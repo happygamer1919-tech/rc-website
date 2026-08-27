@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="{{meta.lang}}" dir="{{meta.dir}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{meta.title}}</title>
+<meta name="description" content="{{meta.description}}">
+<link rel="canonical" href="{{canonical}}">
+<link rel="alternate" hreflang="ro" href="{{urlRo}}">
+<link rel="alternate" hreflang="ru" href="{{urlRu}}">
+<link rel="alternate" hreflang="x-default" href="{{urlRo}}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{meta.ogTitle}}">
+<meta property="og:description" content="{{meta.description}}">
+<meta property="og:url" content="{{ogUrl}}">
+<meta property="og:locale" content="{{meta.ogLocale}}">
+<meta property="og:image" content="{{ogImage}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{meta.ogImageAlt}}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon-512.png" sizes="512x512" type="image/png">
+<link rel="apple-touch-icon" href="/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Unbounded:wght@800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Rapid Construct","description":"{{meta.description}}","url":"{{canonical}}","telephone":"+37376837180","email":"rapidconstructmd@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Nicolae Zelinski St 24","addressLocality":"Chișinău","addressCountry":"MD"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"08:00","closes":"17:00"}]}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#acasa">{{meta.skipToContent}}</a>
+
+<!-- 1 · Header, sticky, opaque, 72px -->
+<header class="header">
+  <div class="header__inner">
+    <a class="header__logo" href="{{homeHref}}"><img src="/logo-full.png" alt="{{meta.logoAlt}}" width="1542" height="568"></a>
+
+    <nav class="nav">
+      <a href="#acasa" aria-current="page">{{header.navHome}}</a>
+      <a href="#servicii">{{header.navServices}}</a>
+      <a href="#portofoliu">{{header.navPortfolio}}</a>
+      <a href="#despre">{{header.navAbout}}</a>
+      <a href="#contacte">{{header.navContacts}}</a>
+    </nav>
+
+    <div class="header__actions">
+      <a class="header__phone" href="tel:+37376837180" aria-label="{{header.phoneAria}}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        <span>{{header.phone}}</span>
+      </a>
+      <a class="btn btn--primary" href="#oferta">{{header.cta}}</a>
+      <div class="lang" data-lang="{{meta.lang}}">
+        <a class="lang__ro" href="/" hreflang="ro" aria-label="Comută pe română">RO</a>
+        <span class="lang__sep" aria-hidden="true"></span>
+        <a class="lang__ru" href="/ru/" hreflang="ru" aria-label="Переключить на русский">RU</a>
+      </div>
+    </div>
+
+    <div class="header__mobile">
+      <a class="icon-btn icon-btn--call" href="tel:+37376837180" aria-label="{{header.phoneAria}}">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      </a>
+      <button class="icon-btn" type="button" id="menu-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="{{header.menuOpen}}" data-label-open="{{header.menuOpen}}" data-label-close="{{header.menuClose}}">
+        <svg class="icon-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <svg class="icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" hidden><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-panel" id="mobile-panel" data-open="false">
+  <a class="mobile-nav-link" href="#acasa">{{header.navHome}}</a>
+  <a class="mobile-nav-link" href="#servicii">{{header.navServices}}</a>
+  <a class="mobile-nav-link" href="#portofoliu">{{header.navPortfolio}}</a>
+  <a class="mobile-nav-link" href="#despre">{{header.navAbout}}</a>
+  <a class="mobile-nav-link" href="#contacte">{{header.navContacts}}</a>
+  <a class="btn btn--primary" href="#oferta">{{header.cta}}</a>
+  <div class="mobile-panel__foot">
+    <a href="tel:+37376837180">{{header.phone}}</a>
+    <div class="lang" data-lang="{{meta.lang}}">
+      <a class="lang__ro" href="/" hreflang="ro" aria-label="Comută pe română">RO</a>
+      <span class="lang__sep" aria-hidden="true"></span>
+      <a class="lang__ru" href="/ru/" hreflang="ru" aria-label="Переключить на русский">RU</a>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<!-- 2 · Hero, variant B, centred, #FFFFFF, no photo -->
+<section class="section section--light hero" id="acasa">
+  <div class="container">
+    <p class="eyebrow">{{hero.eyebrow}}</p>
+    <h1>{{hero.h1}}</h1>
+    <p class="hero__sub">{{hero.sub}}</p>
+
+    <div class="grid grid--4 stats">
+      <div class="stat"><div class="stat__n">{{stats.0.n}}</div><div class="stat__label">{{stats.0.label}}</div></div>
+      <div class="stat"><div class="stat__n">{{stats.1.n}}</div><div class="stat__label">{{stats.1.label}}</div></div>
+      <div class="stat"><div class="stat__n">{{stats.2.n}}</div><div class="stat__label">{{stats.2.label}}</div></div>
+      <div class="stat"><div class="stat__n">{{stats.3.n}}</div><div class="stat__label">{{stats.3.label}}</div></div>
+    </div>
+
+    <div class="price-box">
+      <p class="price-box__title">{{hero.priceTitle}}</p>
+      <p class="price-box__line">{{hero.priceLine1}}</p>
+      <p class="price-box__line">{{hero.priceLine2}}</p>
+    </div>
+
+    <div class="cta-row">
+      <a class="btn btn--primary" href="#oferta">{{hero.ctaPrimary}}</a>
+      <a class="btn btn--outline" href="tel:+37376837180">{{hero.ctaSecondary}}</a>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · Services, #F2F2F2, 3x3 -->
+<section class="section section--grey" id="servicii">
+  <div class="container">
+    <p class="eyebrow">{{services.eyebrow}}</p>
+    <h2>{{services.h2}}</h2>
+    <p class="lede">{{services.intro}}</p>
+
+    <div class="grid grid--3" style="margin-top: 40px;">
+      <article class="card">
+        <div class="media media--4x3 media--card"><img src="/img/svc-case-la-cheie.jpg" alt="{{services.items.0.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
+        <div class="card__body">
+          <h3 class="service__title">{{services.items.0.title}}</h3>
+          <p class="service__desc">{{services.items.0.desc}}</p>
+          <a class="link-arrow" href="#oferta">{{services.linkLabel}}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="media media--4x3 media--card"><img src="/img/svc-acoperisuri.jpg" alt="{{services.items.1.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
+        <div class="card__body">
+          <h3 class="service__title">{{services.items.1.title}}</h3>
+          <p class="service__desc">{{services.items.1.desc}}</p>
+          <a class="link-arrow" href="#oferta">{{services.linkLabel}}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="media media--4x3 media--card"><img src="/img/svc-fatade.jpg" alt="{{services.items.2.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
+        <div class="card__body">
+          <h3 class="service__title">{{services.items.2.title}}</h3>
+          <p class="service__desc">{{services.items.2.desc}}</p>
+          <a class="link-arrow" href="#oferta">{{services.linkLabel}}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="media media--4x3 media--card"><img src="/img/svc-reparatii.jpg" alt="{{services.items.3.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
+        <div class="card__body">
+          <h3 class="service__title">{{services.items.3.title}}</h3>
+          <p class="service__desc">{{services.items.3.desc}}</p>
+          <a class="link-arrow" href="#oferta">{{services.linkLabel}}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="media media--4x3 media--card"><img src="/img/svc-finisaje.jpg" alt="{{services.items.4.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
+        <div class="card__body">
+          <h3 class="service__title">{{services.items.4.title}}</h3>
+          <p class="service__desc">{{services.items.4.desc}}</p>
+          <a class="link-arrow" href="#oferta">{{services.linkLabel}}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="media media--4x3 media--card"><img src="/img/svc-proiectare-3d.jpg" alt="{{services.items.5.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
+        <div class="card__body">
+          <h3 class="service__title">{{services.items.5.title}}</h3>
+          <p class="service__desc">{{services.items.5.desc}}</p>
+          <a class="link-arrow" href="#oferta">{{services.linkLabel}}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="media media--4x3 media--card"><img src="/img/svc-retele.jpg" alt="{{services.items.6.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
+        <div class="card__body">
+          <h3 class="service__title">{{services.items.6.title}}</h3>
+          <p class="service__desc">{{services.items.6.desc}}</p>
+          <a class="link-arrow" href="#oferta">{{services.linkLabel}}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="media media--4x3 media--card"><img src="/img/svc-industrial.jpg" alt="{{services.items.7.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
+        <div class="card__body">
+          <h3 class="service__title">{{services.items.7.title}}</h3>
+          <p class="service__desc">{{services.items.7.desc}}</p>
+          <a class="link-arrow" href="#oferta">{{services.linkLabel}}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="media media--4x3 media--card"><img src="/img/svc-terasamente.jpg" alt="{{services.items.8.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
+        <div class="card__body">
+          <h3 class="service__title">{{services.items.8.title}}</h3>
+          <p class="service__desc">{{services.items.8.desc}}</p>
+          <a class="link-arrow" href="#oferta">{{services.linkLabel}}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · Process, #FFFFFF, five static steps, no motion -->
+<section class="section section--light" id="proces">
+  <div class="container">
+    <p class="eyebrow">{{process.eyebrow}}</p>
+    <h2>{{process.h2}}</h2>
+
+    <div class="grid grid--5" style="margin-top: 40px;">
+      <div class="step">
+        <div class="step__n">{{process.steps.0.n}}</div>
+        <div class="media media--4x3 media--framed"><img src="/img/step-01-fundatie.jpg" alt="{{process.steps.0.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
+        <div><h3 class="step__title">{{process.steps.0.title}}</h3><p class="step__line">{{process.steps.0.line}}</p></div>
+      </div>
+      <div class="step">
+        <div class="step__n">{{process.steps.1.n}}</div>
+        <div class="media media--4x3 media--framed"><img src="/img/step-02-structura.jpg" alt="{{process.steps.1.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
+        <div><h3 class="step__title">{{process.steps.1.title}}</h3><p class="step__line">{{process.steps.1.line}}</p></div>
+      </div>
+      <div class="step">
+        <div class="step__n">{{process.steps.2.n}}</div>
+        <div class="media media--4x3 media--framed"><img src="/img/step-03-acoperis.jpg" alt="{{process.steps.2.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
+        <div><h3 class="step__title">{{process.steps.2.title}}</h3><p class="step__line">{{process.steps.2.line}}</p></div>
+      </div>
+      <div class="step">
+        <div class="step__n">{{process.steps.3.n}}</div>
+        <div class="media media--4x3 media--framed"><img src="/img/step-04-fatada.jpg" alt="{{process.steps.3.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
+        <div><h3 class="step__title">{{process.steps.3.title}}</h3><p class="step__line">{{process.steps.3.line}}</p></div>
+      </div>
+      <div class="step">
+        <div class="step__n">{{process.steps.4.n}}</div>
+        <div class="media media--4x3 media--framed"><img src="/img/step-05-predare.jpg" alt="{{process.steps.4.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
+        <div><h3 class="step__title">{{process.steps.4.title}}</h3><p class="step__line">{{process.steps.4.line}}</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · Portfolio, #F2F2F2, instant client-side filters -->
+<section class="section section--grey" id="portofoliu">
+  <div class="container">
+    <p class="eyebrow">{{portfolio.eyebrow}}</p>
+    <h2>{{portfolio.h2}}</h2>
+
+    <div class="filters" role="group" aria-label="{{portfolio.filterAria}}">
+      <button class="filter" type="button" data-filter="all" aria-pressed="true">{{portfolio.filters.all}}</button>
+      <button class="filter" type="button" data-filter="case" aria-pressed="false">{{portfolio.filters.case}}</button>
+      <button class="filter" type="button" data-filter="acoperis" aria-pressed="false">{{portfolio.filters.acoperis}}</button>
+      <button class="filter" type="button" data-filter="fatade" aria-pressed="false">{{portfolio.filters.fatade}}</button>
+      <button class="filter" type="button" data-filter="renovari" aria-pressed="false">{{portfolio.filters.renovari}}</button>
+      <button class="filter" type="button" data-filter="finisaje" aria-pressed="false">{{portfolio.filters.finisaje}}</button>
+    </div>
+
+    <div class="grid grid--3" id="portfolio-grid">
+      <article class="card project" data-cat="acoperis">
+        <div class="media media--3x2 media--card project__media">
+          <img src="/img/port-01.jpg" alt="{{portfolio.items.0.alt}}" width="1400" height="933" loading="lazy" decoding="async">
+          <span class="chip">{{portfolio.items.0.cat}}</span>
+        </div>
+        <div class="card__body"><h3>{{portfolio.items.0.title}}</h3><p class="project__desc">{{portfolio.items.0.desc}}</p></div>
+      </article>
+      <article class="card project" data-cat="finisaje">
+        <div class="media media--3x2 media--card project__media">
+          <img src="/img/port-02.jpg" alt="{{portfolio.items.1.alt}}" width="1400" height="933" loading="lazy" decoding="async">
+          <span class="chip">{{portfolio.items.1.cat}}</span>
+        </div>
+        <div class="card__body"><h3>{{portfolio.items.1.title}}</h3><p class="project__desc">{{portfolio.items.1.desc}}</p></div>
+      </article>
+      <article class="card project" data-cat="renovari">
+        <div class="media media--3x2 media--card project__media">
+          <img src="/img/port-03.jpg" alt="{{portfolio.items.2.alt}}" width="1400" height="933" loading="lazy" decoding="async">
+          <span class="chip">{{portfolio.items.2.cat}}</span>
+        </div>
+        <div class="card__body"><h3>{{portfolio.items.2.title}}</h3><p class="project__desc">{{portfolio.items.2.desc}}</p></div>
+      </article>
+      <article class="card project" data-cat="case">
+        <div class="media media--3x2 media--card project__media">
+          <img src="/img/port-04.jpg" alt="{{portfolio.items.3.alt}}" width="1400" height="933" loading="lazy" decoding="async">
+          <span class="chip">{{portfolio.items.3.cat}}</span>
+        </div>
+        <div class="card__body"><h3>{{portfolio.items.3.title}}</h3><p class="project__desc">{{portfolio.items.3.desc}}</p></div>
+      </article>
+      <article class="card project" data-cat="fatade">
+        <div class="media media--3x2 media--card project__media">
+          <img src="/img/port-05.jpg" alt="{{portfolio.items.4.alt}}" width="1400" height="933" loading="lazy" decoding="async">
+          <span class="chip">{{portfolio.items.4.cat}}</span>
+        </div>
+        <div class="card__body"><h3>{{portfolio.items.4.title}}</h3><p class="project__desc">{{portfolio.items.4.desc}}</p></div>
+      </article>
+      <article class="card project" data-cat="case">
+        <div class="media media--3x2 media--card project__media">
+          <img src="/img/port-06.jpg" alt="{{portfolio.items.5.alt}}" width="1400" height="933" loading="lazy" decoding="async">
+          <span class="chip">{{portfolio.items.5.cat}}</span>
+        </div>
+        <div class="card__body"><h3>{{portfolio.items.5.title}}</h3><p class="project__desc">{{portfolio.items.5.desc}}</p></div>
+      </article>
+    </div>
+
+    <p class="portfolio__empty" id="portfolio-empty" hidden>{{portfolio.empty}}</p>
+
+    <div class="portfolio__foot"><a class="btn btn--outline" href="#oferta">{{portfolio.ctaAll}}</a></div>
+  </div>
+</section>
+
+<!-- 6 · Stats band, #141414, dark 1 of 2 -->
+<section class="section section--dark band">
+  <div class="container">
+    <div class="grid grid--4 band__stats">
+      <div class="stat"><div class="stat__n">{{stats.0.n}}</div><div class="stat__label">{{stats.0.label}}</div></div>
+      <div class="stat"><div class="stat__n">{{stats.1.n}}</div><div class="stat__label">{{stats.1.label}}</div></div>
+      <div class="stat"><div class="stat__n">{{stats.2.n}}</div><div class="stat__label">{{stats.2.label}}</div></div>
+      <div class="stat"><div class="stat__n">{{stats.3.n}}</div><div class="stat__label">{{stats.3.label}}</div></div>
+    </div>
+    <p class="band__coverage"><strong>{{band.coverageTitle}}</strong> {{band.coverageLine}}</p>
+  </div>
+</section>
+
+<!-- 7 · Why us + testimonials, #FFFFFF, one section, two blocks -->
+<section class="section section--light" id="despre">
+  <div class="container">
+    <p class="eyebrow">{{trust.eyebrow}}</p>
+    <h2>{{trust.h2}}</h2>
+
+    <div class="grid grid--3 trust-grid" style="margin-top: 40px;">
+      <div class="trust-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F65308" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        <h3>{{trust.items.0.title}}</h3><p class="trust-item__line">{{trust.items.0.line}}</p>
+      </div>
+      <div class="trust-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F65308" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 7.7l5.4-.8z"></path></svg>
+        <h3>{{trust.items.1.title}}</h3><p class="trust-item__line">{{trust.items.1.line}}</p>
+      </div>
+      <div class="trust-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F65308" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 6v6l4 2"></path></svg>
+        <h3>{{trust.items.2.title}}</h3><p class="trust-item__line">{{trust.items.2.line}}</p>
+      </div>
+      <div class="trust-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F65308" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zM22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"></path></svg>
+        <h3>{{trust.items.3.title}}</h3><p class="trust-item__line">{{trust.items.3.line}}</p>
+      </div>
+      <div class="trust-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F65308" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3h7l11 11-7 7L3 10zM7.5 7.5h.01"></path></svg>
+        <h3>{{trust.items.4.title}}</h3><p class="trust-item__line">{{trust.items.4.line}}</p>
+      </div>
+      <div class="trust-item">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F65308" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3M4 15a2 2 0 0 0 2 2h1v-6H6a2 2 0 0 0-2 2zM20 15a2 2 0 0 1-2 2h-1v-6h1a2 2 0 0 1 2 2z"></path></svg>
+        <h3>{{trust.items.5.title}}</h3><p class="trust-item__line">{{trust.items.5.line}}</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <p class="eyebrow">{{reviews.eyebrow}}</p>
+    <h2>{{reviews.h2}}</h2>
+
+    <div class="grid grid--3" style="margin-top: 40px;">
+      <figure class="review" style="margin: 0;">
+        <blockquote class="review__quote" style="margin: 0;">{{reviews.items.0.quote}}</blockquote>
+        <figcaption><div class="review__name">{{reviews.items.0.name}}</div><div class="review__meta">{{reviews.items.0.meta}}</div></figcaption>
+      </figure>
+      <figure class="review" style="margin: 0;">
+        <blockquote class="review__quote" style="margin: 0;">{{reviews.items.1.quote}}</blockquote>
+        <figcaption><div class="review__name">{{reviews.items.1.name}}</div><div class="review__meta">{{reviews.items.1.meta}}</div></figcaption>
+      </figure>
+      <figure class="review" style="margin: 0;">
+        <blockquote class="review__quote" style="margin: 0;">{{reviews.items.2.quote}}</blockquote>
+        <figcaption><div class="review__name">{{reviews.items.2.name}}</div><div class="review__meta">{{reviews.items.2.meta}}</div></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · Quote form, #F2F2F2 -->
+<section class="section section--grey" id="oferta">
+  <div class="container">
+    <p class="eyebrow">{{form.eyebrow}}</p>
+    <h2>{{form.h2}}</h2>
+    <p class="lede">{{form.intro}}</p>
+
+    <div class="form-layout" style="margin-top: 40px;">
+      <form class="form-card form-card--stack" id="quote-form" method="POST" action="https://api.web3forms.com/submit" novalidate data-ok="{{form.ok}}" data-fail="{{form.fail}}">
+        <input type="hidden" name="access_key" value="{{formEndpoint}}">
+        <input type="hidden" name="subject" value="{{form.h2}} — rapidconstruct.md">
+        <input type="hidden" name="from_name" value="Rapid Construct">
+        <div class="honeypot" aria-hidden="true"><label for="botcheck">{{form.honeypotLabel}}</label><input id="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></div>
+
+        <h3>{{form.cardTitle}}</h3>
+
+        <div class="field">
+          <label for="f-name">{{form.labelName}}</label>
+          <input id="f-name" name="nume" type="text" placeholder="{{form.phName}}" autocomplete="name" required aria-describedby="e-name">
+          <p class="field__error" id="e-name" hidden>{{form.errName}}</p>
+        </div>
+
+        <div class="field">
+          <label for="f-phone">{{form.labelPhone}}</label>
+          <input id="f-phone" name="telefon" type="tel" placeholder="{{form.phPhone}}" autocomplete="tel" required aria-describedby="h-phone e-phone">
+          <p class="field__hint" id="h-phone">{{form.hintPhone}}</p>
+          <p class="field__error" id="e-phone" hidden>{{form.errPhone}}</p>
+        </div>
+
+        <div class="field">
+          <label for="f-type">{{form.labelType}}</label>
+          <select id="f-type" name="tip_lucrari">
+            <option value="">{{form.phType}}</option>
+            <option>{{form.options.0}}</option>
+            <option>{{form.options.1}}</option>
+            <option>{{form.options.2}}</option>
+            <option>{{form.options.3}}</option>
+            <option>{{form.options.4}}</option>
+            <option>{{form.options.5}}</option>
+            <option>{{form.options.6}}</option>
+            <option>{{form.options.7}}</option>
+            <option>{{form.options.8}}</option>
+            <option>{{form.options.9}}</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="f-city">{{form.labelCity}}</label>
+          <input id="f-city" name="localitate" type="text" placeholder="{{form.phCity}}" autocomplete="address-level2" aria-describedby="h-city">
+          <p class="field__hint" id="h-city">{{form.hintCity}}</p>
+        </div>
+
+        <div class="field">
+          <label for="f-message">{{form.labelMessage}}</label>
+          <textarea id="f-message" name="mesaj" rows="4" placeholder="{{form.phMessage}}"></textarea>
+        </div>
+
+        <div class="consent">
+          <input id="f-consent" name="acord" type="checkbox" required aria-describedby="e-consent">
+          <label for="f-consent">{{form.consentPre}} <a href="#contacte">{{form.consentLink}}</a>{{form.consentPost}}</label>
+        </div>
+        <p class="field__error" id="e-consent" hidden>{{form.errConsent}}</p>
+
+        <button class="btn btn--primary" type="submit" style="align-self: flex-start;">{{form.submit}}</button>
+        <p class="form-status" id="form-status" role="status" hidden></p>
+      </form>
+
+      <div class="form-aside">
+        <div class="form-card">
+          <h3>{{form.sideTitle}}</h3>
+          <p class="muted" style="margin-top: 12px;">{{form.sideBody}}</p>
+          <p class="muted" style="margin-top: 12px;">{{form.sideNote}}</p>
+        </div>
+        <div class="form-card">
+          <p class="eyebrow">{{form.phoneEyebrow}}</p>
+          <a class="aside__phone" href="tel:+37376837180">{{header.phone}}</a>
+          <p class="muted">{{form.hours}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- 9 · Contact footer, #141414, dark 2 of 2 -->
+<footer class="footer" id="contacte">
+  <div class="container">
+    <div class="footer__cta">
+      <a class="btn btn--primary" href="#oferta">{{hero.ctaPrimary}}</a>
+      <a class="btn btn--outline-light" href="tel:+37376837180">{{hero.ctaSecondary}}</a>
+    </div>
+
+    <div class="footer__cols">
+      <div class="footer__brand">
+        <img src="/logo-white.png" alt="{{meta.logoAlt}}" width="1542" height="568">
+        <p class="footer__desc">{{footer.description}}</p>
+        <p class="footer__offer">{{footer.offer}}</p>
+      </div>
+
+      <div class="footer__lists">
+        <div>
+          <p class="footer__heading">{{footer.navHeading}}</p>
+          <div class="footer__links">
+            <a href="#acasa">{{header.navHome}}</a>
+            <a href="#servicii">{{header.navServices}}</a>
+            <a href="#portofoliu">{{header.navPortfolio}}</a>
+            <a href="#despre">{{header.navAbout}}</a>
+            <a href="#contacte">{{header.navContacts}}</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer__heading">{{footer.servicesHeading}}</p>
+          <div class="footer__links">
+            <a href="#servicii">{{services.items.0.title}}</a>
+            <a href="#servicii">{{services.items.1.title}}</a>
+            <a href="#servicii">{{services.items.2.title}}</a>
+            <a href="#servicii">{{services.items.3.title}}</a>
+            <a href="#servicii">{{services.items.4.title}}</a>
+            <a href="#servicii">{{services.items.5.title}}</a>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="footer__heading">{{footer.contactHeading}}</p>
+        <dl class="footer__contact">
+          <div><dt>{{footer.addressLabel}}</dt><dd>{{footer.address}}</dd></div>
+          <div><dt>{{footer.phoneLabel}}</dt><dd><a href="tel:+37376837180">{{header.phone}}</a></dd></div>
+          <div><dt>{{footer.emailLabel}}</dt><dd><a href="mailto:rapidconstructmd@gmail.com">{{footer.email}}</a></dd></div>
+          <div><dt>{{footer.hoursLabel}}</dt><dd>{{form.hours}}</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__bar">
+    <div class="footer__bar-inner">
+      <div>{{footer.copyright}} · {{footer.region}}</div>
+      <div class="footer__legal"><a href="#contacte">{{footer.privacy}}</a><a href="#contacte">{{footer.cookies}}</a></div>
+    </div>
+  </div>
+</footer>
+
+<div class="floating">
+  <a class="floating__wa" href="https://wa.me/37376837180" aria-label="{{footer.whatsappAria}}" rel="noopener">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"></path></svg>
+  </a>
+  <a class="floating__call" href="tel:+37376837180" aria-label="{{header.phoneAria}}">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+  </a>
+</div>
+
+<script src="/main.js" defer></script>
+</body>
+</html>

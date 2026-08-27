@@ -21,10 +21,7 @@
     "phone": "+373 76 837 180",
     "phoneAria": "Sună la +373 76 837 180",
     "menuOpen": "Deschide meniul",
-    "menuClose": "Închide meniul",
-    "langCurrent": "RO",
-    "langOther": "RU",
-    "langOtherAria": "Переключить на русский"
+    "menuClose": "Închide meniul"
   },
 
   "hero": {
@@ -254,6 +251,8 @@
     "consentPost": ". Le folosim doar ca să te contactăm în legătură cu proiectul tău.",
     "errConsent": "Confirmă acordul ca să putem răspunde.",
     "honeypotLabel": "Website",
+    "ok": "Mulțumim. Te contactăm în maximum 2 ore lucrătoare.",
+    "fail": "Nu am putut trimite mesajul. Sună-ne la +373 76 837 180.",
     "submit": "Trimite mesajul",
     "sideTitle": "Începe proiectul tău",
     "sideBody": "Spune-ne ce ai nevoie și primești o ofertă clară, fără obligații.",

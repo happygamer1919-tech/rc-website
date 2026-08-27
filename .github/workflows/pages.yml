@@ -1,0 +1,61 @@
+# Builds the site with the GitHub Pages base path and publishes dist/.
+# Pages must be set to "GitHub Actions" as its source, not "deploy from a
+# branch" — docs/ holds the specs, it is not a site directory.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # Placeholders are committed, so nothing regenerates here. Dropping a real
+      # photo into public/img/ is enough to publish it. (The generator needs
+      # macOS sips and would not run on this runner anyway.)
+      - name: Build both locales
+        env:
+          BASE_PATH: /rc-website
+          SITE_URL: https://happygamer1919-tech.github.io
+          # Absent until the client approves, which leaves the form in demo mode.
+          WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_KEY }}
+        run: |
+          node build.js
+          touch dist/.nojekyll
+
+      - name: Fail if any placeholder survived
+        run: |
+          if grep -rq '{{' dist/; then echo "unsubstituted placeholder in dist/"; exit 1; fi
+          test -f dist/index.html && test -f dist/ru/index.html
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

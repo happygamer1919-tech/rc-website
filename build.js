@@ -6,7 +6,9 @@ const fs = require('fs');
 const path = require('path');
 
 const SITE = process.env.SITE_URL || 'https://rapidconstruct.md';
-const FORM_ENDPOINT = process.env.WEB3FORMS_KEY || 'WEB3FORMS_ACCESS_KEY_PLACEHOLDER';
+const FORM_KEY = (process.env.WEB3FORMS_KEY || '').trim();
+const FORM_ARMED = FORM_KEY.length > 0;
+const FORM_ENDPOINT = FORM_ARMED ? FORM_KEY : 'WEB3FORMS_ACCESS_KEY_PLACEHOLDER';
 
 const LOCALES = [
   { code: 'ro', file: 'locales/ro.json', out: 'dist/index.html', home: '/', alt: '/ru/' },
@@ -41,6 +43,9 @@ for (const l of loaded) {
   const vars = {
     ...l.strings,
     formEndpoint: FORM_ENDPOINT,
+    formArmed: FORM_ARMED ? '1' : '0',
+    // With no key the form must not post anywhere: it validates, then says so.
+    formAction: FORM_ARMED ? 'https://api.web3forms.com/submit' : '#oferta',
     homeHref: l.home,
     altHref: l.alt,
     canonical: SITE + l.home,
@@ -67,6 +72,7 @@ fs.copyFileSync('src/main.js', 'dist/main.js');
 fs.cpSync('public', 'dist', { recursive: true, filter: (src) => !src.endsWith('PLACEHOLDERS.json') });
 console.log('copied styles.css, main.js and public/ into dist/');
 
-if (FORM_ENDPOINT.includes('PLACEHOLDER')) {
-  console.log('\nNOTE: WEB3FORMS_KEY not set, form posts to a placeholder access key.');
-}
+console.log(FORM_ARMED
+  ? '\nform: ARMED, posts to Web3Forms.'
+  : '\nform: DEMO MODE. No WEB3FORMS_KEY set, so the form validates and then shows\n'
+    + '      the inline notice instead of posting. Set WEB3FORMS_KEY to arm it.');

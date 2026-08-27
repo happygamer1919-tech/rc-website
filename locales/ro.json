@@ -1,0 +1,295 @@
+{
+  "meta": {
+    "lang": "ro",
+    "dir": "ltr",
+    "title": "Construcții și renovări la cheie în Chișinău · Rapid Construct",
+    "description": "Acoperișuri, fațade, renovări complete și finisaje în Chișinău, Orhei, Cahul și Costești. Garanție scrisă până la 30 de ani, materiale certificate UE, prețuri de la 160 lei/m².",
+    "ogTitle": "Construcții și renovări la cheie în Chișinău",
+    "ogLocale": "ro_MD",
+    "skipToContent": "Sari la conținut",
+    "logoAlt": "Rapid Construct",
+    "ogImageAlt": "Casă la cheie finalizată de Rapid Construct"
+  },
+
+  "header": {
+    "navHome": "Acasă",
+    "navServices": "Servicii",
+    "navPortfolio": "Portofoliu",
+    "navAbout": "Despre noi",
+    "navContacts": "Contacte",
+    "cta": "Solicită ofertă",
+    "phone": "+373 76 837 180",
+    "phoneAria": "Sună la +373 76 837 180",
+    "menuOpen": "Deschide meniul",
+    "menuClose": "Închide meniul"
+  },
+
+  "hero": {
+    "eyebrow": "Construcții & Renovări · în toată Moldova",
+    "h1": "Casa ta la cheie, fără să coordonezi singur echipele",
+    "sub": "Construcții și renovări complete: venim, măsurăm gratuit și construim la cheie.",
+    "priceTitle": "160 lei/m² preț înghețat pentru 2026",
+    "priceLine1": "−10% la programări anticipate",
+    "priceLine2": "Rate 0% la acoperiș",
+    "ctaPrimary": "Solicită ofertă gratuită",
+    "ctaSecondary": "Sună acum"
+  },
+
+  "stats": {
+    "0": { "n": "500+", "label": "proiecte finalizate" },
+    "1": { "n": "15+", "label": "ani de experiență" },
+    "2": { "n": "30", "label": "ani garanție scrisă" },
+    "3": { "n": "4.9/5", "label": "din 250+ recenzii" }
+  },
+
+  "services": {
+    "eyebrow": "Servicii",
+    "h2": "Ce construim pentru tine",
+    "intro": "O singură echipă răspunde de tot proiectul, de la structură până la ultimul finisaj.",
+    "linkLabel": "Află mai multe",
+    "items": {
+      "0": {
+        "title": "Construcție case la cheie",
+        "desc": "Ridicăm casa de la fundație până la predarea cheii. Un singur contract, o singură echipă.",
+        "alt": "Casă finalizată la cheie, construită de Rapid Construct"
+      },
+      "1": {
+        "title": "Acoperișuri",
+        "desc": "Țiglă metalică, șindrilă bituminoasă, jgheaburi și burlane. Montate corect, ca să nu curgă niciodată.",
+        "alt": "Acoperiș finalizat cu țiglă metalică, montat de Rapid Construct"
+      },
+      "2": {
+        "title": "Fațade",
+        "desc": "Termoizolație, tencuieli decorative și placări din piatră naturală pentru un exterior durabil.",
+        "alt": "Fațadă finisată cu tencuială decorativă și placare din piatră"
+      },
+      "3": {
+        "title": "Renovări la cheie",
+        "desc": "Coordonăm tot procesul, de la demolări până la finisaje. Tu primești casa gata de locuit.",
+        "alt": "Renovare la cheie finalizată, interior gata de locuit"
+      },
+      "4": {
+        "title": "Finisaje",
+        "desc": "Gips-carton, glet, vopsit, podele și plăci, totul lucrat curat, la milimetru.",
+        "alt": "Finisaje interioare: glet, vopsit și pardoseli"
+      },
+      "5": {
+        "title": "Proiectare și vizualizare 3D",
+        "desc": "Vezi casa în 3D și planurile pe hârtie înainte să începem lucrul, ca să știi exact ce primești.",
+        "alt": "Randare 3D a unei case, realizată înainte de începerea lucrărilor"
+      },
+      "6": {
+        "title": "Instalații",
+        "desc": "Curent, apă și căldură, calculate corect și pornite cu garanție.",
+        "alt": "Instalații de apă, curent și încălzire montate într-o casă"
+      },
+      "7": {
+        "title": "Construcții industriale",
+        "desc": "Hale, depozite și spații comerciale, structură și finisaje executate la cheie.",
+        "alt": "Hală industrială construită la cheie de Rapid Construct"
+      },
+      "8": {
+        "title": "Lucrări de terasament și excavare",
+        "desc": "Excavații, nivelare și pregătirea terenului cu utilaje specializate.",
+        "alt": "Excavator pregătind terenul pentru o construcție nouă"
+      }
+    }
+  },
+
+  "process": {
+    "eyebrow": "Cum lucrăm",
+    "h2": "De la fundație la predare",
+    "steps": {
+      "0": {
+        "n": "01",
+        "title": "Fundație",
+        "line": "Turnăm fundația după proiect. Pe ea stă toată casa.",
+        "alt": "Fundație turnată în cofraj, pregătită pentru zidărie"
+      },
+      "1": {
+        "n": "02",
+        "title": "Structură și ziduri",
+        "line": "Ridicăm pereții casei, exact ca în proiect.",
+        "alt": "Pereții casei ridicați, structura vizibilă pe șantier"
+      },
+      "2": {
+        "n": "03",
+        "title": "Acoperiș",
+        "line": "Montăm structura de lemn, țigla și coșul. Casa e sub acoperiș.",
+        "alt": "Șarpantă de lemn și învelitoare montate pe casă"
+      },
+      "3": {
+        "n": "04",
+        "title": "Fațadă",
+        "line": "Termoizolație, tencuieli decorative și placări din piatră naturală.",
+        "alt": "Plăci de termoizolație montate pe fațada casei"
+      },
+      "4": {
+        "n": "05",
+        "title": "Finisaje și predare",
+        "line": "Jgheaburi și burlane, apoi predăm cheia. Casa e gata.",
+        "alt": "Casă finalizată și predată, curtea eliberată"
+      }
+    }
+  },
+
+  "portfolio": {
+    "eyebrow": "Portofoliu",
+    "h2": "Proiecte recente",
+    "ctaAll": "Vezi tot portofoliul",
+    "filterAria": "Filtrează proiectele după tipul lucrării",
+    "empty": "Niciun proiect în această categorie.",
+    "filters": {
+      "all": "Toate",
+      "case": "Case la cheie",
+      "acoperis": "Acoperișuri",
+      "fatade": "Fațade",
+      "renovari": "Renovări",
+      "finisaje": "Finisaje"
+    },
+    "items": {
+      "0": {
+        "cat": "Acoperișuri",
+        "title": "Acoperiș din șindrilă bituminoasă",
+        "desc": "Acoperiș în patru ape din șindrilă bituminoasă antracit, cu dolii și coșuri finisate, pe o casă nouă din suburbie.",
+        "alt": "Acoperiș în patru ape din șindrilă bituminoasă antracit pe o casă nouă"
+      },
+      "1": {
+        "cat": "Finisaje",
+        "title": "Terasă cu bucătărie de vară",
+        "desc": "Terasă placată cu travertin, geamuri glisante mari și șemineu exterior din piatră, chiar lângă casă.",
+        "alt": "Terasă placată cu travertin, cu geamuri glisante și șemineu din piatră"
+      },
+      "2": {
+        "cat": "Renovări",
+        "title": "Acoperiș nou pe casă existentă",
+        "desc": "Înlocuirea completă a acoperișului cu țiglă metalică antracit, pe o casă mai veche din zona colinară.",
+        "alt": "Acoperiș nou din țiglă metalică antracit pe o casă renovată"
+      },
+      "3": {
+        "cat": "Case la cheie",
+        "title": "Casă cu parter și etaj, în lucru",
+        "desc": "Pereți tencuiți, acoperiș montat și schela încă pe fațadă.",
+        "alt": "Casă cu parter și etaj în lucru, cu schela montată pe fațadă"
+      },
+      "4": {
+        "cat": "Fațade",
+        "title": "Termoizolație pe o casă la parter",
+        "desc": "Plăci de vată montate pe pereți, sub acoperișul deja pus.",
+        "alt": "Plăci de vată minerală montate pe pereții unei case la parter"
+      },
+      "5": {
+        "cat": "Case la cheie",
+        "title": "Casă finisată, cu acoperiș nou",
+        "desc": "Fațadă gata, învelitoare nouă din țiglă metalică și curtea eliberată.",
+        "alt": "Casă finisată cu fațadă gata și învelitoare nouă din țiglă metalică"
+      }
+    }
+  },
+
+  "band": {
+    "coverageTitle": "Lucrăm în toată Moldova.",
+    "coverageLine": "Am construit în Chișinău, Codru, Coșnița, Costești, Căinari și Sociteni."
+  },
+
+  "trust": {
+    "eyebrow": "Despre noi",
+    "h2": "De ce Rapid Construct",
+    "items": {
+      "0": { "title": "Garanție 30 de ani în contract", "line": "Garanția e scrisă în contract, nu doar promisă." },
+      "1": { "title": "Materiale certificate UE", "line": "Produse de la producători cu reputație, potrivite proiectului." },
+      "2": { "title": "Execuție și livrare la timp", "line": "Stabilim termene clare de la început și le respectăm." },
+      "3": { "title": "Echipă cu 10+ ani experiență", "line": "Meșteri specializați pe fiecare tip de lucrare." },
+      "4": { "title": "Prețuri transparente", "line": "Ce scrie în deviz, aceea plătești. Fără costuri ascunse." },
+      "5": { "title": "Suport post-lucrare", "line": "Rămânem alături de tine și după finalizarea proiectului." }
+    }
+  },
+
+  "reviews": {
+    "eyebrow": "Recenzii",
+    "h2": "Ce spun clienții",
+    "items": {
+      "0": {
+        "quote": "Acoperișul metalic a fost montat curat, la termen și fără costuri surpriză. Recomand cu încredere.",
+        "name": "Ion Miron",
+        "meta": "Chișinău · acoperiș metalic"
+      },
+      "1": {
+        "quote": "Fațada și izolația au schimbat complet casa: mai caldă iarna și mult mai frumoasă. Echipă serioasă.",
+        "name": "Maria Oprea",
+        "meta": "Orhei · fațadă + izolație"
+      },
+      "2": {
+        "quote": "Colaborăm pe mai multe proiecte. Calitate constantă și termene respectate, exact ce cauți la un partener.",
+        "name": "Andrei Condrea",
+        "meta": "Dezvoltator imobiliar"
+      }
+    }
+  },
+
+  "form": {
+    "eyebrow": "Cere ofertă",
+    "h2": "Solicită ofertă gratuită",
+    "intro": "Completează formularul și te contactăm în maximum 2 ore lucrătoare cu un răspuns concret.",
+    "cardTitle": "Lasă-ne un mesaj",
+    "labelName": "Nume",
+    "phName": "Numele tău",
+    "errName": "Scrie-ne numele tău.",
+    "labelPhone": "Telefon",
+    "phPhone": "+373 __ ___ ___",
+    "hintPhone": "Te sunăm noi dacă e mai ușor.",
+    "errPhone": "Scrie un număr de telefon valid.",
+    "labelType": "Tipul lucrării",
+    "phType": "Alege tipul lucrării",
+    "labelCity": "Localitate",
+    "phCity": "Chișinău, Orhei, Costești…",
+    "hintCity": "Orașul sau satul unde e lucrarea.",
+    "labelMessage": "Mesaj (opțional)",
+    "phMessage": "Suprafață, termen dorit, alte detalii",
+    "consentPre": "Sunt de acord cu prelucrarea datelor conform",
+    "consentLink": "politicii de confidențialitate",
+    "consentPost": ". Le folosim doar ca să te contactăm în legătură cu proiectul tău.",
+    "errConsent": "Confirmă acordul ca să putem răspunde.",
+    "honeypotLabel": "Website",
+    "ok": "Mulțumim. Te contactăm în maximum 2 ore lucrătoare.",
+    "fail": "Nu am putut trimite mesajul. Sună-ne la +373 76 837 180.",
+    "submit": "Trimite mesajul",
+    "sideTitle": "Începe proiectul tău",
+    "sideBody": "Spune-ne ce ai nevoie și primești o ofertă clară, fără obligații.",
+    "sideNote": "Îți răspundem în maximum 2 ore lucrătoare.",
+    "phoneEyebrow": "Telefon",
+    "hours": "Lun-Sâm 08:00-17:00 · Dum: închis",
+    "options": {
+      "0": "Construcție case la cheie",
+      "1": "Acoperișuri",
+      "2": "Fațade",
+      "3": "Renovări la cheie",
+      "4": "Finisaje",
+      "5": "Proiectare și vizualizare 3D",
+      "6": "Instalații",
+      "7": "Construcții industriale",
+      "8": "Lucrări de terasament și excavare",
+      "9": "Altceva"
+    }
+  },
+
+  "footer": {
+    "description": "Construcții și renovări la cheie în toată Moldova, cu garanție scrisă și materiale certificate UE.",
+    "offer": "−10% la programări anticipate · Rate 0% la acoperiș · preț înghețat 160 lei/m² pentru 2026",
+    "navHeading": "Companie",
+    "servicesHeading": "Servicii",
+    "contactHeading": "Contact",
+    "addressLabel": "Adresă",
+    "address": "Nicolae Zelinski St 24, Chișinău",
+    "phoneLabel": "Telefon",
+    "emailLabel": "Email",
+    "email": "rapidconstructmd@gmail.com",
+    "hoursLabel": "Program",
+    "copyright": "© Rapid Construct 2026",
+    "privacy": "Politica de confidențialitate",
+    "cookies": "Politica cookie",
+    "region": "Chișinău, Republica Moldova",
+    "whatsappAria": "Scrie pe WhatsApp",
+    "backToTop": "Sus"
+  }
+}

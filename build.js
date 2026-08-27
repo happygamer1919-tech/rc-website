@@ -5,7 +5,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const SITE = process.env.SITE_URL || 'https://rapidconstruct.md';
+const SITE = (process.env.SITE_URL || 'https://rapidconstruct.md').replace(/\/$/, '');
+// Sub-path the site is served from. Empty for a domain root (Hostinger);
+// '/rc-website' for GitHub Pages. Every asset and inter-locale link uses it.
+const BASE = (process.env.BASE_PATH || '').replace(/\/+$/, '');
 const FORM_KEY = (process.env.WEB3FORMS_KEY || '').trim();
 const FORM_ARMED = FORM_KEY.length > 0;
 const FORM_ENDPOINT = FORM_ARMED ? FORM_KEY : 'WEB3FORMS_ACCESS_KEY_PLACEHOLDER';
@@ -46,13 +49,15 @@ for (const l of loaded) {
     formArmed: FORM_ARMED ? '1' : '0',
     // With no key the form must not post anywhere: it validates, then says so.
     formAction: FORM_ARMED ? 'https://api.web3forms.com/submit' : '#oferta',
-    homeHref: l.home,
-    altHref: l.alt,
-    canonical: SITE + l.home,
-    ogUrl: SITE + l.home,
-    ogImage: SITE + '/img/og-image.jpg',
-    urlRo: SITE + '/',
-    urlRu: SITE + '/ru/',
+    base: BASE,
+    homeHref: BASE + l.home,
+    hrefRo: BASE + '/',
+    hrefRu: BASE + '/ru/',
+    canonical: SITE + BASE + l.home,
+    ogUrl: SITE + BASE + l.home,
+    ogImage: SITE + BASE + '/img/og-image.jpg',
+    urlRo: SITE + BASE + '/',
+    urlRu: SITE + BASE + '/ru/',
   };
   const missing = new Set();
   const html = template.replace(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/g, (_, key) => {
@@ -72,6 +77,7 @@ fs.copyFileSync('src/main.js', 'dist/main.js');
 fs.cpSync('public', 'dist', { recursive: true, filter: (src) => !src.endsWith('PLACEHOLDERS.json') });
 console.log('copied styles.css, main.js and public/ into dist/');
 
+console.log(`base path: ${BASE || '(root)'}    site: ${SITE}`);
 console.log(FORM_ARMED
   ? '\nform: ARMED, posts to Web3Forms.'
   : '\nform: DEMO MODE. No WEB3FORMS_KEY set, so the form validates and then shows\n'

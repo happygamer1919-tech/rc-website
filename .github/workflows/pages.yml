@@ -40,10 +40,15 @@ jobs:
           node build.js
           touch dist/.nojekyll
 
+      # HTML only. Compressed image data contains the bytes '{{' by chance, and
+      # GNU grep -r happily matches inside binaries where BSD grep skips them.
       - name: Fail if any placeholder survived
         run: |
-          if grep -rq '{{' dist/; then echo "unsubstituted placeholder in dist/"; exit 1; fi
           test -f dist/index.html && test -f dist/ru/index.html
+          if grep -l '{{' dist/index.html dist/ru/index.html; then
+            echo "unsubstituted placeholder in generated HTML"; exit 1
+          fi
+          echo "no placeholders survived"
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

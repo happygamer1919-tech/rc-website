@@ -379,7 +379,7 @@
     <p class="lede">{{form.intro}}</p>
 
     <div class="form-layout" style="margin-top: 40px;">
-      <form class="form-card form-card--stack" id="quote-form" method="POST" action="https://api.web3forms.com/submit" novalidate data-ok="{{form.ok}}" data-fail="{{form.fail}}">
+      <form class="form-card form-card--stack" id="quote-form" method="POST" action="{{formAction}}" novalidate data-armed="{{formArmed}}" data-ok="{{form.ok}}" data-fail="{{form.fail}}" data-demo="{{form.demoNotice}}">
         <input type="hidden" name="access_key" value="{{formEndpoint}}">
         <input type="hidden" name="subject" value="{{form.h2}} — rapidconstruct.md">
         <input type="hidden" name="from_name" value="Rapid Construct">

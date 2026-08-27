@@ -96,10 +96,19 @@
   });
 
   form.addEventListener('submit', function (e) {
-    var bad = checks.filter(function (f) { return !validate(f); });
-    if (bad.length) { e.preventDefault(); bad[0].input.focus(); return; }
-
     e.preventDefault();
+
+    var bad = checks.filter(function (f) { return !validate(f); });
+    if (bad.length) { bad[0].input.focus(); return; }
+
+    // No endpoint key at build time: validate, then say so. Never post.
+    if (form.getAttribute('data-armed') !== '1') {
+      status.hidden = false;
+      status.textContent = form.getAttribute('data-demo');
+      status.style.color = '#5A5A5A';
+      return;
+    }
+
     var button = form.querySelector('button[type="submit"]');
     button.disabled = true;
     status.hidden = false;

@@ -3,7 +3,7 @@
 > Companion to `RC-WEBSITE-MASTER-PLAN.md`. Applies only to the Rapid Construct MD website (repo `rc-website`).
 > Fill the **File / notes** column during the photo selection session with Mihai. Leave it blank if no real photo exists for that slot.
 
-**Total needed: 26 mandatory, up to 18 optional.**
+**Total needed: 25 mandatory, up to 18 optional.** (26 before `form-bg` was struck.)
 
 Every file: minimum 1600px long edge, landscape, JPG, under 400KB after compression, no watermark, real Rapid Construct work only.
 Naming: use the Slot ID exactly, lowercase, `.jpg`. Example: `svc-acoperisuri.jpg`. Drop everything into one folder, no subfolders.
@@ -67,11 +67,12 @@ Only if we enable the lightbox. Name them `port-01-a`, `port-01-b`, `port-01-c` 
 | `port-05` | | | |
 | `port-06` | | | |
 
-### Form section background — 1 mandatory, 16:9 wide, 1920x1080
+### Form section background — STRUCK
 
-| Slot ID | What it must show | File / notes |
-|---|---|---|
-| `form-bg` | Wide site or finished house shot, uncluttered in the middle so form text stays readable. Will be darkened | |
+~~`form-bg`, 16:9, 1920x1080.~~ Removed by Ivan, 2026-08-27. A darkened photo
+behind the form would add a fourth background value and a translucent overlay,
+both forbidden by the master plan's background rule, which is the one thing the
+client stated clearly. The form section stays flat `#F2F2F2`.
 
 ### Social share image — 1 mandatory, 1200x630
 

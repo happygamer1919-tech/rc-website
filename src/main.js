@@ -7,12 +7,18 @@
   var toggle = document.getElementById('menu-toggle');
   var panel = document.getElementById('mobile-panel');
 
+  function setHidden(el, hide) {
+    if (hide) el.setAttribute('hidden', ''); else el.removeAttribute('hidden');
+  }
+
   function setMenu(open) {
     panel.setAttribute('data-open', open ? 'true' : 'false');
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     toggle.setAttribute('aria-label', toggle.getAttribute(open ? 'data-label-close' : 'data-label-open'));
-    toggle.querySelector('.icon-menu').hidden = open;
-    toggle.querySelector('.icon-close').hidden = !open;
+    // NB: `.hidden` does not reflect to the attribute on SVGElement (it is not
+    // an HTMLElement), so toggle the attribute itself or the icons never swap.
+    setHidden(toggle.querySelector('.icon-menu'), open);
+    setHidden(toggle.querySelector('.icon-close'), !open);
     document.body.style.overflow = open ? 'hidden' : '';
   }
 

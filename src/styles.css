@@ -181,6 +181,7 @@ p { margin: 0; }
   background: transparent; border: 0; color: var(--ink); cursor: pointer;
 }
 .icon-btn svg { display: block; }
+.icon-btn svg[hidden] { display: none; }
 .icon-btn--call { color: var(--brand); }
 .icon-btn:hover { background: var(--bg-grey); }
 .header__mobile { display: none; align-items: center; gap: 4px; flex: none; }
@@ -419,6 +420,11 @@ p { margin: 0; }
   .price-box__title { font-size: 19px; }
   .cta-row { flex-direction: column; }
   .cta-row .btn { width: 100%; }
+
+  /* Single column: without a cap, a 4:3 slot at a 736px container is 552px
+     tall and the services section balloons. No effect at the 390px reference
+     width, where a 4:3 slot is already only 268px. */
+  .media--4x3, .media--3x2 { max-height: 300px; }
 
   .card__body { padding: 16px; }
   .step__n { font-size: 32px; }

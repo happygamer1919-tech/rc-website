@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html><head>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@700;800&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+<style>
+  html, body { margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; color: #1A1A1A; -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  * { animation-duration: .001s !important; transition-duration: 0s !important; }
+  a { color: #1A1A1A; text-decoration: none; }
+  ::selection { background: #F65308; color: #FFFFFF; }
+</style>
+
+</helmet>
+
+<doc-page size="letter" content-width="1440px" content-height="1863px" margin="0">
+
+  <section class="page" style="width: 1440px; height: 1863px; background: #FFFFFF; padding: 72px; display: flex; flex-direction: column;">
+    <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; border-bottom: 1px solid #E2E2E2; padding-bottom: 40px;">
+      <div>
+        <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08; margin-bottom: 16px;">Pachet de predare · pentru implementare</div>
+        <h1 style="font-size: 56px; font-weight: 800; text-transform: uppercase; line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 16px;">Rapid Construct · landing</h1>
+        <p style="font-size: 17px; line-height: 1.6; color: #5A5A5A; margin: 0; max-width: 720px;">Tokenuri exacte, sloturi de imagine, machetele desktop și mobil ale tuturor celor nouă secțiuni. Codul HTML și CSS complet este livrat separat, în <span style="font-weight: 700; color: #1A1A1A;">handover/rapid-construct.html</span>.</p>
+      </div>
+      <img src="a329c7be-e319-4850-adb0-23281034fe53" alt="Rapid Construct" style="height: 56px; width: auto; display: block; flex: none;">
+    </div>
+
+    <div style="padding-top: 40px;">
+      <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08; margin-bottom: 16px;">01 · Culoare — set închis, nicio altă valoare în pagină</div>
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px;">
+        <sc-for list="{{ tokens }}" as="t" hint-placeholder-count="8">
+          <div>
+            <div style="height: 120px; background: {{ t.hex }}; border: 1px solid #E2E2E2; border-radius: 10px;"></div>
+            <div style="font-size: 22px; font-weight: 700; line-height: 1.15; margin: 16px 0 4px;">{{ t.name }}</div>
+            <div style="font-size: 17px; font-weight: 700; line-height: 1.6;">{{ t.hex }}</div>
+            <div style="font-size: 17px; line-height: 1.6; color: #5A5A5A;">{{ t.use }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="padding-top: 40px;">
+      <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08; margin-bottom: 16px;">Regula de fundal</div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
+        <div style="border: 1px solid #E2E2E2; border-radius: 10px; padding: 24px;">
+          <div style="font-size: 44px; font-weight: 800; line-height: 1.15; color: #F65308;">3</div>
+          <div style="font-size: 17px; line-height: 1.6; color: #5A5A5A; margin-top: 8px;">Valori de fundal în total: #FFFFFF, #F2F2F2, #141414. Secțiunile alternează A/B; fiecare limită este o linie de 1px #E2E2E2.</div>
+        </div>
+        <div style="border: 1px solid #E2E2E2; border-radius: 10px; padding: 24px;">
+          <div style="font-size: 44px; font-weight: 800; line-height: 1.15; color: #F65308;">2</div>
+          <div style="font-size: 17px; line-height: 1.6; color: #5A5A5A; margin-top: 8px;">Utilizări ale #141414: banda de cifre (secțiunea 6) și footerul (secțiunea 9). Nicăieri altundeva.</div>
+        </div>
+        <div style="border: 1px solid #E2E2E2; border-radius: 10px; padding: 24px;">
+          <div style="font-size: 44px; font-weight: 800; line-height: 1.15; color: #F65308;">0</div>
+          <div style="font-size: 17px; line-height: 1.6; color: #5A5A5A; margin-top: 8px;">Gradiente, fade-uri, suprapuneri translucide, animații la scroll, contoare, carusele. Totul se randează în starea finală.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: auto; border-top: 1px solid #E2E2E2; padding-top: 24px; display: flex; justify-content: space-between; gap: 24px;">
+      <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #5A5A5A;">Pagina 1 · Culoare</div>
+      <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #5A5A5A;">Excepție documentată: pe #141414, eyebrow-ul și separatoarele trec pe #F65308 / #FFFFFF / #E2E2E2</div>
+    </div>
+  </section>
+
+  <section class="page" style="width: 1440px; height: 1863px; background: #FFFFFF; padding: 72px; display: flex; flex-direction: column;">
+    <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08; margin-bottom: 16px;">02 · Tipografie — familie unică: Inter</div>
+    <h2 style="font-size: 40px; font-weight: 800; text-transform: uppercase; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 32px;">Mărimi, greutăți, culori pe element</h2>
+
+    <div style="border: 1px solid #E2E2E2; border-radius: 10px; overflow: hidden;">
+      <div style="display: grid; grid-template-columns: 160px 130px 130px 110px 200px 1fr; background: #F2F2F2; border-bottom: 1px solid #E2E2E2;">
+        <div style="padding: 14px 16px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08;">Element</div>
+        <div style="padding: 14px 16px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08;">Desktop</div>
+        <div style="padding: 14px 16px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08;">Mobil</div>
+        <div style="padding: 14px 16px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08;">Weight</div>
+        <div style="padding: 14px 16px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08;">Culoare</div>
+        <div style="padding: 14px 16px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08;">Reguli</div>
+      </div>
+      <sc-for list="{{ typeRows }}" as="r" hint-placeholder-count="7">
+        <div style="display: grid; grid-template-columns: 160px 130px 130px 110px 200px 1fr; border-bottom: 1px solid #E2E2E2;">
+          <div style="padding: 14px 16px; font-size: 17px; font-weight: 700; line-height: 1.6;">{{ r.el }}</div>
+          <div style="padding: 14px 16px; font-size: 17px; line-height: 1.6;">{{ r.d }}</div>
+          <div style="padding: 14px 16px; font-size: 17px; line-height: 1.6;">{{ r.m }}</div>
+          <div style="padding: 14px 16px; font-size: 17px; line-height: 1.6;">{{ r.w }}</div>
+          <div style="padding: 14px 16px; font-size: 17px; line-height: 1.6;">{{ r.c }}</div>
+          <div style="padding: 14px 16px; font-size: 17px; line-height: 1.6; color: #5A5A5A;">{{ r.note }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08; margin: 40px 0 16px;">03 · Layout, spațiere, componente</div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px;">
+      <div style="border: 1px solid #E2E2E2; border-radius: 10px; overflow: hidden;">
+        <sc-for list="{{ layoutRows }}" as="l" hint-placeholder-count="9">
+          <div style="display: flex; justify-content: space-between; gap: 24px; padding: 12px 20px; border-bottom: 1px solid #E2E2E2;">
+            <span style="font-size: 17px; line-height: 1.6; color: #5A5A5A;">{{ l.k }}</span>
+            <span style="font-size: 17px; font-weight: 700; line-height: 1.6; text-align: right;">{{ l.v }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="border: 1px solid #E2E2E2; border-radius: 10px; overflow: hidden;">
+        <sc-for list="{{ compRows }}" as="l" hint-placeholder-count="9">
+          <div style="display: flex; justify-content: space-between; gap: 24px; padding: 12px 20px; border-bottom: 1px solid #E2E2E2;">
+            <span style="font-size: 17px; line-height: 1.6; color: #5A5A5A;">{{ l.k }}</span>
+            <span style="font-size: 17px; font-weight: 700; line-height: 1.6; text-align: right;">{{ l.v }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-top: 32px;">
+      <span style="height: 48px; padding: 0 28px; border-radius: 6px; background: #F65308; color: #FFFFFF; font-size: 17px; font-weight: 700; line-height: 1; display: inline-flex; align-items: center;">Buton primar · #F65308</span>
+      <span style="height: 48px; padding: 0 28px; border-radius: 6px; border: 1px solid #1A1A1A; font-size: 17px; font-weight: 700; line-height: 1; display: inline-flex; align-items: center;">Buton secundar · contur #1A1A1A</span>
+      <span style="height: 48px; padding: 0 28px; border-radius: 6px; border: 1px solid #FFFFFF; background: #141414; color: #FFFFFF; font-size: 17px; font-weight: 700; line-height: 1; display: inline-flex; align-items: center;">Secundar pe închis · contur #FFFFFF</span>
+      <span style="font-size: 17px; line-height: 1.6; color: #5A5A5A;">Hover primar → #B23C08 · hover secundar → umplere #1A1A1A, text #FFFFFF</span>
+    </div>
+
+    <div style="margin-top: auto; border-top: 1px solid #E2E2E2; padding-top: 24px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #5A5A5A;">Pagina 2 · Tipografie și layout</div>
+  </section>
+
+  <section class="page" style="width: 1440px; height: 1863px; background: #FFFFFF; padding: 72px; display: flex; flex-direction: column;">
+    <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08; margin-bottom: 16px;">04 · Sloturi de imagine</div>
+    <h2 style="font-size: 40px; font-weight: 800; text-transform: uppercase; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 16px;">Douăzeci de sloturi, cu raport și dimensiune</h2>
+    <p style="font-size: 17px; line-height: 1.6; color: #5A5A5A; margin: 0 0 32px; max-width: 900px;">Dimensiunile în pixeli sunt pentru densitate 1× la lățimea desktop de 1200px container. Livrați fișierele la 2× pentru ecrane retina. Toate colțurile la 10px; imaginile din carduri umplu lățimea cardului fără margine.</p>
+
+    <div style="border: 1px solid #E2E2E2; border-radius: 10px; overflow: hidden;">
+      <div style="display: grid; grid-template-columns: 60px 320px 120px 180px 200px 1fr; background: #F2F2F2; border-bottom: 1px solid #E2E2E2;">
+        <div style="padding: 12px 16px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08;">#</div>
+        <div style="padding: 12px 16px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08;">Slot ID</div>
+        <div style="padding: 12px 16px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08;">Raport</div>
+        <div style="padding: 12px 16px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08;">Desktop 1×</div>
+        <div style="padding: 12px 16px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08;">Mobil 1×</div>
+        <div style="padding: 12px 16px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08;">Unde apare</div>
+      </div>
+      <sc-for list="{{ slots }}" as="s" hint-placeholder-count="20">
+        <div style="display: grid; grid-template-columns: 60px 320px 120px 180px 200px 1fr; border-bottom: 1px solid #E2E2E2;">
+          <div style="padding: 10px 16px; font-size: 17px; font-weight: 700; line-height: 1.6; color: #F65308;">{{ s.i }}</div>
+          <div style="padding: 10px 16px; font-size: 17px; font-weight: 700; line-height: 1.6;">{{ s.id }}</div>
+          <div style="padding: 10px 16px; font-size: 17px; line-height: 1.6;">{{ s.ratio }}</div>
+          <div style="padding: 10px 16px; font-size: 17px; line-height: 1.6;">{{ s.desk }}</div>
+          <div style="padding: 10px 16px; font-size: 17px; line-height: 1.6;">{{ s.mob }}</div>
+          <div style="padding: 10px 16px; font-size: 17px; line-height: 1.6; color: #5A5A5A;">{{ s.where }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="margin-top: 32px; border: 1px solid #E2E2E2; border-left: 4px solid #F65308; border-radius: 6px; padding: 20px 24px;">
+      <div style="font-size: 22px; font-weight: 700; line-height: 1.15; margin-bottom: 8px;">Starea de placeholder</div>
+      <div style="font-size: 17px; line-height: 1.6; color: #5A5A5A;">Până la livrarea fotografiilor, fiecare slot se randează ca dreptunghi #F2F2F2 cu bordură 1px #E2E2E2 și eticheta „slot-id · raport" centrată, în #5A5A5A. Nicio imagine nu este selectată încă; nu există fotografie în hero, prin cerință.</div>
+    </div>
+
+    <div style="margin-top: auto; border-top: 1px solid #E2E2E2; padding-top: 24px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #5A5A5A;">Pagina 3 · Sloturi de imagine</div>
+  </section>
+
+  <section class="page" style="width: 1440px; height: 1863px; background: #FFFFFF; overflow: hidden;">
+    <div style="padding: 40px 72px 24px; border-bottom: 1px solid #E2E2E2;">
+      <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08;">Secțiunile 1 și 2 · Header sticky și hero · desktop 1440px, la scară 1:1</div>
+    </div>
+
+    <div style="background: #FFFFFF; height: 72px; border-bottom: 1px solid #E2E2E2;">
+      <div style="max-width: 1200px; margin: 0 auto; height: 100%; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+        <img src="a329c7be-e319-4850-adb0-23281034fe53" alt="Rapid Construct" style="height: 40px; width: auto; display: block; flex: none;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 28px; flex: 1 1 auto; min-width: 0;">
+          <span style="font-size: 17px; font-weight: 700; line-height: 1; color: #F65308;">Acasă</span>
+          <span style="font-size: 17px; line-height: 1;">Servicii</span>
+          <span style="font-size: 17px; line-height: 1;">Portofoliu</span>
+          <span style="font-size: 17px; line-height: 1;">Despre noi</span>
+          <span style="font-size: 17px; line-height: 1;">Contacte</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 20px; flex: none;">
+          <span style="font-size: 17px; font-weight: 700; line-height: 1;">+373 76 837 180</span>
+          <span style="height: 48px; padding: 0 28px; border-radius: 6px; background: #F65308; color: #FFFFFF; font-size: 17px; font-weight: 700; line-height: 1; display: inline-flex; align-items: center;">Solicită ofertă</span>
+          <span style="display: flex; align-items: center; gap: 6px; border: 1px solid #E2E2E2; border-radius: 6px; padding: 5px 8px;">
+            <span style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; line-height: 1; color: #F65308;">RO</span>
+            <span style="width: 1px; height: 12px; background: #E2E2E2;"></span>
+            <span style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; line-height: 1; color: #5A5A5A;">RU</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: #FFFFFF;">
+      <div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px;">
+        <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08; margin-bottom: 24px;">Construcții și renovări · în toată Moldova</div>
+        <h1 style="font-size: 56px; font-weight: 800; text-transform: uppercase; line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 24px; max-width: 900px;">Casa ta la cheie, fără bătăi de cap cu echipele</h1>
+        <p style="font-size: 17px; line-height: 1.6; margin: 0 0 40px; max-width: 640px;">Construim și renovăm la cheie. Venim, măsurăm gratuit, construim.</p>
+        <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding: 32px 0; border-top: 1px solid #E2E2E2; border-bottom: 1px solid #E2E2E2; margin-bottom: 40px;">
+          <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+            <div>
+              <div style="font-size: 44px; font-weight: 800; line-height: 1.15; color: #F65308;">{{ s.n }}</div>
+              <div style="font-size: 17px; line-height: 1.6; color: #5A5A5A;">{{ s.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="border: 1px solid #E2E2E2; border-left: 4px solid #F65308; border-radius: 6px; padding: 24px 28px; margin-bottom: 40px; max-width: 560px;">
+          <div style="font-size: 22px; font-weight: 700; line-height: 1.15; margin-bottom: 12px;">160 lei/m² preț fixat pentru 2026</div>
+          <div style="font-size: 17px; line-height: 1.6; color: #5A5A5A;">−10% la rezervare timpurie</div>
+          <div style="font-size: 17px; line-height: 1.6; color: #5A5A5A;">Rate 0% la acoperiș</div>
+        </div>
+        <div style="display: flex; gap: 16px;">
+          <span style="height: 48px; padding: 0 28px; border-radius: 6px; background: #F65308; color: #FFFFFF; font-size: 17px; font-weight: 700; line-height: 1; display: inline-flex; align-items: center;">Solicită ofertă gratuită</span>
+          <span style="height: 48px; padding: 0 28px; border-radius: 6px; border: 1px solid #1A1A1A; font-size: 17px; font-weight: 700; line-height: 1; display: inline-flex; align-items: center;">Sună acum</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" style="width: 1440px; height: 1863px; background: #F2F2F2; overflow: hidden;">
+    <div style="background: #FFFFFF; padding: 40px 72px 24px; border-bottom: 1px solid #E2E2E2;">
+      <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08;">Secțiunea 3 · Servicii · #F2F2F2, grilă 3×3</div>
+    </div>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 56px 24px;">
+      <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08; margin-bottom: 16px;">Servicii</div>
+      <h2 style="font-size: 40px; font-weight: 800; text-transform: uppercase; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 16px;">Ce construim pentru tine</h2>
+      <p style="font-size: 17px; line-height: 1.6; margin: 0 0 32px; max-width: 720px;">Nouă direcții de lucru, o singură echipă și un singur responsabil de șantier.</p>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
+        <sc-for list="{{ services }}" as="svc" hint-placeholder-count="9">
+          <div style="background: #FFFFFF; border: 1px solid #E2E2E2; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); overflow: hidden;">
+            <div style="aspect-ratio: 4 / 3; background: #F2F2F2; border-bottom: 1px solid #E2E2E2; display: flex; align-items: center; justify-content: center; padding: 16px;">
+              <span style="font-size: 17px; line-height: 1.6; color: #5A5A5A;">{{ svc.slot }} · 4:3</span>
+            </div>
+            <div style="padding: 20px; display: flex; flex-direction: column; gap: 6px;">
+              <h3 style="font-size: 22px; font-weight: 700; line-height: 1.15; margin: 0;">{{ svc.title }}</h3>
+              <div style="font-size: 17px; line-height: 1.6; color: #5A5A5A;">{{ svc.d1 }}</div>
+              <div style="font-size: 17px; line-height: 1.6; color: #5A5A5A;">{{ svc.d2 }}</div>
+              <span style="font-size: 17px; font-weight: 700; line-height: 1.15; color: #F65308; margin-top: 6px;">Detalii →</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" style="width: 1440px; height: 1863px; background: #FFFFFF; overflow: hidden; display: flex; flex-direction: column;">
+    <div style="padding: 40px 72px 24px; border-bottom: 1px solid #E2E2E2;">
+      <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08;">Secțiunile 4 și 6 · Proces (#FFFFFF) și banda de cifre (#141414, 1 din 2)</div>
+    </div>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 56px 24px; width: 100%;">
+      <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08; margin-bottom: 16px;">Cum lucrăm</div>
+      <h2 style="font-size: 40px; font-weight: 800; text-transform: uppercase; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 32px;">De la fundație la predare</h2>
+      <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px;">
+        <sc-for list="{{ steps }}" as="st" hint-placeholder-count="5">
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div style="font-size: 44px; font-weight: 800; line-height: 1.15; color: #F65308;">{{ st.n }}</div>
+            <div style="aspect-ratio: 4 / 3; background: #F2F2F2; border: 1px solid #E2E2E2; border-radius: 10px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 10px;">
+              <span style="font-size: 17px; line-height: 1.6; color: #5A5A5A;">{{ st.slot }} · 4:3</span>
+            </div>
+            <div>
+              <h3 style="font-size: 22px; font-weight: 700; line-height: 1.15; margin: 0 0 8px;">{{ st.title }}</h3>
+              <div style="font-size: 17px; line-height: 1.6; color: #5A5A5A;">{{ st.line }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="background: #141414; border-top: 1px solid #E2E2E2; margin-top: 40px;">
+      <div style="max-width: 1200px; margin: 0 auto; padding: 56px 24px;">
+        <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-bottom: 32px;">
+          <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+            <div style="text-align: center;">
+              <div style="font-size: 64px; font-weight: 800; line-height: 1.15; color: #F65308;">{{ s.n }}</div>
+              <div style="font-size: 17px; line-height: 1.6; color: #FFFFFF;">{{ s.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="font-size: 17px; line-height: 1.6; color: #E2E2E2; text-align: center;">Lucrăm în toată Moldova. Obiectivele noastre: Chișinău, Codru, Coșnița, Costești, Căinari, Sociteni.</div>
+      </div>
+    </div>
+
+    <div style="padding: 24px 72px; font-size: 17px; line-height: 1.6; color: #5A5A5A;">Banda închisă are 56px padding vertical, nu 96px — este singura abatere de la ritmul de secțiune, cerută de plafonul de 320px înălțime.</div>
+  </section>
+
+  <section class="page" style="width: 1440px; height: 1863px; background: #F2F2F2; overflow: hidden;">
+    <div style="background: #FFFFFF; padding: 40px 72px 24px; border-bottom: 1px solid #E2E2E2;">
+      <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08;">Secțiunea 5 · Portofoliu · filtre statice, grilă 3×2</div>
+    </div>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 56px 24px;">
+      <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08; margin-bottom: 16px;">Portofoliu</div>
+      <h2 style="font-size: 40px; font-weight: 800; text-transform: uppercase; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 24px;">Proiecte recente</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px;">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="6">
+          <span style="height: 40px; padding: 0 20px; border-radius: 6px; border: {{ f.border }}; background: {{ f.bg }}; color: {{ f.color }}; font-size: 17px; font-weight: {{ f.weight }}; line-height: 1; display: inline-flex; align-items: center;">{{ f.label }}</span>
+        </sc-for>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-bottom: 32px;">
+        <sc-for list="{{ projects }}" as="p" hint-placeholder-count="6">
+          <div style="background: #FFFFFF; border: 1px solid #E2E2E2; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); overflow: hidden;">
+            <div style="position: relative; aspect-ratio: 3 / 2; background: #F2F2F2; border-bottom: 1px solid #E2E2E2; display: flex; align-items: center; justify-content: center; padding: 16px;">
+              <span style="font-size: 17px; line-height: 1.6; color: #5A5A5A;">{{ p.slot }} · 3:2</span>
+              <span style="position: absolute; top: 12px; left: 12px; background: #F65308; color: #FFFFFF; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; line-height: 1; padding: 7px 10px; border-radius: 6px;">{{ p.cat }}</span>
+            </div>
+            <div style="padding: 20px; display: flex; flex-direction: column; gap: 6px;">
+              <h3 style="font-size: 22px; font-weight: 700; line-height: 1.15; margin: 0;">{{ p.title }}</h3>
+              <div style="font-size: 17px; line-height: 1.6; color: #5A5A5A;">{{ p.line }}</div>
+              <div style="font-size: 17px; line-height: 1.6; color: #5A5A5A;">◍ {{ p.loc }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display: flex; justify-content: center;">
+        <span style="height: 48px; padding: 0 28px; border-radius: 6px; border: 1px solid #1A1A1A; font-size: 17px; font-weight: 700; line-height: 1; display: inline-flex; align-items: center;">Vezi tot portofoliul</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" style="width: 1440px; height: 1863px; background: #FFFFFF; overflow: hidden;">
+    <div style="padding: 40px 72px 24px; border-bottom: 1px solid #E2E2E2;">
+      <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08;">Secțiunea 7 · Două blocuri într-o singură secțiune albă, separate de o linie de 1px</div>
+    </div>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 56px 24px;">
+      <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08; margin-bottom: 16px;">De ce Rapid Construct</div>
+      <h2 style="font-size: 40px; font-weight: 800; text-transform: uppercase; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 32px;">De ce să ne alegi</h2>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 24px;">
+        <sc-for list="{{ trust }}" as="t" hint-placeholder-count="6">
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <svg width="32" height="32" sc-camel-view-box="0 0 24 24" fill="none" stroke="#F65308" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
+              <path d="{{ t.icon }}"></path>
+            </svg>
+            <h3 style="font-size: 22px; font-weight: 700; line-height: 1.15; margin: 0;">{{ t.title }}</h3>
+            <div style="font-size: 17px; line-height: 1.6; color: #5A5A5A;">{{ t.line }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="height: 1px; background: #E2E2E2; margin: 48px 0;"></div>
+
+      <h2 style="font-size: 40px; font-weight: 800; text-transform: uppercase; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 32px;">Ce spun clienții</h2>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
+        <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="3">
+          <div style="border: 1px solid #E2E2E2; border-radius: 10px; padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+            <div style="font-size: 17px; line-height: 1.6;">{{ r.quote }}</div>
+            <div>
+              <div style="font-size: 17px; font-weight: 700; line-height: 1.6;">{{ r.name }}</div>
+              <div style="font-size: 17px; line-height: 1.6; color: #5A5A5A;">{{ r.meta }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" style="width: 1440px; height: 1863px; background: #F2F2F2; overflow: hidden;">
+    <div style="background: #FFFFFF; padding: 40px 72px 24px; border-bottom: 1px solid #E2E2E2;">
+      <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08;">Secțiunea 8 · Formular de ofertă · două coloane pe desktop</div>
+    </div>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 56px 24px;">
+      <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08; margin-bottom: 16px;">Solicită ofertă</div>
+      <h2 style="font-size: 40px; font-weight: 800; text-transform: uppercase; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 16px;">Cere o ofertă gratuită</h2>
+      <p style="font-size: 17px; line-height: 1.6; margin: 0 0 32px;">Completează formularul și te contactăm în maximum 2 ore lucrătoare.</p>
+
+      <div style="display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 24px; align-items: start;">
+        <div style="background: #FFFFFF; border: 1px solid #E2E2E2; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 32px; display: flex; flex-direction: column; gap: 18px;">
+          <sc-for list="{{ fields }}" as="f" hint-placeholder-count="5">
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08;">{{ f.label }}</div>
+              <div style="min-height: 48px; padding: 12px 16px; border: 1px solid #E2E2E2; border-radius: 6px; background: #FFFFFF; font-size: 17px; line-height: 1.6; color: #5A5A5A;">{{ f.ph }}</div>
+            </div>
+          </sc-for>
+          <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="width: 20px; height: 20px; border: 1px solid #E2E2E2; border-radius: 4px; flex: none; margin-top: 2px;"></div>
+            <div style="font-size: 13px; line-height: 1.6; color: #5A5A5A;">Sunt de acord cu prelucrarea datelor personale pentru a fi contactat cu privire la această solicitare.</div>
+          </div>
+          <span style="height: 48px; padding: 0 28px; border-radius: 6px; background: #F65308; color: #FFFFFF; font-size: 17px; font-weight: 700; line-height: 1; display: inline-flex; align-items: center; align-self: flex-start;">Trimite cererea</span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <div style="background: #FFFFFF; border: 1px solid #E2E2E2; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 32px;">
+            <h3 style="font-size: 22px; font-weight: 700; line-height: 1.15; margin: 0 0 12px;">Ce urmează după ce trimiți</h3>
+            <div style="font-size: 17px; line-height: 1.6; color: #5A5A5A;">Te sunăm, stabilim o vizită și măsurăm gratuit. Primești devizul pe articole în 48 de ore. Fără avans până la semnarea contractului.</div>
+          </div>
+          <div style="background: #FFFFFF; border: 1px solid #E2E2E2; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 32px;">
+            <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08; margin-bottom: 12px;">Sună direct</div>
+            <div style="font-size: 40px; font-weight: 800; line-height: 1.15; letter-spacing: -0.01em; color: #F65308; margin-bottom: 12px;">+373 76 837 180</div>
+            <div style="font-size: 17px; line-height: 1.6; color: #5A5A5A;">Luni–Sâmbătă 08:00–17:00. Duminica, doar urgențe pe șantierele active.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" style="width: 1440px; height: 1863px; background: #FFFFFF; overflow: hidden; display: flex; flex-direction: column;">
+    <div style="padding: 40px 72px 24px; border-bottom: 1px solid #E2E2E2;">
+      <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08;">Secțiunea 9 · Footer de contact (#141414, 2 din 2) și butoanele flotante</div>
+    </div>
+
+    <div style="background: #141414;">
+      <div style="max-width: 1200px; margin: 0 auto; padding: 56px 24px;">
+        <div style="display: flex; gap: 16px; padding-bottom: 32px; border-bottom: 1px solid #FFFFFF; margin-bottom: 32px;">
+          <span style="height: 48px; padding: 0 28px; border-radius: 6px; background: #F65308; color: #FFFFFF; font-size: 17px; font-weight: 700; line-height: 1; display: inline-flex; align-items: center;">Solicită ofertă gratuită</span>
+          <span style="height: 48px; padding: 0 28px; border-radius: 6px; border: 1px solid #FFFFFF; color: #FFFFFF; font-size: 17px; font-weight: 700; line-height: 1; display: inline-flex; align-items: center;">Sună acum</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;">
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <img src="41144081-fdff-4888-98c5-21492faf7391" alt="Rapid Construct" style="height: 44px; width: auto; display: block; align-self: flex-start;">
+            <div style="font-size: 17px; line-height: 1.6; color: #FFFFFF; max-width: 340px;">Construcții și renovări la cheie în Chișinău și în toată Moldova, cu echipă proprie și garanție scrisă.</div>
+            <div style="font-size: 17px; font-weight: 700; line-height: 1.6; color: #F65308; max-width: 340px;">−10% la rezervare timpurie · Rate 0% la acoperiș · 160 lei/m² fixat pentru 2026</div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px;">
+            <div>
+              <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #F65308; margin-bottom: 16px;">Navigare</div>
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <sc-for list="{{ footNav }}" as="n" hint-placeholder-count="5">
+                  <div style="font-size: 17px; line-height: 1.6; color: #FFFFFF;">{{ n }}</div>
+                </sc-for>
+              </div>
+            </div>
+            <div>
+              <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #F65308; margin-bottom: 16px;">Servicii</div>
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <sc-for list="{{ footServices }}" as="s" hint-placeholder-count="6">
+                  <div style="font-size: 17px; line-height: 1.6; color: #FFFFFF;">{{ s }}</div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #F65308; margin-bottom: 16px;">Contacte</div>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <sc-for list="{{ contacts }}" as="c" hint-placeholder-count="4">
+                <div>
+                  <div style="font-size: 13px; line-height: 1.6; color: #E2E2E2;">{{ c.label }}</div>
+                  <div style="font-size: 17px; font-weight: 700; line-height: 1.6; color: #FFFFFF;">{{ c.value }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="border-top: 1px solid #FFFFFF;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 20px 24px; display: flex; justify-content: space-between;">
+          <div style="font-size: 13px; line-height: 1.6; color: #E2E2E2;">© 2026 Rapid Construct SRL. Toate drepturile rezervate.</div>
+          <div style="font-size: 13px; line-height: 1.6; color: #E2E2E2;">Chișinău, Republica Moldova</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding: 40px 72px; display: flex; gap: 40px; align-items: flex-start;">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="width: 56px; height: 56px; border-radius: 28px; background: #FFFFFF; border: 1px solid #E2E2E2; box-shadow: 0 1px 3px rgba(0,0,0,0.08); color: #F65308; display: flex; align-items: center; justify-content: center;">
+          <svg width="26" height="26" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"></path></svg>
+        </div>
+        <div style="width: 56px; height: 56px; border-radius: 28px; background: #F65308; border: 1px solid #F65308; box-shadow: 0 1px 3px rgba(0,0,0,0.08); color: #FFFFFF; display: flex; align-items: center; justify-content: center;">
+          <svg width="26" height="26" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        </div>
+      </div>
+      <div style="max-width: 720px;">
+        <h3 style="font-size: 22px; font-weight: 700; line-height: 1.15; margin: 0 0 8px;">Butoane flotante de contact</h3>
+        <div style="font-size: 17px; line-height: 1.6; color: #5A5A5A;">Fixate în colțul dreapta-jos, 56px diametru, offset 24px desktop / 16px mobil, z-index deasupra întregii pagini, vizibile la orice poziție de scroll. Cercul de sus este WhatsApp (glifa finală se înlocuiește cu marca oficială), cel de jos este apel direct. Umbra este aceeași ca pe carduri.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" style="width: 1440px; height: 1863px; background: #FFFFFF; padding: 72px; overflow: hidden;">
+    <div style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08; margin-bottom: 16px;">Mobil 390px · toate secțiunile</div>
+    <h2 style="font-size: 40px; font-weight: 800; text-transform: uppercase; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 32px;">Machetele mobile</h2>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 390px); gap: 40px; justify-content: start;">
+
+      <div style="border: 1px solid #E2E2E2;">
+        <div style="background: #FFFFFF; height: 72px; border-bottom: 1px solid #E2E2E2; padding: 0 16px; display: flex; align-items: center; justify-content: space-between;">
+          <img src="a329c7be-e319-4850-adb0-23281034fe53" alt="Rapid Construct" style="height: 40px; width: auto; display: block;">
+          <div style="display: flex; gap: 4px;">
+            <div style="width: 44px; height: 44px; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #F65308;">
+              <svg width="24" height="24" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </div>
+            <div style="width: 44px; height: 44px; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+              <svg width="24" height="24" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </div>
+          </div>
+        </div>
+        <div style="padding: 40px 16px;">
+          <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08; margin-bottom: 16px;">Construcții și renovări · în toată Moldova</div>
+          <h1 style="font-size: 32px; font-weight: 800; text-transform: uppercase; line-height: 1.15; letter-spacing: -0.01em; margin: 0 0 16px;">Casa ta la cheie, fără bătăi de cap cu echipele</h1>
+          <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px;">Construim și renovăm la cheie. Venim, măsurăm gratuit, construim.</p>
+          <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; padding: 20px 0; border-top: 1px solid #E2E2E2; border-bottom: 1px solid #E2E2E2; margin-bottom: 20px;">
+            <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+              <div>
+                <div style="font-size: 32px; font-weight: 800; line-height: 1.15; color: #F65308;">{{ s.n }}</div>
+                <div style="font-size: 16px; line-height: 1.6; color: #5A5A5A;">{{ s.label }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="border: 1px solid #E2E2E2; border-left: 4px solid #F65308; border-radius: 6px; padding: 16px 20px; margin-bottom: 20px;">
+            <div style="font-size: 19px; font-weight: 700; line-height: 1.15; margin-bottom: 8px;">160 lei/m² preț fixat pentru 2026</div>
+            <div style="font-size: 16px; line-height: 1.6; color: #5A5A5A;">−10% la rezervare timpurie</div>
+            <div style="font-size: 16px; line-height: 1.6; color: #5A5A5A;">Rate 0% la acoperiș</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="height: 48px; border-radius: 6px; background: #F65308; color: #FFFFFF; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center;">Solicită ofertă gratuită</div>
+            <div style="height: 48px; border-radius: 6px; border: 1px solid #1A1A1A; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center;">Sună acum</div>
+          </div>
+        </div>
+        <div style="border-top: 1px solid #E2E2E2; padding: 10px 16px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #5A5A5A;">Header + hero</div>
+      </div>
+
+      <div style="border: 1px solid #E2E2E2; background: #F2F2F2;">
+        <div style="padding: 40px 16px;">
+          <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #B23C08; margin-bottom: 16px;">Servicii</div>
+          <h2 style="font-size: 26px; font-weight: 800; text-transform: uppercase; line-height: 1.15; margin: 0 0 16px;">Ce construim pentru tine</h2>
+          <div style="display: grid; gap: 16px;">
+            <sc-for list="{{ servicesShort }}" as="svc" hint-placeholder-count="3">
+              <div style="background: #FFFFFF; border: 1px solid #E2E2E2; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); overflow: hidden;">
+                <div style="aspect-ratio: 4 / 3; background: #F2F2F2; border-bottom: 1px solid #E2E2E2; display: flex; align-items: center; justify-content: center;">
+                  <span style="font-size: 16px; line-height: 1.6; color: #5A5A5A;">{{ svc.slot }} · 4:3</span>
+                </div>
+                <div style="padding: 16px;">
+                  <h3 style="font-size: 19px; font-weight: 700; line-height: 1.15; margin: 0 0 8px;">{{ svc.title }}</h3>
+                  <div style="font-size: 16px; line-height: 1.6; color: #5A5A5A;">{{ svc.d1 }}</div>
+                  <div style="font-size: 16px; font-weight: 700; line-height: 1.15; color: #F65308; margin-top: 8px;">Detalii →</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="background: #FFFFFF; border-top: 1px solid #E2E2E2; padding: 10px 16px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #5A5A5A;">Servicii · o coloană (9 carduri)</div>
+      </div>
+
+      <div style="border: 1px solid #E2E2E2;">
+        <div style="background: #141414; padding: 40px 16px;">
+          <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-bottom: 20px;">
+            <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+              <div style="text-align: center;">
+                <div style="font-size: 44px; font-weight: 800; line-height: 1.15; color: #F65308;">{{ s.n }}</div>
+                <div style="font-size: 16px; line-height: 1.6; color: #FFFFFF;">{{ s.label }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="font-size: 16px; line-height: 1.6; color: #E2E2E2; text-align: center;">Lucrăm în toată Moldova. Obiectivele noastre: Chișinău, Codru, Coșnița, Costești, Căinari, Sociteni.</div>
+        </div>
+        <div style="background: #141414; border-top: 1px solid #FFFFFF; padding: 32px 16px;">
+          <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;">
+            <div style="height: 48px; border-radius: 6px; background: #F65308; color: #FFFFFF; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center;">Solicită ofertă gratuită</div>
+            <div style="height: 48px; border-radius: 6px; border: 1px solid #FFFFFF; color: #FFFFFF; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center;">Sună acum</div>
+          </div>
+          <img src="41144081-fdff-4888-98c5-21492faf7391" alt="Rapid Construct" style="height: 40px; width: auto; display: block; margin-bottom: 16px;">
+          <div style="font-size: 16px; font-weight: 700; line-height: 1.6; color: #F65308; margin-bottom: 20px;">−10% la rezervare timpurie · Rate 0% la acoperiș · 160 lei/m² fixat pentru 2026</div>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <sc-for list="{{ contacts }}" as="c" hint-placeholder-count="4">
+              <div>
+                <div style="font-size: 12px; line-height: 1.6; color: #E2E2E2;">{{ c.label }}</div>
+                <div style="font-size: 16px; font-weight: 700; line-height: 1.6; color: #FFFFFF;">{{ c.value }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="padding: 10px 16px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #5A5A5A;">Bandă de cifre + footer</div>
+      </div>
+
+    </div>
+
+    <div style="margin-top: 40px; border-top: 1px solid #E2E2E2; padding-top: 24px; font-size: 17px; line-height: 1.6; color: #5A5A5A; max-width: 1000px;">Breakpointuri: sub 1024px grila trece la 2 coloane și nav-ul desktop se ascunde în hamburger; sub 768px totul devine o coloană, gutterul scade la 16px, padding-ul de secțiune la 56px și se aplică mărimile de tip mobile din pagina 2.</div>
+  </section>
+
+</doc-page>
+</x-dc>
+<script type="text/x-dc" data-dc-script="">
+const T = (name, hex, use) => ({ name, hex, use });
+const R = (el, d, m, w, c, note) => ({ el, d, m, w, c, note });
+const KV = (k, v) => ({ k, v });
+const S = (i, id, ratio, desk, mob, where) => ({ i, id, ratio, desk, mob, where });
+
+class Component extends DCLogic {
+  renderVals() {
+    const services = [
+      { slot: 'svc-case-la-cheie', title: 'Case la cheie', d1: 'De la fundație până la cheia în ușă,', d2: 'cu un singur contract și un singur deviz.' },
+      { slot: 'svc-acoperisuri', title: 'Acoperișuri', d1: 'Șarpantă, învelitoare metalică sau țiglă,', d2: 'jgheaburi și izolație termică inclusă.' },
+      { slot: 'svc-fatade', title: 'Fațade', d1: 'Termoizolare, tencuială decorativă,', d2: 'placaje ventilate și finisaje rezistente.' },
+      { slot: 'svc-reparatii', title: 'Reparații la cheie', d1: 'Apartamente și case, demolare inclusă,', d2: 'predare curată la termenul stabilit.' },
+      { slot: 'svc-finisaje', title: 'Finisaje', d1: 'Gips-carton, glet, vopsitorii și pardoseli,', d2: 'montaj uși și instalații sanitare.' },
+      { slot: 'svc-proiectare-3d', title: 'Proiectare și vizualizare 3D', d1: 'Plan arhitectural și randări 3D,', d2: 'vezi rezultatul înainte de prima cărămidă.' },
+      { slot: 'svc-retele', title: 'Rețele inginerești', d1: 'Electrice, apă, canalizare și încălzire,', d2: 'proiectate și racordate legal.' },
+      { slot: 'svc-industrial', title: 'Construcții industriale', d1: 'Hale, depozite și spații comerciale,', d2: 'structuri metalice și beton armat.' },
+      { slot: 'svc-terasamente', title: 'Terasamente', d1: 'Excavații, nivelări și compactări,', d2: 'utilaj propriu și transport inclus.' },
+    ];
+
+    return {
+      services,
+      servicesShort: services.slice(0, 3),
+
+      stats: [
+        { n: '500+', label: 'proiecte finalizate' },
+        { n: '15+', label: 'ani experiență' },
+        { n: '30 ani', label: 'garanție scrisă' },
+        { n: '4.9/5', label: 'din 250+ recenzii' },
+      ],
+
+      steps: [
+        { n: '01', slot: 'step-01-fundatie', title: 'Fundație', line: 'Trasare, săpătură și turnare armată.' },
+        { n: '02', slot: 'step-02-structura', title: 'Structură și ziduri', line: 'Zidărie, stâlpi, centuri și planșee.' },
+        { n: '03', slot: 'step-03-acoperis', title: 'Acoperiș', line: 'Șarpantă, învelitoare și jgheaburi.' },
+        { n: '04', slot: 'step-04-fatada', title: 'Fațadă', line: 'Termoizolare și finisaj exterior.' },
+        { n: '05', slot: 'step-05-predare', title: 'Finisaje și predare', line: 'Finisaje interioare și cheia în mână.' },
+      ],
+
+      filters: ['Toate', 'Case la cheie', 'Acoperișuri', 'Fațade', 'Reparații', 'Finisaje'].map((f, i) => ({
+        label: f,
+        color: i === 0 ? '#F65308' : '#1A1A1A',
+        weight: i === 0 ? 700 : 400,
+        border: i === 0 ? '1px solid #F65308' : '1px solid #E2E2E2',
+        bg: i === 0 ? '#FFFFFF' : 'transparent',
+      })),
+
+      projects: [
+        { slot: 'port-01', cat: 'Acoperișuri', title: 'Acoperiș metalic, casă privată', line: 'Șarpantă nouă și învelitoare falțuită, 240 m².', loc: 'Durlești, Chișinău' },
+        { slot: 'port-02', cat: 'Finisaje', title: 'Finisaje apartament 3 camere', line: 'Glet, vopsitorii, parchet și instalații sanitare.', loc: 'Botanica, Chișinău' },
+        { slot: 'port-03', cat: 'Reparații', title: 'Reparație capitală, birou', line: 'Recompartimentare completă și rețele noi.', loc: 'Centru, Chișinău' },
+        { slot: 'port-04', cat: 'Case la cheie', title: 'Casă la cheie, 140 m²', line: 'De la fundație la predare în unsprezece luni.', loc: 'Stăuceni' },
+        { slot: 'port-05', cat: 'Fațade', title: 'Fațadă ventilată, bloc locativ', line: 'Termoizolare 100 mm și placaj fibrociment.', loc: 'Ialoveni' },
+        { slot: 'port-06', cat: 'Case la cheie', title: 'Casă parter cu terasă', line: 'Structură din blocuri ceramice și terasă acoperită.', loc: 'Bubuieci' },
+      ],
+
+      trust: [
+        { icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z', title: 'Garanție 30 ani în contract', line: 'Termenul e scris în contract, nu promis verbal.' },
+        { icon: 'M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4-4.8-2.5-4.8 2.5.9-5.4L4.2 7.7l5.4-.8z', title: 'Materiale cu certificare UE', line: 'Furnizori verificați, documente la fiecare livrare.' },
+        { icon: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 3v6l4 2', title: 'Predare la termen', line: 'Grafic fixat la semnare, penalități asumate.' },
+        { icon: 'M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zM22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8', title: 'Echipă cu peste 10 ani experiență', line: 'Meșteri proprii, nu subcontractanți de ocazie.' },
+        { icon: 'M3 3h7l11 11-7 7L3 10zM7.5 7.5h.01', title: 'Prețuri transparente', line: 'Deviz pe articole, fără costuri apărute pe parcurs.' },
+        { icon: 'M4 15v-3a8 8 0 0 1 16 0v3M4 15a2 2 0 0 0 2 2h1v-6H6a2 2 0 0 0-2 2zM20 15a2 2 0 0 1-2 2h-1v-6h1a2 2 0 0 1 2 2z', title: 'Suport după predare', line: 'Răspundem și după ce am predat cheile.' },
+      ],
+
+      reviews: [
+        { quote: 'Au început când au spus și au terminat cu două săptămâni mai devreme. Devizul final a fost identic cu cel semnat.', name: 'Andrei Ciobanu', meta: 'Stăuceni · casă la cheie' },
+        { quote: 'Acoperișul vechi curgea de trei ani. Echipa a demontat, a refăcut șarpanta și a montat totul în unsprezece zile.', name: 'Maria Rusu', meta: 'Chișinău, Durlești · acoperiș' },
+        { quote: 'Apartamentul a fost predat curat, cu toate documentele și garanțiile la mână. Au revenit o dată pentru un reglaj, fără discuții.', name: 'Victor Munteanu', meta: 'Chișinău, Botanica · finisaje' },
+      ],
+
+      fields: [
+        { label: 'Nume', ph: 'Numele tău' },
+        { label: 'Telefon', ph: '+373 __ ___ ___' },
+        { label: 'Tip lucrări', ph: 'Alege tipul lucrării ▾' },
+        { label: 'Localitate', ph: 'Chișinău, Stăuceni, Ialoveni…' },
+        { label: 'Mesaj · opțional', ph: 'Suprafață, termen dorit, alte detalii' },
+      ],
+
+      footNav: ['Acasă', 'Servicii', 'Portofoliu', 'Despre noi', 'Contacte'],
+      footServices: ['Case la cheie', 'Acoperișuri', 'Fațade', 'Reparații la cheie', 'Finisaje', 'Proiectare și vizualizare 3D'],
+      contacts: [
+        { label: 'Adresă', value: 'Nicolae Zelinski 24, Chișinău' },
+        { label: 'Telefon', value: '+373 76 837 180' },
+        { label: 'Email', value: 'rapidconstructmd@gmail.com' },
+        { label: 'Program', value: 'Luni–Sâmbătă 08:00–17:00' },
+      ],
+
+      tokens: [
+        T('--brand', '#F65308', 'Butoane primare, cifre statistice, stări active, chip de categorie.'),
+        T('--brand-dark', '#B23C08', 'Etichete eyebrow, hover pe linkuri și butoane.'),
+        T('--ink', '#1A1A1A', 'Tot textul pe fundal deschis; conturul butonului secundar.'),
+        T('--ink-muted', '#5A5A5A', 'Text secundar, legende, etichete de placeholder.'),
+        T('--bg-light', '#FFFFFF', 'Fundal de secțiune A; fundal de card; text pe #141414.'),
+        T('--bg-grey', '#F2F2F2', 'Fundal de secțiune B; umplerea placeholderelor de imagine.'),
+        T('--bg-dark', '#141414', 'Secțiunile 6 și 9, exact două utilizări în pagină.'),
+        T('--line', '#E2E2E2', 'Borduri, separatoare, text mic pe fundal închis.'),
+      ],
+
+      typeRows: [
+        R('h1', '56px', '32px', '800', '#1A1A1A', 'UPPERCASE, line-height 1,15, letter-spacing −0,02em. O singură apariție: hero.'),
+        R('h2', '40px', '26px', '800', '#1A1A1A', 'UPPERCASE, line-height 1,15, letter-spacing −0,01em. Alb pe #141414.'),
+        R('h3', '22px', '19px', '700', '#1A1A1A', 'Sentence case, line-height 1,15. Titluri de card și de pas.'),
+        R('eyebrow', '13px', '12px', '700', '#B23C08', 'UPPERCASE, letter-spacing 0,08em. Pe #141414 trece pe #F65308.'),
+        R('body', '17px', '16px', '400', '#1A1A1A / #5A5A5A', 'line-height 1,6. Secundarul este #5A5A5A pe deschis, #FFFFFF pe închis.'),
+        R('stat numeral', '44px', '32px', '800', '#F65308', 'line-height 1,15. Hero, pași de proces.'),
+        R('stat bandă', '64px', '44px', '800', '#F65308', 'Doar în banda închisă, secțiunea 6.'),
+      ],
+
+      layoutRows: [
+        KV('Container', 'max-width 1200px, centrat'),
+        KV('Gutter', '24px desktop · 16px mobil'),
+        KV('Padding secțiune', '96px sus/jos · 56px mobil'),
+        KV('Excepție padding', 'banda închisă 56px pe desktop'),
+        KV('Grilă', '3 col ≥1025px · 2 col 769–1024px · 1 col ≤768px'),
+        KV('Gap grilă', '24px (16px pe mobil)'),
+        KV('Breakpointuri', '1024px · 768px'),
+        KV('Lățime desktop de referință', '1440px'),
+        KV('Lățime mobil de referință', '390px'),
+      ],
+
+      compRows: [
+        KV('Rază butoane / inputuri', '6px'),
+        KV('Rază carduri / imagini', '10px'),
+        KV('Umbră (doar carduri)', '0 1px 3px rgba(0,0,0,0.08)'),
+        KV('Buton', 'înălțime 48px · padding 0 28px · weight 700'),
+        KV('Buton primar', 'fundal #F65308, text #FFFFFF'),
+        KV('Buton secundar', 'contur 1px #1A1A1A, fundal transparent'),
+        KV('Header', 'înălțime 72px, opac, bordură jos 1px #E2E2E2'),
+        KV('Ținte tactile mobile', 'minimum 44×44px'),
+        KV('Butoane flotante', '56px diametru, offset 24px / 16px'),
+      ],
+
+      slots: [
+        S(1, 'svc-case-la-cheie', '4:3', '384 × 288 px', '358 × 269 px', 'Secțiunea 3, card 1'),
+        S(2, 'svc-acoperisuri', '4:3', '384 × 288 px', '358 × 269 px', 'Secțiunea 3, card 2'),
+        S(3, 'svc-fatade', '4:3', '384 × 288 px', '358 × 269 px', 'Secțiunea 3, card 3'),
+        S(4, 'svc-reparatii', '4:3', '384 × 288 px', '358 × 269 px', 'Secțiunea 3, card 4'),
+        S(5, 'svc-finisaje', '4:3', '384 × 288 px', '358 × 269 px', 'Secțiunea 3, card 5'),
+        S(6, 'svc-proiectare-3d', '4:3', '384 × 288 px', '358 × 269 px', 'Secțiunea 3, card 6'),
+        S(7, 'svc-retele', '4:3', '384 × 288 px', '358 × 269 px', 'Secțiunea 3, card 7'),
+        S(8, 'svc-industrial', '4:3', '384 × 288 px', '358 × 269 px', 'Secțiunea 3, card 8'),
+        S(9, 'svc-terasamente', '4:3', '384 × 288 px', '358 × 269 px', 'Secțiunea 3, card 9'),
+        S(10, 'step-01-fundatie', '4:3', '211 × 158 px', '358 × 269 px', 'Secțiunea 4, pasul 01'),
+        S(11, 'step-02-structura', '4:3', '211 × 158 px', '358 × 269 px', 'Secțiunea 4, pasul 02'),
+        S(12, 'step-03-acoperis', '4:3', '211 × 158 px', '358 × 269 px', 'Secțiunea 4, pasul 03'),
+        S(13, 'step-04-fatada', '4:3', '211 × 158 px', '358 × 269 px', 'Secțiunea 4, pasul 04'),
+        S(14, 'step-05-predare', '4:3', '211 × 158 px', '358 × 269 px', 'Secțiunea 4, pasul 05'),
+        S(15, 'port-01', '3:2', '384 × 256 px', '358 × 239 px', 'Secțiunea 5 · Acoperișuri'),
+        S(16, 'port-02', '3:2', '384 × 256 px', '358 × 239 px', 'Secțiunea 5 · Finisaje'),
+        S(17, 'port-03', '3:2', '384 × 256 px', '358 × 239 px', 'Secțiunea 5 · Reparații'),
+        S(18, 'port-04', '3:2', '384 × 256 px', '358 × 239 px', 'Secțiunea 5 · Case la cheie'),
+        S(19, 'port-05', '3:2', '384 × 256 px', '358 × 239 px', 'Secțiunea 5 · Fațade'),
+        S(20, 'port-06', '3:2', '384 × 256 px', '358 × 239 px', 'Secțiunea 5 · Case la cheie'),
+      ],
+    };
+  }
+}
+</script>
+
+
+</body></html>

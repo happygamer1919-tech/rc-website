@@ -30,7 +30,8 @@
     "priceLine1": "−10% la programări anticipate",
     "priceLine2": "Rate 0% la acoperiș",
     "ctaPrimary": "Solicită ofertă gratuită",
-    "ctaSecondary": "Sună acum"
+    "ctaSecondary": "Sună acum",
+    "panelAlt": "Ilustrație: casă la cheie construită de Rapid Construct"
   },
   "stats": {
     "0": {
@@ -351,7 +352,7 @@
     "proc2": "Furnizorul nostru de email, pentru livrarea mesajului.",
     "procNote": "Nu transferăm datele nimănui altcuiva și nu le publicăm.",
     "retH": "6. Cât timp le păstrăm",
-    "retP": "TODO: perioada de păstrare, de completat înainte de publicare. După expirarea acestei perioade mesajele sunt șterse.",
+    "retP": "Păstrăm mesajele primite prin formular timp de 12 luni de la ultima comunicare, apoi le ștergem.",
     "rightsH": "7. Drepturile tale",
     "rightsP": "Conform Legii nr. 133/2011 ai dreptul:",
     "right1": "Să afli ce date avem despre tine.",
@@ -365,5 +366,53 @@
     "contactH": "9. Contact pentru cereri",
     "contactP": "Pentru orice cerere legată de datele tale, scrie la adresa de mai jos și menționează numărul de telefon folosit în formular, ca să găsim mesajul.",
     "back": "Înapoi la pagina principală"
+  },
+  "marquee": {
+    "h2": "Materiale și utilaje",
+    "lead": "Materiale și utilaje cu care lucrăm de obicei. Marca finală o confirmăm în ofertă, după proiect și buget."
+  },
+  "popup": {
+    "h2": "Te sunăm noi",
+    "sub": "Lasă numărul și te contactăm în maximum 2 ore lucrătoare.",
+    "submit": "Sună-mă",
+    "close": "Închide fereastra",
+    "fine": "Folosim numărul doar ca să te contactăm despre această cerere. Detalii în",
+    "fineLink": "politica de confidențialitate",
+    "ok": "Mulțumim. Te sunăm în maximum 2 ore lucrătoare.",
+    "fail": "Nu am putut trimite. Sună-ne la +373 76 837 180."
+  },
+  "suppliers": {
+    "0": {
+      "id": "supplier-01",
+      "name": "supplier-01"
+    },
+    "1": {
+      "id": "supplier-02",
+      "name": "supplier-02"
+    },
+    "2": {
+      "id": "supplier-03",
+      "name": "supplier-03"
+    },
+    "3": {
+      "id": "supplier-04",
+      "name": "supplier-04"
+    },
+    "4": {
+      "id": "supplier-05",
+      "name": "supplier-05"
+    },
+    "5": {
+      "id": "supplier-06",
+      "name": "supplier-06"
+    },
+    "6": {
+      "id": "supplier-07",
+      "name": "supplier-07"
+    },
+    "7": {
+      "id": "supplier-08",
+      "name": "supplier-08"
+    }
   }
 }

@@ -81,7 +81,9 @@
     var target = document.getElementById(id);
     if (!target) return;
     e.preventDefault();
-    var top = target.getBoundingClientRect().top + window.pageYOffset - 72;
+    var header = document.querySelector('.header');
+    var offset = header ? header.getBoundingClientRect().height : 72;
+    var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     window.scrollTo({ top: top, behavior: reduce ? 'auto' : 'smooth' });
     if (history.replaceState) history.replaceState(null, '', '#' + id);
@@ -147,4 +149,175 @@
       })
       .then(function () { button.disabled = false; });
   });
+
+  /* --- phase 2 ------------------------------------------------------------ */
+
+  var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 3. sticky header: shadow + compression past 40px.
+     Passive listener, rAF-throttled. It reads scroll, never alters it. */
+  (function () {
+    var header = document.querySelector('.header');
+    if (!header) return;
+    var panel = document.getElementById('mobile-panel');
+    var ticking = false;
+    function sync() {
+      var scrolled = window.pageYOffset > 40;
+      header.setAttribute('data-scrolled', scrolled ? 'true' : 'false');
+      if (panel) panel.style.top = header.getBoundingClientRect().height + 'px';
+      ticking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(sync);
+    }, { passive: true });
+    sync();
+  })();
+
+  /* 2. scroll reveal. IntersectionObserver only: no scroll listener, no scroll
+     mutation, unobserved the moment it fires so it never repeats. */
+  (function () {
+    var nodes = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+    if (!nodes.length) return;
+    if (REDUCED || !('IntersectionObserver' in window)) {
+      nodes.forEach(function (n) { n.classList.add('is-revealed'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('is-revealed');
+        obs.unobserve(e.target);
+      });
+    }, { threshold: 0.1 });
+    nodes.forEach(function (n) { io.observe(n); });
+  })();
+
+  /* 5. lead capture modal */
+  (function () {
+    var modal = document.getElementById('lead-modal');
+    if (!modal) return;
+
+    var KEY = 'rc-lead-shown';
+    var panel = modal.querySelector('.modal__panel');
+    var closeBtn = document.getElementById('lead-modal-close');
+    var leadForm = document.getElementById('lead-form');
+    var leadStatus = document.getElementById('lead-status');
+    var phone = document.getElementById('lead-phone');
+    var phoneErr = document.getElementById('lead-phone-err');
+    var lastFocus = null;
+    var timer = null;
+    var open = false;
+
+    function seen() {
+      try { return sessionStorage.getItem(KEY) === '1'; } catch (e) { return false; }
+    }
+    function markSeen() {
+      try { sessionStorage.setItem(KEY, '1'); } catch (e) { /* private mode */ }
+    }
+
+    function focusables() {
+      return Array.prototype.slice.call(panel.querySelectorAll(
+        'button, [href], input:not([type="hidden"]), select, textarea, [tabindex]:not([tabindex="-1"])'
+      )).filter(function (el) {
+        // The honeypot is off-screen and tabindex=-1, but still matches the
+        // input selector. It must never receive focus.
+        if (el.closest('.honeypot')) return false;
+        if (el.getAttribute('tabindex') === '-1') return false;
+        return true;
+      });
+    }
+
+    function openModal() {
+      if (open || seen()) return;
+      markSeen();
+      teardownTriggers();
+      lastFocus = document.activeElement;
+      modal.hidden = false;
+      open = true;
+      // The page keeps its scroll position and is never locked mid-gesture;
+      // the overlay simply covers it.
+      (phone || closeBtn).focus();
+    }
+
+    function closeModal() {
+      if (!open) return;
+      modal.hidden = true;
+      open = false;
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    modal.addEventListener('mousedown', function (e) { if (e.target === modal) closeModal(); });
+    closeBtn.addEventListener('click', closeModal);
+    document.addEventListener('keydown', function (e) {
+      if (!open) return;
+      if (e.key === 'Escape') { closeModal(); return; }
+      if (e.key !== 'Tab') return;
+      var f = focusables();
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+
+    /* Triggers: 30s, 50% depth, or (desktop) pointer exiting through the top.
+       The scroll trigger is a passive read of position. It never intervenes. */
+    function onScrollDepth() {
+      var doc = document.documentElement;
+      var max = doc.scrollHeight - window.innerHeight;
+      if (max > 0 && window.pageYOffset / max >= 0.5) openModal();
+    }
+    function onExitIntent(e) {
+      if (e.clientY <= 0 && !e.relatedTarget) openModal();
+    }
+    function teardownTriggers() {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', onScrollDepth);
+      document.removeEventListener('mouseout', onExitIntent);
+    }
+
+    if (!seen()) {
+      timer = setTimeout(openModal, 30000);
+      window.addEventListener('scroll', onScrollDepth, { passive: true });
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        document.addEventListener('mouseout', onExitIntent);
+      }
+    }
+
+    // Suppress permanently once the main form has been submitted.
+    var mainForm = document.getElementById('quote-form');
+    if (mainForm) {
+      mainForm.addEventListener('submit', function () { markSeen(); teardownTriggers(); });
+    }
+
+    /* Same validation rule and same demo-mode contract as the main form. */
+    leadForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var good = phone.value.replace(/\D/g, '').length >= 8;
+      phoneErr.hidden = good;
+      phone.setAttribute('aria-invalid', good ? 'false' : 'true');
+      if (!good) { phone.focus(); return; }
+
+      if (leadForm.getAttribute('data-armed') !== '1') {
+        leadStatus.hidden = false;
+        leadStatus.textContent = leadForm.getAttribute('data-demo');
+        leadStatus.style.color = '#5A5A5A';
+        return;
+      }
+      var button = leadForm.querySelector('button[type="submit"]');
+      button.disabled = true;
+      leadStatus.hidden = false;
+      leadStatus.textContent = '…';
+      fetch(leadForm.action, { method: 'POST', body: new FormData(leadForm) })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (!d || !d.success) throw new Error('rejected');
+          leadForm.reset();
+          leadStatus.textContent = leadForm.getAttribute('data-ok');
+        })
+        .catch(function () { leadStatus.textContent = leadForm.getAttribute('data-fail'); })
+        .then(function () { button.disabled = false; leadStatus.style.color = '#B23C08'; });
+    });
+  })();
 })();

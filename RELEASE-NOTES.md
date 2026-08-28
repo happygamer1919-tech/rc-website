@@ -3,7 +3,7 @@
 Status of the Rapid Construct site as built. Read this first if you are coming
 back to the project cold.
 
-**Last updated:** 2026-08-28
+**Last updated:** 2026-08-28 (phase 2)
 **State:** ready for client review. Not production.
 
 ---
@@ -30,11 +30,34 @@ Logos and favicons are real files in `public/`.
 
 ## What is a placeholder
 
-### All 21 image slots
+### Supplier logos (marquee)
 
-Every image on the site is a generated placeholder: a flat `#F2F2F2` JPG at the
+Eight placeholder tiles under the hero. To add a real one:
+
+1. Drop the logo at `public/img/suppliers/<id>.svg` (or `.png`), sized to fit a
+   160x80 tile. SVG preferred.
+2. In **both** locale files, set `suppliers.<n>.name` to the supplier's name and
+   `suppliers.<n>.id` to the filename stem.
+3. Rebuild. The tile renders the image instead of the label.
+
+The strip duplicates the list to loop seamlessly, so the template renders each
+entry twice. Adding an entry means adding it to the array only; the duplication
+is automatic in the template.
+
+### Service card illustrations (9)
+
+Not photographs and not in the photo manifest. Drop each finished SVG at
+`public/img/services/<id>.svg`, overwriting the placeholder. IDs are the nine
+`svc-*` names. `node scripts/gen-service-svgs.js` regenerates placeholders and
+will not overwrite a real illustration.
+
+### All 13 photo slots
+
+Every photo on the site is a generated placeholder: a flat `#F2F2F2` JPG at the
 manifest's exact pixel size, with the slot ID and aspect ratio printed in the
-middle. Nine services, five process steps, six portfolio covers, one og-image.
+middle. One hero panel, five process steps, six portfolio covers, one og-image.
+The count went 21 -> 13 in phase 2: the nine `svc-*` photo slots became SVG
+illustrations and `hero-panel` was added.
 
 **To swap in a real photo:** drop the raw file into `photos-raw/` named by slot
 ID, at any size, then:
@@ -83,7 +106,10 @@ build prints which mode it used.
 | Item | State |
 |---|---|
 | **Heading font** | **Resolved: Inter stays.** Unbounded is no longer loaded. `--font-heading` remains a variable, so a future family swap is still one value in `src/styles.css` plus adding it to the font link. |
-| **Photos** | All 21 slots. Selection session with Mihai still to happen. |
+| **Photos** | All 13 photo slots. Selection session with Mihai still to happen. |
+| **Service illustrations** | Nine SVGs from Claude Design, placeholders in place. |
+| **Hero panel illustration** | `hero-panel`, Ivan is producing it. |
+| **Supplier logos** | Eight placeholder tiles, real logos after the client meeting. |
 | **Form endpoint** | No Web3Forms key yet. Deliberate until the visual is approved. |
 | **Production host** | GitHub Pages is for client review only. Hostinger is the production target. |
 | **Privacy page legal fields** | `/confidentialitate/` and `/ru/konfidentsialnost/` exist and are linked, but the registered company name, IDNO and retention period are visible `TODO:` placeholders. **While any remain, both pages are `noindex` and excluded from `sitemap.xml` automatically.** Fill them in the `privacy` block of both locale files and the flags clear themselves. |
@@ -130,7 +156,25 @@ breaking the first two.
   auto-advancing carousels.
 - No section over 1,400px except the services and portfolio grids, which are
   agreed exceptions.
-- Header opaque and sticky at 72px, nav items never wrap.
+- Header opaque at 72px (64px compressed), nav items never wrap.
+
+## Motion (phase 2)
+
+Motion is permitted but never touches scroll. The rules, all enforced:
+
+- No wheel, touchmove or scroll handler ever calls `preventDefault`. Both scroll
+  listeners are registered `{ passive: true }`, so they cannot block scrolling
+  even in principle.
+- Reveals use `IntersectionObserver` and `unobserve` on first fire, so they
+  never repeat on scroll back up.
+- Reveal 320ms / 16px, hover 200ms / 4px, stagger capped at 6 items (360ms).
+- Nothing in the header or hero animates.
+- The header is `position: fixed` with a constant 72px spacer on `<body>`.
+  It was sticky, but a sticky header keeps its box in flow, so compressing it
+  72px -> 64px shortened the document and shunted every section up 8px
+  mid-scroll. Fixed makes the compression purely visual.
+- `prefers-reduced-motion: reduce` disables every effect. Reveals render final,
+  hover travel is removed, the marquee stops dead, the header does not animate.
 
 ## Lighthouse baseline
 

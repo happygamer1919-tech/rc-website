@@ -93,4 +93,30 @@ Recommendation, pending Ivan's decision:
 4. Footer service links: point each at `#servicii` but keep them, they are
    navigational rather than promissory. No change.
 
-Nothing here has been changed yet. Each is a one-line edit once decided.
+**Resolved 2026-08-28, all approved by Ivan:**
+
+1. `Vezi tot portofoliul` deleted.
+2. Nine `Află mai multe` relabelled `Cere ofertă`.
+3. Cookie-policy link deleted. The site sets no cookies, so the document would
+   describe nothing. It returns if analytics are ever added, with a real banner.
+4. Footer service links unchanged.
+5. Privacy policy: real pages built at `/confidentialitate/` and
+   `/ru/konfidentsialnost/` rather than stripping the anchor. The form collects
+   name, phone and locality and the consent checkbox references a policy;
+   under Law 133/2011 consent pointing at nothing is worse than no link.
+   Legal identity fields are visible `TODO:` placeholders, never invented, and
+   the build keeps the pages out of the index until they are filled.
+
+## Contrast, resolved 2026-08-28
+
+`#F65308` is sampled from the logo and approved on screen, so it was fixed from
+the other side rather than darkened:
+
+- **Buttons**: text raised 17px -> 19px. WCAG treats >=18.66px bold as large
+  text, where AA asks 3:1 rather than 4.5:1. White on `--brand` is 3.41:1, so it
+  passes. The fill is untouched.
+- **Category chip**: 13px uppercase cannot reach that threshold without
+  wrecking the card, so the chip fill alone moves to `--brand-dark`, giving
+  5.93:1. It reads as a deliberate darker member of the brand family.
+
+Lighthouse accessibility went 96 -> 100 on both locales.

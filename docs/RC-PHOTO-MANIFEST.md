@@ -1,132 +1,198 @@
-# RC WEBSITE — PHOTO MANIFEST
+# RC WEBSITE — PHOTO MANIFEST V2
 
-> Companion to `RC-WEBSITE-MASTER-PLAN.md`. Applies only to the Rapid Construct MD website (repo `rc-website`).
-> Fill the **File / notes** column during the photo selection session with Mihai. Leave it blank if no real photo exists for that slot.
+> Companion to `RC-WEBSITE-MASTER-PLAN.md`. Applies only to the Rapid Construct
+> MD website (repo `rc-website`).
+>
+> **V2 supersedes V1 entirely.** V1 listed 21 flat slots. V2 is built around a
+> project content model, so portfolio covers are no longer separate slots: the
+> portfolio reuses project covers. Fill the **File / notes** column during the
+> selection session with Mihai. Leave it blank if no real photo exists.
 
-**Total needed: 17 mandatory, up to 18 optional.**
+**Total: 47 photo slots.** 41 project slots (9 covers + 32 gallery)
++ 5 process stages + 1 social share. Full arithmetic in *Slot count* below.
 
-Revised for phase 2. The count went 26 -> 25 when `form-bg` was struck, then
-25 -> 17 when the nine `svc-*` photo slots were replaced by SVG illustrations
-and `hero-panel` was added.
-
-**13 image slots** + 4 logo assets = 17:
-one `hero-panel`, five process stages, six portfolio covers, one `og-image`.
-
-Every file: minimum 1600px long edge, landscape, JPG, under 400KB after compression, no watermark, real Rapid Construct work only.
-Naming: use the Slot ID exactly, lowercase, `.jpg`. Example: `svc-acoperisuri.jpg`. Drop everything into one folder, no subfolders.
+Every file: minimum 1600px long edge, landscape, JPG, under 400KB after
+processing, no watermark, real Rapid Construct work only.
+Naming: the Slot ID exactly, lowercase, `.jpg`.
 
 ---
 
-## Part A — Slots in the build
+## Part A — Content model
 
-### Hero
-No photo. Decision locked: plain background.
+Photos are no longer a flat list. They hang off projects, defined in
+`content/projects.json` (to be created when the portfolio is rebuilt):
 
-### Services grid — STRUCK, no longer photographs
+```json
+{
+  "id": "acoperis-durlesti",
+  "title": "Acoperiș din șindrilă bituminoasă",
+  "service": "acoperisuri",
+  "location": "Durlești",
+  "year": 2025,
+  "cover": "proj-acoperis-durlesti-cover",
+  "gallery": [
+    "proj-acoperis-durlesti-01",
+    "proj-acoperis-durlesti-02",
+    "proj-acoperis-durlesti-03"
+  ]
+}
+```
 
-~~Nine `svc-*` photo slots, 4:3, 1200x900.~~ Removed in phase 2. The nine
-service cards now hold **SVG illustrations**, produced in Claude Design, not
-photographs. They are therefore outside this manifest.
-
-Drop each finished illustration at `public/img/services/<id>.svg`, overwriting
-the placeholder. IDs: `svc-case-la-cheie`, `svc-acoperisuri`, `svc-fatade`,
-`svc-reparatii`, `svc-finisaje`, `svc-proiectare-3d`, `svc-retele`,
-`svc-industrial`, `svc-terasamente`. Regenerate placeholders with
-`node scripts/gen-service-svgs.js`; it will not overwrite a real file.
-
-### Hero panel — 1 mandatory, 4:3 landscape, 1200x900
-
-| Slot ID | What it must show | File / notes |
+| Field | Type | Notes |
 |---|---|---|
-| `hero-panel` | Right-hand panel of the hero. Ivan is producing an illustration for this slot | |
+| `id` | slug | Unique, lowercase, hyphenated. Drives the slot IDs. |
+| `title` | string | Per locale. Real project name. |
+| `service` | slug | One of the nine service slugs below. |
+| `location` | string | Locality. **Leave the field out if unknown. Never invent one.** |
+| `year` | number | **Leave out if unknown.** |
+| `cover` | slot ID | `proj-<id>-cover`. |
+| `gallery` | slot ID[] | `proj-<id>-01` … `-04`. Three minimum, four maximum. |
 
-### Process block — 5 mandatory, 4:3 landscape, 900x675
+Service slugs: `case-la-cheie`, `acoperisuri`, `fatade`, `reparatii`,
+`finisaje`, `proiectare-3d`, `instalatii`, `industrial`, `terasamente`.
 
-These can come from a single project shot at five stages. That is the strongest version of this section: same house, five moments.
+**The portfolio grid reads project covers directly.** There are no `port-01`…
+`port-06` slots any more. A project appears in the portfolio because it exists,
+not because a separate cover was shot for it.
 
-| Slot ID | Stage | File / notes |
-|---|---|---|
-| `step-01-fundatie` | Foundation poured or formwork in place | |
-| `step-02-structura` | Walls up, structure visible | |
-| `step-03-acoperis` | Roof being installed or freshly finished | |
-| `step-04-fatada` | Insulation boards or render being applied | |
-| `step-05-predare` | Finished house, yard cleared | |
+---
 
-### Portfolio covers — 6 mandatory, 3:2 landscape, 1400x933
+## Part B — Project slots
 
-One cover per project. Each project also gets a category so the filter tabs work.
+Nine projects, one per service, so every service has real work behind it.
 
-| Slot ID | Category | Project | File / notes |
+**Per project: 1 cover + 3 to 4 gallery.** Cover is 3:2 landscape 1400x933.
+Gallery is 3:2 landscape 1400x933. Gallery slot 04 is optional.
+
+| Project ID | Service | Cover slot | Gallery slots | File / notes |
+|---|---|---|---|---|
+| `case-la-cheie-01` | case-la-cheie | `proj-case-la-cheie-01-cover` | `-01` `-02` `-03` `-04` | |
+| `acoperisuri-01` | acoperisuri | `proj-acoperisuri-01-cover` | `-01` `-02` `-03` `-04` | |
+| `fatade-01` | fatade | `proj-fatade-01-cover` | `-01` `-02` `-03` `-04` | |
+| `reparatii-01` | reparatii | `proj-reparatii-01-cover` | `-01` `-02` `-03` `-04` | |
+| `finisaje-01` | finisaje | `proj-finisaje-01-cover` | `-01` `-02` `-03` `-04` | |
+| `proiectare-3d-01` | proiectare-3d | `proj-proiectare-3d-01-cover` | `-01` `-02` `-03` | |
+| `instalatii-01` | instalatii | `proj-instalatii-01-cover` | `-01` `-02` `-03` | |
+| `industrial-01` | industrial | `proj-industrial-01-cover` | `-01` `-02` `-03` | |
+| `terasamente-01` | terasamente | `proj-terasamente-01-cover` | `-01` `-02` `-03` | |
+
+### Shooting notes, one line per slot
+
+| Slot ID | Ratio | Dimensions | Shooting note |
 |---|---|---|---|
-| `port-01` | Acoperișuri | | |
-| `port-02` | Finisaje | | |
-| `port-03` | Reparații | | |
-| `port-04` | Case la cheie | | |
-| `port-05` | Fațade | | |
-| `port-06` | Case la cheie | | |
+| `proj-case-la-cheie-01-cover` | 3:2 | 1400x933 | Finished house, full exterior, daylight, straight on |
+| `proj-case-la-cheie-01-01` | 3:2 | 1400x933 | Same house, three-quarter angle showing depth |
+| `proj-case-la-cheie-01-02` | 3:2 | 1400x933 | Entrance and door detail |
+| `proj-case-la-cheie-01-03` | 3:2 | 1400x933 | Interior, main living space, finished |
+| `proj-case-la-cheie-01-04` | 3:2 | 1400x933 | Optional: the same house earlier in the build |
+| `proj-acoperisuri-01-cover` | 3:2 | 1400x933 | Completed roof from an elevated angle |
+| `proj-acoperisuri-01-01` | 3:2 | 1400x933 | Ridge and valley detail, clean lines |
+| `proj-acoperisuri-01-02` | 3:2 | 1400x933 | Guttering and downpipe run |
+| `proj-acoperisuri-01-03` | 3:2 | 1400x933 | Roof in progress, battens or membrane visible |
+| `proj-acoperisuri-01-04` | 3:2 | 1400x933 | Optional: chimney or skylight flashing |
+| `proj-fatade-01-cover` | 3:2 | 1400x933 | Finished façade, full elevation, even light |
+| `proj-fatade-01-01` | 3:2 | 1400x933 | Render or cladding texture, close |
+| `proj-fatade-01-02` | 3:2 | 1400x933 | Insulation boards going on, mid-job |
+| `proj-fatade-01-03` | 3:2 | 1400x933 | Corner or reveal detail |
+| `proj-fatade-01-04` | 3:2 | 1400x933 | Optional: before and after from one position |
+| `proj-reparatii-01-cover` | 3:2 | 1400x933 | Finished renovated room, wide |
+| `proj-reparatii-01-01` | 3:2 | 1400x933 | Same room before, from the same position |
+| `proj-reparatii-01-02` | 3:2 | 1400x933 | Demolition or strip-out in progress |
+| `proj-reparatii-01-03` | 3:2 | 1400x933 | Second finished room |
+| `proj-reparatii-01-04` | 3:2 | 1400x933 | Optional: kitchen or bathroom finished |
+| `proj-finisaje-01-cover` | 3:2 | 1400x933 | Finished interior, plaster and paint clean |
+| `proj-finisaje-01-01` | 3:2 | 1400x933 | Flooring laid, edges and thresholds neat |
+| `proj-finisaje-01-02` | 3:2 | 1400x933 | Tiling, grout lines square |
+| `proj-finisaje-01-03` | 3:2 | 1400x933 | Plasterboard and skim mid-job |
+| `proj-finisaje-01-04` | 3:2 | 1400x933 | Optional: door or trim detail |
+| `proj-proiectare-3d-01-cover` | 3:2 | 1400x933 | 3D render of a real project, full exterior |
+| `proj-proiectare-3d-01-01` | 3:2 | 1400x933 | Render next to the built result, same angle |
+| `proj-proiectare-3d-01-02` | 3:2 | 1400x933 | Floor plan or elevation on screen |
+| `proj-proiectare-3d-01-03` | 3:2 | 1400x933 | Interior render |
+| `proj-instalatii-01-cover` | 3:2 | 1400x933 | Tidy pipe or cable run, first fix |
+| `proj-instalatii-01-01` | 3:2 | 1400x933 | Manifold or distribution board, labelled |
+| `proj-instalatii-01-02` | 3:2 | 1400x933 | Underfloor heating loops laid out |
+| `proj-instalatii-01-03` | 3:2 | 1400x933 | Finished fixtures, second fix |
+| `proj-industrial-01-cover` | 3:2 | 1400x933 | Hall or warehouse exterior, full width |
+| `proj-industrial-01-01` | 3:2 | 1400x933 | Interior span, structure visible |
+| `proj-industrial-01-02` | 3:2 | 1400x933 | Steel frame going up |
+| `proj-industrial-01-03` | 3:2 | 1400x933 | Loading bay or main door detail |
+| `proj-terasamente-01-cover` | 3:2 | 1400x933 | Machinery working the plot, wide |
+| `proj-terasamente-01-01` | 3:2 | 1400x933 | Excavation face, depth readable |
+| `proj-terasamente-01-02` | 3:2 | 1400x933 | Levelled and compacted ground |
+| `proj-terasamente-01-03` | 3:2 | 1400x933 | Foundation trench set out |
 
-### Portfolio extras — up to 18 optional, 3 per project, same 3:2 spec
+---
 
-Only if we enable the lightbox. Name them `port-01-a`, `port-01-b`, `port-01-c` and so on.
+## Part C — Retained non-project slots
 
-| Project | Extra 1 | Extra 2 | Extra 3 |
+### Process stages — 5 mandatory, 4:3 landscape, 900x675
+
+Strongest version is one house at five moments.
+
+| Slot ID | Ratio | Dimensions | Shooting note |
 |---|---|---|---|
-| `port-01` | | | |
-| `port-02` | | | |
-| `port-03` | | | |
-| `port-04` | | | |
-| `port-05` | | | |
-| `port-06` | | | |
+| `step-01-fundatie` | 4:3 | 900x675 | Foundation poured or formwork in place |
+| `step-02-structura` | 4:3 | 900x675 | Walls up, structure visible |
+| `step-03-acoperis` | 4:3 | 900x675 | Roof being installed or freshly finished |
+| `step-04-fatada` | 4:3 | 900x675 | Insulation boards or render being applied |
+| `step-05-predare` | 4:3 | 900x675 | Finished house, yard cleared |
 
-### Form section background — STRUCK
+### Social share — 1 mandatory, 1200x630
 
-~~`form-bg`, 16:9, 1920x1080.~~ Removed by Ivan, 2026-08-27. A darkened photo
-behind the form would add a fourth background value and a translucent overlay,
-both forbidden by the master plan's background rule, which is the one thing the
-client stated clearly. The form section stays flat `#F2F2F2`.
+| Slot ID | Ratio | Dimensions | Shooting note |
+|---|---|---|---|
+| `og-image` | 1200x630 | 1200x630 | Best single finished-house shot. Currently a branded logo card on #141414; a real photo overwrites it |
 
-### Social share image — 1 mandatory, 1200x630
-
-| Slot ID | What it must show | File / notes |
-|---|---|---|
-| `og-image` | Best single finished-house photo. This is what appears when the link is shared on WhatsApp, Facebook or Viber | |
-
-### Logo
+### Delivered, no longer photo slots
 
 | Asset | Format | Status |
 |---|---|---|
-| Logo, full colour | SVG preferred, PNG with transparency acceptable | Pending from Ivan |
-| Logo, white version for the dark footer | SVG or PNG | Pending |
-| Favicon | 512x512 PNG, square mark only | Pending |
+| `hero-panel` | SVG, 800x600 | **Delivered.** Illustration, not a photograph |
+| 9 service illustrations | SVG, 400x300 | **Delivered.** `public/img/services/svc-*.svg` |
+| Logo full / white, favicon 512 / 180 | PNG | **Delivered** |
 
-A JPG will need its background removed before it can sit on the white header bar. Vector avoids that step entirely.
+> Deviation noted: the card brief said to retain `hero-panel` in the manifest.
+> It is listed here for traceability but is **not** a photo slot, because it was
+> delivered as an SVG illustration in W1-00.
 
----
+### Struck from V1
 
-## Part B — Shooting and collection batches
-
-If you are going out to collect or shoot rather than picking from an archive, gather by batch. Slots draw from these.
-
-| Batch | Count | Covers slots |
-|---|---|---|
-| Acoperișuri: metal tile and bituminous, at least one elevated angle | 5 | `svc-acoperisuri`, `step-03`, `port-01` and its extras |
-| Fațade: insulation boards, decorative render, stone cladding | 5 | `svc-fatade`, `step-04`, `port-05` and extras |
-| Case la cheie: finished exteriors, different houses, daylight | 6 | `svc-case-la-cheie`, `step-05`, `port-04`, `port-06`, `og-image` |
-| Șantier în lucru: excavation, foundation, walls, structure | 5 | `svc-terasamente`, `step-01`, `step-02`, `form-bg` |
-| Interioare și finisaje | 4 | `svc-finisaje`, `svc-reparatii`, `port-02`, `port-03` |
-| Proiectare 3D: renders or plans | 2 | `svc-proiectare-3d` |
-| Industrial: hall, warehouse, commercial | 2 | `svc-industrial` |
-| Rețele inginerești: piping, wiring, heating | 2 | `svc-retele` |
-| Reserve: anything strong that does not fit above | 2 | swap-ins |
-
-**Total to collect: 33.** That gives 26 slots filled with 7 in reserve for the ones that turn out unusable at full size.
+`form-bg` (struck earlier), the nine `svc-*` photo slots (now SVG), and
+`port-01`…`port-06` (portfolio now reads project covers).
 
 ---
 
-## Part C — Rules for the selection session
+## Slot count
 
-1. Judge every photo at full width on a laptop, not on a phone. Photos that look fine on a phone fall apart at 1400px.
-2. Reject anything blurred, backlit into a white sky, shot in rain, or containing another company's branding.
-3. Prefer daylight and clear weather across the whole set. Mixed lighting across a grid looks like a mistake even when each photo is fine on its own.
-4. If a slot has no good real photo, delete the slot. Never fill it with stock. A grid of eight real services beats nine with one fake.
-5. Decide the roof and façade batches first. Those two carry the business and they are the shots Mihai will judge the site by.
+| Group | Slots |
+|---|---|
+| Project covers, 9 projects x 1 | 9 |
+| Project gallery, 5 projects x 4 + 4 projects x 3 | 32 |
+| Process stages | 5 |
+| Social share | 1 |
+| **Total photo slots** | **47** |
+| Delivered illustrations (`hero-panel` + 9 service SVGs) | 10 |
+| Logo and favicon assets | 4 |
+| **Total assets tracked** | **61** |
+
+**47 photographs to collect**, up from V1's 12 remaining photo slots, because
+the portfolio moved from six one-off covers to nine documented projects with
+galleries. That is the cost of the project model, and it is the number to plan
+the shooting days around.
+
+Minimum viable set: the 9 covers plus 5 process stages = **14 photographs**.
+Galleries can land per project afterwards without blocking launch.
+
+---
+
+## Part D — Rules for the selection session
+
+1. Judge every photo at full width on a laptop, not on a phone.
+2. Reject anything blurred, backlit into a white sky, shot in rain, or carrying
+   another company's branding.
+3. Prefer daylight and clear weather across the whole set.
+4. If a slot has no good real photo, delete the slot. Never fill it with stock.
+5. Decide roof and façade first. Those two carry the business.
+6. A project with fewer than three usable gallery photos ships as cover only.
+   Do not pad a gallery with weak frames.

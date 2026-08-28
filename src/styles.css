@@ -617,6 +617,10 @@ p { margin: 0; }
 .hero-claim__divider { height: 1px; background: rgba(255, 255, 255, 0.25); margin: 32px 0 20px; border: 0; }
 .hero-claim__highlight { color: var(--brand); font-weight: 700; font-size: 16px; margin-top: auto; }
 .hero-panel-media { border-radius: var(--radius-card); border: 1px solid var(--line); overflow: hidden; }
+/* contain, not cover. The illustration is 4:3 and the box is 4:3, so the two
+   render identically today, but contain guarantees a future asset at a
+   different ratio is letterboxed rather than silently cropped. */
+.hero-panel-media img { object-fit: contain; }
 
 /* --- 8. service illustration box ------------------------------------------ */
 /* Fixed 4:3 box, illustration centred and contained. The <img> always resolves

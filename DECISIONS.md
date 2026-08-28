@@ -148,3 +148,37 @@ unmaintained. It is not maintained and takes no further commits.
 All local feature branches were pushed to origin at the same time, so the
 history is no longer local-only. Before that push only `main` existed remotely;
 16 branches were added.
+
+## Price figure scope on service pages — PROVISIONAL, 2026-08-28
+
+**This is provisional pending a client ruling and is built to be easy to
+reverse.**
+
+`hero.priceTitle` ("160 lei/m² preț înghețat pentru 2026") and
+`hero.priceLine1` ("−10% la programări anticipate") render on five service
+pages only:
+
+| Shown | Not shown |
+|---|---|
+| case-la-cheie | proiectare-3d |
+| acoperisuri | instalatii |
+| fatade | industrial |
+| reparatii | terasamente |
+| finisaje | |
+
+`hero.priceLine2` ("Rate 0% la acoperiș") stays confined to acoperisuri, since
+the copy names roofing itself.
+
+**Why provisional.** Nobody has told us which services the per-m² figure
+actually covers. A square-metre price is natural for building, roofing,
+façades, renovation and finishing; it is not obviously meaningful for design
+work, engineering installations, industrial builds or earthworks. That is a
+commercial judgement, not a copy judgement, so it is flagged rather than
+settled.
+
+**To reverse.** One array in `build.js`: `PRICED_SLUGS`. Add a slug to show the
+block, remove one to hide it. Nothing else changes.
+
+**The homepage hero is unaffected.** The price box there was deleted in W1-02
+and the figure now reaches the homepage only through `footer.offer`, which is
+the site-wide standing offer and is not scoped per service.

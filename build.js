@@ -134,7 +134,9 @@ for (const l of loaded) {
     // The privacy page ships with TODO legal-identity fields. Until they are
     // filled it must not be indexed and must stay out of the sitemap.
     privacyRobots: privacyIncomplete ? 'noindex, nofollow' : 'index, follow',
-    googleReviewsUrl: GOOGLE_REVIEWS_URL || '#',
+    // With no URL the anchor renders with no href at all: an <a> without href
+    // is not focusable or clickable, so the hidden block contains no dead link.
+    googleHref: GOOGLE_REVIEWS_URL ? ` href="${GOOGLE_REVIEWS_URL}"` : '',
     googleHidden: GOOGLE_REVIEWS_URL ? '' : 'hidden',
   };
   // Homepage portfolio: six cards straight off projects.json, each linking to
@@ -204,7 +206,7 @@ for (const l of loaded) {
     const missing = new Set();
     const html = template.replace(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/g, (_, key) => {
       if (!(key in vars)) { missing.add(key); return `{{${key}}}`; }
-      return key === 'portfolioCards' ? vars[key] : esc(vars[key]);
+      return (key === 'portfolioCards' || key === 'googleHref') ? vars[key] : esc(vars[key]);
     });
     if (missing.size) die(`${page.template} references unknown keys for locale ${l.code}: ${[...missing].join(', ')}`);
     if (html.includes('{{')) die(`unsubstituted placeholder survived in ${out}`);

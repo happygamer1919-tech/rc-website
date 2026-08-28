@@ -18,6 +18,13 @@ const LOCALES = [
   { code: 'ru', file: 'locales/ru.json', out: 'dist/ru/index.html', home: '/ru/', alt: '/' },
 ];
 
+// Each page template rendered once per locale. 404 goes to the site root as
+// well as /ru/, because a static host serves one 404 for the whole origin.
+const PAGES = [
+  { template: 'src/template.html', out: (l) => l.out },
+  { template: 'src/404.html', out: (l) => (l.code === 'ro' ? 'dist/404.html' : 'dist/ru/404.html') },
+];
+
 const die = (msg) => { console.error('\nBUILD FAILED: ' + msg + '\n'); process.exit(1); };
 
 const flatten = (obj, prefix = '') => Object.entries(obj).reduce((acc, [k, v]) => {
@@ -40,8 +47,6 @@ const empty = loaded.flatMap((l) => Object.entries(l.strings).filter(([, v]) => 
 if (empty.length) die(`empty strings: ${empty.join(', ')}`);
 
 // --- render ------------------------------------------------------------------
-const template = fs.readFileSync('src/template.html', 'utf8');
-
 for (const l of loaded) {
   const vars = {
     ...l.strings,
@@ -58,24 +63,59 @@ for (const l of loaded) {
     ogImage: SITE + BASE + '/img/og-image.jpg',
     urlRo: SITE + BASE + '/',
     urlRu: SITE + BASE + '/ru/',
+    logoUrl: SITE + BASE + '/logo-full.png',
   };
-  const missing = new Set();
-  const html = template.replace(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/g, (_, key) => {
-    if (!(key in vars)) { missing.add(key); return `{{${key}}}`; }
-    return esc(vars[key]);
-  });
-  if (missing.size) die(`template references unknown keys for locale ${l.code}: ${[...missing].join(', ')}`);
-  if (html.includes('{{')) die(`unsubstituted placeholder survived in ${l.out}`);
-  fs.mkdirSync(path.dirname(l.out), { recursive: true });
-  fs.writeFileSync(l.out, html);
-  console.log(`wrote ${l.out}  (${(html.length / 1024).toFixed(1)} KB)`);
+  for (const page of PAGES) {
+    const template = fs.readFileSync(page.template, 'utf8');
+    const out = page.out(l);
+    const missing = new Set();
+    const html = template.replace(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/g, (_, key) => {
+      if (!(key in vars)) { missing.add(key); return `{{${key}}}`; }
+      return esc(vars[key]);
+    });
+    if (missing.size) die(`${page.template} references unknown keys for locale ${l.code}: ${[...missing].join(', ')}`);
+    if (html.includes('{{')) die(`unsubstituted placeholder survived in ${out}`);
+    fs.mkdirSync(path.dirname(out), { recursive: true });
+    fs.writeFileSync(out, html);
+    console.log(`wrote ${out}  (${(html.length / 1024).toFixed(1)} KB)`);
+  }
 }
 
 // --- static assets ------------------------------------------------------------
+// robots + sitemap, generated so they always carry the right origin and base
+fs.writeFileSync('dist/robots.txt',
+  `User-agent: *\nAllow: /\n\nSitemap: ${SITE}${BASE}/sitemap.xml\n`);
+
+const pages = [{ loc: SITE + BASE + '/', lang: 'ro' }, { loc: SITE + BASE + '/ru/', lang: 'ru' }];
+fs.writeFileSync('dist/sitemap.xml',
+  '<?xml version="1.0" encoding="UTF-8"?>\n' +
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +
+  pages.map((p) => '  <url>\n' +
+    `    <loc>${p.loc}</loc>\n` +
+    pages.map((a) => `    <xhtml:link rel="alternate" hreflang="${a.lang}" href="${a.loc}"/>\n`).join('') +
+    `    <xhtml:link rel="alternate" hreflang="x-default" href="${pages[0].loc}"/>\n` +
+    '    <changefreq>monthly</changefreq>\n  </url>\n').join('') +
+  '</urlset>\n');
+
+fs.writeFileSync('dist/site.webmanifest', JSON.stringify({
+  name: 'Rapid Construct',
+  short_name: 'Rapid Construct',
+  start_url: BASE + '/',
+  scope: BASE + '/',
+  display: 'standalone',
+  background_color: '#FFFFFF',
+  theme_color: '#F65308',
+  icons: [
+    { src: BASE + '/favicon-180.png', sizes: '180x180', type: 'image/png' },
+    { src: BASE + '/favicon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+  ],
+}, null, 2) + '\n');
+
 fs.copyFileSync('src/styles.css', 'dist/styles.css');
 fs.copyFileSync('src/main.js', 'dist/main.js');
 fs.cpSync('public', 'dist', { recursive: true, filter: (src) => !src.endsWith('PLACEHOLDERS.json') });
 console.log('copied styles.css, main.js and public/ into dist/');
+console.log('generated robots.txt, sitemap.xml, site.webmanifest');
 
 console.log(`base path: ${BASE || '(root)'}    site: ${SITE}`);
 console.log(FORM_ARMED

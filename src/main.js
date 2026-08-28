@@ -42,17 +42,33 @@
   var projects = Array.prototype.slice.call(document.querySelectorAll('.project'));
   var emptyMsg = document.getElementById('portfolio-empty');
 
-  filters.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var want = btn.getAttribute('data-filter');
-      filters.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
-      var shown = 0;
-      projects.forEach(function (card) {
-        var match = want === 'all' || card.getAttribute('data-cat') === want;
-        card.hidden = !match;
-        if (match) shown++;
-      });
-      if (emptyMsg) emptyMsg.hidden = shown !== 0;
+  function applyFilter(btn) {
+    var want = btn.getAttribute('data-filter');
+    filters.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+    var shown = 0;
+    projects.forEach(function (card) {
+      var match = want === 'all' || card.getAttribute('data-cat') === want;
+      card.hidden = !match;
+      if (match) shown++;
+    });
+    if (emptyMsg) emptyMsg.hidden = shown !== 0;
+  }
+
+  filters.forEach(function (btn, i) {
+    btn.addEventListener('click', function () { applyFilter(btn); });
+
+    // Arrow keys move between tabs, Home/End jump to the ends. Tab still
+    // reaches them; this just makes the group behave the way a tab group should.
+    btn.addEventListener('keydown', function (e) {
+      var next = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = filters[(i + 1) % filters.length];
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = filters[(i - 1 + filters.length) % filters.length];
+      else if (e.key === 'Home') next = filters[0];
+      else if (e.key === 'End') next = filters[filters.length - 1];
+      if (!next) return;
+      e.preventDefault();
+      next.focus();
+      applyFilter(next);
     });
   });
 

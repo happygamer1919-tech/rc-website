@@ -23,10 +23,60 @@
 <link rel="apple-touch-icon" href="{{base}}/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=Unbounded:wght@800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{base}}/styles.css">
+<meta name="theme-color" content="#F65308">
+<link rel="manifest" href="{{base}}/site.webmanifest">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Rapid Construct","description":"{{meta.description}}","url":"{{canonical}}","telephone":"+37376837180","email":"rapidconstructmd@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Nicolae Zelinski St 24","addressLocality":"Chișinău","addressCountry":"MD"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"08:00","closes":"17:00"}]}
+{
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "@id": "{{urlRo}}#business",
+  "name": "Rapid Construct",
+  "description": "{{meta.description}}",
+  "url": "{{canonical}}",
+  "image": "{{ogImage}}",
+  "logo": "{{logoUrl}}",
+  "telephone": "+37376837180",
+  "email": "rapidconstructmd@gmail.com",
+  "priceRange": "160 MDL/m²",
+  "currenciesAccepted": "MDL",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Nicolae Zelinski 24",
+    "addressLocality": "Chișinău",
+    "addressCountry": "MD"
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "opens": "08:00",
+    "closes": "17:00"
+  }],
+  "areaServed": [
+    { "@type": "City", "name": "Chișinău" },
+    { "@type": "City", "name": "Codru" },
+    { "@type": "City", "name": "Coșnița" },
+    { "@type": "City", "name": "Costești" },
+    { "@type": "City", "name": "Căinari" },
+    { "@type": "City", "name": "Sociteni" }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "{{services.h2}}",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "{{services.items.0.title}}", "description": "{{services.items.0.desc}}" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "{{services.items.1.title}}", "description": "{{services.items.1.desc}}" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "{{services.items.2.title}}", "description": "{{services.items.2.desc}}" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "{{services.items.3.title}}", "description": "{{services.items.3.desc}}" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "{{services.items.4.title}}", "description": "{{services.items.4.desc}}" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "{{services.items.5.title}}", "description": "{{services.items.5.desc}}" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "{{services.items.6.title}}", "description": "{{services.items.6.desc}}" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "{{services.items.7.title}}", "description": "{{services.items.7.desc}}" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "{{services.items.8.title}}", "description": "{{services.items.8.desc}}" } }
+    ]
+  }
+}
 </script>
 </head>
 <body>
@@ -126,7 +176,7 @@
 
     <div class="grid grid--3" style="margin-top: 40px;">
       <article class="card">
-        <div class="media media--4x3 media--card"><img src="{{base}}/img/svc-case-la-cheie.jpg" alt="{{services.items.0.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
+        <div class="media media--4x3 media--card"><img src="{{base}}/img/svc-case-la-cheie.jpg" srcset="{{base}}/img/svc-case-la-cheie.jpg 1x, {{base}}/img/svc-case-la-cheie@2x.jpg 2x" alt="{{services.items.0.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
         <div class="card__body">
           <h3 class="service__title">{{services.items.0.title}}</h3>
           <p class="service__desc">{{services.items.0.desc}}</p>
@@ -134,7 +184,7 @@
         </div>
       </article>
       <article class="card">
-        <div class="media media--4x3 media--card"><img src="{{base}}/img/svc-acoperisuri.jpg" alt="{{services.items.1.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
+        <div class="media media--4x3 media--card"><img src="{{base}}/img/svc-acoperisuri.jpg" srcset="{{base}}/img/svc-acoperisuri.jpg 1x, {{base}}/img/svc-acoperisuri@2x.jpg 2x" alt="{{services.items.1.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
         <div class="card__body">
           <h3 class="service__title">{{services.items.1.title}}</h3>
           <p class="service__desc">{{services.items.1.desc}}</p>
@@ -142,7 +192,7 @@
         </div>
       </article>
       <article class="card">
-        <div class="media media--4x3 media--card"><img src="{{base}}/img/svc-fatade.jpg" alt="{{services.items.2.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
+        <div class="media media--4x3 media--card"><img src="{{base}}/img/svc-fatade.jpg" srcset="{{base}}/img/svc-fatade.jpg 1x, {{base}}/img/svc-fatade@2x.jpg 2x" alt="{{services.items.2.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
         <div class="card__body">
           <h3 class="service__title">{{services.items.2.title}}</h3>
           <p class="service__desc">{{services.items.2.desc}}</p>
@@ -150,7 +200,7 @@
         </div>
       </article>
       <article class="card">
-        <div class="media media--4x3 media--card"><img src="{{base}}/img/svc-reparatii.jpg" alt="{{services.items.3.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
+        <div class="media media--4x3 media--card"><img src="{{base}}/img/svc-reparatii.jpg" srcset="{{base}}/img/svc-reparatii.jpg 1x, {{base}}/img/svc-reparatii@2x.jpg 2x" alt="{{services.items.3.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
         <div class="card__body">
           <h3 class="service__title">{{services.items.3.title}}</h3>
           <p class="service__desc">{{services.items.3.desc}}</p>
@@ -158,7 +208,7 @@
         </div>
       </article>
       <article class="card">
-        <div class="media media--4x3 media--card"><img src="{{base}}/img/svc-finisaje.jpg" alt="{{services.items.4.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
+        <div class="media media--4x3 media--card"><img src="{{base}}/img/svc-finisaje.jpg" srcset="{{base}}/img/svc-finisaje.jpg 1x, {{base}}/img/svc-finisaje@2x.jpg 2x" alt="{{services.items.4.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
         <div class="card__body">
           <h3 class="service__title">{{services.items.4.title}}</h3>
           <p class="service__desc">{{services.items.4.desc}}</p>
@@ -166,7 +216,7 @@
         </div>
       </article>
       <article class="card">
-        <div class="media media--4x3 media--card"><img src="{{base}}/img/svc-proiectare-3d.jpg" alt="{{services.items.5.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
+        <div class="media media--4x3 media--card"><img src="{{base}}/img/svc-proiectare-3d.jpg" srcset="{{base}}/img/svc-proiectare-3d.jpg 1x, {{base}}/img/svc-proiectare-3d@2x.jpg 2x" alt="{{services.items.5.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
         <div class="card__body">
           <h3 class="service__title">{{services.items.5.title}}</h3>
           <p class="service__desc">{{services.items.5.desc}}</p>
@@ -174,7 +224,7 @@
         </div>
       </article>
       <article class="card">
-        <div class="media media--4x3 media--card"><img src="{{base}}/img/svc-retele.jpg" alt="{{services.items.6.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
+        <div class="media media--4x3 media--card"><img src="{{base}}/img/svc-retele.jpg" srcset="{{base}}/img/svc-retele.jpg 1x, {{base}}/img/svc-retele@2x.jpg 2x" alt="{{services.items.6.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
         <div class="card__body">
           <h3 class="service__title">{{services.items.6.title}}</h3>
           <p class="service__desc">{{services.items.6.desc}}</p>
@@ -182,7 +232,7 @@
         </div>
       </article>
       <article class="card">
-        <div class="media media--4x3 media--card"><img src="{{base}}/img/svc-industrial.jpg" alt="{{services.items.7.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
+        <div class="media media--4x3 media--card"><img src="{{base}}/img/svc-industrial.jpg" srcset="{{base}}/img/svc-industrial.jpg 1x, {{base}}/img/svc-industrial@2x.jpg 2x" alt="{{services.items.7.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
         <div class="card__body">
           <h3 class="service__title">{{services.items.7.title}}</h3>
           <p class="service__desc">{{services.items.7.desc}}</p>
@@ -190,7 +240,7 @@
         </div>
       </article>
       <article class="card">
-        <div class="media media--4x3 media--card"><img src="{{base}}/img/svc-terasamente.jpg" alt="{{services.items.8.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
+        <div class="media media--4x3 media--card"><img src="{{base}}/img/svc-terasamente.jpg" srcset="{{base}}/img/svc-terasamente.jpg 1x, {{base}}/img/svc-terasamente@2x.jpg 2x" alt="{{services.items.8.alt}}" width="1200" height="900" loading="lazy" decoding="async"></div>
         <div class="card__body">
           <h3 class="service__title">{{services.items.8.title}}</h3>
           <p class="service__desc">{{services.items.8.desc}}</p>
@@ -210,27 +260,27 @@
     <div class="grid grid--5" style="margin-top: 40px;">
       <div class="step">
         <div class="step__n">{{process.steps.0.n}}</div>
-        <div class="media media--4x3 media--framed"><img src="{{base}}/img/step-01-fundatie.jpg" alt="{{process.steps.0.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
+        <div class="media media--4x3 media--framed"><img src="{{base}}/img/step-01-fundatie.jpg" srcset="{{base}}/img/step-01-fundatie.jpg 1x, {{base}}/img/step-01-fundatie@2x.jpg 2x" alt="{{process.steps.0.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
         <div><h3 class="step__title">{{process.steps.0.title}}</h3><p class="step__line">{{process.steps.0.line}}</p></div>
       </div>
       <div class="step">
         <div class="step__n">{{process.steps.1.n}}</div>
-        <div class="media media--4x3 media--framed"><img src="{{base}}/img/step-02-structura.jpg" alt="{{process.steps.1.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
+        <div class="media media--4x3 media--framed"><img src="{{base}}/img/step-02-structura.jpg" srcset="{{base}}/img/step-02-structura.jpg 1x, {{base}}/img/step-02-structura@2x.jpg 2x" alt="{{process.steps.1.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
         <div><h3 class="step__title">{{process.steps.1.title}}</h3><p class="step__line">{{process.steps.1.line}}</p></div>
       </div>
       <div class="step">
         <div class="step__n">{{process.steps.2.n}}</div>
-        <div class="media media--4x3 media--framed"><img src="{{base}}/img/step-03-acoperis.jpg" alt="{{process.steps.2.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
+        <div class="media media--4x3 media--framed"><img src="{{base}}/img/step-03-acoperis.jpg" srcset="{{base}}/img/step-03-acoperis.jpg 1x, {{base}}/img/step-03-acoperis@2x.jpg 2x" alt="{{process.steps.2.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
         <div><h3 class="step__title">{{process.steps.2.title}}</h3><p class="step__line">{{process.steps.2.line}}</p></div>
       </div>
       <div class="step">
         <div class="step__n">{{process.steps.3.n}}</div>
-        <div class="media media--4x3 media--framed"><img src="{{base}}/img/step-04-fatada.jpg" alt="{{process.steps.3.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
+        <div class="media media--4x3 media--framed"><img src="{{base}}/img/step-04-fatada.jpg" srcset="{{base}}/img/step-04-fatada.jpg 1x, {{base}}/img/step-04-fatada@2x.jpg 2x" alt="{{process.steps.3.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
         <div><h3 class="step__title">{{process.steps.3.title}}</h3><p class="step__line">{{process.steps.3.line}}</p></div>
       </div>
       <div class="step">
         <div class="step__n">{{process.steps.4.n}}</div>
-        <div class="media media--4x3 media--framed"><img src="{{base}}/img/step-05-predare.jpg" alt="{{process.steps.4.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
+        <div class="media media--4x3 media--framed"><img src="{{base}}/img/step-05-predare.jpg" srcset="{{base}}/img/step-05-predare.jpg 1x, {{base}}/img/step-05-predare@2x.jpg 2x" alt="{{process.steps.4.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
         <div><h3 class="step__title">{{process.steps.4.title}}</h3><p class="step__line">{{process.steps.4.line}}</p></div>
       </div>
     </div>
@@ -255,42 +305,42 @@
     <div class="grid grid--3" id="portfolio-grid">
       <article class="card project" data-cat="acoperis">
         <div class="media media--3x2 media--card project__media">
-          <img src="{{base}}/img/port-01.jpg" alt="{{portfolio.items.0.alt}}" width="1400" height="933" loading="lazy" decoding="async">
+          <img src="{{base}}/img/port-01.jpg" srcset="{{base}}/img/port-01.jpg 1x, {{base}}/img/port-01@2x.jpg 2x" alt="{{portfolio.items.0.alt}}" width="1400" height="933" loading="lazy" decoding="async">
           <span class="chip">{{portfolio.items.0.cat}}</span>
         </div>
         <div class="card__body"><h3>{{portfolio.items.0.title}}</h3><p class="project__desc">{{portfolio.items.0.desc}}</p></div>
       </article>
       <article class="card project" data-cat="finisaje">
         <div class="media media--3x2 media--card project__media">
-          <img src="{{base}}/img/port-02.jpg" alt="{{portfolio.items.1.alt}}" width="1400" height="933" loading="lazy" decoding="async">
+          <img src="{{base}}/img/port-02.jpg" srcset="{{base}}/img/port-02.jpg 1x, {{base}}/img/port-02@2x.jpg 2x" alt="{{portfolio.items.1.alt}}" width="1400" height="933" loading="lazy" decoding="async">
           <span class="chip">{{portfolio.items.1.cat}}</span>
         </div>
         <div class="card__body"><h3>{{portfolio.items.1.title}}</h3><p class="project__desc">{{portfolio.items.1.desc}}</p></div>
       </article>
       <article class="card project" data-cat="renovari">
         <div class="media media--3x2 media--card project__media">
-          <img src="{{base}}/img/port-03.jpg" alt="{{portfolio.items.2.alt}}" width="1400" height="933" loading="lazy" decoding="async">
+          <img src="{{base}}/img/port-03.jpg" srcset="{{base}}/img/port-03.jpg 1x, {{base}}/img/port-03@2x.jpg 2x" alt="{{portfolio.items.2.alt}}" width="1400" height="933" loading="lazy" decoding="async">
           <span class="chip">{{portfolio.items.2.cat}}</span>
         </div>
         <div class="card__body"><h3>{{portfolio.items.2.title}}</h3><p class="project__desc">{{portfolio.items.2.desc}}</p></div>
       </article>
       <article class="card project" data-cat="case">
         <div class="media media--3x2 media--card project__media">
-          <img src="{{base}}/img/port-04.jpg" alt="{{portfolio.items.3.alt}}" width="1400" height="933" loading="lazy" decoding="async">
+          <img src="{{base}}/img/port-04.jpg" srcset="{{base}}/img/port-04.jpg 1x, {{base}}/img/port-04@2x.jpg 2x" alt="{{portfolio.items.3.alt}}" width="1400" height="933" loading="lazy" decoding="async">
           <span class="chip">{{portfolio.items.3.cat}}</span>
         </div>
         <div class="card__body"><h3>{{portfolio.items.3.title}}</h3><p class="project__desc">{{portfolio.items.3.desc}}</p></div>
       </article>
       <article class="card project" data-cat="fatade">
         <div class="media media--3x2 media--card project__media">
-          <img src="{{base}}/img/port-05.jpg" alt="{{portfolio.items.4.alt}}" width="1400" height="933" loading="lazy" decoding="async">
+          <img src="{{base}}/img/port-05.jpg" srcset="{{base}}/img/port-05.jpg 1x, {{base}}/img/port-05@2x.jpg 2x" alt="{{portfolio.items.4.alt}}" width="1400" height="933" loading="lazy" decoding="async">
           <span class="chip">{{portfolio.items.4.cat}}</span>
         </div>
         <div class="card__body"><h3>{{portfolio.items.4.title}}</h3><p class="project__desc">{{portfolio.items.4.desc}}</p></div>
       </article>
       <article class="card project" data-cat="case">
         <div class="media media--3x2 media--card project__media">
-          <img src="{{base}}/img/port-06.jpg" alt="{{portfolio.items.5.alt}}" width="1400" height="933" loading="lazy" decoding="async">
+          <img src="{{base}}/img/port-06.jpg" srcset="{{base}}/img/port-06.jpg 1x, {{base}}/img/port-06@2x.jpg 2x" alt="{{portfolio.items.5.alt}}" width="1400" height="933" loading="lazy" decoding="async">
           <span class="chip">{{portfolio.items.5.cat}}</span>
         </div>
         <div class="card__body"><h3>{{portfolio.items.5.title}}</h3><p class="project__desc">{{portfolio.items.5.desc}}</p></div>

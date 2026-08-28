@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="{{meta.lang}}" dir="{{meta.dir}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{notfound.title}}</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F65308">
+<link rel="icon" href="{{base}}/favicon-512.png" sizes="512x512" type="image/png">
+<link rel="apple-touch-icon" href="{{base}}/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{base}}/styles.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header__inner">
+    <a class="header__logo" href="{{homeHref}}"><img src="{{base}}/logo-full.png" alt="{{meta.logoAlt}}" width="1542" height="568"></a>
+    <div class="header__actions" style="margin-left: auto;">
+      <a class="header__phone" href="tel:+37376837180" aria-label="{{header.phoneAria}}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        <span>{{header.phone}}</span>
+      </a>
+      <div class="lang" data-lang="{{meta.lang}}">
+        <a class="lang__ro" href="{{hrefRo}}" hreflang="ro" aria-label="Comută pe română">RO</a>
+        <span class="lang__sep" aria-hidden="true"></span>
+        <a class="lang__ru" href="{{hrefRu}}" hreflang="ru" aria-label="Переключить на русский">RU</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section section--light hero">
+    <div class="container">
+      <p class="eyebrow">{{notfound.code}}</p>
+      <h1>{{notfound.heading}}</h1>
+      <p class="hero__sub">{{notfound.body}}</p>
+      <div class="cta-row">
+        <a class="btn btn--primary" href="{{homeHref}}">{{notfound.home}}</a>
+        <a class="btn btn--outline" href="tel:+37376837180">{{hero.ctaSecondary}}</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__cols" style="padding-bottom: 40px;">
+      <div class="footer__brand">
+        <img src="{{base}}/logo-white.png" alt="{{meta.logoAlt}}" width="1542" height="568">
+        <p class="footer__desc">{{footer.description}}</p>
+      </div>
+      <div>
+        <p class="footer__heading">{{footer.contactHeading}}</p>
+        <dl class="footer__contact">
+          <div><dt>{{footer.addressLabel}}</dt><dd>{{footer.address}}</dd></div>
+          <div><dt>{{footer.phoneLabel}}</dt><dd><a href="tel:+37376837180">{{header.phone}}</a></dd></div>
+          <div><dt>{{footer.emailLabel}}</dt><dd><a href="mailto:rapidconstructmd@gmail.com">{{footer.email}}</a></dd></div>
+          <div><dt>{{footer.hoursLabel}}</dt><dd>{{form.hours}}</dd></div>
+        </dl>
+      </div>
+      <div></div>
+    </div>
+  </div>
+  <div class="footer__bar">
+    <div class="footer__bar-inner"><div>{{footer.copyright}} · {{footer.region}}</div></div>
+  </div>
+</footer>
+
+</body>
+</html>

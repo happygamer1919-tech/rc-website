@@ -5,7 +5,6 @@
    illustrations, which are not photographs and live in SERVICE_ILLUSTRATIONS
    below. */
 const SLOTS = [
-  { id: 'hero-panel', w: 1200, h: 900, ratio: '4:3', retina: true },
   ...['step-01-fundatie', 'step-02-structura', 'step-03-acoperis', 'step-04-fatada', 'step-05-predare']
     .map((id) => ({ id, w: 900, h: 675, ratio: '4:3', retina: true })),
   ...['port-01', 'port-02', 'port-03', 'port-04', 'port-05', 'port-06']
@@ -22,7 +21,7 @@ const MIN_LONG_EDGE = 1600;     // manifest: minimum on the long edge
    at public/img/services/<id>.svg. */
 const SERVICE_ILLUSTRATIONS = [
   'svc-case-la-cheie', 'svc-acoperisuri', 'svc-fatade', 'svc-reparatii', 'svc-finisaje',
-  'svc-proiectare-3d', 'svc-retele', 'svc-industrial', 'svc-terasamente',
+  'svc-proiectare-3d', 'svc-instalatii', 'svc-industrial', 'svc-terasamente',
 ];
 
 module.exports = { SLOTS, SERVICE_ILLUSTRATIONS, MAX_BYTES, MIN_LONG_EDGE };

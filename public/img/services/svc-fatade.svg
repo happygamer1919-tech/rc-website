@@ -1,5 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="svc-fatade">
-  <rect x="0.5" y="0.5" width="399" height="299" fill="#F2F2F2" stroke="#E2E2E2" stroke-width="1" rx="10"/>
-  <text x="200" y="146" fill="#5A5A5A" font-family="Inter, Arial, sans-serif" font-size="17" text-anchor="middle">svc-fatade</text>
-  <text x="200" y="170" fill="#5A5A5A" font-family="Inter, Arial, sans-serif" font-size="14" text-anchor="middle">illustration &#183; 4:3</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+<rect width="400" height="300" rx="10" fill="var(--svc-bg,#141414)"></rect>
+<g stroke="var(--svc-line,#FFFFFF)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M30 262H370"></path>
+<path d="M60 262V56H235"></path>
+<path d="M50 56H350M54 46H346M50 56L54 46M350 56L346 46"></path>
+<path d="M78 80H124V140H78Z"></path>
+<path d="M101 80V140M78 110H124"></path>
+<path d="M60 178H145M60 226H145"></path>
+<path d="M92 178V226M120 226V262"></path>
+<path d="M145 100H235M145 180H235"></path>
+<path d="M175 56V100M205 100V180M175 180V262"></path>
+<circle cx="175" cy="140" r="4"></circle><circle cx="205" cy="220" r="4"></circle>
+<path d="M56 44V268M148 44V268M242 44V268"></path>
+<path d="M56 96H242M56 102H242M56 176H242M56 182H242"></path>
+<path d="M56 176L148 102"></path>
+<path d="M48 268H64M140 268H156M234 268H250"></path>
+</g>
+<g stroke="var(--svc-accent,#F65308)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M235 56V262M340 56V262M235 56H340"></path>
+<path d="M266 106H316V158H266Z"></path>
+<path d="M291 106V158M266 132H316"></path>
+<path d="M235 236H340"></path>
+<path d="M252 78H272M296 78H320M252 186H274M300 208H322"></path>
+</g>
 </svg>

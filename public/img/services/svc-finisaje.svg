@@ -1,5 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="svc-finisaje">
-  <rect x="0.5" y="0.5" width="399" height="299" fill="#F2F2F2" stroke="#E2E2E2" stroke-width="1" rx="10"/>
-  <text x="200" y="146" fill="#5A5A5A" font-family="Inter, Arial, sans-serif" font-size="17" text-anchor="middle">svc-finisaje</text>
-  <text x="200" y="170" fill="#5A5A5A" font-family="Inter, Arial, sans-serif" font-size="14" text-anchor="middle">illustration &#183; 4:3</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+<rect width="400" height="300" rx="10" fill="var(--svc-bg,#141414)"></rect>
+<g stroke="var(--svc-line,#FFFFFF)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M55 44H312M312 44V196M312 44L348 34M312 196L348 208M348 34V208"></path>
+<path d="M55 196H312M55 205H312M312 205L348 217"></path>
+<path d="M55 226H345M55 248H345M55 268H345"></path>
+<path d="M110 205V226M240 205V226M160 226V248M290 226V248M100 248V268M210 248V268M320 248V268"></path>
+<path d="M62 126L134 108L138 124L66 142Z"></path>
+<path d="M98 114V104M86 104H114A8 8 0 0 1 114 90H86A8 8 0 0 0 86 104Z"></path>
+<path d="M58 166Q96 140 134 166M66 178Q96 158 126 178"></path>
+<path d="M58 236H128L118 262H48Z"></path>
+<path d="M64 248H112M68 254H108"></path>
+</g>
+<g stroke="var(--svc-accent,#F65308)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<rect x="198" y="54" width="60" height="22" rx="11"></rect>
+<path d="M261 65H276L332 148"></path>
+<path d="M324 138L340 160M331 134L347 156M324 138L331 134M340 160L347 156"></path>
+<path d="M172 88H196M260 88H292"></path>
+<path d="M172 88V164M292 88V164"></path>
+<path d="M172 164Q202 178 232 164Q262 150 292 164"></path>
+<path d="M188 104V138M212 116V150M240 100V132M268 118V152"></path>
+</g>
 </svg>

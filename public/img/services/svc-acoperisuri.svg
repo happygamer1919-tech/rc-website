@@ -1,5 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="svc-acoperisuri">
-  <rect x="0.5" y="0.5" width="399" height="299" fill="#F2F2F2" stroke="#E2E2E2" stroke-width="1" rx="10"/>
-  <text x="200" y="146" fill="#5A5A5A" font-family="Inter, Arial, sans-serif" font-size="17" text-anchor="middle">svc-acoperisuri</text>
-  <text x="200" y="170" fill="#5A5A5A" font-family="Inter, Arial, sans-serif" font-size="14" text-anchor="middle">illustration &#183; 4:3</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+<rect width="400" height="300" rx="10" fill="var(--svc-bg,#141414)"></rect>
+<g stroke="var(--svc-line,#FFFFFF)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M110 80L80 210M330 80L360 210"></path>
+<path d="M244 28H286M250 28V80M280 28V80M250 42H280"></path>
+<path d="M110 158H220M110 171H223M110 184H226M110 197H229"></path>
+<path d="M110 158L98 210M140 158L128 210M170 158L158 210M200 158L188 210"></path>
+<path d="M80 210H360"></path>
+<path d="M78 210V214A7 7 0 0 0 85 221H355A7 7 0 0 0 362 214V210"></path>
+<path d="M352 221V258M344 232H358"></path>
+<path d="M96 221V262M344 262H60"></path>
+<path d="M120 268L128 262M150 268L158 262M180 268L188 262M210 268L218 262M240 268L248 262M270 268L278 262M300 268L308 262"></path>
+</g>
+<g stroke="var(--svc-accent,#F65308)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M110 80H330M113 71H327M110 80L113 71M330 80L327 71"></path>
+<path d="M104 106H336M98 132H342M92 158H348M232 184H354M240 208H358"></path>
+<path d="M150 106V132M200 106V132M250 106V132M300 106V132"></path>
+<path d="M125 132V158M175 132V158M225 132V158M275 132V158M325 132V158"></path>
+<path d="M255 158V184M295 158V184M335 158V184"></path>
+<path d="M270 184V208M310 184V208"></path>
+</g>
 </svg>

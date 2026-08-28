@@ -415,7 +415,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         </div>
         <div class="rating__count">{{reviews.count}}</div>
         <div class="rating__google" {{googleHidden}}>
-          <a class="link-arrow" href="{{googleReviewsUrl}}" target="_blank" rel="noopener noreferrer">{{reviews.google}}</a>
+          <a class="link-arrow"{{googleHref}} target="_blank" rel="noopener noreferrer">{{reviews.google}}</a>
         </div>
       </div>
 

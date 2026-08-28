@@ -134,7 +134,9 @@ for (const l of loaded) {
     // The privacy page ships with TODO legal-identity fields. Until they are
     // filled it must not be indexed and must stay out of the sitemap.
     privacyRobots: privacyIncomplete ? 'noindex, nofollow' : 'index, follow',
-    googleReviewsUrl: GOOGLE_REVIEWS_URL || '#',
+    // With no URL the anchor renders with no href at all: an <a> without href
+    // is not focusable or clickable, so the hidden block contains no dead link.
+    googleHref: GOOGLE_REVIEWS_URL ? ` href="${GOOGLE_REVIEWS_URL}"` : '',
     googleHidden: GOOGLE_REVIEWS_URL ? '' : 'hidden',
   };
   // Homepage portfolio: six cards straight off projects.json, each linking to
@@ -204,7 +206,7 @@ for (const l of loaded) {
     const missing = new Set();
     const html = template.replace(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/g, (_, key) => {
       if (!(key in vars)) { missing.add(key); return `{{${key}}}`; }
-      return key === 'portfolioCards' ? vars[key] : esc(vars[key]);
+      return (key === 'portfolioCards' || key === 'googleHref') ? vars[key] : esc(vars[key]);
     });
     if (missing.size) die(`${page.template} references unknown keys for locale ${l.code}: ${[...missing].join(', ')}`);
     if (html.includes('{{')) die(`unsubstituted placeholder survived in ${out}`);
@@ -224,6 +226,11 @@ const extraPages = privacyIncomplete ? [] : [
   { loc: SITE + BASE + PRIVACY_PATH.ro, lang: 'ro' },
   { loc: SITE + BASE + PRIVACY_PATH.ru, lang: 'ru' },
 ];
+// The 18 service pages, paired ro/ru by slug so each carries both alternates.
+const servicePairs = SERVICE_SLUGS.map((sg) => ({
+  ro: SITE + BASE + SERVICES_ROOT.ro + sg + '/',
+  ru: SITE + BASE + SERVICES_ROOT.ru + sg + '/',
+}));
 fs.writeFileSync('dist/sitemap.xml',
   '<?xml version="1.0" encoding="UTF-8"?>\n' +
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +
@@ -232,6 +239,12 @@ fs.writeFileSync('dist/sitemap.xml',
     pages.map((a) => `    <xhtml:link rel="alternate" hreflang="${a.lang}" href="${a.loc}"/>\n`).join('') +
     `    <xhtml:link rel="alternate" hreflang="x-default" href="${pages[0].loc}"/>\n` +
     '    <changefreq>monthly</changefreq>\n  </url>\n').join('') +
+  servicePairs.flatMap((pair) => ['ro', 'ru'].map((lang) => '  <url>\n' +
+    `    <loc>${pair[lang]}</loc>\n` +
+    `    <xhtml:link rel="alternate" hreflang="ro" href="${pair.ro}"/>\n` +
+    `    <xhtml:link rel="alternate" hreflang="ru" href="${pair.ru}"/>\n` +
+    `    <xhtml:link rel="alternate" hreflang="x-default" href="${pair.ro}"/>\n` +
+    '    <changefreq>monthly</changefreq>\n  </url>\n')).join('') +
   '</urlset>\n');
 
 fs.writeFileSync('dist/site.webmanifest', JSON.stringify({

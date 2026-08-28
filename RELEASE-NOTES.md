@@ -86,8 +86,8 @@ build prints which mode it used.
 | **Photos** | All 21 slots. Selection session with Mihai still to happen. |
 | **Form endpoint** | No Web3Forms key yet. Deliberate until the visual is approved. |
 | **Production host** | GitHub Pages is for client review only. Hostinger is the production target. |
-| **Privacy / cookie policy** | **Dead links.** The consent checkbox and two footer links point at `#contacte`, which is not a policy. The old site had real pages. See the dead-link audit in `DECISIONS.md`. |
-| **Primary button contrast** | White on `#F65308` is 3.41:1, below WCAG AA. Holds Lighthouse accessibility at 96. Fixing means darkening the approved brand fill; awaiting the client's call. |
+| **Privacy page legal fields** | `/confidentialitate/` and `/ru/konfidentsialnost/` exist and are linked, but the registered company name, IDNO and retention period are visible `TODO:` placeholders. **While any remain, both pages are `noindex` and excluded from `sitemap.xml` automatically.** Fill them in the `privacy` block of both locale files and the flags clear themselves. |
+| **Production domain** | `SITE_URL` defaults to `https://rapidconstruct.md`. If the real domain differs, canonical, hreflang, sitemap and og: URLs are all wrong. Confirm before the Hostinger move. |
 | **Portfolio lightbox** | Not built. The manifest's 18 optional `port-0N-a/b/c` extras are unused. |
 
 ---
@@ -96,6 +96,10 @@ build prints which mode it used.
 
     node build.js                                  # root build, for Hostinger
     BASE_PATH=/rc-website node build.js            # GitHub Pages build
+
+Pages built, per locale: the landing page, a 404, and the privacy policy.
+`dist/.htaccess` carries `ErrorDocument 404` and cache lifetimes for Apache;
+GitHub Pages ignores it and finds `/404.html` itself.
 
 `BASE_PATH` prefixes every asset, stylesheet, script and inter-locale link.
 Default is empty, which is what a domain root wants. The Pages workflow sets it
@@ -135,10 +139,12 @@ placeholders. Re-measure after real photos land.
 
 | | Performance | Accessibility | Best practices | SEO |
 |---|---|---|---|---|
-| RO | 100 | 96 | 100 | 100 |
-| RU | 100 | 96 | 100 | 100 |
+| RO | 100 | 100 | 100 | 100 |
+| RU | 100 | 100 | 100 | 100 |
 
-The 96 is entirely white-on-`#F65308` for the primary button and category chip.
+Accessibility reached 100 by raising button text to 19px (clearing the WCAG
+large-text threshold, so 3:1 applies) and darkening the category chip fill to
+`--brand-dark`. The approved `#F65308` is untouched on buttons.
 
 See `DECISIONS.md` for where this build departs from the master plan and why.
 The short version: `--brand` is `#F65308` and `--ink` is `#1A1A1A`, sampled from

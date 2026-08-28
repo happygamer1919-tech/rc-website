@@ -20,9 +20,12 @@ const LOCALES = [
 
 // Each page template rendered once per locale. 404 goes to the site root as
 // well as /ru/, because a static host serves one 404 for the whole origin.
+const PRIVACY_PATH = { ro: '/confidentialitate/', ru: '/ru/konfidentsialnost/' };
+
 const PAGES = [
   { template: 'src/template.html', out: (l) => l.out },
   { template: 'src/404.html', out: (l) => (l.code === 'ro' ? 'dist/404.html' : 'dist/ru/404.html') },
+  { template: 'src/privacy.html', out: (l) => 'dist' + PRIVACY_PATH[l.code] + 'index.html' },
 ];
 
 const die = (msg) => { console.error('\nBUILD FAILED: ' + msg + '\n'); process.exit(1); };
@@ -46,6 +49,12 @@ if (onlyA.length || onlyB.length) {
 const empty = loaded.flatMap((l) => Object.entries(l.strings).filter(([, v]) => !v.trim()).map(([k]) => `${l.code}:${k}`));
 if (empty.length) die(`empty strings: ${empty.join(', ')}`);
 
+// --- has the privacy page still got TODO placeholders in it? -----------------
+const privacyTodos = loaded.flatMap((l) =>
+  Object.entries(l.strings).filter(([k, v]) => k.startsWith('privacy.') && /TODO:/.test(v))
+    .map(([k]) => `${l.code}:${k}`));
+const privacyIncomplete = privacyTodos.length > 0;
+
 // --- render ------------------------------------------------------------------
 for (const l of loaded) {
   const vars = {
@@ -64,6 +73,15 @@ for (const l of loaded) {
     urlRo: SITE + BASE + '/',
     urlRu: SITE + BASE + '/ru/',
     logoUrl: SITE + BASE + '/logo-full.png',
+    privacyHref: BASE + PRIVACY_PATH[l.code],
+    privacyUrlRoPath: BASE + PRIVACY_PATH.ro,
+    privacyUrlRuPath: BASE + PRIVACY_PATH.ru,
+    privacyCanonical: SITE + BASE + PRIVACY_PATH[l.code],
+    privacyUrlRo: SITE + BASE + PRIVACY_PATH.ro,
+    privacyUrlRu: SITE + BASE + PRIVACY_PATH.ru,
+    // The privacy page ships with TODO legal-identity fields. Until they are
+    // filled it must not be indexed and must stay out of the sitemap.
+    privacyRobots: privacyIncomplete ? 'noindex, nofollow' : 'index, follow',
   };
   for (const page of PAGES) {
     const template = fs.readFileSync(page.template, 'utf8');
@@ -87,10 +105,14 @@ fs.writeFileSync('dist/robots.txt',
   `User-agent: *\nAllow: /\n\nSitemap: ${SITE}${BASE}/sitemap.xml\n`);
 
 const pages = [{ loc: SITE + BASE + '/', lang: 'ro' }, { loc: SITE + BASE + '/ru/', lang: 'ru' }];
+const extraPages = privacyIncomplete ? [] : [
+  { loc: SITE + BASE + PRIVACY_PATH.ro, lang: 'ro' },
+  { loc: SITE + BASE + PRIVACY_PATH.ru, lang: 'ru' },
+];
 fs.writeFileSync('dist/sitemap.xml',
   '<?xml version="1.0" encoding="UTF-8"?>\n' +
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +
-  pages.map((p) => '  <url>\n' +
+  pages.concat(extraPages).map((p) => '  <url>\n' +
     `    <loc>${p.loc}</loc>\n` +
     pages.map((a) => `    <xhtml:link rel="alternate" hreflang="${a.lang}" href="${a.loc}"/>\n`).join('') +
     `    <xhtml:link rel="alternate" hreflang="x-default" href="${pages[0].loc}"/>\n` +
@@ -111,6 +133,20 @@ fs.writeFileSync('dist/site.webmanifest', JSON.stringify({
   ],
 }, null, 2) + '\n');
 
+// Hostinger runs Apache, which needs to be told where the 404 lives.
+// GitHub Pages ignores this file and finds /404.html on its own.
+fs.writeFileSync('dist/.htaccess',
+  `ErrorDocument 404 ${BASE}/404.html\n` +
+  'AddDefaultCharset UTF-8\n\n' +
+  '<IfModule mod_expires.c>\n' +
+  '  ExpiresActive On\n' +
+  '  ExpiresByType image/jpeg "access plus 1 year"\n' +
+  '  ExpiresByType image/png "access plus 1 year"\n' +
+  '  ExpiresByType text/css "access plus 1 year"\n' +
+  '  ExpiresByType application/javascript "access plus 1 year"\n' +
+  '  ExpiresByType text/html "access plus 1 hour"\n' +
+  '</IfModule>\n');
+
 fs.copyFileSync('src/styles.css', 'dist/styles.css');
 fs.copyFileSync('src/main.js', 'dist/main.js');
 fs.cpSync('public', 'dist', { recursive: true, filter: (src) => !src.endsWith('PLACEHOLDERS.json') });
@@ -118,6 +154,11 @@ console.log('copied styles.css, main.js and public/ into dist/');
 console.log('generated robots.txt, sitemap.xml, site.webmanifest');
 
 console.log(`base path: ${BASE || '(root)'}    site: ${SITE}`);
+if (privacyIncomplete) {
+  console.log(`\nPRIVACY PAGE INCOMPLETE: ${privacyTodos.length} TODO field(s) still unfilled.`);
+  privacyTodos.forEach((t) => console.log('  · ' + t));
+  console.log('  -> the page is noindex and excluded from sitemap.xml until they are filled.');
+}
 console.log(FORM_ARMED
   ? '\nform: ARMED, posts to Web3Forms.'
   : '\nform: DEMO MODE. No WEB3FORMS_KEY set, so the form validates and then shows\n'

@@ -24,17 +24,8 @@ const BG = [0xF2, 0xF2, 0xF2];
 const BORDER = [0xE2, 0xE2, 0xE2];
 const TEXT = [0x5A, 0x5A, 0x5A];
 
-// ---- slots, straight from the manifest --------------------------------------
-const SLOTS = [
-  ...['svc-case-la-cheie', 'svc-acoperisuri', 'svc-fatade', 'svc-reparatii', 'svc-finisaje',
-      'svc-proiectare-3d', 'svc-retele', 'svc-industrial', 'svc-terasamente']
-    .map((id) => ({ id, w: 1200, h: 900, ratio: '4:3' })),
-  ...['step-01-fundatie', 'step-02-structura', 'step-03-acoperis', 'step-04-fatada', 'step-05-predare']
-    .map((id) => ({ id, w: 900, h: 675, ratio: '4:3' })),
-  ...['port-01', 'port-02', 'port-03', 'port-04', 'port-05', 'port-06']
-    .map((id) => ({ id, w: 1400, h: 933, ratio: '3:2' })),
-  { id: 'og-image', w: 1200, h: 630, ratio: '1200x630' },
-];
+// ---- slots come from the shared manifest module ---------------------------
+const { SLOTS } = require('./slots');
 
 // ---- 5x7 bitmap font, column-encoded, bit 0 = top row ------------------------
 const F = {
@@ -132,32 +123,54 @@ const ledger = fs.existsSync(LEDGER) ? JSON.parse(fs.readFileSync(LEDGER, 'utf8'
 const next = {};
 let made = 0, kept = 0;
 
-for (const slot of SLOTS) {
-  const jpg = path.join(OUT, slot.id + '.jpg');
-  if (!FORCE && fs.existsSync(jpg)) {
-    const size = fs.statSync(jpg).size;
-    if (ledger[slot.id] !== size) {
-      console.log(`  keep    ${slot.id}.jpg  (real photo, ${(size / 1024).toFixed(0)} KB)`);
-      next[slot.id] = ledger[slot.id] ?? -1;
-      kept++;
-      continue;
-    }
-  }
-
-  const label = `${slot.id} · ${slot.ratio}`;
-  const scale = Math.max(2, Math.floor((slot.w * 0.62) / (label.length * ADVANCE)));
-  const img = raster(slot.w, slot.h);
-  drawText(img, label, slot.w, slot.h, scale);
-
-  const png = path.join(OUT, slot.id + '.png');
-  fs.writeFileSync(png, encodePNG(img.px, slot.w, slot.h));
+function writePlaceholder(name, w, h, label) {
+  const scale = Math.max(2, Math.floor((w * 0.62) / (label.length * ADVANCE)));
+  const img = raster(w, h);
+  drawText(img, label, w, h, scale);
+  const png = path.join(OUT, name + '.png');
+  const jpg = path.join(OUT, name + '.jpg');
+  fs.writeFileSync(png, encodePNG(img.px, w, h));
   execFileSync('sips', ['-s', 'format', 'jpeg', '-s', 'formatOptions', '80', png, '--out', jpg], { stdio: 'ignore' });
   fs.unlinkSync(png);
+  return fs.statSync(jpg).size;
+}
 
-  next[slot.id] = fs.statSync(jpg).size;
+// Every slot gets a 1x and, where the template uses srcset, a matching @2x.
+// Without the @2x the browser would request a file that does not exist.
+const VARIANTS = (slot) => [{ name: slot.id, w: slot.w, h: slot.h }]
+  .concat(slot.retina ? [{ name: slot.id + '@2x', w: slot.w * 2, h: slot.h * 2 }] : []);
+
+for (const slot of SLOTS) {
+  // og-image is a branded card, not a labelled rectangle. See gen-og-image.js.
+  if (slot.branded) continue;
+  for (const v of VARIANTS(slot)) {
+    const jpg = path.join(OUT, v.name + '.jpg');
+    if (!FORCE && fs.existsSync(jpg)) {
+      const size = fs.statSync(jpg).size;
+      if (ledger[v.name] !== size) {
+        console.log(`  keep    ${v.name}.jpg  (real photo, ${(size / 1024).toFixed(0)} KB)`);
+        next[v.name] = ledger[v.name] ?? -1;
+        kept++;
+        continue;
+      }
+    }
+    next[v.name] = writePlaceholder(v.name, v.w, v.h, `${slot.id} · ${slot.ratio}`);
+    made++;
+    console.log(`  write   ${v.name}.jpg  ${v.w}x${v.h}  ${(next[v.name] / 1024).toFixed(1)} KB`);
+  }
+}
+
+// Branded social card, unless a real photo already replaced it.
+const ogJpg = path.join(OUT, 'og-image.jpg');
+if (FORCE || !fs.existsSync(ogJpg) || ledger['og-image'] === fs.statSync(ogJpg).size) {
+  execFileSync('node', [path.join(__dirname, 'gen-og-image.js')], { stdio: 'inherit' });
+  next['og-image'] = fs.statSync(ogJpg).size;
   made++;
-  console.log(`  write   ${slot.id}.jpg  ${slot.w}x${slot.h}  ${(next[slot.id] / 1024).toFixed(1)} KB`);
+} else {
+  console.log(`  keep    og-image.jpg  (real photo, ${(fs.statSync(ogJpg).size / 1024).toFixed(0)} KB)`);
+  next['og-image'] = ledger['og-image'] ?? -1;
+  kept++;
 }
 
 fs.writeFileSync(LEDGER, JSON.stringify(next, null, 2) + '\n');
-console.log(`\n${made} placeholder(s) written, ${kept} real photo(s) left untouched. ${SLOTS.length} slots total.`);
+console.log(`\n${made} placeholder file(s) written, ${kept} real photo(s) left untouched. ${SLOTS.length} slots.`);

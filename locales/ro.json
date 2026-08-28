@@ -10,7 +10,6 @@
     "logoAlt": "Rapid Construct",
     "ogImageAlt": "Casă la cheie finalizată de Rapid Construct"
   },
-
   "header": {
     "navHome": "Acasă",
     "navServices": "Servicii",
@@ -23,7 +22,6 @@
     "menuOpen": "Deschide meniul",
     "menuClose": "Închide meniul"
   },
-
   "hero": {
     "eyebrow": "Construcții & Renovări · în toată Moldova",
     "h1": "Casa ta la cheie, fără să coordonezi singur echipele",
@@ -34,14 +32,24 @@
     "ctaPrimary": "Solicită ofertă gratuită",
     "ctaSecondary": "Sună acum"
   },
-
   "stats": {
-    "0": { "n": "500+", "label": "proiecte finalizate" },
-    "1": { "n": "15+", "label": "ani de experiență" },
-    "2": { "n": "30", "label": "ani garanție scrisă" },
-    "3": { "n": "4.9/5", "label": "din 250+ recenzii" }
+    "0": {
+      "n": "500+",
+      "label": "proiecte finalizate"
+    },
+    "1": {
+      "n": "15+",
+      "label": "ani de experiență"
+    },
+    "2": {
+      "n": "30",
+      "label": "ani garanție scrisă"
+    },
+    "3": {
+      "n": "4.9/5",
+      "label": "din 250+ recenzii"
+    }
   },
-
   "services": {
     "eyebrow": "Servicii",
     "h2": "Ce construim pentru tine",
@@ -95,7 +103,6 @@
       }
     }
   },
-
   "process": {
     "eyebrow": "Cum lucrăm",
     "h2": "De la fundație la predare",
@@ -132,7 +139,6 @@
       }
     }
   },
-
   "portfolio": {
     "eyebrow": "Portofoliu",
     "h2": "Proiecte recente",
@@ -186,25 +192,40 @@
       }
     }
   },
-
   "band": {
     "coverageTitle": "Lucrăm în toată Moldova.",
     "coverageLine": "Am construit în Chișinău, Codru, Coșnița, Costești, Căinari și Sociteni."
   },
-
   "trust": {
     "eyebrow": "Despre noi",
     "h2": "De ce Rapid Construct",
     "items": {
-      "0": { "title": "Garanție 30 de ani în contract", "line": "Garanția e scrisă în contract, nu doar promisă." },
-      "1": { "title": "Materiale certificate UE", "line": "Produse de la producători cu reputație, potrivite proiectului." },
-      "2": { "title": "Execuție și livrare la timp", "line": "Stabilim termene clare de la început și le respectăm." },
-      "3": { "title": "Echipă cu 10+ ani experiență", "line": "Meșteri specializați pe fiecare tip de lucrare." },
-      "4": { "title": "Prețuri transparente", "line": "Ce scrie în deviz, aceea plătești. Fără costuri ascunse." },
-      "5": { "title": "Suport post-lucrare", "line": "Rămânem alături de tine și după finalizarea proiectului." }
+      "0": {
+        "title": "Garanție 30 de ani în contract",
+        "line": "Garanția e scrisă în contract, nu doar promisă."
+      },
+      "1": {
+        "title": "Materiale certificate UE",
+        "line": "Produse de la producători cu reputație, potrivite proiectului."
+      },
+      "2": {
+        "title": "Execuție și livrare la timp",
+        "line": "Stabilim termene clare de la început și le respectăm."
+      },
+      "3": {
+        "title": "Echipă cu 10+ ani experiență",
+        "line": "Meșteri specializați pe fiecare tip de lucrare."
+      },
+      "4": {
+        "title": "Prețuri transparente",
+        "line": "Ce scrie în deviz, aceea plătești. Fără costuri ascunse."
+      },
+      "5": {
+        "title": "Suport post-lucrare",
+        "line": "Rămânem alături de tine și după finalizarea proiectului."
+      }
     }
   },
-
   "reviews": {
     "eyebrow": "Recenzii",
     "h2": "Ce spun clienții",
@@ -226,7 +247,6 @@
       }
     }
   },
-
   "form": {
     "eyebrow": "Cere ofertă",
     "h2": "Solicită ofertă gratuită",
@@ -273,7 +293,6 @@
       "9": "Altceva"
     }
   },
-
   "footer": {
     "description": "Construcții și renovări la cheie în toată Moldova, cu garanție scrisă și materiale certificate UE.",
     "offer": "−10% la programări anticipate · Rate 0% la acoperiș · preț înghețat 160 lei/m² pentru 2026",
@@ -292,5 +311,12 @@
     "region": "Chișinău, Republica Moldova",
     "whatsappAria": "Scrie pe WhatsApp",
     "backToTop": "Sus"
+  },
+  "notfound": {
+    "title": "Pagina nu a fost găsită · Rapid Construct",
+    "code": "404",
+    "heading": "Pagina nu există",
+    "body": "Linkul e greșit sau pagina a fost mutată. Mergi la pagina principală sau sună-ne direct.",
+    "home": "Înapoi la pagina principală"
   }
 }

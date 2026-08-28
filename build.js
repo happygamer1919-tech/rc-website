@@ -79,27 +79,54 @@ const servicePages = [];
 // Service page rendering. One page per slug per locale, 18 in all.
 const serviceTemplate = fs.readFileSync('src/service.html', 'utf8');
 
-function renderProjects(l, slug, vars) {
-  const mine = PROJECTS.filter((p) => p.service === slug);
-  if (!mine.length) return `<p class="lede" data-reveal>${esc(l.strings['servicePage.galleryEmpty'])}</p>`;
+// A project is renderable only when every field it would print is real.
+// A TODO marker is never printed: the project is dropped instead.
+function renderableProjects(l, slug) {
+  return PROJECTS.filter((p) => p.service === slug
+    && !p.title[l.code].startsWith('TODO:')
+    && !p.summary[l.code].startsWith('TODO:'));
+}
+
+// The gate for indexability: a real cover photo, not a generated placeholder.
+// gen-placeholders records the byte size of every file it writes; a file whose
+// size no longer matches that ledger is a real photo someone dropped in.
+const PLACEHOLDER_LEDGER = (() => {
+  const f = 'public/img/PLACEHOLDERS.json';
+  return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : {};
+})();
+function coverIsRealPhoto(cover) {
+  const file = `public/img/${cover}.jpg`;
+  if (!fs.existsSync(file)) return false;
+  const recorded = PLACEHOLDER_LEDGER[cover];
+  return recorded === undefined || recorded !== fs.statSync(file).size;
+}
+
+function renderGallerySection(l, slug, vars) {
+  const mine = renderableProjects(l, slug);
+  if (!mine.length) return '';          // section, heading and all, simply absent
   const cards = mine.map((p, i) => {
-    const title = p.title[l.code];
-    const summary = p.summary[l.code];
     const loc = p.location[l.code];
-    // A TODO field is rendered as a visible marker, never silently filled.
     const meta = [];
     if (!loc.startsWith('TODO:')) meta.push(`<span class="review__tag">${esc(loc)}</span>`);
     if (!String(p.year).startsWith('TODO:')) meta.push(`<span class="review__tag">${esc(String(p.year))}</span>`);
     return `      <article class="card project" id="project-${p.id}" data-reveal data-stagger="${Math.min(i, 6)}">
-        <div class="media media--3x2 media--card"><img src="${vars.base}/img/${p.cover}.jpg" alt="${esc(title)}" width="1400" height="933" loading="lazy" decoding="async"></div>
+        <div class="media media--3x2 media--card"><img src="${vars.base}/img/${p.cover}.jpg" alt="${esc(p.title[l.code])}" width="1400" height="933" loading="lazy" decoding="async"></div>
         <div class="card__body">
-          <h3>${esc(title)}</h3>
-          <p class="project__desc">${esc(summary)}</p>
+          <h3>${esc(p.title[l.code])}</h3>
+          <p class="project__desc">${esc(p.summary[l.code])}</p>
           ${meta.length ? `<span class="review__tags">${meta.join('')}</span>` : ''}
         </div>
       </article>`;
   }).join('\n');
-  return `<div class="grid grid--3" style="margin-top: 40px;">\n${cards}\n    </div>`;
+  return `<section class="section section--light section--divided" id="proiecte">
+  <div class="container">
+    <p class="eyebrow" data-reveal>${esc(l.strings['servicePage.galleryH'])}</p>
+    <h2 data-reveal>${esc(l.strings['portfolio.h2'])}</h2>
+    <div class="grid grid--3" style="margin-top: 40px;">
+${cards}
+    </div>
+  </div>
+</section>`;
 }
 
 for (const l of loaded) {
@@ -183,7 +210,7 @@ for (const l of loaded) {
       // only on that service. The other two lines are the site-wide offer.
       'svc.priceExtra': slug === 'acoperisuri' ? ' · ' + l.strings['hero.priceLine2'] : '',
     };
-    svcVars['svc.projects'] = renderProjects(l, slug, vars);
+    svcVars['svc.gallerySection'] = renderGallerySection(l, slug, vars);
     svcVars['svc.footerLinks'] = SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
       `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join('');
 
@@ -191,7 +218,7 @@ for (const l of loaded) {
     const html = serviceTemplate.replace(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/g, (_, key) => {
       if (key in svcVars) {
         // pre-rendered HTML fragments must not be escaped again
-        return (key === 'svc.projects' || key === 'svc.footerLinks' || key === 'svc.priceExtra')
+        return (key === 'svc.gallerySection' || key === 'svc.footerLinks' || key === 'svc.priceExtra')
           ? svcVars[key] : esc(svcVars[key]);
       }
       missing.add(key); return `{{${key}}}`;

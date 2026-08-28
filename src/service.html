@@ -176,14 +176,8 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   </div>
 </section>
 
-<!-- 4 · Projects for this service -->
-<section class="section section--light section--divided" id="proiecte">
-  <div class="container">
-    <p class="eyebrow" data-reveal>{{servicePage.galleryH}}</p>
-    <h2 data-reveal>{{portfolio.h2}}</h2>
-    {{svc.projects}}
-  </div>
-</section>
+<!-- 4 · Projects. Omitted entirely when nothing renderable exists. -->
+{{svc.gallerySection}}
 
 <!-- 5 · CTA, the same form as the homepage -->
 <section class="section section--light section--divided" id="oferta">

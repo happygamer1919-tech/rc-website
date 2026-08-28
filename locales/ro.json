@@ -31,7 +31,12 @@
     "priceLine2": "Rate 0% la acoperiș",
     "ctaPrimary": "Solicită ofertă gratuită",
     "ctaSecondary": "Sună acum",
-    "panelAlt": "Ilustrație: casă la cheie construită de Rapid Construct"
+    "panelAlt": "Ilustrație: casă la cheie construită de Rapid Construct",
+    "highlights": {
+      "0": "−10% la programări anticipate",
+      "1": "Rate 0% la acoperiș",
+      "2": "preț înghețat 160 lei/m² pentru 2026"
+    }
   },
   "stats": {
     "0": {

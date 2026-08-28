@@ -168,14 +168,8 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   </div>
 </section>
 
-<!-- 3 · Pricing, reused from the hero price copy -->
-<section class="section section--dark section--compact">
-  <div class="container">
-    <p class="eyebrow" data-reveal>{{servicePage.priceH}}</p>
-    <h2 data-reveal>{{hero.priceTitle}}</h2>
-    <p class="lede" data-reveal style="color: #FFFFFF; opacity: 0.75;">{{hero.priceLine1}}{{svc.priceExtra}}</p>
-  </div>
-</section>
+<!-- 3 · Pricing. Provisional: only on the five priced services. -->
+{{svc.priceSection}}
 
 <!-- 4 · Projects. Omitted entirely when nothing renderable exists. -->
 {{svc.gallerySection}}

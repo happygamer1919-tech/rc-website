@@ -32,6 +32,10 @@ const SERVICE_SLUGS = [
   'case-la-cheie', 'acoperisuri', 'fatade', 'reparatii', 'finisaje',
   'proiectare-3d', 'instalatii', 'industrial', 'terasamente',
 ];
+// PROVISIONAL, pending a client ruling: the per-m2 figure and the early-booking
+// discount are shown only on these five. See DECISIONS.md.
+const PRICED_SLUGS = ['case-la-cheie', 'acoperisuri', 'fatade', 'reparatii', 'finisaje'];
+
 const SLOT_FOR_SLUG = {
   'case-la-cheie': 'svc-case-la-cheie', 'acoperisuri': 'svc-acoperisuri', 'fatade': 'svc-fatade',
   'reparatii': 'svc-reparatii', 'finisaje': 'svc-finisaje', 'proiectare-3d': 'svc-proiectare-3d',
@@ -209,6 +213,13 @@ for (const l of loaded) {
       // priceLine2 is roofing-specific ("Rate 0% la acoperis"), so it appears
       // only on that service. The other two lines are the site-wide offer.
       'svc.priceExtra': slug === 'acoperisuri' ? ' · ' + l.strings['hero.priceLine2'] : '',
+      'svc.priceSection': PRICED_SLUGS.includes(slug) ? `<section class="section section--dark section--compact">
+  <div class="container">
+    <p class="eyebrow" data-reveal>${esc(l.strings['servicePage.priceH'])}</p>
+    <h2 data-reveal>${esc(l.strings['hero.priceTitle'])}</h2>
+    <p class="lede" data-reveal style="color: #FFFFFF; opacity: 0.75;">${esc(l.strings['hero.priceLine1'])}${slug === 'acoperisuri' ? ' · ' + esc(l.strings['hero.priceLine2']) : ''}</p>
+  </div>
+</section>` : '',
       // Indexable only when this service has at least one renderable project
       // whose cover is a real photograph rather than a generated placeholder.
       // Same shape as the privacy-page gate: it clears itself.
@@ -223,7 +234,7 @@ for (const l of loaded) {
     const html = serviceTemplate.replace(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/g, (_, key) => {
       if (key in svcVars) {
         // pre-rendered HTML fragments must not be escaped again
-        return (key === 'svc.gallerySection' || key === 'svc.footerLinks' || key === 'svc.priceExtra')
+        return (key === 'svc.gallerySection' || key === 'svc.priceSection' || key === 'svc.footerLinks' || key === 'svc.priceExtra')
           ? svcVars[key] : esc(svcVars[key]);
       }
       missing.add(key); return `{{${key}}}`;

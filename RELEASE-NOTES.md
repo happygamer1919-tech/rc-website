@@ -3,7 +3,7 @@
 Status of the Rapid Construct site as built. Read this first if you are coming
 back to the project cold.
 
-**Last updated:** 2026-08-27
+**Last updated:** 2026-08-28
 **State:** ready for client review. Not production.
 
 ---
@@ -36,9 +36,21 @@ Every image on the site is a generated placeholder: a flat `#F2F2F2` JPG at the
 manifest's exact pixel size, with the slot ID and aspect ratio printed in the
 middle. Nine services, five process steps, six portfolio covers, one og-image.
 
-**To swap in a real photo:** drop the file at `public/img/<slot-id>.jpg` and
-rebuild. No code changes. The `<img>` tag, its dimensions and its alt text are
+**To swap in a real photo:** drop the raw file into `photos-raw/` named by slot
+ID, at any size, then:
+
+    node scripts/process-photos.js && node build.js
+
+That centre-crops to the slot's ratio, writes a 1x and a 2x into `public/img/`,
+compresses each under 400KB, warns about anything below the 1600px long-edge
+minimum or shot in portrait, and lists which slots are still on placeholders.
+It exits non-zero if a file could not be squeezed under budget. No code
+changes: the `<img>` tag, its `srcset`, its dimensions and its alt text are
 already in place.
+
+A pre-cropped file can also just be dropped straight into
+`public/img/<slot-id>.jpg`, but then you owe it an `@2x` too, or the browser
+requests one that does not exist.
 
 `node scripts/gen-placeholders.js` regenerates placeholders if a slot is added.
 It will **not** overwrite a real photo: it compares each file against the size
@@ -70,11 +82,12 @@ build prints which mode it used.
 
 | Item | State |
 |---|---|
-| **Heading font** | Inter 800 uppercase. Unbounded is an open A/B with Mihai. Both families are already in the font link, so switching is one value: `--font-heading` in `src/styles.css`. No other change, no extra download for the unused family. |
+| **Heading font** | **Resolved: Inter stays.** Unbounded is no longer loaded. `--font-heading` remains a variable, so a future family swap is still one value in `src/styles.css` plus adding it to the font link. |
 | **Photos** | All 21 slots. Selection session with Mihai still to happen. |
 | **Form endpoint** | No Web3Forms key yet. Deliberate until the visual is approved. |
 | **Production host** | GitHub Pages is for client review only. Hostinger is the production target. |
-| **Privacy / cookie policy** | Footer links point at `#contacte`. There are no policy pages yet; the old site had them. |
+| **Privacy / cookie policy** | **Dead links.** The consent checkbox and two footer links point at `#contacte`, which is not a policy. The old site had real pages. See the dead-link audit in `DECISIONS.md`. |
+| **Primary button contrast** | White on `#F65308` is 3.41:1, below WCAG AA. Holds Lighthouse accessibility at 96. Fixing means darkening the approved brand fill; awaiting the client's call. |
 | **Portfolio lightbox** | Not built. The manifest's 18 optional `port-0N-a/b/c` extras are unused. |
 
 ---
@@ -114,6 +127,18 @@ breaking the first two.
 - No section over 1,400px except the services and portfolio grids, which are
   agreed exceptions.
 - Header opaque and sticky at 72px, nav items never wrap.
+
+## Lighthouse baseline
+
+Measured on the Pages URL, desktop preset, 2026-08-28, with all 21 images still
+placeholders. Re-measure after real photos land.
+
+| | Performance | Accessibility | Best practices | SEO |
+|---|---|---|---|---|
+| RO | 100 | 96 | 100 | 100 |
+| RU | 100 | 96 | 100 | 100 |
+
+The 96 is entirely white-on-`#F65308` for the primary button and category chip.
 
 See `DECISIONS.md` for where this build departs from the master plan and why.
 The short version: `--brand` is `#F65308` and `--ink` is `#1A1A1A`, sampled from

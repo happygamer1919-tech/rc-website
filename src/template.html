@@ -164,17 +164,6 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
       <div class="stat"><div class="stat__n">{{stats.3.n}}</div><div class="stat__label">{{stats.3.label}}</div></div>
     </div>
 
-    <div class="price-box">
-      <p class="price-box__title">{{hero.priceTitle}}</p>
-      <p class="price-box__line">{{hero.priceLine1}}</p>
-      <p class="price-box__line">{{hero.priceLine2}}</p>
-    </div>
-
-    <div class="cta-row">
-      <a class="btn btn--primary" href="#oferta">{{hero.ctaPrimary}}</a>
-      <a class="btn btn--outline" href="tel:+37376837180">{{hero.ctaSecondary}}</a>
-    </div>
-
     <div class="hero-panels">
       <div class="hero-claim">
         <h2>{{trust.items.0.title}}</h2>
@@ -190,6 +179,10 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
       <div class="hero-panel-media media media--4x3">
         <img src="{{base}}/img/hero-panel.svg" alt="{{hero.panelAlt}}" width="800" height="600" loading="lazy" decoding="async">
       </div>
+    </div>
+
+    <div class="cta-row">
+      <a class="btn btn--primary" href="#oferta">{{hero.ctaPrimary}}</a>
     </div>
   </div>
 </section>

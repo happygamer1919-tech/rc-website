@@ -24,6 +24,20 @@ const LOCALES = [
 // Each page template rendered once per locale. 404 goes to the site root as
 // well as /ru/, because a static host serves one 404 for the whole origin.
 const PRIVACY_PATH = { ro: '/confidentialitate/', ru: '/ru/konfidentsialnost/' };
+const SERVICES_ROOT = { ro: '/servicii/', ru: '/ru/servicii/' };
+
+// Nine service slugs, matching the delivered SVG filenames and the order of
+// services.items.N in the locale files.
+const SERVICE_SLUGS = [
+  'case-la-cheie', 'acoperisuri', 'fatade', 'reparatii', 'finisaje',
+  'proiectare-3d', 'instalatii', 'industrial', 'terasamente',
+];
+const SLOT_FOR_SLUG = {
+  'case-la-cheie': 'svc-case-la-cheie', 'acoperisuri': 'svc-acoperisuri', 'fatade': 'svc-fatade',
+  'reparatii': 'svc-reparatii', 'finisaje': 'svc-finisaje', 'proiectare-3d': 'svc-proiectare-3d',
+  'instalatii': 'svc-instalatii', 'industrial': 'svc-industrial', 'terasamente': 'svc-terasamente',
+};
+const PROJECTS = JSON.parse(fs.readFileSync('content/projects.json', 'utf8')).projects;
 
 const PAGES = [
   { template: 'src/template.html', out: (l) => l.out },
@@ -58,7 +72,36 @@ const privacyTodos = loaded.flatMap((l) =>
     .map(([k]) => `${l.code}:${k}`));
 const privacyIncomplete = privacyTodos.length > 0;
 
+const servicePages = [];
+
 // --- render ------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// Service page rendering. One page per slug per locale, 18 in all.
+const serviceTemplate = fs.readFileSync('src/service.html', 'utf8');
+
+function renderProjects(l, slug, vars) {
+  const mine = PROJECTS.filter((p) => p.service === slug);
+  if (!mine.length) return `<p class="lede" data-reveal>${esc(l.strings['servicePage.galleryEmpty'])}</p>`;
+  const cards = mine.map((p, i) => {
+    const title = p.title[l.code];
+    const summary = p.summary[l.code];
+    const loc = p.location[l.code];
+    // A TODO field is rendered as a visible marker, never silently filled.
+    const meta = [];
+    if (!loc.startsWith('TODO:')) meta.push(`<span class="review__tag">${esc(loc)}</span>`);
+    if (!String(p.year).startsWith('TODO:')) meta.push(`<span class="review__tag">${esc(String(p.year))}</span>`);
+    return `      <article class="card project" id="project-${p.id}" data-reveal data-stagger="${Math.min(i, 6)}">
+        <div class="media media--3x2 media--card"><img src="${vars.base}/img/${p.cover}.jpg" alt="${esc(title)}" width="1400" height="933" loading="lazy" decoding="async"></div>
+        <div class="card__body">
+          <h3>${esc(title)}</h3>
+          <p class="project__desc">${esc(summary)}</p>
+          ${meta.length ? `<span class="review__tags">${meta.join('')}</span>` : ''}
+        </div>
+      </article>`;
+  }).join('\n');
+  return `<div class="grid grid--3" style="margin-top: 40px;">\n${cards}\n    </div>`;
+}
+
 for (const l of loaded) {
   const vars = {
     ...l.strings,
@@ -77,6 +120,10 @@ for (const l of loaded) {
     urlRu: SITE + BASE + '/ru/',
     logoUrl: SITE + BASE + '/logo-full.png',
     privacyHref: BASE + PRIVACY_PATH[l.code],
+    servicesHref: BASE + l.home + '#servicii',
+    portfolioHref: BASE + l.home + '#portofoliu',
+    aboutHref: BASE + l.home + '#despre',
+    contactHref: BASE + l.home + '#contacte',
     privacyUrlRoPath: BASE + PRIVACY_PATH.ro,
     privacyUrlRuPath: BASE + PRIVACY_PATH.ru,
     privacyCanonical: SITE + BASE + PRIVACY_PATH[l.code],
@@ -88,6 +135,45 @@ for (const l of loaded) {
     googleReviewsUrl: GOOGLE_REVIEWS_URL || '#',
     googleHidden: GOOGLE_REVIEWS_URL ? '' : 'hidden',
   };
+  // --- 18 service pages -----------------------------------------------------
+  for (let i = 0; i < SERVICE_SLUGS.length; i++) {
+    const slug = SERVICE_SLUGS[i];
+    const out = 'dist' + SERVICES_ROOT[l.code] + slug + '/index.html';
+    const svcVars = {
+      ...vars,
+      'svc.title': l.strings[`services.items.${i}.title`],
+      'svc.desc': l.strings[`services.items.${i}.desc`],
+      'svc.alt': l.strings[`services.items.${i}.alt`],
+      'svc.slot': SLOT_FOR_SLUG[slug],
+      'svc.canonical': SITE + BASE + SERVICES_ROOT[l.code] + slug + '/',
+      'svc.urlRo': SITE + BASE + SERVICES_ROOT.ro + slug + '/',
+      'svc.urlRu': SITE + BASE + SERVICES_ROOT.ru + slug + '/',
+      'svc.pathRo': BASE + SERVICES_ROOT.ro + slug + '/',
+      'svc.pathRu': BASE + SERVICES_ROOT.ru + slug + '/',
+      // priceLine2 is roofing-specific ("Rate 0% la acoperis"), so it appears
+      // only on that service. The other two lines are the site-wide offer.
+      'svc.priceExtra': slug === 'acoperisuri' ? ' · ' + l.strings['hero.priceLine2'] : '',
+    };
+    svcVars['svc.projects'] = renderProjects(l, slug, vars);
+    svcVars['svc.footerLinks'] = SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
+      `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join('');
+
+    const missing = new Set();
+    const html = serviceTemplate.replace(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/g, (_, key) => {
+      if (key in svcVars) {
+        // pre-rendered HTML fragments must not be escaped again
+        return (key === 'svc.projects' || key === 'svc.footerLinks' || key === 'svc.priceExtra')
+          ? svcVars[key] : esc(svcVars[key]);
+      }
+      missing.add(key); return `{{${key}}}`;
+    });
+    if (missing.size) die(`src/service.html references unknown keys for ${l.code}/${slug}: ${[...missing].join(', ')}`);
+    if (html.includes('{{')) die(`unsubstituted placeholder survived in ${out}`);
+    fs.mkdirSync(path.dirname(out), { recursive: true });
+    fs.writeFileSync(out, html);
+    servicePages.push({ loc: SITE + BASE + SERVICES_ROOT[l.code] + slug + '/', lang: l.code });
+  }
+
   for (const page of PAGES) {
     const template = fs.readFileSync(page.template, 'utf8');
     const out = page.out(l);

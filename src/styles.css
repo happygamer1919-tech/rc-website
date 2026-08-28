@@ -718,6 +718,35 @@ p { margin: 0; }
   .reviews-layout { grid-template-columns: minmax(0, 1fr); }
 }
 
+/* --- service pages --------------------------------------------------------- */
+.breadcrumb {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--ink-muted); margin-bottom: 24px;
+}
+.breadcrumb a { text-decoration: underline; }
+.breadcrumb a:hover { color: var(--brand-dark); }
+.breadcrumb [aria-current='page'] { color: var(--ink); font-weight: 700; }
+
+.svc-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+  gap: 40px var(--gap);
+  align-items: center;
+}
+.svc-hero__art {
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--bg-dark);
+}
+.svc-hero__art img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+/* The dark price strip is a band, not a full section. */
+.section--compact { padding: var(--band-pad) 0; }
+
+@media (max-width: 1024px) {
+  .svc-hero__grid { grid-template-columns: minmax(0, 1fr); }
+}
+
 /* ==========================================================================
    Tablet — 1024px and below: 3-col grids become 2-col, 5-col process becomes 3
    ========================================================================== */

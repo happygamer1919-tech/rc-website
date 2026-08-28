@@ -7,8 +7,10 @@
 const SLOTS = [
   ...['step-01-fundatie', 'step-02-structura', 'step-03-acoperis', 'step-04-fatada', 'step-05-predare']
     .map((id) => ({ id, w: 900, h: 675, ratio: '4:3', retina: true })),
-  ...['port-01', 'port-02', 'port-03', 'port-04', 'port-05', 'port-06']
-    .map((id) => ({ id, w: 1400, h: 933, ratio: '3:2', retina: true })),
+  // Project covers, one per project in content/projects.json. Gallery slots are
+  // declared in the manifest but not yet rendered, so they get no placeholder.
+  ...require('../content/projects.json').projects
+    .map((p) => ({ id: p.cover, w: 1400, h: 933, ratio: '3:2', retina: true })),
   // Social card. Never retina: og consumers take one fixed size.
   { id: 'og-image', w: 1200, h: 630, ratio: '1200x630', retina: false, branded: true },
 ];

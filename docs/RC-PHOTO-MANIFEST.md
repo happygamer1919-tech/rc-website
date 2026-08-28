@@ -3,7 +3,14 @@
 > Companion to `RC-WEBSITE-MASTER-PLAN.md`. Applies only to the Rapid Construct MD website (repo `rc-website`).
 > Fill the **File / notes** column during the photo selection session with Mihai. Leave it blank if no real photo exists for that slot.
 
-**Total needed: 25 mandatory, up to 18 optional.** (26 before `form-bg` was struck.)
+**Total needed: 17 mandatory, up to 18 optional.**
+
+Revised for phase 2. The count went 26 -> 25 when `form-bg` was struck, then
+25 -> 17 when the nine `svc-*` photo slots were replaced by SVG illustrations
+and `hero-panel` was added.
+
+**13 image slots** + 4 logo assets = 17:
+one `hero-panel`, five process stages, six portfolio covers, one `og-image`.
 
 Every file: minimum 1600px long edge, landscape, JPG, under 400KB after compression, no watermark, real Rapid Construct work only.
 Naming: use the Slot ID exactly, lowercase, `.jpg`. Example: `svc-acoperisuri.jpg`. Drop everything into one folder, no subfolders.
@@ -15,19 +22,23 @@ Naming: use the Slot ID exactly, lowercase, `.jpg`. Example: `svc-acoperisuri.jp
 ### Hero
 No photo. Decision locked: plain background.
 
-### Services grid — 9 mandatory, 4:3 landscape, 1200x900
+### Services grid — STRUCK, no longer photographs
+
+~~Nine `svc-*` photo slots, 4:3, 1200x900.~~ Removed in phase 2. The nine
+service cards now hold **SVG illustrations**, produced in Claude Design, not
+photographs. They are therefore outside this manifest.
+
+Drop each finished illustration at `public/img/services/<id>.svg`, overwriting
+the placeholder. IDs: `svc-case-la-cheie`, `svc-acoperisuri`, `svc-fatade`,
+`svc-reparatii`, `svc-finisaje`, `svc-proiectare-3d`, `svc-retele`,
+`svc-industrial`, `svc-terasamente`. Regenerate placeholders with
+`node scripts/gen-service-svgs.js`; it will not overwrite a real file.
+
+### Hero panel — 1 mandatory, 4:3 landscape, 1200x900
 
 | Slot ID | What it must show | File / notes |
 |---|---|---|
-| `svc-case-la-cheie` | A finished house, full exterior, daylight | |
-| `svc-acoperisuri` | A completed roof, clean angle, ideally from above or elevated | |
-| `svc-fatade` | A finished façade, decorative render or stone cladding visible | |
-| `svc-reparatii` | Renovation in progress or a finished renovated interior | |
-| `svc-finisaje` | Interior finishing: plaster, paint, flooring or tiling | |
-| `svc-proiectare-3d` | A 3D render or a plan on screen. This one may be a render, not a photo | |
-| `svc-retele` | Installations: piping, wiring, heating, visible and tidy | |
-| `svc-industrial` | A hall, warehouse or commercial space | |
-| `svc-terasamente` | Excavator or machinery on a plot, earthworks | |
+| `hero-panel` | Right-hand panel of the hero. Ivan is producing an illustration for this slot | |
 
 ### Process block — 5 mandatory, 4:3 landscape, 900x675
 

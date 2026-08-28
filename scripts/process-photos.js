@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /* Turns raw photos into the exact files the site needs.
 
-   Drop files into photos-raw/ named by slot ID (svc-acoperisuri.jpg,
-   port-03.jpg, ...) at any size, then:
+   Drop files into photos-raw/ named by slot ID (proj-acoperisuri-01-cover.jpg,
+   step-01-fundatie.heic, ...) at any size, then:
 
        node scripts/process-photos.js
 
@@ -22,6 +22,27 @@ const RAW = path.join(ROOT, 'photos-raw');
 const OUT = path.join(ROOT, 'public', 'img');
 const LEDGER = path.join(OUT, 'PLACEHOLDERS.json');
 const DRY = process.argv.includes('--dry-run');
+
+// sips reads all of these natively on macOS, HEIC included.
+const ACCEPTED = /\.(jpe?g|png|heic|heif|webp|tiff?)$/i;
+
+// Levenshtein, so an unmatched filename can be told what it nearly matched.
+function distance(a, b) {
+  const m = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
+  for (let j = 0; j <= b.length; j++) m[0][j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      m[i][j] = Math.min(m[i - 1][j] + 1, m[i][j - 1] + 1,
+        m[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    }
+  }
+  return m[a.length][b.length];
+}
+const nearest = (name, ids) => ids
+  .map((id) => [id, distance(name, id)])
+  .sort((x, y) => x[1] - y[1])
+  .slice(0, 3)
+  .map(([id]) => id);
 
 const KB = (b) => (b / 1024).toFixed(0) + ' KB';
 const sips = (args) => execFileSync('sips', args, { stdio: ['ignore', 'pipe', 'pipe'] }).toString();
@@ -67,7 +88,7 @@ if (!fs.existsSync(RAW)) {
 
 const inputs = new Map();
 for (const f of fs.readdirSync(RAW)) {
-  if (f.startsWith('.') || !/\.(jpe?g|png|tiff?|heic|webp)$/i.test(f)) continue;
+  if (f.startsWith('.') || !ACCEPTED.test(f)) continue;
   inputs.set(path.parse(f).name.toLowerCase(), path.join(RAW, f));
 }
 
@@ -114,15 +135,27 @@ console.log(`processed: ${done.length}/${SLOTS.length} slots`);
 
 if (warnings.length) { console.log(`\nWARNINGS (${warnings.length}):`); warnings.forEach((w) => console.log('  ! ' + w)); }
 if (oversize.length) { console.log(`\nOVER BUDGET (${oversize.length}):`); oversize.forEach((w) => console.log('  ! ' + w)); }
-if (unknown.length) {
-  console.log(`\nUNRECOGNISED FILENAMES (${unknown.length}) — these were ignored:`);
-  unknown.forEach((u) => console.log(`  ? photos-raw/${u}  (no slot with that ID)`));
-}
 if (missing.length) {
   console.log(`\nSTILL ON PLACEHOLDERS (${missing.length}):`);
   missing.forEach((m) => console.log('  · ' + m));
 } else {
   console.log('\nAll slots filled with real photos.');
 }
-console.log(`\nNext: node build.js\n`);
-process.exit(oversize.length ? 1 : 0);
+
+console.log(`\n${'='.repeat(70)}`);
+console.log(`SUMMARY   slots filled: ${done.length}/${SLOTS.length}` +
+            `   still placeholder: ${missing.length}` +
+            `   files unmatched: ${unknown.length}`);
+console.log('='.repeat(70));
+
+if (unknown.length) {
+  console.error(`\nREJECTED: ${unknown.length} file(s) in photos-raw/ match no slot ID.`);
+  console.error('Nothing was skipped silently. Rename them or remove them, then re-run.\n');
+  unknown.forEach((u) => {
+    console.error(`  ${u}  ->  did you mean:`);
+    nearest(u, SLOTS.map((s) => s.id)).forEach((n) => console.error(`      ${n}`));
+  });
+  console.error('');
+}
+if (oversize.length || unknown.length) process.exit(1);
+console.log('\nNext: node build.js\n');

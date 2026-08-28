@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="{{meta.lang}}" dir="{{meta.dir}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{privacy.title}}</title>
+<meta name="description" content="{{privacy.description}}">
+<meta name="robots" content="{{privacyRobots}}">
+<link rel="canonical" href="{{privacyCanonical}}">
+<link rel="alternate" hreflang="ro" href="{{privacyUrlRo}}">
+<link rel="alternate" hreflang="ru" href="{{privacyUrlRu}}">
+<link rel="alternate" hreflang="x-default" href="{{privacyUrlRo}}">
+<meta name="theme-color" content="#F65308">
+<link rel="icon" href="{{base}}/favicon-512.png" sizes="512x512" type="image/png">
+<link rel="apple-touch-icon" href="{{base}}/favicon-180.png">
+<link rel="manifest" href="{{base}}/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap"></noscript>
+<link rel="stylesheet" href="{{base}}/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#continut">{{meta.skipToContent}}</a>
+
+<header class="header">
+  <div class="header__inner">
+    <a class="header__logo" href="{{homeHref}}"><img src="{{base}}/logo-full.png" alt="{{meta.logoAlt}}" width="1542" height="568"></a>
+    <div class="header__actions" style="margin-left: auto;">
+      <a class="header__phone" href="tel:+37376837180" aria-label="{{header.phoneAria}}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        <span>{{header.phone}}</span>
+      </a>
+      <div class="lang" data-lang="{{meta.lang}}">
+        <a class="lang__ro" href="{{privacyUrlRoPath}}" hreflang="ro" aria-label="RO — Comută pe română">RO</a>
+        <span class="lang__sep" aria-hidden="true"></span>
+        <a class="lang__ru" href="{{privacyUrlRuPath}}" hreflang="ru" aria-label="RU — Переключить на русский">RU</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="continut">
+  <section class="section section--light">
+    <div class="container prose">
+      <p class="eyebrow">{{footer.contactHeading}}</p>
+      <h1>{{privacy.h1}}</h1>
+      <p class="prose__updated">{{privacy.updated}}</p>
+      <p class="prose__lead">{{privacy.intro}}</p>
+      <p class="prose__todo">{{privacy.todoNote}}</p>
+
+      <h2>{{privacy.opH}}</h2>
+      <p>{{privacy.opP}}</p>
+      <dl class="prose__dl">
+        <div><dt>{{privacy.opNameLabel}}</dt><dd>{{privacy.opName}}</dd></div>
+        <div><dt>{{privacy.opIdnoLabel}}</dt><dd>{{privacy.opIdno}}</dd></div>
+        <div><dt>{{privacy.opAddressLabel}}</dt><dd>{{footer.address}}</dd></div>
+        <div><dt>{{privacy.opEmailLabel}}</dt><dd><a href="mailto:rapidconstructmd@gmail.com">{{footer.email}}</a></dd></div>
+        <div><dt>{{privacy.opPhoneLabel}}</dt><dd><a href="tel:+37376837180">{{header.phone}}</a></dd></div>
+      </dl>
+
+      <h2>{{privacy.colH}}</h2>
+      <p>{{privacy.colP}}</p>
+      <ul>
+        <li>{{privacy.col1}}</li>
+        <li>{{privacy.col2}}</li>
+        <li>{{privacy.col3}}</li>
+        <li>{{privacy.col4}}</li>
+        <li>{{privacy.col5}}</li>
+      </ul>
+      <p>{{privacy.colNote}}</p>
+
+      <h2>{{privacy.whyH}}</h2>
+      <p>{{privacy.whyP}}</p>
+
+      <h2>{{privacy.basisH}}</h2>
+      <p>{{privacy.basisP}}</p>
+
+      <h2>{{privacy.procH}}</h2>
+      <p>{{privacy.procP}}</p>
+      <ul>
+        <li>{{privacy.proc1}}</li>
+        <li>{{privacy.proc2}}</li>
+      </ul>
+      <p>{{privacy.procNote}}</p>
+
+      <h2>{{privacy.retH}}</h2>
+      <p>{{privacy.retP}}</p>
+
+      <h2>{{privacy.rightsH}}</h2>
+      <p>{{privacy.rightsP}}</p>
+      <ul>
+        <li>{{privacy.right1}}</li>
+        <li>{{privacy.right2}}</li>
+        <li>{{privacy.right3}}</li>
+        <li>{{privacy.right4}}</li>
+        <li>{{privacy.right5}}</li>
+      </ul>
+      <p>{{privacy.rightsHow}}</p>
+
+      <h2>{{privacy.cookH}}</h2>
+      <p>{{privacy.cookP}}</p>
+
+      <h2>{{privacy.contactH}}</h2>
+      <p>{{privacy.contactP}}</p>
+
+      <p class="prose__back"><a class="btn btn--outline" href="{{homeHref}}">{{privacy.back}}</a></p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__cols" style="padding-bottom: 40px;">
+      <div class="footer__brand">
+        <img src="{{base}}/logo-white.png" alt="{{meta.logoAlt}}" width="1542" height="568">
+        <p class="footer__desc">{{footer.description}}</p>
+      </div>
+      <div>
+        <p class="footer__heading">{{footer.contactHeading}}</p>
+        <dl class="footer__contact">
+          <div><dt>{{footer.addressLabel}}</dt><dd>{{footer.address}}</dd></div>
+          <div><dt>{{footer.phoneLabel}}</dt><dd><a href="tel:+37376837180">{{header.phone}}</a></dd></div>
+          <div><dt>{{footer.emailLabel}}</dt><dd><a href="mailto:rapidconstructmd@gmail.com">{{footer.email}}</a></dd></div>
+          <div><dt>{{footer.hoursLabel}}</dt><dd>{{form.hours}}</dd></div>
+        </dl>
+      </div>
+      <div></div>
+    </div>
+  </div>
+  <div class="footer__bar">
+    <div class="footer__bar-inner"><div>{{footer.copyright}} · {{footer.region}}</div></div>
+  </div>
+</footer>
+
+</body>
+</html>

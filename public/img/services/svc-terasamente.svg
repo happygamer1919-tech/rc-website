@@ -1,5 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="svc-terasamente">
-  <rect x="0.5" y="0.5" width="399" height="299" fill="#F2F2F2" stroke="#E2E2E2" stroke-width="1" rx="10"/>
-  <text x="200" y="146" fill="#5A5A5A" font-family="Inter, Arial, sans-serif" font-size="17" text-anchor="middle">svc-terasamente</text>
-  <text x="200" y="170" fill="#5A5A5A" font-family="Inter, Arial, sans-serif" font-size="14" text-anchor="middle">illustration &#183; 4:3</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+<rect width="400" height="300" rx="10" fill="var(--svc-bg,#141414)"></rect>
+<g stroke="var(--svc-line,#FFFFFF)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M25 190H120V262H230V190H375"></path>
+<path d="M25 212H120M25 236H120M240 212H375M240 236H375" stroke-dasharray="6 7"></path>
+<path d="M38 202L46 194M66 202L74 194M96 202L104 194M250 202L258 194M280 202L288 194M310 202L318 194M340 202L348 194"></path>
+<path d="M128 210H222M128 210L136 204M222 210L214 204"></path>
+<path d="M128 240H222M128 240L136 234M222 240L214 234"></path>
+<path d="M126 190V262M224 190V262"></path>
+<path d="M120 252H230"></path>
+<path d="M134 258L142 252M156 258L164 252M178 258L186 252M200 258L208 252"></path>
+<path d="M28 190Q58 146 92 190"></path>
+<path d="M46 178L56 168M64 170L74 180M58 158L62 166"></path>
+<path d="M150 178L154 190M166 172L170 184"></path>
+</g>
+<g stroke="var(--svc-accent,#F65308)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<rect x="238" y="158" width="132" height="32" rx="16"></rect>
+<circle cx="262" cy="174" r="7"></circle><circle cx="304" cy="174" r="7"></circle><circle cx="346" cy="174" r="7"></circle>
+<path d="M250 158V120H352V158M352 128H364V158"></path>
+<path d="M256 126H294V152H256Z"></path>
+<path d="M262 132L262 152"></path>
+<path d="M262 132L200 80M268 125L206 73M262 132L268 125M200 80L206 73"></path>
+<path d="M203 76L148 130M209 82L154 136M203 76L209 82M148 130L154 136"></path>
+<path d="M272 150L248 132L252 126L276 144Z"></path>
+<path d="M250 129L232 114"></path>
+<path d="M212 92L188 108L192 114L216 98Z"></path>
+<path d="M190 111L174 122"></path>
+<path d="M136 128L160 122L176 150L150 168L132 150Z"></path>
+<path d="M156 166L159 174M164 161L168 169M172 155L176 163"></path>
+</g>
 </svg>

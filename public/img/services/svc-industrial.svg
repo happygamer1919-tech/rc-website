@@ -1,5 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="svc-industrial">
-  <rect x="0.5" y="0.5" width="399" height="299" fill="#F2F2F2" stroke="#E2E2E2" stroke-width="1" rx="10"/>
-  <text x="200" y="146" fill="#5A5A5A" font-family="Inter, Arial, sans-serif" font-size="17" text-anchor="middle">svc-industrial</text>
-  <text x="200" y="170" fill="#5A5A5A" font-family="Inter, Arial, sans-serif" font-size="14" text-anchor="middle">illustration &#183; 4:3</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+<rect width="400" height="300" rx="10" fill="var(--svc-bg,#141414)"></rect>
+<g stroke="var(--svc-line,#FFFFFF)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M30 250H370"></path>
+<path d="M60 250V140M340 250V140"></path>
+<path d="M50 250H74M326 250H350"></path>
+<path d="M100 225V145M300 225V145M130 210V150M268 210V150"></path>
+<path d="M100 145H300M130 150H268"></path>
+<path d="M100 128L200 98L300 128M130 138L200 116L268 138"></path>
+<path d="M60 140L100 145L130 150M340 140L300 145L268 150"></path>
+<path d="M60 120L100 128L130 138M340 120L300 128L268 138"></path>
+<path d="M200 80L200 98L200 116"></path>
+<path d="M130 210H268V150"></path>
+<path d="M160 176H240V210H160Z"></path>
+<path d="M160 184H240M160 192H240M160 200H240"></path>
+<path d="M100 225L130 210M300 225L268 210"></path>
+<path d="M74 250L100 240M326 250L300 240"></path>
+</g>
+<g stroke="var(--svc-accent,#F65308)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M60 120L200 80L340 120"></path>
+<path d="M60 140H340"></path>
+<path d="M60 140L95 110L130 140L165 90L200 140L235 90L270 140L305 110L340 140"></path>
+<path d="M60 120V140M340 120V140M200 80V140"></path>
+</g>
 </svg>

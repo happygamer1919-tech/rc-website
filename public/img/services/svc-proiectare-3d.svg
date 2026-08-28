@@ -1,5 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="svc-proiectare-3d">
-  <rect x="0.5" y="0.5" width="399" height="299" fill="#F2F2F2" stroke="#E2E2E2" stroke-width="1" rx="10"/>
-  <text x="200" y="146" fill="#5A5A5A" font-family="Inter, Arial, sans-serif" font-size="17" text-anchor="middle">svc-proiectare-3d</text>
-  <text x="200" y="170" fill="#5A5A5A" font-family="Inter, Arial, sans-serif" font-size="14" text-anchor="middle">illustration &#183; 4:3</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+<rect width="400" height="300" rx="10" fill="var(--svc-bg,#141414)"></rect>
+<g stroke="var(--svc-line,#FFFFFF)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M50 196L230 148L302 218L122 266Z"></path>
+<path d="M70 198L221 157L282 216L131 257Z"></path>
+<path d="M78 198L218 161L274 216L134 253Z"></path>
+<path d="M148 180L204 234"></path>
+<path d="M155 187L172 182M186 197L204 192"></path>
+<path d="M109 229L180 210"></path>
+<path d="M124 172L133 181M172 159L181 168M232 190L241 199M198 226L207 235"></path>
+<path d="M46 192L226 144M46 192L42 188M226 144L230 148"></path>
+</g>
+<g stroke="var(--svc-accent,#F65308)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M70 198L221 157L282 216L131 257Z" stroke-dasharray="5 6"></path>
+<path d="M70 198V128M221 157V87M282 216V146M131 257V187"></path>
+<path d="M70 128L221 87L282 146L131 187Z"></path>
+<path d="M70 128L100 94M131 187L100 94M221 87L252 53M282 146L252 53M100 94L252 53"></path>
+<path d="M92 170V148H112V162"></path>
+</g>
 </svg>

@@ -673,6 +673,52 @@ p { margin: 0; }
 .modal__status { font-weight: 700; margin-top: 12px; }
 .modal__status[hidden] { display: none; }
 
+/* --- reviews: aggregate panel + cards ------------------------------------- */
+.reviews-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  gap: 40px var(--gap);
+  align-items: start;
+}
+.rating {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 32px;
+  text-align: center;
+}
+.rating__score {
+  font-family: var(--font-heading), var(--font-fallback);
+  font-size: 64px; font-weight: 800; line-height: 1.15; color: var(--brand);
+}
+.rating__outof { color: var(--ink-muted); margin-bottom: 12px; }
+.rating__count { font-weight: 700; margin-top: 12px; }
+
+/* Five outline stars with a filled copy clipped to the real percentage.
+   No gradient: the overlay is width-clipped. */
+.stars { position: relative; display: inline-block; line-height: 0; }
+.stars__base, .stars__fill { display: flex; gap: 4px; }
+.stars__fill {
+  position: absolute; inset: 0;
+  overflow: hidden; white-space: nowrap;
+}
+.stars svg { display: block; flex: none; }
+
+.rating__google[hidden] { display: none; }
+.rating__google { margin-top: 16px; }
+
+.review__head { display: flex; flex-direction: column; gap: 4px; margin-bottom: 4px; }
+.review__name { font-weight: 700; }
+.review__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.review__tag {
+  font-size: 13px; color: var(--ink-muted);
+  border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px;
+}
+.review__quote { flex: 1; }
+
+@media (max-width: 1024px) {
+  .reviews-layout { grid-template-columns: minmax(0, 1fr); }
+}
+
 /* ==========================================================================
    Tablet — 1024px and below: 3-col grids become 2-col, 5-col process becomes 3
    ========================================================================== */

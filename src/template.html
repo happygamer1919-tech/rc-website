@@ -452,19 +452,43 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     <p class="eyebrow" data-reveal>{{reviews.eyebrow}}</p>
     <h2 data-reveal>{{reviews.h2}}</h2>
 
-    <div class="grid grid--3" style="margin-top: 40px;">
-      <figure class="review" style="margin: 0;" data-reveal data-stagger="6">
+    <div class="reviews-layout" style="margin-top: 40px;">
+      <div class="rating" data-reveal>
+        <div class="rating__score">{{reviews.score}}</div>
+        <div class="rating__outof">{{reviews.outOf}}</div>
+        <div class="stars" role="img" aria-label="{{reviews.aria}}">
+          <div class="stars__base"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg></div>
+          <div class="stars__fill" style="width: 98%;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#F65308" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="#F65308" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="#F65308" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="#F65308" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="#F65308" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg></div>
+        </div>
+        <div class="rating__count">{{reviews.count}}</div>
+        <div class="rating__google" {{googleHidden}}>
+          <a class="link-arrow" href="{{googleReviewsUrl}}" target="_blank" rel="noopener noreferrer">{{reviews.google}}</a>
+        </div>
+      </div>
+
+      <div class="grid grid--3" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+      <figure class="review" style="margin: 0;">
+        <figcaption class="review__head">
+          <span class="review__name">{{reviews.items.0.name}}</span>
+          <span class="review__tags"><span class="review__tag">{{reviews.items.0.locality}}</span><span class="review__tag">{{reviews.items.0.tag}}</span></span>
+        </figcaption>
         <blockquote class="review__quote" style="margin: 0;">{{reviews.items.0.quote}}</blockquote>
-        <figcaption><div class="review__name" data-reveal data-stagger="6">{{reviews.items.0.name}}</div><div class="review__meta" data-reveal data-stagger="6">{{reviews.items.0.meta}}</div></figcaption>
       </figure>
-      <figure class="review" style="margin: 0;" data-reveal data-stagger="6">
+      <figure class="review" style="margin: 0;">
+        <figcaption class="review__head">
+          <span class="review__name">{{reviews.items.1.name}}</span>
+          <span class="review__tags"><span class="review__tag">{{reviews.items.1.locality}}</span><span class="review__tag">{{reviews.items.1.tag}}</span></span>
+        </figcaption>
         <blockquote class="review__quote" style="margin: 0;">{{reviews.items.1.quote}}</blockquote>
-        <figcaption><div class="review__name" data-reveal data-stagger="6">{{reviews.items.1.name}}</div><div class="review__meta" data-reveal data-stagger="6">{{reviews.items.1.meta}}</div></figcaption>
       </figure>
-      <figure class="review" style="margin: 0;" data-reveal data-stagger="6">
+      <figure class="review" style="margin: 0;">
+        <figcaption class="review__head">
+          <span class="review__name">{{reviews.items.2.name}}</span>
+          <span class="review__tags"><span class="review__tag">{{reviews.items.2.tag}}</span></span>
+        </figcaption>
         <blockquote class="review__quote" style="margin: 0;">{{reviews.items.2.quote}}</blockquote>
-        <figcaption><div class="review__name" data-reveal data-stagger="6">{{reviews.items.2.name}}</div><div class="review__meta" data-reveal data-stagger="6">{{reviews.items.2.meta}}</div></figcaption>
       </figure>
+      </div>
     </div>
   </div>
 </section>

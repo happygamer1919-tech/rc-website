@@ -233,19 +233,29 @@
       "0": {
         "quote": "Acoperișul metalic a fost montat curat, la termen și fără costuri surpriză. Recomand cu încredere.",
         "name": "Ion Miron",
-        "meta": "Chișinău · acoperiș metalic"
+        "meta": "Chișinău · acoperiș metalic",
+        "locality": "Chișinău",
+        "tag": "acoperiș metalic"
       },
       "1": {
         "quote": "Fațada și izolația au schimbat complet casa: mai caldă iarna și mult mai frumoasă. Echipă serioasă.",
         "name": "Maria Oprea",
-        "meta": "Orhei · fațadă + izolație"
+        "meta": "Orhei · fațadă + izolație",
+        "locality": "Orhei",
+        "tag": "fațadă + izolație"
       },
       "2": {
         "quote": "Colaborăm pe mai multe proiecte. Calitate constantă și termene respectate, exact ce cauți la un partener.",
         "name": "Andrei Condrea",
-        "meta": "Dezvoltator imobiliar"
+        "meta": "Dezvoltator imobiliar",
+        "tag": "Dezvoltator imobiliar"
       }
-    }
+    },
+    "score": "4.9",
+    "outOf": "din 5",
+    "count": "250+ recenzii",
+    "aria": "Nota medie 4.9 din 5",
+    "google": "Vezi recenziile pe Google"
   },
   "form": {
     "eyebrow": "Cere ofertă",

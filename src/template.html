@@ -23,7 +23,9 @@
 <link rel="apple-touch-icon" href="{{base}}/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap"></noscript>
 <link rel="stylesheet" href="{{base}}/styles.css">
 <meta name="theme-color" content="#F65308">
 <link rel="manifest" href="{{base}}/site.webmanifest">
@@ -103,9 +105,9 @@
       </a>
       <a class="btn btn--primary" href="#oferta">{{header.cta}}</a>
       <div class="lang" data-lang="{{meta.lang}}">
-        <a class="lang__ro" href="{{hrefRo}}" hreflang="ro" aria-label="Comută pe română">RO</a>
+        <a class="lang__ro" href="{{hrefRo}}" hreflang="ro" aria-label="RO — Comută pe română">RO</a>
         <span class="lang__sep" aria-hidden="true"></span>
-        <a class="lang__ru" href="{{hrefRu}}" hreflang="ru" aria-label="Переключить на русский">RU</a>
+        <a class="lang__ru" href="{{hrefRu}}" hreflang="ru" aria-label="RU — Переключить на русский">RU</a>
       </div>
     </div>
 
@@ -131,9 +133,9 @@
   <div class="mobile-panel__foot">
     <a href="tel:+37376837180">{{header.phone}}</a>
     <div class="lang" data-lang="{{meta.lang}}">
-      <a class="lang__ro" href="{{hrefRo}}" hreflang="ro" aria-label="Comută pe română">RO</a>
+      <a class="lang__ro" href="{{hrefRo}}" hreflang="ro" aria-label="RO — Comută pe română">RO</a>
       <span class="lang__sep" aria-hidden="true"></span>
-      <a class="lang__ru" href="{{hrefRu}}" hreflang="ru" aria-label="Переключить на русский">RU</a>
+      <a class="lang__ru" href="{{hrefRu}}" hreflang="ru" aria-label="RU — Переключить на русский">RU</a>
     </div>
   </div>
 </div>

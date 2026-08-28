@@ -209,6 +209,11 @@ for (const l of loaded) {
       // priceLine2 is roofing-specific ("Rate 0% la acoperis"), so it appears
       // only on that service. The other two lines are the site-wide offer.
       'svc.priceExtra': slug === 'acoperisuri' ? ' · ' + l.strings['hero.priceLine2'] : '',
+      // Indexable only when this service has at least one renderable project
+      // whose cover is a real photograph rather than a generated placeholder.
+      // Same shape as the privacy-page gate: it clears itself.
+      'svc.robots': renderableProjects(l, slug).some((p) => coverIsRealPhoto(p.cover))
+        ? 'index, follow' : 'noindex, nofollow',
     };
     svcVars['svc.gallerySection'] = renderGallerySection(l, slug, vars);
     svcVars['svc.footerLinks'] = SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
@@ -257,10 +262,12 @@ const extraPages = privacyIncomplete ? [] : [
   { loc: SITE + BASE + PRIVACY_PATH.ru, lang: 'ru' },
 ];
 // The 18 service pages, paired ro/ru by slug so each carries both alternates.
-const servicePairs = SERVICE_SLUGS.map((sg) => ({
-  ro: SITE + BASE + SERVICES_ROOT.ro + sg + '/',
-  ru: SITE + BASE + SERVICES_ROOT.ru + sg + '/',
-}));
+const servicePairs = SERVICE_SLUGS
+  .filter((sg) => loaded.some((l) => renderableProjects(l, sg).some((p) => coverIsRealPhoto(p.cover))))
+  .map((sg) => ({
+    ro: SITE + BASE + SERVICES_ROOT.ro + sg + '/',
+    ru: SITE + BASE + SERVICES_ROOT.ru + sg + '/',
+  }));
 fs.writeFileSync('dist/sitemap.xml',
   '<?xml version="1.0" encoding="UTF-8"?>\n' +
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +
@@ -313,6 +320,12 @@ console.log('generated robots.txt, sitemap.xml, site.webmanifest');
 
 console.log(`base path: ${BASE || '(root)'}    site: ${SITE}`);
 console.log(`google reviews link: ${GOOGLE_REVIEWS_URL || 'HIDDEN (set GOOGLE_REVIEWS_URL to reveal)'}`);
+{
+  const indexable = SERVICE_SLUGS.filter((sg) =>
+    loaded.some((l) => renderableProjects(l, sg).some((p) => coverIsRealPhoto(p.cover))));
+  console.log(`service pages indexable: ${indexable.length}/9` +
+    (indexable.length ? ` (${indexable.join(', ')})` : ' — all noindex until a real cover photo lands'));
+}
 if (privacyIncomplete) {
   console.log(`\nPRIVACY PAGE INCOMPLETE: ${privacyTodos.length} TODO field(s) still unfilled.`);
   privacyTodos.forEach((t) => console.log('  · ' + t));

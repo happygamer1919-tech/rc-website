@@ -8,7 +8,7 @@
 > portfolio reuses project covers. Fill the **File / notes** column during the
 > selection session with Mihai. Leave it blank if no real photo exists.
 
-**Total: 47 photo slots.** 41 project slots (9 covers + 32 gallery)
+**Total: 51 photo slots.** 45 project slots (10 covers + 35 gallery)
 + 5 process stages + 1 social share. Full arithmetic in *Slot count* below.
 
 Every file: minimum 1600px long edge, landscape, JPG, under 400KB after
@@ -75,6 +75,7 @@ Gallery is 3:2 landscape 1400x933. Gallery slot 04 is optional.
 | `instalatii-01` | instalatii | `proj-instalatii-01-cover` | `-01` `-02` `-03` | |
 | `industrial-01` | industrial | `proj-industrial-01-cover` | `-01` `-02` `-03` | |
 | `terasamente-01` | terasamente | `proj-terasamente-01-cover` | `-01` `-02` `-03` | |
+| `case-la-cheie-02` | case-la-cheie | `proj-case-la-cheie-02-cover` | `-01` `-02` `-03` | Added W2-01: carries the sixth real live-site entry, which a strict one-per-service seed would have orphaned |
 
 ### Shooting notes, one line per slot
 
@@ -167,21 +168,21 @@ Strongest version is one house at five moments.
 
 | Group | Slots |
 |---|---|
-| Project covers, 9 projects x 1 | 9 |
-| Project gallery, 5 projects x 4 + 4 projects x 3 | 32 |
+| Project covers, 10 projects x 1 | 10 |
+| Project gallery, 5 projects x 4 + 5 projects x 3 | 35 |
 | Process stages | 5 |
 | Social share | 1 |
-| **Total photo slots** | **47** |
+| **Total photo slots** | **51** |
 | Delivered illustrations (`hero-panel` + 9 service SVGs) | 10 |
 | Logo and favicon assets | 4 |
-| **Total assets tracked** | **61** |
+| **Total assets tracked** | **65** |
 
-**47 photographs to collect**, up from V1's 12 remaining photo slots, because
+**51 photographs to collect**, up from V1's 12 remaining photo slots, because
 the portfolio moved from six one-off covers to nine documented projects with
 galleries. That is the cost of the project model, and it is the number to plan
 the shooting days around.
 
-Minimum viable set: the 9 covers plus 5 process stages = **14 photographs**.
+Minimum viable set: the 10 covers plus 5 process stages = **15 photographs**.
 Galleries can land per project afterwards without blocking launch.
 
 ---

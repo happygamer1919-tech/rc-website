@@ -1,0 +1,250 @@
+{
+  "_note": "Project content model. Slot IDs follow docs/RC-PHOTO-MANIFEST.md v2. Every \"TODO:\" value is a field with no source in the existing content or on the original live site; fill it rather than inventing.",
+  "projects": [
+    {
+      "id": "case-la-cheie-01",
+      "service": "case-la-cheie",
+      "serviceIndex": 0,
+      "title": {
+        "ro": "Casă cu parter și etaj, în lucru",
+        "ru": "Двухэтажный дом в работе"
+      },
+      "summary": {
+        "ro": "Pereți tencuiți, acoperiș montat și schela încă pe fațadă.",
+        "ru": "Оштукатуренные стены, смонтированная кровля и леса ещё на фасаде."
+      },
+      "location": {
+        "ro": "TODO: localitate",
+        "ru": "TODO: населённый пункт"
+      },
+      "year": "TODO: an",
+      "cover": "proj-case-la-cheie-01-cover",
+      "gallery": [
+        "proj-case-la-cheie-01-01",
+        "proj-case-la-cheie-01-02",
+        "proj-case-la-cheie-01-03",
+        "proj-case-la-cheie-01-04"
+      ]
+    },
+    {
+      "id": "acoperisuri-01",
+      "service": "acoperisuri",
+      "serviceIndex": 1,
+      "title": {
+        "ro": "Acoperiș din șindrilă bituminoasă",
+        "ru": "Крыша из битумной черепицы"
+      },
+      "summary": {
+        "ro": "Acoperiș în patru ape din șindrilă bituminoasă antracit, cu dolii și coșuri finisate, pe o casă nouă din suburbie.",
+        "ru": "Четырёхскатная крыша из антрацитовой битумной черепицы, с ендовами и отделанными дымоходами, на новом доме в пригороде."
+      },
+      "location": {
+        "ro": "TODO: localitate",
+        "ru": "TODO: населённый пункт"
+      },
+      "year": "TODO: an",
+      "cover": "proj-acoperisuri-01-cover",
+      "gallery": [
+        "proj-acoperisuri-01-01",
+        "proj-acoperisuri-01-02",
+        "proj-acoperisuri-01-03",
+        "proj-acoperisuri-01-04"
+      ]
+    },
+    {
+      "id": "fatade-01",
+      "service": "fatade",
+      "serviceIndex": 2,
+      "title": {
+        "ro": "Termoizolație pe o casă la parter",
+        "ru": "Утепление одноэтажного дома"
+      },
+      "summary": {
+        "ro": "Plăci de vată montate pe pereți, sub acoperișul deja pus.",
+        "ru": "Плиты минеральной ваты на стенах, под уже уложенной кровлей."
+      },
+      "location": {
+        "ro": "TODO: localitate",
+        "ru": "TODO: населённый пункт"
+      },
+      "year": "TODO: an",
+      "cover": "proj-fatade-01-cover",
+      "gallery": [
+        "proj-fatade-01-01",
+        "proj-fatade-01-02",
+        "proj-fatade-01-03",
+        "proj-fatade-01-04"
+      ]
+    },
+    {
+      "id": "reparatii-01",
+      "service": "reparatii",
+      "serviceIndex": 3,
+      "title": {
+        "ro": "Acoperiș nou pe casă existentă",
+        "ru": "Новая крыша на существующем доме"
+      },
+      "summary": {
+        "ro": "Înlocuirea completă a acoperișului cu țiglă metalică antracit, pe o casă mai veche din zona colinară.",
+        "ru": "Полная замена кровли на металлочерепицу антрацитового цвета на старом доме в холмистой местности."
+      },
+      "location": {
+        "ro": "TODO: localitate",
+        "ru": "TODO: населённый пункт"
+      },
+      "year": "TODO: an",
+      "cover": "proj-reparatii-01-cover",
+      "gallery": [
+        "proj-reparatii-01-01",
+        "proj-reparatii-01-02",
+        "proj-reparatii-01-03",
+        "proj-reparatii-01-04"
+      ]
+    },
+    {
+      "id": "finisaje-01",
+      "service": "finisaje",
+      "serviceIndex": 4,
+      "title": {
+        "ro": "Terasă cu bucătărie de vară",
+        "ru": "Терраса с летней кухней"
+      },
+      "summary": {
+        "ro": "Terasă placată cu travertin, geamuri glisante mari și șemineu exterior din piatră, chiar lângă casă.",
+        "ru": "Терраса, облицованная травертином, с большими раздвижными окнами и уличным камином из камня, рядом с домом."
+      },
+      "location": {
+        "ro": "TODO: localitate",
+        "ru": "TODO: населённый пункт"
+      },
+      "year": "TODO: an",
+      "cover": "proj-finisaje-01-cover",
+      "gallery": [
+        "proj-finisaje-01-01",
+        "proj-finisaje-01-02",
+        "proj-finisaje-01-03",
+        "proj-finisaje-01-04"
+      ]
+    },
+    {
+      "id": "proiectare-3d-01",
+      "service": "proiectare-3d",
+      "serviceIndex": 5,
+      "title": {
+        "ro": "TODO: titlu proiect",
+        "ru": "TODO: название проекта"
+      },
+      "summary": {
+        "ro": "TODO: descriere proiect",
+        "ru": "TODO: описание проекта"
+      },
+      "location": {
+        "ro": "TODO: localitate",
+        "ru": "TODO: населённый пункт"
+      },
+      "year": "TODO: an",
+      "cover": "proj-proiectare-3d-01-cover",
+      "gallery": [
+        "proj-proiectare-3d-01-01",
+        "proj-proiectare-3d-01-02",
+        "proj-proiectare-3d-01-03"
+      ]
+    },
+    {
+      "id": "instalatii-01",
+      "service": "instalatii",
+      "serviceIndex": 6,
+      "title": {
+        "ro": "TODO: titlu proiect",
+        "ru": "TODO: название проекта"
+      },
+      "summary": {
+        "ro": "TODO: descriere proiect",
+        "ru": "TODO: описание проекта"
+      },
+      "location": {
+        "ro": "TODO: localitate",
+        "ru": "TODO: населённый пункт"
+      },
+      "year": "TODO: an",
+      "cover": "proj-instalatii-01-cover",
+      "gallery": [
+        "proj-instalatii-01-01",
+        "proj-instalatii-01-02",
+        "proj-instalatii-01-03"
+      ]
+    },
+    {
+      "id": "industrial-01",
+      "service": "industrial",
+      "serviceIndex": 7,
+      "title": {
+        "ro": "TODO: titlu proiect",
+        "ru": "TODO: название проекта"
+      },
+      "summary": {
+        "ro": "TODO: descriere proiect",
+        "ru": "TODO: описание проекта"
+      },
+      "location": {
+        "ro": "TODO: localitate",
+        "ru": "TODO: населённый пункт"
+      },
+      "year": "TODO: an",
+      "cover": "proj-industrial-01-cover",
+      "gallery": [
+        "proj-industrial-01-01",
+        "proj-industrial-01-02",
+        "proj-industrial-01-03"
+      ]
+    },
+    {
+      "id": "terasamente-01",
+      "service": "terasamente",
+      "serviceIndex": 8,
+      "title": {
+        "ro": "TODO: titlu proiect",
+        "ru": "TODO: название проекта"
+      },
+      "summary": {
+        "ro": "TODO: descriere proiect",
+        "ru": "TODO: описание проекта"
+      },
+      "location": {
+        "ro": "TODO: localitate",
+        "ru": "TODO: населённый пункт"
+      },
+      "year": "TODO: an",
+      "cover": "proj-terasamente-01-cover",
+      "gallery": [
+        "proj-terasamente-01-01",
+        "proj-terasamente-01-02",
+        "proj-terasamente-01-03"
+      ]
+    },
+    {
+      "id": "case-la-cheie-02",
+      "service": "case-la-cheie",
+      "serviceIndex": 0,
+      "title": {
+        "ro": "Casă finisată, cu acoperiș nou",
+        "ru": "Готовый дом с новой кровлей"
+      },
+      "summary": {
+        "ro": "Fațadă gata, învelitoare nouă din țiglă metalică și curtea eliberată.",
+        "ru": "Фасад закончен, кровля из металлочерепицы новая, двор освобождён."
+      },
+      "location": {
+        "ro": "TODO: localitate",
+        "ru": "TODO: населённый пункт"
+      },
+      "year": "TODO: an",
+      "cover": "proj-case-la-cheie-02-cover",
+      "gallery": [
+        "proj-case-la-cheie-02-01",
+        "proj-case-la-cheie-02-02",
+        "proj-case-la-cheie-02-03"
+      ]
+    }
+  ]
+}

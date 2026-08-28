@@ -424,5 +424,17 @@
       "id": "supplier-08",
       "name": "supplier-08"
     }
+  },
+  "servicePage": {
+    "breadcrumbAria": "Firul Ariadnei",
+    "home": "Acasă",
+    "all": "Servicii",
+    "galleryH": "Proiecte",
+    "galleryEmpty": "Proiectele pentru acest serviciu se adaugă după sesiunea foto.",
+    "priceH": "Preț și condiții",
+    "ctaH": "Cere o ofertă pentru acest serviciu",
+    "backToServices": "Vezi toate serviciile",
+    "projectLocation": "Localitate",
+    "projectYear": "An"
   }
 }

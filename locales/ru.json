@@ -424,5 +424,17 @@
       "id": "supplier-08",
       "name": "supplier-08"
     }
+  },
+  "servicePage": {
+    "breadcrumbAria": "Хлебные крошки",
+    "home": "Главная",
+    "all": "Услуги",
+    "galleryH": "Проекты",
+    "galleryEmpty": "Проекты для этой услуги добавим после фотосессии.",
+    "priceH": "Цена и условия",
+    "ctaH": "Запросить смету на эту услугу",
+    "backToServices": "Смотреть все услуги",
+    "projectLocation": "Населённый пункт",
+    "projectYear": "Год"
   }
 }

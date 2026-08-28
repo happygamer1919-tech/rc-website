@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="{{meta.lang}}" dir="{{meta.dir}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{svc.title}} · Rapid Construct</title>
+<meta name="description" content="{{svc.desc}}">
+<link rel="canonical" href="{{svc.canonical}}">
+<link rel="alternate" hreflang="ro" href="{{svc.urlRo}}">
+<link rel="alternate" hreflang="ru" href="{{svc.urlRu}}">
+<link rel="alternate" hreflang="x-default" href="{{svc.urlRo}}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{svc.title}} · Rapid Construct">
+<meta property="og:description" content="{{svc.desc}}">
+<meta property="og:url" content="{{svc.canonical}}">
+<meta property="og:locale" content="{{meta.ogLocale}}">
+<meta property="og:image" content="{{ogImage}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{meta.ogImageAlt}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F65308">
+<link rel="icon" href="{{base}}/favicon-512.png" sizes="512x512" type="image/png">
+<link rel="apple-touch-icon" href="{{base}}/favicon-180.png">
+<link rel="manifest" href="{{base}}/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap"></noscript>
+<link rel="stylesheet" href="{{base}}/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "{{svc.title}}",
+  "description": "{{svc.desc}}",
+  "serviceType": "{{svc.title}}",
+  "url": "{{svc.canonical}}",
+  "areaServed": [
+    { "@type": "City", "name": "Chișinău" },
+    { "@type": "City", "name": "Codru" },
+    { "@type": "City", "name": "Coșnița" },
+    { "@type": "City", "name": "Costești" },
+    { "@type": "City", "name": "Căinari" },
+    { "@type": "City", "name": "Sociteni" }
+  ],
+  "provider": {
+    "@type": "GeneralContractor",
+    "@id": "{{urlRo}}#business",
+    "name": "Rapid Construct",
+    "telephone": "+37376837180",
+    "email": "rapidconstructmd@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Nicolae Zelinski 24",
+      "addressLocality": "Chișinău",
+      "addressCountry": "MD"
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "{{servicePage.home}}", "item": "{{canonical}}" },
+    { "@type": "ListItem", "position": 2, "name": "{{servicePage.all}}", "item": "{{servicesHref}}" },
+    { "@type": "ListItem", "position": 3, "name": "{{svc.title}}" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<script>
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.documentElement.className += ' js-motion';
+}
+</script>
+
+<a class="skip-link" href="#continut">{{meta.skipToContent}}</a>
+
+<header class="header">
+  <div class="header__inner">
+    <div class="header__pill">
+    <a class="header__logo" href="{{homeHref}}"><img src="{{base}}/logo-white.png" alt="{{meta.logoAlt}}" width="1542" height="568"></a>
+
+    <nav class="nav">
+      <a href="{{homeHref}}">{{header.navHome}}</a>
+      <a href="{{servicesHref}}" aria-current="page">{{header.navServices}}</a>
+      <a href="{{portfolioHref}}">{{header.navPortfolio}}</a>
+      <a href="{{aboutHref}}">{{header.navAbout}}</a>
+      <a href="{{contactHref}}">{{header.navContacts}}</a>
+    </nav>
+
+    <div class="header__actions">
+      <a class="header__phone" href="tel:+37376837180" aria-label="{{header.phoneAria}}">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        <span>{{header.phone}}</span>
+      </a>
+      <a class="btn btn--primary" href="#oferta">{{header.cta}}</a>
+      <div class="lang" data-lang="{{meta.lang}}">
+        <a class="lang__ro" href="{{svc.pathRo}}" hreflang="ro" aria-label="RO — Comută pe română">RO</a>
+        <span class="lang__sep" aria-hidden="true"></span>
+        <a class="lang__ru" href="{{svc.pathRu}}" hreflang="ru" aria-label="RU — Переключить на русский">RU</a>
+      </div>
+    </div>
+
+    <div class="header__mobile">
+      <a class="icon-btn icon-btn--call" href="tel:+37376837180" aria-label="{{header.phoneAria}}">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      </a>
+      <button class="icon-btn" type="button" id="menu-toggle" aria-expanded="false" aria-controls="mobile-panel" aria-label="{{header.menuOpen}}" data-label-open="{{header.menuOpen}}" data-label-close="{{header.menuClose}}">
+        <svg class="icon-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <svg class="icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" hidden><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-panel" id="mobile-panel" data-open="false">
+  <a class="mobile-nav-link" href="{{homeHref}}">{{header.navHome}}</a>
+  <a class="mobile-nav-link" href="{{servicesHref}}">{{header.navServices}}</a>
+  <a class="mobile-nav-link" href="{{portfolioHref}}">{{header.navPortfolio}}</a>
+  <a class="mobile-nav-link" href="{{aboutHref}}">{{header.navAbout}}</a>
+  <a class="mobile-nav-link" href="{{contactHref}}">{{header.navContacts}}</a>
+  <a class="btn btn--primary" href="#oferta">{{header.cta}}</a>
+  <div class="mobile-panel__foot">
+    <a href="tel:+37376837180">{{header.phone}}</a>
+    <div class="lang" data-lang="{{meta.lang}}">
+      <a class="lang__ro" href="{{svc.pathRo}}" hreflang="ro" aria-label="RO — Comută pe română">RO</a>
+      <span class="lang__sep" aria-hidden="true"></span>
+      <a class="lang__ru" href="{{svc.pathRu}}" hreflang="ru" aria-label="RU — Переключить на русский">RU</a>
+    </div>
+  </div>
+</div>
+
+<main id="continut">
+
+<!-- 1 · Service hero, illustration on #141414 -->
+<section class="section section--light svc-hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="{{servicePage.breadcrumbAria}}">
+      <a href="{{homeHref}}">{{servicePage.home}}</a>
+      <span aria-hidden="true">/</span>
+      <a href="{{servicesHref}}">{{servicePage.all}}</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{{svc.title}}</span>
+    </nav>
+
+    <div class="svc-hero__grid">
+      <div>
+        <p class="eyebrow">{{services.eyebrow}}</p>
+        <h1>{{svc.title}}</h1>
+        <p class="hero__sub" style="margin: 16px 0 0;">{{svc.desc}}</p>
+        <div class="cta-row" style="justify-content: flex-start; margin-top: 32px;">
+          <a class="btn btn--primary" href="#oferta">{{hero.ctaPrimary}}</a>
+        </div>
+      </div>
+      <div class="svc-hero__art media media--4x3">
+        <img src="{{base}}/img/services/{{svc.slot}}.svg" alt="{{svc.alt}}" width="400" height="300" decoding="async">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · Pricing, reused from the hero price copy -->
+<section class="section section--dark section--compact">
+  <div class="container">
+    <p class="eyebrow" data-reveal>{{servicePage.priceH}}</p>
+    <h2 data-reveal>{{hero.priceTitle}}</h2>
+    <p class="lede" data-reveal style="color: #FFFFFF; opacity: 0.75;">{{hero.priceLine1}}{{svc.priceExtra}}</p>
+  </div>
+</section>
+
+<!-- 4 · Projects for this service -->
+<section class="section section--light section--divided" id="proiecte">
+  <div class="container">
+    <p class="eyebrow" data-reveal>{{servicePage.galleryH}}</p>
+    <h2 data-reveal>{{portfolio.h2}}</h2>
+    {{svc.projects}}
+  </div>
+</section>
+
+<!-- 5 · CTA, the same form as the homepage -->
+<section class="section section--light section--divided" id="oferta">
+  <div class="container">
+    <p class="eyebrow" data-reveal>{{form.eyebrow}}</p>
+    <h2 data-reveal>{{servicePage.ctaH}}</h2>
+    <p class="lede" data-reveal>{{form.intro}}</p>
+
+    <div class="form-layout" style="margin-top: 40px;">
+      <form class="form-card form-card--stack" id="quote-form" method="POST" action="{{formAction}}" novalidate data-armed="{{formArmed}}" data-ok="{{form.ok}}" data-fail="{{form.fail}}" data-demo="{{form.demoNotice}}">
+        <input type="hidden" name="access_key" value="{{formEndpoint}}">
+        <input type="hidden" name="subject" value="{{svc.title}} — rapidconstruct.md">
+        <input type="hidden" name="from_name" value="Rapid Construct">
+        <input type="hidden" name="serviciu" value="{{svc.title}}">
+        <div class="honeypot" aria-hidden="true"><label for="botcheck">{{form.honeypotLabel}}</label><input id="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></div>
+
+        <h3>{{form.cardTitle}}</h3>
+
+        <div class="field">
+          <label for="f-name">{{form.labelName}}</label>
+          <input id="f-name" name="nume" type="text" placeholder="{{form.phName}}" autocomplete="name" required aria-describedby="e-name">
+          <p class="field__error" id="e-name" hidden>{{form.errName}}</p>
+        </div>
+
+        <div class="field">
+          <label for="f-phone">{{form.labelPhone}}</label>
+          <input id="f-phone" name="telefon" type="tel" placeholder="{{form.phPhone}}" autocomplete="tel" required aria-describedby="h-phone e-phone">
+          <p class="field__hint" id="h-phone">{{form.hintPhone}}</p>
+          <p class="field__error" id="e-phone" hidden>{{form.errPhone}}</p>
+        </div>
+
+        <div class="field">
+          <label for="f-city">{{form.labelCity}}</label>
+          <input id="f-city" name="localitate" type="text" placeholder="{{form.phCity}}" autocomplete="address-level2" aria-describedby="h-city">
+          <p class="field__hint" id="h-city">{{form.hintCity}}</p>
+        </div>
+
+        <div class="field">
+          <label for="f-message">{{form.labelMessage}}</label>
+          <textarea id="f-message" name="mesaj" rows="4" placeholder="{{form.phMessage}}"></textarea>
+        </div>
+
+        <div class="consent">
+          <input id="f-consent" name="acord" type="checkbox" required aria-describedby="e-consent">
+          <label for="f-consent">{{form.consentPre}} <a href="{{privacyHref}}">{{form.consentLink}}</a>{{form.consentPost}}</label>
+        </div>
+        <p class="field__error" id="e-consent" hidden>{{form.errConsent}}</p>
+
+        <button class="btn btn--primary" type="submit" style="align-self: flex-start;">{{form.submit}}</button>
+        <p class="form-status" id="form-status" role="status" hidden></p>
+      </form>
+
+      <div class="form-aside">
+        <div class="form-card">
+          <h3>{{form.sideTitle}}</h3>
+          <p class="muted" style="margin-top: 12px;">{{form.sideBody}}</p>
+          <p class="muted" style="margin-top: 12px;">{{form.sideNote}}</p>
+        </div>
+        <div class="form-card">
+          <p class="eyebrow">{{form.phoneEyebrow}}</p>
+          <a class="aside__phone" href="tel:+37376837180">{{header.phone}}</a>
+          <p class="muted">{{form.hours}}</p>
+        </div>
+        <a class="link-arrow" href="{{servicesHref}}">{{servicePage.backToServices}}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer" id="contacte">
+  <div class="container">
+    <div class="footer__cols">
+      <div class="footer__brand">
+        <img src="{{base}}/logo-white.png" alt="{{meta.logoAlt}}" width="1542" height="568">
+        <p class="footer__desc">{{footer.description}}</p>
+        <p class="footer__offer">{{footer.offer}}</p>
+      </div>
+      <div class="footer__lists">
+        <div>
+          <p class="footer__heading">{{footer.navHeading}}</p>
+          <div class="footer__links">
+            <a href="{{homeHref}}">{{header.navHome}}</a>
+            <a href="{{servicesHref}}">{{header.navServices}}</a>
+            <a href="{{portfolioHref}}">{{header.navPortfolio}}</a>
+            <a href="{{aboutHref}}">{{header.navAbout}}</a>
+            <a href="{{contactHref}}">{{header.navContacts}}</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer__heading">{{footer.servicesHeading}}</p>
+          <div class="footer__links">{{svc.footerLinks}}</div>
+        </div>
+      </div>
+      <div>
+        <p class="footer__heading">{{footer.contactHeading}}</p>
+        <dl class="footer__contact">
+          <div><dt>{{footer.addressLabel}}</dt><dd>{{footer.address}}</dd></div>
+          <div><dt>{{footer.phoneLabel}}</dt><dd><a href="tel:+37376837180">{{header.phone}}</a></dd></div>
+          <div><dt>{{footer.emailLabel}}</dt><dd><a href="mailto:rapidconstructmd@gmail.com">{{footer.email}}</a></dd></div>
+          <div><dt>{{footer.hoursLabel}}</dt><dd>{{form.hours}}</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bar">
+    <div class="footer__bar-inner">
+      <div>{{footer.copyright}} · {{footer.region}}</div>
+      <div class="footer__legal"><a href="{{privacyHref}}">{{footer.privacy}}</a></div>
+    </div>
+  </div>
+</footer>
+
+<div class="floating">
+  <a class="floating__wa" href="https://wa.me/37376837180" aria-label="{{footer.whatsappAria}}" target="_blank" rel="noopener noreferrer">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.82 9.82 0 0 1 6.988 2.896 9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.82 11.82 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.88 11.88 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413Z"/></svg>
+  </a>
+  <a class="floating__call" href="tel:+37376837180" aria-label="{{header.phoneAria}}">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+  </a>
+</div>
+
+<script src="{{base}}/main.js" defer></script>
+</body>
+</html>

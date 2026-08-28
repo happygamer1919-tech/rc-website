@@ -616,8 +616,24 @@ p { margin: 0; }
   text-transform: none; letter-spacing: 0; margin-bottom: 16px;
 }
 .hero-claim__line { color: var(--bg-light); margin-bottom: 8px; }
-.hero-claim__divider { height: 1px; background: rgba(255, 255, 255, 0.25); margin: 32px 0 20px; border: 0; }
-.hero-claim__highlight { color: var(--brand); font-weight: 700; font-size: 16px; margin-top: auto; }
+
+/* CTA sits inside the card, left aligned, in the space above the divider. */
+.hero-claim__cta { align-self: flex-start; margin-top: 20px; }
+
+.hero-claim__divider { height: 1px; background: rgba(255, 255, 255, 0.25); margin: 24px 0 16px; border: 0; margin-top: auto; }
+
+/* Three separate rows, each with its own middot marker. */
+.hero-claim__highlights { list-style: none; margin: 0; padding: 0; }
+.hero-claim__highlights li {
+  color: var(--brand); font-weight: 700; font-size: 16px; line-height: 1.5;
+  padding-left: 16px; position: relative;
+  /* one line each: never wrap into six rows */
+  text-wrap: pretty;
+}
+.hero-claim__highlights li::before {
+  content: '·'; position: absolute; left: 0; top: 0;
+}
+.hero-claim__highlights li + li { margin-top: 4px; }
 .hero-panel-media { border-radius: var(--radius-card); border: 1px solid var(--line); overflow: hidden; }
 /* contain, not cover. The illustration is 4:3 and the box is 4:3, so the two
    render identically today, but contain guarantees a future asset at a
@@ -820,6 +836,8 @@ p { margin: 0; }
 
   .hero-claim { padding: 24px; }
   .hero-claim h2 { font-size: 22px; }
+  .hero-claim__cta { width: 100%; align-self: stretch; }
+  .hero-claim__highlights li { font-size: 15px; }
   .modal__panel { padding: 24px; }
   .modal h2 { font-size: 22px; }
   .media--illustration { padding: 16px; }

@@ -169,17 +169,19 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         <h2>{{trust.items.0.title}}</h2>
         <p class="hero-claim__line">{{trust.items.0.line}}</p>
         <p class="hero-claim__line">{{trust.items.1.line}}</p>
+        <a class="btn btn--primary hero-claim__cta" href="#oferta">{{hero.ctaPrimary}}</a>
         <hr class="hero-claim__divider">
-        <p class="hero-claim__highlight">{{footer.offer}}</p>
+        <ul class="hero-claim__highlights">
+          <li>{{hero.highlights.0}}</li>
+          <li>{{hero.highlights.1}}</li>
+          <li>{{hero.highlights.2}}</li>
+        </ul>
       </div>
       <div class="hero-panel-media media media--4x3">
         <img src="{{base}}/img/hero-panel.svg" alt="{{hero.panelAlt}}" width="800" height="600" loading="lazy" decoding="async">
       </div>
     </div>
 
-    <div class="cta-row">
-      <a class="btn btn--primary" href="#oferta">{{hero.ctaPrimary}}</a>
-    </div>
   </div>
 </section>
 

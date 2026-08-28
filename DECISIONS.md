@@ -66,3 +66,31 @@ None of this reached `dist/`:
   backgrounds, so `<img>` alt text survives for Romanian-language SEO and no
   broken-image icon is ever possible. See `scripts/gen-placeholders.js`.
 - Form posts to Web3Forms. Access key comes from `WEB3FORMS_KEY` at build time.
+
+## Dead-link audit, 2026-08-28
+
+Every `href` in the built page resolves to a real target: there are no broken
+anchors. The problem is semantic, links whose destination does not match their
+promise. Findings and recommendations:
+
+| Link | Count | Currently | Verdict |
+|---|---|---|---|
+| Consent "politicii de confidențialitate" | 1 | `#contacte` | **Genuinely misleading.** A privacy-policy link pointing at the footer. Legally meaningful. |
+| Footer "Politica de confidențialitate" / "Politica cookie" | 2 | `#contacte` | Same problem. |
+| "Vezi tot portofoliul" | 1 | `#oferta` | **Misleading.** "See the whole portfolio" opening a quote form. All six projects are already on screen, so the button is also redundant. |
+| Nine "Află mai multe" on service cards | 9 | `#oferta` | Weak. "Learn more" delivering a form. Defensible for a contractor, but it is not what the label says. |
+| Six footer service links | 6 | `#servicii` | Weak. All six land on the same section rather than their own service. |
+| Nav "Despre noi" | 1 | `#despre` | **Fine.** That section is the about-us content. |
+| Nav "Contacte" | 1 | `#contacte` | **Fine.** Footer carries address, phone, email, hours. |
+
+Recommendation, pending Ivan's decision:
+
+1. Privacy and cookie links: remove the anchor and leave the consent sentence as
+   plain text until real policy pages exist. Do not point them at a section.
+2. "Vezi tot portofoliul": remove the button. The grid is the whole portfolio.
+3. "Află mai multe": relabel to "Cere ofertă" so the label matches `#oferta`.
+   Cheaper and more honest than building nine sub-pages.
+4. Footer service links: point each at `#servicii` but keep them, they are
+   navigational rather than promissory. No change.
+
+Nothing here has been changed yet. Each is a one-line edit once decided.

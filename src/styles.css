@@ -818,6 +818,9 @@ p { margin: 0; }
   .grid--3, .grid--5 { grid-template-columns: minmax(0, 1fr); }
   .grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
+  /* W5-03: desktop keeps the tightened 64px; mobile returns to the section
+     rhythm of 56px, which was already inside the intended range. */
+  .hero { padding-top: 56px; }
   .hero .eyebrow { margin-bottom: 16px; }
   .hero { text-align: left; }
   .hero h1 { margin: 0 0 16px; }

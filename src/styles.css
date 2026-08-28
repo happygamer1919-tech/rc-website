@@ -555,11 +555,15 @@ p { margin: 0; }
   display: flex; align-items: center; justify-content: center;
   border: 1px solid var(--line); border-radius: var(--radius-card);
   background: var(--bg-light);
+}
+/* The greyscale/60% treatment applies to the LOGO only. Applied to the tile it
+   also dimmed the placeholder label to 2.74:1, below AA. */
+.supplier img {
   filter: grayscale(100%); opacity: 0.6;
   transition: filter var(--hover-dur) ease-out, opacity var(--hover-dur) ease-out;
 }
 @media (hover: hover) {
-  .supplier:hover { filter: grayscale(0%); opacity: 1; }
+  .supplier:hover img { filter: grayscale(0%); opacity: 1; }
 }
 .supplier img { max-width: 120px; max-height: 48px; width: auto; height: auto; }
 .supplier__label {

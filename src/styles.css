@@ -611,7 +611,6 @@ p { margin: 0; }
   text-transform: none; letter-spacing: 0; margin-bottom: 16px;
 }
 .hero-claim__line { color: var(--bg-light); margin-bottom: 8px; }
-.hero-claim__cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
 .hero-claim__divider { height: 1px; background: rgba(255, 255, 255, 0.25); margin: 32px 0 20px; border: 0; }
 .hero-claim__highlight { color: var(--brand); font-weight: 700; font-size: 16px; margin-top: auto; }
 .hero-panel-media { border-radius: var(--radius-card); border: 1px solid var(--line); overflow: hidden; }
@@ -783,8 +782,6 @@ p { margin: 0; }
 
   .hero-claim { padding: 24px; }
   .hero-claim h2 { font-size: 22px; }
-  .hero-claim__cta { flex-direction: column; }
-  .hero-claim__cta .btn { width: 100%; }
   .modal__panel { padding: 24px; }
   .modal h2 { font-size: 22px; }
   .media--illustration { padding: 16px; }

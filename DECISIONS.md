@@ -120,3 +120,31 @@ the other side rather than darkened:
   5.93:1. It reads as a deliberate darker member of the brand family.
 
 Lighthouse accessibility went 96 -> 100 on both locales.
+
+## Phase 1 snapshot, 2026-08-28
+
+Phase 1 is preserved as a standing comparison artefact, the same way the
+rejected build is kept at `rapidconstruct-web.vercel.app`.
+
+| | |
+|---|---|
+| Tag | `phase1-approved` -> `1c4e37ab74de9e3d7340e2140f0a0470e8b30471` |
+| Tagged commit | "Merge site/rc-008: contrast, dead links, privacy pages" |
+| Approved by | Mihai, 2026-08-28 |
+| Repo | `happygamer1919-tech/rc-website-v1`, public |
+| Live | https://happygamer1919-tech.github.io/rc-website-v1/ |
+| Current build | https://happygamer1919-tech.github.io/rc-website/ |
+
+**Why both exist.** Master plan section 9 rule 4: keep the comparison artefact
+live, because when Mihai wavers the answer is to show him old against new side
+by side. Phase 1 is what he signed off; the current build carries the phase 2
+motion work and the wave 1 changes on top. Having both on stable URLs means an
+approval can always be re-grounded against the thing that was approved.
+
+The v1 repo is a snapshot of the tag with exactly two edits: `BASE_PATH` set to
+`/rc-website-v1` in the Pages workflow, and one line in its README marking it
+unmaintained. It is not maintained and takes no further commits.
+
+All local feature branches were pushed to origin at the same time, so the
+history is no longer local-only. Before that push only `main` existed remotely;
+16 branches were added.

@@ -134,9 +134,12 @@ for (const l of loaded) {
     // The privacy page ships with TODO legal-identity fields. Until they are
     // filled it must not be indexed and must stay out of the sitemap.
     privacyRobots: privacyIncomplete ? 'noindex, nofollow' : 'index, follow',
-    // With no URL the anchor renders with no href at all: an <a> without href
-    // is not focusable or clickable, so the hidden block contains no dead link.
-    googleHref: GOOGLE_REVIEWS_URL ? ` href="${GOOGLE_REVIEWS_URL}"` : '',
+    // With no URL the anchor is not rendered at all. href="#" was a dead link
+    // and an <a> without href fails Lighthouse's crawlable-anchors audit, so
+    // the whole element is conditional.
+    googleLink: GOOGLE_REVIEWS_URL
+      ? `<a class="link-arrow" href="${GOOGLE_REVIEWS_URL}" target="_blank" rel="noopener noreferrer">${esc(l.strings['reviews.google'])}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>`
+      : '',
     googleHidden: GOOGLE_REVIEWS_URL ? '' : 'hidden',
   };
   // Homepage portfolio: six cards straight off projects.json, each linking to
@@ -206,7 +209,7 @@ for (const l of loaded) {
     const missing = new Set();
     const html = template.replace(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/g, (_, key) => {
       if (!(key in vars)) { missing.add(key); return `{{${key}}}`; }
-      return (key === 'portfolioCards' || key === 'googleHref') ? vars[key] : esc(vars[key]);
+      return (key === 'portfolioCards' || key === 'googleLink') ? vars[key] : esc(vars[key]);
     });
     if (missing.size) die(`${page.template} references unknown keys for locale ${l.code}: ${[...missing].join(', ')}`);
     if (html.includes('{{')) die(`unsubstituted placeholder survived in ${out}`);

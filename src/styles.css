@@ -253,7 +253,9 @@ p { margin: 0; }
 
 /* --- hero ----------------------------------------------------------------- */
 
-.hero { text-align: center; }
+/* W5-01: the eyebrow sat 96px below the band, which read as a hole. Scoped to
+   the hero only; no negative margin, the hero never slides under the header. */
+.hero { text-align: center; padding-top: 64px; }
 .hero .eyebrow { margin-bottom: 24px; }
 .hero h1 { max-width: 900px; margin: 0 auto 24px; text-wrap: pretty; }
 .hero__sub { max-width: 640px; margin: 0 auto 40px; }

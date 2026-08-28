@@ -10,6 +10,9 @@ const SITE = (process.env.SITE_URL || 'https://rapidconstruct.md').replace(/\/$/
 // '/rc-website' for GitHub Pages. Every asset and inter-locale link uses it.
 const BASE = (process.env.BASE_PATH || '').replace(/\/+$/, '');
 const FORM_KEY = (process.env.WEB3FORMS_KEY || '').trim();
+// Single flag for the Google review mark and outbound link. The profile URL is
+// not available yet, so both stay hidden until GOOGLE_REVIEWS_URL is set.
+const GOOGLE_REVIEWS_URL = (process.env.GOOGLE_REVIEWS_URL || '').trim();
 const FORM_ARMED = FORM_KEY.length > 0;
 const FORM_ENDPOINT = FORM_ARMED ? FORM_KEY : 'WEB3FORMS_ACCESS_KEY_PLACEHOLDER';
 
@@ -82,6 +85,8 @@ for (const l of loaded) {
     // The privacy page ships with TODO legal-identity fields. Until they are
     // filled it must not be indexed and must stay out of the sitemap.
     privacyRobots: privacyIncomplete ? 'noindex, nofollow' : 'index, follow',
+    googleReviewsUrl: GOOGLE_REVIEWS_URL || '#',
+    googleHidden: GOOGLE_REVIEWS_URL ? '' : 'hidden',
   };
   for (const page of PAGES) {
     const template = fs.readFileSync(page.template, 'utf8');
@@ -154,6 +159,7 @@ console.log('copied styles.css, main.js and public/ into dist/');
 console.log('generated robots.txt, sitemap.xml, site.webmanifest');
 
 console.log(`base path: ${BASE || '(root)'}    site: ${SITE}`);
+console.log(`google reviews link: ${GOOGLE_REVIEWS_URL || 'HIDDEN (set GOOGLE_REVIEWS_URL to reveal)'}`);
 if (privacyIncomplete) {
   console.log(`\nPRIVACY PAGE INCOMPLETE: ${privacyTodos.length} TODO field(s) still unfilled.`);
   privacyTodos.forEach((t) => console.log('  · ' + t));

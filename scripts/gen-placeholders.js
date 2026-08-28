@@ -143,6 +143,8 @@ const VARIANTS = (slot) => [{ name: slot.id, w: slot.w, h: slot.h }]
 for (const slot of SLOTS) {
   // og-image is a branded card, not a labelled rectangle. See gen-og-image.js.
   if (slot.branded) continue;
+  // Gallery slots are real, but nothing renders them yet, so no placeholder.
+  if (slot.placeholder === false) continue;
   for (const v of VARIANTS(slot)) {
     const jpg = path.join(OUT, v.name + '.jpg');
     if (!FORCE && fs.existsSync(jpg)) {

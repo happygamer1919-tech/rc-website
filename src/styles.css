@@ -322,6 +322,9 @@ p { margin: 0; }
   line-height: 1; padding: 7px 10px; border-radius: var(--radius-control);
 }
 .project[hidden] { display: none; }
+.project__link { display: flex; flex-direction: column; height: 100%; color: inherit; }
+.project__link:hover { color: inherit; }
+.project__link:hover h3 { color: var(--brand-dark); }
 .project__desc { color: var(--ink-muted); }
 .portfolio__foot { display: flex; justify-content: center; margin-top: 40px; }
 .portfolio__empty { color: var(--ink-muted); margin-top: 8px; }

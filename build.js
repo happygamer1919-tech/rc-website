@@ -124,6 +124,8 @@ for (const l of loaded) {
     portfolioHref: BASE + l.home + '#portofoliu',
     aboutHref: BASE + l.home + '#despre',
     contactHref: BASE + l.home + '#contacte',
+    ...Object.fromEntries(SERVICE_SLUGS.map((sg, i) =>
+      [`svcHref${i}`, BASE + SERVICES_ROOT[l.code] + sg + '/'])),
     privacyUrlRoPath: BASE + PRIVACY_PATH.ro,
     privacyUrlRuPath: BASE + PRIVACY_PATH.ru,
     privacyCanonical: SITE + BASE + PRIVACY_PATH[l.code],
@@ -135,6 +137,28 @@ for (const l of loaded) {
     googleReviewsUrl: GOOGLE_REVIEWS_URL || '#',
     googleHidden: GOOGLE_REVIEWS_URL ? '' : 'hidden',
   };
+  // Homepage portfolio: six cards straight off projects.json, each linking to
+  // its project anchor on the relevant service page. Only projects with a real
+  // title are shown; a TODO title must never reach the homepage.
+  const featured = PROJECTS.filter((p) => !p.title[l.code].startsWith('TODO:')).slice(0, 6);
+  vars.portfolioCards = '<div class="grid grid--3" id="portfolio-grid">\n' +
+    featured.map((p, i) => {
+      const href = BASE + SERVICES_ROOT[l.code] + p.service + '/#project-' + p.id;
+      const cat = l.strings[`services.items.${SERVICE_SLUGS.indexOf(p.service)}.title`];
+      return `      <article class="card project" data-cat="${p.service}" data-reveal data-stagger="${Math.min(i, 6)}">
+        <a href="${href}" class="project__link">
+          <div class="media media--3x2 media--card project__media">
+            <img src="${BASE}/img/${p.cover}.jpg" alt="${esc(p.title[l.code])}" width="1400" height="933" loading="lazy" decoding="async">
+            <span class="chip">${esc(cat)}</span>
+          </div>
+          <div class="card__body">
+            <h3>${esc(p.title[l.code])}</h3>
+            <p class="project__desc">${esc(p.summary[l.code])}</p>
+          </div>
+        </a>
+      </article>`;
+    }).join('\n') + '\n    </div>';
+
   // --- 18 service pages -----------------------------------------------------
   for (let i = 0; i < SERVICE_SLUGS.length; i++) {
     const slug = SERVICE_SLUGS[i];
@@ -180,7 +204,7 @@ for (const l of loaded) {
     const missing = new Set();
     const html = template.replace(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/g, (_, key) => {
       if (!(key in vars)) { missing.add(key); return `{{${key}}}`; }
-      return esc(vars[key]);
+      return key === 'portfolioCards' ? vars[key] : esc(vars[key]);
     });
     if (missing.size) die(`${page.template} references unknown keys for locale ${l.code}: ${[...missing].join(', ')}`);
     if (html.includes('{{')) die(`unsubstituted placeholder survived in ${out}`);

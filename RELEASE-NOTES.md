@@ -173,7 +173,11 @@ breaking the first two.
   auto-advancing carousels.
 - No section over 1,400px except the services and portfolio grids, which are
   agreed exceptions.
-- Header opaque at 72px (64px compressed), nav items never wrap.
+- Header opaque, nav items never wrap. The outer bar is 96px desktop / 80px
+  mobile and the inner pill is 64px, compressing to 56px on scroll (52px
+  mobile). `<body>` carries a matching constant spacer.
+  (Corrected 2026-08-31: this line read "72px (64px compressed)", which was
+  stale by three numbers.)
 
 ## Motion (phase 2)
 
@@ -186,10 +190,11 @@ Motion is permitted but never touches scroll. The rules, all enforced:
   never repeat on scroll back up.
 - Reveal 320ms / 16px, hover 200ms / 4px, stagger capped at 6 items (360ms).
 - Nothing in the header or hero animates.
-- The header is `position: fixed` with a constant 72px spacer on `<body>`.
-  It was sticky, but a sticky header keeps its box in flow, so compressing it
-  72px -> 64px shortened the document and shunted every section up 8px
-  mid-scroll. Fixed makes the compression purely visual.
+- The header is `position: fixed` with a constant spacer on `<body>` (96px
+  desktop, 80px mobile). It was sticky, but a sticky header keeps its box in
+  flow, so compressing the pill 64px -> 56px shortened the document and shunted
+  every section up mid-scroll. Fixed makes the compression purely visual.
+  (Corrected 2026-08-31: the spacer and the compression figures were stale.)
 - `prefers-reduced-motion: reduce` disables every effect. Reveals render final,
   hover travel is removed, the marquee stops dead, the header does not animate.
 

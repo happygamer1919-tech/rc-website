@@ -91,3 +91,57 @@ minimum, so the pipeline will accept them and say so. The 2x would be upscaled
 from 1448 to 1600. If better originals exist, they are worth finding first.
 
 **If they are not**, they should be deleted or moved out of the repo root.
+
+---
+
+## Q-06 · The header contradicts a locked master-plan decision — OPEN, opened 2026-08-31 (W7-01)
+
+Found while deriving `docs/CLAUDE.md` from committed material, not while
+looking for it.
+
+Master plan section 3, in the **Locked decisions** table:
+
+> **Header** — White bar with accent. Solid, opaque, sticky. Not transparent,
+> **not a floating dark pill.**
+
+What is built (`src/styles.css`): a white `#FFFFFF` bar, 96px, opaque, fixed,
+1px `--line` bottom border — containing a **`#141414` pill with
+`border-radius: 999px`** that holds the nav, phone, CTA and language switcher.
+
+**`DECISIONS.md` says nothing about the header.** Not one entry. That file
+exists to record every departure from the master plan, and this departure is
+from a decision the plan marks as locked and specifically warns against.
+
+**In fairness to the build**, it honours most of the clause: the bar is white,
+solid, opaque, and not floating (it is fixed with a constant body spacer). It is
+a dark pill *inside* a white bar, not a floating dark pill. Whether that is the
+thing the plan ruled out is a judgement, and that is exactly why it should be
+recorded and is not.
+
+The master plan also specifies header height 72px; the built bar is 96px
+desktop and 80px mobile.
+
+**Nothing was changed.** The header is not this wave's card, it was approved by
+Mihai in the phase 1 snapshot on 2026-08-28, and reversing an approved visual on
+my own reading of an older document would be guessing a product decision.
+
+**Options:**
+
+1. **Ratify it.** The pill shipped, it was approved, it looks deliberate. Add a
+   `DECISIONS.md` entry saying the master plan loses here and why. One paragraph,
+   no code. **Recommended.**
+2. **Revert to the plan.** Drop the pill, put the nav on the white bar in
+   `--ink`. This is a visible change to something Mihai has already signed off,
+   and it would need re-approval.
+3. Leave both documents contradicting each other. Not recommended: the next
+   executor booting from the master plan reads "not a floating dark pill" as a
+   live rule and may "fix" a header nobody asked them to touch.
+
+**Default shipped:** option 3 by inaction, which is why this question exists.
+No code changed and the contradiction is now at least written down.
+
+**Related, already fixed:** `RELEASE-NOTES.md` carried three stale header
+numbers (a "72px spacer" and a "72px -> 64px" compression; the real values are a
+96px spacer and 64px -> 56px). Corrected in the W7-01 commit, since
+`docs/CLAUDE.md` cites that file as a source and citing a wrong source is worse
+than not citing one.

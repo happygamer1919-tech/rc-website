@@ -198,16 +198,21 @@ function heroPanelMedia(l, base) {
 }
 
 // One service card's media box. `variant` picks the two places it is used:
-// the homepage 3x3 grid and the hero of the service page itself.
+// the homepage 3x3 grid, where the card is far below the fold and lazy is
+// right, and the hero of the service page itself, where the image sits beside
+// the h1 and is the LCP candidate, so it must not be lazy.
 function serviceMedia(l, base, i, variant) {
+  const hero = variant === 'hero';
   const slot = SLOT_FOR_SLUG[SERVICE_SLUGS[i]];
   const alt = esc(l.strings[`services.items.${i}.alt`]);
-  const box = variant === 'hero' ? 'svc-hero__art media media--4x3' : 'media media--illustration';
+  const load = hero ? '' : ' loading="lazy"';
   if (onFallback(slot)) {
-    return `<div class="${box}"><img src="${base}/img/services/${slot}.svg" alt="${alt}" width="400" height="300" loading="lazy" decoding="async"></div>`;
+    const box = hero ? 'svc-hero__art media media--4x3' : 'media media--illustration';
+    return `<div class="${box}"><img src="${base}/img/services/${slot}.svg" alt="${alt}" width="400" height="300"${load} decoding="async"></div>`;
   }
-  const photoBox = variant === 'hero' ? 'svc-hero__art svc-hero__art--photo media media--4x3' : 'media media--4x3 media--card';
-  return `<div class="${photoBox}"><img src="${base}/img/${slot}.jpg" srcset="${base}/img/${slot}.jpg 1x, ${base}/img/${slot}@2x.jpg 2x" alt="${alt}" width="800" height="600" loading="lazy" decoding="async"></div>`;
+  const box = hero ? 'svc-hero__art svc-hero__art--photo media media--4x3' : 'media media--4x3 media--card';
+  const prio = hero ? ' fetchpriority="high"' : '';
+  return `<div class="${box}"><img src="${base}/img/${slot}.jpg" srcset="${base}/img/${slot}.jpg 1x, ${base}/img/${slot}@2x.jpg 2x" alt="${alt}" width="800" height="600"${load} decoding="async"${prio}></div>`;
 }
 
 // A renderable project always points at a cover file that exists. Stub covers

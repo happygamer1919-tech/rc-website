@@ -43,11 +43,69 @@ const SLOT_FOR_SLUG = {
 };
 const PROJECTS = JSON.parse(fs.readFileSync('content/projects.json', 'utf8')).projects;
 
+// Supplier logos. One full-colour file per brand, dropped at
+// public/img/suppliers/<slug>.<ext>. There is no second greyscale asset: the
+// default grey state is a CSS filter on the colour file. A brand with no file
+// falls back to its name as text inside the same white tile, per brand, so the
+// first logo to land renders as a logo while the rest stay text.
+const SUPPLIER_LOGO_DIR = 'public/img/suppliers';
+// SVG and PNG only: a logo on a white tile needs a transparent background, and
+// both are sizeable at build time, which keeps width/height on every <img>.
+const SUPPLIER_LOGO_EXT = ['svg', 'png'];
+
+// Intrinsic size of a logo file, so the <img> can carry width and height and
+// never shift layout. PNG: the IHDR header. SVG: viewBox, else width/height.
+function logoSize(file) {
+  const buf = fs.readFileSync(file);
+  if (file.endsWith('.png')) return { w: buf.readUInt32BE(16), h: buf.readUInt32BE(20) };
+  const svg = buf.toString('utf8').slice(0, 2000);
+  const box = svg.match(/viewBox\s*=\s*["']\s*[-\d.]+[,\s]+[-\d.]+[,\s]+([\d.]+)[,\s]+([\d.]+)/);
+  if (box) return { w: Math.round(Number(box[1])), h: Math.round(Number(box[2])) };
+  const w = svg.match(/\bwidth\s*=\s*["']([\d.]+)(?:px)?["']/);
+  const h = svg.match(/\bheight\s*=\s*["']([\d.]+)(?:px)?["']/);
+  return w && h ? { w: Math.round(Number(w[1])), h: Math.round(Number(h[1])) } : null;
+}
+
+function supplierLogo(slug) {
+  for (const ext of SUPPLIER_LOGO_EXT) {
+    const file = `${SUPPLIER_LOGO_DIR}/${slug}.${ext}`;
+    if (!fs.existsSync(file)) continue;
+    return { ext, file, size: logoSize(file) };
+  }
+  return null;
+}
+
+// The twelve tiles, then the same twelve again so the -50% keyframe lands on a
+// seam. Only the first copy is reachable: the second is aria-hidden and carries
+// no tabindex, so a screen reader reads twelve brands and a keyboard user gets
+// twelve tab stops, not twenty-four.
+function renderSupplierChips(l, base) {
+  const brands = [];
+  for (let i = 0; `suppliers.${i}.id` in l.strings; i++) {
+    brands.push({ slug: l.strings[`suppliers.${i}.id`], name: l.strings[`suppliers.${i}.name`] });
+  }
+  const tile = (b, dup) => {
+    const logo = supplierLogo(b.slug);
+    const inner = logo
+      ? `<img class="supplier__logo" src="${base}/img/suppliers/${b.slug}.${logo.ext}"` +
+        ` alt="${dup ? '' : esc(b.name)}"` +
+        (logo.size ? ` width="${logo.size.w}" height="${logo.size.h}"` : '') +
+        ' loading="lazy" decoding="async">'
+      : `<span class="supplier__label">${esc(b.name)}</span>`;
+    return `        <div class="supplier"${dup ? ' aria-hidden="true"' : ' tabindex="0"'}>${inner}</div>`;
+  };
+  return [false, true].flatMap((dup) => brands.map((b) => tile(b, dup))).join('\n');
+}
+
 const PAGES = [
   { template: 'src/template.html', out: (l) => l.out },
   { template: 'src/404.html', out: (l) => (l.code === 'ro' ? 'dist/404.html' : 'dist/ru/404.html') },
   { template: 'src/privacy.html', out: (l) => 'dist' + PRIVACY_PATH[l.code] + 'index.html' },
 ];
+
+// Keys whose value is already HTML built by this file. Everything else is
+// escaped on substitution.
+const RAW_KEYS = new Set(['portfolioCards', 'googleLink', 'supplierChips']);
 
 const die = (msg) => { console.error('\nBUILD FAILED: ' + msg + '\n'); process.exit(1); };
 
@@ -177,6 +235,7 @@ for (const l of loaded) {
   // its project anchor on the relevant service page. Only projects with a real
   // title are shown; a TODO title must never reach the homepage.
   const featured = PROJECTS.filter((p) => !p.title[l.code].startsWith('TODO:')).slice(0, 6);
+  vars.supplierChips = renderSupplierChips(l, BASE);
   vars.portfolioCards = '<div class="grid grid--3" id="portfolio-grid">\n' +
     featured.map((p, i) => {
       const href = BASE + SERVICES_ROOT[l.code] + p.service + '/#project-' + p.id;
@@ -252,7 +311,7 @@ for (const l of loaded) {
     const missing = new Set();
     const html = template.replace(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/g, (_, key) => {
       if (!(key in vars)) { missing.add(key); return `{{${key}}}`; }
-      return (key === 'portfolioCards' || key === 'googleLink') ? vars[key] : esc(vars[key]);
+      return RAW_KEYS.has(key) ? vars[key] : esc(vars[key]);
     });
     if (missing.size) die(`${page.template} references unknown keys for locale ${l.code}: ${[...missing].join(', ')}`);
     if (html.includes('{{')) die(`unsubstituted placeholder survived in ${out}`);

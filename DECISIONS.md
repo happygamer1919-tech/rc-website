@@ -182,3 +182,60 @@ block, remove one to hide it. Nothing else changes.
 **The homepage hero is unaffected.** The price box there was deleted in W1-02
 and the figure now reaches the homepage only through `footer.offer`, which is
 the site-wide standing offer and is not scoped per service.
+
+## Supplier marquee, W6-01, 2026-08-31
+
+Eight placeholder chips became twelve named brands on white logo tiles.
+
+**The tile grew sideways, not downwards.** 160x80 became 200x80. A logo wants
+width; the homepage has under 200px of headroom against the 8,700px cap, so
+height is the expensive axis and buys nothing here. Measured cost of the whole
+card: **0px**. RO stayed 8,504px and RU stayed 8,774px.
+
+**One asset per brand, no greyscale twin.** The default grey state is
+`filter: grayscale(100%); opacity: 0.6` on the colour file. Hover and keyboard
+focus remove it. A second greyscale export would be a file to keep in sync for
+no gain.
+
+**The filter stays off the tile and off the text.** Applied to the tile in phase
+1 it dimmed the placeholder label to 2.74:1. The rule is now scoped to
+`.supplier__logo`, so the text fallback renders full-strength `--ink` on
+`#FFFFFF`: **17.40:1**.
+
+**Fallback is per brand, resolved at build time.** `build.js` looks for
+`public/img/suppliers/<slug>.svg` then `.png`. Found: an `<img>`, with width and
+height read out of the file (PNG IHDR, SVG viewBox) so it can never shift
+layout. Not found: the brand name as text in the same tile. The first logo to
+land renders as a logo while the other eleven stay text.
+
+**Only the first twelve tiles are reachable.** The track carries the list twice
+so the `-50%` keyframe lands on a seam. The second copy is `aria-hidden="true"`
+and carries no `tabindex`, so a screen reader reads twelve brands and a keyboard
+user gets twelve tab stops, not twenty-four. Under `prefers-reduced-motion` the
+duplicate is `display: none`: with no loop it is just twelve repeated tiles.
+
+**Keyboard focus does what hover does, and one thing hover does not.** Pause is
+`:hover, :focus-within` on the viewport; colour restore is `:hover,
+:focus-visible` on the tile. Both are pure CSS state on an animation, so nothing
+registers a wheel, touch or scroll handler and scrolling cannot be delayed,
+captured or hijacked. Verified with real keyboard input: 12 tab stops, a 2px
+`--brand` ring, `animation-play-state: paused`, page scroll unmoved.
+
+The one thing focus does that hover does not is scroll the viewport sideways.
+An `overflow: hidden` box is still a scroll container, so Chrome scrolls it to
+keep the focused tile visible — measured at 997px. That is the behaviour we
+want, it is what keeps the focus ring on screen. Two things make it safe:
+
+1. `.marquee__viewport { scroll-behavior: auto; }`. `html` sets
+   `scroll-behavior: smooth`, which is inherited, and an animated sideways
+   scroll then outran the reset below and won the race.
+2. A `focusout` listener in `main.js` returns `scrollLeft` to 0 once focus
+   leaves the region, so the offset never survives into the running loop. It
+   does nothing under reduced motion, where the box is a real scroll region the
+   reader drives and their position is theirs to keep.
+
+**Colour audit.** One value removed (`#1F1F1F`, the old dark chip), none added.
+Tiles are `var(--bg-light)`, which is `#FFFFFF`.
+
+**Speed unchanged.** The track travels half its own width per cycle. 24 tiles is
+5,352px, so 72s gives 37px/s, the same as phase 1's 16 tiles in 40s.

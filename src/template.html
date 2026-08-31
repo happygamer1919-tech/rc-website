@@ -186,30 +186,17 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
 </section>
 
 <!-- 2b · Supplier marquee. Continuous, never touches scroll, stops under
-     prefers-reduced-motion. Track holds the list twice for a seamless loop. -->
+     prefers-reduced-motion. Tiles and their duplicate copy are built in
+     build.js: one white tile per brand, logo if the file is there, brand name
+     as text if it is not. -->
 <section class="section section--dark marquee" aria-labelledby="marquee-h">
   <div class="container">
-    <h2 id="marquee-h" data-reveal data-reveal>{{marquee.h2}}</h2>
+    <h2 id="marquee-h" data-reveal>{{marquee.h2}}</h2>
     <p class="lede" data-reveal>{{marquee.lead}}</p>
   </div>
   <div class="marquee__viewport" style="margin-top: 24px;">
     <div class="marquee__track">
-        <div class="supplier"><span class="supplier__label">{{suppliers.0.name}}</span></div>
-        <div class="supplier"><span class="supplier__label">{{suppliers.1.name}}</span></div>
-        <div class="supplier"><span class="supplier__label">{{suppliers.2.name}}</span></div>
-        <div class="supplier"><span class="supplier__label">{{suppliers.3.name}}</span></div>
-        <div class="supplier"><span class="supplier__label">{{suppliers.4.name}}</span></div>
-        <div class="supplier"><span class="supplier__label">{{suppliers.5.name}}</span></div>
-        <div class="supplier"><span class="supplier__label">{{suppliers.6.name}}</span></div>
-        <div class="supplier"><span class="supplier__label">{{suppliers.7.name}}</span></div>
-        <div class="supplier"><span class="supplier__label">{{suppliers.0.name}}</span></div>
-        <div class="supplier"><span class="supplier__label">{{suppliers.1.name}}</span></div>
-        <div class="supplier"><span class="supplier__label">{{suppliers.2.name}}</span></div>
-        <div class="supplier"><span class="supplier__label">{{suppliers.3.name}}</span></div>
-        <div class="supplier"><span class="supplier__label">{{suppliers.4.name}}</span></div>
-        <div class="supplier"><span class="supplier__label">{{suppliers.5.name}}</span></div>
-        <div class="supplier"><span class="supplier__label">{{suppliers.6.name}}</span></div>
-        <div class="supplier"><span class="supplier__label">{{suppliers.7.name}}</span></div>
+{{supplierChips}}
     </div>
   </div>
 </section>

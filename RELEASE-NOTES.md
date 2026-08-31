@@ -140,6 +140,13 @@ Preview locally:
     node build.js && cd dist && python3 -m http.server 8000
     # then open http://localhost:8000/  (RO)  and  http://localhost:8000/ru/
 
+Check every internal link and anchor resolves:
+
+    node build.js && node scripts/check-links.js
+
+24 pages, 1,368 hrefs and srcs, 0 dead. Exits non-zero if that stops being
+true, so it can be used as a gate.
+
 ---
 
 ## Constraints that must not drift
@@ -147,8 +154,18 @@ Preview locally:
 From `docs/RC-WEBSITE-MASTER-PLAN.md`. The previous build was rejected for
 breaking the first two.
 
-- Desktop page height under 9,000px. Currently **8,080px RO / 8,296px RU**.
-  The rejected build was 13,312px.
+- Desktop page height under 9,000px. Currently **8,504px RO / 8,774px RU**.
+  The rejected build was 13,312px. Wave 6's cap was tighter still, 8,700px RO,
+  and all three cards landed at 0px.
+
+  Measure it the same way every time or the number moves by 154px:
+  settled height, all reveals applied. An unrevealed `[data-reveal]` is
+  translated 16px down, which inflates `scrollHeight` until it fires.
+
+      // in the console, at a desktop width
+      document.querySelectorAll('[data-reveal]').forEach(n => n.classList.add('is-revealed'));
+      // wait ~1.5s for the staggered transitions, then:
+      document.documentElement.scrollHeight
 - Exactly three background values: `#FFFFFF`, `#F2F2F2`, `#141414`. `#141414`
   appears exactly twice, on the stats band and the footer. No gradients, no
   fourth off-white, no translucent overlays.
@@ -178,13 +195,25 @@ Motion is permitted but never touches scroll. The rules, all enforced:
 
 ## Lighthouse baseline
 
-Measured on the Pages URL, desktop preset, 2026-08-28, with all 21 images still
-placeholders. Re-measure after real photos land.
+Re-measured 2026-08-31 after wave 6, locally against `dist/` on the desktop
+preset, with every photo slot still on a placeholder or an SVG fallback:
+
+    node build.js && cd dist && python3 -m http.server 8765
+    npx lighthouse@12 http://localhost:8765/ --preset=desktop \
+      --chrome-flags="--headless=new"
 
 | | Performance | Accessibility | Best practices | SEO |
 |---|---|---|---|---|
-| RO | 100 | 100 | 100 | 100 |
-| RU | 100 | 100 | 100 | 100 |
+| RO homepage | 100 | 100 | 100 | 100 |
+| RU homepage | 100 | 100 | 100 | 100 |
+| Service page | 100 | 100 | 100 | 69 |
+
+The service page's SEO 69 is the W3-02 gate working: `is-crawlable` fails
+because the page is deliberately `noindex` until one of its projects has a real
+cover photograph. It clears itself when a photo lands.
+
+The 2026-08-28 baseline on the Pages URL was 100 across the board on both
+homepages, unchanged.
 
 Accessibility reached 100 by raising button text to 19px (clearing the WCAG
 large-text threshold, so 3:1 applies) and darkening the category chip fill to
@@ -193,3 +222,44 @@ large-text threshold, so 3:1 applies) and darkening the category chip fill to
 See `DECISIONS.md` for where this build departs from the master plan and why.
 The short version: `--brand` is `#F65308` and `--ink` is `#1A1A1A`, sampled from
 the logo, because the plan predates the logo file.
+
+---
+
+## Wave 6, 2026-08-31
+
+Three cards, RC-032 to RC-034, plus one follow-up fix. Every gate green.
+
+**W6-01 · Supplier marquee.** Eight placeholder chips became twelve named
+brands (TechnoNICOL, Bilka, Novatik, IKO, Swisspor, Knauf, Baumit, Ceresit,
+Weber, Ytong, Holcim, Bosch) on white `#FFFFFF` logo tiles, 200x80. One
+full-colour file per brand goes at `public/img/suppliers/<slug>.svg` or `.png`;
+until one lands the tile shows the brand name as text, per brand. Hover and
+keyboard focus both restore full colour and pause the loop, in pure CSS. The
+duplicate half of the track is `aria-hidden` with no `tabindex`, so it is 12 tab
+stops rather than 24. Text on the white tile is 17.40:1.
+
+**W6-02 · Project model.** 10 projects became 54, six per service. The 44 new
+ones are stubs with empty fields and render nowhere, so the site is unchanged.
+Seven new optional fields per project (`location`, `year`, `work_type`,
+`area_sqm`, `duration`, `main_materials`, `challenge`), each omitted on its own.
+`build.js` now refuses to build if a project that renders has no cover file.
+
+**W6-03 · Image slots.** `hero-panel` and the nine service illustrations became
+photo slots, 4:3. The SVGs stay as per-slot fallbacks: the first service to get
+a jpg shows a photo while the other eight still show SVGs. Every build prints
+which slots are on fallback. All 10 today.
+
+| Gate | Result |
+|---|---|
+| Homepage RO under 8,700px | **8,504px** |
+| Homepage RU under 9,000px | **8,774px** |
+| Lighthouse performance >=95, both locales | **100 / 100** |
+| Lighthouse accessibility 100, both locales | **100 / 100** |
+| Marquee hover pause does not touch scroll | Pure CSS `animation-play-state`. No wheel, touch or scroll handler exists |
+| `prefers-reduced-motion` disables every effect | Animation none, transform none, logos full colour, duplicate tiles hidden |
+| No new colour values beyond `#FFFFFF` tiles | One removed (`#1F1F1F`), none added |
+| Dead links across all pages | **0**, over 24 pages and 1,368 hrefs and srcs |
+
+Photo manifest: 51 slots -> 105. The shooting plan is unchanged at 11
+photographs on the critical path; the growth is reserved slots on projects that
+have no content yet.

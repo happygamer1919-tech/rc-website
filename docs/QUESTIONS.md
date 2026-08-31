@@ -145,3 +145,50 @@ numbers (a "72px spacer" and a "72px -> 64px" compression; the real values are a
 96px spacer and 64px -> 56px). Corrected in the W7-01 commit, since
 `docs/CLAUDE.md` cites that file as a source and citing a wrong source is worse
 than not citing one.
+
+---
+
+## Q-07 · Three supplier tiles have no logo — OPEN, opened 2026-08-31 (W7-03)
+
+Nine of the twelve brands now show a logo. Three still show the brand name as
+text. Each needs a different decision from you, and none of them is mine to make.
+
+**Bosch — blocked by usage terms.** Bosch's legal notice says third parties
+agree *"not to copy, use or otherwise infringe upon these marks"*. The card said
+to skip a brand whose terms visibly forbid display, so it was skipped.
+**To resolve:** ask Bosch for written permission, or leave it as text. If Bosch
+is not actually a supplier you want to name, dropping it from the twelve is the
+cheapest answer.
+
+**Ceresit — no full-colour asset at a permitted source.** Henkel publishes only
+a white-on-transparent Ceresit wordmark, which is invisible on a white tile.
+**To resolve:** ask your Ceresit or Henkel rep for the colour logo. A supplier
+will usually send a brand pack on request, and that lands it in the top-priority
+source category.
+
+**Weber — no Weber mark is published.** Saint-Gobain has folded Weber into the
+masterbrand, so `ro.weber` serves the Saint-Gobain corporate logo. Putting that
+in a tile captioned "Weber" would misrepresent it.
+**To resolve, three options:** relabel the tile "Saint-Gobain Weber" and use the
+Saint-Gobain logo; ask your Weber rep for the product-brand mark if one is still
+issued; or leave it as text.
+
+**Default shipped:** all three render as the styled brand name, which is the
+designed fallback and looks deliberate rather than broken. Nothing is blocked.
+
+---
+
+## Q-08 · Are all twelve brands really your suppliers? — REOPENED 2026-08-31 (W7-03)
+
+This was raised in Q-01 and has not been answered. It matters more now that nine
+of them appear as real logos rather than placeholder text.
+
+The marquee sits under the heading *Materiale și utilaje* with the line
+*materials and equipment we usually work with*. With logos rendered, that reads
+as a supplier claim about the business, not as decoration. The twelve names came
+from the wave 6 card, so they are your input, not invented — but nobody has
+confirmed the list against what Rapid Construct actually buys and installs.
+
+**Recommended:** confirm the list before the site goes in front of clients, and
+drop any brand you do not actually work with. A wrong logo here is the kind of
+detail a competitor or a supplier rep notices.

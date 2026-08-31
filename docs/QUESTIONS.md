@@ -62,3 +62,32 @@ work_type, area_sqm, duration, main_materials, challenge. Nothing is invented.
 ## Answered
 
 *(none yet)*
+
+---
+
+## Q-05 · Nine `svc-*.png` files in the repo root — OPEN, opened 2026-08-31 (W6-03)
+
+Nine untracked files sit in the repo root: `svc-case-la-cheie.png`,
+`svc-acoperisuri.png`, `svc-fatade.png`, `svc-reparatii.png`, `svc-finisaje.png`,
+`svc-proiectare-3d.png`, `svc-instalatii.png`, `svc-industrial.png`,
+`svc-terasamente.png`. Each is 1448x1086 (4:3) and 1.7 to 2.2MB, timestamped
+15:10 to 15:14 on 2026-08-31, which is before this session started. They were
+not created by W6-03.
+
+They match the nine service card slots by name and by ratio, which is very
+likely what they are for.
+
+**Nothing was done with them.** They are untouched, unstaged and uncommitted,
+because moving or committing someone else's files is not this card's call.
+
+**If they are the service card artwork**, the route in is:
+
+    mv svc-*.png photos-raw/          # rename any .png to .jpg first, or keep .png
+    node scripts/process-photos.js    # writes 800x600 and 1600x1200 into public/img
+    node build.js                     # each card flips from SVG to photo on its own
+
+One warning to expect: 1448px on the long edge is under the manifest's 1600px
+minimum, so the pipeline will accept them and say so. The 2x would be upscaled
+from 1448 to 1600. If better originals exist, they are worth finding first.
+
+**If they are not**, they should be deleted or moved out of the repo root.

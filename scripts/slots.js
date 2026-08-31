@@ -1,9 +1,11 @@
 /* Single source of truth for image slots, from docs/RC-PHOTO-MANIFEST.md.
    Both gen-placeholders.js and process-photos.js read this. Adding a slot here
    and to the template is all it takes. */
-/* Phase 2: the nine svc-* photo slots are gone. Service cards now hold SVG
-   illustrations, which are not photographs and live in SERVICE_ILLUSTRATIONS
-   below. */
+/* W6-03: the nine svc-* slots and hero-panel are photo slots again. The SVGs
+   are not deleted, they become per-slot fallbacks: a service card renders its
+   jpg the moment one exists and its SVG until then, one slot at a time. That is
+   why these carry `placeholder: false` — the SVG already guarantees the <img>
+   resolves, so a generated JPG placeholder would only hide the fallback. */
 const SLOTS = [
   ...['step-01-fundatie', 'step-02-structura', 'step-03-acoperis', 'step-04-fatada', 'step-05-predare']
     .map((id) => ({ id, w: 900, h: 675, ratio: '4:3', retina: true })),
@@ -21,6 +23,14 @@ const SLOTS = [
   // writing 70 files nothing points at. process-photos handles them normally.
   ...require('../content/projects.json').projects
     .flatMap((p) => p.gallery.map((id) => ({ id, w: 1400, h: 933, ratio: '3:2', retina: true, placeholder: false }))),
+  // Hero panel. 4:3, and the 2x is the 2800px source the card asks for.
+  // Falls back to public/img/hero-panel.svg until the photo lands.
+  { id: 'hero-panel', w: 1400, h: 1050, ratio: '4:3', retina: true, placeholder: false },
+  // Nine service card photos, 4:3, with the 2x at the 1600x1200 source size.
+  // Each falls back to public/img/services/<id>.svg on its own.
+  ...['svc-case-la-cheie', 'svc-acoperisuri', 'svc-fatade', 'svc-reparatii', 'svc-finisaje',
+      'svc-proiectare-3d', 'svc-instalatii', 'svc-industrial', 'svc-terasamente']
+    .map((id) => ({ id, w: 800, h: 600, ratio: '4:3', retina: true, placeholder: false })),
   // Social card. Never retina: og consumers take one fixed size.
   { id: 'og-image', w: 1200, h: 630, ratio: '1200x630', retina: false, branded: true },
 ];
@@ -28,9 +38,11 @@ const SLOTS = [
 const MAX_BYTES = 400 * 1024;   // manifest: under 400KB after processing
 const MIN_LONG_EDGE = 1600;     // manifest: minimum on the long edge
 
-/* Service card illustrations. Not photo slots: they ship as placeholder SVGs so
-   the <img> always resolves, and a real illustration simply overwrites the file
-   at public/img/services/<id>.svg. */
+/* Service card illustration SVGs. Since W6-03 these are the FALLBACK for the
+   nine svc-* photo slots above, not the final asset: a card shows its SVG until
+   public/img/<id>.jpg exists, then the photo. Still generated here so the <img>
+   always resolves, and a real illustration still just overwrites the file at
+   public/img/services/<id>.svg. */
 const SERVICE_ILLUSTRATIONS = [
   'svc-case-la-cheie', 'svc-acoperisuri', 'svc-fatade', 'svc-reparatii', 'svc-finisaje',
   'svc-proiectare-3d', 'svc-instalatii', 'svc-industrial', 'svc-terasamente',

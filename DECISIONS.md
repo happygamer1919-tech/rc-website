@@ -294,3 +294,50 @@ sitemap; the other eight stay `noindex, nofollow`. The gate reads through
 **Slot count: 51 -> 95.** 54 covers + 35 gallery + 5 process + 1 social. The
 shooting plan does not change: 11 photographs are still the whole critical path
 (6 covers of projects that have content, plus 5 process stages).
+
+## Image slot type changes, W6-03, 2026-08-31
+
+`hero-panel` and the nine service illustrations become photo slots. The SVGs are
+not deleted: they become fallbacks.
+
+| Slot | Ratio | 1x | 2x, the source to supply |
+|---|---|---|---|
+| `hero-panel` | 4:3 | 1400x1050 | **2800x2100** |
+| `svc-<slug>` x9 | 4:3 | 800x600 | **1600x1200** |
+
+The card gave the source sizes (2800px for the hero, 1600x1200 for the cards)
+and the pipeline writes a 1x and a 2x per slot, so the 1x is half of each. That
+is why the slot dimensions are not the numbers in the card: the numbers in the
+card are the 2x, which is the file to hand over.
+
+**The fallback is per slot, decided at build time, and it is a different box.**
+`slotHasRealPhoto()` asks whether `public/img/<slot>.jpg` exists and is not a
+generated placeholder — the same test the W3-02 indexability gate already used,
+generalised from covers to any slot. No photo: the SVG in a
+`media--illustration` box, contained on a grey field with 24px of padding. Photo:
+a `media--card` box, `object-fit: cover`, edge to edge, with a `srcset`. An
+illustration wants padding and a photograph wants none, so the swap changes the
+box and not only the `src`.
+
+Verified by processing one service photo and the hero photo and rebuilding:
+`svc-fatade` rendered a jpg on the homepage card **and** on its own service page
+hero while the other eight rendered SVGs, and no layout moved. All nine service
+media boxes measured 366x275 with the photo in place, and the page stayed at
+8,504px.
+
+**A real hero photo is not lazy.** It sits beside the hero claim and is the
+likely LCP element, so with the jpg present the build drops `loading="lazy"` and
+sets `fetchpriority="high"`. The SVG keeps `loading="lazy"`; it is 1KB.
+
+**The nine cards moved out of the template into `build.js`.** They were nine
+hardcoded `<img>` tags, which cannot express a per-slot decision. The service
+page's `{{svc.slot}}.svg` went the same way and `svc.slot` was deleted.
+
+**`process-photos.js` needed no change.** It reads `scripts/slots.js`, so the
+ten new IDs were accepted the moment they were added there: dry run wrote
+`hero-panel` at 1400x1050 and 2800x2100 and `svc-fatade` at 800x600 and
+1600x1200, and strict rejection still fired on a near-miss filename
+(`svc-fatadex` -> "did you mean svc-fatade").
+
+**Currently on fallback: all 10.** `build.js` prints the list on every build, so
+this number is never guessed. Slot count 95 -> 105.

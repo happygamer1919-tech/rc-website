@@ -8,10 +8,11 @@
 > portfolio reuses project covers. Fill the **File / notes** column during the
 > selection session with Mihai. Leave it blank if no real photo exists.
 
-**Total: 95 photo slots.** 89 project slots (54 covers + 35 gallery)
-+ 5 process stages + 1 social share. Full arithmetic in *Slot count* below.
+**Total: 105 photo slots.** 89 project slots (54 covers + 35 gallery)
++ 5 process stages + 1 social share + 1 hero panel + 9 service cards.
+Full arithmetic in *Slot count* below.
 
-**95 is the slot inventory, not the shooting plan.** Only **11** photographs are
+**105 is the slot inventory, not the shooting plan.** Only **11** photographs are
 on the critical path: the 6 covers of the projects that carry real content, plus
 the 5 process stages. Everything else is a reserved slot on a project with no
 content, and a slot with no content behind it renders nowhere.
@@ -245,22 +246,56 @@ The fallback is per brand: a slug with no file renders its brand name as text in
 the same white tile, so the first logo to land shows as a logo while the rest
 stay text. Nothing in the code changes when a file appears.
 
-### Delivered, no longer photo slots
+### Hero panel — 1, 4:3 landscape, 1400x1050 (2x is the 2800px source)
+
+W6-03 turned this back into a photo slot. `public/img/hero-panel.svg` stays in
+the repo and is what renders until `public/img/hero-panel.jpg` exists.
+
+| Slot ID | Ratio | Dimensions | Shooting note |
+|---|---|---|---|
+| `hero-panel` | 4:3 | 1400x1050 | The single best finished-house shot the company owns. It sits beside the hero claim, so it carries the first impression |
+
+Supply at **2800px on the long edge**: that is the 2x the pipeline writes.
+A real photo here is the likely LCP element, so the build drops `loading="lazy"`
+and sets `fetchpriority="high"` the moment the jpg exists.
+
+### Service cards — 9, 4:3 landscape, 800x600 (2x is the 1600x1200 source)
+
+W6-03 turned these back into photo slots too. The nine SVGs at
+`public/img/services/svc-*.svg` stay in the repo as **per-slot fallbacks**: a
+card renders its photograph the moment its own jpg exists and its SVG until
+then. One service having a photo does not affect the other eight.
+
+Photos live at `public/img/<slot-id>.jpg`, which is where the pipeline writes.
+The SVG fallbacks stay at `public/img/services/<slot-id>.svg`.
+
+| Slot ID | Ratio | Dimensions | Shooting note |
+|---|---|---|---|
+| `svc-case-la-cheie` | 4:3 | 800x600 | A finished house, whole, daylight |
+| `svc-acoperisuri` | 4:3 | 800x600 | A completed roof, elevated angle |
+| `svc-fatade` | 4:3 | 800x600 | A finished façade, even light |
+| `svc-reparatii` | 4:3 | 800x600 | A renovated room, wide |
+| `svc-finisaje` | 4:3 | 800x600 | Finished plaster, paint or tiling |
+| `svc-proiectare-3d` | 4:3 | 800x600 | A render of a real project |
+| `svc-instalatii` | 4:3 | 800x600 | A tidy pipe or cable run |
+| `svc-industrial` | 4:3 | 800x600 | A hall or warehouse, full width |
+| `svc-terasamente` | 4:3 | 800x600 | Machinery working a plot |
+
+Each also appears at the top of its own service page, on the dark field.
+
+### Delivered, not photo slots
 
 | Asset | Format | Status |
 |---|---|---|
-| `hero-panel` | SVG, 800x600 | **Delivered.** Illustration, not a photograph |
-| 9 service illustrations | SVG, 400x300 | **Delivered.** `public/img/services/svc-*.svg` |
 | Logo full / white, favicon 512 / 180 | PNG | **Delivered** |
-
-> Deviation noted: the card brief said to retain `hero-panel` in the manifest.
-> It is listed here for traceability but is **not** a photo slot, because it was
-> delivered as an SVG illustration in W1-00.
+| 12 supplier logos | SVG or PNG | Awaiting files, see above |
 
 ### Struck from V1
 
-`form-bg` (struck earlier), the nine `svc-*` photo slots (now SVG), and
-`port-01`…`port-06` (portfolio now reads project covers).
+`form-bg` (struck earlier) and `port-01`…`port-06` (the portfolio reads project
+covers). The nine `svc-*` slots were struck in phase 2 and **reinstated in
+W6-03**; `hero-panel` was never a photo slot before W6-03 and is one now. In
+both cases the SVG is not deleted, it becomes the fallback.
 
 ---
 
@@ -272,11 +307,13 @@ stay text. Nothing in the code changes when a file appears.
 | Project gallery, 5 projects x 4 + 5 projects x 3 | 35 |
 | Process stages | 5 |
 | Social share | 1 |
-| **Total photo slots** | **95** |
-| Delivered illustrations (`hero-panel` + 9 service SVGs) | 10 |
+| Hero panel | 1 |
+| Service cards | 9 |
+| **Total photo slots** | **105** |
+| SVG fallbacks (`hero-panel` + 9 service SVGs), in the repo | 10 |
 | Logo and favicon assets | 4 |
 | Supplier logos | 12 |
-| **Total assets tracked** | **121** |
+| **Total assets tracked** | **131** |
 
 **95 photo slots, but 95 is not the shooting plan.** 44 of the covers belong to
 stub projects with no content. A stub becomes a real project only when someone
@@ -287,9 +324,10 @@ The number to plan shooting days around is unchanged from V2's first pass:
 | | Photographs |
 |---|---|
 | Minimum viable: 6 covers of projects with real content + 5 process stages | **11** |
+| The 10 slots that currently render an SVG fallback (hero panel + 9 cards) | 10 |
 | Those 6 projects complete, covers and galleries | 29 |
 | The 10 seeded projects complete, if the 4 without content get content | 45 |
-| Every slot in the file, including 44 stubs | 95 |
+| Every slot in the manifest, including 44 stubs | 105 |
 
 Six of the ten seeded projects have real titles and summaries and therefore
 render. The other four (`proiectare-3d-01`, `instalatii-01`, `industrial-01`,

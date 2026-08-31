@@ -105,7 +105,14 @@ const PAGES = [
 
 // Keys whose value is already HTML built by this file. Everything else is
 // escaped on substitution.
-const RAW_KEYS = new Set(['portfolioCards', 'googleLink', 'supplierChips']);
+const RAW_KEYS = new Set([
+  'portfolioCards', 'googleLink', 'supplierChips', 'heroPanelMedia',
+  ...Array.from({ length: 9 }, (_, i) => `svcMedia${i}`),
+]);
+// Same idea for the service-page template.
+const SVC_RAW_KEYS = new Set([
+  'svc.gallerySection', 'svc.priceSection', 'svc.footerLinks', 'svc.priceExtra', 'svc.media',
+]);
 
 const die = (msg) => { console.error('\nBUILD FAILED: ' + msg + '\n'); process.exit(1); };
 
@@ -154,18 +161,53 @@ function renderableProjects(l, slug) {
     && REAL(p.title[l.code]) && REAL(p.summary[l.code]));
 }
 
-// The gate for indexability: a real cover photo, not a generated placeholder.
-// gen-placeholders records the byte size of every file it writes; a file whose
-// size no longer matches that ledger is a real photo someone dropped in.
+// Has a real photograph landed in this slot? gen-placeholders records the byte
+// size of every file it writes; a file whose size no longer matches that ledger
+// is a real photo someone dropped in. Two things read this: the indexability
+// gate on the service pages, and the per-slot fallback below.
 const PLACEHOLDER_LEDGER = (() => {
   const f = 'public/img/PLACEHOLDERS.json';
   return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : {};
 })();
-function coverIsRealPhoto(cover) {
-  const file = `public/img/${cover}.jpg`;
+function slotHasRealPhoto(id) {
+  const file = `public/img/${id}.jpg`;
   if (!fs.existsSync(file)) return false;
-  const recorded = PLACEHOLDER_LEDGER[cover];
+  const recorded = PLACEHOLDER_LEDGER[id];
   return recorded === undefined || recorded !== fs.statSync(file).size;
+}
+const coverIsRealPhoto = slotHasRealPhoto;
+
+// W6-03: hero-panel and the nine service illustrations are photo slots whose
+// fallback is an SVG. The decision is per slot, never global: the first service
+// to get a jpg renders a photo while the other eight still render SVGs.
+const FALLBACK_SLOTS = ['hero-panel', ...SERVICE_SLUGS.map((sg) => SLOT_FOR_SLUG[sg])];
+const onFallback = (id) => !slotHasRealPhoto(id);
+
+// The hero panel box. 4:3 either way, so the box never changes size.
+function heroPanelMedia(l, base) {
+  const alt = esc(l.strings['hero.panelAlt']);
+  if (onFallback('hero-panel')) {
+    return `<div class="hero-panel-media media media--4x3">
+        <img src="${base}/img/hero-panel.svg" alt="${alt}" width="800" height="600" loading="lazy" decoding="async">
+      </div>`;
+  }
+  // A real hero photograph is the likely LCP element, so it is not lazy.
+  return `<div class="hero-panel-media hero-panel-media--photo media media--4x3">
+        <img src="${base}/img/hero-panel.jpg" srcset="${base}/img/hero-panel.jpg 1x, ${base}/img/hero-panel@2x.jpg 2x" alt="${alt}" width="1400" height="1050" decoding="async" fetchpriority="high">
+      </div>`;
+}
+
+// One service card's media box. `variant` picks the two places it is used:
+// the homepage 3x3 grid and the hero of the service page itself.
+function serviceMedia(l, base, i, variant) {
+  const slot = SLOT_FOR_SLUG[SERVICE_SLUGS[i]];
+  const alt = esc(l.strings[`services.items.${i}.alt`]);
+  const box = variant === 'hero' ? 'svc-hero__art media media--4x3' : 'media media--illustration';
+  if (onFallback(slot)) {
+    return `<div class="${box}"><img src="${base}/img/services/${slot}.svg" alt="${alt}" width="400" height="300" loading="lazy" decoding="async"></div>`;
+  }
+  const photoBox = variant === 'hero' ? 'svc-hero__art svc-hero__art--photo media media--4x3' : 'media media--4x3 media--card';
+  return `<div class="${photoBox}"><img src="${base}/img/${slot}.jpg" srcset="${base}/img/${slot}.jpg 1x, ${base}/img/${slot}@2x.jpg 2x" alt="${alt}" width="800" height="600" loading="lazy" decoding="async"></div>`;
 }
 
 // A renderable project always points at a cover file that exists. Stub covers
@@ -267,6 +309,8 @@ for (const l of loaded) {
   // title are shown; a TODO title must never reach the homepage.
   const featured = PROJECTS.filter((p) => REAL(p.title[l.code]) && REAL(p.summary[l.code])).slice(0, 6);
   vars.supplierChips = renderSupplierChips(l, BASE);
+  vars.heroPanelMedia = heroPanelMedia(l, BASE);
+  SERVICE_SLUGS.forEach((_, i) => { vars[`svcMedia${i}`] = serviceMedia(l, BASE, i, 'card'); });
   vars.portfolioCards = '<div class="grid grid--3" id="portfolio-grid">\n' +
     featured.map((p, i) => {
       const href = BASE + SERVICES_ROOT[l.code] + p.service + '/#project-' + p.id;
@@ -294,7 +338,6 @@ for (const l of loaded) {
       'svc.title': l.strings[`services.items.${i}.title`],
       'svc.desc': l.strings[`services.items.${i}.desc`],
       'svc.alt': l.strings[`services.items.${i}.alt`],
-      'svc.slot': SLOT_FOR_SLUG[slug],
       'svc.canonical': SITE + BASE + SERVICES_ROOT[l.code] + slug + '/',
       'svc.urlRo': SITE + BASE + SERVICES_ROOT.ro + slug + '/',
       'svc.urlRu': SITE + BASE + SERVICES_ROOT.ru + slug + '/',
@@ -316,6 +359,7 @@ for (const l of loaded) {
       'svc.robots': renderableProjects(l, slug).some((p) => coverIsRealPhoto(p.cover))
         ? 'index, follow' : 'noindex, nofollow',
     };
+    svcVars['svc.media'] = serviceMedia(l, BASE, i, 'hero');
     svcVars['svc.gallerySection'] = renderGallerySection(l, slug, vars);
     svcVars['svc.footerLinks'] = SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
       `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join('');
@@ -324,8 +368,7 @@ for (const l of loaded) {
     const html = serviceTemplate.replace(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/g, (_, key) => {
       if (key in svcVars) {
         // pre-rendered HTML fragments must not be escaped again
-        return (key === 'svc.gallerySection' || key === 'svc.priceSection' || key === 'svc.footerLinks' || key === 'svc.priceExtra')
-          ? svcVars[key] : esc(svcVars[key]);
+        return SVC_RAW_KEYS.has(key) ? svcVars[key] : esc(svcVars[key]);
       }
       missing.add(key); return `{{${key}}}`;
     });
@@ -426,6 +469,11 @@ console.log(`google reviews link: ${GOOGLE_REVIEWS_URL || 'HIDDEN (set GOOGLE_RE
     loaded.some((l) => renderableProjects(l, sg).some((p) => coverIsRealPhoto(p.cover))));
   console.log(`service pages indexable: ${indexable.length}/9` +
     (indexable.length ? ` (${indexable.join(', ')})` : ' — all noindex until a real cover photo lands'));
+}
+{
+  const fallback = FALLBACK_SLOTS.filter(onFallback);
+  console.log(`slots on SVG fallback: ${fallback.length}/${FALLBACK_SLOTS.length}` +
+    (fallback.length ? `\n  · ` + fallback.join('\n  · ') : ' — every slot has a real photo'));
 }
 if (privacyIncomplete) {
   console.log(`\nPRIVACY PAGE INCOMPLETE: ${privacyTodos.length} TODO field(s) still unfilled.`);

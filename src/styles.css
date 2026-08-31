@@ -670,6 +670,10 @@ p { margin: 0; }
    render identically today, but contain guarantees a future asset at a
    different ratio is letterboxed rather than silently cropped. */
 .hero-panel-media img { object-fit: contain; }
+/* W6-03: with a real photograph the box should be filled, not letterboxed.
+   process-photos crops to exactly 4:3, so contain and cover agree, but the
+   intent differs and cover is right for a photo. */
+.hero-panel-media--photo img { object-fit: cover; }
 
 /* --- 8. service illustration box ------------------------------------------ */
 /* Fixed 4:3 box, illustration centred and contained. The <img> always resolves
@@ -795,6 +799,8 @@ p { margin: 0; }
   background: var(--bg-dark);
 }
 .svc-hero__art img { width: 100%; height: 100%; object-fit: contain; display: block; }
+/* An illustration is contained on the dark field; a photograph fills it. */
+.svc-hero__art--photo img { object-fit: cover; }
 
 /* The dark price strip is a band, not a full section. */
 .section--compact { padding: var(--band-pad) 0; }

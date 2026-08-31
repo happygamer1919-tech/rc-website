@@ -24,7 +24,7 @@ history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 | Ticket | Card | Branch | Status |
 |---|---|---|---|
 | RC-037 | W7-01 docs/CLAUDE.md, standing rules | `w7/rc-037-claude-md` | shipped |
-| RC-038 | W7-02 Route the nine service images | `w7/rc-038-service-images` | todo |
+| RC-038 | W7-02 Route the nine service images | `w7/rc-038-service-images` | shipped |
 | RC-039 | W7-03 Supplier logos | `w7/rc-039-supplier-logos` | todo |
 
 ## Shipped, waves 1 to 5

@@ -28,15 +28,20 @@ const SLOTS = [
   { id: 'hero-panel', w: 1400, h: 1050, ratio: '4:3', retina: true, placeholder: false },
   // Nine service card photos, 4:3, with the 2x at the 1600x1200 source size.
   // Each falls back to public/img/services/<id>.svg on its own.
+  // minLongEdge 1200, not the global 1600: owner ruling, W7-02. The approved
+  // artwork is 1448px, and a card renders at 366px wide, so 1448 still covers
+  // the 1x four times over. See DECISIONS.md.
   ...['svc-case-la-cheie', 'svc-acoperisuri', 'svc-fatade', 'svc-reparatii', 'svc-finisaje',
       'svc-proiectare-3d', 'svc-instalatii', 'svc-industrial', 'svc-terasamente']
-    .map((id) => ({ id, w: 800, h: 600, ratio: '4:3', retina: true, placeholder: false })),
+    .map((id) => ({ id, w: 800, h: 600, ratio: '4:3', retina: true, placeholder: false, minLongEdge: 1200 })),
   // Social card. Never retina: og consumers take one fixed size.
   { id: 'og-image', w: 1200, h: 630, ratio: '1200x630', retina: false, branded: true },
 ];
 
 const MAX_BYTES = 400 * 1024;   // manifest: under 400KB after processing
-const MIN_LONG_EDGE = 1600;     // manifest: minimum on the long edge
+// Manifest default minimum on the long edge. A slot may lower its own bar with
+// `minLongEdge`, which is an owner ruling each time, recorded in DECISIONS.md.
+const MIN_LONG_EDGE = 1600;
 
 /* Service card illustration SVGs. Since W6-03 these are the FALLBACK for the
    nine svc-* photo slots above, not the final asset: a card shows its SVG until

@@ -341,3 +341,63 @@ ten new IDs were accepted the moment they were added there: dry run wrote
 
 **Currently on fallback: all 10.** `build.js` prints the list on every build, so
 this number is never guessed. Slot count 95 -> 105.
+
+## Service card minimum long edge: 1600 -> 1200, W7-02, 2026-08-31
+
+**Owner ruling.** The nine service card slots accept a source with a long edge
+of **1200px**, not the manifest default of 1600. The approved artwork is
+1448x1086 and the ruling was made to take it.
+
+The floor is **per slot**, not global. `scripts/slots.js` carries `minLongEdge`
+on those nine slots and `process-photos.js` warns against a slot's own value
+where it has one, the manifest default where it does not. Every other slot,
+including all 54 project covers and the 5 process stages, still stands at 1600.
+
+**Why it is safe here, and would not be everywhere.** A service card renders at
+366px wide, so the 1x at 800x600 is already more than double the display size
+and 1448 covers it four times over. The cost is confined to the 2x, which is
+interpolated up from 1448 to 1600 — a 10% upscale, on an image that only serves
+retina screens at 366 CSS px. A project cover, which renders at 366px but is
+also the largest image on a service page, keeps the 1600 floor.
+
+1448x1086 is exactly 4:3, so the centre crop discarded nothing.
+
+## Nine service card images routed, W7-02, 2026-08-31
+
+All nine slots filled from the approved artwork. Every card now renders a
+photograph and **`slots on SVG fallback` is down to 1/10**, the hero panel.
+
+**The nine SVGs are retained, not deleted.** They sit at
+`public/img/services/svc-*.svg` and are referenced **zero** times in `dist/`.
+They are the fallback if a jpg is ever pulled, which is the whole point of the
+W6-03 per-slot design: nothing had to be edited to switch nine cards from
+illustrations to photographs except dropping nine files into `photos-raw/`.
+
+**Zero layout movement**, which is what the per-slot design promised:
+
+| | Before | After |
+|---|---|---|
+| Homepage RO | 8,504px | **8,504px** |
+| Homepage RU | 8,774px | **8,774px** |
+| Services section | 1,830px | **1,830px** |
+| Every service media box | 366x275 | **366x275** |
+
+Confirmed against an independent renderer: Lighthouse's own headless Chrome
+reports a full-page height of 8,504 RO and 8,774 RU, and CLS 0.002 RO / 0.012 RU.
+
+**Weight.** 3,852KB added to `public/img` across 18 files. A visitor does not
+pay that: the nine 1x files total **878KB** and are all lazy and below the fold,
+and the 2,938KB of 2x files are fetched only by retina screens. Lighthouse total
+byte weight is 1,352KB RO / 1,377KB RU with performance still 100 and LCP 0.7s,
+because the LCP element is hero text, not an image.
+
+**These are illustrative product artwork, not documentary photographs of Rapid
+Construct's own work.** That is not a breach of master plan section 7. The "real
+Rapid Construct work only, never stock" rule governs the slots that make a claim
+about work performed — project covers, project galleries and process stages —
+and all of those are still on placeholders. Service card slots have been
+illustrations since phase 2 and were SVG line drawings until today.
+
+**The raw sources are not committed.** They went to `photos-raw/`, which carries
+a `.gitignore` of `*` and has always been out of the repo by design. The
+processed output in `public/img/` is what ships.

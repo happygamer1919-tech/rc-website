@@ -8,8 +8,13 @@
 > portfolio reuses project covers. Fill the **File / notes** column during the
 > selection session with Mihai. Leave it blank if no real photo exists.
 
-**Total: 51 photo slots.** 45 project slots (10 covers + 35 gallery)
+**Total: 95 photo slots.** 89 project slots (54 covers + 35 gallery)
 + 5 process stages + 1 social share. Full arithmetic in *Slot count* below.
+
+**95 is the slot inventory, not the shooting plan.** Only **11** photographs are
+on the critical path: the 6 covers of the projects that carry real content, plus
+the 5 process stages. Everything else is a reserved slot on a project with no
+content, and a slot with no content behind it renders nowhere.
 
 Every file: minimum 1600px long edge, landscape, JPG, under 400KB after
 processing, no watermark, real Rapid Construct work only.
@@ -43,10 +48,24 @@ Photos are no longer a flat list. They hang off projects, defined in
 | `id` | slug | Unique, lowercase, hyphenated. Drives the slot IDs. |
 | `title` | string | Per locale. Real project name. |
 | `service` | slug | One of the nine service slugs below. |
-| `location` | string | Locality. **Leave the field out if unknown. Never invent one.** |
-| `year` | number | **Leave out if unknown.** |
+| `location` | per locale | Locality. **Never invent one.** |
+| `year` | string | Four digits. |
+| `work_type` | per locale | What kind of work it was, in the client's words. |
+| `area_sqm` | string | Bare number. The `m²` is added on render. |
+| `duration` | per locale | How long it ran. |
+| `main_materials` | per locale | The materials that define the job. |
+| `challenge` | per locale | The hard part, and what was done about it. |
 | `cover` | slot ID | `proj-<id>-cover`. |
-| `gallery` | slot ID[] | `proj-<id>-01` … `-04`. Three minimum, four maximum. |
+| `gallery` | slot ID[] | `proj-<id>-01` … `-04`. Three minimum, four maximum, or empty. |
+
+**Every field except `id`, `service` and `cover` is optional and drops out of the
+render on its own.** An empty string `""` and a `TODO:` marker mean the same
+thing: no source for this yet. Neither is ever printed. A project with a real
+location and no year prints the location alone.
+
+**`title` and `summary` are the two that gate the project.** Without both, the
+project does not render anywhere: not on its service page, not in the homepage
+portfolio, not in the sitemap. That is what makes a stub safe to commit.
 
 Service slugs: `case-la-cheie`, `acoperisuri`, `fatade`, `reparatii`,
 `finisaje`, `proiectare-3d`, `instalatii`, `industrial`, `terasamente`.
@@ -59,23 +78,76 @@ not because a separate cover was shot for it.
 
 ## Part B — Project slots
 
-Nine projects, one per service, so every service has real work behind it.
+**Six projects per service, nine services, 54 in all.** The card asked for 5 to
+7; six is the midpoint and divides evenly. Ten of the 54 carry real content
+inherited from the live site; the other 44 are stubs.
 
 **Per project: 1 cover + 3 to 4 gallery.** Cover is 3:2 landscape 1400x933.
 Gallery is 3:2 landscape 1400x933. Gallery slot 04 is optional.
 
+**A stub reserves its cover slot and no gallery slots.** Manifest rule D-6
+already says a project with fewer than three usable gallery photos ships as
+cover only, and a project with no content has no photos at all. Reserving three
+gallery slots per stub would have put 132 unshootable slots into the plan and
+taken the total from 95 to 216. Gallery slots are added to a project when it has
+content and photographs. See `docs/QUESTIONS.md` Q-03.
+
 | Project ID | Service | Cover slot | Gallery slots | File / notes |
 |---|---|---|---|---|
-| `case-la-cheie-01` | case-la-cheie | `proj-case-la-cheie-01-cover` | `-01` `-02` `-03` `-04` | |
-| `acoperisuri-01` | acoperisuri | `proj-acoperisuri-01-cover` | `-01` `-02` `-03` `-04` | |
-| `fatade-01` | fatade | `proj-fatade-01-cover` | `-01` `-02` `-03` `-04` | |
-| `reparatii-01` | reparatii | `proj-reparatii-01-cover` | `-01` `-02` `-03` `-04` | |
-| `finisaje-01` | finisaje | `proj-finisaje-01-cover` | `-01` `-02` `-03` `-04` | |
-| `proiectare-3d-01` | proiectare-3d | `proj-proiectare-3d-01-cover` | `-01` `-02` `-03` | |
-| `instalatii-01` | instalatii | `proj-instalatii-01-cover` | `-01` `-02` `-03` | |
-| `industrial-01` | industrial | `proj-industrial-01-cover` | `-01` `-02` `-03` | |
-| `terasamente-01` | terasamente | `proj-terasamente-01-cover` | `-01` `-02` `-03` | |
-| `case-la-cheie-02` | case-la-cheie | `proj-case-la-cheie-02-cover` | `-01` `-02` `-03` | Added W2-01: carries the sixth real live-site entry, which a strict one-per-service seed would have orphaned |
+| `case-la-cheie-01` | case-la-cheie | `proj-case-la-cheie-01-cover` | `-01` `-02` `-03` `-04` |  |
+| `case-la-cheie-02` | case-la-cheie | `proj-case-la-cheie-02-cover` | `-01` `-02` `-03` |  |
+| `case-la-cheie-03` | case-la-cheie | `proj-case-la-cheie-03-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `case-la-cheie-04` | case-la-cheie | `proj-case-la-cheie-04-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `case-la-cheie-05` | case-la-cheie | `proj-case-la-cheie-05-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `case-la-cheie-06` | case-la-cheie | `proj-case-la-cheie-06-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `acoperisuri-01` | acoperisuri | `proj-acoperisuri-01-cover` | `-01` `-02` `-03` `-04` |  |
+| `acoperisuri-02` | acoperisuri | `proj-acoperisuri-02-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `acoperisuri-03` | acoperisuri | `proj-acoperisuri-03-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `acoperisuri-04` | acoperisuri | `proj-acoperisuri-04-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `acoperisuri-05` | acoperisuri | `proj-acoperisuri-05-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `acoperisuri-06` | acoperisuri | `proj-acoperisuri-06-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `fatade-01` | fatade | `proj-fatade-01-cover` | `-01` `-02` `-03` `-04` |  |
+| `fatade-02` | fatade | `proj-fatade-02-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `fatade-03` | fatade | `proj-fatade-03-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `fatade-04` | fatade | `proj-fatade-04-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `fatade-05` | fatade | `proj-fatade-05-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `fatade-06` | fatade | `proj-fatade-06-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `reparatii-01` | reparatii | `proj-reparatii-01-cover` | `-01` `-02` `-03` `-04` |  |
+| `reparatii-02` | reparatii | `proj-reparatii-02-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `reparatii-03` | reparatii | `proj-reparatii-03-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `reparatii-04` | reparatii | `proj-reparatii-04-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `reparatii-05` | reparatii | `proj-reparatii-05-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `reparatii-06` | reparatii | `proj-reparatii-06-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `finisaje-01` | finisaje | `proj-finisaje-01-cover` | `-01` `-02` `-03` `-04` |  |
+| `finisaje-02` | finisaje | `proj-finisaje-02-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `finisaje-03` | finisaje | `proj-finisaje-03-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `finisaje-04` | finisaje | `proj-finisaje-04-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `finisaje-05` | finisaje | `proj-finisaje-05-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `finisaje-06` | finisaje | `proj-finisaje-06-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `proiectare-3d-01` | proiectare-3d | `proj-proiectare-3d-01-cover` | `-01` `-02` `-03` | Stub. Cover slot reserved, no content and no gallery yet. |
+| `proiectare-3d-02` | proiectare-3d | `proj-proiectare-3d-02-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `proiectare-3d-03` | proiectare-3d | `proj-proiectare-3d-03-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `proiectare-3d-04` | proiectare-3d | `proj-proiectare-3d-04-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `proiectare-3d-05` | proiectare-3d | `proj-proiectare-3d-05-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `proiectare-3d-06` | proiectare-3d | `proj-proiectare-3d-06-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `instalatii-01` | instalatii | `proj-instalatii-01-cover` | `-01` `-02` `-03` | Stub. Cover slot reserved, no content and no gallery yet. |
+| `instalatii-02` | instalatii | `proj-instalatii-02-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `instalatii-03` | instalatii | `proj-instalatii-03-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `instalatii-04` | instalatii | `proj-instalatii-04-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `instalatii-05` | instalatii | `proj-instalatii-05-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `instalatii-06` | instalatii | `proj-instalatii-06-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `industrial-01` | industrial | `proj-industrial-01-cover` | `-01` `-02` `-03` | Stub. Cover slot reserved, no content and no gallery yet. |
+| `industrial-02` | industrial | `proj-industrial-02-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `industrial-03` | industrial | `proj-industrial-03-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `industrial-04` | industrial | `proj-industrial-04-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `industrial-05` | industrial | `proj-industrial-05-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `industrial-06` | industrial | `proj-industrial-06-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `terasamente-01` | terasamente | `proj-terasamente-01-cover` | `-01` `-02` `-03` | Stub. Cover slot reserved, no content and no gallery yet. |
+| `terasamente-02` | terasamente | `proj-terasamente-02-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `terasamente-03` | terasamente | `proj-terasamente-03-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `terasamente-04` | terasamente | `proj-terasamente-04-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `terasamente-05` | terasamente | `proj-terasamente-05-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `terasamente-06` | terasamente | `proj-terasamente-06-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
 
 ### Shooting notes, one line per slot
 
@@ -196,22 +268,33 @@ stay text. Nothing in the code changes when a file appears.
 
 | Group | Slots |
 |---|---|
-| Project covers, 10 projects x 1 | 10 |
+| Project covers, 54 projects x 1 | 54 |
 | Project gallery, 5 projects x 4 + 5 projects x 3 | 35 |
 | Process stages | 5 |
 | Social share | 1 |
-| **Total photo slots** | **51** |
+| **Total photo slots** | **95** |
 | Delivered illustrations (`hero-panel` + 9 service SVGs) | 10 |
 | Logo and favicon assets | 4 |
-| **Total assets tracked** | **65** |
+| Supplier logos | 12 |
+| **Total assets tracked** | **121** |
 
-**51 photographs to collect**, up from V1's 12 remaining photo slots, because
-the portfolio moved from six one-off covers to nine documented projects with
-galleries. That is the cost of the project model, and it is the number to plan
-the shooting days around.
+**95 photo slots, but 95 is not the shooting plan.** 44 of the covers belong to
+stub projects with no content. A stub becomes a real project only when someone
+writes its title and summary, and only then does its cover need a photograph.
 
-Minimum viable set: the 10 covers plus 5 process stages = **15 photographs**.
-Galleries can land per project afterwards without blocking launch.
+The number to plan shooting days around is unchanged from V2's first pass:
+
+| | Photographs |
+|---|---|
+| Minimum viable: 6 covers of projects with real content + 5 process stages | **11** |
+| Those 6 projects complete, covers and galleries | 29 |
+| The 10 seeded projects complete, if the 4 without content get content | 45 |
+| Every slot in the file, including 44 stubs | 95 |
+
+Six of the ten seeded projects have real titles and summaries and therefore
+render. The other four (`proiectare-3d-01`, `instalatii-01`, `industrial-01`,
+`terasamente-01`) keep their reserved gallery slots but carry `TODO:` content,
+so they are in the same position as the 44 stubs: invisible until written.
 
 ---
 

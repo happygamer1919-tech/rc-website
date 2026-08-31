@@ -456,5 +456,9 @@
     "backToServices": "Vezi toate serviciile",
     "projectLocation": "Localitate",
     "projectYear": "An"
+  },
+  "projectMeta": {
+    "materials": "Materiale principale:",
+    "challenge": "Provocarea:"
   }
 }

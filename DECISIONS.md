@@ -239,3 +239,58 @@ Tiles are `var(--bg-light)`, which is `#FFFFFF`.
 
 **Speed unchanged.** The track travels half its own width per cycle. 24 tiles is
 5,352px, so 72s gives 37px/s, the same as phase 1's 16 tiles in 40s.
+
+## Project model scale-up, W6-02, 2026-08-31
+
+Ten projects became **54**: six per service across nine services. The card asked
+for 5 to 7; six is the midpoint and divides evenly. Logged as Q-02.
+
+**Nothing was invented.** The 44 new projects are stubs: a slot ID, a service,
+and empty strings. Only `title` and `summary` gate a project, and without both
+it renders nowhere — not on its service page, not in the homepage portfolio, not
+in the sitemap. That is what makes 44 empty records safe to commit. The site is
+byte-identical: 6 homepage cards before, 6 after; 8,504px RO and 8,774px RU
+before and after.
+
+**Seven new fields, each optional on its own.** `location`, `year`, `work_type`,
+`area_sqm`, `duration`, `main_materials`, `challenge`. The first five render as
+chips in the existing meta row, in that order; `area_sqm` gets `m²` added on
+render so the number is stored bare. `main_materials` and `challenge` are
+sentences, not chips, so they render as two labelled lines under the row. Every
+one is tested individually: a project with a location and no year prints the
+location alone, verified both ways.
+
+**One emptiness rule, two spellings.** The seeded projects use `TODO: ...`
+markers and the stubs use `""`. `REAL()` in `build.js` treats both as "no source
+yet" and neither is ever printed. Previously the check was
+`startsWith('TODO:')`, which would have let an empty-string title through and
+rendered a card with no heading.
+
+**Stubs reserve a cover slot and no gallery slots.** Manifest rule D-6 already
+says a project with fewer than three usable gallery photos ships as cover only,
+and a project with no content has no photos at all. Three reserved gallery slots
+per stub would have added 132 unshootable slots and taken the manifest from 95 to
+216. Logged as Q-03.
+
+**Stub covers get no placeholder JPG either.** `scripts/slots.js` sets
+`placeholder: false` for any cover whose project has no title, the same device
+the gallery slots already use, so the repo does not carry 88 generated files
+nothing points at. The four seeded covers whose projects still have `TODO:`
+titles (`proiectare-3d-01`, `instalatii-01`, `industrial-01`, `terasamente-01`)
+had their placeholders deleted for the same reason: nothing rendered them.
+
+That opened a way to ship a broken `<img>`: fill in a title, forget to run the
+placeholder generator, and the card points at a file that does not exist. So
+`build.js` now refuses to build when a renderable project has no cover file, and
+names the file and the command that fixes it. Proven by giving a stub a title:
+the build fails with the path.
+
+**W3-02 indexability gate re-verified at the new scale.** Still 0/9 indexable
+with 54 projects. Dropping one real photo onto `proj-acoperisuri-01-cover.jpg`
+flips exactly one service to `index, follow` and adds exactly that pair to the
+sitemap; the other eight stay `noindex, nofollow`. The gate reads through
+`renderableProjects`, so 44 stubs are invisible to it.
+
+**Slot count: 51 -> 95.** 54 covers + 35 gallery + 5 process + 1 social. The
+shooting plan does not change: 11 photographs are still the whole critical path
+(6 covers of projects that have content, plus 5 process stages).

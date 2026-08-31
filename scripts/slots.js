@@ -7,9 +7,15 @@
 const SLOTS = [
   ...['step-01-fundatie', 'step-02-structura', 'step-03-acoperis', 'step-04-fatada', 'step-05-predare']
     .map((id) => ({ id, w: 900, h: 675, ratio: '4:3', retina: true })),
-  // Project covers, one per project in content/projects.json.
+  // Project covers, one per project in content/projects.json. A stub project
+  // has no title, so nothing renders its cover and no placeholder is written
+  // for it; the slot is still real and process-photos.js accepts it. Same
+  // `placeholder: false` device as the gallery slots below.
   ...require('../content/projects.json').projects
-    .map((p) => ({ id: p.cover, w: 1400, h: 933, ratio: '3:2', retina: true })),
+    .map((p) => ({
+      id: p.cover, w: 1400, h: 933, ratio: '3:2', retina: true,
+      placeholder: Boolean(p.title && p.title.ro && p.title.ro.trim() && !p.title.ro.trim().startsWith('TODO:')),
+    })),
   // Project gallery slots. Real slots the photo pipeline must accept, but not
   // rendered anywhere yet, so `placeholder: false` keeps gen-placeholders from
   // writing 70 files nothing points at. process-photos handles them normally.

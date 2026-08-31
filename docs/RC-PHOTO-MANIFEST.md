@@ -145,6 +145,34 @@ Strongest version is one house at five moments.
 |---|---|---|---|
 | `og-image` | 1200x630 | 1200x630 | Best single finished-house shot. Currently a branded logo card on #141414; a real photo overwrites it |
 
+### Supplier logos — 12, not photographs
+
+One full-colour file per brand at `public/img/suppliers/<slug>.svg` (preferred)
+or `.png`. Transparent background. **There is no second greyscale asset:** the
+grey default state in the marquee is a CSS filter on the colour file.
+
+Not photo slots, so they are outside the 51-slot count and the `photos-raw/`
+pipeline: they are a direct drop into `public/img/suppliers/`.
+
+| Slug | Brand | File present |
+|---|---|---|
+| `technonicol` | TechnoNICOL | |
+| `bilka` | Bilka | |
+| `novatik` | Novatik | |
+| `iko` | IKO | |
+| `swisspor` | Swisspor | |
+| `knauf` | Knauf | |
+| `baumit` | Baumit | |
+| `ceresit` | Ceresit | |
+| `weber` | Weber | |
+| `ytong` | Ytong | |
+| `holcim` | Holcim | |
+| `bosch` | Bosch | |
+
+The fallback is per brand: a slug with no file renders its brand name as text in
+the same white tile, so the first logo to land shows as a logo while the rest
+stay text. Nothing in the code changes when a file appears.
+
 ### Delivered, no longer photo slots
 
 | Asset | Format | Status |

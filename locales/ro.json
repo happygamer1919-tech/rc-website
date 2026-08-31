@@ -398,36 +398,52 @@
   },
   "suppliers": {
     "0": {
-      "id": "supplier-01",
-      "name": "supplier-01"
+      "id": "technonicol",
+      "name": "TechnoNICOL"
     },
     "1": {
-      "id": "supplier-02",
-      "name": "supplier-02"
+      "id": "bilka",
+      "name": "Bilka"
     },
     "2": {
-      "id": "supplier-03",
-      "name": "supplier-03"
+      "id": "novatik",
+      "name": "Novatik"
     },
     "3": {
-      "id": "supplier-04",
-      "name": "supplier-04"
+      "id": "iko",
+      "name": "IKO"
     },
     "4": {
-      "id": "supplier-05",
-      "name": "supplier-05"
+      "id": "swisspor",
+      "name": "Swisspor"
     },
     "5": {
-      "id": "supplier-06",
-      "name": "supplier-06"
+      "id": "knauf",
+      "name": "Knauf"
     },
     "6": {
-      "id": "supplier-07",
-      "name": "supplier-07"
+      "id": "baumit",
+      "name": "Baumit"
     },
     "7": {
-      "id": "supplier-08",
-      "name": "supplier-08"
+      "id": "ceresit",
+      "name": "Ceresit"
+    },
+    "8": {
+      "id": "weber",
+      "name": "Weber"
+    },
+    "9": {
+      "id": "ytong",
+      "name": "Ytong"
+    },
+    "10": {
+      "id": "holcim",
+      "name": "Holcim"
+    },
+    "11": {
+      "id": "bosch",
+      "name": "Bosch"
     }
   },
   "servicePage": {

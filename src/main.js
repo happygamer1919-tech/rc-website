@@ -194,6 +194,25 @@
     nodes.forEach(function (n) { io.observe(n); });
   })();
 
+  /* 4. marquee keyboard focus. The pause and the colour restore are pure CSS;
+     this exists only to undo a side effect of tabbing. An overflow:hidden box
+     is still a scroll container, so the browser scrolls it sideways to reveal
+     a focused tile. That keeps the focus ring visible, which is what we want,
+     but the offset must not survive after focus leaves or the -50% seam lands
+     in the wrong place. Nothing here reads or writes page scroll. */
+  (function () {
+    var viewport = document.querySelector('.marquee__viewport');
+    if (!viewport) return;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    viewport.addEventListener('focusout', function (e) {
+      // Under reduced motion the track does not move and the box is a plain
+      // horizontal scroll region the reader drives. Their position is theirs.
+      if (reduced.matches) return;
+      if (e.relatedTarget && viewport.contains(e.relatedTarget)) return;
+      viewport.scrollLeft = 0;
+    });
+  })();
+
   /* 5. lead capture modal */
   (function () {
     var modal = document.getElementById('lead-modal');

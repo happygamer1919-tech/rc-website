@@ -557,6 +557,11 @@ p { margin: 0; }
 .marquee .lede { color: var(--bg-light); opacity: 0.75; }
 .marquee__viewport {
   overflow: hidden;
+  /* html sets scroll-behavior: smooth. Inherited here it animates the sideways
+     scroll the browser performs to reveal a focused tile, which then races the
+     reset in main.js and wins. This box is never an anchor target, so it has no
+     use for smooth scrolling. */
+  scroll-behavior: auto;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 80px, #000 calc(100% - 80px), transparent);
           mask-image: linear-gradient(90deg, transparent, #000 80px, #000 calc(100% - 80px), transparent);
 }
@@ -564,34 +569,55 @@ p { margin: 0; }
   display: flex;
   width: max-content;
   gap: 24px;
-  animation: marquee-scroll 40s linear infinite;
+  /* The track travels half its own width per cycle. 24 tiles is 5,352px, so
+     72s gives 37px/s, the same speed phase 1 ran at with 16 tiles in 40s. */
+  animation: marquee-scroll 72s linear infinite;
 }
-.marquee__viewport:hover .marquee__track { animation-play-state: paused; }
+/* Pause is a pure CSS state change on an animation. It registers no wheel,
+   touch or scroll handler, so it cannot delay, capture or hijack scrolling.
+   Keyboard focus does exactly what hover does. */
+.marquee__viewport:hover .marquee__track,
+.marquee__viewport:focus-within .marquee__track { animation-play-state: paused; }
 @keyframes marquee-scroll {
   from { transform: translate3d(0, 0, 0); }
   /* The track holds the list twice; -50% lands exactly on the seam. */
   to   { transform: translate3d(-50%, 0, 0); }
 }
+/* White logo tile. Sized for a wordmark, 2.5:1, not for a text label. The
+   height is deliberately unchanged from phase 1: the homepage has under 200px
+   of headroom against the 8,700px cap, and a logo needs width, not height. */
 .supplier {
   flex: none;
-  width: 160px; height: 80px;
+  width: 200px; height: 80px;
   display: flex; align-items: center; justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-card);
-  background: #1F1F1F;
+  background: var(--bg-light);
+  padding: 14px 20px;
 }
-/* The greyscale/60% treatment applies to the LOGO only. Applied to the tile it
-   also dimmed the placeholder label to 2.74:1, below AA. */
-.supplier img {
+/* Default: greyscale and dimmed. One full-colour source file per brand and no
+   second asset; the grey state is this filter, and hover or keyboard focus
+   removes it. Scoped to the logo, never the tile: applied to the tile it also
+   dimmed the text fallback below AA. */
+.supplier__logo {
   filter: grayscale(100%); opacity: 0.6;
   transition: filter var(--hover-dur) ease-out, opacity var(--hover-dur) ease-out;
 }
+/* No CLS without an explicit box: the tile is a fixed 200x80 and the logo is
+   clamped inside it, whatever the file's own dimensions turn out to be. */
+.supplier__logo { max-width: 160px; max-height: 52px; width: auto; height: auto; }
+/* Guarded: on a touch device :hover sticks after a tap. Focus is not guarded,
+   it is exactly the keyboard equivalent and must always work. */
 @media (hover: hover) {
-  .supplier:hover img { filter: grayscale(0%); opacity: 1; }
+  .supplier:hover .supplier__logo { filter: grayscale(0%); opacity: 1; }
 }
-.supplier img { max-width: 120px; max-height: 48px; width: auto; height: auto; }
+.supplier:focus-visible .supplier__logo { filter: grayscale(0%); opacity: 1; }
+.supplier:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; }
+/* Text fallback until a logo file lands. Full-strength --ink on #FFFFFF,
+   17.40:1. It is not dimmed with the logo: contrast is worth more than the
+   visual consistency of a placeholder. */
 .supplier__label {
-  font-size: 13px; color: var(--bg-light); text-align: center; padding: 0 8px;
+  font-size: 15px; font-weight: 700; line-height: 1.2;
+  color: var(--ink); text-align: center;
   word-break: break-word;
 }
 
@@ -892,9 +918,16 @@ p { margin: 0; }
   /* Hover: no travel. Colour feedback stays, it is not motion. */
   .card:hover, .review:hover, .trust-item:hover,
   .section--dark .step:hover { transform: none !important; }
-  /* Marquee: stopped dead, static row. */
+  /* Marquee: stopped dead, static row. Nothing to pause, so hover and focus
+     have nothing to do and cannot error; they only ever set a play state. */
   .marquee__track { animation: none !important; transform: none !important; }
   .marquee__viewport { overflow-x: auto; }
+  /* Every logo full colour: the grey default is a motion-adjacent effect and
+     there is no hover reveal left to restore it. */
+  .supplier__logo { filter: none !important; opacity: 1 !important; transition: none !important; }
+  /* The second copy exists only to make the loop seamless. With no loop it is
+     twelve repeated tiles a reader has to scroll past. */
+  .supplier[aria-hidden="true"] { display: none; }
   /* Header: no compression animation. */
   .header, .header__logo img { transition: none !important; }
   /* Modal: no entrance. */

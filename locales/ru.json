@@ -456,5 +456,9 @@
     "backToServices": "Смотреть все услуги",
     "projectLocation": "Населённый пункт",
     "projectYear": "Год"
+  },
+  "projectMeta": {
+    "materials": "Основные материалы:",
+    "challenge": "Задача:"
   }
 }

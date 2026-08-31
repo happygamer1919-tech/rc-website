@@ -141,12 +141,17 @@ const servicePages = [];
 // Service page rendering. One page per slug per locale, 18 in all.
 const serviceTemplate = fs.readFileSync('src/service.html', 'utf8');
 
-// A project is renderable only when every field it would print is real.
-// A TODO marker is never printed: the project is dropped instead.
+// A field carries real content only when it is neither empty nor a TODO marker.
+// Stubs use "" and the seeded projects use "TODO: ...": both mean "no source
+// for this yet", and neither is ever printed. Every optional field is tested on
+// its own, so a project with a real location and no year prints the location.
+const REAL = (v) => typeof v === 'string' && v.trim() !== '' && !v.trim().startsWith('TODO:');
+
+// A project is renderable only when the two fields it cannot do without are
+// real. The other seven are optional and drop out individually.
 function renderableProjects(l, slug) {
   return PROJECTS.filter((p) => p.service === slug
-    && !p.title[l.code].startsWith('TODO:')
-    && !p.summary[l.code].startsWith('TODO:'));
+    && REAL(p.title[l.code]) && REAL(p.summary[l.code]));
 }
 
 // The gate for indexability: a real cover photo, not a generated placeholder.
@@ -163,20 +168,46 @@ function coverIsRealPhoto(cover) {
   return recorded === undefined || recorded !== fs.statSync(file).size;
 }
 
+// A renderable project always points at a cover file that exists. Stub covers
+// get no placeholder, so filling in a title without either dropping a photo or
+// re-running gen-placeholders would ship a broken <img>. Caught here instead.
+function assertCoversExist() {
+  const missing = [...new Set(loaded.flatMap((l) => SERVICE_SLUGS
+    .flatMap((slug) => renderableProjects(l, slug))
+    .filter((p) => !fs.existsSync(`public/img/${p.cover}.jpg`))
+    .map((p) => p.cover)))];
+  if (missing.length) {
+    die(`${missing.length} renderable project(s) have no cover file:\n` +
+      missing.map((c) => `  · public/img/${c}.jpg`).join('\n') +
+      '\n\n  Drop the real photo in, or run: node scripts/gen-placeholders.js');
+  }
+}
+assertCoversExist();
+
 function renderGallerySection(l, slug, vars) {
   const mine = renderableProjects(l, slug);
   if (!mine.length) return '';          // section, heading and all, simply absent
   const cards = mine.map((p, i) => {
-    const loc = p.location[l.code];
+    // Short facts as chips, in reading order. Each is omitted on its own.
+    const chip = (v) => `<span class="review__tag">${esc(v)}</span>`;
     const meta = [];
-    if (!loc.startsWith('TODO:')) meta.push(`<span class="review__tag">${esc(loc)}</span>`);
-    if (!String(p.year).startsWith('TODO:')) meta.push(`<span class="review__tag">${esc(String(p.year))}</span>`);
+    if (REAL(p.location[l.code])) meta.push(chip(p.location[l.code]));
+    if (REAL(String(p.year))) meta.push(chip(String(p.year)));
+    if (REAL(p.work_type[l.code])) meta.push(chip(p.work_type[l.code]));
+    if (REAL(String(p.area_sqm))) meta.push(chip(`${String(p.area_sqm).trim()} m²`));
+    if (REAL(p.duration[l.code])) meta.push(chip(p.duration[l.code]));
+    // Two facts too long to be chips. Same rule: absent when empty.
+    const fact = (label, v) => REAL(v)
+      ? `<p class="project__fact"><span>${esc(l.strings[label])}</span> ${esc(v)}</p>` : '';
+    const facts = fact('projectMeta.materials', p.main_materials[l.code])
+                + fact('projectMeta.challenge', p.challenge[l.code]);
     return `      <article class="card project" id="project-${p.id}" data-reveal data-stagger="${Math.min(i, 6)}">
         <div class="media media--3x2 media--card"><img src="${vars.base}/img/${p.cover}.jpg" alt="${esc(p.title[l.code])}" width="1400" height="933" loading="lazy" decoding="async"></div>
         <div class="card__body">
           <h3>${esc(p.title[l.code])}</h3>
           <p class="project__desc">${esc(p.summary[l.code])}</p>
           ${meta.length ? `<span class="review__tags">${meta.join('')}</span>` : ''}
+          ${facts}
         </div>
       </article>`;
   }).join('\n');
@@ -234,7 +265,7 @@ for (const l of loaded) {
   // Homepage portfolio: six cards straight off projects.json, each linking to
   // its project anchor on the relevant service page. Only projects with a real
   // title are shown; a TODO title must never reach the homepage.
-  const featured = PROJECTS.filter((p) => !p.title[l.code].startsWith('TODO:')).slice(0, 6);
+  const featured = PROJECTS.filter((p) => REAL(p.title[l.code]) && REAL(p.summary[l.code])).slice(0, 6);
   vars.supplierChips = renderSupplierChips(l, BASE);
   vars.portfolioCards = '<div class="grid grid--3" id="portfolio-grid">\n' +
     featured.map((p, i) => {

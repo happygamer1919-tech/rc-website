@@ -328,6 +328,11 @@ p { margin: 0; }
 .project__link:hover { color: inherit; }
 .project__link:hover h3 { color: var(--brand-dark); }
 .project__desc { color: var(--ink-muted); }
+/* Two optional project facts too long to sit in the chip row: main materials
+   and the challenge. Each renders only when it has real content, so on a
+   project with neither, nothing at all is emitted and the card is unchanged. */
+.project__fact { font-size: 15px; color: var(--ink-muted); margin-top: 8px; }
+.project__fact span { font-weight: 700; color: var(--ink); }
 .portfolio__foot { display: flex; justify-content: center; margin-top: 40px; }
 .portfolio__empty { color: var(--ink-muted); margin-top: 8px; }
 

@@ -177,9 +177,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
           <li>{{hero.highlights.2}}</li>
         </ul>
       </div>
-      <div class="hero-panel-media media media--4x3">
-        <img src="{{base}}/img/hero-panel.svg" alt="{{hero.panelAlt}}" width="800" height="600" loading="lazy" decoding="async">
-      </div>
+      {{heroPanelMedia}}
     </div>
 
   </div>
@@ -211,7 +209,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
     <div class="grid grid--3" style="margin-top: 40px;">
       <article class="card" data-reveal data-stagger="0">
-        <div class="media media--illustration"><img src="{{base}}/img/services/svc-case-la-cheie.svg" alt="{{services.items.0.alt}}" width="400" height="300" loading="lazy" decoding="async"></div>
+        {{svcMedia0}}
         <div class="card__body" data-reveal data-stagger="1">
           <h3 class="service__title">{{services.items.0.title}}</h3>
           <p class="service__desc">{{services.items.0.desc}}</p>
@@ -219,7 +217,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         </div>
       </article>
       <article class="card" data-reveal data-stagger="2">
-        <div class="media media--illustration"><img src="{{base}}/img/services/svc-acoperisuri.svg" alt="{{services.items.1.alt}}" width="400" height="300" loading="lazy" decoding="async"></div>
+        {{svcMedia1}}
         <div class="card__body" data-reveal data-stagger="3">
           <h3 class="service__title">{{services.items.1.title}}</h3>
           <p class="service__desc">{{services.items.1.desc}}</p>
@@ -227,7 +225,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         </div>
       </article>
       <article class="card" data-reveal data-stagger="4">
-        <div class="media media--illustration"><img src="{{base}}/img/services/svc-fatade.svg" alt="{{services.items.2.alt}}" width="400" height="300" loading="lazy" decoding="async"></div>
+        {{svcMedia2}}
         <div class="card__body" data-reveal data-stagger="5">
           <h3 class="service__title">{{services.items.2.title}}</h3>
           <p class="service__desc">{{services.items.2.desc}}</p>
@@ -235,7 +233,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         </div>
       </article>
       <article class="card" data-reveal data-stagger="6">
-        <div class="media media--illustration"><img src="{{base}}/img/services/svc-reparatii.svg" alt="{{services.items.3.alt}}" width="400" height="300" loading="lazy" decoding="async"></div>
+        {{svcMedia3}}
         <div class="card__body" data-reveal data-stagger="6">
           <h3 class="service__title">{{services.items.3.title}}</h3>
           <p class="service__desc">{{services.items.3.desc}}</p>
@@ -243,7 +241,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         </div>
       </article>
       <article class="card" data-reveal data-stagger="6">
-        <div class="media media--illustration"><img src="{{base}}/img/services/svc-finisaje.svg" alt="{{services.items.4.alt}}" width="400" height="300" loading="lazy" decoding="async"></div>
+        {{svcMedia4}}
         <div class="card__body" data-reveal data-stagger="6">
           <h3 class="service__title">{{services.items.4.title}}</h3>
           <p class="service__desc">{{services.items.4.desc}}</p>
@@ -251,7 +249,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         </div>
       </article>
       <article class="card" data-reveal data-stagger="6">
-        <div class="media media--illustration"><img src="{{base}}/img/services/svc-proiectare-3d.svg" alt="{{services.items.5.alt}}" width="400" height="300" loading="lazy" decoding="async"></div>
+        {{svcMedia5}}
         <div class="card__body" data-reveal data-stagger="6">
           <h3 class="service__title">{{services.items.5.title}}</h3>
           <p class="service__desc">{{services.items.5.desc}}</p>
@@ -259,7 +257,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         </div>
       </article>
       <article class="card" data-reveal data-stagger="6">
-        <div class="media media--illustration"><img src="{{base}}/img/services/svc-instalatii.svg" alt="{{services.items.6.alt}}" width="400" height="300" loading="lazy" decoding="async"></div>
+        {{svcMedia6}}
         <div class="card__body" data-reveal data-stagger="6">
           <h3 class="service__title">{{services.items.6.title}}</h3>
           <p class="service__desc">{{services.items.6.desc}}</p>
@@ -267,7 +265,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         </div>
       </article>
       <article class="card" data-reveal data-stagger="6">
-        <div class="media media--illustration"><img src="{{base}}/img/services/svc-industrial.svg" alt="{{services.items.7.alt}}" width="400" height="300" loading="lazy" decoding="async"></div>
+        {{svcMedia7}}
         <div class="card__body" data-reveal data-stagger="6">
           <h3 class="service__title">{{services.items.7.title}}</h3>
           <p class="service__desc">{{services.items.7.desc}}</p>
@@ -275,7 +273,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         </div>
       </article>
       <article class="card" data-reveal data-stagger="6">
-        <div class="media media--illustration"><img src="{{base}}/img/services/svc-terasamente.svg" alt="{{services.items.8.alt}}" width="400" height="300" loading="lazy" decoding="async"></div>
+        {{svcMedia8}}
         <div class="card__body" data-reveal data-stagger="6">
           <h3 class="service__title">{{services.items.8.title}}</h3>
           <p class="service__desc">{{services.items.8.desc}}</p>

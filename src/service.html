@@ -161,9 +161,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
           <a class="btn btn--primary" href="#oferta">{{hero.ctaPrimary}}</a>
         </div>
       </div>
-      <div class="svc-hero__art media media--4x3">
-        <img src="{{base}}/img/services/{{svc.slot}}.svg" alt="{{svc.alt}}" width="400" height="300" decoding="async">
-      </div>
+      {{svc.media}}
     </div>
   </div>
 </section>

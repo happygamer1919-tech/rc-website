@@ -401,3 +401,104 @@ illustrations since phase 2 and were SVG line drawings until today.
 **The raw sources are not committed.** They went to `photos-raw/`, which carries
 a `.gitignore` of `*` and has always been out of the repo by design. The
 processed output in `public/img/` is what ships.
+
+## Supplier logos fetched, W7-03, 2026-08-31
+
+**Nine of twelve landed. Three stayed as the text fallback**, each for a
+different reason, none of them a decision I was entitled to make alone.
+
+### Landed, with the source of every file
+
+Source order was the card's: the brand's own press kit or media centre first,
+the brand's own website second, Wikimedia Commons SVG third. **No file came from
+a distributor, retailer or logo-aggregator site.**
+
+| Slug | File | Source | Kind |
+|---|---|---|---|
+| `baumit` | `baumit.png` | `https://int.baumit.com/files/com/press/logo/Baumit-Logo.zip` -> `Baumit-Logo/Baumit_logo_frame-01.png` | **Official press kit**, from Baumit's own press-releases page |
+| `technonicol` | `technonicol.svg` | `https://www.technonicol.com/local/media/img/logo_eng.svg` | Brand's own site. Latin-script variant, which suits an RO/RU site better than the Cyrillic one |
+| `bilka` | `bilka.svg` | `https://www.bilka.ro/svg/logo-ro.svg` | Brand's own site |
+| `novatik` | `novatik.png` | `https://www.novatik.ro/themes/frontend/site/assets/images/logo_21.png` | Brand's own site. PNG with alpha; no SVG published |
+| `iko` | `iko.svg` | `https://www.iko.com/wp-content/uploads/2025/07/Logo.svg` | Brand's own site |
+| `knauf` | `knauf.svg` | `https://upload.wikimedia.org/wikipedia/commons/2/2c/KNAUF_Logo_2024.svg` | Wikimedia Commons, **public domain** |
+| `swisspor` | `swisspor.svg` | `https://upload.wikimedia.org/wikipedia/commons/b/b4/Swisspor_Holding_Logo.svg` | Wikimedia Commons, **public domain** |
+| `ytong` | `ytong.svg` | `https://upload.wikimedia.org/wikipedia/commons/4/49/Ytong.svg` | Wikimedia Commons, **public domain** |
+| `holcim` | `holcim.svg` | `https://upload.wikimedia.org/wikipedia/commons/5/50/Holcim_logo.svg` | Wikimedia Commons, **public domain** |
+
+Seven SVG, two PNG. `baumit.png` has no alpha channel, but its background is
+pure `#FFFFFF` (verified by decoding the first pixel) and the tile is `#FFFFFF`,
+so it is visually identical to a transparent one. It was downscaled from
+1765x1777 to 397x400; nothing else about any file was altered.
+
+Every SVG was checked for `<script>`, `onload`, `onclick` and `javascript:`
+before being committed. All nine are clean. They are referenced from `<img src>`,
+where SVG script execution is blocked regardless.
+
+### Stayed as text, and why
+
+**`bosch` — usage terms forbid it.** Bosch's own legal notice states *"You agree
+not to copy, use or otherwise infringe upon these marks and design elements"*
+and that content *"may not be copied, disseminated, altered or made accessible
+to third parties for commercial purposes."*
+Source: `https://us.bosch-press.com/pressportal/us/en/imprint/legal-notice.html`.
+This is the case the card named: terms visibly forbid third-party display, so
+the brand is skipped and reported rather than decided on the owner's behalf.
+
+**`ceresit` — no full-colour asset exists at a permitted source.** Henkel's own
+DAM serves the Ceresit wordmark **in white on transparent**
+(`https://dm.henkel-dam.com/is/image/henkel/ceresit-logo_638x148` and
+`.../ceresit-logo`), which is invisible on a white tile. Confirmed by rendering
+both on `#141414`, where the wordmark appears, and on `#FFFFFF`, where the tile
+is blank. The card asks for a **full-colour** logo, and a white variant is not
+one. Ceresit is not on Wikimedia Commons. Every colour version findable is on a
+logo-aggregator site, which the source rule excludes. Recolouring someone's
+trademark to fit our tile is not something to do unasked.
+
+**`weber` — the brand does not publish a Weber mark.** The only logo
+`https://www.ro.weber/` serves is `saint-gobain-logo.svg`, the Saint-Gobain
+corporate logo, because Saint-Gobain has consolidated Weber under the masterbrand.
+Putting the Saint-Gobain logo in a tile captioned "Weber" would misrepresent it.
+`uk.weber`, `de.weber` and `fr.weber` all return 403. Not on Commons either.
+
+### Two near-misses that were rejected
+
+Wikimedia name collisions, both caught before download:
+
+- **"Bilka"** on Commons is `File:Bilka (Unternehmen) logo.svg`, the **Danish
+  hypermarket chain** owned by Salling Group, not the Romanian steel roofing
+  manufacturer. The file that shipped is from `bilka.ro` and carries the
+  Romanian tagline *sisteme pentru acoperișuri*.
+- **"IKO"** on Commons is `File:Nichi-iko logo.svg`, a **Japanese
+  pharmaceutical company**. The file that shipped is from `iko.com`, the
+  roofing and waterproofing group.
+
+A logo search matching the right word is not the same as matching the right
+company. Both were caught by reading the file description before downloading.
+
+### Verified at the real tile size
+
+All twelve were rendered at exactly 200x80 in the production `.supplier` tile,
+using the production stylesheet, in **both** states — greyscale at 60% opacity
+and full colour — and screenshotted with headless Chrome. All nine logos are
+legible in both states and all three fallbacks render as the styled brand name.
+
+One note for the record: **Knauf is the faintest in the default state.** Its
+`#00A0E6` blue greyscales to a light grey which, at 60% opacity on white, is
+washed out. It is still legible and it goes to full colour on hover and focus.
+If it ever reads as broken, the fix is to raise the default opacity for that one
+file, not to alter the logo.
+
+**Ytong is a filled orange block by design**, not a rendering fault. Its SVG
+carries a full-canvas `#FDB813` polygon with the wordmark knocked out in black.
+That is the real Ytong logo.
+
+### Colour set unchanged
+
+Brand logos are image assets, not CSS colour values. `src/styles.css` was not
+touched by this card and the approved set stands at the same **10** values.
+
+### Weight
+
+92KB for all nine, the largest being `bilka.svg` at 31KB. Lighthouse stayed
+100/100/100/100 on both locales; page heights are unchanged at 8,504px RO and
+8,774px RU.

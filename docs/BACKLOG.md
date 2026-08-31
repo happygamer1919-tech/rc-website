@@ -19,6 +19,14 @@ history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 | RC-035 | W6-03b Service page hero art eager, not lazy | `w6/rc-035-svc-hero-eager` | shipped |
 | RC-036 | Dead-link gate script + wave 6 release notes | `docs/rc-036-wave6-gates` | shipped |
 
+## Wave 7
+
+| Ticket | Card | Branch | Status |
+|---|---|---|---|
+| RC-037 | W7-01 docs/CLAUDE.md, standing rules | `w7/rc-037-claude-md` | shipped |
+| RC-038 | W7-02 Route the nine service images | `w7/rc-038-service-images` | todo |
+| RC-039 | W7-03 Supplier logos | `w7/rc-039-supplier-logos` | todo |
+
 ## Shipped, waves 1 to 5
 
 | Ticket | What | Wave |

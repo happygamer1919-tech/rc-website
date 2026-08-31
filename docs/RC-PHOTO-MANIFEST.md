@@ -21,6 +21,11 @@ Every file: minimum 1600px long edge, landscape, JPG, under 400KB after
 processing, no watermark, real Rapid Construct work only.
 Naming: the Slot ID exactly, lowercase, `.jpg`.
 
+**One slot group has a lower floor.** The nine service card slots take a
+minimum of **1200px** on the long edge, not 1600. Owner ruling, W7-02; see
+DECISIONS.md. A slot's own floor lives in `scripts/slots.js` as `minLongEdge`
+and `process-photos.js` warns against that value rather than the default.
+
 ---
 
 ## Part A — Content model
@@ -259,27 +264,34 @@ Supply at **2800px on the long edge**: that is the 2x the pipeline writes.
 A real photo here is the likely LCP element, so the build drops `loading="lazy"`
 and sets `fetchpriority="high"` the moment the jpg exists.
 
-### Service cards — 9, 4:3 landscape, 800x600 (2x is the 1600x1200 source)
+### Service cards — 9, 4:3 landscape, 800x600 — FILLED 2026-08-31
 
-W6-03 turned these back into photo slots too. The nine SVGs at
-`public/img/services/svc-*.svg` stay in the repo as **per-slot fallbacks**: a
-card renders its photograph the moment its own jpg exists and its SVG until
-then. One service having a photo does not affect the other eight.
+**All nine are filled.** W7-02 processed the approved artwork through the
+pipeline. Every card renders a photograph; the nine SVGs at
+`public/img/services/svc-*.svg` are **retained but unused** — referenced zero
+times in `dist/` — and remain the fallback if a jpg is ever removed.
+
+Minimum long edge for this group is **1200px**, not the manifest default of
+1600. The supplied artwork is 1448x1086, which is exactly 4:3 and crops without
+losing a pixel. The 1x is 800x600, so 1448 covers it comfortably; the 2x is
+interpolated up from 1448 to 1600, a 10% upscale.
 
 Photos live at `public/img/<slot-id>.jpg`, which is where the pipeline writes.
 The SVG fallbacks stay at `public/img/services/<slot-id>.svg`.
 
 | Slot ID | Ratio | Dimensions | Shooting note |
 |---|---|---|---|
-| `svc-case-la-cheie` | 4:3 | 800x600 | A finished house, whole, daylight |
-| `svc-acoperisuri` | 4:3 | 800x600 | A completed roof, elevated angle |
-| `svc-fatade` | 4:3 | 800x600 | A finished façade, even light |
-| `svc-reparatii` | 4:3 | 800x600 | A renovated room, wide |
-| `svc-finisaje` | 4:3 | 800x600 | Finished plaster, paint or tiling |
-| `svc-proiectare-3d` | 4:3 | 800x600 | A render of a real project |
-| `svc-instalatii` | 4:3 | 800x600 | A tidy pipe or cable run |
-| `svc-industrial` | 4:3 | 800x600 | A hall or warehouse, full width |
-| `svc-terasamente` | 4:3 | 800x600 | Machinery working a plot |
+| `svc-case-la-cheie` | 4:3 | 800x600 | **Filled** 2026-08-31, 82 KB / 266 KB |
+| `svc-acoperisuri` | 4:3 | 800x600 | **Filled** 2026-08-31, 101 KB / 384 KB |
+| `svc-fatade` | 4:3 | 800x600 | **Filled** 2026-08-31, 100 KB / 382 KB |
+| `svc-reparatii` | 4:3 | 800x600 | **Filled** 2026-08-31, 131 KB / 368 KB (2x at q64 to fit the budget) |
+| `svc-finisaje` | 4:3 | 800x600 | **Filled** 2026-08-31, 75 KB / 274 KB |
+| `svc-proiectare-3d` | 4:3 | 800x600 | **Filled** 2026-08-31, 67 KB / 208 KB |
+| `svc-instalatii` | 4:3 | 800x600 | **Filled** 2026-08-31, 125 KB / 387 KB |
+| `svc-industrial` | 4:3 | 800x600 | **Filled** 2026-08-31, 77 KB / 292 KB |
+| `svc-terasamente` | 4:3 | 800x600 | **Filled** 2026-08-31, 120 KB / 377 KB |
+
+Sizes are 1x / 2x. Every file is under the 400KB budget.
 
 Each also appears at the top of its own service page, on the dark field.
 

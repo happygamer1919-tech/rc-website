@@ -104,8 +104,10 @@ for (const slot of SLOTS) {
   if (!src) continue;
 
   const { w: sw, h: sh } = dimensions(src);
-  if (Math.max(sw, sh) < MIN_LONG_EDGE) {
-    warnings.push(`${slot.id}: ${sw}x${sh}, long edge under ${MIN_LONG_EDGE}px (manifest minimum)`);
+  // A slot may carry its own floor; without one the manifest default applies.
+  const floor = slot.minLongEdge || MIN_LONG_EDGE;
+  if (Math.max(sw, sh) < floor) {
+    warnings.push(`${slot.id}: ${sw}x${sh}, long edge under ${floor}px (minimum for this slot)`);
   }
   if (sh > sw) {
     warnings.push(`${slot.id}: ${sw}x${sh} is portrait. The manifest requires landscape; the crop will discard a lot.`);

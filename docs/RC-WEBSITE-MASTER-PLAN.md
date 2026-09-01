@@ -57,7 +57,7 @@ Approved by Ivan. Do not reopen without his sign-off.
 |---|---|
 | Hero visual | **No photo.** Plain light background, headline, stat row, two CTAs, price box (Imperlux model). |
 | Prices | **Published.** Per m² figures visible in the hero. |
-| Header | **White bar with accent.** Solid, opaque, sticky. Not transparent, not a floating dark pill. |
+| Header | **White bar carrying a dark pill.** Solid, opaque, fixed. The bar is `#FFFFFF` with a 1px `--line` bottom border; the nav, phone, CTA and language switcher sit inside a `#141414` pill with a 999px radius. Not transparent, and not floating: the bar is fixed and `<body>` carries a constant spacer. *Amended 2026-09-01, W8-04. This row previously read "Not transparent, not a floating dark pill", which the built header contradicted from phase 1 onward. Ratified by Ivan; see DECISIONS.md.* |
 | Languages | **RO + RU.** RO is the default locale at `/`, RU at `/ru`. Language switcher in the header. |
 | Copy | Sourced from the existing build, restructured and re-laid-out. Not rewritten from scratch. |
 | Photos | Not selected at build time. Build ships with labelled placeholders. See section 7. |
@@ -118,8 +118,9 @@ Eight sections. Target total page height 7,000 to 8,000px desktop. If the build 
 
 ### 5.1 Header (sticky)
 
-`--bg-light`, opaque, 1px bottom border `--line`, height 72px.
+`--bg-light`, opaque, 1px bottom border `--line`, height **96px desktop / 80px mobile** (amended 2026-09-01, W8-04; this read 72px and never matched the build).
 Left: logo. Centre: nav (Acasă, Servicii, Portofoliu, Despre noi, Contacte). Right: phone number as a clickable link, primary CTA button "Solicită ofertă", RO/RU switcher.
+These sit inside a `#141414` pill, 64px tall, compressing to 56px on scroll (52px mobile).
 Mobile: logo, phone icon, hamburger.
 **Fix carried over:** opaque background so nothing overlaps on scroll; `white-space: nowrap` on nav items so none wraps to two lines.
 

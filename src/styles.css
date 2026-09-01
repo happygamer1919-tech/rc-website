@@ -573,10 +573,17 @@ p { margin: 0; }
 .marquee__track {
   display: flex;
   width: max-content;
-  gap: 24px;
-  /* The track travels half its own width per cycle. 24 tiles is 5,352px, so
-     72s gives 37px/s, the same speed phase 1 ran at with 16 tiles in 40s. */
-  animation: marquee-scroll 72s linear infinite;
+  /* NOT `gap`. Flex puts n-1 gaps between n tiles, so the second copy of the
+     list starts 12px short of half the track width and the -50% keyframe lands
+     12px off its seam, jumping by half a gap every cycle. Measured at 12px with
+     8, 12 and 11 brands: it was always gap/2 and had been there since phase 1.
+     A trailing margin on every tile gives n gaps, so half the width falls
+     exactly on the first duplicate. Fixed W8-04. */
+  /* The track travels half its own width per cycle. 11 brands rendered twice is
+     22 tiles at 4,928px, so 66s holds ~37px/s, the speed phase 1 ran at with 16
+     tiles in 40s. With the trailing-margin fix above the -50% seam is exact at
+     any brand count, so adding or dropping a brand cannot reopen the jump. */
+  animation: marquee-scroll 66s linear infinite;
 }
 /* Pause is a pure CSS state change on an animation. It registers no wheel,
    touch or scroll handler, so it cannot delay, capture or hijack scrolling.
@@ -594,6 +601,7 @@ p { margin: 0; }
 .supplier {
   flex: none;
   width: 200px; height: 80px;
+  margin-right: 24px;          /* the tile gap; see .marquee__track above */
   display: flex; align-items: center; justify-content: center;
   border-radius: var(--radius-card);
   background: var(--bg-light);

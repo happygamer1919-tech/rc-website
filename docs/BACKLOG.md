@@ -104,3 +104,24 @@ FAQPage schema, two contextual sibling links per page, content-dated
 "Actualizat". All 20 pages inside the height budgets. Open deviation recorded in
 DECISIONS.md: Russian answers run 31-39 words, not 40-60, to stay faithful
 translations.
+
+## W10-01 · Publish wave 9
+**Status: DONE** (2026-09-01). Merged `w9/rc-047-portfolio-content` to main as
+`b4bf763`, deployed. Verified live, not local: 18 sitemap URLs each with a
+lastmod, 16 of 18 service pages indexable, industrial the only noindex pair,
+homepage portfolio six different services in both locales, 68 cover files all
+HTTP 200, zero slots on SVG fallback, 212 images across 20 pages all decode,
+zero dead internal links, zero upscaled variants against source.
+
+## W10-02 · Live form test
+**Status: BLOCKED, not started.** `WEB3FORMS_KEY` does not exist. Deploy log says
+DEMO MODE, the secrets API returns zero for the repo and both environments, and
+the live HTML carries `data-armed="0"`. See Q-W10-01 for the three-step fix.
+
+## W10-03 · Restore images
+**Status: HELD** pending the owner confirming the set, as instructed.
+
+## W10-04 · Title and description
+**Status: DONE** (2026-09-01). RO title 62 -> 60, description 176 -> 155, no
+claim dropped. Deployed as `7b136d0` and verified live. All 24 pages within both
+limits. RU unchanged at 60 and 155.

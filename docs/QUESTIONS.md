@@ -363,3 +363,27 @@ is to be indexable before launch.
 supplied and it was not. Under master plan section 6 an unsourced field is
 omitted, never filled, so the chip simply does not render. Supplying the list
 later is a data-only change: no template, no build, no photo reprocessing.
+
+---
+
+## Q-W9-06 · The two live form submissions are blocked on a publish
+
+**Raised:** W9-05, 2026-09-01. **Status:** blocked, not failed.
+
+B-01 asks for one real submission from the live RO site and one from the live RU
+site, reporting the subject lines that arrive. Everything up to that point is
+done and verified in a browser, both locales, both the armed and the disarmed
+path. The live test needs two things this session cannot supply:
+
+1. **The real `WEB3FORMS_KEY` in repo secrets.** A secret is not readable from a
+   checkout, so whether it has actually been added cannot be confirmed from
+   here. The workflow already references it correctly.
+2. **A merge to `main`, which is a publish.** CLAUDE.md section 10: "Pushing
+   `main` is a publish." That is owner-confirmable and was not done unasked.
+
+**What unblocks it:** confirm the secret is set, then authorise the merge. The
+build log prints `form: ARMED, posts to Web3Forms.` when the key is present and
+`form: DEMO MODE.` when it is not, so the deploy log answers question 1 by
+itself. After that the two submissions take a minute and the subjects to expect
+are exactly `[RO] Solicită ofertă gratuită — /` and
+`[RU] Запросите бесплатную оферту — /ru/`.

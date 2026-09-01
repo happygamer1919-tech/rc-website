@@ -106,11 +106,17 @@ const PAGES = [
 // Keys whose value is already HTML built by this file. Everything else is
 // escaped on substitution.
 const RAW_KEYS = new Set([
+  // demoAttr is a whole attribute, ` data-demo="..."`, not an attribute value:
+  // it is either present or absent. Its inner text is escaped where it is
+  // built, so what lands here is already safe. Escaping it again turned the
+  // quotes into &quot; and truncated the notice at its first space.
+  'demoAttr',
   'portfolioCards', 'googleLink', 'supplierChips', 'heroPanelMedia',
   ...Array.from({ length: 9 }, (_, i) => `svcMedia${i}`),
 ]);
 // Same idea for the service-page template.
 const SVC_RAW_KEYS = new Set([
+  'demoAttr',
   'svc.gallerySection', 'svc.priceSection', 'svc.footerLinks', 'svc.priceExtra', 'svc.media',
 ]);
 
@@ -286,6 +292,18 @@ for (const l of loaded) {
     urlRo: SITE + BASE + '/',
     urlRu: SITE + BASE + '/ru/',
     logoUrl: SITE + BASE + '/logo-full.png',
+    // W9-05. The subject line is the only thing that reaches Mihai's inbox
+    // before he opens the mail, so it carries BOTH facts he needs to triage:
+    // the locale, as an explicit [RO]/[RU] tag rather than "whichever alphabet
+    // this is", and the exact page the lead came from. The path is written
+    // without a host, because SITE_URL is the GitHub Pages origin today and the
+    // production domain has not landed; a path is true under either.
+    // The demo notice is not merely hidden when the key lands, it is not emitted
+    // at all. A disarmed build carries the attribute, an armed build does not,
+    // so "the notice is gone" is true of the HTML and not only of the screen.
+    demoAttr: FORM_ARMED ? '' : ` data-demo="${esc(l.strings['form.demoNotice'])}"`,
+    subjectMain: `[${l.code.toUpperCase()}] ${l.strings['form.h2']} — ${l.home}`,
+    subjectPopup: `[${l.code.toUpperCase()}] ${l.strings['popup.h2']} — ${l.home}`,
     privacyHref: BASE + PRIVACY_PATH[l.code],
     servicesHref: BASE + l.home + '#servicii',
     portfolioHref: BASE + l.home + '#portofoliu',
@@ -353,6 +371,7 @@ for (const l of loaded) {
       'svc.title': l.strings[`services.items.${i}.title`],
       'svc.desc': l.strings[`services.items.${i}.desc`],
       'svc.alt': l.strings[`services.items.${i}.alt`],
+      'svc.subject': `[${l.code.toUpperCase()}] ${l.strings['services.items.' + i + '.title']} — ${SERVICES_ROOT[l.code]}${slug}/`,
       'svc.canonical': SITE + BASE + SERVICES_ROOT[l.code] + slug + '/',
       'svc.urlRo': SITE + BASE + SERVICES_ROOT.ro + slug + '/',
       'svc.urlRu': SITE + BASE + SERVICES_ROOT.ru + slug + '/',

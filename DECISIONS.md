@@ -1074,3 +1074,91 @@ excavator in the terasamente set: described as "excavator pe pneuri", because
 the brand is not the work. Two small red fittings on a wall in the ceiling-frame
 photograph: omitted entirely, because they could not be identified with
 confidence and naming them would have been a spec nobody sourced.
+
+---
+
+## W9-05 · Form delivery: the subject line, and a quoting bug it uncovered
+
+### The wiring was already correct, and needed no code change
+
+`.github/workflows/pages.yml` already passes `WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_KEY }}`
+into the build step. `build.js` reads it, sets `FORM_ARMED`, and switches the
+form `action` from `#oferta` to `https://api.web3forms.com/submit`. **Adding the
+repo secret arms the form on the next push and nothing else has to happen.**
+
+A honeypot was also already in place on all three forms — the homepage form, the
+service-page form and the lead modal. It is Web3Forms' own `botcheck` field,
+wrapped in `.honeypot`, which is `position: absolute; left: -9999px` inside a
+1x1 `overflow: hidden` box, `aria-hidden="true"` and `tabindex="-1"`. Measured in
+a real browser: the input sits at x = -9995 and is off screen, unreachable by
+keyboard and invisible to assistive technology. Nothing to add.
+
+### The subject line did not identify the locale, only the language
+
+It read `{{form.h2}} — rapidconstruct.md`, which is a localised string, so an RO
+lead and an RU lead were told apart only by which alphabet the heading was in.
+That is a thing a human has to decode rather than scan, and it says nothing at
+all about which page produced the lead.
+
+Now every form emits an explicit tag and the exact source path:
+
+| Form | Subject |
+|---|---|
+| Homepage, RO | `[RO] Solicită ofertă gratuită — /` |
+| Homepage, RU | `[RU] Запросите бесплатную оферту — /ru/` |
+| Lead modal, RO | `[RO] Te sunăm noi — /` |
+| Service page, RO | `[RO] Acoperișuri — /servicii/acoperisuri/` |
+| Service page, RU | `[RU] Земляные работы и выемка грунта — /ru/servicii/terasamente/` |
+
+**The path carries no host on purpose.** `SITE_URL` is the GitHub Pages origin
+in CI today and the production domain has not landed, so a hostname in the
+subject would be wrong for one of the two. A path is true under either, and the
+`from_name` already says Rapid Construct.
+
+### The demo notice is now absent when armed, not merely hidden
+
+It was emitted as `data-demo="..."` on every build and only *displayed* when
+`data-armed !== "1"`. The string therefore sat in the HTML of a live, armed
+site. `build.js` now emits the whole attribute or nothing.
+
+**That change failed the first time, and the failure is worth recording.** The
+new variable holds an attribute, ` data-demo="..."`, not an attribute value, and
+the template substitution escapes every value it inserts unless the key is in
+`RAW_KEYS`. So the quotes became `&quot;` and the browser parsed
+`data-demo=&quot;Formularul` as an empty attribute followed by a stray one. The
+notice truncated at its first space and read **"Formularul"**.
+
+Nothing in the build caught it: the HTML was well-formed, `check-links.js` was
+clean, and the placeholder guard in the workflow only looks for surviving `{{`.
+**It was caught by submitting the form in a headless browser and reading the
+message back**, which is the only check that was ever going to find it. The key
+is now in both `RAW_KEYS` and `SVC_RAW_KEYS`, and its inner text is escaped
+where it is built.
+
+### Verified in a browser, both paths, both locales
+
+| | Disarmed | Armed |
+|---|---|---|
+| `data-armed` | `0` | `1` |
+| Network | **nothing posted** | `POST https://api.web3forms.com/submit` |
+| RO message | "Formularul se activează la publicarea site-ului." | "Nu am putut trimite mesajul. Sună-ne la +373 76 837 180." |
+| RU message | "Форма будет активирована при публикации сайта." | "Не удалось отправить сообщение. Позвоните нам: +373 76 837 180." |
+
+The armed run used an all-zero key, so Web3Forms rejected it and the **error**
+state is what is shown above. Success and failure are the same branch, split on
+`data.success`, so the success path is reached the moment a valid key is used.
+
+### The access key does not leak
+
+With a key set, it appears **only** in `<input type="hidden" name="access_key">`
+— the field Web3Forms requires — twice on each homepage (form plus modal) and
+once on each service page. Nowhere else in any page, in `main.js`, or in any
+data attribute.
+
+### Still owed: the two live submissions
+
+B-01 asks for one real submission from the live RO site and one from the live RU
+site, with the arriving subject lines reported. **Not done, and it cannot be
+done from here.** It needs two things that are not mine to do: the real
+`WEB3FORMS_KEY` present in repo secrets, which is not readable from a checkout,
+and a merge to `main`, which is a publish. See QUESTIONS Q-W9-06.

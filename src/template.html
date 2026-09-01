@@ -439,9 +439,9 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     <p class="lede" data-reveal>{{form.intro}}</p>
 
     <div class="form-layout" style="margin-top: 40px;">
-      <form class="form-card form-card--stack" id="quote-form" method="POST" action="{{formAction}}" novalidate data-armed="{{formArmed}}" data-ok="{{form.ok}}" data-fail="{{form.fail}}" data-demo="{{form.demoNotice}}">
+      <form class="form-card form-card--stack" id="quote-form" method="POST" action="{{formAction}}" novalidate data-armed="{{formArmed}}" data-ok="{{form.ok}}" data-fail="{{form.fail}}"{{demoAttr}}>
         <input type="hidden" name="access_key" value="{{formEndpoint}}">
-        <input type="hidden" name="subject" value="{{form.h2}} — rapidconstruct.md">
+        <input type="hidden" name="subject" value="{{subjectMain}}">
         <input type="hidden" name="from_name" value="Rapid Construct">
         <div class="honeypot" aria-hidden="true"><label for="botcheck">{{form.honeypotLabel}}</label><input id="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></div>
 
@@ -604,9 +604,9 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     </button>
     <h2 id="lead-modal-h">{{popup.h2}}</h2>
     <p class="modal__sub">{{popup.sub}}</p>
-    <form id="lead-form" method="POST" action="{{formAction}}" novalidate data-armed="{{formArmed}}" data-ok="{{popup.ok}}" data-fail="{{popup.fail}}" data-demo="{{form.demoNotice}}">
+    <form id="lead-form" method="POST" action="{{formAction}}" novalidate data-armed="{{formArmed}}" data-ok="{{popup.ok}}" data-fail="{{popup.fail}}"{{demoAttr}}>
       <input type="hidden" name="access_key" value="{{formEndpoint}}">
-      <input type="hidden" name="subject" value="{{popup.h2}} — rapidconstruct.md">
+      <input type="hidden" name="subject" value="{{subjectPopup}}">
       <input type="hidden" name="from_name" value="Rapid Construct">
       <div class="honeypot" aria-hidden="true"><label for="lead-botcheck">{{form.honeypotLabel}}</label><input id="lead-botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></div>
       <div class="field">

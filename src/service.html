@@ -180,9 +180,9 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     <p class="lede" data-reveal>{{form.intro}}</p>
 
     <div class="form-layout" style="margin-top: 40px;">
-      <form class="form-card form-card--stack" id="quote-form" method="POST" action="{{formAction}}" novalidate data-armed="{{formArmed}}" data-ok="{{form.ok}}" data-fail="{{form.fail}}" data-demo="{{form.demoNotice}}">
+      <form class="form-card form-card--stack" id="quote-form" method="POST" action="{{formAction}}" novalidate data-armed="{{formArmed}}" data-ok="{{form.ok}}" data-fail="{{form.fail}}"{{demoAttr}}>
         <input type="hidden" name="access_key" value="{{formEndpoint}}">
-        <input type="hidden" name="subject" value="{{svc.title}} — rapidconstruct.md">
+        <input type="hidden" name="subject" value="{{svc.subject}}">
         <input type="hidden" name="from_name" value="Rapid Construct">
         <input type="hidden" name="serviciu" value="{{svc.title}}">
         <div class="honeypot" aria-hidden="true"><label for="botcheck">{{form.honeypotLabel}}</label><input id="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></div>

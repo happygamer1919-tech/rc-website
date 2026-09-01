@@ -831,3 +831,89 @@ black rather than grey to colour. It is a clear, visible change and it reads as
 deliberate next to the coloured tiles.
 
 **Colour set unchanged at ten.** A logo is an image asset, not a CSS value.
+
+## The five "Cum lucrăm" step photos, W10-01, 2026-09-01
+
+All five process slots are filled. The section no longer shows labelled
+placeholders.
+
+**Where they were found.** `dist/img/Cum Lucram/`, named in Romanian
+(`Fundatie.jpeg`, `Structura si ziduri.jpeg`, `Acoperis.jpeg`, `Fatada.jpeg`,
+`Finisaje si predare.jpeg`). They map one-to-one onto the five slots and the
+content matches the step copy exactly: a foundation slab with rebar, brick
+columns going up, a finished tiled roof, façade work with a worker on a ladder,
+and a finished house. Copied into `photos-raw/` under their slot IDs.
+
+**`dist/` is build output.** It is gitignored and regenerated, so files left
+there are not in the repo and would be lost by a clean checkout. `photos-raw/`
+is the pipeline's front door and is where drops belong. The originals now live
+in both places on this Mac and in neither in git, which is by design — the
+`photos-raw/README.md` says the processed output in `public/img/` is what ships.
+
+### Minimum long edge for the five step slots: 1600 -> 900, PROVISIONAL
+
+Every one of the five is under the manifest's 1600px floor, so it is the same
+kind of ruling as W7-02 (service cards, 1200) and W8-03 (hero panel, 720).
+**Only the five step slots moved.** All 54 project covers remain at 1600.
+
+| Slot | Supplied | Long edge | Orientation |
+|---|---|---|---|
+| `step-01-fundatie` | 1136x852 | 1136 | landscape, **already exactly 4:3** |
+| `step-02-structura` | 736x981 | 981 | **portrait** |
+| `step-03-acoperis` | 1365x768 | 1365 | landscape |
+| `step-04-fatada` | 864x1152 | 1152 | **portrait** |
+| `step-05-predare` | 896x1194 | 1194 | **portrait** |
+
+### The 1600 floor is the wrong test for this slot, and that is the real finding
+
+A step card renders at **209x157 CSS px**. At retina that is 418x314 device
+pixels. The smallest source, `step-02` at 736px wide, therefore supplies **176%
+of what a retina screen can show**. These are not marginal images at their
+display size; they are comfortably oversupplied.
+
+That is the opposite of the hero panel, which supplies 64% of its box. The 1600
+floor was written for large slots and is simply not the right bar for a card
+this small.
+
+### Three are portrait, and the centre crop survived it
+
+`process-photos.js` warned on all three, correctly. Reviewed frame by frame
+against the sources:
+
+| Slot | Crop | Verdict |
+|---|---|---|
+| `step-01` | 1136x852 -> unchanged | Already 4:3. Nothing discarded. |
+| `step-02` | 736x981 -> 736x552, **44% of height gone** | Fine, arguably better. The brick corner and rebar fill the frame; only sky and part of the base were lost. |
+| `step-03` | 1365x768 -> 1024x768, **25% of width gone** | Fine. The house centres better than in the wide original. |
+| `step-04` | 864x1152 -> 864x648, **44% of height gone** | Fine. The worker on the ladder and the render work are both kept. |
+| `step-05` | 896x1194 -> 896x672, **44% of height gone** | Acceptable, the tightest of the five. The roofline now sits close to the top edge; the house is still whole and readable. |
+
+Nothing important was cut in any of the five. That was not a given with three
+portrait sources and it is worth re-checking if any of them is ever replaced.
+
+### Cost: RU performance is at the floor, 95, for the first time
+
+| | Before | After |
+|---|---|---|
+| Homepage RO | 8,505px, perf 98 | **8,505px, perf 99** |
+| Homepage RU | 8,775px, perf 100 | **8,775px, perf 95** |
+| Total page weight | ~1,670KB | **~2,735KB** |
+
+Heights did not move: the slot boxes are aspect-ratio driven, so a real photo
+replacing a placeholder changes nothing in layout. CLS 0.002 / 0.012.
+
+**RU at 95 clears the floor with nothing to spare, and that should not be left
+without a stated remedy.** The five photos add 2,734KB across ten files, of
+which **1,698KB is the `@2x` set**.
+
+**Those `@2x` files are pure waste at this slot.** The box needs 418 device
+pixels at retina and the 1x is already 900px, more than double. A retina browser
+fetches the 1800px file and gains nothing visible, and four of the five 1800px
+files are upscales of sources smaller than 1365px, so there is no extra detail
+in them to gain.
+
+**Recommendation, not applied:** set `retina: false` on the five step slots and
+drop the `srcset` from those five `<img>` tags. That removes about 1,698KB with
+no visible quality loss at any device pixel ratio, and would put RU back near
+100. It was not applied because the card was "upload these five", and removing
+image variants and editing the template is a different change.

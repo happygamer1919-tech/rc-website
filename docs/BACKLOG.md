@@ -19,6 +19,12 @@ history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 | RC-035 | W6-03b Service page hero art eager, not lazy | `w6/rc-035-svc-hero-eager` | shipped |
 | RC-036 | Dead-link gate script + wave 6 release notes | `docs/rc-036-wave6-gates` | shipped |
 
+## Wave 10
+
+| Ticket | Card | Branch | Status |
+|---|---|---|---|
+| RC-046 | W10-01 Process the five "Cum lucrăm" step photos | `w10/rc-046-process-steps` | shipped |
+
 ## Wave 9
 
 | Ticket | Card | Branch | Status |

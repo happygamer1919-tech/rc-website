@@ -7,8 +7,13 @@
    why these carry `placeholder: false` — the SVG already guarantees the <img>
    resolves, so a generated JPG placeholder would only hide the fallback. */
 const SLOTS = [
+  // minLongEdge 900 is a PROVISIONAL owner ruling, W10-01: it exists only to let
+  // the five interim "Cum lucram" photos through, and is to be raised back to
+  // the manifest default when better sources arrive. Three of the five are
+  // portrait, which the manifest forbids for a landscape slot; the centre crop
+  // is what pays for that. See DECISIONS.md.
   ...['step-01-fundatie', 'step-02-structura', 'step-03-acoperis', 'step-04-fatada', 'step-05-predare']
-    .map((id) => ({ id, w: 900, h: 675, ratio: '4:3', retina: true })),
+    .map((id) => ({ id, w: 900, h: 675, ratio: '4:3', retina: true, minLongEdge: 900 })),
   // Project covers, one per project in content/projects.json. A stub project
   // has no title, so nothing renders its cover and no placeholder is written
   // for it; the slot is still real and process-photos.js accepts it. Same

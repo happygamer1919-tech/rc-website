@@ -211,11 +211,16 @@ Strongest version is one house at five moments.
 
 | Slot ID | Ratio | Dimensions | Shooting note |
 |---|---|---|---|
-| `step-01-fundatie` | 4:3 | 900x675 | Foundation poured or formwork in place |
-| `step-02-structura` | 4:3 | 900x675 | Walls up, structure visible |
-| `step-03-acoperis` | 4:3 | 900x675 | Roof being installed or freshly finished |
-| `step-04-fatada` | 4:3 | 900x675 | Insulation boards or render being applied |
-| `step-05-predare` | 4:3 | 900x675 | Finished house, yard cleared |
+| `step-01-fundatie` | 4:3 | 900x675 | **Filled** 2026-09-01, from 1136x852, already 4:3, nothing cropped |
+| `step-02-structura` | 4:3 | 900x675 | **Filled** 2026-09-01, from 736x981 portrait, 44% of height cropped |
+| `step-03-acoperis` | 4:3 | 900x675 | **Filled** 2026-09-01, from 1365x768, 25% of width cropped |
+| `step-04-fatada` | 4:3 | 900x675 | **Filled** 2026-09-01, from 864x1152 portrait, 44% of height cropped |
+| `step-05-predare` | 4:3 | 900x675 | **Filled** 2026-09-01, from 896x1194 portrait, 44% of height cropped |
+
+**Minimum long edge for these five is 900, not 1600.** Provisional owner ruling,
+W10-01. A step card renders at 209x157 CSS px, so even the smallest source
+supplies 176% of what a retina screen shows: the 1600 floor is the wrong bar for
+a card this size. See DECISIONS.md.
 
 ### Social share — 1 mandatory, 1200x630
 

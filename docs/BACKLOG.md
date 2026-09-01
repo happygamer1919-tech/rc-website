@@ -62,3 +62,45 @@ carried no code change. W8-02's premise did not hold: no duplicate set exists.
 | RC-024 … RC-027 | Never render a TODO marker, noindex gate, price scope, hero fit | 3 |
 | RC-028 | 51-slot pipeline, dress rehearsal, shoot sheet | 4 |
 | RC-029, RC-030 | Hero spacing, mobile hero gap | 5 |
+
+## W9-04 · Portfolio content from the real photo set
+**Status: DONE** (2026-09-01, branch `w9/rc-047-portfolio-content`)
+
+Owner rulings R-A to R-G recorded in DECISIONS.md. 46 photographs inventoried,
+12 struck for failing master plan section 7 (4 by R-D, 8 by Q-W9-04), 34 written
+into `content/projects.json` with bilingual descriptions and per-project crop
+anchors. `process-photos.js` gained the R-B no-upscale clamp and `--cropOffset`
+anchoring; project covers moved to 4:3 at 400/800.
+
+Sitemap 2 -> 18 URLs. 16 of 18 service pages cleared the W3-02 noindex gate;
+`industrial` is the exception and has no real photograph. Open: Q-W9-04
+(provenance rulings, and a photograph for `industrial`), Q-W9-05 (localities).
+
+## W9-05 · Form delivery (B-01)
+**Status: DONE except the live test** (2026-09-01)
+
+Workflow wiring and honeypot were already correct. Subject lines now carry an
+explicit [RO]/[RU] tag and the source path; the demo notice is emitted only when
+disarmed. Verified in a headless browser, both locales, both paths. The two live
+submissions are blocked on the secret being present and a merge to main, which
+is a publish. See Q-W9-06.
+
+## W9-06 · SEO foundations (C-01, C-04, part of C-02)
+**Status: DONE** (2026-09-01)
+
+sitemap lastmod from git content dates, six answer engines allowed explicitly in
+robots.txt, generated /llms.txt, sameAs, absolute breadcrumb, ImageObject per
+project cover, per-service og:image with real dimensions, unique title and
+description on all 24 pages. Open: Q-W9-07 (two RO homepage fields over their
+limits, plus a coverage-list contradiction), Q-W9-08 (SITE_URL is set, not
+unset; answered).
+
+## W9-08 · Extractable structure (C-02 FAQ, C-03)
+**Status: DONE** (2026-09-01)
+
+Direct 40-60 word answer opening all 18 service pages, spec tables on the six
+services whose content supports one, four FAQ questions per page with matching
+FAQPage schema, two contextual sibling links per page, content-dated
+"Actualizat". All 20 pages inside the height budgets. Open deviation recorded in
+DECISIONS.md: Russian answers run 31-39 words, not 40-60, to stay faithful
+translations.

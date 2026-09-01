@@ -302,3 +302,150 @@ dead brand on the page.
 Recorded as answered rather than open because the rename is a verifiable fact,
 not a product decision. **If you want the old name shown anyway, it is one word
 in `locales/ro.json` and `locales/ru.json`.**
+
+---
+
+## Q-W9-04 · Nine more photographs fail the "real Rapid Construct work" rule
+
+**Raised:** W9-04, 2026-09-01. **Status:** shipped a default, needs an owner ruling.
+
+R-D struck four files. Viewing all forty-two at full size found **nine more**
+that fail master plan section 7 the same way, four of them with proof visible
+in the frame. They were dropped rather than published, and any of them is one
+line in `content/projects.json` away from coming back.
+
+### Struck on visible evidence, four files
+
+| Project slot | What is visible in the frame |
+|---|---|
+| `fatade-05` (600x900) | A **`dreamstime` stock-library watermark** printed across the middle of the image. |
+| `reparatii-03` (1200x1600) | Three workers in branded vests reading **`MITCHELL ROMÁN`**, legible on two of them. Another contractor's crew. |
+| `reparatii-04` (736x981) | A before/after composite carrying a **`G6` studio logo** top centre. Same class as the `image (73).png` already struck by R-D. |
+| `terasamente-04` (1200x1500) | A site banner reading **`NOW HIRING · AllFinishConcrete.com · Foremen, Finishers, Wall & Flatwork Laborers`**, beside a MACK truck. A United States concrete contractor. |
+
+Publishing any of these puts another company's mark, or a stock library's
+watermark, on Rapid Construct's portfolio. That is not a judgement call and it
+was not treated as one.
+
+### Struck on the owner's own R-D reasoning, four files
+
+All four remaining `Construcții industriale` photographs: `industrial-01`,
+`industrial-02`, `industrial-03`, `industrial-04`. R-D already struck the fifth
+file from that folder for failing the real-work rule. `industrial-01` is the
+**same site, same day** as the struck one. The other three are a Turkish
+apartment block and two arid low-rise sites. Keeping four while striking their
+sibling would have applied the owner's ruling inconsistently.
+
+**Consequence, and it is visible to a visitor:** `industrial` now has zero
+renderable projects, so **`/servicii/industrial/` and `/ru/servicii/industrial/`
+are the only two service pages still carrying `noindex`**. The W3-02 gate is
+working exactly as designed; the service simply has no real photograph yet.
+
+### Kept, but the owner should look
+
+`case-la-cheie-01`, `fatade-02` and `fatade-03` are architecturally
+inconsistent with Moldova (arid ground, flat parapet roofs, decorative metal
+grille doors). **Style is not proof**, no mark is visible in any of them, and no
+sibling in either folder was struck by R-D, so there was no ruling to apply.
+They shipped. `finisaje-02`, `reparatii-01` and `instalatii-04` are likewise
+unremarkable but unplaceable.
+
+**Recommended default, shipped:** publish the thirty-four that carry no visible
+third-party mark and no struck sibling. **What is needed:** one word per flagged
+file, keep or strike, and a replacement photograph for `industrial` if that page
+is to be indexable before launch.
+
+---
+
+## Q-W9-05 · The locality list was never supplied
+
+`location` is empty on all thirty-four projects. A-03 said the list would be
+supplied and it was not. Under master plan section 6 an unsourced field is
+omitted, never filled, so the chip simply does not render. Supplying the list
+later is a data-only change: no template, no build, no photo reprocessing.
+
+---
+
+## Q-W9-06 · The two live form submissions are blocked on a publish
+
+**Raised:** W9-05, 2026-09-01. **Status:** blocked, not failed.
+
+B-01 asks for one real submission from the live RO site and one from the live RU
+site, reporting the subject lines that arrive. Everything up to that point is
+done and verified in a browser, both locales, both the armed and the disarmed
+path. The live test needs two things this session cannot supply:
+
+1. **The real `WEB3FORMS_KEY` in repo secrets.** A secret is not readable from a
+   checkout, so whether it has actually been added cannot be confirmed from
+   here. The workflow already references it correctly.
+2. **A merge to `main`, which is a publish.** CLAUDE.md section 10: "Pushing
+   `main` is a publish." That is owner-confirmable and was not done unasked.
+
+**What unblocks it:** confirm the secret is set, then authorise the merge. The
+build log prints `form: ARMED, posts to Web3Forms.` when the key is present and
+`form: DEMO MODE.` when it is not, so the deploy log answers question 1 by
+itself. After that the two submissions take a minute and the subjects to expect
+are exactly `[RO] Solicită ofertă gratuită — /` and
+`[RU] Запросите бесплатную оферту — /ru/`.
+
+---
+
+## Q-W9-07 · The RO homepage title and description exceed their limits
+
+**Raised:** W9-06, 2026-09-01. **Status:** reported, not changed.
+
+Across 24 pages, every title and every description is unique and inside its
+limit **except two**, both existing approved copy on the Romanian homepage:
+
+| Field | Now | Limit |
+|---|---|---|
+| `meta.title` | 62 characters | 60 |
+| `meta.description` | 176 characters | 155 |
+
+The Russian equivalents are 60 and 155, exactly at the line. Nothing was
+rewritten: master plan section 6 says copy is not invented or edited beyond
+shortening, and shortening approved homepage copy is the owner's call.
+
+**Recommended, if he wants them fixed.** Title, dropping two words and keeping
+the meaning: `Construcții și renovări în Chișinău · Rapid Construct` (53).
+Description, cutting the trailing price clause, which the hero already states:
+`Acoperișuri, fațade, renovări complete și finisaje în Chișinău, Orhei, Cahul și
+Costești. Garanție scrisă până la 30 de ani, materiale certificate UE.` (152).
+
+**A separate inconsistency worth a decision.** `meta.description` says the work
+happens in "Chișinău, Orhei, Cahul și Costești"; `band.coverageLine` says
+"Chișinău, Codru, Coșnița, Costești, Căinari și Sociteni", and that second list
+is what feeds `areaServed` in the structured data and `llms.txt`. Two different
+answers to "where do you work" are live on the same page. Only Chișinău and
+Costești appear in both. This predates the wave and was not touched.
+
+---
+
+## Q-W9-08 · SITE_URL, and what actually breaks when the domain lands
+
+**Raised:** W9-06, 2026-09-01. **Status:** answered, no action needed yet.
+
+C-01 assumed `SITE_URL` is unset and that every canonical, hreflang and og:url
+is therefore wrong. **It is set, and they are correct.**
+
+`.github/workflows/pages.yml` sets `SITE_URL: https://happygamer1919-tech.github.io`
+with `BASE_PATH: /rc-website`, so the deployed pages carry canonicals and
+hreflang for the origin they are actually served from. Unset only applies to a
+local build, which falls back to `https://rapidconstruct.md`.
+
+**Already correct, nothing to redo later:** canonical, both hreflang pairs and
+x-default, og:url, og:image, the JSON-LD `@id` and every `url` in it, the
+`Sitemap:` line in robots.txt, every `<loc>` in sitemap.xml, every URL in
+llms.txt, and the breadcrumb items. All eighteen derive from `SITE`.
+
+**What the domain change costs: one environment variable.** The string
+`rapidconstruct.md` appears exactly once in the whole repo, as the fallback on
+`build.js:8`. Nothing else hardcodes a host, including the form subject lines
+added in W9-05, which deliberately carry a path and no host so they stay true
+under either origin.
+
+**What breaks at cutover, and it is not the markup:** the GitHub Pages site and
+the custom-domain site will briefly both be live and serving identical
+canonicals unless the old origin redirects. Set `SITE_URL` and `BASE_PATH` in
+the workflow in the same commit that points DNS, and treat the github.io origin
+as retired the moment it is.

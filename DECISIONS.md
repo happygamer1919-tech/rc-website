@@ -917,3 +917,366 @@ drop the `srcset` from those five `<img>` tags. That removes about 1,698KB with
 no visible quality loss at any device pixel ratio, and would put RU back near
 100. It was not applied because the card was "upload these five", and removing
 image variants and editing the template is a different change.
+
+---
+
+## W9-04 · Portfolio content from the real photo set (owner rulings R-A to R-G)
+
+Forty-six photographs arrived in `Services_real images/`, nine folders, one per
+service. Every folder mapped to a service slug; none was unmatched. The set
+broke three standing rules at once, so the owner ruled on all of them together.
+The seven rulings below are his, verbatim in substance, and this section records
+what each one cost and what it bought.
+
+### R-A · Provisional `minLongEdge` of 900 for project slots
+
+Thirty-six of the forty-six sources were under the manifest's 1600px floor, the
+worst at 350x350. The floor stays in `slots.js` as the default; project cover
+slots lower their own bar to 900, the same device already used by W7-02 (1200),
+W8-03 (720) and W10-01 (900).
+
+**Interim, not a judgement that 900 is enough.** It is to be raised when better
+originals arrive.
+
+### R-B · Never upscale, and it overrides target sizes
+
+A generated variant may not exceed what its source actually contains. Applied
+strictly: the bar is the **cropped** source, not the raw long edge, because the
+crop happens first and a 600x900 portrait cropped to 4:3 holds 600x450 real
+pixels no matter what its long edge says.
+
+Implemented in `process-photos.js` as a clamp inside `render()`, so it holds for
+every slot rather than only for the ones added by this card.
+
+**This is retroactive, and it caught nineteen variants already shipped.** The
+existing files were generated before the rule existed and several are largely
+invented pixels:
+
+| Variant | Was | Real content | Upscale |
+|---|---|---|---|
+| `hero-panel@2x` | 2800x2100 | 720x540 | **3.89x** |
+| `hero-panel` | 1400x1050 | 720x540 | 1.94x |
+| `step-02-structura@2x` | 1800x1350 | 736x552 | 2.45x |
+| `step-05-predare@2x` | 1800x1350 | 896x672 | 2.01x |
+| `step-04-fatada@2x` | 1800x1350 | 864x648 | 2.08x |
+| `step-03-acoperis@2x` | 1800x1350 | 1024x768 | 1.76x |
+| `step-01-fundatie@2x` | 1800x1350 | 1136x852 | 1.58x |
+| `step-02`, `step-04`, `step-05` at 1x | 900x675 | 736-896 wide | 1.00-1.22x |
+| `svc-*@2x`, all nine | 1600x1200 | 1448x1086 | 1.10x |
+
+**No layout moved.** The clamp preserves the crop, and the crop is already at
+the slot's ratio, so every clamped file keeps 4:3 exactly. The `width`/`height`
+attributes in the template still describe the right ratio, so CLS is unchanged.
+What changed is that the files stopped claiming detail they never had, and the
+page got lighter for free.
+
+### R-C · Project covers move from 3:2 to 4:3
+
+Thirty-one of the forty-two survivors are portrait. At 3:2 a 896x1195 portrait
+keeps 50% of its height; at 4:3 it keeps 56%. The ratio change is worth about
+six percentage points of every portrait frame, and it aligns project covers with
+the service cards and the step photos, which were already 4:3.
+
+Cost: `media--3x2` is now used by nothing. It is left in `styles.css` rather
+than deleted, on the same reasoning as the retained fallback SVGs.
+
+### R-D · Four files struck from the set
+
+| File | Reason |
+|---|---|
+| `Finisaje` 350x350 | Too small. Below any usable crop. |
+| `Finisaje` 1200x800 | Fails master plan section 7, "real Rapid Construct work only". Studio-lit, staged, a model in unmarked painter's whites. Reads as stock. |
+| `Construcții industriale` 1200x1200 | Fails the same rule. Timber and bamboo propping, eucalyptus, dress not consistent with a Moldovan site. |
+| `Reparatii` `image (73).png` | A two-panel before/after composite, not a photograph, and its provenance is unconfirmed. |
+
+Forty-two remain. **The rule that six invented projects never reached `dist/`
+is the same rule that struck these four**; it now applies to photographs as well
+as to copy.
+
+### R-E · One file moves service
+
+`Instalații` 1200x1600 shows a galvanised metal frame for a suspended ceiling.
+That is finishing work, not utilities. Moved to `finisaje`. Finisaje therefore
+carries four covers and instalatii four.
+
+### R-F · One image, one project cover. No gallery processing
+
+`build.js` renders `p.cover` and nothing else. The `gallery` arrays exist in the
+data and `process-photos.js` accepts the slot IDs, but **no template outputs a
+gallery image anywhere on the site.** Processing into gallery slots would have
+written eighty-odd files no visitor could ever reach.
+
+So each photograph becomes one project cover. Forty-two photographs, forty-two
+renderable projects, six slots per service and five or fewer used in every
+service, so nothing overflows.
+
+### R-G · The homepage portfolio picks one project per service
+
+`build.js` took `.slice(0, 6)` in file order. With five real projects that
+happened to yield five different services. With forty-two it would have yielded
+**six `case-la-cheie` cards**, and the category chip under each card would have
+read the same word six times.
+
+Replaced with a first-per-service pick over `SERVICE_SLUGS`, capped at six. The
+six cards are now six different services by construction, in the same order as
+the services grid above them.
+
+### The sizes, derived rather than chosen
+
+At a 1440 viewport the container is capped at 1200px with a 24px gutter, so the
+row is 1152px. A `grid--3` at a 24px gap gives 368px columns, and the card's 1px
+border leaves the media box at **366px**. The service page gallery uses the same
+`grid--3` and the same `.card`, so both boxes are identical: **366 x 275** at
+4:3.
+
+| | Target | Covers |
+|---|---|---|
+| 1x | **400 x 300** | the 366px box natively, plus the 2-column tablet break |
+| 2x | **800 x 600** | 366 at device-pixel-ratio 2 (732), with headroom |
+
+**Deliberately smaller than the `svc-*` convention of 800/1600**, which fills
+the same 366px box. There are forty-two of these and nine of those; at this
+count the weight matters more than the headroom does, and W10-01 already
+recorded that the 1800px step variants were "pure waste at this slot".
+
+Against the forty-two sources under R-B:
+
+- **1x 400px: native for all 42.** The smallest 4:3 crop in the set is 600x450,
+  half again larger than the 1x needs.
+- **2x 800px: 29 files at full size, 13 clamped to their own crop** — one at
+  600, one at 676, nine at 736, one at 780, one at 789.
+- **Files requiring any upscale: zero.**
+
+### Crop anchor, per project
+
+A centre crop is wrong for a roof and wrong for a foundation. `process-photos.js`
+gained a `cropAnchor` of `top`, `centre` or `bottom`, applied through the
+`--cropOffset` flag that `sips` has carried since macOS 13, and every project
+carries the anchor chosen from what actually matters in its frame. Roofs and
+ceilings anchor top, excavation and screed anchor bottom, everything else
+centres.
+
+### Descriptions describe the work, not the photograph
+
+Owner instruction, and it is the right one. No description opens with "imagine",
+"vedere" or "fotografiat", and none contains "in prim-plan". Each leads with
+what was built or done. The nine approved A-02 samples were rewritten to the
+same standard rather than kept as they were.
+
+**Nothing was invented.** No client, no surname, no locality, no year, no square
+metres, no duration, no cost, no warranty, no brand. `location` is empty on all
+forty-two: the owner has not supplied a locality list, and under master plan
+section 6 an unsourced field is omitted, never filled. `year`, `area_sqm`,
+`duration`, `main_materials` and `challenge` are empty for the same reason.
+
+Two things were left out rather than guessed. A legible manufacturer name on the
+excavator in the terasamente set: described as "excavator pe pneuri", because
+the brand is not the work. Two small red fittings on a wall in the ceiling-frame
+photograph: omitted entirely, because they could not be identified with
+confidence and naming them would have been a spec nobody sourced.
+
+---
+
+## W9-05 · Form delivery: the subject line, and a quoting bug it uncovered
+
+### The wiring was already correct, and needed no code change
+
+`.github/workflows/pages.yml` already passes `WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_KEY }}`
+into the build step. `build.js` reads it, sets `FORM_ARMED`, and switches the
+form `action` from `#oferta` to `https://api.web3forms.com/submit`. **Adding the
+repo secret arms the form on the next push and nothing else has to happen.**
+
+A honeypot was also already in place on all three forms — the homepage form, the
+service-page form and the lead modal. It is Web3Forms' own `botcheck` field,
+wrapped in `.honeypot`, which is `position: absolute; left: -9999px` inside a
+1x1 `overflow: hidden` box, `aria-hidden="true"` and `tabindex="-1"`. Measured in
+a real browser: the input sits at x = -9995 and is off screen, unreachable by
+keyboard and invisible to assistive technology. Nothing to add.
+
+### The subject line did not identify the locale, only the language
+
+It read `{{form.h2}} — rapidconstruct.md`, which is a localised string, so an RO
+lead and an RU lead were told apart only by which alphabet the heading was in.
+That is a thing a human has to decode rather than scan, and it says nothing at
+all about which page produced the lead.
+
+Now every form emits an explicit tag and the exact source path:
+
+| Form | Subject |
+|---|---|
+| Homepage, RO | `[RO] Solicită ofertă gratuită — /` |
+| Homepage, RU | `[RU] Запросите бесплатную оферту — /ru/` |
+| Lead modal, RO | `[RO] Te sunăm noi — /` |
+| Service page, RO | `[RO] Acoperișuri — /servicii/acoperisuri/` |
+| Service page, RU | `[RU] Земляные работы и выемка грунта — /ru/servicii/terasamente/` |
+
+**The path carries no host on purpose.** `SITE_URL` is the GitHub Pages origin
+in CI today and the production domain has not landed, so a hostname in the
+subject would be wrong for one of the two. A path is true under either, and the
+`from_name` already says Rapid Construct.
+
+### The demo notice is now absent when armed, not merely hidden
+
+It was emitted as `data-demo="..."` on every build and only *displayed* when
+`data-armed !== "1"`. The string therefore sat in the HTML of a live, armed
+site. `build.js` now emits the whole attribute or nothing.
+
+**That change failed the first time, and the failure is worth recording.** The
+new variable holds an attribute, ` data-demo="..."`, not an attribute value, and
+the template substitution escapes every value it inserts unless the key is in
+`RAW_KEYS`. So the quotes became `&quot;` and the browser parsed
+`data-demo=&quot;Formularul` as an empty attribute followed by a stray one. The
+notice truncated at its first space and read **"Formularul"**.
+
+Nothing in the build caught it: the HTML was well-formed, `check-links.js` was
+clean, and the placeholder guard in the workflow only looks for surviving `{{`.
+**It was caught by submitting the form in a headless browser and reading the
+message back**, which is the only check that was ever going to find it. The key
+is now in both `RAW_KEYS` and `SVC_RAW_KEYS`, and its inner text is escaped
+where it is built.
+
+### Verified in a browser, both paths, both locales
+
+| | Disarmed | Armed |
+|---|---|---|
+| `data-armed` | `0` | `1` |
+| Network | **nothing posted** | `POST https://api.web3forms.com/submit` |
+| RO message | "Formularul se activează la publicarea site-ului." | "Nu am putut trimite mesajul. Sună-ne la +373 76 837 180." |
+| RU message | "Форма будет активирована при публикации сайта." | "Не удалось отправить сообщение. Позвоните нам: +373 76 837 180." |
+
+The armed run used an all-zero key, so Web3Forms rejected it and the **error**
+state is what is shown above. Success and failure are the same branch, split on
+`data.success`, so the success path is reached the moment a valid key is used.
+
+### The access key does not leak
+
+With a key set, it appears **only** in `<input type="hidden" name="access_key">`
+— the field Web3Forms requires — twice on each homepage (form plus modal) and
+once on each service page. Nowhere else in any page, in `main.js`, or in any
+data attribute.
+
+### Still owed: the two live submissions
+
+B-01 asks for one real submission from the live RO site and one from the live RU
+site, with the arriving subject lines reported. **Not done, and it cannot be
+done from here.** It needs two things that are not mine to do: the real
+`WEB3FORMS_KEY` present in repo secrets, which is not readable from a checkout,
+and a merge to `main`, which is a publish. See QUESTIONS Q-W9-06.
+
+---
+
+## W9-08 · Extractable structure on the service pages (C-02, C-03)
+
+### FAQ: written once, read by both
+
+Four questions per service page, eighteen pages, seventy-two answers. The
+visible FAQ and the `FAQPage` JSON-LD are generated from **the same locale
+strings**, so they cannot drift; a check across all eighteen pages confirms the
+schema text is character for character the text on the page, which is also what
+Google requires of the markup. There is no second copy of anything written for
+an answer engine, and nothing is chunked into fragments: ordinary `h3` plus `p`.
+
+**No fact in any answer is new.** Each one is assembled from the service's own
+one-liner, the six `trust` items, the five `process` steps, `band.coverageLine`,
+the two hero price lines, and the thirty-four project descriptions written in
+W9-04 — which is what makes the answers differ from service to service instead
+of nine copies of the same guarantee paragraph.
+
+### The Russian answers are 31 to 39 words, not 40 to 60
+
+C-02 asks for 40 to 60 words. **Every Romanian answer is inside that range. No
+Russian one is**, and that is not an oversight.
+
+Russian carries the same content in roughly a fifth fewer words: no articles,
+and none of the `de`/`la`/`în` chains Romanian needs. A faithful translation of
+a 47-word Romanian answer lands near 37. The two instructions in play — 40 to 60
+words, and "faithful translations, not rewrites" — cannot both hold, and padding
+the Russian to reach 40 would produce exactly the rewrite the second one forbids.
+
+Faithfulness won. The Russian answers say everything the Romanian ones say.
+Padding them is a mechanical change if the count matters more.
+
+### Tables on six services, and none invented for the other three
+
+C-03 says one table per service page **where the content already supports one**,
+and not to fabricate one to have one. Six do: case-la-cheie (the five process
+steps, which are literally this service), acoperisuri, fatade, finisaje,
+instalatii and terasamente, each built from its own projects and one-liner.
+
+Three do not, and were left without:
+
+| Service | Why there is no table |
+|---|---|
+| `reparatii` | Two projects. The one-liner names two endpoints, demolition and finishing. Three thin rows would be a table for the sake of having one. |
+| `proiectare-3d` | The one-liner yields two rows, 3D views and paper plans. Not a table. |
+| `industrial` | No projects at all, and the page is `noindex`. Nothing to tabulate. |
+
+Every table scrolls inside its own `overflow-x` box, so a long row can never be
+the reason the page body scrolls sideways. Checked at 1440, 1024, 768 and 390.
+
+### "Actualizat" is a content date, not the wall clock
+
+C-03 says the visible date should be driven by build time. It is driven by the
+**same git content date the sitemap `lastmod` uses**, and that is a deliberate
+departure.
+
+A visible "Actualizat" that moves on every deploy — including a deploy that
+changed nothing on that page — is worth less than no date at all, and it would
+contradict the `lastmod` the same build writes for the same URL. One of the two
+would be lying. Now they agree, and both move only when something that renders
+into that page actually changes. Switching to literal build time is one
+expression if that is preferred.
+
+### The hero lede is now the direct answer
+
+C-03 asks each service page to open with a direct 40 to 60 word answer to what
+the service is and what it includes, **before any marketing**. The hero
+previously opened on the service one-liner, which ends on a claim
+("Montate corect, ca să nu curgă niciodată"). The answer replaced it there.
+
+**The one-liner is not deleted.** It still carries the meta description, the
+og:description, the homepage service card and the `Service` schema. What changed
+is that the page no longer *opens* on it.
+
+### Sibling links, from the order the work actually happens
+
+Every service page carries exactly two contextual links to sibling services, in
+a sentence, not a footer list. The pairs come from the `process` order —
+terasamente to fundație to structură to acoperiș to fațadă to finisaje — so the
+sentence says something true about sequence rather than "you may also like".
+Verified: eighteen pages, two links each, none pointing at itself.
+
+### The height budget was the binding constraint, and what paid for it
+
+Adding two sections cost roughly 384px of section padding alone, and ten of the
+eighteen service pages went over 6,000px, the worst by 333px. What was cut:
+
+- Both new sections run at `--band-pad` (56px) rather than `--section-pad`
+  (96px). They are supporting content around the projects, not bands of their
+  own. **160px.**
+- Project descriptions on the service page clamp to six lines, as the homepage
+  ones clamp to four. Eleven to thirteen lines of text in a 366px card is not a
+  card. **270 to 380px**, and the full summary stays in the DOM for a screen
+  reader and a crawler *and* is the `description` of that project's ImageObject
+  in the page's own JSON-LD, so nothing is hidden from anything that reads.
+- FAQ gaps 24 to 18px, table cell padding 16 to 13px. **~110px.**
+
+Result: the worst page is now 5,685px against 6,000, and the largest single
+service page fell from 6,333px to 5,685px while gaining a table and four
+questions.
+
+### A build failure that a gate did not catch, and why
+
+`svcFaqSection` called `lastmodOf` before its definition — the lastmod helpers
+sat in the static-assets block, which runs after the service-page loop. `node
+build.js` died with a `ReferenceError` and wrote nothing.
+
+`node scripts/check-links.js` then reported **zero dead links**, because it was
+reading the `dist/` from the previous successful build. That is not a defect in
+check-links, it is what CLAUDE.md section 9 already prescribes against by
+writing the gate as `node build.js && node scripts/check-links.js`: the `&&` is
+load-bearing. It was missed here because the build output was piped through
+`grep`, which made the shell see grep's exit status instead of node's.
+
+**Piping `node build.js` through anything discards its exit code.** Run the two
+commands chained with `&&` and unpiped, exactly as section 9 writes them.

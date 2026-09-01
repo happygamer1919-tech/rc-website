@@ -1,0 +1,38 @@
+{
+  "case-la-cheie": [
+    "acoperisuri",
+    "fatade"
+  ],
+  "acoperisuri": [
+    "case-la-cheie",
+    "fatade"
+  ],
+  "fatade": [
+    "acoperisuri",
+    "finisaje"
+  ],
+  "reparatii": [
+    "finisaje",
+    "instalatii"
+  ],
+  "finisaje": [
+    "reparatii",
+    "instalatii"
+  ],
+  "proiectare-3d": [
+    "case-la-cheie",
+    "fatade"
+  ],
+  "instalatii": [
+    "finisaje",
+    "reparatii"
+  ],
+  "industrial": [
+    "terasamente",
+    "case-la-cheie"
+  ],
+  "terasamente": [
+    "case-la-cheie",
+    "industrial"
+  ]
+}

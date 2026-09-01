@@ -1,26 +1,26 @@
 {
-  "_note": "Project content model. Slot IDs follow docs/RC-PHOTO-MANIFEST.md v2. A field is empty (\"\") or carries a \"TODO:\" marker when it has no source in the existing content or on the original live site; fill it rather than inventing. Both forms mean the same thing to build.js and neither is ever rendered. location, year, work_type, area_sqm, duration, main_materials and challenge are all optional and are each omitted from the render on their own.",
+  "_note": "Project content model. Slot IDs follow docs/RC-PHOTO-MANIFEST.md v2. A field is empty (\"\") or carries a \"TODO:\" marker when it has no source in the existing content or on the original live site; fill it rather than inventing. Both forms mean the same thing to build.js and neither is ever rendered. location, year, work_type, area_sqm, duration, main_materials and challenge are all optional and are each omitted from the render on their own. crop_anchor is top, centre or bottom and tells process-photos.js which part of the frame survives the crop; it is not rendered. Galleries are empty by W9-04 R-F: no template outputs a gallery image.",
   "projects": [
     {
       "id": "case-la-cheie-01",
       "service": "case-la-cheie",
       "serviceIndex": 0,
       "title": {
-        "ro": "Casă cu parter și etaj, în lucru",
-        "ru": "Двухэтажный дом в работе"
+        "ro": "Vilă cu două niveluri, structură la roșu",
+        "ru": "Двухуровневая вилла, коробка здания"
       },
       "summary": {
-        "ro": "Pereți tencuiți, acoperiș montat și schela încă pe fațadă.",
-        "ru": "Оштукатуренные стены, смонтированная кровля и леса ещё на фасаде."
+        "ro": "Structura de rezistență este ridicată complet, cu stâlpi și grinzi din beton armat și închideri din blocuri de zidărie. Consolele și balcoanele sunt turnate odată cu planșeele, iar cornișele de la atic sunt deja conturate. Zidul de împrejmuire al parcelei este ridicat din blocuri de beton, cu stâlpi de rigidizare la intervale regulate. Golurile de ferestre și de uși rămân libere pentru tâmplărie.",
+        "ru": "Несущий каркас возведён полностью: железобетонные колонны и балки с заполнением стеновыми блоками. Консоли и балконы залиты вместе с перекрытиями, карнизы парапета уже сформированы. Ограждение участка выложено из бетонных блоков с усиливающими столбами через равные промежутки. Оконные и дверные проёмы оставлены под установку столярки."
       },
       "location": {
-        "ro": "TODO: localitate",
-        "ru": "TODO: населённый пункт"
-      },
-      "year": "TODO: an",
-      "work_type": {
         "ro": "",
         "ru": ""
+      },
+      "year": "",
+      "work_type": {
+        "ro": "Structură la roșu",
+        "ru": "Коробка здания"
       },
       "area_sqm": "",
       "duration": {
@@ -36,33 +36,29 @@
         "ru": ""
       },
       "cover": "proj-case-la-cheie-01-cover",
-      "gallery": [
-        "proj-case-la-cheie-01-01",
-        "proj-case-la-cheie-01-02",
-        "proj-case-la-cheie-01-03",
-        "proj-case-la-cheie-01-04"
-      ]
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "case-la-cheie-02",
       "service": "case-la-cheie",
       "serviceIndex": 0,
       "title": {
-        "ro": "Casă finisată, cu acoperiș nou",
-        "ru": "Готовый дом с новой кровлей"
+        "ro": "Casă cu trei niveluri, cadre din beton armat",
+        "ru": "Трёхуровневый дом, железобетонные рамы"
       },
       "summary": {
-        "ro": "Fațadă gata, învelitoare nouă din țiglă metalică și curtea eliberată.",
-        "ru": "Фасад закончен, кровля из металлочерепицы новая, двор освобождён."
+        "ro": "Cadrele din beton armat sunt turnate pe trei niveluri, cu stâlpi zvelți care lasă parterul deschis sub o terasă generoasă. Închiderile sunt din blocuri ceramice cu goluri, ridicate între cadre după decofrare. Planșeele sunt turnate pe grinzi aparente, iar parapetele terasei sunt deja zidite. Pe platformă sunt stivuite blocuri ceramice pentru etapa următoare și este trasă o conductă flexibilă pentru instalații.",
+        "ru": "Железобетонные рамы залиты на трёх уровнях, тонкие колонны оставляют первый этаж открытым под просторной террасой. Заполнение выполнено из пустотелых керамических блоков, выложенных между рамами после распалубки. Перекрытия опираются на открытые ригели, парапеты террасы уже выложены. На площадке сложены керамические блоки для следующего этапа и протянут гибкий рукав под инженерные сети."
       },
       "location": {
-        "ro": "TODO: localitate",
-        "ru": "TODO: населённый пункт"
-      },
-      "year": "TODO: an",
-      "work_type": {
         "ro": "",
         "ru": ""
+      },
+      "year": "",
+      "work_type": {
+        "ro": "Cadre din beton armat",
+        "ru": "Железобетонные рамы"
       },
       "area_sqm": "",
       "duration": {
@@ -78,23 +74,20 @@
         "ru": ""
       },
       "cover": "proj-case-la-cheie-02-cover",
-      "gallery": [
-        "proj-case-la-cheie-02-01",
-        "proj-case-la-cheie-02-02",
-        "proj-case-la-cheie-02-03"
-      ]
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "case-la-cheie-03",
       "service": "case-la-cheie",
       "serviceIndex": 0,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Casă cu etaj, șarpantă montată",
+        "ru": "Двухэтажный дом со смонтированной стропильной системой"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Zidăria de blocuri ceramice este ridicată pe două niveluri, cu stâlpi și centuri din beton armat turnate pe tot conturul. Șarpanta din lemn este montată peste, cu căpriorii așezați și astereala pornită de la coamă. Parterul se deschide printr-un portic cu stâlpi de beton către o scară curbă turnată la intrare. Golurile de ferestre sunt lăsate libere, iar buiandrugii sunt turnați deasupra fiecăruia.",
+        "ru": "Кладка из керамических блоков выведена на два уровня, по всему контуру залиты железобетонные колонны и пояса. Сверху смонтирована деревянная стропильная система: стропила установлены, обрешётка начата от конька. Первый этаж раскрывается портиком на бетонных колоннах к залитой полукруглой лестнице у входа. Оконные проёмы оставлены открытыми, над каждым залита перемычка."
       },
       "location": {
         "ro": "",
@@ -102,8 +95,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Zidărie și șarpantă",
+        "ru": "Кладка и стропила"
       },
       "area_sqm": "",
       "duration": {
@@ -119,19 +112,20 @@
         "ru": ""
       },
       "cover": "proj-case-la-cheie-03-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "case-la-cheie-04",
       "service": "case-la-cheie",
       "serviceIndex": 0,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Casă la parter, zidărie și centură turnată",
+        "ru": "Одноэтажный дом, кладка и монолитный пояс"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Pereții sunt ridicați din blocuri de zidărie deschise la culoare, cu stâlpi și buiandrugi din beton armat turnați între ei. Centura de beton este turnată pe tot conturul clădirii, deasupra zidăriei. Golurile de ferestre și de uși sunt lăsate libere pentru tâmplărie, iar soclul este tratat cu hidroizolație bituminoasă neagră. Terasa acoperită din lateral are placa turnată și stâlpii ridicați.",
+        "ru": "Стены выложены из светлых стеновых блоков, между ними залиты железобетонные колонны и перемычки. Монолитный пояс залит по всему контуру здания поверх кладки. Оконные и дверные проёмы оставлены под установку столярки, цоколь обработан чёрной битумной гидроизоляцией. У боковой крытой террасы залита плита и подняты стойки."
       },
       "location": {
         "ro": "",
@@ -139,8 +133,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Structură la roșu",
+        "ru": "Коробка здания"
       },
       "area_sqm": "",
       "duration": {
@@ -156,19 +150,20 @@
         "ru": ""
       },
       "cover": "proj-case-la-cheie-04-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "case-la-cheie-05",
       "service": "case-la-cheie",
       "serviceIndex": 0,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Casă cu mansardă, zidărie din blocuri și tâmplărie montată",
+        "ru": "Дом с мансардой, кладка из блоков и установленная столярка"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Pereții sunt ridicați din blocuri de beton celular autoclavizat, cu rosturi subțiri de mortar-adeziv. Șarpanta din lemn este montată cu console aparente la frontoane și streșini late pe ambele laturi. Tâmplăria este deja instalată pe ambele niveluri, inclusiv fereastra înaltă de la casa scării. Soclul este hidroizolat și acoperit cu profil, iar în jurul casei este așternut un pat de piatră spartă pentru drenaj.",
+        "ru": "Стены выложены из автоклавного газобетона на тонкошовном клеевом растворе. Деревянная стропильная система смонтирована с открытыми консолями на фронтонах и широкими свесами с обеих сторон. Столярка установлена на обоих уровнях, включая высокое окно лестничной клетки. Цоколь гидроизолирован и закрыт профилем, вокруг дома отсыпан слой щебня под дренаж."
       },
       "location": {
         "ro": "",
@@ -176,8 +171,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Zidărie, șarpantă, tâmplărie",
+        "ru": "Кладка, стропила, столярка"
       },
       "area_sqm": "",
       "duration": {
@@ -193,7 +188,8 @@
         "ru": ""
       },
       "cover": "proj-case-la-cheie-05-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "case-la-cheie-06",
@@ -237,21 +233,21 @@
       "service": "acoperisuri",
       "serviceIndex": 1,
       "title": {
-        "ro": "Acoperiș din șindrilă bituminoasă",
-        "ru": "Крыша из битумной черепицы"
+        "ro": "Acoperiș din țiglă metalică antracit",
+        "ru": "Кровля из металлочерепицы цвета антрацит"
       },
       "summary": {
-        "ro": "Acoperiș în patru ape din șindrilă bituminoasă antracit, cu dolii și coșuri finisate, pe o casă nouă din suburbie.",
-        "ru": "Четырёхскатная крыша из антрацитовой битумной черепицы, с ендовами и отделанными дымоходами, на новом доме в пригороде."
+        "ro": "Învelitoarea din țiglă metalică antracit este montată pe toți versanții, inclusiv peste terasa laterală acoperită. Coama și doliile sunt închise cu elemente de tablă îndoită, iar coșul de fum este îmbrăcat în tablă pe toată înălțimea. Pe versanții dinspre stradă sunt fixate rânduri de opritori de zăpadă. Streașina este dotată cu jgheab și burlane, iar frontonul este închis cu lambriu metalic vertical.",
+        "ru": "Покрытие из металлочерепицы цвета антрацит смонтировано на всех скатах, включая крытую боковую террасу. Конёк и ендовы закрыты гнутыми доборными элементами, дымоход обшит металлом на всю высоту. На скатах со стороны улицы закреплены ряды снегозадержателей. По свесу установлены жёлоб и водосточные трубы, фронтон зашит вертикальной металлической панелью."
       },
       "location": {
-        "ro": "TODO: localitate",
-        "ru": "TODO: населённый пункт"
-      },
-      "year": "TODO: an",
-      "work_type": {
         "ro": "",
         "ru": ""
+      },
+      "year": "",
+      "work_type": {
+        "ro": "Montaj țiglă metalică",
+        "ru": "Монтаж металлочерепицы"
       },
       "area_sqm": "",
       "duration": {
@@ -267,24 +263,20 @@
         "ru": ""
       },
       "cover": "proj-acoperisuri-01-cover",
-      "gallery": [
-        "proj-acoperisuri-01-01",
-        "proj-acoperisuri-01-02",
-        "proj-acoperisuri-01-03",
-        "proj-acoperisuri-01-04"
-      ]
+      "gallery": [],
+      "crop_anchor": "top"
     },
     {
       "id": "acoperisuri-02",
       "service": "acoperisuri",
       "serviceIndex": 1,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Acoperiș în patru ape pe casă la parter",
+        "ru": "Вальмовая кровля на одноэтажном доме"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Acoperișul în patru ape este învelit cu țiglă metalică antracit, cu coama și muchiile închise cu elemente de tablă. Opritorii de zăpadă sunt montați în rânduri pe versanții dinspre curte și dinspre vecini. Streașina este prelungită peste terasa laterală, sprijinită pe stâlpi tencuiți. Jgheaburile urmăresc tot conturul, iar tencuiala fațadei este deja aplicată sub streașină.",
+        "ru": "Вальмовая кровля покрыта металлочерепицей цвета антрацит, конёк и рёбра закрыты доборными элементами. Снегозадержатели установлены рядами на скатах со стороны двора и соседнего участка. Свес продлён над боковой террасой и опирается на оштукатуренные стойки. Жёлоба идут по всему контуру, штукатурка фасада под свесом уже нанесена."
       },
       "location": {
         "ro": "",
@@ -292,8 +284,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Acoperiș în patru ape",
+        "ru": "Вальмовая кровля"
       },
       "area_sqm": "",
       "duration": {
@@ -309,19 +301,20 @@
         "ru": ""
       },
       "cover": "proj-acoperisuri-02-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "top"
     },
     {
       "id": "acoperisuri-03",
       "service": "acoperisuri",
       "serviceIndex": 1,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Acoperiș în patru ape și fațadă finisată",
+        "ru": "Вальмовая кровля и завершённый фасад"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Învelitoarea din țiglă metalică antracit acoperă un acoperiș în patru ape cu streașină largă, care protejează balconul de la etaj pe toată lungimea. Coșul de fum este îmbrăcat în tablă și prevăzut cu capac. Jgheaburile și burlanele sunt montate pe tot conturul și coboară pe lângă colțuri. Fațada este tencuită și vopsită în două tonuri, cu ancadramente în relief la ferestre și profile la colțuri.",
+        "ru": "Покрытие из металлочерепицы цвета антрацит уложено на вальмовую кровлю с широким свесом, который закрывает балкон второго этажа по всей длине. Дымоход обшит металлом и накрыт колпаком. Жёлоба и водосточные трубы смонтированы по всему контуру и спускаются вдоль углов. Фасад оштукатурен и окрашен в два тона, с рельефными наличниками у окон и профилями на углах."
       },
       "location": {
         "ro": "",
@@ -329,8 +322,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Acoperiș și fațadă",
+        "ru": "Кровля и фасад"
       },
       "area_sqm": "",
       "duration": {
@@ -346,19 +339,20 @@
         "ru": ""
       },
       "cover": "proj-acoperisuri-03-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "top"
     },
     {
       "id": "acoperisuri-04",
       "service": "acoperisuri",
       "serviceIndex": 1,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Acoperiș în patru ape, țiglă metalică",
+        "ru": "Вальмовая кровля, металлочерепица"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Învelitoarea din țiglă metalică maro este montată pe două corpuri în formă de L, fiecare cu pante în patru ape. Coamele și doliile sunt îmbinate la intersecția celor două volume și închise cu elemente de tablă. Pe fiecare versant sunt fixate rânduri de opritori de zăpadă, iar streașina este închisă cu bordură. Terasa acoperită se sprijină pe stâlpi metalici, iar platforma de beton din curte este deja turnată.",
+        "ru": "Покрытие из коричневой металлочерепицы смонтировано на двух объёмах Г-образной формы, каждый с вальмовыми скатами. Коньки и ендовы состыкованы на пересечении объёмов и закрыты доборными элементами. На каждом скате закреплены ряды снегозадержателей, свес подшит карнизной планкой. Крытая терраса опирается на металлические стойки, бетонная площадка во дворе уже залита."
       },
       "location": {
         "ro": "",
@@ -366,8 +360,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Montaj țiglă metalică",
+        "ru": "Монтаж металлочерепицы"
       },
       "area_sqm": "",
       "duration": {
@@ -383,19 +377,20 @@
         "ru": ""
       },
       "cover": "proj-acoperisuri-04-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "top"
     },
     {
       "id": "acoperisuri-05",
       "service": "acoperisuri",
       "serviceIndex": 1,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Acoperiș montat peste structură la roșu",
+        "ru": "Кровля, смонтированная над коробкой здания"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Acoperișul în patru ape este învelit cu țiglă metalică antracit și finalizat înaintea finisajelor, ca structura să fie pusă la adăpost. Coșul de fum este îmbrăcat în tablă și scos peste coamă. Sub el, zidăria de blocuri ceramice și stâlpii din beton armat rămân neacoperiți, cu golurile de ferestre libere. O copertină separată, tot din țiglă metalică, acoperă intrarea laterală.",
+        "ru": "Вальмовая кровля покрыта металлочерепицей цвета антрацит и завершена до отделочных работ, чтобы закрыть коробку от осадков. Дымоход обшит металлом и выведен выше конька. Под кровлей кладка из керамических блоков и железобетонные колонны остаются без отделки, оконные проёмы открыты. Отдельный козырёк, также из металлочерепицы, закрывает боковой вход."
       },
       "location": {
         "ro": "",
@@ -403,8 +398,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Învelitoare țiglă metalică",
+        "ru": "Кровельное покрытие"
       },
       "area_sqm": "",
       "duration": {
@@ -420,7 +415,8 @@
         "ru": ""
       },
       "cover": "proj-acoperisuri-05-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "top"
     },
     {
       "id": "acoperisuri-06",
@@ -464,21 +460,21 @@
       "service": "fatade",
       "serviceIndex": 2,
       "title": {
-        "ro": "Termoizolație pe o casă la parter",
-        "ru": "Утепление одноэтажного дома"
+        "ro": "Fațadă ventilată cu placaj imitație lemn",
+        "ru": "Вентилируемый фасад с облицовкой под дерево"
       },
       "summary": {
-        "ro": "Plăci de vată montate pe pereți, sub acoperișul deja pus.",
-        "ru": "Плиты минеральной ваты на стенах, под уже уложенной кровлей."
+        "ro": "Fațada combină tencuiala albă cu un placaj vertical în imitație de lemn, montat pe o structură ventilată. Panourile de placaj sunt aliniate la rosturi verticale continue, pe toată înălțimea celor două niveluri. Balconul de la etaj are balustradă metalică cu montanți verticali și placă în consolă. Soclul și zona de acces sunt finisate în gri închis, iar curtea este deja betonată.",
+        "ru": "Фасад сочетает белую штукатурку с вертикальной облицовкой под дерево, смонтированной на вентилируемой подсистеме. Панели облицовки выровнены по сплошным вертикальным швам на всю высоту двух уровней. У балкона второго этажа металлическое ограждение с вертикальными стойками и консольная плита. Цоколь и входная зона отделаны в тёмно-сером тоне, двор уже забетонирован."
       },
       "location": {
-        "ro": "TODO: localitate",
-        "ru": "TODO: населённый пункт"
-      },
-      "year": "TODO: an",
-      "work_type": {
         "ro": "",
         "ru": ""
+      },
+      "year": "",
+      "work_type": {
+        "ro": "Fațadă ventilată",
+        "ru": "Вентилируемый фасад"
       },
       "area_sqm": "",
       "duration": {
@@ -494,24 +490,20 @@
         "ru": ""
       },
       "cover": "proj-fatade-01-cover",
-      "gallery": [
-        "proj-fatade-01-01",
-        "proj-fatade-01-02",
-        "proj-fatade-01-03",
-        "proj-fatade-01-04"
-      ]
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "fatade-02",
       "service": "fatade",
       "serviceIndex": 2,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Fațadă cu placaj din plăci mari de piatră",
+        "ru": "Фасад с облицовкой крупноформатным камнем"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Fațada este placată cu plăci mari de piatră cu vinișaj pronunțat, montate cu rosturi drepte pe toată înălțimea. Zona de intrare este marcată cu un panou vertical din lemn, încadrat de o copertină metalică. Restul suprafeței este finisat cu tencuială decorativă în tonuri de gri. Parcarea acoperită de la parter este integrată sub consola etajului, iar accesul este pavat cu dale de beton.",
+        "ru": "Фасад облицован крупноформатными каменными плитами с выраженным рисунком, уложенными в прямой шов на всю высоту. Входная зона выделена вертикальной деревянной панелью в обрамлении металлического козырька. Остальная поверхность отделана декоративной штукатуркой в серых тонах. Крытая парковка на первом этаже размещена под консолью второго, подъезд вымощен бетонной плиткой."
       },
       "location": {
         "ro": "",
@@ -519,8 +511,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Placaj piatră fațadă",
+        "ru": "Каменная облицовка фасада"
       },
       "area_sqm": "",
       "duration": {
@@ -536,19 +528,20 @@
         "ru": ""
       },
       "cover": "proj-fatade-02-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "fatade-03",
       "service": "fatade",
       "serviceIndex": 2,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Fațadă cu tencuială albă și stâlpi placați cu piatră",
+        "ru": "Фасад с белой штукатуркой и облицованными камнем пилонами"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Fațada de la intrare alternează tencuiala albă cu stâlpi înalți placați în piatră naturală montată în straturi subțiri. Copertinele din beton peste intrare și peste ferestre sunt turnate în consolă și lăsate aparente. Tâmplăria este încadrată în ancadramente albe reliefate, iar ușa de acces are grilaj metalic decorativ. Treptele de acces sunt turnate în trei niveluri, cu muchii drepte și finisaj neted.",
+        "ru": "Входной фасад чередует белую штукатурку с высокими пилонами, облицованными натуральным камнем тонкой слоистой кладки. Бетонные козырьки над входом и окнами залиты консольно и оставлены открытыми. Столярка обрамлена рельефными белыми наличниками, входная дверь имеет декоративную металлическую решётку. Входные ступени залиты в три уровня с прямыми кромками и гладкой поверхностью."
       },
       "location": {
         "ro": "",
@@ -556,8 +549,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Tencuială și placaj piatră",
+        "ru": "Штукатурка и облицовка камнем"
       },
       "area_sqm": "",
       "duration": {
@@ -573,19 +566,20 @@
         "ru": ""
       },
       "cover": "proj-fatade-03-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "fatade-04",
       "service": "fatade",
       "serviceIndex": 2,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Fațadă ventilată cu plăci ceramice pe structură metalică",
+        "ru": "Вентилируемый фасад с керамическими плитами на металлической подсистеме"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Peste zidăria de cărămidă este montată o substructură din profile metalice verticale, fixate în perete cu console reglabile. Pe ea se prind plăci ceramice de format mare, în nuanță ruginie, cu rost deschis între ele. Stratul de aer dintre placaj și perete rămâne liber pe toată înălțimea, ceea ce dă sistemului ventilarea. Montajul avansează de jos în sus, cu rândurile inferioare deja închise și cele superioare încă descoperite.",
+        "ru": "Поверх кирпичной кладки смонтирована подсистема из вертикальных металлических профилей, закреплённых в стене регулируемыми кронштейнами. На неё крепятся крупноформатные керамические плиты ржавого оттенка с открытым швом между ними. Воздушный зазор между облицовкой и стеной остаётся свободным по всей высоте, что и обеспечивает вентиляцию. Монтаж идёт снизу вверх: нижние ряды уже закрыты, верхние пока открыты."
       },
       "location": {
         "ro": "",
@@ -593,8 +587,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Fațadă ventilată ceramică",
+        "ru": "Керамический вентфасад"
       },
       "area_sqm": "",
       "duration": {
@@ -610,7 +604,8 @@
         "ru": ""
       },
       "cover": "proj-fatade-04-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "fatade-05",
@@ -654,12 +649,12 @@
       "service": "fatade",
       "serviceIndex": 2,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Termoizolație de fațadă cu polistiren grafitat",
+        "ru": "Утепление фасада графитовым пенополистиролом"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Plăcile de polistiren expandat grafitat sunt lipite pe perete și fixate suplimentar cu dibluri cu rozetă, dispuse regulat pe fiecare placă. Rosturile dintre plăci și racordul de la streașină sunt umplute cu spumă poliuretanică. Sistemul pornește de jos de pe un profil de soclu, iar glafurile ferestrelor sunt îmbrăcate cu plăci tăiate pe măsură. Tâmplăria are încă folia de protecție pe geam, deci finisajul exterior urmează.",
+        "ru": "Плиты графитового пенополистирола приклеены к стене и дополнительно закреплены тарельчатыми дюбелями, расставленными равномерно по каждой плите. Швы между плитами и примыкание к свесу заполнены полиуретановой пеной. Система начинается снизу с цокольного профиля, откосы окон обшиты подрезанными по месту плитами. На стекле ещё осталась защитная плёнка, значит наружная отделка впереди."
       },
       "location": {
         "ro": "",
@@ -667,8 +662,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Sistem termoizolant fațadă",
+        "ru": "Фасадная теплоизоляция"
       },
       "area_sqm": "",
       "duration": {
@@ -684,28 +679,29 @@
         "ru": ""
       },
       "cover": "proj-fatade-06-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "reparatii-01",
       "service": "reparatii",
       "serviceIndex": 3,
       "title": {
-        "ro": "Acoperiș nou pe casă existentă",
-        "ru": "Новая крыша на существующем доме"
+        "ro": "Pereți din gips-carton, gletuiți la rosturi",
+        "ru": "Стены из гипсокартона со шпаклёванными швами"
       },
       "summary": {
-        "ro": "Înlocuirea completă a acoperișului cu țiglă metalică antracit, pe o casă mai veche din zona colinară.",
-        "ru": "Полная замена кровли на металлочерепицу антрацитового цвета на старом доме в холмистой местности."
+        "ro": "Pereții și tavanul sunt închiși cu plăci de gips-carton, montate pe structură metalică. Rosturile dintre plăci și capetele de șuruburi sunt acoperite cu bandă și glet, aplicat în straturi late și lăsat să se usuce. Colțurile ieșite sunt întărite cu profile de protecție înglobate în glet. Dozele electrice rămân neacoperite în perete, iar în tavan este pregătit un gol pentru grila de ventilație.",
+        "ru": "Стены и потолок закрыты гипсокартонными листами по металлическому каркасу. Швы между листами и головки саморезов проклеены лентой и зашпаклёваны широкими полосами, оставленными сохнуть. Внешние углы усилены защитными профилями, утопленными в шпаклёвку. Электрические подрозетники оставлены открытыми в стене, в потолке подготовлен проём под вентиляционную решётку."
       },
       "location": {
-        "ro": "TODO: localitate",
-        "ru": "TODO: населённый пункт"
-      },
-      "year": "TODO: an",
-      "work_type": {
         "ro": "",
         "ru": ""
+      },
+      "year": "",
+      "work_type": {
+        "ro": "Montaj și gletuire gips-carton",
+        "ru": "Монтаж и шпаклёвка гипсокартона"
       },
       "area_sqm": "",
       "duration": {
@@ -721,24 +717,20 @@
         "ru": ""
       },
       "cover": "proj-reparatii-01-cover",
-      "gallery": [
-        "proj-reparatii-01-01",
-        "proj-reparatii-01-02",
-        "proj-reparatii-01-03",
-        "proj-reparatii-01-04"
-      ]
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "reparatii-02",
       "service": "reparatii",
       "serviceIndex": 3,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Tavan suspendat cu lumină ascunsă și climatizare",
+        "ru": "Подвесной потолок со скрытым светом и кондиционированием"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Tavanul suspendat este executat pe două niveluri, cu o nișă perimetrală care ascunde banda de lumină. Spoturile încastrate sunt distribuite pe ambele trepte ale tavanului, iar grila de ventilație este integrată în planul superior. Unitatea interioară de climatizare este montată pe perete, cu traseul de racord scos prin spatele ei. Pereții sunt gletuiți și vopsiți, iar pardoseala este încă șapă brută.",
+        "ru": "Подвесной потолок выполнен в двух уровнях, с периметральной нишей, скрывающей световую ленту. Встроенные светильники распределены по обеим ступеням потолка, вентиляционная решётка интегрирована в верхнюю плоскость. Внутренний блок кондиционера закреплён на стене, трасса подключения выведена за ним. Стены зашпаклёваны и окрашены, пол пока остаётся черновой стяжкой."
       },
       "location": {
         "ro": "",
@@ -746,8 +738,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Tavan suspendat",
+        "ru": "Подвесной потолок"
       },
       "area_sqm": "",
       "duration": {
@@ -763,7 +755,8 @@
         "ru": ""
       },
       "cover": "proj-reparatii-02-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "top"
     },
     {
       "id": "reparatii-03",
@@ -918,21 +911,21 @@
       "service": "finisaje",
       "serviceIndex": 4,
       "title": {
-        "ro": "Terasă cu bucătărie de vară",
-        "ru": "Терраса с летней кухней"
+        "ro": "Tavan din gips-carton pe două niveluri, cu lumină ascunsă",
+        "ru": "Двухуровневый гипсокартонный потолок со скрытым светом"
       },
       "summary": {
-        "ro": "Terasă placată cu travertin, geamuri glisante mari și șemineu exterior din piatră, chiar lângă casă.",
-        "ru": "Терраса, облицованная травертином, с большими раздвижными окнами и уличным камином из камня, рядом с домом."
+        "ro": "Tavanul este executat din gips-carton pe două trepte, cu o nișă continuă care ascunde banda de lumină pe tot perimetrul. Fâșiile liniare de lumină sunt încastrate în planul superior, dispuse paralel și înclinate față de axul camerei. Spoturile rotunde completează iluminatul pe treapta inferioară și de-a lungul pereților. Pereții sunt gletuiți și vopsiți, iar pardoseala din plăci de marmură este montată și lustruită.",
+        "ru": "Потолок выполнен из гипсокартона в две ступени, со сплошной нишей, скрывающей световую ленту по всему периметру. Линейные световые полосы встроены в верхнюю плоскость параллельно друг другу и под углом к оси помещения. Круглые встроенные светильники дополняют освещение на нижней ступени и вдоль стен. Стены зашпаклёваны и окрашены, мраморный пол уложен и отполирован."
       },
       "location": {
-        "ro": "TODO: localitate",
-        "ru": "TODO: населённый пункт"
-      },
-      "year": "TODO: an",
-      "work_type": {
         "ro": "",
         "ru": ""
+      },
+      "year": "",
+      "work_type": {
+        "ro": "Tavan gips-carton",
+        "ru": "Гипсокартонный потолок"
       },
       "area_sqm": "",
       "duration": {
@@ -948,24 +941,20 @@
         "ru": ""
       },
       "cover": "proj-finisaje-01-cover",
-      "gallery": [
-        "proj-finisaje-01-01",
-        "proj-finisaje-01-02",
-        "proj-finisaje-01-03",
-        "proj-finisaje-01-04"
-      ]
+      "gallery": [],
+      "crop_anchor": "top"
     },
     {
       "id": "finisaje-02",
       "service": "finisaje",
       "serviceIndex": 4,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Montaj plăci ceramice pe pardoseală",
+        "ru": "Укладка керамической плитки на пол"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Plăcile ceramice de format mare sunt montate pe un pat de adeziv întins cu gletiera dințată, care lasă striuri paralele uniforme. Fiecare placă este așezată și presată manual în adeziv, imediat după întinderea acestuia. Distanțierele mențin rostul constant între plăcile deja poziționate. Adezivul este preparat în găleată și dozat pe suprafețe mici, ca să nu apuce înainte de montaj.",
+        "ru": "Крупноформатная керамическая плитка укладывается на слой клея, распределённый зубчатым шпателем с ровными параллельными бороздами. Каждая плитка укладывается и прижимается вручную сразу после нанесения клея. Крестики держат постоянный шов между уже уложенными плитками. Клей замешивается в ведре и наносится небольшими участками, чтобы не схватился до укладки."
       },
       "location": {
         "ro": "",
@@ -973,8 +962,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Montaj plăci ceramice",
+        "ru": "Укладка керамической плитки"
       },
       "area_sqm": "",
       "duration": {
@@ -990,19 +979,20 @@
         "ru": ""
       },
       "cover": "proj-finisaje-02-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "finisaje-03",
       "service": "finisaje",
       "serviceIndex": 4,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Gletuirea pereților înainte de vopsire",
+        "ru": "Шпаклевание стен перед покраской"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Peretele este gletuit în straturi succesive, aplicate cu drișca și întinse până la o suprafață continuă. Zona din dreapta arată trecerea dintre stratul proaspăt și cel deja uscat, mai deschis la culoare. Colțul dintre pereți este tras drept, iar racordul la tocul ferestrei este curățat pe muchie. Trafaletul și tăvița sunt pregătite pe scară pentru stratul următor.",
+        "ru": "Стена шпаклюется последовательными слоями, которые наносятся тёркой и растягиваются до сплошной поверхности. Справа виден переход между свежим слоем и уже высохшим, более светлым. Угол между стенами выведен ровно, примыкание к оконной коробке зачищено по кромке. Валик и лоток подготовлены на стремянке под следующий слой."
       },
       "location": {
         "ro": "",
@@ -1010,8 +1000,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Gletuire pereți",
+        "ru": "Шпаклевание стен"
       },
       "area_sqm": "",
       "duration": {
@@ -1027,19 +1017,20 @@
         "ru": ""
       },
       "cover": "proj-finisaje-03-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "finisaje-04",
       "service": "finisaje",
       "serviceIndex": 4,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Structură metalică pentru tavan fals",
+        "ru": "Металлический каркас подвесного потолка"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Structura tavanului fals este montată din profile zincate, dispuse într-o rețea ortogonală pe toată suprafața încăperii. Profilele sunt prinse de planșeu prin ancore și conectori așezați la distanțe regulate, care preiau nivelul tavanului finit. O parte din suprafață este deja închisă cu plăci, iar spre fundul încăperii rețeaua rămâne deschisă pentru trasee. Încăperea are înălțime mare, așa că structura coboară considerabil sub planșeul existent.",
+        "ru": "Каркас подвесного потолка собран из оцинкованных профилей, расставленных ортогональной сеткой по всей площади помещения. Профили закреплены к перекрытию анкерами и подвесами с равным шагом, которые задают отметку чистого потолка. Часть площади уже зашита плитами, в глубине помещения сетка остаётся открытой под прокладку трасс. Помещение высокое, поэтому каркас опускается заметно ниже существующего перекрытия."
       },
       "location": {
         "ro": "",
@@ -1047,8 +1038,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Structură tavan fals",
+        "ru": "Каркас подвесного потолка"
       },
       "area_sqm": "",
       "duration": {
@@ -1064,7 +1055,8 @@
         "ru": ""
       },
       "cover": "proj-finisaje-04-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "top"
     },
     {
       "id": "finisaje-05",
@@ -1145,21 +1137,21 @@
       "service": "proiectare-3d",
       "serviceIndex": 5,
       "title": {
-        "ro": "TODO: titlu proiect",
-        "ru": "TODO: название проекта"
+        "ro": "Randare 3D, hol cu tavan în trepte",
+        "ru": "3D-визуализация: холл со ступенчатым потолком"
       },
       "summary": {
-        "ro": "TODO: descriere proiect",
-        "ru": "TODO: описание проекта"
+        "ro": "Proiectul propune un hol lung cu tavan din gips-carton executat în trepte alternante, fiecare cu bandă de lumină ascunsă. Pereții sunt tratați cu profile decorative aplicate în casete, vopsite în același ton cu suprafața. Un panou traforat și o oglindă înaltă marchează zona de consolă de la intrare. Pardoseala este din plăci de marmură lustruită, cu covoare înguste așezate pe axul holului.",
+        "ru": "Проект предлагает длинный холл с гипсокартонным потолком, выполненным чередующимися ступенями, каждая со скрытой световой лентой. Стены оформлены декоративными профилями в виде филёнок, окрашенных в тон поверхности. Резная панель и высокое зеркало выделяют зону консоли у входа. Пол выложен полированной мраморной плиткой, по оси холла лежат узкие ковры."
       },
       "location": {
-        "ro": "TODO: localitate",
-        "ru": "TODO: населённый пункт"
-      },
-      "year": "TODO: an",
-      "work_type": {
         "ro": "",
         "ru": ""
+      },
+      "year": "",
+      "work_type": {
+        "ro": "Vizualizare 3D hol",
+        "ru": "3D-визуализация холла"
       },
       "area_sqm": "",
       "duration": {
@@ -1175,23 +1167,20 @@
         "ru": ""
       },
       "cover": "proj-proiectare-3d-01-cover",
-      "gallery": [
-        "proj-proiectare-3d-01-01",
-        "proj-proiectare-3d-01-02",
-        "proj-proiectare-3d-01-03"
-      ]
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "proiectare-3d-02",
       "service": "proiectare-3d",
       "serviceIndex": 5,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Randare 3D, dressing cu fronturi din lemn",
+        "ru": "3D-визуализация: гардеробная с деревянными фасадами"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Proiectul arată un corp de dressing pe toată înălțimea camerei, cu fronturi din furnir de lemn și rosturi verticale continue. Un modul central are ușă din sticlă fumurie, cu rafturi iluminate pe verticală în interior. Oglinda înaltă este integrată în același plan cu fronturile, încadrată în ramă de lemn. Ușa camerei este ascunsă în perete, cu toc invizibil, iar pardoseala este din parchet montat în spic.",
+        "ru": "Проект показывает гардеробный блок на всю высоту комнаты с фасадами из деревянного шпона и сплошными вертикальными швами. Центральный модуль имеет дверь из дымчатого стекла с подсвеченными по вертикали полками внутри. Высокое зеркало встроено в одну плоскость с фасадами и обрамлено деревянной рамой. Дверь комнаты скрыта в стене на невидимой коробке, пол выложен паркетом ёлочкой."
       },
       "location": {
         "ro": "",
@@ -1199,8 +1188,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Vizualizare 3D dressing",
+        "ru": "3D-визуализация гардеробной"
       },
       "area_sqm": "",
       "duration": {
@@ -1216,19 +1205,20 @@
         "ru": ""
       },
       "cover": "proj-proiectare-3d-02-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "proiectare-3d-03",
       "service": "proiectare-3d",
       "serviceIndex": 5,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Randare 3D, baie cu placaj în două contraste",
+        "ru": "3D-визуализация: ванная в двух контрастах"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Proiectul propune o baie placată cu plăci mari, negre mate pe pereți și albe cu vinișaj pe pardoseală și în cabina de duș. Cada independentă este așezată liber lângă perete, cu baterie de pardoseală alături. Cabina de duș este închisă cu sticlă în profile negre, cu nișă încastrată pentru obiecte. Oglinda rotundă are iluminare perimetrală, iar tavanul are lumină ascunsă pe perimetru și spoturi încastrate.",
+        "ru": "Проект предлагает ванную, облицованную крупноформатными плитами: матовыми чёрными на стенах и белыми с прожилками на полу и в душевой. Отдельно стоящая ванна размещена свободно у стены, рядом напольный смеситель. Душевая закрыта стеклом в чёрных профилях, со встроенной нишей для принадлежностей. Круглое зеркало имеет подсветку по контуру, у потолка скрытый свет по периметру и встроенные светильники."
       },
       "location": {
         "ro": "",
@@ -1236,8 +1226,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Vizualizare 3D baie",
+        "ru": "3D-визуализация ванной"
       },
       "area_sqm": "",
       "duration": {
@@ -1253,19 +1243,20 @@
         "ru": ""
       },
       "cover": "proj-proiectare-3d-03-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "proiectare-3d-04",
       "service": "proiectare-3d",
       "serviceIndex": 5,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Randare 3D, dormitor cu perete din lamele de lemn",
+        "ru": "3D-визуализация: спальня с реечной стеной"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Proiectul propune un dormitor cu peretele din dreptul patului placat cu lamele verticale de lemn și benzi luminoase liniare integrate între ele. Televizorul este montat pe placaj, cu o consolă suspendată cu sertare dedesubt. Fereastra este dublată de perdea transparentă și draperie groasă pe toată înălțimea. Pardoseala este din parchet montat în spic, iar corpurile de iluminat suspendate coboară pe lângă noptieră.",
+        "ru": "Проект предлагает спальню, где стена у изголовья облицована вертикальными деревянными рейками с интегрированными между ними линейными светильниками. Телевизор закреплён на облицовке, под ним подвесная консоль с ящиками. Окно закрыто прозрачным тюлем и плотной портьерой на всю высоту. Пол выложен паркетом ёлочкой, вдоль прикроватной тумбы спускаются подвесные светильники."
       },
       "location": {
         "ro": "",
@@ -1273,8 +1264,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Vizualizare 3D dormitor",
+        "ru": "3D-визуализация спальни"
       },
       "area_sqm": "",
       "duration": {
@@ -1290,19 +1281,20 @@
         "ru": ""
       },
       "cover": "proj-proiectare-3d-04-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "proiectare-3d-05",
       "service": "proiectare-3d",
       "serviceIndex": 5,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Randare 3D, zonă de intrare cu perete din lamele",
+        "ru": "3D-визуализация: входная зона с реечной стеной"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Proiectul centrează zona de intrare pe un panou înalt din lamele verticale de lemn, conturat de lumină ascunsă pe toate laturile. De o parte și de alta, pereții sunt tratați cu panouri verticale mate, cu rosturi subțiri între ele. O consolă îngustă din lemn închis este fixată pe panou, cu două taburete dedesubt. Pardoseala este din parchet montat în spic lat, orientat pe diagonala încăperii.",
+        "ru": "Проект строит входную зону вокруг высокой панели из вертикальных деревянных реек, очерченной скрытым светом со всех сторон. По обе стороны стены оформлены матовыми вертикальными панелями с тонкими швами между ними. Узкая консоль из тёмного дерева закреплена на панели, под ней два пуфа. Пол выложен широкой паркетной ёлочкой, ориентированной по диагонали помещения."
       },
       "location": {
         "ro": "",
@@ -1310,8 +1302,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Vizualizare 3D intrare",
+        "ru": "3D-визуализация входной зоны"
       },
       "area_sqm": "",
       "duration": {
@@ -1327,7 +1319,8 @@
         "ru": ""
       },
       "cover": "proj-proiectare-3d-05-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "proiectare-3d-06",
@@ -1371,21 +1364,21 @@
       "service": "instalatii",
       "serviceIndex": 6,
       "title": {
-        "ro": "TODO: titlu proiect",
-        "ru": "TODO: название проекта"
+        "ro": "Compartimentări pe structură metalică într-o hală",
+        "ru": "Перегородки на металлическом каркасе в ангаре"
       },
       "summary": {
-        "ro": "TODO: descriere proiect",
-        "ru": "TODO: описание проекта"
+        "ro": "În interiorul unei hale cu structură metalică sunt ridicate compartimentări pe schelet din profile zincate, montate între pardoseală și tavan. Traseele electrice sunt trase prin golurile din montanți, în tub flexibil, înainte de închiderea pereților. Golurile de ușă sunt întărite cu montanți dubli și rigidizări din lemn. Un perete este deja închis pe o față cu plăci, iar restul rămân deschise pentru instalații.",
+        "ru": "Внутри ангара с металлическим каркасом возводятся перегородки на профилях из оцинкованной стали, установленных между полом и потолком. Электрические трассы протянуты через отверстия в стойках в гофрированной трубе до зашивки стен. Дверные проёмы усилены сдвоенными стойками и деревянными закладными. Одна перегородка уже зашита плитами с одной стороны, остальные остаются открытыми под инженерные сети."
       },
       "location": {
-        "ro": "TODO: localitate",
-        "ru": "TODO: населённый пункт"
-      },
-      "year": "TODO: an",
-      "work_type": {
         "ro": "",
         "ru": ""
+      },
+      "year": "",
+      "work_type": {
+        "ro": "Compartimentări și trasee",
+        "ru": "Перегородки и трассы"
       },
       "area_sqm": "",
       "duration": {
@@ -1401,23 +1394,20 @@
         "ru": ""
       },
       "cover": "proj-instalatii-01-cover",
-      "gallery": [
-        "proj-instalatii-01-01",
-        "proj-instalatii-01-02",
-        "proj-instalatii-01-03"
-      ]
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "instalatii-02",
       "service": "instalatii",
       "serviceIndex": 6,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Încălzire în pardoseală, montaj conducte",
+        "ru": "Тёплый пол, монтаж трубопровода"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Pe planșeul de beton este așternut un strat de izolație cu folie caserată, peste care se montează conductele de încălzire în pardoseală. Conductele sunt fixate în bucle paralele, cu pasul păstrat constant pe toată suprafața. În încăpere sunt pregătite țevile de scurgere și piesele de legătură pentru restul instalațiilor. Pereții sunt încă la stadiul de beton și zidărie brută, deci montajul se face înaintea finisajelor.",
+        "ru": "На бетонное перекрытие уложен слой изоляции с фольгированным покрытием, поверх которого монтируются трубы тёплого пола. Трубы закреплены параллельными петлями с постоянным шагом по всей площади. В помещении подготовлены канализационные трубы и соединительные элементы для остальных сетей. Стены пока остаются в бетоне и черновой кладке, то есть монтаж идёт до отделки."
       },
       "location": {
         "ro": "",
@@ -1425,8 +1415,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Încălzire în pardoseală",
+        "ru": "Тёплый пол"
       },
       "area_sqm": "",
       "duration": {
@@ -1442,19 +1432,20 @@
         "ru": ""
       },
       "cover": "proj-instalatii-02-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "bottom"
     },
     {
       "id": "instalatii-03",
       "service": "instalatii",
       "serviceIndex": 6,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Perete nou pe structură metalică, în renovare",
+        "ru": "Новая перегородка на металлическом каркасе при ремонте"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Într-un apartament aflat în renovare este ridicat un perete nou pe schelet din profile metalice zincate, prins în șine la pardoseală și la tavan. Montanții sunt așezați la pas constant, cu decupaje pentru trecerea traseelor prin perete. Peretele vechi a fost desfăcut, iar tencuiala și pardoseala au fost îndepărtate până la structura de bază. Sculele și accesoriile de prindere sunt pregătite pe pardoseală, lângă zona de montaj.",
+        "ru": "В квартире на этапе ремонта возводится новая перегородка на каркасе из оцинкованных металлических профилей, закреплённом в направляющих у пола и потолка. Стойки расставлены с постоянным шагом, с вырезами для прохода трасс сквозь перегородку. Старая стена разобрана, штукатурка и напольное покрытие сняты до несущей основы. Инструмент и крепёж подготовлены на полу рядом с зоной монтажа."
       },
       "location": {
         "ro": "",
@@ -1462,8 +1453,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Pereți pe structură metalică",
+        "ru": "Перегородки на металлокаркасе"
       },
       "area_sqm": "",
       "duration": {
@@ -1479,19 +1470,20 @@
         "ru": ""
       },
       "cover": "proj-instalatii-03-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "instalatii-04",
       "service": "instalatii",
       "serviceIndex": 6,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Convector de pardoseală la ușa glisantă",
+        "ru": "Внутрипольный конвектор у раздвижной двери"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "La pragul unei uși glisante late este încastrat în pardoseală un convector, cu grilă din lamele de lemn la nivelul finisajului. Canalul convectorului este integrat în structura pardoselii, sub stratul de parchet deja montat. Parchetul este pozat pe folie de amortizare, cu rândurile orientate perpendicular pe ușă. Pe latura dinspre exterior, pragul face racordul cu terasa pavată cu dale.",
+        "ru": "У порога широкой раздвижной двери в пол встроен конвектор с решёткой из деревянных ламелей на уровне чистого покрытия. Короб конвектора интегрирован в конструкцию пола под уже уложенным слоем ламината. Ламинат уложен на демпферную подложку, ряды ориентированы перпендикулярно двери. С наружной стороны порог стыкуется с террасой, вымощенной плиткой."
       },
       "location": {
         "ro": "",
@@ -1499,8 +1491,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Convector pardoseală",
+        "ru": "Внутрипольный конвектор"
       },
       "area_sqm": "",
       "duration": {
@@ -1516,7 +1508,8 @@
         "ru": ""
       },
       "cover": "proj-instalatii-04-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "bottom"
     },
     {
       "id": "instalatii-05",
@@ -1597,12 +1590,12 @@
       "service": "industrial",
       "serviceIndex": 7,
       "title": {
-        "ro": "TODO: titlu proiect",
-        "ru": "TODO: название проекта"
+        "ro": "",
+        "ru": ""
       },
       "summary": {
-        "ro": "TODO: descriere proiect",
-        "ru": "TODO: описание проекта"
+        "ro": "",
+        "ru": ""
       },
       "location": {
         "ro": "TODO: localitate",
@@ -1627,11 +1620,7 @@
         "ru": ""
       },
       "cover": "proj-industrial-01-cover",
-      "gallery": [
-        "proj-industrial-01-01",
-        "proj-industrial-01-02",
-        "proj-industrial-01-03"
-      ]
+      "gallery": []
     },
     {
       "id": "industrial-02",
@@ -1823,21 +1812,21 @@
       "service": "terasamente",
       "serviceIndex": 8,
       "title": {
-        "ro": "TODO: titlu proiect",
-        "ru": "TODO: название проекта"
+        "ro": "Săpătură generală pentru fundație",
+        "ru": "Общий котлован под фундамент"
       },
       "summary": {
-        "ro": "TODO: descriere proiect",
-        "ru": "TODO: описание проекта"
+        "ro": "Groapa de fundație este săpată pe toată amprenta construcției, cu taluzuri înclinate pe tot conturul pentru stabilitate. Excavatorul pe șenile lucrează la marginea săpăturii și încarcă pământul direct în autobasculante. Fundul gropii este adus aproape de cotă și nivelat, cu urmele utilajelor vizibile pe toată suprafața. Accesul în groapă se face pe o rampă săpată în taluz, pe care circulă camioanele.",
+        "ru": "Котлован разработан по всему пятну застройки, с наклонными откосами по всему контуру для устойчивости. Гусеничный экскаватор работает у кромки выемки и грузит грунт прямо в самосвалы. Дно котлована доведено почти до отметки и спланировано, следы техники видны по всей площади. Въезд в котлован устроен по пандусу, врезанному в откос, по нему движутся самосвалы."
       },
       "location": {
-        "ro": "TODO: localitate",
-        "ru": "TODO: населённый пункт"
-      },
-      "year": "TODO: an",
-      "work_type": {
         "ro": "",
         "ru": ""
+      },
+      "year": "",
+      "work_type": {
+        "ro": "Săpătură generală",
+        "ru": "Разработка котлована"
       },
       "area_sqm": "",
       "duration": {
@@ -1853,23 +1842,20 @@
         "ru": ""
       },
       "cover": "proj-terasamente-01-cover",
-      "gallery": [
-        "proj-terasamente-01-01",
-        "proj-terasamente-01-02",
-        "proj-terasamente-01-03"
-      ]
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "terasamente-02",
       "service": "terasamente",
       "serviceIndex": 8,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Nivelare și sistematizare în jurul casei",
+        "ru": "Планировка и благоустройство вокруг дома"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Un excavator pe șenile lucrează în spațiul îngust dintre casă și limita parcelei, la nivelarea terenului după terminarea structurii. Lama de nivelare este coborâtă pe sol, iar cupa mută pământul în straturi subțiri către zona de umplutură. Zidul de sprijin din beton și scara de acces sunt deja turnate și rămân reperul pentru cota finală. Terenul este adus treptat la nivelul soclului, pentru a permite executarea trotuarului de gardă.",
+        "ru": "Гусеничный экскаватор работает в узком пространстве между домом и границей участка, планируя грунт после завершения коробки. Отвал опущен на грунт, ковш перемещает землю тонкими слоями в зону подсыпки. Бетонная подпорная стена и входная лестница уже залиты и служат ориентиром для финальной отметки. Грунт постепенно выводится к уровню цоколя, чтобы можно было выполнить отмостку."
       },
       "location": {
         "ro": "",
@@ -1877,8 +1863,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Nivelare teren",
+        "ru": "Планировка грунта"
       },
       "area_sqm": "",
       "duration": {
@@ -1894,19 +1880,20 @@
         "ru": ""
       },
       "cover": "proj-terasamente-02-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "terasamente-03",
       "service": "terasamente",
       "serviceIndex": 8,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Radier armat, cofraj montat înainte de turnare",
+        "ru": "Армированная фундаментная плита, опалубка до бетонирования"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Radierul este cofrat pe tot conturul cu panouri sprijinite de contrafișe din lemn, așezate la pas regulat. Armătura este legată în două plase suprapuse, cu distanțieri care păstrează stratul de acoperire față de cofraj. Mustățile de armătură sunt lăsate ridicate în punctele unde vor urca stâlpii și pereții. Pe amplasament este adusă deja pompa de beton, iar o a doua platformă este pregătită în spate.",
+        "ru": "Плита закрыта опалубкой по всему контуру, щиты удерживаются деревянными подкосами, расставленными с равным шагом. Армирование связано в две наложенные сетки с фиксаторами, которые держат защитный слой относительно опалубки. Выпуски арматуры оставлены поднятыми в точках, где пойдут колонны и стены. На площадку уже подан бетононасос, вторая площадка подготовлена позади."
       },
       "location": {
         "ro": "",
@@ -1914,8 +1901,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Radier și cofraj",
+        "ru": "Плита и опалубка"
       },
       "area_sqm": "",
       "duration": {
@@ -1931,7 +1918,8 @@
         "ru": ""
       },
       "cover": "proj-terasamente-03-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "terasamente-04",
@@ -1975,12 +1963,12 @@
       "service": "terasamente",
       "serviceIndex": 8,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Excavare și evacuare pământ de pe amplasament",
+        "ru": "Разработка и вывоз грунта с площадки"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Excavatorul pe pneuri sapă la marginea platformei și încarcă pământul direct în bena unei autobasculante, care îl evacuează de pe amplasament. Terenul este adus aproape de cotă pe toată suprafața, cu urme adânci de roți lăsate în pământul reavăn. Taluzul săpăturii este conturat pe latura din dreapta, cu un țăruș de trasare înfipt la marginea lui. Lucrarea se desfășoară la limita unei localități, pe un teren care coboară spre vale.",
+        "ru": "Колёсный экскаватор разрабатывает грунт у кромки площадки и грузит его прямо в кузов самосвала, который вывозит его с объекта. Площадка доведена почти до отметки по всей поверхности, на влажном грунте остались глубокие следы колёс. Откос выемки сформирован по правой стороне, по его краю забит разбивочный колышек. Работы ведутся на краю населённого пункта, на участке, понижающемся к долине."
       },
       "location": {
         "ro": "",
@@ -1988,8 +1976,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Săpătură și nivelare",
+        "ru": "Земляные работы и планировка"
       },
       "area_sqm": "",
       "duration": {
@@ -2005,7 +1993,8 @@
         "ru": ""
       },
       "cover": "proj-terasamente-05-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "terasamente-06",

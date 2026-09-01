@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{svc.title}} · Rapid Construct</title>
-<meta name="description" content="{{svc.desc}}">
+<title>{{svc.metaTitle}}</title>
+<meta name="description" content="{{svc.metaDesc}}">
 <meta name="robots" content="{{svc.robots}}">
 <link rel="canonical" href="{{svc.canonical}}">
 <link rel="alternate" hreflang="ro" href="{{svc.urlRo}}">
 <link rel="alternate" hreflang="ru" href="{{svc.urlRu}}">
 <link rel="alternate" hreflang="x-default" href="{{svc.urlRo}}">
 <meta property="og:type" content="website">
-<meta property="og:title" content="{{svc.title}} · Rapid Construct">
-<meta property="og:description" content="{{svc.desc}}">
+<meta property="og:title" content="{{svc.metaTitle}}">
+<meta property="og:description" content="{{svc.metaDesc}}">
 <meta property="og:url" content="{{svc.canonical}}">
 <meta property="og:locale" content="{{meta.ogLocale}}">
-<meta property="og:image" content="{{ogImage}}">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="{{meta.ogImageAlt}}">
+<meta property="og:image" content="{{svc.ogImage}}">
+<meta property="og:image:width" content="{{svc.ogImageW}}">
+<meta property="og:image:height" content="{{svc.ogImageH}}">
+<meta property="og:image:alt" content="{{svc.ogImageAlt}}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F65308">
 <link rel="icon" href="{{base}}/favicon-512.png" sizes="512x512" type="image/png">
@@ -36,7 +36,7 @@
   "@type": "Service",
   "name": "{{svc.title}}",
   "description": "{{svc.desc}}",
-  "serviceType": "{{svc.title}}",
+  "serviceType": "{{svc.title}}"{{svc.imageObjects}},
   "url": "{{svc.canonical}}",
   "areaServed": [
     { "@type": "City", "name": "Chișinău" },
@@ -67,11 +67,11 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "{{servicePage.home}}", "item": "{{canonical}}" },
-    { "@type": "ListItem", "position": 2, "name": "{{servicePage.all}}", "item": "{{servicesHref}}" },
+    { "@type": "ListItem", "position": 2, "name": "{{servicePage.all}}", "item": "{{servicesUrl}}" },
     { "@type": "ListItem", "position": 3, "name": "{{svc.title}}" }
   ]
 }
-</script>
+</script>{{svc.faqSchema}}
 </head>
 <body>
 
@@ -156,7 +156,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
       <div>
         <p class="eyebrow">{{services.eyebrow}}</p>
         <h1>{{svc.title}}</h1>
-        <p class="hero__sub" style="margin: 16px 0 0;">{{svc.desc}}</p>
+        <p class="hero__sub" style="margin: 16px 0 0;">{{svc.answer}}</p>
         <div class="cta-row" style="justify-content: flex-start; margin-top: 32px;">
           <a class="btn btn--primary" href="#oferta">{{hero.ctaPrimary}}</a>
         </div>
@@ -166,11 +166,18 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   </div>
 </section>
 
+<!-- 2b · What it includes. Present only where the page's own content
+     already supports a table; three services legitimately have none. -->
+{{svc.table}}
+
 <!-- 3 · Pricing. Provisional: only on the five priced services. -->
 {{svc.priceSection}}
 
 <!-- 4 · Projects. Omitted entirely when nothing renderable exists. -->
 {{svc.gallerySection}}
+
+<!-- 4b · FAQ, sibling links and the updated date. -->
+{{svc.faqSection}}
 
 <!-- 5 · CTA, the same form as the homepage -->
 <section class="section section--light section--divided" id="oferta">
@@ -180,9 +187,9 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     <p class="lede" data-reveal>{{form.intro}}</p>
 
     <div class="form-layout" style="margin-top: 40px;">
-      <form class="form-card form-card--stack" id="quote-form" method="POST" action="{{formAction}}" novalidate data-armed="{{formArmed}}" data-ok="{{form.ok}}" data-fail="{{form.fail}}" data-demo="{{form.demoNotice}}">
+      <form class="form-card form-card--stack" id="quote-form" method="POST" action="{{formAction}}" novalidate data-armed="{{formArmed}}" data-ok="{{form.ok}}" data-fail="{{form.fail}}"{{demoAttr}}>
         <input type="hidden" name="access_key" value="{{formEndpoint}}">
-        <input type="hidden" name="subject" value="{{svc.title}} — rapidconstruct.md">
+        <input type="hidden" name="subject" value="{{svc.subject}}">
         <input type="hidden" name="from_name" value="Rapid Construct">
         <input type="hidden" name="serviciu" value="{{svc.title}}">
         <div class="honeypot" aria-hidden="true"><label for="botcheck">{{form.honeypotLabel}}</label><input id="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></div>

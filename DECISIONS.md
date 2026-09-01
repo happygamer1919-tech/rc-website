@@ -502,3 +502,97 @@ touched by this card and the approved set stands at the same **10** values.
 92KB for all nine, the largest being `bilka.svg` at 31KB. Lighthouse stayed
 100/100/100/100 on both locales; page heights are unchanged at 8,504px RO and
 8,774px RU.
+
+## Hero panel minimum long edge: 1600 -> 720, PROVISIONAL, W8-03, 2026-09-01
+
+**This is provisional and is built to be raised again.** It exists only to let
+one interim file through and is not a judgement that 720px is enough for a hero
+image.
+
+| | |
+|---|---|
+| Slot | `hero-panel`, 4:3, 1x 1400x1050, 2x 2800x2100 |
+| Manifest asks for | a **2800px** source |
+| Enforced floor before | **1600**, the global default (the slot had no override) |
+| Enforced floor now | **720**, per-slot, provisional |
+| File supplied | 720x540, exactly 4:3, already cropped, 144KB |
+
+**Nothing else moved.** Only `hero-panel` carries this floor. The nine service
+card slots stay at their own 1200 (W7-02) and every other slot, including all
+**54 of 54** project covers and the 5 process stages, stays at 1600.
+
+**To raise it:** delete `minLongEdge: 720` from the `hero-panel` entry in
+`scripts/slots.js`, drop the real 2800px file into `photos-raw/`, and re-run the
+pipeline. One line.
+
+### Upscale, measured
+
+| Variant | Written | From | Linear upscale | Area |
+|---|---|---|---|---|
+| `hero-panel.jpg` | 1400x1050 | 720x540 | **1.94x** | 3.8x |
+| `hero-panel@2x.jpg` | 2800x2100 | 720x540 | **3.89x** | **15.1x** |
+
+The source was not re-cropped: it is already exactly 4:3, so the pipeline's
+centre crop was 720x540 -> 720x540 and discarded nothing.
+
+### Honest read: acceptable at 1440 retina, but only just, and the @2x is waste
+
+The panel renders in a 564x423 CSS px box. On a 1440 retina screen that box is
+**1128x846 device pixels**, and the file carries **720px** of real detail. So
+the image is supplying **64%** of the detail the display can show.
+
+- **At DPR 1 it is fine.** 720px of detail into a 564px box is a surplus.
+- **At DPR 2 it is visibly soft**, but not broken. Hard edges — scaffold poles,
+  helmet rims, the lettering on the vest — lose their crispness, and the vest
+  text is not readable. The photograph's own dust and haze hide much of it; on a
+  clean, sharp subject the same upscale would look far worse.
+- **Verdict: it ships, but it is not good.** It reads as a slightly soft photo
+  rather than a defect, and it will not embarrass the page. A client looking
+  closely on a MacBook will see it is not crisp. Replace it with the original
+  when it arrives.
+
+**The `@2x` file earns nothing and should probably not be written.** It is 369KB
+of a 3.89x interpolation carrying no detail the 1x does not already have, and
+the compressor had to walk all the way down to **quality 32** — the bottom of
+the ladder — to fit it under the 400KB budget, which adds visible mottling to
+the flat orange areas. Rendered side by side at 3x magnification, the q32 2x and
+the q80 1x are near-indistinguishable; if anything the 1x is cleaner in flat
+colour.
+
+**Recommendation, not applied:** set `retina: false` on `hero-panel` until the
+real source lands. Retina screens would then get the 1400x1050 at q80, which
+looks the same or slightly better, and the page sheds 369KB. It was not applied
+because the card asked for the file to be processed into the slot, and dropping
+a variant is a change beyond that. It is a one-word change when wanted.
+
+### Cost to the page
+
+Performance went **100 -> 97** on the RO homepage, still clear of the 95 floor.
+LCP went **0.7s -> 1.2s** and the LCP element is now this photograph, because
+W6-03 renders a real hero photo eagerly with `fetchpriority="high"` precisely
+because it is the LCP candidate. Total page weight went 1,352KB -> 1,763KB.
+
+`public/img/hero-panel.svg` is **retained** (3,431 bytes) and is referenced
+**zero** times in `dist/`.
+
+## The hero panel alt text is now wrong, W8-03, 2026-09-01
+
+Swapping the SVG for a photograph left the alt text describing the SVG. It is
+wrong twice over and it was **not** changed here, because one half of the fix is
+a product claim only the owner can make. Raised as Q-09.
+
+| | |
+|---|---|
+| RO | `Ilustrație: casă la cheie construită de Rapid Construct` |
+| RU | `Иллюстрация: дом под ключ, построенный Rapid Construct` |
+
+1. It says **"Ilustrație" / "Иллюстрация"** — illustration. The slot now holds a
+   photograph.
+2. It says **a turnkey house built by Rapid Construct**. The photograph shows
+   three workers in hi-vis vests on scaffolding around rebar in a dusty
+   interior. It is not a finished house, and whether Rapid Construct built it is
+   not something the repo knows.
+
+A screen reader user currently receives a description of an image that is not
+there. Fixing clause 1 needs no product knowledge; clause 2 does, so neither was
+touched. See `docs/QUESTIONS.md` Q-09.

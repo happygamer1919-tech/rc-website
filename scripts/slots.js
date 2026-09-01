@@ -23,9 +23,12 @@ const SLOTS = [
   // writing 70 files nothing points at. process-photos handles them normally.
   ...require('../content/projects.json').projects
     .flatMap((p) => p.gallery.map((id) => ({ id, w: 1400, h: 933, ratio: '3:2', retina: true, placeholder: false }))),
-  // Hero panel. 4:3, and the 2x is the 2800px source the card asks for.
+  // Hero panel. 4:3, and the 2x is the 2800px source the manifest asks for.
   // Falls back to public/img/hero-panel.svg until the photo lands.
-  { id: 'hero-panel', w: 1400, h: 1050, ratio: '4:3', retina: true, placeholder: false },
+  // minLongEdge 720 is a PROVISIONAL owner ruling, W8-03: it exists only to let
+  // the 720x540 interim file through, and is to be raised back when the
+  // original arrives. It is NOT a judgement that 720 is enough. See DECISIONS.md.
+  { id: 'hero-panel', w: 1400, h: 1050, ratio: '4:3', retina: true, placeholder: false, minLongEdge: 720 },
   // Nine service card photos, 4:3, with the 2x at the 1600x1200 source size.
   // Each falls back to public/img/services/<id>.svg on its own.
   // minLongEdge 1200, not the global 1600: owner ruling, W7-02. The approved

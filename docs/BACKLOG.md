@@ -24,6 +24,7 @@ history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 | Ticket | Card | Branch | Status |
 |---|---|---|---|
 | RC-043 | W9-01 Swap Ceresit -> CAT and Weber -> Heidelberg Materials | `w9/rc-043-supplier-swap` | shipped |
+| RC-044 | W9-02 Social profiles in the footer bar | `w9/rc-044-social-links` | shipped |
 
 ## Wave 8
 

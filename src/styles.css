@@ -420,7 +420,7 @@ p { margin: 0; }
 .footer__contact dt { font-size: 13px; color: var(--line); }
 .footer__contact dd { margin: 0; font-weight: 700; }
 .footer__bar { border-top: 1px solid var(--bg-light); }
-.footer__bar-inner { max-width: var(--container); margin: 0 auto; padding: 20px var(--gutter); display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: 13px; color: var(--line); }
+.footer__bar-inner { max-width: var(--container); margin: 0 auto; padding: 20px var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: 13px; color: var(--line); }
 .footer__bar-inner a:hover { color: var(--brand); }
 .footer__legal { display: flex; gap: 20px; flex-wrap: wrap; }
 
@@ -633,6 +633,32 @@ p { margin: 0; }
   color: var(--ink); text-align: center;
   word-break: break-word;
 }
+
+/* --- 6b. footer social links ------------------------------------------------ */
+/* Monochrome, drawn in currentColor. Brand colours are deliberately not used:
+   Instagram, Facebook and TikTok would add at least three values to a palette
+   that is fixed at ten, and the footer's own language is white on #141414.
+   Hover and focus move to --brand, which is already in the set. */
+/* It lives in the footer bar, not in a column: the bar already runs 62px tall
+   with 700px of unused width, so the row costs the page ZERO height. In the
+   contact column it cost 70px, and the homepage has under 200px of headroom
+   against the 8,700px cap. */
+.footer__social { display: flex; gap: 4px; align-items: center; }
+.footer__social a {
+  /* 44x44 clears the WCAG 2.5.8 target minimum with room to spare. The bar's
+     line box is ~22px inside 20px of padding, so a negative block margin lets
+     the target overlap that padding rather than grow the bar: the hit area
+     stays 44px and the bar height does not move. */
+  width: 44px; height: 44px;
+  margin: -11px 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--bg-light);
+  border-radius: var(--radius-control);
+  transition: color var(--hover-dur) ease-out, background-color var(--hover-dur) ease-out;
+}
+.footer__social a:hover { color: var(--brand); background: rgba(255, 255, 255, 0.06); }
+.footer__social a:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.footer__social svg { display: block; }
 
 /* --- 7. hero two-panel block ---------------------------------------------- */
 .hero-panels {

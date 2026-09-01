@@ -746,3 +746,42 @@ The 22-tile loop is unchanged and the seam stays exact: with the W8-04
 trailing-margin fix the track is `2n x (tile + margin)` for any n, so swapping
 brands cannot reopen the 12px jump.
 
+## Social profiles in the footer bar, W9-02, 2026-09-01
+
+Instagram, Facebook and TikTok, added to the **footer bar** — the bottom strip
+that already carries the copyright and the privacy link.
+
+| Platform | Profile | Verified |
+|---|---|---|
+| Instagram | `rapid.construct` | `200` |
+| Facebook | `rapidconstructofficial` | Renders `<title>Rapid Construct \| Facebook</title>` |
+| TikTok | `@rapid.construct` | `200` |
+
+Facebook answers `400` to automated requests whether or not a page exists — a
+deliberately nonexistent handle returns `400` too — so the status code proves
+nothing and the profile was confirmed by rendering it in headless Chrome.
+
+**Why the bar and not the contact column.** The contact column was the obvious
+home and it was built there first, then moved. Measured: in the column the row
+cost **70px** of page height; in the bar it costs **1px**. The bar was already
+62px tall with about 700px of unused width, and a negative block margin lets the
+44x44 targets overlap its existing padding instead of growing it. The homepage
+had 196px of headroom against the 8,700px cap, so 70px was a third of it for a
+row of three icons. RO went 8,504 -> **8,505px**.
+
+**44x44 targets** clear the WCAG 2.5.8 minimum with room to spare, and the
+negative margin does not shrink the hit area, only the space it claims in flow.
+
+**Monochrome, and deliberately so.** The icons are drawn in `currentColor`,
+white on `#141414`, hover and focus moving to `--brand`. Instagram, Facebook and
+TikTok brand colours would have added at least three values to a palette fixed
+at ten. WhatsApp's green is in the set as a documented exception for the
+floating button; three more would stop being exceptions and start being a
+second palette. **Colour count after this card: still ten.**
+
+The wrapper is a `<nav>` carrying the localised label, not a `<div>`: an
+`aria-label` on a generic `div` with no role is not exposed to assistive
+technology, so as a `div` the label would have been dead markup.
+
+Links are `target="_blank" rel="noopener noreferrer"`, matching the existing
+outbound pattern used by the WhatsApp button and the Google review link.

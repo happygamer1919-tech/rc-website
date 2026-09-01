@@ -223,7 +223,7 @@ Strongest version is one house at five moments.
 |---|---|---|---|
 | `og-image` | 1200x630 | 1200x630 | Best single finished-house shot. Currently a branded logo card on #141414; a real photo overwrites it |
 
-### Supplier logos — 12, not photographs
+### Supplier logos — 11, not photographs
 
 One full-colour file per brand at `public/img/suppliers/<slug>.svg` (preferred)
 or `.png`. Transparent background. **There is no second greyscale asset:** the
@@ -245,11 +245,15 @@ pipeline: they are a direct drop into `public/img/suppliers/`.
 | `weber` | Weber | |
 | `ytong` | Ytong | |
 | `holcim` | Holcim | |
-| `bosch` | Bosch | |
 
 The fallback is per brand: a slug with no file renders its brand name as text in
 the same white tile, so the first logo to land shows as a logo while the rest
 stay text. Nothing in the code changes when a file appears.
+
+**Bosch was dropped entirely in W8-04**, taking the list from twelve to eleven.
+Its own legal notice forbids third-party use of its marks, so no logo could ever
+land in that slot. Owner ruling; see DECISIONS.md. `ceresit` and `weber` remain
+as text fallbacks and are still open in `docs/QUESTIONS.md` Q-07.
 
 ### Hero panel — 1, 4:3 landscape, 1400x1050 (2x is the 2800px source)
 
@@ -324,8 +328,8 @@ both cases the SVG is not deleted, it becomes the fallback.
 | **Total photo slots** | **105** |
 | SVG fallbacks (`hero-panel` + 9 service SVGs), in the repo | 10 |
 | Logo and favicon assets | 4 |
-| Supplier logos | 12 |
-| **Total assets tracked** | **131** |
+| Supplier logos | 11 |
+| **Total assets tracked** | **130** |
 
 **95 photo slots, but 95 is not the shooting plan.** 44 of the covers belong to
 stub projects with no content. A stub becomes a real project only when someone

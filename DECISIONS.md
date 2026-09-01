@@ -596,3 +596,105 @@ a product claim only the owner can make. Raised as Q-09.
 A screen reader user currently receives a description of an image that is not
 there. Fixing clause 1 needs no product knowledge; clause 2 does, so neither was
 touched. See `docs/QUESTIONS.md` Q-09.
+
+## The header pill is ratified; the master plan loses, W8-04, 2026-09-01
+
+**Owner ruling on Q-06.** The header as built stands. The master plan's locked
+decision was wrong, not the build, and the master plan has been corrected so the
+contradiction no longer exists anywhere in the repo.
+
+| | |
+|---|---|
+| The plan said | "White bar with accent. Solid, opaque, sticky. Not transparent, **not a floating dark pill**." Height 72px. |
+| The build does | A `#FFFFFF` bar, 96px desktop / 80px mobile, opaque, fixed, 1px `--line` bottom border, carrying a `#141414` pill at `border-radius: 999px` that holds the nav, phone, CTA and language switcher. The pill is 64px, compressing to 56px on scroll. |
+| Ruling | **The build wins. 96px stands.** |
+
+**Why the build was right.** The clause the plan was protecting is met: the
+header is opaque, so nothing overlaps section headings on scroll, which was
+defect 4 in the plan's own list of reasons the first build was rejected. It is
+also not *floating* — it is fixed with a constant `<body>` spacer, which is what
+keeps document height stable during compression. What the plan ruled out was a
+transparent or detached header; a dark pill sitting inside a solid white bar is
+neither. Mihai approved this header in the phase 1 snapshot on 2026-08-28.
+
+**What was changed in the plan**, both amendments marked inline with the date
+and the reason, and neither deleting the original wording without recording it:
+
+1. Section 3, locked decisions, the `Header` row: rewritten to describe the bar
+   and the pill, and to note what the row used to say.
+2. Section 5.1: height 72px corrected to 96px desktop / 80px mobile, with the
+   pill's 64px -> 56px compression stated.
+
+This is the first time the master plan has been edited rather than overridden by
+a `DECISIONS.md` entry. It is the right instrument here: a stale *locked
+decision* actively misleads the next executor, who is told to boot from the plan
+and would read "not a floating dark pill" as a live instruction to go and
+"fix" a header nobody asked them to touch. An override entry buried in this file
+would not have prevented that.
+
+## Bosch dropped from the supplier list, W8-04, 2026-09-01
+
+**Owner ruling on Q-07.** Twelve brands become **eleven**. Bosch is removed
+entirely: its tile, both locale entries, and its manifest row.
+
+The reason is the one recorded in W7-03: Bosch's own legal notice states third
+parties *"agree not to copy, use or otherwise infringe upon these marks"*, so no
+logo could ever legitimately land in that slot. A permanently empty tile is
+worse than no tile.
+
+`ceresit` and `weber` stay as text fallbacks and Q-07 remains open for those two
+only. Neither is blocked by terms: Ceresit has no full-colour asset at a
+permitted source, and Saint-Gobain publishes no Weber mark. Both are resolvable
+by asking a supplier rep for a brand pack.
+
+**The marquee loop was retuned, not just shortened.** Eleven brands rendered
+twice is 22 tiles at 4,904px, so the duration moves 72s -> **66s** to hold the
+same 37px/s the loop has run at since phase 1. The `-50%` seam is
+count-independent — it lands on the boundary whatever the brand count — so
+dropping a brand cannot open a gap or cause a jump; only the apparent speed
+would have drifted, and that is now corrected.
+
+## Q-02, Q-03, Q-05 and Q-08 closed, W8-04, 2026-09-01
+
+- **Q-02 ratified**: six projects per service, 54 total. No change.
+- **Q-03 ratified**: stub projects carry a cover slot and no gallery slots. No
+  change. This is what holds the manifest at 105 slots instead of 216.
+- **Q-05 resolved by W7-02**: the nine root `svc-*.png` were the service card
+  artwork; they were processed and all nine cards now render photographs.
+- **Q-08 confirmed**: the supplier list is real, and is now the eleven brands
+  remaining after Bosch was dropped. This also closes Q-01.
+
+**Q-04 stays open**: the 44 stub projects still have no content, and they stay
+invisible until they do.
+
+## The marquee has jumped 12px every cycle since phase 1, W8-04, 2026-09-01
+
+Found while verifying the wave 8 acceptance line "marquee still loops cleanly at
+eleven brands, no gap, no jump". It did not loop cleanly, and the brand count had
+nothing to do with it.
+
+**The bug.** `.marquee__track` used `gap: 24px`. Flexbox puts **n-1** gaps
+between n tiles, but the `-50%` keyframe assumes the second copy of the list
+begins at exactly half the track width, which needs a **trailing** gap after the
+first copy. It was always short by half a gap:
+
+| Brands | Tiles | Track width | -50% lands at | First duplicate sits at | Jump |
+|---|---|---|---|---|---|
+| 8 (phase 1) | 16 | 2,920px | 1,460 | 1,472 | **12px** |
+| 12 (wave 6) | 24 | 5,352px | 2,676 | 2,688 | **12px** |
+| 11 (wave 8, before fix) | 22 | 4,904px | 2,452 | 2,464 | **12px** |
+
+Always `gap / 2`. Every 66 seconds the row snapped sideways by 12px. Subtle
+enough to survive three waves of review, including mine.
+
+**The fix.** `gap: 24px` on the track becomes `margin-right: 24px` on
+`.supplier`. That gives n gaps including a trailing one, so half the width falls
+exactly on the first duplicate. Measured after the change: track 4,928px, -50%
+lands at 2,464, first duplicate at 2,464, **mismatch 0.0px**.
+
+**Why it is now count-independent.** With a trailing margin the track is always
+`2n x (tile + margin)` and half of that is always `n x (tile + margin)`, which is
+the offset of tile n. Adding or dropping a brand can never reopen the jump.
+
+Duration moved 72s -> 66s in the same change to hold the loop at ~37px/s with
+eleven brands rather than twelve.

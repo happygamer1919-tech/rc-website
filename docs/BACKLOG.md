@@ -19,6 +19,16 @@ history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 | RC-035 | W6-03b Service page hero art eager, not lazy | `w6/rc-035-svc-hero-eager` | shipped |
 | RC-036 | Dead-link gate script + wave 6 release notes | `docs/rc-036-wave6-gates` | shipped |
 
+## Wave 8
+
+| Ticket | Card | Branch | Status |
+|---|---|---|---|
+| RC-040 | W8-03 Hero panel photo on a provisional 720px floor | `w8/rc-040-hero-panel-photo` | shipped |
+| RC-041 | W8-04 Close questions, drop bosch, ratify the header | `w8/rc-041-close-questions` | shipped |
+
+W8-01 (deploy wave 7 and verify live) and W8-02 (reconcile duplicate artwork)
+carried no code change. W8-02's premise did not hold: no duplicate set exists.
+
 ## Wave 7
 
 | Ticket | Card | Branch | Status |

@@ -698,3 +698,90 @@ the offset of tile n. Adding or dropping a brand can never reopen the jump.
 
 Duration moved 72s -> 66s in the same change to hold the loop at ~37px/s with
 eleven brands rather than twelve.
+
+## Two suppliers swapped: Ceresit -> CAT, Weber -> Heidelberg Materials, W9-01, 2026-09-01
+
+Owner request. The list stays at **eleven**.
+
+| Out | In | Logo |
+|---|---|---|
+| `ceresit` | `cat` (CAT) | **None. Text fallback.** |
+| `weber` | `heidelberg-materials` (Heidelberg Materials) | `heidelberg-materials.svg`, from the brand's own site |
+
+**Heidelberg Materials landed.** Sourced from
+`https://www.heidelbergmaterials.com/sites/default/files/logo/HeidelbergMaterials.svg`
+— the brand's own website, which outranks Wikimedia under the W7-03 source
+order. Clean SVG, 986.5x283.5, green `#004E2B` / `#00DD39` on white, no script
+or event handlers. Their imprint states no restriction on third-party use of
+their marks, only a general copyright line.
+
+**The name has changed and the tile uses the current one.** The request said
+"HeidelbergCement AG". That company **renamed itself Heidelberg Materials in
+September 2022**; the logo it publishes reads *Heidelberg Materials*, and the
+legal entity is Heidelberg Materials AG. The tile is labelled **Heidelberg
+Materials** so that the visible logo, the `alt` text and the accessible name all
+agree. Labelling it "HeidelbergCement AG" over a logo reading something else
+would mislead a screen reader user and show a retired brand. One word to change
+back if that is wrong.
+
+**CAT could not land, and it is the same blocker that removed Bosch.**
+Caterpillar's standard trademark notice reads:
+
+> "CAT, CATERPILLAR, BUILT FOR IT, Olympian, their respective logos,
+> 'Caterpillar Yellow,' and the 'Power Edge' trade dress, as well as corporate
+> and product identity used herein, are trademarks of Caterpillar and **may not
+> be used without permission**."
+
+`cat.com` and `caterpillar.com` both return `403 Access Denied` to automated
+requests, so the notice was confirmed from a Caterpillar dealer page that
+reproduces it verbatim. Under the standing rule — terms visibly forbid
+third-party display, so skip, keep the text fallback and report rather than
+decide for the owner — CAT ships as text.
+
+**Net effect on the marquee: it went from two text tiles to one.** Ceresit and
+Weber were both text; CAT is text and Heidelberg Materials is a logo. Ten of
+eleven tiles now carry a logo.
+
+The 22-tile loop is unchanged and the seam stays exact: with the W8-04
+trailing-margin fix the track is `2n x (tile + margin)` for any n, so swapping
+brands cannot reopen the 12px jump.
+
+## Social profiles in the footer bar, W9-02, 2026-09-01
+
+Instagram, Facebook and TikTok, added to the **footer bar** — the bottom strip
+that already carries the copyright and the privacy link.
+
+| Platform | Profile | Verified |
+|---|---|---|
+| Instagram | `rapid.construct` | `200` |
+| Facebook | `rapidconstructofficial` | Renders `<title>Rapid Construct \| Facebook</title>` |
+| TikTok | `@rapid.construct` | `200` |
+
+Facebook answers `400` to automated requests whether or not a page exists — a
+deliberately nonexistent handle returns `400` too — so the status code proves
+nothing and the profile was confirmed by rendering it in headless Chrome.
+
+**Why the bar and not the contact column.** The contact column was the obvious
+home and it was built there first, then moved. Measured: in the column the row
+cost **70px** of page height; in the bar it costs **1px**. The bar was already
+62px tall with about 700px of unused width, and a negative block margin lets the
+44x44 targets overlap its existing padding instead of growing it. The homepage
+had 196px of headroom against the 8,700px cap, so 70px was a third of it for a
+row of three icons. RO went 8,504 -> **8,505px**.
+
+**44x44 targets** clear the WCAG 2.5.8 minimum with room to spare, and the
+negative margin does not shrink the hit area, only the space it claims in flow.
+
+**Monochrome, and deliberately so.** The icons are drawn in `currentColor`,
+white on `#141414`, hover and focus moving to `--brand`. Instagram, Facebook and
+TikTok brand colours would have added at least three values to a palette fixed
+at ten. WhatsApp's green is in the set as a documented exception for the
+floating button; three more would stop being exceptions and start being a
+second palette. **Colour count after this card: still ten.**
+
+The wrapper is a `<nav>` carrying the localised label, not a `<div>`: an
+`aria-label` on a generic `div` with no role is not exposed to assistive
+technology, so as a `div` the label would have been dead markup.
+
+Links are `target="_blank" rel="noopener noreferrer"`, matching the existing
+outbound pattern used by the WhatsApp button and the Google review link.

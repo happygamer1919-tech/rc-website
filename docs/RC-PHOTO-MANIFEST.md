@@ -241,7 +241,7 @@ pipeline: they are a direct drop into `public/img/suppliers/`.
 | `swisspor` | Swisspor | |
 | `knauf` | Knauf | |
 | `baumit` | Baumit | |
-| `cat` | CAT | Text fallback. Caterpillar's terms forbid third-party logo use |
+| `liebherr` | Liebherr | `liebherr.svg`, Wikimedia Commons, public domain |
 | `heidelberg-materials` | Heidelberg Materials | `heidelberg-materials.svg`, from the brand's own site |
 | `ytong` | Ytong | |
 | `holcim` | Holcim | |
@@ -257,7 +257,7 @@ land in that slot. Owner ruling; see DECISIONS.md.
 **W9-01 replaced two brands**, keeping the count at eleven: `ceresit` -> `cat`
 and `weber` -> `heidelberg-materials`. Heidelberg Materials landed a logo from
 its own site. CAT could not: Caterpillar's terms forbid it, the same blocker
-that removed Bosch. `cat` is the only text fallback left; see `docs/QUESTIONS.md` Q-10.
+that removed Bosch. **W9-03 then replaced CAT with Liebherr**, which carries a logo, so the marquee has **no text fallbacks left**: eleven brands, eleven logos. See `docs/QUESTIONS.md` Q-10.
 
 ### Hero panel — 1, 4:3 landscape, 1400x1050 (2x is the 2800px source)
 

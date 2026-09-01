@@ -25,6 +25,7 @@ history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 |---|---|---|---|
 | RC-043 | W9-01 Swap Ceresit -> CAT and Weber -> Heidelberg Materials | `w9/rc-043-supplier-swap` | shipped |
 | RC-044 | W9-02 Social profiles in the footer bar | `w9/rc-044-social-links` | shipped |
+| RC-045 | W9-03 CAT -> Liebherr, every tile now has a logo | `w9/rc-045-cat-replacement` | shipped |
 
 ## Wave 8
 

@@ -785,3 +785,49 @@ technology, so as a `div` the label would have been dead markup.
 
 Links are `target="_blank" rel="noopener noreferrer"`, matching the existing
 outbound pattern used by the WhatsApp button and the Google review link.
+
+## CAT replaced with Liebherr; every tile now carries a logo, W9-03, 2026-09-01
+
+Owner authorised choosing a comparable brand, on the condition that it comes
+with a logo like the rest. **Liebherr.** The marquee now has **zero text
+fallbacks for the first time**: eleven brands, eleven logos.
+
+**Source:** `https://upload.wikimedia.org/wikipedia/commons/6/66/Liebherr_logo.svg`,
+Wikimedia Commons, **public domain**, described as the logo of the
+Switzerland-based German equipment manufacturer. 1,772 bytes, 600x81, no script
+or event handlers.
+
+**Terms checked before shipping.** Liebherr's legal notice at
+`liebherr.com/en/gbr/legal-notice/legal-notice.html` states **no restriction**
+on third-party use of its marks. That is the same posture as Heidelberg
+Materials, Baumit and the rest of the list, and the opposite of Bosch and
+Caterpillar.
+
+### Why Liebherr and not JCB or Komatsu
+
+All three were downloaded, rendered at the real 200x80 tile in both states, and
+checked. All three are public domain on Commons and all three are credible
+peers. The deciding factor was **which company's terms I could actually read**:
+
+| | Fit | Terms |
+|---|---|---|
+| **Liebherr** | Top-three global heavy equipment maker alongside Caterpillar and Komatsu. Excavators, wheel loaders, dozers, cranes **and concrete technology**, so it covers both the earthworks and the structural side of what Rapid Construct does. European, like the rest of the list | **Legal notice located and read. No restriction stated.** |
+| JCB | Visually the closest to CAT — yellow livery, backhoes and excavators, very common in Eastern Europe. The most dramatic hover reveal of the three | **Could not verify.** `jcb.com` terms pages 404. The one legal page that exists is a fraud notice about people misusing the JCB name, which signals an actively policed mark |
+| Komatsu | Credible global peer, clean blue wordmark | Not pursued once Liebherr cleared |
+
+Two brands have already had to be dropped for exactly this reason, so between
+two otherwise equal candidates the one whose terms are verified wins. JCB was
+the more striking tile and it was not chosen on that basis alone.
+
+**A name collision worth recording.** Searching JCB's terms returns
+**JCB Co., Ltd.**, the Japanese *credit card* company — `global.jcb`,
+`account.jcb.com`, `jcbusa.com` are all the payment brand, not
+J.C. Bamford Excavators. `jcbusa.com` in particular reads like a construction
+site and is not one. Same trap as the Commons "Bilka" being a Danish
+hypermarket and "IKO" a Japanese pharmaceutical company.
+
+**Liebherr's mark is monochrome**, so its hover state goes light grey to solid
+black rather than grey to colour. It is a clear, visible change and it reads as
+deliberate next to the coloured tiles.
+
+**Colour set unchanged at ten.** A logo is an image asset, not a CSS value.

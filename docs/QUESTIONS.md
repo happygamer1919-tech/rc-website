@@ -248,7 +248,7 @@ wave 8 that ships knowingly incorrect, and it is a two-string fix once you rule.
 
 ---
 
-## Q-10 · CAT has no logo, and the same terms blocked Bosch — OPEN, opened 2026-09-01 (W9-01)
+## Q-10 · CAT has no logo, and the same terms blocked Bosch — ANSWERED 2026-09-01, resolved by W9-03 (opened 2026-09-01, W9-01)
 
 W9-01 replaced two brands: `ceresit` -> `cat` and `weber` -> `heidelberg-materials`.
 
@@ -270,6 +270,17 @@ took Bosch off the list in W8-04. One text tile out of eleven.
 3. **Drop CAT** the way Bosch was dropped, taking the list to ten.
 
 **Default shipped:** option 2, the text fallback.
+
+**RESOLVED 2026-09-01 (W9-03), by a fourth option the owner authorised:**
+replace CAT with a comparable brand that comes with a logo. **Liebherr** was
+chosen — a top-three global heavy equipment maker alongside Caterpillar and
+Komatsu, covering excavators, loaders, dozers, cranes and concrete technology,
+and European like the rest of the list. Its legal notice states no restriction
+on third-party use. JCB was the closer visual match to CAT but its terms pages
+404 and its only legal page is a trademark-misuse warning, so the brand whose
+terms could actually be verified was taken.
+
+**The marquee now has zero text fallbacks: eleven brands, eleven logos.**
 
 **Worth knowing:** the two brands that came off the list, Ceresit and Weber,
 were both text tiles, and one of the two replacements carries a logo. The

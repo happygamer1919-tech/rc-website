@@ -449,3 +449,46 @@ the custom-domain site will briefly both be live and serving identical
 canonicals unless the old origin redirects. Set `SITE_URL` and `BASE_PATH` in
 the workflow in the same commit that points DNS, and treat the github.io origin
 as retired the moment it is.
+
+---
+
+## Q-W10-01 · WEB3FORMS_KEY is not set. The live form test cannot run.
+
+**Raised:** W10-02, 2026-09-01. **Status:** BLOCKED on the owner. Nothing to build.
+
+W10-02 states the key is present as a repo secret. **It is not.** Three
+independent checks, all against the live repository:
+
+1. The deploy that just published `b4bf763` logged
+   `form: DEMO MODE. No WEB3FORMS_KEY set, so the form validates and then shows
+   the inline notice instead of posting.`
+2. `GET /repos/happygamer1919-tech/rc-website/actions/secrets` returns
+   `{"total_count": 0, "secrets": []}`. Both environments, `github-pages` and
+   `Production`, also return zero. The repo is user-owned, so there is no
+   organisation scope to inherit from either.
+3. The live HTML at `/rc-website/` carries `data-armed="0"` and still emits the
+   `data-demo` attribute, which an armed build does not.
+
+**The wiring is not the problem.** `.github/workflows/pages.yml` already passes
+`WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_KEY }}` into the build step, and a secret
+that does not exist expands to an empty string, which is exactly what
+`build.js` reports. Nothing in the repo needs to change.
+
+Submitting the live form now would only reproduce the demo notice. It would not
+test delivery, no mail would reach `rapidconstructmd@gmail.com`, and reporting a
+subject line from it would be reporting a thing that never happened.
+
+**What unblocks it, in order:**
+
+1. Create the Web3Forms access key at web3forms.com for
+   `rapidconstructmd@gmail.com`, if one does not exist yet.
+2. Add it at Settings → Secrets and variables → Actions → New repository secret,
+   named exactly `WEB3FORMS_KEY`. A repository secret, not an environment
+   secret: the `build` job declares no `environment:`, so an environment secret
+   would still expand empty and the symptom would look identical.
+3. Push any commit to `main`, or run the workflow by hand. **The deploy log
+   answers whether it worked before anyone opens a browser**: it prints
+   `form: ARMED, posts to Web3Forms.` when the key is present.
+
+The two live submissions then take a minute. The subjects to expect are
+`[RO] Solicită ofertă gratuită — /` and `[RU] Запросите бесплатную оферту — /ru/`.

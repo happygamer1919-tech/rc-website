@@ -1280,3 +1280,55 @@ load-bearing. It was missed here because the build output was piped through
 
 **Piping `node build.js` through anything discards its exit code.** Run the two
 commands chained with `&&` and unpiped, exactly as section 9 writes them.
+
+---
+
+## W10-04 · The RO homepage title and description, shortened to fit
+
+Q-W9-07 flagged the only two fields on the site outside their limits. Both are
+now inside, and **no claim was dropped to get there**.
+
+| | Before | After |
+|---|---|---|
+| `meta.title` | 62 | **60** |
+| `meta.description` | 176 | **155** |
+
+**Title.** `Construcții și renovări la cheie în Chișinău · Rapid Construct` became
+`Construcții și renovări la cheie, Chișinău · Rapid Construct`. One preposition
+became a comma. Every element survives: construcții, renovări, la cheie,
+Chișinău, brand.
+
+**Description.** Three words and three conjunctions went, nothing else:
+
+- `complete`, after `renovări`
+- `prețuri`, before `de la 160 lei/m²`, which the figure implies
+- three `și` conjunctions, replaced by commas in the two lists
+
+Everything the brief said to protect is verbatim: all four services, all four
+localities, `Garanție scrisă până la 30 de ani`, `materiale certificate UE` and
+`de la 160 lei/m²`. This is what master plan section 6 permits — shortening a
+sentence — and not a rewrite.
+
+**Two earlier candidates were rejected**, and it is worth saying why, because
+both fit comfortably and both were wrong:
+
+- Dropping `materiale certificate UE` reached 141 characters. It also silently
+  removed a differentiator from the Romanian page while the Russian one kept
+  claiming it, so the two locales would have advertised different things.
+- Compressing `garanție scrisă până la 30 de ani` to `garanție scrisă 30 ani`
+  reached 148. It also turns "up to 30 years" into a flat "30 years", which
+  **strengthens** the claim. Shortening copy must never make a promise bigger
+  than the one that was approved.
+
+**Russian is unchanged.** Its title is 60 and its description 155, both already
+at the bound, and since the Romanian keeps every claim there is no asymmetry to
+correct. Both locales now sit at exactly the same limits.
+
+`meta.ogTitle` was left alone at 44 characters. It carries no brand suffix, is
+nowhere near a limit, and changing it would have been an edit with no cause.
+
+**Still open, and not touched here:** `meta.description` says the work happens in
+"Chișinău, Orhei, Cahul și Costești" while `band.coverageLine` says "Chișinău,
+Codru, Coșnița, Costești, Căinari și Sociteni". Only Chișinău and Costești are
+in both, and the second list is the one feeding `areaServed` and `llms.txt`. Two
+answers to "where do you work" are still live on the same page. Q-W9-07.

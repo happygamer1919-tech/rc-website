@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{svc.title}} · Rapid Construct</title>
-<meta name="description" content="{{svc.desc}}">
+<title>{{svc.metaTitle}}</title>
+<meta name="description" content="{{svc.metaDesc}}">
 <meta name="robots" content="{{svc.robots}}">
 <link rel="canonical" href="{{svc.canonical}}">
 <link rel="alternate" hreflang="ro" href="{{svc.urlRo}}">
 <link rel="alternate" hreflang="ru" href="{{svc.urlRu}}">
 <link rel="alternate" hreflang="x-default" href="{{svc.urlRo}}">
 <meta property="og:type" content="website">
-<meta property="og:title" content="{{svc.title}} · Rapid Construct">
-<meta property="og:description" content="{{svc.desc}}">
+<meta property="og:title" content="{{svc.metaTitle}}">
+<meta property="og:description" content="{{svc.metaDesc}}">
 <meta property="og:url" content="{{svc.canonical}}">
 <meta property="og:locale" content="{{meta.ogLocale}}">
-<meta property="og:image" content="{{ogImage}}">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="{{meta.ogImageAlt}}">
+<meta property="og:image" content="{{svc.ogImage}}">
+<meta property="og:image:width" content="{{svc.ogImageW}}">
+<meta property="og:image:height" content="{{svc.ogImageH}}">
+<meta property="og:image:alt" content="{{svc.ogImageAlt}}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F65308">
 <link rel="icon" href="{{base}}/favicon-512.png" sizes="512x512" type="image/png">
@@ -36,7 +36,7 @@
   "@type": "Service",
   "name": "{{svc.title}}",
   "description": "{{svc.desc}}",
-  "serviceType": "{{svc.title}}",
+  "serviceType": "{{svc.title}}"{{svc.imageObjects}},
   "url": "{{svc.canonical}}",
   "areaServed": [
     { "@type": "City", "name": "Chișinău" },
@@ -67,7 +67,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "{{servicePage.home}}", "item": "{{canonical}}" },
-    { "@type": "ListItem", "position": 2, "name": "{{servicePage.all}}", "item": "{{servicesHref}}" },
+    { "@type": "ListItem", "position": 2, "name": "{{servicePage.all}}", "item": "{{servicesUrl}}" },
     { "@type": "ListItem", "position": 3, "name": "{{svc.title}}" }
   ]
 }

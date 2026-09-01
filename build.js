@@ -4,6 +4,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { execFileSync } = require('child_process');
 
 const SITE = (process.env.SITE_URL || 'https://rapidconstruct.md').replace(/\/$/, '');
 // Sub-path the site is served from. Empty for a domain root (Hostinger);
@@ -25,6 +26,8 @@ const LOCALES = [
 // well as /ru/, because a static host serves one 404 for the whole origin.
 const PRIVACY_PATH = { ro: '/confidentialitate/', ru: '/ru/konfidentsialnost/' };
 const SERVICES_ROOT = { ro: '/servicii/', ru: '/ru/servicii/' };
+// The city already named in meta.title, band.coverageLine and areaServed.
+const PRIMARY_CITY = { ro: 'Chișinău', ru: 'Кишинёве' };
 
 // Nine service slugs, matching the delivered SVG filenames and the order of
 // services.items.N in the locale files.
@@ -116,7 +119,7 @@ const RAW_KEYS = new Set([
 ]);
 // Same idea for the service-page template.
 const SVC_RAW_KEYS = new Set([
-  'demoAttr',
+  'demoAttr', 'svc.imageObjects',
   'svc.gallerySection', 'svc.priceSection', 'svc.footerLinks', 'svc.priceExtra', 'svc.media',
 ]);
 
@@ -151,6 +154,100 @@ const servicePages = [];
 
 // --- render ------------------------------------------------------------------
 // ---------------------------------------------------------------------------
+
+/* W9-07. Per-page title, description and social image for a service page.
+
+   Titles and descriptions were `<service> · Rapid Construct` and the service's
+   own one-liner. Unique already, but the title said nothing about where the
+   work happens and the description ran well under what a result snippet will
+   show. Both are now built from strings that already exist: the service title,
+   its description, and `band.coverageLine`, which is the sourced list of places
+   Rapid Construct has actually built.
+
+   Nothing is padded to hit a length. The coverage sentence is appended only
+   when the result still fits 155 characters, so a service with a long
+   description simply keeps its description and no more. */
+const BRAND = ' · Rapid Construct';
+const TITLE_MAX = 60, DESC_MAX = 155;
+
+function serviceHeadVars(l, slug, i) {
+  const title = l.strings[`services.items.${i}.title`];
+  const desc = l.strings[`services.items.${i}.desc`];
+  const inCity = l.code === 'ro' ? ` în ${PRIMARY_CITY.ro}` : ` в ${PRIMARY_CITY.ru}`;
+
+  // Longest form that still fits, never a truncation mid-word.
+  const candidates = [title + inCity + BRAND, title + BRAND, title];
+  const metaTitle = candidates.find((c) => c.length <= TITLE_MAX) || candidates[2];
+
+  const coverage = l.strings['band.coverageLine'];
+  const withCoverage = `${desc} ${coverage}`;
+  const metaDesc = withCoverage.length <= DESC_MAX ? withCoverage : desc;
+
+  // og:image is this service's own first real cover, not the site fallback.
+  // A social card wants the work, not the logo.
+  const own = renderableProjects(l, slug).find((p) => coverIsRealPhoto(p.cover));
+  if (!own) {
+    return {
+      'svc.metaTitle': metaTitle, 'svc.metaDesc': metaDesc,
+      'svc.ogImage': SITE + BASE + '/img/og-image.jpg',
+      'svc.ogImageW': '1200', 'svc.ogImageH': '630',
+      'svc.ogImageAlt': l.strings['meta.ogImageAlt'],
+      'svc.imageObjects': '',
+    };
+  }
+  const big = `public/img/${own.cover}@2x.jpg`;
+  const file = fs.existsSync(big) ? big : `public/img/${own.cover}.jpg`;
+  const dim = jpegSize(file) || { w: 800, h: 600 };
+
+  return {
+    'svc.metaTitle': metaTitle,
+    'svc.metaDesc': metaDesc,
+    'svc.ogImage': SITE + BASE + '/img/' + path.basename(file),
+    'svc.ogImageW': String(dim.w), 'svc.ogImageH': String(dim.h),
+    'svc.ogImageAlt': own.title[l.code],
+    'svc.imageObjects': serviceImageObjects(l, slug),
+  };
+}
+
+/* Read a JPEG's real pixel size out of its SOF marker. The R-B clamp means a
+   cover's @2x is whatever its source allowed, between 600 and 800 wide, so a
+   hardcoded 800x600 in og:image:width would be a lie for thirteen of them. */
+function jpegSize(file) {
+  const b = fs.readFileSync(file);
+  let o = 2;
+  while (o < b.length) {
+    if (b[o] !== 0xFF) { o++; continue; }
+    const m = b[o + 1];
+    if (m >= 0xC0 && m <= 0xCF && m !== 0xC4 && m !== 0xC8 && m !== 0xCC) {
+      return { h: b.readUInt16BE(o + 5), w: b.readUInt16BE(o + 7) };
+    }
+    o += 2 + b.readUInt16BE(o + 2);
+  }
+  return null;
+}
+
+/* An ImageObject per project cover on this service page. Each one carries the
+   project's real title and summary, so a crawler that indexes the image also
+   gets what the photograph shows rather than a filename. */
+function serviceImageObjects(l, slug) {
+  const mine = renderableProjects(l, slug).filter((p) => coverIsRealPhoto(p.cover));
+  if (!mine.length) return '';
+  return ',\n  "image": [\n' + mine.map((p) => {
+    const big = `public/img/${p.cover}@2x.jpg`;
+    const file = fs.existsSync(big) ? big : `public/img/${p.cover}.jpg`;
+    const d = jpegSize(file) || { w: 800, h: 600 };
+    return '    ' + JSON.stringify({
+      '@type': 'ImageObject',
+      contentUrl: SITE + BASE + '/img/' + path.basename(file),
+      url: SITE + BASE + SERVICES_ROOT[l.code] + slug + '/#project-' + p.id,
+      name: p.title[l.code],
+      description: p.summary[l.code],
+      width: d.w, height: d.h,
+      creator: { '@type': 'Organization', name: 'Rapid Construct' },
+    });
+  }).join(',\n') + '\n  ]';
+}
+
 // Service page rendering. One page per slug per locale, 18 in all.
 const serviceTemplate = fs.readFileSync('src/service.html', 'utf8');
 
@@ -306,6 +403,9 @@ for (const l of loaded) {
     subjectPopup: `[${l.code.toUpperCase()}] ${l.strings['popup.h2']} — ${l.home}`,
     privacyHref: BASE + PRIVACY_PATH[l.code],
     servicesHref: BASE + l.home + '#servicii',
+    // JSON-LD `item` must be an absolute URL. servicesHref is a path, correct
+    // for an <a href> and invalid inside the BreadcrumbList.
+    servicesUrl: SITE + BASE + l.home + '#servicii',
     portfolioHref: BASE + l.home + '#portofoliu',
     aboutHref: BASE + l.home + '#despre',
     contactHref: BASE + l.home + '#contacte',
@@ -371,6 +471,7 @@ for (const l of loaded) {
       'svc.title': l.strings[`services.items.${i}.title`],
       'svc.desc': l.strings[`services.items.${i}.desc`],
       'svc.alt': l.strings[`services.items.${i}.alt`],
+      ...serviceHeadVars(l, slug, i),
       'svc.subject': `[${l.code.toUpperCase()}] ${l.strings['services.items.' + i + '.title']} — ${SERVICES_ROOT[l.code]}${slug}/`,
       'svc.canonical': SITE + BASE + SERVICES_ROOT[l.code] + slug + '/',
       'svc.urlRo': SITE + BASE + SERVICES_ROOT.ro + slug + '/',
@@ -430,14 +531,71 @@ for (const l of loaded) {
 }
 
 // --- static assets ------------------------------------------------------------
-// robots + sitemap, generated so they always carry the right origin and base
-fs.writeFileSync('dist/robots.txt',
-  `User-agent: *\nAllow: /\n\nSitemap: ${SITE}${BASE}/sitemap.xml\n`);
 
-const pages = [{ loc: SITE + BASE + '/', lang: 'ro' }, { loc: SITE + BASE + '/ru/', lang: 'ru' }];
+/* W9-06. lastmod for the sitemap, from the last commit that actually touched
+   each source file.
+
+   The obvious implementation is the file's mtime, and it is wrong in CI: git
+   does not record mtimes, so a fresh checkout stamps every file with the moment
+   the runner cloned. Every lastmod would then read "whenever we last deployed",
+   which tells a crawler nothing and is a reason to distrust the whole file.
+
+   `git log -1 --format=%cI` gives the real date the content last changed, and
+   it is identical on this machine and on the runner. mtime is kept only as the
+   fallback for a checkout with no git history (a tarball download). */
+const gitDate = (() => {
+  const cache = new Map();
+  return (file) => {
+    if (cache.has(file)) return cache.get(file);
+    let iso = null;
+    try {
+      const out = execFileSync('git', ['log', '-1', '--format=%cI', '--', file],
+        { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+      if (out) iso = out;
+    } catch { /* no git, or the file is untracked */ }
+    if (!iso && fs.existsSync(file)) iso = fs.statSync(file).mtime.toISOString();
+    cache.set(file, iso);
+    return iso;
+  };
+})();
+
+// The newest of the files that decide a page's content. A page is "modified"
+// when anything that renders into it is, which is what a crawler is asking.
+const lastmodOf = (...files) => {
+  const dates = files.filter(Boolean).map(gitDate).filter(Boolean).sort();
+  return dates.length ? dates[dates.length - 1].slice(0, 10) : null;
+};
+const localeFiles = LOCALES.map((l) => l.file);
+const HOME_SOURCES = ['src/template.html', 'content/projects.json', 'build.js', ...localeFiles];
+const SVC_SOURCES = ['src/service.html', 'content/projects.json', 'build.js', ...localeFiles];
+// A service page also moves when one of its own cover photographs is replaced.
+const coversFor = (slug) => PROJECTS.filter((p) => p.service === slug)
+  .map((p) => `public/img/${p.cover}.jpg`).filter((f) => fs.existsSync(f));
+
+/* robots.txt. The six answer engines are named and allowed EXPLICITLY, not left
+   to `User-agent: *`.
+
+   `Allow: /` under `*` already permits them, so this block changes no crawler's
+   behaviour. It is here as a statement of intent that survives someone later
+   tightening the wildcard: blocking these is the same as deciding the site may
+   not be cited in an AI answer, and that decision should have to be made on
+   purpose rather than as a side effect. Google-Extended is the odd one out --
+   it governs Gemini and AI Overviews grounding only, never Google Search
+   ranking, so allowing it costs nothing in ordinary search either way. */
+const AI_AGENTS = ['GPTBot', 'OAI-SearchBot', 'PerplexityBot', 'ClaudeBot', 'Google-Extended', 'CCBot'];
+fs.writeFileSync('dist/robots.txt',
+  'User-agent: *\nAllow: /\n\n' +
+  '# Answer engines, allowed explicitly. Blocking these means the site cannot be\n' +
+  '# cited in an AI answer; that is a decision to take on purpose, not by default.\n' +
+  AI_AGENTS.map((a) => `User-agent: ${a}\nAllow: /\n`).join('\n') +
+  `\nSitemap: ${SITE}${BASE}/sitemap.xml\n`);
+
+const homeLastmod = lastmodOf(...HOME_SOURCES);
+const pages = [{ loc: SITE + BASE + '/', lang: 'ro', lastmod: homeLastmod },
+               { loc: SITE + BASE + '/ru/', lang: 'ru', lastmod: homeLastmod }];
 const extraPages = privacyIncomplete ? [] : [
-  { loc: SITE + BASE + PRIVACY_PATH.ro, lang: 'ro' },
-  { loc: SITE + BASE + PRIVACY_PATH.ru, lang: 'ru' },
+  { loc: SITE + BASE + PRIVACY_PATH.ro, lang: 'ro', lastmod: lastmodOf('src/privacy.html', ...localeFiles) },
+  { loc: SITE + BASE + PRIVACY_PATH.ru, lang: 'ru', lastmod: lastmodOf('src/privacy.html', ...localeFiles) },
 ];
 // The 18 service pages, paired ro/ru by slug so each carries both alternates.
 const servicePairs = SERVICE_SLUGS
@@ -445,6 +603,7 @@ const servicePairs = SERVICE_SLUGS
   .map((sg) => ({
     ro: SITE + BASE + SERVICES_ROOT.ro + sg + '/',
     ru: SITE + BASE + SERVICES_ROOT.ru + sg + '/',
+    lastmod: lastmodOf(...SVC_SOURCES, ...coversFor(sg)),
   }));
 fs.writeFileSync('dist/sitemap.xml',
   '<?xml version="1.0" encoding="UTF-8"?>\n' +
@@ -453,14 +612,71 @@ fs.writeFileSync('dist/sitemap.xml',
     `    <loc>${p.loc}</loc>\n` +
     pages.map((a) => `    <xhtml:link rel="alternate" hreflang="${a.lang}" href="${a.loc}"/>\n`).join('') +
     `    <xhtml:link rel="alternate" hreflang="x-default" href="${pages[0].loc}"/>\n` +
+    (p.lastmod ? `    <lastmod>${p.lastmod}</lastmod>\n` : '') +
     '    <changefreq>monthly</changefreq>\n  </url>\n').join('') +
   servicePairs.flatMap((pair) => ['ro', 'ru'].map((lang) => '  <url>\n' +
     `    <loc>${pair[lang]}</loc>\n` +
     `    <xhtml:link rel="alternate" hreflang="ro" href="${pair.ro}"/>\n` +
     `    <xhtml:link rel="alternate" hreflang="ru" href="${pair.ru}"/>\n` +
     `    <xhtml:link rel="alternate" hreflang="x-default" href="${pair.ro}"/>\n` +
+    (pair.lastmod ? `    <lastmod>${pair.lastmod}</lastmod>\n` : '') +
     '    <changefreq>monthly</changefreq>\n  </url>\n')).join('') +
   '</urlset>\n');
+
+/* W9-06. /llms.txt — what the site is, what it offers and where, in the flat
+   markdown an answer engine can lift without parsing a page.
+
+   Facts only, and every one of them is already on the site: the service names
+   and their one-line descriptions come from the locale files, the localities
+   from `band.coverageLine`, the phone and email from the footer. The service
+   lines are each description's FIRST sentence, which is the factual enumeration
+   of what the service covers; the second, where there is one, is a claim about
+   how well it is done and has no place here. */
+{
+  const ro = loaded.find((l) => l.code === 'ro');
+  const ru = loaded.find((l) => l.code === 'ru');
+  const firstSentence = (t) => {
+    const i = t.indexOf('. ');
+    return (i === -1 ? t : t.slice(0, i + 1)).replace(/\.$/, '');
+  };
+  const lines = [
+    '# Rapid Construct',
+    '',
+    '> Antreprenor general de construcții din Chișinău, Republica Moldova.',
+    '> Construcții noi, renovări și lucrări de specialitate pentru locuințe și',
+    '> spații comerciale. Site bilingv, română și rusă.',
+    '',
+    `Строительная компания из Кишинёва, Молдова. Сайт на румынском и русском.`,
+    '',
+    '## Servicii / Услуги',
+    '',
+  ];
+  // Same gate as the sitemap: a service page with no real cover is noindex, and
+  // pointing an answer engine at a page that asks not to be indexed is working
+  // against yourself. The service reappears here the moment a photograph lands.
+  SERVICE_SLUGS.forEach((slug, i) => {
+    if (!loaded.some((l) => renderableProjects(l, slug).some((pr) => coverIsRealPhoto(pr.cover)))) return;
+    const url = SITE + BASE + SERVICES_ROOT.ro + slug + '/';
+    lines.push(`- [${ro.strings[`services.items.${i}.title`]}](${url}): ` +
+      `${firstSentence(ro.strings[`services.items.${i}.desc`])}. ` +
+      `RU: ${ru.strings[`services.items.${i}.title`]}, ` +
+      `${SITE}${BASE}${SERVICES_ROOT.ru}${slug}/`);
+  });
+  lines.push('',
+    '## Zonă deservită / Зона обслуживания', '',
+    ro.strings['band.coverageLine'],
+    ru.strings['band.coverageLine'], '',
+    '## Contact', '',
+    `- Telefon: ${ro.strings['footer.phone'] || '+373 76 837 180'}`,
+    `- Email: ${ro.strings['footer.email'] || 'rapidconstructmd@gmail.com'}`,
+    `- Program: ${ro.strings['form.hours']}`,
+    '',
+    '## Limbi / Языки', '',
+    `- Română: ${SITE}${BASE}/`,
+    `- Русский: ${SITE}${BASE}/ru/`,
+    '');
+  fs.writeFileSync('dist/llms.txt', lines.join('\n'));
+}
 
 fs.writeFileSync('dist/site.webmanifest', JSON.stringify({
   name: 'Rapid Construct',

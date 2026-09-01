@@ -209,9 +209,15 @@ preset, with every photo slot still on a placeholder or an SVG fallback:
 
 | | Performance | Accessibility | Best practices | SEO |
 |---|---|---|---|---|
-| RO homepage | 100 | 100 | 100 | 100 |
-| RU homepage | 100 | 100 | 100 | 100 |
+| RO homepage | **98** | 100 | 100 | 100 |
+| RU homepage | **100** | 100 | 100 | 100 |
 | Service page | 100 | 100 | 100 | 69 |
+
+Re-measured **live** on the Pages URL after wave 8, 2026-09-01. RO dropped 100 ->
+98 when the hero panel became a photograph: it is now the LCP element, and LCP
+went 0.7s -> 1.0s. Still clear of the 95 floor. It should recover when the real
+2800px hero source replaces the 720px interim file, which is currently upscaled
+3.89x. See DECISIONS.md, W8-03.
 
 The service page's SEO 69 is the W3-02 gate working: `is-crawlable` fails
 because the page is deliberately `noindex` until one of its projects has a real
@@ -268,3 +274,50 @@ which slots are on fallback. All 10 today.
 Photo manifest: 51 slots -> 105. The shooting plan is unchanged at 11
 photographs on the critical path; the growth is reserved slots on projects that
 have no content yet.
+
+---
+
+## Wave 8, 2026-09-01
+
+Wave 7 deployed and verified live; two cards of new work; one long-standing bug
+found and fixed. Everything below is measured **on the live Pages URL**.
+
+**W8-01 · Wave 7 deployed.** All nine service cards serve photographs on both
+homepages and on all 18 service pages, every asset 200. Zero SVG service
+illustrations referenced anywhere.
+
+**W8-02 · No duplicate artwork exists.** The premise did not hold, so nothing was
+changed. Exactly nine `svc-*.png` exist on the machine, all in `photos-raw/`,
+where W7-02 moved them.
+
+**W8-03 · Hero panel photograph**, on a **provisional** 720px floor for that one
+slot. Upscaled 1.94x to the 1x and 3.89x to the 2x. Soft at retina but it ships.
+The `@2x` is 369KB of interpolation at quality 32 and earns nothing; dropping it
+is a one-word change. `hero-panel.svg` retained, referenced zero times.
+
+**W8-04 · Eleven brands, header ratified, seam fixed.** Bosch dropped entirely.
+The master plan's locked header decision was corrected rather than overridden.
+
+**The marquee had jumped 12px every cycle since phase 1.** Flex `gap` gives n-1
+gaps but the `-50%` keyframe needs a trailing one, so the seam was always short
+by `gap / 2` — 12px at 8, 12 and 11 brands alike. Replaced with a trailing
+`margin-right` on the tile. Verified live: track 4,928px, `-50%` lands at 2,464,
+first duplicate at 2,464, **mismatch 0px**, and now exact at any brand count.
+
+| Gate | Live result |
+|---|---|
+| Homepage RO under 8,700px | **8,504px** |
+| Homepage RU under 9,000px | **8,774px** |
+| Lighthouse performance >=95 | **98 RO / 100 RU** |
+| Lighthouse accessibility 100 | **100 / 100** |
+| Nine service images add no layout movement | CLS **0.002 RO / 0.013 RU** |
+| Marquee loops cleanly at eleven brands | Seam mismatch **0px** |
+| `prefers-reduced-motion` disables every effect | 5 blocks live; marquee stopped, logos full colour, duplicates hidden |
+| Scroll never delayed, captured or hijacked | 2 listeners, both `{ passive: true }`; zero `preventDefault` on wheel, touchmove or scroll |
+| No new colour values | **10**, unchanged |
+| Dead links across all pages | **0**, over 24 pages and 1,404 hrefs and srcs |
+
+One thing ships knowingly wrong: the hero panel alt text still describes an
+illustration of a finished house while the photograph shows workers on
+scaffolding. Half that fix is a provenance claim only the owner can make. See
+`docs/QUESTIONS.md` Q-09.

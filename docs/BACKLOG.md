@@ -25,6 +25,7 @@ history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 |---|---|---|---|
 | RC-040 | W8-03 Hero panel photo on a provisional 720px floor | `w8/rc-040-hero-panel-photo` | shipped |
 | RC-041 | W8-04 Close questions, drop bosch, ratify the header | `w8/rc-041-close-questions` | shipped |
+| RC-042 | Wave 8 release notes, live measurements | `docs/rc-042-wave8-notes` | shipped |
 
 W8-01 (deploy wave 7 and verify live) and W8-02 (reconcile duplicate artwork)
 carried no code change. W8-02's premise did not hold: no duplicate set exists.

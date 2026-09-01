@@ -241,8 +241,8 @@ pipeline: they are a direct drop into `public/img/suppliers/`.
 | `swisspor` | Swisspor | |
 | `knauf` | Knauf | |
 | `baumit` | Baumit | |
-| `ceresit` | Ceresit | |
-| `weber` | Weber | |
+| `cat` | CAT | Text fallback. Caterpillar's terms forbid third-party logo use |
+| `heidelberg-materials` | Heidelberg Materials | `heidelberg-materials.svg`, from the brand's own site |
 | `ytong` | Ytong | |
 | `holcim` | Holcim | |
 
@@ -252,8 +252,12 @@ stay text. Nothing in the code changes when a file appears.
 
 **Bosch was dropped entirely in W8-04**, taking the list from twelve to eleven.
 Its own legal notice forbids third-party use of its marks, so no logo could ever
-land in that slot. Owner ruling; see DECISIONS.md. `ceresit` and `weber` remain
-as text fallbacks and are still open in `docs/QUESTIONS.md` Q-07.
+land in that slot. Owner ruling; see DECISIONS.md.
+
+**W9-01 replaced two brands**, keeping the count at eleven: `ceresit` -> `cat`
+and `weber` -> `heidelberg-materials`. Heidelberg Materials landed a logo from
+its own site. CAT could not: Caterpillar's terms forbid it, the same blocker
+that removed Bosch. `cat` is the only text fallback left; see `docs/QUESTIONS.md` Q-10.
 
 ### Hero panel — 1, 4:3 landscape, 1400x1050 (2x is the 2800px source)
 

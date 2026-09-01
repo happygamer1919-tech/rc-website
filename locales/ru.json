@@ -314,6 +314,7 @@
     "navHeading": "Компания",
     "servicesHeading": "Услуги",
     "contactHeading": "Контакты",
+    "socialHeading": "Мы в соцсетях",
     "addressLabel": "Адрес",
     "address": "Nicolae Zelinski St 24, Chișinău",
     "phoneLabel": "Телефон",
@@ -426,12 +427,12 @@
       "name": "Baumit"
     },
     "7": {
-      "id": "ceresit",
-      "name": "Ceresit"
+      "id": "cat",
+      "name": "CAT"
     },
     "8": {
-      "id": "weber",
-      "name": "Weber"
+      "id": "heidelberg-materials",
+      "name": "Heidelberg Materials"
     },
     "9": {
       "id": "ytong",

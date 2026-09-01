@@ -698,3 +698,51 @@ the offset of tile n. Adding or dropping a brand can never reopen the jump.
 
 Duration moved 72s -> 66s in the same change to hold the loop at ~37px/s with
 eleven brands rather than twelve.
+
+## Two suppliers swapped: Ceresit -> CAT, Weber -> Heidelberg Materials, W9-01, 2026-09-01
+
+Owner request. The list stays at **eleven**.
+
+| Out | In | Logo |
+|---|---|---|
+| `ceresit` | `cat` (CAT) | **None. Text fallback.** |
+| `weber` | `heidelberg-materials` (Heidelberg Materials) | `heidelberg-materials.svg`, from the brand's own site |
+
+**Heidelberg Materials landed.** Sourced from
+`https://www.heidelbergmaterials.com/sites/default/files/logo/HeidelbergMaterials.svg`
+— the brand's own website, which outranks Wikimedia under the W7-03 source
+order. Clean SVG, 986.5x283.5, green `#004E2B` / `#00DD39` on white, no script
+or event handlers. Their imprint states no restriction on third-party use of
+their marks, only a general copyright line.
+
+**The name has changed and the tile uses the current one.** The request said
+"HeidelbergCement AG". That company **renamed itself Heidelberg Materials in
+September 2022**; the logo it publishes reads *Heidelberg Materials*, and the
+legal entity is Heidelberg Materials AG. The tile is labelled **Heidelberg
+Materials** so that the visible logo, the `alt` text and the accessible name all
+agree. Labelling it "HeidelbergCement AG" over a logo reading something else
+would mislead a screen reader user and show a retired brand. One word to change
+back if that is wrong.
+
+**CAT could not land, and it is the same blocker that removed Bosch.**
+Caterpillar's standard trademark notice reads:
+
+> "CAT, CATERPILLAR, BUILT FOR IT, Olympian, their respective logos,
+> 'Caterpillar Yellow,' and the 'Power Edge' trade dress, as well as corporate
+> and product identity used herein, are trademarks of Caterpillar and **may not
+> be used without permission**."
+
+`cat.com` and `caterpillar.com` both return `403 Access Denied` to automated
+requests, so the notice was confirmed from a Caterpillar dealer page that
+reproduces it verbatim. Under the standing rule — terms visibly forbid
+third-party display, so skip, keep the text fallback and report rather than
+decide for the owner — CAT ships as text.
+
+**Net effect on the marquee: it went from two text tiles to one.** Ceresit and
+Weber were both text; CAT is text and Heidelberg Materials is a logo. Ten of
+eleven tiles now carry a logo.
+
+The 22-tile loop is unchanged and the seam stays exact: with the W8-04
+trailing-margin fix the track is `2n x (tile + margin)` for any n, so swapping
+brands cannot reopen the 12px jump.
+

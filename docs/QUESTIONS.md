@@ -163,7 +163,7 @@ than not citing one.
 
 ---
 
-## Q-07 · Three supplier tiles have no logo — PARTIALLY ANSWERED 2026-09-01, bosch dropped; ceresit and weber still OPEN (opened 2026-08-31, W7-03)
+## Q-07 · Three supplier tiles have no logo — SUPERSEDED 2026-09-01 by W9-01; see Q-10 (opened 2026-08-31, W7-03)
 
 Nine of the twelve brands now show a logo. Three still show the brand name as
 text. Each needs a different decision from you, and none of them is mine to make.
@@ -245,3 +245,49 @@ ever invented.
 
 **Default shipped:** the wrong alt text, unchanged. This is the one thing in
 wave 8 that ships knowingly incorrect, and it is a two-string fix once you rule.
+
+---
+
+## Q-10 · CAT has no logo, and the same terms blocked Bosch — OPEN, opened 2026-09-01 (W9-01)
+
+W9-01 replaced two brands: `ceresit` -> `cat` and `weber` -> `heidelberg-materials`.
+
+**Heidelberg Materials landed a logo** from its own website. That closes the
+`weber` half of Q-07, and `ceresit` left the list entirely, so Q-07 is
+superseded rather than left hanging.
+
+**CAT did not, and cannot without permission.** Caterpillar's trademark notice
+says its logos "may not be used without permission" — the identical wording that
+took Bosch off the list in W8-04. One text tile out of eleven.
+
+**Three ways to resolve, yours to pick:**
+
+1. **Ask Caterpillar, or your Cat dealer.** Dealers routinely hold co-branding
+   packs and permission for a supplier listing is a normal request. This is the
+   one that ends with a logo on the tile.
+2. **Leave it as text.** It renders as a styled brand name, consistent with the
+   other tiles, and nobody will read it as broken.
+3. **Drop CAT** the way Bosch was dropped, taking the list to ten.
+
+**Default shipped:** option 2, the text fallback.
+
+**Worth knowing:** the two brands that came off the list, Ceresit and Weber,
+were both text tiles, and one of the two replacements carries a logo. The
+marquee went from two text tiles to one.
+
+---
+
+## Q-11 · "HeidelbergCement AG" is a retired name — ANSWERED 2026-09-01 by the rename itself (opened 2026-09-01, W9-01)
+
+The request named the brand **HeidelbergCement AG**. That company renamed itself
+**Heidelberg Materials** in September 2022. The logo it publishes today reads
+*Heidelberg Materials*, and the legal entity is Heidelberg Materials AG.
+
+**Shipped as "Heidelberg Materials"**, so the visible logo, the `alt` text and
+the accessible name all agree. Labelling the tile with the retired name over a
+logo that reads something else would both mislead a screen reader user and put a
+dead brand on the page.
+
+Recorded as answered rather than open because the rename is a verifiable fact,
+not a product decision. **If you want the old name shown anyway, it is one word
+in `locales/ro.json` and `locales/ru.json`.**

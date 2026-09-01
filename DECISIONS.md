@@ -1332,3 +1332,90 @@ nowhere near a limit, and changing it would have been an edit with no cause.
 Codru, Coșnița, Costești, Căinari și Sociteni". Only Chișinău and Costești are
 in both, and the second list is the one feeding `areaServed` and `llms.txt`. Two
 answers to "where do you work" are still live on the same page. Q-W9-07.
+
+---
+
+## W11-01 · The four industrial photographs restored, and a correction
+
+### The correction first
+
+The wave 11 brief asks for eight photographs to be restored: the four
+`Construcții industriale` ones plus `case-la-cheie-01`, `fatade-02`, `fatade-03`
+and `finisaje-02`. **Only four of the eight were ever held.**
+
+`case-la-cheie-01`, `fatade-02`, `fatade-03` and `finisaje-02` shipped in W9-04
+and have been live since. They were the "kept, but the owner should look" list
+in Q-W9-04: flagged for provenance, never withheld. The W10 report called all
+eight "candidates for restoration", which was wrong and is what put four
+already-published photographs on the restore list. Nothing was done to them;
+they need nothing.
+
+The four that were genuinely held are the `industrial` ones, struck in W10 by
+extending R-D's reasoning from the fifth photograph in that folder to its
+siblings. They are now restored.
+
+### Restored
+
+| Slot | Source | Crop | Anchor |
+|---|---|---|---|
+| `industrial-01` | 900x1600 | 900x675 | top |
+| `industrial-02` | 900x1200 | 900x675 | centre |
+| `industrial-03` | 900x1600 | 900x675 | top |
+| `industrial-04` | 736x981 | 736x552 | centre |
+
+Three anchor decisions worth stating: 01 and 03 anchor **top** because the frame
+is a tall building and a centre crop of a 900x1600 source would have kept the
+ground and lost the structure. 04 anchors centre because the two blocks sit
+across the middle of the frame.
+
+R-B held: `industrial-04@2x` clamped from 800x600 to 736x552, its own crop. Zero
+upscales. The 1200x1200 photograph struck by R-D was **not** restored and the
+processing script skipped it by dimension, not by hand.
+
+**The R-D exclusion still stands** on the file the owner struck. Restoring the
+four siblings is not a reversal of R-D; it is the owner overruling the extension
+of R-D that this session made in W10, which was mine and not his.
+
+### Result
+
+`industrial` now has four renderable projects, so **both its pages cleared the
+W3-02 noindex gate**. Service pages indexable: **9 of 9 slugs, 18 of 18 pages.**
+Sitemap 18 URLs to **20**. Renderable projects 34 to **38**.
+
+---
+
+## W11-02 · /review/, an unlisted page for a yes or no
+
+`/review/` renders the five held photographs at full size with the filename, the
+reason and the service each came from. No descriptions: writing copy for a
+photograph that may never be published is work thrown away, and it invites
+talking the picture up rather than ruling on it.
+
+**Reasons, as stated, without softening:**
+
+| File | Reason |
+|---|---|
+| `Fatade` 600x900 | Filigran **dreamstime** vizibil pe imagine. |
+| `Reparatii` 1200x1600 | Vestele echipei poartă inscripția **MITCHELL ROMÁN**. |
+| `Reparatii` 736x981 | Sigla de studio **G6** aplicată pe compoziția înainte–după. |
+| `Terasamente` 1200x1500 | Banner de recrutare **AllFinishConcrete.com** în imagine. |
+| `Finisaje` 350x350 | 350x350, prea mică pentru publicare. |
+
+**Each pairing was re-verified against the actual frame before the page was
+written, and the first attempt got one wrong.** Selecting the files by dimension
+picked `Reparatii 10.33.59 AM (1).jpeg` for the 1200x1600 slot — the drywall
+taping photograph that is *published* as `reparatii-01`. That folder holds **two**
+files at 1200x1600, and the one carrying the MITCHELL ROMÁN vests is `(3)`.
+Selection is now by exact filename with an asserted dimension check, and all
+five were opened and confirmed to show the mark attributed to them. A review
+page whose whole purpose is a yes or no cannot afford to show the wrong picture
+next to the reason.
+
+**Deliberately outside the locale system.** The page is Romanian only, and
+`build.js` refuses to build when the two locale files disagree on keys, so
+RO-only strings in `locales/ro.json` would have broken every other page. It is
+generated directly in `build.js` instead.
+
+`noindex, nofollow`, absent from `sitemap.xml`, and **zero pages in `dist/` link
+to it**. Reachable by typing the URL and no other way. The five images live in
+`public/review/` and are served as-is, at full size, unprocessed.

@@ -387,3 +387,65 @@ build log prints `form: ARMED, posts to Web3Forms.` when the key is present and
 itself. After that the two submissions take a minute and the subjects to expect
 are exactly `[RO] Solicită ofertă gratuită — /` and
 `[RU] Запросите бесплатную оферту — /ru/`.
+
+---
+
+## Q-W9-07 · The RO homepage title and description exceed their limits
+
+**Raised:** W9-06, 2026-09-01. **Status:** reported, not changed.
+
+Across 24 pages, every title and every description is unique and inside its
+limit **except two**, both existing approved copy on the Romanian homepage:
+
+| Field | Now | Limit |
+|---|---|---|
+| `meta.title` | 62 characters | 60 |
+| `meta.description` | 176 characters | 155 |
+
+The Russian equivalents are 60 and 155, exactly at the line. Nothing was
+rewritten: master plan section 6 says copy is not invented or edited beyond
+shortening, and shortening approved homepage copy is the owner's call.
+
+**Recommended, if he wants them fixed.** Title, dropping two words and keeping
+the meaning: `Construcții și renovări în Chișinău · Rapid Construct` (53).
+Description, cutting the trailing price clause, which the hero already states:
+`Acoperișuri, fațade, renovări complete și finisaje în Chișinău, Orhei, Cahul și
+Costești. Garanție scrisă până la 30 de ani, materiale certificate UE.` (152).
+
+**A separate inconsistency worth a decision.** `meta.description` says the work
+happens in "Chișinău, Orhei, Cahul și Costești"; `band.coverageLine` says
+"Chișinău, Codru, Coșnița, Costești, Căinari și Sociteni", and that second list
+is what feeds `areaServed` in the structured data and `llms.txt`. Two different
+answers to "where do you work" are live on the same page. Only Chișinău and
+Costești appear in both. This predates the wave and was not touched.
+
+---
+
+## Q-W9-08 · SITE_URL, and what actually breaks when the domain lands
+
+**Raised:** W9-06, 2026-09-01. **Status:** answered, no action needed yet.
+
+C-01 assumed `SITE_URL` is unset and that every canonical, hreflang and og:url
+is therefore wrong. **It is set, and they are correct.**
+
+`.github/workflows/pages.yml` sets `SITE_URL: https://happygamer1919-tech.github.io`
+with `BASE_PATH: /rc-website`, so the deployed pages carry canonicals and
+hreflang for the origin they are actually served from. Unset only applies to a
+local build, which falls back to `https://rapidconstruct.md`.
+
+**Already correct, nothing to redo later:** canonical, both hreflang pairs and
+x-default, og:url, og:image, the JSON-LD `@id` and every `url` in it, the
+`Sitemap:` line in robots.txt, every `<loc>` in sitemap.xml, every URL in
+llms.txt, and the breadcrumb items. All eighteen derive from `SITE`.
+
+**What the domain change costs: one environment variable.** The string
+`rapidconstruct.md` appears exactly once in the whole repo, as the fallback on
+`build.js:8`. Nothing else hardcodes a host, including the form subject lines
+added in W9-05, which deliberately carry a path and no host so they stay true
+under either origin.
+
+**What breaks at cutover, and it is not the markup:** the GitHub Pages site and
+the custom-domain site will briefly both be live and serving identical
+canonicals unless the old origin redirects. Set `SITE_URL` and `BASE_PATH` in
+the workflow in the same commit that points DNS, and treat the github.io origin
+as retired the moment it is.

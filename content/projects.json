@@ -1590,21 +1590,21 @@
       "service": "industrial",
       "serviceIndex": 7,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Structură din beton armat, execuție pe niveluri",
+        "ru": "Железобетонный каркас, возведение по уровням"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Structura din beton armat urcă nivel cu nivel, cu stâlpi și grinzi turnate monolit și cu planșeele susținute de popi până la întărirea betonului. La ultimul nivel turnat cofrajul este încă montat pe margine, iar din capetele stâlpilor pornesc mustăți de armătură pregătite pentru continuarea structurii. Nivelurile inferioare sunt deja decofrate și rămân deschise, fără închideri. La bază se execută pereții de subsol, cu armătura legată și cofrajul montat pe contur, înaintea turnării.",
+        "ru": "Железобетонный каркас поднимается уровень за уровнем: колонны и ригели заливаются монолитно, перекрытия остаются на стойках до набора прочности бетоном. На верхнем залитом уровне опалубка ещё стоит по краю, а из оголовков колонн выходят выпуски арматуры, подготовленные под продолжение каркаса. Нижние уровни уже распалублены и остаются открытыми, без ограждающих конструкций. Внизу выполняются стены подвала: арматура связана, опалубка выставлена по контуру, до бетонирования."
       },
       "location": {
-        "ro": "TODO: localitate",
-        "ru": "TODO: населённый пункт"
-      },
-      "year": "TODO: an",
-      "work_type": {
         "ro": "",
         "ru": ""
+      },
+      "year": "",
+      "work_type": {
+        "ro": "Structură beton armat",
+        "ru": "Железобетонный каркас"
       },
       "area_sqm": "",
       "duration": {
@@ -1620,19 +1620,20 @@
         "ru": ""
       },
       "cover": "proj-industrial-01-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "top"
     },
     {
       "id": "industrial-02",
       "service": "industrial",
       "serviceIndex": 7,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Planșeu turnat, cu mustăți pentru nivelul următor",
+        "ru": "Залитое перекрытие с выпусками под следующий уровень"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Planșeul este turnat și driscuit pe toată suprafața, cu mustățile de armătură lăsate ridicate în punctele unde vor urca stâlpii nivelului următor. Pe latura încă neturnată, corpurile de umplutură sunt așezate între nervuri, iar peste ele urmează suprabetonarea armată. Dedesubt, cofrajul rămâne sprijinit pe popi metalici și pe grinzi de lemn dispuse la pas regulat pe toată deschiderea. Betonul este adus cu autopompa, poziționată pe stradă și cu brațul întins peste planșeu.",
+        "ru": "Перекрытие залито и заглажено по всей площади, выпуски арматуры оставлены поднятыми в точках, где пойдут колонны следующего уровня. На ещё незалитой стороне между рёбрами уложены вкладыши, поверх которых выполняется армированная набетонка. Снизу опалубка остаётся на металлических стойках и деревянных балках, расставленных с равным шагом по всему пролёту. Бетон подаётся автобетононасосом, установленным на улице, со стрелой, вытянутой над перекрытием."
       },
       "location": {
         "ro": "",
@@ -1640,8 +1641,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Planșeu beton armat",
+        "ru": "Железобетонное перекрытие"
       },
       "area_sqm": "",
       "duration": {
@@ -1657,19 +1658,20 @@
         "ru": ""
       },
       "cover": "proj-industrial-02-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "industrial-03",
       "service": "industrial",
       "serviceIndex": 7,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Cofraj de planșeu pe popi, înainte de turnare",
+        "ru": "Опалубка перекрытия на стойках, до бетонирования"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Planșeul următor este cofrat pe toată suprafața, cu panouri de placaj așezate pe grinzi de lemn și sprijinite de popi metalici la pas des. Popii descarcă în planșeul deja turnat de dedesubt, care rămâne el însuși sprijinit până la întărirea betonului. Nivelul inferior este decofrat, cu stâlpii și grinzile din beton armat lăsate aparente și cu zidăria de închidere ridicată spre fundul halei. Traseele de instalații sunt deja fixate sub planșeu, iar cheresteaua pentru etapa următoare este stivuită la sol.",
+        "ru": "Следующее перекрытие закрыто опалубкой по всей площади: листы фанеры уложены на деревянные балки и оперты на металлические стойки с частым шагом. Стойки передают нагрузку на уже залитое перекрытие снизу, которое само остаётся на подпорках до набора прочности бетоном. Нижний уровень распалублен, железобетонные колонны и ригели оставлены открытыми, в глубине выложена ограждающая кладка. Трассы инженерных сетей уже закреплены под перекрытием, а пиломатериал под следующий этап сложен на земле."
       },
       "location": {
         "ro": "",
@@ -1677,8 +1679,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Cofraj planșeu",
+        "ru": "Опалубка перекрытия"
       },
       "area_sqm": "",
       "duration": {
@@ -1694,19 +1696,20 @@
         "ru": ""
       },
       "cover": "proj-industrial-03-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "top"
     },
     {
       "id": "industrial-04",
       "service": "industrial",
       "serviceIndex": 7,
       "title": {
-        "ro": "",
-        "ru": ""
+        "ro": "Două corpuri cu cadre din beton armat, în paralel",
+        "ru": "Два корпуса с железобетонными рамами одновременно"
       },
       "summary": {
-        "ro": "",
-        "ru": ""
+        "ro": "Două corpuri de clădire se execută în paralel, ambele cu cadre din beton armat pe stâlpi și grinzi turnate monolit. Peste nivelul inferior este montat cofrajul planșeului, susținut de popi și de grinzi de lemn dispuse pe toată deschiderea. Din capetele stâlpilor pornesc mustăți lungi de armătură, pregătite pentru nivelul următor. Rampele de scară sunt deja turnate și leagă cele două niveluri, iar platforma din jur este așternută cu balast.",
+        "ru": "Два корпуса возводятся одновременно, оба с железобетонными рамами на монолитных колоннах и ригелях. Над нижним уровнем смонтирована опалубка перекрытия, опертая на стойки и деревянные балки, расставленные по всему пролёту. Из оголовков колонн выходят длинные выпуски арматуры, подготовленные под следующий уровень. Лестничные марши уже залиты и связывают два уровня, а площадка вокруг отсыпана балластом."
       },
       "location": {
         "ro": "",
@@ -1714,8 +1717,8 @@
       },
       "year": "",
       "work_type": {
-        "ro": "",
-        "ru": ""
+        "ro": "Cadre din beton armat",
+        "ru": "Железобетонные рамы"
       },
       "area_sqm": "",
       "duration": {
@@ -1731,7 +1734,8 @@
         "ru": ""
       },
       "cover": "proj-industrial-04-cover",
-      "gallery": []
+      "gallery": [],
+      "crop_anchor": "centre"
     },
     {
       "id": "industrial-05",

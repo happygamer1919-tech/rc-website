@@ -780,6 +780,91 @@ fs.writeFileSync('dist/sitemap.xml',
   fs.writeFileSync('dist/llms.txt', lines.join('\n'));
 }
 
+/* W11-02. /review/ — an unlisted page for the owner to rule on the five
+   photographs that were held back.
+
+   Four of them carry another party's mark inside the frame, and one is simply
+   too small. They are shown at full size with the filename, the reason and the
+   service they came from, and nothing else: no description is written for a
+   photograph that may never be published, and writing one would be work thrown
+   away plus a temptation to talk the picture up.
+
+   Deliberately outside the locale system. The page is Romanian only, and
+   build.js refuses to build when the two locale files disagree on keys, so
+   RO-only strings in locales/ro.json would break the build for every other
+   page. It is written here instead.
+
+   noindex, nofollow, absent from sitemap.xml, and nothing anywhere links to it.
+   Reachable by typing the URL and no other way. */
+{
+  const HELD = [
+    { file: 'held-1-fatade-600x900.jpg', orig: 'Fatade / WhatsApp Image 2026-09-01 at 10.33.39 AM (5).jpeg',
+      w: 600, h: 900, service: 'Fațade', reason: 'Filigran dreamstime vizibil pe imagine.' },
+    { file: 'held-2-reparatii-1200x1600.jpg', orig: 'Reparatii / WhatsApp Image 2026-09-01 at 10.33.59 AM (3).jpeg',
+      w: 1200, h: 1600, service: 'Renovări la cheie', reason: 'Vestele echipei poartă inscripția MITCHELL ROMÁN.' },
+    { file: 'held-3-reparatii-736x981.jpg', orig: 'Reparatii / WhatsApp Image 2026-09-01 at 10.33.59 AM.jpeg',
+      w: 736, h: 981, service: 'Renovări la cheie', reason: 'Sigla de studio G6 aplicată pe compoziția înainte–după.' },
+    { file: 'held-4-terasamente-1200x1500.jpg', orig: 'Lucrări de terasament și excavare / WhatsApp Image 2026-09-01 at 10.36.24 AM (1).jpeg',
+      w: 1200, h: 1500, service: 'Lucrări de terasament și excavare', reason: 'Banner de recrutare AllFinishConcrete.com în imagine.' },
+    { file: 'held-5-finisaje-350x350.jpg', orig: 'Finisaje / WhatsApp Image 2026-09-01 at 10.34.32 AM (3).jpeg',
+      w: 350, h: 350, service: 'Finisaje', reason: '350x350, prea mică pentru publicare.' },
+  ];
+  const items = HELD.map((h, i) => `      <article class="held">
+        <p class="eyebrow">${i + 1} / ${HELD.length}</p>
+        <div class="held__media"><img src="${BASE}/review/${h.file}" alt="" width="${h.w}" height="${h.h}" loading="lazy" decoding="async"></div>
+        <dl class="held__meta">
+          <dt>Fișier</dt><dd><code>${esc(h.orig)}</code></dd>
+          <dt>Dimensiune</dt><dd>${h.w} x ${h.h} px</dd>
+          <dt>Serviciu</dt><dd>${esc(h.service)}</dd>
+          <dt>Motivul reținerii</dt><dd><strong>${esc(h.reason)}</strong></dd>
+        </dl>
+      </article>`).join('\n');
+
+  const html = `<!doctype html>
+<html lang="ro" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fotografii reținute · Rapid Construct</title>
+<meta name="description" content="Pagină internă. Cele cinci fotografii reținute de la publicare, cu motivul fiecăreia.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F65308">
+<link rel="stylesheet" href="${BASE}/styles.css">
+<style>
+  .held { padding: 40px 0; border-top: 1px solid var(--line); }
+  .held:first-of-type { border-top: 0; }
+  .held__media { background: var(--bg-grey); display: flex; justify-content: center; margin: 16px 0 24px; }
+  .held__media img { width: auto; height: auto; max-width: 100%; display: block; }
+  .held__meta { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 8px 24px; margin: 0; max-width: 760px; }
+  .held__meta dt { font-weight: 700; }
+  .held__meta dd { margin: 0; color: var(--ink-muted); }
+  .held__meta code { font-size: 14px; word-break: break-word; }
+  @media (max-width: 768px) { .held__meta { grid-template-columns: minmax(0, 1fr); gap: 2px 0; } .held__meta dd { margin-bottom: 12px; } }
+</style>
+</head>
+<body>
+<main id="continut">
+  <section class="section section--light">
+    <div class="container">
+      <p class="eyebrow">Pagină internă</p>
+      <h1>Fotografii reținute de la publicare</h1>
+      <p class="lede">Cinci fotografii din setul primit nu au fost publicate. Patru dintre ele
+      poartă în cadru marca altcuiva, iar una este prea mică. Fiecare este afișată mai jos la
+      mărime reală, cu fișierul, motivul și serviciul din care provine.</p>
+      <p class="muted" style="margin-top: 16px;">Pagina nu este indexată, nu apare în sitemap și nu
+      este legată din nicio altă pagină. Nu s-a scris nicio descriere pentru aceste fotografii.</p>
+${items}
+    </div>
+  </section>
+</main>
+</body>
+</html>
+`;
+  fs.mkdirSync('dist/review', { recursive: true });
+  fs.writeFileSync('dist/review/index.html', html);
+  console.log(`wrote dist/review/index.html  (${HELD.length} held photographs, noindex, not in sitemap, unlinked)`);
+}
+
 fs.writeFileSync('dist/site.webmanifest', JSON.stringify({
   name: 'Rapid Construct',
   short_name: 'Rapid Construct',

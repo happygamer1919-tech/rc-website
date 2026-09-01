@@ -452,10 +452,378 @@
     "ctaH": "Cere o ofertă pentru acest serviciu",
     "backToServices": "Vezi toate serviciile",
     "projectLocation": "Localitate",
-    "projectYear": "An"
+    "projectYear": "An",
+    "faqH": "Întrebări frecvente",
+    "answerH": "Ce este și ce include",
+    "relatedH": "Servicii legate",
+    "updated": "Actualizat"
   },
   "projectMeta": {
     "materials": "Materiale principale:",
     "challenge": "Provocarea:"
+  },
+  "svcContent": {
+    "case-la-cheie": {
+      "answer": "Construcția la cheie înseamnă că ridicăm casa de la fundație până la predarea cheii, cu un singur contract și o singură echipă. Turnăm fundația, ridicăm structura din beton armat și zidăria, montăm șarpanta și învelitoarea, executăm fațada, apoi finisajele. Coordonarea echipelor rămâne la noi, nu la tine.",
+      "table": {
+        "caption": "Etapele unei case la cheie",
+        "rows": {
+          "0": {
+            "k": "Fundație",
+            "v": "Turnăm fundația după proiect. Pe ea stă toată casa."
+          },
+          "1": {
+            "k": "Structură și ziduri",
+            "v": "Ridicăm pereții casei, exact ca în proiect."
+          },
+          "2": {
+            "k": "Acoperiș",
+            "v": "Montăm structura de lemn, țigla și coșul. Casa e sub acoperiș."
+          },
+          "3": {
+            "k": "Fațadă",
+            "v": "Termoizolație, tencuieli decorative și placări din piatră naturală."
+          },
+          "4": {
+            "k": "Finisaje și predare",
+            "v": "Jgheaburi și burlane, apoi predăm cheia. Casa e gata."
+          }
+        }
+      },
+      "faq": {
+        "0": {
+          "q": "Ce include o casă la cheie?",
+          "a": "Include tot drumul de la fundație până la predarea cheii: turnarea fundației, ridicarea structurii și a zidăriei, montajul șarpantei și al învelitorii, execuția fațadei și finisajele interioare. Totul intră într-un singur contract, cu o singură echipă responsabilă, așa că nu trebuie să cauți și să coordonezi meșteri separat pentru fiecare etapă."
+        },
+        "1": {
+          "q": "Din ce se ridică structura casei?",
+          "a": "Lucrăm cu stâlpi, grinzi și centuri din beton armat, turnate pe conturul clădirii, iar închiderile se fac din blocuri ceramice cu goluri sau din beton celular autoclavizat. Deasupra zidăriei se toarnă centura, iar buiandrugii se execută peste fiecare gol de fereastră și de ușă înainte de montajul șarpantei."
+        },
+        "2": {
+          "q": "Cine coordonează echipele pe șantier?",
+          "a": "Noi. Un singur contract acoperă toate etapele, așa că nu ai de negociat separat cu echipa de fundații, cu zidarii, cu dulgherii și cu finisorii. Meșterii sunt specializați pe fiecare tip de lucrare și au peste zece ani de experiență, iar termenele se stabilesc clar de la început și se respectă."
+        },
+        "3": {
+          "q": "Ce garanție și ce preț primesc?",
+          "a": "Garanția este scrisă în contract, până la treizeci de ani, nu doar promisă verbal. Materialele sunt de la producători cu reputație, cu certificare UE, potrivite proiectului. Prețul este cel din deviz, fără costuri ascunse, iar la programările anticipate se aplică o reducere de zece la sută."
+        }
+      },
+      "related": {
+        "sentence": "Acoperișul și fațada sunt două dintre etapele acestui parcurs și se pot contracta și separat: vezi {0} și {1}."
+      }
+    },
+    "acoperisuri": {
+      "answer": "Montăm acoperișuri complete, pe case noi și peste structuri existente: șarpantă din lemn, învelitoare din țiglă metalică sau șindrilă bituminoasă, jgheaburi și burlane. Închidem coama, doliile și frontoanele cu elemente de tablă, îmbrăcăm coșul de fum și fixăm opritori de zăpadă pe versanții expuși.",
+      "table": {
+        "caption": "Ce montăm pe un acoperiș",
+        "rows": {
+          "0": {
+            "k": "Învelitoare",
+            "v": "Țiglă metalică sau șindrilă bituminoasă."
+          },
+          "1": {
+            "k": "Structură",
+            "v": "Șarpantă din lemn, cu astereală pornită de la coamă."
+          },
+          "2": {
+            "k": "Coamă, dolii, frontoane",
+            "v": "Închise cu elemente de tablă îndoită."
+          },
+          "3": {
+            "k": "Coș de fum",
+            "v": "Îmbrăcat în tablă pe toată înălțimea, cu capac."
+          },
+          "4": {
+            "k": "Scurgere",
+            "v": "Jgheaburi și burlane pe tot conturul streșinii."
+          },
+          "5": {
+            "k": "Siguranță",
+            "v": "Opritori de zăpadă, în rânduri, pe versanții expuși."
+          }
+        }
+      },
+      "faq": {
+        "0": {
+          "q": "Ce învelitori montați?",
+          "a": "Montăm țiglă metalică și șindrilă bituminoasă. Pe proiectele din această pagină se văd acoperișuri în patru ape și acoperișuri cu fronton, învelite cu țiglă metalică în antracit și în maro, cu coama și doliile închise cu elemente de tablă îndoită și cu frontonul zăvorât cu lambriu metalic vertical."
+        },
+        "1": {
+          "q": "Puteți monta acoperișul pe o casă deja construită?",
+          "a": "Da. Unul dintre proiectele de aici este exact asta: acoperișul în patru ape a fost învelit și finalizat înaintea finisajelor, ca structura de blocuri ceramice și stâlpii din beton armat de dedesubt să fie puși la adăpost. Copertina intrării laterale s-a montat din aceeași învelitoare."
+        },
+        "2": {
+          "q": "Ce se montează pe lângă învelitoarea propriu-zisă?",
+          "a": "Jgheaburile și burlanele urmăresc tot conturul streșinii și coboară pe lângă colțuri. Coșul de fum se îmbracă în tablă pe toată înălțimea și primește capac. Pe versanții dinspre stradă și dinspre vecini se fixează rânduri de opritori de zăpadă, iar streașina se închide cu bordură."
+        },
+        "3": {
+          "q": "Ce condiții de plată aveți la acoperiș?",
+          "a": "La acoperiș se pot face rate zero la sută, iar la programările anticipate se aplică o reducere de zece la sută. Prețul rămâne cel din deviz, fără costuri ascunse. Garanția se scrie în contract, până la treizeci de ani, iar materialele vin de la producători cu certificare UE."
+        }
+      },
+      "related": {
+        "sentence": "Acoperișul vine după ce structura este ridicată, la {0}, și înaintea lucrărilor de {1}."
+      }
+    },
+    "fatade": {
+      "answer": "Executăm fațade complete: termoizolație cu polistiren expandat, tencuieli decorative, placări din piatră naturală și fațade ventilate pe substructură metalică. Sistemul pornește de pe un profil de soclu, plăcile se lipesc și se fixează cu dibluri cu rozetă, iar glafurile ferestrelor se îmbracă separat.",
+      "table": {
+        "caption": "Sisteme de fațadă",
+        "rows": {
+          "0": {
+            "k": "Termoizolație",
+            "v": "Polistiren expandat grafitat, lipit și fixat cu dibluri cu rozetă, pornit de pe profil de soclu."
+          },
+          "1": {
+            "k": "Fațadă ventilată",
+            "v": "Substructură din profile metalice cu console reglabile, placată cu plăci ceramice de format mare sau cu placaj imitație lemn, cu strat de aer liber în spate."
+          },
+          "2": {
+            "k": "Placaj din piatră",
+            "v": "Plăci mari montate cu rosturi drepte, sau piatră naturală în straturi subțiri pe stâlpi și pilaștri."
+          },
+          "3": {
+            "k": "Tencuială decorativă",
+            "v": "Aplicată pe suprafețele care nu primesc placaj, în tonuri alese pe proiect."
+          }
+        }
+      },
+      "faq": {
+        "0": {
+          "q": "Cum se montează termoizolația pe fațadă?",
+          "a": "Plăcile de polistiren expandat grafitat se lipesc pe perete și se fixează suplimentar cu dibluri cu rozetă, dispuse regulat pe fiecare placă. Sistemul pornește de jos de pe un profil de soclu, rosturile dintre plăci și racordul de la streașină se umplu cu spumă poliuretanică, iar glafurile ferestrelor se îmbracă cu plăci tăiate pe măsură."
+        },
+        "1": {
+          "q": "Ce este o fațadă ventilată?",
+          "a": "Peste zidărie se montează o substructură din profile metalice verticale, fixate în perete cu console reglabile, iar pe ea se prind plăcile de finisaj. Între placaj și perete rămâne un strat de aer liber pe toată înălțimea, iar acesta este chiar elementul care dă sistemului ventilarea."
+        },
+        "2": {
+          "q": "Ce finisaje exterioare pot alege?",
+          "a": "Pe proiectele din această pagină apar plăci ceramice de format mare cu rost deschis, placaj vertical în imitație de lemn pe structură ventilată, plăci mari de piatră cu rosturi drepte, piatră naturală în straturi subțiri pe stâlpi și tencuială decorativă în tonuri de gri sau alb."
+        },
+        "3": {
+          "q": "Ce materiale folosiți și ce garanție dați?",
+          "a": "Materialele vin de la producători cu reputație, cu certificare UE, alese potrivit proiectului. Garanția se scrie în contract, până la treizeci de ani, nu se promite doar verbal. Prețul este cel din deviz, fără costuri ascunse, iar la programările anticipate se aplică o reducere de zece la sută."
+        }
+      },
+      "related": {
+        "sentence": "Fațada se execută după ce casa este pusă sub {0} și înaintea lucrărilor de {1}."
+      }
+    },
+    "reparatii": {
+      "answer": "Coordonăm tot procesul de renovare, de la demolări până la finisaje, cu un singur contract. Desfacem pereții și pardoselile vechi până la structura de bază, ridicăm compartimentări noi pe schelet metalic, închidem cu gips-carton, gletuim rosturile și executăm tavanele suspendate.",
+      "faq": {
+        "0": {
+          "q": "Ce acoperă o renovare la cheie?",
+          "a": "Acoperă tot procesul, de la demolări până la finisaje, sub un singur contract. Intră desfacerea pereților și a pardoselilor vechi până la structura de bază, compartimentările noi, închiderea cu gips-carton, gletuirea și tavanele suspendate, plus coordonarea echipelor, care rămâne la noi și nu la tine."
+        },
+        "1": {
+          "q": "Cum se execută pereții din gips-carton?",
+          "a": "Pereții și tavanul se închid cu plăci de gips-carton montate pe structură metalică. Rosturile dintre plăci și capetele de șuruburi se acoperă cu bandă și glet, aplicat în straturi late și lăsat să se usuce. Colțurile ieșite se întăresc cu profile de protecție înglobate în glet."
+        },
+        "2": {
+          "q": "Se poate schimba compartimentarea apartamentului?",
+          "a": "Da. Peretele vechi se desface, tencuiala și pardoseala se îndepărtează până la structura de bază, iar peretele nou se ridică pe schelet din profile metalice zincate, prins în șine la pardoseală și la tavan. Montanții se așază la pas constant, cu decupaje pentru trecerea traseelor prin perete."
+        },
+        "3": {
+          "q": "Cât durează și cât costă?",
+          "a": "Termenele se stabilesc clar de la început și se respectă. Prețul este cel din deviz, fără costuri ascunse, iar la programările anticipate se aplică o reducere de zece la sută. Măsurarea este gratuită: venim, măsurăm și abia apoi întocmim devizul, ca să știi de la început ce plătești."
+        }
+      },
+      "related": {
+        "sentence": "Renovarea se termină cu {0}, iar traseele noi se execută la {1}, înainte de închiderea pereților."
+      }
+    },
+    "finisaje": {
+      "answer": "Executăm finisaje interioare complete: structuri și tavane din gips-carton, gletuire, vopsit, pardoseli și placări cu plăci ceramice. Tavanele se execută pe profile zincate prinse de planșeu prin ancore, cu nișe pentru lumină ascunsă, iar pereții se gletuiesc în straturi succesive până la o suprafață continuă.",
+      "table": {
+        "caption": "Ce cuprind finisajele",
+        "rows": {
+          "0": {
+            "k": "Structuri de tavan",
+            "v": "Profile zincate în rețea ortogonală, prinse de planșeu prin ancore și conectori la pas regulat."
+          },
+          "1": {
+            "k": "Tavane din gips-carton",
+            "v": "Executate pe unul sau două niveluri, cu nișă perimetrală pentru banda de lumină și spoturi încastrate."
+          },
+          "2": {
+            "k": "Pereți",
+            "v": "Gletuire în straturi succesive, aplicate cu drișca până la o suprafață continuă, apoi vopsit."
+          },
+          "3": {
+            "k": "Pardoseli și placări",
+            "v": "Plăci ceramice de format mare pe pat de adeziv întins cu gletiera dințată, cu rost menținut de distanțiere."
+          }
+        }
+      },
+      "faq": {
+        "0": {
+          "q": "Cum se execută un tavan din gips-carton?",
+          "a": "Structura se montează din profile zincate dispuse într-o rețea ortogonală și prinse de planșeu prin ancore și conectori la distanțe regulate, care preiau nivelul tavanului finit. Tavanul se poate executa pe două trepte, cu o nișă continuă care ascunde banda de lumină pe tot perimetrul."
+        },
+        "1": {
+          "q": "Cum se pregătesc pereții înainte de vopsire?",
+          "a": "Peretele se gletuiește în straturi succesive, aplicate cu drișca și întinse până la o suprafață continuă. Colțul dintre pereți se trage drept, iar racordul la tocul ferestrei se curăță pe muchie. Fiecare strat se lasă să se usuce înainte de următorul, iar trafaletul se pregătește pentru vopsit."
+        },
+        "2": {
+          "q": "Cum se montează plăcile ceramice?",
+          "a": "Plăcile de format mare se montează pe un pat de adeziv întins cu gletiera dințată, care lasă striuri paralele uniforme. Fiecare placă se așază și se presează manual în adeziv, imediat după întindere. Distanțierele mențin rostul constant, iar adezivul se dozează pe suprafețe mici ca să nu apuce."
+        },
+        "3": {
+          "q": "Cine execută lucrarea?",
+          "a": "Meșteri specializați pe fiecare tip de lucrare, cu peste zece ani de experiență. Termenele se stabilesc clar de la început și se respectă, prețul rămâne cel din deviz, fără costuri ascunse, iar după finalizare rămânem alături de tine cu suport post-lucrare."
+        }
+      },
+      "related": {
+        "sentence": "Finisajele încheie de obicei o {0}, iar traseele se execută înainte, la {1}."
+      }
+    },
+    "proiectare-3d": {
+      "answer": "Îți arătăm casa în 3D și planurile pe hârtie înainte să începem lucrul, ca să știi exact ce primești. Vizualizările sunt fotorealiste și acoperă fiecare încăpere: pereți, placaje, tâmplărie, corpuri de iluminat, pardoseli și mobilier fix, la nivelul de detaliu la care se execută apoi lucrarea.",
+      "faq": {
+        "0": {
+          "q": "Ce primesc înainte să înceapă lucrul?",
+          "a": "Primești vizualizări 3D ale casei și planurile pe hârtie, înainte de începerea lucrului. Scopul este să știi exact ce primești, nu să aproximezi din descriere. Randările din această pagină arată nivelul de detaliu: materiale, culori, corpuri de iluminat și mobilier fix, așa cum vor arăta la execuție."
+        },
+        "1": {
+          "q": "Ce încăperi se pot vizualiza?",
+          "a": "Orice încăpere din proiect. Pe pagina aceasta sunt randări pentru dormitor, baie, hol, dressing și zona de intrare. Fiecare arată finisajele propuse în detaliu: placaje din lamele de lemn, plăci mari de marmură sau piatră, tavane în trepte cu lumină ascunsă și pardoseli din parchet montat în spic."
+        },
+        "2": {
+          "q": "Cât de aproape de realitate sunt randările?",
+          "a": "Sunt fotorealiste și se fac la nivelul de detaliu la care se execută apoi lucrarea: se vede unde cade lumina ascunsă, cum se aliniază rosturile placajului și cum se orientează parchetul. Rolul lor este să elimine surprizele, nu să înfrumusețeze ceea ce urmează să fie construit."
+        },
+        "3": {
+          "q": "Proiectarea se poate lua separat de construcție?",
+          "a": "Da, proiectarea și vizualizarea 3D sunt un serviciu de sine stătător. Dacă mergi mai departe cu execuția, ele devin punctul de pornire pentru deviz, iar prețul rămâne cel din deviz, fără costuri ascunse. Măsurarea la fața locului este gratuită, iar la programările anticipate se aplică o reducere de zece la sută."
+        }
+      },
+      "related": {
+        "sentence": "Proiectul stă apoi la baza execuției, fie ea o casă completă la {0}, fie doar lucrări de {1}."
+      }
+    },
+    "instalatii": {
+      "answer": "Executăm instalațiile de curent, apă și căldură, calculate corect și pornite cu garanție. Traseele se trag înainte de închiderea pereților, prin decupajele din montanții metalici, iar încălzirea în pardoseală se montează pe izolație, în bucle paralele cu pasul păstrat constant pe toată suprafața.",
+      "table": {
+        "caption": "Ce executăm la instalații",
+        "rows": {
+          "0": {
+            "k": "Curent",
+            "v": "Trasee trase prin montanții metalici, în tub flexibil, înainte de închiderea pereților."
+          },
+          "1": {
+            "k": "Apă",
+            "v": "Țevi de alimentare și de scurgere, cu piesele de legătură pregătite înainte de finisaje."
+          },
+          "2": {
+            "k": "Încălzire în pardoseală",
+            "v": "Conducte fixate în bucle paralele, cu pasul constant, pe izolație cu folie caserată."
+          },
+          "3": {
+            "k": "Convectoare de pardoseală",
+            "v": "Canal încastrat în structura pardoselii, cu grilă la nivelul finisajului."
+          },
+          "4": {
+            "k": "Compartimentări pentru trasee",
+            "v": "Schelet din profile zincate între pardoseală și tavan, cu montanți dubli la goluri."
+          }
+        }
+      },
+      "faq": {
+        "0": {
+          "q": "Ce instalații executați?",
+          "a": "Curent, apă și căldură, calculate corect și pornite cu garanție. Pe proiectele din această pagină se văd trasee electrice trase prin montanții metalici înainte de închiderea pereților, conducte de încălzire în pardoseală montate pe izolație și un convector încastrat în pardoseală la pragul unei uși glisante."
+        },
+        "1": {
+          "q": "Când se montează instalațiile?",
+          "a": "Înaintea finisajelor. Traseele se trag prin decupajele din montanții metalici cât pereții sunt încă deschiși, iar încălzirea în pardoseală se montează cât pereții sunt la stadiul de beton și zidărie brută. Odată închise pereții și turnată șapa, orice modificare înseamnă desfacere."
+        },
+        "2": {
+          "q": "Cum se montează încălzirea în pardoseală?",
+          "a": "Pe planșeul de beton se așterne un strat de izolație cu folie caserată, iar peste el se fixează conductele în bucle paralele, cu pasul păstrat constant pe toată suprafața. În aceeași etapă se pregătesc țevile de scurgere și piesele de legătură pentru restul instalațiilor."
+        },
+        "3": {
+          "q": "Instalațiile vin cu garanție?",
+          "a": "Da, sunt pornite cu garanție, iar garanția se scrie în contract, nu se promite doar verbal. Materialele vin de la producători cu reputație, cu certificare UE. După finalizare rămânem alături de tine cu suport post-lucrare, iar prețul este cel din deviz, fără costuri ascunse."
+        }
+      },
+      "related": {
+        "sentence": "Traseele se închid apoi la {0}, iar pe o {1} completă instalațiile se refac de la zero."
+      }
+    },
+    "industrial": {
+      "answer": "Executăm hale, depozite și spații comerciale, structură și finisaje la cheie, cu un singur contract. Lucrarea acoperă structura de rezistență, închiderile, compartimentările interioare și finisajele, cu aceleași termene stabilite de la început și aceeași garanție scrisă în contract ca la lucrările rezidențiale.",
+      "faq": {
+        "0": {
+          "q": "Ce tipuri de clădiri executați?",
+          "a": "Hale, depozite și spații comerciale. Lucrarea se face la cheie, cu structura și finisajele sub un singur contract, așa că nu ai de coordonat separat echipe pentru structură, pentru închideri și pentru amenajarea interioară. Coordonarea rămâne la noi, ca și la construcțiile rezidențiale."
+        },
+        "1": {
+          "q": "Amenajarea interioară intră în contract?",
+          "a": "Da. Compartimentările pe schelet metalic, traseele de instalații trase înainte de închiderea pereților și finisajele intră în aceeași lucrare. Asta înseamnă o singură echipă responsabilă de la structură până la predare, cu termene stabilite clar de la început și respectate."
+        },
+        "2": {
+          "q": "Ce garanție se aplică la o lucrare industrială?",
+          "a": "Aceeași ca la restul lucrărilor: garanția se scrie în contract, până la treizeci de ani, nu se promite doar verbal. Materialele vin de la producători cu reputație, cu certificare UE, potrivite proiectului, iar prețul rămâne cel din deviz, fără costuri ascunse."
+        },
+        "3": {
+          "q": "De unde începe o lucrare industrială?",
+          "a": "De la teren. Excavațiile, nivelarea și pregătirea terenului se fac cu utilaje specializate, înainte de turnarea fundației. Măsurarea la fața locului este gratuită: venim, măsurăm și abia apoi întocmim devizul, ca termenele și prețul să fie stabilite pe date reale, nu pe estimări."
+        }
+      },
+      "related": {
+        "sentence": "Lucrarea începe de la teren, cu {0}, și folosește aceeași organizare pe etape ca la {1}."
+      }
+    },
+    "terasamente": {
+      "answer": "Executăm excavații, nivelare și pregătirea terenului cu utilaje specializate. Săpăm groapa de fundație pe toată amprenta construcției, cu taluzuri înclinate pentru stabilitate, încărcăm pământul direct în autobasculante și aducem terenul la cotă, inclusiv sistematizarea din jurul casei după terminarea structurii.",
+      "table": {
+        "caption": "Lucrări de terasament",
+        "rows": {
+          "0": {
+            "k": "Săpătură generală",
+            "v": "Groapa de fundație pe toată amprenta, cu taluzuri înclinate și rampă de acces pentru camioane."
+          },
+          "1": {
+            "k": "Evacuare pământ",
+            "v": "Încărcare directă în autobasculante de la marginea săpăturii, cu evacuare de pe amplasament."
+          },
+          "2": {
+            "k": "Nivelare la cotă",
+            "v": "Suprafața adusă aproape de cotă și spălată de denivelări, cu lama de nivelare a excavatorului."
+          },
+          "3": {
+            "k": "Sistematizare în jurul casei",
+            "v": "Terenul adus treptat la nivelul soclului, ca să permită executarea trotuarului de gardă."
+          },
+          "4": {
+            "k": "Radier și cofraj",
+            "v": "Cofraj sprijinit de contrafișe, armătură legată în două plase, mustăți lăsate pentru stâlpi și pereți."
+          }
+        }
+      },
+      "faq": {
+        "0": {
+          "q": "Ce lucrări de terasament executați?",
+          "a": "Excavații, nivelare și pregătirea terenului cu utilaje specializate. Săpăm groapa de fundație pe toată amprenta construcției, cu taluzuri înclinate pe tot conturul pentru stabilitate, și aducem fundul gropii aproape de cotă. Accesul camioanelor se face pe o rampă săpată chiar în taluz."
+        },
+        "1": {
+          "q": "Ce se întâmplă cu pământul excavat?",
+          "a": "Excavatorul lucrează la marginea săpăturii și încarcă pământul direct în bena autobasculantelor, care îl evacuează de pe amplasament. Nu rămâne depozitat pe teren decât ce se folosește la umplutură. Suprafața se nivelează pe măsură ce se lucrează, iar urmele utilajelor se sting la final."
+        },
+        "2": {
+          "q": "Lucrați și pe parcele înguste, lângă casă?",
+          "a": "Da. Unul dintre proiectele de aici este exact asta: un excavator pe șenile lucrează în spațiul îngust dintre casă și limita parcelei, la nivelarea terenului după terminarea structurii. Lama coboară pe sol, iar cupa mută pământul în straturi subțiri către zona de umplutură."
+        },
+        "3": {
+          "q": "Executați și fundația după săpătură?",
+          "a": "Da. Radierul se cofrează pe tot conturul cu panouri sprijinite de contrafișe din lemn, armătura se leagă în două plase suprapuse cu distanțieri care păstrează stratul de acoperire, iar mustățile se lasă ridicate în punctele unde vor urca stâlpii și pereții, înainte de turnare."
+        }
+      },
+      "related": {
+        "sentence": "Terasamentele sunt prima etapă, fie că urmează o casă la {0}, fie o lucrare de {1}."
+      }
+    }
   }
 }

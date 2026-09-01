@@ -170,6 +170,41 @@ p { margin: 0; }
 }
 .card__body { padding: 24px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
 
+/* --- service page: spec table, FAQ, related ---------------------------------- */
+/* W9-08. No new colour: borders are --line, secondary text is --ink-muted, and
+   the row heading sits on --bg-light like every other card. */
+
+/* The table scrolls inside its own box. A long specification row must never be
+   the reason the page body scrolls sideways. */
+.table-wrap { overflow-x: auto; margin-top: 28px; -webkit-overflow-scrolling: touch; }
+
+.spec {
+  width: 100%; min-width: 480px;
+  border-collapse: collapse;
+  background: var(--bg-light);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+.spec th, .spec td { padding: 13px 20px; text-align: left; vertical-align: top; }
+.spec tr + tr th, .spec tr + tr td { border-top: 1px solid var(--line); }
+.spec th { font-weight: 700; width: 34%; white-space: nowrap; }
+.spec td { color: var(--ink-muted); }
+
+.faq { margin-top: 28px; display: flex; flex-direction: column; gap: 18px; }
+.faq__item { border-top: 1px solid var(--line); padding-top: 18px; }
+.faq__item:first-child { border-top: 0; padding-top: 0; }
+.faq__q { margin: 0 0 8px; }
+.faq__a { margin: 0; color: var(--ink-muted); max-width: 760px; }
+
+.svc-related { margin-top: 28px; max-width: 760px; }
+.svc-updated { margin-top: 16px; font-size: 14px; }
+
+@media (max-width: 768px) {
+  .spec th { white-space: normal; width: 40%; }
+  .spec th, .spec td { padding: 12px 14px; }
+}
+
 /* --- header ---------------------------------------------------------------- */
 
 /* Two layers. The BAND is a full-width solid #FFFFFF strip, fixed, opaque at
@@ -337,13 +372,18 @@ p { margin: 0; }
 
    The text stays in the DOM, so nothing is hidden from a screen reader or from
    a crawler, and the whole card is already a link to the full entry. */
-#portfolio-grid .project__desc {
+#portfolio-grid .project__desc,
+#proiecte .project__desc {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-  line-clamp: 4;
   overflow: hidden;
 }
+/* Four lines on the homepage teaser, six on the service page, where the project
+   is the subject rather than a link to it. Both are visual only: the full
+   summary stays in the DOM for a screen reader and a crawler, and it is also
+   the `description` of that project's ImageObject in the page's JSON-LD. */
+#portfolio-grid .project__desc { -webkit-line-clamp: 4; line-clamp: 4; }
+#proiecte .project__desc { -webkit-line-clamp: 6; line-clamp: 6; }
 /* Two optional project facts too long to sit in the chip row: main materials
    and the challenge. Each renders only when it has real content, so on a
    project with neither, nothing at all is emitted and the card is unchanged. */

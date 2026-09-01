@@ -71,7 +71,7 @@
     { "@type": "ListItem", "position": 3, "name": "{{svc.title}}" }
   ]
 }
-</script>
+</script>{{svc.faqSchema}}
 </head>
 <body>
 
@@ -156,7 +156,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
       <div>
         <p class="eyebrow">{{services.eyebrow}}</p>
         <h1>{{svc.title}}</h1>
-        <p class="hero__sub" style="margin: 16px 0 0;">{{svc.desc}}</p>
+        <p class="hero__sub" style="margin: 16px 0 0;">{{svc.answer}}</p>
         <div class="cta-row" style="justify-content: flex-start; margin-top: 32px;">
           <a class="btn btn--primary" href="#oferta">{{hero.ctaPrimary}}</a>
         </div>
@@ -166,11 +166,18 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   </div>
 </section>
 
+<!-- 2b · What it includes. Present only where the page's own content
+     already supports a table; three services legitimately have none. -->
+{{svc.table}}
+
 <!-- 3 · Pricing. Provisional: only on the five priced services. -->
 {{svc.priceSection}}
 
 <!-- 4 · Projects. Omitted entirely when nothing renderable exists. -->
 {{svc.gallerySection}}
+
+<!-- 4b · FAQ, sibling links and the updated date. -->
+{{svc.faqSection}}
 
 <!-- 5 · CTA, the same form as the homepage -->
 <section class="section section--light section--divided" id="oferta">

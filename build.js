@@ -119,7 +119,7 @@ const RAW_KEYS = new Set([
 ]);
 // Same idea for the service-page template.
 const SVC_RAW_KEYS = new Set([
-  'demoAttr', 'svc.imageObjects',
+  'demoAttr', 'svc.imageObjects', 'svc.answer', 'svc.table', 'svc.faqSection', 'svc.faqSchema',
   'svc.gallerySection', 'svc.priceSection', 'svc.footerLinks', 'svc.priceExtra', 'svc.media',
 ]);
 
@@ -154,6 +154,144 @@ const servicePages = [];
 
 // --- render ------------------------------------------------------------------
 // ---------------------------------------------------------------------------
+
+/* W9-06. lastmod for the sitemap, from the last commit that actually touched
+   each source file.
+
+   The obvious implementation is the file's mtime, and it is wrong in CI: git
+   does not record mtimes, so a fresh checkout stamps every file with the moment
+   the runner cloned. Every lastmod would then read "whenever we last deployed",
+   which tells a crawler nothing and is a reason to distrust the whole file.
+
+   `git log -1 --format=%cI` gives the real date the content last changed, and
+   it is identical on this machine and on the runner. mtime is kept only as the
+   fallback for a checkout with no git history (a tarball download). */
+const gitDate = (() => {
+  const cache = new Map();
+  return (file) => {
+    if (cache.has(file)) return cache.get(file);
+    let iso = null;
+    try {
+      const out = execFileSync('git', ['log', '-1', '--format=%cI', '--', file],
+        { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+      if (out) iso = out;
+    } catch { /* no git, or the file is untracked */ }
+    if (!iso && fs.existsSync(file)) iso = fs.statSync(file).mtime.toISOString();
+    cache.set(file, iso);
+    return iso;
+  };
+})();
+
+// The newest of the files that decide a page's content. A page is "modified"
+// when anything that renders into it is, which is what a crawler is asking.
+const lastmodOf = (...files) => {
+  const dates = files.filter(Boolean).map(gitDate).filter(Boolean).sort();
+  return dates.length ? dates[dates.length - 1].slice(0, 10) : null;
+};
+const localeFiles = LOCALES.map((l) => l.file);
+const HOME_SOURCES = ['src/template.html', 'content/projects.json', 'build.js', ...localeFiles];
+const SVC_SOURCES = ['src/service.html', 'content/projects.json', 'build.js', ...localeFiles];
+// A service page also moves when one of its own cover photographs is replaced.
+const coversFor = (slug) => PROJECTS.filter((p) => p.service === slug)
+  .map((p) => `public/img/${p.cover}.jpg`).filter((f) => fs.existsSync(f));
+
+/* W9-08. The four blocks C-03 asks a service page to open and close with.
+
+   All of it is ordinary headings and paragraphs. Nothing is chunked into
+   fragments for a machine and there is no second copy of anything written for
+   an answer engine: the FAQ a crawler reads through FAQPage is character for
+   character the FAQ a visitor reads on the page, which is also what Google
+   requires of the markup. */
+const RELATED = require('./content/related-services.json');
+
+// The direct answer. Replaces the service one-liner as the hero lede: the
+// one-liner ends on a claim ("ca să nu curgă niciodată") and C-03 wants the
+// page to open on what the service IS. The one-liner is not lost — it still
+// carries the meta description, og:description, the homepage card and the
+// Service schema.
+const svcAnswer = (l, slug) => esc(l.strings[`svcContent.${slug}.answer`]);
+
+/* A specification table, only where the page's own content already supports
+   one. Six services have one; reparatii, proiectare-3d and industrial do not,
+   and none was fabricated to fill the gap. It scrolls inside its own box so a
+   long row can never push the page into a horizontal scroll. */
+function svcTable(l, slug) {
+  const cap = l.strings[`svcContent.${slug}.table.caption`];
+  if (!cap) return '';
+  const rows = [];
+  for (let i = 0; l.strings[`svcContent.${slug}.table.rows.${i}.k`] !== undefined; i++) {
+    rows.push(`        <tr><th scope="row">${esc(l.strings[`svcContent.${slug}.table.rows.${i}.k`])}</th>` +
+              `<td>${esc(l.strings[`svcContent.${slug}.table.rows.${i}.v`])}</td></tr>`);
+  }
+  return `<section class="section section--light section--divided section--compact" id="ce-include">
+  <div class="container">
+    <h2 data-reveal>${esc(cap)}</h2>
+    <div class="table-wrap" data-reveal>
+      <table class="spec">
+        <tbody>
+${rows.join('\n')}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>`;
+}
+
+const svcFaqItems = (l, slug) => {
+  const out = [];
+  for (let i = 0; l.strings[`svcContent.${slug}.faq.${i}.q`] !== undefined; i++) {
+    out.push({ q: l.strings[`svcContent.${slug}.faq.${i}.q`],
+               a: l.strings[`svcContent.${slug}.faq.${i}.a`] });
+  }
+  return out;
+};
+
+/* The FAQ, plus the contextual links to two sibling services and the updated
+   date, in one closing section.
+
+   The date is the same content date the sitemap uses, not the wall clock at
+   build time. A visible "Actualizat" that moves on every deploy, including one
+   that changed nothing on this page, is worth less than no date at all, and it
+   would contradict the page's own lastmod. See DECISIONS.md. */
+function svcFaqSection(l, slug, updated) {
+  const items = svcFaqItems(l, slug);
+  if (!items.length) return '';
+  const dl = items.map((it, i) => `      <div class="faq__item" data-reveal data-stagger="${Math.min(i, 6)}">
+        <h3 class="faq__q">${esc(it.q)}</h3>
+        <p class="faq__a">${esc(it.a)}</p>
+      </div>`).join('\n');
+
+  const pair = RELATED[slug].map((sg) => {
+    const i = SERVICE_SLUGS.indexOf(sg);
+    return `<a href="${BASE + SERVICES_ROOT[l.code] + sg + '/'}">${esc(l.strings[`services.items.${i}.title`])}</a>`;
+  });
+  const sentence = esc(l.strings[`svcContent.${slug}.related.sentence`])
+    .replace('{0}', pair[0]).replace('{1}', pair[1]);
+
+  return `<section class="section section--light section--divided section--compact" id="intrebari">
+  <div class="container">
+    <h2 data-reveal>${esc(l.strings['servicePage.faqH'])}</h2>
+    <div class="faq" data-reveal>
+${dl}
+    </div>
+    <p class="svc-related" data-reveal>${sentence}</p>
+    <p class="svc-updated muted" data-reveal>${esc(l.strings['servicePage.updated'])}: <time datetime="${updated}">${updated}</time></p>
+  </div>
+</section>`;
+}
+
+// FAQPage, mirroring the visible FAQ exactly.
+function svcFaqSchema(l, slug) {
+  const items = svcFaqItems(l, slug);
+  if (!items.length) return '';
+  return '\n<script type="application/ld+json">\n' + JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: items.map((it) => ({
+      '@type': 'Question', name: it.q,
+      acceptedAnswer: { '@type': 'Answer', text: it.a },
+    })),
+  }, null, 2) + '\n</script>';
+}
 
 /* W9-07. Per-page title, description and social image for a service page.
 
@@ -472,6 +610,10 @@ for (const l of loaded) {
       'svc.desc': l.strings[`services.items.${i}.desc`],
       'svc.alt': l.strings[`services.items.${i}.alt`],
       ...serviceHeadVars(l, slug, i),
+      'svc.answer': svcAnswer(l, slug),
+      'svc.table': svcTable(l, slug),
+      'svc.faqSection': svcFaqSection(l, slug, lastmodOf(...SVC_SOURCES, ...coversFor(slug))),
+      'svc.faqSchema': svcFaqSchema(l, slug),
       'svc.subject': `[${l.code.toUpperCase()}] ${l.strings['services.items.' + i + '.title']} — ${SERVICES_ROOT[l.code]}${slug}/`,
       'svc.canonical': SITE + BASE + SERVICES_ROOT[l.code] + slug + '/',
       'svc.urlRo': SITE + BASE + SERVICES_ROOT.ro + slug + '/',
@@ -531,46 +673,6 @@ for (const l of loaded) {
 }
 
 // --- static assets ------------------------------------------------------------
-
-/* W9-06. lastmod for the sitemap, from the last commit that actually touched
-   each source file.
-
-   The obvious implementation is the file's mtime, and it is wrong in CI: git
-   does not record mtimes, so a fresh checkout stamps every file with the moment
-   the runner cloned. Every lastmod would then read "whenever we last deployed",
-   which tells a crawler nothing and is a reason to distrust the whole file.
-
-   `git log -1 --format=%cI` gives the real date the content last changed, and
-   it is identical on this machine and on the runner. mtime is kept only as the
-   fallback for a checkout with no git history (a tarball download). */
-const gitDate = (() => {
-  const cache = new Map();
-  return (file) => {
-    if (cache.has(file)) return cache.get(file);
-    let iso = null;
-    try {
-      const out = execFileSync('git', ['log', '-1', '--format=%cI', '--', file],
-        { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
-      if (out) iso = out;
-    } catch { /* no git, or the file is untracked */ }
-    if (!iso && fs.existsSync(file)) iso = fs.statSync(file).mtime.toISOString();
-    cache.set(file, iso);
-    return iso;
-  };
-})();
-
-// The newest of the files that decide a page's content. A page is "modified"
-// when anything that renders into it is, which is what a crawler is asking.
-const lastmodOf = (...files) => {
-  const dates = files.filter(Boolean).map(gitDate).filter(Boolean).sort();
-  return dates.length ? dates[dates.length - 1].slice(0, 10) : null;
-};
-const localeFiles = LOCALES.map((l) => l.file);
-const HOME_SOURCES = ['src/template.html', 'content/projects.json', 'build.js', ...localeFiles];
-const SVC_SOURCES = ['src/service.html', 'content/projects.json', 'build.js', ...localeFiles];
-// A service page also moves when one of its own cover photographs is replaced.
-const coversFor = (slug) => PROJECTS.filter((p) => p.service === slug)
-  .map((p) => `public/img/${p.cover}.jpg`).filter((f) => fs.existsSync(f));
 
 /* robots.txt. The six answer engines are named and allowed EXPLICITLY, not left
    to `User-agent: *`.

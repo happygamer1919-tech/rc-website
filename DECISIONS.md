@@ -1162,3 +1162,121 @@ site, with the arriving subject lines reported. **Not done, and it cannot be
 done from here.** It needs two things that are not mine to do: the real
 `WEB3FORMS_KEY` present in repo secrets, which is not readable from a checkout,
 and a merge to `main`, which is a publish. See QUESTIONS Q-W9-06.
+
+---
+
+## W9-08 · Extractable structure on the service pages (C-02, C-03)
+
+### FAQ: written once, read by both
+
+Four questions per service page, eighteen pages, seventy-two answers. The
+visible FAQ and the `FAQPage` JSON-LD are generated from **the same locale
+strings**, so they cannot drift; a check across all eighteen pages confirms the
+schema text is character for character the text on the page, which is also what
+Google requires of the markup. There is no second copy of anything written for
+an answer engine, and nothing is chunked into fragments: ordinary `h3` plus `p`.
+
+**No fact in any answer is new.** Each one is assembled from the service's own
+one-liner, the six `trust` items, the five `process` steps, `band.coverageLine`,
+the two hero price lines, and the thirty-four project descriptions written in
+W9-04 — which is what makes the answers differ from service to service instead
+of nine copies of the same guarantee paragraph.
+
+### The Russian answers are 31 to 39 words, not 40 to 60
+
+C-02 asks for 40 to 60 words. **Every Romanian answer is inside that range. No
+Russian one is**, and that is not an oversight.
+
+Russian carries the same content in roughly a fifth fewer words: no articles,
+and none of the `de`/`la`/`în` chains Romanian needs. A faithful translation of
+a 47-word Romanian answer lands near 37. The two instructions in play — 40 to 60
+words, and "faithful translations, not rewrites" — cannot both hold, and padding
+the Russian to reach 40 would produce exactly the rewrite the second one forbids.
+
+Faithfulness won. The Russian answers say everything the Romanian ones say.
+Padding them is a mechanical change if the count matters more.
+
+### Tables on six services, and none invented for the other three
+
+C-03 says one table per service page **where the content already supports one**,
+and not to fabricate one to have one. Six do: case-la-cheie (the five process
+steps, which are literally this service), acoperisuri, fatade, finisaje,
+instalatii and terasamente, each built from its own projects and one-liner.
+
+Three do not, and were left without:
+
+| Service | Why there is no table |
+|---|---|
+| `reparatii` | Two projects. The one-liner names two endpoints, demolition and finishing. Three thin rows would be a table for the sake of having one. |
+| `proiectare-3d` | The one-liner yields two rows, 3D views and paper plans. Not a table. |
+| `industrial` | No projects at all, and the page is `noindex`. Nothing to tabulate. |
+
+Every table scrolls inside its own `overflow-x` box, so a long row can never be
+the reason the page body scrolls sideways. Checked at 1440, 1024, 768 and 390.
+
+### "Actualizat" is a content date, not the wall clock
+
+C-03 says the visible date should be driven by build time. It is driven by the
+**same git content date the sitemap `lastmod` uses**, and that is a deliberate
+departure.
+
+A visible "Actualizat" that moves on every deploy — including a deploy that
+changed nothing on that page — is worth less than no date at all, and it would
+contradict the `lastmod` the same build writes for the same URL. One of the two
+would be lying. Now they agree, and both move only when something that renders
+into that page actually changes. Switching to literal build time is one
+expression if that is preferred.
+
+### The hero lede is now the direct answer
+
+C-03 asks each service page to open with a direct 40 to 60 word answer to what
+the service is and what it includes, **before any marketing**. The hero
+previously opened on the service one-liner, which ends on a claim
+("Montate corect, ca să nu curgă niciodată"). The answer replaced it there.
+
+**The one-liner is not deleted.** It still carries the meta description, the
+og:description, the homepage service card and the `Service` schema. What changed
+is that the page no longer *opens* on it.
+
+### Sibling links, from the order the work actually happens
+
+Every service page carries exactly two contextual links to sibling services, in
+a sentence, not a footer list. The pairs come from the `process` order —
+terasamente to fundație to structură to acoperiș to fațadă to finisaje — so the
+sentence says something true about sequence rather than "you may also like".
+Verified: eighteen pages, two links each, none pointing at itself.
+
+### The height budget was the binding constraint, and what paid for it
+
+Adding two sections cost roughly 384px of section padding alone, and ten of the
+eighteen service pages went over 6,000px, the worst by 333px. What was cut:
+
+- Both new sections run at `--band-pad` (56px) rather than `--section-pad`
+  (96px). They are supporting content around the projects, not bands of their
+  own. **160px.**
+- Project descriptions on the service page clamp to six lines, as the homepage
+  ones clamp to four. Eleven to thirteen lines of text in a 366px card is not a
+  card. **270 to 380px**, and the full summary stays in the DOM for a screen
+  reader and a crawler *and* is the `description` of that project's ImageObject
+  in the page's own JSON-LD, so nothing is hidden from anything that reads.
+- FAQ gaps 24 to 18px, table cell padding 16 to 13px. **~110px.**
+
+Result: the worst page is now 5,685px against 6,000, and the largest single
+service page fell from 6,333px to 5,685px while gaining a table and four
+questions.
+
+### A build failure that a gate did not catch, and why
+
+`svcFaqSection` called `lastmodOf` before its definition — the lastmod helpers
+sat in the static-assets block, which runs after the service-page loop. `node
+build.js` died with a `ReferenceError` and wrote nothing.
+
+`node scripts/check-links.js` then reported **zero dead links**, because it was
+reading the `dist/` from the previous successful build. That is not a defect in
+check-links, it is what CLAUDE.md section 9 already prescribes against by
+writing the gate as `node build.js && node scripts/check-links.js`: the `&&` is
+load-bearing. It was missed here because the build output was piped through
+`grep`, which made the shell see grep's exit status instead of node's.
+
+**Piping `node build.js` through anything discards its exit code.** Run the two
+commands chained with `&&` and unpiped, exactly as section 9 writes them.

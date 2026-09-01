@@ -62,3 +62,16 @@ carried no code change. W8-02's premise did not hold: no duplicate set exists.
 | RC-024 … RC-027 | Never render a TODO marker, noindex gate, price scope, hero fit | 3 |
 | RC-028 | 51-slot pipeline, dress rehearsal, shoot sheet | 4 |
 | RC-029, RC-030 | Hero spacing, mobile hero gap | 5 |
+
+## W9-04 · Portfolio content from the real photo set
+**Status: DONE** (2026-09-01, branch `w9/rc-047-portfolio-content`)
+
+Owner rulings R-A to R-G recorded in DECISIONS.md. 46 photographs inventoried,
+12 struck for failing master plan section 7 (4 by R-D, 8 by Q-W9-04), 34 written
+into `content/projects.json` with bilingual descriptions and per-project crop
+anchors. `process-photos.js` gained the R-B no-upscale clamp and `--cropOffset`
+anchoring; project covers moved to 4:3 at 400/800.
+
+Sitemap 2 -> 18 URLs. 16 of 18 service pages cleared the W3-02 noindex gate;
+`industrial` is the exception and has no real photograph. Open: Q-W9-04
+(provenance rulings, and a photograph for `industrial`), Q-W9-05 (localities).

@@ -328,6 +328,22 @@ p { margin: 0; }
 .project__link:hover { color: inherit; }
 .project__link:hover h3 { color: var(--brand-dark); }
 .project__desc { color: var(--ink-muted); }
+
+/* W9-04. The homepage portfolio is a teaser grid, the service page is where a
+   project is read in full. The real descriptions run eleven to thirteen lines
+   in a 366px card, which put the homepage 326px (RO) and 322px (RU) over the
+   section 2 budgets. Clamped to four lines HERE ONLY: `#proiecte` on the
+   service page is untouched and still prints every sentence.
+
+   The text stays in the DOM, so nothing is hidden from a screen reader or from
+   a crawler, and the whole card is already a link to the full entry. */
+#portfolio-grid .project__desc {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  overflow: hidden;
+}
 /* Two optional project facts too long to sit in the chip row: main materials
    and the challenge. Each renders only when it has real content, so on a
    project with neither, nothing at all is emitted and the card is unchanged. */

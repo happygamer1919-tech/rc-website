@@ -917,3 +917,160 @@ drop the `srcset` from those five `<img>` tags. That removes about 1,698KB with
 no visible quality loss at any device pixel ratio, and would put RU back near
 100. It was not applied because the card was "upload these five", and removing
 image variants and editing the template is a different change.
+
+---
+
+## W9-04 · Portfolio content from the real photo set (owner rulings R-A to R-G)
+
+Forty-six photographs arrived in `Services_real images/`, nine folders, one per
+service. Every folder mapped to a service slug; none was unmatched. The set
+broke three standing rules at once, so the owner ruled on all of them together.
+The seven rulings below are his, verbatim in substance, and this section records
+what each one cost and what it bought.
+
+### R-A · Provisional `minLongEdge` of 900 for project slots
+
+Thirty-six of the forty-six sources were under the manifest's 1600px floor, the
+worst at 350x350. The floor stays in `slots.js` as the default; project cover
+slots lower their own bar to 900, the same device already used by W7-02 (1200),
+W8-03 (720) and W10-01 (900).
+
+**Interim, not a judgement that 900 is enough.** It is to be raised when better
+originals arrive.
+
+### R-B · Never upscale, and it overrides target sizes
+
+A generated variant may not exceed what its source actually contains. Applied
+strictly: the bar is the **cropped** source, not the raw long edge, because the
+crop happens first and a 600x900 portrait cropped to 4:3 holds 600x450 real
+pixels no matter what its long edge says.
+
+Implemented in `process-photos.js` as a clamp inside `render()`, so it holds for
+every slot rather than only for the ones added by this card.
+
+**This is retroactive, and it caught nineteen variants already shipped.** The
+existing files were generated before the rule existed and several are largely
+invented pixels:
+
+| Variant | Was | Real content | Upscale |
+|---|---|---|---|
+| `hero-panel@2x` | 2800x2100 | 720x540 | **3.89x** |
+| `hero-panel` | 1400x1050 | 720x540 | 1.94x |
+| `step-02-structura@2x` | 1800x1350 | 736x552 | 2.45x |
+| `step-05-predare@2x` | 1800x1350 | 896x672 | 2.01x |
+| `step-04-fatada@2x` | 1800x1350 | 864x648 | 2.08x |
+| `step-03-acoperis@2x` | 1800x1350 | 1024x768 | 1.76x |
+| `step-01-fundatie@2x` | 1800x1350 | 1136x852 | 1.58x |
+| `step-02`, `step-04`, `step-05` at 1x | 900x675 | 736-896 wide | 1.00-1.22x |
+| `svc-*@2x`, all nine | 1600x1200 | 1448x1086 | 1.10x |
+
+**No layout moved.** The clamp preserves the crop, and the crop is already at
+the slot's ratio, so every clamped file keeps 4:3 exactly. The `width`/`height`
+attributes in the template still describe the right ratio, so CLS is unchanged.
+What changed is that the files stopped claiming detail they never had, and the
+page got lighter for free.
+
+### R-C · Project covers move from 3:2 to 4:3
+
+Thirty-one of the forty-two survivors are portrait. At 3:2 a 896x1195 portrait
+keeps 50% of its height; at 4:3 it keeps 56%. The ratio change is worth about
+six percentage points of every portrait frame, and it aligns project covers with
+the service cards and the step photos, which were already 4:3.
+
+Cost: `media--3x2` is now used by nothing. It is left in `styles.css` rather
+than deleted, on the same reasoning as the retained fallback SVGs.
+
+### R-D · Four files struck from the set
+
+| File | Reason |
+|---|---|
+| `Finisaje` 350x350 | Too small. Below any usable crop. |
+| `Finisaje` 1200x800 | Fails master plan section 7, "real Rapid Construct work only". Studio-lit, staged, a model in unmarked painter's whites. Reads as stock. |
+| `Construcții industriale` 1200x1200 | Fails the same rule. Timber and bamboo propping, eucalyptus, dress not consistent with a Moldovan site. |
+| `Reparatii` `image (73).png` | A two-panel before/after composite, not a photograph, and its provenance is unconfirmed. |
+
+Forty-two remain. **The rule that six invented projects never reached `dist/`
+is the same rule that struck these four**; it now applies to photographs as well
+as to copy.
+
+### R-E · One file moves service
+
+`Instalații` 1200x1600 shows a galvanised metal frame for a suspended ceiling.
+That is finishing work, not utilities. Moved to `finisaje`. Finisaje therefore
+carries four covers and instalatii four.
+
+### R-F · One image, one project cover. No gallery processing
+
+`build.js` renders `p.cover` and nothing else. The `gallery` arrays exist in the
+data and `process-photos.js` accepts the slot IDs, but **no template outputs a
+gallery image anywhere on the site.** Processing into gallery slots would have
+written eighty-odd files no visitor could ever reach.
+
+So each photograph becomes one project cover. Forty-two photographs, forty-two
+renderable projects, six slots per service and five or fewer used in every
+service, so nothing overflows.
+
+### R-G · The homepage portfolio picks one project per service
+
+`build.js` took `.slice(0, 6)` in file order. With five real projects that
+happened to yield five different services. With forty-two it would have yielded
+**six `case-la-cheie` cards**, and the category chip under each card would have
+read the same word six times.
+
+Replaced with a first-per-service pick over `SERVICE_SLUGS`, capped at six. The
+six cards are now six different services by construction, in the same order as
+the services grid above them.
+
+### The sizes, derived rather than chosen
+
+At a 1440 viewport the container is capped at 1200px with a 24px gutter, so the
+row is 1152px. A `grid--3` at a 24px gap gives 368px columns, and the card's 1px
+border leaves the media box at **366px**. The service page gallery uses the same
+`grid--3` and the same `.card`, so both boxes are identical: **366 x 275** at
+4:3.
+
+| | Target | Covers |
+|---|---|---|
+| 1x | **400 x 300** | the 366px box natively, plus the 2-column tablet break |
+| 2x | **800 x 600** | 366 at device-pixel-ratio 2 (732), with headroom |
+
+**Deliberately smaller than the `svc-*` convention of 800/1600**, which fills
+the same 366px box. There are forty-two of these and nine of those; at this
+count the weight matters more than the headroom does, and W10-01 already
+recorded that the 1800px step variants were "pure waste at this slot".
+
+Against the forty-two sources under R-B:
+
+- **1x 400px: native for all 42.** The smallest 4:3 crop in the set is 600x450,
+  half again larger than the 1x needs.
+- **2x 800px: 29 files at full size, 13 clamped to their own crop** — one at
+  600, one at 676, nine at 736, one at 780, one at 789.
+- **Files requiring any upscale: zero.**
+
+### Crop anchor, per project
+
+A centre crop is wrong for a roof and wrong for a foundation. `process-photos.js`
+gained a `cropAnchor` of `top`, `centre` or `bottom`, applied through the
+`--cropOffset` flag that `sips` has carried since macOS 13, and every project
+carries the anchor chosen from what actually matters in its frame. Roofs and
+ceilings anchor top, excavation and screed anchor bottom, everything else
+centres.
+
+### Descriptions describe the work, not the photograph
+
+Owner instruction, and it is the right one. No description opens with "imagine",
+"vedere" or "fotografiat", and none contains "in prim-plan". Each leads with
+what was built or done. The nine approved A-02 samples were rewritten to the
+same standard rather than kept as they were.
+
+**Nothing was invented.** No client, no surname, no locality, no year, no square
+metres, no duration, no cost, no warranty, no brand. `location` is empty on all
+forty-two: the owner has not supplied a locality list, and under master plan
+section 6 an unsourced field is omitted, never filled. `year`, `area_sqm`,
+`duration`, `main_materials` and `challenge` are empty for the same reason.
+
+Two things were left out rather than guessed. A legible manufacturer name on the
+excavator in the terasamente set: described as "excavator pe pneuri", because
+the brand is not the work. Two small red fittings on a wall in the ceiling-frame
+photograph: omitted entirely, because they could not be identified with
+confidence and naming them would have been a spec nobody sourced.

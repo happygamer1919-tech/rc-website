@@ -302,3 +302,64 @@ dead brand on the page.
 Recorded as answered rather than open because the rename is a verifiable fact,
 not a product decision. **If you want the old name shown anyway, it is one word
 in `locales/ro.json` and `locales/ru.json`.**
+
+---
+
+## Q-W9-04 · Nine more photographs fail the "real Rapid Construct work" rule
+
+**Raised:** W9-04, 2026-09-01. **Status:** shipped a default, needs an owner ruling.
+
+R-D struck four files. Viewing all forty-two at full size found **nine more**
+that fail master plan section 7 the same way, four of them with proof visible
+in the frame. They were dropped rather than published, and any of them is one
+line in `content/projects.json` away from coming back.
+
+### Struck on visible evidence, four files
+
+| Project slot | What is visible in the frame |
+|---|---|
+| `fatade-05` (600x900) | A **`dreamstime` stock-library watermark** printed across the middle of the image. |
+| `reparatii-03` (1200x1600) | Three workers in branded vests reading **`MITCHELL ROMÁN`**, legible on two of them. Another contractor's crew. |
+| `reparatii-04` (736x981) | A before/after composite carrying a **`G6` studio logo** top centre. Same class as the `image (73).png` already struck by R-D. |
+| `terasamente-04` (1200x1500) | A site banner reading **`NOW HIRING · AllFinishConcrete.com · Foremen, Finishers, Wall & Flatwork Laborers`**, beside a MACK truck. A United States concrete contractor. |
+
+Publishing any of these puts another company's mark, or a stock library's
+watermark, on Rapid Construct's portfolio. That is not a judgement call and it
+was not treated as one.
+
+### Struck on the owner's own R-D reasoning, four files
+
+All four remaining `Construcții industriale` photographs: `industrial-01`,
+`industrial-02`, `industrial-03`, `industrial-04`. R-D already struck the fifth
+file from that folder for failing the real-work rule. `industrial-01` is the
+**same site, same day** as the struck one. The other three are a Turkish
+apartment block and two arid low-rise sites. Keeping four while striking their
+sibling would have applied the owner's ruling inconsistently.
+
+**Consequence, and it is visible to a visitor:** `industrial` now has zero
+renderable projects, so **`/servicii/industrial/` and `/ru/servicii/industrial/`
+are the only two service pages still carrying `noindex`**. The W3-02 gate is
+working exactly as designed; the service simply has no real photograph yet.
+
+### Kept, but the owner should look
+
+`case-la-cheie-01`, `fatade-02` and `fatade-03` are architecturally
+inconsistent with Moldova (arid ground, flat parapet roofs, decorative metal
+grille doors). **Style is not proof**, no mark is visible in any of them, and no
+sibling in either folder was struck by R-D, so there was no ruling to apply.
+They shipped. `finisaje-02`, `reparatii-01` and `instalatii-04` are likewise
+unremarkable but unplaceable.
+
+**Recommended default, shipped:** publish the thirty-four that carry no visible
+third-party mark and no struck sibling. **What is needed:** one word per flagged
+file, keep or strike, and a replacement photograph for `industrial` if that page
+is to be indexable before launch.
+
+---
+
+## Q-W9-05 · The locality list was never supplied
+
+`location` is empty on all thirty-four projects. A-03 said the list would be
+supplied and it was not. Under master plan section 6 an unsourced field is
+omitted, never filled, so the chip simply does not render. Supplying the list
+later is a data-only change: no template, no build, no photo reprocessing.

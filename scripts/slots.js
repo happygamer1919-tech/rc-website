@@ -18,9 +18,27 @@ const SLOTS = [
   // has no title, so nothing renders its cover and no placeholder is written
   // for it; the slot is still real and process-photos.js accepts it. Same
   // `placeholder: false` device as the gallery slots below.
+  // W9-04 R-C: 4:3, not 3:2. Thirty-one of the forty-two sources are portrait,
+  // and 4:3 keeps six more percentage points of every portrait frame than 3:2
+  // did. It also matches the service cards and the step photos.
+  //
+  // W9-04, the sizes: at 1440 the container caps at 1200, a grid--3 at a 24px
+  // gap gives 368px columns, and the card border leaves the media box at 366px.
+  // So 400 covers the 1x natively and 800 covers it at device-pixel-ratio 2.
+  // Deliberately below the svc-* convention of 800/1600 for the same box: there
+  // are thirty-four of these and nine of those, so weight beats headroom here.
+  //
+  // minLongEdge 900 is a PROVISIONAL owner ruling, W9-04 R-A, the same device as
+  // W7-02 (1200), W8-03 (720) and W10-01 (900). It is to be raised back to the
+  // manifest default when better originals arrive. It is NOT a judgement that
+  // 900 is enough. See DECISIONS.md.
+  //
+  // cropAnchor comes from the project record. A centre crop is wrong for a roof
+  // and wrong for a foundation, so each project names the part that matters.
   ...require('../content/projects.json').projects
     .map((p) => ({
-      id: p.cover, w: 1400, h: 933, ratio: '3:2', retina: true,
+      id: p.cover, w: 400, h: 300, ratio: '4:3', retina: true, minLongEdge: 900,
+      cropAnchor: p.crop_anchor || 'centre',
       placeholder: Boolean(p.title && p.title.ro && p.title.ro.trim() && !p.title.ro.trim().startsWith('TODO:')),
     })),
   // Project gallery slots. Real slots the photo pipeline must accept, but not

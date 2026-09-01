@@ -249,7 +249,7 @@ function renderGallerySection(l, slug, vars) {
     const facts = fact('projectMeta.materials', p.main_materials[l.code])
                 + fact('projectMeta.challenge', p.challenge[l.code]);
     return `      <article class="card project" id="project-${p.id}" data-reveal data-stagger="${Math.min(i, 6)}">
-        <div class="media media--3x2 media--card"><img src="${vars.base}/img/${p.cover}.jpg" alt="${esc(p.title[l.code])}" width="1400" height="933" loading="lazy" decoding="async"></div>
+        <div class="media media--4x3 media--card"><img src="${vars.base}/img/${p.cover}.jpg" srcset="${vars.base}/img/${p.cover}.jpg 1x, ${vars.base}/img/${p.cover}@2x.jpg 2x" alt="${esc(p.title[l.code])}" width="400" height="300" loading="lazy" decoding="async"></div>
         <div class="card__body">
           <h3>${esc(p.title[l.code])}</h3>
           <p class="project__desc">${esc(p.summary[l.code])}</p>
@@ -312,7 +312,17 @@ for (const l of loaded) {
   // Homepage portfolio: six cards straight off projects.json, each linking to
   // its project anchor on the relevant service page. Only projects with a real
   // title are shown; a TODO title must never reach the homepage.
-  const featured = PROJECTS.filter((p) => REAL(p.title[l.code]) && REAL(p.summary[l.code])).slice(0, 6);
+  // W9-04 R-G. This was `.slice(0, 6)` over projects.json in file order, which
+  // was six different services only by luck: five projects happened to sit in
+  // five services. With thirty-four the first six are all `case-la-cheie`, and
+  // the category chip under each card reads the same word six times. Take the
+  // first renderable project of each service instead, in the order the services
+  // grid uses, so the six cards are six services by construction.
+  const featured = SERVICE_SLUGS
+    .map((slug) => PROJECTS.find((p) => p.service === slug
+      && REAL(p.title[l.code]) && REAL(p.summary[l.code])))
+    .filter(Boolean)
+    .slice(0, 6);
   vars.supplierChips = renderSupplierChips(l, BASE);
   vars.heroPanelMedia = heroPanelMedia(l, BASE);
   SERVICE_SLUGS.forEach((_, i) => { vars[`svcMedia${i}`] = serviceMedia(l, BASE, i, 'card'); });
@@ -322,8 +332,8 @@ for (const l of loaded) {
       const cat = l.strings[`services.items.${SERVICE_SLUGS.indexOf(p.service)}.title`];
       return `      <article class="card project" data-cat="${p.service}" data-reveal data-stagger="${Math.min(i, 6)}">
         <a href="${href}" class="project__link">
-          <div class="media media--3x2 media--card project__media">
-            <img src="${BASE}/img/${p.cover}.jpg" alt="${esc(p.title[l.code])}" width="1400" height="933" loading="lazy" decoding="async">
+          <div class="media media--4x3 media--card project__media">
+            <img src="${BASE}/img/${p.cover}.jpg" srcset="${BASE}/img/${p.cover}.jpg 1x, ${BASE}/img/${p.cover}@2x.jpg 2x" alt="${esc(p.title[l.code])}" width="400" height="300" loading="lazy" decoding="async">
             <span class="chip">${esc(cat)}</span>
           </div>
           <div class="card__body">

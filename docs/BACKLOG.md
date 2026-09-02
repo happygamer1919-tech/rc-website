@@ -125,3 +125,22 @@ the live HTML carries `data-armed="0"`. See Q-W10-01 for the three-step fix.
 **Status: DONE** (2026-09-01). RO title 62 -> 60, description 176 -> 155, no
 claim dropped. Deployed as `7b136d0` and verified live. All 24 pages within both
 limits. RU unchanged at 60 and 155.
+
+## W11-01 · Restore the four industrial photographs
+**Status: DONE** (2026-09-02). Only four of the eight on the brief were ever
+held; the other four shipped in W9-04 and were live. Correction recorded in
+DECISIONS.md. industrial cleared the noindex gate: 18 of 18 service pages
+indexable, sitemap 20 URLs, 38 renderable projects, zero upscales.
+
+## W11-02 · Unlisted review page
+**Status: DONE** (2026-09-02). /review/ renders the five held photographs at
+full size with filename, reason and service, no descriptions. noindex nofollow,
+absent from the sitemap, zero links to it from any other page. One mislabel was
+caught and fixed before publishing: selecting by dimension picked the published
+reparatii-01 for the 1200x1600 slot because that folder holds two files at that
+size. Selection is now by exact filename with an asserted dimension check.
+
+## W11-03 · Deploy and verify live
+**Status: DONE** (2026-09-02). Deployed as f179951. All acceptance criteria met
+live. The deploy log still reports DEMO MODE: WEB3FORMS_KEY is still absent, so
+Q-W10-01 remains open and W10-02 remains blocked.

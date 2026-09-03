@@ -389,6 +389,29 @@ p { margin: 0; }
    project with neither, nothing at all is emitted and the card is unchanged. */
 .project__fact { font-size: 15px; color: var(--ink-muted); margin-top: 8px; }
 .project__fact span { font-weight: 700; color: var(--ink); }
+/* W12-01. The seventh cell. Same box as a project card and nothing else: the
+   `card` class already supplies the background, border, radius and shadow, so
+   this rule adds no colour value and no second box style. It is alone on the
+   third row, so the row is only as tall as the tile itself.
+
+   The numeral matches .stat__n exactly (44px / 800 / --brand). --brand on white
+   is 3.41:1, which clears the WCAG 3:1 large-text threshold at this size and
+   weight, the same justification the hero stats have carried since wave 1. */
+.card--more {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 28px 24px;
+  gap: 6px;
+}
+.more__n {
+  margin: 0;
+  font-family: var(--font-heading), var(--font-fallback);
+  font-size: 44px; font-weight: 800; line-height: 1.15;
+  color: var(--brand);
+}
+.more__line { margin: 0; color: var(--ink-muted); max-width: 22ch; }
+
 .portfolio__foot { display: flex; justify-content: center; margin-top: 40px; }
 .portfolio__empty { color: var(--ink-muted); margin-top: 8px; }
 
@@ -941,6 +964,7 @@ p { margin: 0; }
   .header__pill { padding: 0 8px 0 16px; height: 56px; }
   .header[data-scrolled="true"] .header__pill { height: 52px; }
   .mobile-panel { top: 80px; }
+
 
   .grid--3, .grid--5 { grid-template-columns: minmax(0, 1fr); }
   .grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }

@@ -395,6 +395,33 @@ const serviceTemplate = fs.readFileSync('src/service.html', 'utf8');
 // its own, so a project with a real location and no year prints the location.
 const REAL = (v) => typeof v === 'string' && v.trim() !== '' && !v.trim().startsWith('TODO:');
 
+// --- W12-01, the portfolio end tile -----------------------------------------
+
+/* The seventh cell of the homepage portfolio grid. It is not a project and not
+   a link: no href, no tabindex, nothing focusable inside it. Filters ignore it
+   because it does not carry the `project` class that `main.js` selects on, so
+   it stays put while the six cards above it come and go.
+
+   Accessibility: it is LABELLED, not hidden. The tile carries a real fact, and
+   hiding the whole thing behind aria-hidden would tell a sighted visitor
+   something a screen-reader user never hears. Only the big numeral is hidden,
+   because "100+" is a visual restatement of the sentence below it; without that
+   the tile would announce as "100+ and over 100 other completed projects". What
+   is read is the one sentence, exactly as printed. See DECISIONS.md W12-01.
+
+   The 100+ figure is not invented. `stats.0` has claimed "500+ proiecte
+   finalizate" since wave 1, and six shown plus a hundred more is entailed by
+   it — a strictly weaker claim than the one already on the page. */
+function portfolioEndTile(l) {
+  const n = l.strings['portfolio.more.n'];
+  const line = l.strings['portfolio.more.line'];
+  if (!REAL(n) || !REAL(line)) return '';
+  return `      <div class="card card--more">
+        <p class="more__n" aria-hidden="true">${esc(n)}</p>
+        <p class="more__line">${esc(line)}</p>
+      </div>`;
+}
+
 // A project is renderable only when the two fields it cannot do without are
 // real. The other seven are optional and drop out individually.
 function renderableProjects(l, slug) {
@@ -598,7 +625,7 @@ for (const l of loaded) {
           </div>
         </a>
       </article>`;
-    }).join('\n') + '\n    </div>';
+    }).join('\n') + '\n' + portfolioEndTile(l) + '\n    </div>';
 
   // --- 18 service pages -----------------------------------------------------
   for (let i = 0; i < SERVICE_SLUGS.length; i++) {

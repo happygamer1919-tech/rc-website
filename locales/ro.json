@@ -22,6 +22,10 @@
     "menuOpen": "Deschide meniul",
     "menuClose": "Închide meniul"
   },
+  "promo": {
+    "text": "Reducere 10% la orice serviciu doar până în 2027",
+    "endDate": "2027-01-01"
+  },
   "hero": {
     "eyebrow": "Construcții & Renovări · în toată Moldova",
     "h1": "Casa ta la cheie, fără să coordonezi singur echipele",

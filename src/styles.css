@@ -286,6 +286,46 @@ p { margin: 0; }
 .mobile-panel .lang a { color: var(--ink-muted); }
 .mobile-panel .lang__sep { background: var(--line); }
 
+/* --- promo bar (W12-02) ---------------------------------------------------- */
+
+/* A static offer strip in normal flow, directly beneath the fixed header and
+   above the hero. Ruling R-H in DECISIONS.md: CLAUDE.md section 1 forbids
+   ANIMATION above the fold, and this does not animate. It is not sticky, has no
+   transition, no transform and no keyframes, and it scrolls away with the page.
+
+   Text is --ink on --brand: 5.10:1, which clears WCAG AA for normal text at any
+   size. White on --brand is 3.41:1 and fails AA below the large-text threshold,
+   which is why the bar is dark-on-orange and not the site's usual white-on-
+   orange. Both ratios are measured and recorded in DECISIONS.md.
+
+   Height is a hard cap, not a minimum, and the text is centred inside it and
+   clipped rather than allowed to push the box open. That is what makes the
+   contribution to CLS exactly zero: the strip occupies 44px from first paint,
+   before the webfont resolves and whatever the string turns out to be. */
+.promo {
+  height: 44px;
+  background: var(--brand);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--gutter);
+  overflow: hidden;
+}
+.promo__text {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  /* One line, always. It may not wrap into a second and it may not grow the
+     bar; on a viewport too narrow for the string it is clipped by the rule
+     above, which is a visual loss and never a layout shift. */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+}
+
 /* --- hero ----------------------------------------------------------------- */
 
 /* W5-01: the eyebrow sat 96px below the band, which read as a hole. Scoped to
@@ -965,6 +1005,18 @@ p { margin: 0; }
   .header[data-scrolled="true"] .header__pill { height: 52px; }
   .mobile-panel { top: 80px; }
 
+  /* Hard cap, 36px. The type shrinks to fit the line rather than the bar
+     growing or the text moving: 13px clipped the Russian string at 360px and
+     both strings at 320px, and the card's instruction there is to reduce the
+     font size, never to introduce motion. The floor of the clamp, 11px, is the
+     size at which the longer string (Russian, 331px at 13px) fits the 288px
+     available inside a 320px viewport. Measured widths are in DECISIONS.md.
+
+     A viewport-relative size is still a static size: it is fixed for a given
+     viewport and never animates, and the bar's height is capped independently
+     of it, so nothing here can shift layout. */
+  .promo { height: 36px; }
+  .promo__text { font-size: clamp(11px, 3.4vw, 13px); }
 
   .grid--3, .grid--5 { grid-template-columns: minmax(0, 1fr); }
   .grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }

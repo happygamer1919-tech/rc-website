@@ -114,7 +114,7 @@ const RAW_KEYS = new Set([
   // built, so what lands here is already safe. Escaping it again turned the
   // quotes into &quot; and truncated the notice at its first space.
   'demoAttr',
-  'portfolioCards', 'googleLink', 'supplierChips', 'heroPanelMedia',
+  'portfolioCards', 'googleLink', 'supplierChips', 'heroPanelMedia', 'promoBar',
   ...Array.from({ length: 9 }, (_, i) => `svcMedia${i}`),
 ]);
 // Same idea for the service-page template.
@@ -395,6 +395,50 @@ const serviceTemplate = fs.readFileSync('src/service.html', 'utf8');
 // its own, so a project with a real location and no year prints the location.
 const REAL = (v) => typeof v === 'string' && v.trim() !== '' && !v.trim().startsWith('TODO:');
 
+// --- W12-02, the promo bar --------------------------------------------------
+
+/* A static, fixed-height offer strip that sits in flow directly under the fixed
+   header and scrolls away with the page. Nothing about it moves: no marquee, no
+   transition, no transform. See DECISIONS.md ruling R-H.
+
+   It is data, not markup. Two fields in each locale file drive it, and the
+   `endDate` is the removal switch: the bar is emitted only while that date is
+   still in the future at build time. Setting `promo.endDate` to a past date
+   pulls the bar from both locales with no edit to the template, the stylesheet
+   or this file.
+
+   Why an end date and not an empty string: `build.js` already refuses to build
+   on any empty locale string, so `"text": ""` would fail the build rather than
+   remove the bar. The date is the switch that the existing gates allow.
+
+   The claim carries its own expiry for a reason. "doar pana in 2027" stops
+   being true on 2027-01-01, and a discount bar that outlives its own deadline
+   is exactly the kind of invented fact CLAUDE.md section 5 forbids. The one
+   caveat, recorded in QUESTIONS.md: expiry is evaluated when the site is BUILT,
+   so the bar survives past its date until something triggers a rebuild. */
+function promoBar(l) {
+  const text = l.strings['promo.text'];
+  const endDate = (l.strings['promo.endDate'] || '').trim();
+  if (!REAL(text) || !REAL(endDate)) return '';
+
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(endDate)) {
+    die(`promo.endDate in ${l.code} is "${endDate}", which is not an ISO YYYY-MM-DD date.`);
+  }
+  // Compared as UTC midnight against UTC midnight, so the switch does not flip
+  // an hour early or late depending on the runner's timezone.
+  const ends = Date.parse(endDate + 'T00:00:00Z');
+  const today = Date.parse(new Date().toISOString().slice(0, 10) + 'T00:00:00Z');
+  if (!(ends > today)) return '';
+
+  // No data-reveal: this sits above the fold, where CLAUDE.md section 1 allows
+  // nothing to animate. It is plain markup with a hard-capped height, so it
+  // costs no CLS either.
+  return `<div class="promo">
+  <p class="promo__text">${esc(text)}</p>
+</div>
+`;
+}
+
 // --- W12-01, the portfolio end tile -----------------------------------------
 
 /* The seventh cell of the homepage portfolio grid. It is not a project and not
@@ -608,6 +652,7 @@ for (const l of loaded) {
     .slice(0, 6);
   vars.supplierChips = renderSupplierChips(l, BASE);
   vars.heroPanelMedia = heroPanelMedia(l, BASE);
+  vars.promoBar = promoBar(l);
   SERVICE_SLUGS.forEach((_, i) => { vars[`svcMedia${i}`] = serviceMedia(l, BASE, i, 'card'); });
   vars.portfolioCards = '<div class="grid grid--3" id="portfolio-grid">\n' +
     featured.map((p, i) => {

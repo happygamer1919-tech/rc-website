@@ -154,13 +154,26 @@ true, so it can be used as a gate.
 From `docs/RC-WEBSITE-MASTER-PLAN.md`. The previous build was rejected for
 breaking the first two.
 
-- Desktop page height under 9,000px. Currently **8,504px RO / 8,774px RU**.
+- Desktop page height under 9,000px. Currently **8,646px RO / 8,860px RU**
+  on `main`, and **8,883px RO / 9,096px RU** on the unmerged wave 12 branch.
   The rejected build was 13,312px. Wave 6's cap was tighter still, 8,700px RO,
   and all three cards landed at 0px.
+
+  **Corrected 2026-09-03.** This line read "8,504px RO / 8,774px RU" from wave 8
+  until wave 12, and both figures were wrong by 142px and 86px. It is not drift
+  from waves 9 to 11: rebuilding `b4bf763`, the wave 9 merge, and measuring it
+  the same way gives 8,646 / 8,860 as well. The error mattered — it advertised
+  196px of RO headroom where there were 54px, which is most of why wave 12
+  finished over budget. The wave 6 and wave 8 gate tables below are left as they
+  were recorded; only this current-state line is corrected.
 
   Measure it the same way every time or the number moves by 154px:
   settled height, all reveals applied. An unrevealed `[data-reveal]` is
   translated 16px down, which inflates `scrollHeight` until it fires.
+
+  The number is width-invariant across the desktop range — identical at 1280,
+  1350, 1440, 1512, 1600 and 1920 — because the container caps at 1200px. What
+  changes it is measuring before the reveals settle, not the window size.
 
       // in the console, at a desktop width
       document.querySelectorAll('[data-reveal]').forEach(n => n.classList.add('is-revealed'));
@@ -321,3 +334,60 @@ One thing ships knowingly wrong: the hero panel alt text still describes an
 illustration of a finished house while the photograph shows workers on
 scaffolding. Half that fix is a provenance claim only the owner can make. See
 `docs/QUESTIONS.md` Q-09.
+
+---
+
+## Wave 12 — promo bar and portfolio end tile (BUILT, NOT MERGED)
+
+**Held on two gates.** The owner's gate: the wave does not merge until the
+contact form is ARMED and verified by a real browser submission, which is still
+blocked on `WEB3FORMS_KEY` (Q-W10-01, unchanged since wave 10). And a second one
+this wave produced itself: both locales finish over the R-I budgets, which needs
+a ruling (Q-W12-01).
+
+**W12-01 · Portfolio end tile.** A seventh cell after the six project cards:
+`100+` in `--brand` over a one-line caption, in the project card's own box.
+Not a link, no `href`, nothing focusable, and it does not carry the `project`
+class so the category filters leave it alone. Labelled rather than hidden: the
+numeral is `aria-hidden` as a restatement, the sentence is exposed, confirmed on
+the accessibility tree. The figure is entailed by the existing "500+ proiecte
+finalizate" stat, not invented.
+
+**W12-02 · Promo bar.** A static, in-flow strip beneath the fixed header and
+above the hero, 44px desktop / 36px mobile as a hard cap, dark on `--brand`.
+Data-driven from `promo.text` and `promo.endDate` in each locale file; the bar
+is emitted only while the end date is in the future, so it is removed by editing
+data rather than markup. Nothing animates, nothing is sticky, zero CLS.
+
+**Rulings recorded:** R-H (a static strip above the fold is permitted, the
+motion rules are unchanged) and R-I (budgets +44px while the bar is live).
+
+| Gate | Result |
+|---|---|
+| Homepage RO under 8,744px | **8,883px — 139px OVER** |
+| Homepage RU under 9,044px | **9,096px — 52px OVER** |
+| Lighthouse performance >=95, both locales | **99 RO / 99–100 RU** |
+| Lighthouse accessibility 100, both locales | **100 / 100** |
+| Best practices / SEO | **100 / 100**, both locales |
+| Promo bar contrast, shipped (`--ink` on `--brand`) | **5.10:1**, AA normal PASS |
+| Promo bar contrast, white on `--brand` (not shipped) | **3.41:1**, AA normal FAIL |
+| Promo bar height | **44px** desktop, **36px** mobile, exact |
+| One line, unclipped, 320px to 1440px | **yes**, both locales, via `clamp(11px, 3.4vw, 13px)` |
+| No animation on the bar, any viewport or motion preference | `animation-name: none`, `transition-duration: 0s`, `transform: none`, `position: static` |
+| Promo bar CLS contribution | **zero** — 0.0022 RO unchanged vs control, 0.0126 → 0.0118 RU |
+| Scroll never delayed, captured or hijacked | unchanged; no handler added |
+| New colour values | **zero** — no hex or `rgba()` in the diff |
+| Dead links | **0** of 1,524 checked across 25 pages |
+| Upscaled variants | **zero**, unchanged |
+
+Heights were measured at 1440px CSS, settled, against a control build of `main`
+at `d2c2023` on the same machine and server, so the cost of each card is
+attributed rather than inferred: the bar is 44px, the end tile is 193px, and the
+bar alone would have left both locales inside budget at 8,690 / 8,904.
+
+**A measurement note worth keeping.** Lighthouse performance first read 69 on
+this build. It reads 99 on an untouched `main` served the same way. The cause is
+`python3 -m http.server`, which is single-threaded and serialises the ~30 image
+requests; a threaded server scores both builds at 99–100. The recipe recorded
+under "Lighthouse baseline" above predates the real photographs and will
+under-report now. Use a threaded server, and always measure a control.

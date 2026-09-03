@@ -492,3 +492,94 @@ subject line from it would be reporting a thing that never happened.
 
 The two live submissions then take a minute. The subjects to expect are
 `[RO] Solicită ofertă gratuită — /` and `[RU] Запросите бесплатную оферту — /ru/`.
+
+---
+
+## Q-W12-01 · The RO homepage is 139px over budget, and the end tile is why — OPEN, opened 2026-09-03 (W12-01, W12-03)
+
+**Shipped default: the tile as the card specified it, both locales over budget,
+wave held. Nothing was trimmed to hide it.**
+
+R-I raised the homepage budgets by 44px for the promo bar. The bar costs exactly
+44px and stays inside. The **portfolio end tile costs a further 193px**, which
+R-I did not fund, and that is the entire overage:
+
+| | RO | RU |
+|---|---|---|
+| Baseline (`main`) | 8,646 | 8,860 |
+| Promo bar only | 8,690 ✓ | 8,904 ✓ |
+| **Both, as shipped** | **8,883** | **9,096** |
+| Budget (R-I) | 8,744 | 9,044 |
+| Over by | **139px** | **52px** |
+
+The 193px is structural, not styling slack: a seventh item in a three-column
+grid opens a third row that only the tile occupies. Shrinking the tile's padding
+buys tens of pixels, not hundreds.
+
+**Three ways out. A recommendation, not a menu:**
+
+1. **Raise the RO budget to 8,900 and the RU budget to 9,100** and keep the tile
+   as specified. *Recommended.* The tile is content the owner asked for, and
+   R-I's own principle is that approved content is not tightened to fund
+   something added later — which cuts both ways: the tile should not be starved
+   to fit a budget that was set before it existed. This is the smallest change
+   and it keeps the card as written.
+2. **Take the full-width variant**, a single-line closing strip spanning all
+   three columns. Measured on this build at **RO 8,791 / RU 9,005**: it saves
+   92px, brings RU inside its budget, and still leaves RO 47px over, so it does
+   not remove the decision, only shrinks it. It also arguably looks better — a
+   lone third-width tile on a row of its own reads as a missing seventh card.
+3. **Drop the tile and ship W12-02 alone.** Both locales then sit comfortably
+   inside the amended budgets at 8,690 and 8,904. Cheapest, and loses the card.
+
+There is no fourth option that keeps a card-shaped tile and the 8,744 budget.
+
+**Related and worth knowing regardless of the answer:** the recorded 8,504 /
+8,774 baseline in the docs was wrong by 142 / 86px. Real headroom on `main`
+before this wave was 54px RO, not 196px. See W12-03 in DECISIONS.md.
+
+---
+
+## Q-W12-02 · The promo bar expires at build time, not in the browser — OPEN, opened 2026-09-03 (W12-02)
+
+**Shipped default: build-time expiry, `endDate` 2027-01-01.**
+
+The bar is emitted only while `promo.endDate` is in the future **when the site is
+built**. GitHub Pages rebuilds on a push to `main`, so if nobody pushes after the
+date the bar keeps claiming a discount that has ended.
+
+Two things the owner may want to decide:
+
+1. **Is 2027-01-01 the right date?** "doar până în 2027" reads most naturally as
+   *until 2027 arrives*, so the offer ends as 2026 does, and that is what
+   shipped. If it actually means *through the whole of 2027*, the date should be
+   2028-01-01. One-character fix in both locale files.
+2. **Should expiry be enforced without a push?** Options, cheapest first: do
+   nothing and remember to change the data; add a scheduled workflow run so the
+   site rebuilds itself periodically; or expire it client-side, which is
+   refused by default because it puts JavaScript in charge of an above-the-fold
+   box and risks the zero-CLS property the card demanded.
+
+Recommendation: leave it build-time and add a monthly `schedule:` trigger to
+`pages.yml` when the wave merges. It costs three lines and no risk.
+
+---
+
+## Q-W12-03 · Should the promo bar appear on the service pages too? — OPEN, opened 2026-09-03 (W12-02)
+
+**Shipped default: homepage only.**
+
+The card said "beneath the header, above the hero" and the wave's acceptance
+measures the homepage only, so the bar went into `src/template.html` and not
+`src/service.html`. But the offer is site-wide ("la orice serviciu"), and a
+visitor who lands on `/servicii/acoperisuri/` from search — which is what the
+whole of W9-06 and W9-08 was for — never sees it.
+
+Extending it is one `{{promoBar}}` placeholder in `src/service.html`; the
+renderer, the styles and the locale data are already shared. The cost is 44px on
+each of the eighteen service pages against a 6,000px budget whose worst page is
+currently 5,685px, so there is room. It was not done unasked because this wave's
+rulings amended the homepage budgets only.
+
+Recommendation: extend it. The bar is worth least on the page a visitor is
+least likely to land on.

@@ -8,6 +8,22 @@ Status values: `todo` · `in progress` · `blocked` · `shipped`.
 Waves 1 to 5 predate this file; their tickets are reconstructed from the git
 history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 
+## Wave 12
+
+| Ticket | Card | Branch | Status |
+|---|---|---|---|
+| RC-050 | W12-01 Portfolio end tile, 100+ | `w12/rc-050-portfolio-end-tile` | built, held |
+| RC-051 | W12-02 Static promo bar, data-driven | `w12/rc-051-promo-bar` | built, held |
+| RC-052 | W12-03 Rulings R-H and R-I, heights measured | `w12/rc-052-wave12-docs` | built, held |
+
+**The whole wave is held unmerged**, on the owner's gate: the contact form must
+be ARMED and verified by a real browser submission first. That is still blocked
+on `WEB3FORMS_KEY`, unchanged since wave 10 — see Q-W10-01.
+
+A second decision is owed before merge regardless of the form: both locales
+finish over the R-I budgets, RO by 139px and RU by 52px, and the end tile is the
+whole of it. Nothing was trimmed to hide it, per the card. See Q-W12-01.
+
 ## Wave 6
 
 | Ticket | Card | Branch | Status |
@@ -144,3 +160,22 @@ size. Selection is now by exact filename with an asserted dimension check.
 **Status: DONE** (2026-09-02). Deployed as f179951. All acceptance criteria met
 live. The deploy log still reports DEMO MODE: WEB3FORMS_KEY is still absent, so
 Q-W10-01 remains open and W10-02 remains blocked.
+
+## W12-01 · Portfolio end tile
+**Status: BUILT, HELD** (2026-09-03). Seventh cell after the six cards, `100+`
+over a one-line caption, project-card box, no link and nothing focusable, and
+outside the filter selector so filters leave it alone. Labelled not hidden:
+numeral `aria-hidden`, sentence exposed, confirmed on the accessibility tree.
+Costs 193px, which is the whole of the wave's budget overage. See Q-W12-01.
+
+## W12-02 · Promo bar
+**Status: BUILT, HELD** (2026-09-03). Static in-flow strip, 44/36px hard cap,
+`--ink` on `--brand` at 5.10:1, one line unclipped from 320px to 1440px, zero
+animation, zero CLS measured against a control. Data-driven with `promo.endDate`
+as the removal switch. Homepage only — Q-W12-03 asks whether to extend it to the
+service pages. Costs exactly 44px and stays inside budget on its own.
+
+## W12-03 · Heights
+**Status: REPORTED, OVER BUDGET** (2026-09-03). RO 8,883 against 8,744, RU 9,096
+against 9,044. Not trimmed, per the card. Also corrected a 142px error in the
+recorded baseline that had stood since wave 8. See W12-03 in DECISIONS.md.

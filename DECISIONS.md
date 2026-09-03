@@ -1419,3 +1419,295 @@ generated directly in `build.js` instead.
 `noindex, nofollow`, absent from `sitemap.xml`, and **zero pages in `dist/` link
 to it**. Reachable by typing the URL and no other way. The five images live in
 `public/review/` and are served as-is, at full size, unprocessed.
+
+---
+
+## RULING R-H · A static promo strip above the fold, W12-02, 2026-09-03
+
+**Recorded at the owner's instruction, verbatim in substance:**
+
+> CLAUDE.md says nothing above the fold moves. A static fixed-height promo strip
+> above the fold is a permitted exception because it does not move. The motion
+> rules are unchanged and no animated element above the fold is authorised by
+> this.
+
+What this does and does not license, so it is not read too widely later:
+
+- It licenses **one static strip**. The exception is that the strip is *there*,
+  above the fold, not that anything above the fold may now behave differently.
+- CLAUDE.md section 1 is untouched. "Nothing above the fold animates" still
+  holds, and the strip complies with it rather than being excused from it: no
+  keyframes, no transition, no transform, no `data-reveal`, `position: static`.
+- **No marquee.** The supplier marquee is the only animated element on the site
+  and it stays below the fold where it has always been. A moving promo bar is
+  not authorised by this ruling and is refused by it.
+
+Verified in a headless browser at every width from 320px to 1440px, and again
+under `prefers-reduced-motion: reduce`: `animation-name: none`,
+`transition-duration: 0s`, `transform: none`, `position: static`. The only
+`@keyframes` rule in the stylesheet is still `marquee-scroll`.
+
+---
+
+## RULING R-I · Homepage height budgets while the promo bar is live, W12-03, 2026-09-03
+
+**Recorded at the owner's instruction:**
+
+> For as long as the promo bar is live, homepage height budgets are RO under
+> 8,744px and RU under 9,044px, being the existing budgets plus the 44px bar.
+> When the bar is removed by data the budgets revert to 8,700 and 9,000 with no
+> other change. Approved above-the-fold content is not tightened to fund chrome
+> added later.
+
+| | Bar live | Bar removed by data |
+|---|---|---|
+| Homepage RO | under **8,744px** | under **8,700px** |
+| Homepage RU | under **9,044px** | under **9,000px** |
+
+This supersedes the CLAUDE.md section 2 figures **only while `promo.endDate` is
+in the future**. Nothing else about section 2 changes: same measurement recipe,
+same 1,400px per-section cap, same two standing exceptions.
+
+**The ruling's arithmetic covers W12-02 and not W12-01.** +44px is the bar
+alone. The portfolio end tile added in the same wave costs a further 193px and
+is not funded by this ruling, which is why both locales finish the wave over
+budget. Measured breakdown and the decision that is owed are in W12-03 below and
+in Q-W12-01.
+
+---
+
+## W12-01 · The portfolio end tile
+
+### It is labelled, not hidden. Only the numeral is hidden.
+
+The card left the choice open: hide the tile from the accessibility tree as
+decorative, or give it a plain text label. **It is labelled**, and the reason is
+that the tile is not decorative. It carries a fact — that the six cards are a
+sample of a much larger body of work — and `aria-hidden` on the whole tile would
+mean a sighted visitor learns that and a screen-reader user never does. That is
+a real loss even though Lighthouse scores 100 either way, because Lighthouse
+cannot tell a decorative tile from a hidden sentence.
+
+What is hidden is the **numeral only**. `100+` is a visual restatement of the
+sentence printed under it, so exposing both makes the tile announce as
+
+    100+ Și peste 100 de alte proiecte finalizate
+
+Marking `.more__n` `aria-hidden="true"` leaves exactly one clean sentence.
+Confirmed against the real accessibility tree, not the DOM:
+
+| Node | Result |
+|---|---|
+| `.more__n` (the big 100+) | `ignored: true`, reason `ariaHiddenElement` |
+| `.more__line` (the sentence) | `role: paragraph`, **not ignored** |
+| `.card--more` (the box) | `ignored: true`, reason `uninteresting` — a plain `div` with no role, which is correct |
+
+The box being "uninteresting" is the intended result and not a bug: the box is
+the styling, the paragraph inside it is the content.
+
+### Not a link, not focusable, and invisible to the filters
+
+No `href`, no `tabindex`, no `<a>`, nothing focusable inside it: measured, zero
+focusable descendants. It deliberately does **not** carry the `project` class,
+which is the selector `src/main.js` filters on, so the six cards come and go
+under the category filters while the tile stays put. Exercised all six filters
+in a browser: every filter leaves the tile visible, every filter matches at
+least one project, so the tile is never left sitting alone next to the "no
+projects in this category" message.
+
+### The copy, and why 100+ is not an invented figure
+
+| | Numeral | Line |
+|---|---|---|
+| RO | `100+` | **Și peste 100 de alte proiecte finalizate** |
+| RU | `100+` | **И более 100 других завершённых проектов** |
+
+CLAUDE.md section 5 forbids inventing a figure. This one is not invented: it is
+**strictly weaker than a claim the site has carried since wave 1**. `stats.0`
+reads "500+ proiecte finalizate" / "500+ завершённых проектов" in the hero and
+again in the dark band. If 500+ is true then six shown plus a hundred more is
+true, and the tile deliberately says 100+ rather than 494 so that it stays true
+without depending on the exact total.
+
+The nouns are lifted from `stats.0` in each locale ("proiecte finalizate",
+"завершённых проектов") rather than newly worded, so the tile and the stat band
+cannot drift apart in wording.
+
+### Styling adds no colour and no second box
+
+`.card--more` reuses the `card` class for background, border, radius and shadow,
+so the box is the project card's box by construction rather than by imitation.
+The numeral is `.stat__n` exactly — 44px, weight 800, `--brand` — which is the
+same treatment, and the same contrast justification, the hero stats have carried
+since wave 1: `--brand` on white is **3.41:1**, clearing the WCAG 3:1
+large-text threshold at 44px/800. The caption is `--ink-muted`, **6.90:1**.
+No new colour value: the diff adds no hex and no `rgba()`.
+
+---
+
+## W12-02 · The promo bar
+
+### Placement: in flow, above `<main>`
+
+The header is `position: fixed` with a constant 96px spacer on `<body>`, so the
+first element in normal flow already sits directly beneath the header. The bar
+is emitted there, immediately before `<main>` — site chrome rather than page
+content, and above the hero without being inside it. Being in flow is what makes
+it scroll away with the page; it is `position: static` and there is no sticky
+behaviour to disable.
+
+### Contrast, both directions, measured
+
+Computed from the shipped `#F65308` with the WCAG 2.1 relative-luminance
+formula, and cross-checked against the rendered `getComputedStyle` values
+(`rgb(246, 83, 8)` on `rgb(26, 26, 26)`):
+
+| Foreground on `#F65308` | Ratio | AA normal (4.5:1) | AA large (3:1) |
+|---|---|---|---|
+| **`--ink` `#1A1A1A` — shipped** | **5.10:1** | **PASS** | PASS |
+| `#FFFFFF` — not shipped | **3.41:1** | **FAIL** | PASS |
+
+The owner's estimate for white was "about 3.4:1" and it is 3.41:1. The stop
+condition in the card — dark-on-orange measuring under 4.5:1 — **did not fire**:
+5.10:1 clears AA for normal text at any size, so the bar shipped as specified
+rather than being reported back.
+
+This is also why the bar is the one place on the site where text on `--brand` is
+dark rather than white. The primary button gets away with white on `--brand` at
+3.41:1 only because its label is 19px, over the WCAG large-text threshold, which
+is recorded in "Contrast, resolved 2026-08-28". Bar text at 15px is not large
+text, so the same trick is unavailable and the fill stays orange with dark type.
+
+### Nothing moves, and it cost zero CLS
+
+No keyframes, no transition, no transform, no `data-reveal`. Verified at 320,
+360, 375, 390, 414, 600, 768, 769, 1024 and 1440px, and again under
+`prefers-reduced-motion: reduce`.
+
+CLS was measured against a control build of `main` at `d2c2023` on the same
+machine, same server, same run:
+
+| | control (`main`) | wave 12 |
+|---|---|---|
+| RO | 0.0022 | **0.0022** |
+| RU | 0.0126 | **0.0118** |
+
+Unchanged on RO and marginally lower on RU. The bar contributes nothing because
+its height is a hard cap in CSS, present from first paint, and independent of
+when the webfont resolves or how long the string turns out to be.
+
+### The RU line fits, at a smaller size, with no motion
+
+The card allowed reducing the font size to fit and forbade introducing motion.
+At a flat 13px the Russian string **clipped at 360px and both strings clipped at
+320px**, so the mobile size became `clamp(11px, 3.4vw, 13px)`. A
+viewport-relative size is still a static size: fixed for a given viewport, never
+animated, and the 36px cap is independent of it.
+
+Measured single-line text width against the space available, both locales:
+
+| Viewport | Font | RO | RU | Clipped |
+|---|---|---|---|---|
+| 320px | 11px | 264px | 280px | no |
+| 360px | 12.24px | 294px | 312px | no |
+| 375px | 12.75px | 306px | 325px | no |
+| 390px | 13px | 312px | 331px | no |
+| 768px | 13px | 312px | 331px | no |
+| 769px+ | 15px | 360px | 382px | no |
+
+One line at every width, never wrapped, never clipped, bar height exactly 36px
+below 769px and exactly 44px above it.
+
+### The copy
+
+| | Text |
+|---|---|
+| RO | **Reducere 10% la orice serviciu doar până în 2027** |
+| RU | **Скидка 10% на любую услугу только до 2027 года** |
+
+The RO string is the owner's, with the diacritics restored (`pana in` →
+`până în`) to match every other Romanian string on the site. Nothing else about
+it was touched. The RU string is a faithful clause-for-clause translation and
+not a rewrite: *Скидка 10%* / *на любую услугу* / *только до 2027 года*.
+
+**This is a different offer from the one already on the page** and does not
+contradict it. `hero.priceLine1` has read "−10% la programări anticipate" since
+wave 1 — 10% off for booking early. The bar's 10% is on any service, until a
+date. Both are the owner's copy; neither is inferred from the other.
+
+### Data-driven, with the end date as the switch
+
+`promo.text` and `promo.endDate` in each locale file drive the bar, and
+`build.js` emits it only while `endDate` is still in the future at build time.
+Setting `promo.endDate` to a past date removes the bar from both locales with no
+edit to the template, the stylesheet or `build.js`.
+
+**Why a date and not an empty string.** `build.js` already refuses to build on
+any empty locale string, so `"text": ""` would fail the build rather than remove
+the bar. The date is the switch the existing gates permit.
+
+The claim carries its own expiry deliberately: "doar până în 2027" stops being
+true on 2027-01-01, and a discount bar outliving its own deadline is the kind of
+untrue copy section 5 exists to prevent. The caveat, recorded in Q-W12-02: the
+comparison happens when the site is **built**, so the bar survives its date until
+something triggers a rebuild.
+
+### Homepage only, for now
+
+`src/template.html` is the homepage template and `src/service.html` is separate,
+so the bar landed on the homepage alone. That is the literal scope of the card
+and the whole of the wave's acceptance. Extending it to the eighteen service
+pages is one placeholder and is left as Q-W12-03 rather than taken unasked,
+because the service pages have their own 6,000px budget which this wave's
+rulings did not amend.
+
+---
+
+## W12-03 · Heights: both locales finish over budget, and it is W12-01 that does it
+
+**Reported, not trimmed.** The card's instruction where a budget is exceeded is
+to stop and report rather than trim to fit, and no section was tightened.
+
+Measured at exactly 1440px CSS, settled, all reveals applied. Each row is a
+separate build measured the same way, so the costs are attributed and not
+inferred:
+
+| Build | RO | RU |
+|---|---|---|
+| Baseline (`main` at `d2c2023`) | 8,646 | 8,860 |
+| **+ W12-02 promo bar only** | **8,690** | **8,904** |
+| + W12-01 end tile only | 8,839 | 9,052 |
+| **Both, as shipped** | **8,883** | **9,096** |
+| Budget (R-I amended) | 8,744 | 9,044 |
+| **Over by** | **139px** | **52px** |
+
+- The promo bar costs exactly **44px**, as R-I assumed, and on its own **both
+  locales stay inside the amended budgets**.
+- The end tile costs **193px**: a 169px tile plus the 24px grid gap, because a
+  seventh item in a three-column grid opens a third row that only it occupies.
+- R-I raised the budgets by 44px, which funds the bar and nothing else. The
+  tile's 193px was never funded.
+
+**The homepage is 142px taller than the docs say.** `RELEASE-NOTES.md` and
+DECISIONS.md have recorded 8,504px RO / 8,774px RU since wave 8. The real
+figures on `main` today are 8,646 / 8,860. This is not drift introduced by
+waves 9 to 11: a build of `b4bf763` (the wave 9 merge) measures **8,646 / 8,860
+as well**, byte for byte the same numbers. The recorded figures are simply
+wrong, and they matter, because they suggest 196px of RO headroom where there
+are **54px**. The stale figures are corrected in RELEASE-NOTES in this wave.
+
+Height is width-invariant across the desktop range — 8,646px at 1280, 1350,
+1440, 1512, 1600 and 1920 — because the container caps at 1200px. So the
+measurement is not sensitive to which desktop width is used, only to whether the
+reveals have settled.
+
+### The alternative that was measured but not shipped
+
+A tile spanning all three columns as a single-line closing strip was measured on
+the same build: **RO 8,791, RU 9,005**. That is 92px cheaper, brings **RU inside
+its budget**, and still leaves RO 47px over. It is offered in Q-W12-01 rather
+than shipped, because "a final tile in the portfolio grid, styled like the
+existing cards" most plainly means a card-shaped cell, and changing that shape
+is the owner's call and not a height optimisation to make quietly.
+
+No variant of the tile fits the RO budget as amended. That is the decision owed.

@@ -762,7 +762,36 @@ a visitor sees.
 
 ---
 
-## Q-W12-07 · Arming the reviews link puts "4.9 from 250+" one click from "5.0 from 7" — OPEN, opened 2026-09-06 (W12-12)
+## Q-W12-07 · The 4.9/250+ claim — **RESOLVED 2026-09-06, claim removed** (W12-13)
+
+**Removed from the homepage in both locales, and the investigation found nothing
+that would support restoring it.**
+
+Searched Google Maps three ways for a second listing:
+
+| Search | Result |
+|---|---|
+| Phone `+373 76 837 180` | resolves directly to ONE place, no results list |
+| `Rapid Construct`, zoomed out over the whole region | the same single place |
+| `Nicolae Zelinski 24` address | a results list: one Rapid Construct, plus a post office, an apartment building and a software company |
+
+**Exactly one profile exists:** CID `1981309119616115698` (`0x1b7f062598f5e3f2`),
+KG mid `/g/11xrn6_nk5`, **5.0 from 7 reviews**, Nicolae Zelinski St 24,
+`rapidconstruct.md`, +373 768 37 180.
+
+**The other site is the same entity, not a second listing.** `rapidconstruct.md`
+embeds a Maps URL whose place segment carries `0x1b7f062598f5e3f2` — the identical
+CID. The other id in that URL, `/g/11c4mnb1fc`, is the geocoded street address,
+not a business.
+
+So no listing anywhere supports 4.9, and none supports 250+. Per the card,
+nothing is restored.
+
+**Still worth asking the client what the 250+ counted.** If it was jobs, or
+reviews across Facebook and Instagram, that is a real number that could be stated
+honestly as what it is. If nobody can say, it should stay off the site.
+
+*Original entry follows, unedited.*
 
 **Shipped default: the link is armed, as instructed. The rating copy is
 untouched, because it is not this card's to change.**

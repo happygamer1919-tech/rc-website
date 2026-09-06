@@ -2087,3 +2087,64 @@ text. `Оргеев` redirects to `Орхей`, so that placeholder disagrees wi
 coverage list it sits beside. It is a placeholder, not a coverage claim, and the
 card ruled `meta.title` and `meta.description` keep their exonyms, so nothing was
 changed. Flagged rather than fixed.
+
+---
+
+## RULING R-N · The 4.9/250+ review claim is restored on client instruction, W12-18, 2026-09-06
+
+Recorded at the owner's instruction:
+
+> The 4.9/5 from 250+ reviews claim is restored on the client's explicit written
+> instruction of this date. It is client-asserted and unverified. The W12-13
+> investigation stands unchanged and is preserved beside this ruling: exactly one
+> Google Business Profile exists, CID 1981309119616115698, showing 5.0 from 7
+> reviews, and rapidconstruct.md embeds that same CID, so there is no second
+> listing. Nothing found supports 4.9 or 250+. The claim is the client's
+> statement about his own business, not a verified figure, and is never expressed
+> as structured data. R-K unchanged.
+
+### The investigation, preserved unchanged
+
+Kept here in full because the ruling depends on it being on the record, not
+because it argues against the ruling. Three searches of Google Maps:
+
+| Search | Result |
+|---|---|
+| Phone `+373 76 837 180` | resolves directly to ONE place, no results list |
+| `Rapid Construct`, zoomed out over the region | the same single place |
+| `Nicolae Zelinski 24` | a results list: one Rapid Construct, plus a post office, an apartment building and a software company |
+
+**One profile: CID `1981309119616115698`, 5.0 from 7 reviews.** `rapidconstruct.md`
+embeds a Maps URL carrying that identical CID, so the second site is the same
+entity, not a second listing. **Nothing found supports 4.9, and nothing supports
+250+.**
+
+### What the ruling settles, and what it does not
+
+It settles **who is responsible**: this is the client's assertion about his own
+business, made in writing, and it is his to make. It is not a figure this repo
+verified, and CLAUDE.md section 5 is not violated by publishing it, because the
+source is the client rather than an invention of ours.
+
+It does not make the figure true, and it does not touch R-K. **The claim is
+visible copy and never structured data.** Audited after the restore across every
+generated `html`, `json`, `txt` and `xml`: `aggregateRating` 0, `ratingValue` 0,
+`reviewCount` 0, `bestRating` 0, `worstRating` 0, `"@type": "Review"` 0.
+
+Re-audited by the rc-065 method — stripping HTML comments and SVG path data
+before searching — so the figures cannot hide in a comment the way they did
+once: **0 occurrences inside comments, 0 in meta tags or JSON-LD.**
+
+### What was restored, and the one thing that was not
+
+Restored exactly as they were, from the pre-removal commit: `stats.3`,
+`reviews.score`, `reviews.outOf`, `reviews.count`, `reviews.aria`, the `.rating`
+panel including the five-star display clipped to 98%, and both stat grids back to
+four columns.
+
+**The Google profile link stays below the cards**, where W12-13 put it, and was
+deliberately not moved back into the panel. Measured vertical distance from the
+bottom of the rating panel to the top of the link: **107px RO, 162px RU.**
+
+That instruction is also the whole reason the wave now exceeds its height budget.
+See W12-19 below.

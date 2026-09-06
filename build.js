@@ -417,6 +417,35 @@ const REAL = (v) => typeof v === 'string' && v.trim() !== '' && !v.trim().starts
    second copy anywhere to fall out of step. meta.description is necessarily
    shorter than 20 names and states four plus "and other localities", so it is a
    subset of the list rather than a rival to it. */
+/* R-M, W12-15. The Russian list is in the USAGE register, not the classifier's.
+   CUATM is authoritative for the Romanian forms and is not authoritative for the
+   Russian locale, which addresses Russian-speaking customers rather than the
+   state. The classifier form is recorded here so the divergence is documented
+   next to the data rather than only in DECISIONS.md.
+
+     #   Romanian (CUATM)   Russian (usage, shipped)   Russian (CUATM)
+     1   Chișinău           Кишинёв                    Кишинэу
+     2   Codru              Кодру                      Кодру
+     3   Durlești           Дурлешты                   Дурлешть
+     4   Sîngera            Сынджера                   Сынджера
+     5   Ialoveni           Яловены                    Яловень
+     6   Strășeni           Страшены                   Стрэшень
+     7   Anenii Noi         Анений-Ной                 Анений Ной
+     8   Criuleni           Криулень                   Криулень
+     9   Coșnița            Кошница                    Кошница
+    10   Dubăsari           Дубоссары                  Дубэсарь
+    11   Orhei              Орхей                      Орхей
+    12   Călărași           Калараш                    Кэлэрашь
+    13   Hîncești           Хынчешты                   Хынчешть
+    14   Căinari            Каинары                    Кэинарь
+    15   Costești           Костешты                   Костешть
+    16   Sociteni           Сочитены                   Сочитень
+    17   Cahul              Кагул                      Кахул
+    18   Ungheni            Унгены                     Унгень
+    19   Bălți              Бельцы                     Бэлць
+    20   Vadul lui Vodă     Вадул-луй-Водэ             Вадул луй Водэ
+
+   Six agree in both registers. Fourteen diverge. */
 const localities = (l) => {
   const out = [];
   for (let i = 0; `band.localities.${i}` in l.strings; i++) out.push(l.strings[`band.localities.${i}`]);

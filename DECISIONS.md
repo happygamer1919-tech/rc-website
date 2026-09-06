@@ -1711,3 +1711,90 @@ existing cards" most plainly means a card-shaped cell, and changing that shape
 is the owner's call and not a height optimisation to make quietly.
 
 No variant of the tile fits the RO budget as amended. That is the decision owed.
+
+---
+
+## RULING R-M · The Russian locale follows usage, not the classifier, W12-15, 2026-09-06
+
+Recorded at the owner's instruction:
+
+> CUATM is authoritative for Romanian locality forms. It is not authoritative for
+> the Russian locale. The Russian locale addresses Russian-speaking customers,
+> not the state, so established Russian usage governs. Each entry records the
+> CUATM Russian form alongside as a comment so the divergence is documented.
+
+This settles Q-W12-05 and reverses, for Russian only, what W12-11's verification
+produced. W12-11 was not wrong: CUATM really is the official classifier and its
+Russian forms really are transliterations of the Romanian. R-M says that
+authority does not extend to the Russian locale, because the classifier speaks to
+the state and the locale speaks to a customer — and a customer searching for a
+builder types Кишинёв, not Кишинэу.
+
+**Romanian is unchanged and fully CUATM**, including the two the classifier
+settled: `Sîngera` with `î`, and `Hîncești` with `î`.
+
+The CUATM Russian form for all twenty is recorded as a comment beside the
+`localities` helper in `build.js`, next to the data rather than only here.
+
+### The three-column list, as shipped
+
+| # | Romanian (CUATM) | Russian (usage, shipped) | Russian (CUATM) |
+|---|---|---|---|
+| 1 | Chișinău | **Кишинёв** | Кишинэу |
+| 2 | Codru | Кодру | Кодру |
+| 3 | Durlești | **Дурлешты** | Дурлешть |
+| 4 | **Sîngera** | Сынджера | Сынджера |
+| 5 | Ialoveni | **Яловены** | Яловень |
+| 6 | Strășeni | **Страшены** | Стрэшень |
+| 7 | Anenii Noi | **Анений-Ной** | Анений Ной |
+| 8 | Criuleni | Криулень | Криулень |
+| 9 | Coșnița | Кошница | Кошница |
+| 10 | Dubăsari | **Дубоссары** | Дубэсарь |
+| 11 | Orhei | Орхей | Орхей |
+| 12 | Călărași | **Калараш** | Кэлэрашь |
+| 13 | Hîncești | **Хынчешты** | Хынчешть |
+| 14 | Căinari | **Каинары** | Кэинарь |
+| 15 | Costești | **Костешты** | Костешть |
+| 16 | Sociteni | **Сочитены** | Сочитень |
+| 17 | Cahul | **Кагул** | Кахул |
+| 18 | Ungheni | **Унгены** | Унгень |
+| 19 | Bălți | **Бельцы** | Бэлць |
+| 20 | Vadul lui Vodă | **Вадул-луй-Водэ** | Вадул луй Водэ |
+
+**Six agree in both registers. Fourteen diverge.**
+
+### The Russian-usage source, and its standing
+
+**Source: the canonical article titles on ru.wikipedia**, queried through the
+MediaWiki API with redirect resolution, so what is recorded is the title Russian
+usage settles on rather than a title that merely exists.
+
+It is named plainly because it is weaker than CUATM. It is a usage reference,
+not a state register, and R-M is precisely the ruling that usage is what the
+Russian locale needs. Where a form I had guessed was merely *a* spelling, the
+redirect resolution says which one Russian actually lands on:
+
+| Queried | Resolves to | Meaning |
+|---|---|---|
+| Сынжера | **Сынджера** | my original spelling was wrong in *both* registers |
+| Оргеев | **Орхей** | the Soviet exonym redirects to the Romanian-derived form |
+| Криуляны | **Криулень** | same |
+| Кэинарь | **Каинары** | the classifier form redirects to the usage form |
+| Анений Ной | **Анений-Ной** | usage hyphenates, the classifier does not |
+
+### The two the card asked about by name
+
+- **Костешты stands.** Usage confirms it; it is the canonical title. Unchanged
+  since wave 1 and correct.
+- **Кэйнары does NOT stand.** There is no article at `Кэйнары` at all, and the
+  classifier form `Кэинарь` redirects to **`Каинары`**. So the string that has
+  been on the site since wave 1 is wrong under *both* registers, and the shipped
+  form is `Каинары`.
+
+### Out of scope but worth knowing
+
+`form.phCity` in the RU locale reads `Кишинёв, Оргеев, Костешты…` as placeholder
+text. `Оргеев` redirects to `Орхей`, so that placeholder disagrees with the
+coverage list it sits beside. It is a placeholder, not a coverage claim, and the
+card ruled `meta.title` and `meta.description` keep their exonyms, so nothing was
+changed. Flagged rather than fixed.

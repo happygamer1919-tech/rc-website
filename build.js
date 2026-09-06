@@ -160,7 +160,23 @@ if (empty.length) die(`empty strings: ${empty.join(', ')}`);
 const privacyTodos = loaded.flatMap((l) =>
   Object.entries(l.strings).filter(([k, v]) => k.startsWith('privacy.') && /TODO:/.test(v))
     .map(([k]) => `${l.code}:${k}`));
-const privacyIncomplete = privacyTodos.length > 0;
+
+/* W12-21. The operator identity is ABSENT from the fallback page rather than
+   marked TODO, so a TODO scan alone would report the page complete and release
+   the W12-17 link suppression. Absence is not completeness: a policy that never
+   names an operator is exactly as unlinkable as one that says TODO.
+
+   Both conditions are checked, so the page counts as incomplete while the
+   operator fields are missing OR still marked. The reversal is unchanged in
+   substance: add privacy.opName and privacy.opIdno with real values to both
+   locale files and the links, indexability and sitemap entries return together. */
+const OPERATOR_KEYS = ['privacy.opName', 'privacy.opIdno'];
+// REAL() is defined further down and would be in its temporal dead zone here,
+// so the same predicate is written out.
+const operatorPresent = (v) => typeof v === 'string' && v.trim() !== '' && !v.trim().startsWith('TODO:');
+const privacyMissingOperator = loaded.flatMap((l) =>
+  OPERATOR_KEYS.filter((k) => !operatorPresent(l.strings[k])).map((k) => `${l.code}:${k} (absent or TODO)`));
+const privacyIncomplete = privacyTodos.length > 0 || privacyMissingOperator.length > 0;
 
 const servicePages = [];
 
@@ -1126,8 +1142,10 @@ console.log(`google reviews link: ${GOOGLE_REVIEWS_URL || 'HIDDEN (set GOOGLE_RE
     (fallback.length ? `\n  · ` + fallback.join('\n  · ') : ' — every slot has a real photo'));
 }
 if (privacyIncomplete) {
-  console.log(`\nPRIVACY PAGE INCOMPLETE: ${privacyTodos.length} TODO field(s) still unfilled.`);
-  privacyTodos.forEach((t) => console.log('  · ' + t));
+  const reasons = [...privacyTodos, ...privacyMissingOperator];
+  console.log(`\nPRIVACY PAGE INCOMPLETE: ${reasons.length} operator field(s) unresolved.`);
+  reasons.forEach((t) => console.log('  · ' + t));
+  console.log('  -> nothing on the site links to the privacy pages (W12-17).');
   console.log('  -> the page is noindex and excluded from sitemap.xml until they are filled.');
 }
 console.log(FORM_ARMED

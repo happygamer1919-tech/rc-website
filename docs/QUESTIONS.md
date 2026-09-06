@@ -829,7 +829,27 @@ about the existing copy and much bigger than this link.
 
 ---
 
-## Q-W12-07-LEGAL · The privacy pages are unlinked until the registry extract arrives — OPEN, opened 2026-09-06 (W12-17)
+## Q-W12-07-LEGAL · The privacy pages are unlinked until the registry extract arrives — OPEN, opened 2026-09-06 (W12-17, W12-21)
+
+**UPDATED 2026-09-06 by W12-21.** A fallback policy page is drafted on
+`w12/rc-072-privacy-fallback`, unmerged and awaiting review. It names no legal
+entity and carries no placeholder text.
+
+**The reversal step changed shape, and this is the important part.** The gate was
+`privacyIncomplete`, computed by scanning `privacy.*` for `TODO:`. The fallback
+page OMITS the operator fields rather than marking them, so that scan found
+nothing and reported the page complete — which silently restored all three link
+sites, `index, follow` and the sitemap entry. Caught before merge.
+
+The gate now treats **absence and TODO alike**: a page that never names an
+operator is exactly as unlinkable as one that says TODO.
+
+**Reversal, unchanged in substance:** add `privacy.opName` and `privacy.opIdno`
+with real values to both locale files, and restore the operator section to
+`src/privacy.html`. The links, the footer entry, `index, follow` and the sitemap
+entries all return together.
+
+*Original entry follows, unedited.*
 
 **State: the pages are published, `noindex`, out of the sitemap, and NOTHING on
 the site links to them.** They are reachable only by typing the URL.

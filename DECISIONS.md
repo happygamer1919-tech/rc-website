@@ -2205,3 +2205,75 @@ on Russian the rating panel is shorter than the cards beside it, so a link
 *inside* the panel cost nothing, and deleting it therefore changed nothing. On
 Romanian the panel is the taller element, so the same link cost 8px. The two
 locales differ because the reviews row is driven by a different child in each.
+
+---
+
+## RULING R-P · Live measurement requires a cache-buster and markers, W12-22, 2026-09-06
+
+Recorded at the owner's instruction as **standing doctrine**, in `docs/CLAUDE.md`
+section 12 rather than only here:
+
+> A live measurement is valid only when taken with a cache-buster AND with
+> content markers asserted in the same pass. Height alone is never sufficient
+> evidence, because a stale page returns a plausible number. Every live
+> verification asserts at least one marker proving the deployed build is the one
+> being measured. A measurement without markers is reported as unverified, never
+> as passed.
+
+### What bought this rule
+
+After the W12-18/W12-20 deploy the live homepage measured **RO 8,843 and RU
+9,002** — inside budget, entirely plausible, and *wrong*. It was a stale edge
+copy returning the pre-deploy build. The true figures were 8,818 and 9,032.
+
+It was caught by luck rather than method: the numbers were **exactly** the
+previous build's, which is the one pattern a human notices. Had the stale copy
+differed by twenty pixels it would have been reported as a pass.
+
+### The marker sets
+
+| Page type | Markers |
+|---|---|
+| Homepage | rating panel 1, portfolio grid children 7, visible profile anchors 0, promo bar 1, stat tiles 8, `areaServed` 20 |
+| Service page | promo bar 1, visible profile anchors 0, `areaServed` 20 |
+| Privacy page | promo bar 1, visible profile anchors 0 |
+
+`scripts/verify-live.js` implements it: a run-unique cache-buster on every
+request, `Network.setCacheDisabled`, markers and settled height read in **one
+page evaluation** so they cannot come from different responses, and a non-zero
+exit on any mismatch.
+
+**The assertions were negative-tested, not merely written.** Pointed at a build
+with the review panel removed, the verifier reported UNVERIFIED with three named
+mismatches — `ratingPanel` 1→0, `profileAnchors` 0→1, `statTiles` 8→6 — and
+exited 1, *while reporting heights of 8,843 and 9,002 that were inside budget and
+looked correct*. That is the failure this ruling exists for, reproduced on
+demand.
+
+### The limit of it, stated plainly
+
+**A marker set proves the build has certain properties, not that it is a specific
+commit.** Two builds sharing all six markers are indistinguishable to this
+verifier. The stronger form is a deployment fingerprint — the commit SHA emitted
+into every page and asserted by the verifier — which turns a property check into
+an identity check. It is **not built**, and is recorded as Q-W12-09 rather than
+assumed.
+
+### Gates that passed this wave on readings that cannot be reproduced under R-P
+
+Reported, not fixed, as instructed. Every live reading before this card was taken
+without a cache-buster and without markers:
+
+| Gate | Wave | Status under R-P |
+|---|---|---|
+| Homepage heights after every deploy, RC-059 through W12-20 | 12 | **unverified as taken.** Re-measured now and passing, but the original readings are not evidence |
+| Tallest service page, 5,729px, reported three times | 12 | **unverified as taken.** Re-measured now at 5,729 |
+| Zero visitor-reachable TODO, by crawling | 12 | **unverified as taken.** The crawler used plain URLs. Re-run cache-busted now |
+| Lighthouse 100/100/100/100, both locales | 12 | **unverified as taken.** Lighthouse fetched plain URLs |
+| Zero rating markup live, after W12-13 and after W12-20 | 12 | **partly verified.** Some curl audits carried `?v=`/`?b=`/`?cb=`; others did not, and which is which was not recorded at the time |
+| CNAME and canonical checks after RC-059 | 12 | **partly verified**, same mixed pattern |
+
+**None of them are known to be wrong, and one of them is known to have been
+right only by accident.** The distinction R-P draws is between a reading that is
+correct and a reading that is *evidence*, and this wave produced the first
+without the second.

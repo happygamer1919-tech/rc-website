@@ -947,3 +947,28 @@ budget on layout rather than content, one day before launch.
 **Until this is answered, the branch `w12/rc-070-restore-review-claim` holds the
 restore, committed and unmerged.** The homepage on production still has no review
 claim.
+
+---
+
+## Q-W12-09 · Markers prove properties, a fingerprint would prove identity — OPEN, opened 2026-09-06 (W12-22)
+
+**Shipped default: content markers, as R-P specifies. No fingerprint.**
+
+`scripts/verify-live.js` asserts six markers on the homepage. That catches the
+stale copy which bought R-P, and it was negative-tested doing exactly that. But
+it proves the deployed build *has certain properties*, not that it *is the commit
+just pushed*. Two builds that share all six markers are indistinguishable to it —
+a docs-only change, a copy tweak, a colour fix, would all pass while stale.
+
+**The stronger form is one line of build output.** Emit the commit SHA into every
+page as a meta tag, have the verifier read the expected SHA from `git rev-parse
+HEAD` and assert equality. That converts a property check into an identity check
+and closes the gap completely.
+
+Cost: a `<meta name="build" content="…">` on 25 pages, zero height, zero CLS, and
+a `GITHUB_SHA` already available in the workflow environment.
+
+Recommendation: **do it.** The only reason it is not in this card is that R-P
+specified markers and adding a fingerprint changes what every page emits, which
+is a decision about the artifact rather than about the verifier. One line of
+instruction and it ships.

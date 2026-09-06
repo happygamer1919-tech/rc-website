@@ -49,9 +49,16 @@ Measured at a desktop width, settled, with every reveal applied.
 
 | Page | Budget | Source |
 |---|---|---|
-| Homepage RO | under **8,700px** | Wave 6 acceptance |
-| Homepage RU | under **9,000px** | Master plan section 10 |
+| Homepage RO | under **8,851px** | Ruling R-J |
+| Homepage RU | under **9,065px** | Ruling R-J |
 | Service pages, either locale | under **6,000px** | Wave 7 acceptance |
+
+The homepage figures are **derived**, not chosen: corrected baseline plus the
+measured cost of each element above the fold plus 60px of stated headroom. R-J
+carries the derivation and the revert values for when the promo bar or the 100+
+tile is removed by data. The wave 6 figures of 8,700 and 9,000 were superseded
+twice, first by R-I and then by R-J, and they are wrong to budget against.
+*Source: DECISIONS.md rulings R-I, R-J.*
 
 **Measure it the same way every time.** An unrevealed `[data-reveal]` is
 translated 16px down, which inflates `scrollHeight` until it fires. Measuring
@@ -265,6 +272,54 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
 6. `prefers-reduced-motion` still disables every effect.
 7. `DECISIONS.md` appended, `BACKLOG.md` status updated, and any question the
    card raised written to `QUESTIONS.md` with a shipped default.
+8. After any deploy, `node scripts/verify-live.js` exits 0. A live figure quoted
+   without it is unverified, per section 12.
+
+---
+
+## 12. Live verification
+
+> A live measurement is valid only when taken with a cache-buster **and** with
+> content markers asserted in the same pass. Height alone is never sufficient
+> evidence, because a stale page returns a plausible number. Every live
+> verification asserts at least one marker proving the deployed build is the one
+> being measured. A measurement without markers is reported as **unverified**,
+> never as passed.
+*Source: ruling R-P, DECISIONS.md, W12-22.*
+
+**This rule was bought.** During wave 12 a post-deploy reading returned the exact
+pre-deploy heights, RO 8,843 and RU 9,002, from a stale edge copy. It was inside
+budget and entirely plausible, and it was caught only because the numbers were
+suspiciously identical to the previous build. Every other live reading that wave
+was taken the same way and none of them can be reproduced as evidence.
+
+**`node scripts/verify-live.js [origin]`** is the implementation. It cache-busts
+every request with a token unique to the run, disables the browser cache, reads
+markers and the settled height in a **single page evaluation** so they cannot come
+from different responses, and exits non-zero when any marker mismatches.
+
+The marker sets, by page type:
+
+| Page type | Markers |
+|---|---|
+| Homepage | rating panel present (1), portfolio grid children (7: six cards plus the closing tile), visible profile anchors (0), promo bar (1), stat tiles (8), `areaServed` entries (20) |
+| Service page | promo bar (1), visible profile anchors (0), `areaServed` (20) |
+| Privacy page | promo bar (1), visible profile anchors (0) |
+
+Alongside the markers each page is checked for rating markup, the `sameAs`
+profile URL, visible `TODO`, `robots` and `canonical`; and a cache-busted crawl
+follows every visible anchor to confirm no visitor-reachable `TODO`.
+
+**A marker set proves the build has certain properties, not that it is a
+specific commit.** Two builds sharing all six markers are indistinguishable to
+it. The stronger form is a deployment fingerprint emitted into every page and
+asserted by the verifier; that is not built, and is recorded as a recommendation
+in QUESTIONS.md rather than assumed.
+
+**Prove the assertions fire.** They were negative-tested against a build with the
+review panel removed: three markers mismatched and the run exited 1, while the
+heights it reported were inside budget and looked correct. An assertion nobody
+has watched fail is not a gate.
 
 ---
 

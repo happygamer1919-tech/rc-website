@@ -876,3 +876,61 @@ registered entity with a legal form and an IDNO. **The bank payment advice is
 not evidence** — `Beneficiar` on a payment advice identifies who received a
 payment. The registry extract is expected. Nothing is written until then, and
 the company name and the two 13-digit codes remain absent from the repo.
+
+---
+
+## Q-W12-08 · The restore exceeds the height budget in both locales — OPEN, BLOCKING, opened 2026-09-06 (W12-18, W12-19)
+
+**STOPPED, not shipped. Nothing trimmed, no budget raised.** W12-19 says to stop
+and report if RO exceeds 8,851, and it does, by 67px. RU exceeds too, by 66px.
+
+Measured three times, identical every run:
+
+| | Measured | Budget | Result |
+|---|---|---|---|
+| RO | **8,918** | 8,851 | **67px OVER** |
+| RU | **9,131** | 9,065 | **66px OVER** |
+
+**These are live figures.** Local and live were calibrated on the same commit
+first and came out identical to the pixel — `main` measures RO 8,843 / RU 9,002
+both locally and on rapidconstructmd.com — so the local reading of the restore
+is the live reading. The restore has NOT been deployed, because deploying is what
+would make it shipped and the card says stop before that.
+
+### The cause is one instruction, not the claim
+
+W12-18 says restore the panel; it also says the Google link stays below the
+cards and must not move back beside the panel. **Those two together are the
+overage.** Before W12-13 the link lived inside the panel and cost nothing extra;
+now the page carries the panel *and* a separate link row that did not exist
+before the wave.
+
+Measured both ways on the same build:
+
+| Layout | RO | RU |
+|---|---|---|
+| Link below the cards, **as instructed** | 8,918 ✗ | 9,131 ✗ |
+| Link inside the panel, **informational only** | **8,826 ✓** | **9,032 ✓** |
+| `main` today, claim removed | 8,843 | 9,002 |
+
+Putting the link back in the panel fits both locales with 25px and 33px to
+spare. **I did not do it, because the card forbids it.**
+
+### The three ways out, none of which are mine to take
+
+1. **Let the link go back inside the panel.** Fits immediately, no other change,
+   and it is where it lived until this wave. Costs the deliberate separation
+   W12-13 introduced.
+2. **Raise the budgets** to about RO 8,930 and RU 9,150. R-J's own principle
+   says a budget is derived from measured element costs plus stated headroom, so
+   this would be a derivation with a new term rather than a round number.
+3. **Trim something else** on the homepage to pay for the link row.
+
+Recommendation: **1.** It is reversible, it needs no ruling, and the link's
+position below the cards was a side effect of removing the panel rather than a
+decision about where the link belongs. Option 2 is defensible but spends a
+budget on layout rather than content, one day before launch.
+
+**Until this is answered, the branch `w12/rc-070-restore-review-claim` holds the
+restore, committed and unmerged.** The homepage on production still has no review
+claim.

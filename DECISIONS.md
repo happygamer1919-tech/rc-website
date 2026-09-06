@@ -188,9 +188,11 @@ the site-wide standing offer and is not scoped per service.
 Eight placeholder chips became twelve named brands on white logo tiles.
 
 **The tile grew sideways, not downwards.** 160x80 became 200x80. A logo wants
-width; the homepage has under 200px of headroom against the 8,700px cap, so
+width; the homepage has under 60px of headroom against the 8,700px cap, so
 height is the expensive axis and buys nothing here. Measured cost of the whole
-card: **0px**. RO stayed 8,504px and RU stayed 8,774px.
+card: **0px**. RO stayed 8,646px and RU stayed 8,860px.
+*(Heights and headroom corrected in place 2026-09-06 under R-J. The measured
+cost of the card, 0px, is unchanged: only the absolute figures were wrong.)*
 
 **One asset per brand, no greyscale twin.** The default grey state is
 `filter: grayscale(100%); opacity: 0.6` on the colour file. Hover and keyboard
@@ -249,8 +251,8 @@ for 5 to 7; six is the midpoint and divides evenly. Logged as Q-02.
 and empty strings. Only `title` and `summary` gate a project, and without both
 it renders nowhere — not on its service page, not in the homepage portfolio, not
 in the sitemap. That is what makes 44 empty records safe to commit. The site is
-byte-identical: 6 homepage cards before, 6 after; 8,504px RO and 8,774px RU
-before and after.
+byte-identical: 6 homepage cards before, 6 after; 8,646px RO and 8,860px RU
+before and after. *(Corrected in place 2026-09-06 under R-J.)*
 
 **Seven new fields, each optional on its own.** `location`, `year`, `work_type`,
 `area_sqm`, `duration`, `main_materials`, `challenge`. The first five render as
@@ -323,7 +325,7 @@ Verified by processing one service photo and the hero photo and rebuilding:
 `svc-fatade` rendered a jpg on the homepage card **and** on its own service page
 hero while the other eight rendered SVGs, and no layout moved. All nine service
 media boxes measured 366x275 with the photo in place, and the page stayed at
-8,504px.
+8,646px. *(Corrected in place 2026-09-06 under R-J.)*
 
 **A real hero photo is not lazy.** It sits beside the hero claim and is the
 likely LCP element, so with the jpg present the build drops `loading="lazy"` and
@@ -377,13 +379,14 @@ illustrations to photographs except dropping nine files into `photos-raw/`.
 
 | | Before | After |
 |---|---|---|
-| Homepage RO | 8,504px | **8,504px** |
-| Homepage RU | 8,774px | **8,774px** |
+| Homepage RO | 8,646px | **8,646px** |
+| Homepage RU | 8,860px | **8,860px** |
 | Services section | 1,830px | **1,830px** |
 | Every service media box | 366x275 | **366x275** |
 
 Confirmed against an independent renderer: Lighthouse's own headless Chrome
-reports a full-page height of 8,504 RO and 8,774 RU, and CLS 0.002 RO / 0.012 RU.
+reports a full-page height of 8,646 RO and 8,860 RU, and CLS 0.002 RO / 0.012 RU.
+*(Heights corrected in place 2026-09-06 under R-J; the CLS figures stand.)*
 
 **Weight.** 3,852KB added to `public/img` across 18 files. A visitor does not
 pay that: the nine 1x files total **878KB** and are all lazy and below the fold,
@@ -500,8 +503,8 @@ touched by this card and the approved set stands at the same **10** values.
 ### Weight
 
 92KB for all nine, the largest being `bilka.svg` at 31KB. Lighthouse stayed
-100/100/100/100 on both locales; page heights are unchanged at 8,504px RO and
-8,774px RU.
+100/100/100/100 on both locales; page heights are unchanged at 8,646px RO and
+8,860px RU. *(Corrected in place 2026-09-06 under R-J.)*
 
 ## Hero panel minimum long edge: 1600 -> 720, PROVISIONAL, W8-03, 2026-09-01
 
@@ -766,8 +769,11 @@ home and it was built there first, then moved. Measured: in the column the row
 cost **70px** of page height; in the bar it costs **1px**. The bar was already
 62px tall with about 700px of unused width, and a negative block margin lets the
 44x44 targets overlap its existing padding instead of growing it. The homepage
-had 196px of headroom against the 8,700px cap, so 70px was a third of it for a
-row of three icons. RO went 8,504 -> **8,505px**.
+had 54px of headroom against the 8,700px cap, so a 70px row of three icons
+would have blown the budget outright rather than eaten a third of it. RO went
+8,646 -> **8,647px**. *(Corrected in place 2026-09-06 under R-J. The recorded
+196px of headroom never existed; the decision to refuse the 70px approach was
+right for an even stronger reason than the one written at the time.)*
 
 **44x44 targets** clear the WCAG 2.5.8 minimum with room to spare, and the
 negative margin does not shrink the hit area, only the space it claims in flow.
@@ -1711,3 +1717,173 @@ existing cards" most plainly means a card-shaped cell, and changing that shape
 is the owner's call and not a height optimisation to make quietly.
 
 No variant of the tile fits the RO budget as amended. That is the decision owed.
+
+---
+
+## RULING R-J · Corrected baselines and derived budgets, W12-04, 2026-09-06
+
+**Supersedes R-I.** Recorded at the owner's instruction.
+
+### The baselines were never true
+
+Recorded homepage baselines are corrected to **RO 8,646px** and **RU 8,860px**.
+The 8,504 and 8,774 figures carried in the docs from wave 8 were never true.
+
+Corrected in place on **2026-09-06** in every doc that carried them: seven sites
+in this file and two gate tables in `RELEASE-NOTES.md`. Each correction is
+marked where it sits. Two of them carried derived reasoning that also had to
+move:
+
+- W7-03 read "under 200px of headroom against the 8,700px cap". It was 54px.
+- W9-02 read "196px of headroom, so 70px was a third of it". There were 54px, so
+  a 70px row would have blown the cap outright. **The decision that entry
+  records — refuse the 70px approach — was right, and for a stronger reason
+  than the one written at the time.** No decision reverses under the correction;
+  only the arithmetic behind two of them does.
+
+**Why this file was edited in place when CLAUDE.md calls it append-only.** The
+append-only rule protects decisions and the reasoning that produced them. A
+measurement that was never true is neither: leaving it in place would mean every
+future card reads a false headroom figure and budgets against it, which is
+exactly what happened to wave 12. The owner ordered the correction explicitly.
+Each edited site says it was corrected, so the record of *what changed* survives
+even though the wrong number does not.
+
+### Budgets are derived, never rounded
+
+While the promo bar and the 100+ tile are live:
+
+| Page | Budget |
+|---|---|
+| Homepage RO | under **8,850px** |
+| Homepage RU | under **9,100px** |
+
+Derivation, and it is the derivation that is the ruling:
+
+| Term | RO | RU |
+|---|---|---|
+| Corrected baseline | 8,646 | 8,860 |
+| Promo bar, measured | +44 | +44 |
+| Full-width 100+ tile, measured | +101 | +101 |
+| Headroom, restoring the page's real slack | +60 | +60 |
+| Derivation totals | **8,851** | **9,065** |
+| Budget as stated in the ruling | **8,850** | **9,100** |
+| Difference | **−1** | **+35** |
+
+**The stated budgets and the stated derivation do not reconcile, and the ruling
+says budgets are never rounded to a convenient number.** RO comes out 1px above
+its stated budget, which reads as arithmetic. RU comes out 35px below, and 9,100
+is exactly the kind of round number the same ruling forbids.
+
+Nothing is blocked by it: the measured heights are **RO 8,818** and **RU 9,032**,
+inside both the derived and the stated figure in both locales. The stated budget
+governs, because that is what the ruling states, and the gap is recorded as
+slack rather than quietly spent. The reconciliation is Q-W12-04.
+
+**Removing either element by data drops the budget by that element's measured
+cost.** Bar removed: RO 8,806, RU 9,056. Tile removed: RO 8,749, RU 8,999. Both
+removed: the R-I revert of 8,700 and 9,000.
+
+**Budgets derive from measured element costs plus stated headroom. They are
+never rounded to a convenient number.** Where a derived figure and a stated
+budget differ, as RU does here, the stated budget governs and the difference is
+slack, not licence to add another element without a ruling.
+
+---
+
+## RULING R-K · Google review content, W12-08, 2026-09-06
+
+Recorded at the owner's instruction:
+
+> Review content from the Google profile may appear as visible page content with
+> the client's granted permission, including client names. It is never marked up
+> as `aggregateRating` or `Review` on `LocalBusiness` or `Organization`.
+
+The line this draws: **visible content yes, structured data no.** A quote from a
+real Google review, shown on the page with the client's permission and their
+name, is ordinary page copy and is governed by the usual rule — it must be real
+and it must not be invented. The same words inside a JSON-LD `Review` or an
+`aggregateRating` on the business entity are self-serving review markup, which
+Google disallows on `LocalBusiness` and `Organization`, and a copied Maps rating
+risks a manual action against the whole site.
+
+The profile currently shows 5.0 from 7 reviews. **None of it is marked up.**
+Audited across every generated `html`, `json`, `txt` and `xml` file in `dist/`:
+`aggregateRating` 0, `ratingValue` 0, `reviewCount` 0, `bestRating` 0,
+`worstRating` 0, `"@type": "Review"` 0.
+
+This also settles what the existing reviews section may become. It already
+renders visible testimonials and has never carried rating markup; R-K says it
+may keep doing exactly that, and may not acquire schema for it.
+
+---
+
+## W12-05 to W12-09 · what shipped, measured
+
+### W12-05 · The tile spans the grid
+
+193px → **101px**, and the 92px is structural rather than styling slack. As one
+cell the tile was alone on a third row, and a grid row is as tall as its tallest
+item whether or not anything sits beside it. Full width, the row is one line
+tall. The accessibility treatment is unchanged and was **re-verified after the
+layout change** rather than carried over on trust: `.more__n` ignored as
+`ariaHiddenElement`, `.more__line` a live paragraph, zero focusable descendants,
+still outside the `project` selector the filters use.
+
+### W12-06 · The bar on every public page
+
+24 of 25 generated pages. The exception is `/review/`, which has no header at
+all, carries `noindex, nofollow`, is absent from the sitemap and is linked from
+zero pages. Tallest service page after the change: **`/ru/servicii/fatade/` at
+5,729px** against the unchanged 6,000 budget, 271px of headroom — exactly the
+predicted 5,685 + 44. Lowest 4,458px. All eighteen inside.
+
+`promoBar` had to be added to `SVC_RAW_KEYS` as well as `RAW_KEYS`: the service
+template substitutes through a separate key set, and without it the generated
+markup would have been escaped into visible angle brackets on eighteen pages.
+
+### W12-08 · The shortlink did not resolve to something schema-worthy
+
+`https://share.google/66noJUnEhzlMq7vcK` resolves to a Google **Search** URL
+carrying a request timestamp, a session token and a `utm_source` campaign. That
+is less stable than the shortlink, not more. Following it through to the Maps
+place gives CID `0x1b7f062598f5e3f2` = `1981309119616115698`, and
+
+    https://maps.google.com/?cid=1981309119616115698
+
+is the same profile with no tracking parameters. Confirmed in a browser against
+the address, phone and website already in the schema block, so it is the right
+business and not a same-named one. That is the fourth `sameAs` entry.
+
+### W12-09 · One list, four surfaces
+
+The coverage list is now generated from `band.localities` in each locale file.
+The prose sentence, `areaServed` on the homepage, `areaServed` on all eighteen
+service pages and the `llms.txt` section are all derived from it. Verified, not
+asserted: all four return the identical 20 names in the identical order in both
+locales. Q-W9-07's contradiction cannot recur, because there is no second copy.
+
+**The connective changed and that is the important part.** It was "Am construit
+în" / "Наши объекты" — *we have built in*. The client confirmed where the
+company **works**, not which project was built where. Carrying the old verb into
+twenty localities would have invented thirty-eight project locations in one
+edit. It is now "Inclusiv:" / "Включая:", which claims coverage and nothing more.
+
+**Q-W9-05 is not closed.** `location` is empty on all 38 renderable projects,
+verified against `content/projects.json`: 0 of 54 records carry a real location,
+and no locality name from the list appears anywhere in that file.
+
+`meta.description` cannot hold twenty names inside 155 characters, so it names
+the four largest plus "și alte localități" / "и других населённых пунктах" — a
+subset of the list rather than a rival to it. RO 147, RU 144. One claim had to
+go and it went from **both** locales so the two keep saying the same thing: the
+EU-certified-materials clause. The written 30-year guarantee and the 160 price
+are kept. All 25 pages remain inside 60/155.
+
+The twenty-name sentence wraps to one more line and costs **27px** in each
+locale, taking the homepage to RO 8,818 and RU 9,032.
+
+**PROVISIONAL.** W12-09 is held unmerged pending the client's confirmation on
+Bălți, Ungheni and Cahul. Those three are also three of the four names in
+`meta.description`, so a "no" on any of them changes the description as well as
+the list. Spelling is flagged in Q-W12-05.

@@ -154,8 +154,9 @@ true, so it can be used as a gate.
 From `docs/RC-WEBSITE-MASTER-PLAN.md`. The previous build was rejected for
 breaking the first two.
 
-- Desktop page height under 9,000px. Currently **8,646px RO / 8,860px RU**
-  on `main`, and **8,883px RO / 9,096px RU** on the unmerged wave 12 branch.
+- Desktop page height under 9,000px. Currently **8,791px RO / 9,005px RU**
+  with wave 12 merged and W12-09 still held, against the R-J budgets. `main`
+  before wave 12 was 8,646 / 8,860. With W12-09 it becomes 8,818 / 9,032.
   The rejected build was 13,312px. Wave 6's cap was tighter still, 8,700px RO,
   and all three cards landed at 0px.
 
@@ -275,8 +276,8 @@ which slots are on fallback. All 10 today.
 
 | Gate | Result |
 |---|---|
-| Homepage RO under 8,700px | **8,504px** |
-| Homepage RU under 9,000px | **8,774px** |
+| Homepage RO under 8,700px | **8,646px** |
+| Homepage RU under 9,000px | **8,860px** |
 | Lighthouse performance >=95, both locales | **100 / 100** |
 | Lighthouse accessibility 100, both locales | **100 / 100** |
 | Marquee hover pause does not touch scroll | Pure CSS `animation-play-state`. No wheel, touch or scroll handler exists |
@@ -319,8 +320,8 @@ first duplicate at 2,464, **mismatch 0px**, and now exact at any brand count.
 
 | Gate | Live result |
 |---|---|
-| Homepage RO under 8,700px | **8,504px** |
-| Homepage RU under 9,000px | **8,774px** |
+| Homepage RO under 8,700px | **8,646px** |
+| Homepage RU under 9,000px | **8,860px** |
 | Lighthouse performance >=95 | **98 RO / 100 RU** |
 | Lighthouse accessibility 100 | **100 / 100** |
 | Nine service images add no layout movement | CLS **0.002 RO / 0.013 RU** |
@@ -391,3 +392,62 @@ this build. It reads 99 on an untouched `main` served the same way. The cause is
 requests; a threaded server scores both builds at 99–100. The recipe recorded
 under "Lighthouse baseline" above predates the real photographs and will
 under-report now. Use a threaded server, and always measure a control.
+
+---
+
+## Wave 12, second half — site-wide bar, coverage, schema (BUILT, PARTLY HELD)
+
+The form gate is released: `WEB3FORMS_KEY` is set and a real browser submission
+landed at 08:57 on 2026-09-06. Q-W10-01 and W10-02 are closed on that evidence.
+A local build still printing `form: DEMO MODE` is correct — the secret lives in
+CI, not on a workstation — and must not be read as a regression.
+
+**W12-04 · R-J.** Baselines corrected to RO 8,646 / RU 8,860 and the wrong
+figures fixed in place across nine sites in two files, each marked. Two carried
+derived headroom claims that also moved; no decision reverses, and one (refusing
+a 70px icon row in W9-02) turns out to have been right for a stronger reason
+than was written at the time. Budgets while bar and tile are live: RO under
+8,850, RU under 9,100. The ruling's stated budgets and its own derivation differ
+by −1 and +35; both are recorded and Q-W12-04 asks which governs.
+
+**W12-05 · Full-width tile.** 193px → 101px, because a one-cell tile was alone
+on a grid row and a full-width one is not.
+
+**W12-06 · Bar site-wide.** 24 of 25 pages, `/review/` excluded.
+
+**W12-08 · Google profile.** The share.google shortlink resolves to a Search URL
+carrying a timestamp, a session token and a utm campaign, so it was not used.
+The Maps CID URL was, after confirming in a browser that the address, phone and
+website match the schema block.
+
+**W12-09 · Coverage, HELD.** 20 localities generated from one list in each
+locale file; prose, both `areaServed` blocks and `llms.txt` verified identical.
+The connective changed from "we have built in" to "including", because the
+client confirmed coverage and not project locations.
+
+**R-K.** Google review content may be visible page copy with permission; it is
+never `aggregateRating` or `Review` on `LocalBusiness` or `Organization`.
+
+**Heights below are for what actually merges: W12-09 is held, so the coverage
+list is still the old six localities and the homepage is 27px shorter in each
+locale than it will be once W12-09 lands.**
+
+| Gate | Result (W12-09 held) | With W12-09 |
+|---|---|---|
+| Homepage RO under 8,850px | **8,791px** ✓ | 8,818px ✓ |
+| Homepage RU under 9,100px | **9,005px** ✓ | 9,032px ✓ |
+| Tallest service page under 6,000px | **5,729px** (`/ru/servicii/fatade/`), 271px headroom ✓ |
+| All 18 service pages under 6,000px | **yes**, lowest 4,458px |
+| Lighthouse performance >=95, both locales | **99 / 99**, five runs each; one RO outlier at 95, four at 99 |
+| Lighthouse accessibility 100, both locales | **100 / 100** |
+| Best practices / SEO | **100 / 100** both locales |
+| No animation on the bar, any viewport or motion preference | `animation-name: none`, `transition-duration: 0s`, `transform: none`, `position: static`, on every page type |
+| Scroll never delayed, captured or hijacked | unchanged; no handler added in this wave |
+| aggregateRating / ratingValue / reviewCount / Review on LocalBusiness or Organization | **0 / 0 / 0 / 0**, audited across every generated html, json, txt and xml |
+| JSON-LD blocks revalidated | **56 blocks across 20 pages, 0 parse failures** — 18 Service, 18 BreadcrumbList, 18 FAQPage, 2 GeneralContractor |
+| `location` empty on all 38 renderable projects | **verified** — 0 of 54 records carry a real location, and no locality name appears in `projects.json` |
+| Coverage agreement across all four surfaces | **20 = 20 = 20 = 20**, identical order, both locales |
+| Dead links | **0** of 1,524 checked across 25 pages |
+| Upscaled variants | **zero** — no image file touched in this wave |
+| New colour values | **zero** — no hex or `rgba()` added |
+| Titles and descriptions inside 60 / 155 | **25 of 25 pages** |

@@ -2148,3 +2148,60 @@ bottom of the rating panel to the top of the link: **107px RO, 162px RU.**
 
 That instruction is also the whole reason the wave now exceeds its height budget.
 See W12-19 below.
+
+---
+
+## RULING R-O · The profile connection is structured data only, W12-20, 2026-09-06
+
+**Resolves Q-W12-08.** Recorded at the owner's instruction:
+
+> The Google Business Profile connection is expressed through `sameAs` in
+> structured data only. No visible anchor to the profile renders on the homepage
+> while the unverified review claim under R-N is live. `sameAs` was added by
+> W12-08 and carries the entity connection; the visible anchor was added by
+> W12-12 and carries no search value. If R-N is later resolved by a verifiable
+> source, the anchor may return under a new ruling.
+
+### Why this is the right cut, and not a compromise
+
+The two things were never the same thing. `sameAs` tells a crawler *this
+business and that profile are one entity*, which is true and stays. The anchor
+invited a visitor to compare a client-asserted 4.9 from 250+ against a profile
+showing 5.0 from 7, which is the collision Q-W12-07 raised and W12-13 removed the
+claim over. Under R-N the claim is back by the client's instruction, so the
+collision is resolved on the other side: the invitation goes.
+
+**It also happens to fix the height overage**, and that is a consequence rather
+than the reason. Q-W12-08 recorded that the restore exceeded both budgets by
+about 67px and that the cause was the panel and a separate link row coexisting.
+Removing the row removes the overage.
+
+### What remains armed
+
+`GOOGLE_REVIEWS_URL` **stays set** in the workflow and `googleLink` and
+`googleHidden` are still computed by `build.js`. Only the markup that consumed
+them was deleted, so the value is present and correct the moment a ruling lets
+the anchor back.
+
+**Nothing else consumes that variable.** `sameAs` carries the profile URL as a
+literal in `src/template.html` and is not derived from the environment at all, so
+the structured-data connection could not have been affected by this change and
+was verified unaffected: 4 `sameAs` entries in both locales, the fourth being
+`https://maps.google.com/?cid=1981309119616115698`.
+
+### Measured
+
+Live-calibrated before deploy: `main` measures RO 8,843 / RU 9,002 identically
+local and on production, so a local reading is a live reading.
+
+| | Result | R-J budget | |
+|---|---|---|---|
+| RO | **8,818** | 8,851 | 33px inside |
+| RU | **9,032** | 9,065 | 33px inside |
+
+Three identical runs. RO came in 8px below the 8,826 the owner predicted; **RU
+landed exactly on 9,032 rather than under it**, and the reason is worth keeping:
+on Russian the rating panel is shorter than the cards beside it, so a link
+*inside* the panel cost nothing, and deleting it therefore changed nothing. On
+Romanian the panel is the taller element, so the same link cost 8px. The two
+locales differ because the reviews row is driven by a different child in each.

@@ -430,10 +430,10 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         <blockquote class="review__quote" style="margin: 0;">{{reviews.items.2.quote}}</blockquote>
       </figure>
       </div>
-      <!-- W12-13. A link out is not a rating claim, so it stays while the
-           aggregate panel is gone. .portfolio__foot is the existing
-           centre-a-thing rule; no new CSS, no new colour. -->
-      <div class="portfolio__foot" {{googleHidden}}>{{googleLink}}</div>
+      <!-- W12-20, R-O. The visible anchor to the Google profile is gone while
+           the R-N review claim is live. The entity connection is carried by
+           sameAs in the JSON-LD above, which is unaffected: that URL is a
+           literal in this template and is not derived from GOOGLE_REVIEWS_URL. -->
     </div>
   </div>
 </section>

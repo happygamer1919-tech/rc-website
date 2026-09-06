@@ -42,6 +42,13 @@ jobs:
           # SITE_URL must stay explicit: build.js defaults it to
           # https://rapidconstruct.md, which is a DIFFERENT domain.
           SITE_URL: https://rapidconstructmd.com
+          # W12-12. The canonical Google Business Profile URL, resolved in
+          # W12-08 from the share.google shortlink. The CID form on purpose:
+          # the shortlink redirects to a Search URL carrying a request
+          # timestamp, a session token and a utm campaign, and a URL carrying
+          # any of those never enters this repo. This reveals a LINK only.
+          # R-K's prohibition on review markup is untouched by it.
+          GOOGLE_REVIEWS_URL: https://maps.google.com/?cid=1981309119616115698
           # Absent until the client approves, which leaves the form in demo mode.
           WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_KEY }}
         run: |

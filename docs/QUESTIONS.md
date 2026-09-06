@@ -759,3 +759,41 @@ visible page content pointing at Google, not review markup, so **R-K permits it*
 Recommendation: set it. It was left unset because W12-08 authorised a `sameAs`
 entry and nothing else, and arming a visible link is a separate change to what
 a visitor sees.
+
+---
+
+## Q-W12-07 · Arming the reviews link puts "4.9 from 250+" one click from "5.0 from 7" — OPEN, opened 2026-09-06 (W12-12)
+
+**Shipped default: the link is armed, as instructed. The rating copy is
+untouched, because it is not this card's to change.**
+
+W12-12 armed a visible link to the Google Business Profile. The profile,
+verified in a browser during W12-08, shows **5.0 from 7 Google reviews**. The
+site says, in three places:
+
+| Where | Claim |
+|---|---|
+| `stats.3` (hero and dark band) | **4.9/5**, `din 250+ recenzii` |
+| `reviews.score` / `reviews.count` | **4.9**, `250+ recenzii` |
+| the link now beside them | "Vezi recenziile pe Google" → 7 reviews |
+
+Both numbers can be true — 250+ reviews across every channel, 7 of them on
+Google — but the link now invites the comparison, and a visitor who clicks
+lands on a page that appears to contradict the figure they just read.
+
+This is not a W12-12 defect. The 4.9/250+ copy predates every wave here and came
+from the predecessor build under master plan section 6. R-K is satisfied: none
+of it is marked up, `aggregateRating` and `Review` are still zero everywhere.
+
+**Three options.**
+
+1. **Leave it.** Cheapest, and the numbers are not actually inconsistent.
+2. **Qualify the count** so the two obviously measure different things, e.g.
+   `250+ recenzii` → a phrase meaning "across all channels". Needs the client to
+   say what the 250+ actually counts, which nobody in this repo knows.
+3. **Unarm the link** until the profile has more reviews.
+
+Recommendation: **1, and ask the client what 250+ counts.** The claim is theirs
+and predates us; the honest fix is knowing its source, not quietly softening it.
+If the client cannot say where 250+ comes from, that is a section 5 problem
+about the existing copy and much bigger than this link.

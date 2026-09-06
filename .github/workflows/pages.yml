@@ -39,8 +39,9 @@ jobs:
           # asset, link and canonical as /rc-website/... which 404s on the live
           # domain. There is no longer a sub-path to configure.
           #
-          # SITE_URL must stay explicit: build.js defaults it to
-          # https://rapidconstruct.md, which is a DIFFERENT domain.
+          # SITE_URL is set explicitly even though build.js now defaults to the
+          # same value (W12-14), so the deployed host is stated where the deploy
+          # is configured rather than inferred from a source default.
           SITE_URL: https://rapidconstructmd.com
           # W12-12. The canonical Google Business Profile URL, resolved in
           # W12-08 from the share.google shortlink. The CID form on purpose:

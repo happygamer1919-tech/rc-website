@@ -893,6 +893,17 @@ p { margin: 0; }
 .modal__status { font-weight: 700; margin-top: 12px; }
 .modal__status[hidden] { display: none; }
 
+/* W12-21. The privacy page numbers its own sections.
+
+   The ordinals used to be typed into the heading strings, which meant inserting
+   a section at the top renumbered every heading below it: adding the operator
+   identity, when the registry extract lands, would have been a rewrite of five
+   strings in two locale files rather than an addition. A counter makes the new
+   section purely additive. No new colour, no new box. */
+.prose { counter-reset: prose-section; }
+.prose h2 { counter-increment: prose-section; }
+.prose h2::before { content: counter(prose-section) ". "; }
+
 /* --- reviews: aggregate panel + cards ------------------------------------- */
 .reviews-layout {
   display: grid;

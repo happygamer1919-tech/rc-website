@@ -967,3 +967,41 @@ budget on layout rather than content, one day before launch.
 **Until this is answered, the branch `w12/rc-070-restore-review-claim` holds the
 restore, committed and unmerged.** The homepage on production still has no review
 claim.
+
+---
+
+## Q-W12-07-LEGAL, addendum · Exactly what to add when the extract arrives — 2026-09-06 (W12-21)
+
+The page is structured so the operator identity is an **addition**, not a
+rewrite. Two files, and nothing else moves.
+
+**1. `locales/ro.json` and `locales/ru.json`, key `privacy`.** Add four keys.
+Order inside the block does not matter; `build.js` reads them by name.
+
+    "opH":          RO "Cine este operatorul de date"   RU "Кто является оператором данных"
+    "opP":          RO "Datele trimise prin acest site sunt prelucrate de:"
+                    RU "Данные, отправленные через этот сайт, обрабатывает:"
+    "opNameLabel":  RO "Denumire juridică"              RU "Юридическое наименование"
+    "opName":       the registered name from the extract
+    "opIdnoLabel":  RO "IDNO"                           RU "IDNO"
+    "opIdno":       the IDNO from the extract
+
+**2. `src/privacy.html`.** Insert one block immediately before the
+`{{privacy.colH}}` heading:
+
+    <h2>{{privacy.opH}}</h2>
+    <p>{{privacy.opP}}</p>
+    <dl class="prose__dl">
+      <div><dt>{{privacy.opNameLabel}}</dt><dd>{{privacy.opName}}</dd></div>
+      <div><dt>{{privacy.opIdnoLabel}}</dt><dd>{{privacy.opIdno}}</dd></div>
+    </dl>
+
+**Nothing else changes, and that is deliberate.** The section ordinals used to be
+typed into the heading strings, so inserting a section at the top renumbered all
+five headings — a rewrite of ten strings across two locale files. They are now a
+CSS counter (`.prose h2::before` in `src/styles.css`), so the new section becomes
+1 and the rest renumber themselves.
+
+Adding `opName` and `opIdno` with real values also releases the W12-17 link
+suppression automatically: the links, footer entry, `index, follow` and both
+sitemap entries return with no further edit.

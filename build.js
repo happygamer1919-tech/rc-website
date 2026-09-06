@@ -166,6 +166,16 @@ const privacyTodos = loaded.flatMap((l) =>
    the W12-17 link suppression. Absence is not completeness: a policy that never
    names an operator is exactly as unlinkable as one that says TODO.
 
+   RATIFIED, and the reason generalises. The build was inferring COMPLETENESS
+   FROM MISSING EVIDENCE: it looked for a marker of incompleteness, did not find
+   one because the whole section had been deleted, and concluded the page was
+   ready to publish. That is the same failure class as a card reporting SHIPPED
+   with its evidence field null, and as R-P's stale page returning a plausible
+   height: in each case absent evidence was read as positive evidence.
+
+   The rule that falls out of it: a gate must assert the presence of what it
+   requires, never the absence of a complaint about it.
+
    Both conditions are checked, so the page counts as incomplete while the
    operator fields are missing OR still marked. The reversal is unchanged in
    substance: add privacy.opName and privacy.opIdno with real values to both

@@ -32,8 +32,16 @@ jobs:
       # macOS sips and would not run on this runner anyway.)
       - name: Build both locales
         env:
-          BASE_PATH: /rc-website
-          SITE_URL: https://happygamer1919-tech.github.io
+          # BASE_PATH is deliberately ABSENT, not set empty. The site moved to
+          # the custom domain rapidconstructmd.com on 2026-09-06 and serves from
+          # the ROOT; build.js already defaults the sub-path to '' when the
+          # variable is unset. Setting it to anything non-empty emits every
+          # asset, link and canonical as /rc-website/... which 404s on the live
+          # domain. There is no longer a sub-path to configure.
+          #
+          # SITE_URL must stay explicit: build.js defaults it to
+          # https://rapidconstruct.md, which is a DIFFERENT domain.
+          SITE_URL: https://rapidconstructmd.com
           # Absent until the client approves, which leaves the form in demo mode.
           WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_KEY }}
         run: |

@@ -113,7 +113,7 @@ build prints which mode it used.
 | **Form endpoint** | No Web3Forms key yet. Deliberate until the visual is approved. |
 | **Production host** | GitHub Pages is for client review only. Hostinger is the production target. |
 | **Privacy page legal fields** | `/confidentialitate/` and `/ru/konfidentsialnost/` exist and are linked, but the registered company name, IDNO and retention period are visible `TODO:` placeholders. **While any remain, both pages are `noindex` and excluded from `sitemap.xml` automatically.** Fill them in the `privacy` block of both locale files and the flags clear themselves. |
-| **Production domain** | `SITE_URL` defaults to `https://rapidconstruct.md`. If the real domain differs, canonical, hreflang, sitemap and og: URLs are all wrong. Confirm before the Hostinger move. |
+| **Production domain** | **Resolved 2026-09-06.** The site is live on `rapidconstructmd.com`; the workflow sets `SITE_URL` to it and `build.js` defaults to it (W12-14). The old default, `rapidconstruct.md`, is a domain the client does not control and which serves a different site. |
 | **Portfolio lightbox** | Not built. The manifest's 18 optional `port-0N-a/b/c` extras are unused. |
 
 ---

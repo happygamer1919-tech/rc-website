@@ -6,7 +6,11 @@ const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
 
-const SITE = (process.env.SITE_URL || 'https://rapidconstruct.md').replace(/\/$/, '');
+// W12-14. The fallback is the domain the client controls. It was
+// rapidconstruct.md, which the client does NOT control and which serves a
+// different site, so a build that forgot to set SITE_URL would have emitted
+// canonicals and a sitemap pointing at somebody else's pages.
+const SITE = (process.env.SITE_URL || 'https://rapidconstructmd.com').replace(/\/$/, '');
 // Sub-path the site is served from. Empty for a domain root (Hostinger);
 // '/rc-website' for GitHub Pages. Every asset and inter-locale link uses it.
 const BASE = (process.env.BASE_PATH || '').replace(/\/+$/, '');

@@ -119,6 +119,7 @@ const RAW_KEYS = new Set([
   // quotes into &quot; and truncated the notice at its first space.
   'demoAttr',
   'portfolioCards', 'googleLink', 'supplierChips', 'heroPanelMedia', 'promoBar',
+  'areaServedJson',
   ...Array.from({ length: 9 }, (_, i) => `svcMedia${i}`),
 ]);
 // Same idea for the service-page template.
@@ -127,6 +128,8 @@ const SVC_RAW_KEYS = new Set([
   'svc.gallerySection', 'svc.priceSection', 'svc.footerLinks', 'svc.priceExtra', 'svc.media',
   // W12-06. The bar is site-wide, so the service template needs it raw too.
   'promoBar',
+  // W12-09. Generated JSON-LD fragment, must not be escaped.
+  'areaServedJson',
 ]);
 
 const die = (msg) => { console.error('\nBUILD FAILED: ' + msg + '\n'); process.exit(1); };
@@ -401,6 +404,75 @@ const serviceTemplate = fs.readFileSync('src/service.html', 'utf8');
 // its own, so a project with a real location and no year prints the location.
 const REAL = (v) => typeof v === 'string' && v.trim() !== '' && !v.trim().startsWith('TODO:');
 
+// --- W12-09, the coverage list ----------------------------------------------
+
+/* Twenty localities, client-supplied, PROVISIONAL pending confirmation on
+   Balti, Ungheni and Cahul. See DECISIONS.md W12-09.
+
+   ONE source, three surfaces. Q-W9-07 found the site giving two different
+   answers to "where do you work": meta.description named four localities and
+   band.coverageLine named six, and only two appeared in both. The second list
+   also fed areaServed and llms.txt, so the contradiction was in the structured
+   data as well as the prose.
+
+   That cannot recur by construction now. `band.localities` in each locale file
+   is the only list; the coverage sentence, the areaServed block on both
+   templates and the llms.txt section are all derived from it here. There is no
+   second copy anywhere to fall out of step. meta.description is necessarily
+   shorter than 20 names and states four plus "and other localities", so it is a
+   subset of the list rather than a rival to it. */
+/* R-M, W12-15. The Russian list is in the USAGE register, not the classifier's.
+   CUATM is authoritative for the Romanian forms and is not authoritative for the
+   Russian locale, which addresses Russian-speaking customers rather than the
+   state. The classifier form is recorded here so the divergence is documented
+   next to the data rather than only in DECISIONS.md.
+
+     #   Romanian (CUATM)   Russian (usage, shipped)   Russian (CUATM)
+     1   Chișinău           Кишинёв                    Кишинэу
+     2   Codru              Кодру                      Кодру
+     3   Durlești           Дурлешты                   Дурлешть
+     4   Sîngera            Сынджера                   Сынджера
+     5   Ialoveni           Яловены                    Яловень
+     6   Strășeni           Страшены                   Стрэшень
+     7   Anenii Noi         Анений-Ной                 Анений Ной
+     8   Criuleni           Криулень                   Криулень
+     9   Coșnița            Кошница                    Кошница
+    10   Dubăsari           Дубоссары                  Дубэсарь
+    11   Orhei              Орхей                      Орхей
+    12   Călărași           Калараш                    Кэлэрашь
+    13   Hîncești           Хынчешты                   Хынчешть
+    14   Căinari            Каинары                    Кэинарь
+    15   Costești           Костешты                   Костешть
+    16   Sociteni           Сочитены                   Сочитень
+    17   Cahul              Кагул                      Кахул
+    18   Ungheni            Унгены                     Унгень
+    19   Bălți              Бельцы                     Бэлць
+    20   Vadul lui Vodă     Вадул-луй-Водэ             Вадул луй Водэ
+
+   Six agree in both registers. Fourteen diverge. */
+const localities = (l) => {
+  const out = [];
+  for (let i = 0; `band.localities.${i}` in l.strings; i++) out.push(l.strings[`band.localities.${i}`]);
+  if (!out.length) die(`no band.localities.N in ${l.code}`);
+  return out;
+};
+
+/* The connective is "Inclusiv:" / "Включая:", NOT the previous "Am construit
+   în" / "Наши объекты". That is a deliberate correction, not a rewrite.
+
+   "Am construit în X" asserts a completed project in X. The client confirmed
+   where the company WORKS, not which project was built where — Q-W9-05 is
+   explicitly not closed by this list — so carrying the old verb into twenty
+   localities would have invented thirty-eight project locations in one edit.
+   "Inclusiv" claims coverage, which is what was actually confirmed. */
+const coverageLine = (l) => `${l.strings['band.coverageLead']} ${localities(l).join(', ')}.`;
+
+// areaServed for the two templates that carry a schema block. Indented to sit
+// inside the JSON-LD exactly where the hand-written array used to.
+const areaServedJson = (l, indent) => localities(l)
+  .map((n) => `${indent}{ "@type": "City", "name": ${JSON.stringify(n)} }`)
+  .join(',\n');
+
 // --- W12-02, the promo bar --------------------------------------------------
 
 /* A static, fixed-height offer strip that sits in flow directly under the fixed
@@ -659,6 +731,10 @@ for (const l of loaded) {
   vars.supplierChips = renderSupplierChips(l, BASE);
   vars.heroPanelMedia = heroPanelMedia(l, BASE);
   vars.promoBar = promoBar(l);
+  // Overrides nothing: band.coverageLine is no longer a locale key, it is
+  // composed here so the sentence and the schema cannot disagree.
+  vars['band.coverageLine'] = coverageLine(l);
+  vars.areaServedJson = areaServedJson(l, '    ');
   SERVICE_SLUGS.forEach((_, i) => { vars[`svcMedia${i}`] = serviceMedia(l, BASE, i, 'card'); });
   vars.portfolioCards = '<div class="grid grid--3" id="portfolio-grid">\n' +
     featured.map((p, i) => {
@@ -844,8 +920,8 @@ fs.writeFileSync('dist/sitemap.xml',
   });
   lines.push('',
     '## Zonă deservită / Зона обслуживания', '',
-    ro.strings['band.coverageLine'],
-    ru.strings['band.coverageLine'], '',
+    coverageLine(ro),
+    coverageLine(ru), '',
     '## Contact', '',
     `- Telefon: ${ro.strings['footer.phone'] || '+373 76 837 180'}`,
     `- Email: ${ro.strings['footer.email'] || 'rapidconstructmd@gmail.com'}`,

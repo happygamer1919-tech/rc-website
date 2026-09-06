@@ -32,8 +32,12 @@ jobs:
       # macOS sips and would not run on this runner anyway.)
       - name: Build both locales
         env:
-          BASE_PATH: /rc-website
-          SITE_URL: https://happygamer1919-tech.github.io
+          # The site moved to the custom domain rapidconstructmd.com on
+          # 2026-09-06, which serves from the ROOT. The GitHub Pages project
+          # sub-path must be empty here or every asset, link and canonical is
+          # emitted as /rc-website/... and 404s on the live domain.
+          BASE_PATH: ''
+          SITE_URL: https://rapidconstructmd.com
           # Absent until the client approves, which leaves the form in demo mode.
           WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_KEY }}
         run: |

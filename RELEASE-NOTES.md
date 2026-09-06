@@ -154,10 +154,16 @@ true, so it can be used as a gate.
 From `docs/RC-WEBSITE-MASTER-PLAN.md`. The previous build was rejected for
 breaking the first two.
 
-- Desktop page height under 9,000px. Measured live on rapidconstructmd.com:
-  **8,807px RO / 9,005px RU**, against the R-J budgets of 8,851 and 9,065, so
-  44px and 60px inside. `main` before wave 12 was 8,646 / 8,860. With W12-09,
-  still held, it becomes 8,834 / 9,032.
+- Desktop page height under 9,000px. Measured live on rapidconstructmd.com with
+  the whole of wave 12 merged: **8,843px RO / 8,975px RU**, against the R-J
+  budgets of 8,851 and 9,065. `main` before wave 12 was 8,646 / 8,860.
+
+  **RO has 8px of headroom. Read that as none.** The wave spent the 60px R-J
+  allowed and 52px more than the derivation anticipated, because two cards
+  landed after the budget was set: W12-12's link (+16) and W12-09's twenty-name
+  coverage line (+27, measured live by substituting a one-word line). W12-13's
+  removal gave back 30px on RU and nothing on RO. Nothing may be added to the RO
+  homepage without either a measurement first or a new ruling.
   The rejected build was 13,312px. Wave 6's cap was tighter still, 8,700px RO,
   and all three cards landed at 0px.
 
@@ -487,3 +493,42 @@ should budget against 44 on RO, not 60.
 | `/CNAME` served | **rapidconstructmd.com**, 20 bytes |
 | aggregateRating / ratingValue / reviewCount | **0 / 0 / 0** live |
 | Tallest service page | **5,729px** of 6,000 |
+
+
+---
+
+## Wave 12, final — live on rapidconstructmd.com
+
+| | RO | RU |
+|---|---|---|
+| Homepage height | **8,843px** | **8,975px** |
+| R-J budget | 8,851 | 9,065 |
+| Headroom | **8px** | 90px |
+
+Three identical runs each. The asymmetry is real: RU absorbed the twenty-name
+coverage line inside a line it was already wrapping, RO did not.
+
+| Gate | Live result |
+|---|---|
+| RO / RU / service page HTTP | **200 / 200 / 200** |
+| Lighthouse performance | **100 / 100** |
+| Lighthouse accessibility | **100 / 100** |
+| Best practices / SEO | **100 / 100** |
+| 4.9 or 250+ as text, or in a comment | **0 / 0**, both locales |
+| Rating panel markup | **0** |
+| aggregateRating · ratingValue · reviewCount · Review | **0 · 0 · 0 · 0** |
+| areaServed, prose and llms.txt agreement | **20 = 20 = 20 = 20**, both locales |
+| `location` on 38 renderable projects | **0 of 54**, no locality name in `projects.json` |
+| Dead links | **0** |
+| New colour values | **0** |
+| Image files touched in the wave | **0**, so upscales unchanged |
+| `rapidconstruct.md` as an active default | **0** |
+
+### What is still open at the close of wave 12
+
+- **W12-07**, legal identity. Nothing written. The client answered "Rapid
+  Construct", which is a brand and not a registered entity; the registry extract
+  is expected. Privacy pages stay `noindex` and out of the sitemap.
+- **Q-W12-07**, the review claim. Removed, and the investigation found nothing
+  that would support restoring it: exactly one Google Business Profile exists.
+- **The RO height, at 8px.** Not a question so much as a standing hazard.

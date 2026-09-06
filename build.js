@@ -114,13 +114,15 @@ const RAW_KEYS = new Set([
   // built, so what lands here is already safe. Escaping it again turned the
   // quotes into &quot; and truncated the notice at its first space.
   'demoAttr',
-  'portfolioCards', 'googleLink', 'supplierChips', 'heroPanelMedia',
+  'portfolioCards', 'googleLink', 'supplierChips', 'heroPanelMedia', 'promoBar',
   ...Array.from({ length: 9 }, (_, i) => `svcMedia${i}`),
 ]);
 // Same idea for the service-page template.
 const SVC_RAW_KEYS = new Set([
   'demoAttr', 'svc.imageObjects', 'svc.answer', 'svc.table', 'svc.faqSection', 'svc.faqSchema',
   'svc.gallerySection', 'svc.priceSection', 'svc.footerLinks', 'svc.priceExtra', 'svc.media',
+  // W12-06. The bar is site-wide, so the service template needs it raw too.
+  'promoBar',
 ]);
 
 const die = (msg) => { console.error('\nBUILD FAILED: ' + msg + '\n'); process.exit(1); };
@@ -395,6 +397,77 @@ const serviceTemplate = fs.readFileSync('src/service.html', 'utf8');
 // its own, so a project with a real location and no year prints the location.
 const REAL = (v) => typeof v === 'string' && v.trim() !== '' && !v.trim().startsWith('TODO:');
 
+// --- W12-02, the promo bar --------------------------------------------------
+
+/* A static, fixed-height offer strip that sits in flow directly under the fixed
+   header and scrolls away with the page. Nothing about it moves: no marquee, no
+   transition, no transform. See DECISIONS.md ruling R-H.
+
+   It is data, not markup. Two fields in each locale file drive it, and the
+   `endDate` is the removal switch: the bar is emitted only while that date is
+   still in the future at build time. Setting `promo.endDate` to a past date
+   pulls the bar from both locales with no edit to the template, the stylesheet
+   or this file.
+
+   Why an end date and not an empty string: `build.js` already refuses to build
+   on any empty locale string, so `"text": ""` would fail the build rather than
+   remove the bar. The date is the switch that the existing gates allow.
+
+   The claim carries its own expiry for a reason. "doar pana in 2027" stops
+   being true on 2027-01-01, and a discount bar that outlives its own deadline
+   is exactly the kind of invented fact CLAUDE.md section 5 forbids. The one
+   caveat, recorded in QUESTIONS.md: expiry is evaluated when the site is BUILT,
+   so the bar survives past its date until something triggers a rebuild. */
+function promoBar(l) {
+  const text = l.strings['promo.text'];
+  const endDate = (l.strings['promo.endDate'] || '').trim();
+  if (!REAL(text) || !REAL(endDate)) return '';
+
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(endDate)) {
+    die(`promo.endDate in ${l.code} is "${endDate}", which is not an ISO YYYY-MM-DD date.`);
+  }
+  // Compared as UTC midnight against UTC midnight, so the switch does not flip
+  // an hour early or late depending on the runner's timezone.
+  const ends = Date.parse(endDate + 'T00:00:00Z');
+  const today = Date.parse(new Date().toISOString().slice(0, 10) + 'T00:00:00Z');
+  if (!(ends > today)) return '';
+
+  // No data-reveal: this sits above the fold, where CLAUDE.md section 1 allows
+  // nothing to animate. It is plain markup with a hard-capped height, so it
+  // costs no CLS either.
+  return `<div class="promo">
+  <p class="promo__text">${esc(text)}</p>
+</div>
+`;
+}
+
+// --- W12-01, the portfolio end tile -----------------------------------------
+
+/* The seventh cell of the homepage portfolio grid. It is not a project and not
+   a link: no href, no tabindex, nothing focusable inside it. Filters ignore it
+   because it does not carry the `project` class that `main.js` selects on, so
+   it stays put while the six cards above it come and go.
+
+   Accessibility: it is LABELLED, not hidden. The tile carries a real fact, and
+   hiding the whole thing behind aria-hidden would tell a sighted visitor
+   something a screen-reader user never hears. Only the big numeral is hidden,
+   because "100+" is a visual restatement of the sentence below it; without that
+   the tile would announce as "100+ and over 100 other completed projects". What
+   is read is the one sentence, exactly as printed. See DECISIONS.md W12-01.
+
+   The 100+ figure is not invented. `stats.0` has claimed "500+ proiecte
+   finalizate" since wave 1, and six shown plus a hundred more is entailed by
+   it — a strictly weaker claim than the one already on the page. */
+function portfolioEndTile(l) {
+  const n = l.strings['portfolio.more.n'];
+  const line = l.strings['portfolio.more.line'];
+  if (!REAL(n) || !REAL(line)) return '';
+  return `      <div class="card card--more">
+        <p class="more__n" aria-hidden="true">${esc(n)}</p>
+        <p class="more__line">${esc(line)}</p>
+      </div>`;
+}
+
 // A project is renderable only when the two fields it cannot do without are
 // real. The other seven are optional and drop out individually.
 function renderableProjects(l, slug) {
@@ -581,6 +654,7 @@ for (const l of loaded) {
     .slice(0, 6);
   vars.supplierChips = renderSupplierChips(l, BASE);
   vars.heroPanelMedia = heroPanelMedia(l, BASE);
+  vars.promoBar = promoBar(l);
   SERVICE_SLUGS.forEach((_, i) => { vars[`svcMedia${i}`] = serviceMedia(l, BASE, i, 'card'); });
   vars.portfolioCards = '<div class="grid grid--3" id="portfolio-grid">\n' +
     featured.map((p, i) => {
@@ -598,7 +672,7 @@ for (const l of loaded) {
           </div>
         </a>
       </article>`;
-    }).join('\n') + '\n    </div>';
+    }).join('\n') + '\n' + portfolioEndTile(l) + '\n    </div>';
 
   // --- 18 service pages -----------------------------------------------------
   for (let i = 0; i < SERVICE_SLUGS.length; i++) {

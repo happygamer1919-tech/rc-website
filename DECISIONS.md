@@ -1894,3 +1894,112 @@ locale, taking the homepage to RO 8,818 and RU 9,032.
 Bălți, Ungheni and Cahul. Those three are also three of the four names in
 `meta.description`, so a "no" on any of them changes the description as well as
 the list. Spelling is flagged in Q-W12-05.
+
+---
+
+## RULING R-L · Place names, W12-11, 2026-09-06
+
+Recorded at the owner's instruction:
+
+> Place names are public toponyms, not claims about client work, so they are not
+> invented facts. They must still be verified, because they render as visible
+> copy and as structured data at once.
+
+This draws a line that CLAUDE.md section 5 did not: **a toponym is not a claim.**
+Writing "Bălți" does not assert that Rapid Construct built anything in Bălți; the
+sentence around it does. So supplying a place name is not the invention section 5
+forbids, and the coverage list did not need a client source for the *spelling*.
+
+What it does need is verification, and for a harder reason than usual. A locality
+name on this site is rendered twice from one string: as visible prose in the
+coverage sentence, and as an `areaServed` `City` name inside JSON-LD on twenty
+pages. A wrong form is therefore wrong in the copy a visitor reads *and* in the
+data a crawler ingests, and the structured-data copy is the one nobody proofreads.
+
+**Q-W9-05 is untouched by this.** R-L governs how a place is spelled, never
+whether work happened there.
+
+---
+
+## W12-11 · Verification against the official CUATM, and what it found
+
+**Source.** The *Clasificatorul unităților administrativ-teritoriale al
+Republicii Moldova* (CUATM, CRM 004-2003), maintained by the **Biroul Național de
+Statistică**. Romanian edition `CUATM_2003_2025_rom.doc` from `statistica.gov.md`;
+the Russian edition of the same classifier. Each of the 40 forms was matched by
+hit count against the classifier body, not by eye.
+
+**15 of the 40 forms were wrong.** The paired list, as corrected:
+
+| # | Romanian (CUATM) | Russian (CUATM) | Was |
+|---|---|---|---|
+| 1 | Chișinău | Кишинэу | Кишинёв ✗ |
+| 2 | Codru | Кодру | ✓ |
+| 3 | Durlești | Дурлешть | Дурлешты ✗ |
+| 4 | **Sîngera** ✗ | Сынджера | Сынжера ✗ |
+| 5 | Ialoveni | Яловень | Яловены ✗ |
+| 6 | Strășeni | Стрэшень | Страшены ✗ |
+| 7 | Anenii Noi | Анений Ной | ✓ |
+| 8 | Criuleni | Криулень | ✓ |
+| 9 | Coșnița | Кошница | ✓ |
+| 10 | Dubăsari | Дубэсарь | Дубоссары ✗ |
+| 11 | Orhei | Орхей | ✓ |
+| 12 | Călărași | Кэлэрашь | Кэлэраши ✗ |
+| 13 | Hîncești | Хынчешть | Хынчешты ✗ |
+| 14 | Căinari | Кэинарь | Кэйнары ✗ |
+| 15 | Costești | Костешть | Костешты ✗ |
+| 16 | Sociteni | Сочитень | ✓ |
+| 17 | Cahul | Кахул | Кагул ✗ |
+| 18 | Ungheni | Унгень | Унгены ✗ |
+| 19 | Bălți | Бэлць | Бельцы ✗ |
+| 20 | Vadul lui Vodă | Вадул луй Водэ | Вадул-луй-Водэ ✗ |
+
+### Romanian: one wrong, and the guess that produced it
+
+**Sângera → Sîngera.** CUATM has `Sîngera` 2 hits and `Sângera` 0.
+
+Q-W12-05 recorded that the client's unaccented list forced a choice on two names
+and that I had followed the client's own letters — `Sangera` giving `â`,
+`Hincesti` giving `î` — and flagged the two as inconsistent with each other. The
+classifier settles it: **it uses `î` in both**, so the convention was uniform all
+along and the client's spelling was the misleading signal rather than the source
+of truth. Hîncești happened to be right; Sângera was not. The other 18 confirmed
+unchanged.
+
+### Russian: fourteen wrong, because the register is transliteration
+
+Moldovan official Russian **transliterates the Romanian** rather than using the
+Soviet-era exonyms. Кишинэу, not Кишинёв. Бэлць, not Бельцы. Кахул, not Кагул.
+Дубэсарь, not Дубоссары. That is the single finding behind twelve of the
+fourteen.
+
+Two were not findable under my first spellings and were resolved from their own
+classifier rows: **Сынджера** at code `0111000` in sector Botanica (I had
+Сынжера, missing the `д`), and **Кэинарь** at `2702000` (I had Кэйнары).
+
+**Two of the wrong forms are older than this wave.** `Кэйнары` and `Костешты`
+have been in `locales/ru.json` since wave 1 and are wrong by this source. Two
+others that predate the wave, `Кошница` and `Сочитень`, are correct.
+
+### What is NOT resolved, and why looking harder will not resolve it
+
+The card says to choose the form used by Moldovan official Russian-language
+sources. **Those sources use both registers, and one of them uses both on a
+single page.**
+
+| Source | Form |
+|---|---|
+| CUATM classifier (BNS) | **Кишинэу** |
+| Moldpres, the state news agency | **Кишинёва** |
+| Presidency, presedinte.md/rus | **Кишиневе** |
+| `statistica.gov.md/ru` front page | **Кишинэу** ×2 *and* **Кишинев** ×1 |
+
+The classifier register is right for a classifier. The exonym register is what
+the state press writes in prose, what a Russian-speaking customer types into
+Google, and **what this site already uses in nine strings** — `meta.title`,
+`meta.description`, `meta.ogTitle`, `footer.description`, `footer.region`,
+`form.phCity` and the review entries.
+
+So the branch now holds a verified list in one register beside nine strings in
+the other. That is a decision about voice, not a fact that can be looked up, and
+it is recorded as such in Q-W12-05 rather than settled here.

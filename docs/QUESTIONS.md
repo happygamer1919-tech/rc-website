@@ -658,7 +658,53 @@ rather than the budget floating free of it.
 
 ---
 
-## Q-W12-05 · Locality spelling: diacritics restored by me, and Russian names supplied by me — OPEN, opened 2026-09-06 (W12-09)
+## Q-W12-05 · Locality spelling — **RO ANSWERED, RU REGISTER STILL OPEN** (opened 2026-09-06, W12-09; verified W12-11)
+
+**Verified against the official CUATM (Biroul Național de Statistică). 15 of the
+40 forms were wrong. The full paired list is in DECISIONS.md under W12-11.**
+
+**Romanian: closed.** One correction, `Sângera` → `Sîngera`. The classifier uses
+`î` in both Sîngera and Hîncești, so the convention was uniform and following the
+client's unaccented letters was the wrong method. The other 18 confirmed.
+
+**Russian: 14 corrected, but the REGISTER is a decision you have to make.**
+
+Moldovan official Russian transliterates rather than using Soviet exonyms, and
+the classifier is unambiguous about the forms. But official sources disagree on
+register, and `statistica.gov.md/ru` uses both on one page:
+
+| Source | Capital |
+|---|---|
+| CUATM classifier | **Кишинэу** |
+| Moldpres, state news agency | **Кишинёва** |
+| Presidency | **Кишиневе** |
+| statistica.gov.md/ru front page | **Кишинэу** ×2 and **Кишинев** ×1 |
+
+The held branch now carries the classifier register in the coverage list while
+**nine other RU strings carry the exonym**: `meta.title`, `meta.description`,
+`meta.ogTitle`, `footer.description`, `footer.region`, `form.phCity` and two
+review fields. One page cannot say both.
+
+**Recommendation: the exonym register, and convert the list back.** Not because
+the classifier is wrong — it is the more official of the two — but because this
+is a marketing site whose Russian-speaking customer types "Кишинёв" into Google,
+the state press writes it that way in prose, and the title, description and
+footer already do. Changing nine strings to `Кишинэу` to match twenty would trade
+the site's search term for a classifier convention.
+
+If you take that, I need one more thing before shipping: the exonyms for the
+other 19 are **not** verified by any official source I could find, so I would be
+back to supplying them. `Бельцы`, `Кагул`, `Дубоссары`, `Оргеев` are standard
+Russian, but standard is not verified, and W12-11 says do not ship an unverified
+form. Tell me the register and I will either keep the classifier list as it
+stands, or go and verify the exonym set properly against Moldovan Russian-language
+press before shipping it.
+
+**Two of the exonyms already on the site are wrong even as exonyms:** `Кэйнары`
+and `Костешты` have been in `locales/ru.json` since wave 1 and match neither
+register cleanly. They need fixing whichever way you rule.
+
+*Original entry follows, unedited.*
 
 **Shipped default: the list as written below. It is on a held branch, so nothing
 is public.**

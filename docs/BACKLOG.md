@@ -12,17 +12,28 @@ history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 
 | Ticket | Card | Branch | Status |
 |---|---|---|---|
-| RC-050 | W12-01 Portfolio end tile, 100+ | `w12/rc-050-portfolio-end-tile` | built, held |
-| RC-051 | W12-02 Static promo bar, data-driven | `w12/rc-051-promo-bar` | built, held |
-| RC-052 | W12-03 Rulings R-H and R-I, heights measured | `w12/rc-052-wave12-docs` | built, held |
+| RC-050 | W12-01 Portfolio end tile, 100+ | `w12/rc-050-portfolio-end-tile` | shipped |
+| RC-051 | W12-02 Static promo bar, data-driven | `w12/rc-051-promo-bar` | shipped |
+| RC-052 | W12-03 Rulings R-H and R-I, heights measured | `w12/rc-052-wave12-docs` | shipped |
+| RC-053 | W12-05 Adopt the full-width tile | `w12/rc-053-full-width-tile` | shipped |
+| RC-054 | W12-06 Promo bar on every public page | `w12/rc-054-promo-site-wide` | shipped |
+| RC-055 | W12-08 Google profile sameAs, resolved | `w12/rc-055-google-sameas` | shipped |
+| RC-056 | W12-09 Coverage, 20 localities, one source | `w12/rc-056-coverage` | **built, HELD** |
+| RC-057 | W12-04 R-J, R-K, baseline corrections, docs | `w12/rc-057-wave12b-docs` | shipped |
+| RC-058 | W12-07 Legal identity from the client PDF | — | **BLOCKED, awaiting confirmation** |
 
-**The whole wave is held unmerged**, on the owner's gate: the contact form must
-be ARMED and verified by a real browser submission first. That is still blocked
-on `WEB3FORMS_KEY`, unchanged since wave 10 — see Q-W10-01.
+**The form gate is released.** `WEB3FORMS_KEY` is set and a real browser
+submission landed at 08:57 on 2026-09-06. Q-W10-01 and W10-02 are closed on that
+evidence.
 
-A second decision is owed before merge regardless of the form: both locales
-finish over the R-I budgets, RO by 139px and RU by 52px, and the end tile is the
-whole of it. Nothing was trimmed to hide it, per the card. See Q-W12-01.
+**Two things are still held, and they are not the same hold:**
+
+- **RC-056 (W12-09)** is built and must not merge until the client confirms
+  Bălți, Ungheni and Cahul. Those three are also three of the four names in the
+  new `meta.description`, so a "no" changes more than the list.
+- **RC-058 (W12-07)** is not built at all. The two strings were extracted from
+  the client PDF and reported for confirmation, which the card requires before
+  anything is written. See Q-W12-07 and the report.
 
 ## Wave 6
 
@@ -179,3 +190,28 @@ service pages. Costs exactly 44px and stays inside budget on its own.
 **Status: REPORTED, OVER BUDGET** (2026-09-03). RO 8,883 against 8,744, RU 9,096
 against 9,044. Not trimmed, per the card. Also corrected a 142px error in the
 recorded baseline that had stood since wave 8. See W12-03 in DECISIONS.md.
+
+## W12-05 · Full-width tile
+**Status: DONE** (2026-09-06). 193px -> 101px. Accessibility treatment
+re-verified against the accessibility tree after the layout change, not carried
+over on trust. RO 8,791 / RU 9,005 at this point in the wave.
+
+## W12-06 · Promo bar site-wide
+**Status: DONE** (2026-09-06). 24 of 25 pages; `/review/` excluded and why is
+recorded. Tallest service page 5,729px against 6,000, 271px of headroom.
+
+## W12-07 · Legal identity
+**Status: BLOCKED, reported not written** (2026-09-06). The PDF was located and
+two strings extracted. The company name in it is **not** "Rapid Construct", and
+the document is a bank payment advice rather than a registration certificate, so
+both facts were reported for confirmation before any write. Privacy pages remain
+`noindex` and out of the sitemap. See Q-W12-07.
+
+## W12-08 · Google Business Profile
+**Status: DONE** (2026-09-06). Shortlink resolved to a tracking-laden Search URL
+and was NOT used; the Maps CID URL was used instead. Zero rating markup, audited.
+
+## W12-09 · Coverage
+**Status: BUILT, HELD** (2026-09-06). 20 localities from one source; prose,
+both `areaServed` blocks and `llms.txt` verified identical. `location` still
+empty on all 38 renderable projects. Q-W9-05 explicitly NOT closed.

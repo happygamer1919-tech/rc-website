@@ -452,7 +452,24 @@ as retired the moment it is.
 
 ---
 
-## Q-W10-01 · WEB3FORMS_KEY is not set. The live form test cannot run.
+## Q-W10-01 · WEB3FORMS_KEY is not set. The live form test cannot run. — **CLOSED 2026-09-06** (W12-04)
+
+**Closed by the owner.** `WEB3FORMS_KEY` is set as a repository secret and a real
+browser submission landed in the inbox at 08:57 on 2026-09-06. That submission is
+the evidence; nothing in the repo needed to change, which is what this entry
+predicted.
+
+**The DEMO MODE line in a local build is correct behaviour, not a leftover.**
+`build.js` reads `WEB3FORMS_KEY` from the environment, a workstation build has no
+secret, so it prints DEMO MODE and emits `data-armed="0"`. Only the CI build,
+which the workflow passes the secret to, is armed. A local build reporting DEMO
+MODE after this date is the gate working and must not be read as a regression.
+The check that means something is the deploy log line `form: ARMED, posts to
+Web3Forms.`
+
+**W10-02 is unblocked and done by the same evidence.**
+
+*Original entry follows, unedited.*
 
 **Raised:** W10-02, 2026-09-01. **Status:** BLOCKED on the owner. Nothing to build.
 
@@ -495,7 +512,15 @@ The two live submissions then take a minute. The subjects to expect are
 
 ---
 
-## Q-W12-01 · The RO homepage is 139px over budget, and the end tile is why — OPEN, opened 2026-09-03 (W12-01, W12-03)
+## Q-W12-01 · The RO homepage is 139px over budget, and the end tile is why — **ANSWERED 2026-09-06 by R-J and W12-05** (opened 2026-09-03, W12-01/W12-03)
+
+**Answered with a combination of options 1 and 2, not either alone.** The owner
+took the full-width tile (option 2), which cut the tile from 193px to 101px, and
+raised the budgets (option 1) to RO 8,850 and RU 9,100 under ruling R-J. Measured
+result: RO 8,818 and RU 9,032, both inside. Option 3, dropping the tile, was not
+taken.
+
+*Original entry follows, unedited.*
 
 **Shipped default: the tile as the card specified it, both locales over budget,
 wave held. Nothing was trimmed to hide it.**
@@ -565,7 +590,13 @@ Recommendation: leave it build-time and add a monthly `schedule:` trigger to
 
 ---
 
-## Q-W12-03 · Should the promo bar appear on the service pages too? — OPEN, opened 2026-09-03 (W12-02)
+## Q-W12-03 · Should the promo bar appear on the service pages too? — **ANSWERED 2026-09-06, YES** (opened 2026-09-03, W12-02)
+
+Answered by W12-06: extended to all 24 public pages. Tallest service page after
+the change is 5,729px against 6,000. `/review/` is excluded and why is recorded
+in DECISIONS.md.
+
+*Original entry follows, unedited.*
 
 **Shipped default: homepage only.**
 
@@ -583,3 +614,91 @@ rulings amended the homepage budgets only.
 
 Recommendation: extend it. The bar is worth least on the page a visitor is
 least likely to land on.
+
+---
+
+## Q-W12-04 · R-J's stated budgets do not match R-J's own derivation — OPEN, opened 2026-09-06 (W12-04)
+
+**Shipped default: the stated budgets govern. Nothing was spent on the gap.**
+
+R-J states the budgets and also states how they are derived, and the two do not
+agree:
+
+| | Baseline | +bar | +tile | +headroom | Derived | Stated | Difference |
+|---|---|---|---|---|---|---|---|
+| RO | 8,646 | +44 | +101 | +60 | **8,851** | **8,850** | −1 |
+| RU | 8,860 | +44 | +101 | +60 | **9,065** | **9,100** | +35 |
+
+The same ruling says budgets "derive from measured element costs plus stated
+headroom" and are "never rounded to a convenient number". RO misses by 1px,
+which reads as arithmetic. RU misses by 35px, and 9,100 is precisely a
+convenient round number.
+
+**Nothing is blocked.** Measured heights are RO 8,818 and RU 9,032, inside both
+the derived and the stated figure in both locales, so the wave passes either
+way. This is a question about which number the next card budgets against.
+
+**Recommendation: correct RU to 9,065 and RO to 8,851, and let the derivation
+be the budget.** It is what the ruling's own principle asks for, it costs
+nothing today, and it stops 35px of unexplained slack being treated as spendable
+headroom by a later card that has not measured anything. If instead the 60px
+headroom term was meant to be larger for RU, say so and the derivation changes
+rather than the budget floating free of it.
+
+---
+
+## Q-W12-05 · Locality spelling: diacritics restored by me, and Russian names supplied by me — OPEN, opened 2026-09-06 (W12-09)
+
+**Shipped default: the list as written below. It is on a held branch, so nothing
+is public.**
+
+The client supplied 20 localities **without diacritics**, and only in Romanian.
+Two kinds of guess went into making that a bilingual list, and both should be
+checked by someone who knows the places.
+
+**1. Romanian diacritics restored from an unaccented source.** Mostly
+unambiguous, two are not. The client's own letter choices were followed:
+
+| Supplied | Written as | Note |
+|---|---|---|
+| `Sangera` | **Sângera** | client wrote `a`, so `â`. Moldova's official register uses **Sîngera** |
+| `Hincesti` | **Hîncești** | client wrote `i`, so `î`. Romanian standard would be **Hâncești** |
+
+The two are inconsistent with each other — one `â`, one `î` — because the
+client's spellings were inconsistent and following the source seemed better than
+imposing a rule the client did not use. Say which convention you want and both
+become consistent.
+
+**2. The Russian names are mine, not the client's.** Six already existed on the
+site and are unchanged (Кишинёв, Кодру, Кошница, Костешты, Кэйнары, Сочитень).
+The other fourteen I supplied as the standard Russian toponyms:
+
+Дурлешты, Сынжера, Яловены, Страшены, Анений Ной, Криулень, Дубоссары, Орхей,
+**Кэлэраши**, Хынчешты, Кагул, **Унгены**, Бельцы, Вадул-луй-Водэ.
+
+Two worth a second look: **Кэлэраши** (also written Кэлэрашь) and **Унгены**
+(also Унгень). Both forms are in use.
+
+These names are visible copy in the RU locale and they are `areaServed` values
+in the structured data, so a wrong one is wrong in two places at once.
+
+---
+
+## Q-W12-06 · The Google profile URL could also arm the reviews link — OPEN, opened 2026-09-06 (W12-08)
+
+**Shipped default: not armed. W12-08 added the URL to `sameAs` only.**
+
+`GOOGLE_REVIEWS_URL` is still unset, so the "reviews on Google" link and mark in
+the reviews section render as nothing at all — the anchor is not emitted, which
+is the W3-02 crawlable-anchor fix working. The canonical profile URL resolved in
+W12-08 is exactly what that variable wants:
+
+    GOOGLE_REVIEWS_URL=https://maps.google.com/?cid=1981309119616115698
+
+Setting it in the workflow reveals an outbound link to the profile. That is
+visible page content pointing at Google, not review markup, so **R-K permits it**
+— it adds no `aggregateRating` and no `Review`.
+
+Recommendation: set it. It was left unset because W12-08 authorised a `sameAs`
+entry and nothing else, and arming a visible link is a separate change to what
+a visitor sees.

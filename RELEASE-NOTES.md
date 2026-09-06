@@ -154,9 +154,10 @@ true, so it can be used as a gate.
 From `docs/RC-WEBSITE-MASTER-PLAN.md`. The previous build was rejected for
 breaking the first two.
 
-- Desktop page height under 9,000px. Currently **8,791px RO / 9,005px RU**
-  with wave 12 merged and W12-09 still held, against the R-J budgets. `main`
-  before wave 12 was 8,646 / 8,860. With W12-09 it becomes 8,818 / 9,032.
+- Desktop page height under 9,000px. Measured live on rapidconstructmd.com:
+  **8,807px RO / 9,005px RU**, against the R-J budgets of 8,851 and 9,065, so
+  44px and 60px inside. `main` before wave 12 was 8,646 / 8,860. With W12-09,
+  still held, it becomes 8,834 / 9,032.
   The rejected build was 13,312px. Wave 6's cap was tighter still, 8,700px RO,
   and all three cards landed at 0px.
 
@@ -432,10 +433,10 @@ never `aggregateRating` or `Review` on `LocalBusiness` or `Organization`.
 list is still the old six localities and the homepage is 27px shorter in each
 locale than it will be once W12-09 lands.**
 
-| Gate | Result (W12-09 held) | With W12-09 |
+| Gate | Live (W12-09 held) | With W12-09 |
 |---|---|---|
-| Homepage RO under 8,850px | **8,791px** ✓ | 8,818px ✓ |
-| Homepage RU under 9,100px | **9,005px** ✓ | 9,032px ✓ |
+| Homepage RO under 8,851px | **8,807px** ✓, 44px inside | 8,834px ✓ |
+| Homepage RU under 9,065px | **9,005px** ✓, 60px inside | 9,032px ✓ |
 | Tallest service page under 6,000px | **5,729px** (`/ru/servicii/fatade/`), 271px headroom ✓ |
 | All 18 service pages under 6,000px | **yes**, lowest 4,458px |
 | Lighthouse performance >=95, both locales | **99 / 99**, five runs each; one RO outlier at 95, four at 99 |
@@ -451,3 +452,38 @@ locale than it will be once W12-09 lands.**
 | Upscaled variants | **zero** — no image file touched in this wave |
 | New colour values | **zero** — no hex or `rgba()` added |
 | Titles and descriptions inside 60 / 155 | **25 of 25 pages** |
+
+
+---
+
+## Wave 12 close — live figures on rapidconstructmd.com
+
+All measured on the live domain after the final merge, not locally.
+
+| | RO | RU |
+|---|---|---|
+| Homepage height | **8,807px** | **9,005px** |
+| R-J budget | 8,851 | 9,065 |
+| Inside by | 44px | 60px |
+
+**W12-12 cost 16px on RO and 0 on RU, and nobody budgeted it.** Arming
+`GOOGLE_REVIEWS_URL` emits an anchor that was previously not rendered at all, and
+on Romanian it wraps to a new line in the ratings row. Attributed by measuring
+the live page with the anchor removed: RO 8,791 without it, 8,807 with, three
+identical runs. Russian is unaffected because its shorter string does not wrap.
+
+That 16px comes out of R-J's 60px headroom term, leaving RO with 44px rather
+than 60. Still inside, but the headroom is no longer symmetric and a future card
+should budget against 44 on RO, not 60.
+
+| Gate | Live result |
+|---|---|
+| RO / RU / service page HTTP | **200 / 200 / 200** |
+| Lighthouse performance | **100 / 100**, both locales |
+| Lighthouse accessibility | **100 / 100** |
+| Best practices / SEO | **100 / 100** both |
+| CLS | 0.0022 RO / 0.0116 RU |
+| `/rc-website/` on any served page | **0** |
+| `/CNAME` served | **rapidconstructmd.com**, 20 bytes |
+| aggregateRating / ratingValue / reviewCount | **0 / 0 / 0** live |
+| Tallest service page | **5,729px** of 6,000 |

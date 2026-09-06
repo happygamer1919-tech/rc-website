@@ -617,7 +617,18 @@ least likely to land on.
 
 ---
 
-## Q-W12-04 · R-J's stated budgets do not match R-J's own derivation — OPEN, opened 2026-09-06 (W12-04)
+## Q-W12-04 · R-J's stated budgets do not match R-J's own derivation — **ANSWERED 2026-09-06, the derivation governs** (W12-10)
+
+**Budgets are RO under 8,851 and RU under 9,065.** The owner confirmed 8,850 and
+9,100 were an arithmetic error and that 9,100 violated the ruling's own
+prohibition on round numbers. R-J amended in place. Nothing rebuilt or trimmed:
+the measured heights passed under both readings.
+
+The corrected budgets are exact. Live, with W12-09 held, the homepage measures RO
+8,791 and RU 9,005 — baseline + 44 + 101 — leaving each locale 60px inside, which
+is the headroom term and nothing else. The old 9,100 gave RU 95px while claiming 60.
+
+*Original entry follows, unedited.*
 
 **Shipped default: the stated budgets govern. Nothing was spent on the gap.**
 
@@ -647,7 +658,53 @@ rather than the budget floating free of it.
 
 ---
 
-## Q-W12-05 · Locality spelling: diacritics restored by me, and Russian names supplied by me — OPEN, opened 2026-09-06 (W12-09)
+## Q-W12-05 · Locality spelling — **RO ANSWERED, RU REGISTER STILL OPEN** (opened 2026-09-06, W12-09; verified W12-11)
+
+**Verified against the official CUATM (Biroul Național de Statistică). 15 of the
+40 forms were wrong. The full paired list is in DECISIONS.md under W12-11.**
+
+**Romanian: closed.** One correction, `Sângera` → `Sîngera`. The classifier uses
+`î` in both Sîngera and Hîncești, so the convention was uniform and following the
+client's unaccented letters was the wrong method. The other 18 confirmed.
+
+**Russian: 14 corrected, but the REGISTER is a decision you have to make.**
+
+Moldovan official Russian transliterates rather than using Soviet exonyms, and
+the classifier is unambiguous about the forms. But official sources disagree on
+register, and `statistica.gov.md/ru` uses both on one page:
+
+| Source | Capital |
+|---|---|
+| CUATM classifier | **Кишинэу** |
+| Moldpres, state news agency | **Кишинёва** |
+| Presidency | **Кишиневе** |
+| statistica.gov.md/ru front page | **Кишинэу** ×2 and **Кишинев** ×1 |
+
+The held branch now carries the classifier register in the coverage list while
+**nine other RU strings carry the exonym**: `meta.title`, `meta.description`,
+`meta.ogTitle`, `footer.description`, `footer.region`, `form.phCity` and two
+review fields. One page cannot say both.
+
+**Recommendation: the exonym register, and convert the list back.** Not because
+the classifier is wrong — it is the more official of the two — but because this
+is a marketing site whose Russian-speaking customer types "Кишинёв" into Google,
+the state press writes it that way in prose, and the title, description and
+footer already do. Changing nine strings to `Кишинэу` to match twenty would trade
+the site's search term for a classifier convention.
+
+If you take that, I need one more thing before shipping: the exonyms for the
+other 19 are **not** verified by any official source I could find, so I would be
+back to supplying them. `Бельцы`, `Кагул`, `Дубоссары`, `Оргеев` are standard
+Russian, but standard is not verified, and W12-11 says do not ship an unverified
+form. Tell me the register and I will either keep the classifier list as it
+stands, or go and verify the exonym set properly against Moldovan Russian-language
+press before shipping it.
+
+**Two of the exonyms already on the site are wrong even as exonyms:** `Кэйнары`
+and `Костешты` have been in `locales/ru.json` since wave 1 and match neither
+register cleanly. They need fixing whichever way you rule.
+
+*Original entry follows, unedited.*
 
 **Shipped default: the list as written below. It is on a held branch, so nothing
 is public.**
@@ -702,3 +759,41 @@ visible page content pointing at Google, not review markup, so **R-K permits it*
 Recommendation: set it. It was left unset because W12-08 authorised a `sameAs`
 entry and nothing else, and arming a visible link is a separate change to what
 a visitor sees.
+
+---
+
+## Q-W12-07 · Arming the reviews link puts "4.9 from 250+" one click from "5.0 from 7" — OPEN, opened 2026-09-06 (W12-12)
+
+**Shipped default: the link is armed, as instructed. The rating copy is
+untouched, because it is not this card's to change.**
+
+W12-12 armed a visible link to the Google Business Profile. The profile,
+verified in a browser during W12-08, shows **5.0 from 7 Google reviews**. The
+site says, in three places:
+
+| Where | Claim |
+|---|---|
+| `stats.3` (hero and dark band) | **4.9/5**, `din 250+ recenzii` |
+| `reviews.score` / `reviews.count` | **4.9**, `250+ recenzii` |
+| the link now beside them | "Vezi recenziile pe Google" → 7 reviews |
+
+Both numbers can be true — 250+ reviews across every channel, 7 of them on
+Google — but the link now invites the comparison, and a visitor who clicks
+lands on a page that appears to contradict the figure they just read.
+
+This is not a W12-12 defect. The 4.9/250+ copy predates every wave here and came
+from the predecessor build under master plan section 6. R-K is satisfied: none
+of it is marked up, `aggregateRating` and `Review` are still zero everywhere.
+
+**Three options.**
+
+1. **Leave it.** Cheapest, and the numbers are not actually inconsistent.
+2. **Qualify the count** so the two obviously measure different things, e.g.
+   `250+ recenzii` → a phrase meaning "across all channels". Needs the client to
+   say what the 250+ actually counts, which nobody in this repo knows.
+3. **Unarm the link** until the profile has more reviews.
+
+Recommendation: **1, and ask the client what 250+ counts.** The claim is theirs
+and predates us; the honest fix is knowing its source, not quietly softening it.
+If the client cannot say where 250+ comes from, that is a section 5 problem
+about the existing copy and much bigger than this link.

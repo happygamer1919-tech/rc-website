@@ -1755,8 +1755,8 @@ While the promo bar and the 100+ tile are live:
 
 | Page | Budget |
 |---|---|
-| Homepage RO | under **8,850px** |
-| Homepage RU | under **9,100px** |
+| Homepage RO | under **8,851px** |
+| Homepage RU | under **9,065px** |
 
 Derivation, and it is the derivation that is the ruling:
 
@@ -1766,23 +1766,30 @@ Derivation, and it is the derivation that is the ruling:
 | Promo bar, measured | +44 | +44 |
 | Full-width 100+ tile, measured | +101 | +101 |
 | Headroom, restoring the page's real slack | +60 | +60 |
-| Derivation totals | **8,851** | **9,065** |
-| Budget as stated in the ruling | **8,850** | **9,100** |
-| Difference | **−1** | **+35** |
+| **Budget** | **8,851** | **9,065** |
 
-**The stated budgets and the stated derivation do not reconcile, and the ruling
-says budgets are never rounded to a convenient number.** RO comes out 1px above
-its stated budget, which reads as arithmetic. RU comes out 35px below, and 9,100
-is exactly the kind of round number the same ruling forbids.
+**Amended 2026-09-06 by W12-10, answering Q-W12-04.** As first recorded, this
+ruling stated 8,850 and 9,100 while its own derivation produced 8,851 and 9,065.
+The owner has confirmed the derivation governs: **8,850 and 9,100 were an
+arithmetic error, and 9,100 additionally violated this ruling's own prohibition
+on rounding to a convenient number.** The budgets are the derived figures.
 
-Nothing is blocked by it: the measured heights are **RO 8,818** and **RU 9,032**,
-inside both the derived and the stated figure in both locales. The stated budget
-governs, because that is what the ruling states, and the gap is recorded as
-slack rather than quietly spent. The reconciliation is Q-W12-04.
+Nothing was rebuilt or trimmed. The measured heights already passed under both
+readings.
+
+The derivation is exact, and the corrected budgets show it. With the bar and the
+tile live and W12-09 held, the homepage measures **RO 8,791** and **RU 9,005** —
+precisely baseline + 44 + 101 — so each locale sits exactly 60px inside its
+budget, which is the headroom term and nothing else. That is what a derived
+budget is supposed to look like. The old 9,100 gave RU 95px of slack while
+claiming to give it 60, which is the practical reason the round number was wrong
+rather than merely untidy.
 
 **Removing either element by data drops the budget by that element's measured
-cost.** Bar removed: RO 8,806, RU 9,056. Tile removed: RO 8,749, RU 8,999. Both
-removed: the R-I revert of 8,700 and 9,000.
+cost.** Bar removed: RO 8,807, RU 9,021. Tile removed: RO 8,750, RU 8,964. Both
+removed: RO 8,706, RU 8,920 — baseline plus the 60px headroom, which supersedes
+R-I's flat revert to 8,700 and 9,000, a revert that silently dropped the
+headroom term.
 
 **Budgets derive from measured element costs plus stated headroom. They are
 never rounded to a convenient number.** Where a derived figure and a stated
@@ -1887,3 +1894,112 @@ locale, taking the homepage to RO 8,818 and RU 9,032.
 Bălți, Ungheni and Cahul. Those three are also three of the four names in
 `meta.description`, so a "no" on any of them changes the description as well as
 the list. Spelling is flagged in Q-W12-05.
+
+---
+
+## RULING R-L · Place names, W12-11, 2026-09-06
+
+Recorded at the owner's instruction:
+
+> Place names are public toponyms, not claims about client work, so they are not
+> invented facts. They must still be verified, because they render as visible
+> copy and as structured data at once.
+
+This draws a line that CLAUDE.md section 5 did not: **a toponym is not a claim.**
+Writing "Bălți" does not assert that Rapid Construct built anything in Bălți; the
+sentence around it does. So supplying a place name is not the invention section 5
+forbids, and the coverage list did not need a client source for the *spelling*.
+
+What it does need is verification, and for a harder reason than usual. A locality
+name on this site is rendered twice from one string: as visible prose in the
+coverage sentence, and as an `areaServed` `City` name inside JSON-LD on twenty
+pages. A wrong form is therefore wrong in the copy a visitor reads *and* in the
+data a crawler ingests, and the structured-data copy is the one nobody proofreads.
+
+**Q-W9-05 is untouched by this.** R-L governs how a place is spelled, never
+whether work happened there.
+
+---
+
+## W12-11 · Verification against the official CUATM, and what it found
+
+**Source.** The *Clasificatorul unităților administrativ-teritoriale al
+Republicii Moldova* (CUATM, CRM 004-2003), maintained by the **Biroul Național de
+Statistică**. Romanian edition `CUATM_2003_2025_rom.doc` from `statistica.gov.md`;
+the Russian edition of the same classifier. Each of the 40 forms was matched by
+hit count against the classifier body, not by eye.
+
+**15 of the 40 forms were wrong.** The paired list, as corrected:
+
+| # | Romanian (CUATM) | Russian (CUATM) | Was |
+|---|---|---|---|
+| 1 | Chișinău | Кишинэу | Кишинёв ✗ |
+| 2 | Codru | Кодру | ✓ |
+| 3 | Durlești | Дурлешть | Дурлешты ✗ |
+| 4 | **Sîngera** ✗ | Сынджера | Сынжера ✗ |
+| 5 | Ialoveni | Яловень | Яловены ✗ |
+| 6 | Strășeni | Стрэшень | Страшены ✗ |
+| 7 | Anenii Noi | Анений Ной | ✓ |
+| 8 | Criuleni | Криулень | ✓ |
+| 9 | Coșnița | Кошница | ✓ |
+| 10 | Dubăsari | Дубэсарь | Дубоссары ✗ |
+| 11 | Orhei | Орхей | ✓ |
+| 12 | Călărași | Кэлэрашь | Кэлэраши ✗ |
+| 13 | Hîncești | Хынчешть | Хынчешты ✗ |
+| 14 | Căinari | Кэинарь | Кэйнары ✗ |
+| 15 | Costești | Костешть | Костешты ✗ |
+| 16 | Sociteni | Сочитень | ✓ |
+| 17 | Cahul | Кахул | Кагул ✗ |
+| 18 | Ungheni | Унгень | Унгены ✗ |
+| 19 | Bălți | Бэлць | Бельцы ✗ |
+| 20 | Vadul lui Vodă | Вадул луй Водэ | Вадул-луй-Водэ ✗ |
+
+### Romanian: one wrong, and the guess that produced it
+
+**Sângera → Sîngera.** CUATM has `Sîngera` 2 hits and `Sângera` 0.
+
+Q-W12-05 recorded that the client's unaccented list forced a choice on two names
+and that I had followed the client's own letters — `Sangera` giving `â`,
+`Hincesti` giving `î` — and flagged the two as inconsistent with each other. The
+classifier settles it: **it uses `î` in both**, so the convention was uniform all
+along and the client's spelling was the misleading signal rather than the source
+of truth. Hîncești happened to be right; Sângera was not. The other 18 confirmed
+unchanged.
+
+### Russian: fourteen wrong, because the register is transliteration
+
+Moldovan official Russian **transliterates the Romanian** rather than using the
+Soviet-era exonyms. Кишинэу, not Кишинёв. Бэлць, not Бельцы. Кахул, not Кагул.
+Дубэсарь, not Дубоссары. That is the single finding behind twelve of the
+fourteen.
+
+Two were not findable under my first spellings and were resolved from their own
+classifier rows: **Сынджера** at code `0111000` in sector Botanica (I had
+Сынжера, missing the `д`), and **Кэинарь** at `2702000` (I had Кэйнары).
+
+**Two of the wrong forms are older than this wave.** `Кэйнары` and `Костешты`
+have been in `locales/ru.json` since wave 1 and are wrong by this source. Two
+others that predate the wave, `Кошница` and `Сочитень`, are correct.
+
+### What is NOT resolved, and why looking harder will not resolve it
+
+The card says to choose the form used by Moldovan official Russian-language
+sources. **Those sources use both registers, and one of them uses both on a
+single page.**
+
+| Source | Form |
+|---|---|
+| CUATM classifier (BNS) | **Кишинэу** |
+| Moldpres, the state news agency | **Кишинёва** |
+| Presidency, presedinte.md/rus | **Кишиневе** |
+| `statistica.gov.md/ru` front page | **Кишинэу** ×2 *and* **Кишинев** ×1 |
+
+The classifier register is right for a classifier. The exonym register is what
+the state press writes in prose, what a Russian-speaking customer types into
+Google, and **what this site already uses in nine strings** — `meta.title`,
+`meta.description`, `meta.ogTitle`, `footer.description`, `footer.region`,
+`form.phCity` and the review entries.
+
+So the branch now holds a verified list in one register beside nine strings in
+the other. That is a decision about voice, not a fact that can be looked up, and
+it is recorded as such in Q-W12-05 rather than settled here.

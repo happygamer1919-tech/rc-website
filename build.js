@@ -733,6 +733,12 @@ for (const l of loaded) {
     // With no URL the anchor is not rendered at all. href="#" was a dead link
     // and an <a> without href fails Lighthouse's crawlable-anchors audit, so
     // the whole element is conditional.
+    /* W12-20, R-O. These two are still COMPUTED and deliberately not rendered.
+       GOOGLE_REVIEWS_URL stays armed in the data layer so the value is present
+       and correct the moment a ruling lets the anchor back; only the markup that
+       consumed them was removed. Nothing else reads the variable: sameAs carries
+       the profile URL as a literal in src/template.html, so the structured-data
+       connection does not depend on this at all. */
     googleLink: GOOGLE_REVIEWS_URL
       ? `<a class="link-arrow" href="${GOOGLE_REVIEWS_URL}" target="_blank" rel="noopener noreferrer">${esc(l.strings['reviews.google'])}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>`
       : '',

@@ -161,10 +161,11 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     <h1>{{hero.h1}}</h1>
     <p class="hero__sub">{{hero.sub}}</p>
 
-    <div class="grid grid--3 stats">
+    <div class="grid grid--4 stats">
       <div class="stat"><div class="stat__n">{{stats.0.n}}</div><div class="stat__label">{{stats.0.label}}</div></div>
       <div class="stat"><div class="stat__n">{{stats.1.n}}</div><div class="stat__label">{{stats.1.label}}</div></div>
       <div class="stat"><div class="stat__n">{{stats.2.n}}</div><div class="stat__label">{{stats.2.label}}</div></div>
+      <div class="stat"><div class="stat__n">{{stats.3.n}}</div><div class="stat__label">{{stats.3.label}}</div></div>
     </div>
 
     <div class="hero-panels">
@@ -347,10 +348,11 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
 <!-- 6 · Stats band, #141414, dark 1 of 2 -->
 <section class="section section--dark band">
   <div class="container">
-    <div class="grid grid--3 band__stats">
+    <div class="grid grid--4 band__stats">
       <div class="stat"><div class="stat__n">{{stats.0.n}}</div><div class="stat__label">{{stats.0.label}}</div></div>
       <div class="stat"><div class="stat__n">{{stats.1.n}}</div><div class="stat__label">{{stats.1.label}}</div></div>
       <div class="stat"><div class="stat__n">{{stats.2.n}}</div><div class="stat__label">{{stats.2.label}}</div></div>
+      <div class="stat"><div class="stat__n">{{stats.3.n}}</div><div class="stat__label">{{stats.3.label}}</div></div>
     </div>
     <p class="band__coverage"><strong>{{band.coverageTitle}}</strong> {{band.coverageLine}}</p>
   </div>
@@ -394,7 +396,16 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     <p class="eyebrow" data-reveal>{{reviews.eyebrow}}</p>
     <h2 data-reveal>{{reviews.h2}}</h2>
 
-    <div style="margin-top: 40px;">
+    <div class="reviews-layout" style="margin-top: 40px;">
+      <div class="rating" data-reveal>
+        <div class="rating__score">{{reviews.score}}</div>
+        <div class="rating__outof">{{reviews.outOf}}</div>
+        <div class="stars" role="img" aria-label="{{reviews.aria}}">
+          <div class="stars__base"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg></div>
+          <div class="stars__fill" style="width: 98%;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#F65308" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="#F65308" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="#F65308" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="#F65308" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="#F65308" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg></div>
+        </div>
+        <div class="rating__count">{{reviews.count}}</div>
+      </div>
 
       <div class="grid grid--3" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
       <figure class="review" style="margin: 0;">
@@ -419,10 +430,10 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         <blockquote class="review__quote" style="margin: 0;">{{reviews.items.2.quote}}</blockquote>
       </figure>
       </div>
-      <!-- W12-13. A link out is not a rating claim, so it stays while the
-           aggregate panel is gone. .portfolio__foot is the existing
-           centre-a-thing rule; no new CSS, no new colour. -->
-      <div class="portfolio__foot" {{googleHidden}}>{{googleLink}}</div>
+      <!-- W12-20, R-O. The visible anchor to the Google profile is gone while
+           the R-N review claim is live. The entity connection is carried by
+           sameAs in the JSON-LD above, which is unaffected: that URL is a
+           literal in this template and is not derived from GOOGLE_REVIEWS_URL. -->
     </div>
   </div>
 </section>

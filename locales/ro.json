@@ -54,6 +54,10 @@
     "2": {
       "n": "30",
       "label": "ani garanție scrisă"
+    },
+    "3": {
+      "n": "4.9/5",
+      "label": "din 250+ recenzii"
     }
   },
   "services": {
@@ -282,6 +286,10 @@
         "tag": "Dezvoltator imobiliar"
       }
     },
+    "score": "4.9",
+    "outOf": "din 5",
+    "count": "250+ recenzii",
+    "aria": "Nota medie 4.9 din 5",
     "google": "Vezi recenziile pe Google"
   },
   "form": {

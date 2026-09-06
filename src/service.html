@@ -220,7 +220,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
         <div class="consent">
           <input id="f-consent" name="acord" type="checkbox" required aria-describedby="e-consent">
-          <label for="f-consent">{{form.consentPre}} <a href="{{privacyHref}}">{{form.consentLink}}</a>{{form.consentPost}}</label>
+          <label for="f-consent">{{form.consentPre}} {{privacyLinkOpen}}{{form.consentLink}}{{privacyLinkClose}}{{form.consentPost}}</label>
         </div>
         <p class="field__error" id="e-consent" hidden>{{form.errConsent}}</p>
 
@@ -285,7 +285,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   <div class="footer__bar">
     <div class="footer__bar-inner">
       <div>{{footer.copyright}} · {{footer.region}}</div>
-      <div class="footer__legal"><a href="{{privacyHref}}">{{footer.privacy}}</a></div>
+      {{privacyFooterLegal}}
     </div>
   </div>
 </footer>

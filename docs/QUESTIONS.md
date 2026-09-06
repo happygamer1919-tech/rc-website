@@ -826,3 +826,53 @@ Recommendation: **1, and ask the client what 250+ counts.** The claim is theirs
 and predates us; the honest fix is knowing its source, not quietly softening it.
 If the client cannot say where 250+ comes from, that is a section 5 problem
 about the existing copy and much bigger than this link.
+
+---
+
+## Q-W12-07-LEGAL · The privacy pages are unlinked until the registry extract arrives — OPEN, opened 2026-09-06 (W12-17)
+
+**State: the pages are published, `noindex`, out of the sitemap, and NOTHING on
+the site links to them.** They are reachable only by typing the URL.
+
+**Why.** The client launches tomorrow and both privacy pages still render their
+placeholders as bold body text a reader hits directly:
+
+| Locale | What a visitor read |
+|---|---|
+| RO | *Câmpurile marcate TODO se completează înainte de publicarea site-ului.* |
+| RO | Denumire juridică — **TODO: denumirea juridică completă, de completat înainte de publicare** |
+| RO | IDNO — **TODO: numărul IDNO, de completat înainte de publicare** |
+| RU | *Поля, помеченные TODO, будут заполнены до публикации сайта.* |
+| RU | Юридическое наименование — **TODO: полное юридическое наименование, заполнить до публикации** |
+| RU | IDNO — **TODO: номер IDNO, заполнить до публикации** |
+
+A policy page that announces its own operator is undeclared is worse than no
+linked policy: it tells a visitor, in bold, that the company behind the form has
+not been identified.
+
+### THE REVERSAL, and it is one change
+
+**Fill `privacy.opName` and `privacy.opIdno` in both locale files. That is all.**
+
+Do not edit a template, a stylesheet or `build.js`. The links are gated on
+`privacyIncomplete`, the same flag that has always driven the `noindex` and the
+sitemap exclusion, so filling the four strings restores, together and
+automatically:
+
+1. the footer legal entry on all 24 pages,
+2. the consent-checkbox link in both forms,
+3. the popup fine-print link,
+4. `index, follow` on both privacy pages,
+5. both pages back into `sitemap.xml`.
+
+**Verified, not assumed.** The two strings were filled with placeholders, the
+site rebuilt, and all five came back: 3 links on the homepage, 2 on a service
+page, footer entry present, `index, follow`, 1 sitemap entry. Then reverted.
+
+### What is still blocked
+
+W12-07. The client answered "Rapid Construct", which is a brand and not a
+registered entity with a legal form and an IDNO. **The bank payment advice is
+not evidence** — `Beneficiar` on a payment advice identifies who received a
+payment. The registry extract is expected. Nothing is written until then, and
+the company name and the two 13-digit codes remain absent from the repo.

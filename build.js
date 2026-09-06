@@ -119,6 +119,7 @@ const RAW_KEYS = new Set([
   // quotes into &quot; and truncated the notice at its first space.
   'demoAttr',
   'portfolioCards', 'googleLink', 'supplierChips', 'heroPanelMedia', 'promoBar',
+  'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
   'areaServedJson',
   ...Array.from({ length: 9 }, (_, i) => `svcMedia${i}`),
 ]);
@@ -130,6 +131,8 @@ const SVC_RAW_KEYS = new Set([
   'promoBar',
   // W12-09. Generated JSON-LD fragment, must not be escaped.
   'areaServedJson',
+  // W12-17. Anchor fragments and a bare attribute.
+  'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
 ]);
 
 const die = (msg) => { console.error('\nBUILD FAILED: ' + msg + '\n'); process.exit(1); };
@@ -689,6 +692,27 @@ for (const l of loaded) {
     subjectMain: `[${l.code.toUpperCase()}] ${l.strings['form.h2']} — ${l.home}`,
     subjectPopup: `[${l.code.toUpperCase()}] ${l.strings['popup.h2']} — ${l.home}`,
     privacyHref: BASE + PRIVACY_PATH[l.code],
+    /* W12-17. While the privacy page still carries TODO markers, nothing links
+       to it. A visitor who followed the footer link read "TODO: denumirea
+       juridică completă" in bold, which is worse than no policy page: it
+       advertises that the operator is undeclared.
+
+       Gated on privacyIncomplete, the SAME flag that already sets noindex and
+       excludes the page from the sitemap. That makes the reversal exactly one
+       change: fill privacy.opName and privacy.opIdno in both locale files and
+       the links, the footer entry, the indexability and the sitemap entry all
+       come back together. No markup edit, no second switch to remember.
+
+       The pages themselves stay published and reachable by typing the URL, so
+       nothing 404s and no existing link outside our control breaks. */
+    privacyLinkOpen: privacyIncomplete ? '' : `<a href="${BASE + PRIVACY_PATH[l.code]}">`,
+    privacyLinkClose: privacyIncomplete ? '' : '</a>',
+    // The footer entry is the link and nothing else, so an unlinked label would
+    // be a dead word in the legal row. The whole element is omitted rather than
+    // hidden: `hidden` keeps the href in the HTML, where a crawler can still
+    // follow it to a page advertising that the operator is undeclared.
+    privacyFooterLegal: privacyIncomplete ? ''
+      : `<div class="footer__legal"><a href="${BASE + PRIVACY_PATH[l.code]}">${esc(l.strings['footer.privacy'])}</a></div>`,
     servicesHref: BASE + l.home + '#servicii',
     // JSON-LD `item` must be an absolute URL. servicesHref is a path, correct
     // for an <a href> and invalid inside the BreadcrumbList.

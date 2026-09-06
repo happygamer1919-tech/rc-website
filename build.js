@@ -121,6 +121,8 @@ const RAW_KEYS = new Set([
 const SVC_RAW_KEYS = new Set([
   'demoAttr', 'svc.imageObjects', 'svc.answer', 'svc.table', 'svc.faqSection', 'svc.faqSchema',
   'svc.gallerySection', 'svc.priceSection', 'svc.footerLinks', 'svc.priceExtra', 'svc.media',
+  // W12-06. The bar is site-wide, so the service template needs it raw too.
+  'promoBar',
 ]);
 
 const die = (msg) => { console.error('\nBUILD FAILED: ' + msg + '\n'); process.exit(1); };

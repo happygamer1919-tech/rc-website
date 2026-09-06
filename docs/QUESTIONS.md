@@ -879,7 +879,20 @@ the company name and the two 13-digit codes remain absent from the repo.
 
 ---
 
-## Q-W12-08 · The restore exceeds the height budget in both locales — OPEN, BLOCKING, opened 2026-09-06 (W12-18, W12-19)
+## Q-W12-08 · The restore exceeds the height budget — **RESOLVED 2026-09-06 by R-O** (W12-18, W12-19, W12-20)
+
+**Resolved by a fourth option none of the three listed below anticipated: remove
+the visible anchor entirely rather than move it, raise the budget or trim.**
+
+R-O rules the profile connection is `sameAs` only. The anchor carried no search
+value; `sameAs` carries the entity connection and stays. With the anchor gone the
+restore measures **RO 8,818 and RU 9,032, inside R-J by 33px each**, three
+identical runs, live-calibrated.
+
+Nothing was trimmed, the link was not moved back into the panel, and no budget
+was raised. The restored panel is exactly as W12-18 committed it.
+
+*Original entry follows, unedited.*
 
 **STOPPED, not shipped. Nothing trimmed, no budget raised.** W12-19 says to stop
 and report if RO exceeds 8,851, and it does, by 67px. RU exceeds too, by 66px.

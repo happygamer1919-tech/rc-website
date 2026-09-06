@@ -617,7 +617,18 @@ least likely to land on.
 
 ---
 
-## Q-W12-04 · R-J's stated budgets do not match R-J's own derivation — OPEN, opened 2026-09-06 (W12-04)
+## Q-W12-04 · R-J's stated budgets do not match R-J's own derivation — **ANSWERED 2026-09-06, the derivation governs** (W12-10)
+
+**Budgets are RO under 8,851 and RU under 9,065.** The owner confirmed 8,850 and
+9,100 were an arithmetic error and that 9,100 violated the ruling's own
+prohibition on round numbers. R-J amended in place. Nothing rebuilt or trimmed:
+the measured heights passed under both readings.
+
+The corrected budgets are exact. Live, with W12-09 held, the homepage measures RO
+8,791 and RU 9,005 — baseline + 44 + 101 — leaving each locale 60px inside, which
+is the headroom term and nothing else. The old 9,100 gave RU 95px while claiming 60.
+
+*Original entry follows, unedited.*
 
 **Shipped default: the stated budgets govern. Nothing was spent on the gap.**
 

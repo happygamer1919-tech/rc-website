@@ -1755,8 +1755,8 @@ While the promo bar and the 100+ tile are live:
 
 | Page | Budget |
 |---|---|
-| Homepage RO | under **8,850px** |
-| Homepage RU | under **9,100px** |
+| Homepage RO | under **8,851px** |
+| Homepage RU | under **9,065px** |
 
 Derivation, and it is the derivation that is the ruling:
 
@@ -1766,23 +1766,30 @@ Derivation, and it is the derivation that is the ruling:
 | Promo bar, measured | +44 | +44 |
 | Full-width 100+ tile, measured | +101 | +101 |
 | Headroom, restoring the page's real slack | +60 | +60 |
-| Derivation totals | **8,851** | **9,065** |
-| Budget as stated in the ruling | **8,850** | **9,100** |
-| Difference | **−1** | **+35** |
+| **Budget** | **8,851** | **9,065** |
 
-**The stated budgets and the stated derivation do not reconcile, and the ruling
-says budgets are never rounded to a convenient number.** RO comes out 1px above
-its stated budget, which reads as arithmetic. RU comes out 35px below, and 9,100
-is exactly the kind of round number the same ruling forbids.
+**Amended 2026-09-06 by W12-10, answering Q-W12-04.** As first recorded, this
+ruling stated 8,850 and 9,100 while its own derivation produced 8,851 and 9,065.
+The owner has confirmed the derivation governs: **8,850 and 9,100 were an
+arithmetic error, and 9,100 additionally violated this ruling's own prohibition
+on rounding to a convenient number.** The budgets are the derived figures.
 
-Nothing is blocked by it: the measured heights are **RO 8,818** and **RU 9,032**,
-inside both the derived and the stated figure in both locales. The stated budget
-governs, because that is what the ruling states, and the gap is recorded as
-slack rather than quietly spent. The reconciliation is Q-W12-04.
+Nothing was rebuilt or trimmed. The measured heights already passed under both
+readings.
+
+The derivation is exact, and the corrected budgets show it. With the bar and the
+tile live and W12-09 held, the homepage measures **RO 8,791** and **RU 9,005** —
+precisely baseline + 44 + 101 — so each locale sits exactly 60px inside its
+budget, which is the headroom term and nothing else. That is what a derived
+budget is supposed to look like. The old 9,100 gave RU 95px of slack while
+claiming to give it 60, which is the practical reason the round number was wrong
+rather than merely untidy.
 
 **Removing either element by data drops the budget by that element's measured
-cost.** Bar removed: RO 8,806, RU 9,056. Tile removed: RO 8,749, RU 8,999. Both
-removed: the R-I revert of 8,700 and 9,000.
+cost.** Bar removed: RO 8,807, RU 9,021. Tile removed: RO 8,750, RU 8,964. Both
+removed: RO 8,706, RU 8,920 — baseline plus the 60px headroom, which supersedes
+R-I's flat revert to 8,700 and 9,000, a revert that silently dropped the
+headroom term.
 
 **Budgets derive from measured element costs plus stated headroom. They are
 never rounded to a convenient number.** Where a derived figure and a stated

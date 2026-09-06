@@ -3,7 +3,7 @@
     "lang": "ro",
     "dir": "ltr",
     "title": "Construcții și renovări la cheie, Chișinău · Rapid Construct",
-    "description": "Acoperișuri, fațade, renovări, finisaje în Chișinău, Orhei, Cahul, Costești. Garanție scrisă până la 30 de ani, materiale certificate UE, de la 160 lei/m².",
+    "description": "Acoperișuri, fațade, renovări, finisaje în Chișinău, Bălți, Ungheni, Cahul și alte localități. Garanție scrisă până la 30 de ani, de la 160 lei/m².",
     "ogTitle": "Construcții și renovări la cheie în Chișinău",
     "ogLocale": "ro_MD",
     "skipToContent": "Sari la conținut",
@@ -207,7 +207,29 @@
   },
   "band": {
     "coverageTitle": "Lucrăm în toată Moldova.",
-    "coverageLine": "Am construit în Chișinău, Codru, Coșnița, Costești, Căinari și Sociteni."
+    "coverageLead": "Inclusiv:",
+    "localities": {
+      "0": "Chișinău",
+      "1": "Codru",
+      "2": "Durlești",
+      "3": "Sângera",
+      "4": "Ialoveni",
+      "5": "Strășeni",
+      "6": "Anenii Noi",
+      "7": "Criuleni",
+      "8": "Coșnița",
+      "9": "Dubăsari",
+      "10": "Orhei",
+      "11": "Călărași",
+      "12": "Hîncești",
+      "13": "Căinari",
+      "14": "Costești",
+      "15": "Sociteni",
+      "16": "Cahul",
+      "17": "Ungheni",
+      "18": "Bălți",
+      "19": "Vadul lui Vodă"
+    }
   },
   "trust": {
     "eyebrow": "Despre noi",

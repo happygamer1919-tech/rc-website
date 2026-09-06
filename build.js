@@ -893,11 +893,40 @@ fs.writeFileSync('dist/.htaccess',
   '  ExpiresByType text/html "access plus 1 hour"\n' +
   '</IfModule>\n');
 
+/* CNAME, and why build.js emits it rather than leaving it to Settings.
+
+   A Pages site deployed from Actions serves whatever the uploaded artifact
+   contains. If that artifact carries no CNAME, a deploy can drop the custom
+   domain and the site falls back to the github.io host — Settings is where the
+   domain is configured, but the artifact is what makes it durable. The CNAME in
+   the repository root is not enough either: only `dist/` is uploaded, and the
+   repository root is not part of it.
+
+   Exactly the domain, no trailing content. GitHub trims whitespace when it
+   reads the file, but there is no reason to write any. */
+const CUSTOM_DOMAIN = 'rapidconstructmd.com';
+
+/* The CNAME and the canonical host must never disagree: a page canonicalised to
+   one origin and served from another is worse than either mistake alone. When
+   SITE_URL is set explicitly, which is what CI does, its hostname must be the
+   domain being written. A local build that leaves SITE_URL unset skips the
+   check and still gets a CNAME, which is harmless because a local build is
+   never uploaded. */
+if (process.env.SITE_URL) {
+  const host = new URL(SITE).hostname;
+  if (host !== CUSTOM_DOMAIN) {
+    die(`SITE_URL host is "${host}" but the CNAME would say "${CUSTOM_DOMAIN}".\n` +
+        '  These must match, or the deployed site canonicalises to an origin it is not served from.\n' +
+        `  Either set SITE_URL to https://${CUSTOM_DOMAIN}, or change CUSTOM_DOMAIN in build.js.`);
+  }
+}
+fs.writeFileSync('dist/CNAME', CUSTOM_DOMAIN);
+
 fs.copyFileSync('src/styles.css', 'dist/styles.css');
 fs.copyFileSync('src/main.js', 'dist/main.js');
 fs.cpSync('public', 'dist', { recursive: true, filter: (src) => !src.endsWith('PLACEHOLDERS.json') });
 console.log('copied styles.css, main.js and public/ into dist/');
-console.log('generated robots.txt, sitemap.xml, site.webmanifest');
+console.log(`generated robots.txt, sitemap.xml, site.webmanifest, CNAME (${CUSTOM_DOMAIN})`);
 
 console.log(`base path: ${BASE || '(root)'}    site: ${SITE}`);
 console.log(`google reviews link: ${GOOGLE_REVIEWS_URL || 'HIDDEN (set GOOGLE_REVIEWS_URL to reveal)'}`);

@@ -445,7 +445,17 @@ ticket stops one branch of the graph, never the whole run.
 **`scripts/check-stale-docs.js` is the implementation**, run as a gate the way
 `check-links.js` is, exiting non-zero on a hit. It carries a list of
 known-superseded values, each with the authority that superseded it, and fails
-when one appears in a governing document with no amendment within three lines.
+when one appears with no amendment within three lines.
+
+**It reads the governing documents whole, and the source files' comments only**
+(W12-31). Comments, not whole source files, and the distinction is what makes
+the extension safe rather than noisy: `MIN_LONG_EDGE = 1600` in `slots.js` is the
+correct implementation of a rule, and `setTimeout(r, 1600)` in
+`verify-live.js` is a delay in milliseconds. A gate that flags its own correct
+implementation trains people to ignore it. Neither is a comment, so neither is
+read. The comments are extracted by a character scanner that tracks strings,
+template literals to any depth and regex literals, because a regex cannot tell
+`//` in a line comment from `//` in `https://` and `build.js` is full of both.
 
 **The list, the exempt files and the enumerated exceptions live in the script.**
 They are the one place each is written, per section 14, and the script prints all
@@ -465,12 +475,15 @@ are how a gate stops being one:
 **Its limit, stated plainly.** It is a value search with a proximity rule. It
 catches a superseded value arriving with nothing beside it, which is every
 instance found in wave 12. It cannot tell a value quoted as dead from one quoted
-as live when a marker happens to sit within three lines, and it only reads the
-documents named in its scan list. Source-file comments are out of scope and one
-known instance is recorded in QUESTIONS.md rather than assumed to be handled.
+as live when a marker happens to sit within three lines, and it reads only the
+files named in its two scan lists. It does not read code, by design, so a
+superseded figure written into a string or a variable name is invisible to it.
 
-**Negative-tested before it was trusted**, per section 13. Four superseded values
-were reintroduced into a scratch copy — R-I's budgets restated as live in this
+**Negative-tested before it was trusted**, per section 13, and again when the
+source-comment scan was added in W12-31: four values planted in comments of four
+different kinds all fired, and six planted in code fired nothing, which is the
+arm that proves the scan is reading comments rather than files. Four superseded
+values were reintroduced into a scratch copy — R-I's budgets restated as live in this
 file, the struck line 121 heuristic restored to the master plan, `#F26419` (dead;
 `#F65308` is live) added
 to the photo manifest, the never-true baseline added to the backlog — and all

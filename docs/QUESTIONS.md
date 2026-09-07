@@ -1107,7 +1107,7 @@ run as a gate the way `check-links.js` is, would.
 
 ---
 
-## Q-W12-12 · The staleness gate reads documents, and two stale values are in a stylesheet — OPEN, opened 2026-09-07 (W12-29)
+## Q-W12-12 · The staleness gate reads documents, and two stale values are in a stylesheet — **ANSWERED 2026-09-07, option (a) and (b) both taken** (opened 2026-09-07, W12-29; answered W12-31)
 
 **Shipped default: documents only. The two source-file occurrences are reported
 here, not fixed, and not silently ignored.**

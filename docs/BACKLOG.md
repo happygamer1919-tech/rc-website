@@ -39,6 +39,7 @@ history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 | RC-076 | W12-27 Ruling R-R, three documents amended in place | `w12/rc-076-ruling-rr` | shipped |
 | RC-078 | W12-29 Staleness gate, `check-stale-docs.js`, negative-tested | `w12/rc-078-stale-docs-gate` | shipped |
 | RC-079 | W12-30 Close wave 12: handoff, open questions, production tag | `w12/rc-079-close-wave-12` | shipped |
+| RC-080 | W12-31 Amend the two stylesheet comments; gate reads source comments | `w12/rc-080-source-comment-gate` | shipped |
 
 **The docs branch was rebuilt off W12-08, not off W12-09.** RC-057 originally sat
 on top of the coverage commit, so merging it would have dragged the held card in.
@@ -277,3 +278,11 @@ defect and are out of the scan's scope.
 assertion and tagged. Handoff written at the foot of `RELEASE-NOTES.md`: budgets
 by ruling reference, the open questions with what unblocks each, and the exact
 W12-07 reversal step.
+
+## W12-31 · The last known stale value
+**Status: DONE** (2026-09-07). The two `src/styles.css` comments quoting the cap
+R-J superseded are amended, naming R-J and stating no figure. `check-stale-docs.js`
+now reads source comments as well as documents: `src/*.css`, `src/*.html`,
+`build.js`, `scripts/*.js`, comments only, extracted by a character scanner
+rather than a regex. Negative-tested on both arms - four values planted in four
+comment forms all fired, six planted in code fired nothing. Resolves Q-W12-12.

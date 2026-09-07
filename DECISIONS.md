@@ -2632,3 +2632,102 @@ tell a value quoted as dead from one quoted as live when a marker happens to sit
 within three lines, and it reads only the documents in its scan list. Source-file
 comments are out of scope; the two known instances are in Q-W12-12 rather than
 assumed to be handled.
+
+---
+
+## W12-31 · The last known stale value, and the gate learns to read comments, 2026-09-07
+
+**Resolves Q-W12-12.** Two `src/styles.css` comments quoted the 8,700px cap R-J
+superseded, and the gate built in W12-29 could not see them because it read
+documents only.
+
+### The two comments, amended under R-R
+
+Both carried the same two dead figures: a cap R-J replaced, and "under 200px of
+headroom", which R-J corrected to a small fraction of that. The amendment names
+R-J and **states no figure**, at the owner's instruction and per R-Q.
+
+**The struck-value half of R-R does not apply here, and that is deliberate.** R-R
+says not to strip the number, because the master plan is a design spec and a spec
+with its values removed is not a spec. A stylesheet comment is not a spec. There
+is nothing to preserve for a reader who needs the figure, and leaving a dead
+number in a comment is how it gets copied again. So the figures are removed and
+the ruling is named.
+
+The second comment's amendment records something R-J already established and the
+comment did not: refusing the 70px row was **more** right than the comment
+claimed. It reasoned that 70px was a fraction of the available headroom. The real
+headroom was a fraction of the figure it quoted, so the row would have blown the
+budget outright. The decision stands and its reasoning is now stronger.
+
+### The extension: comments, not source files
+
+`SCAN_SOURCE` covers `src/*.css`, `src/*.html`, `build.js` and `scripts/*.js`,
+minus the gate itself, which cannot be in its own scan list because the list of
+superseded values necessarily contains every superseded value.
+
+**Only comments are read.** Q-W12-12 recorded why a whole-file scan was rejected
+and it was the right call: the seeded `1600` pattern hits `MIN_LONG_EDGE = 1600`
+in `slots.js`, which is the correct implementation of the rule, and
+`setTimeout(r, 1600)` in `verify-live.js`, which is a delay in milliseconds. A
+gate that flags its own correct implementation trains people to ignore it.
+
+**A regex cannot extract comments and was not used.** `https://` is not a line
+comment, and `build.js` is 39% comment by character and full of template literals
+containing URLs. The extractor is a character scanner tracking line comments,
+block comments, all three string forms, `${}` interpolation to any depth, and
+regex literals — the last because `/\/\//` would otherwise look like a comment
+opening. Non-comment characters are blanked rather than deleted, so byte offsets
+survive and a hit still reports the true line number.
+
+Verified directly rather than inferred from a clean pass: on the five largest
+scanned files the extractor preserves length exactly, drifts zero offsets, keeps
+32.5% of `styles.css` and 38.9% of `build.js`, excludes
+`const MIN_LONG_EDGE = 1600`, `setTimeout(r, 1600)` and the `ORIGIN` string
+constant, and captures the header comment of `verify-live.js` including the usage
+line that contains a URL.
+
+The window is drawn from the same blanked text, so **a comment must carry its own
+marker**. A mention of the ruling in nearby code does not excuse it.
+
+`photo-min` lost `1600x1200` from its pattern: that is the service card's 2x
+render dimension, not the long-edge minimum, and it appears in a correct comment
+in `slots.js`. One real source-comment occurrence survives on the tree,
+`scripts/slots.js:57`, which names W7-02 on its own line and is properly marked.
+
+### Negative test, both runs
+
+Per section 13, on a scratch copy of the whole tree. **Two arms, because the
+extension has two ways to be wrong.**
+
+Values planted in comments — it must fire:
+
+| Planted | Comment form | Caught |
+|---|---|---|
+| the 8,700px cap | `/* … */` in `src/styles.css` | yes, naming R-J |
+| the 8,504px baseline | `<!-- … -->` in `src/template.html` | yes, naming R-J |
+| `#F26419` | `//` in `build.js` | yes, naming the DECISIONS entry |
+| the flat 9,000px cap | `/* … */` in `scripts/verify-live.js` | yes, naming R-J |
+
+    FAIL — 4 unmarked, 0 dead exceptions, 0 missing files      exit 1
+
+Each hit printed `(in a comment)` with the true line number.
+
+The same values planted in **code** — it must stay silent: a string constant
+holding "under 200px of headroom against the 8,700px cap", a `#F26419` string,
+and a template literal holding `8,744`, `9,044` and `#1C1C1C`. Six values, zero
+hits. **That arm is the one that proves the scan reads comments rather than
+files**, and a gate that fired on all ten would have been indistinguishable from
+a working one on the first arm alone.
+
+One plant did **not** fire on its first placement: the CSS value was planted
+immediately above the footer comment amended earlier in this same card, whose
+`R-J` sat within the window and cleared it. That is the documented proximity
+limit behaving exactly as stated, not a defect, and it was moved clear of every
+marker and watched firing before the arm was called tested.
+
+Real tree, same run:
+
+    7 documents + 13 source files (comments only), 0 missing
+    marked: 25   known exceptions used: 8   unmarked: 0
+    every known-superseded value is amended, excepted or absent.      exit 0

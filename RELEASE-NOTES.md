@@ -562,20 +562,25 @@ this file.** Read it first; everything above it is a dated wave record.
 | | |
 |---|---|
 | Live | `https://rapidconstructmd.com`, GitHub Pages from `main` |
-| Tag | **`wave-12-verified`** — the commit this state was verified at |
+| Tag | **`wave-12-final`** — the commit this state was verified at. `wave-12-verified` is the earlier one, kept, not moved |
 | Verified by | `node scripts/verify-live.js`, exit 0, under ruling R-P |
 | Pages | 25, both locales, plus `/review/` unlisted |
 
-**The tag is the SHA.** `git rev-parse wave-12-verified` gives it, and that is
-the same value `verify-live.js` asserted against the `build-sha` meta tag every
-page carries. Nothing here restates it, because a SHA copied into prose is the
-same class of thing as a budget copied into prose.
+**The tag is the SHA.** `git rev-parse wave-12-final` gives it, and that is the
+same value `verify-live.js` asserted against the `build-sha` meta tag every page
+carries. Nothing here restates it, because a SHA copied into prose is the same
+class of thing as a budget copied into prose.
+
+**Tags are added, never moved.** `wave-12-verified` marks the state at W12-30 and
+`wave-12-final` marks the state at W12-32. Moving a published tag is a force
+operation and it would destroy the record of what was verified when, which is
+what R-S is about.
 
 Re-verify at any time. It cache-busts every request, reads markers and height in
 one page evaluation, and exits non-zero on any mismatch:
 
     node scripts/verify-live.js
-    EXPECT_SHA=$(git rev-parse wave-12-verified) node scripts/verify-live.js
+    EXPECT_SHA=$(git rev-parse wave-12-final) node scripts/verify-live.js
 
 ## Budgets, and where they are
 
@@ -601,13 +606,20 @@ Three things a card picking this up needs to know, none of which are figures:
 ## Last verified run
 
 Recorded as a run, not as a constraint. Taken on the live domain, cache-busted,
-`build-sha` asserted, three pages of the eight shown:
+`build-sha` asserted, all eight pages VERIFIED, 0 unverified and 0 failed:
 
 | Page | Height | Verdict |
 |---|---|---|
 | Homepage RO | 8,818px | VERIFIED, inside its R-J budget |
 | Homepage RU | 9,032px | VERIFIED, inside its R-J budget |
-| Tallest service page | 5,729px | VERIFIED, inside 6,000 |
+| Six service pages | 5,522 – 5,729px | VERIFIED, inside 6,000 |
+| Reachable URLs crawled | 27 | 0 with a visible TODO |
+
+**Three consecutive runs across W12-30, W12-31 and W12-32 returned these same
+figures**, at three different SHAs, each asserted against the `build-sha` the
+page served. W12-31 changed two stylesheet comments and moved nothing: identical
+heights on all eight pages, which is what "zero height impact" means here and how
+it was established rather than assumed.
 
 **RU is above 9,000px and that is correct.** The master plan's line 121 said
 otherwise until W12-28 struck it. If you find any document telling you 9,000px
@@ -689,13 +701,15 @@ that shipped. **All are owner-input questions except the last two.**
 | **Q-W12-02** · The promo bar expires at build time, not in the browser | An owner decision. Today the bar disappears at the next build after `promo.endDate`, not at midnight on it. A deploy on the day is the workaround |
 | **Q-W12-05** · The Russian register for the locality names | Owner confirmation of the transliteration register R-M settled by usage. RO is answered and verified against the CUATM |
 | **Q-W12-07-LEGAL** · The privacy pages have no operator section | The registry extract. The reversal is the step-by-step above and it has been rehearsed |
-| **Q-W12-12** · Two `src/styles.css` comments quote a superseded cap | A source card, where a redeploy is expected anyway. Not a docs card: a stylesheet comment is deployed content |
+| **Q-W12-13** · Does an appended amendment block count as editing a body under R-S | A one-word answer. Default shipped: it does, so the next amendment to a ruling is its own entry. Two existing blocks stay either way |
 
 **Answered this wave and no longer live:** Q-W12-06 (the reviews link, armed in
 W12-12), Q-W12-09 (the `build-sha` fingerprint, shipped in W12-23), Q-W12-10 and
 Q-W12-11 (the governing-document staleness, amended under R-R in W12-27 and
-W12-28). All four had headings still reading OPEN and were corrected here after
-checking the tree rather than the claim.
+W12-28), Q-W12-12 (the two stylesheet comments, amended in W12-31, which also
+taught the staleness gate to read source comments). The first four had headings
+still reading OPEN and were corrected at W12-30 after checking the tree rather
+than the claim; R-S ratifies that as a status change and not an edit.
 
 ## What a card picking this up should read, in order
 
@@ -703,8 +717,9 @@ checking the tree rather than the claim.
    staleness gate, sections 12 and 13 are what a measurement and a gate may
    conclude.
 2. This handoff.
-3. `DECISIONS.md` from ruling R-J onward — nine rulings landed in wave 12 and
-   they are what the master plan now loses to.
+3. `DECISIONS.md` from ruling R-J onward — ten rulings landed in wave 12 and
+   they are what the master plan now loses to. R-S is the one to read before
+   editing any record: bodies are immutable, status markers are not.
 4. `docs/QUESTIONS.md` for anything the card touches.
 
 **The master plan wins by default only where no later ruling addresses the

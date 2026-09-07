@@ -2731,3 +2731,63 @@ Real tree, same run:
     7 documents + 13 source files (comments only), 0 missing
     marked: 25   known exceptions used: 8   unmarked: 0
     every known-superseded value is amended, excepted or absent.      exit 0
+
+---
+
+## RULING R-S · Bodies are immutable, status is not, W12-32, 2026-09-07
+
+Recorded at the owner's instruction, in `docs/CLAUDE.md` section 17:
+
+> In append-only records, entry bodies are immutable and status metadata is not.
+> A status marker may be updated in place. Nothing inside a recorded body is ever
+> edited, including to correct an error, which is recorded as a subsequent entry
+> instead.
+
+**Ratifies the four heading changes made in W12-30.** Q-W12-06, Q-W12-09,
+Q-W12-10 and Q-W12-11 were moved from `OPEN` to answered after each was checked
+against the tree rather than against the ruling's claim to have done it. They are
+status metadata, they stand, and they are not reverted.
+
+**And it settles `RELEASE-NOTES.md`.** Dated wave records stay as written. Current
+figures live in the handoff at the foot of the file, which is the one section
+written to be replaced.
+
+### Why the line falls between body and status
+
+Read absolutely, "append-only" would freeze a question's heading at `OPEN`
+forever. Nothing could then say what is still live, and W12-30's instruction to
+list the open questions would have been unanswerable without reading 1,100 lines
+and reconstructing each status by hand. Read loosely, it licenses editing the
+record, which is how the 8,504 baseline survived four waves.
+
+The split is what makes it usable: the body is evidence, the status is a pointer
+at the body. A pointer going stale is visible on reading. Evidence being edited is
+not — which is R-Q's argument, one level up.
+
+### This closes a method R-J used, and R-J is not reversed
+
+**R-J corrected measurements in place, in this file, across seven sites.** Under
+R-S that is no longer available: an error in a body is corrected by a subsequent
+entry naming it.
+
+R-J is **not** reversed and nothing is restored. Reverting would reintroduce
+figures that were never true into the document every future card budgets from,
+which is worse than the irregularity it would cure, and R-S itself says a
+correction is a new entry rather than a new edit. R-J was ordered explicitly by
+the owner, every edited site says it was corrected, and the record of what
+changed survives. What R-S changes is that the next card may not do the same
+thing: it writes an entry.
+
+### One thing R-S does not settle, and it is live
+
+Two entries in this file carry **amendment blocks appended inside them**:
+R-J's "Amended 2026-09-06 by W12-10" and R-Q's "Amended 2026-09-07 by W12-29".
+Both are dated, attributed, and alter no existing sentence — but both are inside
+a recorded body, and R-S says nothing inside a recorded body is ever edited.
+
+Neither is removed. Removing them would itself be an edit to a body, and both are
+load-bearing: W12-10 is what makes R-J's budgets the derived figures rather than
+the arithmetic error, and W12-29 is what puts the staleness list inside the act of
+recording a ruling. **Q-W12-13 asks whether an appended, dated amendment block
+counts as editing a body**, with the default that shipped: no further ones are
+written, and a future amendment becomes its own entry naming what it amends.

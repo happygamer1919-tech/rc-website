@@ -22,7 +22,23 @@ history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 | RC-060 | W12-04 R-J, R-K, baseline corrections, docs | `w12/rc-060-wave12b-docs` | shipped |
 | RC-059 | Custom domain root + CNAME in the artifact | `fix/rc-059-custom-domain-base-path` | **merged 2026-09-06, live** |
 | RC-077 | W12-28 Amend master plan lines 121, 245, 200 under R-R | `w12/rc-077-amend-master-plan-heuristic` | shipped |
+| RC-061 | W12-10 R-J amended: the derivation governs, not the stated figures | `w12/rc-060-wave12b-docs` | shipped |
+| RC-062 | W12-11 Ruling R-L, locality names verified against the CUATM | `w12/rc-062-cuatm-verify` | shipped |
+| RC-063 | W12-12 Arm GOOGLE_REVIEWS_URL with the resolved canonical | `w12/rc-063-live-figures` | shipped |
+| RC-064 | W12-13 Remove the 4.9/250+ review claim, both locales | `w12/rc-064-remove-review-claim` | shipped |
+| RC-065 | W12-13b The removed claim was still shipping in an HTML comment | `w12/rc-065-comment-fix` | shipped |
+| RC-066 | W12-14 SITE_URL defaults to the domain the client controls | `w12/rc-066-site-url-default` | shipped |
+| RC-067 | W12-15 Ruling R-M, the Russian locale follows usage | `w12/rc-066-site-url-default` | shipped |
+| RC-068 | W12-16 Wave 12 close, live figures, the 8px RO headroom | `docs/rc-068-wave12-close` | shipped |
+| RC-069 | W12-17 Unlink the privacy pages while they render TODO | `w12/rc-069-unlink-privacy` | shipped |
+| RC-070 | W12-18 to W12-20 Ruling R-N restore, R-O profile is sameAs only | `w12/rc-070-review-restore` | shipped |
+| RC-071 | W12-21, W12-21b Privacy draft naming no operator; gate fix | `w12/rc-073-verify-live-doctrine` | shipped |
+| RC-073 | W12-22 Ruling R-P, the live-measurement verifier | `w12/rc-073-verify-live-doctrine` | shipped |
+| RC-074 | W12-23 to W12-25 build-sha identity marker, R-Q, the gate rule | `w12/rc-074-sha-and-rq` | shipped |
+| RC-072 | W12-26 Publish the fallback privacy page on an explicit switch | `w12/rc-072-privacy-fallback` | shipped |
+| RC-076 | W12-27 Ruling R-R, three documents amended in place | `w12/rc-076-ruling-rr` | shipped |
 | RC-078 | W12-29 Staleness gate, `check-stale-docs.js`, negative-tested | `w12/rc-078-stale-docs-gate` | shipped |
+| RC-079 | W12-30 Close wave 12: handoff, open questions, production tag | `w12/rc-079-close-wave-12` | shipped |
 
 **The docs branch was rebuilt off W12-08, not off W12-09.** RC-057 originally sat
 on top of the coverage commit, so merging it would have dragged the held card in.
@@ -226,3 +242,38 @@ and was NOT used; the Maps CID URL was used instead. Zero rating markup, audited
 **Status: BUILT, HELD** (2026-09-06). 20 localities from one source; prose,
 both `areaServed` blocks and `llms.txt` verified identical. `location` still
 empty on all 38 renderable projects. Q-W9-05 explicitly NOT closed.
+
+## W12-10 to W12-27 · the second half of wave 12
+
+**Status: all shipped** (2026-09-06 and 2026-09-07). Rows added at the wave close,
+W12-30: the ticket table above stopped being updated after W12-09 and eighteen
+cards merged without one. The branch column is reconstructed from
+`git log --first-parent` on `main` and two cards share a branch where a docs
+commit was cherry-picked onto its predecessor, which is recorded above for
+RC-060.
+
+Six rulings landed in that stretch — R-L and R-M on place names, R-N and R-O on
+the review claim and the profile link, R-P on live measurement, R-Q and R-R on
+what a governing document may restate. Each is in `DECISIONS.md` under its own
+heading.
+
+## W12-28 · Master plan amendments
+**Status: DONE** (2026-09-07). Lines 121, 245 and 200 amended under R-R.
+Line 121 was a false rule rather than a stale value: it declared that exceeding
+9,000px meant something had been over-built, which RU does by design under R-J. Resolves
+Q-W12-11.
+
+## W12-29 · Staleness gate
+**Status: DONE** (2026-09-07). `scripts/check-stale-docs.js`, gate 3 in
+CLAUDE.md section 11, seeded with every value the wave found. Negative-tested on
+a scratch copy before it was trusted, and the first version failed that test:
+it missed a superseded budget restated as live in a section that discussed the
+superseding ruling four lines away. R-Q amended to make the list part of
+recording a ruling. Q-W12-12 logged: two `src/styles.css` comments are the same
+defect and are out of the scan's scope.
+
+## W12-30 · Close the wave
+**Status: DONE** (2026-09-07). Production verified under R-P with the SHA
+assertion and tagged. Handoff written at the foot of `RELEASE-NOTES.md`: budgets
+by ruling reference, the open questions with what unblocks each, and the exact
+W12-07 reversal step.

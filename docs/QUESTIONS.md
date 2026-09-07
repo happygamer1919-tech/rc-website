@@ -741,7 +741,7 @@ in the structured data, so a wrong one is wrong in two places at once.
 
 ---
 
-## Q-W12-06 · The Google profile URL could also arm the reviews link — OPEN, opened 2026-09-06 (W12-08)
+## Q-W12-06 · The Google profile URL could also arm the reviews link — **ANSWERED 2026-09-06, armed** (opened 2026-09-06, W12-08; answered W12-12)
 
 **Shipped default: not armed. W12-08 added the URL to `sameAs` only.**
 
@@ -1005,7 +1005,7 @@ CSS counter (`.prose h2::before` in `src/styles.css`), so the new section become
 Adding `opName` and `opIdno` with real values also releases the W12-17 link
 suppression automatically: the links, footer entry, `index, follow` and both
 sitemap entries return with no further edit.
-## Q-W12-09 · Markers prove properties, a fingerprint would prove identity — OPEN, opened 2026-09-06 (W12-22)
+## Q-W12-09 · Markers prove properties, a fingerprint would prove identity — **ANSWERED 2026-09-06, the fingerprint shipped** (opened 2026-09-06, W12-22; answered W12-23)
 
 **Shipped default: content markers, as R-P specifies. No fingerprint.**
 
@@ -1030,7 +1030,7 @@ instruction and it ships.
 
 ---
 
-## Q-W12-10 · Three governing docs restate values that rulings have superseded — OPEN, opened 2026-09-06 (W12-24)
+## Q-W12-10 · Three governing docs restate values that rulings have superseded — **ANSWERED 2026-09-07, all three amended in place** (opened 2026-09-06, W12-24; answered W12-27 under R-R)
 
 **Reported, not changed.** W12-24 limited the fix to CLAUDE.md. These are the
 others, worst first.

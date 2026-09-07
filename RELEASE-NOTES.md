@@ -157,16 +157,24 @@ true, so it can be used as a gate.
 From `docs/RC-WEBSITE-MASTER-PLAN.md`. The previous build was rejected for
 breaking the first two.
 
-- Desktop page height under 9,000px. Measured live on rapidconstructmd.com with
-  the whole of wave 12 merged: **8,843px RO / 8,975px RU**, against the R-J
-  budgets of 8,851 and 9,065. `main` before wave 12 was 8,646 / 8,860.
+- Desktop page height **inside the per-locale budgets held in R-J**
+  (`DECISIONS.md`, W12-04, amended by W12-10). ~~Under 9,000px.~~ **AMENDED by
+  W12-28: there is no flat figure and RU is above 9,000px under R-J by design.
+  The budgets are per locale, derived from measured element costs plus a stated
+  headroom term, and they move when an element is added or removed by data. Read
+  them in R-J; they are deliberately not repeated here, per R-Q.**
 
-  **RO has 8px of headroom. Read that as none.** The wave spent the 60px R-J
-  allowed and 52px more than the derivation anticipated, because two cards
-  landed after the budget was set: W12-12's link (+16) and W12-09's twenty-name
-  coverage line (+27, measured live by substituting a one-word line). W12-13's
-  removal gave back 30px on RU and nothing on RO. Nothing may be added to the RO
-  homepage without either a measurement first or a new ruling.
+  **The current live measurement is not a constraint and is not kept here.** It
+  is whatever `node scripts/verify-live.js` last reported, which prints each
+  height against its budget and refuses to report one without a cache-buster and
+  a matching `build-sha`. The last such run is recorded at the foot of this file.
+
+  **Both locales have been inside their budget by a small margin all wave, and
+  RO by the smallest.** Nothing may be added to the RO homepage without a
+  measurement first or a new ruling. The wave spent the whole of R-J's headroom
+  term and more than the derivation anticipated, because two cards landed after
+  the budget was set: W12-12's link and W12-09's twenty-name coverage line.
+  W12-13's removal gave some back on RU and nothing on RO.
   The rejected build was 13,312px. Wave 6's cap was tighter still, 8,700px RO,
   and all three cards landed at 0px.
 
@@ -529,9 +537,179 @@ coverage line inside a line it was already wrapping, RO did not.
 
 ### What is still open at the close of wave 12
 
+**SUPERSEDED by the handoff at the foot of this file, W12-30, 2026-09-07.**
+Two of the three items below have moved since: the privacy pages are linked
+and indexed under W12-26, and the RO headroom figure is a measurement, not a
+standing fact. Kept as the record of what was open on 2026-09-06.
+
 - **W12-07**, legal identity. Nothing written. The client answered "Rapid
   Construct", which is a brand and not a registered entity; the registry extract
   is expected. Privacy pages stay `noindex` and out of the sitemap.
 - **Q-W12-07**, the review claim. Removed, and the investigation found nothing
   that would support restoring it: exactly one Google Business Profile exists.
 - **The RO height, at 8px.** Not a question so much as a standing hazard.
+
+
+---
+
+# Handoff — wave 12 closed, 2026-09-07
+
+Written at W12-30. **This section supersedes every earlier "what is open" list in
+this file.** Read it first; everything above it is a dated wave record.
+
+## Where production is
+
+| | |
+|---|---|
+| Live | `https://rapidconstructmd.com`, GitHub Pages from `main` |
+| Tag | **`wave-12-verified`** — the commit this state was verified at |
+| Verified by | `node scripts/verify-live.js`, exit 0, under ruling R-P |
+| Pages | 25, both locales, plus `/review/` unlisted |
+
+**The tag is the SHA.** `git rev-parse wave-12-verified` gives it, and that is
+the same value `verify-live.js` asserted against the `build-sha` meta tag every
+page carries. Nothing here restates it, because a SHA copied into prose is the
+same class of thing as a budget copied into prose.
+
+Re-verify at any time. It cache-busts every request, reads markers and height in
+one page evaluation, and exits non-zero on any mismatch:
+
+    node scripts/verify-live.js
+    EXPECT_SHA=$(git rev-parse wave-12-verified) node scripts/verify-live.js
+
+## Budgets, and where they are
+
+**Homepage, both locales: ruling R-J**, `DECISIONS.md`, W12-04, amended by
+W12-10. **Service pages: the wave 7 acceptance table** in this file.
+
+They are **not repeated here, and that is deliberate.** R-Q: a number lives in
+exactly one place, the ruling that set it. Four separate staleness findings in
+wave 12 came from copies, and `node scripts/check-stale-docs.js` now fails a
+build that makes another one.
+
+Three things a card picking this up needs to know, none of which are figures:
+
+1. **The budgets are derived, not chosen** — a corrected baseline plus each
+   above-the-fold element's measured cost plus a stated headroom term. Adding an
+   element without measuring it spends headroom nobody allocated, which is what
+   happened twice in wave 12.
+2. **They move when the promo bar or the 100+ tile is removed by data.** R-J
+   carries the revert figures for each case.
+3. **RO has less room than RU, and RO is the constraint.** Nothing goes on the
+   RO homepage without a measurement first or a new ruling.
+
+## Last verified run
+
+Recorded as a run, not as a constraint. Taken on the live domain, cache-busted,
+`build-sha` asserted, three pages of the eight shown:
+
+| Page | Height | Verdict |
+|---|---|---|
+| Homepage RO | 8,818px | VERIFIED, inside its R-J budget |
+| Homepage RU | 9,032px | VERIFIED, inside its R-J budget |
+| Tallest service page | 5,729px | VERIFIED, inside 6,000 |
+
+**RU is above 9,000px and that is correct.** The master plan's line 121 said
+otherwise until W12-28 struck it. If you find any document telling you 9,000px
+means the page has been over-built, it is superseded by R-J, the staleness gate
+should have caught it, and the right move is to report that — not to trim the
+page.
+
+## Gates, in order
+
+    node build.js
+    node scripts/check-links.js
+    node scripts/check-stale-docs.js
+    node scripts/verify-live.js          # after any deploy
+
+The full list, including the ones no script covers, is `docs/CLAUDE.md`
+section 11. Heights come from the fourth command; do not measure by hand and do
+not quote a live figure taken any other way, per section 12.
+
+## The W12-07 reversal, step by step
+
+This is the one piece of held work with a written, tested procedure. The privacy
+pages ship **without** an operator section, published on an explicit switch under
+W12-26. When the registry extract arrives, reverse it exactly like this:
+
+**1. Add six keys to `locales/ro.json` and `locales/ru.json`, under `privacy`.**
+Four are labels and two carry the extract's data:
+
+    "opH"          RO "Cine este operatorul de date"
+                   RU "Кто является оператором данных"
+    "opP"          RO "Datele trimise prin acest site sunt prelucrate de:"
+                   RU "Данные, отправленные через этот сайт, обрабатывает:"
+    "opNameLabel"  RO "Denumire juridică"     RU "Юридическое наименование"
+    "opName"       the registered name from the extract, both locales
+    "opIdnoLabel"  RO "IDNO"                  RU "IDNO"
+    "opIdno"       the IDNO from the extract, both locales
+
+**2. Insert one block in `src/privacy.html`**, immediately before the
+`{{privacy.colH}}` heading:
+
+    <h2>{{privacy.opH}}</h2>
+    <p>{{privacy.opP}}</p>
+    <dl class="prose__dl">
+      <div><dt>{{privacy.opNameLabel}}</dt><dd>{{privacy.opName}}</dd></div>
+      <div><dt>{{privacy.opIdnoLabel}}</dt><dd>{{privacy.opIdno}}</dd></div>
+    </dl>
+
+**3. Set `PRIVACY_PUBLISHABLE_WITHOUT_OPERATOR = false` in `build.js`.** With the
+fields real the flag is already irrelevant, so this is not what publishes the
+page — it is what restores the property W12-21b bought: with the flag false,
+deleting the operator fields suppresses the links again instead of silently
+releasing them.
+
+**4. Build.** The warning block naming the four unresolved fields disappears on
+its own. Nothing else changes and nothing renumbers: section ordinals are a CSS
+counter (`.prose h2::before`), so the new section becomes 1 and the other five
+renumber themselves.
+
+**This was confirmed by doing it**, in W12-26, and reverting: six keys per
+locale, one block, zero build warnings, no surrounding text touched, no company
+name or code left anywhere in the repo.
+
+**Do not invent the two values.** Master plan section 5 and CLAUDE.md section 5:
+the client answered "Rapid Construct", which is a brand and not a registered
+entity. The extract is the only source.
+
+## Open questions, and what unblocks each
+
+Every one of these is in `docs/QUESTIONS.md` with full context and the default
+that shipped. **All are owner-input questions except the last two.**
+
+| Question | What unblocks it |
+|---|---|
+| **Q-04** · 44 stub projects have no real content | The owner supplying titles and summaries. Stubs are safe: a project renders only when both are real in that locale, so none of the 44 reaches a visitor |
+| **Q-09** · The hero panel alt text describes an illustration that is gone | Either the real hero photograph, or a one-line instruction to rewrite the alt to describe what is actually there |
+| **Q-W9-04** · Nine photographs fail the "real Rapid Construct work" rule | An owner ruling on the nine, file by file. A default shipped; the ruling replaces it |
+| **Q-W9-05** · The locality list was never supplied | The list. `location` is empty on all 54 projects and the chip does not render, which is section 5 working, not a bug |
+| **Q-W9-06** · Two live form submissions, one per locale | One remains. The key is set and the site is published, so it is a minute of the owner's time. Expect the subjects `[RO] Solicită ofertă gratuită — /` and `[RU] Запросите бесплатную оферту — /ru/` |
+| **Q-W9-07** · The RO homepage title and description exceed their limits | An instruction to shorten. Reported and not changed, because shortening is a copy edit and copy has one source |
+| **Q-W12-02** · The promo bar expires at build time, not in the browser | An owner decision. Today the bar disappears at the next build after `promo.endDate`, not at midnight on it. A deploy on the day is the workaround |
+| **Q-W12-05** · The Russian register for the locality names | Owner confirmation of the transliteration register R-M settled by usage. RO is answered and verified against the CUATM |
+| **Q-W12-07-LEGAL** · The privacy pages have no operator section | The registry extract. The reversal is the step-by-step above and it has been rehearsed |
+| **Q-W12-12** · Two `src/styles.css` comments quote a superseded cap | A source card, where a redeploy is expected anyway. Not a docs card: a stylesheet comment is deployed content |
+
+**Answered this wave and no longer live:** Q-W12-06 (the reviews link, armed in
+W12-12), Q-W12-09 (the `build-sha` fingerprint, shipped in W12-23), Q-W12-10 and
+Q-W12-11 (the governing-document staleness, amended under R-R in W12-27 and
+W12-28). All four had headings still reading OPEN and were corrected here after
+checking the tree rather than the claim.
+
+## What a card picking this up should read, in order
+
+1. `docs/CLAUDE.md` — the rules. Section 11 is the gate list, section 16 is the
+   staleness gate, sections 12 and 13 are what a measurement and a gate may
+   conclude.
+2. This handoff.
+3. `DECISIONS.md` from ruling R-J onward — nine rulings landed in wave 12 and
+   they are what the master plan now loses to.
+4. `docs/QUESTIONS.md` for anything the card touches.
+
+**The master plan wins by default only where no later ruling addresses the
+point**, per R-R. Where it is superseded it now says so at the point of the
+value. If you find a value it does not say so about, that is a defect in the
+amendment and not in the card that obeyed it — report it, add it to the
+staleness gate, and carry on.
+

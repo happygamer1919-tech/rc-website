@@ -2349,3 +2349,83 @@ entries are marked. It is a record, not a governing document, and is left alone.
 `docs/RC-WEBSITE-MASTER-PLAN.md` also shows the pattern done **right** at line
 121, where the header height carries an inline amendment naming the wave that
 changed it. That is the cheapest fix for the three above if the value must stay.
+
+---
+
+## RULING R-R · Amend the master plan in place, W12-27, 2026-09-07
+
+**Resolves Q-W12-10.** Recorded at the owner's instruction, in `docs/CLAUDE.md`
+section 15:
+
+> The master plan wins by default only where no later ruling addresses the point.
+> Any master plan value superseded by a ruling carries an inline amendment naming
+> that ruling at the point of the stale value. A value with no amendment is
+> presumed current. An un-amended stale value is therefore a defect in the
+> amendment, not in the card that obeyed it.
+
+**That last clause is what makes "the master plan wins by default" safe to say at
+all.** It is an instruction to trust a document. A card that trusts it and is
+wrong has obeyed correctly, and the fault belongs to whoever left the value
+unmarked. Without that, the instruction quietly asks every card to know in
+advance which parts of the plan to disbelieve.
+
+### The three amendments, exact text
+
+**1. Brand colours — the priority, and the reason the ruling exists.** A card
+obeying "the master plan wins" would have painted the site `#F26419` and believed
+it was being correct.
+
+    | `--brand` | ~~`#F26419`~~ **`#F65308`** | Primary buttons, active states,
+    numerals, logo mark. **AMENDED: DECISIONS.md, "The master plan is stale on
+    two token values". `#F26419` predates the logo file and never shipped.** |
+
+    | `--ink` | ~~`#1C1C1C`~~ **`#1A1A1A`** | All body and heading text on light
+    backgrounds. **AMENDED: DECISIONS.md, "The master plan is stale on two token
+    values". `#1C1C1C` predates the logo file and never shipped.** |
+
+A banner sits above the table too, because a reader scanning a colour table reads
+values and not prose:
+
+    **Two values in this table were superseded before the build started and are
+    struck through below. The live palette is CLAUDE.md section 3, which is the
+    ten approved values and the only place to add an eleventh.**
+
+**2. Photo manifest, the long-edge minimum.**
+
+    **AMENDED — the 1600px minimum is not universal.** Three rulings lower it for
+    specific slot groups, each recorded in DECISIONS.md and repeated at the group
+    below: **1200px** for the nine service cards (W7-02), **900px** for the five
+    "Cum lucrăm" step slots (PROVISIONAL), and **720px** for the hero panel
+    (W8-03, PROVISIONAL). 1600px remains the default for every slot no ruling has
+    lowered.
+
+**3. Backlog, W12-03's budgets.**
+
+    **AMENDED: those budgets are R-I's and were superseded by R-J on 2026-09-06,
+    which set 8,851 and 9,065. The figures here are the then-current ones this
+    card was measured against, kept as the record of what was reported; do not
+    budget against them.**
+
+### Swept, reported, NOT amended
+
+The card limits amendment to what was already reported. Three more unmarked stale
+values surfaced, all in the master plan, and all left for a ruling:
+
+| Where | Value | Superseded by |
+|---|---|---|
+| line 121 | "Target total page height 7,000 to 8,000px desktop. If the build exceeds 9,000px, something has been over-built." | R-I then R-J. The live budgets are 8,851 and 9,065, and RU has legitimately exceeded 9,000 since W12-09 |
+| line 245 | "Page under 9,000px desktop", an acceptance criterion | same |
+| line 200 | "Minimum 1600px on the long edge" | the same three rulings as the manifest's copy |
+
+Line 121 is the one worth acting on: it does not merely state a stale number, it
+states a **heuristic** — exceeding 9,000px means something has been over-built —
+which is now false for the Russian homepage by design.
+
+Checked and **not** findings: master plan line 22 lists `#1C1C1C` among the
+*rejected* build's four off-whites, which is a description of what was wrong
+rather than a spec value; and several lines in CLAUDE.md and QUESTIONS.md quote
+stale figures precisely in order to correct them.
+
+`docs/QUESTIONS.md` carries stale values throughout and is deliberately left
+alone under R-Q: every entry is a snapshot of the state when a question was
+raised, answered entries are marked, and rewriting them would destroy the record.

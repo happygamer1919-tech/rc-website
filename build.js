@@ -179,7 +179,50 @@ if (empty.length) die(`empty strings: ${empty.join(', ')}`);
 const privacyTodos = loaded.flatMap((l) =>
   Object.entries(l.strings).filter(([k, v]) => k.startsWith('privacy.') && /TODO:/.test(v))
     .map(([k]) => `${l.code}:${k}`));
-const privacyIncomplete = privacyTodos.length > 0;
+
+/* W12-21. The operator identity is ABSENT from the fallback page rather than
+   marked TODO, so a TODO scan alone would report the page complete and release
+   the W12-17 link suppression. Absence is not completeness: a policy that never
+   names an operator is exactly as unlinkable as one that says TODO.
+
+   RATIFIED, and the reason generalises. The build was inferring COMPLETENESS
+   FROM MISSING EVIDENCE: it looked for a marker of incompleteness, did not find
+   one because the whole section had been deleted, and concluded the page was
+   ready to publish. That is the same failure class as a card reporting SHIPPED
+   with its evidence field null, and as R-P's stale page returning a plausible
+   height: in each case absent evidence was read as positive evidence.
+
+   The rule that falls out of it: a gate must assert the presence of what it
+   requires, never the absence of a complaint about it.
+
+   Both conditions are checked, so the page counts as incomplete while the
+   operator fields are missing OR still marked. The reversal is unchanged in
+   substance: add privacy.opName and privacy.opIdno with real values to both
+   locale files and the links, indexability and sitemap entries return together. */
+const OPERATOR_KEYS = ['privacy.opName', 'privacy.opIdno'];
+// REAL() is defined further down and would be in its temporal dead zone here,
+// so the same predicate is written out.
+const operatorPresent = (v) => typeof v === 'string' && v.trim() !== '' && !v.trim().startsWith('TODO:');
+const privacyMissingOperator = loaded.flatMap((l) =>
+  OPERATOR_KEYS.filter((k) => !operatorPresent(l.strings[k])).map((k) => `${l.code}:${k} (absent or TODO)`));
+/* W12-26, 2026-09-07. The fallback page is published and linked WITHOUT an
+   operator section, on the owner's explicit instruction: the registry extract
+   has not arrived, and a linked page with no operator beats an unreachable one.
+
+   This does NOT revert W12-21b. That fix stands: absence must never SILENTLY
+   release the gate. What it needed was an explicit second key, so the release is
+   a decision someone made rather than a consequence of a deletion nobody
+   noticed. Delete the operator fields with this constant false and the links
+   stay off, which is exactly the property W12-21b bought.
+
+   Filling privacy.opName and privacy.opIdno closes the gate on evidence and
+   makes this flag irrelevant. */
+const PRIVACY_PUBLISHABLE_WITHOUT_OPERATOR = true;
+
+/* Placeholders remain absolute: a page rendering "TODO:" is never linkable,
+   whatever the flag says. The flag governs the operator branch only. */
+const privacyIncomplete = privacyTodos.length > 0
+  || (privacyMissingOperator.length > 0 && !PRIVACY_PUBLISHABLE_WITHOUT_OPERATOR);
 
 const servicePages = [];
 
@@ -1146,9 +1189,17 @@ console.log(`google reviews link: ${GOOGLE_REVIEWS_URL || 'HIDDEN (set GOOGLE_RE
     (fallback.length ? `\n  · ` + fallback.join('\n  · ') : ' — every slot has a real photo'));
 }
 if (privacyIncomplete) {
-  console.log(`\nPRIVACY PAGE INCOMPLETE: ${privacyTodos.length} TODO field(s) still unfilled.`);
-  privacyTodos.forEach((t) => console.log('  · ' + t));
+  const reasons = [...privacyTodos, ...privacyMissingOperator];
+  console.log(`\nPRIVACY PAGE INCOMPLETE: ${reasons.length} field(s) unresolved.`);
+  reasons.forEach((t) => console.log('  · ' + t));
+  console.log('  -> nothing on the site links to the privacy pages (W12-17).');
   console.log('  -> the page is noindex and excluded from sitemap.xml until they are filled.');
+} else if (privacyMissingOperator.length) {
+  console.log('\nPRIVACY PAGE PUBLISHED WITHOUT AN OPERATOR SECTION (W12-26).');
+  privacyMissingOperator.forEach((t) => console.log('  · ' + t));
+  console.log('  -> linked, indexable and in the sitemap. No placeholder text renders.');
+  console.log('  -> fill the fields when the registry extract lands; the flag in');
+  console.log('     build.js then becomes irrelevant.');
 }
 console.log(FORM_ARMED
   ? '\nform: ARMED, posts to Web3Forms.'

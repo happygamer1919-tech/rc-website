@@ -829,7 +829,27 @@ about the existing copy and much bigger than this link.
 
 ---
 
-## Q-W12-07-LEGAL · The privacy pages are unlinked until the registry extract arrives — OPEN, opened 2026-09-06 (W12-17)
+## Q-W12-07-LEGAL · The privacy pages are unlinked until the registry extract arrives — OPEN, opened 2026-09-06 (W12-17, W12-21)
+
+**UPDATED 2026-09-06 by W12-21.** A fallback policy page is drafted on
+`w12/rc-072-privacy-fallback`, unmerged and awaiting review. It names no legal
+entity and carries no placeholder text.
+
+**The reversal step changed shape, and this is the important part.** The gate was
+`privacyIncomplete`, computed by scanning `privacy.*` for `TODO:`. The fallback
+page OMITS the operator fields rather than marking them, so that scan found
+nothing and reported the page complete — which silently restored all three link
+sites, `index, follow` and the sitemap entry. Caught before merge.
+
+The gate now treats **absence and TODO alike**: a page that never names an
+operator is exactly as unlinkable as one that says TODO.
+
+**Reversal, unchanged in substance:** add `privacy.opName` and `privacy.opIdno`
+with real values to both locale files, and restore the operator section to
+`src/privacy.html`. The links, the footer entry, `index, follow` and the sitemap
+entries all return together.
+
+*Original entry follows, unedited.*
 
 **State: the pages are published, `noindex`, out of the sitemap, and NOTHING on
 the site links to them.** They are reachable only by typing the URL.
@@ -950,6 +970,41 @@ claim.
 
 ---
 
+## Q-W12-07-LEGAL, addendum · Exactly what to add when the extract arrives — 2026-09-06 (W12-21)
+
+The page is structured so the operator identity is an **addition**, not a
+rewrite. Two files, and nothing else moves.
+
+**1. `locales/ro.json` and `locales/ru.json`, key `privacy`.** Add four keys.
+Order inside the block does not matter; `build.js` reads them by name.
+
+    "opH":          RO "Cine este operatorul de date"   RU "Кто является оператором данных"
+    "opP":          RO "Datele trimise prin acest site sunt prelucrate de:"
+                    RU "Данные, отправленные через этот сайт, обрабатывает:"
+    "opNameLabel":  RO "Denumire juridică"              RU "Юридическое наименование"
+    "opName":       the registered name from the extract
+    "opIdnoLabel":  RO "IDNO"                           RU "IDNO"
+    "opIdno":       the IDNO from the extract
+
+**2. `src/privacy.html`.** Insert one block immediately before the
+`{{privacy.colH}}` heading:
+
+    <h2>{{privacy.opH}}</h2>
+    <p>{{privacy.opP}}</p>
+    <dl class="prose__dl">
+      <div><dt>{{privacy.opNameLabel}}</dt><dd>{{privacy.opName}}</dd></div>
+      <div><dt>{{privacy.opIdnoLabel}}</dt><dd>{{privacy.opIdno}}</dd></div>
+    </dl>
+
+**Nothing else changes, and that is deliberate.** The section ordinals used to be
+typed into the heading strings, so inserting a section at the top renumbered all
+five headings — a rewrite of ten strings across two locale files. They are now a
+CSS counter (`.prose h2::before` in `src/styles.css`), so the new section becomes
+1 and the rest renumber themselves.
+
+Adding `opName` and `opIdno` with real values also releases the W12-17 link
+suppression automatically: the links, footer entry, `index, follow` and both
+sitemap entries return with no further edit.
 ## Q-W12-09 · Markers prove properties, a fingerprint would prove identity — OPEN, opened 2026-09-06 (W12-22)
 
 **Shipped default: content markers, as R-P specifies. No fingerprint.**

@@ -2205,3 +2205,147 @@ on Russian the rating panel is shorter than the cards beside it, so a link
 *inside* the panel cost nothing, and deleting it therefore changed nothing. On
 Romanian the panel is the taller element, so the same link cost 8px. The two
 locales differ because the reviews row is driven by a different child in each.
+
+---
+
+## RULING R-P · Live measurement requires a cache-buster and markers, W12-22, 2026-09-06
+
+Recorded at the owner's instruction as **standing doctrine**, in `docs/CLAUDE.md`
+section 12 rather than only here:
+
+> A live measurement is valid only when taken with a cache-buster AND with
+> content markers asserted in the same pass. Height alone is never sufficient
+> evidence, because a stale page returns a plausible number. Every live
+> verification asserts at least one marker proving the deployed build is the one
+> being measured. A measurement without markers is reported as unverified, never
+> as passed.
+
+### What bought this rule
+
+After the W12-18/W12-20 deploy the live homepage measured **RO 8,843 and RU
+9,002** — inside budget, entirely plausible, and *wrong*. It was a stale edge
+copy returning the pre-deploy build. The true figures were 8,818 and 9,032.
+
+It was caught by luck rather than method: the numbers were **exactly** the
+previous build's, which is the one pattern a human notices. Had the stale copy
+differed by twenty pixels it would have been reported as a pass.
+
+### The marker sets
+
+| Page type | Markers |
+|---|---|
+| Homepage | rating panel 1, portfolio grid children 7, visible profile anchors 0, promo bar 1, stat tiles 8, `areaServed` 20 |
+| Service page | promo bar 1, visible profile anchors 0, `areaServed` 20 |
+| Privacy page | promo bar 1, visible profile anchors 0 |
+
+`scripts/verify-live.js` implements it: a run-unique cache-buster on every
+request, `Network.setCacheDisabled`, markers and settled height read in **one
+page evaluation** so they cannot come from different responses, and a non-zero
+exit on any mismatch.
+
+**The assertions were negative-tested, not merely written.** Pointed at a build
+with the review panel removed, the verifier reported UNVERIFIED with three named
+mismatches — `ratingPanel` 1→0, `profileAnchors` 0→1, `statTiles` 8→6 — and
+exited 1, *while reporting heights of 8,843 and 9,002 that were inside budget and
+looked correct*. That is the failure this ruling exists for, reproduced on
+demand.
+
+### The limit of it, stated plainly
+
+**A marker set proves the build has certain properties, not that it is a specific
+commit.** Two builds sharing all six markers are indistinguishable to this
+verifier. The stronger form is a deployment fingerprint — the commit SHA emitted
+into every page and asserted by the verifier — which turns a property check into
+an identity check. It is **not built**, and is recorded as Q-W12-09 rather than
+assumed.
+
+### Gates that passed this wave on readings that cannot be reproduced under R-P
+
+Reported, not fixed, as instructed. Every live reading before this card was taken
+without a cache-buster and without markers:
+
+| Gate | Wave | Status under R-P |
+|---|---|---|
+| Homepage heights after every deploy, RC-059 through W12-20 | 12 | **unverified as taken.** Re-measured now and passing, but the original readings are not evidence |
+| Tallest service page, 5,729px, reported three times | 12 | **unverified as taken.** Re-measured now at 5,729 |
+| Zero visitor-reachable TODO, by crawling | 12 | **unverified as taken.** The crawler used plain URLs. Re-run cache-busted now |
+| Lighthouse 100/100/100/100, both locales | 12 | **unverified as taken.** Lighthouse fetched plain URLs |
+| Zero rating markup live, after W12-13 and after W12-20 | 12 | **partly verified.** Some curl audits carried `?v=`/`?b=`/`?cb=`; others did not, and which is which was not recorded at the time |
+| CNAME and canonical checks after RC-059 | 12 | **partly verified**, same mixed pattern |
+
+**None of them are known to be wrong, and one of them is known to have been
+right only by accident.** The distinction R-P draws is between a reading that is
+correct and a reading that is *evidence*, and this wave produced the first
+without the second.
+
+---
+
+## RULING R-Q · Governing documents do not restate measurements, W12-24, 2026-09-06
+
+Recorded at the owner's instruction, in `docs/CLAUDE.md` section 14:
+
+> Governing documents name the ruling that holds a measured value and never
+> repeat the value. A number lives in exactly one place, the ruling that set it.
+> This is the third instance of the same failure: the 8,504 baseline wrong for
+> four waves, R-I's arithmetic not matching its own derivation, and section 2
+> carrying budgets two rulings had superseded. A stale pointer is visible on
+> reading, a stale number is not.
+
+That last sentence is the whole ruling. A reader who meets "see R-J" and finds no
+R-J knows immediately. A reader who meets "8,700px" has no way to tell.
+
+### Applied to CLAUDE.md, seven sites
+
+| Section | Was | Now |
+|---|---|---|
+| 1. Motion | "Reveal 320ms, hover 200ms, stagger capped at 6 items … 360ms" | names the tokens in `src/styles.css` |
+| 1. Motion | "Reveal 16px, hover 4px" | names the rules that set them |
+| 1. Motion | "a 5,081px scroll-driven section" | names the master plan as holder |
+| 2. Height budgets | the RO and RU figures, and the 60px headroom term | **ruling R-J** |
+| 2. Height budgets | "translated 16px down … reads about 150px high" | the travel token and the sum of the offsets |
+| 4. Lighthouse floors | "button text at 19px … chip … for 5.93:1" | the DECISIONS entry that measured them |
+| 12. Live verification | the six-row marker count table | the `MARKERS` constant in `scripts/verify-live.js` |
+
+**Section 12's table was mine, added one card earlier, and it was already the
+most fragile thing in the file**: marker counts change whenever a page gains a
+section, and a copy in the rules file would have gone stale on the first card
+that added one.
+
+### What CLAUDE.md may still state
+
+Rules and thresholds **it owns**: "under 400ms", "under 20px", the ten colour
+values, the Lighthouse floors, the 1,400px section cap. Those are chosen there,
+so there is their one place. WCAG's 3:1 and 4.5:1 stay too, marked as the
+external standard rather than as ours.
+
+### Swept, not changed: what the other governing docs restate
+
+Reported for a later card, as instructed. Three are genuinely stale, not merely
+duplicated:
+
+1. **`docs/RC-WEBSITE-MASTER-PLAN.md` lines 76 and 78 — the worst of the three.**
+   It gives `--brand` as `#F26419` and `--ink` as `#1C1C1C`. Both are wrong; the
+   real values are `#F65308` and `#1A1A1A`. This matters more than the others
+   because CLAUDE.md says the master plan **"wins by default"**, so a card that
+   trusted that instruction and read the plan would paint the site the wrong
+   colour. DECISIONS records the override and CLAUDE.md section 3 states the
+   truth, but the plan itself still says otherwise.
+
+2. **`docs/RC-PHOTO-MANIFEST.md` line 20** states "Every file: minimum 1600px
+   long edge" as a universal rule. **Three rulings have overridden it** — 1200px
+   for service cards (W7-02), 900px for the five step slots, 720px for the hero
+   panel (W8-03). The manifest flags two of them further down, which is the right
+   instinct, but the headline rule reads as absolute.
+
+3. **`docs/BACKLOG.md` lines 196-197** quote budgets of 8,744 and 9,044. Those
+   are R-I's, superseded by R-J. The entry is a status record of what was true on
+   2026-09-03, so it is defensible as history, but a reader scanning the backlog
+   for "the budget" finds a superseded number with nothing marking it as such.
+
+`docs/QUESTIONS.md` restates measurements throughout and that is what it is for:
+each entry is a snapshot of the state when a question was raised, and answered
+entries are marked. It is a record, not a governing document, and is left alone.
+
+`docs/RC-WEBSITE-MASTER-PLAN.md` also shows the pattern done **right** at line
+121, where the header height carries an inline amendment naming the wave that
+changed it. That is the cheapest fix for the three above if the value must stay.

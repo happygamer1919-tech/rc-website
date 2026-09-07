@@ -42,6 +42,7 @@ history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 | RC-080 | W12-31 Amend the two stylesheet comments; gate reads source comments | `w12/rc-080-source-comment-gate` | shipped |
 | RC-081 | W12-32 Ruling R-S, handoff final figures, re-tag | `w12/rc-081-ruling-rs` | shipped |
 | RC-082 | W12-33 Ruling R-T, amendment blocks and strike-through scope | `w12/rc-082-ruling-rt` | shipped |
+| RC-083 | W12-34 Five owner answers, ruling R-U, hero alt and RO title | `w12/rc-083-owner-answers` | shipped |
 
 **The docs branch was rebuilt off W12-08, not off W12-09.** RC-057 originally sat
 on top of the coverage commit, so merging it would have dragged the held card in.
@@ -306,3 +307,12 @@ R-J's in-place figure corrections are regularised, so the irregularity W12-32
 left open is closed with no correcting entry owed. Recorded alongside R-R: the
 strike-through requirement holds where the superseded value has documentary
 purpose, so W12-31's removal from two stylesheet comments is the standard.
+
+## W12-34 · Owner answers and ruling R-U
+**Status: DONE** (2026-09-07). Q-09 hero alt rewritten in both locales from the
+photograph itself; the provenance half dissolves because the new text claims
+nothing. Q-W9-07 title shortened 60 to 51 by deleting two words, and this card
+corrects that question's stale figures - the description half stays open and was
+not touched. Q-W12-02 accepted as built, no scheduler, reasoning recorded.
+Q-W12-05 closed by R-M. Ruling R-U closes Q-W9-05: `location` is permanently
+empty, verified 0 of 54 and 0 of the 20 coverage names anywhere in projects.json.

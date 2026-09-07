@@ -2877,3 +2877,133 @@ above:
 from first principles and reached the ruling's answer before the ruling existed:
 a stylesheet comment is not a spec, so there is no reader who needs the figure,
 and leaving a dead number in one is how it gets copied again.
+
+---
+
+## W12-34 · Five owner answers, and ruling R-U, 2026-09-07
+
+### Q-09 · The hero panel alt text — ANSWERED, both locales rewritten
+
+The owner's rule: **describe the work shown, not the photograph.** No `imagine`,
+`vedere` or `fotografiat` as an opener, which is the convention every portfolio
+and process alt string already follows and which the hero panel alone broke by
+opening `Ilustrație:`.
+
+**The photograph was opened and looked at rather than described from the
+question's summary.** It shows three workers in hi-vis vests and hard hats on
+scaffolding, tying a vertical column reinforcement cage, inside a building under
+construction with a steel roof structure above and dust in the light.
+
+| | Before | After |
+|---|---|---|
+| RO | `Ilustrație: casă la cheie construită de Rapid Construct` | `Armătură de stâlp în lucru, echipă pe schelă într-o clădire în construcție` |
+| RU | `Иллюстрация: дом под ключ, построенный Rapid Construct` | `Армирование колонны в работе, бригада на лесах внутри строящегося здания` |
+
+**Both halves of Q-09 are resolved, and the second one dissolves rather than
+being answered.** The old text made a provenance claim — a turnkey house *built
+by Rapid Construct* — that the repo could not support and the photograph does not
+show. The new text claims nothing about who did the work, so the question of
+whether this is Rapid Construct's own job no longer needs answering to ship a
+correct string.
+
+**What remains, and it is not Q-09's:** whether the photograph belongs in a hero
+slot at all under master plan section 7 is owned by **Q-W9-04**, which stays open
+on the client and covers nine photographs by name. Nothing here rules on that.
+
+### Q-W9-07 · The RO title — ANSWERED FOR THE TITLE, and the question's figures were stale
+
+**Approved: shorten, retaining the primary locality and the service noun.**
+
+| | Before | After |
+|---|---|---|
+| `ro.meta.title` | `Construcții și renovări la cheie, Chișinău · Rapid Construct` — **60 characters** | `Construcții și renovări, Chișinău · Rapid Construct` — **51 characters** |
+
+Retains `Chișinău`, the primary locality, and both service nouns, `Construcții`
+and `renovări`. `TITLE_MAX` in `build.js` is 60, so it moves from exactly at the
+limit to nine characters inside it.
+
+**It is a deletion, not a rewrite.** Only the words `la cheie` are removed, and
+no word is introduced. Q-W9-07 recommended `Construcții și renovări în Chișinău ·
+Rapid Construct` at 53, which is also fine but adds `în`; master plan section 6
+permits shortening and forbids inventing, and a form that adds nothing is the
+safer read of that.
+
+**Q-W9-07's stated figures are wrong now, and this entry is the correction.**
+It says the RO title is 62 characters and the description 176, both over their
+limits. On the tree they are **60 and 147** — the title was at the limit, not
+over it, and the description has been inside it since W12-09 rewrote it around
+the coverage list. Under R-S the question's body is a snapshot of 2026-09-01 and
+is not edited; the correction lives here.
+
+**The description half of Q-W9-07 is NOT closed and the question stays open.**
+The owner approved shortening the title. The description was not approved and was
+not touched, and the coverage-list inconsistency the question also raises —
+`meta.description` naming four localities where `band.coverageLine` names twenty —
+is untouched and still live.
+
+### Q-W12-02 · The promo bar's build-time expiry — ACCEPTED AS BUILT, CLOSED
+
+**A build-time expiry on a fifteen-month offer does not warrant a scheduler.**
+
+The bar is emitted only while `promo.endDate` is in the future at build time, and
+GitHub Pages rebuilds on a push to `main`. The recommendation in the question was
+a monthly `schedule:` trigger in `pages.yml`. It is not taken, and the reasoning
+is worth recording because the recommendation was not wrong so much as
+disproportionate:
+
+- The window is **fifteen months**, to 2027-01-01. A site under active
+  development will be pushed many times inside it.
+- A scheduled workflow is a standing job that runs forever to guard one date
+  that passes once. It also rebuilds and redeploys production unattended, which
+  is a larger standing risk than the thing it prevents.
+- The failure it guards against is a stale discount claim on a site nobody has
+  touched for over a year. If that is the state, the promo bar is not the
+  problem.
+- Client-side expiry stays refused for the reason W12-02 gave: it puts
+  JavaScript in charge of an above-the-fold box and risks the zero-CLS property
+  the card was built to hold.
+
+**2027-01-01 is confirmed as the date.** "doar până în 2027" reads as *until 2027
+arrives*, so the offer ends as 2026 does.
+
+### Q-W12-05 · The Russian locality register — CLOSED, settled by R-M
+
+R-M ruled that the Russian locale follows usage rather than the classifier, and
+W12-11 verified every name against the official CUATM. Nothing further is owed.
+
+### RULING R-U · `location` stays permanently empty, W12-34, 2026-09-07
+
+**Closes Q-W9-05.** Recorded at the owner's instruction:
+
+> `location` stays permanently empty on all 38 projects. Filling it would require
+> the client to identify the locality of each photograph, which is not
+> obtainable. Empty is the correct final state, not a pending one. No card
+> reopens this without the client supplying per-project localities unprompted.
+> Coverage claims live in `areaServed`, `band.coverageLine` and `llms.txt` and
+> are never mapped onto projects.
+
+**The change this makes is to the status, and the status was doing damage.**
+Nothing about the rendered site moves: `location` was already empty, already
+dropped out of the render on its own under master plan section 6, and already
+absent from every page. What changes is that it stops being a gap. Q-W9-05 had
+sat open since 2026-09-01 as a thing still owed, and every wave-close report
+listed it as one.
+
+**Empty is not a placeholder here, it is the answer.** The site claims coverage
+of twenty localities, sourced and verified against the CUATM in W12-11. It does
+not claim that any particular photograph was taken in any particular one, and it
+cannot, because nobody recorded where each was shot. Mapping the coverage list
+onto projects to fill the field would be inventing copy, which master plan
+section 5 forbids outright — and it would be the most dangerous kind, since a
+locality on a project reads as a verifiable fact about a specific job.
+
+**Verified after the ruling**, not assumed:
+
+| Assertion | Result |
+|---|---|
+| Projects in `content/projects.json` | 54 |
+| Renderable, RO and RU | **38 and 38** |
+| Projects with any non-empty `location`, either locale | **0 of 54** |
+| Renderable projects with a `location` | **0 of 38** |
+| Of the 20 official `band.localities` names, how many appear anywhere in `projects.json` | **0 of 20** |
+| Rendered location chips in `dist/`, both locales and every service page | **0** |

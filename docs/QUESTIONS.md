@@ -1145,3 +1145,43 @@ the scan needs per-file patterns, which is a card, not a constant.
       More thorough, and the false-positive work above is the cost.
   (c) Nothing. Rejected: the comments are wrong now, and one of them carries the
       54px headroom figure R-J corrected.
+
+---
+
+## Q-W12-13 · Does an appended amendment block count as editing a body? — OPEN, opened 2026-09-07 (W12-32)
+
+**Shipped default: no more of them.** A future amendment to a ruling becomes its
+own dated entry naming the ruling it amends. The two that already exist stay.
+
+R-S says nothing inside a recorded body is ever edited. Two rulings in
+`DECISIONS.md` carry amendment blocks appended **inside** them:
+
+    RULING R-J → "### Amended 2026-09-06 by W12-10, answering Q-W12-04"
+    RULING R-Q → "### Amended 2026-09-07 by W12-29 · the list is part of
+                  recording a ruling"
+
+Both are dated, attributed, and change no existing sentence. Both are also inside
+a body. Whether that is an append or an edit is genuinely unsettled by R-S as
+worded, and it matters because the next ruling amendment has to go somewhere.
+
+**Neither is removed, and that is not a preference.** Removing them would itself
+be an edit to a body, which R-S forbids more clearly than it forbids their
+existence. Both are load-bearing: without W12-10's block, R-J states the
+arithmetic error rather than the derived budgets; without W12-29's, the staleness
+list is not part of recording a ruling and the gate rots.
+
+  (a) **An appended, dated block inside an entry is an append, not an edit.**
+      Permitted, and the two existing ones are the pattern. Cheapest, and it
+      keeps an amendment beside the thing it amends, which is R-R's own argument
+      for amending the master plan in place.
+  (b) **It is an edit.** A future amendment is its own entry, cross-referenced
+      both ways. Strictest reading of R-S, and it costs a reader one jump to
+      find out that a ruling was later changed — which is the failure mode R-Q
+      exists to prevent, so it is not free.
+  (c) Permit it only for rulings, not for cards. Rejected as a distinction with
+      no principle behind it.
+
+**Recommendation: (a).** R-R already ruled that an amendment belongs at the point
+of the value it amends, and a ruling is a value. But (b) shipped as the default
+because R-S is the newer instruction and reading it strictly costs nothing until
+the next amendment is actually needed.

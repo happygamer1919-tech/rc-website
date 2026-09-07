@@ -492,3 +492,43 @@ dead-exception and missing-file arms were each watched failing too. The first
 version of the gate did **not** catch the first of those four, and the window was
 tightened from six lines to three until it did.
 
+---
+
+## 17. What "append-only" protects, and what it does not
+
+> In an append-only record, **entry bodies are immutable and status metadata is
+> not.** A status marker may be updated in place. Nothing inside a recorded body
+> is ever edited, including to correct an error: the correction is a subsequent
+> entry that names the one it corrects.
+*Source: ruling R-S, DECISIONS.md, W12-32.*
+
+**The two halves are what makes the rule usable.** "Append-only" read absolutely
+would freeze a question's heading at OPEN forever, so nothing could say what is
+still live, and a reader would have to reconstruct status from the whole file.
+Read loosely it licenses editing the record, which is how a wrong figure survives
+four waves with nothing marking it. The line between them is body and status.
+
+| May be updated in place | May never be edited |
+|---|---|
+| A question's status in its heading: `OPEN` → `ANSWERED <date>, <what>` | Anything inside the question's body — the context, the options, the figures as they stood |
+| A superseded-by marker added to a dated section | The dated section's own text |
+| A backlog ticket's status field | What the backlog entry said when it was written |
+
+**A record of a moment stays a record of that moment.** `DECISIONS.md`,
+`docs/QUESTIONS.md` and the dated wave sections of `RELEASE-NOTES.md` are all
+records: each states what was true and known when it was written. That is exactly
+why they carry superseded figures, and why the staleness gate holds an enumerated
+exception list rather than a licence to correct them.
+
+**Current figures live in the handoff**, at the foot of `RELEASE-NOTES.md`, which
+is the one section written to be replaced. Everything above it is dated and
+stays as written.
+
+**Ratified at W12-32:** the four question headings W12-30 moved from `OPEN` to
+answered — Q-W12-06, Q-W12-09, Q-W12-10 and Q-W12-11 — are status metadata and
+stand. No entry body was touched in doing it.
+
+An error inside a recorded body is corrected by the next entry, not by the pen.
+The record then shows both what was believed and what replaced it, which is
+strictly more than the corrected version would have shown.
+

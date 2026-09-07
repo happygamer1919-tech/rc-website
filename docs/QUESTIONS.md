@@ -972,3 +972,44 @@ Recommendation: **do it.** The only reason it is not in this card is that R-P
 specified markers and adding a fingerprint changes what every page emits, which
 is a decision about the artifact rather than about the verifier. One line of
 instruction and it ships.
+
+---
+
+## Q-W12-10 · Three governing docs restate values that rulings have superseded — OPEN, opened 2026-09-06 (W12-24)
+
+**Reported, not changed.** W12-24 limited the fix to CLAUDE.md. These are the
+others, worst first.
+
+**1. The master plan gives the wrong brand colours.** `docs/RC-WEBSITE-MASTER-PLAN.md`
+lines 76 and 78 still say `--brand: #F26419` and `--ink: #1C1C1C`. The real values
+are `#F65308` and `#1A1A1A`.
+
+This is the one to fix first, and not because of the colours. CLAUDE.md tells a
+card that the master plan **"wins by default"** and to ask before deviating. A
+card that followed that instruction literally would paint the site wrong and
+believe it was being obedient. The correction exists in DECISIONS and in CLAUDE.md
+section 3, so nothing is unrecorded — but the plan contradicts both.
+
+**2. The photo manifest states a minimum three rulings have overridden.**
+`docs/RC-PHOTO-MANIFEST.md` line 20: "Every file: minimum 1600px long edge."
+Overridden to 1200px for service cards (W7-02), 900px for the five step slots,
+and 720px for the hero panel (W8-03). The manifest notes two of them lower down;
+the headline still reads as universal.
+
+**3. The backlog quotes superseded budgets.** `docs/BACKLOG.md` lines 196-197 use
+8,744 and 9,044, which are R-I's figures, superseded by R-J's 8,851 and 9,065.
+Defensible as a dated status record, but nothing marks it as historical.
+
+**Recommendation: option (b), the cheap one.** The master plan already
+demonstrates it at line 121, where the header height carries an inline amendment
+naming the wave that changed it:
+
+  (a) Replace each value with a pointer to the ruling. Strictly R-Q, but the
+      master plan is a design spec and stripping its numbers would gut it.
+  (b) **Leave the value and add an inline amendment naming the ruling that
+      supersedes it.** Keeps the spec readable, makes staleness visible on
+      reading, and matches what line 121 already does.
+  (c) Nothing, and rely on CLAUDE.md section 3 winning. Rejected: it requires
+      every future card to know the plan is wrong before reading it.
+
+For the backlog, one word — "then-current" — is enough.

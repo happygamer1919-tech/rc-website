@@ -2277,3 +2277,75 @@ without a cache-buster and without markers:
 right only by accident.** The distinction R-P draws is between a reading that is
 correct and a reading that is *evidence*, and this wave produced the first
 without the second.
+
+---
+
+## RULING R-Q · Governing documents do not restate measurements, W12-24, 2026-09-06
+
+Recorded at the owner's instruction, in `docs/CLAUDE.md` section 14:
+
+> Governing documents name the ruling that holds a measured value and never
+> repeat the value. A number lives in exactly one place, the ruling that set it.
+> This is the third instance of the same failure: the 8,504 baseline wrong for
+> four waves, R-I's arithmetic not matching its own derivation, and section 2
+> carrying budgets two rulings had superseded. A stale pointer is visible on
+> reading, a stale number is not.
+
+That last sentence is the whole ruling. A reader who meets "see R-J" and finds no
+R-J knows immediately. A reader who meets "8,700px" has no way to tell.
+
+### Applied to CLAUDE.md, seven sites
+
+| Section | Was | Now |
+|---|---|---|
+| 1. Motion | "Reveal 320ms, hover 200ms, stagger capped at 6 items … 360ms" | names the tokens in `src/styles.css` |
+| 1. Motion | "Reveal 16px, hover 4px" | names the rules that set them |
+| 1. Motion | "a 5,081px scroll-driven section" | names the master plan as holder |
+| 2. Height budgets | the RO and RU figures, and the 60px headroom term | **ruling R-J** |
+| 2. Height budgets | "translated 16px down … reads about 150px high" | the travel token and the sum of the offsets |
+| 4. Lighthouse floors | "button text at 19px … chip … for 5.93:1" | the DECISIONS entry that measured them |
+| 12. Live verification | the six-row marker count table | the `MARKERS` constant in `scripts/verify-live.js` |
+
+**Section 12's table was mine, added one card earlier, and it was already the
+most fragile thing in the file**: marker counts change whenever a page gains a
+section, and a copy in the rules file would have gone stale on the first card
+that added one.
+
+### What CLAUDE.md may still state
+
+Rules and thresholds **it owns**: "under 400ms", "under 20px", the ten colour
+values, the Lighthouse floors, the 1,400px section cap. Those are chosen there,
+so there is their one place. WCAG's 3:1 and 4.5:1 stay too, marked as the
+external standard rather than as ours.
+
+### Swept, not changed: what the other governing docs restate
+
+Reported for a later card, as instructed. Three are genuinely stale, not merely
+duplicated:
+
+1. **`docs/RC-WEBSITE-MASTER-PLAN.md` lines 76 and 78 — the worst of the three.**
+   It gives `--brand` as `#F26419` and `--ink` as `#1C1C1C`. Both are wrong; the
+   real values are `#F65308` and `#1A1A1A`. This matters more than the others
+   because CLAUDE.md says the master plan **"wins by default"**, so a card that
+   trusted that instruction and read the plan would paint the site the wrong
+   colour. DECISIONS records the override and CLAUDE.md section 3 states the
+   truth, but the plan itself still says otherwise.
+
+2. **`docs/RC-PHOTO-MANIFEST.md` line 20** states "Every file: minimum 1600px
+   long edge" as a universal rule. **Three rulings have overridden it** — 1200px
+   for service cards (W7-02), 900px for the five step slots, 720px for the hero
+   panel (W8-03). The manifest flags two of them further down, which is the right
+   instinct, but the headline rule reads as absolute.
+
+3. **`docs/BACKLOG.md` lines 196-197** quote budgets of 8,744 and 9,044. Those
+   are R-I's, superseded by R-J. The entry is a status record of what was true on
+   2026-09-03, so it is defensible as history, but a reader scanning the backlog
+   for "the budget" finds a superseded number with nothing marking it as such.
+
+`docs/QUESTIONS.md` restates measurements throughout and that is what it is for:
+each entry is a snapshot of the state when a question was raised, and answered
+entries are marked. It is a record, not a governing document, and is left alone.
+
+`docs/RC-WEBSITE-MASTER-PLAN.md` also shows the pattern done **right** at line
+121, where the header height carries an inline amendment naming the wave that
+changed it. That is the cheapest fix for the three above if the value must stay.

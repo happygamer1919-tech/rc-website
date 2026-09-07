@@ -196,6 +196,15 @@ Every other field — `location`, `year`, `work_type`, `area_sqm`, `duration`,
 `main_materials`, `challenge` — is optional and drops out of the render **on its
 own**. A project with a real location and no year prints the location alone.
 
+**`location` is permanently empty and that is the finished state, not a gap.**
+Filling it would need the client to identify the locality of each photograph,
+which is not obtainable, and mapping the coverage list onto projects to fill it
+would be inventing copy under section 5. No card reopens this unless the client
+supplies per-project localities unprompted. **Coverage claims live in
+`areaServed`, `band.coverageLine` and `llms.txt`, and are never mapped onto
+projects.**
+*Source: ruling R-U, DECISIONS.md, W12-34, closing Q-W9-05.*
+
 A project that renders must have a cover file. `build.js` refuses to build
 otherwise and names both the missing file and the command that fixes it.
 *Source: DECISIONS.md W6-02.*

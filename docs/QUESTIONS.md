@@ -210,7 +210,7 @@ detail a competitor or a supplier rep notices.
 
 ---
 
-## Q-09 · The hero panel alt text describes an illustration that is gone — OPEN, opened 2026-09-01 (W8-03)
+## Q-09 · The hero panel alt text describes an illustration that is gone — **ANSWERED 2026-09-07, both locales rewritten** (opened 2026-09-01, W8-03; answered W12-34)
 
 W8-03 replaced the hero panel SVG with a photograph. The alt text still
 describes the SVG, and it is wrong twice over.
@@ -357,7 +357,7 @@ is to be indexable before launch.
 
 ---
 
-## Q-W9-05 · The locality list was never supplied
+## Q-W9-05 · The locality list was never supplied — **CLOSED 2026-09-07 by ruling R-U: empty is the final state** (opened 2026-09-01, W9-04; closed W12-34)
 
 `location` is empty on all thirty-four projects. A-03 said the list would be
 supplied and it was not. Under master plan section 6 an unsourced field is
@@ -390,7 +390,7 @@ are exactly `[RO] Solicită ofertă gratuită — /` and
 
 ---
 
-## Q-W9-07 · The RO homepage title and description exceed their limits
+## Q-W9-07 · The RO homepage title and description exceed their limits — **TITLE ANSWERED AND SHORTENED 2026-09-07; DESCRIPTION STILL OPEN** (opened 2026-09-01, W9-06; title answered W12-34, which also corrects this entry's figures)
 
 **Raised:** W9-06, 2026-09-01. **Status:** reported, not changed.
 
@@ -565,7 +565,7 @@ before this wave was 54px RO, not 196px. See W12-03 in DECISIONS.md.
 
 ---
 
-## Q-W12-02 · The promo bar expires at build time, not in the browser — OPEN, opened 2026-09-03 (W12-02)
+## Q-W12-02 · The promo bar expires at build time, not in the browser — **ACCEPTED AS BUILT 2026-09-07, no scheduler** (opened 2026-09-03, W12-02; closed W12-34)
 
 **Shipped default: build-time expiry, `endDate` 2027-01-01.**
 
@@ -658,7 +658,7 @@ rather than the budget floating free of it.
 
 ---
 
-## Q-W12-05 · Locality spelling — **RO ANSWERED, RU REGISTER STILL OPEN** (opened 2026-09-06, W12-09; verified W12-11)
+## Q-W12-05 · Locality spelling — **CLOSED 2026-09-07, settled by R-M** (opened 2026-09-06, W12-09; verified W12-11; closed W12-34)
 
 **Verified against the official CUATM (Biroul Național de Statistică). 15 of the
 40 forms were wrong. The full paired list is in DECISIONS.md under W12-11.**

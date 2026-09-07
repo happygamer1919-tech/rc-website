@@ -372,13 +372,22 @@ amendment, which is the only way the instruction stays safe to give.
 
 **The standard is the pattern already at master plan line 121**, where the header
 height carries its amendment inline naming the wave that changed it. Amend in
-place. Do not strip the number: the plan is a design spec and a spec with its
-values removed is not a spec.
+place.
 
     | `--brand` | ~~`#F26419`~~ **`#F65308`** | … **AMENDED: DECISIONS.md, "…". ** |
 
+**Strike the value, do not remove it — where the value has documentary purpose.**
+A design spec with its numbers taken out is not a spec, and a reader who needs to
+know what the plan used to say has nowhere else to look. **Where it has no
+documentary purpose, removal is correct and is the R-Q-clean answer.** A
+stylesheet comment is the clear case: nobody reads it for the figure, and a dead
+number left sitting in one is how it gets copied again. The amendment still names
+the superseding ruling either way; only the corpse is optional.
+*Source: ruling R-T, DECISIONS.md, W12-33, ratifying W12-31.*
+
 Three documents were amended under this ruling on 2026-09-07: the master plan's
-`--brand` and `--ink` rows, the photo manifest's 1600px long-edge minimum, and
+`--brand` and `--ink` rows, the photo manifest's 1600px long-edge minimum (not
+universal: W7-02 and W8-03 lower it per slot group), and
 the backlog's W12-03 budgets. Details in DECISIONS.md, W12-27.
 
 ---
@@ -531,4 +540,27 @@ stand. No entry body was touched in doing it.
 An error inside a recorded body is corrected by the next entry, not by the pen.
 The record then shows both what was believed and what replaced it, which is
 strictly more than the corrected version would have shown.
+
+### R-S governs snapshots. A ruling is not a snapshot.
+
+> **A ruling body may carry appended amendment blocks.** Each is dated, names the
+> card that added it, and alters no existing sentence.
+*Source: ruling R-T, DECISIONS.md, W12-33, answering Q-W12-13.*
+
+**The distinction is what the document is for.** A question entry and a dated
+wave record state what was believed at a moment; they are read backward, as
+evidence, and editing them destroys the only thing they carry. A ruling is
+standing authority and is **read forward** — a card consults R-J to find out what
+the budget is *now*. An amendment that lives anywhere but inside the ruling means
+a card can read the whole ruling, act on it, and be wrong.
+
+That is R-R's argument exactly, one level up: an amendment sits at the point of
+the thing it amends, and a ruling is a value.
+
+The two blocks that already exist — R-J's, added by W12-10, and R-Q's, added by
+W12-29 — stand, and are the pattern. **R-J's in-place corrections of figures in
+`DECISIONS.md` are regularised by R-T** and need no correcting entry.
+
+What is still forbidden inside a ruling: editing a sentence that is already
+there. An amendment is added below, dated and attributed. Nothing above it moves.
 

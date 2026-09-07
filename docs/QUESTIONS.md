@@ -1071,7 +1071,7 @@ For the backlog, one word — "then-current" — is enough.
 
 ---
 
-## Q-W12-11 · The master plan's height heuristic is now false by design — OPEN, opened 2026-09-07 (W12-27)
+## Q-W12-11 · The master plan's height heuristic is now false by design — **ANSWERED 2026-09-07, all three amended in place** (opened 2026-09-07, W12-27; answered W12-28)
 
 **Reported, not amended.** W12-27 limited amendment to values already reported.
 These three surfaced during its sweep, all in `docs/RC-WEBSITE-MASTER-PLAN.md`.

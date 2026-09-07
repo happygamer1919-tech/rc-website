@@ -118,7 +118,7 @@ Line height 1.15 on headings, 1.6 on body. No Playfair Display, no serif anywher
 
 ## 5. Section specification
 
-Eight sections. Target total page height 7,000 to 8,000px desktop. If the build exceeds 9,000px, something has been over-built.
+Eight sections. ~~Target total page height 7,000 to 8,000px desktop. If the build exceeds 9,000px, something has been over-built.~~ **AMENDED: superseded by R-I and then by R-J (DECISIONS.md, W12-04, amended by W12-10). This is not a stale number, it is a false rule. The Russian homepage exceeds 9,000px by design and every pixel of it was ruled in, most recently the twenty-locality coverage list, so a card applying this heuristic would go looking for something to cut that a ruling had already approved. Do not treat 9,000px as an over-build signal. Height budgets are held by ruling, not by this line: they are per locale, derived from measured element costs plus a stated headroom term, and they move when an element is added or removed by data. Read them in R-J.**
 
 ### 5.1 Header (sticky)
 
@@ -197,7 +197,7 @@ Build requirement: every image slot ships as a labelled placeholder showing the 
 The slot inventory and the shooting batches are in the companion file `RC-PHOTO-MANIFEST.md`.
 
 Technical spec for every supplied photo:
-- Minimum 1600px on the long edge.
+- ~~Minimum 1600px on the long edge.~~ **AMENDED: not universal. Three rulings lower it for specific slot groups (W7-02 for the service cards, the step-slot ruling, W8-03 for the hero panel). The per-group figures are held in the amendment at `RC-PHOTO-MANIFEST.md` line 20, which is the slot inventory; 1600px remains the default for every slot no ruling has lowered.**
 - Landscape only for grid and cover slots. Vertical phone photos are unusable there.
 - JPG, compressed under 400KB after processing.
 - No watermarks, no third-party logos, no date stamps, no people's faces without permission.
@@ -242,7 +242,7 @@ Mihai has low technical fluency and cannot specify what he wants, but he reacts 
 
 - No scroll-driven motion of any kind.
 - Exactly three background values, hard edges only.
-- Page under 9,000px desktop.
+- ~~Page under 9,000px desktop.~~ **AMENDED: superseded by R-I and then by R-J (DECISIONS.md, W12-04, amended by W12-10). The acceptance criterion is the per-locale budget held in R-J, not one flat figure, and RU sits above 9,000px under it by design. See the amendment at line 121.**
 - No section taller than 1,400px except the portfolio grid.
 - Contact reachable from every scroll position.
 - Both locales must stay in sync; a string added to one is added to the other in the same commit.

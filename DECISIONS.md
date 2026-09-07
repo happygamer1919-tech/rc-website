@@ -2429,3 +2429,89 @@ stale figures precisely in order to correct them.
 `docs/QUESTIONS.md` carries stale values throughout and is deliberately left
 alone under R-Q: every entry is a snapshot of the state when a question was
 raised, answered entries are marked, and rewriting them would destroy the record.
+
+---
+
+## W12-28 · Line 121 was a false rule, not a stale value, 2026-09-07
+
+**Resolves Q-W12-11.** Applies R-R to the three master plan values its sweep
+reported and left for a ruling. The owner's instruction names the distinction
+that makes this card different from W12-27:
+
+> Line 121 is not a stale value, it is a false rule: it states that exceeding
+> 9,000px means something has been over-built. RU is 9,032px and every pixel was
+> ruled in under R-J. A card applying line 121 would cut content a ruling
+> approved and would pass every existing gate while doing it.
+
+**That last clause is the reason this could not wait.** A stale number misleads a
+reader. A stale *heuristic* instructs one. `check-links.js` would not see it,
+`verify-live.js` would not see it — RU at 9,032px is inside R-J's 9,065 and
+verifies clean — and a card that trimmed the coverage list to get under 9,000px
+would report a green wave while deleting content W12-09 ruled in. The gate that
+would have caught it did not exist until W12-29, one card later.
+
+RU measured **9,032px** on production at `4edcb1c`, verified under R-P with the
+SHA assertion, in the run that opened this card.
+
+### The three amendments, exact text
+
+**1. Line 121, the one that matters.**
+
+    Eight sections. ~~Target total page height 7,000 to 8,000px desktop. If the
+    build exceeds 9,000px, something has been over-built.~~ **AMENDED: superseded
+    by R-I and then by R-J (DECISIONS.md, W12-04, amended by W12-10). This is not
+    a stale number, it is a false rule. The Russian homepage exceeds 9,000px by
+    design and every pixel of it was ruled in, most recently the twenty-locality
+    coverage list, so a card applying this heuristic would go looking for
+    something to cut that a ruling had already approved. Do not treat 9,000px as
+    an over-build signal. Height budgets are held by ruling, not by this line:
+    they are per locale, derived from measured element costs plus a stated
+    headroom term, and they move when an element is added or removed by data.
+    Read them in R-J.**
+
+**2. Line 245, the same value as an acceptance criterion.**
+
+    - ~~Page under 9,000px desktop.~~ **AMENDED: superseded by R-I and then by
+    R-J (DECISIONS.md, W12-04, amended by W12-10). The acceptance criterion is the
+    per-locale budget held in R-J, not one flat figure, and RU sits above 9,000px
+    under it by design. See the amendment at line 121.**
+
+**3. Line 200, the long-edge minimum.**
+
+    - ~~Minimum 1600px on the long edge.~~ **AMENDED: not universal. Three rulings
+    lower it for specific slot groups (W7-02 for the service cards, the step-slot
+    ruling, W8-03 for the hero panel). The per-group figures are held in the
+    amendment at `RC-PHOTO-MANIFEST.md` line 20, which is the slot inventory;
+    1600px remains the default for every slot no ruling has lowered.**
+
+### Departure from the text Q-W12-11 recommended, and why
+
+Q-W12-11 drafted line 121's amendment as *"The live budgets are RO under 8,851px
+and RU under 9,065px"*. **That draft is not shipped, and it was wrong.** Writing
+the live budgets into the master plan creates exactly the copy R-Q forbids: a
+measured value in a governing document with no mechanism that notices when the
+ruling behind it changes. It would have been the fifth instance of the pattern,
+introduced by the card written to close the fourth, and W12-29's gate would have
+had to police it a day later.
+
+The shipped text names R-J and stops. The owner's own instruction says it
+plainly — *"state plainly that height budgets are held by ruling, not by this
+line"* — and that is R-Q's rule, not a softening of it.
+
+Line 200 is treated the same way. R-R's manifest amendment states 1200px, 900px
+and 720px because the manifest is the slot inventory and that is those figures'
+one home. The master plan's copy names the three rulings and points at the
+manifest rather than repeating them.
+
+### What was not touched
+
+**`docs/QUESTIONS.md`, at the owner's instruction**, ratifying the reasoning
+recorded under R-R: every entry is a snapshot of the state when a question was
+raised, and rewriting the snapshots destroys the record. It carries the stale
+figures throughout and keeps them. Marking Q-W12-11 answered in its heading is
+the file's own convention for an answered entry and is not a rewrite of the
+snapshot; nothing inside the entry changed.
+
+**Master plan line 22** still lists `#1C1C1C` among the *rejected* build's four
+off-whites. Checked again and still not a finding: it describes what was wrong,
+it is not a spec value.

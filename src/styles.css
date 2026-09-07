@@ -723,8 +723,11 @@ p { margin: 0; }
   to   { transform: translate3d(-50%, 0, 0); }
 }
 /* White logo tile. Sized for a wordmark, 2.5:1, not for a text label. The
-   height is deliberately unchanged from phase 1: the homepage has under 200px
-   of headroom against the 8,700px cap, and a logo needs width, not height. */
+   height is deliberately unchanged from phase 1: the homepage has very little
+   headroom against its budget, and a logo needs width, not height.
+   AMENDED under R-R, W12-31: this comment carried a cap and a headroom figure
+   that ruling R-J superseded (DECISIONS.md, W12-04). The budgets are per
+   locale, derived, and held in R-J. No figure is restated here, per R-Q. */
 .supplier {
   flex: none;
   width: 200px; height: 80px;
@@ -768,8 +771,13 @@ p { margin: 0; }
    Hover and focus move to --brand, which is already in the set. */
 /* It lives in the footer bar, not in a column: the bar already runs 62px tall
    with 700px of unused width, so the row costs the page ZERO height. In the
-   contact column it cost 70px, and the homepage has under 200px of headroom
-   against the 8,700px cap. */
+   contact column it cost 70px, which the homepage had no room for.
+   AMENDED under R-R, W12-31: the cap and the headroom figure this comment
+   carried were superseded by ruling R-J (DECISIONS.md, W12-04). R-J makes the
+   decision recorded here STRONGER, not weaker: the real headroom was a
+   fraction of the figure written at the time, so the 70px row would have blown
+   the budget outright rather than eaten part of it. Budgets are held in R-J
+   and no figure is restated here, per R-Q. */
 .footer__social { display: flex; gap: 4px; align-items: center; }
 .footer__social a {
   /* 44x44 clears the WCAG 2.5.8 target minimum with room to spare. The bar's

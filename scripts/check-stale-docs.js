@@ -121,7 +121,7 @@ const SUPERSEDED = [
   },
   {
     id: 'photo-min',
-    find: /1600px|1600 ?px|minimum 1600|1600x1200/gi,
+    find: /1600px|minimum 1600|1600 long edge|global 1600/gi,
     ruling: 'W7-02, the step-slot ruling, and W8-03',
     what: 'the 1600px long-edge minimum stated as universal. Three rulings lower it per slot group; slots.js holds the per-slot floors',
     clear: /AMENDED|W7-02|W8-03|not universal|default for every slot/,
@@ -139,6 +139,32 @@ const SCAN = [
   'docs/SHOOT-SHEET.md',
   'RELEASE-NOTES.md',
   'README.md',
+];
+
+/* Source files, added by W12-31 closing Q-W12-12. Only their COMMENTS are
+   scanned. That distinction is the whole reason the extension is safe: the
+   values here collide with live code that is entirely correct — `MIN_LONG_EDGE
+   = 1600` in slots.js is the implementation of the rule, and `setTimeout(r,
+   1600)` in verify-live.js is a delay in milliseconds. A gate that flags its own
+   correct implementation trains people to ignore it. Neither is a comment, so
+   neither is read.
+
+   `scripts/check-stale-docs.js` is absent and must stay absent: the list of
+   superseded values necessarily contains every superseded value. */
+const SCAN_SOURCE = [
+  'src/styles.css',
+  'src/template.html',
+  'src/service.html',
+  'src/privacy.html',
+  'src/404.html',
+  'build.js',
+  'scripts/check-links.js',
+  'scripts/gen-og-image.js',
+  'scripts/gen-placeholders.js',
+  'scripts/gen-service-svgs.js',
+  'scripts/process-photos.js',
+  'scripts/slots.js',
+  'scripts/verify-live.js',
 ];
 
 /* Exempt, by ruling, and printed every run so the scope is never implicit. */
@@ -197,6 +223,103 @@ const KNOWN = [
   },
 ];
 
+/* --- comment extraction ---------------------------------------------------- */
+/* A regex cannot do this. `https://` is not a line comment, a `//` inside a
+   template literal is not a line comment, and build.js is full of both. So this
+   walks the file character by character and returns the text of the comments
+   only, with every non-comment character replaced by a space.
+
+   Blanking rather than deleting is deliberate: it preserves every byte offset,
+   so a hit still reports the true line number in the real file.
+
+   States tracked: line comment, block comment, the three string forms, template
+   `${}` interpolation to any depth, and regex literals. Regex literals matter
+   because `/\/\//` would otherwise look like a comment opening. Whether a `/`
+   starts a regex or divides is decided by the previous significant character,
+   which is the standard heuristic and is exact for this codebase. */
+function commentsOnly(src, kind) {
+  const out = new Array(src.length).fill(' ');
+  const keep = (i) => { if (src[i] !== '\n') out[i] = src[i]; };
+  let i = 0;
+
+  if (kind === 'css' || kind === 'html') {
+    const open = kind === 'css' ? '/*' : '<!--';
+    const close = kind === 'css' ? '*/' : '-->';
+    while (i < src.length) {
+      const a = src.indexOf(open, i);
+      if (a < 0) break;
+      let b = src.indexOf(close, a + open.length);
+      if (b < 0) b = src.length; else b += close.length;
+      for (let k = a; k < b; k++) keep(k);
+      i = b;
+    }
+    for (let k = 0; k < src.length; k++) if (src[k] === '\n') out[k] = '\n';
+    return out.join('');
+  }
+
+  /* JavaScript. */
+  let prevSig = '';                       // last significant char, for regex vs divide
+  const stack = [];                       // '`' for template, '{' for ${ } inside one
+  while (i < src.length) {
+    const c = src[i], d = src[i + 1];
+
+    if (c === '/' && d === '/') {         // line comment
+      while (i < src.length && src[i] !== '\n') { keep(i); i++; }
+      continue;
+    }
+    if (c === '/' && d === '*') {         // block comment
+      const b = src.indexOf('*/', i + 2);
+      const end = b < 0 ? src.length : b + 2;
+      for (; i < end; i++) keep(i);
+      continue;
+    }
+    if (c === '"' || c === "'") {         // string
+      i++;
+      while (i < src.length && src[i] !== c) { if (src[i] === '\\') i++; i++; }
+      i++; prevSig = 'x'; continue;
+    }
+    if (c === '`') {                      // template literal, possibly nested
+      i++;
+      while (i < src.length) {
+        if (src[i] === '\\') { i += 2; continue; }
+        if (src[i] === '`') { i++; break; }
+        if (src[i] === '$' && src[i + 1] === '{') { stack.push('`'); i += 2; break; }
+        i++;
+      }
+      prevSig = 'x'; continue;
+    }
+    if (c === '}' && stack.length && stack[stack.length - 1] === '`') {
+      stack.pop(); i++;                   // close ${ }, resume the template
+      while (i < src.length) {
+        if (src[i] === '\\') { i += 2; continue; }
+        if (src[i] === '`') { i++; break; }
+        if (src[i] === '$' && src[i + 1] === '{') { stack.push('`'); i += 2; break; }
+        i++;
+      }
+      prevSig = 'x'; continue;
+    }
+    if (c === '/' && /[=(,:[!&|?{;+\-*%~^<>]/.test(prevSig)) {   // regex literal
+      i++;
+      let cls = false;
+      while (i < src.length) {
+        if (src[i] === '\\') { i += 2; continue; }
+        if (src[i] === '[') cls = true;
+        else if (src[i] === ']') cls = false;
+        else if (src[i] === '/' && !cls) { i++; break; }
+        else if (src[i] === '\n') break;
+        i++;
+      }
+      prevSig = 'x'; continue;
+    }
+    if (!/\s/.test(c)) prevSig = c;
+    i++;
+  }
+  for (let k = 0; k < src.length; k++) if (src[k] === '\n') out[k] = '\n';
+  return out.join('');
+}
+
+const kindOf = (rel) => rel.endsWith('.css') ? 'css' : rel.endsWith('.html') ? 'html' : 'js';
+
 /* -------------------------------------------------------------------------- */
 
 const rx = (r) => new RegExp(r.source, r.flags.replace('g', ''));
@@ -220,17 +343,26 @@ for (const e of EXEMPT) {
 }
 console.log('');
 
-for (const rel of SCAN) {
+function scan(rel, isSource) {
   const file = path.join(ROOT, rel);
-  if (!fs.existsSync(file)) { missingFiles.push(rel); continue; }
-  const lines = fs.readFileSync(file, 'utf8').split('\n');
+  if (!fs.existsSync(file)) { missingFiles.push(rel); return; }
+  const raw = fs.readFileSync(file, 'utf8');
 
-  lines.forEach((line, i) => {
+  /* Documents are read whole. Source files are read as their COMMENTS ONLY,
+     with every other character blanked. Offsets survive the blanking, so a hit
+     still reports the true line and the real line is what gets printed. */
+  const searched = (isSource ? commentsOnly(raw, kindOf(rel)) : raw).split('\n');
+  const actual = raw.split('\n');
+
+  searched.forEach((line, i) => {
     for (const v of SUPERSEDED) {
       if (!rx(v.find).test(line)) continue;
       perValue.set(v.id, perValue.get(v.id) + 1);
 
-      const window = lines.slice(Math.max(0, i - WINDOW), i + WINDOW + 1).join('\n');
+      /* The window is drawn from the SAME text that was searched. In a source
+         file that means a comment must carry its own marker: a mention of the
+         ruling in nearby code does not excuse it. */
+      const window = searched.slice(Math.max(0, i - WINDOW), i + WINDOW + 1).join('\n');
       if (v.clear.test(window)) { marked++; continue; }
 
       const ex = KNOWN.find((k) => k.file === rel && k.id === v.id && line.includes(k.contains));
@@ -240,10 +372,13 @@ for (const rel of SCAN) {
         continue;
       }
 
-      hits.push({ rel, line: i + 1, text: line.trim(), v });
+      hits.push({ rel, line: i + 1, text: actual[i].trim(), v, isSource });
     }
   });
 }
+
+SCAN.forEach((rel) => scan(rel, false));
+SCAN_SOURCE.forEach((rel) => scan(rel, true));
 
 /* A file that vanished is not a pass. */
 if (missingFiles.length) {
@@ -260,12 +395,12 @@ console.log('values checked:');
 for (const v of SUPERSEDED) {
   console.log(`  · ${pad(v.id, 14)} ${pad(perValue.get(v.id) + ' found', 10)} superseded by ${v.ruling}`);
 }
-console.log(`\n${SCAN.length - missingFiles.length} documents scanned   marked: ${marked}   known exceptions used: ${excepted}   unmarked: ${hits.length}`);
+console.log(`\n${SCAN.length} documents + ${SCAN_SOURCE.length} source files (comments only), ${missingFiles.length} missing   marked: ${marked}   known exceptions used: ${excepted}   unmarked: ${hits.length}`);
 
 if (hits.length) {
   console.error('\nSTALE VALUES WITH NO ADJACENT AMENDMENT:\n');
   for (const h of hits) {
-    console.error(`  ${h.rel}:${h.line}`);
+    console.error(`  ${h.rel}:${h.line}${h.isSource ? '   (in a comment)' : ''}`);
     console.error(`    value:      ${h.v.what}`);
     console.error(`    superseded: ${h.v.ruling}`);
     console.error(`    line:       ${h.text.length > 140 ? h.text.slice(0, 137) + '…' : h.text}`);

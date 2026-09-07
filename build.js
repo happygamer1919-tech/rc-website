@@ -18,6 +18,25 @@ const FORM_KEY = (process.env.WEB3FORMS_KEY || '').trim();
 // Single flag for the Google review mark and outbound link. The profile URL is
 // not available yet, so both stay hidden until GOOGLE_REVIEWS_URL is set.
 const GOOGLE_REVIEWS_URL = (process.env.GOOGLE_REVIEWS_URL || '').trim();
+
+/* W12-23. The commit this artifact was built from, emitted into every page as a
+   meta tag so a live check can assert IDENTITY rather than properties.
+
+   Content markers under R-P prove the deployed build has certain properties.
+   Two builds that share those properties are indistinguishable to them, so a
+   docs-only or copy-only change could go out and a stale copy would still pass.
+   A SHA turns that into an identity check.
+
+   GITHUB_SHA in CI, `git rev-parse HEAD` locally. A checkout with no git history
+   yields 'unknown', which verify-live.js treats as a FAILURE rather than a skip:
+   an assertion that quietly disables itself when its input is missing is the
+   same defect as the privacy gate reading a deleted section as completeness. */
+const BUILD_SHA = (() => {
+  if (process.env.GITHUB_SHA) return process.env.GITHUB_SHA.trim();
+  try {
+    return execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+  } catch { return 'unknown'; }
+})();
 const FORM_ARMED = FORM_KEY.length > 0;
 const FORM_ENDPOINT = FORM_ARMED ? FORM_KEY : 'WEB3FORMS_ACCESS_KEY_PLACEHOLDER';
 
@@ -670,6 +689,7 @@ for (const l of loaded) {
     // With no key the form must not post anywhere: it validates, then says so.
     formAction: FORM_ARMED ? 'https://api.web3forms.com/submit' : '#oferta',
     base: BASE,
+    buildSha: BUILD_SHA,
     homeHref: BASE + l.home,
     hrefRo: BASE + '/',
     hrefRu: BASE + '/ru/',
@@ -1011,7 +1031,7 @@ fs.writeFileSync('dist/sitemap.xml',
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fotografii reținute · Rapid Construct</title>
 <meta name="description" content="Pagină internă. Cele cinci fotografii reținute de la publicare, cu motivul fiecăreia.">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="noindex, nofollow">\n<meta name="build-sha" content="${BUILD_SHA}">
 <meta name="theme-color" content="#F65308">
 <link rel="stylesheet" href="${BASE}/styles.css">
 <style>

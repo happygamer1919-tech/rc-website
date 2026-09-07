@@ -205,7 +205,24 @@ const OPERATOR_KEYS = ['privacy.opName', 'privacy.opIdno'];
 const operatorPresent = (v) => typeof v === 'string' && v.trim() !== '' && !v.trim().startsWith('TODO:');
 const privacyMissingOperator = loaded.flatMap((l) =>
   OPERATOR_KEYS.filter((k) => !operatorPresent(l.strings[k])).map((k) => `${l.code}:${k} (absent or TODO)`));
-const privacyIncomplete = privacyTodos.length > 0 || privacyMissingOperator.length > 0;
+/* W12-26, 2026-09-07. The fallback page is published and linked WITHOUT an
+   operator section, on the owner's explicit instruction: the registry extract
+   has not arrived, and a linked page with no operator beats an unreachable one.
+
+   This does NOT revert W12-21b. That fix stands: absence must never SILENTLY
+   release the gate. What it needed was an explicit second key, so the release is
+   a decision someone made rather than a consequence of a deletion nobody
+   noticed. Delete the operator fields with this constant false and the links
+   stay off, which is exactly the property W12-21b bought.
+
+   Filling privacy.opName and privacy.opIdno closes the gate on evidence and
+   makes this flag irrelevant. */
+const PRIVACY_PUBLISHABLE_WITHOUT_OPERATOR = true;
+
+/* Placeholders remain absolute: a page rendering "TODO:" is never linkable,
+   whatever the flag says. The flag governs the operator branch only. */
+const privacyIncomplete = privacyTodos.length > 0
+  || (privacyMissingOperator.length > 0 && !PRIVACY_PUBLISHABLE_WITHOUT_OPERATOR);
 
 const servicePages = [];
 
@@ -1173,10 +1190,16 @@ console.log(`google reviews link: ${GOOGLE_REVIEWS_URL || 'HIDDEN (set GOOGLE_RE
 }
 if (privacyIncomplete) {
   const reasons = [...privacyTodos, ...privacyMissingOperator];
-  console.log(`\nPRIVACY PAGE INCOMPLETE: ${reasons.length} operator field(s) unresolved.`);
+  console.log(`\nPRIVACY PAGE INCOMPLETE: ${reasons.length} field(s) unresolved.`);
   reasons.forEach((t) => console.log('  · ' + t));
   console.log('  -> nothing on the site links to the privacy pages (W12-17).');
   console.log('  -> the page is noindex and excluded from sitemap.xml until they are filled.');
+} else if (privacyMissingOperator.length) {
+  console.log('\nPRIVACY PAGE PUBLISHED WITHOUT AN OPERATOR SECTION (W12-26).');
+  privacyMissingOperator.forEach((t) => console.log('  · ' + t));
+  console.log('  -> linked, indexable and in the sitemap. No placeholder text renders.');
+  console.log('  -> fill the fields when the registry extract lands; the flag in');
+  console.log('     build.js then becomes irrelevant.');
 }
 console.log(FORM_ARMED
   ? '\nform: ARMED, posts to Web3Forms.'

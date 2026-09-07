@@ -23,8 +23,8 @@ That is the whole rule. What satisfies each clause today:
 |---|---|---|
 | Never delays or captures scroll | No `wheel`, `touchmove` or `scroll` handler calls `preventDefault`. Both scroll listeners are registered `{ passive: true }`, so they cannot block scrolling even in principle | `src/main.js`, RELEASE-NOTES "Motion (phase 2)" |
 | Fires once | `IntersectionObserver` with `unobserve` on first fire. Reveals never repeat on scroll back up | `src/main.js` |
-| Under 400ms | Reveal 320ms, hover 200ms, stagger capped at 6 items so a nine-card grid completes in 360ms | `--reveal-dur`, `--hover-dur`, `[data-stagger]` in `src/styles.css` |
-| Under 20px travel | Reveal 16px, hover 4px | `[data-reveal]` and `:hover` rules in `src/styles.css` |
+| Under 400ms | Every duration is a token, and the tokens are the only place they are written | `--reveal-dur`, `--hover-dur`, `[data-stagger]` in `src/styles.css` |
+| Under 20px travel | Travel distances are set where the rules are | `[data-reveal]` and `:hover` rules in `src/styles.css` |
 | Opacity and transform only | `[data-reveal]` transitions `opacity` and `transform`. Nothing animates layout, colour or size | `src/styles.css` |
 | Nothing above the fold | Nothing in the header or the hero animates. The header is `position: fixed` and `<body>` carries a **constant** spacer for it, so the pill's compression on scroll is purely visual and never shortens the document. A sticky header keeps its box in flow; compressing it shunted every section up mid-scroll, which is why it is fixed | RELEASE-NOTES "Motion (phase 2)", `src/styles.css` |
 | Fully disabled under reduced motion | Reveals render final, hover travel removed, marquee stopped dead, header does not animate, modal has no entrance | `@media (prefers-reduced-motion: reduce)` at the foot of `src/styles.css` |
@@ -32,8 +32,8 @@ That is the whole rule. What satisfies each clause today:
 
 **The stricter parent rule still holds:** zero *scroll-driven* motion. No
 parallax, no scroll sequences, no count-up numerals, no auto-advancing
-carousels. The predecessor build was rejected over a 5,081px scroll-driven
-section and it is deleted, not reworked.
+carousels. The predecessor build was rejected over a scroll-driven section whose
+measured height is recorded in the master plan, and it is deleted, not reworked.
 *Source: master plan sections 1 and 10.*
 
 A pause on hover or focus is a state change on an existing animation, not new
@@ -47,22 +47,23 @@ handler exists to interfere with scrolling.
 
 Measured at a desktop width, settled, with every reveal applied.
 
-| Page | Budget | Source |
-|---|---|---|
-| Homepage RO | under **8,851px** | Ruling R-J |
-| Homepage RU | under **9,065px** | Ruling R-J |
-| Service pages, either locale | under **6,000px** | Wave 7 acceptance |
+| Page | Budget lives in |
+|---|---|
+| Homepage RO and RU | **DECISIONS.md, ruling R-J** |
+| Service pages, either locale | **RELEASE-NOTES.md, wave 7 acceptance** |
 
-The homepage figures are **derived**, not chosen: corrected baseline plus the
-measured cost of each element above the fold plus 60px of stated headroom. R-J
-carries the derivation and the revert values for when the promo bar or the 100+
-tile is removed by data. The wave 6 figures of 8,700 and 9,000 were superseded
-twice, first by R-I and then by R-J, and they are wrong to budget against.
-*Source: DECISIONS.md rulings R-I, R-J.*
+The homepage budgets are **derived, not chosen**: a corrected baseline plus the
+measured cost of each element above the fold plus a stated headroom term. R-J
+carries the derivation, the current figures, and the revert values for when the
+promo bar or the 100+ tile is removed by data. Read them there.
+
+They have been superseded twice, by R-I and then by R-J, and this file has
+already carried a stale copy once. Per R-Q it now carries the pointer only.
 
 **Measure it the same way every time.** An unrevealed `[data-reveal]` is
-translated 16px down, which inflates `scrollHeight` until it fires. Measuring
-before the reveals settle reads about 150px high on the homepage:
+translated down by its travel token, which inflates `scrollHeight` until it
+fires, and measuring before the reveals settle reads high by roughly the sum of
+those offsets:
 
     document.querySelectorAll('[data-reveal]').forEach(n => n.classList.add('is-revealed'));
     // wait ~1.5s for the staggered transitions, then:
@@ -141,9 +142,11 @@ clears itself when one lands.
 *Source: DECISIONS.md W3-02, RELEASE-NOTES "Lighthouse baseline".*
 
 Accessibility 100 is held by two decisions that must not be quietly undone:
-button text at 19px, which clears the WCAG large-text threshold so white on
-`--brand` needs 3:1 rather than 4.5:1; and the category chip filled with
-`--brand-dark` for 5.93:1.
+button text sized to clear the WCAG large-text threshold, so white on `--brand`
+is judged against 3:1 rather than 4.5:1; and the category chip filled with
+`--brand-dark`. The sizes and the measured ratios are in the DECISIONS.md entry.
+3:1 and 4.5:1 are WCAG's thresholds, not ours, and are quoted as the external
+standard they are.
 *Source: DECISIONS.md "Contrast, resolved 2026-08-28".*
 
 ---
@@ -298,13 +301,10 @@ every request with a token unique to the run, disables the browser cache, reads
 markers and the settled height in a **single page evaluation** so they cannot come
 from different responses, and exits non-zero when any marker mismatches.
 
-The marker sets, by page type:
-
-| Page type | Markers |
-|---|---|
-| Homepage | rating panel present (1), portfolio grid children (7: six cards plus the closing tile), visible profile anchors (0), promo bar (1), stat tiles (8), `areaServed` entries (20) |
-| Service page | promo bar (1), visible profile anchors (0), `areaServed` (20) |
-| Privacy page | promo bar (1), visible profile anchors (0) |
+**The marker sets live in `scripts/verify-live.js`, in the `MARKERS` constant.**
+They are counts of things on the page, so they change whenever the page does, and
+a copy of them here would go stale the first time a card added a section. Read
+them there; the script is the only place they are written.
 
 Alongside the markers each page is checked for rating markup, the `sameAs`
 profile URL, visible `TODO`, `robots` and `canonical`; and a cache-busted crawl
@@ -320,6 +320,64 @@ in QUESTIONS.md rather than assumed.
 review panel removed: three markers mismatched and the run exited 1, while the
 heights it reported were inside budget and looked correct. An assertion nobody
 has watched fail is not a gate.
+
+---
+
+## 13. What a gate may conclude
+
+> A gate asserts the **presence of what it requires**, never the absence of a
+> complaint about it. Absent evidence is not positive evidence.
+*Source: ruling recorded with R-P, DECISIONS.md, W12-22 and W12-25.*
+
+Three incidents in one wave, all the same shape:
+
+| Incident | What the check looked for | What it concluded |
+|---|---|---|
+| The privacy gate | a `TODO:` marker in `privacy.*` | the section was **deleted**, so no marker was found, so the page was declared publishable and the links were released |
+| A live height reading | a plausible number | a **stale edge copy** returned one, and it was inside budget, so the deploy was nearly reported as passing |
+| A card reporting done | a status field | **evidence null** was read as nothing-to-report rather than nothing-was-checked |
+
+In each case the checker asked "is anything complaining?", got silence, and read
+silence as approval. The three fixes are the same fix: assert what must be there.
+
+- The privacy gate now requires `privacy.opName` and `privacy.opIdno` to be
+  **present and real**, so deleting them fails exactly as marking them TODO does.
+- `scripts/verify-live.js` requires a `build-sha` tag to be **present and equal**
+  to the expected commit. A missing tag is `UNVERIFIED` and exit 1, never a skip.
+- A gate whose evidence is missing reports **unverified**, never passed.
+
+The corollary is what makes this operational: **an assertion nobody has watched
+fail is not a gate.** Every assertion added under R-P and W12-23 was
+negative-tested against a build that should fail it, and the failure observed,
+before it was trusted.
+
+---
+
+## 14. Governing documents do not restate measurements
+
+> Governing documents name the ruling that holds a measured value and never
+> repeat the value. A number lives in exactly one place: the ruling that set it.
+*Source: ruling R-Q, DECISIONS.md, W12-24.*
+
+**A stale pointer is visible on reading. A stale number is not.** That asymmetry
+is the whole argument, and it was paid for three times:
+
+| Instance | Cost |
+|---|---|
+| The 8,504 / 8,774 homepage baseline | wrong for four waves; advertised 196px of RO headroom where 54px existed, and is most of why wave 12 went over budget |
+| R-I's stated budgets | did not match R-I's own derivation, by −1 and +35, and the +35 was a round number the same ruling forbade |
+| Section 2 of this file | carried budgets that R-I and then R-J had superseded, 151px too tight on RO |
+
+What this file may still state: **rules and thresholds it owns** — "under 400ms",
+"under 20px", the ten colour values, the Lighthouse floors, the 1,400px section
+cap. Those are chosen here, so here is their one place.
+
+What it may not state: **anything measured or derived elsewhere** — height
+budgets, contrast ratios, animation durations, marker counts. Those live in the
+ruling, the stylesheet token, or the script, and this file names the holder.
+
+Where the two are quoted together, the external standard is marked as such:
+WCAG's 3:1 and 4.5:1 are not ours to hold.
 
 ---
 

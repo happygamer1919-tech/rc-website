@@ -34,6 +34,12 @@ const WIDTH = 1440, HEIGHT = 900;
 /* One buster for the whole run. Unique per invocation, so nothing can be served
    from an edge cache populated by a previous run either. */
 const BUST = `rp${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`;
+
+/* W12-23. The SHA the deployed artifact is expected to carry. Content markers
+   prove the build has properties; this proves it IS the commit. Override with
+   EXPECT_SHA when verifying something other than local HEAD. */
+const EXPECT_SHA = (process.env.EXPECT_SHA
+  || require('child_process').execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' })).trim();
 const bust = (p) => `${ORIGIN}${p}${p.includes('?') ? '&' : '?'}${BUST}=1`;
 
 /* --- the marker sets, per page type -------------------------------------- */
@@ -126,6 +132,7 @@ const PROBE = `(async () => {
       [...document.querySelectorAll('script[type="application/ld+json"]')].map(s=>s.textContent).join(' ')),
     todoVisible: (document.body.innerText.match(/TODO/gi) || []).length,
     robots: (document.querySelector('meta[name="robots"]') || {}).content || '',
+    buildSha: (document.querySelector('meta[name="build-sha"]') || {}).content || null,
     canonical: (document.querySelector('link[rel="canonical"]') || {}).href || '',
   };
   document.querySelectorAll('[data-reveal]').forEach(n => n.classList.add('is-revealed'));
@@ -145,7 +152,8 @@ async function main() {
   if (!up) { chrome.kill(); throw new Error('chrome did not start'); }
 
   console.log(`R-P live verification of ${ORIGIN}`);
-  console.log(`cache-buster for this run: ?${BUST}=1\n`);
+  console.log(`cache-buster for this run: ?${BUST}=1`);
+  console.log(`expected build-sha:        ${EXPECT_SHA}\n`);
 
   const target = await rq(`http://127.0.0.1:${PORT}/json/new?about:blank`, 'PUT');
   const ws = new WebSocket(target.webSocketDebuggerUrl);
@@ -169,16 +177,31 @@ async function main() {
     const r = await cdp.ev(PROBE);
     const want = MARKERS[page.type];
     const bad = Object.entries(want).filter(([k, v]) => r.markers[k] !== v);
-    const ok = bad.length === 0;
+
+    /* Identity is part of whether the page is VERIFIED, not a note under it.
+       ABSENCE is a failure, never a skip: an assertion that disables itself when
+       its input is missing is the defect that lost cache-busting and that let a
+       deleted privacy section read as completeness. */
+    const shaProblem = r.facts.buildSha === null
+      ? 'no build-sha meta tag served'
+      : (r.facts.buildSha !== EXPECT_SHA
+          ? `build-sha mismatch\n               served   ${r.facts.buildSha}\n               expected ${EXPECT_SHA}`
+          : null);
+
+    const ok = bad.length === 0 && !shaProblem;
     if (!ok) unverified++;
     const within = r.height < page.budget;
     if (!within) failures++;
     seen.push({ page, r, ok, within });
     console.log(`${ok ? 'VERIFIED  ' : 'UNVERIFIED'} ${page.label.padEnd(16)} ${String(r.height).padStart(5)}px / ${page.budget}  ${within ? 'inside' : 'OVER'}`);
-    if (!ok) bad.forEach(([k, v]) => console.log(`             marker mismatch: ${k} expected ${v}, got ${r.markers[k]}`));
+    if (shaProblem) console.log(`             ${shaProblem}`);
+    bad.forEach(([k, v]) => console.log(`             marker mismatch: ${k} expected ${v}, got ${r.markers[k]}`));
     if (r.facts.ratingMarkup) { console.log('             RATING MARKUP PRESENT — R-K violated'); failures++; }
     if (page.type === 'home' && r.facts.sameAsProfile !== true) { console.log('             sameAs profile URL MISSING'); failures++; }
     if (r.facts.todoVisible) { console.log(`             ${r.facts.todoVisible} visible TODO`); failures++; }
+    /* Identity. ABSENCE is a failure, never a skip: an assertion that disables
+       itself when its input is missing is the defect that lost cache-busting
+       and that let a deleted privacy section read as completeness. */
   }
 
   /* Reachability crawl, also cache-busted: follow every visible anchor a

@@ -194,7 +194,10 @@ service pages. Costs exactly 44px and stays inside budget on its own.
 
 ## W12-03 · Heights
 **Status: REPORTED, OVER BUDGET** (2026-09-03). RO 8,883 against 8,744, RU 9,096
-against 9,044. Not trimmed, per the card. Also corrected a 142px error in the
+against 9,044. Not trimmed, per the card. **AMENDED: those budgets are R-I's and
+were superseded by R-J on 2026-09-06, which set 8,851 and 9,065. The figures here
+are the then-current ones this card was measured against, kept as the record of
+what was reported; do not budget against them.** Also corrected a 142px error in the
 recorded baseline that had stood since wave 8. See W12-03 in DECISIONS.md.
 
 ## W12-05 · Full-width tile

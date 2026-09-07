@@ -21,6 +21,12 @@ Every file: minimum 1600px long edge, landscape, JPG, under 400KB after
 processing, no watermark, real Rapid Construct work only.
 Naming: the Slot ID exactly, lowercase, `.jpg`.
 
+**AMENDED — the 1600px minimum is not universal.** Three rulings lower it for
+specific slot groups, each recorded in DECISIONS.md and repeated at the group
+below: **1200px** for the nine service cards (W7-02), **900px** for the five
+"Cum lucrăm" step slots (PROVISIONAL), and **720px** for the hero panel (W8-03,
+PROVISIONAL). 1600px remains the default for every slot no ruling has lowered.
+
 **One slot group has a lower floor.** The nine service card slots take a
 minimum of **1200px** on the long edge, not 1600. Owner ruling, W7-02; see
 DECISIONS.md. A slot's own floor lives in `scripts/slots.js` as `minLongEdge`

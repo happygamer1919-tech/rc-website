@@ -71,11 +71,15 @@ Approved by Ivan. Do not reopen without his sign-off.
 
 ### Colour
 
+**Two values in this table were superseded before the build started and are
+struck through below. The live palette is CLAUDE.md section 3, which is the ten
+approved values and the only place to add an eleventh.**
+
 | Token | Value | Use |
 |---|---|---|
-| `--brand` | `#F26419` | Primary buttons, active states, numerals, logo mark |
+| `--brand` | ~~`#F26419`~~ **`#F65308`** | Primary buttons, active states, numerals, logo mark. **AMENDED: DECISIONS.md, "The master plan is stale on two token values". `#F26419` predates the logo file and never shipped.** |
 | `--brand-dark` | `#B23C08` | Eyebrow labels, link hover, small text on light |
-| `--ink` | `#1C1C1C` | All body and heading text on light backgrounds |
+| `--ink` | ~~`#1C1C1C`~~ **`#1A1A1A`** | All body and heading text on light backgrounds. **AMENDED: DECISIONS.md, "The master plan is stale on two token values". `#1C1C1C` predates the logo file and never shipped.** |
 | `--ink-muted` | `#5A5A5A` | Secondary text, captions, form hints |
 | `--bg-light` | `#FFFFFF` | Section background A |
 | `--bg-grey` | `#F2F2F2` | Section background B |

@@ -353,6 +353,33 @@ before it was trusted.
 
 ---
 
+## 15. When the master plan wins, and when it does not
+
+> The master plan wins by default **only where no later ruling addresses the
+> point.** Any master plan value superseded by a ruling carries an inline
+> amendment naming that ruling, at the point of the stale value. A value with no
+> amendment is presumed current. An un-amended stale value is therefore a defect
+> in the amendment, not in the card that obeyed it.
+*Source: ruling R-R, DECISIONS.md, W12-27.*
+
+**The last sentence is the point of the rule.** "The master plan wins by default"
+is an instruction to trust the document. A card that trusts it and is wrong has
+obeyed correctly; the fault is that nobody marked the value. Blame follows the
+amendment, which is the only way the instruction stays safe to give.
+
+**The standard is the pattern already at master plan line 121**, where the header
+height carries its amendment inline naming the wave that changed it. Amend in
+place. Do not strip the number: the plan is a design spec and a spec with its
+values removed is not a spec.
+
+    | `--brand` | ~~`#F26419`~~ **`#F65308`** | … **AMENDED: DECISIONS.md, "…". ** |
+
+Three documents were amended under this ruling on 2026-09-07: the master plan's
+`--brand` and `--ink` rows, the photo manifest's 1600px long-edge minimum, and
+the backlog's W12-03 budgets. Details in DECISIONS.md, W12-27.
+
+---
+
 ## 14. Governing documents do not restate measurements
 
 > Governing documents name the ruling that holds a measured value and never

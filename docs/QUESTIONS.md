@@ -1068,3 +1068,39 @@ naming the wave that changed it:
       every future card to know the plan is wrong before reading it.
 
 For the backlog, one word — "then-current" — is enough.
+
+---
+
+## Q-W12-11 · The master plan's height heuristic is now false by design — OPEN, opened 2026-09-07 (W12-27)
+
+**Reported, not amended.** W12-27 limited amendment to values already reported.
+These three surfaced during its sweep, all in `docs/RC-WEBSITE-MASTER-PLAN.md`.
+
+| Line | Text | Superseded by |
+|---|---|---|
+| **121** | "Target total page height 7,000 to 8,000px desktop. **If the build exceeds 9,000px, something has been over-built.**" | R-I, then R-J |
+| 245 | "Page under 9,000px desktop" | R-I, then R-J |
+| 200 | "Minimum 1600px on the long edge" | W7-02, the step-slot ruling, W8-03 |
+
+**Line 121 is the one that matters, and not because of the number.** It states a
+*heuristic*: exceeding 9,000px means something has been over-built. That is now
+false by design — the Russian homepage measures 9,032px and every pixel of it was
+ruled in, most recently the twenty-locality coverage list. A card applying the
+heuristic would go looking for something to cut that a ruling had already
+approved.
+
+Recommended amendment, same inline pattern:
+
+    **AMENDED: superseded by R-J. The live budgets are RO under 8,851px and RU
+    under 9,065px, derived from measured element costs plus headroom. RU exceeds
+    9,000px by design. Do not treat 9,000px as an over-build signal.**
+
+Lines 245 and 200 are ordinary stale values and take the same treatment as the
+three amended in W12-27.
+
+One word of scope: this is the fourth document-staleness finding in two cards.
+The pattern is not that these documents are badly written — it is that a value
+copied into a governing document has **no mechanism** that notices when the
+ruling behind it changes. R-Q stops new copies being made and R-R makes existing
+ones visible; neither detects the next one. A grep for known-superseded values,
+run as a gate the way `check-links.js` is, would.

@@ -43,6 +43,7 @@ history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 | RC-081 | W12-32 Ruling R-S, handoff final figures, re-tag | `w12/rc-081-ruling-rs` | shipped |
 | RC-082 | W12-33 Ruling R-T, amendment blocks and strike-through scope | `w12/rc-082-ruling-rt` | shipped |
 | RC-083 | W12-34 Five owner answers, ruling R-U, hero alt and RO title | `w12/rc-083-owner-answers` | shipped |
+| RC-084 | W12-35 Close: final handoff, deploy, verify, tag | `w12/rc-084-close` | shipped |
 
 **The docs branch was rebuilt off W12-08, not off W12-09.** RC-057 originally sat
 on top of the coverage commit, so merging it would have dragged the held card in.
@@ -316,3 +317,10 @@ corrects that question's stale figures - the description half stays open and was
 not touched. Q-W12-02 accepted as built, no scheduler, reasoning recorded.
 Q-W12-05 closed by R-M. Ruling R-U closes Q-W9-05: `location` is permanently
 empty, verified 0 of 54 and 0 of the 20 coverage names anywhere in projects.json.
+
+## W12-35 · Close
+**Status: DONE** (2026-09-07). Final handoff: four live questions with whose they
+are and what unblocks each, R-U flagged as required reading before touching
+projects.json, and the four-step W12-07 reversal carried forward unchanged.
+Production verified under R-P with the SHA assertion and tagged `wave-12-closed`.
+Tags are added, never moved.

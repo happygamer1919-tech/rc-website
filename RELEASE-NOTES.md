@@ -562,25 +562,25 @@ this file.** Read it first; everything above it is a dated wave record.
 | | |
 |---|---|
 | Live | `https://rapidconstructmd.com`, GitHub Pages from `main` |
-| Tag | **`wave-12-final`** — the commit this state was verified at. `wave-12-verified` is the earlier one, kept, not moved |
+| Tag | **`wave-12-closed`** — the commit this state was verified at. `wave-12-verified` and `wave-12-final` are the earlier ones, kept, not moved |
 | Verified by | `node scripts/verify-live.js`, exit 0, under ruling R-P |
 | Pages | 25, both locales, plus `/review/` unlisted |
 
-**The tag is the SHA.** `git rev-parse wave-12-final` gives it, and that is the
+**The tag is the SHA.** `git rev-parse wave-12-closed` gives it, and that is the
 same value `verify-live.js` asserted against the `build-sha` meta tag every page
 carries. Nothing here restates it, because a SHA copied into prose is the same
 class of thing as a budget copied into prose.
 
-**Tags are added, never moved.** `wave-12-verified` marks the state at W12-30 and
-`wave-12-final` marks the state at W12-32. Moving a published tag is a force
-operation and it would destroy the record of what was verified when, which is
-what R-S is about.
+**Tags are added, never moved.** `wave-12-verified` marks W12-30,
+`wave-12-final` marks W12-32, `wave-12-closed` marks W12-35. Moving a published
+tag is a force operation and would destroy the record of what was verified when,
+which is what R-S is about.
 
 Re-verify at any time. It cache-busts every request, reads markers and height in
 one page evaluation, and exits non-zero on any mismatch:
 
     node scripts/verify-live.js
-    EXPECT_SHA=$(git rev-parse wave-12-final) node scripts/verify-live.js
+    EXPECT_SHA=$(git rev-parse wave-12-closed) node scripts/verify-live.js
 
 ## Budgets, and where they are
 
@@ -615,11 +615,12 @@ Recorded as a run, not as a constraint. Taken on the live domain, cache-busted,
 | Six service pages | 5,522 – 5,729px | VERIFIED, inside 6,000 |
 | Reachable URLs crawled | 27 | 0 with a visible TODO |
 
-**Three consecutive runs across W12-30, W12-31 and W12-32 returned these same
-figures**, at three different SHAs, each asserted against the `build-sha` the
-page served. W12-31 changed two stylesheet comments and moved nothing: identical
-heights on all eight pages, which is what "zero height impact" means here and how
-it was established rather than assumed.
+**Four consecutive runs across W12-30, W12-31, W12-32 and W12-35 returned these
+same figures**, at four different SHAs, each asserted against the `build-sha` the
+page served. W12-31 changed two stylesheet comments and W12-34 changed two alt
+strings and a `<title>`; neither moved a pixel on any of the eight pages, which
+is what "zero height impact" means here and how it was established rather than
+assumed.
 
 **RU is above 9,000px and that is correct.** The master plan's line 121 said
 otherwise until W12-28 struck it. If you find any document telling you 9,000px
@@ -690,26 +691,29 @@ entity. The extract is the only source.
 Every one of these is in `docs/QUESTIONS.md` with full context and the default
 that shipped. **All are owner-input questions except the last two.**
 
-| Question | What unblocks it |
-|---|---|
-| **Q-04** · 44 stub projects have no real content | The owner supplying titles and summaries. Stubs are safe: a project renders only when both are real in that locale, so none of the 44 reaches a visitor |
-| **Q-09** · The hero panel alt text describes an illustration that is gone | Either the real hero photograph, or a one-line instruction to rewrite the alt to describe what is actually there |
-| **Q-W9-04** · Nine photographs fail the "real Rapid Construct work" rule | An owner ruling on the nine, file by file. A default shipped; the ruling replaces it |
-| **Q-W9-05** · The locality list was never supplied | The list. `location` is empty on all 54 projects and the chip does not render, which is section 5 working, not a bug |
-| **Q-W9-06** · Two live form submissions, one per locale | One remains. The key is set and the site is published, so it is a minute of the owner's time. Expect the subjects `[RO] Solicită ofertă gratuită — /` and `[RU] Запросите бесплатную оферту — /ru/` |
-| **Q-W9-07** · The RO homepage title and description exceed their limits | An instruction to shorten. Reported and not changed, because shortening is a copy edit and copy has one source |
-| **Q-W12-02** · The promo bar expires at build time, not in the browser | An owner decision. Today the bar disappears at the next build after `promo.endDate`, not at midnight on it. A deploy on the day is the workaround |
-| **Q-W12-05** · The Russian register for the locality names | Owner confirmation of the transliteration register R-M settled by usage. RO is answered and verified against the CUATM |
-| **Q-W12-07-LEGAL** · The privacy pages have no operator section | The registry extract. The reversal is the step-by-step above and it has been rehearsed |
-| **Q-W12-13** · Does an appended amendment block count as editing a body under R-S | A one-word answer. Default shipped: it does, so the next amendment to a ruling is its own entry. Two existing blocks stay either way |
+| Question | Whose | What unblocks it |
+|---|---|---|
+| **Q-04** · 44 stub projects have no real content | client | Titles and summaries. Stubs are safe: a project renders only when both are real in that locale, so none of the 44 reaches a visitor and none ever has |
+| **Q-W9-04** · Nine photographs fail the "real Rapid Construct work" rule | client | A ruling on the nine, file by file. It also owns the open half of Q-09: whether the hero photograph belongs in a hero slot under master plan section 7. A default shipped; the ruling replaces it |
+| **Q-W12-07-LEGAL** · The privacy pages have no operator section | client | The registry extract. The reversal is the four steps below and it has been rehearsed end to end |
+| **Q-W9-06** · Two live form submissions, one per locale | Ivan | One remains. The key is set and the site is published, so it is a minute. Expect the subjects `[RO] Solicită ofertă gratuită — /` and `[RU] Запросите бесплатную оферту — /ru/` |
+| **Q-W9-07** · The RO `meta.description`, and two answers to "where do you work" | Ivan | The title half is done. Still open: whether to shorten the description, which is inside its limit but names four localities where `band.coverageLine` names twenty. Two different answers on the same page |
 
-**Answered this wave and no longer live:** Q-W12-06 (the reviews link, armed in
-W12-12), Q-W12-09 (the `build-sha` fingerprint, shipped in W12-23), Q-W12-10 and
-Q-W12-11 (the governing-document staleness, amended under R-R in W12-27 and
-W12-28), Q-W12-12 (the two stylesheet comments, amended in W12-31, which also
-taught the staleness gate to read source comments). The first four had headings
-still reading OPEN and were corrected at W12-30 after checking the tree rather
-than the claim; R-S ratifies that as a status change and not an edit.
+**Closed in wave 12 and no longer live:** Q-W12-06 (reviews link armed, W12-12),
+Q-W12-09 (`build-sha` fingerprint shipped, W12-23), Q-W12-10 and Q-W12-11
+(governing-document staleness, R-R in W12-27 and W12-28), Q-W12-12 (the two
+stylesheet comments, W12-31, which also taught the gate to read source comments),
+Q-W12-13 (answered by R-T in W12-33), Q-09 (hero alt rewritten, W12-34), Q-W12-02
+(accepted as built, no scheduler, W12-34), Q-W12-05 (settled by R-M, W12-34) and
+**Q-W9-05, closed by ruling R-U** in W12-34.
+
+**R-U is the one to read before touching `content/projects.json`.** `location` is
+permanently empty on all 38 renderable projects and that is the finished state,
+not a gap: nobody recorded where each photograph was shot, and mapping the
+coverage list onto projects to fill the field would be inventing copy. Coverage
+lives in `areaServed`, `band.coverageLine` and `llms.txt` and is never mapped
+onto a project. Verified at W12-34: 0 of 54 carry a location, and none of the 20
+official locality names appears anywhere in the file.
 
 ## What a card picking this up should read, in order
 
@@ -717,9 +721,11 @@ than the claim; R-S ratifies that as a status change and not an edit.
    staleness gate, sections 12 and 13 are what a measurement and a gate may
    conclude.
 2. This handoff.
-3. `DECISIONS.md` from ruling R-J onward — ten rulings landed in wave 12 and
-   they are what the master plan now loses to. R-S is the one to read before
-   editing any record: bodies are immutable, status markers are not.
+3. `DECISIONS.md` from ruling R-J onward — twelve rulings landed in wave 12 and
+   they are what the master plan now loses to. Two govern how you write:
+   **R-S**, bodies are immutable and status markers are not; and **R-T**, a
+   ruling may carry appended amendment blocks because a ruling is read forward,
+   while a snapshot is read backward.
 4. `docs/QUESTIONS.md` for anything the card touches.
 
 **The master plan wins by default only where no later ruling addresses the

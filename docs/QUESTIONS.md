@@ -1148,7 +1148,7 @@ the scan needs per-file patterns, which is a card, not a constant.
 
 ---
 
-## Q-W12-13 · Does an appended amendment block count as editing a body? — OPEN, opened 2026-09-07 (W12-32)
+## Q-W12-13 · Does an appended amendment block count as editing a body? — **ANSWERED 2026-09-07 by R-T, option (a): it is an append** (opened 2026-09-07, W12-32; answered W12-33)
 
 **Shipped default: no more of them.** A future amendment to a ruling becomes its
 own dated entry naming the ruling it amends. The two that already exist stay.

@@ -2450,6 +2450,28 @@ stale figures precisely in order to correct them.
 alone under R-Q: every entry is a snapshot of the state when a question was
 raised, answered entries are marked, and rewriting them would destroy the record.
 
+### Amended 2026-09-07 by W12-33 · what the strike-through requirement covers
+
+**This ruling said "do not strip the number" without saying where that holds.**
+Recorded at the owner's instruction, under R-T:
+
+> The strike-through requirement applies where the superseded value has
+> documentary purpose, as in a design spec. Where it has none, as in a stylesheet
+> comment, removal is correct and is the R-Q-clean answer.
+
+**W12-31's departure is ratified as the standard, not as an exception.** It
+removed the 8,700px cap from two `src/styles.css` comments rather than striking
+it, and named R-J in its place.
+
+The test is whether a reader has a reason to know what the text used to say. In
+`RC-WEBSITE-MASTER-PLAN.md` they do: it is a design spec, it is read as one, and
+a spec with its values taken out stops being a spec. In a stylesheet comment they
+do not. Nobody consults a comment for a figure, and a dead number left in one is
+how it gets copied into the next document — which is the whole of R-Q.
+
+**The amendment names the superseding ruling either way.** That half is not
+optional and never was. Only the corpse is.
+
 ---
 
 ## W12-28 · Line 121 was a false rule, not a stale value, 2026-09-07
@@ -2791,3 +2813,67 @@ the arithmetic error, and W12-29 is what puts the staleness list inside the act 
 recording a ruling. **Q-W12-13 asks whether an appended, dated amendment block
 counts as editing a body**, with the default that shipped: no further ones are
 written, and a future amendment becomes its own entry naming what it amends.
+
+---
+
+## RULING R-T · A ruling body may carry appended amendment blocks, W12-33, 2026-09-07
+
+**Answers Q-W12-13 with option (a).** Recorded at the owner's instruction, in
+`docs/CLAUDE.md` sections 15 and 17:
+
+> A ruling body may carry appended amendment blocks. Each is dated, names the
+> card that added it, and alters no existing sentence. This follows R-R: an
+> amendment sits at the point of the thing it amends, and a ruling is a value.
+> R-S governs snapshots, which record what was believed at a moment. A ruling is
+> not a snapshot, it is standing authority, read forward.
+
+### The distinction is direction of reading
+
+A question entry and a dated wave record are read **backward**. They are evidence
+of what was believed at a moment, and there is nothing else in them; edit one and
+the only thing it carried is gone. R-S protects those absolutely and is not
+weakened here.
+
+A ruling is read **forward**. A card opens R-J to find out what the budget is
+now, not what someone thought in September. If R-J's amendment lived in a
+separate entry, a card could read the whole of R-J, act on it correctly, and be
+wrong — which is precisely the failure R-Q exists to prevent, reappearing one
+level up. **An amendment that is not where the authority is, is not an
+amendment.**
+
+That is R-R's own argument. R-R made the master plan carry its amendments inline
+because a card told to trust a document must be able to see, in the document,
+where trust stops. A ruling is a document a card is told to trust.
+
+### What stands, and what is closed
+
+**The two existing blocks stand and are the pattern:** R-J's, added by W12-10
+when the derivation was confirmed to govern over the stated figures; and R-Q's,
+added by W12-29 when the staleness list became part of recording a ruling.
+
+**R-J's in-place corrections of figures in `DECISIONS.md` are regularised by this
+ruling and need no correcting entry.** W12-32 recorded them as a method R-S had
+closed and left the irregularity standing on the record. R-T removes it: R-J is a
+ruling, the corrections were ordered by the owner, each site says it was
+corrected, and they are amendments to standing authority rather than edits to a
+snapshot. No correcting entry is written and none is owed.
+
+**Still forbidden inside a ruling:** editing a sentence already there. An
+amendment is appended below it, dated and attributed, and nothing above it moves.
+Q-W12-13's shipped default — that the next amendment becomes its own entry — is
+**overturned**, and this ruling used the permission it grants: the strike-through
+scope is recorded as an amendment block inside R-R, not as a separate entry.
+
+### Recorded alongside R-R: what the strike-through requirement covers
+
+The second half of the instruction, recorded as an amendment block inside R-R
+above:
+
+> The strike-through requirement applies where the superseded value has
+> documentary purpose, as in a design spec. Where it has none, as in a stylesheet
+> comment, removal is correct and is the R-Q-clean answer.
+
+**W12-31 is ratified as the standard, not as an exception.** It argued the point
+from first principles and reached the ruling's answer before the ruling existed:
+a stylesheet comment is not a spec, so there is no reader who needs the figure,
+and leaving a dead number in one is how it gets copied again.

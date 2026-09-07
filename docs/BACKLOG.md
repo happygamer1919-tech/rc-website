@@ -41,6 +41,7 @@ history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 | RC-079 | W12-30 Close wave 12: handoff, open questions, production tag | `w12/rc-079-close-wave-12` | shipped |
 | RC-080 | W12-31 Amend the two stylesheet comments; gate reads source comments | `w12/rc-080-source-comment-gate` | shipped |
 | RC-081 | W12-32 Ruling R-S, handoff final figures, re-tag | `w12/rc-081-ruling-rs` | shipped |
+| RC-082 | W12-33 Ruling R-T, amendment blocks and strike-through scope | `w12/rc-082-ruling-rt` | shipped |
 
 **The docs branch was rebuilt off W12-08, not off W12-09.** RC-057 originally sat
 on top of the coverage commit, so merging it would have dragged the held card in.
@@ -296,3 +297,12 @@ while current figures live in the handoff. Closes the in-place correction method
 R-J used without reversing R-J. Q-W12-13 logged: two rulings carry amendment
 blocks appended inside their bodies, which R-S as worded does not clearly permit;
 default shipped is that the next one is its own entry.
+
+## W12-33 · Ruling R-T
+**Status: DONE** (2026-09-07). Answers Q-W12-13 with (a): a ruling body may carry
+appended amendment blocks, because a ruling is standing authority read forward
+and R-S governs snapshots read backward. The blocks in R-J and R-Q stand, and
+R-J's in-place figure corrections are regularised, so the irregularity W12-32
+left open is closed with no correcting entry owed. Recorded alongside R-R: the
+strike-through requirement holds where the superseded value has documentary
+purpose, so W12-31's removal from two stylesheet comments is the standard.

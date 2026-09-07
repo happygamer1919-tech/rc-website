@@ -2318,6 +2318,26 @@ values, the Lighthouse floors, the 1,400px section cap. Those are chosen there,
 so there is their one place. WCAG's 3:1 and 4.5:1 stay too, marked as the
 external standard rather than as ours.
 
+### Amended 2026-09-07 by W12-29 · the list is part of recording a ruling
+
+**This ruling now carries an obligation it did not carry when it was written.**
+R-Q stops a new copy of a measured value being made. It has no way to notice when
+a value already copied goes stale, which is the failure it was written about, and
+after W12-27 and W12-28 that was still true: R-R made existing copies visible but
+nothing detected the next one.
+
+`scripts/check-stale-docs.js` (W12-29) is the mechanism. Added to R-Q at the
+owner's instruction:
+
+> Adding a value to the check-stale-docs list is part of recording any ruling
+> that supersedes a measurement. It is not a follow-up card.
+
+So a ruling that supersedes a measured value is not fully recorded until three
+things are true: the ruling states the new value and its derivation, every
+governing document carrying the old value has an amendment beside it per R-R, and
+the old value is in the gate's list with the superseding authority named. The
+third is what makes the first two survive the next card that has not read them.
+
 ### Swept, not changed: what the other governing docs restate
 
 Reported for a later card, as instructed. Three are genuinely stale, not merely
@@ -2515,3 +2535,100 @@ snapshot; nothing inside the entry changed.
 **Master plan line 22** still lists `#1C1C1C` among the *rejected* build's four
 off-whites. Checked again and still not a finding: it describes what was wrong,
 it is not a spec value.
+
+---
+
+## W12-29 · The staleness gate, 2026-09-07
+
+**Approved at the owner's instruction, ratifying the closing note of Q-W12-11:**
+
+> Your pattern finding is correct. A value copied into a governing doc has no
+> mechanism that notices when the ruling behind it changes.
+
+`scripts/check-stale-docs.js`, run as a gate the way `check-links.js` is,
+exiting non-zero on a hit. Zero dependencies, like everything else in `scripts/`.
+Recorded in `docs/CLAUDE.md` as section 16 and as gate 3 in section 11.
+
+### What it asserts
+
+For every occurrence of a known-superseded value in a governing document, it
+requires the **presence** of a marker naming the authority that superseded it,
+within three lines. Section 13's rule is the whole design: it never looks for a
+complaint and pass on silence. An occurrence with no marker is a hit.
+
+Seeded with every value wave 12 found: the 8,504 / 8,774 baselines that were
+never true, R-I's 8,744 / 9,044 budgets, the flat 8,700 / 9,000 caps, `#F26419`,
+`#1C1C1C`, and the 1600px long-edge minimum stated as universal.
+
+Two failure arms exist that would ordinarily be housekeeping, and both fail the
+run, because both are how a gate stops being one:
+
+- **A named exception matching nothing.** It has outlived the occurrence it
+  excused and is now an unreviewed licence inside a gate.
+- **A scanned document that has gone missing.** A file that vanished is not a
+  file that passed.
+
+Exempt files are printed with the ruling that exempts them on every run, so the
+scope is never implicit. There are two: `DECISIONS.md`, because R-Q puts a
+number's one home in the ruling that set it; and `docs/QUESTIONS.md`, because
+every entry is a snapshot and rewriting it destroys the record.
+
+### The window was six lines and it did not work
+
+**This is the part worth keeping.** The first version cleared an occurrence when
+the superseding ruling was named within six lines. Negative-testing planted four
+superseded values in a scratch copy, and it caught three.
+
+The one it missed was the most important of the four: R-I's superseded budgets
+written into CLAUDE.md section 2 **as the live budget** —
+
+    | Homepage RO and RU | under 8,744px RO and 9,044px RU |
+
+— which is, exactly, the defect R-Q was written about. It passed because section 2
+is a section *about* R-J, so the ruling's name sat four lines away and cleared it.
+A section discussing the right ruling had licensed a table restating the wrong
+number.
+
+The window was tightened to three lines and the miss became a hit. Two real
+occurrences failed at three lines and both were fixed rather than excused: the
+photo manifest's line 20 amendment was moved onto the line it amends, which is
+what R-R says to do ("at the point of the stale value") and was not being done;
+and `RELEASE-NOTES.md`'s description of the photo pipeline, which stated the
+1600px minimum as universal when `slots.js` has held per-slot floors since W7-02.
+
+**The gate then caught its own documentation.** Section 16 of CLAUDE.md named
+`#F26419` with no live value beside it. The fix was to write `#F65308` in, not to
+widen the rule.
+
+### Negative test, both runs
+
+Per section 13, on a scratch copy of the tree at
+`scratchpad/stale-negtest`, four values reintroduced:
+
+| Planted | Where | Caught |
+|---|---|---|
+| R-I's budgets restated as the live budget | `docs/CLAUDE.md` section 2 | yes, both values, naming R-J |
+| line 121's struck heuristic, amendment stripped | `docs/RC-WEBSITE-MASTER-PLAN.md` | yes, naming R-J |
+| `#F26419` as a branding overlay colour | `docs/RC-PHOTO-MANIFEST.md` | yes, naming the DECISIONS entry |
+| the never-true 8,504 / 8,774 baseline | `docs/BACKLOG.md` | yes, both values, naming R-J |
+
+    FAIL — 6 unmarked, 0 dead exceptions, 0 missing files      exit 1
+
+Six, not four, because two of the four plant two values each. The dead-exception
+arm was watched failing separately (delete the wave 12 gate table two exceptions
+excuse: `2 dead exceptions`, exit 1) and so was the missing-file arm (delete a
+scanned document: `SCANNED FILE MISSING`, exit 1).
+
+On the real tree, same run:
+
+    7 documents scanned   marked: 20   known exceptions used: 8   unmarked: 0
+    every known-superseded value is amended, excepted or absent.      exit 0
+
+### Its limit, stated plainly
+
+It is a value search with a proximity rule. It catches a superseded value
+arriving with nothing beside it, which is every instance wave 12 found. It cannot
+tell a value quoted as dead from one quoted as live when a marker happens to sit
+within three lines, and it reads only the documents in its scan list. Source-file
+comments are out of scope; the two known instances are in Q-W12-12 rather than
+assumed to be handled.

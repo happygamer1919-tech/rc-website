@@ -1104,3 +1104,44 @@ copied into a governing document has **no mechanism** that notices when the
 ruling behind it changes. R-Q stops new copies being made and R-R makes existing
 ones visible; neither detects the next one. A grep for known-superseded values,
 run as a gate the way `check-links.js` is, would.
+
+---
+
+## Q-W12-12 · The staleness gate reads documents, and two stale values are in a stylesheet — OPEN, opened 2026-09-07 (W12-29)
+
+**Shipped default: documents only. The two source-file occurrences are reported
+here, not fixed, and not silently ignored.**
+
+`scripts/check-stale-docs.js` scans the seven governing and reference documents.
+It does not scan source files. Two comments in `src/styles.css` quote a value R-J
+superseded:
+
+    src/styles.css:727   "…of headroom against the 8,700px cap, and a logo needs
+                          width, not height."
+    src/styles.css:772   "…against the 8,700px cap."
+
+Both are the same class of defect as the ones amended in W12-27 and W12-28: a
+card reading either comment would budget against a cap R-J replaced, and against
+a flat figure where the live budgets are per locale and derived.
+
+**Why they were not fixed in W12-29.** The card scoped the gate to documents. A
+stylesheet comment is deployed content: `src/styles.css` is copied into `dist/`,
+so editing a comment changes the bytes GitHub Pages serves and turns the last
+docs card of a wave into a production redeploy. That is a poor trade on the last
+card of a wave for zero visitor-visible benefit, so it is logged rather than
+taken.
+
+**Why the scan was not simply widened to `src/` and `scripts/`.** It was tried.
+The seeded `1600px` pattern hits `scripts/slots.js`, where `MIN_LONG_EDGE = 1600`
+is the *implementation* of the rule and correct, and `scripts/verify-live.js`
+line 139, where `1600` is a millisecond delay. A gate that flags its own correct
+implementation and a coincidental timeout trains people to ignore it. Widening
+the scan needs per-file patterns, which is a card, not a constant.
+
+  (a) **Fix the two comments in a source card**, where a redeploy is expected
+      anyway, and leave the scan on documents. **Recommended.** It is two
+      comments; the honest form names R-J and states no figure.
+  (b) Widen the scan to `src/` and `scripts/` with per-file value patterns.
+      More thorough, and the false-positive work above is the cost.
+  (c) Nothing. Rejected: the comments are wrong now, and one of them carries the
+      54px headroom figure R-J corrected.

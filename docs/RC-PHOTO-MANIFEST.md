@@ -17,7 +17,7 @@ on the critical path: the 6 covers of the projects that carry real content, plus
 the 5 process stages. Everything else is a reserved slot on a project with no
 content, and a slot with no content behind it renders nowhere.
 
-Every file: minimum 1600px long edge, landscape, JPG, under 400KB after
+Every file: minimum 1600px long edge **(AMENDED — not universal, see below)**, landscape, JPG, under 400KB after
 processing, no watermark, real Rapid Construct work only.
 Naming: the Slot ID exactly, lowercase, `.jpg`.
 

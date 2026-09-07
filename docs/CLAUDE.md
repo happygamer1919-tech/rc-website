@@ -269,13 +269,16 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
 
 1. `node build.js` clean.
 2. `node scripts/check-links.js` clean.
-3. Heights inside the section 2 budgets, measured settled.
-4. Lighthouse at or above the section 4 floors, both locales.
-5. No new colour value.
-6. `prefers-reduced-motion` still disables every effect.
-7. `DECISIONS.md` appended, `BACKLOG.md` status updated, and any question the
+3. `node scripts/check-stale-docs.js` clean. Enforces sections 14 and 15: no
+   known-superseded value appears in a governing document without an amendment
+   beside it. See section 16.
+4. Heights inside the section 2 budgets, measured settled.
+5. Lighthouse at or above the section 4 floors, both locales.
+6. No new colour value.
+7. `prefers-reduced-motion` still disables every effect.
+8. `DECISIONS.md` appended, `BACKLOG.md` status updated, and any question the
    card raised written to `QUESTIONS.md` with a shipped default.
-8. After any deploy, `node scripts/verify-live.js` exits 0. A live figure quoted
+9. After any deploy, `node scripts/verify-live.js` exits 0. A live figure quoted
    without it is unverified, per section 12.
 
 ---
@@ -427,3 +430,52 @@ measurements).
 with full context and a recommended default, ship the default, mark the ticket
 blocked if it cannot proceed, and move to the next unblocked one. A blocked
 ticket stops one branch of the graph, never the whole run.
+
+---
+
+## 16. The staleness gate
+
+> A value copied into a governing document has no mechanism that notices when the
+> ruling behind it changes. Section 14 stops new copies being made and section 15
+> makes the existing ones visible. Neither detects the next one.
+*Source: W12-29, DECISIONS.md. Opened as the closing note of Q-W12-11.*
+
+    node scripts/check-stale-docs.js
+
+**`scripts/check-stale-docs.js` is the implementation**, run as a gate the way
+`check-links.js` is, exiting non-zero on a hit. It carries a list of
+known-superseded values, each with the authority that superseded it, and fails
+when one appears in a governing document with no amendment within three lines.
+
+**The list, the exempt files and the enumerated exceptions live in the script.**
+They are the one place each is written, per section 14, and the script prints all
+three on every run so the scope is never implicit.
+
+**Adding a value to that list is part of recording a ruling that supersedes a
+measurement**, not a follow-up card. That obligation is written into R-Q.
+
+Two things fail that would ordinarily be treated as housekeeping, because both
+are how a gate stops being one:
+
+- **A named exception that no longer matches anything.** It has outlived the
+  occurrence it excused and is now an unreviewed licence sitting inside a gate.
+- **A scanned document that has gone missing.** A file that vanished is not a
+  file that passed.
+
+**Its limit, stated plainly.** It is a value search with a proximity rule. It
+catches a superseded value arriving with nothing beside it, which is every
+instance found in wave 12. It cannot tell a value quoted as dead from one quoted
+as live when a marker happens to sit within three lines, and it only reads the
+documents named in its scan list. Source-file comments are out of scope and one
+known instance is recorded in QUESTIONS.md rather than assumed to be handled.
+
+**Negative-tested before it was trusted**, per section 13. Four superseded values
+were reintroduced into a scratch copy — R-I's budgets restated as live in this
+file, the struck line 121 heuristic restored to the master plan, `#F26419` (dead;
+`#F65308` is live) added
+to the photo manifest, the never-true baseline added to the backlog — and all
+four were reported with the superseding authority named, exit 1. The
+dead-exception and missing-file arms were each watched failing too. The first
+version of the gate did **not** catch the first of those four, and the window was
+tightened from six lines to three until it did.
+

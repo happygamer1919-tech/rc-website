@@ -65,8 +65,11 @@ ID, at any size, then:
     node scripts/process-photos.js && node build.js
 
 That centre-crops to the slot's ratio, writes a 1x and a 2x into `public/img/`,
-compresses each under 400KB, warns about anything below the 1600px long-edge
-minimum or shot in portrait, and lists which slots are still on placeholders.
+compresses each under 400KB, warns about anything below its slot's long-edge
+floor or shot in portrait, and lists which slots are still on placeholders.
+**The floor is per slot, not universal.** `scripts/slots.js` holds it as
+`minLongEdge` and is the only place it is written; W7-02, W8-03 and the
+step-slot ruling each lowered it for one group.
 It exits non-zero if a file could not be squeezed under budget. No code
 changes: the `<img>` tag, its `srcset`, its dimensions and its alt text are
 already in place.

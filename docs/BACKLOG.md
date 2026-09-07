@@ -22,6 +22,7 @@ history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 | RC-060 | W12-04 R-J, R-K, baseline corrections, docs | `w12/rc-060-wave12b-docs` | shipped |
 | RC-059 | Custom domain root + CNAME in the artifact | `fix/rc-059-custom-domain-base-path` | **merged 2026-09-06, live** |
 | RC-077 | W12-28 Amend master plan lines 121, 245, 200 under R-R | `w12/rc-077-amend-master-plan-heuristic` | shipped |
+| RC-078 | W12-29 Staleness gate, `check-stale-docs.js`, negative-tested | `w12/rc-078-stale-docs-gate` | shipped |
 
 **The docs branch was rebuilt off W12-08, not off W12-09.** RC-057 originally sat
 on top of the coverage commit, so merging it would have dragged the held card in.

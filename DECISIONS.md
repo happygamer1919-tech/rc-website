@@ -3007,3 +3007,105 @@ locality on a project reads as a verifiable fact about a specific job.
 | Renderable projects with a `location` | **0 of 38** |
 | Of the 20 official `band.localities` names, how many appear anywhere in `projects.json` | **0 of 20** |
 | Rendered location chips in `dist/`, both locales and every service page | **0** |
+
+---
+
+## W13-02 · The mark goes brand orange, by channel rewrite, 2026-09-08
+
+**Authorised by the owner after the W13-01 survey.** The Step 1 report found the
+mark is raster with no vector source anywhere in the repo, and stopped. The owner
+ratified the survey and authorised the one operation the survey identified as
+exact rather than approximate.
+
+### Why this is not the thing the prohibition targeted
+
+`logo-white.png` was a **single-colour alpha mask**: exactly one RGB value,
+`#FFFFFF`, across every opaque pixel, with all the shape information carried in
+the alpha channel. Rewriting the RGB channel of such a file is lossless and
+exact — every pixel becomes the new colour at its existing coverage, and the
+anti-aliasing composites correctly against whatever is behind it.
+
+That is categorically different from the three techniques the W13-01 instruction
+forbade. A CSS filter, a tint and a `mix-blend-mode` are all approximations
+applied to a multi-colour raster at render time, and all three would have
+mangled `logo-full.png`, which carries 12,194 distinct RGB values. **The
+prohibition was right and still holds for that file**, which is why it is
+untouched and why Q-W13-01 exists.
+
+### The value, and where it came from
+
+`#F65308`, read from **`docs/CLAUDE.md` section 3, token 1**, which is the
+authority. The master plan's colour table was not used: its `--brand` row carries
+a struck `#F26419` amended under R-R, and reading a spec value from a document
+that says it is superseded is the failure R-R was written to make visible.
+Cross-checked against `--brand` in `src/styles.css` line 17. **Zero new colour
+values**: `#F65308` is already token 1.
+
+### Verified on the file as written, not on the intention
+
+| Assertion | Result |
+|---|---|
+| Dimensions preserved | 1542×568 → 1542×568 |
+| Distinct RGB values in the output | **1** |
+| That value | **`#F65308`**, equal to the target |
+| Alpha bytes differing from the original | **0 of 875,856** |
+| Alpha channel `Buffer.compare` | **0**, identical |
+| Alpha `sha256`, before and after | `e6ffc161…57b9` both |
+| File size | 99,063 → 75,992 bytes |
+
+The file got 23% smaller. A constant RGB channel compresses better than a
+constant one did in the old file only because the old encoder wrote a different
+filter set; nothing was discarded, which the byte-identical alpha proves.
+
+**The verification decodes the written file rather than the buffer that was
+encoded.** A check that asserts against what it just built in memory proves the
+variable, not the artifact.
+
+### Renamed, and named for what it is
+
+`public/logo-white.png` → **`public/logo-mono.png`**. Nine references updated:
+two each in `template.html`, `service.html`, `privacy.html` and `404.html`, and
+one in `gen-og-image.js`. Zero references to the old name remain in source or in
+`dist/`.
+
+**It is named for its structure, not its colour, and that is the point.**
+`logo-white` became a lie the moment the file went orange. `logo-orange` would
+become one at the next recolour. `logo-mono` says the thing that will stay true:
+one colour plus an alpha channel. That is R-Q's instinct applied to a filename —
+a value that lives in two places goes stale in one of them, and a colour written
+into a filename is a second place.
+
+### Surfaces, and contrast on each
+
+The mark renders **2 per page across 24 of 25 pages**, both locales. `/review/`,
+the unlisted page, carries no logo. Both instances sit on `--bg-dark`:
+
+| Surface | Background | Ratio | Floor 3:1, graphical object |
+|---|---|---|---|
+| Header pill, `.header__logo img`, 32px / 28px scrolled / 24px mobile | `#141414` | **5.40:1** | PASS |
+| Footer brand block, `.footer__brand img`, 44px | `#141414` | **5.40:1** | PASS |
+| `og:image` composite | `#141414` | **5.40:1** | PASS |
+
+**There is no light-surface instance.** `.header__pill` and `.footer` are both
+`var(--bg-dark)` unconditionally, on every page and every breakpoint, so the
+complete surface set is one colour. The white-on-dark that shipped before
+measured 18.42:1; orange measures 5.40:1, which is 80% above the floor and
+visibly softer. That is a look change, not a compliance one, and it is what the
+client asked for.
+
+### og:image regenerated
+
+`node scripts/gen-og-image.js`, which reads the mask and composites it on
+`BG = [0x14, 0x14, 0x14]` — read from the script, not assumed. 1200×630, 46.9 KB.
+Decoded back and sampled: 17,314 orange core pixels at a mean of `#EF550F`, the
+JPEG-shifted `#F65308`, and **0 near-white pixels**, where the mark was
+previously entirely white.
+
+### Not done, and the transformation script is not committed
+
+The recolour ran as a one-off in the scratchpad, reusing the repo's own PNG
+decoder from `gen-og-image.js`. It is not added to `scripts/`. The operation is
+one sentence — set R, G, B to `F6 53 08` on every pixel and leave A alone — and
+the proof is in the table above, which anyone can re-run against the committed
+file. A permanent script for a one-time change that the client's own source file
+will supersede is weight without use.

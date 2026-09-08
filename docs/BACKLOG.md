@@ -14,6 +14,7 @@ history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 |---|---|---|---|
 | RC-085 | W13-01 Logo survey, reported, stopped on raster | — | reported |
 | RC-085 | W13-02 Mark to brand orange by channel rewrite | `w13/rc-085-logo-orange` | shipped |
+| RC-086 | W13-03 Enlarge the mark in the header pill and footer | `w13/rc-086-logo-size` | shipped |
 
 ## Wave 12
 
@@ -346,3 +347,14 @@ written file: 1 distinct RGB equal to the target, alpha identical across all
 and updated nine references. og:image regenerated on `#141414`, 5.40:1 on every
 surface the mark renders on. Q-W13-01 logged for the three assets that need a
 client-supplied source.
+
+## W13-03 · Logo size
+**Status: DONE** (2026-09-08). CSS only, no image files touched. Mark 32 to 48px
+in the 64px pill, derived from the CTA button's existing 8px clearance rather
+than chosen; 40px scrolled, 40px mobile, 36px mobile scrolled, all at the same
+8px. Mobile had no rule and was inheriting the desktop 32px into a 56px pill.
+Footer 44 to 66px, the same 1.5x factor. The real finding: the PNG carries 76px
+of transparent margin at the top and 24px at the bottom, so a 32px box was only
+26.4px of ink sitting low - which is why it read smaller than its CSS said.
+Header bar 96px and pill 64px both unchanged. Zero height impact, measured
+before deploying. Largest rendered width 179.2px against a 1542px source.

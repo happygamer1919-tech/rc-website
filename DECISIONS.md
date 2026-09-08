@@ -3109,3 +3109,116 @@ one sentence — set R, G, B to `F6 53 08` on every pixel and leave A alone — 
 the proof is in the table above, which anyone can re-run against the committed
 file. A permanent script for a one-time change that the client's own source file
 will supersede is weight without use.
+
+---
+
+## W13-03 · The mark is enlarged inside the existing pill, 2026-09-08
+
+**Client request: the logo is too small.** CSS only. No new image files, no
+variants, no change to any asset.
+
+### Two terms in the card are different things, and both are unchanged
+
+The card says "the header pill height of 96px". **96px is the header bar;
+the pill inside it is 64px.** `.header { height: 96px }` at line 215 of
+`src/styles.css`, `.header__pill { height: 64px }` at line 227. The master plan
+records the same split at section 5.1: a 96px desktop bar containing a 64px pill
+that compresses to 56px on scroll.
+
+Both are unchanged by this card, so the constraint holds either way, but the
+figure the mark is derived from is 64, not 96.
+
+### Measured before, at three widths
+
+| Viewport | Header bar | Pill | Mark | Fill | Tallest sibling |
+|---|---|---|---|---|---|
+| 1440 | 1440×96 | 1152×64 | **86.9×32** | 50% | CTA button 187.5×48 |
+| 1024 | 1024×96 | 976×64 | **86.9×32** | 50% | CTA button 187.5×48 |
+| 375 | 375×80 | 343×56 | **86.9×32** | 57% | icon button 44×44 |
+| 1440 scrolled | — | 1152×56 | **76×28** | 50% | — |
+| 375 scrolled | — | 343×52 | **76×28** | 54% | — |
+| Footer, all widths | — | — | **119.4×44** | — | — |
+
+### Why it read even smaller than 32px, which is the actual finding
+
+**`logo-mono.png` is 1542×568 but its ink is 1500×468, and the transparent
+margin is asymmetric: 76px at the top, 24px at the bottom.** The ink is 82.4% of
+the box height and sits low in it.
+
+So a 32px box was never 32px of mark. It was **26.4px of ink**, offset ~1.5px
+below the optical centre of the space it occupied. That is most of why the client
+read it as too small, and it is not visible from the CSS, which says 32px.
+
+### The figure, and why it is derived rather than chosen
+
+**48px in the 64px pill.** The CTA button inside the same pill is 48px tall,
+which gives it 8px of clearance above and below. Setting the mark to 48px gives
+it **the same 8px clearance as the button already has**. That is a figure the
+pill itself produces, not a taste call, and it holds at every pill height:
+
+| State | Pill | Mark | Clearance |
+|---|---|---|---|
+| Desktop | 64px | **48px** | 8px |
+| Desktop, scrolled | 56px | **40px** | 8px |
+| Mobile | 56px | **40px** | 8px |
+| Mobile, scrolled | 52px | **36px** | 8px |
+
+**Mobile had no rule of its own** and was inheriting the desktop 32px into a
+56px pill. It now has one, at the same clearance as everywhere else.
+
+The transparent margin is what makes 48px safe rather than aggressive. A 48px box
+is 39.6px of ink, so the mark stays visibly smaller than the CTA's 48px of solid
+fill and the button keeps priority in the pill.
+
+**Footer: 44px → 66px**, the same 1.5× factor as the header, so the two move
+together and the footer keeps its existing relationship to the header.
+
+### Measured after
+
+| Viewport | Header bar | Pill | Mark | Fill | Footer mark |
+|---|---|---|---|---|---|
+| 1440 | 1440×**96** | 1152×**64** | **130.3×48** | 75% | **179.2×66** |
+| 1024 | 1024×**96** | 976×**64** | **130.3×48** | 75% | **179.2×66** |
+| 375 | 375×**80** | 343×**56** | **108.6×40** | 71% | **179.2×66** |
+| 1440 scrolled | — | 1152×**56** | 108.6×40 | 71% | — |
+| 375 scrolled | — | 343×**52** | 97.7×36 | 69% | — |
+
+**Header bar and pill heights are byte-for-byte the values they were.** Only the
+`img` height changed.
+
+### R-B, the no-upscale rule
+
+**Largest rendered width at any breakpoint: 179.2px**, the footer mark, and it is
+179.2px at every breakpoint because the footer size is not responsive.
+
+| Device pixel ratio | Device px consumed | Of a 1542px source |
+|---|---|---|
+| 1× | 179 | 11.6% |
+| 2× | 359 | 23.3% |
+| 3× | 538 | 34.9% |
+
+Never upscaled, with 2.9× of headroom at the worst case. **Zero variants were
+generated**, so R-B's clamp in `process-photos.js` is not even reached: this card
+creates no image files at all.
+
+### Zero height impact, measured locally before deploying
+
+Settled heights at 1440, reveals applied, before and after the change:
+
+| | Before | After |
+|---|---|---|
+| Homepage RO | 8,818px | **8,818px** |
+| Homepage RU | 9,032px | **9,032px** |
+
+**The footer growing 22px moved nothing**, because `.footer__cols` is a
+three-column grid whose row height is set by its tallest column, and the brand
+column was not it: all three measured 304.3px before and after. The header cannot
+affect document height at all — it is `position: fixed` with a constant body
+spacer, which is the W8-04 decision recorded under CLAUDE.md section 1.
+
+### No overflow, seven widths
+
+Checked at 320, 360, 375, 768, 1024, 1440 and 1920, on both locales at the
+narrow end where the Russian strings are longest. `scrollWidth` equals `innerWidth`
+at every one, and the footer mark clips nothing. At 320px the pill is 288px wide
+and holds a 108.6px mark plus two 44px icon buttons.

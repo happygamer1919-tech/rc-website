@@ -229,7 +229,16 @@ p { margin: 0; }
   display: flex; align-items: center; justify-content: space-between; gap: 24px;
 }
 .header__logo { display: flex; align-items: center; flex: none; }
-.header__logo img { height: 32px; width: auto; display: block; }
+/* W13-03. The mark is sized to the SAME 8px vertical clearance the CTA button
+   already has inside the pill: 64 - 48 = 16, 8 top and 8 bottom. That makes the
+   figure derived rather than chosen, and it holds at every pill height below.
+
+   48px is the box, not the ink. logo-mono.png carries 76px of transparent
+   margin at the top of its 568px canvas and 24px at the bottom, so the ink is
+   82.4% of the box: 39.6px here. That is why the mark read small at 32px, where
+   only 26.4px of it was ever visible, and it is why the box may match the CTA's
+   48px without the mark out-shouting a solid filled button. */
+.header__logo img { height: 48px; width: auto; display: block; }
 
 .nav { display: flex; align-items: center; justify-content: center; gap: 28px; flex: 1 1 auto; min-width: 0; }
 .nav a { font-size: 17px; line-height: 1; white-space: nowrap; color: var(--bg-light); }
@@ -536,7 +545,9 @@ p { margin: 0; }
 .footer__cta { display: flex; gap: 16px; flex-wrap: wrap; padding-bottom: 40px; border-bottom: 1px solid var(--bg-light); margin-bottom: 40px; }
 .footer__cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); padding-bottom: var(--section-pad); }
 .footer__brand { display: flex; flex-direction: column; gap: 16px; }
-.footer__brand img { height: 44px; width: auto; display: block; align-self: flex-start; }
+/* W13-03. Enlarged by the same 1.5x factor as the header mark, so the two move
+   together and the footer keeps its existing relationship to the header. */
+.footer__brand img { height: 66px; width: auto; display: block; align-self: flex-start; }
 .footer__desc { max-width: 340px; }
 .footer__offer { font-weight: 700; color: var(--brand); max-width: 340px; }
 .footer__heading { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand); margin-bottom: 16px; }
@@ -680,7 +691,8 @@ p { margin: 0; }
 .header__logo img { transition: height var(--hover-dur) ease-out; }
 .header[data-scrolled="true"] { box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08); }
 .header[data-scrolled="true"] .header__pill { height: 56px; }
-.header[data-scrolled="true"] .header__logo img { height: 28px; }
+/* 56 - 16 = 40, the same 8px clearance. */
+.header[data-scrolled="true"] .header__logo img { height: 40px; }
 
 /* --- 6. supplier marquee --------------------------------------------------- */
 .marquee { overflow: hidden; padding: var(--band-pad) 0; background: var(--bg-dark); }
@@ -1030,6 +1042,10 @@ p { margin: 0; }
   .header { height: 80px; }
   .header__pill { padding: 0 8px 0 16px; height: 56px; }
   .header[data-scrolled="true"] .header__pill { height: 52px; }
+  /* Mobile had no rule of its own and inherited the desktop 32px into a 56px
+     pill. Same 8px clearance as everywhere else: 56 - 16 and 52 - 16. */
+  .header__logo img { height: 40px; }
+  .header[data-scrolled="true"] .header__logo img { height: 36px; }
   .mobile-panel { top: 80px; }
 
   /* Hard cap, 36px. The type shrinks to fit the line rather than the bar

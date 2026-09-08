@@ -1185,3 +1185,49 @@ list is not part of recording a ruling and the gate rots.
 of the value it amends, and a ruling is a value. But (b) shipped as the default
 because R-S is the newer instruction and reading it strictly costs nothing until
 the next amendment is actually needed.
+
+---
+
+## Q-W13-01 · Three logo assets still need a client-supplied source — OPEN, opened 2026-09-08 (W13-02)
+
+**Shipped default: they stay exactly as they are.** The visible mark is orange as
+of W13-02. Three assets are not, and cannot be made so from anything in the repo.
+
+| Asset | Why it cannot be recoloured here |
+|---|---|
+| `public/logo-full.png` | 1542×568, **12,194 distinct RGB values**. The full-colour wordmark: black "Rapid" over orange "CONSTRUCT" and roof line. Only used as the JSON-LD `"logo"` on `/` and `/ru/`; never rendered visibly |
+| `public/favicon-180.png` | 180×180, **875 distinct RGB values**. `apple-touch-icon`, all 25 pages |
+| `public/favicon-512.png` | 512×512, **4,551 distinct RGB values**. `rel="icon"` and the webmanifest, all 25 pages |
+
+`logo-mono.png` could be recoloured because it was a single-colour alpha mask.
+These three are anti-aliased multi-colour rasters, and there is no exact
+operation that turns one into a different brand colour. Filtering or tinting them
+is refused, per the W13-01 instruction and on the merits: it would produce a
+colour that is not `#F65308` and would be a new value against the ten.
+
+**Exactly what to ask the client for.**
+
+  (a) **An SVG of the mark. Strongly preferred.** It makes this recolour and
+      every future one a data edit, and it removes the whole class of problem:
+      the repo has now hit it twice in two waves. One file replaces all four
+      raster assets, since the favicons and the full-colour logo can all be
+      generated from it.
+  (b) **Failing that, four PNGs**, at the dimensions already in use so nothing
+      in the templates or `slots.js` has to move:
+      - `1542x568` full-colour wordmark
+      - `1542x568` single-colour, on transparency — this one is a drop-in
+        replacement for `logo-mono.png`
+      - `180x180` favicon
+      - `512x512` favicon
+
+**Worth telling the client explicitly:** the wordmark is currently two-tone,
+black "Rapid" above orange "CONSTRUCT". "The logo in orange" does not say whether
+"Rapid" becomes orange too. The single-colour mask now on the site makes the
+whole wordmark orange, which is one answer; the full-colour file still says the
+other. They should confirm which they meant before producing files.
+
+**What is inconsistent in the meantime, stated plainly:** the visible mark is
+orange, the favicon in the browser tab is the older orange-red mark, and the
+structured-data logo is still black-and-orange. No visitor sees the last of
+those. The favicon is visible and does not match, and that is the cost of
+shipping the half that could be done exactly.

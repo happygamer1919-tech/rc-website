@@ -8,6 +8,13 @@ Status values: `todo` · `in progress` · `blocked` · `shipped`.
 Waves 1 to 5 predate this file; their tickets are reconstructed from the git
 history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 
+## Wave 13
+
+| Ticket | Card | Branch | Status |
+|---|---|---|---|
+| RC-085 | W13-01 Logo survey, reported, stopped on raster | — | reported |
+| RC-085 | W13-02 Mark to brand orange by channel rewrite | `w13/rc-085-logo-orange` | shipped |
+
 ## Wave 12
 
 | Ticket | Card | Branch | Status |
@@ -324,3 +331,18 @@ are and what unblocks each, R-U flagged as required reading before touching
 projects.json, and the four-step W12-07 reversal carried forward unchanged.
 Production verified under R-P with the SHA assertion and tagged `wave-12-closed`.
 Tags are added, never moved.
+
+## W13-01 · Logo survey
+**Status: REPORTED, STOPPED** (2026-09-07). Every logo asset is raster; no vector
+source exists in the repo. Reported per the card's stop condition rather than
+recolouring by filter or tint. The survey found one asset, `logo-white.png`, that
+is a single-colour alpha mask and therefore exactly recolourable in data.
+
+## W13-02 · Mark to brand orange
+**Status: DONE** (2026-09-08). RGB channel rewritten to `#F65308`, taken from
+CLAUDE.md section 3 and not from the master plan's struck row. Verified on the
+written file: 1 distinct RGB equal to the target, alpha identical across all
+875,856 bytes with a matching sha256. Renamed `logo-white.png` to `logo-mono.png`
+and updated nine references. og:image regenerated on `#141414`, 5.40:1 on every
+surface the mark renders on. Q-W13-01 logged for the three assets that need a
+client-supplied source.

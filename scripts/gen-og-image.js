@@ -116,7 +116,7 @@ const chunk = (type, data) => {
 
 // ---- compose ----------------------------------------------------------------
 const ROOT = path.join(__dirname, '..');
-const logo = decodePNG(fs.readFileSync(path.join(ROOT, 'public', 'logo-white.png')));
+const logo = decodePNG(fs.readFileSync(path.join(ROOT, 'public', 'logo-mono.png')));
 
 const lw = Math.round(W * LOGO_WIDTH_FRACTION);
 const lh = Math.round(logo.h * (lw / logo.w));

@@ -131,7 +131,7 @@ const PAGES = [
 
 // Keys whose value is already HTML built by this file. Everything else is
 // escaped on substitution.
-const RAW_KEYS = new Set(['copertine', 'tiglaGrid', 'beforeAfter', 'roofOffers', 'socialRow',
+const RAW_KEYS = new Set(['garduri', 'copertine', 'tiglaGrid', 'beforeAfter', 'roofOffers', 'socialRow',
   // demoAttr is a whole attribute, ` data-demo="..."`, not an attribute value:
   // it is either present or absent. Its inner text is escaped where it is
   // built, so what lands here is already safe. Escaping it again turned the
@@ -956,6 +956,56 @@ ${steps}
 `;
 }
 
+// --- W14-12, louvre fences (S-05), component only ----------------------------
+
+/* BLOCKED on supplier identity (Q-W14-09). The component exists and its data
+   file is empty, so nothing renders, nothing is linked from the nav, and the
+   sitemap is untouched (it lists pages, and this is a homepage section with no
+   anchor anywhere in the navigation).
+
+   Deliberately generic: a model is a name, one line of text, and an optional
+   image. No field exists for a model code, a price, a thickness or a warranty,
+   because the dispatch forbids writing any of those until the supplier is known,
+   and a field that exists invites a value. When the supplier is named, the fields
+   that supplier can actually vouch for are added in the same commit as the data.
+
+   Presence, not silence: a file without a models array fails the build, and so
+   does a model whose name or line is not real in both locales. */
+const GARDURI_FILE = 'content/garduri.json';
+const GARDURI = JSON.parse(fs.readFileSync(GARDURI_FILE, 'utf8'));
+if (!Array.isArray(GARDURI.models)) die(`${GARDURI_FILE} has no "models" array. No models is [], never a missing key.`);
+
+function garduri(l) {
+  if (GARDURI.models.length === 0) return '';
+  const t = (k) => esc(l.strings[`garduri.${k}`]);
+  const cards = GARDURI.models.map((m, i) => {
+    const where = `models[${i}]`;
+    for (const f of ['name', 'line']) {
+      if (!m[f] || !REAL(m[f][l.code])) die(`${GARDURI_FILE}: ${where}.${f} is not real for ${l.code}.`);
+    }
+    const id = `gard-${m.id}`;
+    let media = '';
+    if (fs.existsSync(`public/img/${id}.jpg`)) {
+      if (!m.alt || !REAL(m.alt[l.code])) die(`public/img/${id}.jpg exists but ${where}.alt is not real for ${l.code}.`);
+      media = `<div class="fence__media"><img src="${BASE}/img/${id}.jpg" alt="${esc(m.alt[l.code])}" width="800" height="1000" loading="lazy" decoding="async"></div>`;
+    }
+    return `      <article class="fence" data-reveal data-stagger="${Math.min(i, 6)}">
+        ${media}<h3 class="fence__name">${esc(m.name[l.code])}</h3>
+        <p class="fence__line">${esc(m.line[l.code])}</p>
+      </article>`;
+  }).join('\n');
+  return `<section class="section section--light section--divided" id="garduri" aria-labelledby="garduri-h">
+  <div class="container">
+    <p class="eyebrow" data-reveal>${t('eyebrow')}</p>
+    <h2 id="garduri-h" data-reveal>${t('h2')}</h2>
+    <div class="fences">
+${cards}
+    </div>
+  </div>
+</section>
+`;
+}
+
 // --- W12-01, the portfolio end tile -----------------------------------------
 
 /* The seventh cell of the homepage portfolio grid. It is not a project and not
@@ -1198,6 +1248,7 @@ for (const l of loaded) {
   vars.supplierChips = renderSupplierChips(l, BASE);
   vars.heroPanelMedia = heroPanelMedia(l, BASE);
   vars.promoBar = promoBar(l);
+  vars.garduri = garduri(l);
   vars.copertine = copertine(l);
   vars.tiglaGrid = tiglaGrid(l);
   vars.beforeAfter = beforeAfter(l);

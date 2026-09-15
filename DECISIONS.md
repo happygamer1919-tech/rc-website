@@ -3771,3 +3771,41 @@ before merge, per section 2; the new budgets are RC-113's, which is blocked
 
 Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 /
 100**.
+
+## W14-12 · Louvre fences: the component and an empty data file, blocked on the supplier, 2026-09-15
+
+**Card RC-112.** **Status: blocked** on Q-W14-09, "which fabricator supplies
+louvre fence panels to Rapid Construct", as the card itself directs. What the card
+asks to be built is built and merged: the section component and its data file,
+left empty.
+
+### What exists, and what deliberately does not
+
+- `content/garduri.json`, `"models": []`. While it is empty the section does not
+  render, so there is no heading, no padding and no gap.
+- `garduri()` in `build.js`. A model is a name, one line of text and an optional
+  image, and nothing else. **There is no field for a model code, a price, a
+  thickness or a warranty.** The card forbids writing any of those until the
+  supplier is known, and a field that exists invites a value. When the supplier is
+  named, the fields its product sheet vouches for are added in the same commit as
+  the data.
+- Not linked from the nav, the mobile panel or the footer, and absent from the
+  sitemap, which lists pages; this is a homepage section with no anchor anywhere.
+- Placed after the carport steps and before the process section, on white with
+  the divider rule, so when it does render the dark process section still
+  alternates.
+
+The build fails on a missing `models` array and on a model whose name or line is
+not real in both locales. Both were watched failing, and the data restored
+byte-identical.
+
+### Tested
+
+| Build | Assertions | Result |
+|---|---|---|
+| As shipped, empty | sitemap has no fence entry; no link or nav label points at it; no code, price, thickness or warranty in any fence markup; the section absent; the carport steps followed directly by process; both locales | **9 of 9** |
+| As shipped, empty | heights, all eight pages | **identical to `main` at 01a0b20**, 13,582 RO / 13,978 RU |
+| Local fixture, one model | the section renders from the data, after the carport steps and before process, on white, one card, still unlinked; both locales | **11 of 11** |
+
+Lighthouse, desktop, localhost, as shipped: **RO 99 / 100 / 100 / 100, RU 99 / 100 /
+100 / 100**.

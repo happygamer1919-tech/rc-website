@@ -32,9 +32,9 @@ jobs:
       # macOS sips and would not run on this runner anyway.)
       - name: Build both locales
         env:
-          # BASE_PATH is deliberately ABSENT, not set empty. The site moved to
-          # the custom domain rapidconstructmd.com on 2026-09-06 and serves from
-          # the ROOT; build.js already defaults the sub-path to '' when the
+          # BASE_PATH is deliberately ABSENT, not set empty. The site serves from
+          # the ROOT of its custom domain, rapidconstruct.md since W14-17
+          # (rapidconstructmd.com before it); build.js already defaults the sub-path to '' when the
           # variable is unset. Setting it to anything non-empty emits every
           # asset, link and canonical as /rc-website/... which 404s on the live
           # domain. There is no longer a sub-path to configure.
@@ -42,7 +42,7 @@ jobs:
           # SITE_URL is set explicitly even though build.js now defaults to the
           # same value (W12-14), so the deployed host is stated where the deploy
           # is configured rather than inferred from a source default.
-          SITE_URL: https://rapidconstructmd.com
+          SITE_URL: https://rapidconstruct.md
           # W12-12. The canonical Google Business Profile URL, resolved in
           # W12-08 from the share.google shortlink. The CID form on purpose:
           # the shortlink redirects to a Search URL carrying a request

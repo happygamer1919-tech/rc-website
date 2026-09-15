@@ -60,6 +60,12 @@ const SLOTS = [
   ...['svc-case-la-cheie', 'svc-acoperisuri', 'svc-fatade', 'svc-reparatii', 'svc-finisaje',
       'svc-proiectare-3d', 'svc-instalatii', 'svc-industrial', 'svc-terasamente']
     .map((id) => ({ id, w: 800, h: 600, ratio: '4:3', retina: true, placeholder: false, minLongEdge: 1200 })),
+  // W14-08. The four acoperișuri offer card images, 0.81:1 as in the wave 14
+  // audit 3.2. placeholder: false because a card with no image drops its image
+  // column rather than showing a placeholder, and a file dropped here is held to
+  // R-W by the provenance gate like any other.
+  ...['offer-roof-01', 'offer-roof-02', 'offer-roof-03', 'offer-roof-04']
+    .map((id) => ({ id, w: 600, h: 740, ratio: '0.81:1', retina: true, placeholder: false })),
   // Social card. Never retina: og consumers take one fixed size.
   { id: 'og-image', w: 1200, h: 630, ratio: '1200x630', retina: false, branded: true },
 ];

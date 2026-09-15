@@ -1,0 +1,39 @@
+# The `quality` check, created by W14-02 (RC-102) under ruling R-V.
+#
+# Runs the machine-checkable gates from docs/CLAUDE.md section 11 on every pull
+# request. R-V permits a SELF card to self-merge only when this job is green.
+# It never deploys: publishing stays in pages.yml, on push to main.
+#
+# Deliberately sets no build environment. build.js defaults the site origin and
+# base path to their production values, and the form stays in demo mode without
+# a key, which is correct for a check.
+name: quality
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Build both locales
+        run: node build.js
+
+      - name: Links resolve
+        run: node scripts/check-links.js
+
+      - name: No stale values in governing documents
+        run: node scripts/check-stale-docs.js
+
+      - name: Every image has a provenance row (R-W)
+        run: node scripts/check-asset-provenance.js

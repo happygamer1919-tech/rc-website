@@ -3222,3 +3222,54 @@ Checked at 320, 360, 375, 768, 1024, 1440 and 1920, on both locales at the
 narrow end where the Russian strings are longest. `scrollWidth` equals `innerWidth`
 at every one, and the footer mark clips nothing. At 320px the pill is 288px wide
 and holds a 108.6px mark plus two 44px icon buttons.
+
+## W14-02 · Asset provenance gate, and the `quality` check it needed, 2026-09-15
+
+**Card RC-102, ruling R-W** (`docs/rulings/R-W.md`, STOP PR #2). Every image the
+site serves now has a row in `docs/assets/PROVENANCE.md`, and
+`node scripts/check-asset-provenance.js` fails the `quality` check when one does
+not.
+
+### The check the card wires into did not exist
+
+The dispatch says "wire into the `quality` check". There was none. The repo had
+one workflow, `pages.yml`, which runs on push to `main` and never on a pull
+request, and no pull request had ever been opened here. So this card creates
+`.github/workflows/quality.yml`, job `quality`, on `pull_request` and
+`workflow_dispatch`. It runs `build.js`, `check-links.js`, `check-stale-docs.js`
+and the new provenance check. It deploys nothing.
+
+**It sets no build environment on purpose.** `build.js` defaults the origin and
+base path to production, and `SITE_URL` is in the R-V STOP set, so the check
+does not name it. Flagged for ratification in the wave report.
+
+### What the gate reads, and what it refuses to conclude
+
+- **The tree is `public/`, walked on disk.** A file copied in and not committed
+  still fails. `photos-raw/` and `Services_real images/` are unpublished input.
+- **Presence first** (`docs/CLAUDE.md` section 13). The ledger must exist and
+  parse to rows, the walk must find at least one image, and the hostname matcher
+  must pass an eight-case self-test, before any clean result is printed.
+- **Banned hosts match on the parsed hostname, subdomains included.** A bare
+  `dasterum.md/x` with no scheme is caught.
+- **`unrecorded before R-W` is accepted only on rows dated before 2026-09-15.**
+  Old gaps are recorded as gaps. New images cannot use the same words.
+
+### Negative-tested before it was trusted
+
+| Arm | Planted | Result |
+|---|---|---|
+| Unlisted image | a copy of `favicon-180.png` at `public/img/planted-unlisted.png` | exit 1, file named; exit 0 after removal |
+| Banned host | `bilka.svg` source rewritten to `https://www.dasterum.md/img/logo.svg` | exit 1, host and rule named |
+| Unrecorded after R-W | `logo-mono.png` row re-dated 2026-09-15 | exit 1 |
+| Ghost row | a row for `public/img/ghost.jpg` with an empty source cell | exit 1, both problems named |
+
+### The ledger, and the gap it exposes
+
+149 images, 149 rows, compiled only from what `DECISIONS.md` already recorded.
+The five Wikimedia Commons logos and the files generated in this repo have a
+recorded licence. **Nothing else does.** The client's photographs were never
+covered by a written licence or release, four supplier logos came from brand
+websites with no recorded terms, and the service artwork, the step photos and
+the interim hero panel have no recorded origin at all. Each row says exactly
+that rather than filling the gap. Opened as Q-W14-01.

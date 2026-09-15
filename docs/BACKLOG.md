@@ -67,7 +67,7 @@ ratifications). #16 and #20 were merged by the owner before the run; #25 was not
 | RC-121 | W14-21 Header fit, unblocks #7 | SELF | `w14/rc-121-header-fit` | shipped: ladder step 3; with the catalog, slack at 1280px and up RO 52px, RU 15px |
 | RC-106b | W14-06b Merge the catalog menu | SELF | `w14/rc-106-catalog-menu` | shipped: 67 of 67, data 16 of 16, header fit 116 of 116 with the catalog; #7 merged |
 | RC-120 | W14-20 Garduri service page, closes Q-W14-09 | SELF | `w14/rc-120-garduri-page` | shipped: page rebuilt, 34 of 34; the header nav link **blocked** (Q-W14-15) |
-| RC-122 | W14-22 Tile colour swatches, closes Q-W14-11 | SELF | `w14/rc-122-tile-swatches` | todo |
+| RC-122 | W14-22 Tile colour swatches, closes Q-W14-11 | SELF | `w14/rc-122-tile-swatches` | shipped: RAL swatches on every chip, 12 of 12; Dasterum renders still open (Q-W14-11b) |
 | RC-123 | W14-23 Carport diagrams, closes Q-W14-12 | SELF | `w14/rc-123-carport-diagrams` | todo |
 
 ## Wave 13

@@ -834,9 +834,11 @@ ${items}
    Ruling R-X: list prices only. No discount badge, no percentage, no struck
    price, and the scarcity gate would fail the build's output if one appeared.
 
-   Colour chips carry the code, the finish and the colour's name as text. They
-   carry no swatch: a swatch is a colour value, docs/CLAUDE.md section 3 allows
-   ten, and the legend would add up to fifteen. Q-W14-08.
+   Colour chips carry the code, the finish and the colour's name as text, and
+   since W14-22 a swatch in the value RAL publishes for the code: the tile grid
+   exception to docs/CLAUDE.md section 3. A matt code's swatch is flat; a gloss
+   code's carries a highlight. A line under the swatches says screen colour is
+   indicative and the physical sample decides.
 
    Presence, not silence: a missing models array or legend fails the build, as
    does a grade other than standart or premium (Econom is excluded by the
@@ -846,6 +848,18 @@ const TIGLA_FILE = 'content/tigla-metalica.json';
 const TIGLA = JSON.parse(fs.readFileSync(TIGLA_FILE, 'utf8'));
 if (!Array.isArray(TIGLA.models) || !Array.isArray(TIGLA.legend)) die(`${TIGLA_FILE} needs both a "models" and a "legend" array.`);
 const TIGLA_LEGEND = new Map(TIGLA.legend.map((c) => [c.code, c]));
+/* W14-22. Every legend entry must carry its RAL Classic code (the code without
+   the matt M), a #RRGGBB value, and the RAL colour page the value was read from.
+   A code and its matt twin must agree, because RAL defines the colour, not the
+   finish. A missing or malformed value fails the build; a swatch is never guessed. */
+for (const [i, c] of TIGLA.legend.entries()) {
+  const where = `${TIGLA_FILE}: legend[${i}] ${c.code}`;
+  if (c.ral !== String(c.code).replace(/M$/, '') || !/^\d{4}$/.test(c.ral)) die(`${where} has ral "${c.ral}", expected its code without the M.`);
+  if (!/^#[0-9A-F]{6}$/.test(c.hex || '')) die(`${where} has no #RRGGBB hex.`);
+  if (!new RegExp(`^https://www\\.ral-farben\\.de/en/colour/ral-classic/ral-${c.ral}/\\d+$`).test(c.source || '')) die(`${where} has no RAL colour page for ${c.ral} as its source.`);
+  const twin = TIGLA_LEGEND.get(String(c.code).endsWith('M') ? c.ral : `${c.ral}M`);
+  if (twin && twin.hex !== c.hex) die(`${where} and ${twin.code} are one RAL colour but carry ${c.hex} and ${twin.hex}.`);
+}
 const TIGLA_GRADES = ['standart', 'premium'];
 
 function tiglaGrid(l) {
@@ -874,8 +888,10 @@ function tiglaGrid(l) {
       if (!Array.isArray(v.colours) || v.colours.length === 0) die(`${TIGLA_FILE}: ${w} has no colours.`);
       const unknown = v.colours.filter((c) => !TIGLA_LEGEND.has(c));
       if (unknown.length) die(`${TIGLA_FILE}: ${w} lists colour codes not in the legend: ${unknown.join(', ')}.`);
-      const chips = (matt) => v.colours.filter((c) => c.endsWith('M') === matt).map((c) =>
-        `<li class="tile__colour"><span class="tile__code">${esc(c)}</span> ${esc(TIGLA_LEGEND.get(c).name[l.code])}</li>`).join('');
+      const chips = (matt) => v.colours.filter((c) => c.endsWith('M') === matt).map((c) => {
+        const e = TIGLA_LEGEND.get(c);
+        return `<li class="tile__colour"><span class="tile__swatch${matt ? ' tile__swatch--matt' : ''}" style="background-color: ${e.hex};" data-ral="${e.ral}" aria-hidden="true"></span><span class="tile__code">${esc(c)}</span> ${esc(e.name[l.code])}</li>`;
+      }).join('');
       const group = (matt) => {
         const html = chips(matt);
         return html ? `
@@ -899,6 +915,7 @@ function tiglaGrid(l) {
             </dl>
             <div class="tile__palette">
               <p class="tile__palette-h">${esc(t('colours'))}</p>${group(true)}${group(false)}
+              <p class="tile__swatch-note">${esc(t('swatchNote'))}</p>
             </div>
           </div>`;
     }).join('');

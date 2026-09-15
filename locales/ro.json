@@ -177,7 +177,8 @@
     "perPiece": "lei/bucată",
     "colours": "Culori",
     "matt": "Mat",
-    "gloss": "Lucios"
+    "gloss": "Lucios",
+    "swatchNote": "Culoarea de pe ecran este orientativă; decisivă este mostra fizică."
   },
   "copertine": {
     "eyebrow": "Copertine",

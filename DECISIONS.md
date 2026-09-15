@@ -3809,3 +3809,55 @@ byte-identical.
 
 Lighthouse, desktop, localhost, as shipped: **RO 99 / 100 / 100 / 100, RU 99 / 100 /
 100 / 100**.
+
+## W14 ratifications · The owner's rulings on the fourteen wave 14 deviations, 2026-09-15
+
+Recorded at the owner's instruction from the wave 14 close-out dispatch, before
+any close-out card was worked. The numbers are the deviation numbers in the wave
+14 report.
+
+| # | Deviation, as reported | Ruling | Consequence |
+|---|---|---|---|
+| 1 | Repo and audit paths | **Ratified** | none |
+| 2 | The `quality` check was created by RC-102 | **Ratified** | none |
+| 3 | Rulings from R-V onward live in `docs/rulings/`; ruling PRs are STOP | **Ratified** | PRs #1, #2, #3 merged at the owner's instruction |
+| 4 | Wave 14 blocks placed on the homepage | **Overturned** | RC-116 moves the tile grid, carports and fences onto their own service pages |
+| 5 | Card order changed from number order | **Ratified** | none |
+| 6 | RC-114 removed the live 0% instalment offer | **Ratified** | none |
+| 7 | RC-107 used the three real profile URLs and the footer's inline icons | **Ratified** | none |
+| 8 | RC-108, RC-110 and RC-111 shipped without images | **Ratified** | RC-118 fills them under the amended R-W |
+| 9 | RC-110 colour chips as text, no swatch | **Ratified with amendment** | RAL swatches are permitted, scoped to the metal tile grid component only, sourced from the 15-code legend in the wave 14 audit. `docs/CLAUDE.md` section 3 carries the exception from this commit |
+| 10 | RC-111 designations, family mapping, the "up to 6 m" figure, white step tiles and 19px numerals | **Overturned in part** | the "up to 6 m" cantilever claim is struck from C-02 in this commit; C-01 to C-12 naming stays; the rest of the deviation stands |
+| 11 | RC-109 slider role, pan-y, solid labels, arrows only for two or more projects | **Ratified** | none |
+| 12 | RC-106 not merged despite SELF; mobile icon toggle | **Ratified** | RC-106b reopens it |
+| 13 | RC-105 left "de la 160 lei/m²" in the meta description and `priceRange` | **Overturned** | RC-105b removes the figure from both, both locales, folded into PR #14 |
+| 14 | Live verification run against rapidconstruct.md | **Ratified** | RC-117 makes rapidconstruct.md the declared origin |
+
+### C-02, the struck claim
+
+The descriptor "Consolă de până la 6 m." / "Консоль до 6 м." was the competitor's
+stated span. It becomes "Consolă pentru deschideri mari." / "Консоль для больших
+пролётов.", which restates the model's own category chip ("Consolă, deschidere
+mare") and carries no figure.
+
+### The colour rule, amended for one component
+
+`docs/CLAUDE.md` section 3 still holds ten colour values for the site. It now
+names one exception, in its "What is not a colour value" list: the RAL swatches
+inside the metal tile grid's colour chips, which depict a product finish and are
+data, not palette. The exception reaches no other component. The values land with
+RC-118, each from the audit's 15-code legend.
+
+### Questions closed or narrowed by the dispatch
+
+Status metadata only, per R-S; no question body is edited.
+
+| Question | New status |
+|---|---|
+| Q-W14-02 | answered: the T-02 to T-09 strings were supplied |
+| Q-W14-03 | answered: rapidconstruct.md is the real domain (RC-117) |
+| Q-W14-04 | answered: the menu lists the audit 1.2 taxonomy (RC-106b) |
+| Q-W14-05 | answered: the nav collapses at 1100px (RC-115) |
+| Q-W14-07 | answered: approved image origins added to R-W (RC-118) |
+| Q-W14-08 | part (b) answered: RAL swatches permitted in the tile grid; part (a), prices, stays open |
+| Q-W14-10 | answered: the 160 lei/m² figure leaves the meta description and the price field (RC-105b). The question was opened on the RC-105 branch and exists only in PR #14, so its status is set there |

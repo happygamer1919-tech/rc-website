@@ -198,6 +198,24 @@
     "eyebrow": "Garduri",
     "h2": "Garduri din lamele metalice"
   },
+  "pages": {
+    "teaserAria": "Pagini de produse",
+    "tigla": {
+      "title": "Țiglă metalică",
+      "lede": "Modele Standart și Premium: grosime, lățime utilă, garanție, culori și preț de listă.",
+      "teaser": "Monterrey, Valencia, Kascad și țiglă modulară, cu prețuri de listă."
+    },
+    "copertine": {
+      "title": "Copertine",
+      "lede": "Pe stâlpi, în consolă, prinse de perete, arcuite sau arhitecturale. Fiecare se face pe dimensiunile curții, iar prețul se stabilește după măsurare.",
+      "teaser": "12 modele, alese după curte, cu prețul stabilit după măsurare."
+    },
+    "garduri": {
+      "title": "Garduri",
+      "lede": "Venim, măsurăm și îți facem oferta pentru gard.",
+      "teaser": "Garduri din lamele metalice."
+    }
+  },
   "process": {
     "eyebrow": "Cum lucrăm",
     "h2": "De la fundație la predare",

@@ -3951,3 +3951,70 @@ column is wide enough, so the panel is still exactly 4:3.
 Heights at 1440px on all eight `verify-live.js` pages identical to `main`.
 Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 /
 100**.
+
+## W14-16 · The page split: tile grid, carports and fences get their own pages, 2026-09-15
+
+**Card RC-116.** Carries out the owner's overturn of wave 14 deviation 4. The
+metal tile grid, the carports and the fences leave the homepage for pages of
+their own, in both locales. The homepage keeps the offer cards and the
+before/after slot, and gains a compact row of three links to the new pages.
+
+### The pages
+
+| RO | RU | H1 | Carries |
+|---|---|---|---|
+| `/servicii/tigla-metalica/` | `/ru/servicii/tigla-metalica/` | Țiglă metalică / Металлочерепица | the W14-10 grid |
+| `/servicii/copertine/` | `/ru/servicii/copertine/` | Copertine / Навесы | the W14-11 chooser, models and steps |
+| `/servicii/garduri/` | `/ru/servicii/garduri/` | Garduri / Заборы | the W14-12 component, still empty (Q-W14-09) |
+
+Each is `src/product.html`, derived from `src/service.html`: same header, promo
+bar, quote form and footer; a breadcrumb, one H1, one line and a CTA; then the
+block. The block renderers are the same functions the homepage used, unchanged.
+Meta titles and descriptions follow the service-page rules (the longest title
+that fits 60 characters; the coverage line appended if it fits 155). The social
+image is the site default, since none of the three has its own photograph.
+
+### Copy for the new lines, and where it comes from
+
+- Tile grid lede and teaser: what the grid itself shows (grades, thickness,
+  working width, warranty, colours, list price; the four model names).
+- Carports lede and teaser: the five family names and the models section's own
+  line (made to the yard's dimensions, priced after measurement).
+- Fences lede: "Venim, măsurăm și îți facem oferta pentru gard", from the
+  homepage's existing "venim, măsurăm... ". The teaser only names the product;
+  nothing about fences can be claimed until Q-W14-09.
+
+### Flagged for ratification
+
+1. **STOP-set items touched under a SELF card.** New pages need their own
+   canonical, hreflang and sitemap entries, which R-V lists as STOP. The card
+   marks RC-116 SELF and says to add all three to the sitemap, so they shipped.
+2. **The fences page is in the sitemap while its block is empty,** because the
+   card says all three. It carries an H1, a line and the quote form.
+3. **Service pages enter the sitemap only with a real cover photograph; these
+   three enter unconditionally,** per the card.
+4. **`llms.txt` is unchanged.** The card did not ask for it.
+5. **The quote form's subject line uses a plain hyphen** where the service pages
+   use an em dash, per the dispatch's rule on dashes in code.
+
+### Tested
+
+| Suite | Result |
+|---|---|
+| Page split: all six pages 200, one H1 each matching the locale, canonical and og:url, hreflang and language switch, breadcrumb, form present, the right block and nothing else; sitemap entries with ro, ru and x-default; homepage free of every moved marker; four offer cards kept; three teaser links resolving, placed after the offer cards; no overflow at 390 | **68 of 68** |
+| The tile grid's own acceptance, run on its new pages (placement check adapted) | **90 of 90** |
+| The carports' own acceptance, run on their new pages (order now ends at the form) | **40 of 40** |
+
+### Measured
+
+| Page | Before (13,582 RO / 13,978 RU on main) | After |
+|---|---|---|
+| Homepage RO | 13,582 | **10,261** |
+| Homepage RU | 13,978 | **10,556** |
+| Țiglă metalică RO / RU | not a page | 3,647 / 3,698 |
+| Copertine RO / RU | not a page | 4,587 / 4,663 |
+| Garduri RO / RU | not a page | 2,298 / 2,298 |
+
+The homepage is still over its R-J budget; the new per-page budgets are RC-113's.
+Lighthouse, desktop, localhost: **homepage RO 99 / 100 / 100 / 100, RU 99 / 100 /
+100 / 100; tile grid, carports and fences RO pages 100 / 100 / 100 / 100 each**.

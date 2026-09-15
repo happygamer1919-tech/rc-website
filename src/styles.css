@@ -1085,6 +1085,22 @@ p { margin: 0; }
 .fence__name { font-size: 20px; }
 .fence__line { margin: 8px 0 0; }
 
+/* --- W14-16, the homepage teaser row -------------------------------------- */
+/* Three link cards to the product pages, one row, compact: no section heading,
+   the section carries an aria-label. White cards with the line border and a
+   brand top edge, the same family as the offer cards above. */
+.section--teaser { padding: 48px 0; }
+.teasers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+.teaser {
+  display: flex; flex-direction: column; gap: 8px;
+  background: var(--bg-light); border: 1px solid var(--line); border-top: 4px solid var(--brand);
+  padding: 20px 24px; color: var(--ink);
+}
+.teaser:hover .teaser__title { color: var(--brand-dark); }
+.teaser__title { font-size: 20px; text-transform: uppercase; letter-spacing: 0; }
+.teaser__line { margin: 0; color: var(--ink-muted); }
+.teaser__more { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; font-weight: 700; color: var(--brand-dark); }
+
 /* --- 8. service illustration box ------------------------------------------ */
 /* Fixed 4:3 box, illustration centred and contained. The <img> always resolves
    because placeholder SVGs ship until the real ones land. */
@@ -1296,6 +1312,10 @@ p { margin: 0; }
   h2 { font-size: 26px; letter-spacing: 0; }
   h3 { font-size: 19px; }
 
+
+  /* W14-16. Teaser cards stack. */
+  .teasers { grid-template-columns: minmax(0, 1fr); }
+  .section--teaser { padding: 40px 0; }
 
   /* W14-12. Fence cards, one column. */
   .fences { grid-template-columns: minmax(0, 1fr); }

@@ -74,7 +74,8 @@ const MARKERS = {
 };
 
 const PAGES = [
-  // Homepage and product page budgets: ruling R-Y (docs/rulings/R-Y.md, W14-13).
+  // Homepage and product page budgets: ruling R-Y (docs/rulings/R-Y.md, W14-13;
+  // product pages as amended by the wave 14 tail).
   { path: '/',                             type: 'home',    label: 'homepage RO',    budget: 10507 },
   { path: '/ru/',                          type: 'home',    label: 'homepage RU',    budget: 10807 },
   { path: '/servicii/case-la-cheie/',      type: 'service', label: 'svc RO case',    budget: 6000 },
@@ -83,12 +84,12 @@ const PAGES = [
   { path: '/ru/servicii/fatade/',          type: 'service', label: 'svc RU fatade',  budget: 6000 },
   { path: '/ru/servicii/acoperisuri/',     type: 'service', label: 'svc RU acoper',  budget: 6000 },
   { path: '/ru/servicii/finisaje/',        type: 'service', label: 'svc RU finis',   budget: 6000 },
-  { path: '/servicii/tigla-metalica/',     type: 'product', label: 'tigla RO',       budget: 3707 },
-  { path: '/ru/servicii/tigla-metalica/',  type: 'product', label: 'tigla RU',       budget: 3758 },
-  { path: '/servicii/copertine/',          type: 'product', label: 'copertine RO',   budget: 4647 },
-  { path: '/ru/servicii/copertine/',       type: 'product', label: 'copertine RU',   budget: 4723 },
-  { path: '/servicii/garduri/',            type: 'product', label: 'garduri RO',     budget: 2358 },
-  { path: '/ru/servicii/garduri/',         type: 'product', label: 'garduri RU',     budget: 2358 },
+  { path: '/servicii/tigla-metalica/',     type: 'product', label: 'tigla RO',       budget: 3841 },
+  { path: '/ru/servicii/tigla-metalica/',  type: 'product', label: 'tigla RU',       budget: 3875 },
+  { path: '/servicii/copertine/',          type: 'product', label: 'copertine RO',   budget: 5493 },
+  { path: '/ru/servicii/copertine/',       type: 'product', label: 'copertine RU',   budget: 5569 },
+  { path: '/servicii/garduri/',            type: 'product', label: 'garduri RO',     budget: 4816 },
+  { path: '/ru/servicii/garduri/',         type: 'product', label: 'garduri RU',     budget: 4838 },
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

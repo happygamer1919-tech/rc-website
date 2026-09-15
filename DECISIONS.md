@@ -5019,3 +5019,15 @@ serves from today; the cutover changes no markup height.
  main
  main
  main
+
+## W14-13a · R-Y amended for the three product pages the tail filled, STOP, 2026-09-15
+
+**#25 updated, still for the owner to merge.** The tail cards filled the tile grid
+(swatches), the carports (diagrams) and the fences page, so the product page budgets
+R-Y set on 2026-09-15 no longer describe those pages. Per R-T, R-Y carries an
+appended amendment block with the new figures and how they were measured; per R-Q
+they are not repeated here. `scripts/verify-live.js` carries them. The homepage did
+not move, so its budgets stand.
+
+#25 was also brought up to date with main: its `quality` check had failed on the
+provenance table the web merges broke, which W14-24a repaired.

@@ -103,3 +103,26 @@ in `RELEASE-NOTES.md`.
    No service page was added in wave 14.
 4. **The fences budget is set on an empty page** because that is what is live.
    It is expected to move when Q-W14-09 is answered.
+
+### Amended 2026-09-15 by the wave 14 tail (W14-20, W14-22, W14-23) · the three product pages filled
+
+Added under R-T; nothing above this block was edited. The tail dispatch filled all
+three product pages, which is what "What moves a budget" said would happen. Measured
+the same way as the ruling: on the live domain after the last tail merge, cache-busted,
+`build-sha` asserted in the same load and matching on every page, reveals settled,
+two identical runs. Each budget is again the measured height plus the 60px headroom
+term.
+
+| Page | Product block now | RO measured | RO budget, under | RU measured | RU budget, under |
+|---|---|---|---|---|---|
+| `/servicii/tigla-metalica/` | the tile grid with RAL swatches and the indicative-colour line (W14-22) | 3,781 | **3,841** | 3,815 | **3,875** |
+| `/servicii/copertine/` | chooser, twelve models and four steps, each card with its line diagram (W14-23) | 5,433 | **5,493** | 5,509 | **5,569** |
+| `/servicii/garduri/` | chooser, materials and finish, four steps, FAQ (W14-20) | 4,756 | **4,816** | 4,778 | **4,838** |
+
+These supersede the product page budgets in the table above. The homepage measured
+10,447 RO and 10,747 RU, unchanged: the catalog button (#7) sits in the
+header and moves no height, so the homepage budgets and their revert figures stand.
+Promo bar removed by data: each product page budget still drops by 44.
+
+The fences budget is no longer the empty page's. Metal tile renders (Q-W14-11b) would
+still move the tile grid budget.

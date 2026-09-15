@@ -1,0 +1,20 @@
+{
+  "_note": "W14-07. The social row on the dark hero card (S-07) reads its links from this file and nowhere else. The dispatch asked for placeholder hrefs pending confirmation; they are instead the three profile URLs the site has linked from its footer and its JSON-LD sameAs since wave 1, because a placeholder is a dead link on the live page. Confirm or replace them here (Q-W14-06). The footer and sameAs still carry their own literal copies: sameAs is in the R-V STOP set and was not touched. Order is the dispatch order. build.js refuses a missing links array, a label that is empty, and an href that is not https.",
+  "links": [
+    {
+      "id": "facebook",
+      "label": "Facebook",
+      "href": "https://www.facebook.com/rapidconstructofficial"
+    },
+    {
+      "id": "instagram",
+      "label": "Instagram",
+      "href": "https://www.instagram.com/rapid.construct/"
+    },
+    {
+      "id": "tiktok",
+      "label": "TikTok",
+      "href": "https://www.tiktok.com/@rapid.construct"
+    }
+  ]
+}

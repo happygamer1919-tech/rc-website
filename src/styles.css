@@ -891,6 +891,21 @@ p { margin: 0; }
 /* CTA sits inside the card, left aligned, in the space above the divider. */
 .hero-claim__cta { align-self: flex-start; margin-top: 20px; }
 
+/* W14-07. The social row sits under the CTA on the dark card. Same 44px targets
+   as the footer row, so WCAG 2.5.8 is cleared, and the first icon is pulled left
+   by its own inset so the glyph lines up with the CTA's left edge. Hover changes
+   colour only; the transition is disabled under reduced motion by the global rule. */
+.hero-claim__social { list-style: none; margin: 12px 0 0 -11px; padding: 0; display: flex; gap: 4px; align-items: center; }
+.hero-claim__social a {
+  width: 44px; height: 44px;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--bg-light); border-radius: var(--radius-control);
+  transition: color var(--hover-dur) ease-out, background-color var(--hover-dur) ease-out;
+}
+.hero-claim__social a:hover { color: var(--brand); background: rgba(255, 255, 255, 0.06); }
+.hero-claim__social a:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.hero-claim__social svg { display: block; }
+
 .hero-claim__divider { height: 1px; background: rgba(255, 255, 255, 0.25); margin: 24px 0 16px; border: 0; margin-top: auto; }
 
 /* Three separate rows, each with its own middot marker. */
@@ -906,6 +921,12 @@ p { margin: 0; }
 }
 .hero-claim__highlights li + li { margin-top: 4px; }
 .hero-panel-media { border-radius: var(--radius-card); border: 1px solid var(--line); overflow: hidden; }
+/* W14-07 fix. The panel keeps a 4:3 ratio and stretches to the claim card's
+   height, so when the card grows (W14-07 added the social row) the ratio pushed
+   the panel wider than its column: 573px in a 514px column on RU at 1100px, 35px
+   past the viewport. Capping it at the column lets the stretched height stand and
+   the photo crop with object-fit, as it already does. */
+.hero-panels > .hero-panel-media { max-width: 100%; min-width: 0; }
 /* contain, not cover. The illustration is 4:3 and the box is 4:3, so the two
    render identically today, but contain guarantees a future asset at a
    different ratio is letterboxed rather than silently cropped. */
@@ -914,6 +935,230 @@ p { margin: 0; }
    process-photos crops to exactly 4:3, so contain and cover agree, but the
    intent differs and cover is right for a photo. */
 .hero-panel-media--photo img { object-fit: cover; }
+
+/* --- W14-08, acoperișuri offer cards (S-02) -------------------------------- */
+/* Anatomy from the wave 14 audit 3.2, in this site's tokens: a 4px --brand top
+   border, no radius, no shadow; a ghost numeral in --brand at 0.1 opacity behind
+   the title area; body in two columns, image left at 0.81:1 when a real image
+   exists, text right with the CTA at its foot. The ghost numeral is decorative
+   (aria-hidden) and is text at reduced opacity on a white card, not a
+   translucent section overlay, so docs/CLAUDE.md section 3 is not engaged. */
+.offers {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap); margin-top: 40px;
+}
+.offer {
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+  background: var(--bg-light);
+  border: 1px solid var(--line); border-top: 4px solid var(--brand);
+  padding: 28px;
+}
+.offer__n {
+  position: absolute; top: 4px; right: 20px; margin: 0;
+  font-size: 92px; font-weight: 800; line-height: 1;
+  color: var(--brand); opacity: 0.1; pointer-events: none; user-select: none;
+}
+.offer__title {
+  position: relative; max-width: 80%;
+  font-size: 22px; text-transform: uppercase; letter-spacing: 0;
+}
+.offer__body { flex: 1 1 auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; margin-top: 20px; }
+.offer--media .offer__body { grid-template-columns: minmax(0, 300fr) minmax(0, 262fr); }
+.offer__media { aspect-ratio: 81 / 100; border: 1px solid var(--line); overflow: hidden; background: var(--bg-grey); }
+.offer__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.offer__text { display: flex; flex-direction: column; min-width: 0; }
+.offer__desc { margin: 0; }
+.offer__options-label { margin: 16px 0 0; font-weight: 700; }
+.offer__options { margin: 8px 0 0; padding-left: 20px; list-style: disc; }
+.offer__options li::marker { color: var(--brand); }
+.offer__options li + li { margin-top: 4px; }
+/* The CTA sits under the paragraph on cards 02 and 04, which have no options
+   (audit 3.2). After an option list, on cards 01 and 03, it is pushed to the foot
+   of the right column, so it lines up with the bottom of a taller image; the
+   list keeps a 24px floor above it either way. */
+.offer__cta { align-self: flex-start; margin-top: 24px; }
+.offer__options { margin-bottom: 24px; }
+.offer__options + .offer__cta { margin-top: auto; }
+
+/* --- W14-09, before/after slider (S-03) ------------------------------------ */
+/* Renders only when content/before-after.json has projects. Per audit 3.3: the
+   after image fills the frame; the before image lies on top, clipped from the
+   right by --position, so before reads on the left and after on the right. The
+   handle is a full-height 4px white line with a centred 40x70 pill carrying three
+   grip bars. Labels are fixed to the frame corners, not to the divider.
+
+   Three departures from the audit, each for a rule here:
+   - touch-action is pan-y, not none. A vertical swipe over the photo still
+     scrolls the page (docs/CLAUDE.md section 1: never capture scroll); only a
+     horizontal drag moves the divider.
+   - The labels sit on solid --bg-dark, not 82% black: no new colour value and no
+     translucent overlay (section 3).
+   - The frame uses the site's --radius-card and card shadow, not 18px.
+   Nothing animates: the divider follows the pointer or a key, with no transition. */
+.ba__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+.ba__nav { display: flex; gap: 12px; flex: none; }
+.ba__arrow {
+  width: 56px; height: 56px; border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--bg-light); color: var(--ink); border: 1px solid var(--brand); cursor: pointer;
+}
+.ba__arrow:hover { background: var(--brand); color: var(--ink); }
+.ba__arrow:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.ba__stage { margin-top: 40px; }
+.ba__item { margin: 0; }
+.ba__item[hidden] { display: none; }
+.ba__compare {
+  position: relative; overflow: hidden;
+  aspect-ratio: 1180 / 664;
+  border-radius: var(--radius-card); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  background: var(--bg-grey);
+  cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none;
+}
+.ba__after, .ba__before-img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;
+  pointer-events: none;
+}
+.ba__before { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--position)) 0 0); }
+.ba__handle {
+  position: absolute; top: 0; bottom: 0; left: var(--position); width: 44px;
+  transform: translateX(-50%);
+  display: flex; align-items: center; justify-content: center;
+  cursor: ew-resize;
+}
+.ba__handle::before {
+  content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 4px; margin-left: -2px;
+  background: var(--bg-light);
+}
+.ba__handle:focus-visible { outline: none; }
+.ba__handle:focus-visible .ba__pill { outline: 2px solid var(--brand); outline-offset: 2px; }
+.ba__pill {
+  position: relative; width: 40px; height: 70px; border-radius: 999px;
+  background: var(--bg-light); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  display: flex; align-items: center; justify-content: center; gap: 5px;
+}
+.ba__pill span { width: 2px; height: 24px; background: var(--bg-dark); border-radius: 1px; }
+.ba__label {
+  position: absolute; bottom: 24px; height: 38px; padding: 0 14px;
+  display: flex; align-items: center;
+  background: var(--bg-dark); color: var(--bg-light);
+  font-size: 14px; font-weight: 700; line-height: 1; text-transform: uppercase; letter-spacing: 0.08em;
+  pointer-events: none;
+}
+.ba__label--before { left: 24px; }
+.ba__label--after { right: 24px; }
+
+/* --- W14-10, metal tile grid (S-04) ---------------------------------------- */
+/* One card per model, four across at desktop so the section stays under the
+   1,400px cap, two at 1024px and below, one below 768px. A card is a column of
+   grade blocks, each with its list price, its specs as a definition list, and
+   its colours as text chips grouped by finish. No swatch colour, no discount
+   styling, no struck price (R-X). */
+.tiles {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap); margin-top: 40px; align-items: start;
+}
+.tile {
+  background: var(--bg-light); border: 1px solid var(--line); border-top: 4px solid var(--brand);
+  padding: 20px;
+}
+.tile__name { font-size: 20px; text-transform: uppercase; letter-spacing: 0; }
+.tile__media { margin-top: 16px; aspect-ratio: 1 / 1; border: 1px solid var(--line); overflow: hidden; background: var(--bg-grey); }
+.tile__media img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.tile__variant { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+.tile__grade {
+  margin: 0; font-size: 13px; font-weight: 700; line-height: 1; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--brand-dark);
+}
+.tile__price { margin: 8px 0 0; color: var(--ink); font-size: 15px; }
+.tile__amount { font-size: 28px; font-weight: 800; line-height: 1; }
+.tile__specs { margin: 12px 0 0; display: grid; gap: 4px; }
+.tile__specs div { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; }
+.tile__specs dt { color: var(--ink-muted); }
+.tile__specs dd { margin: 0; font-weight: 700; text-align: right; }
+.tile__palette { margin-top: 12px; }
+.tile__palette-h { margin: 0; font-size: 14px; color: var(--ink-muted); }
+.tile__finish { margin: 8px 0 0; font-size: 13px; font-weight: 700; }
+.tile__colours { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
+.tile__colour {
+  font-size: 12px; line-height: 1.3; padding: 2px 6px;
+  border: 1px solid var(--line); border-radius: var(--radius-control); color: var(--ink);
+}
+.tile__code { font-weight: 700; }
+
+/* --- W14-11, carports (S-06) ----------------------------------------------- */
+/* Three sections, alternating white, #141414, white, so the dark process
+   section after them keeps the hard-edged rhythm. Structure per audit 4.2,
+   in this site's tokens:
+   - Chooser bento: five tiles in three columns, the first spanning two.
+   - Models: twelve cards on the dark band, three across. Card borders are the
+     permitted rgba(255, 255, 255, x) hairline on the dark band. The category
+     chip is --brand-dark with white text, the site's existing chip pairing.
+   - Steps: four white tiles with a 1px --line border. The audit's grey tile fill
+     is not used: --bg-grey is an image placeholder fill only (section 3). The
+     orange numeral circle carries a 19px bold digit, which clears WCAG's
+     large-text threshold, so white on --brand is judged at 3:1. */
+.cop-media { margin-bottom: 16px; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--radius-control); background: var(--bg-grey); }
+.cop-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.bento { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); margin-top: 40px; }
+.bento__tile { background: var(--bg-light); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 24px; }
+.bento__tile--wide { grid-column: span 2; }
+.bento__title { font-size: 20px; }
+.bento__text { margin: 8px 0 0; }
+.bento__chips { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.model-chip {
+  font-size: 13px; font-weight: 700; line-height: 1; padding: 6px 10px;
+  border: 1px solid var(--line); border-radius: 999px; color: var(--ink);
+}
+
+.cop-lede--dark { color: var(--bg-light); }
+.models { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); margin-top: 40px; }
+.model { border: 1px solid rgba(255, 255, 255, 0.25); border-radius: var(--radius-card); padding: 20px; }
+.model__cat {
+  display: inline-block; margin: 0; padding: 4px 8px;
+  background: var(--brand-dark); color: var(--bg-light); border-radius: var(--radius-control);
+  font-size: 12px; font-weight: 700; line-height: 1.3; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.section--dark .model__name { margin-top: 12px; font-size: 22px; color: var(--bg-light); }
+.model__desc { margin: 6px 0 0; color: var(--bg-light); }
+
+.csteps { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.csteps__step { background: var(--bg-light); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 24px; }
+.csteps__n {
+  width: 40px; height: 40px; border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--brand); color: var(--bg-light); font-size: 19px; font-weight: 700; line-height: 1;
+}
+.csteps__title { margin-top: 16px; font-size: 19px; }
+.csteps__text { margin: 8px 0 0; }
+
+/* --- W14-12, louvre fences (S-05), component only ------------------------ */
+/* Renders only when content/garduri.json has models (blocked, Q-W14-09). Three
+   across, white cards with the site's line border; the optional image is 4:5
+   as in audit 4.1. */
+.fences { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); margin-top: 40px; }
+.fence { background: var(--bg-light); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 20px; }
+.fence__media { margin-bottom: 16px; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--radius-control); background: var(--bg-grey); }
+.fence__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.fence__name { font-size: 20px; }
+.fence__line { margin: 8px 0 0; }
+
+/* --- W14-16, the homepage teaser row -------------------------------------- */
+/* Three link cards to the product pages, one row, compact: no section heading,
+   the section carries an aria-label. White cards with the line border and a
+   brand top edge, the same family as the offer cards above. */
+.section--teaser { padding: 48px 0; }
+.teasers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+.teaser {
+  display: flex; flex-direction: column; gap: 8px;
+  background: var(--bg-light); border: 1px solid var(--line); border-top: 4px solid var(--brand);
+  padding: 20px 24px; color: var(--ink);
+}
+.teaser:hover .teaser__title { color: var(--brand-dark); }
+.teaser__title { font-size: 20px; text-transform: uppercase; letter-spacing: 0; }
+.teaser__line { margin: 0; color: var(--ink-muted); }
+.teaser__more { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; font-weight: 700; color: var(--brand-dark); }
 
 /* --- 8. service illustration box ------------------------------------------ */
 /* Fixed 4:3 box, illustration centred and contained. The <img> always resolves
@@ -1030,6 +1275,10 @@ p { margin: 0; }
 }
 
 /* --- service pages --------------------------------------------------------- */
+/* W14-03. The service answer under the H1, one paragraph per line. Two classes
+   deep so the 768px `.hero__sub` margin does not reach it. */
+.svc-answer .svc-answer__p { margin: 12px 0 0; }
+.svc-answer .svc-answer__p:first-child { margin-top: 16px; }
 .breadcrumb {
   display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
   font-size: 13px; color: var(--ink-muted); margin-bottom: 24px;
@@ -1061,18 +1310,49 @@ p { margin: 0; }
 }
 
 /* ==========================================================================
+   W14-15. Header: the desktop nav tightens at 1180px and collapses at 1100px
+   ========================================================================== */
+
+/* Between 1101 and 1180px the desktop nav did not fit at its full spacing: on
+   the live site the wordmark covered the first link and the last link ran into
+   the phone number, by up to 16px (RO) and 28px (RU) at 1101px. These are the
+   spacing values the 1024px block already used, moved up to where they are
+   needed. Nothing new is chosen. */
+@media (max-width: 1180px) {
+  .nav { gap: 20px; }
+  .nav a { font-size: 16px; }
+  .header__actions { gap: 12px; }
+}
+
+/* At 1100px and below the header collapses to the hamburger layout, which used
+   to start at 768px. Between 769 and 1100px the desktop nav overlapped itself on
+   the live site (Q-W14-05). These rules moved here unchanged from the 768px
+   block; the body spacer moves with them because it is the header's height. */
+@media (max-width: 1100px) {
+  body { padding-top: 80px; }
+  .nav, .header__actions { display: none; }
+  .header__mobile { display: flex; }
+  .icon-btn { display: inline-flex; }
+  .header { height: 80px; }
+  .header__pill { padding: 0 8px 0 16px; height: 56px; }
+  .header[data-scrolled="true"] .header__pill { height: 52px; }
+  /* Same 8px clearance as the desktop pill: 56 - 16 and 52 - 16. */
+  .header__logo img { height: 40px; }
+  .header[data-scrolled="true"] .header__logo img { height: 36px; }
+  .mobile-panel { top: 80px; }
+}
+
+/* ==========================================================================
    Tablet — 1024px and below: 3-col grids become 2-col, 5-col process becomes 3
    ========================================================================== */
 
 @media (max-width: 1024px) {
   :root { --section-pad: 72px; }
+  .bento, .models, .csteps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grid--5 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   h1 { font-size: 44px; }
-  .nav { gap: 20px; }
-  .nav a { font-size: 16px; }
-  .header__actions { gap: 12px; }
-  .header__phone span { display: none; }
   .form-layout { grid-template-columns: minmax(0, 1fr); }
   .hero-panels { grid-template-columns: minmax(0, 1fr); }
   .footer__cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
@@ -1090,22 +1370,42 @@ p { margin: 0; }
     --gap: 16px;
   }
 
-  body { font-size: 16px; padding-top: 80px; }
+  body { font-size: 16px; }
   h1 { font-size: 32px; letter-spacing: -0.01em; }
   h2 { font-size: 26px; letter-spacing: 0; }
   h3 { font-size: 19px; }
 
-  .nav, .header__actions { display: none; }
-  .header__mobile { display: flex; }
-  .icon-btn { display: inline-flex; }
-  .header { height: 80px; }
-  .header__pill { padding: 0 8px 0 16px; height: 56px; }
-  .header[data-scrolled="true"] .header__pill { height: 52px; }
-  /* Mobile had no rule of its own and inherited the desktop 32px into a 56px
-     pill. Same 8px clearance as everywhere else: 56 - 16 and 52 - 16. */
-  .header__logo img { height: 40px; }
-  .header[data-scrolled="true"] .header__logo img { height: 36px; }
-  .mobile-panel { top: 80px; }
+
+  /* W14-16. Teaser cards stack. */
+  .teasers { grid-template-columns: minmax(0, 1fr); }
+  .section--teaser { padding: 40px 0; }
+
+  /* W14-12. Fence cards, one column. */
+  .fences { grid-template-columns: minmax(0, 1fr); }
+
+  /* W14-11. Carport chooser, models and steps go to one column. */
+  .bento, .models, .csteps { grid-template-columns: minmax(0, 1fr); }
+  .bento__tile--wide { grid-column: auto; }
+
+  /* W14-10. One tile card per row. */
+  .tiles { grid-template-columns: minmax(0, 1fr); }
+  .tile__amount { font-size: 24px; }
+
+  /* W14-09. The arrows drop below the heading, and the corner labels tighten. */
+  .ba__head { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .ba__arrow { width: 48px; height: 48px; }
+  .ba__label { bottom: 12px; height: 30px; padding: 0 10px; font-size: 12px; }
+  .ba__label--before { left: 12px; }
+  .ba__label--after { right: 12px; }
+
+  /* W14-08. Offer cards stack to one column, and a card with an image stacks its
+     image above its text. */
+  .offers { grid-template-columns: minmax(0, 1fr); }
+  .offer { padding: 24px; }
+  .offer__n { font-size: 72px; right: 16px; }
+  .offer__title { font-size: 19px; }
+  .offer--media .offer__body { grid-template-columns: minmax(0, 1fr); }
+  .offer__cta { width: 100%; align-self: stretch; }
 
   /* W14-06. Below 768px the catalog panel takes the same fixed sheet as the
      hamburger panel, and a subcategory list is a drill-down over it. */

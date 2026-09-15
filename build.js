@@ -131,7 +131,7 @@ const PAGES = [
 
 // Keys whose value is already HTML built by this file. Everything else is
 // escaped on substitution.
-const RAW_KEYS = new Set(['catalogMenu',
+const RAW_KEYS = new Set(['catalogMenu', 'productTeaser', 'beforeAfter', 'roofOffers', 'socialRow',
   // demoAttr is a whole attribute, ` data-demo="..."`, not an attribute value:
   // it is either present or absent. Its inner text is escaped where it is
   // built, so what lands here is already safe. Escaping it again turned the
@@ -283,7 +283,11 @@ const RELATED = require('./content/related-services.json');
 // page to open on what the service IS. The one-liner is not lost — it still
 // carries the meta description, og:description, the homepage card and the
 // Service schema.
-const svcAnswer = (l, slug) => esc(l.strings[`svcContent.${slug}.answer`]);
+// W14-03. An answer may hold several lines (T-08, T-09); each renders as its own
+// paragraph. A one-line answer renders exactly as before.
+const svcAnswer = (l, slug) => l.strings[`svcContent.${slug}.answer`].split('\n')
+  .map((line) => line.trim()).filter(Boolean)
+  .map((line) => `<p class="hero__sub svc-answer__p">${esc(line)}</p>`).join('\n        ');
 
 /* A specification table, only where the page's own content already supports
    one. Six services have one; reparatii, proiectare-3d and industrial do not,
@@ -391,9 +395,12 @@ function serviceHeadVars(l, slug, i) {
   const candidates = [title + inCity + BRAND, title + BRAND, title];
   const metaTitle = candidates.find((c) => c.length <= TITLE_MAX) || candidates[2];
 
-  const coverage = l.strings['band.coverageLine'];
-  const withCoverage = `${desc} ${coverage}`;
+  // W14-05b. band.coverageLine left the locale files at W12-09 and is composed by
+  // coverageLine(l); reading it from l.strings returned undefined, and 18 live
+  // service descriptions ended in the word "undefined".
+  const withCoverage = `${desc} ${coverageLine(l)}`;
   const metaDesc = withCoverage.length <= DESC_MAX ? withCoverage : desc;
+  if (/\bundefined\b/.test(metaDesc)) die(`meta description for ${slug} (${l.code}) contains "undefined": ${metaDesc}`);
 
   // og:image is this service's own first real cover, not the site fallback.
   // A social card wants the work, not the logo.
@@ -649,6 +656,483 @@ ${rows}
     `;
 }
 
+// --- W14-07, the social row on the hero card (S-07) --------------------------
+
+/* Three profile links under the hero claim's CTA, read from content/social.json,
+   which is the one place their hrefs are written for this row. The icons are the
+   footer's own inline SVGs, so no image file and no icon library is added: the
+   repo has neither, and has no dependencies at all.
+
+   Presence, not silence (docs/CLAUDE.md section 13): a file without a links
+   array fails the build rather than rendering an empty row, and so does an icon
+   id this function has no drawing for. */
+const SOCIAL_FILE = 'content/social.json';
+const SOCIAL = JSON.parse(fs.readFileSync(SOCIAL_FILE, 'utf8'));
+if (!Array.isArray(SOCIAL.links)) die(`${SOCIAL_FILE} has no "links" array.`);
+const SOCIAL_ICONS = {
+  facebook: '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>',
+  instagram: '<rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1.1"></circle>',
+  tiktok: '<path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5c.34 0 .68.05 1 .15"></path><path d="M14 3.5c.4 2.6 2.4 4.6 5 4.9"></path>',
+};
+function socialRow(l) {
+  if (SOCIAL.links.length === 0) return '';
+  const items = SOCIAL.links.map((s, i) => {
+    if (!SOCIAL_ICONS[s.id]) die(`${SOCIAL_FILE}: links[${i}] id "${s.id}" has no icon in build.js.`);
+    if (!REAL(s.label)) die(`${SOCIAL_FILE}: links[${i}] has no label.`);
+    if (!/^https:\/\//.test(s.href || '')) die(`${SOCIAL_FILE}: links[${i}] href "${s.href}" is not an https URL.`);
+    return `          <li><a href="${esc(s.href)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(s.label)}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SOCIAL_ICONS[s.id]}</svg></a></li>`;
+  }).join('\n');
+  return `<ul class="hero-claim__social" aria-label="${esc(l.strings['footer.socialHeading'])}">
+${items}
+        </ul>`;
+}
+
+// --- W14-08, the acoperișuri offer cards (S-02) ------------------------------
+
+/* Four roofing jobs as cards, anatomy from the wave 14 audit section 3.2: a
+   brand orange top border, a ghost numeral 01 to 04 top right, the image left at
+   0.81:1, a description, a bold options label and bulleted list on cards 01 and
+   03 only, and the CTA at the foot of the right column.
+
+   The offer set and the three metal tile origins are the dispatch's. Every other
+   claim restates copy the site already carries on the roofing service page: what
+   is fitted, over new and existing structures, with which coverings.
+
+   Images are per card and only ever real files. A card whose image file is not
+   in public/img/ renders without the image column rather than with a
+   placeholder (master plan section 7: a slot with no photo is removed, not
+   filled). Any file that does land is already held to R-W by the provenance
+   gate, which fails on an image without a row. */
+const ROOF_OFFER_COUNT = 4;
+const ROOF_OFFERS_WITH_OPTIONS = [0, 2];
+
+function roofOfferImage(i, alt) {
+  const id = `offer-roof-0${i + 1}`;
+  if (!fs.existsSync(`public/img/${id}.jpg`)) return '';
+  if (!REAL(alt)) die(`public/img/${id}.jpg exists but roofOffers.items.${i}.alt is not real. An image that lands brings its alt text in both locales.`);
+  const retina = fs.existsSync(`public/img/${id}@2x.jpg`)
+    ? ` srcset="${BASE}/img/${id}.jpg 1x, ${BASE}/img/${id}@2x.jpg 2x"` : '';
+  return `<div class="offer__media"><img src="${BASE}/img/${id}.jpg"${retina} alt="${esc(alt)}" width="600" height="740" loading="lazy" decoding="async"></div>`;
+}
+
+function roofOffers(l) {
+  const s = (k) => l.strings[`roofOffers.${k}`];
+  const cards = Array.from({ length: ROOF_OFFER_COUNT }, (_, i) => {
+    const n = String(i + 1).padStart(2, '0');
+    const media = roofOfferImage(i, s(`items.${i}.alt`));
+    const options = ROOF_OFFERS_WITH_OPTIONS.includes(i)
+      ? `
+            <p class="offer__options-label">${esc(s('optionsLabel'))}</p>
+            <ul class="offer__options">
+              <li>${esc(s('options.0'))}</li>
+              <li>${esc(s('options.1'))}</li>
+              <li>${esc(s('options.2'))}</li>
+            </ul>` : '';
+    return `      <article class="offer${media ? ' offer--media' : ''}" data-reveal data-stagger="${i}">
+        <p class="offer__n" aria-hidden="true">${n}</p>
+        <h3 class="offer__title">${esc(s(`items.${i}.title`))}</h3>
+        <div class="offer__body">
+          ${media}
+          <div class="offer__text">
+            <p class="offer__desc">${esc(s(`items.${i}.desc`))}</p>${options}
+            <a class="btn btn--primary offer__cta" href="#oferta">${esc(l.strings['header.cta'])}</a>
+          </div>
+        </div>
+      </article>`;
+  }).join('\n');
+  return `<section class="section section--light section--divided" id="acoperisuri" aria-labelledby="acoperisuri-h">
+  <div class="container">
+    <p class="eyebrow" data-reveal>${esc(s('eyebrow'))}</p>
+    <h2 id="acoperisuri-h" data-reveal>${esc(s('h2'))}</h2>
+    <p class="lede" data-reveal>${esc(s('lede'))}</p>
+    <div class="offers">
+${cards}
+    </div>
+  </div>
+</section>
+`;
+}
+
+// --- W14-09, the before/after slider (S-03) ----------------------------------
+
+/* One project visible at a time, from content/before-after.json. With an empty
+   list this returns '' and the section does not exist: no heading, no padding,
+   no gap on the page. That is the shipped state until the client supplies
+   before/after pairs, which can only honestly be their own site photographs
+   (audit 5.1 classifies every pair as "RC photo only").
+
+   Component per audit 3.3: the after image underneath, the before image on top
+   clipped by `clip-path: inset()` driven by a `--position` custom property, a
+   full-height handle with a centred pill and grip bars, labels fixed to the
+   frame corners, arrow buttons in the header row that wrap at both ends.
+
+   Presence, not silence (docs/CLAUDE.md section 13): a file without a
+   `projects` array fails the build, and so does a project whose title or either
+   alt is not real in both locales, or whose image files are missing. */
+const BA_FILE = 'content/before-after.json';
+const BEFORE_AFTER = JSON.parse(fs.readFileSync(BA_FILE, 'utf8'));
+if (!Array.isArray(BEFORE_AFTER.projects)) die(`${BA_FILE} has no "projects" array. No projects is [], never a missing key.`);
+
+function beforeAfter(l) {
+  const projects = BEFORE_AFTER.projects;
+  if (projects.length === 0) return '';
+  const t = (k) => esc(l.strings[`beforeAfter.${k}`]);
+  const img = (id, alt, cls) => {
+    if (!fs.existsSync(`public/img/${id}.jpg`)) die(`${BA_FILE}: public/img/${id}.jpg does not exist.`);
+    const retina = fs.existsSync(`public/img/${id}@2x.jpg`) ? ` srcset="${BASE}/img/${id}.jpg 1x, ${BASE}/img/${id}@2x.jpg 2x"` : '';
+    return `<img class="${cls}" src="${BASE}/img/${id}.jpg"${retina} alt="${esc(alt)}" width="1180" height="664" loading="lazy" decoding="async" draggable="false">`;
+  };
+  const items = projects.map((p, i) => {
+    const where = `projects[${i}]`;
+    for (const f of ['title', 'alt_before', 'alt_after']) {
+      if (!p[f] || !REAL(p[f][l.code])) die(`${BA_FILE}: ${where}.${f} is not real for ${l.code}.`);
+    }
+    return `      <figure class="ba__item" data-ba-item${i === 0 ? '' : ' hidden'}>
+        <h3 class="sr-only">${esc(p.title[l.code])}</h3>
+        <div class="ba__compare" style="--position: 50%;">
+          ${img(p.after, p.alt_after[l.code], 'ba__after')}
+          <div class="ba__before">${img(p.before, p.alt_before[l.code], 'ba__before-img')}</div>
+          <div class="ba__handle" role="slider" tabindex="0" aria-label="${t('handle')}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+            <span class="ba__pill" aria-hidden="true"><span></span><span></span><span></span></span>
+          </div>
+          <span class="ba__label ba__label--before" aria-hidden="true">${t('before')}</span>
+          <span class="ba__label ba__label--after" aria-hidden="true">${t('after')}</span>
+        </div>
+      </figure>`;
+  }).join('\n');
+  const chevron = (points) => `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="${points}"></polyline></svg>`;
+  // One project needs no navigation, so the arrows render only for two or more.
+  const nav = projects.length > 1 ? `
+      <div class="ba__nav">
+        <button class="ba__arrow" type="button" data-ba-prev aria-label="${t('prev')}">${chevron('15 6 9 12 15 18')}</button>
+        <button class="ba__arrow" type="button" data-ba-next aria-label="${t('next')}">${chevron('9 6 15 12 9 18')}</button>
+      </div>` : '';
+  return `<section class="section section--light section--divided ba" id="inainte-dupa" aria-labelledby="ba-h" data-ba>
+  <div class="container">
+    <div class="ba__head">
+      <div>
+        <p class="eyebrow" data-reveal>${t('eyebrow')}</p>
+        <h2 id="ba-h" data-reveal>${t('h2')}</h2>
+      </div>${nav}
+    </div>
+    <div class="ba__stage">
+${items}
+    </div>
+  </div>
+</section>
+`;
+}
+
+// --- W14-10, the metal tile grid (S-04) --------------------------------------
+
+/* Standart and Premium metal tile, one card per model, from
+   content/tigla-metalica.json. Every value comes from the wave 14 audit 2.1 and
+   the file says so; nothing is derived or rounded here except the decimal
+   separator, which follows the locale.
+
+   Ruling R-X: list prices only. No discount badge, no percentage, no struck
+   price, and the scarcity gate would fail the build's output if one appeared.
+
+   Colour chips carry the code, the finish and the colour's name as text. They
+   carry no swatch: a swatch is a colour value, docs/CLAUDE.md section 3 allows
+   ten, and the legend would add up to fifteen. Q-W14-08.
+
+   Presence, not silence: a missing models array or legend fails the build, as
+   does a grade other than standart or premium (Econom is excluded by the
+   dispatch, and a third grade must not slip in by data), a colour code that is
+   not in the legend, and a required field that is empty. */
+const TIGLA_FILE = 'content/tigla-metalica.json';
+const TIGLA = JSON.parse(fs.readFileSync(TIGLA_FILE, 'utf8'));
+if (!Array.isArray(TIGLA.models) || !Array.isArray(TIGLA.legend)) die(`${TIGLA_FILE} needs both a "models" and a "legend" array.`);
+const TIGLA_LEGEND = new Map(TIGLA.legend.map((c) => [c.code, c]));
+const TIGLA_GRADES = ['standart', 'premium'];
+
+function tiglaGrid(l) {
+  if (TIGLA.models.length === 0) return '';
+  const t = (k) => l.strings[`tigla.${k}`];
+  const dec = (v) => (l.code === 'ro' || l.code === 'ru') ? String(v).replace('.', ',') : String(v);
+  const cards = TIGLA.models.map((m, i) => {
+    const where = `models[${i}]`;
+    if (!m.name || !REAL(m.name[l.code])) die(`${TIGLA_FILE}: ${where}.name is not real for ${l.code}.`);
+    if (!Array.isArray(m.variants) || m.variants.length === 0) die(`${TIGLA_FILE}: ${where} has no variants.`);
+    const img = `public/img/tigla-${m.id}.jpg`;
+    let media = '';
+    if (fs.existsSync(img)) {
+      const alt = l.strings[`tigla.alt.${m.id}`];
+      if (!REAL(alt)) die(`${img} exists but tigla.alt.${m.id} is not real in ${l.code}.`);
+      media = `\n        <div class="tile__media"><img src="${BASE}/img/tigla-${m.id}.jpg" alt="${esc(alt)}" width="480" height="480" loading="lazy" decoding="async"></div>`;
+    }
+    const variants = m.variants.map((v, j) => {
+      const w = `${where}.variants[${j}]`;
+      if (!TIGLA_GRADES.includes(v.grade)) die(`${TIGLA_FILE}: ${w}.grade "${v.grade}" is not standart or premium.`);
+      for (const f of ['thickness_mm', 'warranty_years', 'unit', 'list_price_lei']) {
+        if (!REAL(v[f])) die(`${TIGLA_FILE}: ${w}.${f} is empty.`);
+      }
+      if (!['m2', 'piece'].includes(v.unit)) die(`${TIGLA_FILE}: ${w}.unit "${v.unit}" is not m2 or piece.`);
+      if (v.unit === 'piece' && !REAL(v.piece_area_m2)) die(`${TIGLA_FILE}: ${w} is sold by the piece but has no piece_area_m2.`);
+      if (!Array.isArray(v.colours) || v.colours.length === 0) die(`${TIGLA_FILE}: ${w} has no colours.`);
+      const unknown = v.colours.filter((c) => !TIGLA_LEGEND.has(c));
+      if (unknown.length) die(`${TIGLA_FILE}: ${w} lists colour codes not in the legend: ${unknown.join(', ')}.`);
+      const chips = (matt) => v.colours.filter((c) => c.endsWith('M') === matt).map((c) =>
+        `<li class="tile__colour"><span class="tile__code">${esc(c)}</span> ${esc(TIGLA_LEGEND.get(c).name[l.code])}</li>`).join('');
+      const group = (matt) => {
+        const html = chips(matt);
+        return html ? `
+              <p class="tile__finish">${esc(t(matt ? 'matt' : 'gloss'))}</p>
+              <ul class="tile__colours">${html}</ul>` : '';
+      };
+      const unit = v.unit === 'm2' ? t('perM2') : t('perPiece');
+      const rows = [
+        [t('thickness'), `${dec(v.thickness_mm)} ${t('mm')}`],
+        REAL(v.working_width_mm) ? [t('workingWidth'), `${v.working_width_mm} ${t('mm')}`] : null,
+        v.unit === 'piece' ? [t('pieceArea'), `${dec(v.piece_area_m2)} ${t('m2')}`] : null,
+        // Romanian counts from 20 take "de": 10 ani, 20 de ani. yearsMany carries it.
+        [t('warranty'), `${v.warranty_years} ${Number(v.warranty_years) >= 20 ? t('yearsMany') : t('years')}`],
+      ].filter(Boolean).map(([k, val]) => `
+              <div><dt>${esc(k)}</dt><dd>${esc(val)}</dd></div>`).join('');
+      return `
+          <div class="tile__variant tile__variant--${v.grade}">
+            <h4 class="tile__grade">${esc(t(v.grade))}</h4>
+            <p class="tile__price"><span class="tile__amount">${esc(v.list_price_lei)}</span> ${esc(unit)}</p>
+            <dl class="tile__specs">${rows}
+            </dl>
+            <div class="tile__palette">
+              <p class="tile__palette-h">${esc(t('colours'))}</p>${group(true)}${group(false)}
+            </div>
+          </div>`;
+    }).join('');
+    return `      <article class="tile" data-reveal data-stagger="${Math.min(i, 6)}">
+        <h3 class="tile__name">${esc(m.name[l.code])}</h3>${media}${variants}
+      </article>`;
+  }).join('\n');
+  return `<section class="section section--light section--divided" id="tigla-metalica" aria-labelledby="tigla-h">
+  <div class="container">
+    <p class="eyebrow" data-reveal>${esc(t('eyebrow'))}</p>
+    <h2 id="tigla-h" data-reveal>${esc(t('h2'))}</h2>
+    <div class="tiles">
+${cards}
+    </div>
+  </div>
+</section>
+`;
+}
+
+// --- W14-11, carports (S-06) -------------------------------------------------
+
+/* Three sections from content/copertine.json and the copertine.* strings,
+   structure from the wave 14 audit 4.2: a chooser of five structural families,
+   the twelve models on the dark band, and the four-step process from
+   measurement to installation. No prices: a carport is quoted after a site
+   measurement, which is also what the steps say.
+
+   Images are real files or nothing, like the offer cards: a family or model
+   whose image is not in public/img/ renders as text (Q-W14-07).
+
+   Presence, not silence: missing arrays fail the build, and so does a model in
+   no family or in two, a family naming a model that does not exist, a duplicate
+   designation, any field not real in both locales, and any competitor model code
+   surviving anywhere in the data. */
+const COP_FILE = 'content/copertine.json';
+const COP = JSON.parse(fs.readFileSync(COP_FILE, 'utf8'));
+if (!Array.isArray(COP.families) || !Array.isArray(COP.models)) die(`${COP_FILE} needs "families" and "models" arrays.`);
+if (/\bIL\s?\d{3}\b/i.test(JSON.stringify({ families: COP.families, models: COP.models }))) {
+  die(`${COP_FILE} still carries a competitor model code (IL followed by three digits). Models use Rapid Construct designations.`);
+}
+(() => {
+  const ids = new Set(COP.models.map((m) => m.id));
+  const seen = new Map();
+  const designations = new Set();
+  for (const m of COP.models) {
+    if (designations.has(m.designation)) die(`${COP_FILE}: designation ${m.designation} is used twice.`);
+    designations.add(m.designation);
+  }
+  for (const f of COP.families) {
+    for (const id of f.models) {
+      if (!ids.has(id)) die(`${COP_FILE}: family ${f.id} names model ${id}, which does not exist.`);
+      if (seen.has(id)) die(`${COP_FILE}: model ${id} is in both ${seen.get(id)} and ${f.id}.`);
+      seen.set(id, f.id);
+    }
+  }
+  const orphans = COP.models.filter((m) => !seen.has(m.id)).map((m) => m.id);
+  if (orphans.length) die(`${COP_FILE}: models in no family: ${orphans.join(', ')}.`);
+})();
+
+function copertine(l) {
+  if (COP.models.length === 0) return '';
+  const t = (k) => esc(l.strings[`copertine.${k}`]);
+  const txt = (o, where) => {
+    if (!o || !REAL(o[l.code])) die(`${COP_FILE}: ${where} is not real for ${l.code}.`);
+    return esc(o[l.code]);
+  };
+  const byId = new Map(COP.models.map((m) => [m.id, m]));
+  const image = (id, alt, w, h) => {
+    if (!fs.existsSync(`public/img/${id}.jpg`)) return '';
+    if (!REAL(alt)) die(`public/img/${id}.jpg exists but its alt text is not real in ${l.code}.`);
+    return `<div class="cop-media"><img src="${BASE}/img/${id}.jpg" alt="${esc(alt)}" width="${w}" height="${h}" loading="lazy" decoding="async"></div>`;
+  };
+
+  const tiles = COP.families.map((f, i) => {
+    const w = `families[${i}]`;
+    const media = image(`copertina-fam-${f.id}`, f.alt && f.alt[l.code], 800, 500);
+    const chips = f.models.map((id) => `<li class="model-chip">${esc(byId.get(id).designation)}</li>`).join('');
+    return `      <article class="bento__tile${i === 0 ? ' bento__tile--wide' : ''}" data-reveal data-stagger="${Math.min(i, 6)}">
+        ${media}<h3 class="bento__title">${txt(f.title, `${w}.title`)}</h3>
+        <p class="bento__text">${txt(f.text, `${w}.text`)}</p>
+        <ul class="bento__chips">${chips}</ul>
+      </article>`;
+  }).join('\n');
+
+  const models = COP.models.map((m, i) => {
+    const w = `models[${i}]`;
+    const media = image(`copertina-${m.id}`, m.alt && m.alt[l.code], 800, 600);
+    return `      <article class="model" data-reveal data-stagger="${Math.min(i, 6)}">
+        ${media}<p class="model__cat">${txt(m.category, `${w}.category`)}</p>
+        <h3 class="model__name">${esc(m.designation)}</h3>
+        <p class="model__desc">${txt(m.descriptor, `${w}.descriptor`)}</p>
+      </article>`;
+  }).join('\n');
+
+  const steps = [0, 1, 2, 3].map((i) => `      <li class="csteps__step" data-reveal data-stagger="${i}">
+        <span class="csteps__n" aria-hidden="true">${i + 1}</span>
+        <h3 class="csteps__title">${t(`steps.${i}.title`)}</h3>
+        <p class="csteps__text">${t(`steps.${i}.text`)}</p>
+      </li>`).join('\n');
+
+  return `<section class="section section--light section--divided" id="copertine" aria-labelledby="copertine-h">
+  <div class="container">
+    <p class="eyebrow" data-reveal>${t('eyebrow')}</p>
+    <h2 id="copertine-h" data-reveal>${t('chooserH2')}</h2>
+    <p class="lede" data-reveal>${t('chooserLede')}</p>
+    <div class="bento">
+${tiles}
+    </div>
+  </div>
+</section>
+<section class="section section--dark" id="copertine-modele" aria-labelledby="copertine-modele-h">
+  <div class="container">
+    <p class="eyebrow" data-reveal>${t('eyebrow')}</p>
+    <h2 id="copertine-modele-h" data-reveal>${t('modelsH2')}</h2>
+    <p class="lede cop-lede--dark" data-reveal>${t('modelsLede')}</p>
+    <div class="models">
+${models}
+    </div>
+  </div>
+</section>
+<section class="section section--light" id="copertine-pasi" aria-labelledby="copertine-pasi-h">
+  <div class="container">
+    <p class="eyebrow" data-reveal>${t('eyebrow')}</p>
+    <h2 id="copertine-pasi-h" data-reveal>${t('stepsH2')}</h2>
+    <ol class="csteps">
+${steps}
+    </ol>
+  </div>
+</section>
+`;
+}
+
+// --- W14-12, louvre fences (S-05), component only ----------------------------
+
+/* BLOCKED on supplier identity (Q-W14-09). The component exists and its data
+   file is empty, so nothing renders, nothing is linked from the nav, and the
+   sitemap is untouched (it lists pages, and this is a homepage section with no
+   anchor anywhere in the navigation).
+
+   Deliberately generic: a model is a name, one line of text, and an optional
+   image. No field exists for a model code, a price, a thickness or a warranty,
+   because the dispatch forbids writing any of those until the supplier is known,
+   and a field that exists invites a value. When the supplier is named, the fields
+   that supplier can actually vouch for are added in the same commit as the data.
+
+   Presence, not silence: a file without a models array fails the build, and so
+   does a model whose name or line is not real in both locales. */
+const GARDURI_FILE = 'content/garduri.json';
+const GARDURI = JSON.parse(fs.readFileSync(GARDURI_FILE, 'utf8'));
+if (!Array.isArray(GARDURI.models)) die(`${GARDURI_FILE} has no "models" array. No models is [], never a missing key.`);
+
+function garduri(l) {
+  if (GARDURI.models.length === 0) return '';
+  const t = (k) => esc(l.strings[`garduri.${k}`]);
+  const cards = GARDURI.models.map((m, i) => {
+    const where = `models[${i}]`;
+    for (const f of ['name', 'line']) {
+      if (!m[f] || !REAL(m[f][l.code])) die(`${GARDURI_FILE}: ${where}.${f} is not real for ${l.code}.`);
+    }
+    const id = `gard-${m.id}`;
+    let media = '';
+    if (fs.existsSync(`public/img/${id}.jpg`)) {
+      if (!m.alt || !REAL(m.alt[l.code])) die(`public/img/${id}.jpg exists but ${where}.alt is not real for ${l.code}.`);
+      media = `<div class="fence__media"><img src="${BASE}/img/${id}.jpg" alt="${esc(m.alt[l.code])}" width="800" height="1000" loading="lazy" decoding="async"></div>`;
+    }
+    return `      <article class="fence" data-reveal data-stagger="${Math.min(i, 6)}">
+        ${media}<h3 class="fence__name">${esc(m.name[l.code])}</h3>
+        <p class="fence__line">${esc(m.line[l.code])}</p>
+      </article>`;
+  }).join('\n');
+  return `<section class="section section--light section--divided" id="garduri" aria-labelledby="garduri-h">
+  <div class="container">
+    <p class="eyebrow" data-reveal>${t('eyebrow')}</p>
+    <h2 id="garduri-h" data-reveal>${t('h2')}</h2>
+    <div class="fences">
+${cards}
+    </div>
+  </div>
+</section>
+`;
+}
+
+// --- W14-16, the product pages and the homepage teaser ------------------------
+
+/* Owner ruling on wave 14 deviation 4: the metal tile grid, the carports and the
+   fences leave the homepage for pages of their own, under the services root, in
+   both locales. Each page is src/product.html: breadcrumb, H1, one line, the
+   block, the quote form. The block renderers are the same functions the homepage
+   used; nothing about the blocks changes except where they render.
+
+   The homepage keeps the offer cards and the before/after slot, plus a compact
+   row of three links to these pages. All six URLs go in the sitemap, which the
+   owner's card asks for; the fences page is listed while its block is still
+   empty (Q-W14-09), because the card says all three. */
+const PRODUCT_PAGES = [
+  { slug: 'tigla-metalica', key: 'tigla', block: (l) => tiglaGrid(l), sources: ['content/tigla-metalica.json'] },
+  { slug: 'copertine', key: 'copertine', block: (l) => copertine(l), sources: ['content/copertine.json'] },
+  { slug: 'garduri', key: 'garduri', block: (l) => garduri(l), sources: ['content/garduri.json'] },
+];
+const PROD_RAW_KEYS = new Set(['catalogMenu',
+  'demoAttr', 'promoBar', 'areaServedJson', 'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
+  'prod.block', 'prod.footerLinks',
+]);
+const productTemplate = fs.readFileSync('src/product.html', 'utf8');
+const PROD_SOURCES = ['src/product.html', 'build.js', ...LOCALES.map((l) => l.file)];
+
+function productTeaser(l) {
+  const t = (k) => esc(l.strings[`pages.${k}`]);
+  const arrow = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+  const items = PRODUCT_PAGES.map((p, i) => `      <a class="teaser" href="${BASE}${SERVICES_ROOT[l.code]}${p.slug}/" data-reveal data-stagger="${i}">
+        <h3 class="teaser__title">${t(`${p.key}.title`)}</h3>
+        <p class="teaser__line">${t(`${p.key}.teaser`)}</p>
+        <span class="teaser__more">${esc(l.strings['services.linkLabel'])}${arrow}</span>
+      </a>`).join('\n');
+  return `<section class="section section--light section--divided section--teaser" aria-label="${t('teaserAria')}">
+  <div class="container">
+    <div class="teasers">
+${items}
+    </div>
+  </div>
+</section>
+`;
+}
+
+function productHeadVars(l, p) {
+  const title = l.strings[`pages.${p.key}.title`];
+  const lede = l.strings[`pages.${p.key}.lede`];
+  const inCity = l.code === 'ro' ? ` în ${PRIMARY_CITY.ro}` : ` в ${PRIMARY_CITY.ru}`;
+  const metaTitle = [title + inCity + BRAND, title + BRAND, title].find((c) => c.length <= TITLE_MAX) || title;
+  const withCoverage = `${lede} ${coverageLine(l)}`;
+  const metaDesc = withCoverage.length <= DESC_MAX ? withCoverage : lede;
+  if (/\bundefined\b/.test(metaDesc)) die(`meta description for ${p.slug} (${l.code}) contains "undefined"`);
+  return { metaTitle, metaDesc };
+}
+
 // --- W12-01, the portfolio end tile -----------------------------------------
 
 /* The seventh cell of the homepage portfolio grid. It is not a project and not
@@ -892,6 +1376,10 @@ for (const l of loaded) {
   vars.heroPanelMedia = heroPanelMedia(l, BASE);
   vars.promoBar = promoBar(l);
   vars.catalogMenu = catalogMenu(l);
+  vars.productTeaser = productTeaser(l);
+  vars.beforeAfter = beforeAfter(l);
+  vars.roofOffers = roofOffers(l);
+  vars.socialRow = socialRow(l);
   // Overrides nothing: band.coverageLine is no longer a locale key, it is
   // composed here so the sentence and the schema cannot disagree.
   vars['band.coverageLine'] = coverageLine(l);
@@ -938,7 +1426,6 @@ for (const l of loaded) {
       'svc.priceSection': PRICED_SLUGS.includes(slug) ? `<section class="section section--dark section--compact">
   <div class="container">
     <p class="eyebrow" data-reveal>${esc(l.strings['servicePage.priceH'])}</p>
-    <h2 data-reveal>${esc(l.strings['hero.priceTitle'])}</h2>
     <p class="lede" data-reveal style="color: #FFFFFF; opacity: 0.75;">${esc(l.strings['hero.priceLine1'])}</p>
   </div>
 </section>` : '',
@@ -966,6 +1453,40 @@ for (const l of loaded) {
     fs.mkdirSync(path.dirname(out), { recursive: true });
     fs.writeFileSync(out, html);
     servicePages.push({ loc: SITE + BASE + SERVICES_ROOT[l.code] + slug + '/', lang: l.code });
+  }
+
+  // --- W14-16, the three product pages --------------------------------------
+  for (const p of PRODUCT_PAGES) {
+    const out = 'dist' + SERVICES_ROOT[l.code] + p.slug + '/index.html';
+    const title = l.strings[`pages.${p.key}.title`];
+    if (!REAL(title) || !REAL(l.strings[`pages.${p.key}.lede`])) die(`pages.${p.key}.title and .lede must be real in ${l.code}.`);
+    const head = productHeadVars(l, p);
+    const prodVars = {
+      ...vars,
+      'prod.title': title,
+      'prod.lede': l.strings[`pages.${p.key}.lede`],
+      'prod.metaTitle': head.metaTitle,
+      'prod.metaDesc': head.metaDesc,
+      'prod.canonical': SITE + BASE + SERVICES_ROOT[l.code] + p.slug + '/',
+      'prod.urlRo': SITE + BASE + SERVICES_ROOT.ro + p.slug + '/',
+      'prod.urlRu': SITE + BASE + SERVICES_ROOT.ru + p.slug + '/',
+      'prod.pathRo': BASE + SERVICES_ROOT.ro + p.slug + '/',
+      'prod.pathRu': BASE + SERVICES_ROOT.ru + p.slug + '/',
+      'prod.subject': `[${l.code.toUpperCase()}] ${title} - ${SERVICES_ROOT[l.code]}${p.slug}/`,
+      'prod.block': p.block(l),
+      'prod.footerLinks': SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
+        `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join(''),
+    };
+    const missing = new Set();
+    const html = productTemplate.replace(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/g, (_, key) => {
+      if (!(key in prodVars)) { missing.add(key); return `{{${key}}}`; }
+      return PROD_RAW_KEYS.has(key) ? prodVars[key] : esc(prodVars[key]);
+    });
+    if (missing.size) die(`src/product.html references unknown keys for ${l.code}/${p.slug}: ${[...missing].join(', ')}`);
+    if (html.includes('{{')) die(`unsubstituted placeholder survived in ${out}`);
+    fs.mkdirSync(path.dirname(out), { recursive: true });
+    fs.writeFileSync(out, html);
+    console.log(`wrote ${out}  (${(html.length / 1024).toFixed(1)} KB)`);
   }
 
   for (const page of PAGES) {
@@ -1019,6 +1540,13 @@ const servicePairs = SERVICE_SLUGS
     ru: SITE + BASE + SERVICES_ROOT.ru + sg + '/',
     lastmod: lastmodOf(...SVC_SOURCES, ...coversFor(sg)),
   }));
+// W14-16. The three product pages, always listed, per the owner's card.
+const productPairs = PRODUCT_PAGES.map((p) => ({
+  ro: SITE + BASE + SERVICES_ROOT.ro + p.slug + '/',
+  ru: SITE + BASE + SERVICES_ROOT.ru + p.slug + '/',
+  lastmod: lastmodOf(...PROD_SOURCES, ...p.sources),
+}));
+servicePairs.push(...productPairs);
 fs.writeFileSync('dist/sitemap.xml',
   '<?xml version="1.0" encoding="UTF-8"?>\n' +
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +

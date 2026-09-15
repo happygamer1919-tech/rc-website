@@ -33,7 +33,7 @@
       if (e.key === 'Escape' && panel.getAttribute('data-open') === 'true') { setMenu(false); toggle.focus(); }
     });
     window.addEventListener('resize', function () {
-      if (window.innerWidth > 768 && panel.getAttribute('data-open') === 'true') setMenu(false);
+      if (window.innerWidth > 1100 && panel.getAttribute('data-open') === 'true') setMenu(false); // W14-15: the header collapses at 1100px
     });
   }
 
@@ -111,6 +111,77 @@
       });
       backBtn.addEventListener('click', function () { closeSubs(null); expand.focus(); });
     });
+  })();
+
+  /* --- W14-09 before/after slider ------------------------------------------- */
+  /* Present only when content/before-after.json has projects. Pointer down
+     anywhere on the frame jumps the divider there and a drag follows it; hover
+     alone does nothing. Arrow keys on the handle move it 5 points, Home and End
+     go to the ends. The arrow buttons show the previous or next project and wrap
+     at both ends. The compare frame is touch-action: pan-y, so a vertical swipe
+     still scrolls: no handler here calls preventDefault on a scroll gesture. */
+  (function () {
+    var root = document.querySelector('[data-ba]');
+    if (!root) return;
+    var items = root.querySelectorAll('[data-ba-item]');
+
+    function set(compare, value) {
+      var v = Math.max(0, Math.min(100, value));
+      v = Math.round(v * 10) / 10;
+      compare.style.setProperty('--position', v + '%');
+      compare.querySelector('.ba__handle').setAttribute('aria-valuenow', String(Math.round(v)));
+    }
+    /* 0 is a real position. `|| 50` read it as missing and snapped the divider
+       back to the middle on the next key press; caught by the acceptance test. */
+    function current(compare) {
+      var v = parseFloat(compare.style.getPropertyValue('--position'));
+      return isNaN(v) ? 50 : v;
+    }
+
+    Array.prototype.forEach.call(items, function (item) {
+      var compare = item.querySelector('.ba__compare');
+      var handle = compare.querySelector('.ba__handle');
+      var dragging = null;
+      function fromEvent(e) {
+        var r = compare.getBoundingClientRect();
+        set(compare, ((e.clientX - r.left) / r.width) * 100);
+      }
+      compare.addEventListener('pointerdown', function (e) {
+        if (e.button !== 0) return;
+        dragging = e.pointerId;
+        compare.setPointerCapture(e.pointerId);
+        fromEvent(e);
+      });
+      compare.addEventListener('pointermove', function (e) {
+        if (dragging === e.pointerId) fromEvent(e);
+      });
+      function end(e) {
+        if (dragging !== e.pointerId) return;
+        dragging = null;
+        if (compare.hasPointerCapture(e.pointerId)) compare.releasePointerCapture(e.pointerId);
+      }
+      compare.addEventListener('pointerup', end);
+      compare.addEventListener('pointercancel', end);
+      handle.addEventListener('keydown', function (e) {
+        var step = { ArrowLeft: -5, ArrowDown: -5, ArrowRight: 5, ArrowUp: 5 }[e.key];
+        if (step !== undefined) { e.preventDefault(); set(compare, current(compare) + step); }
+        else if (e.key === 'Home') { e.preventDefault(); set(compare, 0); }
+        else if (e.key === 'End') { e.preventDefault(); set(compare, 100); }
+      });
+    });
+
+    function show(delta) {
+      var at = 0;
+      Array.prototype.forEach.call(items, function (item, i) { if (!item.hasAttribute('hidden')) at = i; });
+      var next = (at + delta + items.length) % items.length;
+      Array.prototype.forEach.call(items, function (item, i) {
+        if (i === next) item.removeAttribute('hidden'); else item.setAttribute('hidden', '');
+      });
+    }
+    var prev = root.querySelector('[data-ba-prev]');
+    var nextBtn = root.querySelector('[data-ba-next]');
+    if (prev) prev.addEventListener('click', function () { show(-1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { show(1); });
   })();
 
   /* --- portfolio filters --------------------------------------------------- */

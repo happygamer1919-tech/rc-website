@@ -1255,7 +1255,7 @@ that the photographs, the service artwork and the logo are theirs to publish.
 The step photos and the hero panel need their origin named first. Supplier logos
 used only to name a supplier are the lowest risk and can wait.
 
-## Q-W14-02 · RC-103 strings T-02 to T-09 are not in the dispatch · OPEN, opened 2026-09-15 (W14-03)
+## Q-W14-02 · RC-103 strings T-02 to T-09 are not in the dispatch · ANSWERED 2026-09-15, strings supplied in the close-out dispatch · opened 2026-09-15 (W14-03)
 
 **No default ships, and none can.** RC-103 says: "Apply T-02 through T-09
 exactly as given in `docs/audits/wave-14-copy-delta.md`, which you author first
@@ -1270,7 +1270,7 @@ out inventing copy in any case.
 it replaces (a locale key such as `hero.h1`, or the visible current text). With
 the target named, the delta file maps one-to-one and RC-104 can follow at once.
 
-## Q-W14-03 · The site now serves from rapidconstruct.md, and every canonical still names rapidconstructmd.com · OPEN, opened 2026-09-15 (found at W14-02, gate 9)
+## Q-W14-03 · The site now serves from rapidconstruct.md, and every canonical still names rapidconstructmd.com · ANSWERED 2026-09-15, rapidconstruct.md is the real domain (RC-117) · opened 2026-09-15 (found at W14-02, gate 9)
 
 **Shipped default: nothing changed.** Every value involved (`SITE_URL`, the
 CNAME, canonical, hreflang, og:url, the sitemap, the GeneralContractor JSON-LD)
@@ -1318,3 +1318,286 @@ about 2026-09-10, which matches the manual re-run of the W13-03 deploy that day.
 **Recommended: decide (a) or (b) today.** Every day the canonical points at a
 404 costs indexing. Until then, wave 14's live verifications run against
 `https://rapidconstruct.md`, because that is where the deployed build is.
+
+
+## Q-W14-04 · What the catalog menu lists, and where each row goes · ANSWERED 2026-09-15, the audit 1.2 taxonomy (RC-106b) · opened 2026-09-15 (W14-06)
+
+**Shipped default: the menu is built and switched off.** `content/catalog.json`
+holds `"categories": []`, and while it is empty neither the Catalog button nor
+its panel exists on any page. Filling it is a data edit with no code change;
+`build.js` validates the file on every build.
+
+**Why it shipped empty.** RC-106 gives the taxonomy as audit section 1.2: 7
+top-level categories, 2 with children, 7 subcategories. Those are fatade3d's
+product categories (thermal insulation systems, decorative plasters, ceramic
+tiles, decorative elements, paints, lighting systems, other building materials).
+Two things are missing, and neither is mine to fill:
+
+1. **The labels.** Copying fatade3d's categories would list products Rapid
+   Construct is not shown selling anywhere on the site, which `docs/CLAUDE.md`
+   section 5 forbids ("not a service").
+2. **The target of every row.** No page on the site corresponds to any of those
+   categories. A menu row that opens nothing is a dead link, and `docs/CLAUDE.md`
+   section 9 requires a link to mean what it says.
+
+**Options:**
+
+  (a) **Rapid Construct's own catalog, pointing at pages that exist.** For
+      example: Acoperișuri, with Țiglă metalică and Copertine as children, once
+      RC-108, RC-110 and RC-111 put those sections on the page, each row linking
+      to its section anchor; plus the service pages as the remaining rows.
+  (b) **The audit 1.2 taxonomy verbatim**, which needs a destination page per
+      category first. That is new pages, not a menu.
+  (c) Keep the menu off.
+
+**Recommended: (a).** It is honest about what the company sells, every row lands
+somewhere real, and the file format already takes it. Send the rows as label
+RO, label RU, and target, and the menu is live in one commit.
+
+**Filling the file is not enough on its own, and this is measured.** A local
+build carrying the audit's 7/2/7 shape was driven in headless Chrome. The
+interaction passes: click-only open, hover flyout, orange active row, keyboard,
+Escape, the mobile drill-down, and the pill fits at 390, 360 and 320px. **The
+desktop header does not fit the toggle.** At 1440 the toggle and its gap cost
+115px (RO) and 119px (RU), and the first nav link slides under the wordmark by
+24px and 37px, which Lighthouse reports as a target-size failure (accessibility
+97 against the floor of 100). Tightening the header's own gaps and nav type
+fixed RO at 1280 and above but left RU overlapping at every desktop width, so
+that tuning was not shipped.
+
+**So switching the menu on needs one more decision, about the header:** what
+gives up its room. Candidates, none measured yet: drop the "Acasă" nav link (the
+wordmark already links home), hide the phone number text on desktop as it
+already is at 1024px and below, or move the whole desktop header to the
+hamburger below a wider breakpoint (see Q-W14-05). RC-106 is marked blocked on
+this question and on the labels above; its PR is open and not merged.
+
+## Q-W14-05 · The live header overlaps itself between 769 and 1100px · ANSWERED 2026-09-15, collapse at 1100px (RC-115) · opened 2026-09-15 (found at W14-06)
+
+**Shipped default: nothing changed.** This is a defect already on `main`, found
+while testing RC-106. No wave 14 card covers the header breakpoints, and where
+the header switches to the hamburger is a design decision.
+
+**Measured on the live site**, `https://rapidconstruct.md`, build-sha 2ebedfb,
+cache-busted, every visible link and button in the header pill checked pairwise
+for intersecting boxes:
+
+| Width | RO | RU |
+|---|---|---|
+| 1440, 1180, 1024 | clean | clean |
+| 1100 | wordmark covers "Acasă" by 17px; "Contacte" runs 17px into the phone link | 28px and 28px |
+| 1025 | 52px and 54px | 66px and 66px |
+| 900 | 14px and 14px | 25px and 18px |
+| 800 | 49px; "Contacte" also 34px into "Solicită ofertă" | 66px; 45px into "Получить смету" |
+| 769 | 49px, plus "Servicii" 10px under the wordmark; "Contacte" 49px into the CTA | 66px; "Услуги" 5px; 61px into the CTA |
+
+**Why nothing caught it.** The nav is `flex: 1 1 auto; min-width: 0`, so it
+shrinks and its links slide under their neighbours while the pill's
+`scrollWidth` never grows: an overflow check reads clean. Lighthouse runs at
+1440 on the desktop preset, which is clean. The overlap shows only between the
+768px mobile switch and the widths the desktop layout was designed for.
+
+**What a visitor sees at, say, a 1024 to 1100px laptop or a landscape tablet:**
+nav labels printed on top of the logo and the phone number, and a tap on one
+target can land on the other.
+
+**Options:**
+
+  (a) **Switch to the hamburger header at 1100px instead of 768px.** One
+      breakpoint change; the mobile header is already built and tested.
+  (b) Keep the desktop header down to 769px and make room: hide the phone
+      number text (already done at 1024 and below), shorten the gaps, and drop
+      the nav font a step, re-measured at every width in the table.
+  (c) Leave it.
+
+**Recommended: (a).** It removes the whole band of widths rather than tuning
+pixels inside it, and it does not change the desktop header anyone has approved.
+
+## Q-W14-06 · The social row links to the three profiles the site already names; confirm them · OPEN, opened 2026-09-15 (W14-07)
+
+**Shipped default: the three URLs the site has linked since wave 1**, not
+placeholders.
+
+RC-107 says "URLs blocked pending Ivan. Ship with the row present and hrefs set
+to a placeholder constant in one file." The row reads its hrefs from one file,
+`content/social.json`, as asked. The values in it are not placeholders, and that
+is a deviation, for two reasons:
+
+1. **A placeholder is a dead link on the live page.** `href="#"` goes nowhere
+   and fails `docs/CLAUDE.md` section 9, and `build.js` already records that an
+   anchor without a real href fails Lighthouse's crawlable-anchors audit. The row
+   sits in the hero, above the fold, on both homepages.
+2. **The URLs were not unknown.** The footer has linked these three since the
+   first build, and the homepage JSON-LD `sameAs` carries the same three:
+
+| Platform | URL |
+|---|---|
+| Facebook | `https://www.facebook.com/rapidconstructofficial` |
+| Instagram | `https://www.instagram.com/rapid.construct/` |
+| TikTok | `https://www.tiktok.com/@rapid.construct` |
+
+**What to send:** "confirmed", or the correct URLs. A change is one edit to
+`content/social.json`. If a URL is wrong, the footer and `sameAs` are wrong too:
+the footer is a SELF edit, `sameAs` is in the R-V STOP set.
+
+## Q-W14-07 · The wave 14 image slots have no permitted source · ANSWERED 2026-09-15, approved origins added to R-W (RC-118) · opened 2026-09-15 (W14-08)
+
+**Shipped default: every such slot ships without its image.** The acoperișuri
+offer cards render their text column only. Their four image slots are
+registered in `scripts/slots.js` (`offer-roof-01` to `04`, 0.81:1), so a file
+dropped into `photos-raw/` goes through the pipeline and, the moment it lands in
+`public/img/`, the card switches to the two-column layout with no code change.
+The build refuses an image that arrives without alt text in both locales, and
+R-W refuses one without a provenance row.
+
+**Why no image was sourced.** RC-108 asks for "stock-type roofing scenes, R-W
+provenance required"; RC-110 for manufacturer profile renders; RC-111 for
+architectural visualisations. Three things stand in the way, and none is mine to
+waive:
+
+1. **The master plan forbids it.** Section 7: "Real Rapid Construct work only.
+   If a slot has no real photo, the slot is removed rather than filled with
+   stock." The dispatch conflicts with that rule, and `docs/CLAUDE.md` says to
+   ask before deviating from the master plan. No ruling amends section 7.
+2. **No source is approved.** A stock library is a new vendor, which needs your
+   sign-off, and its licence terms would need recording per R-W.
+3. **The obvious sources are banned.** The audit's own images come from
+   fatade3d.md, imperlux.md and dasterum.md, which R-W now fails outright. The
+   metal tile renders in audit 5.4 are also watermarked.
+
+**Options, per slot group:**
+
+| Slot group | Card | Honest source | What it needs from you |
+|---|---|---|---|
+| Offer cards, four roofing jobs | RC-108 | **the client's own photos** of a slate replacement and a new roof | the photos; no ruling needed, section 7 already allows them |
+| Metal tile profiles | RC-110 | **the manufacturer**, with written permission | the supplier's name, and their render files or a permission email |
+| Carport models | RC-111 | a visualisation licensed for commercial use, or the client's photos | approval of a source, and a ruling amending section 7 for this group |
+
+**Recommended:** ask the client for real photos for the offer cards first. They
+depict work the company does, so a real photo is both allowed and more
+convincing than stock. Treat stock as a last resort for the carport group only,
+under an explicit ruling.
+
+## Q-W14-08 · The metal tile prices are a manufacturer's published list prices; confirm they are ours, and whether chips may show colour · PART (b) ANSWERED 2026-09-15, RAL swatches permitted in the tile grid; (a) OPEN · opened 2026-09-15 (W14-10)
+
+**Shipped default: the grid as the dispatch specified it,** with every value from
+the wave 14 audit section 2.1, Standart and Premium only, list prices only, and
+colour chips as text.
+
+**(a) Whose prices these are.** The audit read them on 2026-09-15 from the
+manufacturer's own listing and product pages. The grid now shows them on Rapid
+Construct's homepage as Rapid Construct's list prices:
+
+| Model | Standart | Premium |
+|---|---|---|
+| Monterrey | 184 lei/m² | 207 lei/m² |
+| Valencia | 184 lei/m² | 207 lei/m² |
+| Kascad | 189 lei/m² | 213 lei/m² |
+| Țiglă metalică modulară | not offered | 188 lei/bucată |
+
+The dispatch named the fields and the source, so this shipped. But nothing in the
+repo says Rapid Construct buys from that manufacturer, sells at those prices, or
+offers those warranties, and `docs/CLAUDE.md` section 5 says a price is never
+invented. Two things need confirming, in writing:
+
+1. **The supplier.** Is this the manufacturer Rapid Construct buys metal tile
+   from? The same answer unblocks the product images (Q-W14-07), which can only
+   come from the supplier with permission.
+2. **The prices and warranties.** Are these the figures Rapid Construct quotes? If
+   the company sells at a different price or installs at an all-in rate, the
+   list price field is wrong for this site and should be replaced or removed.
+
+**(b) Colour chips without colour.** Each chip reads its code, finish and name,
+for example "7016M Gri antracit", with no swatch. A swatch is a colour value, and
+`docs/CLAUDE.md` section 3 allows ten on the whole site; the fifteen-code legend
+would add up to fifteen more. Options:
+
+  (a) **Keep text chips.** Honest, and within section 3.
+  (b) **Allow product swatches as data, not palette.** Add a named exception to
+      section 3 for colour chips that depict a product's finish, with the values
+      taken from the manufacturer, never estimated.
+
+**Recommended:** confirm or correct (a) first; it decides whether the section
+stays. For (b), keep text chips until the supplier supplies its own swatch
+values, then take option (b) with those values.
+
+## Q-W14-09 · Which fabricator supplies louvre fence panels to Rapid Construct · OPEN, opened 2026-09-15 (W14-12)
+
+**Asked as the dispatch worded it.** RC-112 is blocked on this question.
+
+**Shipped default: the component, with nothing in it.** `content/garduri.json`
+holds `"models": []`, so no section renders, nothing links to it and the sitemap
+does not mention it. The component deliberately has no field for a model code, a
+price, a thickness or a warranty: the dispatch forbids writing any of those until
+the supplier is known, and a field that exists invites a value.
+
+**Why the supplier decides the content.** Every figure the audit recorded for
+louvre fences (audit 2.2: model codes, a 0.50 mm thickness, a ZnMg 140 g/m²
+coating, 20 and 30 year warranties, prices per m²) belongs to one competitor's
+own production. None of it transfers to a panel made by someone else. The
+supplier's name is what tells us which specifications and warranties Rapid
+Construct can actually stand behind.
+
+**What to send:** the fabricator's name, and ideally their product sheet for the
+panels Rapid Construct installs. With that, the fields the sheet vouches for are
+added to the component and the data filled in one commit, and the product images
+can be requested from the same source (Q-W14-07).
+
+## Q-W14-10 · The 160 lei/m² figure is still in the meta description and the JSON-LD price range · ANSWERED 2026-09-15, the figure is removed (RC-105b) · opened 2026-09-15 (W14-05)
+
+**Shipped default in the RC-105 PR: both left as they are.** RC-105 says to delete
+every occurrence of the string "preț înghețat 160 lei/m² pentru 2026" and its RU
+counterpart, "in body copy, meta description, og:description and any JSON-LD
+offer or price field". It was deleted everywhere it occurs. Two places carry the
+figure **without** that string, so they were not touched and are reported here:
+
+| Where | RO | RU |
+|---|---|---|
+| `meta.description`, which also fills `og:description` and the JSON-LD `description` | "... Garanție scrisă până la 30 de ani, **de la 160 lei/m²**." | "... Письменная гарантия до 30 лет, **от 160 лей/м²**." |
+| Homepage JSON-LD `GeneralContractor`, `priceRange` | `"160 MDL/m²"` | same node |
+
+Both are in the R-V STOP set.
+
+**The question is whether 160 lei/m² is a price or the offer.** "From 160 lei/m²"
+as a standing starting price is a different claim from "160 lei/m² frozen for
+2026". If the figure existed only as the frozen offer, removing the offer and
+keeping the figure leaves a price with nothing behind it.
+
+**Options:**
+
+  (a) **160 lei/m² is still a real starting price.** Nothing to change; close this.
+  (b) **It was only the offer.** A follow-up STOP PR removes ", de la 160 lei/m²"
+      and its RU counterpart from `meta.description`, and removes `priceRange` or
+      replaces it with a figure the client confirms.
+
+**Recommended:** confirm with the client which it is before merging RC-105, so both
+changes land together if (b).
+
+## Q-W14-13 · The desktop header cannot fit the Catalog button without giving something up · OPEN, opened 2026-09-15 (W14-06b)
+
+**Shipped default: #7 stays open and unmerged,** so the live site has no Catalog
+button. The branch is current with main and carries the real menu data; everything
+but the desktop fit passes.
+
+**The measurement.** From 1200px up the header pill is 1152px wide. With the
+Catalog button it needs 1,249px in RO and 1,275px in RU (DECISIONS.md W14-06b has
+the breakdown). Tightening every gap and the nav text as far as the header already
+goes at 1180px recovers about 84px; RU is still short at every desktop width.
+
+**Options:**
+
+  (a) **Phone as an icon on desktop, on pages with the menu.** The icon still dials
+      the number, and the number stays written in the footer, the contact section
+      and the phone-width header. Saves about 140px, enough for both locales with
+      today's spacing. The header switches to the hamburger layout about 30px
+      earlier than 1100px.
+  (b) **Catalog button as an icon.** The grid icon only, with its name kept for
+      screen readers, plus tighter spacing at every desktop width. Keeps the phone
+      number; the button loses its visible word, and the hamburger layout starts
+      at about 1180px.
+  (c) **A wider header than the page, 1280px, on pages with the menu.** Keeps
+      every word visible; the wordmark no longer lines up with the page content's
+      left edge, and spacing still tightens below about 1330px.
+
+**Recommended: (a).** A phone icon is a familiar control and one tap still calls.
+The Catalog button is new to the site and needs its word to be found.

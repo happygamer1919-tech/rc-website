@@ -4729,3 +4729,97 @@ principle at the tail ratifications.
 | · Vopsele de interior | Интерьерные краски | Finisaje: `/servicii/finisaje/` · `/ru/servicii/finisaje/` |
 | Sisteme de iluminare | Системы освещения | Instalații: `/servicii/instalatii/` · `/ru/servicii/instalatii/` |
 | Alte materiale de construcții | Другие строительные материалы | Case la cheie: `/servicii/case-la-cheie/` · `/ru/servicii/case-la-cheie/` |
+
+## W14-20 · The fences page, rebuilt on the carport pattern, 2026-09-15
+
+**Card RC-120. Closes Q-W14-09.** `/servicii/garduri/` and `/ru/servicii/garduri/`
+now carry, after the product page hero: a chooser by site constraint, the materials
+and finish on the dark band, four steps ending in a fixed price after measurement,
+a FAQ, and the quote form. The chooser, materials and steps reuse the carport
+page's markup and styles; the FAQ reuses the service pages'. A FAQPage JSON-LD block
+mirrors the visible FAQ (it is not LocalBusiness or Organization markup, so outside
+the STOP set).
+
+**What went.** RC-112's empty `content/garduri.json`, its model card component and
+the fence card CSS. There are no models to list.
+
+### The card's prohibitions, enforced
+
+No model codes, prices, thicknesses, warranty years, supplier or manufacturer names.
+The build refuses any `garduri.*` string, in either locale, carrying IL and two or
+three digits, lei/m² (лей/м²), a thickness in mm, or a warranty stated in years. A
+name cannot be pattern-matched, so every RO string is listed below for review; the
+RU strings in `locales/ru.json` say the same.
+
+### The copy, RO, for ratification
+
+Written for this card: every claim is about how the quote is made (measurement
+first, a fixed price after) or a choice the customer makes on site.
+
+**Chooser: Cum alegi gardul.** Alegerea pornește de la loc: cum e terenul, ce există deja pe linia gardului și cât trebuie să ascundă.
+
+| # | Tile | Text |
+|---|---|---|
+| 1 | Teren în pantă | Panourile se așază în trepte, după teren, ca fiecare tronson să rămână drept. |
+| 2 | Soclu existent | La măsurare verificăm dacă soclul poate purta stâlpii sau dacă e nevoie de fundație nouă. |
+| 3 | Intimitate sau aer | Lamelele mai strânse ascund curtea; cele mai deschise lasă aerul și lumina să treacă. |
+| 4 | Loc deschis, cu vânt | Stâlpii și fundația se stabilesc după lungimea și înălțimea gardului, nu după un tabel. |
+| 5 | La drum sau lângă vecini | Pe limita proprietății măsurăm exact linia gardului înainte de ofertă. |
+
+**Materials: Materiale și finisaj.** Din ce se face un gard din lamele metalice și ce alegi tu.
+
+| # | Item | Text |
+|---|---|---|
+| 1 | Stâlpi metalici | Se fixează în beton. Distanța dintre ei se stabilește la măsurare. |
+| 2 | Lamele din tablă de oțel | Panouri din lamele de tablă de oțel protejată împotriva coroziunii. |
+| 3 | Culoare și finisaj | Alegi culoarea din paleta RAL, în finisaj mat sau lucios. Pe ecran culoarea e orientativă; decide mostra fizică. |
+
+**Steps: De la măsurare la prețul fix.**
+
+| # | Step | Text |
+|---|---|---|
+| 1 | Ne spui ce gard vrei | Lungimea aproximativă, înălțimea și ce trebuie să ascundă sau să lase să treacă. |
+| 2 | Venim și măsurăm | Linia gardului, terenul și locul fiecărui stâlp. Fără măsurare nu dăm preț. |
+| 3 | Alegem împreună | Lamelele, stâlpii, culoarea și finisajul, pe baza măsurătorilor. |
+| 4 | Primești prețul fix | Un preț final, stabilit după măsurare, nu o estimare pe metru. |
+
+**FAQ.**
+
+| # | Question | Answer |
+|---|---|---|
+| 1 | Cât costă un gard din lamele metalice? | Prețul depinde de lungime, înălțime, teren și finisaj, așa că îl stabilim după măsurare. Oferta are un preț fix, nu o estimare. |
+| 2 | Măsurarea este obligatorie? | Da. Terenul și locul stâlpilor schimbă lucrarea, așa că fără măsurare nu dăm preț. |
+| 3 | Se poate monta gardul pe teren în pantă? | Da. La măsurare stabilim cum se așază panourile în trepte, ca gardul să urmeze terenul. |
+| 4 | Cum aleg culoarea? | Din paleta RAL, în finisaj mat sau lucios. Culoarea de pe ecran e orientativă; decide mostra fizică. |
+| 5 | Pot păstra soclul existent? | Dacă soclul e solid, stâlpii se pot fixa pe el. Verificăm la măsurare și îți spunem înainte de ofertă. |
+
+Two claims worth a check by someone who installs these fences: that panels are
+stepped on sloping ground, and that posts can be fixed to a sound existing plinth.
+
+### Not done: the header nav link, Q-W14-15
+
+RC-121's measurement shows a fifth desktop nav link does not fit with the catalog
+present (RO short by 24px, RU by 65px, from 1280px). The teaser row and the sitemap
+already link the page and are unchanged.
+
+### Tested
+
+Headless Chrome against the local build, **34 of 34**, both locales: HTTP 200;
+exactly one H1 ("Garduri", "Заборы"); sections in order (hero, chooser, materials,
+steps, FAQ, form); 5 tiles, 3 materials, 4 steps; 5 FAQ questions mirrored exactly by
+the FAQPage JSON-LD; the form; no fence card markup; the breadcrumb; the homepage
+teaser row linking the page; listed in the sitemap; **zero "IL" plus two or three
+digits, zero "lei/m²", zero "ani garanție"** (and zero "лей/м²", "лет гарантии") in
+the page's HTML; no horizontal overflow at 390 and 1440px.
+
+### Measured
+
+| Page | Before | After |
+|---|---|---|
+| Garduri RO | 2,298 | **4,756** |
+| Garduri RU | 2,298 | **4,778** |
+| Homepage, carports | unchanged | unchanged |
+
+Ruling R-Y (#25, not merged) sets the fences budget on the empty page and says a
+filled page moves it; its amendment is owed when #25 merges. Lighthouse, desktop,
+localhost: **RO 100 / 100 / 100 / 100, RU 100 / 100 / 100 / 100**.

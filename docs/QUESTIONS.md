@@ -1530,7 +1530,7 @@ would add up to fifteen more. Options:
 stays. For (b), keep text chips until the supplier supplies its own swatch
 values, then take option (b) with those values.
 
-## Q-W14-09 · Which fabricator supplies louvre fence panels to Rapid Construct · OPEN, opened 2026-09-15 (W14-12)
+## Q-W14-09 · Which fabricator supplies louvre fence panels to Rapid Construct · ANSWERED 2026-09-15, the page is built without any supplier-specific fact (RC-120, W14-20) · opened 2026-09-15 (W14-12)
 
 **Asked as the dispatch worded it.** RC-112 is blocked on this question.
 
@@ -1712,3 +1712,27 @@ be new copy, and a placeholder a visitor can see reverses master plan section 7.
       placeholder tile with its slot ID, for the photographer as a visual brief.
 
 **Recommended: (a),** with (c) if the photographer wants to see the shapes.
+
+## Q-W14-15 · The fences page cannot take a header nav link without breaking the header fit · OPEN, opened 2026-09-15 (W14-20)
+
+**Shipped default: no header nav link.** The fences page is linked from the
+homepage teaser row and listed in the sitemap, as it has been since W14-16.
+
+**The measurement (W14-21).** With the catalog button present and RC-121's step 3
+applied, a fifth nav link, "Garduri" or "Заборы", leaves the nav short by 24px in
+RO and 65px in RU at every width from 1280px, and RU's targets overlap. The ladder's
+step 4 (phone as an icon) only acts below 1280px, and the phone number must stay
+visible from 1280px up. So RC-120's "link it from the nav" and RC-121's acceptance
+cannot both hold.
+
+**Options:**
+
+  (a) **No header link** (shipped). The teaser row, the sitemap, and the page's
+      own place under Servicii carry it.
+  (b) **Link it from the mobile menu and the footer only,** where width is not the
+      constraint. The desktop header stays as RC-121 left it.
+  (c) **Replace a desktop nav item** with Garduri, for example Portofoliu, which the
+      homepage already reaches by scrolling.
+
+**Recommended: (b).** It puts the page one tap away on phones, where most visitors
+are, without reopening the desktop header.

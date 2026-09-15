@@ -31,7 +31,7 @@ the final `main` and stays mergeable.
 | RC-106 | W14-06 Catalog mega-menu, S-01 | SELF | `w14/rc-106-catalog-menu` | **blocked**, PR #7 open, not merged: Q-W14-04, Q-W14-05 |
 | RC-107 | W14-07 Social row, S-07 | SELF | `w14/rc-107-social-row` | shipped, URLs to confirm: Q-W14-06 |
 | RC-108 | W14-08 Acoperișuri offer cards, S-02 | SELF | `w14/rc-108-offer-cards` | shipped without images (Q-W14-07); homepage over R-J until RC-113 |
-| RC-109 | W14-09 Before/after slider, S-03 | SELF | `w14/rc-109-before-after` | todo |
+| RC-109 | W14-09 Before/after slider, S-03 | SELF | `w14/rc-109-before-after` | shipped, empty until client before/after pairs exist |
 | RC-110 | W14-10 Țiglă metalică grid, S-04 | SELF | `w14/rc-110-tigla-grid` | todo |
 | RC-111 | W14-11 Copertine, S-06 | SELF | `w14/rc-111-copertine` | todo |
 | RC-112 | W14-12 Garduri, S-05, component only | SELF | `w14/rc-112-garduri` | todo |

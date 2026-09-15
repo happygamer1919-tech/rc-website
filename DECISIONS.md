@@ -3525,3 +3525,69 @@ is asserted separately and still passes.
 
 Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100, RU 100 / 100 / 100 /
 100**.
+
+## W14-09 · The before/after slider, built and absent until real pairs exist, 2026-09-15
+
+**Card RC-109.** A before/after comparison slider, data-driven from
+`content/before-after.json`. **The file ships with no projects, so the section
+does not exist on the page.** That is the card's own acceptance: "When that file
+is empty the section does not render and the page has no gap."
+
+### Why it ships empty, and what fills it
+
+Audit 5.1 classifies every before/after pair on the competitor page as "RC photo
+only": a pair is proof of work, so only the client's own photographs of the same
+roof before and after can fill it honestly. None are in the repo. When they
+arrive, each pair is one entry in the file and four images (1x and 2x of each)
+dropped through the photo pipeline; `scripts/slots.js` registers the slots from
+the file, and each image needs its R-W provenance row. No code changes.
+
+The build fails on a missing `projects` array, a title or alt that is not real in
+both locales, and a missing image file. All three were watched failing.
+
+### Component, per audit 3.3, and three departures
+
+As specified: the after image underneath; the before image on top, clipped by
+`clip-path: inset()` from a `--position` custom property; pointer down anywhere
+jumps the divider and a drag follows it; hover alone does nothing; arrow keys
+move it 5 points; a full-height 4px line with a centred 40x70 pill and three 2x24
+grip bars 7px apart; labels 24px in from the bottom corners, fixed to the frame;
+arrow buttons in the header row that wrap at both ends; one project visible at a
+time, each with a visually hidden `h3`. Section placed after the offer cards, on
+white with the divider rule.
+
+Departures, each flagged for ratification:
+
+1. **The handle is a focusable `role="slider"`, not a `<button>`.** ARIA does not
+   permit the slider role on a button, and the audit's button carried no value.
+   The slider reports `aria-valuenow` and adds Home and End.
+2. **`touch-action: pan-y`, not `none`.** With `none`, a vertical swipe across the
+   photo on a phone would not scroll the page, which `docs/CLAUDE.md` section 1
+   forbids. Horizontal drags still move the divider.
+3. **Labels on solid `--bg-dark`, not 82% black,** and the frame on the site's
+   `--radius-card`: no new colour value, no translucent overlay.
+
+Arrows render only with two or more projects; one project has nothing to
+navigate to.
+
+### Tested
+
+| Build | Assertions | Result |
+|---|---|---|
+| As shipped, empty | no slider markup, and `#acoperisuri` followed directly by `#proces` | **4 of 4** |
+| As shipped, empty | heights, all eight pages | **identical to `main` at 3d3a6a4** |
+| Local fixture, two projects | placement, 1180:664 frame, start at 50, clip-path, hover does nothing, pointer jump, drag, release, labels and their size and colour, slider role and label, pill, grip bars, full-height line, arrow keys, Home, End, clamping, labels fixed while the divider moves, arrows in the header row, next, wrap, previous, wrap, no transition, pan-y, hidden `h3`s, no overflow at 390 and 320 | **58 of 58** |
+
+**The test caught a real bug.** The keyboard handler read the position as
+`parseFloat(...) || 50`, so a divider at 0 was taken as missing and the next
+key press snapped it to the middle. Fixed with an explicit `isNaN` check.
+
+**And two failures were the test's own.** The site sets `scroll-behavior:
+smooth`, so the first run measured the frame mid-scroll and dispatched its
+pointer press onto `<html>`; a diagnostic run logged the event target and proved
+it. The test now scrolls instantly. It also counted the heading's site-wide
+reveal transition as slider motion; that transition is the section 1 reveal and
+is excluded.
+
+Lighthouse, desktop, localhost, as shipped: **RO 99 / 100 / 100 / 100, RU 100 /
+100 / 100 / 100**.

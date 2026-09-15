@@ -140,6 +140,15 @@
       }
     }
   },
+  "beforeAfter": {
+    "eyebrow": "Acoperișuri",
+    "h2": "Înainte și după",
+    "prev": "Proiectul anterior",
+    "next": "Proiectul următor",
+    "handle": "Trage pentru a compara înainte și după",
+    "before": "Înainte",
+    "after": "După"
+  },
   "process": {
     "eyebrow": "Cum lucrăm",
     "h2": "De la fundație la predare",

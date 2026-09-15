@@ -1318,3 +1318,124 @@ about 2026-09-10, which matches the manual re-run of the W13-03 deploy that day.
 **Recommended: decide (a) or (b) today.** Every day the canonical points at a
 404 costs indexing. Until then, wave 14's live verifications run against
 `https://rapidconstruct.md`, because that is where the deployed build is.
+
+
+## Q-W14-04 · What the catalog menu lists, and where each row goes · OPEN, opened 2026-09-15 (W14-06)
+
+**Shipped default: the menu is built and switched off.** `content/catalog.json`
+holds `"categories": []`, and while it is empty neither the Catalog button nor
+its panel exists on any page. Filling it is a data edit with no code change;
+`build.js` validates the file on every build.
+
+**Why it shipped empty.** RC-106 gives the taxonomy as audit section 1.2: 7
+top-level categories, 2 with children, 7 subcategories. Those are fatade3d's
+product categories (thermal insulation systems, decorative plasters, ceramic
+tiles, decorative elements, paints, lighting systems, other building materials).
+Two things are missing, and neither is mine to fill:
+
+1. **The labels.** Copying fatade3d's categories would list products Rapid
+   Construct is not shown selling anywhere on the site, which `docs/CLAUDE.md`
+   section 5 forbids ("not a service").
+2. **The target of every row.** No page on the site corresponds to any of those
+   categories. A menu row that opens nothing is a dead link, and `docs/CLAUDE.md`
+   section 9 requires a link to mean what it says.
+
+**Options:**
+
+  (a) **Rapid Construct's own catalog, pointing at pages that exist.** For
+      example: Acoperișuri, with Țiglă metalică and Copertine as children, once
+      RC-108, RC-110 and RC-111 put those sections on the page, each row linking
+      to its section anchor; plus the service pages as the remaining rows.
+  (b) **The audit 1.2 taxonomy verbatim**, which needs a destination page per
+      category first. That is new pages, not a menu.
+  (c) Keep the menu off.
+
+**Recommended: (a).** It is honest about what the company sells, every row lands
+somewhere real, and the file format already takes it. Send the rows as label
+RO, label RU, and target, and the menu is live in one commit.
+
+**Filling the file is not enough on its own, and this is measured.** A local
+build carrying the audit's 7/2/7 shape was driven in headless Chrome. The
+interaction passes: click-only open, hover flyout, orange active row, keyboard,
+Escape, the mobile drill-down, and the pill fits at 390, 360 and 320px. **The
+desktop header does not fit the toggle.** At 1440 the toggle and its gap cost
+115px (RO) and 119px (RU), and the first nav link slides under the wordmark by
+24px and 37px, which Lighthouse reports as a target-size failure (accessibility
+97 against the floor of 100). Tightening the header's own gaps and nav type
+fixed RO at 1280 and above but left RU overlapping at every desktop width, so
+that tuning was not shipped.
+
+**So switching the menu on needs one more decision, about the header:** what
+gives up its room. Candidates, none measured yet: drop the "Acasă" nav link (the
+wordmark already links home), hide the phone number text on desktop as it
+already is at 1024px and below, or move the whole desktop header to the
+hamburger below a wider breakpoint (see Q-W14-05). RC-106 is marked blocked on
+this question and on the labels above; its PR is open and not merged.
+
+## Q-W14-05 · The live header overlaps itself between 769 and 1100px · OPEN, opened 2026-09-15 (found at W14-06)
+
+**Shipped default: nothing changed.** This is a defect already on `main`, found
+while testing RC-106. No wave 14 card covers the header breakpoints, and where
+the header switches to the hamburger is a design decision.
+
+**Measured on the live site**, `https://rapidconstruct.md`, build-sha 2ebedfb,
+cache-busted, every visible link and button in the header pill checked pairwise
+for intersecting boxes:
+
+| Width | RO | RU |
+|---|---|---|
+| 1440, 1180, 1024 | clean | clean |
+| 1100 | wordmark covers "Acasă" by 17px; "Contacte" runs 17px into the phone link | 28px and 28px |
+| 1025 | 52px and 54px | 66px and 66px |
+| 900 | 14px and 14px | 25px and 18px |
+| 800 | 49px; "Contacte" also 34px into "Solicită ofertă" | 66px; 45px into "Получить смету" |
+| 769 | 49px, plus "Servicii" 10px under the wordmark; "Contacte" 49px into the CTA | 66px; "Услуги" 5px; 61px into the CTA |
+
+**Why nothing caught it.** The nav is `flex: 1 1 auto; min-width: 0`, so it
+shrinks and its links slide under their neighbours while the pill's
+`scrollWidth` never grows: an overflow check reads clean. Lighthouse runs at
+1440 on the desktop preset, which is clean. The overlap shows only between the
+768px mobile switch and the widths the desktop layout was designed for.
+
+**What a visitor sees at, say, a 1024 to 1100px laptop or a landscape tablet:**
+nav labels printed on top of the logo and the phone number, and a tap on one
+target can land on the other.
+
+**Options:**
+
+  (a) **Switch to the hamburger header at 1100px instead of 768px.** One
+      breakpoint change; the mobile header is already built and tested.
+  (b) Keep the desktop header down to 769px and make room: hide the phone
+      number text (already done at 1024 and below), shorten the gaps, and drop
+      the nav font a step, re-measured at every width in the table.
+  (c) Leave it.
+
+**Recommended: (a).** It removes the whole band of widths rather than tuning
+pixels inside it, and it does not change the desktop header anyone has approved.
+
+## Q-W14-06 · The social row links to the three profiles the site already names; confirm them · OPEN, opened 2026-09-15 (W14-07)
+
+**Shipped default: the three URLs the site has linked since wave 1**, not
+placeholders.
+
+RC-107 says "URLs blocked pending Ivan. Ship with the row present and hrefs set
+to a placeholder constant in one file." The row reads its hrefs from one file,
+`content/social.json`, as asked. The values in it are not placeholders, and that
+is a deviation, for two reasons:
+
+1. **A placeholder is a dead link on the live page.** `href="#"` goes nowhere
+   and fails `docs/CLAUDE.md` section 9, and `build.js` already records that an
+   anchor without a real href fails Lighthouse's crawlable-anchors audit. The row
+   sits in the hero, above the fold, on both homepages.
+2. **The URLs were not unknown.** The footer has linked these three since the
+   first build, and the homepage JSON-LD `sameAs` carries the same three:
+
+| Platform | URL |
+|---|---|
+| Facebook | `https://www.facebook.com/rapidconstructofficial` |
+| Instagram | `https://www.instagram.com/rapid.construct/` |
+| TikTok | `https://www.tiktok.com/@rapid.construct` |
+
+**What to send:** "confirmed", or the correct URLs. A change is one edit to
+`content/social.json`. If a URL is wrong, the footer and `sameAs` are wrong too:
+the footer is a SELF edit, `sameAs` is in the R-V STOP set.

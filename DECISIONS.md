@@ -3382,3 +3382,69 @@ shortens nothing. The markers are what prove the new build was the one measured.
 
 Lighthouse, desktop preset, localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 /
 100 / 100**.
+
+## W14-07 · The social row on the dark hero card, 2026-09-15
+
+**Card RC-107.** Facebook, Instagram and TikTok, in that order, under the CTA on
+the dark hero card, in both locales.
+
+### Two premises in the card did not hold, and each is resolved in the open
+
+**"Icons from an icon library already in the project."** There is no icon
+library. The repo has no `package.json` and no dependencies at all. The icons are
+the footer's own inline SVG paths, reused as data in `build.js`. No image file
+was added, so R-W has nothing to record.
+
+**"URLs blocked pending Ivan, hrefs set to a placeholder constant."** The hrefs
+live in one constant, `content/social.json`, as asked. They are not placeholders.
+A placeholder href on a hero link is a dead link on the live page, which
+`docs/CLAUDE.md` section 9 forbids, and the URLs were already known: the footer
+has linked the same three since wave 1 and the homepage `sameAs` carries them.
+Shipped with those three, flagged, and opened as Q-W14-06 so they are confirmed
+rather than assumed. The footer and `sameAs` keep their own literal copies:
+`sameAs` is in the R-V STOP set, and moving the footer onto the constant was not
+in the card.
+
+### Build and markup
+
+`socialRow()` renders a `<ul>` labelled with the existing `footer.socialHeading`
+string, so no new copy was written. Each link opens a new tab with
+`rel="noopener noreferrer"` and carries the platform name as its accessible
+label. The build fails on a missing `links` array, an href that is not https, an
+id with no icon drawing, and an empty label; all four were watched failing, and
+the file was restored byte-identical afterwards.
+
+CSS reuses the footer row's rules: 44x44 targets, white on `#141414`, brand
+orange on hover. The first icon is pulled left by its own inset so the glyph
+lines up with the CTA. No new colour value; the hover transition is disabled
+under reduced motion by the existing global rule.
+
+### Measured
+
+Headless Chrome against the local build, 53 assertions, all passing: order,
+hrefs equal to the constant, new-tab and rel, inline SVG with no image, the
+list label per locale, dark card and white icons, placed below the CTA and above
+the divider with no overlap, every target at least 44x44, and no horizontal
+overflow at 1440, 1024, 390, 360 and 320px in both locales; plus the transition
+disabled under `prefers-reduced-motion`.
+
+| Page | Before (2ebedfb) | After |
+|---|---|---|
+| Homepage RO | 8,818 | **8,818** |
+| Homepage RU | 9,032 | **9,032** |
+| Six service pages | unchanged | unchanged |
+
+**Zero desktop height impact, and why.** The hero card stretches to the photo
+beside it; 56px more content inside it is absorbed by that stretch. On mobile the
+card is a single column, so the page does grow there, by the row's height. R-J
+budgets are desktop figures and do not cover it.
+
+Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 /
+100**.
+
+### Questions carried to `main` by this commit
+
+Q-W14-04 and Q-W14-05 were opened while working RC-106, which is blocked and not
+merged. They are written to `docs/QUESTIONS.md` here, in a card that does merge,
+so they are visible on `main` while PR #7 stays open and do not duplicate when it
+merges. Q-W14-06 is this card's own.

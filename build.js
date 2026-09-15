@@ -131,7 +131,7 @@ const PAGES = [
 
 // Keys whose value is already HTML built by this file. Everything else is
 // escaped on substitution.
-const RAW_KEYS = new Set([
+const RAW_KEYS = new Set(['socialRow',
   // demoAttr is a whole attribute, ` data-demo="..."`, not an attribute value:
   // it is either present or absent. Its inner text is escaped where it is
   // built, so what lands here is already safe. Escaping it again turned the
@@ -582,6 +582,37 @@ function promoBar(l) {
 `;
 }
 
+// --- W14-07, the social row on the hero card (S-07) --------------------------
+
+/* Three profile links under the hero claim's CTA, read from content/social.json,
+   which is the one place their hrefs are written for this row. The icons are the
+   footer's own inline SVGs, so no image file and no icon library is added: the
+   repo has neither, and has no dependencies at all.
+
+   Presence, not silence (docs/CLAUDE.md section 13): a file without a links
+   array fails the build rather than rendering an empty row, and so does an icon
+   id this function has no drawing for. */
+const SOCIAL_FILE = 'content/social.json';
+const SOCIAL = JSON.parse(fs.readFileSync(SOCIAL_FILE, 'utf8'));
+if (!Array.isArray(SOCIAL.links)) die(`${SOCIAL_FILE} has no "links" array.`);
+const SOCIAL_ICONS = {
+  facebook: '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>',
+  instagram: '<rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1.1"></circle>',
+  tiktok: '<path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5c.34 0 .68.05 1 .15"></path><path d="M14 3.5c.4 2.6 2.4 4.6 5 4.9"></path>',
+};
+function socialRow(l) {
+  if (SOCIAL.links.length === 0) return '';
+  const items = SOCIAL.links.map((s, i) => {
+    if (!SOCIAL_ICONS[s.id]) die(`${SOCIAL_FILE}: links[${i}] id "${s.id}" has no icon in build.js.`);
+    if (!REAL(s.label)) die(`${SOCIAL_FILE}: links[${i}] has no label.`);
+    if (!/^https:\/\//.test(s.href || '')) die(`${SOCIAL_FILE}: links[${i}] href "${s.href}" is not an https URL.`);
+    return `          <li><a href="${esc(s.href)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(s.label)}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SOCIAL_ICONS[s.id]}</svg></a></li>`;
+  }).join('\n');
+  return `<ul class="hero-claim__social" aria-label="${esc(l.strings['footer.socialHeading'])}">
+${items}
+        </ul>`;
+}
+
 // --- W12-01, the portfolio end tile -----------------------------------------
 
 /* The seventh cell of the homepage portfolio grid. It is not a project and not
@@ -824,6 +855,7 @@ for (const l of loaded) {
   vars.supplierChips = renderSupplierChips(l, BASE);
   vars.heroPanelMedia = heroPanelMedia(l, BASE);
   vars.promoBar = promoBar(l);
+  vars.socialRow = socialRow(l);
   // Overrides nothing: band.coverageLine is no longer a locale key, it is
   // composed here so the sentence and the schema cannot disagree.
   vars['band.coverageLine'] = coverageLine(l);

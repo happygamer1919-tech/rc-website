@@ -3861,3 +3861,61 @@ Status metadata only, per R-S; no question body is edited.
 | Q-W14-07 | answered: approved image origins added to R-W (RC-118) |
 | Q-W14-08 | part (b) answered: RAL swatches permitted in the tile grid; part (a), prices, stays open |
 | Q-W14-10 | answered: the 160 lei/m² figure leaves the meta description and the price field (RC-105b). The question was opened on the RC-105 branch and exists only in PR #14, so its status is set there |
+
+## W14-15 · The header collapses at 1100px, and the nav tightens up to 1180px, 2026-09-15
+
+**Card RC-115. Closes Q-W14-05.** The hamburger header, which started at 768px,
+now starts at 1100px and below. Between 769 and 1100px the desktop nav used to
+overlap itself on the live site.
+
+### What moved
+
+- **From the 768px block to a new 1100px block, unchanged:** nav and actions
+  hidden, the mobile icons shown, the 80px header, the 56px pill and its scrolled
+  52px, the 40px and 36px logo, the mobile panel's top, and the 80px body spacer
+  (it is the header's height, so it moves with the header).
+- **`main.js`:** the open mobile panel now closes when the viewport widens past
+  1100px, not 768px.
+- **From the 1024px block to a new 1180px block, unchanged:** nav gap 20px, nav
+  type 16px, actions gap 12px.
+
+### Why the 1180px block exists, which the card did not ask for
+
+Collapsing at 1100px alone left the desktop nav overlapping just above it. Measured
+on the live site: RO overlapped at 1101 and 1120px, RU at 1101, 1120 and 1140px,
+by up to 16px (RO) and 28px (RU), and both were clean from 1160px. The tighter
+spacing the 1024px block already used is applied up to 1180px instead. Nothing new
+is chosen: same values, wider range. The breakpoint itself is exactly the card's.
+The 1024px block's `.header__phone span` rule is dropped: below 1100px the phone
+link it hid is itself hidden, so the rule was dead.
+
+### Tested
+
+Headless Chrome against the local build, **84 of 84**, both locales, at 769, 900,
+1024, 1099, 1100, 1101, 1120, 1140, 1160, 1179, 1180, 1280 and 1440px:
+
+- no two visible links or buttons in the header intersect (bounding boxes);
+- at 1100 and below the hamburger is shown, the nav hidden, the header 80px and the
+  body spacer 80px; above, the nav is shown, the hamburger hidden, 96px and 96px;
+- nothing in the header runs past the viewport;
+- at 900px the hamburger opens the panel with its five links, and widening the
+  window past 1100px closes it.
+
+The card's seven widths are all in the set; the six extra widths are the band the
+live measurement found.
+
+### Found while testing: a wave 14 regression in the hero, fixed separately
+
+The first run also asserted no page-wide horizontal overflow, and it failed on RU
+at 1099, 1100 and 1101px. The cause is not the header. The hero photo panel keeps a
+4:3 ratio and stretches to the guarantee card's height; W14-07 (RC-107) added a
+row to that card, so on RU at 1025 to 1149px the card grows to 430px and the photo
+becomes 573px wide in a 514px column, 35px past the viewport. The same build at
+e49e02e, before wave 14, is clean at those widths. It is fixed in its own change
+under RC-107, and this card's test asserts the header only.
+
+### Measured
+
+Heights at 1440px, all eight `verify-live.js` pages, identical to `main` at
+5e524ff: the header does not change at desktop width. Lighthouse, desktop,
+localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 / 100**.

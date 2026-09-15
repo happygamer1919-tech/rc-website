@@ -33,7 +33,7 @@
       if (e.key === 'Escape' && panel.getAttribute('data-open') === 'true') { setMenu(false); toggle.focus(); }
     });
     window.addEventListener('resize', function () {
-      if (window.innerWidth > 768 && panel.getAttribute('data-open') === 'true') setMenu(false);
+      if (window.innerWidth > 1100 && panel.getAttribute('data-open') === 'true') setMenu(false); // W14-15: the header collapses at 1100px
     });
   }
 

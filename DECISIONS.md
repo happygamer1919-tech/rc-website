@@ -4130,6 +4130,57 @@ The homepage is still over its R-J budget; the new per-page budgets are RC-113's
 Lighthouse, desktop, localhost: **homepage RO 99 / 100 / 100 / 100, RU 99 / 100 /
 100 / 100; tile grid, carports and fences RO pages 100 / 100 / 100 / 100 each**.
 
+ w14/rc-117-origin-cutover
+## W14-17 · Origin cutover: rapidconstruct.md is the site's origin, STOP, 2026-09-15
+
+**Card RC-117. Closes Q-W14-03.** **STOP: pull request only.** It changes
+`SITE_URL`, canonical, hreflang, og, the sitemap, robots and the homepage JSON-LD,
+all in the R-V STOP set.
+
+### What changes
+
+| Place | Before | After |
+|---|---|---|
+| `.github/workflows/pages.yml` `SITE_URL` | https://rapidconstructmd.com | **https://rapidconstruct.md** |
+| `CNAME` (repo root) and `CUSTOM_DOMAIN` in `build.js`, which writes `dist/CNAME` | rapidconstructmd.com | **rapidconstruct.md** |
+| `build.js` `SITE` fallback | https://rapidconstructmd.com | **https://rapidconstruct.md** |
+| `scripts/verify-live.js` default origin | https://rapidconstructmd.com | **https://rapidconstruct.md** |
+
+The GitHub Pages custom domain is already `rapidconstruct.md` and needs no change.
+The two source comments that explained W12-14's choice are rewritten to say what
+is now true and why. `build.js` already refuses a build whose `SITE_URL` host
+differs from `CUSTOM_DOMAIN`, so the two cannot drift apart.
+
+### The assertion, as a permanent gate
+
+`scripts/check-origin.js`, wired into `quality`. It fails on any occurrence of
+`rapidconstructmd.com` in the built site, and it requires the real origin, **by
+presence**, in every place the card names: canonical, hreflang, og:url, og:image,
+sitemap.xml, robots.txt, JSON-LD url and sameAs, and CNAME. A build that emitted
+no canonical at all also contains zero occurrences of the old host; the gate
+counts each kind it checked and fails on a count of zero. The e-mail address
+`rapidconstructmd@gmail.com` is a mailbox, not a host, and the matcher's
+self-test proves it is not caught.
+
+| Arm | Result |
+|---|---|
+| The build as committed | pass: 28 canonicals, 84 hreflang, 26 og:url, 26 og:image, 26 JSON-LD urls, 2 sameAs, sitemap, robots, CNAME, all on https://rapidconstruct.md, zero of the old host |
+| A build with `SITE_URL=https://rapidconstructmd.com` | the build itself refuses (SITE_URL host differs from CUSTOM_DOMAIN); the stale output then fails with 250 problems |
+| The old host planted in one page | exit 1, page named |
+| One canonical moved to a foreign host | exit 1, page named |
+| `dist/CNAME` reverted | exit 1 |
+
+### Verification under R-P, and what is owed after merge
+
+Locally, on the build as committed, `scripts/verify-live.js` against a local
+server: cache-buster, the six content markers and the `build-sha` meta asserted
+in one pass. The deployed half cannot be done from a pull request that is not
+merged: **after the owner merges, run**
+`EXPECT_SHA=<merge sha> node scripts/verify-live.js` (the default origin is now
+rapidconstruct.md), confirm `node scripts/check-origin.js` on the deployed
+artifact's build, **and tag the merge commit `wave-14-cutover`**. Recorded in the
+PR body as the post-merge checklist.
+
 ## W14-03 · Section 1 copy, RO: T-02 to T-09, verbatim, 2026-09-15
 
 **Card RC-103. Closes Q-W14-02.** The eight strings from the close-out dispatch,
@@ -4385,4 +4436,5 @@ changed.
 
 Gates: build, links, stale docs, provenance and scarcity all pass; the card adds no
 image and changes no page.
+ main
  main

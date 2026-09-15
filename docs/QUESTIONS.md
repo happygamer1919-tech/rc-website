@@ -1530,7 +1530,7 @@ would add up to fifteen more. Options:
 stays. For (b), keep text chips until the supplier supplies its own swatch
 values, then take option (b) with those values.
 
-## Q-W14-09 · Which fabricator supplies louvre fence panels to Rapid Construct · OPEN, opened 2026-09-15 (W14-12)
+## Q-W14-09 · Which fabricator supplies louvre fence panels to Rapid Construct · ANSWERED 2026-09-15, the page is built without any supplier-specific fact (RC-120, W14-20) · opened 2026-09-15 (W14-12)
 
 **Asked as the dispatch worded it.** RC-112 is blocked on this question.
 
@@ -1648,6 +1648,35 @@ leaving four empty would also break the grid.
 **Recommended: (a).** It shows exactly the five structures, in one visual style, and
 it is the company's own work.
 
+## Q-W14-13 · The desktop header cannot fit the Catalog button without giving something up · ANSWERED 2026-09-15, the owner's header ladder, fixed at step 3 (RC-121, W14-21) · opened 2026-09-15 (W14-06b)
+
+**Shipped default: #7 stays open and unmerged,** so the live site has no Catalog
+button. The branch is current with main and carries the real menu data; everything
+but the desktop fit passes.
+
+**The measurement.** From 1200px up the header pill is 1152px wide. With the
+Catalog button it needs 1,249px in RO and 1,275px in RU (DECISIONS.md W14-06b has
+the breakdown). Tightening every gap and the nav text as far as the header already
+goes at 1180px recovers about 84px; RU is still short at every desktop width.
+
+**Options:**
+
+  (a) **Phone as an icon on desktop, on pages with the menu.** The icon still dials
+      the number, and the number stays written in the footer, the contact section
+      and the phone-width header. Saves about 140px, enough for both locales with
+      today's spacing. The header switches to the hamburger layout about 30px
+      earlier than 1100px.
+  (b) **Catalog button as an icon.** The grid icon only, with its name kept for
+      screen readers, plus tighter spacing at every desktop width. Keeps the phone
+      number; the button loses its visible word, and the hamburger layout starts
+      at about 1180px.
+  (c) **A wider header than the page, 1280px, on pages with the menu.** Keeps
+      every word visible; the wordmark no longer lines up with the page content's
+      left edge, and spacing still tightens below about 1330px.
+
+**Recommended: (a).** A phone icon is a familiar control and one tap still calls.
+The Catalog button is new to the site and needs its word to be found.
+
 ## Q-W14-14 · Where the RC photo only placeholders go, when their sections do not exist on the site · OPEN, opened 2026-09-15 (W14-19)
 
 **Shipped default: the manifest only,** `docs/assets/PENDING-PHOTOS.md`, and no
@@ -1683,3 +1712,27 @@ be new copy, and a placeholder a visitor can see reverses master plan section 7.
       placeholder tile with its slot ID, for the photographer as a visual brief.
 
 **Recommended: (a),** with (c) if the photographer wants to see the shapes.
+
+## Q-W14-15 · The fences page cannot take a header nav link without breaking the header fit · OPEN, opened 2026-09-15 (W14-20)
+
+**Shipped default: no header nav link.** The fences page is linked from the
+homepage teaser row and listed in the sitemap, as it has been since W14-16.
+
+**The measurement (W14-21).** With the catalog button present and RC-121's step 3
+applied, a fifth nav link, "Garduri" or "Заборы", leaves the nav short by 24px in
+RO and 65px in RU at every width from 1280px, and RU's targets overlap. The ladder's
+step 4 (phone as an icon) only acts below 1280px, and the phone number must stay
+visible from 1280px up. So RC-120's "link it from the nav" and RC-121's acceptance
+cannot both hold.
+
+**Options:**
+
+  (a) **No header link** (shipped). The teaser row, the sitemap, and the page's
+      own place under Servicii carry it.
+  (b) **Link it from the mobile menu and the footer only,** where width is not the
+      constraint. The desktop header stays as RC-121 left it.
+  (c) **Replace a desktop nav item** with Garduri, for example Portofoliu, which the
+      homepage already reaches by scrolling.
+
+**Recommended: (b).** It puts the page one tap away on phones, where most visitors
+are, without reopening the desktop header.

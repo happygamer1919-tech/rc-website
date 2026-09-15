@@ -106,6 +106,20 @@ const SUPERSEDED = [
     clear: /R-J|AMENDED/,
   },
   {
+    id: 'budget-ro-rj',
+    find: /8,851/g,
+    ruling: 'R-Y (docs/rulings/R-Y.md, W14-13)',
+    what: "R-J's RO homepage budget, 8,851px",
+    clear: /R-Y|AMENDED|then-current|do not budget/,
+  },
+  {
+    id: 'budget-ru-rj',
+    find: /9,065/g,
+    ruling: 'R-Y (docs/rulings/R-Y.md, W14-13)',
+    what: "R-J's RU homepage budget, 9,065px",
+    clear: /R-Y|AMENDED|then-current|do not budget/,
+  },
+  {
     id: 'brand-colour',
     find: /#F26419/gi,
     ruling: 'DECISIONS.md, "The master plan is stale on two token values"',
@@ -214,6 +228,30 @@ const KNOWN = [
     id: 'revert-ro',
     contains: "Wave 6's cap was tighter still",
     reason: 'a dated sentence that declares itself historical in its own words. It states what wave 6 measured against, beside the rejected build\'s 13,312px, and is not a budget anyone could act on.',
+  },
+  {
+    file: 'RELEASE-NOTES.md',
+    id: 'budget-ro-rj',
+    contains: 'Homepage RO under 8,851px',
+    reason: "wave 12 second-half gate table. R-J's budgets are what that wave was measured against and the table is the record of it (W14-13).",
+  },
+  {
+    file: 'RELEASE-NOTES.md',
+    id: 'budget-ru-rj',
+    contains: 'Homepage RU under 9,065px',
+    reason: 'the same table, same reason.',
+  },
+  {
+    file: 'RELEASE-NOTES.md',
+    id: 'budget-ro-rj',
+    contains: '| R-J budget | 8,851 | 9,065 |',
+    reason: 'the wave 12 close and wave 12 final live-figure tables, which state the budget each was measured against and name R-J as its holder (W14-13).',
+  },
+  {
+    file: 'RELEASE-NOTES.md',
+    id: 'budget-ru-rj',
+    contains: '| R-J budget | 8,851 | 9,065 |',
+    reason: 'the same two rows carry both locales, same reason.',
   },
   {
     file: 'docs/RC-WEBSITE-MASTER-PLAN.md',

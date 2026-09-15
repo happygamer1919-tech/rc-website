@@ -1796,6 +1796,16 @@ never rounded to a convenient number.** Where a derived figure and a stated
 budget differ, as RU does here, the stated budget governs and the difference is
 slack, not licence to add another element without a ruling.
 
+### Amended 2026-09-15 by W14-13 (RC-113) · the figures are superseded by R-Y
+
+**The budgets above are no longer current.** Wave 14 added the roofing offer
+cards and the product teaser row to the homepage, and split three product pages
+off it. Ruling R-Y, `docs/rulings/R-Y.md`, holds the per-page budgets that
+replace this ruling's figures, and the revert figures for the promo bar and the
+100+ tile. **The method stands:** R-Y derives every budget the way this ruling
+does, from a measured baseline, measured element costs and the same 60px
+headroom term, never rounded. Nothing above this block was edited.
+
 ---
 
 ## RULING R-K · Google review content, W12-08, 2026-09-06
@@ -4343,3 +4353,44 @@ changed.
 
 Gates: build, links, stale docs, provenance and scarcity all pass; the card adds no
 image and changes no page.
+
+## W14-13 · Re-measured after the close-out; ruling R-Y holds the new budgets, STOP, 2026-09-15
+
+**Card RC-113.** Measured under R-P once every SELF card of the close-out was
+merged, and recorded as ruling R-Y in `docs/rulings/R-Y.md`, which holds the
+figures, the derivation and the revert values. Per R-Q they are not repeated here.
+**STOP: the PR is opened and not merged.**
+
+### What was measured, and how
+
+The homepage and the three product pages, both locales, on the live domain after
+the merge of #24: cache-busted, `build-sha` asserted in the same load, reveals
+settled, two runs identical to the pixel. The promo bar and the portfolio end tile
+were re-measured by removing each from the live page; both still cost what R-J
+recorded. RC-117 (#20) is not merged, so the site was measured on the origin it
+serves from today; the cutover changes no markup height.
+
+### Amended in place, R-R and R-T
+
+| Where | What |
+|---|---|
+| R-J, `DECISIONS.md` | an amendment block appended under the ruling: its figures are superseded by R-Y, its method stands. No sentence above it moved |
+| `docs/CLAUDE.md` section 2 | the homepage row points to R-Y; a row for the product pages; the derivation paragraph and the "superseded" count |
+| Master plan, lines 121 and 245 | both existing R-J amendments extended to name R-Y |
+| `RELEASE-NOTES.md` handoff | the budgets pointer and the revert-figures point name R-Y |
+| `docs/BACKLOG.md` | the W12-03 record names R-Y beside R-J's figures; both RC-113 rows |
+| `scripts/check-stale-docs.js` | 8,851 and 9,065 added as superseded by R-Y; the dated wave 12 gate and live-figure tables that hold them are known exceptions, as R-I's figures already were |
+| `scripts/verify-live.js` | R-Y's homepage budgets; six product page rows with a `product` marker set |
+
+### Tested
+
+- **`scripts/verify-live.js` with R-Y's budgets**, against the live site at the
+  merge of #24: **14 of 14 pages VERIFIED, 0 failed, exit 0.** Both homepages and
+  all six product pages sit 60px inside, the six service pages are unchanged under
+  6,000, and 33 reachable URLs were crawled with 0 visible TODO.
+- **Negative arms on a copy of the tree, each watched failing.** A stray 8,851
+  added to `docs/CLAUDE.md` fails the staleness gate, exit 1, with the line named.
+  Removing the dated wave 12 rows leaves the two new exceptions matching nothing,
+  which fails it too, exit 1. A product budget below its measured height and a
+  wrong `product` marker make verify-live report OVER and UNVERIFIED, exit 1.
+- Build, links, staleness, provenance and scarcity gates pass.

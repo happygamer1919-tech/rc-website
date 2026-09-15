@@ -111,6 +111,35 @@
       }
     }
   },
+  "roofOffers": {
+    "eyebrow": "Acoperișuri",
+    "h2": "Patru lucrări de acoperiș",
+    "lede": "Înlocuim acoperișul vechi sau montăm unul nou, cu țiglă metalică sau șindrilă bituminoasă.",
+    "optionsLabel": "Țiglă metalică la alegere:",
+    "options": {
+      "0": "Coreeană",
+      "1": "Italiană",
+      "2": "Suedeză"
+    },
+    "items": {
+      "0": {
+        "title": "Înlocuire ardezie cu țiglă metalică",
+        "desc": "Scoatem ardezia veche și învelim acoperișul cu țiglă metalică."
+      },
+      "1": {
+        "title": "Înlocuire ardezie cu șindrilă bituminoasă",
+        "desc": "Scoatem ardezia veche și învelim acoperișul cu șindrilă bituminoasă."
+      },
+      "2": {
+        "title": "Acoperiș la cheie cu țiglă metalică",
+        "desc": "Montăm acoperișul complet: șarpantă din lemn, învelitoare din țiglă metalică, jgheaburi și burlane."
+      },
+      "3": {
+        "title": "Acoperiș la cheie cu șindrilă bituminoasă",
+        "desc": "Montăm acoperișul complet: șarpantă din lemn, învelitoare din șindrilă bituminoasă, jgheaburi și burlane."
+      }
+    }
+  },
   "process": {
     "eyebrow": "Cum lucrăm",
     "h2": "De la fundație la predare",

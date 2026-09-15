@@ -3448,3 +3448,80 @@ Q-W14-04 and Q-W14-05 were opened while working RC-106, which is blocked and not
 merged. They are written to `docs/QUESTIONS.md` here, in a card that does merge,
 so they are visible on `main` while PR #7 stays open and do not duplicate when it
 merges. Q-W14-06 is this card's own.
+
+## W14-08 · The acoperișuri offer cards, and the homepage goes over R-J, 2026-09-15
+
+**Card RC-108.** Four roofing jobs as cards on the homepage, between the services
+grid and the process section, in both locales. **Shipped without images**
+(Q-W14-07).
+
+### Where the section goes, and why that is an interpretation
+
+The card does not name a page. It is placed on the **homepage**, on the strength
+of RC-113: that card re-measures "after RC-103 through RC-111 are merged" and
+supersedes R-J, which holds the homepage budgets and nothing else. Had these
+sections been meant for the roofing service page, R-J would not move. Flagged for
+ratification.
+
+### Copy: the dispatch's offer set, the site's own facts
+
+| Card | RO title | Source of every claim in it |
+|---|---|---|
+| 01 | Înlocuire ardezie cu țiglă metalică | offer: dispatch. Metal tile fitted: roofing page FAQ 0 |
+| 02 | Înlocuire ardezie cu șindrilă bituminoasă | offer: dispatch. Bituminous shingle fitted: roofing page FAQ 0 |
+| 03 | Acoperiș la cheie cu țiglă metalică | timber rafters, covering, gutters and downpipes: roofing page `answer` |
+| 04 | Acoperiș la cheie cu șindrilă bituminoasă | same |
+
+The options label and list on cards 01 and 03 name the three origins the dispatch
+gives: Korean, Italian, Swedish. Nothing else is claimed: no brand, no price, no
+warranty, no duration. The CTA reuses `header.cta` and goes to the quote form, so
+no new button copy was written. Plain hyphens only, and the R-X gate is green over
+the new strings.
+
+### Anatomy, per audit 3.2
+
+Two columns of cards at desktop, one below 768px. A 4px `--brand` top border, no
+radius, no shadow. A ghost numeral 01 to 04 top right, `--brand` at opacity 0.1
+and `aria-hidden`: text at reduced opacity on a white card, not a translucent
+section, so section 3 is not engaged. On cards 01 and 03 the CTA is pushed to the
+foot of the right column; on 02 and 04, which have no options, it sits 24px under
+the paragraph, as the audit records.
+
+**Images are real files or nothing.** A card whose `public/img/offer-roof-0N.jpg`
+does not exist drops its image column (master plan section 7: remove, never
+fill). The four slots are registered in `scripts/slots.js` at 600x740, 0.81:1.
+The build fails when an image exists without alt text in both locales, and was
+watched failing.
+
+### Tested
+
+| Build | Assertions | Result |
+|---|---|---|
+| As shipped, no images | placement between `#servicii` and `#proces`, white section with its divider and a dark section after, four cards, numerals, opacity, top border, uppercase titles, options only on 01 and 03, CTA placement per card, section under the 1,400px cap, no image column, no overflow at 390, 360, 320 | **36 of 36** |
+| Local fixture, card 01 with an image | all of the above, plus the image at 0.81:1 left of the text, stacking above it below 768px | **46 of 46** |
+
+The first run failed 2 of 32, and both failures were the test's: it demanded the
+CTA at the foot on every card, where the audit puts it under the paragraph on 02
+and 04. The image fixture then exposed a real defect, the CTA 23px above the foot
+beside a taller image, which the CSS fix resolved.
+
+### Measured: the homepage is now over its R-J budgets, knowingly
+
+| Page | Before (1ddfe50) | After | R-J budget | Over by |
+|---|---|---|---|---|
+| Homepage RO | 8,818 | **9,998** | 8,851 | **1,147** |
+| Homepage RU | 9,032 | **10,267** | 9,065 | **1,202** |
+| Six service pages | unchanged | unchanged | 6,000 | inside |
+
+The section itself is 1,180px RO and 1,235px RU, under the 1,400px cap.
+
+**Why it merges anyway.** `docs/CLAUDE.md` section 2 allows nothing on the RO
+homepage "without a measurement first or a new ruling". This is the measurement,
+taken before the merge. The new ruling is RC-113's to author, and the dispatch
+orders RC-108 to RC-111 merged before RC-113 measures. **RC-113 is blocked**
+(Q-W14-02), so until it runs, `scripts/verify-live.js` will report both homepages
+OVER on every run. That is expected, and it is not an unverified deploy: identity
+is asserted separately and still passes.
+
+Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100, RU 100 / 100 / 100 /
+100**.

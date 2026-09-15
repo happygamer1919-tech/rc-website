@@ -1439,3 +1439,41 @@ is a deviation, for two reasons:
 **What to send:** "confirmed", or the correct URLs. A change is one edit to
 `content/social.json`. If a URL is wrong, the footer and `sameAs` are wrong too:
 the footer is a SELF edit, `sameAs` is in the R-V STOP set.
+
+## Q-W14-07 · The wave 14 image slots have no permitted source · OPEN, opened 2026-09-15 (W14-08)
+
+**Shipped default: every such slot ships without its image.** The acoperișuri
+offer cards render their text column only. Their four image slots are
+registered in `scripts/slots.js` (`offer-roof-01` to `04`, 0.81:1), so a file
+dropped into `photos-raw/` goes through the pipeline and, the moment it lands in
+`public/img/`, the card switches to the two-column layout with no code change.
+The build refuses an image that arrives without alt text in both locales, and
+R-W refuses one without a provenance row.
+
+**Why no image was sourced.** RC-108 asks for "stock-type roofing scenes, R-W
+provenance required"; RC-110 for manufacturer profile renders; RC-111 for
+architectural visualisations. Three things stand in the way, and none is mine to
+waive:
+
+1. **The master plan forbids it.** Section 7: "Real Rapid Construct work only.
+   If a slot has no real photo, the slot is removed rather than filled with
+   stock." The dispatch conflicts with that rule, and `docs/CLAUDE.md` says to
+   ask before deviating from the master plan. No ruling amends section 7.
+2. **No source is approved.** A stock library is a new vendor, which needs your
+   sign-off, and its licence terms would need recording per R-W.
+3. **The obvious sources are banned.** The audit's own images come from
+   fatade3d.md, imperlux.md and dasterum.md, which R-W now fails outright. The
+   metal tile renders in audit 5.4 are also watermarked.
+
+**Options, per slot group:**
+
+| Slot group | Card | Honest source | What it needs from you |
+|---|---|---|---|
+| Offer cards, four roofing jobs | RC-108 | **the client's own photos** of a slate replacement and a new roof | the photos; no ruling needed, section 7 already allows them |
+| Metal tile profiles | RC-110 | **the manufacturer**, with written permission | the supplier's name, and their render files or a permission email |
+| Carport models | RC-111 | a visualisation licensed for commercial use, or the client's photos | approval of a source, and a ruling amending section 7 for this group |
+
+**Recommended:** ask the client for real photos for the offer cards first. They
+depict work the company does, so a real photo is both allowed and more
+convincing than stock. Treat stock as a last resort for the carport group only,
+under an explicit ruling.

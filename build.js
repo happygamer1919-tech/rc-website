@@ -131,7 +131,7 @@ const PAGES = [
 
 // Keys whose value is already HTML built by this file. Everything else is
 // escaped on substitution.
-const RAW_KEYS = new Set(['socialRow',
+const RAW_KEYS = new Set(['roofOffers', 'socialRow',
   // demoAttr is a whole attribute, ` data-demo="..."`, not an attribute value:
   // it is either present or absent. Its inner text is escaped where it is
   // built, so what lands here is already safe. Escaping it again turned the
@@ -613,6 +613,72 @@ ${items}
         </ul>`;
 }
 
+// --- W14-08, the acoperișuri offer cards (S-02) ------------------------------
+
+/* Four roofing jobs as cards, anatomy from the wave 14 audit section 3.2: a
+   brand orange top border, a ghost numeral 01 to 04 top right, the image left at
+   0.81:1, a description, a bold options label and bulleted list on cards 01 and
+   03 only, and the CTA at the foot of the right column.
+
+   The offer set and the three metal tile origins are the dispatch's. Every other
+   claim restates copy the site already carries on the roofing service page: what
+   is fitted, over new and existing structures, with which coverings.
+
+   Images are per card and only ever real files. A card whose image file is not
+   in public/img/ renders without the image column rather than with a
+   placeholder (master plan section 7: a slot with no photo is removed, not
+   filled). Any file that does land is already held to R-W by the provenance
+   gate, which fails on an image without a row. */
+const ROOF_OFFER_COUNT = 4;
+const ROOF_OFFERS_WITH_OPTIONS = [0, 2];
+
+function roofOfferImage(i, alt) {
+  const id = `offer-roof-0${i + 1}`;
+  if (!fs.existsSync(`public/img/${id}.jpg`)) return '';
+  if (!REAL(alt)) die(`public/img/${id}.jpg exists but roofOffers.items.${i}.alt is not real. An image that lands brings its alt text in both locales.`);
+  const retina = fs.existsSync(`public/img/${id}@2x.jpg`)
+    ? ` srcset="${BASE}/img/${id}.jpg 1x, ${BASE}/img/${id}@2x.jpg 2x"` : '';
+  return `<div class="offer__media"><img src="${BASE}/img/${id}.jpg"${retina} alt="${esc(alt)}" width="600" height="740" loading="lazy" decoding="async"></div>`;
+}
+
+function roofOffers(l) {
+  const s = (k) => l.strings[`roofOffers.${k}`];
+  const cards = Array.from({ length: ROOF_OFFER_COUNT }, (_, i) => {
+    const n = String(i + 1).padStart(2, '0');
+    const media = roofOfferImage(i, s(`items.${i}.alt`));
+    const options = ROOF_OFFERS_WITH_OPTIONS.includes(i)
+      ? `
+            <p class="offer__options-label">${esc(s('optionsLabel'))}</p>
+            <ul class="offer__options">
+              <li>${esc(s('options.0'))}</li>
+              <li>${esc(s('options.1'))}</li>
+              <li>${esc(s('options.2'))}</li>
+            </ul>` : '';
+    return `      <article class="offer${media ? ' offer--media' : ''}" data-reveal data-stagger="${i}">
+        <p class="offer__n" aria-hidden="true">${n}</p>
+        <h3 class="offer__title">${esc(s(`items.${i}.title`))}</h3>
+        <div class="offer__body">
+          ${media}
+          <div class="offer__text">
+            <p class="offer__desc">${esc(s(`items.${i}.desc`))}</p>${options}
+            <a class="btn btn--primary offer__cta" href="#oferta">${esc(l.strings['header.cta'])}</a>
+          </div>
+        </div>
+      </article>`;
+  }).join('\n');
+  return `<section class="section section--light section--divided" id="acoperisuri" aria-labelledby="acoperisuri-h">
+  <div class="container">
+    <p class="eyebrow" data-reveal>${esc(s('eyebrow'))}</p>
+    <h2 id="acoperisuri-h" data-reveal>${esc(s('h2'))}</h2>
+    <p class="lede" data-reveal>${esc(s('lede'))}</p>
+    <div class="offers">
+${cards}
+    </div>
+  </div>
+</section>
+`;
+}
+
 // --- W12-01, the portfolio end tile -----------------------------------------
 
 /* The seventh cell of the homepage portfolio grid. It is not a project and not
@@ -855,6 +921,7 @@ for (const l of loaded) {
   vars.supplierChips = renderSupplierChips(l, BASE);
   vars.heroPanelMedia = heroPanelMedia(l, BASE);
   vars.promoBar = promoBar(l);
+  vars.roofOffers = roofOffers(l);
   vars.socialRow = socialRow(l);
   // Overrides nothing: band.coverageLine is no longer a locale key, it is
   // composed here so the sentence and the schema cannot disagree.

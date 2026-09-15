@@ -871,6 +871,51 @@ p { margin: 0; }
    intent differs and cover is right for a photo. */
 .hero-panel-media--photo img { object-fit: cover; }
 
+/* --- W14-08, acoperișuri offer cards (S-02) -------------------------------- */
+/* Anatomy from the wave 14 audit 3.2, in this site's tokens: a 4px --brand top
+   border, no radius, no shadow; a ghost numeral in --brand at 0.1 opacity behind
+   the title area; body in two columns, image left at 0.81:1 when a real image
+   exists, text right with the CTA at its foot. The ghost numeral is decorative
+   (aria-hidden) and is text at reduced opacity on a white card, not a
+   translucent section overlay, so docs/CLAUDE.md section 3 is not engaged. */
+.offers {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap); margin-top: 40px;
+}
+.offer {
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+  background: var(--bg-light);
+  border: 1px solid var(--line); border-top: 4px solid var(--brand);
+  padding: 28px;
+}
+.offer__n {
+  position: absolute; top: 4px; right: 20px; margin: 0;
+  font-size: 92px; font-weight: 800; line-height: 1;
+  color: var(--brand); opacity: 0.1; pointer-events: none; user-select: none;
+}
+.offer__title {
+  position: relative; max-width: 80%;
+  font-size: 22px; text-transform: uppercase; letter-spacing: 0;
+}
+.offer__body { flex: 1 1 auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; margin-top: 20px; }
+.offer--media .offer__body { grid-template-columns: minmax(0, 300fr) minmax(0, 262fr); }
+.offer__media { aspect-ratio: 81 / 100; border: 1px solid var(--line); overflow: hidden; background: var(--bg-grey); }
+.offer__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.offer__text { display: flex; flex-direction: column; min-width: 0; }
+.offer__desc { margin: 0; }
+.offer__options-label { margin: 16px 0 0; font-weight: 700; }
+.offer__options { margin: 8px 0 0; padding-left: 20px; list-style: disc; }
+.offer__options li::marker { color: var(--brand); }
+.offer__options li + li { margin-top: 4px; }
+/* The CTA sits under the paragraph on cards 02 and 04, which have no options
+   (audit 3.2). After an option list, on cards 01 and 03, it is pushed to the foot
+   of the right column, so it lines up with the bottom of a taller image; the
+   list keeps a 24px floor above it either way. */
+.offer__cta { align-self: flex-start; margin-top: 24px; }
+.offer__options { margin-bottom: 24px; }
+.offer__options + .offer__cta { margin-top: auto; }
+
 /* --- 8. service illustration box ------------------------------------------ */
 /* Fixed 4:3 box, illustration centred and contained. The <img> always resolves
    because placeholder SVGs ship until the real ones land. */
@@ -1062,6 +1107,15 @@ p { margin: 0; }
   .header__logo img { height: 40px; }
   .header[data-scrolled="true"] .header__logo img { height: 36px; }
   .mobile-panel { top: 80px; }
+
+  /* W14-08. Offer cards stack to one column, and a card with an image stacks its
+     image above its text. */
+  .offers { grid-template-columns: minmax(0, 1fr); }
+  .offer { padding: 24px; }
+  .offer__n { font-size: 72px; right: 16px; }
+  .offer__title { font-size: 19px; }
+  .offer--media .offer__body { grid-template-columns: minmax(0, 1fr); }
+  .offer__cta { width: 100%; align-self: stretch; }
 
   /* Hard cap, 36px. The type shrinks to fit the line rather than the bar
      growing or the text moving: 13px clipped the Russian string at 360px and

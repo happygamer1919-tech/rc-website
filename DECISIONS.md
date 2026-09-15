@@ -3878,3 +3878,212 @@ Lighthouse, desktop, localhost: **homepage RO 99 / 100 / 100 / 100, RU 99 / 100 
 100 / 100, acoperișuri service page RO 98 / 100 / 100 / 100**.
 
 Gates: build, links, stale docs, provenance and scarcity all exit 0.
+
+## W14 ratifications · The owner's rulings on the fourteen wave 14 deviations, 2026-09-15
+
+Recorded at the owner's instruction from the wave 14 close-out dispatch, before
+any close-out card was worked. The numbers are the deviation numbers in the wave
+14 report.
+
+| # | Deviation, as reported | Ruling | Consequence |
+|---|---|---|---|
+| 1 | Repo and audit paths | **Ratified** | none |
+| 2 | The `quality` check was created by RC-102 | **Ratified** | none |
+| 3 | Rulings from R-V onward live in `docs/rulings/`; ruling PRs are STOP | **Ratified** | PRs #1, #2, #3 merged at the owner's instruction |
+| 4 | Wave 14 blocks placed on the homepage | **Overturned** | RC-116 moves the tile grid, carports and fences onto their own service pages |
+| 5 | Card order changed from number order | **Ratified** | none |
+| 6 | RC-114 removed the live 0% instalment offer | **Ratified** | none |
+| 7 | RC-107 used the three real profile URLs and the footer's inline icons | **Ratified** | none |
+| 8 | RC-108, RC-110 and RC-111 shipped without images | **Ratified** | RC-118 fills them under the amended R-W |
+| 9 | RC-110 colour chips as text, no swatch | **Ratified with amendment** | RAL swatches are permitted, scoped to the metal tile grid component only, sourced from the 15-code legend in the wave 14 audit. `docs/CLAUDE.md` section 3 carries the exception from this commit |
+| 10 | RC-111 designations, family mapping, the "up to 6 m" figure, white step tiles and 19px numerals | **Overturned in part** | the "up to 6 m" cantilever claim is struck from C-02 in this commit; C-01 to C-12 naming stays; the rest of the deviation stands |
+| 11 | RC-109 slider role, pan-y, solid labels, arrows only for two or more projects | **Ratified** | none |
+| 12 | RC-106 not merged despite SELF; mobile icon toggle | **Ratified** | RC-106b reopens it |
+| 13 | RC-105 left "de la 160 lei/m²" in the meta description and `priceRange` | **Overturned** | RC-105b removes the figure from both, both locales, folded into PR #14 |
+| 14 | Live verification run against rapidconstruct.md | **Ratified** | RC-117 makes rapidconstruct.md the declared origin |
+
+### C-02, the struck claim
+
+The descriptor "Consolă de până la 6 m." / "Консоль до 6 м." was the competitor's
+stated span. It becomes "Consolă pentru deschideri mari." / "Консоль для больших
+пролётов.", which restates the model's own category chip ("Consolă, deschidere
+mare") and carries no figure.
+
+### The colour rule, amended for one component
+
+`docs/CLAUDE.md` section 3 still holds ten colour values for the site. It now
+names one exception, in its "What is not a colour value" list: the RAL swatches
+inside the metal tile grid's colour chips, which depict a product finish and are
+data, not palette. The exception reaches no other component. The values land with
+RC-118, each from the audit's 15-code legend.
+
+### Questions closed or narrowed by the dispatch
+
+Status metadata only, per R-S; no question body is edited.
+
+| Question | New status |
+|---|---|
+| Q-W14-02 | answered: the T-02 to T-09 strings were supplied |
+| Q-W14-03 | answered: rapidconstruct.md is the real domain (RC-117) |
+| Q-W14-04 | answered: the menu lists the audit 1.2 taxonomy (RC-106b) |
+| Q-W14-05 | answered: the nav collapses at 1100px (RC-115) |
+| Q-W14-07 | answered: approved image origins added to R-W (RC-118) |
+| Q-W14-08 | part (b) answered: RAL swatches permitted in the tile grid; part (a), prices, stays open |
+| Q-W14-10 | answered: the 160 lei/m² figure leaves the meta description and the price field (RC-105b). The question was opened on the RC-105 branch and exists only in PR #14, so its status is set there |
+
+## W14-15 · The header collapses at 1100px, and the nav tightens up to 1180px, 2026-09-15
+
+**Card RC-115. Closes Q-W14-05.** The hamburger header, which started at 768px,
+now starts at 1100px and below. Between 769 and 1100px the desktop nav used to
+overlap itself on the live site.
+
+### What moved
+
+- **From the 768px block to a new 1100px block, unchanged:** nav and actions
+  hidden, the mobile icons shown, the 80px header, the 56px pill and its scrolled
+  52px, the 40px and 36px logo, the mobile panel's top, and the 80px body spacer
+  (it is the header's height, so it moves with the header).
+- **`main.js`:** the open mobile panel now closes when the viewport widens past
+  1100px, not 768px.
+- **From the 1024px block to a new 1180px block, unchanged:** nav gap 20px, nav
+  type 16px, actions gap 12px.
+
+### Why the 1180px block exists, which the card did not ask for
+
+Collapsing at 1100px alone left the desktop nav overlapping just above it. Measured
+on the live site: RO overlapped at 1101 and 1120px, RU at 1101, 1120 and 1140px,
+by up to 16px (RO) and 28px (RU), and both were clean from 1160px. The tighter
+spacing the 1024px block already used is applied up to 1180px instead. Nothing new
+is chosen: same values, wider range. The breakpoint itself is exactly the card's.
+The 1024px block's `.header__phone span` rule is dropped: below 1100px the phone
+link it hid is itself hidden, so the rule was dead.
+
+### Tested
+
+Headless Chrome against the local build, **84 of 84**, both locales, at 769, 900,
+1024, 1099, 1100, 1101, 1120, 1140, 1160, 1179, 1180, 1280 and 1440px:
+
+- no two visible links or buttons in the header intersect (bounding boxes);
+- at 1100 and below the hamburger is shown, the nav hidden, the header 80px and the
+  body spacer 80px; above, the nav is shown, the hamburger hidden, 96px and 96px;
+- nothing in the header runs past the viewport;
+- at 900px the hamburger opens the panel with its five links, and widening the
+  window past 1100px closes it.
+
+The card's seven widths are all in the set; the six extra widths are the band the
+live measurement found.
+
+### Found while testing: a wave 14 regression in the hero, fixed separately
+
+The first run also asserted no page-wide horizontal overflow, and it failed on RU
+at 1099, 1100 and 1101px. The cause is not the header. The hero photo panel keeps a
+4:3 ratio and stretches to the guarantee card's height; W14-07 (RC-107) added a
+row to that card, so on RU at 1025 to 1149px the card grows to 430px and the photo
+becomes 573px wide in a 514px column, 35px past the viewport. The same build at
+e49e02e, before wave 14, is clean at those widths. It is fixed in its own change
+under RC-107, and this card's test asserts the header only.
+
+### Measured
+
+Heights at 1440px, all eight `verify-live.js` pages, identical to `main` at
+5e524ff: the header does not change at desktop width. Lighthouse, desktop,
+localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 / 100**.
+
+## W14-07b · Fix: the hero photo ran past the viewport after the social row landed, 2026-09-15
+
+**A wave 14 regression, found while testing W14-15, fixed under RC-107** because
+W14-07 caused it.
+
+**What visitors saw.** On the homepage between about 1025 and 1150px, the photo
+beside the guarantee card extended past the right edge of the window and the page
+scrolled sideways: by up to 35px in Russian, and by up to 37px in Romanian at
+1025 to 1040px.
+
+**Why.** The photo panel keeps a 4:3 ratio and stretches to the claim card's
+height. W14-07 added the 56px social row to the card, so the card grew, and the
+ratio then made the panel wider than its grid column. Measured on the live site
+at RU 1100px: column 514px, card 430px tall, panel 430px tall and 573px wide. The
+same page built at e49e02e, before wave 14, is clean at every width tested.
+
+**The fix.** `.hero-panels > .hero-panel-media { max-width: 100%; min-width: 0; }`.
+The panel is capped at its column; its stretched height stands; the photo crops
+with the `object-fit: cover` it already had. At 1440px nothing changes: the
+column is wide enough, so the panel is still exactly 4:3.
+
+### Tested
+
+| Build | Assertions | Result |
+|---|---|---|
+| With the fix | both locales, every 5px from 1025 to 1180: the panel inside its column and no page overflow; the panel still the card's height where the card is tallest; 1440 unchanged at 4:3, full column, card height; 1024 single column | **8 of 8** |
+| Live `main` without it, same test | | **6 of 8**, failing the overflow check in both locales |
+
+Heights at 1440px on all eight `verify-live.js` pages identical to `main`.
+Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 /
+100**.
+
+## W14-16 · The page split: tile grid, carports and fences get their own pages, 2026-09-15
+
+**Card RC-116.** Carries out the owner's overturn of wave 14 deviation 4. The
+metal tile grid, the carports and the fences leave the homepage for pages of
+their own, in both locales. The homepage keeps the offer cards and the
+before/after slot, and gains a compact row of three links to the new pages.
+
+### The pages
+
+| RO | RU | H1 | Carries |
+|---|---|---|---|
+| `/servicii/tigla-metalica/` | `/ru/servicii/tigla-metalica/` | Țiglă metalică / Металлочерепица | the W14-10 grid |
+| `/servicii/copertine/` | `/ru/servicii/copertine/` | Copertine / Навесы | the W14-11 chooser, models and steps |
+| `/servicii/garduri/` | `/ru/servicii/garduri/` | Garduri / Заборы | the W14-12 component, still empty (Q-W14-09) |
+
+Each is `src/product.html`, derived from `src/service.html`: same header, promo
+bar, quote form and footer; a breadcrumb, one H1, one line and a CTA; then the
+block. The block renderers are the same functions the homepage used, unchanged.
+Meta titles and descriptions follow the service-page rules (the longest title
+that fits 60 characters; the coverage line appended if it fits 155). The social
+image is the site default, since none of the three has its own photograph.
+
+### Copy for the new lines, and where it comes from
+
+- Tile grid lede and teaser: what the grid itself shows (grades, thickness,
+  working width, warranty, colours, list price; the four model names).
+- Carports lede and teaser: the five family names and the models section's own
+  line (made to the yard's dimensions, priced after measurement).
+- Fences lede: "Venim, măsurăm și îți facem oferta pentru gard", from the
+  homepage's existing "venim, măsurăm... ". The teaser only names the product;
+  nothing about fences can be claimed until Q-W14-09.
+
+### Flagged for ratification
+
+1. **STOP-set items touched under a SELF card.** New pages need their own
+   canonical, hreflang and sitemap entries, which R-V lists as STOP. The card
+   marks RC-116 SELF and says to add all three to the sitemap, so they shipped.
+2. **The fences page is in the sitemap while its block is empty,** because the
+   card says all three. It carries an H1, a line and the quote form.
+3. **Service pages enter the sitemap only with a real cover photograph; these
+   three enter unconditionally,** per the card.
+4. **`llms.txt` is unchanged.** The card did not ask for it.
+5. **The quote form's subject line uses a plain hyphen** where the service pages
+   use an em dash, per the dispatch's rule on dashes in code.
+
+### Tested
+
+| Suite | Result |
+|---|---|
+| Page split: all six pages 200, one H1 each matching the locale, canonical and og:url, hreflang and language switch, breadcrumb, form present, the right block and nothing else; sitemap entries with ro, ru and x-default; homepage free of every moved marker; four offer cards kept; three teaser links resolving, placed after the offer cards; no overflow at 390 | **68 of 68** |
+| The tile grid's own acceptance, run on its new pages (placement check adapted) | **90 of 90** |
+| The carports' own acceptance, run on their new pages (order now ends at the form) | **40 of 40** |
+
+### Measured
+
+| Page | Before (13,582 RO / 13,978 RU on main) | After |
+|---|---|---|
+| Homepage RO | 13,582 | **10,261** |
+| Homepage RU | 13,978 | **10,556** |
+| Țiglă metalică RO / RU | not a page | 3,647 / 3,698 |
+| Copertine RO / RU | not a page | 4,587 / 4,663 |
+| Garduri RO / RU | not a page | 2,298 / 2,298 |
+
+The homepage is still over its R-J budget; the new per-page budgets are RC-113's.
+Lighthouse, desktop, localhost: **homepage RO 99 / 100 / 100 / 100, RU 99 / 100 /
+100 / 100; tile grid, carports and fences RO pages 100 / 100 / 100 / 100 each**.

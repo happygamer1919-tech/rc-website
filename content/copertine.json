@@ -19,7 +19,7 @@
   ],
   "models": [
     { "id": "c01", "designation": "C-01", "category": { "ro": "Pe stâlpi", "ru": "На опорах" }, "descriptor": { "ro": "Copertină standard pentru una sau două mașini.", "ru": "Стандартный навес на одну или две машины." } },
-    { "id": "c02", "designation": "C-02", "category": { "ro": "Consolă, deschidere mare", "ru": "Консольный, большой пролёт" }, "descriptor": { "ro": "Consolă de până la 6 m.", "ru": "Консоль до 6 м." } },
+    { "id": "c02", "designation": "C-02", "category": { "ro": "Consolă, deschidere mare", "ru": "Консольный, большой пролёт" }, "descriptor": { "ro": "Consolă pentru deschideri mari.", "ru": "Консоль для больших пролётов." } },
     { "id": "c03", "designation": "C-03", "category": { "ro": "Prinsă de perete", "ru": "Пристенный" }, "descriptor": { "ro": "Ancorată de clădire.", "ru": "Крепится к зданию." } },
     { "id": "c04", "designation": "C-04", "category": { "ro": "În două ape", "ru": "Двускатный" }, "descriptor": { "ro": "Scurgere pe ambele părți.", "ru": "Сток на обе стороны." } },
     { "id": "c05", "designation": "C-05", "category": { "ro": "Pe stâlpi", "ru": "На опорах" }, "descriptor": { "ro": "Acoperiș plat, pentru una sau două mașini.", "ru": "Плоская крыша, на одну или две машины." } },

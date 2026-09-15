@@ -1255,7 +1255,7 @@ that the photographs, the service artwork and the logo are theirs to publish.
 The step photos and the hero panel need their origin named first. Supplier logos
 used only to name a supplier are the lowest risk and can wait.
 
-## Q-W14-02 · RC-103 strings T-02 to T-09 are not in the dispatch · OPEN, opened 2026-09-15 (W14-03)
+## Q-W14-02 · RC-103 strings T-02 to T-09 are not in the dispatch · ANSWERED 2026-09-15, strings supplied in the close-out dispatch · opened 2026-09-15 (W14-03)
 
 **No default ships, and none can.** RC-103 says: "Apply T-02 through T-09
 exactly as given in `docs/audits/wave-14-copy-delta.md`, which you author first
@@ -1270,7 +1270,7 @@ out inventing copy in any case.
 it replaces (a locale key such as `hero.h1`, or the visible current text). With
 the target named, the delta file maps one-to-one and RC-104 can follow at once.
 
-## Q-W14-03 · The site now serves from rapidconstruct.md, and every canonical still names rapidconstructmd.com · OPEN, opened 2026-09-15 (found at W14-02, gate 9)
+## Q-W14-03 · The site now serves from rapidconstruct.md, and every canonical still names rapidconstructmd.com · ANSWERED 2026-09-15, rapidconstruct.md is the real domain (RC-117) · opened 2026-09-15 (found at W14-02, gate 9)
 
 **Shipped default: nothing changed.** Every value involved (`SITE_URL`, the
 CNAME, canonical, hreflang, og:url, the sitemap, the GeneralContractor JSON-LD)
@@ -1320,7 +1320,7 @@ about 2026-09-10, which matches the manual re-run of the W13-03 deploy that day.
 `https://rapidconstruct.md`, because that is where the deployed build is.
 
 
-## Q-W14-04 · What the catalog menu lists, and where each row goes · OPEN, opened 2026-09-15 (W14-06)
+## Q-W14-04 · What the catalog menu lists, and where each row goes · ANSWERED 2026-09-15, the audit 1.2 taxonomy (RC-106b) · opened 2026-09-15 (W14-06)
 
 **Shipped default: the menu is built and switched off.** `content/catalog.json`
 holds `"categories": []`, and while it is empty neither the Catalog button nor
@@ -1372,7 +1372,7 @@ already is at 1024px and below, or move the whole desktop header to the
 hamburger below a wider breakpoint (see Q-W14-05). RC-106 is marked blocked on
 this question and on the labels above; its PR is open and not merged.
 
-## Q-W14-05 · The live header overlaps itself between 769 and 1100px · OPEN, opened 2026-09-15 (found at W14-06)
+## Q-W14-05 · The live header overlaps itself between 769 and 1100px · ANSWERED 2026-09-15, collapse at 1100px (RC-115) · opened 2026-09-15 (found at W14-06)
 
 **Shipped default: nothing changed.** This is a defect already on `main`, found
 while testing RC-106. No wave 14 card covers the header breakpoints, and where
@@ -1440,7 +1440,7 @@ is a deviation, for two reasons:
 `content/social.json`. If a URL is wrong, the footer and `sameAs` are wrong too:
 the footer is a SELF edit, `sameAs` is in the R-V STOP set.
 
-## Q-W14-07 · The wave 14 image slots have no permitted source · OPEN, opened 2026-09-15 (W14-08)
+## Q-W14-07 · The wave 14 image slots have no permitted source · ANSWERED 2026-09-15, approved origins added to R-W (RC-118) · opened 2026-09-15 (W14-08)
 
 **Shipped default: every such slot ships without its image.** The acoperișuri
 offer cards render their text column only. Their four image slots are
@@ -1478,7 +1478,7 @@ depict work the company does, so a real photo is both allowed and more
 convincing than stock. Treat stock as a last resort for the carport group only,
 under an explicit ruling.
 
-## Q-W14-08 · The metal tile prices are a manufacturer's published list prices; confirm they are ours, and whether chips may show colour · OPEN, opened 2026-09-15 (W14-10)
+## Q-W14-08 · The metal tile prices are a manufacturer's published list prices; confirm they are ours, and whether chips may show colour · PART (b) ANSWERED 2026-09-15, RAL swatches permitted in the tile grid; (a) OPEN · opened 2026-09-15 (W14-10)
 
 **Shipped default: the grid as the dispatch specified it,** with every value from
 the wave 14 audit section 2.1, Standart and Premium only, list prices only, and

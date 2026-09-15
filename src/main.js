@@ -37,6 +37,82 @@
     });
   }
 
+  /* --- W14-06 catalog mega-menu ------------------------------------------- */
+  /* Present only when content/catalog.json has categories. The toggle opens it
+     on click, never on hover. A parent row's subcategories open on hover only
+     where hover exists and the viewport is wider than 768px; everywhere, the
+     row's chevron button opens the same list, which below 768px is a drill-down
+     over the parent list. No animation, and no handler touches scrolling. */
+  (function () {
+    var btn = document.getElementById('catalog-toggle');
+    var sheet = document.getElementById('catalog-panel');
+    if (!btn || !sheet) return;
+    var flyout = window.matchMedia('(hover: hover) and (min-width: 769px)');
+    var mobile = window.matchMedia('(max-width: 768px)');
+    var top = sheet.querySelectorAll('.catalog__list--top > .catalog__row');
+    var parents = sheet.querySelectorAll('.catalog__list--top > .catalog__row--parent');
+
+    function closeSubs(except) {
+      Array.prototype.forEach.call(parents, function (row) {
+        if (row === except) return;
+        row.classList.remove('is-active');
+        row.querySelector('.catalog__expand').setAttribute('aria-expanded', 'false');
+        row.querySelector('.catalog__sub').setAttribute('hidden', '');
+      });
+    }
+    function openSub(row) {
+      closeSubs(row);
+      row.classList.add('is-active');
+      row.querySelector('.catalog__expand').setAttribute('aria-expanded', 'true');
+      row.querySelector('.catalog__sub').removeAttribute('hidden');
+    }
+    function isOpen() { return !sheet.hasAttribute('hidden'); }
+    function setOpen(open) {
+      if (open) {
+        var burger = document.getElementById('mobile-panel');
+        var burgerBtn = document.getElementById('menu-toggle');
+        if (burger && burgerBtn && burger.getAttribute('data-open') === 'true') burgerBtn.click();
+        sheet.removeAttribute('hidden');
+      } else {
+        sheet.setAttribute('hidden', '');
+        closeSubs(null);
+      }
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (mobile.matches) document.body.style.overflow = open ? 'hidden' : '';
+    }
+
+    btn.addEventListener('click', function () { setOpen(!isOpen()); });
+    document.addEventListener('click', function (e) {
+      if (isOpen() && !e.target.closest('.catalog')) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && isOpen()) { setOpen(false); btn.focus(); }
+    });
+    var burgerBtn = document.getElementById('menu-toggle');
+    if (burgerBtn) burgerBtn.addEventListener('click', function () { if (isOpen()) setOpen(false); });
+    window.addEventListener('resize', function () { if (isOpen()) setOpen(false); });
+
+    Array.prototype.forEach.call(top, function (row) {
+      row.addEventListener('mouseenter', function () {
+        if (!flyout.matches) return;
+        if (row.classList.contains('catalog__row--parent')) openSub(row); else closeSubs(null);
+      });
+    });
+    Array.prototype.forEach.call(parents, function (row) {
+      var expand = row.querySelector('.catalog__expand');
+      var backBtn = row.querySelector('.catalog__back');
+      expand.addEventListener('click', function () {
+        if (row.querySelector('.catalog__sub').hasAttribute('hidden')) {
+          openSub(row);
+          if (mobile.matches) backBtn.focus();
+        } else {
+          closeSubs(null);
+        }
+      });
+      backBtn.addEventListener('click', function () { closeSubs(null); expand.focus(); });
+    });
+  })();
+
   /* --- W14-09 before/after slider ------------------------------------------- */
   /* Present only when content/before-after.json has projects. Pointer down
      anywhere on the frame jumps the divider there and a drag follows it; hover

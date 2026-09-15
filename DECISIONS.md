@@ -3393,6 +3393,70 @@ shortens nothing. The markers are what prove the new build was the one measured.
 Lighthouse, desktop preset, localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 /
 100 / 100**.
 
+## W14-06 · The catalog mega-menu is built, switched off, and blocked on the header, 2026-09-15
+
+**Card RC-106.** **Status: blocked. PR open, not self-merged.** The component is
+complete and tested; it cannot be switched on as specified, for two reasons that
+are not mine to decide (Q-W14-04, Q-W14-05, both carried to `main` by W14-07).
+
+### What is built
+
+- `content/catalog.json`, `"categories": []`. The taxonomy shape is audit 1.2:
+  categories, some with subcategories, two levels, never three.
+- `catalogMenu()` in `build.js`. Returns nothing while the list is empty, so no
+  page carries the button or the panel. It fails the build on a missing
+  `categories` array, a label that is not real in both locales, a row with no
+  href, and a third level. Each of those four was watched failing.
+- The button is placed in the black pill, left of the wordmark, on the homepage
+  and all 18 service pages. Not on the 404 page, which has no nav and loads no
+  script, and not on `src/privacy.html`, which is in the R-V STOP set.
+- Interaction per audit 1.3, in `main.js`: click opens, hover never does. On a
+  hover-capable screen wider than 768px a parent row opens its flyout to the
+  right. Below that the same list is a drill-down over the parent list with a
+  back button. Escape and an outside click close it; opening the hamburger
+  closes it. No transition, no animation, nothing touches scrolling.
+- The active row is `--ink` on `--brand`, 5.10:1, the promo bar's pairing. White
+  on `--brand` fails AA at this size. No new colour value.
+
+### Tested, empty and filled
+
+| Build | Test | Result |
+|---|---|---|
+| Shipped, empty | the menu must not exist, both locales, home and service page | **12 of 12** |
+| Shipped, empty | heights, all eight `verify-live.js` pages | **identical to `main`**, 8,818 RO / 9,032 RU |
+| Shipped, empty | Lighthouse desktop | **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 / 100** |
+| Local fixture, audit 7/2/7 | interaction, keyboard, mobile drill-down, mobile fit at 390, 360, 320 | all pass |
+| Local fixture, audit 7/2/7 | no overlapping targets in the desktop pill at 1440 to 1024 | **11 failures** |
+
+### Why it is blocked: the desktop header has no room for the button
+
+At 1440 the toggle and its gap cost 115px (RO) and 119px (RU). The nav is
+`flex: 1 1 auto; min-width: 0`, so it does not push anything out: its links
+slide under the wordmark (24px RO, 37px RU) and into the phone link. The pill's
+`scrollWidth` never grows, so an overflow check reads clean. Lighthouse caught it
+as `target-size`, accessibility **97** against the floor of 100.
+
+Two fixes were tried:
+
+1. **Mobile.** Below 768px, a pill carrying the catalog tightens its gap to 8px,
+   and at 374px and below the toggle becomes a labelled icon button. This fixed
+   the 360 and 320 overflow and is kept.
+2. **Desktop.** The pill's gap, the nav gap and the nav type size, tightened only
+   when the catalog is present. RO then fit at 1280 and above; RU still overlapped
+   at every desktop width. **Reverted, not shipped:** a tuning known to be
+   insufficient would only be re-tuned once the real decision is made.
+
+A third attempt would be a design decision rather than a fix: what gives up its
+room (the "Acasă" link, the phone number text, or the desktop layout itself
+below some wider breakpoint). Stopped there, per the three-attempt ceiling.
+
+### Found on the way, and already live
+
+While building the overlap check, the same measurement on `main` found the
+header overlapping itself between 769 and 1100px with no catalog at all,
+confirmed on the live site at build-sha 2ebedfb. Recorded as Q-W14-05. The
+fixture test asserts only the widths where `main` is clean and prints the rest.
+
 ## W14-07 · The social row on the dark hero card, 2026-09-15
 
 **Card RC-107.** Facebook, Instagram and TikTok, in that order, under the CTA on
@@ -3941,7 +4005,6 @@ Status metadata only, per R-S; no question body is edited.
 | Q-W14-08 | part (b) answered: RAL swatches permitted in the tile grid; part (a), prices, stays open |
 | Q-W14-10 | answered: the 160 lei/m² figure leaves the meta description and the price field (RC-105b). The question was opened on the RC-105 branch and exists only in PR #14, so its status is set there |
 
- w14/rc-102-rw-amendment
 ## W14-02b · R-W amended: legacy status by fingerprint, approved origins, 2026-09-15
 
 **STOP: PR only.** It edits `docs/rulings/R-W.md`, in the STOP set. The amendment
@@ -4140,7 +4203,6 @@ The homepage is still over its R-J budget; the new per-page budgets are RC-113's
 Lighthouse, desktop, localhost: **homepage RO 99 / 100 / 100 / 100, RU 99 / 100 /
 100 / 100; tile grid, carports and fences RO pages 100 / 100 / 100 / 100 each**.
 
- w14/rc-117-origin-cutover
 ## W14-17 · Origin cutover: rapidconstruct.md is the site's origin, STOP, 2026-09-15
 
 **Card RC-117. Closes Q-W14-03.** **STOP: pull request only.** It changes
@@ -4414,6 +4476,76 @@ already over R-J and is re-budgeted in RC-113.
 Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100** (LCP 923 ms, CLS 0.002),
 **RU 99 / 100 / 100 / 100** (LCP 925 ms, CLS 0.012).
 
+## W14-06b · Catalog data filled and main merged forward; blocked again, on the desktop header's width, 2026-09-15
+
+**Card RC-106b.** Q-W14-04 is closed by the close-out dispatch: the menu lists
+exactly the 7 categories and 7 subcategories of audit section 1.2, two levels deep.
+
+**Merged forward, not rebased.** #7 is a published branch, and a rebase would need a
+force push, which is owner-confirmable. Main went into the branch as one merge
+commit instead. Four files conflicted, not five: `build.js` and `src/main.js`
+keep both sides (the catalog beside everything wave 14 added since), DECISIONS.md
+is the union of both sides, and BACKLOG.md takes main's rows, which were the
+current ones. The product pages from W14-16 did not exist when #7 was built, so
+`src/product.html` now carries `{{catalogMenu}}` and `PROD_RAW_KEYS` lists it.
+
+**The data.** RO labels are the audit's, verbatim and in order. RU labels use the
+words the RU site already uses: пенополистирол, минеральная вата, декоративная
+штукатурка, керамическая плитка. The site has no product pages, so each row opens
+the service page that does that work. **The targets are mine, for ratification:**
+
+| RO label | RU label | Opens |
+|---|---|---|
+| Sisteme de termoizolație | Системы теплоизоляции | Fațade |
+| · Polistiren expandat | Пенополистирол | Fațade |
+| · Polistiren extrudat | Экструдированный пенополистирол | Fațade |
+| · Vată minerală | Минеральная вата | Fațade |
+| · Adezivi și mase de șpaclu | Клеи и шпаклёвочные смеси | Fațade |
+| · Alte produse | Другие продукты | Fațade |
+| Tencuieli decorative | Декоративные штукатурки | Fațade |
+| Plăci ceramice | Керамическая плитка | Finisaje |
+| Elemente decorative | Декоративные элементы | Fațade |
+| Vopsele | Краски | Finisaje |
+| · Vopsele de exterior | Фасадные краски | Fațade |
+| · Vopsele de interior | Интерьерные краски | Finisaje |
+| Sisteme de iluminare | Системы освещения | Instalații |
+| Alte materiale de construcții | Другие строительные материалы | Case la cheie |
+
+### Tested
+
+The RC-106 test, unchanged, against a build with this data: **58 of 67.** Every
+behaviour check passes: the 7/2/7 structure, click opens and hover does not, the
+flyout, keyboard, Escape, the mobile drill-down and back button, the hamburger
+closing the menu, no animation, the toggle on service pages, and no overlap from
+320 to 390px. Between 769 and 1100px every width now reads 0 overlapping pairs,
+which RC-115 fixed. **The nine failures are one defect:** at 1180, 1280, 1366 and
+1440px, in both locales, the wordmark covers the first nav link and the last link
+runs into the phone number.
+
+A data test, 16 checks: labels verbatim and in order in both locales, every row's
+target, the panel heading, the repeated parent rows, and the toggle on the three
+product pages all pass. The three failures are the same overlap on product pages.
+
+### Why it does not fit
+
+The header follows the 1200px container, so at every width from 1200px up the pill
+is 1152px wide. What it has to hold, measured at 1440px:
+
+| | RO | RU |
+|---|---|---|
+| pill padding and three 24px gaps | 108 | 108 |
+| Catalog button | 91 | 95 |
+| wordmark | 130 | 130 |
+| nav at full spacing | 461 | 456 |
+| phone, CTA, language, two gaps | 459 | 486 |
+| **needed** | **1,249** | **1,275** |
+| **short by** | **97** | **123** |
+
+Taking every spacing value down to the 1180px block's figures and the pill gap to
+16px recovers about 84px, which is not enough for RU at any width. Something
+visible has to give, and which one is not mine to choose. **Not merged,** as the
+dispatch says: merge when 67/67. Q-W14-13.
+
 ## W14-19 · The pending photo manifest; the placeholders have nowhere to go, 2026-09-15
 
 **Card RC-119.** Two deliverables: a manifest of every slot the wave 14 audit
@@ -4446,6 +4578,401 @@ changed.
 
 Gates: build, links, stale docs, provenance and scarcity all pass; the card adds no
 image and changes no page.
+
+## W14 tail ratifications · The owner's rulings on the close-out, 2026-09-15
+
+Recorded at the owner's instruction, from the wave 14 tail dispatch.
+
+| Item | Ruling |
+|---|---|
+| The RC-118 photo choices, the four offer card photographs (W14-18) | ratified |
+| The section 7 photo rule amended for product slots only (W14-18) | ratified |
+| The alt text written for the four offer card images (W14-18) | ratified |
+| Merging main forward into a published branch instead of rebasing (W14-06b) | ratified |
+| RC-119 shipped as the manifest only, existing project data left intact (W14-19) | ratified |
+| All four recorded interpretations in ruling R-Y (W14-13) | ratified |
+| The RC-106b menu row to page mapping (W14-06b) | ratified in principle |
+
+**Noted, no action:** #14 merging before RC-117 followed a contradiction in the
+close-out dispatch, not an executor error.
+
+**Premise corrected.** The tail dispatch says #16, #20 and #25 were merged before
+this run. #16 and #20 are. **#25 (RC-113, ruling R-Y) is open and not merged,** and
+its `quality` check fails, having inherited the defect W14-24a repairs. It is a
+STOP card and stays with the owner; its interpretations are ratified here ahead of
+its merge. Until it merges, main's `scripts/verify-live.js` carries R-J's budgets
+and reports both homepages OVER, and there is no R-Y on main for a later card to
+amend.
+
+## W14-24 · Post-cutover verification, and the tag, 2026-09-15
+
+**Card RC-124.** #20 merged as b47d79c and Pages deployed it. Verified under R-P on
+https://rapidconstruct.md.
+
+- **`scripts/verify-live.js` at b47d79c:** 8 of 8 pages VERIFIED, the `build-sha`
+  and the content markers read in the same page load; 33 reachable URLs crawled, 0
+  with a visible TODO. Its exit code is 1 only because both homepages are OVER R-J's
+  budgets, which R-Y (#25, not merged) replaces. Identity is not in question.
+- **The deployed output, read over HTTP,** every request cache-busted and the
+  `build-sha` asserted per page in the same response. CNAME 200, "rapidconstruct.md".
+  robots.txt points at https://rapidconstruct.md/sitemap.xml. sitemap.xml has 28
+  locations and 84 alternates, all on the origin. All 28 pages return 200 at b47d79c,
+  each with its canonical and three hreflang links on the origin. og:url and
+  og:image are on the origin on 26 pages; the two privacy pages carry no Open Graph
+  tags at all, by design, and are named as such in the output. JSON-LD `url` on 26
+  pages and `sameAs` 8 times, none naming the retired host. **Zero
+  rapidconstructmd.com anywhere in the deployed output,** CNAME, robots.txt and
+  sitemap.xml included. PASS.
+- **`scripts/check-origin.js` on a local build of b47d79c:** pass.
+- **Tag `wave-14-cutover`,** annotated, on b47d79c. Added, never moved.
+
+## W14-24a · Main repaired: the web merges left conflict marker tails, 2026-09-15
+
+**Found while verifying RC-124.** main's `quality` check fails at b47d79c:
+"docs/assets/PROVENANCE.md table has no rows". #16 and #20 were each brought up to
+date with main through GitHub's conflict editor (eb1f4da, a1cb191). It strips the
+marker characters, leaves their tails as text, and keeps both sides of each
+conflict. Pages deployed anyway, because the deploy workflow does not run the
+gates. The same damage reached #25 when main was merged into it (05102a3).
+
+| File | Damage | Repair |
+|---|---|---|
+| `DECISIONS.md` | four stray lines between entries: ` w14/rc-102-rw-amendment`, ` w14/rc-117-origin-cutover`, ` main` twice | removed. No entry lost or doubled: every heading from both parents of each merge is present |
+| `docs/BACKLOG.md` | in the close-out table, four stray lines, blank lines that cut it in three, and five stale rows kept beside the current ones | removed; the RC-102 and RC-117 rows now say merged by the owner |
+| `docs/assets/PROVENANCE.md` | two stray lines, a blank line inside the table, and five files listed twice (legacy status and the old unrecorded status) | the stray lines, the blank line and the old rows removed: 157 rows for 157 files |
+| `build.js`, also touched by a1cb191 | none | checked, not changed: it differs from its first parent by exactly RC-117's 13 intended lines |
+
+All six `quality` gates pass after the repair.
+
+## W14-21 · Header fit: the ladder stops at step 3, 2026-09-15
+
+**Card RC-121. Unblocks #7.** The owner's ladder, applied in order, stopping at the
+first step where the header fits at 1180, 1280, 1440 and 1920px in both locales
+**with the catalog button present**. "Fits" is read as no two targets intersecting
+and the nav not squeezed below its natural width (slack at or above 0).
+
+### Measured, step by step
+
+On a local build of main with #7 merged in, each step applied on top of the last.
+Slack in px, 1180 / 1280 and up (the pill is capped at 1152px from 1200px, so 1280,
+1440 and 1920 read the same):
+
+| Step | RO | RU |
+|---|---|---|
+| 0, as on main | -57 / -97, overlapping | -83 / -123, overlapping |
+| 1, "Acasă" out of the nav | 12 / -17 | 3 / -25 |
+| 2, "Despre noi" to "Despre" | 40 / 12 | 3 / -25 (RU "О нас" is already the short form) |
+| **3, nav gap and font one step down** | **69 / 52** | **31 / 15** |
+| 4, phone as an icon, 1180 to 1279px | not needed | not needed |
+
+**Stopped at step 3.** Steps 1 to 3 shipped together:
+
+- The desktop nav in `src/template.html`, `src/service.html` and `src/product.html`
+  loses its home link. The wordmark is the home link. The mobile panel and the
+  footer keep theirs: neither has a width problem, and the mobile panel has no
+  wordmark inside it.
+- RO `header.navAbout` is "Despre". The key is shared, so the mobile panel and the
+  footer read "Despre" too.
+- `.nav` gap 28px to 20px and link size 17px to 16px at desktop widths; inside the
+  1180px block, 20px to 16px and 16px to 15px. Both are steps on the scale the
+  stylesheet already uses; no value is new.
+
+The phone number stays visible from 1280px up, and at 1180px too.
+
+### Measured slack after the change, homepage
+
+| Build | RO 1180 | RO 1280 to 1920 | RU 1180 | RU 1280 to 1920 |
+|---|---|---|---|---|
+| main, no catalog | 184 | 167 | 150 | 134 |
+| main with the catalog | 69 | 52 | 31 | 15 |
+
+### Tested
+
+The acceptance test, on both builds: zero bounding-box intersections between any
+two visible links or buttons in the pill at 769, 900, 1024, 1099, 1100, 1180, 1280,
+1440 and 1920px, on the homepage and a product page, in both locales; no
+horizontal overflow; the phone number visible at 1280px and up; no home link in the
+nav; slack at or above 0 from 1180px. **116 of 116 on each build.** Lighthouse,
+desktop, localhost: RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 / 100, target-size
+passing.
+
+### Found while measuring, for RC-120
+
+RC-120 asks for the fences page to be linked from the nav. A fifth nav link does
+not fit under this ladder. With "Garduri" added and the catalog present, step 3
+leaves RO at -24px and RU at -65px from 1280px up, with RU overlapping, and step 4
+only helps below 1280px. That link is carried as a question by RC-120 (W14-20).
+
+## W14-06c · The catalog menu merges, after the header fit, 2026-09-15
+
+**Card RC-106b, tail dispatch.** RC-121 (W14-21) made room in the header, which
+unblocks #7. Main was merged forward into #7 a second time; the only conflicts were
+appends to `DECISIONS.md` and `docs/QUESTIONS.md`, joined in id order with every
+entry kept. No code conflicted.
+
+### Tested, on the merged branch
+
+| Suite | Result |
+|---|---|
+| RC-106 acceptance, unchanged: 7/2/7 structure, click to open and never hover, flyout, keyboard, Escape, mobile drill-down and back, hamburger interplay, no animation, no overlap at 1024 to 1440 and 320 to 390, 769 to 1100 now 0 overlapping pairs | **67 of 67** |
+| Menu data: labels verbatim and in order in both locales, every row's destination, heading, repeated parent rows, the toggle on the three product pages with no overlap | **16 of 16** |
+| RC-121 header fit with the catalog: zero intersections at 769 to 1920px both locales, phone visible from 1280px, slack RO 52px and RU 15px from 1280px | **116 of 116** |
+
+### The menu, row by row
+
+RO labels are audit 1.2's, verbatim and in order; the mapping was ratified in
+principle at the tail ratifications.
+
+| RO label | RU label | Opens |
+|---|---|---|
+| Sisteme de termoizolație | Системы теплоизоляции | Fațade: `/servicii/fatade/` · `/ru/servicii/fatade/` |
+| · Polistiren expandat | Пенополистирол | Fațade: `/servicii/fatade/` · `/ru/servicii/fatade/` |
+| · Polistiren extrudat | Экструдированный пенополистирол | Fațade: `/servicii/fatade/` · `/ru/servicii/fatade/` |
+| · Vată minerală | Минеральная вата | Fațade: `/servicii/fatade/` · `/ru/servicii/fatade/` |
+| · Adezivi și mase de șpaclu | Клеи и шпаклёвочные смеси | Fațade: `/servicii/fatade/` · `/ru/servicii/fatade/` |
+| · Alte produse | Другие продукты | Fațade: `/servicii/fatade/` · `/ru/servicii/fatade/` |
+| Tencuieli decorative | Декоративные штукатурки | Fațade: `/servicii/fatade/` · `/ru/servicii/fatade/` |
+| Plăci ceramice | Керамическая плитка | Finisaje: `/servicii/finisaje/` · `/ru/servicii/finisaje/` |
+| Elemente decorative | Декоративные элементы | Fațade: `/servicii/fatade/` · `/ru/servicii/fatade/` |
+| Vopsele | Краски | Finisaje: `/servicii/finisaje/` · `/ru/servicii/finisaje/` |
+| · Vopsele de exterior | Фасадные краски | Fațade: `/servicii/fatade/` · `/ru/servicii/fatade/` |
+| · Vopsele de interior | Интерьерные краски | Finisaje: `/servicii/finisaje/` · `/ru/servicii/finisaje/` |
+| Sisteme de iluminare | Системы освещения | Instalații: `/servicii/instalatii/` · `/ru/servicii/instalatii/` |
+| Alte materiale de construcții | Другие строительные материалы | Case la cheie: `/servicii/case-la-cheie/` · `/ru/servicii/case-la-cheie/` |
+
+## W14-20 · The fences page, rebuilt on the carport pattern, 2026-09-15
+
+**Card RC-120. Closes Q-W14-09.** `/servicii/garduri/` and `/ru/servicii/garduri/`
+now carry, after the product page hero: a chooser by site constraint, the materials
+and finish on the dark band, four steps ending in a fixed price after measurement,
+a FAQ, and the quote form. The chooser, materials and steps reuse the carport
+page's markup and styles; the FAQ reuses the service pages'. A FAQPage JSON-LD block
+mirrors the visible FAQ (it is not LocalBusiness or Organization markup, so outside
+the STOP set).
+
+**What went.** RC-112's empty `content/garduri.json`, its model card component and
+the fence card CSS. There are no models to list.
+
+### The card's prohibitions, enforced
+
+No model codes, prices, thicknesses, warranty years, supplier or manufacturer names.
+The build refuses any `garduri.*` string, in either locale, carrying IL and two or
+three digits, lei/m² (лей/м²), a thickness in mm, or a warranty stated in years. A
+name cannot be pattern-matched, so every RO string is listed below for review; the
+RU strings in `locales/ru.json` say the same.
+
+### The copy, RO, for ratification
+
+Written for this card: every claim is about how the quote is made (measurement
+first, a fixed price after) or a choice the customer makes on site.
+
+**Chooser: Cum alegi gardul.** Alegerea pornește de la loc: cum e terenul, ce există deja pe linia gardului și cât trebuie să ascundă.
+
+| # | Tile | Text |
+|---|---|---|
+| 1 | Teren în pantă | Panourile se așază în trepte, după teren, ca fiecare tronson să rămână drept. |
+| 2 | Soclu existent | La măsurare verificăm dacă soclul poate purta stâlpii sau dacă e nevoie de fundație nouă. |
+| 3 | Intimitate sau aer | Lamelele mai strânse ascund curtea; cele mai deschise lasă aerul și lumina să treacă. |
+| 4 | Loc deschis, cu vânt | Stâlpii și fundația se stabilesc după lungimea și înălțimea gardului, nu după un tabel. |
+| 5 | La drum sau lângă vecini | Pe limita proprietății măsurăm exact linia gardului înainte de ofertă. |
+
+**Materials: Materiale și finisaj.** Din ce se face un gard din lamele metalice și ce alegi tu.
+
+| # | Item | Text |
+|---|---|---|
+| 1 | Stâlpi metalici | Se fixează în beton. Distanța dintre ei se stabilește la măsurare. |
+| 2 | Lamele din tablă de oțel | Panouri din lamele de tablă de oțel protejată împotriva coroziunii. |
+| 3 | Culoare și finisaj | Alegi culoarea din paleta RAL, în finisaj mat sau lucios. Pe ecran culoarea e orientativă; decide mostra fizică. |
+
+**Steps: De la măsurare la prețul fix.**
+
+| # | Step | Text |
+|---|---|---|
+| 1 | Ne spui ce gard vrei | Lungimea aproximativă, înălțimea și ce trebuie să ascundă sau să lase să treacă. |
+| 2 | Venim și măsurăm | Linia gardului, terenul și locul fiecărui stâlp. Fără măsurare nu dăm preț. |
+| 3 | Alegem împreună | Lamelele, stâlpii, culoarea și finisajul, pe baza măsurătorilor. |
+| 4 | Primești prețul fix | Un preț final, stabilit după măsurare, nu o estimare pe metru. |
+
+**FAQ.**
+
+| # | Question | Answer |
+|---|---|---|
+| 1 | Cât costă un gard din lamele metalice? | Prețul depinde de lungime, înălțime, teren și finisaj, așa că îl stabilim după măsurare. Oferta are un preț fix, nu o estimare. |
+| 2 | Măsurarea este obligatorie? | Da. Terenul și locul stâlpilor schimbă lucrarea, așa că fără măsurare nu dăm preț. |
+| 3 | Se poate monta gardul pe teren în pantă? | Da. La măsurare stabilim cum se așază panourile în trepte, ca gardul să urmeze terenul. |
+| 4 | Cum aleg culoarea? | Din paleta RAL, în finisaj mat sau lucios. Culoarea de pe ecran e orientativă; decide mostra fizică. |
+| 5 | Pot păstra soclul existent? | Dacă soclul e solid, stâlpii se pot fixa pe el. Verificăm la măsurare și îți spunem înainte de ofertă. |
+
+Two claims worth a check by someone who installs these fences: that panels are
+stepped on sloping ground, and that posts can be fixed to a sound existing plinth.
+
+### Not done: the header nav link, Q-W14-15
+
+RC-121's measurement shows a fifth desktop nav link does not fit with the catalog
+present (RO short by 24px, RU by 65px, from 1280px). The teaser row and the sitemap
+already link the page and are unchanged.
+
+### Tested
+
+Headless Chrome against the local build, **34 of 34**, both locales: HTTP 200;
+exactly one H1 ("Garduri", "Заборы"); sections in order (hero, chooser, materials,
+steps, FAQ, form); 5 tiles, 3 materials, 4 steps; 5 FAQ questions mirrored exactly by
+the FAQPage JSON-LD; the form; no fence card markup; the breadcrumb; the homepage
+teaser row linking the page; listed in the sitemap; **zero "IL" plus two or three
+digits, zero "lei/m²", zero "ani garanție"** (and zero "лей/м²", "лет гарантии") in
+the page's HTML; no horizontal overflow at 390 and 1440px.
+
+### Measured
+
+| Page | Before | After |
+|---|---|---|
+| Garduri RO | 2,298 | **4,756** |
+| Garduri RU | 2,298 | **4,778** |
+| Homepage, carports | unchanged | unchanged |
+
+Ruling R-Y (#25, not merged) sets the fences budget on the empty page and says a
+filled page moves it; its amendment is owed when #25 merges. Lighthouse, desktop,
+localhost: **RO 100 / 100 / 100 / 100, RU 100 / 100 / 100 / 100**.
+
+## W14-22 · Tile colour swatches from published RAL reference values, 2026-09-15
+
+**Card RC-122. Closes Q-W14-11 in part;** the renders stay open as Q-W14-11b. Every
+colour chip in the tile grid now carries a swatch beside its code and name, and one
+line under each palette, in both locales, says screen colour is indicative and the
+physical sample decides.
+
+### The values, and where they come from
+
+The legend's 15 codes are 10 RAL Classic colours; a code ending in M is the same RAL
+colour in a matt finish, so it carries the same value. Each value is the swatch
+colour RAL gGmbH publishes on that colour's own page, read on 2026-09-15. It is the
+only publication by the owner of the standard, and it matches RAL's all-colours grid.
+Wikipedia's tables were checked and not used: they differ from RAL by up to 20 on a
+channel and disagree between language editions.
+
+| RAL | Legend codes | Name (RO) | Value | Source |
+|---|---|---|---|---|
+| RAL 3005 | 3005M, 3005 | Roșu vin | `#561E27` | https://www.ral-farben.de/en/colour/ral-classic/ral-3005/9132 |
+| RAL 5005 | 5005 | Albastru semnal | `#134A85` | https://www.ral-farben.de/en/colour/ral-classic/ral-5005/9169 |
+| RAL 6005 | 6005M, 6005 | Verde mușchi | `#234235` | https://www.ral-farben.de/en/colour/ral-classic/ral-6005/9194 |
+| RAL 7016 | 7016M, 7016 | Gri antracit | `#3B4044` | https://www.ral-farben.de/en/colour/ral-classic/ral-7016/9239 |
+| RAL 7024 | 7024M, 7024 | Gri grafit | `#45494E` | https://www.ral-farben.de/en/colour/ral-classic/ral-7024/9243 |
+| RAL 8017 | 8017M, 8017 | Maro ciocolată | `#42332E` | https://www.ral-farben.de/en/colour/ral-classic/ral-8017/9275 |
+| RAL 8019 | 8019M | Maro gri | `#3B3736` | https://www.ral-farben.de/en/colour/ral-classic/ral-8019/9276 |
+| RAL 9003 | 9003 | Alb semnal | `#EBECEA` | https://www.ral-farben.de/en/colour/ral-classic/ral-9003/9285 |
+| RAL 9005 | 9005M | Negru intens | `#131516` | https://www.ral-farben.de/en/colour/ral-classic/ral-9005/9287 |
+| RAL 9006 | 9006 | Aluminiu alb | `#9A9D9D` | https://www.ral-farben.de/en/colour/ral-classic/ral-9006/9288 |
+
+Each entry in `content/tigla-metalica.json` holds its `ral`, `hex` and `source`. The
+build fails if a value is missing or malformed, if the source is not that code's RAL
+page, or if a code and its matt twin disagree.
+
+**For the owner's attention, not acted on.** RAL's all-colours page says: "The
+technical values of the shown RAL colours are protected by copyright. Therefore, a
+user agreement must be concluded with RAL gGmbH in order to use the RAL colour
+values." The dispatch directed published RAL reference values, so they are used.
+Whether showing ten swatches needs RAL's digital colour library licence is a
+business decision the dispatch did not address. 9006 is a metallic effect colour,
+which a flat screen value can only stand in for.
+
+### The surface treatment
+
+A gloss swatch carries a highlight from its top left; a matt swatch is flat. The
+highlight and the swatch edge reuse translucent values the stylesheet already had,
+so the only colour values added are the RAL ones, inside the tile grid, under the
+section 3 exception ratified at W14 ratifications (deviation 9).
+
+### Tested
+
+Headless Chrome against the local build, **12 of 12**, both locales: every chip has
+exactly one swatch whose computed colour is its code's RAL value; matt codes flat,
+gloss codes highlighted; every colour the models use has a chip and every chip code
+is in the legend (7024M is in the legend and used by no model, as before); the
+indicative-colour line closes every palette; no horizontal overflow at 390 and
+1440px.
+
+### Measured
+
+| Page | Before | After |
+|---|---|---|
+| Țiglă metalică RO | 3,647 | **3,781** |
+| Țiglă metalică RU | 3,698 | **3,815** |
+
+Ruling R-Y (#25, not merged) holds the tile grid budget at the page without swatch
+notes; its amendment is owed when #25 merges. Lighthouse, desktop, localhost: **RO
+100 / 100 / 100 / 100, RU 100 / 100 / 100 / 100**.
+
+## W14-23 · Carport diagrams: one line drawing per structure, no photographs, 2026-09-15
+
+**Card RC-123. Closes Q-W14-12.** Five original inline SVG line diagrams, drawn in
+this repo and defined once in `build.js` (`COP_DIAGRAMS`): on posts, cantilever,
+wall-mounted, gable, arched. Each family tile in the chooser and each of the twelve
+model cards shows one, above its existing heading, which labels it.
+
+**How they are drawn.** A shared 160 by 100 frame with the ground line at the same
+height; one stroke weight, 2px, held at any size by `vector-effect`; no fill; no
+text. The roof line is the brand accent (`--brand`, through a class); every other
+line takes the card's text colour, so the same drawing reads on the light chooser
+and on the dark model band. The drawings are decorative (`aria-hidden`): the
+heading names the structure.
+
+### Which card shows which diagram
+
+A model takes its structural category from the wave 14 audit 2.3, matched model for
+model to C-01 to C-12. A family tile takes its family's structure. **For
+ratification:** the audit has no separate drawing for inclined posts or for the
+architectural models, so they show posts; the gable drawing appears only on C-04,
+the model that drains both sides.
+
+| Card | Audit category | Diagram |
+|---|---|---|
+| Pe stâlpi (family) | on posts | posts |
+| În consolă (family) | cantilever | cantilever |
+| Prinsă de perete (family) | wall-mounted | wall-mounted |
+| Arcuită (family) | arched | arched |
+| Arhitecturală (family) | architectural | posts |
+| C-01 | on posts | posts |
+| C-02 | cantilever, wide span | cantilever |
+| C-03 | wall-mounted | wall-mounted |
+| C-04 | gable | **gable** |
+| C-05 | on posts | posts |
+| C-06 | arched | arched |
+| C-07 | arched / semi-arched | arched |
+| C-08 | on posts, boxed edge | posts |
+| C-09 | cantilever | cantilever |
+| C-10 | inclined posts | posts |
+| C-11 | architectural | posts |
+| C-12 | architectural, to project | posts |
+
+The build fails if any family or model has no diagram, or if a diagram is defined
+and used by no card.
+
+### No photographs
+
+The carport image slots (`copertina-fam-*`, `copertina-*`) are removed from
+`scripts/slots.js`, and the render path that would have shown a photograph is
+gone from `build.js` and `src/styles.css`. **Zero image files added.**
+
+### Tested
+
+Headless Chrome against the local build, **22 of 22**, both locales: 5 family tiles
+and 12 model cards; exactly one diagram on every card; the family and model mapping
+above, all five diagrams in use; no fill, no text and one 2px stroke weight on every
+shape; exactly one accent per diagram, computed as `rgb(246, 83, 8)`; every other
+line in the card's text colour; no `<img>` in the carport sections; no horizontal
+overflow at 390 and 1440px.
+
+### Measured
+
+| Page | Before | After |
+|---|---|---|
+| Copertine RO | 4,587 | **5,433** |
+| Copertine RU | 4,663 | **5,509** |
+
+Ruling R-Y (#25, not merged) holds the carports budget at the text-only page; its
+amendment is owed when #25 merges. Lighthouse, desktop, localhost: **RO 100 / 100 / 100 / 100,
+RU 100 / 100 / 100 / 100**.
+
  w14/rc-113-remeasure
 
 ## W14-13 · Re-measured after the close-out; ruling R-Y holds the new budgets, STOP, 2026-09-15

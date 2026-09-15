@@ -1,4 +1,0 @@
-{
-  "_note": "W14-12. Louvre fences (S-05). BLOCKED on supplier identity: Q-W14-09, \"which fabricator supplies louvre fence panels to Rapid Construct\". Empty on purpose, so nothing renders. Do not add model codes, prices, thicknesses or warranty years before that answer; the component has no field for any of them. Shape: models[] of { id, name: {ro, ru}, line: {ro, ru}, alt?: {ro, ru} } with an optional image public/img/gard-<id>.jpg, which needs its R-W provenance row. Not linked from the nav, not in the sitemap.",
-  "models": []
-}

@@ -295,6 +295,65 @@ p { margin: 0; }
 .mobile-panel .lang a { color: var(--ink-muted); }
 .mobile-panel .lang__sep { background: var(--line); }
 
+/* --- W14-06, catalog mega-menu (S-01) -------------------------------------- */
+/* Renders only when content/catalog.json has categories. The toggle is a
+   button: click opens it, hover never does. On a hover-capable screen wider
+   than 768px a parent row opens its subcategories as a flyout to the right of
+   the list; below that, the same list is a drill-down laid over the parent
+   list with a back button. Nothing here transitions or animates.
+
+   The active row is --ink on --brand, the promo bar's 5.10:1 pairing. White on
+   --brand is 3.41:1 and fails AA at this text size. No new colour value. */
+.catalog { position: relative; flex: none; }
+.catalog__toggle {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 40px; padding: 0 16px; border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.4); background: transparent;
+  color: var(--bg-light); font-family: inherit; font-size: 15px; font-weight: 700; line-height: 1;
+  white-space: nowrap; cursor: pointer;
+}
+.catalog__toggle:hover { border-color: var(--brand); color: var(--brand); }
+.catalog__toggle[aria-expanded='true'] { background: var(--brand); border-color: var(--brand); color: var(--ink); }
+.catalog__icon { display: none; flex: none; }
+.catalog__panel {
+  position: absolute; top: calc(100% + 28px); left: 0; z-index: 101;
+  width: 300px;
+  background: var(--bg-light); color: var(--ink);
+  border: 1px solid var(--line); border-radius: var(--radius-card);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+.catalog__heading {
+  margin: 0; padding: 14px 16px; border-bottom: 1px solid var(--line);
+  font-size: 13px; font-weight: 700; line-height: 1; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--ink-muted);
+}
+.catalog__list { list-style: none; margin: 0; padding: 0; }
+.catalog__row { display: flex; align-items: stretch; border-bottom: 1px solid var(--line); }
+.catalog__row:last-child { border-bottom: 0; }
+.catalog__link {
+  flex: 1 1 auto; display: block; padding: 12px 16px;
+  font-size: 15px; line-height: 1.35; color: var(--ink);
+}
+.catalog__link:hover { color: var(--brand-dark); }
+.catalog__row--title .catalog__link { font-weight: 700; }
+.catalog__expand {
+  flex: none; width: 44px; display: flex; align-items: center; justify-content: center;
+  background: transparent; border: 0; border-left: 1px solid var(--line); color: var(--ink); cursor: pointer;
+}
+.catalog__row.is-active,
+.catalog__row.is-active > .catalog__link,
+.catalog__row.is-active > .catalog__expand { background: var(--brand); color: var(--ink); }
+.catalog__row.is-active > .catalog__link:hover { color: var(--ink); }
+.catalog__sub {
+  position: absolute; top: -1px; left: calc(100% + 4px);
+  width: 300px;
+  background: var(--bg-light); color: var(--ink);
+  border: 1px solid var(--line); border-radius: var(--radius-card);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+.catalog__sub[hidden] { display: none; }
+.catalog__back { display: none; }
+
 /* --- promo bar (W12-02) ---------------------------------------------------- */
 
 /* A static offer strip in normal flow, directly beneath the fixed header and
@@ -1048,6 +1107,27 @@ p { margin: 0; }
   .header[data-scrolled="true"] .header__logo img { height: 36px; }
   .mobile-panel { top: 80px; }
 
+  /* W14-06. Below 768px the catalog panel takes the same fixed sheet as the
+     hamburger panel, and a subcategory list is a drill-down over it. */
+  .catalog__toggle { height: 36px; padding: 0 12px; font-size: 14px; }
+  /* Only a pill that carries the catalog tightens its gap, so a page without
+     one keeps the W13-03 layout exactly. Measured: at 24px the RU pill needs
+     347px and a 360px viewport gives it 328. */
+  .header__pill:has(.catalog) { gap: 8px; }
+  .catalog__panel {
+    position: fixed; top: 80px; left: 0; right: 0; bottom: 0;
+    width: auto; border-width: 1px 0 0; border-radius: 0; box-shadow: none; overflow-y: auto;
+  }
+  .catalog__sub {
+    top: 0; left: 0; right: 0; bottom: 0; width: auto; min-height: 100%;
+    border: 0; border-radius: 0; box-shadow: none;
+  }
+  .catalog__back {
+    display: flex; align-items: center; gap: 8px; width: 100%;
+    padding: 14px 16px; background: transparent; border: 0; border-bottom: 1px solid var(--line);
+    font-family: inherit; font-size: 15px; font-weight: 700; color: var(--ink); cursor: pointer; text-align: left;
+  }
+
   /* Hard cap, 36px. The type shrinks to fit the line rather than the bar
      growing or the text moving: 13px clipped the Russian string at 360px and
      both strings at 320px, and the card's instruction there is to reduce the
@@ -1156,4 +1236,17 @@ p { margin: 0; }
   .header, .header__logo img { transition: none !important; }
   /* Modal: no entrance. */
   .modal, .modal__panel { transition: none !important; animation: none !important; }
+}
+
+/* W14-06. At 374px and below even the tightened pill cannot fit the catalog
+   label beside the wordmark and the two mobile buttons, so the toggle becomes
+   a 36px icon button. The label stays in the accessibility tree, clipped rather
+   than removed, so the button keeps its name. */
+@media (max-width: 374px) {
+  .catalog__toggle { width: 36px; padding: 0; }
+  .catalog__icon { display: block; }
+  .catalog__label {
+    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
 }

@@ -1,0 +1,4 @@
+{
+  "_note": "W14-06. Catalog mega-menu data (S-01), audit section 1.2. EMPTY UNTIL Q-W14-04 IS ANSWERED: which labels, and which page each row opens. While categories is [] the Catalog button and panel do not render on any page. Shape: categories[] of { label: {ro, ru}, href: {ro, ru}, children?: [ { label: {ro, ru}, href: {ro, ru} } ] }. href is a site path like /servicii/fatade/ (the base path is added by build.js) or an absolute https URL. Two levels, never three: build.js refuses a child with children, a label that is not real in both locales, and a row with no href.",
+  "categories": []
+}

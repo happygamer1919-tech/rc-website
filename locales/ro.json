@@ -20,7 +20,11 @@
     "phone": "+373 76 837 180",
     "phoneAria": "Sună la +373 76 837 180",
     "menuOpen": "Deschide meniul",
-    "menuClose": "Închide meniul"
+    "menuClose": "Închide meniul",
+    "catalog": "Catalog",
+    "catalogHeading": "Categorii de produse",
+    "catalogExpand": "arată subcategoriile",
+    "catalogBack": "Înapoi"
   },
   "promo": {
     "text": "Reducere 10% la orice serviciu doar până în 2027",

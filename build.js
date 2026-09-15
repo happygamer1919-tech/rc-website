@@ -131,7 +131,7 @@ const PAGES = [
 
 // Keys whose value is already HTML built by this file. Everything else is
 // escaped on substitution.
-const RAW_KEYS = new Set([
+const RAW_KEYS = new Set(['catalogMenu',
   // demoAttr is a whole attribute, ` data-demo="..."`, not an attribute value:
   // it is either present or absent. Its inner text is escaped where it is
   // built, so what lands here is already safe. Escaping it again turned the
@@ -143,7 +143,7 @@ const RAW_KEYS = new Set([
   ...Array.from({ length: 9 }, (_, i) => `svcMedia${i}`),
 ]);
 // Same idea for the service-page template.
-const SVC_RAW_KEYS = new Set([
+const SVC_RAW_KEYS = new Set(['catalogMenu',
   'demoAttr', 'svc.imageObjects', 'svc.answer', 'svc.table', 'svc.faqSection', 'svc.faqSchema',
   'svc.gallerySection', 'svc.priceSection', 'svc.footerLinks', 'svc.media',
   // W12-06. The bar is site-wide, so the service template needs it raw too.
@@ -582,6 +582,73 @@ function promoBar(l) {
 `;
 }
 
+// --- W14-06, the catalog mega-menu (S-01) ------------------------------------
+
+/* Data-driven from content/catalog.json, taxonomy shape from the wave 14 audit
+   section 1.2: categories, some with subcategories, two levels deep and never
+   three. While `categories` is empty this returns '' and neither the button nor
+   the panel exists on any page. That is the shipped state until Q-W14-04 names
+   the labels and the page each row opens.
+
+   Presence, not silence (docs/CLAUDE.md section 13): a file without a
+   `categories` array fails the build rather than reading as an empty menu. So
+   does a label that is not real in both locales, a row with no target, and a
+   third level, which is refused rather than flattened. */
+const CATALOG_FILE = 'content/catalog.json';
+const CATALOG = JSON.parse(fs.readFileSync(CATALOG_FILE, 'utf8'));
+if (!Array.isArray(CATALOG.categories)) die(`${CATALOG_FILE} has no "categories" array. An empty menu is [], never a missing key.`);
+
+function catalogField(entry, field, l, where) {
+  const v = entry[field] && entry[field][l.code];
+  if (!REAL(v)) die(`${CATALOG_FILE}: ${where} has no real ${field} for ${l.code}.`);
+  return v;
+}
+const catalogHref = (entry, l, where) => {
+  const h = catalogField(entry, 'href', l, where);
+  return /^https?:\/\//.test(h) ? h : BASE + h;
+};
+
+function catalogMenu(l) {
+  if (CATALOG.categories.length === 0) return '';
+  const chevron = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg>';
+  const back = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 6 9 12 15 18"></polyline></svg>';
+  const rows = CATALOG.categories.map((c, i) => {
+    const where = `categories[${i}]`;
+    const label = esc(catalogField(c, 'label', l, where));
+    const href = catalogHref(c, l, where);
+    const kids = c.children || [];
+    if (kids.length === 0) {
+      return `          <li class="catalog__row"><a class="catalog__link" href="${href}">${label}</a></li>`;
+    }
+    const sub = kids.map((k, j) => {
+      const w = `${where}.children[${j}]`;
+      if (k.children) die(`${CATALOG_FILE}: ${w} has children. The menu is two levels deep, never three.`);
+      return `                <li class="catalog__row"><a class="catalog__link" href="${catalogHref(k, l, w)}">${esc(catalogField(k, 'label', l, w))}</a></li>`;
+    }).join('\n');
+    return `          <li class="catalog__row catalog__row--parent">
+            <a class="catalog__link" href="${href}">${label}</a>
+            <button class="catalog__expand" type="button" aria-expanded="false" aria-controls="catalog-sub-${i}" aria-label="${label}: ${esc(l.strings['header.catalogExpand'])}">${chevron}</button>
+            <div class="catalog__sub" id="catalog-sub-${i}" hidden>
+              <button class="catalog__back" type="button">${back}<span>${esc(l.strings['header.catalogBack'])}</span></button>
+              <ul class="catalog__list">
+                <li class="catalog__row catalog__row--title"><a class="catalog__link" href="${href}">${label}</a></li>
+${sub}
+              </ul>
+            </div>
+          </li>`;
+  }).join('\n');
+  return `<div class="catalog">
+      <button class="catalog__toggle" type="button" id="catalog-toggle" aria-expanded="false" aria-controls="catalog-panel"><svg class="catalog__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect></svg><span class="catalog__label">${esc(l.strings['header.catalog'])}</span></button>
+      <div class="catalog__panel" id="catalog-panel" hidden>
+        <p class="catalog__heading" id="catalog-heading">${esc(l.strings['header.catalogHeading'])}</p>
+        <ul class="catalog__list catalog__list--top" aria-labelledby="catalog-heading">
+${rows}
+        </ul>
+      </div>
+    </div>
+    `;
+}
+
 // --- W12-01, the portfolio end tile -----------------------------------------
 
 /* The seventh cell of the homepage portfolio grid. It is not a project and not
@@ -824,6 +891,7 @@ for (const l of loaded) {
   vars.supplierChips = renderSupplierChips(l, BASE);
   vars.heroPanelMedia = heroPanelMedia(l, BASE);
   vars.promoBar = promoBar(l);
+  vars.catalogMenu = catalogMenu(l);
   // Overrides nothing: band.coverageLine is no longer a locale key, it is
   // composed here so the sentence and the schema cannot disagree.
   vars['band.coverageLine'] = coverageLine(l);

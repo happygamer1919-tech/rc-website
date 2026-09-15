@@ -3382,3 +3382,67 @@ shortens nothing. The markers are what prove the new build was the one measured.
 
 Lighthouse, desktop preset, localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 /
 100 / 100**.
+
+## W14-06 · The catalog mega-menu is built, switched off, and blocked on the header, 2026-09-15
+
+**Card RC-106.** **Status: blocked. PR open, not self-merged.** The component is
+complete and tested; it cannot be switched on as specified, for two reasons that
+are not mine to decide (Q-W14-04, Q-W14-05, both carried to `main` by W14-07).
+
+### What is built
+
+- `content/catalog.json`, `"categories": []`. The taxonomy shape is audit 1.2:
+  categories, some with subcategories, two levels, never three.
+- `catalogMenu()` in `build.js`. Returns nothing while the list is empty, so no
+  page carries the button or the panel. It fails the build on a missing
+  `categories` array, a label that is not real in both locales, a row with no
+  href, and a third level. Each of those four was watched failing.
+- The button is placed in the black pill, left of the wordmark, on the homepage
+  and all 18 service pages. Not on the 404 page, which has no nav and loads no
+  script, and not on `src/privacy.html`, which is in the R-V STOP set.
+- Interaction per audit 1.3, in `main.js`: click opens, hover never does. On a
+  hover-capable screen wider than 768px a parent row opens its flyout to the
+  right. Below that the same list is a drill-down over the parent list with a
+  back button. Escape and an outside click close it; opening the hamburger
+  closes it. No transition, no animation, nothing touches scrolling.
+- The active row is `--ink` on `--brand`, 5.10:1, the promo bar's pairing. White
+  on `--brand` fails AA at this size. No new colour value.
+
+### Tested, empty and filled
+
+| Build | Test | Result |
+|---|---|---|
+| Shipped, empty | the menu must not exist, both locales, home and service page | **12 of 12** |
+| Shipped, empty | heights, all eight `verify-live.js` pages | **identical to `main`**, 8,818 RO / 9,032 RU |
+| Shipped, empty | Lighthouse desktop | **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 / 100** |
+| Local fixture, audit 7/2/7 | interaction, keyboard, mobile drill-down, mobile fit at 390, 360, 320 | all pass |
+| Local fixture, audit 7/2/7 | no overlapping targets in the desktop pill at 1440 to 1024 | **11 failures** |
+
+### Why it is blocked: the desktop header has no room for the button
+
+At 1440 the toggle and its gap cost 115px (RO) and 119px (RU). The nav is
+`flex: 1 1 auto; min-width: 0`, so it does not push anything out: its links
+slide under the wordmark (24px RO, 37px RU) and into the phone link. The pill's
+`scrollWidth` never grows, so an overflow check reads clean. Lighthouse caught it
+as `target-size`, accessibility **97** against the floor of 100.
+
+Two fixes were tried:
+
+1. **Mobile.** Below 768px, a pill carrying the catalog tightens its gap to 8px,
+   and at 374px and below the toggle becomes a labelled icon button. This fixed
+   the 360 and 320 overflow and is kept.
+2. **Desktop.** The pill's gap, the nav gap and the nav type size, tightened only
+   when the catalog is present. RO then fit at 1280 and above; RU still overlapped
+   at every desktop width. **Reverted, not shipped:** a tuning known to be
+   insufficient would only be re-tuned once the real decision is made.
+
+A third attempt would be a design decision rather than a fix: what gives up its
+room (the "Acasă" link, the phone number text, or the desktop layout itself
+below some wider breakpoint). Stopped there, per the three-attempt ceiling.
+
+### Found on the way, and already live
+
+While building the overlap check, the same measurement on `main` found the
+header overlapping itself between 769 and 1100px with no catalog at all,
+confirmed on the live site at build-sha 2ebedfb. Recorded as Q-W14-05. The
+fixture test asserts only the widths where `main` is clean and prints the rest.

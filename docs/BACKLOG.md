@@ -8,6 +8,37 @@ Status values: `todo` · `in progress` · `blocked` · `shipped`.
 Waves 1 to 5 predate this file; their tickets are reconstructed from the git
 history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 
+## Wave 14
+
+Dispatch of 2026-09-15. **Ruling R-V** (`docs/rulings/R-V.md`): a SELF card
+self-merges on a green `quality` check; a STOP card opens a PR and halts that
+card only. From R-V onward a ruling lives in its own file under `docs/rulings/`.
+
+Worked in dependency order, not number order: R-V first, then RC-102 (nothing
+can self-merge until `quality` exists), RC-101, RC-114 (the R-X gate lands before
+any new content), RC-106 to RC-112, and RC-105 last so its STOP PR is cut from
+the final `main` and stays mergeable.
+
+| Ticket | Card | Mode | Branch | Status |
+|---|---|---|---|---|
+| RC-101 | W14-01a Ruling R-V, wave autonomy | STOP | `w14/rc-101-ruling-rv` | PR #1, awaiting owner |
+| RC-101 | W14-01 Land the competitor structure audit | SELF | `w14/rc-101-audit` | todo |
+| RC-102 | W14-02a Ruling R-W, asset provenance | STOP | `w14/rc-102-ruling-rw` | PR #2, awaiting owner |
+| RC-102 | W14-02 Asset provenance gate, and the `quality` check | SELF | `w14/rc-102-asset-provenance` | shipped |
+| RC-103 | W14-03 Section 1 copy, RO | SELF | none | **blocked**, Q-W14-02 |
+| RC-104 | W14-04 Section 1 copy, RU parity | SELF | none | **blocked** on RC-103 |
+| RC-105 | W14-05 Remove the frozen price | STOP | `w14/rc-105-frozen-price` | todo |
+| RC-106 | W14-06 Catalog mega-menu, S-01 | SELF | `w14/rc-106-catalog-menu` | todo |
+| RC-107 | W14-07 Social row, S-07 | SELF | `w14/rc-107-social-row` | todo |
+| RC-108 | W14-08 Acoperișuri offer cards, S-02 | SELF | `w14/rc-108-offer-cards` | todo |
+| RC-109 | W14-09 Before/after slider, S-03 | SELF | `w14/rc-109-before-after` | todo |
+| RC-110 | W14-10 Țiglă metalică grid, S-04 | SELF | `w14/rc-110-tigla-grid` | todo |
+| RC-111 | W14-11 Copertine, S-06 | SELF | `w14/rc-111-copertine` | todo |
+| RC-112 | W14-12 Garduri, S-05, component only | SELF | `w14/rc-112-garduri` | todo |
+| RC-113 | W14-13 Height re-measure, new budget ruling | STOP | none | **blocked** on RC-103 and RC-104 |
+| RC-114 | W14-14a Ruling R-X, no pressure selling | STOP | `w14/rc-114-ruling-rx` | PR #3, awaiting owner |
+| RC-114 | W14-14 Scarcity gate | SELF | `w14/rc-114-scarcity-gate` | todo |
+
 ## Wave 13
 
 | Ticket | Card | Branch | Status |

@@ -1231,3 +1231,41 @@ orange, the favicon in the browser tab is the older orange-red mark, and the
 structured-data logo is still black-and-orange. No visitor sees the last of
 those. The favicon is visible and does not match, and that is the cost of
 shipping the half that could be done exactly.
+
+## Q-W14-01 · No licence was ever recorded for most shipped images · OPEN, opened 2026-09-15 (W14-02)
+
+**Shipped default: every such row says `unrecorded before R-W`.** The R-W gate
+accepts that value only on rows dated before 2026-09-15, so the gap cannot grow.
+Nothing was removed from the site.
+
+Compiled from `docs/assets/PROVENANCE.md`:
+
+| Group | Files | What is missing |
+|---|---|---|
+| Client project photographs, `public/img/proj-*`, `public/review/` | 81 | a written statement that the client owns them and consents to publication |
+| Nine service card images, `public/img/svc-*.jpg` | 18 | who made them, and on what terms. Recorded only as "approved artwork" (W7-02) |
+| Ten SVG illustrations | 10 | who made them. Recorded only as "delivered" (W1-00) |
+| Five step photos, `public/img/step-*` | 10 | origin. They were found in `dist/img/Cum Lucram/` (W10-01) |
+| Interim hero panel, `public/img/hero-panel*.jpg` | 2 | origin (W8-03) |
+| Six supplier logos from brand websites | 6 | terms of use |
+| Client logo and favicons | 4 | a written licence |
+
+**Recommended:** one message to the client asking them to confirm, in writing,
+that the photographs, the service artwork and the logo are theirs to publish.
+The step photos and the hero panel need their origin named first. Supplier logos
+used only to name a supplier are the lowest risk and can wait.
+
+## Q-W14-02 · RC-103 strings T-02 to T-09 are not in the dispatch · OPEN, opened 2026-09-15 (W14-03)
+
+**No default ships, and none can.** RC-103 says: "Apply T-02 through T-09
+exactly as given in `docs/audits/wave-14-copy-delta.md`, which you author first
+from the strings in this dispatch." The dispatch contains no T-numbered strings.
+"Exactly as given" rules out writing them, and `docs/CLAUDE.md` section 5 rules
+out inventing copy in any case.
+
+**Blocks three cards:** RC-103, RC-104 (the RU parity of RC-103), and RC-113
+(which measures only after RC-103 to RC-111 are merged).
+
+**What unblocks it:** the eight RO strings, T-02 to T-09, each with the element
+it replaces (a locale key such as `hero.h1`, or the visible current text). With
+the target named, the delta file maps one-to-one and RC-104 can follow at once.

@@ -37,3 +37,6 @@ jobs:
 
       - name: Every image has a provenance row (R-W)
         run: node scripts/check-asset-provenance.js
+
+      - name: No countdowns, scarcity, financing or struck prices (R-X)
+        run: node scripts/check-scarcity.js

@@ -1269,3 +1269,52 @@ out inventing copy in any case.
 **What unblocks it:** the eight RO strings, T-02 to T-09, each with the element
 it replaces (a locale key such as `hero.h1`, or the visible current text). With
 the target named, the delta file maps one-to-one and RC-104 can follow at once.
+
+## Q-W14-03 · The site now serves from rapidconstruct.md, and every canonical still names rapidconstructmd.com · OPEN, opened 2026-09-15 (found at W14-02, gate 9)
+
+**Shipped default: nothing changed.** Every value involved (`SITE_URL`, the
+CNAME, canonical, hreflang, og:url, the sitemap, the GeneralContractor JSON-LD)
+is in the R-V STOP set. This entry records what was measured.
+
+**What was measured on 2026-09-15, after the W14-02 deploy:**
+
+| Probe | Result |
+|---|---|
+| `https://rapidconstructmd.com/`, `/ru/`, `/servicii/acoperisuri/` | **HTTP 404, "Site not found · GitHub Pages"** |
+| `https://www.rapidconstructmd.com/` | HTTP 404 |
+| `https://rapidconstruct.md/` and `/ru/` | HTTP 200, `build-sha` f5e4eb6, the W14-02 merge |
+| `https://www.rapidconstruct.md/` | 301 to `https://rapidconstruct.md/` |
+| GitHub Pages settings, `cname` | **`rapidconstruct.md`**, certificate approved for `rapidconstruct.md` and `www.rapidconstruct.md`, expiring 2026-12-09 |
+| `node scripts/verify-live.js https://rapidconstruct.md` | PASS, 8 of 8 VERIFIED, heights identical to the wave 12 handoff |
+| The same against `https://rapidconstructmd.com` | FAIL, 8 of 8 UNVERIFIED, every page a blank 900px GitHub 404 |
+
+**So the site is up, on a different domain from the one it declares.** GitHub
+serves the repo only on the settings domain. Every page still canonicalises to
+`https://rapidconstructmd.com/...`, the sitemap lists that host, and hreflang
+and og:url point there, so search engines are being told the real address of
+each page is one that returns 404. The artifact's `dist/CNAME` still says
+`rapidconstructmd.com`; with a workflow deploy GitHub ignores it, which is why
+the W14-02 and W14-01 deploys did not flip the setting back.
+
+**This reverses W12-14 without a record.** W12-14 made `rapidconstructmd.com`
+the default because the client controls it, and `build.js` line 10 says
+`rapidconstruct.md` is a domain the client does NOT control. The settings change
+is not in the repo. A 90-day certificate expiring 2026-12-09 was issued on or
+about 2026-09-10, which matches the manual re-run of the W13-03 deploy that day.
+
+**Options, one decision, the owner's:**
+
+  (a) **`rapidconstruct.md` is now the real domain.** One STOP PR changes
+      `SITE_URL` in `pages.yml`, `CUSTOM_DOMAIN` and the default in `build.js`,
+      and the `verify-live.js` default origin, then re-verifies. `W12-14` gets a
+      superseding ruling.
+  (b) **`rapidconstructmd.com` stays the real domain.** Set the Pages custom
+      domain back to it in Settings, wait for the certificate, re-verify. No
+      code change.
+  (c) Both, with one redirecting to the other. GitHub Pages serves one custom
+      domain per repo, so the redirect has to live at the DNS or registrar level
+      for the second domain.
+
+**Recommended: decide (a) or (b) today.** Every day the canonical points at a
+404 costs indexing. Until then, wave 14's live verifications run against
+`https://rapidconstruct.md`, because that is where the deployed build is.

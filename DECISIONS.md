@@ -3304,3 +3304,81 @@ audit date, not Rapid Construct values, and nothing in `docs/CLAUDE.md` section
 **The repo is public.** The audit now is too. It contains no personal data: the
 only names in it are business names and village names read from the
 competitors' public pages.
+
+## W14-14 · The R-X gate, and the instalment offer it removes, 2026-09-15
+
+**Card RC-114, ruling R-X** (`docs/rulings/R-X.md`, STOP PR #3).
+`node scripts/check-scarcity.js` now fails the `quality` check on any countdown,
+stock-scarcity, instalment or financing string, or struck-price markup, in
+either locale.
+
+### The gate could not go green on the site as it stood
+
+Run against a build of `main` at 783db5e, the gate reported **37 violations,
+every one real and none a false positive**. All were the same offer: "Rate 0% la
+acoperiș" / "Рассрочка 0% на кровлю", live since wave 1 from the predecessor
+build, in four places per locale. So the removal ships in the same commit as the
+gate, and a gate that passes on `main` before the removal would have been the
+defect.
+
+| Where | RO and RU | Change |
+|---|---|---|
+| `hero.highlights.1` | the second of three orange lines in the hero claim | key and its `<li>` removed |
+| `hero.priceLine2` | the roofing line in the acoperișuri price section | key removed, and `build.js` no longer appends it |
+| `footer.offer` | the offer line in every footer | the instalment segment removed, the rest kept |
+| `svcContent.acoperisuri.faq.3.a` | the roofing payment-terms answer, also in that page's FAQPage JSON-LD | the instalment clause removed; the discount, estimate and guarantee sentences kept |
+
+`svc.priceExtra` in `build.js` was computed and never referenced by any
+template. It carried `priceLine2`, so it goes too.
+
+**What stays, and why.** "−10% la programări anticipate" and the promo bar's
+"Reducere 10% ... doar până în 2027" are discount lines, not badges, not struck
+prices, not countdowns. R-X as given does not reach them. Recorded as
+interpretation 1 in `docs/rulings/R-X.md` for ratification.
+
+**The master plan is amended in place under R-R.** Line 138's standing offer now
+strikes "0% installments on roofing" and names R-X. Not added to
+`check-stale-docs.js`: R-Q's obligation is for superseded measurements, and the
+live copy is now guarded by the R-X gate itself.
+
+### What the gate reads, and what it refuses to conclude
+
+It scans every string in both locale files, the raw HTML of every built page
+(13 RO, 12 RU, so meta, og and JSON-LD text are covered), and seven source files
+for countdown machinery. Before scanning it requires both locale files to parse
+to strings and both `dist/index.html` and `dist/ru/index.html` to exist. **19
+patterns, 204 self-test assertions:** each pattern must match its own samples
+and must not match nine clean samples, several of them live copy ("până la
+ultimul finisaj", "Остались вопросы?") that a careless pattern would catch.
+Word edges are Unicode-letter aware, because `\b` splits "rată" at the ă.
+
+### Negative-tested before it was trusted
+
+| Arm | Planted | Result |
+|---|---|---|
+| Real data | `main` at 783db5e, before the removal | exit 1, 37 violations |
+| RO scarcity | "Stoc limitat." in `form.cardTitle` | exit 1 |
+| RU instalment | "Можно в рассрочку." in `form.cardTitle` | exit 1 |
+| Struck price | `<del>200 lei</del>` in a template comment | exit 1 |
+| Countdown hook | `data-deadline` in a `main.js` comment | exit 1 |
+| Restored | the card as committed | exit 0 |
+
+### Measured, locally, on the build as committed
+
+Both builds served from `dist/` on localhost and read by
+`scripts/verify-live.js`, which matched the live site to the pixel on the
+baseline, so the comparison is like for like.
+
+| Page | Before (783db5e) | After | Content marker |
+|---|---|---|---|
+| Homepage RO | 8,818 | **8,818** | hero highlights 3 to 2, instalment strings 2 to 0 |
+| Homepage RU | 9,032 | **9,032** | hero highlights 3 to 2, instalment strings 2 to 0 |
+| Acoperișuri RU | 5,676 | **5,649** | instalment strings 4 to 0 |
+| Other five service pages | unchanged | unchanged | |
+
+**The homepage does not move, and that is expected, not missed.** The hero claim
+card stretches to the height of the photo beside it, so one fewer line inside it
+shortens nothing. The markers are what prove the new build was the one measured.
+
+Lighthouse, desktop preset, localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 /
+100 / 100**.

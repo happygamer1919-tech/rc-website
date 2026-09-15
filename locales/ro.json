@@ -127,19 +127,23 @@
     "items": {
       "0": {
         "title": "Înlocuire ardezie cu țiglă metalică",
-        "desc": "Scoatem ardezia veche și învelim acoperișul cu țiglă metalică."
+        "desc": "Scoatem ardezia veche și învelim acoperișul cu țiglă metalică.",
+        "alt": "Casă din lemn cu acoperiș vechi din ardezie ondulată"
       },
       "1": {
         "title": "Înlocuire ardezie cu șindrilă bituminoasă",
-        "desc": "Scoatem ardezia veche și învelim acoperișul cu șindrilă bituminoasă."
+        "desc": "Scoatem ardezia veche și învelim acoperișul cu șindrilă bituminoasă.",
+        "alt": "Casă din cărămidă cu acoperiș vechi din ardezie ondulată"
       },
       "2": {
         "title": "Acoperiș la cheie cu țiglă metalică",
-        "desc": "Montăm acoperișul complet: șarpantă din lemn, învelitoare din țiglă metalică, jgheaburi și burlane."
+        "desc": "Montăm acoperișul complet: șarpantă din lemn, învelitoare din țiglă metalică, jgheaburi și burlane.",
+        "alt": "Țiglă metalică închisă la culoare, de aproape"
       },
       "3": {
         "title": "Acoperiș la cheie cu șindrilă bituminoasă",
-        "desc": "Montăm acoperișul complet: șarpantă din lemn, învelitoare din șindrilă bituminoasă, jgheaburi și burlane."
+        "desc": "Montăm acoperișul complet: șarpantă din lemn, învelitoare din șindrilă bituminoasă, jgheaburi și burlane.",
+        "alt": "Șindrilă bituminoasă gri, de aproape"
       }
     }
   },

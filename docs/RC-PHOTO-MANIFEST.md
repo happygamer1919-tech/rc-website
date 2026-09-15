@@ -18,7 +18,8 @@ the 5 process stages. Everything else is a reserved slot on a project with no
 content, and a slot with no content behind it renders nowhere.
 
 Every file: minimum 1600px long edge **(AMENDED — not universal, see below)**, landscape, JPG, under 400KB after
-processing, no watermark, real Rapid Construct work only.
+processing, no watermark, real Rapid Construct work only **(AMENDED: proof slots only; product and
+explanation slots may take licensed stock or visualisations with an R-W row, DECISIONS.md W14-18)**.
 Naming: the Slot ID exactly, lowercase, `.jpg`.
 
 **AMENDED — the 1600px minimum is not universal.** Three rulings lower it for

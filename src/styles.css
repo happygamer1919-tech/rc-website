@@ -862,6 +862,12 @@ p { margin: 0; }
 }
 .hero-claim__highlights li + li { margin-top: 4px; }
 .hero-panel-media { border-radius: var(--radius-card); border: 1px solid var(--line); overflow: hidden; }
+/* W14-07 fix. The panel keeps a 4:3 ratio and stretches to the claim card's
+   height, so when the card grows (W14-07 added the social row) the ratio pushed
+   the panel wider than its column: 573px in a 514px column on RU at 1100px, 35px
+   past the viewport. Capping it at the column lets the stretched height stand and
+   the photo crop with object-fit, as it already does. */
+.hero-panels > .hero-panel-media { max-width: 100%; min-width: 0; }
 /* contain, not cover. The illustration is 4:3 and the box is 4:3, so the two
    render identically today, but contain guarantees a future asset at a
    different ratio is letterboxed rather than silently cropped. */

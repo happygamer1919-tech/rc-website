@@ -1647,3 +1647,39 @@ leaving four empty would also break the grid.
 
 **Recommended: (a).** It shows exactly the five structures, in one visual style, and
 it is the company's own work.
+
+## Q-W14-14 · Where the RC photo only placeholders go, when their sections do not exist on the site · OPEN, opened 2026-09-15 (W14-19)
+
+**Shipped default: the manifest only,** `docs/assets/PENDING-PHOTOS.md`, and no
+placeholder on any page.
+
+RC-119 asks for a neutral branded placeholder in every slot the audit classes RC
+photo only, with the slot ID in a data attribute, while before/after and portfolio
+data stay empty so those sections do not render. This is what the site has for
+those slots:
+
+| Group | Slots | On rapidconstruct.md today |
+|---|---|---|
+| Before/after | 8 | the section exists, empty by design; the card keeps it hidden |
+| Roofing portfolio | 7, plus galleries | exists; 5 already show client photos |
+| Roofing hero video | 1 | no such section |
+| Video testimonials | 13 | no such section; reviews are text |
+| Crew portrait | 1 | no such section |
+| Fences: portfolio, video, reviews, team, manager | 30 | no such sections; the fence page shows nothing yet (Q-W14-09) |
+| Carport cross-sell | 3 | no such section |
+
+Every slot is in a hidden section, already filled, or in a section that does not
+exist. A placeholder therefore needs its section built first: a heading, a layout,
+and on the fence page 30 grey tiles on an otherwise empty page. The headings would
+be new copy, and a placeholder a visitor can see reverses master plan section 7.
+
+**Options:**
+
+  (a) **Manifest only** (shipped). Each section is built when its photos arrive.
+  (b) **Visible placeholder sections** on the live pages, with a heading you supply
+      for each section.
+  (c) **One unlisted review page** (noindex, linked from nowhere, like the held
+      photos under /review/) that shows every pending slot as a branded
+      placeholder tile with its slot ID, for the photographer as a visual brief.
+
+**Recommended: (a),** with (c) if the photographer wants to see the shapes.

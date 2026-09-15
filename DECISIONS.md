@@ -4310,3 +4310,36 @@ already over R-J and is re-budgeted in RC-113.
 
 Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100** (LCP 923 ms, CLS 0.002),
 **RU 99 / 100 / 100 / 100** (LCP 925 ms, CLS 0.012).
+
+## W14-19 · The pending photo manifest; the placeholders have nowhere to go, 2026-09-15
+
+**Card RC-119.** Two deliverables: a manifest of every slot the wave 14 audit
+classes RC photo only, and a neutral branded placeholder in each of those slots,
+with before/after and portfolio data left empty so those sections stay hidden.
+
+**Shipped: `docs/assets/PENDING-PHOTOS.md`.** One row per slot, 63 slots plus the
+roofing galleries, matching audit 5.5's count (30 roofing, 30 fences, 3 carports).
+Each row gives the slot ID, the page on rapidconstruct.md, whether a component
+exists to show it today, what the photo must show, and the aspect. Where the site
+already has the slot, the row uses the site's own figures: 1180:664 for
+before/after (W14-09), 4:3 for project covers (W9-04).
+
+**Two facts the manifest records.** Roofing portfolio slots F-PORT-1 to 5 are
+already filled: client photos render as `proj-acoperisuri-01-cover` to `05-cover`.
+And `content/projects.json` is not empty: it holds real client covers across nine
+services. Emptying it would take proof off live pages, so "portfolio data files
+stay empty" is read as no new portfolio entry without a real photo. Nothing in it
+changed.
+
+**Blocked: the placeholders, Q-W14-14.** Of the 63 slots, 8 sit in the before/after
+section the card keeps hidden, 7 in a portfolio that already shows real photos,
+and the other 48 in sections that do not exist on the site: a roofing hero video,
+video testimonials, a crew portrait, the fence page's portfolio, video and team
+blocks, and a carport cross-sell. Putting a placeholder in any of those means
+building the section first, with a heading nobody has written, and `docs/CLAUDE.md`
+forbids invented copy. It would also reverse master plan section 7 as W14-18 left
+it: a slot with no permitted image is removed rather than filled. So no page
+changed.
+
+Gates: build, links, stale docs, provenance and scarcity all pass; the card adds no
+image and changes no page.

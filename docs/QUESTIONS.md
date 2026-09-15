@@ -1582,7 +1582,7 @@ keeping the figure leaves a price with nothing behind it.
 **Recommended:** confirm with the client which it is before merging RC-105, so both
 changes land together if (b).
 
-## Q-W14-11 · Metal tile profile renders and RAL swatch values for the tile grid · OPEN, opened 2026-09-15 (W14-18)
+## Q-W14-11 · Metal tile profile renders and RAL swatch values for the tile grid · PART ANSWERED 2026-09-15: swatches from published RAL reference values (RC-122, W14-22); the renders carried as Q-W14-11b · opened 2026-09-15 (W14-18)
 
 **Shipped default: the tile grid as it is,** text colour chips and no profile
 image. RC-110's share of RC-118 is blocked on two missing inputs.
@@ -1736,3 +1736,17 @@ cannot both hold.
 
 **Recommended: (b).** It puts the page one tap away on phones, where most visitors
 are, without reopening the desktop header.
+
+## Q-W14-11b · Metal tile profile renders from Dasterum · OPEN, opened 2026-09-15 (W14-22)
+
+Carried from Q-W14-11, whose swatch half the owner answered in the tail dispatch.
+
+**Shipped default: no profile image in the tile grid.** The grid shows text and
+swatches only. The renders RC-118 asked for (Dasterum profile renders, unwatermarked)
+still have no source in this repo: the only Dasterum file available is a price list,
+and the images the audit saw are watermarked and sit on dasterum.md, which R-W fails.
+
+**What to send:** Dasterum's product pack for Monterrey, Valencia, Kascad and the
+modular tile, unwatermarked, square, at least 960px, with written permission. The
+grid already renders `public/img/tigla-<model>.jpg` when the file and its alt text
+exist, and R-W's supplier-pack origin covers the provenance row.

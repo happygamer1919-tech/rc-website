@@ -4823,3 +4823,71 @@ the page's HTML; no horizontal overflow at 390 and 1440px.
 Ruling R-Y (#25, not merged) sets the fences budget on the empty page and says a
 filled page moves it; its amendment is owed when #25 merges. Lighthouse, desktop,
 localhost: **RO 100 / 100 / 100 / 100, RU 100 / 100 / 100 / 100**.
+
+## W14-22 · Tile colour swatches from published RAL reference values, 2026-09-15
+
+**Card RC-122. Closes Q-W14-11 in part;** the renders stay open as Q-W14-11b. Every
+colour chip in the tile grid now carries a swatch beside its code and name, and one
+line under each palette, in both locales, says screen colour is indicative and the
+physical sample decides.
+
+### The values, and where they come from
+
+The legend's 15 codes are 10 RAL Classic colours; a code ending in M is the same RAL
+colour in a matt finish, so it carries the same value. Each value is the swatch
+colour RAL gGmbH publishes on that colour's own page, read on 2026-09-15. It is the
+only publication by the owner of the standard, and it matches RAL's all-colours grid.
+Wikipedia's tables were checked and not used: they differ from RAL by up to 20 on a
+channel and disagree between language editions.
+
+| RAL | Legend codes | Name (RO) | Value | Source |
+|---|---|---|---|---|
+| RAL 3005 | 3005M, 3005 | Roșu vin | `#561E27` | https://www.ral-farben.de/en/colour/ral-classic/ral-3005/9132 |
+| RAL 5005 | 5005 | Albastru semnal | `#134A85` | https://www.ral-farben.de/en/colour/ral-classic/ral-5005/9169 |
+| RAL 6005 | 6005M, 6005 | Verde mușchi | `#234235` | https://www.ral-farben.de/en/colour/ral-classic/ral-6005/9194 |
+| RAL 7016 | 7016M, 7016 | Gri antracit | `#3B4044` | https://www.ral-farben.de/en/colour/ral-classic/ral-7016/9239 |
+| RAL 7024 | 7024M, 7024 | Gri grafit | `#45494E` | https://www.ral-farben.de/en/colour/ral-classic/ral-7024/9243 |
+| RAL 8017 | 8017M, 8017 | Maro ciocolată | `#42332E` | https://www.ral-farben.de/en/colour/ral-classic/ral-8017/9275 |
+| RAL 8019 | 8019M | Maro gri | `#3B3736` | https://www.ral-farben.de/en/colour/ral-classic/ral-8019/9276 |
+| RAL 9003 | 9003 | Alb semnal | `#EBECEA` | https://www.ral-farben.de/en/colour/ral-classic/ral-9003/9285 |
+| RAL 9005 | 9005M | Negru intens | `#131516` | https://www.ral-farben.de/en/colour/ral-classic/ral-9005/9287 |
+| RAL 9006 | 9006 | Aluminiu alb | `#9A9D9D` | https://www.ral-farben.de/en/colour/ral-classic/ral-9006/9288 |
+
+Each entry in `content/tigla-metalica.json` holds its `ral`, `hex` and `source`. The
+build fails if a value is missing or malformed, if the source is not that code's RAL
+page, or if a code and its matt twin disagree.
+
+**For the owner's attention, not acted on.** RAL's all-colours page says: "The
+technical values of the shown RAL colours are protected by copyright. Therefore, a
+user agreement must be concluded with RAL gGmbH in order to use the RAL colour
+values." The dispatch directed published RAL reference values, so they are used.
+Whether showing ten swatches needs RAL's digital colour library licence is a
+business decision the dispatch did not address. 9006 is a metallic effect colour,
+which a flat screen value can only stand in for.
+
+### The surface treatment
+
+A gloss swatch carries a highlight from its top left; a matt swatch is flat. The
+highlight and the swatch edge reuse translucent values the stylesheet already had,
+so the only colour values added are the RAL ones, inside the tile grid, under the
+section 3 exception ratified at W14 ratifications (deviation 9).
+
+### Tested
+
+Headless Chrome against the local build, **12 of 12**, both locales: every chip has
+exactly one swatch whose computed colour is its code's RAL value; matt codes flat,
+gloss codes highlighted; every colour the models use has a chip and every chip code
+is in the legend (7024M is in the legend and used by no model, as before); the
+indicative-colour line closes every palette; no horizontal overflow at 390 and
+1440px.
+
+### Measured
+
+| Page | Before | After |
+|---|---|---|
+| Țiglă metalică RO | 3,647 | **3,781** |
+| Țiglă metalică RU | 3,698 | **3,815** |
+
+Ruling R-Y (#25, not merged) holds the tile grid budget at the page without swatch
+notes; its amendment is owed when #25 merges. Lighthouse, desktop, localhost: **RO
+100 / 100 / 100 / 100, RU 100 / 100 / 100 / 100**.

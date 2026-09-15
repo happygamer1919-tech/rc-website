@@ -4499,3 +4499,62 @@ gates. The same damage reached #25 when main was merged into it (05102a3).
 | `build.js`, also touched by a1cb191 | none | checked, not changed: it differs from its first parent by exactly RC-117's 13 intended lines |
 
 All six `quality` gates pass after the repair.
+
+## W14-21 · Header fit: the ladder stops at step 3, 2026-09-15
+
+**Card RC-121. Unblocks #7.** The owner's ladder, applied in order, stopping at the
+first step where the header fits at 1180, 1280, 1440 and 1920px in both locales
+**with the catalog button present**. "Fits" is read as no two targets intersecting
+and the nav not squeezed below its natural width (slack at or above 0).
+
+### Measured, step by step
+
+On a local build of main with #7 merged in, each step applied on top of the last.
+Slack in px, 1180 / 1280 and up (the pill is capped at 1152px from 1200px, so 1280,
+1440 and 1920 read the same):
+
+| Step | RO | RU |
+|---|---|---|
+| 0, as on main | -57 / -97, overlapping | -83 / -123, overlapping |
+| 1, "Acasă" out of the nav | 12 / -17 | 3 / -25 |
+| 2, "Despre noi" to "Despre" | 40 / 12 | 3 / -25 (RU "О нас" is already the short form) |
+| **3, nav gap and font one step down** | **69 / 52** | **31 / 15** |
+| 4, phone as an icon, 1180 to 1279px | not needed | not needed |
+
+**Stopped at step 3.** Steps 1 to 3 shipped together:
+
+- The desktop nav in `src/template.html`, `src/service.html` and `src/product.html`
+  loses its home link. The wordmark is the home link. The mobile panel and the
+  footer keep theirs: neither has a width problem, and the mobile panel has no
+  wordmark inside it.
+- RO `header.navAbout` is "Despre". The key is shared, so the mobile panel and the
+  footer read "Despre" too.
+- `.nav` gap 28px to 20px and link size 17px to 16px at desktop widths; inside the
+  1180px block, 20px to 16px and 16px to 15px. Both are steps on the scale the
+  stylesheet already uses; no value is new.
+
+The phone number stays visible from 1280px up, and at 1180px too.
+
+### Measured slack after the change, homepage
+
+| Build | RO 1180 | RO 1280 to 1920 | RU 1180 | RU 1280 to 1920 |
+|---|---|---|---|---|
+| main, no catalog | 184 | 167 | 150 | 134 |
+| main with the catalog | 69 | 52 | 31 | 15 |
+
+### Tested
+
+The acceptance test, on both builds: zero bounding-box intersections between any
+two visible links or buttons in the pill at 769, 900, 1024, 1099, 1100, 1180, 1280,
+1440 and 1920px, on the homepage and a product page, in both locales; no
+horizontal overflow; the phone number visible at 1280px and up; no home link in the
+nav; slack at or above 0 from 1180px. **116 of 116 on each build.** Lighthouse,
+desktop, localhost: RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 / 100, target-size
+passing.
+
+### Found while measuring, for RC-120
+
+RC-120 asks for the fences page to be linked from the nav. A fifth nav link does
+not fit under this ladder. With "Garduri" added and the catalog present, step 3
+leaves RO at -24px and RU at -65px from 1280px up, with RU overlapping, and step 4
+only helps below 1280px. That link is carried as a question by RC-120 (W14-20).

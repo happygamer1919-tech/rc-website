@@ -3670,3 +3670,104 @@ Q-W14-02).
 
 Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 /
 100**.
+
+## W14-11 · Carports: chooser, twelve models, four steps, 2026-09-15
+
+**Card RC-111.** Three homepage sections after the metal tile grid and before the
+process section, both locales: a chooser of five structural families, the twelve
+models on the dark band, and four steps from measurement to installation. **No
+prices.** **Shipped without images** (Q-W14-07).
+
+### The twelve models, renamed
+
+The audit's twelve codes are replaced by **C-01 to C-12**, in the audit's order,
+and the build refuses any competitor code surviving anywhere in the data. The
+competitor's model names (Basic, Panoramic, ProtectFlex and so on) are not used:
+they are theirs. The card said "renamed to our own designations" and named none,
+so the scheme is W14-11's. Flagged for ratification.
+
+Each model keeps its **structural category chip** and its **one-line
+descriptor**, translated into Romanian and Russian. One descriptor carries a
+figure, **"Consolă de până la 6 m"** on C-02. It is the competitor's stated span,
+kept because the card says to keep the descriptors. Flagged: if Rapid Construct's
+cantilever span differs, it is one data edit.
+
+### The five families, and which models sit in each
+
+| Family | Models | Why these |
+|---|---|---|
+| Pe stâlpi | C-01, C-04, C-05, C-08, C-10 | category "on posts", plus the gable (C-04) and inclined-post (C-10) models, which also stand on posts |
+| În consolă | C-02, C-09 | category "cantilever" |
+| Prinsă de perete | C-03 | category "wall-mounted" |
+| Arcuită | C-06, C-07 | category "arched" and "arched or semi-arched" |
+| Arhitecturală | C-11, C-12 | category "architectural" |
+
+The audit says only that five families map to model codes; the mapping is
+W14-11's, from each model's own category. Every model is in exactly one family,
+and the build refuses a model in none or in two. Flagged for ratification.
+
+### Copy, and where each line comes from
+
+- Family tiles: a one-line description of each structure, from the categories
+  themselves (on posts, one side only, anchored to the wall, curved, open or
+  asymmetric).
+- Models section lede: "made to the yard's dimensions" is the audit's (4.2);
+  "the price is set after measurement" is the dispatch's ("quote after
+  measurement, which matches how Mihai works").
+- The four steps restate the audit's 4.2 step table: measure on site with no
+  price before it, a quote with the final configuration and price, fabrication
+  to order, installation of structure, roof and drainage.
+- Nothing claims a warranty, a lead time, a material brand or a number of
+  installations. The R-X gate is green over every string.
+
+### Anatomy, per audit 4.2, and two departures
+
+Chooser: five tiles in three columns, the first spanning two. Models: twelve
+cards three across on `#141414`, each with its category chip, designation and
+descriptor. Steps: four tiles in one row, an orange numeral circle, a title and a
+line, as an ordered list. Sections alternate white, `#141414`, white, so the dark
+process section after them keeps the rhythm.
+
+1. **Step tiles are white with a `--line` border, not grey.** `--bg-grey` is an
+   image placeholder fill only (`docs/CLAUDE.md` section 3).
+2. **The numeral in each orange circle is 19px bold, not 14px.** White on
+   `--brand` is 3.41:1; at 19px bold it clears WCAG's large-text threshold and is
+   judged at 3:1, the same decision the site's buttons already rest on.
+
+Model card borders are the permitted `rgba(255, 255, 255, x)` hairline on the
+dark band; the category chip is `--brand-dark` with white text, the site's
+existing chip pairing. No new colour value.
+
+### Build refusals, each watched failing and the data restored byte-identical
+
+A competitor model code in a descriptor; a model left out of every family; a
+model in two families; a duplicate designation; a Russian descriptor left as
+`TODO:`.
+
+### Tested
+
+Headless Chrome against the local build, **40 of 40**, content checked against
+the data file: section order and backgrounds, each section under the 1,400px cap,
+no competitor code anywhere on the page, no price in any of the three sections,
+family titles and texts, each family's designation chips, every model in exactly
+one family, the bento's double tile and three columns, the twelve designations in
+order, categories and descriptors, three across, white names and brand-dark chips
+on the dark band, four steps as an ordered list four across, white tiles and 19px
+bold numerals, no image column, and 2, 1 and 1 columns with no overflow at 1024,
+390 and 320.
+
+### Measured, and this is the largest step of the wave
+
+| Page | Before (802307f) | After | R-J budget | Over by |
+|---|---|---|---|---|
+| Homepage RO | 11,320 | **13,582** | 8,851 | **4,731** |
+| Homepage RU | 11,639 | **13,978** | 9,065 | **4,913** |
+| Six service pages | unchanged | unchanged | 6,000 | inside |
+
+The three sections add 2,262px RO and 2,339px RU; each is under the 1,400px cap
+on its own. The homepage is now **53% over its R-J budget in RO**. Measured
+before merge, per section 2; the new budgets are RC-113's, which is blocked
+(Q-W14-02).
+
+Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 /
+100**.

@@ -131,7 +131,7 @@ const PAGES = [
 
 // Keys whose value is already HTML built by this file. Everything else is
 // escaped on substitution.
-const RAW_KEYS = new Set(['tiglaGrid', 'beforeAfter', 'roofOffers', 'socialRow',
+const RAW_KEYS = new Set(['copertine', 'tiglaGrid', 'beforeAfter', 'roofOffers', 'socialRow',
   // demoAttr is a whole attribute, ` data-demo="..."`, not an attribute value:
   // it is either present or absent. Its inner text is escaped where it is
   // built, so what lands here is already safe. Escaping it again turned the
@@ -843,6 +843,119 @@ ${cards}
 `;
 }
 
+// --- W14-11, carports (S-06) -------------------------------------------------
+
+/* Three sections from content/copertine.json and the copertine.* strings,
+   structure from the wave 14 audit 4.2: a chooser of five structural families,
+   the twelve models on the dark band, and the four-step process from
+   measurement to installation. No prices: a carport is quoted after a site
+   measurement, which is also what the steps say.
+
+   Images are real files or nothing, like the offer cards: a family or model
+   whose image is not in public/img/ renders as text (Q-W14-07).
+
+   Presence, not silence: missing arrays fail the build, and so does a model in
+   no family or in two, a family naming a model that does not exist, a duplicate
+   designation, any field not real in both locales, and any competitor model code
+   surviving anywhere in the data. */
+const COP_FILE = 'content/copertine.json';
+const COP = JSON.parse(fs.readFileSync(COP_FILE, 'utf8'));
+if (!Array.isArray(COP.families) || !Array.isArray(COP.models)) die(`${COP_FILE} needs "families" and "models" arrays.`);
+if (/\bIL\s?\d{3}\b/i.test(JSON.stringify({ families: COP.families, models: COP.models }))) {
+  die(`${COP_FILE} still carries a competitor model code (IL followed by three digits). Models use Rapid Construct designations.`);
+}
+(() => {
+  const ids = new Set(COP.models.map((m) => m.id));
+  const seen = new Map();
+  const designations = new Set();
+  for (const m of COP.models) {
+    if (designations.has(m.designation)) die(`${COP_FILE}: designation ${m.designation} is used twice.`);
+    designations.add(m.designation);
+  }
+  for (const f of COP.families) {
+    for (const id of f.models) {
+      if (!ids.has(id)) die(`${COP_FILE}: family ${f.id} names model ${id}, which does not exist.`);
+      if (seen.has(id)) die(`${COP_FILE}: model ${id} is in both ${seen.get(id)} and ${f.id}.`);
+      seen.set(id, f.id);
+    }
+  }
+  const orphans = COP.models.filter((m) => !seen.has(m.id)).map((m) => m.id);
+  if (orphans.length) die(`${COP_FILE}: models in no family: ${orphans.join(', ')}.`);
+})();
+
+function copertine(l) {
+  if (COP.models.length === 0) return '';
+  const t = (k) => esc(l.strings[`copertine.${k}`]);
+  const txt = (o, where) => {
+    if (!o || !REAL(o[l.code])) die(`${COP_FILE}: ${where} is not real for ${l.code}.`);
+    return esc(o[l.code]);
+  };
+  const byId = new Map(COP.models.map((m) => [m.id, m]));
+  const image = (id, alt, w, h) => {
+    if (!fs.existsSync(`public/img/${id}.jpg`)) return '';
+    if (!REAL(alt)) die(`public/img/${id}.jpg exists but its alt text is not real in ${l.code}.`);
+    return `<div class="cop-media"><img src="${BASE}/img/${id}.jpg" alt="${esc(alt)}" width="${w}" height="${h}" loading="lazy" decoding="async"></div>`;
+  };
+
+  const tiles = COP.families.map((f, i) => {
+    const w = `families[${i}]`;
+    const media = image(`copertina-fam-${f.id}`, f.alt && f.alt[l.code], 800, 500);
+    const chips = f.models.map((id) => `<li class="model-chip">${esc(byId.get(id).designation)}</li>`).join('');
+    return `      <article class="bento__tile${i === 0 ? ' bento__tile--wide' : ''}" data-reveal data-stagger="${Math.min(i, 6)}">
+        ${media}<h3 class="bento__title">${txt(f.title, `${w}.title`)}</h3>
+        <p class="bento__text">${txt(f.text, `${w}.text`)}</p>
+        <ul class="bento__chips">${chips}</ul>
+      </article>`;
+  }).join('\n');
+
+  const models = COP.models.map((m, i) => {
+    const w = `models[${i}]`;
+    const media = image(`copertina-${m.id}`, m.alt && m.alt[l.code], 800, 600);
+    return `      <article class="model" data-reveal data-stagger="${Math.min(i, 6)}">
+        ${media}<p class="model__cat">${txt(m.category, `${w}.category`)}</p>
+        <h3 class="model__name">${esc(m.designation)}</h3>
+        <p class="model__desc">${txt(m.descriptor, `${w}.descriptor`)}</p>
+      </article>`;
+  }).join('\n');
+
+  const steps = [0, 1, 2, 3].map((i) => `      <li class="csteps__step" data-reveal data-stagger="${i}">
+        <span class="csteps__n" aria-hidden="true">${i + 1}</span>
+        <h3 class="csteps__title">${t(`steps.${i}.title`)}</h3>
+        <p class="csteps__text">${t(`steps.${i}.text`)}</p>
+      </li>`).join('\n');
+
+  return `<section class="section section--light section--divided" id="copertine" aria-labelledby="copertine-h">
+  <div class="container">
+    <p class="eyebrow" data-reveal>${t('eyebrow')}</p>
+    <h2 id="copertine-h" data-reveal>${t('chooserH2')}</h2>
+    <p class="lede" data-reveal>${t('chooserLede')}</p>
+    <div class="bento">
+${tiles}
+    </div>
+  </div>
+</section>
+<section class="section section--dark" id="copertine-modele" aria-labelledby="copertine-modele-h">
+  <div class="container">
+    <p class="eyebrow" data-reveal>${t('eyebrow')}</p>
+    <h2 id="copertine-modele-h" data-reveal>${t('modelsH2')}</h2>
+    <p class="lede cop-lede--dark" data-reveal>${t('modelsLede')}</p>
+    <div class="models">
+${models}
+    </div>
+  </div>
+</section>
+<section class="section section--light" id="copertine-pasi" aria-labelledby="copertine-pasi-h">
+  <div class="container">
+    <p class="eyebrow" data-reveal>${t('eyebrow')}</p>
+    <h2 id="copertine-pasi-h" data-reveal>${t('stepsH2')}</h2>
+    <ol class="csteps">
+${steps}
+    </ol>
+  </div>
+</section>
+`;
+}
+
 // --- W12-01, the portfolio end tile -----------------------------------------
 
 /* The seventh cell of the homepage portfolio grid. It is not a project and not
@@ -1085,6 +1198,7 @@ for (const l of loaded) {
   vars.supplierChips = renderSupplierChips(l, BASE);
   vars.heroPanelMedia = heroPanelMedia(l, BASE);
   vars.promoBar = promoBar(l);
+  vars.copertine = copertine(l);
   vars.tiglaGrid = tiglaGrid(l);
   vars.beforeAfter = beforeAfter(l);
   vars.roofOffers = roofOffers(l);

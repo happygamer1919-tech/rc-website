@@ -145,7 +145,7 @@ const RAW_KEYS = new Set([
 // Same idea for the service-page template.
 const SVC_RAW_KEYS = new Set([
   'demoAttr', 'svc.imageObjects', 'svc.answer', 'svc.table', 'svc.faqSection', 'svc.faqSchema',
-  'svc.gallerySection', 'svc.priceSection', 'svc.footerLinks', 'svc.priceExtra', 'svc.media',
+  'svc.gallerySection', 'svc.priceSection', 'svc.footerLinks', 'svc.media',
   // W12-06. The bar is site-wide, so the service template needs it raw too.
   'promoBar',
   // W12-09. Generated JSON-LD fragment, must not be escaped.
@@ -867,14 +867,11 @@ for (const l of loaded) {
       'svc.urlRu': SITE + BASE + SERVICES_ROOT.ru + slug + '/',
       'svc.pathRo': BASE + SERVICES_ROOT.ro + slug + '/',
       'svc.pathRu': BASE + SERVICES_ROOT.ru + slug + '/',
-      // priceLine2 is roofing-specific ("Rate 0% la acoperis"), so it appears
-      // only on that service. The other two lines are the site-wide offer.
-      'svc.priceExtra': slug === 'acoperisuri' ? ' · ' + l.strings['hero.priceLine2'] : '',
       'svc.priceSection': PRICED_SLUGS.includes(slug) ? `<section class="section section--dark section--compact">
   <div class="container">
     <p class="eyebrow" data-reveal>${esc(l.strings['servicePage.priceH'])}</p>
     <h2 data-reveal>${esc(l.strings['hero.priceTitle'])}</h2>
-    <p class="lede" data-reveal style="color: #FFFFFF; opacity: 0.75;">${esc(l.strings['hero.priceLine1'])}${slug === 'acoperisuri' ? ' · ' + esc(l.strings['hero.priceLine2']) : ''}</p>
+    <p class="lede" data-reveal style="color: #FFFFFF; opacity: 0.75;">${esc(l.strings['hero.priceLine1'])}</p>
   </div>
 </section>` : '',
       // Indexable only when this service has at least one renderable project

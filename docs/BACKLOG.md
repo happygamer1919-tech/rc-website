@@ -37,7 +37,7 @@ the final `main` and stays mergeable.
 | RC-112 | W14-12 Garduri, S-05, component only | SELF | `w14/rc-112-garduri` | todo |
 | RC-113 | W14-13 Height re-measure, new budget ruling | STOP | none | **blocked** on RC-103 and RC-104 |
 | RC-114 | W14-14a Ruling R-X, no pressure selling | STOP | `w14/rc-114-ruling-rx` | PR #3, awaiting owner |
-| RC-114 | W14-14 Scarcity gate | SELF | `w14/rc-114-scarcity-gate` | todo |
+| RC-114 | W14-14 Scarcity gate | SELF | `w14/rc-114-scarcity-gate` | shipped |
 
 ## Wave 13
 

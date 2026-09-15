@@ -135,7 +135,7 @@ No photo. Left-aligned or centred, single column.
 - h1: existing headline, reworded to uppercase.
 - One-sentence subhead from existing copy.
 - Stat row, four items: 500+ proiecte, 15+ ani, 30 ani garanție scrisă, 4.9/5 din 250+ recenzii. Numerals in `--brand`, static, no count-up.
-- Price box, bordered, `--brand` left border 4px: the published per-m² figures and the standing offer (minus 10% early booking, 0% installments on roofing, 160 lei/m² frozen for 2026).
+- Price box, bordered, `--brand` left border 4px: the published per-m² figures and the standing offer (minus 10% early booking, ~~0% installments on roofing~~ **AMENDED: removed under ruling R-X, W14-14, `docs/rulings/R-X.md`**, 160 lei/m² frozen for 2026).
 - Two CTAs: "Solicită ofertă gratuită" (filled), "Sună acum" (outline).
 
 ### 5.3 Services — `--bg-grey`

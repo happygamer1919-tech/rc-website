@@ -28,8 +28,8 @@ the final `main` and stays mergeable.
 | RC-103 | W14-03 Section 1 copy, RO | SELF | none | **blocked**, Q-W14-02 |
 | RC-104 | W14-04 Section 1 copy, RU parity | SELF | none | **blocked** on RC-103 |
 | RC-105 | W14-05 Remove the frozen price | STOP | `w14/rc-105-frozen-price` | todo |
-| RC-106 | W14-06 Catalog mega-menu, S-01 | SELF | `w14/rc-106-catalog-menu` | todo |
-| RC-107 | W14-07 Social row, S-07 | SELF | `w14/rc-107-social-row` | todo |
+| RC-106 | W14-06 Catalog mega-menu, S-01 | SELF | `w14/rc-106-catalog-menu` | **blocked**, PR #7 open, not merged: Q-W14-04, Q-W14-05 |
+| RC-107 | W14-07 Social row, S-07 | SELF | `w14/rc-107-social-row` | shipped, URLs to confirm: Q-W14-06 |
 | RC-108 | W14-08 Acoperișuri offer cards, S-02 | SELF | `w14/rc-108-offer-cards` | todo |
 | RC-109 | W14-09 Before/after slider, S-03 | SELF | `w14/rc-109-before-after` | todo |
 | RC-110 | W14-10 Țiglă metalică grid, S-04 | SELF | `w14/rc-110-tigla-grid` | todo |

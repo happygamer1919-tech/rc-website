@@ -832,6 +832,21 @@ p { margin: 0; }
 /* CTA sits inside the card, left aligned, in the space above the divider. */
 .hero-claim__cta { align-self: flex-start; margin-top: 20px; }
 
+/* W14-07. The social row sits under the CTA on the dark card. Same 44px targets
+   as the footer row, so WCAG 2.5.8 is cleared, and the first icon is pulled left
+   by its own inset so the glyph lines up with the CTA's left edge. Hover changes
+   colour only; the transition is disabled under reduced motion by the global rule. */
+.hero-claim__social { list-style: none; margin: 12px 0 0 -11px; padding: 0; display: flex; gap: 4px; align-items: center; }
+.hero-claim__social a {
+  width: 44px; height: 44px;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--bg-light); border-radius: var(--radius-control);
+  transition: color var(--hover-dur) ease-out, background-color var(--hover-dur) ease-out;
+}
+.hero-claim__social a:hover { color: var(--brand); background: rgba(255, 255, 255, 0.06); }
+.hero-claim__social a:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.hero-claim__social svg { display: block; }
+
 .hero-claim__divider { height: 1px; background: rgba(255, 255, 255, 0.25); margin: 24px 0 16px; border: 0; margin-top: auto; }
 
 /* Three separate rows, each with its own middot marker. */

@@ -4891,3 +4891,74 @@ indicative-colour line closes every palette; no horizontal overflow at 390 and
 Ruling R-Y (#25, not merged) holds the tile grid budget at the page without swatch
 notes; its amendment is owed when #25 merges. Lighthouse, desktop, localhost: **RO
 100 / 100 / 100 / 100, RU 100 / 100 / 100 / 100**.
+
+## W14-23 · Carport diagrams: one line drawing per structure, no photographs, 2026-09-15
+
+**Card RC-123. Closes Q-W14-12.** Five original inline SVG line diagrams, drawn in
+this repo and defined once in `build.js` (`COP_DIAGRAMS`): on posts, cantilever,
+wall-mounted, gable, arched. Each family tile in the chooser and each of the twelve
+model cards shows one, above its existing heading, which labels it.
+
+**How they are drawn.** A shared 160 by 100 frame with the ground line at the same
+height; one stroke weight, 2px, held at any size by `vector-effect`; no fill; no
+text. The roof line is the brand accent (`--brand`, through a class); every other
+line takes the card's text colour, so the same drawing reads on the light chooser
+and on the dark model band. The drawings are decorative (`aria-hidden`): the
+heading names the structure.
+
+### Which card shows which diagram
+
+A model takes its structural category from the wave 14 audit 2.3, matched model for
+model to C-01 to C-12. A family tile takes its family's structure. **For
+ratification:** the audit has no separate drawing for inclined posts or for the
+architectural models, so they show posts; the gable drawing appears only on C-04,
+the model that drains both sides.
+
+| Card | Audit category | Diagram |
+|---|---|---|
+| Pe stâlpi (family) | on posts | posts |
+| În consolă (family) | cantilever | cantilever |
+| Prinsă de perete (family) | wall-mounted | wall-mounted |
+| Arcuită (family) | arched | arched |
+| Arhitecturală (family) | architectural | posts |
+| C-01 | on posts | posts |
+| C-02 | cantilever, wide span | cantilever |
+| C-03 | wall-mounted | wall-mounted |
+| C-04 | gable | **gable** |
+| C-05 | on posts | posts |
+| C-06 | arched | arched |
+| C-07 | arched / semi-arched | arched |
+| C-08 | on posts, boxed edge | posts |
+| C-09 | cantilever | cantilever |
+| C-10 | inclined posts | posts |
+| C-11 | architectural | posts |
+| C-12 | architectural, to project | posts |
+
+The build fails if any family or model has no diagram, or if a diagram is defined
+and used by no card.
+
+### No photographs
+
+The carport image slots (`copertina-fam-*`, `copertina-*`) are removed from
+`scripts/slots.js`, and the render path that would have shown a photograph is
+gone from `build.js` and `src/styles.css`. **Zero image files added.**
+
+### Tested
+
+Headless Chrome against the local build, **22 of 22**, both locales: 5 family tiles
+and 12 model cards; exactly one diagram on every card; the family and model mapping
+above, all five diagrams in use; no fill, no text and one 2px stroke weight on every
+shape; exactly one accent per diagram, computed as `rgb(246, 83, 8)`; every other
+line in the card's text colour; no `<img>` in the carport sections; no horizontal
+overflow at 390 and 1440px.
+
+### Measured
+
+| Page | Before | After |
+|---|---|---|
+| Copertine RO | 4,587 | **5,433** |
+| Copertine RU | 4,663 | **5,509** |
+
+Ruling R-Y (#25, not merged) holds the carports budget at the text-only page; its
+amendment is owed when #25 merges. Lighthouse, desktop, localhost: **RO 100 / 100 / 100 / 100,
+RU 100 / 100 / 100 / 100**.

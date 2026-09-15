@@ -943,8 +943,8 @@ ${cards}
    measurement to installation. No prices: a carport is quoted after a site
    measurement, which is also what the steps say.
 
-   Images are real files or nothing, like the offer cards: a family or model
-   whose image is not in public/img/ renders as text (Q-W14-07).
+   No photographs (W14-23): every family tile and every model card shows an
+   original line diagram of its structure, defined below.
 
    Presence, not silence: missing arrays fail the build, and so does a model in
    no family or in two, a family naming a model that does not exist, a duplicate
@@ -975,6 +975,43 @@ if (/\bIL\s?\d{3}\b/i.test(JSON.stringify({ families: COP.families, models: COP.
   if (orphans.length) die(`${COP_FILE}: models in no family: ${orphans.join(', ')}.`);
 })();
 
+/* W14-23. Original line diagrams, one per structural family, drawn in this repo.
+   Shared frame 160x100 with the ground at y 88; one stroke weight (2, held by
+   vector-effect at any size); no fill; no text. The roof line carries the brand
+   accent through the d-accent class; every other line is currentColor, so a
+   diagram reads on the light chooser and the dark model band alike. Decorative:
+   the card heading names what it shows. */
+const copLine = (x1, y1, x2, y2, accent) => `<line${accent ? ' class="d-accent"' : ''} x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" vector-effect="non-scaling-stroke"/>`;
+const copSvg = (body) => `<svg class="cop-diagram__svg" viewBox="0 0 160 100" width="160" height="100" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${body}${copLine(8, 88, 152, 88)}</svg>`;
+const COP_DIAGRAMS = {
+  // A flat roof on a post at each end.
+  posts: copSvg(copLine(18, 34, 142, 34, true) + copLine(30, 34, 30, 88) + copLine(130, 34, 130, 88)),
+  // Posts on one side only; the roof runs out past them, held by a brace.
+  cantilever: copSvg(copLine(26, 34, 146, 34, true) + copLine(40, 34, 40, 88) + copLine(40, 56, 78, 34)),
+  // A wall carries the roof, with a brace and no posts.
+  wall: copSvg(copLine(20, 12, 20, 88) + copLine(20, 34, 146, 40, true) + copLine(20, 62, 72, 37)),
+  // Two posts under a roof pitched both ways.
+  gable: copSvg('<polyline class="d-accent" points="16,50 80,22 144,50" vector-effect="non-scaling-stroke"/>' + copLine(30, 44, 30, 88) + copLine(130, 44, 130, 88)),
+  // Two posts under a curved roof.
+  arched: copSvg('<path class="d-accent" d="M16 50 Q80 2 144 50" vector-effect="non-scaling-stroke"/>' + copLine(30, 44, 30, 88) + copLine(130, 44, 130, 88)),
+};
+/* Which diagram each card shows. A model takes its structural category from the
+   wave 14 audit 2.3, matched model for model to C-01 to C-12: C-04 drains both
+   sides, so it is the gable; the inclined-post and architectural models stand on
+   posts. A family tile takes its family's structure; the architectural family
+   stands on posts. Every family and model must be mapped and every diagram used,
+   or the build fails. */
+const COP_MODEL_DIAGRAM = { c01: 'posts', c02: 'cantilever', c03: 'wall', c04: 'gable', c05: 'posts', c06: 'arched', c07: 'arched', c08: 'posts', c09: 'cantilever', c10: 'posts', c11: 'posts', c12: 'posts' };
+const COP_FAMILY_DIAGRAM = { stalpi: 'posts', consola: 'cantilever', perete: 'wall', arcuita: 'arched', arhitecturala: 'posts' };
+(() => {
+  const unmapped = [...COP.models.filter((m) => !COP_DIAGRAMS[COP_MODEL_DIAGRAM[m.id]]).map((m) => m.id), ...COP.families.filter((f) => !COP_DIAGRAMS[COP_FAMILY_DIAGRAM[f.id]]).map((f) => f.id)];
+  if (unmapped.length) die(`${COP_FILE}: no diagram for ${unmapped.join(', ')}.`);
+  const used = new Set([...Object.values(COP_MODEL_DIAGRAM), ...Object.values(COP_FAMILY_DIAGRAM)]);
+  const unused = Object.keys(COP_DIAGRAMS).filter((k) => !used.has(k));
+  if (unused.length) die(`carport diagrams defined but used by no card: ${unused.join(', ')}.`);
+})();
+const copDiagram = (key) => `<div class="cop-diagram" data-diagram="${key}">${COP_DIAGRAMS[key]}</div>`;
+
 function copertine(l) {
   if (COP.models.length === 0) return '';
   const t = (k) => esc(l.strings[`copertine.${k}`]);
@@ -983,15 +1020,10 @@ function copertine(l) {
     return esc(o[l.code]);
   };
   const byId = new Map(COP.models.map((m) => [m.id, m]));
-  const image = (id, alt, w, h) => {
-    if (!fs.existsSync(`public/img/${id}.jpg`)) return '';
-    if (!REAL(alt)) die(`public/img/${id}.jpg exists but its alt text is not real in ${l.code}.`);
-    return `<div class="cop-media"><img src="${BASE}/img/${id}.jpg" alt="${esc(alt)}" width="${w}" height="${h}" loading="lazy" decoding="async"></div>`;
-  };
 
   const tiles = COP.families.map((f, i) => {
     const w = `families[${i}]`;
-    const media = image(`copertina-fam-${f.id}`, f.alt && f.alt[l.code], 800, 500);
+    const media = copDiagram(COP_FAMILY_DIAGRAM[f.id]);
     const chips = f.models.map((id) => `<li class="model-chip">${esc(byId.get(id).designation)}</li>`).join('');
     return `      <article class="bento__tile${i === 0 ? ' bento__tile--wide' : ''}" data-reveal data-stagger="${Math.min(i, 6)}">
         ${media}<h3 class="bento__title">${txt(f.title, `${w}.title`)}</h3>
@@ -1002,7 +1034,7 @@ function copertine(l) {
 
   const models = COP.models.map((m, i) => {
     const w = `models[${i}]`;
-    const media = image(`copertina-${m.id}`, m.alt && m.alt[l.code], 800, 600);
+    const media = copDiagram(COP_MODEL_DIAGRAM[m.id]);
     return `      <article class="model" data-reveal data-stagger="${Math.min(i, 6)}">
         ${media}<p class="model__cat">${txt(m.category, `${w}.category`)}</p>
         <h3 class="model__name">${esc(m.designation)}</h3>

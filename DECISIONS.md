@@ -3273,3 +3273,34 @@ covered by a written licence or release, four supplier logos came from brand
 websites with no recorded terms, and the service artwork, the step photos and
 the interim hero panel have no recorded origin at all. Each row says exactly
 that rather than filling the gap. Opened as Q-W14-01.
+
+## W14-01 · The wave 14 competitor structure audit lands in the repo, 2026-09-15
+
+**Card RC-101.** Docs only. The audit Ivan supplied at
+`/Users/ivan/RC-101/wave-14-competitor-structure.md` is committed byte for byte
+at `docs/audits/wave-14-competitor-structure.md`. sha256 of both, checked before
+and after the copy:
+`e935eb86e4d291eb267e6dcc3f1fa82ddbc8fb74b703153712153638e86af8ba`.
+
+**The dispatch named the path as a placeholder.** It read "the file at `<PATH FROM
+IVAN>`". Two byte-identical copies existed, one in `~/Downloads` and one in
+`~/RC-101/`. Ivan confirmed the second during the run.
+
+**What it is, for a card reading it later.** A read-only browser audit of three
+competitor sites, performed 2026-09-15: fatade3d.md (catalog taxonomy, the
+roofing page), dasterum.md (metal tile listing and four product pages) and
+imperlux.md (fences, carports). It records structure, interaction models,
+product fields and a photo manifest. It describes body copy in its own words and
+reproduces exact strings only for menu labels, product names, button labels,
+spec values and prices. No image from any of the three sites was downloaded or
+committed, and R-W (W14-02) now fails any provenance row that sources one.
+
+**It is a reference, not a governing document.** It is not added to the
+`check-stale-docs.js` scan list. Its figures are the competitors' figures on the
+audit date, not Rapid Construct values, and nothing in `docs/CLAUDE.md` section
+14 applies to them. Wave 14 cards cite it by section number (1.2, 1.3, 2.1, 2.3,
+3.2, 3.3, 4.2).
+
+**The repo is public.** The audit now is too. It contains no personal data: the
+only names in it are business names and village names read from the
+competitors' public pages.

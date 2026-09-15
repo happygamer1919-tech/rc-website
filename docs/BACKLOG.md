@@ -22,7 +22,7 @@ the final `main` and stays mergeable.
 | Ticket | Card | Mode | Branch | Status |
 |---|---|---|---|---|
 | RC-101 | W14-01a Ruling R-V, wave autonomy | STOP | `w14/rc-101-ruling-rv` | PR #1, awaiting owner |
-| RC-101 | W14-01 Land the competitor structure audit | SELF | `w14/rc-101-audit` | todo |
+| RC-101 | W14-01 Land the competitor structure audit | SELF | `w14/rc-101-audit` | shipped |
 | RC-102 | W14-02a Ruling R-W, asset provenance | STOP | `w14/rc-102-ruling-rw` | PR #2, awaiting owner |
 | RC-102 | W14-02 Asset provenance gate, and the `quality` check | SELF | `w14/rc-102-asset-provenance` | shipped |
 | RC-103 | W14-03 Section 1 copy, RO | SELF | none | **blocked**, Q-W14-02 |

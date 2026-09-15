@@ -1,0 +1,60 @@
+{
+  "_note": "W14-10. Metal tile grid (S-04). Every value is from the wave 14 audit, section 2.1, read on 2026-09-15 from the manufacturer's published listing and product pages. Standart and Premium grades only: the dispatch excludes Econom. List prices only: no discounted figure, no percentage, no struck price (ruling R-X). The legend holds all 15 colour codes from the audit; each variant lists the codes offered in that grade, matt codes end in M. A field with no source is left out, never filled: the modular tile has no working width because it is sold by the piece. Whether these are Rapid Construct's selling prices, and which supplier they come from, is Q-W14-08. build.js refuses a variant whose grade is not standart or premium, a colour code not in the legend, and a missing required field.",
+  "legend": [
+    { "code": "3005M", "name": { "ro": "Roșu vin", "ru": "Винно-красный" } },
+    { "code": "3005", "name": { "ro": "Roșu vin", "ru": "Винно-красный" } },
+    { "code": "5005", "name": { "ro": "Albastru semnal", "ru": "Сигнальный синий" } },
+    { "code": "6005M", "name": { "ro": "Verde mușchi", "ru": "Зелёный мох" } },
+    { "code": "6005", "name": { "ro": "Verde mușchi", "ru": "Зелёный мох" } },
+    { "code": "7016M", "name": { "ro": "Gri antracit", "ru": "Антрацитово-серый" } },
+    { "code": "7016", "name": { "ro": "Gri antracit", "ru": "Антрацитово-серый" } },
+    { "code": "7024M", "name": { "ro": "Gri grafit", "ru": "Графитово-серый" } },
+    { "code": "7024", "name": { "ro": "Gri grafit", "ru": "Графитово-серый" } },
+    { "code": "8017M", "name": { "ro": "Maro ciocolată", "ru": "Шоколадно-коричневый" } },
+    { "code": "8017", "name": { "ro": "Maro ciocolată", "ru": "Шоколадно-коричневый" } },
+    { "code": "8019M", "name": { "ro": "Maro gri", "ru": "Серо-коричневый" } },
+    { "code": "9003", "name": { "ro": "Alb semnal", "ru": "Сигнальный белый" } },
+    { "code": "9005M", "name": { "ro": "Negru intens", "ru": "Глубокий чёрный" } },
+    { "code": "9006", "name": { "ro": "Aluminiu alb", "ru": "Бело-алюминиевый" } }
+  ],
+  "models": [
+    {
+      "id": "monterrey",
+      "name": { "ro": "Monterrey", "ru": "Monterrey" },
+      "variants": [
+        { "grade": "standart", "thickness_mm": "0.45", "working_width_mm": "1100", "warranty_years": "10", "unit": "m2", "list_price_lei": "184",
+          "colours": ["3005M", "7016M", "8017M", "8019M", "9005M", "3005", "5005", "6005", "8017", "9003", "7016", "7024", "9006"] },
+        { "grade": "premium", "thickness_mm": "0.50", "working_width_mm": "1100", "warranty_years": "20", "unit": "m2", "list_price_lei": "207",
+          "colours": ["3005M", "6005M", "8017M", "8019M", "6005"] }
+      ]
+    },
+    {
+      "id": "valencia",
+      "name": { "ro": "Valencia", "ru": "Valencia" },
+      "variants": [
+        { "grade": "standart", "thickness_mm": "0.45", "working_width_mm": "1100", "warranty_years": "10", "unit": "m2", "list_price_lei": "184",
+          "colours": ["3005M", "7016M", "8017M", "8019M", "9005M", "3005", "5005", "6005", "8017", "9003", "7016", "9006"] },
+        { "grade": "premium", "thickness_mm": "0.50", "working_width_mm": "1100", "warranty_years": "20", "unit": "m2", "list_price_lei": "207",
+          "colours": ["3005M", "6005M", "8017M", "8019M", "6005"] }
+      ]
+    },
+    {
+      "id": "kascad",
+      "name": { "ro": "Kascad", "ru": "Kascad" },
+      "variants": [
+        { "grade": "standart", "thickness_mm": "0.45", "working_width_mm": "1080", "warranty_years": "10", "unit": "m2", "list_price_lei": "189",
+          "colours": ["3005M", "7016M", "8017M", "8019M", "9005M", "3005", "5005", "6005", "8017", "9003", "7016", "7024", "9006"] },
+        { "grade": "premium", "thickness_mm": "0.50", "working_width_mm": "1080", "warranty_years": "20", "unit": "m2", "list_price_lei": "213",
+          "colours": ["3005M", "6005M", "8017M", "8019M", "6005"] }
+      ]
+    },
+    {
+      "id": "modulara",
+      "name": { "ro": "Țiglă metalică modulară", "ru": "Модульная металлочерепица" },
+      "variants": [
+        { "grade": "premium", "thickness_mm": "0.45", "warranty_years": "10", "unit": "piece", "piece_area_m2": "0.83", "list_price_lei": "188",
+          "colours": ["7016M", "8019M"] }
+      ]
+    }
+  ]
+}

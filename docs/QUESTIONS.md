@@ -1477,3 +1477,46 @@ waive:
 depict work the company does, so a real photo is both allowed and more
 convincing than stock. Treat stock as a last resort for the carport group only,
 under an explicit ruling.
+
+## Q-W14-08 · The metal tile prices are a manufacturer's published list prices; confirm they are ours, and whether chips may show colour · OPEN, opened 2026-09-15 (W14-10)
+
+**Shipped default: the grid as the dispatch specified it,** with every value from
+the wave 14 audit section 2.1, Standart and Premium only, list prices only, and
+colour chips as text.
+
+**(a) Whose prices these are.** The audit read them on 2026-09-15 from the
+manufacturer's own listing and product pages. The grid now shows them on Rapid
+Construct's homepage as Rapid Construct's list prices:
+
+| Model | Standart | Premium |
+|---|---|---|
+| Monterrey | 184 lei/m² | 207 lei/m² |
+| Valencia | 184 lei/m² | 207 lei/m² |
+| Kascad | 189 lei/m² | 213 lei/m² |
+| Țiglă metalică modulară | not offered | 188 lei/bucată |
+
+The dispatch named the fields and the source, so this shipped. But nothing in the
+repo says Rapid Construct buys from that manufacturer, sells at those prices, or
+offers those warranties, and `docs/CLAUDE.md` section 5 says a price is never
+invented. Two things need confirming, in writing:
+
+1. **The supplier.** Is this the manufacturer Rapid Construct buys metal tile
+   from? The same answer unblocks the product images (Q-W14-07), which can only
+   come from the supplier with permission.
+2. **The prices and warranties.** Are these the figures Rapid Construct quotes? If
+   the company sells at a different price or installs at an all-in rate, the
+   list price field is wrong for this site and should be replaced or removed.
+
+**(b) Colour chips without colour.** Each chip reads its code, finish and name,
+for example "7016M Gri antracit", with no swatch. A swatch is a colour value, and
+`docs/CLAUDE.md` section 3 allows ten on the whole site; the fifteen-code legend
+would add up to fifteen more. Options:
+
+  (a) **Keep text chips.** Honest, and within section 3.
+  (b) **Allow product swatches as data, not palette.** Add a named exception to
+      section 3 for colour chips that depict a product's finish, with the values
+      taken from the manufacturer, never estimated.
+
+**Recommended:** confirm or correct (a) first; it decides whether the section
+stays. For (b), keep text chips until the supplier supplies its own swatch
+values, then take option (b) with those values.

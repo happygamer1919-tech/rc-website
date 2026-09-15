@@ -34,6 +34,11 @@
     "priceLine1": "−10% la programări anticipate",
     "ctaPrimary": "Solicită ofertă gratuită",
     "ctaSecondary": "Sună acum",
+    "claim": {
+      "h2": "Construim pentru azi. Garantăm pentru mâine.",
+      "line1": "30 de ani de garanție, direct în contract.",
+      "line2": "Materiale verificate, producători de încredere și soluții alese pentru casa ta."
+    },
     "panelAlt": "Armătură de stâlp în lucru, echipă pe schelă într-o clădire în construcție",
     "highlights": {
       "0": "−10% la programări anticipate",
@@ -60,7 +65,7 @@
   },
   "services": {
     "eyebrow": "Servicii",
-    "h2": "Ce construim pentru tine",
+    "h2": "Ce oferim pentru tine",
     "intro": "O singură echipă răspunde de tot proiectul, de la structură până la ultimul finisaj.",
     "linkLabel": "Află mai multe",
     "items": {
@@ -235,7 +240,7 @@
       "2": {
         "n": "03",
         "title": "Acoperiș",
-        "line": "Montăm structura de lemn, țigla și coșul. Casa e sub acoperiș.",
+        "line": "Montăm structura de lemn, țigla și coșul.",
         "alt": "Șarpantă de lemn și învelitoare montate pe casă"
       },
       "3": {
@@ -501,7 +506,7 @@
   },
   "marquee": {
     "h2": "Materiale și utilaje",
-    "lead": "Materiale și utilaje cu care lucrăm de obicei. Marca finală o confirmăm în ofertă, după proiect și buget."
+    "lead": "Am testat zeci de variante și am rămas la materialele și echipamentele din prezent. Totuși, producătorul final și soluția finală prind contur în ofertă, unde totul e adaptat după buget și viziunea clientului."
   },
   "popup": {
     "h2": "Te sunăm noi",
@@ -580,7 +585,7 @@
   },
   "svcContent": {
     "case-la-cheie": {
-      "answer": "Construcția la cheie înseamnă că ridicăm casa de la fundație până la predarea cheii, cu un singur contract și o singură echipă. Turnăm fundația, ridicăm structura din beton armat și zidăria, montăm șarpanta și învelitoarea, executăm fațada, apoi finisajele. Coordonarea echipelor rămâne la noi, nu la tine.",
+      "answer": "Construcția la cheie înseamnă că ridicăm casa de la fundație până la predarea cheii, cu un singur contract și o singură echipă. Turnăm fundația, ridicăm structura din beton armat și zidăria, montăm șarpanta și învelitoarea, executăm fațada, apoi finisajele. Noi coordonăm echipele. Tu te bucuri de rezultat.",
       "table": {
         "caption": "Etapele unei case la cheie",
         "rows": {
@@ -629,7 +634,7 @@
       }
     },
     "acoperisuri": {
-      "answer": "Montăm acoperișuri complete, pe case noi și peste structuri existente: șarpantă din lemn, învelitoare din țiglă metalică sau șindrilă bituminoasă, jgheaburi și burlane. Închidem coama, doliile și frontoanele cu elemente de tablă, îmbrăcăm coșul de fum și fixăm opritori de zăpadă pe versanții expuși.",
+      "answer": "Realizăm acoperișuri complete, de la șarpantă și învelitoare până la ultimele finisaje. Montăm țiglă metalică sau șindrilă bituminoasă, jgheaburi și burlane. Executăm coame, dolii și frontoane și ne ocupăm de toate detaliile necesare pentru un acoperiș sigur și durabil.",
       "table": {
         "caption": "Ce montăm pe un acoperiș",
         "rows": {
@@ -796,7 +801,7 @@
       }
     },
     "proiectare-3d": {
-      "answer": "Îți arătăm casa în 3D și planurile pe hârtie înainte să începem lucrul, ca să știi exact ce primești. Vizualizările sunt fotorealiste și acoperă fiecare încăpere: pereți, placaje, tâmplărie, corpuri de iluminat, pardoseli și mobilier fix, la nivelul de detaliu la care se execută apoi lucrarea.",
+      "answer": "Vezi casa înainte să o construim.\nÎți prezentăm proiectul în 3D și planurile tehnice înainte de începerea lucrărilor, astfel încât să știi exact cum va arăta și ce vei primi.\nRealizăm vizualizări fotorealiste pentru fiecare spațiu, de la finisaje și tâmplărie până la iluminat, pardoseli și mobilier, cu toate detaliile necesare pentru execuția corectă a proiectului.",
       "faq": {
         "0": {
           "q": "Ce primesc înainte să înceapă lucrul?",
@@ -820,7 +825,7 @@
       }
     },
     "instalatii": {
-      "answer": "Executăm instalațiile de curent, apă și căldură, calculate corect și pornite cu garanție. Traseele se trag înainte de închiderea pereților, prin decupajele din montanții metalici, iar încălzirea în pardoseală se montează pe izolație, în bucle paralele cu pasul păstrat constant pe toată suprafața.",
+      "answer": "Confortul casei începe din interiorul pereților.\nRealizăm complet instalațiile electrice, sanitare, de încălzire și canalizare, conform proiectului și cerințelor casei tale.\nDe la trasee și conexiuni până la încălzirea în pardoseală, ne ocupăm de fiecare etapă, astfel încât totul să fie pregătit corect înainte de finisaje.\nNoi instalăm. Tu te bucuri de confort.",
       "table": {
         "caption": "Ce executăm la instalații",
         "rows": {

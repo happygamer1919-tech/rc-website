@@ -51,7 +51,7 @@ ratifications); PRs #1, #2, #3 merged at the owner's instruction.
 | RC-117 | W14-17 Origin cutover to rapidconstruct.md | STOP | `w14/rc-117-origin-cutover` | todo |
 | RC-105 | W14-05b The 160 lei/m² figure leaves meta and price field, folded into #14 | owner-ordered merge | `w14/rc-105-frozen-price` | todo |
 | RC-106 | W14-06b Catalog menu, unblocked, audit 1.2 data | SELF | `w14/rc-106-catalog-menu` | todo |
-| RC-103 | W14-03 Section 1 copy, RO, strings supplied | SELF | `w14/rc-103-copy-ro` | todo |
+| RC-103 | W14-03 Section 1 copy, RO, strings supplied | SELF | `w14/rc-103-copy-ro` | shipped, closes Q-W14-02 |
 | RC-104 | W14-04 Section 1 copy, RU parity | SELF | `w14/rc-104-copy-ru` | todo |
 | RC-118 | W14-18 Product and visualisation images | SELF | `w14/rc-118-images` | todo |
 | RC-119 | W14-19 Real-photo placeholders and pending manifest | SELF | `w14/rc-119-pending-photos` | todo |

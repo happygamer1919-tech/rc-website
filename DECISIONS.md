@@ -3931,7 +3931,6 @@ Status metadata only, per R-S; no question body is edited.
 | Q-W14-08 | part (b) answered: RAL swatches permitted in the tile grid; part (a), prices, stays open |
 | Q-W14-10 | answered: the 160 lei/m² figure leaves the meta description and the price field (RC-105b). The question was opened on the RC-105 branch and exists only in PR #14, so its status is set there |
 
- w14/rc-102-rw-amendment
 ## W14-02b · R-W amended: legacy status by fingerprint, approved origins, 2026-09-15
 
 **STOP: PR only.** It edits `docs/rulings/R-W.md`, in the STOP set. The amendment
@@ -4130,7 +4129,6 @@ The homepage is still over its R-J budget; the new per-page budgets are RC-113's
 Lighthouse, desktop, localhost: **homepage RO 99 / 100 / 100 / 100, RU 99 / 100 /
 100 / 100; tile grid, carports and fences RO pages 100 / 100 / 100 / 100 each**.
 
- w14/rc-117-origin-cutover
 ## W14-17 · Origin cutover: rapidconstruct.md is the site's origin, STOP, 2026-09-15
 
 **Card RC-117. Closes Q-W14-03.** **STOP: pull request only.** It changes
@@ -4436,5 +4434,68 @@ changed.
 
 Gates: build, links, stale docs, provenance and scarcity all pass; the card adds no
 image and changes no page.
- main
- main
+
+## W14 tail ratifications · The owner's rulings on the close-out, 2026-09-15
+
+Recorded at the owner's instruction, from the wave 14 tail dispatch.
+
+| Item | Ruling |
+|---|---|
+| The RC-118 photo choices, the four offer card photographs (W14-18) | ratified |
+| The section 7 photo rule amended for product slots only (W14-18) | ratified |
+| The alt text written for the four offer card images (W14-18) | ratified |
+| Merging main forward into a published branch instead of rebasing (W14-06b) | ratified |
+| RC-119 shipped as the manifest only, existing project data left intact (W14-19) | ratified |
+| All four recorded interpretations in ruling R-Y (W14-13) | ratified |
+| The RC-106b menu row to page mapping (W14-06b) | ratified in principle |
+
+**Noted, no action:** #14 merging before RC-117 followed a contradiction in the
+close-out dispatch, not an executor error.
+
+**Premise corrected.** The tail dispatch says #16, #20 and #25 were merged before
+this run. #16 and #20 are. **#25 (RC-113, ruling R-Y) is open and not merged,** and
+its `quality` check fails, having inherited the defect W14-24a repairs. It is a
+STOP card and stays with the owner; its interpretations are ratified here ahead of
+its merge. Until it merges, main's `scripts/verify-live.js` carries R-J's budgets
+and reports both homepages OVER, and there is no R-Y on main for a later card to
+amend.
+
+## W14-24 · Post-cutover verification, and the tag, 2026-09-15
+
+**Card RC-124.** #20 merged as b47d79c and Pages deployed it. Verified under R-P on
+https://rapidconstruct.md.
+
+- **`scripts/verify-live.js` at b47d79c:** 8 of 8 pages VERIFIED, the `build-sha`
+  and the content markers read in the same page load; 33 reachable URLs crawled, 0
+  with a visible TODO. Its exit code is 1 only because both homepages are OVER R-J's
+  budgets, which R-Y (#25, not merged) replaces. Identity is not in question.
+- **The deployed output, read over HTTP,** every request cache-busted and the
+  `build-sha` asserted per page in the same response. CNAME 200, "rapidconstruct.md".
+  robots.txt points at https://rapidconstruct.md/sitemap.xml. sitemap.xml has 28
+  locations and 84 alternates, all on the origin. All 28 pages return 200 at b47d79c,
+  each with its canonical and three hreflang links on the origin. og:url and
+  og:image are on the origin on 26 pages; the two privacy pages carry no Open Graph
+  tags at all, by design, and are named as such in the output. JSON-LD `url` on 26
+  pages and `sameAs` 8 times, none naming the retired host. **Zero
+  rapidconstructmd.com anywhere in the deployed output,** CNAME, robots.txt and
+  sitemap.xml included. PASS.
+- **`scripts/check-origin.js` on a local build of b47d79c:** pass.
+- **Tag `wave-14-cutover`,** annotated, on b47d79c. Added, never moved.
+
+## W14-24a · Main repaired: the web merges left conflict marker tails, 2026-09-15
+
+**Found while verifying RC-124.** main's `quality` check fails at b47d79c:
+"docs/assets/PROVENANCE.md table has no rows". #16 and #20 were each brought up to
+date with main through GitHub's conflict editor (eb1f4da, a1cb191). It strips the
+marker characters, leaves their tails as text, and keeps both sides of each
+conflict. Pages deployed anyway, because the deploy workflow does not run the
+gates. The same damage reached #25 when main was merged into it (05102a3).
+
+| File | Damage | Repair |
+|---|---|---|
+| `DECISIONS.md` | four stray lines between entries: ` w14/rc-102-rw-amendment`, ` w14/rc-117-origin-cutover`, ` main` twice | removed. No entry lost or doubled: every heading from both parents of each merge is present |
+| `docs/BACKLOG.md` | in the close-out table, four stray lines, blank lines that cut it in three, and five stale rows kept beside the current ones | removed; the RC-102 and RC-117 rows now say merged by the owner |
+| `docs/assets/PROVENANCE.md` | two stray lines, a blank line inside the table, and five files listed twice (legacy status and the old unrecorded status) | the stray lines, the blank line and the old rows removed: 157 rows for 157 files |
+| `build.js`, also touched by a1cb191 | none | checked, not changed: it differs from its first parent by exactly RC-117's 13 intended lines |
+
+All six `quality` gates pass after the repair.

@@ -3919,3 +3919,35 @@ under RC-107, and this card's test asserts the header only.
 Heights at 1440px, all eight `verify-live.js` pages, identical to `main` at
 5e524ff: the header does not change at desktop width. Lighthouse, desktop,
 localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 / 100**.
+
+## W14-07b · Fix: the hero photo ran past the viewport after the social row landed, 2026-09-15
+
+**A wave 14 regression, found while testing W14-15, fixed under RC-107** because
+W14-07 caused it.
+
+**What visitors saw.** On the homepage between about 1025 and 1150px, the photo
+beside the guarantee card extended past the right edge of the window and the page
+scrolled sideways: by up to 35px in Russian, and by up to 37px in Romanian at
+1025 to 1040px.
+
+**Why.** The photo panel keeps a 4:3 ratio and stretches to the claim card's
+height. W14-07 added the 56px social row to the card, so the card grew, and the
+ratio then made the panel wider than its grid column. Measured on the live site
+at RU 1100px: column 514px, card 430px tall, panel 430px tall and 573px wide. The
+same page built at e49e02e, before wave 14, is clean at every width tested.
+
+**The fix.** `.hero-panels > .hero-panel-media { max-width: 100%; min-width: 0; }`.
+The panel is capped at its column; its stretched height stands; the photo crops
+with the `object-fit: cover` it already had. At 1440px nothing changes: the
+column is wide enough, so the panel is still exactly 4:3.
+
+### Tested
+
+| Build | Assertions | Result |
+|---|---|---|
+| With the fix | both locales, every 5px from 1025 to 1180: the panel inside its column and no page overflow; the panel still the card's height where the card is tallest; 1440 unchanged at 4:3, full column, card height; 1024 single column | **8 of 8** |
+| Live `main` without it, same test | | **6 of 8**, failing the overflow check in both locales |
+
+Heights at 1440px on all eight `verify-live.js` pages identical to `main`.
+Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 /
+100**.

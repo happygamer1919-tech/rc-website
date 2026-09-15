@@ -4226,3 +4226,87 @@ and no horizontal overflow from 1025 to 1180px or at 390px in either locale.
 | Other measured service pages | unchanged | unchanged |
 
 Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 / 100**.
+
+## W14-18 · Offer card images from licensed stock; tile renders and carport images blocked, 2026-09-15
+
+**Card RC-118.** The dispatch directs RC-108 and RC-111 to licensed stock or
+visualisations and RC-110 to Dasterum profile renders plus RAL chips. What shipped
+is the part an honest image exists for: the four acoperișuri offer cards. The other
+two groups are blocked, each with its own question.
+
+### What shipped
+
+| Card | Offer | Image | Photographer, Unsplash | Why it fits |
+|---|---|---|---|---|
+| 01 | Slate replaced with metal tile | Timber house under an old corrugated slate roof | Margo Evardson, DoGXMRfoxM4 | shows the roof the offer replaces |
+| 02 | Slate replaced with shingle | Brick house under an old corrugated slate roof | wow aram, -1juH9ot-Gs | the same, a second house |
+| 03 | Turnkey roof, metal tile | Dark metal tile, close | Lukáš Patúc, azwc0NpuzTY | shows the covering the offer fits |
+| 04 | Turnkey roof, shingle | Grey asphalt shingle, close | Hal Gatewood, 9u5r1XbtMJg | the same |
+
+**The selection rule.** An image shows either the roof the card replaces or the
+covering it fits, and carries no brand mark, logo or readable plate. Rejected on
+that rule: shingle tear-offs (they show shingle, not slate, being removed), a
+worker carrying shingle bundles (TRIBUILT and shingle maker marks), a roofer on a
+clay tile roof behind Layher scaffolding and a RAW membrane pack, glazed ceramic
+tiles, and a Japanese car park shelter carrying a company logo.
+
+Every file went through `scripts/process-photos.js` (centre crop to 0.81:1, 600x740
+and 1200x1480). One warning, accepted: the card 03 source is portrait, which suits
+a portrait slot. `offer-roof-01@2x.jpg` needed quality 40 to fit 400 KB; inspected
+at full size, no visible artefacts. Eight provenance rows name the photo page, the
+photographer, the Unsplash License and https://unsplash.com/license.
+
+**Alt text, both locales,** describes what the photograph shows and claims nothing
+else. Written for this card; there is no supplied string to take it from.
+
+| Card | RO | RU |
+|---|---|---|
+| 01 | Casă din lemn cu acoperiș vechi din ardezie ondulată | Деревянный дом со старой крышей из волнистого шифера |
+| 02 | Casă din cărămidă cu acoperiș vechi din ardezie ondulată | Кирпичный дом со старой крышей из волнистого шифера |
+| 03 | Țiglă metalică închisă la culoare, de aproape | Тёмная металлочерепица крупным планом |
+| 04 | Șindrilă bituminoasă gri, de aproape | Серая битумная черепица крупным планом |
+
+### Section 7 amended in place (R-R)
+
+"Real Rapid Construct work only, no stock" was stated in three places and the
+dispatch supersedes it for product slots. Each now carries an inline amendment
+naming this entry: master plan section 7, `docs/CLAUDE.md` section 7, and the
+photo manifest's per-file rule. Proof slots (before/after, portfolio,
+testimonials, team) stay real work only, and a slot with no permitted image is
+still removed rather than filled.
+
+### Blocked
+
+- **RC-110, tile renders and RAL chips: Q-W14-11.** No Dasterum pack exists to
+  take renders from; the only Dasterum file is a price list. The audit's legend
+  holds codes and names, no colour values, and RAL publishes no free official
+  screen values, so a swatch would be an estimate. Text chips stay.
+- **RC-111, carport images: Q-W14-12.** No licensed image found shows the five
+  structural families. Unsplash searched on eight queries; Pexels and Pixabay
+  return 403 to a script and were not searched. Recommended: Rapid Construct's own
+  visualisations.
+
+### Tested
+
+Headless Chrome against the local build, **56 of 56**, both locales: four images,
+each in the card whose description matches its offer, `src` and the 2x `srcset`,
+alt verbatim, width 600 and height 740, lazy, file loaded, drawn undistorted; no
+horizontal overflow at 390, 768, 1024, 1100, 1280 and 1440px.
+
+Negative arms, on a copy of the tree: removing the `offer-roof-03@2x.jpg` row fails
+the provenance gate, exit 1; emptying the RU alt for card 04 fails the build
+("empty strings: ru:roofOffers.items.3.alt").
+
+### Measured
+
+| Page | Before (f5800a8) | After |
+|---|---|---|
+| Homepage RO | 10,300 | **10,447** |
+| Homepage RU | 10,595 | **10,747** |
+| Product pages, both locales | unchanged | unchanged |
+
+The cards gain their image column, so the homepage grows about 150px. It was
+already over R-J and is re-budgeted in RC-113.
+
+Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100** (LCP 923 ms, CLS 0.002),
+**RU 99 / 100 / 100 / 100** (LCP 925 ms, CLS 0.012).

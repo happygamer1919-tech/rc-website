@@ -1440,7 +1440,16 @@ is a deviation, for two reasons:
 `content/social.json`. If a URL is wrong, the footer and `sameAs` are wrong too:
 the footer is a SELF edit, `sameAs` is in the R-V STOP set.
 
-## Q-W14-07 · The wave 14 image slots have no permitted source · ANSWERED 2026-09-15, approved origins added to R-W (RC-118) · opened 2026-09-15 (W14-08)
+## Q-W14-07 · The wave 14 image slots have no permitted source · ANSWERED 2026-09-15, approved origins added to R-W; offer card images shipped (RC-118); tile renders and carport images carried as Q-W14-11 and Q-W14-12 · opened 2026-09-15 (W14-08)
+
+**Resolution, W14-18 (RC-118).** The close-out dispatch answered all three blockers
+below: it directs RC-108 and RC-111 to licensed stock or visualisations (section 7
+is amended in place for product slots, R-R), it approves Unsplash, Pexels, Pixabay
+and four supplier packs as origins (R-W amendment, PR #16), and the banned hosts
+stay banned. The four offer cards now carry Unsplash photographs, each with its
+row. The metal tile renders and RAL swatches are not sourced (Q-W14-11), and no
+licensed image honestly shows the carport families (Q-W14-12). The text below is
+the question as it was asked.
 
 **Shipped default: every such slot ships without its image.** The acoperișuri
 offer cards render their text column only. Their four image slots are
@@ -1572,3 +1581,69 @@ keeping the figure leaves a price with nothing behind it.
 
 **Recommended:** confirm with the client which it is before merging RC-105, so both
 changes land together if (b).
+
+## Q-W14-11 · Metal tile profile renders and RAL swatch values for the tile grid · OPEN, opened 2026-09-15 (W14-18)
+
+**Shipped default: the tile grid as it is,** text colour chips and no profile
+image. RC-110's share of RC-118 is blocked on two missing inputs.
+
+**1. The renders.** RC-118 asks for Dasterum profile renders, unwatermarked. The
+only Dasterum file available to this run is a price list,
+`dasterum-pret-2026-08-07.xlsx`, with no images in it. The renders the audit saw
+(audit 5.4) are watermarked and sit on dasterum.md, which R-W fails outright. A
+supplier pack is an approved origin under the R-W amendment, but there is no pack
+to take them from.
+
+**2. The swatch values.** The ratified amendment to deviation 9 permits RAL chips in
+the tile grid, "sourced from the 15-code legend in the wave 14 audit". The legend
+holds a code and a name per entry, for example 7016M Gri antracit, and **no colour
+value**. RAL publishes no free official screen values; every hex value found online
+is someone's approximation, and Q-W14-08 (b) set the rule that swatch values are
+taken from the manufacturer, never estimated. A chip painted from an approximation
+would show a customer a colour the product may not have.
+
+**What to send:** Dasterum's product pack for Monterrey, Valencia, Kascad and the
+modular tile (unwatermarked profile images, 1:1, at least 960px), with written
+permission to use them, and the screen colour values Dasterum uses for its fifteen
+finishes. Both can be asked for in one message.
+
+**Options for the swatches, if Dasterum has no values:**
+
+  (a) **Keep text chips.** Honest, already live.
+  (b) **Approve a named approximation table** for the fifteen codes, recorded as
+      approximate in DECISIONS.md, and accept that screen colour is indicative.
+
+**Recommended:** ask Dasterum for both; keep (a) until they answer.
+
+## Q-W14-12 · No licensed image honestly shows the carport families · OPEN, opened 2026-09-15 (W14-18)
+
+**Shipped default: the carport page stays text-only,** as before. RC-111's share of
+RC-118 is blocked because no licensed image found shows what the page describes.
+
+**What was searched.** Unsplash, free licence only, for carport, car shelter,
+polycarbonate carport, cantilever carport, arched carport, metal carport, modern
+carport and carport house. The results are mostly garages, timber pergolas under
+clay tile, and carports built into a brick house. The best near match is a flat
+steel carport on posts in a garden, with a car's maker badge in frame. Nothing
+shows a cantilever, a wall-anchored, an arched polycarbonate or an architectural
+carport. The one steel parking shelter found stands in a commercial car park and
+carries a company logo. Pexels and Pixabay were not searched: both need a browser
+session or an API key for search, which this run does not have.
+
+**Why stock does not fit here.** The page is organised by structure: five families
+(on posts, cantilever, wall-anchored, arched, architectural) and twelve models,
+each named for a configuration. An image under "Consolă" that shows posts on both
+sides tells the customer the wrong thing about the product. Filling one family and
+leaving four empty would also break the grid.
+
+**Options:**
+
+  (a) **Rapid Construct's own visualisations.** The company sells photoreal 3D
+      visualisation as a service; five family renders, 8:5, at least 1600px wide,
+      in one consistent scene. Provenance: produced by Rapid Construct.
+  (b) **The carport fabricator's renders,** with written permission, recorded as a
+      supplier pack under R-W.
+  (c) **Stock for the post-supported family only,** leaving the other four as text.
+
+**Recommended: (a).** It shows exactly the five structures, in one visual style, and
+it is the company's own work.

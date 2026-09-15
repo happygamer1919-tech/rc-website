@@ -201,7 +201,7 @@ Technical spec for every supplied photo:
 - Landscape only for grid and cover slots. Vertical phone photos are unusable there.
 - JPG, compressed under 400KB after processing.
 - No watermarks, no third-party logos, no date stamps, no people's faces without permission.
-- Real Rapid Construct work only. If a slot has no real photo, the slot is removed rather than filled with stock.
+- ~~Real Rapid Construct work only. If a slot has no real photo, the slot is removed rather than filled with stock.~~ **AMENDED: proof slots only, DECISIONS.md W14-18. The owner's wave 14 close-out dispatch lets product and explanation slots take licensed stock or visualisations: the four roofing offer cards, the metal tile profiles and the carport images, each file with its provenance row under R-W. Proof slots (before/after, portfolio, testimonials, team) stay real Rapid Construct work only. A slot with no permitted image is still removed rather than filled.**
 
 ---
 

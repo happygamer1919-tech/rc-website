@@ -6,11 +6,12 @@ const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
 
-// W12-14. The fallback is the domain the client controls. It was
-// rapidconstruct.md, which the client does NOT control and which serves a
-// different site, so a build that forgot to set SITE_URL would have emitted
-// canonicals and a sitemap pointing at somebody else's pages.
-const SITE = (process.env.SITE_URL || 'https://rapidconstructmd.com').replace(/\/$/, '');
+// W14-17. The fallback is the site's real origin, rapidconstruct.md. W12-14 had
+// made it rapidconstructmd.com, and GitHub Pages was later moved to
+// rapidconstruct.md, so every canonical named a host that returned 404 (Q-W14-03).
+// The owner ruled rapidconstruct.md the real domain on 2026-09-15.
+// scripts/check-origin.js fails the build output if the retired host reappears.
+const SITE = (process.env.SITE_URL || 'https://rapidconstruct.md').replace(/\/$/, '');
 // Sub-path the site is served from. Empty for a domain root (Hostinger);
 // '/rc-website' for GitHub Pages. Every asset and inter-locale link uses it.
 const BASE = (process.env.BASE_PATH || '').replace(/\/+$/, '');
@@ -1744,7 +1745,7 @@ fs.writeFileSync('dist/.htaccess',
 
    Exactly the domain, no trailing content. GitHub trims whitespace when it
    reads the file, but there is no reason to write any. */
-const CUSTOM_DOMAIN = 'rapidconstructmd.com';
+const CUSTOM_DOMAIN = 'rapidconstruct.md';
 
 /* The CNAME and the canonical host must never disagree: a page canonicalised to
    one origin and served from another is worse than either mistake alone. When

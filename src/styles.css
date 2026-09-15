@@ -240,8 +240,10 @@ p { margin: 0; }
    48px without the mark out-shouting a solid filled button. */
 .header__logo img { height: 48px; width: auto; display: block; }
 
-.nav { display: flex; align-items: center; justify-content: center; gap: 28px; flex: 1 1 auto; min-width: 0; }
-.nav a { font-size: 17px; line-height: 1; white-space: nowrap; color: var(--bg-light); }
+/* W14-21. One step down from 28px and 17px, so the header holds the catalog button
+   beside the nav, phone, CTA and language switch at every desktop width. */
+.nav { display: flex; align-items: center; justify-content: center; gap: 20px; flex: 1 1 auto; min-width: 0; }
+.nav a { font-size: 16px; line-height: 1; white-space: nowrap; color: var(--bg-light); }
 .nav a:hover { color: var(--brand); }
 .nav a[aria-current='page'] { color: var(--brand); font-weight: 700; }
 
@@ -1319,8 +1321,9 @@ p { margin: 0; }
    spacing values the 1024px block already used, moved up to where they are
    needed. Nothing new is chosen. */
 @media (max-width: 1180px) {
-  .nav { gap: 20px; }
-  .nav a { font-size: 16px; }
+  /* W14-21: one step below the desktop values above. */
+  .nav { gap: 16px; }
+  .nav a { font-size: 15px; }
   .header__actions { gap: 12px; }
 }
 

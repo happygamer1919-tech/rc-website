@@ -3995,6 +3995,47 @@ Status metadata only, per R-S; no question body is edited.
 | Q-W14-08 | part (b) answered: RAL swatches permitted in the tile grid; part (a), prices, stays open |
 | Q-W14-10 | answered: the 160 lei/m² figure leaves the meta description and the price field (RC-105b). The question was opened on the RC-105 branch and exists only in PR #14, so its status is set there |
 
+## W14-02b · R-W amended: legacy status by fingerprint, approved origins, 2026-09-15
+
+**STOP: PR only.** It edits `docs/rulings/R-W.md`, in the STOP set. The amendment
+is appended under R-T; the ruling's body is untouched.
+
+**What changes in the gate.** `scripts/check-asset-provenance.js` accepts
+`legacy, licence unverified` only for a file whose path and sha256 match
+`docs/assets/LEGACY-IMAGES.txt`, the 149 images in f5e4eb6's first parent
+(e49e02e). Every other image needs an `https://` licence URL, or `supplier
+permission: ...` for a supplier pack. The old `unrecorded before R-W` value is
+retired and refused; the 131 rows that carried it now carry the legacy status.
+Forbidden hostnames apply to every row, legacy or not. The list is frozen at 149
+and the gate fails if it grows.
+
+**Why a fingerprint and not a date or git history.** CI checks out one commit
+with no history, so "was this file on main before f5e4eb6" cannot be asked of git
+there. A filename alone would let an overwritten legacy file keep its status. The
+hash closes both.
+
+**The approved origins are recorded, not enforced as an allow-list,** because
+the dispatch makes them additive to a ruling that only forbade. Recorded as a
+reading for ratification.
+
+**One escape hatch, stated:** a row whose licence URL is `n/a, generated in this
+repo` passes without a URL. It exists for files built by this repo's own scripts
+(og-image, the port placeholders). The source cell must name the script.
+
+### Negative-tested before it was trusted
+
+| Arm | Planted | Exit |
+|---|---|---|
+| New file claiming legacy | a new image whose row says `legacy, licence unverified` | 1 |
+| New file, no licence URL | a new image with an empty licence URL | 1 |
+| New file, real licence | the same image with `https://unsplash.com/license` | 0, as it should |
+| Legacy row, bytes changed | one byte appended to a legacy project cover | 1 |
+| Forbidden host on a legacy row | a supplier logo source rewritten to a dasterum.md host | 1 |
+| Legacy list grown | a 150th entry appended to the list | 1 |
+
+The first run of the bytes arm used `port-01.jpg`, whose row is `generated in
+this repo`, not legacy, so it correctly passed; the arm was rerun on a legacy row.
+
 ## W14-15 · The header collapses at 1100px, and the nav tightens up to 1180px, 2026-09-15
 
 **Card RC-115. Closes Q-W14-05.** The hamburger header, which started at 768px,
@@ -4152,6 +4193,56 @@ The homepage is still over its R-J budget; the new per-page budgets are RC-113's
 Lighthouse, desktop, localhost: **homepage RO 99 / 100 / 100 / 100, RU 99 / 100 /
 100 / 100; tile grid, carports and fences RO pages 100 / 100 / 100 / 100 each**.
 
+## W14-17 · Origin cutover: rapidconstruct.md is the site's origin, STOP, 2026-09-15
+
+**Card RC-117. Closes Q-W14-03.** **STOP: pull request only.** It changes
+`SITE_URL`, canonical, hreflang, og, the sitemap, robots and the homepage JSON-LD,
+all in the R-V STOP set.
+
+### What changes
+
+| Place | Before | After |
+|---|---|---|
+| `.github/workflows/pages.yml` `SITE_URL` | https://rapidconstructmd.com | **https://rapidconstruct.md** |
+| `CNAME` (repo root) and `CUSTOM_DOMAIN` in `build.js`, which writes `dist/CNAME` | rapidconstructmd.com | **rapidconstruct.md** |
+| `build.js` `SITE` fallback | https://rapidconstructmd.com | **https://rapidconstruct.md** |
+| `scripts/verify-live.js` default origin | https://rapidconstructmd.com | **https://rapidconstruct.md** |
+
+The GitHub Pages custom domain is already `rapidconstruct.md` and needs no change.
+The two source comments that explained W12-14's choice are rewritten to say what
+is now true and why. `build.js` already refuses a build whose `SITE_URL` host
+differs from `CUSTOM_DOMAIN`, so the two cannot drift apart.
+
+### The assertion, as a permanent gate
+
+`scripts/check-origin.js`, wired into `quality`. It fails on any occurrence of
+`rapidconstructmd.com` in the built site, and it requires the real origin, **by
+presence**, in every place the card names: canonical, hreflang, og:url, og:image,
+sitemap.xml, robots.txt, JSON-LD url and sameAs, and CNAME. A build that emitted
+no canonical at all also contains zero occurrences of the old host; the gate
+counts each kind it checked and fails on a count of zero. The e-mail address
+`rapidconstructmd@gmail.com` is a mailbox, not a host, and the matcher's
+self-test proves it is not caught.
+
+| Arm | Result |
+|---|---|
+| The build as committed | pass: 28 canonicals, 84 hreflang, 26 og:url, 26 og:image, 26 JSON-LD urls, 2 sameAs, sitemap, robots, CNAME, all on https://rapidconstruct.md, zero of the old host |
+| A build with `SITE_URL=https://rapidconstructmd.com` | the build itself refuses (SITE_URL host differs from CUSTOM_DOMAIN); the stale output then fails with 250 problems |
+| The old host planted in one page | exit 1, page named |
+| One canonical moved to a foreign host | exit 1, page named |
+| `dist/CNAME` reverted | exit 1 |
+
+### Verification under R-P, and what is owed after merge
+
+Locally, on the build as committed, `scripts/verify-live.js` against a local
+server: cache-buster, the six content markers and the `build-sha` meta asserted
+in one pass. The deployed half cannot be done from a pull request that is not
+merged: **after the owner merges, run**
+`EXPECT_SHA=<merge sha> node scripts/verify-live.js` (the default origin is now
+rapidconstruct.md), confirm `node scripts/check-origin.js` on the deployed
+artifact's build, **and tag the merge commit `wave-14-cutover`**. Recorded in the
+PR body as the post-merge checklist.
+
 ## W14-03 · Section 1 copy, RO: T-02 to T-09, verbatim, 2026-09-15
 
 **Card RC-103. Closes Q-W14-02.** The eight strings from the close-out dispatch,
@@ -4291,6 +4382,90 @@ and no horizontal overflow from 1025 to 1180px or at 390px in either locale.
 
 Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 / 100**.
 
+## W14-18 · Offer card images from licensed stock; tile renders and carport images blocked, 2026-09-15
+
+**Card RC-118.** The dispatch directs RC-108 and RC-111 to licensed stock or
+visualisations and RC-110 to Dasterum profile renders plus RAL chips. What shipped
+is the part an honest image exists for: the four acoperișuri offer cards. The other
+two groups are blocked, each with its own question.
+
+### What shipped
+
+| Card | Offer | Image | Photographer, Unsplash | Why it fits |
+|---|---|---|---|---|
+| 01 | Slate replaced with metal tile | Timber house under an old corrugated slate roof | Margo Evardson, DoGXMRfoxM4 | shows the roof the offer replaces |
+| 02 | Slate replaced with shingle | Brick house under an old corrugated slate roof | wow aram, -1juH9ot-Gs | the same, a second house |
+| 03 | Turnkey roof, metal tile | Dark metal tile, close | Lukáš Patúc, azwc0NpuzTY | shows the covering the offer fits |
+| 04 | Turnkey roof, shingle | Grey asphalt shingle, close | Hal Gatewood, 9u5r1XbtMJg | the same |
+
+**The selection rule.** An image shows either the roof the card replaces or the
+covering it fits, and carries no brand mark, logo or readable plate. Rejected on
+that rule: shingle tear-offs (they show shingle, not slate, being removed), a
+worker carrying shingle bundles (TRIBUILT and shingle maker marks), a roofer on a
+clay tile roof behind Layher scaffolding and a RAW membrane pack, glazed ceramic
+tiles, and a Japanese car park shelter carrying a company logo.
+
+Every file went through `scripts/process-photos.js` (centre crop to 0.81:1, 600x740
+and 1200x1480). One warning, accepted: the card 03 source is portrait, which suits
+a portrait slot. `offer-roof-01@2x.jpg` needed quality 40 to fit 400 KB; inspected
+at full size, no visible artefacts. Eight provenance rows name the photo page, the
+photographer, the Unsplash License and https://unsplash.com/license.
+
+**Alt text, both locales,** describes what the photograph shows and claims nothing
+else. Written for this card; there is no supplied string to take it from.
+
+| Card | RO | RU |
+|---|---|---|
+| 01 | Casă din lemn cu acoperiș vechi din ardezie ondulată | Деревянный дом со старой крышей из волнистого шифера |
+| 02 | Casă din cărămidă cu acoperiș vechi din ardezie ondulată | Кирпичный дом со старой крышей из волнистого шифера |
+| 03 | Țiglă metalică închisă la culoare, de aproape | Тёмная металлочерепица крупным планом |
+| 04 | Șindrilă bituminoasă gri, de aproape | Серая битумная черепица крупным планом |
+
+### Section 7 amended in place (R-R)
+
+"Real Rapid Construct work only, no stock" was stated in three places and the
+dispatch supersedes it for product slots. Each now carries an inline amendment
+naming this entry: master plan section 7, `docs/CLAUDE.md` section 7, and the
+photo manifest's per-file rule. Proof slots (before/after, portfolio,
+testimonials, team) stay real work only, and a slot with no permitted image is
+still removed rather than filled.
+
+### Blocked
+
+- **RC-110, tile renders and RAL chips: Q-W14-11.** No Dasterum pack exists to
+  take renders from; the only Dasterum file is a price list. The audit's legend
+  holds codes and names, no colour values, and RAL publishes no free official
+  screen values, so a swatch would be an estimate. Text chips stay.
+- **RC-111, carport images: Q-W14-12.** No licensed image found shows the five
+  structural families. Unsplash searched on eight queries; Pexels and Pixabay
+  return 403 to a script and were not searched. Recommended: Rapid Construct's own
+  visualisations.
+
+### Tested
+
+Headless Chrome against the local build, **56 of 56**, both locales: four images,
+each in the card whose description matches its offer, `src` and the 2x `srcset`,
+alt verbatim, width 600 and height 740, lazy, file loaded, drawn undistorted; no
+horizontal overflow at 390, 768, 1024, 1100, 1280 and 1440px.
+
+Negative arms, on a copy of the tree: removing the `offer-roof-03@2x.jpg` row fails
+the provenance gate, exit 1; emptying the RU alt for card 04 fails the build
+("empty strings: ru:roofOffers.items.3.alt").
+
+### Measured
+
+| Page | Before (f5800a8) | After |
+|---|---|---|
+| Homepage RO | 10,300 | **10,447** |
+| Homepage RU | 10,595 | **10,747** |
+| Product pages, both locales | unchanged | unchanged |
+
+The cards gain their image column, so the homepage grows about 150px. It was
+already over R-J and is re-budgeted in RC-113.
+
+Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100** (LCP 923 ms, CLS 0.002),
+**RU 99 / 100 / 100 / 100** (LCP 925 ms, CLS 0.012).
+
 ## W14-06b · Catalog data filled and main merged forward; blocked again, on the desktop header's width, 2026-09-15
 
 **Card RC-106b.** Q-W14-04 is closed by the close-out dispatch: the menu lists
@@ -4360,3 +4535,197 @@ Taking every spacing value down to the 1180px block's figures and the pill gap t
 16px recovers about 84px, which is not enough for RU at any width. Something
 visible has to give, and which one is not mine to choose. **Not merged,** as the
 dispatch says: merge when 67/67. Q-W14-13.
+
+## W14-19 · The pending photo manifest; the placeholders have nowhere to go, 2026-09-15
+
+**Card RC-119.** Two deliverables: a manifest of every slot the wave 14 audit
+classes RC photo only, and a neutral branded placeholder in each of those slots,
+with before/after and portfolio data left empty so those sections stay hidden.
+
+**Shipped: `docs/assets/PENDING-PHOTOS.md`.** One row per slot, 63 slots plus the
+roofing galleries, matching audit 5.5's count (30 roofing, 30 fences, 3 carports).
+Each row gives the slot ID, the page on rapidconstruct.md, whether a component
+exists to show it today, what the photo must show, and the aspect. Where the site
+already has the slot, the row uses the site's own figures: 1180:664 for
+before/after (W14-09), 4:3 for project covers (W9-04).
+
+**Two facts the manifest records.** Roofing portfolio slots F-PORT-1 to 5 are
+already filled: client photos render as `proj-acoperisuri-01-cover` to `05-cover`.
+And `content/projects.json` is not empty: it holds real client covers across nine
+services. Emptying it would take proof off live pages, so "portfolio data files
+stay empty" is read as no new portfolio entry without a real photo. Nothing in it
+changed.
+
+**Blocked: the placeholders, Q-W14-14.** Of the 63 slots, 8 sit in the before/after
+section the card keeps hidden, 7 in a portfolio that already shows real photos,
+and the other 48 in sections that do not exist on the site: a roofing hero video,
+video testimonials, a crew portrait, the fence page's portfolio, video and team
+blocks, and a carport cross-sell. Putting a placeholder in any of those means
+building the section first, with a heading nobody has written, and `docs/CLAUDE.md`
+forbids invented copy. It would also reverse master plan section 7 as W14-18 left
+it: a slot with no permitted image is removed rather than filled. So no page
+changed.
+
+Gates: build, links, stale docs, provenance and scarcity all pass; the card adds no
+image and changes no page.
+
+## W14 tail ratifications · The owner's rulings on the close-out, 2026-09-15
+
+Recorded at the owner's instruction, from the wave 14 tail dispatch.
+
+| Item | Ruling |
+|---|---|
+| The RC-118 photo choices, the four offer card photographs (W14-18) | ratified |
+| The section 7 photo rule amended for product slots only (W14-18) | ratified |
+| The alt text written for the four offer card images (W14-18) | ratified |
+| Merging main forward into a published branch instead of rebasing (W14-06b) | ratified |
+| RC-119 shipped as the manifest only, existing project data left intact (W14-19) | ratified |
+| All four recorded interpretations in ruling R-Y (W14-13) | ratified |
+| The RC-106b menu row to page mapping (W14-06b) | ratified in principle |
+
+**Noted, no action:** #14 merging before RC-117 followed a contradiction in the
+close-out dispatch, not an executor error.
+
+**Premise corrected.** The tail dispatch says #16, #20 and #25 were merged before
+this run. #16 and #20 are. **#25 (RC-113, ruling R-Y) is open and not merged,** and
+its `quality` check fails, having inherited the defect W14-24a repairs. It is a
+STOP card and stays with the owner; its interpretations are ratified here ahead of
+its merge. Until it merges, main's `scripts/verify-live.js` carries R-J's budgets
+and reports both homepages OVER, and there is no R-Y on main for a later card to
+amend.
+
+## W14-24 · Post-cutover verification, and the tag, 2026-09-15
+
+**Card RC-124.** #20 merged as b47d79c and Pages deployed it. Verified under R-P on
+https://rapidconstruct.md.
+
+- **`scripts/verify-live.js` at b47d79c:** 8 of 8 pages VERIFIED, the `build-sha`
+  and the content markers read in the same page load; 33 reachable URLs crawled, 0
+  with a visible TODO. Its exit code is 1 only because both homepages are OVER R-J's
+  budgets, which R-Y (#25, not merged) replaces. Identity is not in question.
+- **The deployed output, read over HTTP,** every request cache-busted and the
+  `build-sha` asserted per page in the same response. CNAME 200, "rapidconstruct.md".
+  robots.txt points at https://rapidconstruct.md/sitemap.xml. sitemap.xml has 28
+  locations and 84 alternates, all on the origin. All 28 pages return 200 at b47d79c,
+  each with its canonical and three hreflang links on the origin. og:url and
+  og:image are on the origin on 26 pages; the two privacy pages carry no Open Graph
+  tags at all, by design, and are named as such in the output. JSON-LD `url` on 26
+  pages and `sameAs` 8 times, none naming the retired host. **Zero
+  rapidconstructmd.com anywhere in the deployed output,** CNAME, robots.txt and
+  sitemap.xml included. PASS.
+- **`scripts/check-origin.js` on a local build of b47d79c:** pass.
+- **Tag `wave-14-cutover`,** annotated, on b47d79c. Added, never moved.
+
+## W14-24a · Main repaired: the web merges left conflict marker tails, 2026-09-15
+
+**Found while verifying RC-124.** main's `quality` check fails at b47d79c:
+"docs/assets/PROVENANCE.md table has no rows". #16 and #20 were each brought up to
+date with main through GitHub's conflict editor (eb1f4da, a1cb191). It strips the
+marker characters, leaves their tails as text, and keeps both sides of each
+conflict. Pages deployed anyway, because the deploy workflow does not run the
+gates. The same damage reached #25 when main was merged into it (05102a3).
+
+| File | Damage | Repair |
+|---|---|---|
+| `DECISIONS.md` | four stray lines between entries: ` w14/rc-102-rw-amendment`, ` w14/rc-117-origin-cutover`, ` main` twice | removed. No entry lost or doubled: every heading from both parents of each merge is present |
+| `docs/BACKLOG.md` | in the close-out table, four stray lines, blank lines that cut it in three, and five stale rows kept beside the current ones | removed; the RC-102 and RC-117 rows now say merged by the owner |
+| `docs/assets/PROVENANCE.md` | two stray lines, a blank line inside the table, and five files listed twice (legacy status and the old unrecorded status) | the stray lines, the blank line and the old rows removed: 157 rows for 157 files |
+| `build.js`, also touched by a1cb191 | none | checked, not changed: it differs from its first parent by exactly RC-117's 13 intended lines |
+
+All six `quality` gates pass after the repair.
+
+## W14-21 · Header fit: the ladder stops at step 3, 2026-09-15
+
+**Card RC-121. Unblocks #7.** The owner's ladder, applied in order, stopping at the
+first step where the header fits at 1180, 1280, 1440 and 1920px in both locales
+**with the catalog button present**. "Fits" is read as no two targets intersecting
+and the nav not squeezed below its natural width (slack at or above 0).
+
+### Measured, step by step
+
+On a local build of main with #7 merged in, each step applied on top of the last.
+Slack in px, 1180 / 1280 and up (the pill is capped at 1152px from 1200px, so 1280,
+1440 and 1920 read the same):
+
+| Step | RO | RU |
+|---|---|---|
+| 0, as on main | -57 / -97, overlapping | -83 / -123, overlapping |
+| 1, "Acasă" out of the nav | 12 / -17 | 3 / -25 |
+| 2, "Despre noi" to "Despre" | 40 / 12 | 3 / -25 (RU "О нас" is already the short form) |
+| **3, nav gap and font one step down** | **69 / 52** | **31 / 15** |
+| 4, phone as an icon, 1180 to 1279px | not needed | not needed |
+
+**Stopped at step 3.** Steps 1 to 3 shipped together:
+
+- The desktop nav in `src/template.html`, `src/service.html` and `src/product.html`
+  loses its home link. The wordmark is the home link. The mobile panel and the
+  footer keep theirs: neither has a width problem, and the mobile panel has no
+  wordmark inside it.
+- RO `header.navAbout` is "Despre". The key is shared, so the mobile panel and the
+  footer read "Despre" too.
+- `.nav` gap 28px to 20px and link size 17px to 16px at desktop widths; inside the
+  1180px block, 20px to 16px and 16px to 15px. Both are steps on the scale the
+  stylesheet already uses; no value is new.
+
+The phone number stays visible from 1280px up, and at 1180px too.
+
+### Measured slack after the change, homepage
+
+| Build | RO 1180 | RO 1280 to 1920 | RU 1180 | RU 1280 to 1920 |
+|---|---|---|---|---|
+| main, no catalog | 184 | 167 | 150 | 134 |
+| main with the catalog | 69 | 52 | 31 | 15 |
+
+### Tested
+
+The acceptance test, on both builds: zero bounding-box intersections between any
+two visible links or buttons in the pill at 769, 900, 1024, 1099, 1100, 1180, 1280,
+1440 and 1920px, on the homepage and a product page, in both locales; no
+horizontal overflow; the phone number visible at 1280px and up; no home link in the
+nav; slack at or above 0 from 1180px. **116 of 116 on each build.** Lighthouse,
+desktop, localhost: RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 / 100, target-size
+passing.
+
+### Found while measuring, for RC-120
+
+RC-120 asks for the fences page to be linked from the nav. A fifth nav link does
+not fit under this ladder. With "Garduri" added and the catalog present, step 3
+leaves RO at -24px and RU at -65px from 1280px up, with RU overlapping, and step 4
+only helps below 1280px. That link is carried as a question by RC-120 (W14-20).
+
+## W14-06c · The catalog menu merges, after the header fit, 2026-09-15
+
+**Card RC-106b, tail dispatch.** RC-121 (W14-21) made room in the header, which
+unblocks #7. Main was merged forward into #7 a second time; the only conflicts were
+appends to `DECISIONS.md` and `docs/QUESTIONS.md`, joined in id order with every
+entry kept. No code conflicted.
+
+### Tested, on the merged branch
+
+| Suite | Result |
+|---|---|
+| RC-106 acceptance, unchanged: 7/2/7 structure, click to open and never hover, flyout, keyboard, Escape, mobile drill-down and back, hamburger interplay, no animation, no overlap at 1024 to 1440 and 320 to 390, 769 to 1100 now 0 overlapping pairs | **67 of 67** |
+| Menu data: labels verbatim and in order in both locales, every row's destination, heading, repeated parent rows, the toggle on the three product pages with no overlap | **16 of 16** |
+| RC-121 header fit with the catalog: zero intersections at 769 to 1920px both locales, phone visible from 1280px, slack RO 52px and RU 15px from 1280px | **116 of 116** |
+
+### The menu, row by row
+
+RO labels are audit 1.2's, verbatim and in order; the mapping was ratified in
+principle at the tail ratifications.
+
+| RO label | RU label | Opens |
+|---|---|---|
+| Sisteme de termoizolație | Системы теплоизоляции | Fațade: `/servicii/fatade/` · `/ru/servicii/fatade/` |
+| · Polistiren expandat | Пенополистирол | Fațade: `/servicii/fatade/` · `/ru/servicii/fatade/` |
+| · Polistiren extrudat | Экструдированный пенополистирол | Fațade: `/servicii/fatade/` · `/ru/servicii/fatade/` |
+| · Vată minerală | Минеральная вата | Fațade: `/servicii/fatade/` · `/ru/servicii/fatade/` |
+| · Adezivi și mase de șpaclu | Клеи и шпаклёвочные смеси | Fațade: `/servicii/fatade/` · `/ru/servicii/fatade/` |
+| · Alte produse | Другие продукты | Fațade: `/servicii/fatade/` · `/ru/servicii/fatade/` |
+| Tencuieli decorative | Декоративные штукатурки | Fațade: `/servicii/fatade/` · `/ru/servicii/fatade/` |
+| Plăci ceramice | Керамическая плитка | Finisaje: `/servicii/finisaje/` · `/ru/servicii/finisaje/` |
+| Elemente decorative | Декоративные элементы | Fațade: `/servicii/fatade/` · `/ru/servicii/fatade/` |
+| Vopsele | Краски | Finisaje: `/servicii/finisaje/` · `/ru/servicii/finisaje/` |
+| · Vopsele de exterior | Фасадные краски | Fațade: `/servicii/fatade/` · `/ru/servicii/fatade/` |
+| · Vopsele de interior | Интерьерные краски | Finisaje: `/servicii/finisaje/` · `/ru/servicii/finisaje/` |
+| Sisteme de iluminare | Системы освещения | Instalații: `/servicii/instalatii/` · `/ru/servicii/instalatii/` |
+| Alte materiale de construcții | Другие строительные материалы | Case la cheie: `/servicii/case-la-cheie/` · `/ru/servicii/case-la-cheie/` |

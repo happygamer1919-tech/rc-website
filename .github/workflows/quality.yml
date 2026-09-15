@@ -40,3 +40,6 @@ jobs:
 
       - name: No countdowns, scarcity, financing or struck prices (R-X)
         run: node scripts/check-scarcity.js
+
+      - name: The built site names rapidconstruct.md and never the retired origin (W14-17)
+        run: node scripts/check-origin.js

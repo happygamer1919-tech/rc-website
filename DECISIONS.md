@@ -4141,3 +4141,46 @@ guarantee card is now taller, no horizontal overflow at any width from 1025 to
 
 Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 /
 100**.
+
+## W14-05b · The 160 lei/m² figure leaves the meta description and the price field, folded into #14, 2026-09-15
+
+**Card RC-105b. Closes Q-W14-10.** The owner overturned deviation 13: the figure
+goes too. Folded into PR #14 and merged with it at the owner's instruction.
+
+### Removed
+
+| Place | Before | After |
+|---|---|---|
+| `meta.description` RO, which also fills og:description and the homepage JSON-LD `description` | "... Garanție scrisă până la 30 de ani, de la 160 lei/m²." | "... Garanție scrisă până la 30 de ani." |
+| `meta.description` RU | "... Письменная гарантия до 30 лет, от 160 лей/м²." | "... Письменная гарантия до 30 лет." |
+| Homepage JSON-LD `GeneralContractor` | `"priceRange": "160 MDL/m²"` | removed; `currenciesAccepted` stays, it is not a price |
+
+After: zero occurrences of "160 lei", "160 лей", "160 MDL", `priceRange` or the
+frozen phrase anywhere in `dist/`.
+
+### Found on the way, fixed in the same field: service descriptions ended in "undefined"
+
+Checking the descriptions on every page turned up a defect that is **live and
+older than wave 14**. Since W12-09 (2026-09-06) moved `band.coverageLine` out of
+the locale files into `coverageLine(l)`, `serviceHeadVars` still read it from
+`l.strings` and got `undefined`. Every service description that fit 155
+characters shipped ending in the word "undefined", on the live site and in
+og:description; W14-16 copied the same line into the product pages.
+
+Fixed in `build.js` for both: the description uses `coverageLine(l)`, and the
+build now fails if any description contains "undefined". With the real coverage
+line appended most descriptions exceed 155 characters and fall back to the
+service's own description, which is the rule W9-07 wrote. After: zero pages whose
+description or og:description contains "undefined".
+
+**Flagged for ratification:** this touches og:description, which is in the R-V STOP
+set, inside a PR the owner authorised merging for the same field.
+
+### Measured, locally
+
+Homepage heights barely move (the removed hero highlight sits inside a card
+stretched to its photo); each priced service page is 62px shorter from W14-05's
+removed heading. Lighthouse, desktop, localhost, on this branch: **homepage RO 99 /
+100 / 100 / 100, RU 99 / 100 / 100 / 100, acoperișuri service page 100 / 100 / 100
+/ 100**. The description fix changes text only; Lighthouse's meta-description
+audit checks presence, not wording.

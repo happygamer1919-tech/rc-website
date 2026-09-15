@@ -1543,7 +1543,7 @@ panels Rapid Construct installs. With that, the fields the sheet vouches for are
 added to the component and the data filled in one commit, and the product images
 can be requested from the same source (Q-W14-07).
 
-## Q-W14-10 · The 160 lei/m² figure is still in the meta description and the JSON-LD price range · OPEN, opened 2026-09-15 (W14-05)
+## Q-W14-10 · The 160 lei/m² figure is still in the meta description and the JSON-LD price range · ANSWERED 2026-09-15, the figure is removed (RC-105b) · opened 2026-09-15 (W14-05)
 
 **Shipped default in the RC-105 PR: both left as they are.** RC-105 says to delete
 every occurrence of the string "preț înghețat 160 lei/m² pentru 2026" and its RU

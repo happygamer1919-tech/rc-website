@@ -395,9 +395,12 @@ function serviceHeadVars(l, slug, i) {
   const candidates = [title + inCity + BRAND, title + BRAND, title];
   const metaTitle = candidates.find((c) => c.length <= TITLE_MAX) || candidates[2];
 
-  const coverage = l.strings['band.coverageLine'];
-  const withCoverage = `${desc} ${coverage}`;
+  // W14-05b. band.coverageLine left the locale files at W12-09 and is composed by
+  // coverageLine(l); reading it from l.strings returned undefined, and 18 live
+  // service descriptions ended in the word "undefined".
+  const withCoverage = `${desc} ${coverageLine(l)}`;
   const metaDesc = withCoverage.length <= DESC_MAX ? withCoverage : desc;
+  if (/\bundefined\b/.test(metaDesc)) die(`meta description for ${slug} (${l.code}) contains "undefined": ${metaDesc}`);
 
   // og:image is this service's own first real cover, not the site fallback.
   // A social card wants the work, not the logo.
@@ -1057,8 +1060,10 @@ function productHeadVars(l, p) {
   const lede = l.strings[`pages.${p.key}.lede`];
   const inCity = l.code === 'ro' ? ` în ${PRIMARY_CITY.ro}` : ` в ${PRIMARY_CITY.ru}`;
   const metaTitle = [title + inCity + BRAND, title + BRAND, title].find((c) => c.length <= TITLE_MAX) || title;
-  const withCoverage = `${lede} ${l.strings['band.coverageLine']}`;
-  return { metaTitle, metaDesc: withCoverage.length <= DESC_MAX ? withCoverage : lede };
+  const withCoverage = `${lede} ${coverageLine(l)}`;
+  const metaDesc = withCoverage.length <= DESC_MAX ? withCoverage : lede;
+  if (/\bundefined\b/.test(metaDesc)) die(`meta description for ${p.slug} (${l.code}) contains "undefined"`);
+  return { metaTitle, metaDesc };
 }
 
 // --- W12-01, the portfolio end tile -----------------------------------------

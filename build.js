@@ -131,7 +131,7 @@ const PAGES = [
 
 // Keys whose value is already HTML built by this file. Everything else is
 // escaped on substitution.
-const RAW_KEYS = new Set(['roofOffers', 'socialRow',
+const RAW_KEYS = new Set(['beforeAfter', 'roofOffers', 'socialRow',
   // demoAttr is a whole attribute, ` data-demo="..."`, not an attribute value:
   // it is either present or absent. Its inner text is escaped where it is
   // built, so what lands here is already safe. Escaping it again turned the
@@ -679,6 +679,76 @@ ${cards}
 `;
 }
 
+// --- W14-09, the before/after slider (S-03) ----------------------------------
+
+/* One project visible at a time, from content/before-after.json. With an empty
+   list this returns '' and the section does not exist: no heading, no padding,
+   no gap on the page. That is the shipped state until the client supplies
+   before/after pairs, which can only honestly be their own site photographs
+   (audit 5.1 classifies every pair as "RC photo only").
+
+   Component per audit 3.3: the after image underneath, the before image on top
+   clipped by `clip-path: inset()` driven by a `--position` custom property, a
+   full-height handle with a centred pill and grip bars, labels fixed to the
+   frame corners, arrow buttons in the header row that wrap at both ends.
+
+   Presence, not silence (docs/CLAUDE.md section 13): a file without a
+   `projects` array fails the build, and so does a project whose title or either
+   alt is not real in both locales, or whose image files are missing. */
+const BA_FILE = 'content/before-after.json';
+const BEFORE_AFTER = JSON.parse(fs.readFileSync(BA_FILE, 'utf8'));
+if (!Array.isArray(BEFORE_AFTER.projects)) die(`${BA_FILE} has no "projects" array. No projects is [], never a missing key.`);
+
+function beforeAfter(l) {
+  const projects = BEFORE_AFTER.projects;
+  if (projects.length === 0) return '';
+  const t = (k) => esc(l.strings[`beforeAfter.${k}`]);
+  const img = (id, alt, cls) => {
+    if (!fs.existsSync(`public/img/${id}.jpg`)) die(`${BA_FILE}: public/img/${id}.jpg does not exist.`);
+    const retina = fs.existsSync(`public/img/${id}@2x.jpg`) ? ` srcset="${BASE}/img/${id}.jpg 1x, ${BASE}/img/${id}@2x.jpg 2x"` : '';
+    return `<img class="${cls}" src="${BASE}/img/${id}.jpg"${retina} alt="${esc(alt)}" width="1180" height="664" loading="lazy" decoding="async" draggable="false">`;
+  };
+  const items = projects.map((p, i) => {
+    const where = `projects[${i}]`;
+    for (const f of ['title', 'alt_before', 'alt_after']) {
+      if (!p[f] || !REAL(p[f][l.code])) die(`${BA_FILE}: ${where}.${f} is not real for ${l.code}.`);
+    }
+    return `      <figure class="ba__item" data-ba-item${i === 0 ? '' : ' hidden'}>
+        <h3 class="sr-only">${esc(p.title[l.code])}</h3>
+        <div class="ba__compare" style="--position: 50%;">
+          ${img(p.after, p.alt_after[l.code], 'ba__after')}
+          <div class="ba__before">${img(p.before, p.alt_before[l.code], 'ba__before-img')}</div>
+          <div class="ba__handle" role="slider" tabindex="0" aria-label="${t('handle')}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+            <span class="ba__pill" aria-hidden="true"><span></span><span></span><span></span></span>
+          </div>
+          <span class="ba__label ba__label--before" aria-hidden="true">${t('before')}</span>
+          <span class="ba__label ba__label--after" aria-hidden="true">${t('after')}</span>
+        </div>
+      </figure>`;
+  }).join('\n');
+  const chevron = (points) => `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="${points}"></polyline></svg>`;
+  // One project needs no navigation, so the arrows render only for two or more.
+  const nav = projects.length > 1 ? `
+      <div class="ba__nav">
+        <button class="ba__arrow" type="button" data-ba-prev aria-label="${t('prev')}">${chevron('15 6 9 12 15 18')}</button>
+        <button class="ba__arrow" type="button" data-ba-next aria-label="${t('next')}">${chevron('9 6 15 12 9 18')}</button>
+      </div>` : '';
+  return `<section class="section section--light section--divided ba" id="inainte-dupa" aria-labelledby="ba-h" data-ba>
+  <div class="container">
+    <div class="ba__head">
+      <div>
+        <p class="eyebrow" data-reveal>${t('eyebrow')}</p>
+        <h2 id="ba-h" data-reveal>${t('h2')}</h2>
+      </div>${nav}
+    </div>
+    <div class="ba__stage">
+${items}
+    </div>
+  </div>
+</section>
+`;
+}
+
 // --- W12-01, the portfolio end tile -----------------------------------------
 
 /* The seventh cell of the homepage portfolio grid. It is not a project and not
@@ -921,6 +991,7 @@ for (const l of loaded) {
   vars.supplierChips = renderSupplierChips(l, BASE);
   vars.heroPanelMedia = heroPanelMedia(l, BASE);
   vars.promoBar = promoBar(l);
+  vars.beforeAfter = beforeAfter(l);
   vars.roofOffers = roofOffers(l);
   vars.socialRow = socialRow(l);
   // Overrides nothing: band.coverageLine is no longer a locale key, it is

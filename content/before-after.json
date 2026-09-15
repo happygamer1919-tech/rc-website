@@ -1,0 +1,4 @@
+{
+  "_note": "W14-09. Before/after pairs for the slider (S-03), audit section 3.3. EMPTY BY DESIGN: while projects is [] the section does not exist on the page, so there is no heading, no padding and no gap. Every pair must be a real Rapid Construct job photographed before and after (audit 5.1 classifies these as RC photo only). Shape: projects[] of { id, title: {ro, ru}, before: slot id, after: slot id, alt_before: {ro, ru}, alt_after: {ro, ru} }. Slot ids name files in public/img/ at 1180x664 (plus @2x); scripts/slots.js registers them from this file, and each image needs its R-W provenance row. build.js refuses a missing projects array, a field that is not real in both locales, and a missing image file.",
+  "projects": []
+}

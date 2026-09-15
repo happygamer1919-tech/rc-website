@@ -916,6 +916,73 @@ p { margin: 0; }
 .offer__options { margin-bottom: 24px; }
 .offer__options + .offer__cta { margin-top: auto; }
 
+/* --- W14-09, before/after slider (S-03) ------------------------------------ */
+/* Renders only when content/before-after.json has projects. Per audit 3.3: the
+   after image fills the frame; the before image lies on top, clipped from the
+   right by --position, so before reads on the left and after on the right. The
+   handle is a full-height 4px white line with a centred 40x70 pill carrying three
+   grip bars. Labels are fixed to the frame corners, not to the divider.
+
+   Three departures from the audit, each for a rule here:
+   - touch-action is pan-y, not none. A vertical swipe over the photo still
+     scrolls the page (docs/CLAUDE.md section 1: never capture scroll); only a
+     horizontal drag moves the divider.
+   - The labels sit on solid --bg-dark, not 82% black: no new colour value and no
+     translucent overlay (section 3).
+   - The frame uses the site's --radius-card and card shadow, not 18px.
+   Nothing animates: the divider follows the pointer or a key, with no transition. */
+.ba__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+.ba__nav { display: flex; gap: 12px; flex: none; }
+.ba__arrow {
+  width: 56px; height: 56px; border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--bg-light); color: var(--ink); border: 1px solid var(--brand); cursor: pointer;
+}
+.ba__arrow:hover { background: var(--brand); color: var(--ink); }
+.ba__arrow:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.ba__stage { margin-top: 40px; }
+.ba__item { margin: 0; }
+.ba__item[hidden] { display: none; }
+.ba__compare {
+  position: relative; overflow: hidden;
+  aspect-ratio: 1180 / 664;
+  border-radius: var(--radius-card); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  background: var(--bg-grey);
+  cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none;
+}
+.ba__after, .ba__before-img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;
+  pointer-events: none;
+}
+.ba__before { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--position)) 0 0); }
+.ba__handle {
+  position: absolute; top: 0; bottom: 0; left: var(--position); width: 44px;
+  transform: translateX(-50%);
+  display: flex; align-items: center; justify-content: center;
+  cursor: ew-resize;
+}
+.ba__handle::before {
+  content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 4px; margin-left: -2px;
+  background: var(--bg-light);
+}
+.ba__handle:focus-visible { outline: none; }
+.ba__handle:focus-visible .ba__pill { outline: 2px solid var(--brand); outline-offset: 2px; }
+.ba__pill {
+  position: relative; width: 40px; height: 70px; border-radius: 999px;
+  background: var(--bg-light); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  display: flex; align-items: center; justify-content: center; gap: 5px;
+}
+.ba__pill span { width: 2px; height: 24px; background: var(--bg-dark); border-radius: 1px; }
+.ba__label {
+  position: absolute; bottom: 24px; height: 38px; padding: 0 14px;
+  display: flex; align-items: center;
+  background: var(--bg-dark); color: var(--bg-light);
+  font-size: 14px; font-weight: 700; line-height: 1; text-transform: uppercase; letter-spacing: 0.08em;
+  pointer-events: none;
+}
+.ba__label--before { left: 24px; }
+.ba__label--after { right: 24px; }
+
 /* --- 8. service illustration box ------------------------------------------ */
 /* Fixed 4:3 box, illustration centred and contained. The <img> always resolves
    because placeholder SVGs ship until the real ones land. */
@@ -1107,6 +1174,13 @@ p { margin: 0; }
   .header__logo img { height: 40px; }
   .header[data-scrolled="true"] .header__logo img { height: 36px; }
   .mobile-panel { top: 80px; }
+
+  /* W14-09. The arrows drop below the heading, and the corner labels tighten. */
+  .ba__head { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .ba__arrow { width: 48px; height: 48px; }
+  .ba__label { bottom: 12px; height: 30px; padding: 0 10px; font-size: 12px; }
+  .ba__label--before { left: 12px; }
+  .ba__label--after { right: 12px; }
 
   /* W14-08. Offer cards stack to one column, and a card with an image stacks its
      image above its text. */

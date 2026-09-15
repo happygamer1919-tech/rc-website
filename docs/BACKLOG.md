@@ -50,7 +50,7 @@ ratifications); PRs #1, #2, #3 merged at the owner's instruction.
 | RC-116 | W14-16 Page split: tigla-metalica, copertine, garduri | SELF | `w14/rc-116-page-split` | shipped |
 | RC-117 | W14-17 Origin cutover to rapidconstruct.md | STOP | `w14/rc-117-origin-cutover` | merged by the owner, #20; verified live and tagged `wave-14-cutover` (RC-124) |
 | RC-105 | W14-05b The 160 lei/m² figure leaves meta and price field, folded into #14 | owner-ordered merge | `w14/rc-105-frozen-price` | shipped with #14 |
-| RC-106 | W14-06b Catalog menu, unblocked, audit 1.2 data | SELF | `w14/rc-106-catalog-menu` | todo |
+| RC-106 | W14-06b Catalog menu, unblocked, audit 1.2 data | SELF | `w14/rc-106-catalog-menu` | merged, #7 (RC-106b, after RC-121) |
 | RC-103 | W14-03 Section 1 copy, RO, strings supplied | SELF | `w14/rc-103-copy-ro` | shipped, closes Q-W14-02 |
 | RC-104 | W14-04 Section 1 copy, RU parity | SELF | `w14/rc-104-copy-ru` | shipped |
 | RC-118 | W14-18 Product and visualisation images | SELF | `w14/rc-118-images` | shipped: four offer card images (RC-108); tile renders and RAL chips **blocked** (Q-W14-11); carport images **blocked** (Q-W14-12) |
@@ -64,8 +64,8 @@ ratifications). #16 and #20 were merged by the owner before the run; #25 was not
 | Ticket | Card | Mode | Branch | Status |
 |---|---|---|---|---|
 | RC-124 | W14-24 Post-cutover verification and tag | owner-ordered | `w14/rc-124-cutover-verify` | shipped: verified live, tagged `wave-14-cutover`; main repaired (W14-24a) |
-| RC-121 | W14-21 Header fit, unblocks #7 | SELF | `w14/rc-121-header-fit` | todo |
-| RC-106b | W14-06b Merge the catalog menu | SELF | `w14/rc-106-catalog-menu` | todo, after RC-121 |
+| RC-121 | W14-21 Header fit, unblocks #7 | SELF | `w14/rc-121-header-fit` | shipped: ladder step 3; with the catalog, slack at 1280px and up RO 52px, RU 15px |
+| RC-106b | W14-06b Merge the catalog menu | SELF | `w14/rc-106-catalog-menu` | shipped: 67 of 67, data 16 of 16, header fit 116 of 116 with the catalog; #7 merged |
 | RC-120 | W14-20 Garduri service page, closes Q-W14-09 | SELF | `w14/rc-120-garduri-page` | todo |
 | RC-122 | W14-22 Tile colour swatches, closes Q-W14-11 | SELF | `w14/rc-122-tile-swatches` | todo |
 | RC-123 | W14-23 Carport diagrams, closes Q-W14-12 | SELF | `w14/rc-123-carport-diagrams` | todo |

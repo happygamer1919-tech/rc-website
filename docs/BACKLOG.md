@@ -20,14 +20,20 @@ ruling, which is the one path `docs/rulings/` has always taken.
 
 | Ticket | Card | Mode | Branch | Status |
 |---|---|---|---|---|
-| RC-125 | W15-01 Ruling R-Z, merge hygiene and supplier pricing | STOP | `w15/rc-125-ruling-rz` | PR, awaiting owner |
-| RC-126 | W15-02 Servicii dropdown, closes Q-W14-15 | SELF | `w15/rc-126-servicii-dropdown` | todo |
+| RC-125 | W15-01 Ruling R-Z, merge hygiene and supplier pricing | STOP | `w15/rc-125-ruling-rz` | PR #31, awaiting owner |
+| RC-126 | W15-02 Servicii dropdown, closes Q-W14-15 | SELF | `w15/rc-126-servicii-dropdown` | shipped: 13 destinations, 54 of 54 header-fit combinations, 76 of 76 behaviour assertions, heights unmoved; slack unchanged RO 53 / RU 15 at 1280px and up; no caret and no RC-121 revert, both refused by measurement (Q-W15-01) |
 | RC-127 | W15-03 Two missing carport diagrams | SELF | `w15/rc-127-carport-diagrams` | todo |
 | RC-128 | W15-04 Swatch provenance correction | SELF | `w15/rc-128-swatch-provenance` | todo |
 
 **RC-125 is this executor's numbering.** The dispatch named R-Z without a ticket
 id and RC-124 was the last one used, so R-Z took the next. RC-126, RC-127 and
 RC-128 are the dispatch's own numbers.
+
+**This section is added by whichever wave 15 card merges first.** RC-125 is STOP
+and waits for the owner, so the SELF cards reach `main` ahead of it and carry it
+in. PR #31 adds the same section on its own branch; when `main` is merged forward
+into it the two are resolved by union, locally, per `docs/CLAUDE.md` section 10
+and ruling R-Z itself.
 
 ## Wave 14
 

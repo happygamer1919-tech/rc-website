@@ -1319,7 +1319,6 @@ about 2026-09-10, which matches the manual re-run of the W13-03 deploy that day.
 404 costs indexing. Until then, wave 14's live verifications run against
 `https://rapidconstruct.md`, because that is where the deployed build is.
 
-
 ## Q-W14-04 · What the catalog menu lists, and where each row goes · ANSWERED 2026-09-15, the audit 1.2 taxonomy (RC-106b) · opened 2026-09-15 (W14-06)
 
 **Shipped default: the menu is built and switched off.** `content/catalog.json`
@@ -1713,7 +1712,7 @@ be new copy, and a placeholder a visitor can see reverses master plan section 7.
 
 **Recommended: (a),** with (c) if the photographer wants to see the shapes.
 
-## Q-W14-15 · The fences page cannot take a header nav link without breaking the header fit · OPEN, opened 2026-09-15 (W14-20)
+## Q-W14-15 · The fences page cannot take a header nav link without breaking the header fit · ANSWERED 2026-09-15, the Servicii dropdown puts every service page in the header without a fifth nav link (RC-126, W15-02) · opened 2026-09-15 (W14-20)
 
 **Shipped default: no header nav link.** The fences page is linked from the
 homepage teaser row and listed in the sitemap, as it has been since W14-16.
@@ -1767,3 +1766,36 @@ Monterrey, Valencia, Kascad and the modular tile, unwatermarked, square, at leas
 960px, with written permission. Never the price list. R-W's supplier-pack origin
 covers the provenance row, and the grid already renders
 `public/img/tigla-<model>.jpg` the moment the file and its alt text exist.
+## Q-W15-01 · The Servicii disclosure has no caret, because a caret does not fit · OPEN, opened 2026-09-15 (W15-02)
+
+**Shipped default: no caret.** The toggle is exactly as wide as the link it
+replaced, so the menu costs no width and the header fits at every width in both
+locales.
+
+**The measurement.** A 14px caret with a 4px gap adds 18px to the nav. RU had 15px
+of slack at 1280px and up before RC-126, so the caret put the header 3px over at
+1280, 1440 and 1920px on all three templates. It was built that way first and
+measured failing; the caret came out.
+
+**What this costs.** A nav item that opens a panel now looks exactly like a nav item
+that navigates. Clicking Servicii no longer jumps to the services section, it opens
+a list whose first row is that same destination. There is no visual signal of the
+change. The catalog button does not have this problem because it sits in its own
+bordered pill.
+
+**Options, each measured:**
+
+  (a) **No caret** (shipped). Costs nothing. RU keeps its 15px.
+  (b) **An 8px CSS caret**, a border triangle rather than an SVG, with a 2px gap:
+      12px, leaving RU 3px. It fits, but 3px is inside the noise of a font
+      fallback or a future string change, and RU is the locale that breaks first.
+  (c) **Take 4px off the header pill's own 24px gap** between its four children,
+      recovering 12px, and spend it on a proper 14px caret. This fits comfortably
+      in both locales. It edits a value outside the RC-121 ladder the owner fixed
+      at step 3, which is why it was not done without asking.
+
+**Recommended: (c)** if the caret is wanted, (a) if the header spacing is not to be
+touched. Not (b): it fits only until the next string changes.
+
+**Related:** RC-121's ladder cannot be reverted either, for the same reason. The nav
+gap alone costs 24px against RU's 15px. See DECISIONS.md W15-02.

@@ -4087,3 +4087,57 @@ image is the site default, since none of the three has its own photograph.
 The homepage is still over its R-J budget; the new per-page budgets are RC-113's.
 Lighthouse, desktop, localhost: **homepage RO 99 / 100 / 100 / 100, RU 99 / 100 /
 100 / 100; tile grid, carports and fences RO pages 100 / 100 / 100 / 100 each**.
+
+## W14-03 · Section 1 copy, RO: T-02 to T-09, verbatim, 2026-09-15
+
+**Card RC-103. Closes Q-W14-02.** The eight strings from the close-out dispatch,
+applied exactly as given. Plain hyphens only; no string carries an em or en dash.
+
+| String | Where it lands | Key |
+|---|---|---|
+| T-02 | the dark guarantee card in the homepage hero: line 1 the heading, lines 2 and 3 the body | new `hero.claim.h2`, `hero.claim.line1`, `hero.claim.line2` |
+| T-03 | the materials note under "Materiale și utilaje" | `marquee.lead` |
+| T-04 | the services heading, "Ce oferim pentru tine" (uppercase by CSS) | `services.h2` |
+| T-05 | process card 03, "Casa e sub acoperiș." removed | `process.steps.2.line` |
+| T-06 | the case-la-cheie service answer, its closing sentence | `svcContent.case-la-cheie.answer` |
+| T-07 | the roofing service answer | `svcContent.acoperisuri.answer` |
+| T-08 | the 3D visualisation service answer, three lines | `svcContent.proiectare-3d.answer` |
+| T-09 | the installations service answer, four lines | `svcContent.instalatii.answer` |
+
+### Three things the strings needed from the build
+
+1. **T-02 got its own keys.** The guarantee card used to borrow
+   `trust.items.0.title`, `trust.items.0.line` and `trust.items.1.line`, which
+   also head the "Despre" trust grid. Rewriting those would have changed the trust
+   grid too. The card now reads `hero.claim.*`; the trust grid is untouched.
+2. **Both locale files must share keys** (`docs/CLAUDE.md` section 8, and
+   `build.js` refuses otherwise). The three new keys therefore exist in RU as
+   well, holding today's Russian strings, so the RU page does not change in this
+   card. RC-104 translates them.
+3. **A service answer may now carry several lines.** T-08 and T-09 are given as
+   separate lines; each renders as its own paragraph under the service H1, 16px
+   then 12px apart. A one-line answer renders exactly as before.
+
+**Not touched, and reported:** "Casa e sub acoperiș." also ends a row of the
+case-la-cheie service table ("Ce include o casă la cheie"). T-05 names process
+card 03 only, so the table row keeps it.
+
+### Tested
+
+Headless Chrome against the local build, **19 of 19**: each string verbatim at
+its place (T-08 as three paragraphs, T-09 as four); the trust grid's first two
+titles and line unchanged; no em or en dash; the RU guarantee card, materials
+note, services heading, step 03 and 3D answer unchanged; and, because the
+guarantee card is now taller, no horizontal overflow at any width from 1025 to
+1180px in either locale (the W14-07b hazard) and none at 390px.
+
+### Measured
+
+| Page | Before (7b9ffe6) | After |
+|---|---|---|
+| Homepage RO | 10,261 | **10,300** |
+| Homepage RU | 10,556 | 10,556 |
+| Service pages measured by `verify-live.js` | unchanged | unchanged |
+
+Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 /
+100**.

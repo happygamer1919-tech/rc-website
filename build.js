@@ -283,7 +283,11 @@ const RELATED = require('./content/related-services.json');
 // page to open on what the service IS. The one-liner is not lost — it still
 // carries the meta description, og:description, the homepage card and the
 // Service schema.
-const svcAnswer = (l, slug) => esc(l.strings[`svcContent.${slug}.answer`]);
+// W14-03. An answer may hold several lines (T-08, T-09); each renders as its own
+// paragraph. A one-line answer renders exactly as before.
+const svcAnswer = (l, slug) => l.strings[`svcContent.${slug}.answer`].split('\n')
+  .map((line) => line.trim()).filter(Boolean)
+  .map((line) => `<p class="hero__sub svc-answer__p">${esc(line)}</p>`).join('\n        ');
 
 /* A specification table, only where the page's own content already supports
    one. Six services have one; reparatii, proiectare-3d and industrial do not,

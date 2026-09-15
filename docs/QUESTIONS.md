@@ -1750,3 +1750,20 @@ and the images the audit saw are watermarked and sit on dasterum.md, which R-W f
 modular tile, unwatermarked, square, at least 960px, with written permission. The
 grid already renders `public/img/tigla-<model>.jpg` when the file and its alt text
 exist, and R-W's supplier-pack origin covers the provenance row.
+
+## Q-W14-11b, addendum · The wholesale price list is barred, and could not have answered this · 2026-09-15 (W15-01, under R-Z)
+
+**The question stays OPEN and its shipped default is unchanged:** no profile image
+in the tile grid, text and swatches only.
+
+R-Z clause 2 bars supplier trade pricing, wholesale price lists and supplier cost
+data from this repo in every form. The Dasterum price list the owner supplied is
+therefore barred. It also carries no images, so it could not have answered this
+question even had it been permitted: the two facts are independent, and either one
+alone closes that route.
+
+**What to send is narrowed to exactly one thing:** the product image pack for
+Monterrey, Valencia, Kascad and the modular tile, unwatermarked, square, at least
+960px, with written permission. Never the price list. R-W's supplier-pack origin
+covers the provenance row, and the grid already renders
+`public/img/tigla-<model>.jpg` the moment the file and its alt text exist.

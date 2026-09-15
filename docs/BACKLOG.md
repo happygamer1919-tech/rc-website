@@ -8,6 +8,27 @@ Status values: `todo` · `in progress` · `blocked` · `shipped`.
 Waves 1 to 5 predate this file; their tickets are reconstructed from the git
 history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 
+## Wave 15
+
+Dispatch of 2026-09-15. **Ruling R-Z** (`docs/rulings/R-Z.md`) ships first, as a
+STOP PR, ahead of every other card, as the dispatch directs.
+
+**R-V's autonomy did not carry.** R-V scopes itself to wave 14, cards RC-101 to
+RC-114, and says so in as many words. The wave 15 dispatch grants SELF per card
+instead, and the three content cards carry it; R-Z is STOP because it is a
+ruling, which is the one path `docs/rulings/` has always taken.
+
+| Ticket | Card | Mode | Branch | Status |
+|---|---|---|---|---|
+| RC-125 | W15-01 Ruling R-Z, merge hygiene and supplier pricing | STOP | `w15/rc-125-ruling-rz` | PR, awaiting owner |
+| RC-126 | W15-02 Servicii dropdown, closes Q-W14-15 | SELF | `w15/rc-126-servicii-dropdown` | todo |
+| RC-127 | W15-03 Two missing carport diagrams | SELF | `w15/rc-127-carport-diagrams` | todo |
+| RC-128 | W15-04 Swatch provenance correction | SELF | `w15/rc-128-swatch-provenance` | todo |
+
+**RC-125 is this executor's numbering.** The dispatch named R-Z without a ticket
+id and RC-124 was the last one used, so R-Z took the next. RC-126, RC-127 and
+RC-128 are the dispatch's own numbers.
+
 ## Wave 14
 
 Dispatch of 2026-09-15. **Ruling R-V** (`docs/rulings/R-V.md`): a SELF card

@@ -194,6 +194,10 @@
       }
     }
   },
+  "garduri": {
+    "eyebrow": "Garduri",
+    "h2": "Garduri din lamele metalice"
+  },
   "process": {
     "eyebrow": "Cum lucrăm",
     "h2": "De la fundație la predare",

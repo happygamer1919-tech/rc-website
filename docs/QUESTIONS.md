@@ -1520,3 +1520,25 @@ would add up to fifteen more. Options:
 **Recommended:** confirm or correct (a) first; it decides whether the section
 stays. For (b), keep text chips until the supplier supplies its own swatch
 values, then take option (b) with those values.
+
+## Q-W14-09 · Which fabricator supplies louvre fence panels to Rapid Construct · OPEN, opened 2026-09-15 (W14-12)
+
+**Asked as the dispatch worded it.** RC-112 is blocked on this question.
+
+**Shipped default: the component, with nothing in it.** `content/garduri.json`
+holds `"models": []`, so no section renders, nothing links to it and the sitemap
+does not mention it. The component deliberately has no field for a model code, a
+price, a thickness or a warranty: the dispatch forbids writing any of those until
+the supplier is known, and a field that exists invites a value.
+
+**Why the supplier decides the content.** Every figure the audit recorded for
+louvre fences (audit 2.2: model codes, a 0.50 mm thickness, a ZnMg 140 g/m²
+coating, 20 and 30 year warranties, prices per m²) belongs to one competitor's
+own production. None of it transfers to a panel made by someone else. The
+supplier's name is what tells us which specifications and warranties Rapid
+Construct can actually stand behind.
+
+**What to send:** the fabricator's name, and ideally their product sheet for the
+panels Rapid Construct installs. With that, the fields the sheet vouches for are
+added to the component and the data filled in one commit, and the product images
+can be requested from the same source (Q-W14-07).

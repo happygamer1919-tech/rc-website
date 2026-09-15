@@ -1615,7 +1615,7 @@ finishes. Both can be asked for in one message.
 
 **Recommended:** ask Dasterum for both; keep (a) until they answer.
 
-## Q-W14-12 · No licensed image honestly shows the carport families · OPEN, opened 2026-09-15 (W14-18)
+## Q-W14-12 · No licensed image honestly shows the carport families · ANSWERED 2026-09-15, original line diagrams instead of images (RC-123, W14-23) · opened 2026-09-15 (W14-18)
 
 **Shipped default: the carport page stays text-only,** as before. RC-111's share of
 RC-118 is blocked because no licensed image found shows what the page describes.

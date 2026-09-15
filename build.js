@@ -964,54 +964,98 @@ ${steps}
 `;
 }
 
-// --- W14-12, louvre fences (S-05), component only ----------------------------
+// --- W14-20, the fences page (S-05) ----------------------------------------
 
-/* BLOCKED on supplier identity (Q-W14-09). The component exists and its data
-   file is empty, so nothing renders, nothing is linked from the nav, and the
-   sitemap is untouched (it lists pages, and this is a homepage section with no
-   anchor anywhere in the navigation).
+/* The fences page on the carport pattern (audit 4.2): a chooser by site
+   constraint, the materials and finish on the dark band, four steps that end in a
+   fixed price after measurement, and a FAQ, then the product page's quote form.
+   Every string is a garduri.* locale key. RC-112's empty data file and model
+   component are gone: there are no models to list.
 
-   Deliberately generic: a model is a name, one line of text, and an optional
-   image. No field exists for a model code, a price, a thickness or a warranty,
-   because the dispatch forbids writing any of those until the supplier is known,
-   and a field that exists invites a value. When the supplier is named, the fields
-   that supplier can actually vouch for are added in the same commit as the data.
+   RC-120 forbids model codes, prices, thicknesses, warranty years and any
+   supplier or manufacturer name on this page. The build refuses a garduri string
+   carrying any form it can recognise: IL and two or three digits, lei/m², a
+   thickness in mm, a warranty stated in years, in either locale. A name cannot be
+   pattern-matched; W14-20 lists every string for review. */
+const GARD_COUNTS = { chooser: 5, materials: 3, steps: 4, faq: 5 };
+const GARD_FORBIDDEN = [/\bIL\s?\d{2,3}\b/i, /lei\s*\/\s*m²/i, /\bani\s+(de\s+)?garanți/i, /\d\s*mm\b/i, /лет\s+гарант/i, /лей\s*\/\s*м²/i, /гаранти\S*\s+\d/i];
+function gardList(l, group, fields) {
+  for (const [k, v] of Object.entries(l.strings)) {
+    if (!k.startsWith('garduri.')) continue;
+    for (const re of GARD_FORBIDDEN) if (re.test(v)) die(`${k} (${l.code}) carries a form RC-120 forbids on the fences page: ${re}`);
+  }
+  return Array.from({ length: GARD_COUNTS[group] }, (_, i) => Object.fromEntries(fields.map((f) => {
+    const v = l.strings[`garduri.${group}.${i}.${f}`];
+    if (!REAL(v)) die(`garduri.${group}.${i}.${f} is not real in ${l.code}.`);
+    return [f, v];
+  })));
+}
 
-   Presence, not silence: a file without a models array fails the build, and so
-   does a model whose name or line is not real in both locales. */
-const GARDURI_FILE = 'content/garduri.json';
-const GARDURI = JSON.parse(fs.readFileSync(GARDURI_FILE, 'utf8'));
-if (!Array.isArray(GARDURI.models)) die(`${GARDURI_FILE} has no "models" array. No models is [], never a missing key.`);
-
-function garduri(l) {
-  if (GARDURI.models.length === 0) return '';
+function gardPage(l) {
   const t = (k) => esc(l.strings[`garduri.${k}`]);
-  const cards = GARDURI.models.map((m, i) => {
-    const where = `models[${i}]`;
-    for (const f of ['name', 'line']) {
-      if (!m[f] || !REAL(m[f][l.code])) die(`${GARDURI_FILE}: ${where}.${f} is not real for ${l.code}.`);
-    }
-    const id = `gard-${m.id}`;
-    let media = '';
-    if (fs.existsSync(`public/img/${id}.jpg`)) {
-      if (!m.alt || !REAL(m.alt[l.code])) die(`public/img/${id}.jpg exists but ${where}.alt is not real for ${l.code}.`);
-      media = `<div class="fence__media"><img src="${BASE}/img/${id}.jpg" alt="${esc(m.alt[l.code])}" width="800" height="1000" loading="lazy" decoding="async"></div>`;
-    }
-    return `      <article class="fence" data-reveal data-stagger="${Math.min(i, 6)}">
-        ${media}<h3 class="fence__name">${esc(m.name[l.code])}</h3>
-        <p class="fence__line">${esc(m.line[l.code])}</p>
-      </article>`;
-  }).join('\n');
+  const tiles = gardList(l, 'chooser', ['title', 'text']).map((c, i) => `      <article class="bento__tile${i === 0 ? ' bento__tile--wide' : ''}" data-reveal data-stagger="${Math.min(i, 6)}">
+        <h3 class="bento__title">${esc(c.title)}</h3>
+        <p class="bento__text">${esc(c.text)}</p>
+      </article>`).join('\n');
+  const materials = gardList(l, 'materials', ['title', 'text']).map((m, i) => `      <article class="model" data-reveal data-stagger="${Math.min(i, 6)}">
+        <h3 class="model__name">${esc(m.title)}</h3>
+        <p class="model__desc">${esc(m.text)}</p>
+      </article>`).join('\n');
+  const steps = gardList(l, 'steps', ['title', 'text']).map((s, i) => `      <li class="csteps__step" data-reveal data-stagger="${i}">
+        <span class="csteps__n" aria-hidden="true">${i + 1}</span>
+        <h3 class="csteps__title">${esc(s.title)}</h3>
+        <p class="csteps__text">${esc(s.text)}</p>
+      </li>`).join('\n');
+  const faq = gardList(l, 'faq', ['q', 'a']).map((f, i) => `      <div class="faq__item" data-reveal data-stagger="${Math.min(i, 6)}">
+        <h3 class="faq__q">${esc(f.q)}</h3>
+        <p class="faq__a">${esc(f.a)}</p>
+      </div>`).join('\n');
   return `<section class="section section--light section--divided" id="garduri" aria-labelledby="garduri-h">
   <div class="container">
     <p class="eyebrow" data-reveal>${t('eyebrow')}</p>
-    <h2 id="garduri-h" data-reveal>${t('h2')}</h2>
-    <div class="fences">
-${cards}
+    <h2 id="garduri-h" data-reveal>${t('chooserH2')}</h2>
+    <p class="lede" data-reveal>${t('chooserLede')}</p>
+    <div class="bento">
+${tiles}
+    </div>
+  </div>
+</section>
+<section class="section section--dark" id="garduri-materiale" aria-labelledby="garduri-materiale-h">
+  <div class="container">
+    <p class="eyebrow" data-reveal>${t('eyebrow')}</p>
+    <h2 id="garduri-materiale-h" data-reveal>${t('materialsH2')}</h2>
+    <p class="lede cop-lede--dark" data-reveal>${t('materialsLede')}</p>
+    <div class="models">
+${materials}
+    </div>
+  </div>
+</section>
+<section class="section section--light" id="garduri-pasi" aria-labelledby="garduri-pasi-h">
+  <div class="container">
+    <p class="eyebrow" data-reveal>${t('eyebrow')}</p>
+    <h2 id="garduri-pasi-h" data-reveal>${t('stepsH2')}</h2>
+    <ol class="csteps">
+${steps}
+    </ol>
+  </div>
+</section>
+<section class="section section--light section--divided section--compact" id="intrebari" aria-labelledby="garduri-faq-h">
+  <div class="container">
+    <h2 id="garduri-faq-h" data-reveal>${esc(l.strings['servicePage.faqH'])}</h2>
+    <div class="faq" data-reveal>
+${faq}
     </div>
   </div>
 </section>
 `;
+}
+
+// FAQPage for the fences page, mirroring its visible FAQ exactly.
+function gardFaqSchema(l) {
+  return '\n<script type="application/ld+json">\n' + JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: gardList(l, 'faq', ['q', 'a']).map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  }, null, 2) + '\n</script>';
 }
 
 // --- W14-16, the product pages and the homepage teaser ------------------------
@@ -1029,11 +1073,11 @@ ${cards}
 const PRODUCT_PAGES = [
   { slug: 'tigla-metalica', key: 'tigla', block: (l) => tiglaGrid(l), sources: ['content/tigla-metalica.json'] },
   { slug: 'copertine', key: 'copertine', block: (l) => copertine(l), sources: ['content/copertine.json'] },
-  { slug: 'garduri', key: 'garduri', block: (l) => garduri(l), sources: ['content/garduri.json'] },
+  { slug: 'garduri', key: 'garduri', block: (l) => gardPage(l), faqSchema: (l) => gardFaqSchema(l), sources: [] },
 ];
 const PROD_RAW_KEYS = new Set([
   'demoAttr', 'promoBar', 'areaServedJson', 'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
-  'prod.block', 'prod.footerLinks',
+  'prod.block', 'prod.footerLinks', 'prod.faqSchema',
 ]);
 const productTemplate = fs.readFileSync('src/product.html', 'utf8');
 const PROD_SOURCES = ['src/product.html', 'build.js', ...LOCALES.map((l) => l.file)];
@@ -1407,6 +1451,7 @@ for (const l of loaded) {
       'prod.pathRu': BASE + SERVICES_ROOT.ru + p.slug + '/',
       'prod.subject': `[${l.code.toUpperCase()}] ${title} - ${SERVICES_ROOT[l.code]}${p.slug}/`,
       'prod.block': p.block(l),
+      'prod.faqSchema': p.faqSchema ? p.faqSchema(l) : '',
       'prod.footerLinks': SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
         `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join(''),
     };

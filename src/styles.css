@@ -1074,16 +1074,6 @@ p { margin: 0; }
 .csteps__title { margin-top: 16px; font-size: 19px; }
 .csteps__text { margin: 8px 0 0; }
 
-/* --- W14-12, louvre fences (S-05), component only ------------------------ */
-/* Renders only when content/garduri.json has models (blocked, Q-W14-09). Three
-   across, white cards with the site's line border; the optional image is 4:5
-   as in audit 4.1. */
-.fences { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); margin-top: 40px; }
-.fence { background: var(--bg-light); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 20px; }
-.fence__media { margin-bottom: 16px; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--radius-control); background: var(--bg-grey); }
-.fence__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.fence__name { font-size: 20px; }
-.fence__line { margin: 8px 0 0; }
 
 /* --- W14-16, the homepage teaser row -------------------------------------- */
 /* Three link cards to the product pages, one row, compact: no section heading,
@@ -1322,7 +1312,6 @@ p { margin: 0; }
   .section--teaser { padding: 40px 0; }
 
   /* W14-12. Fence cards, one column. */
-  .fences { grid-template-columns: minmax(0, 1fr); }
 
   /* W14-11. Carport chooser, models and steps go to one column. */
   .bento, .models, .csteps { grid-template-columns: minmax(0, 1fr); }

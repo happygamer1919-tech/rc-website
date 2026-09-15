@@ -203,7 +203,87 @@
   },
   "garduri": {
     "eyebrow": "Garduri",
-    "h2": "Garduri din lamele metalice"
+    "chooserH2": "Cum alegi gardul",
+    "chooserLede": "Alegerea pornește de la loc: cum e terenul, ce există deja pe linia gardului și cât trebuie să ascundă.",
+    "chooser": {
+      "0": {
+        "title": "Teren în pantă",
+        "text": "Panourile se așază în trepte, după teren, ca fiecare tronson să rămână drept."
+      },
+      "1": {
+        "title": "Soclu existent",
+        "text": "La măsurare verificăm dacă soclul poate purta stâlpii sau dacă e nevoie de fundație nouă."
+      },
+      "2": {
+        "title": "Intimitate sau aer",
+        "text": "Lamelele mai strânse ascund curtea; cele mai deschise lasă aerul și lumina să treacă."
+      },
+      "3": {
+        "title": "Loc deschis, cu vânt",
+        "text": "Stâlpii și fundația se stabilesc după lungimea și înălțimea gardului, nu după un tabel."
+      },
+      "4": {
+        "title": "La drum sau lângă vecini",
+        "text": "Pe limita proprietății măsurăm exact linia gardului înainte de ofertă."
+      }
+    },
+    "materialsH2": "Materiale și finisaj",
+    "materialsLede": "Din ce se face un gard din lamele metalice și ce alegi tu.",
+    "materials": {
+      "0": {
+        "title": "Stâlpi metalici",
+        "text": "Se fixează în beton. Distanța dintre ei se stabilește la măsurare."
+      },
+      "1": {
+        "title": "Lamele din tablă de oțel",
+        "text": "Panouri din lamele de tablă de oțel protejată împotriva coroziunii."
+      },
+      "2": {
+        "title": "Culoare și finisaj",
+        "text": "Alegi culoarea din paleta RAL, în finisaj mat sau lucios. Pe ecran culoarea e orientativă; decide mostra fizică."
+      }
+    },
+    "stepsH2": "De la măsurare la prețul fix",
+    "steps": {
+      "0": {
+        "title": "Ne spui ce gard vrei",
+        "text": "Lungimea aproximativă, înălțimea și ce trebuie să ascundă sau să lase să treacă."
+      },
+      "1": {
+        "title": "Venim și măsurăm",
+        "text": "Linia gardului, terenul și locul fiecărui stâlp. Fără măsurare nu dăm preț."
+      },
+      "2": {
+        "title": "Alegem împreună",
+        "text": "Lamelele, stâlpii, culoarea și finisajul, pe baza măsurătorilor."
+      },
+      "3": {
+        "title": "Primești prețul fix",
+        "text": "Un preț final, stabilit după măsurare, nu o estimare pe metru."
+      }
+    },
+    "faq": {
+      "0": {
+        "q": "Cât costă un gard din lamele metalice?",
+        "a": "Prețul depinde de lungime, înălțime, teren și finisaj, așa că îl stabilim după măsurare. Oferta are un preț fix, nu o estimare."
+      },
+      "1": {
+        "q": "Măsurarea este obligatorie?",
+        "a": "Da. Terenul și locul stâlpilor schimbă lucrarea, așa că fără măsurare nu dăm preț."
+      },
+      "2": {
+        "q": "Se poate monta gardul pe teren în pantă?",
+        "a": "Da. La măsurare stabilim cum se așază panourile în trepte, ca gardul să urmeze terenul."
+      },
+      "3": {
+        "q": "Cum aleg culoarea?",
+        "a": "Din paleta RAL, în finisaj mat sau lucios. Culoarea de pe ecran e orientativă; decide mostra fizică."
+      },
+      "4": {
+        "q": "Pot păstra soclul existent?",
+        "a": "Dacă soclul e solid, stâlpii se pot fixa pe el. Verificăm la măsurare și îți spunem înainte de ofertă."
+      }
+    }
   },
   "pages": {
     "teaserAria": "Pagini de produse",

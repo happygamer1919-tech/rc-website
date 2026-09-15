@@ -1,0 +1,44 @@
+{
+  "_note": "W14-06, filled at RC-106b (Q-W14-04 closed by the wave 14 close-out dispatch). Catalog mega-menu data (S-01): exactly the 7 top-level categories and 7 subcategories of the wave 14 audit section 1.2, RO labels verbatim and in order, RU labels translated in the site's existing vocabulary. The site has no product pages, so each row opens the service page that does that work: insulation, plaster, decorative elements and exterior paint open Fațade; ceramic tiles, paints and interior paint open Finisaje; lighting opens Instalații; other building materials opens Case la cheie. That mapping is recorded in DECISIONS.md W14-06b for ratification. Shape: categories[] of { label: {ro, ru}, href: {ro, ru}, children?: [ { label: {ro, ru}, href: {ro, ru} } ] }. Two levels, never three: build.js refuses a child with children, a label that is not real in both locales, and a row with no href.",
+  "categories": [
+    {
+      "label": { "ro": "Sisteme de termoizolație", "ru": "Системы теплоизоляции" },
+      "href": { "ro": "/servicii/fatade/", "ru": "/ru/servicii/fatade/" },
+      "children": [
+        { "label": { "ro": "Polistiren expandat", "ru": "Пенополистирол" }, "href": { "ro": "/servicii/fatade/", "ru": "/ru/servicii/fatade/" } },
+        { "label": { "ro": "Polistiren extrudat", "ru": "Экструдированный пенополистирол" }, "href": { "ro": "/servicii/fatade/", "ru": "/ru/servicii/fatade/" } },
+        { "label": { "ro": "Vată minerală", "ru": "Минеральная вата" }, "href": { "ro": "/servicii/fatade/", "ru": "/ru/servicii/fatade/" } },
+        { "label": { "ro": "Adezivi și mase de șpaclu", "ru": "Клеи и шпаклёвочные смеси" }, "href": { "ro": "/servicii/fatade/", "ru": "/ru/servicii/fatade/" } },
+        { "label": { "ro": "Alte produse", "ru": "Другие продукты" }, "href": { "ro": "/servicii/fatade/", "ru": "/ru/servicii/fatade/" } }
+      ]
+    },
+    {
+      "label": { "ro": "Tencuieli decorative", "ru": "Декоративные штукатурки" },
+      "href": { "ro": "/servicii/fatade/", "ru": "/ru/servicii/fatade/" }
+    },
+    {
+      "label": { "ro": "Plăci ceramice", "ru": "Керамическая плитка" },
+      "href": { "ro": "/servicii/finisaje/", "ru": "/ru/servicii/finisaje/" }
+    },
+    {
+      "label": { "ro": "Elemente decorative", "ru": "Декоративные элементы" },
+      "href": { "ro": "/servicii/fatade/", "ru": "/ru/servicii/fatade/" }
+    },
+    {
+      "label": { "ro": "Vopsele", "ru": "Краски" },
+      "href": { "ro": "/servicii/finisaje/", "ru": "/ru/servicii/finisaje/" },
+      "children": [
+        { "label": { "ro": "Vopsele de exterior", "ru": "Фасадные краски" }, "href": { "ro": "/servicii/fatade/", "ru": "/ru/servicii/fatade/" } },
+        { "label": { "ro": "Vopsele de interior", "ru": "Интерьерные краски" }, "href": { "ro": "/servicii/finisaje/", "ru": "/ru/servicii/finisaje/" } }
+      ]
+    },
+    {
+      "label": { "ro": "Sisteme de iluminare", "ru": "Системы освещения" },
+      "href": { "ro": "/servicii/instalatii/", "ru": "/ru/servicii/instalatii/" }
+    },
+    {
+      "label": { "ro": "Alte materiale de construcții", "ru": "Другие строительные материалы" },
+      "href": { "ro": "/servicii/case-la-cheie/", "ru": "/ru/servicii/case-la-cheie/" }
+    }
+  ]
+}

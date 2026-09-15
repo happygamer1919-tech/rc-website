@@ -4072,3 +4072,45 @@ guarantee card is now taller, no horizontal overflow at any width from 1025 to
 
 Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 /
 100**.
+
+## W14-04 · Section 1 copy, RU parity, 2026-09-15
+
+**Card RC-104.** The RC-103 strings translated into the RU locale, in the register
+of the existing Russian copy: formal "вы", plain verbs, no superlatives the RO
+strings do not carry. Nothing is added that the RO string does not say.
+
+| String | RU |
+|---|---|
+| T-02 heading | Строим для сегодняшнего дня. Гарантируем на завтра. |
+| T-02 lines | 30 лет гарантии, прямо в договоре. / Проверенные материалы, надёжные производители и решения, подобранные для вашего дома. |
+| T-03 | Мы испробовали десятки вариантов и остановились на нынешних материалах и технике. При этом конечный производитель и итоговое решение складываются в предложении, где всё подстраивается под бюджет и видение клиента. |
+| T-04 | Что мы предлагаем для вас |
+| T-05 | Ставим деревянную конструкцию, черепицу и дымоход. ("Дом под крышей." removed) |
+| T-06 | Мы координируем бригады. Вы наслаждаетесь результатом. |
+| T-07 | the roofing answer, one paragraph |
+| T-08 | the 3D answer, three lines |
+| T-09 | the installations answer, four lines, ending "Мы монтируем. Вы наслаждаетесь комфортом." |
+
+Two word choices, for ratification: T-09's "Noi instalăm" is rendered "Мы
+монтируем" (the verb the RU site already uses for installation work) rather than a
+literal "устанавливаем"; T-07's "de la șarpantă și învelitoare până la ultimele
+finisaje" is "от стропильной системы и покрытия до финальной отделки", matching the
+roofing FAQ's existing terms.
+
+### Tested
+
+Headless Chrome against the local build, **17 of 17**: every RU string verbatim at
+its place (T-08 three paragraphs, T-09 four), the RU trust grid untouched, no em
+or en dash, the RO guarantee heading, services heading and 3D answer unchanged,
+and no horizontal overflow from 1025 to 1180px or at 390px in either locale.
+
+### Measured
+
+| Page | Before (8b45bcf) | After |
+|---|---|---|
+| Homepage RO | 10,300 | 10,300 |
+| Homepage RU | 10,556 | **10,595** |
+| Service RU acoperișuri | 5,649 | **5,630** |
+| Other measured service pages | unchanged | unchanged |
+
+Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 / 100**.

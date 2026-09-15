@@ -44,23 +44,12 @@ ratifications); PRs #1, #2, #3 merged at the owner's instruction.
 
 | Ticket | Card | Mode | Branch | Status |
 |---|---|---|---|---|
- w14/rc-102-rw-amendment
-| RC-102 | W14-02b R-W amendment: legacy status, approved origins | STOP | `w14/rc-102-rw-amendment` | **STOP**, PR open, awaiting owner |
-| RC-115 | W14-15 Header breakpoint to 1100px | SELF | `w14/rc-115-header-breakpoint` | todo |
-| RC-116 | W14-16 Page split: tigla-metalica, copertine, garduri | SELF | `w14/rc-116-page-split` | todo |
-
-| RC-102 | W14-02b R-W amendment: legacy status, approved origins | STOP | `w14/rc-102-rw-amendment` | todo |
+| RC-102 | W14-02b R-W amendment: legacy status, approved origins | STOP | `w14/rc-102-rw-amendment` | merged by the owner, #16 |
 | RC-115 | W14-15 Header breakpoint to 1100px | SELF | `w14/rc-115-header-breakpoint` | shipped, closes Q-W14-05 |
 | RC-107 | W14-07b Fix: hero photo overflow after the social row | SELF | `w14/rc-107-hero-overflow-fix` | shipped |
 | RC-116 | W14-16 Page split: tigla-metalica, copertine, garduri | SELF | `w14/rc-116-page-split` | shipped |
- w14/rc-117-origin-cutover
-| RC-117 | W14-17 Origin cutover to rapidconstruct.md | STOP | `w14/rc-117-origin-cutover` | **STOP**, PR open, awaiting owner; post-merge verify and tag owed |
-| RC-105 | W14-05b The 160 lei/m² figure leaves meta and price field, folded into #14 | owner-ordered merge | `w14/rc-105-frozen-price` | todo |
-
- main
-| RC-117 | W14-17 Origin cutover to rapidconstruct.md | STOP | `w14/rc-117-origin-cutover` | todo |
+| RC-117 | W14-17 Origin cutover to rapidconstruct.md | STOP | `w14/rc-117-origin-cutover` | merged by the owner, #20; verified live and tagged `wave-14-cutover` (RC-124) |
 | RC-105 | W14-05b The 160 lei/m² figure leaves meta and price field, folded into #14 | owner-ordered merge | `w14/rc-105-frozen-price` | shipped with #14 |
- main
 | RC-106 | W14-06b Catalog menu, unblocked, audit 1.2 data | SELF | `w14/rc-106-catalog-menu` | todo |
 | RC-103 | W14-03 Section 1 copy, RO, strings supplied | SELF | `w14/rc-103-copy-ro` | shipped, closes Q-W14-02 |
 | RC-104 | W14-04 Section 1 copy, RU parity | SELF | `w14/rc-104-copy-ru` | shipped |
@@ -68,6 +57,18 @@ ratifications); PRs #1, #2, #3 merged at the owner's instruction.
 | RC-119 | W14-19 Real-photo placeholders and pending manifest | SELF | `w14/rc-119-pending-photos` | manifest shipped (`docs/assets/PENDING-PHOTOS.md`); placeholders **blocked**, no host section exists for them (Q-W14-14) |
 | RC-113 | W14-13 Re-measure, per-page budgets ruling | STOP | `w14/rc-113-remeasure` | todo, after all of the above |
 | RC-112 | W14-12 Garduri data | SELF | none | **blocked**, Q-W14-09 |
+
+**Tail dispatch, 2026-09-15.** Ratifications recorded (DECISIONS.md, W14 tail
+ratifications). #16 and #20 were merged by the owner before the run; #25 was not.
+
+| Ticket | Card | Mode | Branch | Status |
+|---|---|---|---|---|
+| RC-124 | W14-24 Post-cutover verification and tag | owner-ordered | `w14/rc-124-cutover-verify` | shipped: verified live, tagged `wave-14-cutover`; main repaired (W14-24a) |
+| RC-121 | W14-21 Header fit, unblocks #7 | SELF | `w14/rc-121-header-fit` | todo |
+| RC-106b | W14-06b Merge the catalog menu | SELF | `w14/rc-106-catalog-menu` | todo, after RC-121 |
+| RC-120 | W14-20 Garduri service page, closes Q-W14-09 | SELF | `w14/rc-120-garduri-page` | todo |
+| RC-122 | W14-22 Tile colour swatches, closes Q-W14-11 | SELF | `w14/rc-122-tile-swatches` | todo |
+| RC-123 | W14-23 Carport diagrams, closes Q-W14-12 | SELF | `w14/rc-123-carport-diagrams` | todo |
 
 ## Wave 13
 

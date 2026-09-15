@@ -1542,3 +1542,33 @@ Construct can actually stand behind.
 panels Rapid Construct installs. With that, the fields the sheet vouches for are
 added to the component and the data filled in one commit, and the product images
 can be requested from the same source (Q-W14-07).
+
+## Q-W14-10 · The 160 lei/m² figure is still in the meta description and the JSON-LD price range · ANSWERED 2026-09-15, the figure is removed (RC-105b) · opened 2026-09-15 (W14-05)
+
+**Shipped default in the RC-105 PR: both left as they are.** RC-105 says to delete
+every occurrence of the string "preț înghețat 160 lei/m² pentru 2026" and its RU
+counterpart, "in body copy, meta description, og:description and any JSON-LD
+offer or price field". It was deleted everywhere it occurs. Two places carry the
+figure **without** that string, so they were not touched and are reported here:
+
+| Where | RO | RU |
+|---|---|---|
+| `meta.description`, which also fills `og:description` and the JSON-LD `description` | "... Garanție scrisă până la 30 de ani, **de la 160 lei/m²**." | "... Письменная гарантия до 30 лет, **от 160 лей/м²**." |
+| Homepage JSON-LD `GeneralContractor`, `priceRange` | `"160 MDL/m²"` | same node |
+
+Both are in the R-V STOP set.
+
+**The question is whether 160 lei/m² is a price or the offer.** "From 160 lei/m²"
+as a standing starting price is a different claim from "160 lei/m² frozen for
+2026". If the figure existed only as the frozen offer, removing the offer and
+keeping the figure leaves a price with nothing behind it.
+
+**Options:**
+
+  (a) **160 lei/m² is still a real starting price.** Nothing to change; close this.
+  (b) **It was only the offer.** A follow-up STOP PR removes ", de la 160 lei/m²"
+      and its RU counterpart from `meta.description`, and removes `priceRange` or
+      replaces it with a figure the client confirms.
+
+**Recommended:** confirm with the client which it is before merging RC-105, so both
+changes land together if (b).

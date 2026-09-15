@@ -27,7 +27,7 @@ the final `main` and stays mergeable.
 | RC-102 | W14-02 Asset provenance gate, and the `quality` check | SELF | `w14/rc-102-asset-provenance` | shipped |
 | RC-103 | W14-03 Section 1 copy, RO | SELF | none | **blocked**, Q-W14-02 |
 | RC-104 | W14-04 Section 1 copy, RU parity | SELF | none | **blocked** on RC-103 |
-| RC-105 | W14-05 Remove the frozen price | STOP | `w14/rc-105-frozen-price` | STOP: PR opened after RC-112 merges, cut from the final `main` |
+| RC-105 | W14-05 Remove the frozen price | STOP | `w14/rc-105-frozen-price` | merged at the owner's instruction with W14-05b |
 | RC-106 | W14-06 Catalog mega-menu, S-01 | SELF | `w14/rc-106-catalog-menu` | **blocked**, PR #7 open, not merged: Q-W14-04, Q-W14-05 |
 | RC-107 | W14-07 Social row, S-07 | SELF | `w14/rc-107-social-row` | shipped, URLs to confirm: Q-W14-06 |
 | RC-108 | W14-08 Acoperișuri offer cards, S-02 | SELF | `w14/rc-108-offer-cards` | shipped without images (Q-W14-07); homepage over R-J until RC-113 |
@@ -49,7 +49,7 @@ ratifications); PRs #1, #2, #3 merged at the owner's instruction.
 | RC-107 | W14-07b Fix: hero photo overflow after the social row | SELF | `w14/rc-107-hero-overflow-fix` | shipped |
 | RC-116 | W14-16 Page split: tigla-metalica, copertine, garduri | SELF | `w14/rc-116-page-split` | shipped |
 | RC-117 | W14-17 Origin cutover to rapidconstruct.md | STOP | `w14/rc-117-origin-cutover` | todo |
-| RC-105 | W14-05b The 160 lei/m² figure leaves meta and price field, folded into #14 | owner-ordered merge | `w14/rc-105-frozen-price` | todo |
+| RC-105 | W14-05b The 160 lei/m² figure leaves meta and price field, folded into #14 | owner-ordered merge | `w14/rc-105-frozen-price` | shipped with #14 |
 | RC-106 | W14-06b Catalog menu, unblocked, audit 1.2 data | SELF | `w14/rc-106-catalog-menu` | todo |
 | RC-103 | W14-03 Section 1 copy, RO, strings supplied | SELF | `w14/rc-103-copy-ro` | shipped, closes Q-W14-02 |
 | RC-104 | W14-04 Section 1 copy, RU parity | SELF | `w14/rc-104-copy-ru` | todo |

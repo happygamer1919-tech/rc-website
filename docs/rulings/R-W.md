@@ -38,3 +38,41 @@ request.
    or after R-W with that value fails.
 5. **One row per file**, including `@2x` variants. The check fails on any file
    without its own row and on any row naming a file that does not exist.
+
+## Amendment · Legacy status and approved origins, 2026-09-15, W14-02b
+
+Appended under R-T. Nothing above this block is edited. Recorded at the owner's
+instruction from the wave 14 close-out dispatch.
+
+> A provenance row may carry status "legacy, licence unverified" for images
+> present on main before commit f5e4eb6. The gate fails only for images added at
+> or after that commit without a licence row.
+>
+> Approved origins, additive to R-W: supplier packs from Dasterum, Caparol,
+> Duraziv, Roko Aquamix; and Unsplash, Pexels, Pixabay with the licence URL
+> recorded per file. Forbidden hostnames unchanged.
+
+### How the gate holds it
+
+1. **"Present on main before f5e4eb6" is a fingerprint, not a filename.**
+   `docs/assets/LEGACY-IMAGES.txt` lists the path and sha256 of every image in
+   f5e4eb6's first parent, e49e02e: 149 files. A row may say `legacy, licence
+   unverified` only when its file's path is in that list **and its bytes still
+   hash to the recorded value**. A legacy file overwritten with a new image loses
+   the status and must carry a real licence row. The list is committed because
+   CI checks out without history, and a gate that needs history it does not have
+   would pass silently.
+2. **Every other image needs a licence row:** a non-empty licence, and a licence
+   URL that is a real `https://` URL, or, for a supplier pack, a cell starting
+   `supplier permission:` that says who granted it and when. `legacy` and the old
+   `unrecorded before R-W` value are refused on these rows.
+3. **Forbidden hostnames are unchanged** and still apply to every row, legacy or
+   not. A supplier pack from Dasterum is therefore recorded as a pack received
+   from the supplier, never as a URL on dasterum.md.
+4. **The approved origins are recorded, not enforced as an allow-list.** The
+   dispatch makes them additive to R-W, which only forbade. The gate checks that
+   a stock image names its licence URL; which library it came from is visible in
+   the row.
+
+The old `unrecorded before R-W` value is retired: the 131 rows that carried it
+now say `legacy, licence unverified`, and each of their files is in the list.

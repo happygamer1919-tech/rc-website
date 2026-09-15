@@ -16,7 +16,7 @@
    Chrome over the DevTools protocol using node's built-in WebSocket.
  
    Usage:  node scripts/verify-live.js [origin]
-           node scripts/verify-live.js https://rapidconstructmd.com
+           node scripts/verify-live.js https://rapidconstruct.md
 */
 
 const { spawn } = require('child_process');
@@ -25,7 +25,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 
-const ORIGIN = (process.argv[2] || 'https://rapidconstructmd.com').replace(/\/$/, '');
+const ORIGIN = (process.argv[2] || 'https://rapidconstruct.md').replace(/\/$/, '');
 const CHROME = process.env.CHROME_BIN
   || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const PORT = Number(process.env.CDP_PORT || 9401);

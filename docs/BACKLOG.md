@@ -44,12 +44,23 @@ ratifications); PRs #1, #2, #3 merged at the owner's instruction.
 
 | Ticket | Card | Mode | Branch | Status |
 |---|---|---|---|---|
+ w14/rc-102-rw-amendment
+| RC-102 | W14-02b R-W amendment: legacy status, approved origins | STOP | `w14/rc-102-rw-amendment` | **STOP**, PR open, awaiting owner |
+| RC-115 | W14-15 Header breakpoint to 1100px | SELF | `w14/rc-115-header-breakpoint` | todo |
+| RC-116 | W14-16 Page split: tigla-metalica, copertine, garduri | SELF | `w14/rc-116-page-split` | todo |
+
 | RC-102 | W14-02b R-W amendment: legacy status, approved origins | STOP | `w14/rc-102-rw-amendment` | todo |
 | RC-115 | W14-15 Header breakpoint to 1100px | SELF | `w14/rc-115-header-breakpoint` | shipped, closes Q-W14-05 |
 | RC-107 | W14-07b Fix: hero photo overflow after the social row | SELF | `w14/rc-107-hero-overflow-fix` | shipped |
 | RC-116 | W14-16 Page split: tigla-metalica, copertine, garduri | SELF | `w14/rc-116-page-split` | shipped |
+ w14/rc-117-origin-cutover
+| RC-117 | W14-17 Origin cutover to rapidconstruct.md | STOP | `w14/rc-117-origin-cutover` | **STOP**, PR open, awaiting owner; post-merge verify and tag owed |
+| RC-105 | W14-05b The 160 lei/m² figure leaves meta and price field, folded into #14 | owner-ordered merge | `w14/rc-105-frozen-price` | todo |
+
+ main
 | RC-117 | W14-17 Origin cutover to rapidconstruct.md | STOP | `w14/rc-117-origin-cutover` | todo |
 | RC-105 | W14-05b The 160 lei/m² figure leaves meta and price field, folded into #14 | owner-ordered merge | `w14/rc-105-frozen-price` | shipped with #14 |
+ main
 | RC-106 | W14-06b Catalog menu, unblocked, audit 1.2 data | SELF | `w14/rc-106-catalog-menu` | todo |
 | RC-103 | W14-03 Section 1 copy, RO, strings supplied | SELF | `w14/rc-103-copy-ro` | shipped, closes Q-W14-02 |
 | RC-104 | W14-04 Section 1 copy, RU parity | SELF | `w14/rc-104-copy-ru` | shipped |

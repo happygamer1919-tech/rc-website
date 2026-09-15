@@ -3941,6 +3941,48 @@ Status metadata only, per R-S; no question body is edited.
 | Q-W14-08 | part (b) answered: RAL swatches permitted in the tile grid; part (a), prices, stays open |
 | Q-W14-10 | answered: the 160 lei/m² figure leaves the meta description and the price field (RC-105b). The question was opened on the RC-105 branch and exists only in PR #14, so its status is set there |
 
+ w14/rc-102-rw-amendment
+## W14-02b · R-W amended: legacy status by fingerprint, approved origins, 2026-09-15
+
+**STOP: PR only.** It edits `docs/rulings/R-W.md`, in the STOP set. The amendment
+is appended under R-T; the ruling's body is untouched.
+
+**What changes in the gate.** `scripts/check-asset-provenance.js` accepts
+`legacy, licence unverified` only for a file whose path and sha256 match
+`docs/assets/LEGACY-IMAGES.txt`, the 149 images in f5e4eb6's first parent
+(e49e02e). Every other image needs an `https://` licence URL, or `supplier
+permission: ...` for a supplier pack. The old `unrecorded before R-W` value is
+retired and refused; the 131 rows that carried it now carry the legacy status.
+Forbidden hostnames apply to every row, legacy or not. The list is frozen at 149
+and the gate fails if it grows.
+
+**Why a fingerprint and not a date or git history.** CI checks out one commit
+with no history, so "was this file on main before f5e4eb6" cannot be asked of git
+there. A filename alone would let an overwritten legacy file keep its status. The
+hash closes both.
+
+**The approved origins are recorded, not enforced as an allow-list,** because
+the dispatch makes them additive to a ruling that only forbade. Recorded as a
+reading for ratification.
+
+**One escape hatch, stated:** a row whose licence URL is `n/a, generated in this
+repo` passes without a URL. It exists for files built by this repo's own scripts
+(og-image, the port placeholders). The source cell must name the script.
+
+### Negative-tested before it was trusted
+
+| Arm | Planted | Exit |
+|---|---|---|
+| New file claiming legacy | a new image whose row says `legacy, licence unverified` | 1 |
+| New file, no licence URL | a new image with an empty licence URL | 1 |
+| New file, real licence | the same image with `https://unsplash.com/license` | 0, as it should |
+| Legacy row, bytes changed | one byte appended to a legacy project cover | 1 |
+| Forbidden host on a legacy row | a supplier logo source rewritten to a dasterum.md host | 1 |
+| Legacy list grown | a 150th entry appended to the list | 1 |
+
+The first run of the bytes arm used `port-01.jpg`, whose row is `generated in
+this repo`, not legacy, so it correctly passed; the arm was rerun on a legacy row.
+
 ## W14-15 · The header collapses at 1100px, and the nav tightens up to 1180px, 2026-09-15
 
 **Card RC-115. Closes Q-W14-05.** The hamburger header, which started at 768px,
@@ -4097,6 +4139,57 @@ image is the site default, since none of the three has its own photograph.
 The homepage is still over its R-J budget; the new per-page budgets are RC-113's.
 Lighthouse, desktop, localhost: **homepage RO 99 / 100 / 100 / 100, RU 99 / 100 /
 100 / 100; tile grid, carports and fences RO pages 100 / 100 / 100 / 100 each**.
+
+ w14/rc-117-origin-cutover
+## W14-17 · Origin cutover: rapidconstruct.md is the site's origin, STOP, 2026-09-15
+
+**Card RC-117. Closes Q-W14-03.** **STOP: pull request only.** It changes
+`SITE_URL`, canonical, hreflang, og, the sitemap, robots and the homepage JSON-LD,
+all in the R-V STOP set.
+
+### What changes
+
+| Place | Before | After |
+|---|---|---|
+| `.github/workflows/pages.yml` `SITE_URL` | https://rapidconstructmd.com | **https://rapidconstruct.md** |
+| `CNAME` (repo root) and `CUSTOM_DOMAIN` in `build.js`, which writes `dist/CNAME` | rapidconstructmd.com | **rapidconstruct.md** |
+| `build.js` `SITE` fallback | https://rapidconstructmd.com | **https://rapidconstruct.md** |
+| `scripts/verify-live.js` default origin | https://rapidconstructmd.com | **https://rapidconstruct.md** |
+
+The GitHub Pages custom domain is already `rapidconstruct.md` and needs no change.
+The two source comments that explained W12-14's choice are rewritten to say what
+is now true and why. `build.js` already refuses a build whose `SITE_URL` host
+differs from `CUSTOM_DOMAIN`, so the two cannot drift apart.
+
+### The assertion, as a permanent gate
+
+`scripts/check-origin.js`, wired into `quality`. It fails on any occurrence of
+`rapidconstructmd.com` in the built site, and it requires the real origin, **by
+presence**, in every place the card names: canonical, hreflang, og:url, og:image,
+sitemap.xml, robots.txt, JSON-LD url and sameAs, and CNAME. A build that emitted
+no canonical at all also contains zero occurrences of the old host; the gate
+counts each kind it checked and fails on a count of zero. The e-mail address
+`rapidconstructmd@gmail.com` is a mailbox, not a host, and the matcher's
+self-test proves it is not caught.
+
+| Arm | Result |
+|---|---|
+| The build as committed | pass: 28 canonicals, 84 hreflang, 26 og:url, 26 og:image, 26 JSON-LD urls, 2 sameAs, sitemap, robots, CNAME, all on https://rapidconstruct.md, zero of the old host |
+| A build with `SITE_URL=https://rapidconstructmd.com` | the build itself refuses (SITE_URL host differs from CUSTOM_DOMAIN); the stale output then fails with 250 problems |
+| The old host planted in one page | exit 1, page named |
+| One canonical moved to a foreign host | exit 1, page named |
+| `dist/CNAME` reverted | exit 1 |
+
+### Verification under R-P, and what is owed after merge
+
+Locally, on the build as committed, `scripts/verify-live.js` against a local
+server: cache-buster, the six content markers and the `build-sha` meta asserted
+in one pass. The deployed half cannot be done from a pull request that is not
+merged: **after the owner merges, run**
+`EXPECT_SHA=<merge sha> node scripts/verify-live.js` (the default origin is now
+rapidconstruct.md), confirm `node scripts/check-origin.js` on the deployed
+artifact's build, **and tag the merge commit `wave-14-cutover`**. Recorded in the
+PR body as the post-merge checklist.
 
 ## W14-03 · Section 1 copy, RO: T-02 to T-09, verbatim, 2026-09-15
 
@@ -4353,6 +4446,7 @@ changed.
 
 Gates: build, links, stale docs, provenance and scarcity all pass; the card adds no
 image and changes no page.
+ w14/rc-113-remeasure
 
 ## W14-13 · Re-measured after the close-out; ruling R-Y holds the new budgets, STOP, 2026-09-15
 
@@ -4394,3 +4488,7 @@ serves from today; the cutover changes no markup height.
   which fails it too, exit 1. A product budget below its measured height and a
   wrong `product` marker make verify-live report OVER and UNVERIFIED, exit 1.
 - Build, links, staleness, provenance and scarcity gates pass.
+
+ main
+ main
+ main

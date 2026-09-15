@@ -1440,7 +1440,16 @@ is a deviation, for two reasons:
 `content/social.json`. If a URL is wrong, the footer and `sameAs` are wrong too:
 the footer is a SELF edit, `sameAs` is in the R-V STOP set.
 
-## Q-W14-07 · The wave 14 image slots have no permitted source · ANSWERED 2026-09-15, approved origins added to R-W (RC-118) · opened 2026-09-15 (W14-08)
+## Q-W14-07 · The wave 14 image slots have no permitted source · ANSWERED 2026-09-15, approved origins added to R-W; offer card images shipped (RC-118); tile renders and carport images carried as Q-W14-11 and Q-W14-12 · opened 2026-09-15 (W14-08)
+
+**Resolution, W14-18 (RC-118).** The close-out dispatch answered all three blockers
+below: it directs RC-108 and RC-111 to licensed stock or visualisations (section 7
+is amended in place for product slots, R-R), it approves Unsplash, Pexels, Pixabay
+and four supplier packs as origins (R-W amendment, PR #16), and the banned hosts
+stay banned. The four offer cards now carry Unsplash photographs, each with its
+row. The metal tile renders and RAL swatches are not sourced (Q-W14-11), and no
+licensed image honestly shows the carport families (Q-W14-12). The text below is
+the question as it was asked.
 
 **Shipped default: every such slot ships without its image.** The acoperișuri
 offer cards render their text column only. Their four image slots are
@@ -1542,3 +1551,135 @@ Construct can actually stand behind.
 panels Rapid Construct installs. With that, the fields the sheet vouches for are
 added to the component and the data filled in one commit, and the product images
 can be requested from the same source (Q-W14-07).
+
+## Q-W14-10 · The 160 lei/m² figure is still in the meta description and the JSON-LD price range · ANSWERED 2026-09-15, the figure is removed (RC-105b) · opened 2026-09-15 (W14-05)
+
+**Shipped default in the RC-105 PR: both left as they are.** RC-105 says to delete
+every occurrence of the string "preț înghețat 160 lei/m² pentru 2026" and its RU
+counterpart, "in body copy, meta description, og:description and any JSON-LD
+offer or price field". It was deleted everywhere it occurs. Two places carry the
+figure **without** that string, so they were not touched and are reported here:
+
+| Where | RO | RU |
+|---|---|---|
+| `meta.description`, which also fills `og:description` and the JSON-LD `description` | "... Garanție scrisă până la 30 de ani, **de la 160 lei/m²**." | "... Письменная гарантия до 30 лет, **от 160 лей/м²**." |
+| Homepage JSON-LD `GeneralContractor`, `priceRange` | `"160 MDL/m²"` | same node |
+
+Both are in the R-V STOP set.
+
+**The question is whether 160 lei/m² is a price or the offer.** "From 160 lei/m²"
+as a standing starting price is a different claim from "160 lei/m² frozen for
+2026". If the figure existed only as the frozen offer, removing the offer and
+keeping the figure leaves a price with nothing behind it.
+
+**Options:**
+
+  (a) **160 lei/m² is still a real starting price.** Nothing to change; close this.
+  (b) **It was only the offer.** A follow-up STOP PR removes ", de la 160 lei/m²"
+      and its RU counterpart from `meta.description`, and removes `priceRange` or
+      replaces it with a figure the client confirms.
+
+**Recommended:** confirm with the client which it is before merging RC-105, so both
+changes land together if (b).
+
+## Q-W14-11 · Metal tile profile renders and RAL swatch values for the tile grid · OPEN, opened 2026-09-15 (W14-18)
+
+**Shipped default: the tile grid as it is,** text colour chips and no profile
+image. RC-110's share of RC-118 is blocked on two missing inputs.
+
+**1. The renders.** RC-118 asks for Dasterum profile renders, unwatermarked. The
+only Dasterum file available to this run is a price list,
+`dasterum-pret-2026-08-07.xlsx`, with no images in it. The renders the audit saw
+(audit 5.4) are watermarked and sit on dasterum.md, which R-W fails outright. A
+supplier pack is an approved origin under the R-W amendment, but there is no pack
+to take them from.
+
+**2. The swatch values.** The ratified amendment to deviation 9 permits RAL chips in
+the tile grid, "sourced from the 15-code legend in the wave 14 audit". The legend
+holds a code and a name per entry, for example 7016M Gri antracit, and **no colour
+value**. RAL publishes no free official screen values; every hex value found online
+is someone's approximation, and Q-W14-08 (b) set the rule that swatch values are
+taken from the manufacturer, never estimated. A chip painted from an approximation
+would show a customer a colour the product may not have.
+
+**What to send:** Dasterum's product pack for Monterrey, Valencia, Kascad and the
+modular tile (unwatermarked profile images, 1:1, at least 960px), with written
+permission to use them, and the screen colour values Dasterum uses for its fifteen
+finishes. Both can be asked for in one message.
+
+**Options for the swatches, if Dasterum has no values:**
+
+  (a) **Keep text chips.** Honest, already live.
+  (b) **Approve a named approximation table** for the fifteen codes, recorded as
+      approximate in DECISIONS.md, and accept that screen colour is indicative.
+
+**Recommended:** ask Dasterum for both; keep (a) until they answer.
+
+## Q-W14-12 · No licensed image honestly shows the carport families · OPEN, opened 2026-09-15 (W14-18)
+
+**Shipped default: the carport page stays text-only,** as before. RC-111's share of
+RC-118 is blocked because no licensed image found shows what the page describes.
+
+**What was searched.** Unsplash, free licence only, for carport, car shelter,
+polycarbonate carport, cantilever carport, arched carport, metal carport, modern
+carport and carport house. The results are mostly garages, timber pergolas under
+clay tile, and carports built into a brick house. The best near match is a flat
+steel carport on posts in a garden, with a car's maker badge in frame. Nothing
+shows a cantilever, a wall-anchored, an arched polycarbonate or an architectural
+carport. The one steel parking shelter found stands in a commercial car park and
+carries a company logo. Pexels and Pixabay were not searched: both need a browser
+session or an API key for search, which this run does not have.
+
+**Why stock does not fit here.** The page is organised by structure: five families
+(on posts, cantilever, wall-anchored, arched, architectural) and twelve models,
+each named for a configuration. An image under "Consolă" that shows posts on both
+sides tells the customer the wrong thing about the product. Filling one family and
+leaving four empty would also break the grid.
+
+**Options:**
+
+  (a) **Rapid Construct's own visualisations.** The company sells photoreal 3D
+      visualisation as a service; five family renders, 8:5, at least 1600px wide,
+      in one consistent scene. Provenance: produced by Rapid Construct.
+  (b) **The carport fabricator's renders,** with written permission, recorded as a
+      supplier pack under R-W.
+  (c) **Stock for the post-supported family only,** leaving the other four as text.
+
+**Recommended: (a).** It shows exactly the five structures, in one visual style, and
+it is the company's own work.
+
+## Q-W14-14 · Where the RC photo only placeholders go, when their sections do not exist on the site · OPEN, opened 2026-09-15 (W14-19)
+
+**Shipped default: the manifest only,** `docs/assets/PENDING-PHOTOS.md`, and no
+placeholder on any page.
+
+RC-119 asks for a neutral branded placeholder in every slot the audit classes RC
+photo only, with the slot ID in a data attribute, while before/after and portfolio
+data stay empty so those sections do not render. This is what the site has for
+those slots:
+
+| Group | Slots | On rapidconstruct.md today |
+|---|---|---|
+| Before/after | 8 | the section exists, empty by design; the card keeps it hidden |
+| Roofing portfolio | 7, plus galleries | exists; 5 already show client photos |
+| Roofing hero video | 1 | no such section |
+| Video testimonials | 13 | no such section; reviews are text |
+| Crew portrait | 1 | no such section |
+| Fences: portfolio, video, reviews, team, manager | 30 | no such sections; the fence page shows nothing yet (Q-W14-09) |
+| Carport cross-sell | 3 | no such section |
+
+Every slot is in a hidden section, already filled, or in a section that does not
+exist. A placeholder therefore needs its section built first: a heading, a layout,
+and on the fence page 30 grey tiles on an otherwise empty page. The headings would
+be new copy, and a placeholder a visitor can see reverses master plan section 7.
+
+**Options:**
+
+  (a) **Manifest only** (shipped). Each section is built when its photos arrive.
+  (b) **Visible placeholder sections** on the live pages, with a heading you supply
+      for each section.
+  (c) **One unlisted review page** (noindex, linked from nowhere, like the held
+      photos under /review/) that shows every pending slot as a branded
+      placeholder tile with its slot ID, for the photographer as a visual brief.
+
+**Recommended: (a),** with (c) if the photographer wants to see the shapes.

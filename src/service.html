@@ -155,7 +155,9 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
       <div>
         <p class="eyebrow">{{services.eyebrow}}</p>
         <h1>{{svc.title}}</h1>
-        <p class="hero__sub" style="margin: 16px 0 0;">{{svc.answer}}</p>
+        <div class="svc-answer">
+        {{svc.answer}}
+        </div>
         <div class="cta-row" style="justify-content: flex-start; margin-top: 32px;">
           <a class="btn btn--primary" href="#oferta">{{hero.ctaPrimary}}</a>
         </div>

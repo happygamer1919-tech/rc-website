@@ -20,6 +20,10 @@
    and the hostname matcher must pass its own self-test. A run that saw nothing
    fails; it never reads silence as a pass.
 
+   R-W amendment (W14-02b): "legacy, licence unverified" only for a file whose
+   path and sha256 match docs/assets/LEGACY-IMAGES.txt; every other image needs an
+   https licence URL or "supplier permission: ...".
+
    Usage:  node scripts/check-asset-provenance.js
    No dependencies. */
 
@@ -31,8 +35,14 @@ const TREE = 'public';
 const LEDGER = 'docs/assets/PROVENANCE.md';
 const IMAGE_EXT = /\.(png|jpe?g|webp|gif|svg|avif|ico|bmp|tiff?|heic)$/i;
 const BANNED = ['fatade3d.md', 'imperlux.md', 'dasterum.md'];
-const R_W_DATE = '2026-09-15';
-const UNRECORDED = 'unrecorded before R-W';
+/* R-W amendment, 2026-09-15 (W14-02b). Legacy status is a fingerprint: the path
+   AND sha256 must match docs/assets/LEGACY-IMAGES.txt, the images in f5e4eb6's
+   first parent. The list is committed because CI has no git history. */
+const LEGACY = 'legacy, licence unverified';
+const RETIRED = 'unrecorded before R-W';
+const LEGACY_LIST = 'docs/assets/LEGACY-IMAGES.txt';
+const LEGACY_COUNT = 149;
+const crypto = require('crypto');
 const HEADER = ['file', 'source url', 'licence', 'licence url', 'date'];
 
 const fail = (msg) => { console.error(`\nPROVENANCE CHECK FAILED: ${msg}\n`); process.exit(1); };
@@ -91,6 +101,13 @@ const images = [];
 })(TREE);
 if (images.length === 0) fail(`walked ${TREE}/ and found no images, so the walk itself is broken`);
 
+/* --- the legacy fingerprint list ------------------------------------------ */
+const legacyPath = path.join(ROOT, LEGACY_LIST);
+if (!fs.existsSync(legacyPath)) fail(`${LEGACY_LIST} is missing`);
+const legacy = new Map(fs.readFileSync(legacyPath, 'utf8').trim().split('\n').map((l) => { const [sha, file] = l.split(/\s+/); return [file, sha]; }));
+if (legacy.size !== LEGACY_COUNT) fail(`${LEGACY_LIST} lists ${legacy.size} images, expected ${LEGACY_COUNT}. The list is frozen; it never grows.`);
+const sha256 = (rel) => crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT, rel))).digest('hex');
+
 /* --- checks --------------------------------------------------------------- */
 const problems = [];
 const byFile = new Map();
@@ -104,9 +121,19 @@ for (const { line, c } of rows) {
   byFile.set(file, line);
   if (!fs.existsSync(path.join(ROOT, file))) problems.push(`${where} names ${file}, which does not exist`);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) problems.push(`${where} date "${date}" is not YYYY-MM-DD`);
-  const unrecorded = [source, licence, licenceUrl].some((v) => v.includes(UNRECORDED));
-  if (unrecorded && !(date < R_W_DATE)) {
-    problems.push(`${where} ${file} says "${UNRECORDED}" but is dated ${date}, on or after R-W`);
+  if ([source, licence, licenceUrl].some((v) => v.includes(RETIRED))) {
+    problems.push(`${where} ${file} uses the retired value "${RETIRED}"; legacy rows say "${LEGACY}"`);
+  }
+  const claimsLegacy = [licence, licenceUrl].some((v) => v.includes(LEGACY));
+  const onDisk = fs.existsSync(path.join(ROOT, file));
+  const isLegacy = onDisk && legacy.has(file) && legacy.get(file) === sha256(file);
+  if (claimsLegacy && !isLegacy) {
+    problems.push(`${where} ${file} says "${LEGACY}" but is not a legacy image with its original bytes (${legacy.has(file) ? 'bytes changed since f5e4eb6' : 'not in ' + LEGACY_LIST})`);
+  }
+  if (!claimsLegacy && onDisk && !isLegacy) {
+    if (!/^https:\/\/\S+/.test(licenceUrl) && !/^supplier permission:\s*\S/.test(licenceUrl) && !/^n\/a, generated in this repo/.test(licenceUrl)) {
+      problems.push(`${where} ${file} is not a legacy image, so its licence URL must be an https URL or "supplier permission: ..."; got "${licenceUrl}"`);
+    }
   }
   for (const host of hostsIn(source)) {
     const b = bannedHost(host);
@@ -118,6 +145,7 @@ unlisted.forEach((f) => problems.push(`${f} has no row in ${LEDGER}`));
 
 console.log(`walked ${TREE}/: ${images.length} images   ledger rows: ${rows.length}   banned hosts: ${BANNED.join(', ')}`);
 console.log(`matcher self-test: ${SELF_TEST.length} of ${SELF_TEST.length} passed`);
+console.log(`legacy fingerprints: ${legacy.size} (images present before f5e4eb6)`);
 if (problems.length) {
   console.error(`\n${problems.length} problem(s):`);
   problems.forEach((p) => console.error('  ' + p));

@@ -284,7 +284,11 @@ const RELATED = require('./content/related-services.json');
 // page to open on what the service IS. The one-liner is not lost — it still
 // carries the meta description, og:description, the homepage card and the
 // Service schema.
-const svcAnswer = (l, slug) => esc(l.strings[`svcContent.${slug}.answer`]);
+// W14-03. An answer may hold several lines (T-08, T-09); each renders as its own
+// paragraph. A one-line answer renders exactly as before.
+const svcAnswer = (l, slug) => l.strings[`svcContent.${slug}.answer`].split('\n')
+  .map((line) => line.trim()).filter(Boolean)
+  .map((line) => `<p class="hero__sub svc-answer__p">${esc(line)}</p>`).join('\n        ');
 
 /* A specification table, only where the page's own content already supports
    one. Six services have one; reparatii, proiectare-3d and industrial do not,
@@ -392,9 +396,12 @@ function serviceHeadVars(l, slug, i) {
   const candidates = [title + inCity + BRAND, title + BRAND, title];
   const metaTitle = candidates.find((c) => c.length <= TITLE_MAX) || candidates[2];
 
-  const coverage = l.strings['band.coverageLine'];
-  const withCoverage = `${desc} ${coverage}`;
+  // W14-05b. band.coverageLine left the locale files at W12-09 and is composed by
+  // coverageLine(l); reading it from l.strings returned undefined, and 18 live
+  // service descriptions ended in the word "undefined".
+  const withCoverage = `${desc} ${coverageLine(l)}`;
   const metaDesc = withCoverage.length <= DESC_MAX ? withCoverage : desc;
+  if (/\bundefined\b/.test(metaDesc)) die(`meta description for ${slug} (${l.code}) contains "undefined": ${metaDesc}`);
 
   // og:image is this service's own first real cover, not the site fallback.
   // A social card wants the work, not the logo.
@@ -1054,8 +1061,10 @@ function productHeadVars(l, p) {
   const lede = l.strings[`pages.${p.key}.lede`];
   const inCity = l.code === 'ro' ? ` în ${PRIMARY_CITY.ro}` : ` в ${PRIMARY_CITY.ru}`;
   const metaTitle = [title + inCity + BRAND, title + BRAND, title].find((c) => c.length <= TITLE_MAX) || title;
-  const withCoverage = `${lede} ${l.strings['band.coverageLine']}`;
-  return { metaTitle, metaDesc: withCoverage.length <= DESC_MAX ? withCoverage : lede };
+  const withCoverage = `${lede} ${coverageLine(l)}`;
+  const metaDesc = withCoverage.length <= DESC_MAX ? withCoverage : lede;
+  if (/\bundefined\b/.test(metaDesc)) die(`meta description for ${p.slug} (${l.code}) contains "undefined"`);
+  return { metaTitle, metaDesc };
 }
 
 // --- W12-01, the portfolio end tile -----------------------------------------
@@ -1350,7 +1359,6 @@ for (const l of loaded) {
       'svc.priceSection': PRICED_SLUGS.includes(slug) ? `<section class="section section--dark section--compact">
   <div class="container">
     <p class="eyebrow" data-reveal>${esc(l.strings['servicePage.priceH'])}</p>
-    <h2 data-reveal>${esc(l.strings['hero.priceTitle'])}</h2>
     <p class="lede" data-reveal style="color: #FFFFFF; opacity: 0.75;">${esc(l.strings['hero.priceLine1'])}</p>
   </div>
 </section>` : '',

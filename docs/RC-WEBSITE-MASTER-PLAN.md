@@ -135,7 +135,7 @@ No photo. Left-aligned or centred, single column.
 - h1: existing headline, reworded to uppercase.
 - One-sentence subhead from existing copy.
 - Stat row, four items: 500+ proiecte, 15+ ani, 30 ani garanție scrisă, 4.9/5 din 250+ recenzii. Numerals in `--brand`, static, no count-up.
-- Price box, bordered, `--brand` left border 4px: the published per-m² figures and the standing offer (minus 10% early booking, ~~0% installments on roofing~~ **AMENDED: removed under ruling R-X, W14-14, `docs/rulings/R-X.md`**, 160 lei/m² frozen for 2026).
+- Price box, bordered, `--brand` left border 4px: the published per-m² figures and the standing offer (minus 10% early booking, ~~0% installments on roofing~~ **AMENDED: removed under ruling R-X, W14-14, `docs/rulings/R-X.md`**, ~~160 lei/m² frozen for 2026~~ **AMENDED: removed by W14-05 (RC-105), a STOP card merged by the owner; see DECISIONS.md W14-05**).
 - Two CTAs: "Solicită ofertă gratuită" (filled), "Sună acum" (outline).
 
 ### 5.3 Services — `--bg-grey`
@@ -201,7 +201,7 @@ Technical spec for every supplied photo:
 - Landscape only for grid and cover slots. Vertical phone photos are unusable there.
 - JPG, compressed under 400KB after processing.
 - No watermarks, no third-party logos, no date stamps, no people's faces without permission.
-- Real Rapid Construct work only. If a slot has no real photo, the slot is removed rather than filled with stock.
+- ~~Real Rapid Construct work only. If a slot has no real photo, the slot is removed rather than filled with stock.~~ **AMENDED: proof slots only, DECISIONS.md W14-18. The owner's wave 14 close-out dispatch lets product and explanation slots take licensed stock or visualisations: the four roofing offer cards, the metal tile profiles and the carport images, each file with its provenance row under R-W. Proof slots (before/after, portfolio, testimonials, team) stay real Rapid Construct work only. A slot with no permitted image is still removed rather than filled.**
 
 ---
 

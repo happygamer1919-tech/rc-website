@@ -1216,6 +1216,10 @@ p { margin: 0; }
 }
 
 /* --- service pages --------------------------------------------------------- */
+/* W14-03. The service answer under the H1, one paragraph per line. Two classes
+   deep so the 768px `.hero__sub` margin does not reach it. */
+.svc-answer .svc-answer__p { margin: 12px 0 0; }
+.svc-answer .svc-answer__p:first-child { margin-top: 16px; }
 .breadcrumb {
   display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
   font-size: 13px; color: var(--ink-muted); margin-bottom: 24px;

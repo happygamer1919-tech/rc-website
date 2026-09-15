@@ -3,23 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{svc.metaTitle}}</title>
-<meta name="description" content="{{svc.metaDesc}}">
-<meta name="robots" content="{{svc.robots}}">
+<title>{{prod.metaTitle}}</title>
+<meta name="description" content="{{prod.metaDesc}}">
+<meta name="robots" content="index, follow">
 <meta name="build-sha" content="{{buildSha}}">
-<link rel="canonical" href="{{svc.canonical}}">
-<link rel="alternate" hreflang="ro" href="{{svc.urlRo}}">
-<link rel="alternate" hreflang="ru" href="{{svc.urlRu}}">
-<link rel="alternate" hreflang="x-default" href="{{svc.urlRo}}">
+<link rel="canonical" href="{{prod.canonical}}">
+<link rel="alternate" hreflang="ro" href="{{prod.urlRo}}">
+<link rel="alternate" hreflang="ru" href="{{prod.urlRu}}">
+<link rel="alternate" hreflang="x-default" href="{{prod.urlRo}}">
 <meta property="og:type" content="website">
-<meta property="og:title" content="{{svc.metaTitle}}">
-<meta property="og:description" content="{{svc.metaDesc}}">
-<meta property="og:url" content="{{svc.canonical}}">
+<meta property="og:title" content="{{prod.metaTitle}}">
+<meta property="og:description" content="{{prod.metaDesc}}">
+<meta property="og:url" content="{{prod.canonical}}">
 <meta property="og:locale" content="{{meta.ogLocale}}">
-<meta property="og:image" content="{{svc.ogImage}}">
-<meta property="og:image:width" content="{{svc.ogImageW}}">
-<meta property="og:image:height" content="{{svc.ogImageH}}">
-<meta property="og:image:alt" content="{{svc.ogImageAlt}}">
+<meta property="og:image" content="{{ogImage}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{meta.ogImageAlt}}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F65308">
 <link rel="icon" href="{{base}}/favicon-512.png" sizes="512x512" type="image/png">
@@ -35,10 +35,10 @@
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "{{svc.title}}",
-  "description": "{{svc.desc}}",
-  "serviceType": "{{svc.title}}"{{svc.imageObjects}},
-  "url": "{{svc.canonical}}",
+  "name": "{{prod.title}}",
+  "description": "{{prod.lede}}",
+  "serviceType": "{{prod.title}}",
+  "url": "{{prod.canonical}}",
   "areaServed": [
 {{areaServedJson}}
   ],
@@ -64,10 +64,10 @@
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "{{servicePage.home}}", "item": "{{canonical}}" },
     { "@type": "ListItem", "position": 2, "name": "{{servicePage.all}}", "item": "{{servicesUrl}}" },
-    { "@type": "ListItem", "position": 3, "name": "{{svc.title}}" }
+    { "@type": "ListItem", "position": 3, "name": "{{prod.title}}" }
   ]
 }
-</script>{{svc.faqSchema}}
+</script>
 </head>
 <body>
 
@@ -99,9 +99,9 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
       </a>
       <a class="btn btn--primary" href="#oferta">{{header.cta}}</a>
       <div class="lang" data-lang="{{meta.lang}}">
-        <a class="lang__ro" href="{{svc.pathRo}}" hreflang="ro" aria-label="RO — Comută pe română">RO</a>
+        <a class="lang__ro" href="{{prod.pathRo}}" hreflang="ro" aria-label="RO — Comută pe română">RO</a>
         <span class="lang__sep" aria-hidden="true"></span>
-        <a class="lang__ru" href="{{svc.pathRu}}" hreflang="ru" aria-label="RU — Переключить на русский">RU</a>
+        <a class="lang__ru" href="{{prod.pathRu}}" hreflang="ru" aria-label="RU — Переключить на русский">RU</a>
       </div>
     </div>
 
@@ -128,9 +128,9 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   <div class="mobile-panel__foot">
     <a href="tel:+37376837180">{{header.phone}}</a>
     <div class="lang" data-lang="{{meta.lang}}">
-      <a class="lang__ro" href="{{svc.pathRo}}" hreflang="ro" aria-label="RO — Comută pe română">RO</a>
+      <a class="lang__ro" href="{{prod.pathRo}}" hreflang="ro" aria-label="RO — Comută pe română">RO</a>
       <span class="lang__sep" aria-hidden="true"></span>
-      <a class="lang__ru" href="{{svc.pathRu}}" hreflang="ru" aria-label="RU — Переключить на русский">RU</a>
+      <a class="lang__ru" href="{{prod.pathRu}}" hreflang="ru" aria-label="RU — Переключить на русский">RU</a>
     </div>
   </div>
 </div>
@@ -140,7 +140,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
 {{promoBar}}
 <main id="continut">
 
-<!-- 1 · Service hero, illustration on #141414 -->
+<!-- 1 · Page hero, W14-16. Breadcrumb, H1, one line, CTA; the block follows. -->
 <section class="section section--light svc-hero">
   <div class="container">
     <nav class="breadcrumb" aria-label="{{servicePage.breadcrumbAria}}">
@@ -148,37 +148,19 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
       <span aria-hidden="true">/</span>
       <a href="{{servicesHref}}">{{servicePage.all}}</a>
       <span aria-hidden="true">/</span>
-      <span aria-current="page">{{svc.title}}</span>
+      <span aria-current="page">{{prod.title}}</span>
     </nav>
-
-    <div class="svc-hero__grid">
-      <div>
-        <p class="eyebrow">{{services.eyebrow}}</p>
-        <h1>{{svc.title}}</h1>
-        <div class="svc-answer">
-        {{svc.answer}}
-        </div>
-        <div class="cta-row" style="justify-content: flex-start; margin-top: 32px;">
-          <a class="btn btn--primary" href="#oferta">{{hero.ctaPrimary}}</a>
-        </div>
-      </div>
-      {{svc.media}}
+    <p class="eyebrow">{{services.eyebrow}}</p>
+    <h1>{{prod.title}}</h1>
+    <p class="hero__sub" style="margin: 16px 0 0;">{{prod.lede}}</p>
+    <div class="cta-row" style="justify-content: flex-start; margin-top: 32px;">
+      <a class="btn btn--primary" href="#oferta">{{hero.ctaPrimary}}</a>
     </div>
   </div>
 </section>
 
-<!-- 2b · What it includes. Present only where the page's own content
-     already supports a table; three services legitimately have none. -->
-{{svc.table}}
-
-<!-- 3 · Pricing. Provisional: only on the five priced services. -->
-{{svc.priceSection}}
-
-<!-- 4 · Projects. Omitted entirely when nothing renderable exists. -->
-{{svc.gallerySection}}
-
-<!-- 4b · FAQ, sibling links and the updated date. -->
-{{svc.faqSection}}
+<!-- 2 · The block that moved off the homepage (W14-16) -->
+{{prod.block}}
 
 <!-- 5 · CTA, the same form as the homepage -->
 <section class="section section--light section--divided" id="oferta">
@@ -190,9 +172,9 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     <div class="form-layout" style="margin-top: 40px;">
       <form class="form-card form-card--stack" id="quote-form" method="POST" action="{{formAction}}" novalidate data-armed="{{formArmed}}" data-ok="{{form.ok}}" data-fail="{{form.fail}}"{{demoAttr}}>
         <input type="hidden" name="access_key" value="{{formEndpoint}}">
-        <input type="hidden" name="subject" value="{{svc.subject}}">
+        <input type="hidden" name="subject" value="{{prod.subject}}">
         <input type="hidden" name="from_name" value="Rapid Construct">
-        <input type="hidden" name="serviciu" value="{{svc.title}}">
+        <input type="hidden" name="serviciu" value="{{prod.title}}">
         <div class="honeypot" aria-hidden="true"><label for="botcheck">{{form.honeypotLabel}}</label><input id="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></div>
 
         <h3>{{form.cardTitle}}</h3>
@@ -271,7 +253,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         </div>
         <div>
           <p class="footer__heading">{{footer.servicesHeading}}</p>
-          <div class="footer__links">{{svc.footerLinks}}</div>
+          <div class="footer__links">{{prod.footerLinks}}</div>
         </div>
       </div>
       <div>

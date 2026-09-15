@@ -3810,6 +3810,75 @@ byte-identical.
 Lighthouse, desktop, localhost, as shipped: **RO 99 / 100 / 100 / 100, RU 99 / 100 /
 100 / 100**.
 
+## W14-05 · The frozen price is removed, STOP, PR only, 2026-09-15
+
+**Card RC-105.** **STOP: pull request only, not self-merged.** It edits strings
+that feed the meta description's neighbours, the homepage hero and every page
+footer, and it is in the dispatch's STOP set. Cut from `main` at ab7426c, after
+every SELF card of wave 14 had merged, so it applies cleanly.
+
+### Every occurrence, removed
+
+The card names the string "preț înghețat 160 lei/m² pentru 2026" and its RU
+counterpart. The same claim also exists in the other word order, as
+`hero.priceTitle`; it is the same frozen-price claim and goes too.
+
+| Key | RO before | RU before | Renders on |
+|---|---|---|---|
+| `hero.highlights.2` | preț înghețat 160 lei/m² pentru 2026 | цена 160 лей/м² заморожена на 2026 год | the dark hero card, both homepages |
+| `footer.offer` | −10% la programări anticipate · preț înghețat 160 lei/m² pentru 2026 | the RU equivalent | every page footer, homepage and all 18 service pages |
+| `hero.priceTitle` | 160 lei/m² preț înghețat pentru 2026 | 160 лей/м² цена заморожена на 2026 год | the price box h2 on the five priced service pages, both locales |
+
+After: `footer.offer` reads "−10% la programări anticipate" and "−10% при ранней
+записи". Zero occurrences of either phrase remain in `dist/`, the locale files,
+`src/` or `build.js`.
+
+### Components removed with them, as the card directs
+
+1. **The third hero highlight.** The frozen price was its sole content, so its
+   `<li>` is removed. After RC-114 removed the instalment line, the hero card now
+   carries one highlight: the early-booking discount.
+2. **The price box heading on the five priced service pages** (case-la-cheie,
+   acoperișuri, fațade, reparații, finisaje), both locales, ten pages. The h2 was
+   `hero.priceTitle` and nothing else, so the h2 is removed. **The price box
+   itself stays**, with its eyebrow and the discount line, which are not the
+   frozen price.
+
+### Not touched, and why
+
+- **The meta description, og:description and JSON-LD description** carry "de la
+  160 lei/m²", and the homepage JSON-LD carries `"priceRange": "160 MDL/m²"`.
+  Neither contains the frozen string, so neither is an occurrence the card names.
+  Whether the figure itself should go is a different decision: Q-W14-10.
+- **`design/design-sections.html` and `design/design-handover.html`** carry a
+  "160 lei/m² preț fixat pentru 2026" variant. They are the original design
+  reference files, not built and not served.
+- **`DECISIONS.md` and `docs/QUESTIONS.md`** quote the string in past entries.
+  They are records, immutable under R-S.
+- **The master plan's standing offer** (line 138) is amended in place under R-R:
+  "160 lei/m² frozen for 2026" is struck and names this card.
+
+### Measured, locally, on the build as committed
+
+| Page | Before (ab7426c) | After |
+|---|---|---|
+| Homepage RO | 13,582 | **13,582** |
+| Homepage RU | 13,978 | **13,978** |
+| Service RO case-la-cheie | 5,604 | **5,542** |
+| Service RO fațade | 5,522 | **5,460** |
+| Service RU case-la-cheie | 5,711 | **5,649** |
+| Service RU fațade | 5,729 | **5,667** |
+| Service RU acoperișuri | 5,649 | **5,587** |
+| Service RU finisaje | 5,649 | **5,587** |
+
+The homepage does not move because the hero card stretches to its photo; each
+priced service page loses its 62px price heading.
+
+Lighthouse, desktop, localhost: **homepage RO 99 / 100 / 100 / 100, RU 99 / 100 /
+100 / 100, acoperișuri service page RO 98 / 100 / 100 / 100**.
+
+Gates: build, links, stale docs, provenance and scarcity all exit 0.
+
 ## W14 ratifications · The owner's rulings on the fourteen wave 14 deviations, 2026-09-15
 
 Recorded at the owner's instruction from the wave 14 close-out dispatch, before
@@ -3862,6 +3931,7 @@ Status metadata only, per R-S; no question body is edited.
 | Q-W14-08 | part (b) answered: RAL swatches permitted in the tile grid; part (a), prices, stays open |
 | Q-W14-10 | answered: the 160 lei/m² figure leaves the meta description and the price field (RC-105b). The question was opened on the RC-105 branch and exists only in PR #14, so its status is set there |
 
+ w14/rc-102-rw-amendment
 ## W14-02b · R-W amended: legacy status by fingerprint, approved origins, 2026-09-15
 
 **STOP: PR only.** It edits `docs/rulings/R-W.md`, in the STOP set. The amendment
@@ -3902,3 +3972,417 @@ repo` passes without a URL. It exists for files built by this repo's own scripts
 
 The first run of the bytes arm used `port-01.jpg`, whose row is `generated in
 this repo`, not legacy, so it correctly passed; the arm was rerun on a legacy row.
+
+## W14-15 · The header collapses at 1100px, and the nav tightens up to 1180px, 2026-09-15
+
+**Card RC-115. Closes Q-W14-05.** The hamburger header, which started at 768px,
+now starts at 1100px and below. Between 769 and 1100px the desktop nav used to
+overlap itself on the live site.
+
+### What moved
+
+- **From the 768px block to a new 1100px block, unchanged:** nav and actions
+  hidden, the mobile icons shown, the 80px header, the 56px pill and its scrolled
+  52px, the 40px and 36px logo, the mobile panel's top, and the 80px body spacer
+  (it is the header's height, so it moves with the header).
+- **`main.js`:** the open mobile panel now closes when the viewport widens past
+  1100px, not 768px.
+- **From the 1024px block to a new 1180px block, unchanged:** nav gap 20px, nav
+  type 16px, actions gap 12px.
+
+### Why the 1180px block exists, which the card did not ask for
+
+Collapsing at 1100px alone left the desktop nav overlapping just above it. Measured
+on the live site: RO overlapped at 1101 and 1120px, RU at 1101, 1120 and 1140px,
+by up to 16px (RO) and 28px (RU), and both were clean from 1160px. The tighter
+spacing the 1024px block already used is applied up to 1180px instead. Nothing new
+is chosen: same values, wider range. The breakpoint itself is exactly the card's.
+The 1024px block's `.header__phone span` rule is dropped: below 1100px the phone
+link it hid is itself hidden, so the rule was dead.
+
+### Tested
+
+Headless Chrome against the local build, **84 of 84**, both locales, at 769, 900,
+1024, 1099, 1100, 1101, 1120, 1140, 1160, 1179, 1180, 1280 and 1440px:
+
+- no two visible links or buttons in the header intersect (bounding boxes);
+- at 1100 and below the hamburger is shown, the nav hidden, the header 80px and the
+  body spacer 80px; above, the nav is shown, the hamburger hidden, 96px and 96px;
+- nothing in the header runs past the viewport;
+- at 900px the hamburger opens the panel with its five links, and widening the
+  window past 1100px closes it.
+
+The card's seven widths are all in the set; the six extra widths are the band the
+live measurement found.
+
+### Found while testing: a wave 14 regression in the hero, fixed separately
+
+The first run also asserted no page-wide horizontal overflow, and it failed on RU
+at 1099, 1100 and 1101px. The cause is not the header. The hero photo panel keeps a
+4:3 ratio and stretches to the guarantee card's height; W14-07 (RC-107) added a
+row to that card, so on RU at 1025 to 1149px the card grows to 430px and the photo
+becomes 573px wide in a 514px column, 35px past the viewport. The same build at
+e49e02e, before wave 14, is clean at those widths. It is fixed in its own change
+under RC-107, and this card's test asserts the header only.
+
+### Measured
+
+Heights at 1440px, all eight `verify-live.js` pages, identical to `main` at
+5e524ff: the header does not change at desktop width. Lighthouse, desktop,
+localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 / 100**.
+
+## W14-07b · Fix: the hero photo ran past the viewport after the social row landed, 2026-09-15
+
+**A wave 14 regression, found while testing W14-15, fixed under RC-107** because
+W14-07 caused it.
+
+**What visitors saw.** On the homepage between about 1025 and 1150px, the photo
+beside the guarantee card extended past the right edge of the window and the page
+scrolled sideways: by up to 35px in Russian, and by up to 37px in Romanian at
+1025 to 1040px.
+
+**Why.** The photo panel keeps a 4:3 ratio and stretches to the claim card's
+height. W14-07 added the 56px social row to the card, so the card grew, and the
+ratio then made the panel wider than its grid column. Measured on the live site
+at RU 1100px: column 514px, card 430px tall, panel 430px tall and 573px wide. The
+same page built at e49e02e, before wave 14, is clean at every width tested.
+
+**The fix.** `.hero-panels > .hero-panel-media { max-width: 100%; min-width: 0; }`.
+The panel is capped at its column; its stretched height stands; the photo crops
+with the `object-fit: cover` it already had. At 1440px nothing changes: the
+column is wide enough, so the panel is still exactly 4:3.
+
+### Tested
+
+| Build | Assertions | Result |
+|---|---|---|
+| With the fix | both locales, every 5px from 1025 to 1180: the panel inside its column and no page overflow; the panel still the card's height where the card is tallest; 1440 unchanged at 4:3, full column, card height; 1024 single column | **8 of 8** |
+| Live `main` without it, same test | | **6 of 8**, failing the overflow check in both locales |
+
+Heights at 1440px on all eight `verify-live.js` pages identical to `main`.
+Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 /
+100**.
+
+## W14-16 · The page split: tile grid, carports and fences get their own pages, 2026-09-15
+
+**Card RC-116.** Carries out the owner's overturn of wave 14 deviation 4. The
+metal tile grid, the carports and the fences leave the homepage for pages of
+their own, in both locales. The homepage keeps the offer cards and the
+before/after slot, and gains a compact row of three links to the new pages.
+
+### The pages
+
+| RO | RU | H1 | Carries |
+|---|---|---|---|
+| `/servicii/tigla-metalica/` | `/ru/servicii/tigla-metalica/` | Țiglă metalică / Металлочерепица | the W14-10 grid |
+| `/servicii/copertine/` | `/ru/servicii/copertine/` | Copertine / Навесы | the W14-11 chooser, models and steps |
+| `/servicii/garduri/` | `/ru/servicii/garduri/` | Garduri / Заборы | the W14-12 component, still empty (Q-W14-09) |
+
+Each is `src/product.html`, derived from `src/service.html`: same header, promo
+bar, quote form and footer; a breadcrumb, one H1, one line and a CTA; then the
+block. The block renderers are the same functions the homepage used, unchanged.
+Meta titles and descriptions follow the service-page rules (the longest title
+that fits 60 characters; the coverage line appended if it fits 155). The social
+image is the site default, since none of the three has its own photograph.
+
+### Copy for the new lines, and where it comes from
+
+- Tile grid lede and teaser: what the grid itself shows (grades, thickness,
+  working width, warranty, colours, list price; the four model names).
+- Carports lede and teaser: the five family names and the models section's own
+  line (made to the yard's dimensions, priced after measurement).
+- Fences lede: "Venim, măsurăm și îți facem oferta pentru gard", from the
+  homepage's existing "venim, măsurăm... ". The teaser only names the product;
+  nothing about fences can be claimed until Q-W14-09.
+
+### Flagged for ratification
+
+1. **STOP-set items touched under a SELF card.** New pages need their own
+   canonical, hreflang and sitemap entries, which R-V lists as STOP. The card
+   marks RC-116 SELF and says to add all three to the sitemap, so they shipped.
+2. **The fences page is in the sitemap while its block is empty,** because the
+   card says all three. It carries an H1, a line and the quote form.
+3. **Service pages enter the sitemap only with a real cover photograph; these
+   three enter unconditionally,** per the card.
+4. **`llms.txt` is unchanged.** The card did not ask for it.
+5. **The quote form's subject line uses a plain hyphen** where the service pages
+   use an em dash, per the dispatch's rule on dashes in code.
+
+### Tested
+
+| Suite | Result |
+|---|---|
+| Page split: all six pages 200, one H1 each matching the locale, canonical and og:url, hreflang and language switch, breadcrumb, form present, the right block and nothing else; sitemap entries with ro, ru and x-default; homepage free of every moved marker; four offer cards kept; three teaser links resolving, placed after the offer cards; no overflow at 390 | **68 of 68** |
+| The tile grid's own acceptance, run on its new pages (placement check adapted) | **90 of 90** |
+| The carports' own acceptance, run on their new pages (order now ends at the form) | **40 of 40** |
+
+### Measured
+
+| Page | Before (13,582 RO / 13,978 RU on main) | After |
+|---|---|---|
+| Homepage RO | 13,582 | **10,261** |
+| Homepage RU | 13,978 | **10,556** |
+| Țiglă metalică RO / RU | not a page | 3,647 / 3,698 |
+| Copertine RO / RU | not a page | 4,587 / 4,663 |
+| Garduri RO / RU | not a page | 2,298 / 2,298 |
+
+The homepage is still over its R-J budget; the new per-page budgets are RC-113's.
+Lighthouse, desktop, localhost: **homepage RO 99 / 100 / 100 / 100, RU 99 / 100 /
+100 / 100; tile grid, carports and fences RO pages 100 / 100 / 100 / 100 each**.
+
+## W14-03 · Section 1 copy, RO: T-02 to T-09, verbatim, 2026-09-15
+
+**Card RC-103. Closes Q-W14-02.** The eight strings from the close-out dispatch,
+applied exactly as given. Plain hyphens only; no string carries an em or en dash.
+
+| String | Where it lands | Key |
+|---|---|---|
+| T-02 | the dark guarantee card in the homepage hero: line 1 the heading, lines 2 and 3 the body | new `hero.claim.h2`, `hero.claim.line1`, `hero.claim.line2` |
+| T-03 | the materials note under "Materiale și utilaje" | `marquee.lead` |
+| T-04 | the services heading, "Ce oferim pentru tine" (uppercase by CSS) | `services.h2` |
+| T-05 | process card 03, "Casa e sub acoperiș." removed | `process.steps.2.line` |
+| T-06 | the case-la-cheie service answer, its closing sentence | `svcContent.case-la-cheie.answer` |
+| T-07 | the roofing service answer | `svcContent.acoperisuri.answer` |
+| T-08 | the 3D visualisation service answer, three lines | `svcContent.proiectare-3d.answer` |
+| T-09 | the installations service answer, four lines | `svcContent.instalatii.answer` |
+
+### Three things the strings needed from the build
+
+1. **T-02 got its own keys.** The guarantee card used to borrow
+   `trust.items.0.title`, `trust.items.0.line` and `trust.items.1.line`, which
+   also head the "Despre" trust grid. Rewriting those would have changed the trust
+   grid too. The card now reads `hero.claim.*`; the trust grid is untouched.
+2. **Both locale files must share keys** (`docs/CLAUDE.md` section 8, and
+   `build.js` refuses otherwise). The three new keys therefore exist in RU as
+   well, holding today's Russian strings, so the RU page does not change in this
+   card. RC-104 translates them.
+3. **A service answer may now carry several lines.** T-08 and T-09 are given as
+   separate lines; each renders as its own paragraph under the service H1, 16px
+   then 12px apart. A one-line answer renders exactly as before.
+
+**Not touched, and reported:** "Casa e sub acoperiș." also ends a row of the
+case-la-cheie service table ("Ce include o casă la cheie"). T-05 names process
+card 03 only, so the table row keeps it.
+
+### Tested
+
+Headless Chrome against the local build, **19 of 19**: each string verbatim at
+its place (T-08 as three paragraphs, T-09 as four); the trust grid's first two
+titles and line unchanged; no em or en dash; the RU guarantee card, materials
+note, services heading, step 03 and 3D answer unchanged; and, because the
+guarantee card is now taller, no horizontal overflow at any width from 1025 to
+1180px in either locale (the W14-07b hazard) and none at 390px.
+
+### Measured
+
+| Page | Before (7b9ffe6) | After |
+|---|---|---|
+| Homepage RO | 10,261 | **10,300** |
+| Homepage RU | 10,556 | 10,556 |
+| Service pages measured by `verify-live.js` | unchanged | unchanged |
+
+Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 /
+100**.
+
+## W14-05b · The 160 lei/m² figure leaves the meta description and the price field, folded into #14, 2026-09-15
+
+**Card RC-105b. Closes Q-W14-10.** The owner overturned deviation 13: the figure
+goes too. Folded into PR #14 and merged with it at the owner's instruction.
+
+### Removed
+
+| Place | Before | After |
+|---|---|---|
+| `meta.description` RO, which also fills og:description and the homepage JSON-LD `description` | "... Garanție scrisă până la 30 de ani, de la 160 lei/m²." | "... Garanție scrisă până la 30 de ani." |
+| `meta.description` RU | "... Письменная гарантия до 30 лет, от 160 лей/м²." | "... Письменная гарантия до 30 лет." |
+| Homepage JSON-LD `GeneralContractor` | `"priceRange": "160 MDL/m²"` | removed; `currenciesAccepted` stays, it is not a price |
+
+After: zero occurrences of "160 lei", "160 лей", "160 MDL", `priceRange` or the
+frozen phrase anywhere in `dist/`.
+
+### Found on the way, fixed in the same field: service descriptions ended in "undefined"
+
+Checking the descriptions on every page turned up a defect that is **live and
+older than wave 14**. Since W12-09 (2026-09-06) moved `band.coverageLine` out of
+the locale files into `coverageLine(l)`, `serviceHeadVars` still read it from
+`l.strings` and got `undefined`. Every service description that fit 155
+characters shipped ending in the word "undefined", on the live site and in
+og:description; W14-16 copied the same line into the product pages.
+
+Fixed in `build.js` for both: the description uses `coverageLine(l)`, and the
+build now fails if any description contains "undefined". With the real coverage
+line appended most descriptions exceed 155 characters and fall back to the
+service's own description, which is the rule W9-07 wrote. After: zero pages whose
+description or og:description contains "undefined".
+
+**Flagged for ratification:** this touches og:description, which is in the R-V STOP
+set, inside a PR the owner authorised merging for the same field.
+
+### Measured, locally
+
+Homepage heights barely move (the removed hero highlight sits inside a card
+stretched to its photo); each priced service page is 62px shorter from W14-05's
+removed heading. Lighthouse, desktop, localhost, on this branch: **homepage RO 99 /
+100 / 100 / 100, RU 99 / 100 / 100 / 100, acoperișuri service page 100 / 100 / 100
+/ 100**. The description fix changes text only; Lighthouse's meta-description
+audit checks presence, not wording.
+
+## W14-04 · Section 1 copy, RU parity, 2026-09-15
+
+**Card RC-104.** The RC-103 strings translated into the RU locale, in the register
+of the existing Russian copy: formal "вы", plain verbs, no superlatives the RO
+strings do not carry. Nothing is added that the RO string does not say.
+
+| String | RU |
+|---|---|
+| T-02 heading | Строим для сегодняшнего дня. Гарантируем на завтра. |
+| T-02 lines | 30 лет гарантии, прямо в договоре. / Проверенные материалы, надёжные производители и решения, подобранные для вашего дома. |
+| T-03 | Мы испробовали десятки вариантов и остановились на нынешних материалах и технике. При этом конечный производитель и итоговое решение складываются в предложении, где всё подстраивается под бюджет и видение клиента. |
+| T-04 | Что мы предлагаем для вас |
+| T-05 | Ставим деревянную конструкцию, черепицу и дымоход. ("Дом под крышей." removed) |
+| T-06 | Мы координируем бригады. Вы наслаждаетесь результатом. |
+| T-07 | the roofing answer, one paragraph |
+| T-08 | the 3D answer, three lines |
+| T-09 | the installations answer, four lines, ending "Мы монтируем. Вы наслаждаетесь комфортом." |
+
+Two word choices, for ratification: T-09's "Noi instalăm" is rendered "Мы
+монтируем" (the verb the RU site already uses for installation work) rather than a
+literal "устанавливаем"; T-07's "de la șarpantă și învelitoare până la ultimele
+finisaje" is "от стропильной системы и покрытия до финальной отделки", matching the
+roofing FAQ's existing terms.
+
+### Tested
+
+Headless Chrome against the local build, **17 of 17**: every RU string verbatim at
+its place (T-08 three paragraphs, T-09 four), the RU trust grid untouched, no em
+or en dash, the RO guarantee heading, services heading and 3D answer unchanged,
+and no horizontal overflow from 1025 to 1180px or at 390px in either locale.
+
+### Measured
+
+| Page | Before (8b45bcf) | After |
+|---|---|---|
+| Homepage RO | 10,300 | 10,300 |
+| Homepage RU | 10,556 | **10,595** |
+| Service RU acoperișuri | 5,649 | **5,630** |
+| Other measured service pages | unchanged | unchanged |
+
+Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 / 100**.
+
+## W14-18 · Offer card images from licensed stock; tile renders and carport images blocked, 2026-09-15
+
+**Card RC-118.** The dispatch directs RC-108 and RC-111 to licensed stock or
+visualisations and RC-110 to Dasterum profile renders plus RAL chips. What shipped
+is the part an honest image exists for: the four acoperișuri offer cards. The other
+two groups are blocked, each with its own question.
+
+### What shipped
+
+| Card | Offer | Image | Photographer, Unsplash | Why it fits |
+|---|---|---|---|---|
+| 01 | Slate replaced with metal tile | Timber house under an old corrugated slate roof | Margo Evardson, DoGXMRfoxM4 | shows the roof the offer replaces |
+| 02 | Slate replaced with shingle | Brick house under an old corrugated slate roof | wow aram, -1juH9ot-Gs | the same, a second house |
+| 03 | Turnkey roof, metal tile | Dark metal tile, close | Lukáš Patúc, azwc0NpuzTY | shows the covering the offer fits |
+| 04 | Turnkey roof, shingle | Grey asphalt shingle, close | Hal Gatewood, 9u5r1XbtMJg | the same |
+
+**The selection rule.** An image shows either the roof the card replaces or the
+covering it fits, and carries no brand mark, logo or readable plate. Rejected on
+that rule: shingle tear-offs (they show shingle, not slate, being removed), a
+worker carrying shingle bundles (TRIBUILT and shingle maker marks), a roofer on a
+clay tile roof behind Layher scaffolding and a RAW membrane pack, glazed ceramic
+tiles, and a Japanese car park shelter carrying a company logo.
+
+Every file went through `scripts/process-photos.js` (centre crop to 0.81:1, 600x740
+and 1200x1480). One warning, accepted: the card 03 source is portrait, which suits
+a portrait slot. `offer-roof-01@2x.jpg` needed quality 40 to fit 400 KB; inspected
+at full size, no visible artefacts. Eight provenance rows name the photo page, the
+photographer, the Unsplash License and https://unsplash.com/license.
+
+**Alt text, both locales,** describes what the photograph shows and claims nothing
+else. Written for this card; there is no supplied string to take it from.
+
+| Card | RO | RU |
+|---|---|---|
+| 01 | Casă din lemn cu acoperiș vechi din ardezie ondulată | Деревянный дом со старой крышей из волнистого шифера |
+| 02 | Casă din cărămidă cu acoperiș vechi din ardezie ondulată | Кирпичный дом со старой крышей из волнистого шифера |
+| 03 | Țiglă metalică închisă la culoare, de aproape | Тёмная металлочерепица крупным планом |
+| 04 | Șindrilă bituminoasă gri, de aproape | Серая битумная черепица крупным планом |
+
+### Section 7 amended in place (R-R)
+
+"Real Rapid Construct work only, no stock" was stated in three places and the
+dispatch supersedes it for product slots. Each now carries an inline amendment
+naming this entry: master plan section 7, `docs/CLAUDE.md` section 7, and the
+photo manifest's per-file rule. Proof slots (before/after, portfolio,
+testimonials, team) stay real work only, and a slot with no permitted image is
+still removed rather than filled.
+
+### Blocked
+
+- **RC-110, tile renders and RAL chips: Q-W14-11.** No Dasterum pack exists to
+  take renders from; the only Dasterum file is a price list. The audit's legend
+  holds codes and names, no colour values, and RAL publishes no free official
+  screen values, so a swatch would be an estimate. Text chips stay.
+- **RC-111, carport images: Q-W14-12.** No licensed image found shows the five
+  structural families. Unsplash searched on eight queries; Pexels and Pixabay
+  return 403 to a script and were not searched. Recommended: Rapid Construct's own
+  visualisations.
+
+### Tested
+
+Headless Chrome against the local build, **56 of 56**, both locales: four images,
+each in the card whose description matches its offer, `src` and the 2x `srcset`,
+alt verbatim, width 600 and height 740, lazy, file loaded, drawn undistorted; no
+horizontal overflow at 390, 768, 1024, 1100, 1280 and 1440px.
+
+Negative arms, on a copy of the tree: removing the `offer-roof-03@2x.jpg` row fails
+the provenance gate, exit 1; emptying the RU alt for card 04 fails the build
+("empty strings: ru:roofOffers.items.3.alt").
+
+### Measured
+
+| Page | Before (f5800a8) | After |
+|---|---|---|
+| Homepage RO | 10,300 | **10,447** |
+| Homepage RU | 10,595 | **10,747** |
+| Product pages, both locales | unchanged | unchanged |
+
+The cards gain their image column, so the homepage grows about 150px. It was
+already over R-J and is re-budgeted in RC-113.
+
+Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100** (LCP 923 ms, CLS 0.002),
+**RU 99 / 100 / 100 / 100** (LCP 925 ms, CLS 0.012).
+
+## W14-19 · The pending photo manifest; the placeholders have nowhere to go, 2026-09-15
+
+**Card RC-119.** Two deliverables: a manifest of every slot the wave 14 audit
+classes RC photo only, and a neutral branded placeholder in each of those slots,
+with before/after and portfolio data left empty so those sections stay hidden.
+
+**Shipped: `docs/assets/PENDING-PHOTOS.md`.** One row per slot, 63 slots plus the
+roofing galleries, matching audit 5.5's count (30 roofing, 30 fences, 3 carports).
+Each row gives the slot ID, the page on rapidconstruct.md, whether a component
+exists to show it today, what the photo must show, and the aspect. Where the site
+already has the slot, the row uses the site's own figures: 1180:664 for
+before/after (W14-09), 4:3 for project covers (W9-04).
+
+**Two facts the manifest records.** Roofing portfolio slots F-PORT-1 to 5 are
+already filled: client photos render as `proj-acoperisuri-01-cover` to `05-cover`.
+And `content/projects.json` is not empty: it holds real client covers across nine
+services. Emptying it would take proof off live pages, so "portfolio data files
+stay empty" is read as no new portfolio entry without a real photo. Nothing in it
+changed.
+
+**Blocked: the placeholders, Q-W14-14.** Of the 63 slots, 8 sit in the before/after
+section the card keeps hidden, 7 in a portfolio that already shows real photos,
+and the other 48 in sections that do not exist on the site: a roofing hero video,
+video testimonials, a crew portrait, the fence page's portfolio, video and team
+blocks, and a carport cross-sell. Putting a placeholder in any of those means
+building the section first, with a heading nobody has written, and `docs/CLAUDE.md`
+forbids invented copy. It would also reverse master plan section 7 as W14-18 left
+it: a slot with no permitted image is removed rather than filled. So no page
+changed.
+
+Gates: build, links, stale docs, provenance and scarcity all pass; the card adds no
+image and changes no page.
+ main

@@ -862,6 +862,12 @@ p { margin: 0; }
 }
 .hero-claim__highlights li + li { margin-top: 4px; }
 .hero-panel-media { border-radius: var(--radius-card); border: 1px solid var(--line); overflow: hidden; }
+/* W14-07 fix. The panel keeps a 4:3 ratio and stretches to the claim card's
+   height, so when the card grows (W14-07 added the social row) the ratio pushed
+   the panel wider than its column: 573px in a 514px column on RU at 1100px, 35px
+   past the viewport. Capping it at the column lets the stretched height stand and
+   the photo crop with object-fit, as it already does. */
+.hero-panels > .hero-panel-media { max-width: 100%; min-width: 0; }
 /* contain, not cover. The illustration is 4:3 and the box is 4:3, so the two
    render identically today, but contain guarantees a future asset at a
    different ratio is letterboxed rather than silently cropped. */
@@ -1079,6 +1085,22 @@ p { margin: 0; }
 .fence__name { font-size: 20px; }
 .fence__line { margin: 8px 0 0; }
 
+/* --- W14-16, the homepage teaser row -------------------------------------- */
+/* Three link cards to the product pages, one row, compact: no section heading,
+   the section carries an aria-label. White cards with the line border and a
+   brand top edge, the same family as the offer cards above. */
+.section--teaser { padding: 48px 0; }
+.teasers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+.teaser {
+  display: flex; flex-direction: column; gap: 8px;
+  background: var(--bg-light); border: 1px solid var(--line); border-top: 4px solid var(--brand);
+  padding: 20px 24px; color: var(--ink);
+}
+.teaser:hover .teaser__title { color: var(--brand-dark); }
+.teaser__title { font-size: 20px; text-transform: uppercase; letter-spacing: 0; }
+.teaser__line { margin: 0; color: var(--ink-muted); }
+.teaser__more { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; font-weight: 700; color: var(--brand-dark); }
+
 /* --- 8. service illustration box ------------------------------------------ */
 /* Fixed 4:3 box, illustration centred and contained. The <img> always resolves
    because placeholder SVGs ship until the real ones land. */
@@ -1194,6 +1216,10 @@ p { margin: 0; }
 }
 
 /* --- service pages --------------------------------------------------------- */
+/* W14-03. The service answer under the H1, one paragraph per line. Two classes
+   deep so the 768px `.hero__sub` margin does not reach it. */
+.svc-answer .svc-answer__p { margin: 12px 0 0; }
+.svc-answer .svc-answer__p:first-child { margin-top: 16px; }
 .breadcrumb {
   display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
   font-size: 13px; color: var(--ink-muted); margin-bottom: 24px;
@@ -1225,6 +1251,39 @@ p { margin: 0; }
 }
 
 /* ==========================================================================
+   W14-15. Header: the desktop nav tightens at 1180px and collapses at 1100px
+   ========================================================================== */
+
+/* Between 1101 and 1180px the desktop nav did not fit at its full spacing: on
+   the live site the wordmark covered the first link and the last link ran into
+   the phone number, by up to 16px (RO) and 28px (RU) at 1101px. These are the
+   spacing values the 1024px block already used, moved up to where they are
+   needed. Nothing new is chosen. */
+@media (max-width: 1180px) {
+  .nav { gap: 20px; }
+  .nav a { font-size: 16px; }
+  .header__actions { gap: 12px; }
+}
+
+/* At 1100px and below the header collapses to the hamburger layout, which used
+   to start at 768px. Between 769 and 1100px the desktop nav overlapped itself on
+   the live site (Q-W14-05). These rules moved here unchanged from the 768px
+   block; the body spacer moves with them because it is the header's height. */
+@media (max-width: 1100px) {
+  body { padding-top: 80px; }
+  .nav, .header__actions { display: none; }
+  .header__mobile { display: flex; }
+  .icon-btn { display: inline-flex; }
+  .header { height: 80px; }
+  .header__pill { padding: 0 8px 0 16px; height: 56px; }
+  .header[data-scrolled="true"] .header__pill { height: 52px; }
+  /* Same 8px clearance as the desktop pill: 56 - 16 and 52 - 16. */
+  .header__logo img { height: 40px; }
+  .header[data-scrolled="true"] .header__logo img { height: 36px; }
+  .mobile-panel { top: 80px; }
+}
+
+/* ==========================================================================
    Tablet — 1024px and below: 3-col grids become 2-col, 5-col process becomes 3
    ========================================================================== */
 
@@ -1235,10 +1294,6 @@ p { margin: 0; }
   .grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grid--5 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   h1 { font-size: 44px; }
-  .nav { gap: 20px; }
-  .nav a { font-size: 16px; }
-  .header__actions { gap: 12px; }
-  .header__phone span { display: none; }
   .form-layout { grid-template-columns: minmax(0, 1fr); }
   .hero-panels { grid-template-columns: minmax(0, 1fr); }
   .footer__cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
@@ -1256,22 +1311,15 @@ p { margin: 0; }
     --gap: 16px;
   }
 
-  body { font-size: 16px; padding-top: 80px; }
+  body { font-size: 16px; }
   h1 { font-size: 32px; letter-spacing: -0.01em; }
   h2 { font-size: 26px; letter-spacing: 0; }
   h3 { font-size: 19px; }
 
-  .nav, .header__actions { display: none; }
-  .header__mobile { display: flex; }
-  .icon-btn { display: inline-flex; }
-  .header { height: 80px; }
-  .header__pill { padding: 0 8px 0 16px; height: 56px; }
-  .header[data-scrolled="true"] .header__pill { height: 52px; }
-  /* Mobile had no rule of its own and inherited the desktop 32px into a 56px
-     pill. Same 8px clearance as everywhere else: 56 - 16 and 52 - 16. */
-  .header__logo img { height: 40px; }
-  .header[data-scrolled="true"] .header__logo img { height: 36px; }
-  .mobile-panel { top: 80px; }
+
+  /* W14-16. Teaser cards stack. */
+  .teasers { grid-template-columns: minmax(0, 1fr); }
+  .section--teaser { padding: 40px 0; }
 
   /* W14-12. Fence cards, one column. */
   .fences { grid-template-columns: minmax(0, 1fr); }

@@ -131,7 +131,7 @@ const PAGES = [
 
 // Keys whose value is already HTML built by this file. Everything else is
 // escaped on substitution.
-const RAW_KEYS = new Set(['garduri', 'copertine', 'tiglaGrid', 'beforeAfter', 'roofOffers', 'socialRow',
+const RAW_KEYS = new Set(['productTeaser', 'beforeAfter', 'roofOffers', 'socialRow',
   // demoAttr is a whole attribute, ` data-demo="..."`, not an attribute value:
   // it is either present or absent. Its inner text is escaped where it is
   // built, so what lands here is already safe. Escaping it again turned the
@@ -283,7 +283,11 @@ const RELATED = require('./content/related-services.json');
 // page to open on what the service IS. The one-liner is not lost — it still
 // carries the meta description, og:description, the homepage card and the
 // Service schema.
-const svcAnswer = (l, slug) => esc(l.strings[`svcContent.${slug}.answer`]);
+// W14-03. An answer may hold several lines (T-08, T-09); each renders as its own
+// paragraph. A one-line answer renders exactly as before.
+const svcAnswer = (l, slug) => l.strings[`svcContent.${slug}.answer`].split('\n')
+  .map((line) => line.trim()).filter(Boolean)
+  .map((line) => `<p class="hero__sub svc-answer__p">${esc(line)}</p>`).join('\n        ');
 
 /* A specification table, only where the page's own content already supports
    one. Six services have one; reparatii, proiectare-3d and industrial do not,
@@ -391,9 +395,12 @@ function serviceHeadVars(l, slug, i) {
   const candidates = [title + inCity + BRAND, title + BRAND, title];
   const metaTitle = candidates.find((c) => c.length <= TITLE_MAX) || candidates[2];
 
-  const coverage = l.strings['band.coverageLine'];
-  const withCoverage = `${desc} ${coverage}`;
+  // W14-05b. band.coverageLine left the locale files at W12-09 and is composed by
+  // coverageLine(l); reading it from l.strings returned undefined, and 18 live
+  // service descriptions ended in the word "undefined".
+  const withCoverage = `${desc} ${coverageLine(l)}`;
   const metaDesc = withCoverage.length <= DESC_MAX ? withCoverage : desc;
+  if (/\bundefined\b/.test(metaDesc)) die(`meta description for ${slug} (${l.code}) contains "undefined": ${metaDesc}`);
 
   // og:image is this service's own first real cover, not the site fallback.
   // A social card wants the work, not the logo.
@@ -1006,6 +1013,59 @@ ${cards}
 `;
 }
 
+// --- W14-16, the product pages and the homepage teaser ------------------------
+
+/* Owner ruling on wave 14 deviation 4: the metal tile grid, the carports and the
+   fences leave the homepage for pages of their own, under the services root, in
+   both locales. Each page is src/product.html: breadcrumb, H1, one line, the
+   block, the quote form. The block renderers are the same functions the homepage
+   used; nothing about the blocks changes except where they render.
+
+   The homepage keeps the offer cards and the before/after slot, plus a compact
+   row of three links to these pages. All six URLs go in the sitemap, which the
+   owner's card asks for; the fences page is listed while its block is still
+   empty (Q-W14-09), because the card says all three. */
+const PRODUCT_PAGES = [
+  { slug: 'tigla-metalica', key: 'tigla', block: (l) => tiglaGrid(l), sources: ['content/tigla-metalica.json'] },
+  { slug: 'copertine', key: 'copertine', block: (l) => copertine(l), sources: ['content/copertine.json'] },
+  { slug: 'garduri', key: 'garduri', block: (l) => garduri(l), sources: ['content/garduri.json'] },
+];
+const PROD_RAW_KEYS = new Set([
+  'demoAttr', 'promoBar', 'areaServedJson', 'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
+  'prod.block', 'prod.footerLinks',
+]);
+const productTemplate = fs.readFileSync('src/product.html', 'utf8');
+const PROD_SOURCES = ['src/product.html', 'build.js', ...LOCALES.map((l) => l.file)];
+
+function productTeaser(l) {
+  const t = (k) => esc(l.strings[`pages.${k}`]);
+  const arrow = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+  const items = PRODUCT_PAGES.map((p, i) => `      <a class="teaser" href="${BASE}${SERVICES_ROOT[l.code]}${p.slug}/" data-reveal data-stagger="${i}">
+        <h3 class="teaser__title">${t(`${p.key}.title`)}</h3>
+        <p class="teaser__line">${t(`${p.key}.teaser`)}</p>
+        <span class="teaser__more">${esc(l.strings['services.linkLabel'])}${arrow}</span>
+      </a>`).join('\n');
+  return `<section class="section section--light section--divided section--teaser" aria-label="${t('teaserAria')}">
+  <div class="container">
+    <div class="teasers">
+${items}
+    </div>
+  </div>
+</section>
+`;
+}
+
+function productHeadVars(l, p) {
+  const title = l.strings[`pages.${p.key}.title`];
+  const lede = l.strings[`pages.${p.key}.lede`];
+  const inCity = l.code === 'ro' ? ` în ${PRIMARY_CITY.ro}` : ` в ${PRIMARY_CITY.ru}`;
+  const metaTitle = [title + inCity + BRAND, title + BRAND, title].find((c) => c.length <= TITLE_MAX) || title;
+  const withCoverage = `${lede} ${coverageLine(l)}`;
+  const metaDesc = withCoverage.length <= DESC_MAX ? withCoverage : lede;
+  if (/\bundefined\b/.test(metaDesc)) die(`meta description for ${p.slug} (${l.code}) contains "undefined"`);
+  return { metaTitle, metaDesc };
+}
+
 // --- W12-01, the portfolio end tile -----------------------------------------
 
 /* The seventh cell of the homepage portfolio grid. It is not a project and not
@@ -1248,9 +1308,7 @@ for (const l of loaded) {
   vars.supplierChips = renderSupplierChips(l, BASE);
   vars.heroPanelMedia = heroPanelMedia(l, BASE);
   vars.promoBar = promoBar(l);
-  vars.garduri = garduri(l);
-  vars.copertine = copertine(l);
-  vars.tiglaGrid = tiglaGrid(l);
+  vars.productTeaser = productTeaser(l);
   vars.beforeAfter = beforeAfter(l);
   vars.roofOffers = roofOffers(l);
   vars.socialRow = socialRow(l);
@@ -1300,7 +1358,6 @@ for (const l of loaded) {
       'svc.priceSection': PRICED_SLUGS.includes(slug) ? `<section class="section section--dark section--compact">
   <div class="container">
     <p class="eyebrow" data-reveal>${esc(l.strings['servicePage.priceH'])}</p>
-    <h2 data-reveal>${esc(l.strings['hero.priceTitle'])}</h2>
     <p class="lede" data-reveal style="color: #FFFFFF; opacity: 0.75;">${esc(l.strings['hero.priceLine1'])}</p>
   </div>
 </section>` : '',
@@ -1328,6 +1385,40 @@ for (const l of loaded) {
     fs.mkdirSync(path.dirname(out), { recursive: true });
     fs.writeFileSync(out, html);
     servicePages.push({ loc: SITE + BASE + SERVICES_ROOT[l.code] + slug + '/', lang: l.code });
+  }
+
+  // --- W14-16, the three product pages --------------------------------------
+  for (const p of PRODUCT_PAGES) {
+    const out = 'dist' + SERVICES_ROOT[l.code] + p.slug + '/index.html';
+    const title = l.strings[`pages.${p.key}.title`];
+    if (!REAL(title) || !REAL(l.strings[`pages.${p.key}.lede`])) die(`pages.${p.key}.title and .lede must be real in ${l.code}.`);
+    const head = productHeadVars(l, p);
+    const prodVars = {
+      ...vars,
+      'prod.title': title,
+      'prod.lede': l.strings[`pages.${p.key}.lede`],
+      'prod.metaTitle': head.metaTitle,
+      'prod.metaDesc': head.metaDesc,
+      'prod.canonical': SITE + BASE + SERVICES_ROOT[l.code] + p.slug + '/',
+      'prod.urlRo': SITE + BASE + SERVICES_ROOT.ro + p.slug + '/',
+      'prod.urlRu': SITE + BASE + SERVICES_ROOT.ru + p.slug + '/',
+      'prod.pathRo': BASE + SERVICES_ROOT.ro + p.slug + '/',
+      'prod.pathRu': BASE + SERVICES_ROOT.ru + p.slug + '/',
+      'prod.subject': `[${l.code.toUpperCase()}] ${title} - ${SERVICES_ROOT[l.code]}${p.slug}/`,
+      'prod.block': p.block(l),
+      'prod.footerLinks': SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
+        `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join(''),
+    };
+    const missing = new Set();
+    const html = productTemplate.replace(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/g, (_, key) => {
+      if (!(key in prodVars)) { missing.add(key); return `{{${key}}}`; }
+      return PROD_RAW_KEYS.has(key) ? prodVars[key] : esc(prodVars[key]);
+    });
+    if (missing.size) die(`src/product.html references unknown keys for ${l.code}/${p.slug}: ${[...missing].join(', ')}`);
+    if (html.includes('{{')) die(`unsubstituted placeholder survived in ${out}`);
+    fs.mkdirSync(path.dirname(out), { recursive: true });
+    fs.writeFileSync(out, html);
+    console.log(`wrote ${out}  (${(html.length / 1024).toFixed(1)} KB)`);
   }
 
   for (const page of PAGES) {
@@ -1381,6 +1472,13 @@ const servicePairs = SERVICE_SLUGS
     ru: SITE + BASE + SERVICES_ROOT.ru + sg + '/',
     lastmod: lastmodOf(...SVC_SOURCES, ...coversFor(sg)),
   }));
+// W14-16. The three product pages, always listed, per the owner's card.
+const productPairs = PRODUCT_PAGES.map((p) => ({
+  ro: SITE + BASE + SERVICES_ROOT.ro + p.slug + '/',
+  ru: SITE + BASE + SERVICES_ROOT.ru + p.slug + '/',
+  lastmod: lastmodOf(...PROD_SOURCES, ...p.sources),
+}));
+servicePairs.push(...productPairs);
 fs.writeFileSync('dist/sitemap.xml',
   '<?xml version="1.0" encoding="UTF-8"?>\n' +
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +

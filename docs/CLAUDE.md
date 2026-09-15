@@ -234,9 +234,13 @@ Photos are dropped into `photos-raw/` named by slot ID and processed with
 no slot and tells you what it nearly matched. **Nothing is ever skipped
 silently.**
 
-Real Rapid Construct work only. No stock. **If a slot has no real photo, the
-slot is removed rather than filled.**
-*Source: master plan section 7.*
+~~Real Rapid Construct work only. No stock.~~ **AMENDED, proof slots only
+(DECISIONS.md W14-18).** Before/after, portfolio, testimonial and team slots take
+real Rapid Construct work only, never stock. Product and explanation slots (the
+roofing offer cards, the metal tile profiles, the carport images) may take licensed
+stock or visualisations, each file with its R-W provenance row. **If a slot has
+no permitted image, the slot is removed rather than filled.**
+*Source: master plan section 7, amended by W14-18.*
 
 ---
 

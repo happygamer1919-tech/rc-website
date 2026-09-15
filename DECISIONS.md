@@ -4962,3 +4962,115 @@ overflow at 390 and 1440px.
 Ruling R-Y (#25, not merged) holds the carports budget at the text-only page; its
 amendment is owed when #25 merges. Lighthouse, desktop, localhost: **RO 100 / 100 / 100 / 100,
 RU 100 / 100 / 100 / 100**.
+
+## W15-02 · The Servicii dropdown: every service page in the header, no new target, 2026-09-15
+
+**Card RC-126. Closes Q-W14-15.** The desktop nav's Servicii link becomes a
+disclosure listing every service and product page. The header gains thirteen
+destinations and **no new target**, which is what Q-W14-15 said could not be done
+with a fifth flat link.
+
+Thirteen rows: the services overview (the link that was there before), the nine
+service pages, and the three product pages including `garduri`. Same interaction
+model as the catalog menu, one level deep, so no per-row chevron and no back
+button. Built by `serviciiMenu()` in `build.js`, one shared value reaching all
+three templates.
+
+**No copy is invented.** The toggle reuses `header.navServices`; the first row
+reuses it again as the overview link, which is the catalog's `--title` row
+pattern; every other row reuses a page title that already ships. Zero new locale
+strings in either locale.
+
+**Presence, not silence** (`docs/CLAUDE.md` section 13): the build fails if any
+label is not real, and fails if the row count is not the overview plus every
+service plus every product page. "Every service page reachable from the desktop
+header" is asserted by the build, not by inspection.
+
+### The caret, and why there is not one
+
+**Refused by measurement, not by taste.** A 14px caret with a 4px gap adds 18px to
+the nav. RU had **15px** of slack at 1280px and up before this card. Built with the
+caret, the header came out **3px over at 1280, 1440 and 1920px on all three
+templates**: 9 of 54 combinations failed, with no intersection yet, the nav simply
+squeezed below its natural width. The caret was removed, and the toggle is now
+exactly as wide as the link it replaced.
+
+So the disclosure has no visual affordance, which is a real loss against a flat
+link. **Q-W15-01** records it with the three measured alternatives and what each
+costs. Shipped default is the one that fits.
+
+### RC-121 step 3 is not reverted, and that is measured too
+
+The dispatch says to revert it **if slack permits**. It does not. The nav gap alone,
+20px back to 28px, is 8px across three gaps, **24px against RU's 15px**, before the
+16px to 17px font increase costs anything further. RO could afford it at 53px, but
+spending it only in RO would leave the two locales with headers of different font
+size and spacing, which no card has done and which this one will not start.
+**Step 1 and 2 label changes are kept**, as directed.
+
+### Slack per locale, measured
+
+Nine widths, both locales, three templates, headless Chrome against a local build.
+Slack is the pill's available inner width minus what its children need, with the
+nav measured at its **natural** width rather than its stretched one: the nav is
+`flex: 1 1 auto`, so summing its rendered box makes slack come out as zero at every
+width by construction. The instrument was validated by reproducing RC-121's own
+figures on unmodified main before it was used here.
+
+| | 769-1100 | 1180 | 1280, 1440, 1920 |
+|---|---|---|---|
+| RO, before (home) | 357-688 | 68 | 53 |
+| **RO, after (every template)** | 357-688 | **68** | **53** |
+| RU, before (home) | 353-684 | 31 | 15 |
+| **RU, after (every template)** | 353-684 | **31** | **15** |
+
+**The homepage is unchanged to the pixel: the menu costs no width.** At 1100px and
+below the desktop nav is collapsed and the toggle goes with it, as the link did.
+
+### What the card recovered on the service and product pages
+
+Those two templates read **tighter** than the homepage before this card, RO 49 and
+RU 13 at 1280px, because their nav marked Servicii `aria-current="page"`, and
+`font-weight: 700` is wider than the plain label. A disclosure button is not a page,
+so the marker is gone and all three templates now read alike. **For ratification:**
+the current-page marker no longer appears on Servicii when a service or product
+page is open. The rule that draws it, `.nav a[aria-current='page']`, is untouched
+and still marks any other nav link.
+
+### Heights: nothing moved
+
+Local A/B at 1440px across ten pages, reveals applied and settled per
+`docs/CLAUDE.md` section 2, built from this branch and from main in the same run.
+**All ten identical.** No R-Y amendment is owed. The local figures also match R-Y's
+live amendment exactly where they overlap, which is corroboration of both.
+
+### Tested
+
+**76 of 76 behaviour assertions**, headless Chrome, driving the real thing rather
+than reading the markup: RO and RU home at 1280, RO product at 1280, RU service at
+1440, plus both locales at 1024. Per page: the toggle's accessible name in that
+locale, `aria-controls` resolving to the panel, collapsed at rest, thirteen rows,
+the hidden panel's links at zero size so they are out of the tab order, click
+opens, all thirteen visible with real hrefs, no horizontal overflow with the panel
+open, the panel inside the viewport, Escape closes **and returns focus to the
+toggle**, outside click closes, opening the catalog closes this and opening this
+closes the catalog, and resize closes. At 1024 the toggle is collapsed with the nav
+and the mobile panel still carries its five links.
+
+**54 of 54 header-fit combinations**: zero pairwise intersections, slack at or above
+zero, no horizontal scroll, at 769, 900, 1024, 1099, 1100, 1180, 1280, 1440 and
+1920px on three templates in both locales. Pairwise rather than overflow on
+purpose: a flex child slides under its neighbour without `scrollWidth` ever
+exceeding `clientWidth`.
+
+### Gates
+
+Six pass: build, links, stale docs, provenance, scarcity, origin.
+
+**Lighthouse (gate 5) NOT RUN, and not claimed.** There is no lighthouse binary on
+this machine and the repo has no dependencies by design, so the floors could not be
+measured. This card changes a link into a button with `aria-expanded`,
+`aria-controls` and a hidden thirteen-link panel, which is exactly the shape that
+can move an accessibility score, so the behaviour above was asserted directly
+instead. That is evidence about the mechanism, **not** a Lighthouse score, and it is
+recorded as unverified rather than passed, per `docs/CLAUDE.md` section 13.

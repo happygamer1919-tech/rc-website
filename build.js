@@ -132,7 +132,7 @@ const PAGES = [
 
 // Keys whose value is already HTML built by this file. Everything else is
 // escaped on substitution.
-const RAW_KEYS = new Set(['catalogMenu', 'productTeaser', 'beforeAfter', 'roofOffers', 'socialRow',
+const RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu', 'productTeaser', 'beforeAfter', 'roofOffers', 'socialRow',
   // demoAttr is a whole attribute, ` data-demo="..."`, not an attribute value:
   // it is either present or absent. Its inner text is escaped where it is
   // built, so what lands here is already safe. Escaping it again turned the
@@ -144,7 +144,7 @@ const RAW_KEYS = new Set(['catalogMenu', 'productTeaser', 'beforeAfter', 'roofOf
   ...Array.from({ length: 9 }, (_, i) => `svcMedia${i}`),
 ]);
 // Same idea for the service-page template.
-const SVC_RAW_KEYS = new Set(['catalogMenu',
+const SVC_RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu',
   'demoAttr', 'svc.imageObjects', 'svc.answer', 'svc.table', 'svc.faqSection', 'svc.faqSchema',
   'svc.gallerySection', 'svc.priceSection', 'svc.footerLinks', 'svc.media',
   // W12-06. The bar is site-wide, so the service template needs it raw too.
@@ -655,6 +655,54 @@ ${rows}
       </div>
     </div>
     `;
+}
+
+// --- W15-02, the Servicii dropdown (RC-126) ----------------------------------
+
+/* Q-W14-15 asked how the fences page reaches the desktop header when a fifth
+   flat nav link does not fit at any width in either locale. It does not: the
+   Servicii link becomes a disclosure listing every service and product page, so
+   the header gains a destination list without gaining a target.
+
+   Same interaction model as the catalog menu: a button, click to open, never
+   hover. One level deep, so no expand chevron per row and no back button.
+
+   No copy is invented. The toggle reuses header.navServices, the first row
+   reuses it again as the overview link (the catalog's --title row pattern), and
+   every other row reuses a page title that already ships.
+
+   Presence, not silence (docs/CLAUDE.md section 13): every label must be real
+   and the row count must be the overview plus every service plus every product
+   page, so a page added or dropped in data fails the build rather than quietly
+   leaving the header. That assertion is what "every service page reachable from
+   the desktop header" rests on. */
+function serviciiMenu(l) {
+  const need = (v, where) => {
+    if (!REAL(v)) die(`serviciiMenu: ${where} is not real for ${l.code}.`);
+    return v;
+  };
+  const row = (href, text, cls) =>
+    `          <li class="svcmenu__row${cls ? ' ' + cls : ''}"><a class="svcmenu__link" href="${href}">${esc(text)}</a></li>`;
+  const items = [
+    row(BASE + l.home + '#servicii', need(l.strings['header.navServices'], 'header.navServices'), 'svcmenu__row--title'),
+    ...SERVICE_SLUGS.map((sg, i) => row(
+      `${BASE}${SERVICES_ROOT[l.code]}${sg}/`,
+      need(l.strings[`services.items.${i}.title`], `services.items.${i}.title`))),
+    ...PRODUCT_PAGES.map((p) => row(
+      `${BASE}${SERVICES_ROOT[l.code]}${p.slug}/`,
+      need(l.strings[`pages.${p.key}.title`], `pages.${p.key}.title`))),
+  ];
+  const expected = 1 + SERVICE_SLUGS.length + PRODUCT_PAGES.length;
+  if (items.length !== expected) die(`serviciiMenu: ${items.length} rows, expected ${expected}.`);
+  const label = esc(l.strings['header.navServices']);
+  return `<div class="svcmenu">
+      <button class="svcmenu__toggle" type="button" id="svcmenu-toggle" aria-expanded="false" aria-controls="svcmenu-panel">${label}</button>
+      <div class="svcmenu__panel" id="svcmenu-panel" hidden>
+        <ul class="svcmenu__list" aria-label="${label}">
+${items.join('\n')}
+        </ul>
+      </div>
+    </div>`;
 }
 
 // --- W14-07, the social row on the hero card (S-07) --------------------------
@@ -1191,7 +1239,7 @@ const PRODUCT_PAGES = [
   { slug: 'copertine', key: 'copertine', block: (l) => copertine(l), sources: ['content/copertine.json'] },
   { slug: 'garduri', key: 'garduri', block: (l) => gardPage(l), faqSchema: (l) => gardFaqSchema(l), sources: [] },
 ];
-const PROD_RAW_KEYS = new Set(['catalogMenu',
+const PROD_RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu',
   'demoAttr', 'promoBar', 'areaServedJson', 'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
   'prod.block', 'prod.footerLinks', 'prod.faqSchema',
 ]);
@@ -1470,6 +1518,7 @@ for (const l of loaded) {
   vars.heroPanelMedia = heroPanelMedia(l, BASE);
   vars.promoBar = promoBar(l);
   vars.catalogMenu = catalogMenu(l);
+  vars.serviciiMenu = serviciiMenu(l);
   vars.productTeaser = productTeaser(l);
   vars.beforeAfter = beforeAfter(l);
   vars.roofOffers = roofOffers(l);

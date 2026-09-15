@@ -27,7 +27,7 @@ the final `main` and stays mergeable.
 | RC-102 | W14-02 Asset provenance gate, and the `quality` check | SELF | `w14/rc-102-asset-provenance` | shipped |
 | RC-103 | W14-03 Section 1 copy, RO | SELF | none | **blocked**, Q-W14-02 |
 | RC-104 | W14-04 Section 1 copy, RU parity | SELF | none | **blocked** on RC-103 |
-| RC-105 | W14-05 Remove the frozen price | STOP | `w14/rc-105-frozen-price` | STOP: PR opened after RC-112 merges, cut from the final `main` |
+| RC-105 | W14-05 Remove the frozen price | STOP | `w14/rc-105-frozen-price` | **STOP**, PR open, awaiting owner; figure in meta and priceRange is Q-W14-10 |
 | RC-106 | W14-06 Catalog mega-menu, S-01 | SELF | `w14/rc-106-catalog-menu` | **blocked**, PR #7 open, not merged: Q-W14-04, Q-W14-05 |
 | RC-107 | W14-07 Social row, S-07 | SELF | `w14/rc-107-social-row` | shipped, URLs to confirm: Q-W14-06 |
 | RC-108 | W14-08 Acoperișuri offer cards, S-02 | SELF | `w14/rc-108-offer-cards` | shipped without images (Q-W14-07); homepage over R-J until RC-113 |

@@ -3809,3 +3809,72 @@ byte-identical.
 
 Lighthouse, desktop, localhost, as shipped: **RO 99 / 100 / 100 / 100, RU 99 / 100 /
 100 / 100**.
+
+## W14-05 · The frozen price is removed, STOP, PR only, 2026-09-15
+
+**Card RC-105.** **STOP: pull request only, not self-merged.** It edits strings
+that feed the meta description's neighbours, the homepage hero and every page
+footer, and it is in the dispatch's STOP set. Cut from `main` at ab7426c, after
+every SELF card of wave 14 had merged, so it applies cleanly.
+
+### Every occurrence, removed
+
+The card names the string "preț înghețat 160 lei/m² pentru 2026" and its RU
+counterpart. The same claim also exists in the other word order, as
+`hero.priceTitle`; it is the same frozen-price claim and goes too.
+
+| Key | RO before | RU before | Renders on |
+|---|---|---|---|
+| `hero.highlights.2` | preț înghețat 160 lei/m² pentru 2026 | цена 160 лей/м² заморожена на 2026 год | the dark hero card, both homepages |
+| `footer.offer` | −10% la programări anticipate · preț înghețat 160 lei/m² pentru 2026 | the RU equivalent | every page footer, homepage and all 18 service pages |
+| `hero.priceTitle` | 160 lei/m² preț înghețat pentru 2026 | 160 лей/м² цена заморожена на 2026 год | the price box h2 on the five priced service pages, both locales |
+
+After: `footer.offer` reads "−10% la programări anticipate" and "−10% при ранней
+записи". Zero occurrences of either phrase remain in `dist/`, the locale files,
+`src/` or `build.js`.
+
+### Components removed with them, as the card directs
+
+1. **The third hero highlight.** The frozen price was its sole content, so its
+   `<li>` is removed. After RC-114 removed the instalment line, the hero card now
+   carries one highlight: the early-booking discount.
+2. **The price box heading on the five priced service pages** (case-la-cheie,
+   acoperișuri, fațade, reparații, finisaje), both locales, ten pages. The h2 was
+   `hero.priceTitle` and nothing else, so the h2 is removed. **The price box
+   itself stays**, with its eyebrow and the discount line, which are not the
+   frozen price.
+
+### Not touched, and why
+
+- **The meta description, og:description and JSON-LD description** carry "de la
+  160 lei/m²", and the homepage JSON-LD carries `"priceRange": "160 MDL/m²"`.
+  Neither contains the frozen string, so neither is an occurrence the card names.
+  Whether the figure itself should go is a different decision: Q-W14-10.
+- **`design/design-sections.html` and `design/design-handover.html`** carry a
+  "160 lei/m² preț fixat pentru 2026" variant. They are the original design
+  reference files, not built and not served.
+- **`DECISIONS.md` and `docs/QUESTIONS.md`** quote the string in past entries.
+  They are records, immutable under R-S.
+- **The master plan's standing offer** (line 138) is amended in place under R-R:
+  "160 lei/m² frozen for 2026" is struck and names this card.
+
+### Measured, locally, on the build as committed
+
+| Page | Before (ab7426c) | After |
+|---|---|---|
+| Homepage RO | 13,582 | **13,582** |
+| Homepage RU | 13,978 | **13,978** |
+| Service RO case-la-cheie | 5,604 | **5,542** |
+| Service RO fațade | 5,522 | **5,460** |
+| Service RU case-la-cheie | 5,711 | **5,649** |
+| Service RU fațade | 5,729 | **5,667** |
+| Service RU acoperișuri | 5,649 | **5,587** |
+| Service RU finisaje | 5,649 | **5,587** |
+
+The homepage does not move because the hero card stretches to its photo; each
+priced service page loses its 62px price heading.
+
+Lighthouse, desktop, localhost: **homepage RO 99 / 100 / 100 / 100, RU 99 / 100 /
+100 / 100, acoperișuri service page RO 98 / 100 / 100 / 100**.
+
+Gates: build, links, stale docs, provenance and scarcity all exit 0.

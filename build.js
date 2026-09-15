@@ -1300,7 +1300,6 @@ for (const l of loaded) {
       'svc.priceSection': PRICED_SLUGS.includes(slug) ? `<section class="section section--dark section--compact">
   <div class="container">
     <p class="eyebrow" data-reveal>${esc(l.strings['servicePage.priceH'])}</p>
-    <h2 data-reveal>${esc(l.strings['hero.priceTitle'])}</h2>
     <p class="lede" data-reveal style="color: #FFFFFF; opacity: 0.75;">${esc(l.strings['hero.priceLine1'])}</p>
   </div>
 </section>` : '',

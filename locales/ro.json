@@ -3,7 +3,7 @@
     "lang": "ro",
     "dir": "ltr",
     "title": "Construcții și renovări, Chișinău · Rapid Construct",
-    "description": "Acoperișuri, fațade, renovări, finisaje în Chișinău, Bălți, Ungheni, Cahul și alte localități. Garanție scrisă până la 30 de ani, de la 160 lei/m².",
+    "description": "Acoperișuri, fațade, renovări, finisaje în Chișinău, Bălți, Ungheni, Cahul și alte localități. Garanție scrisă până la 30 de ani.",
     "ogTitle": "Construcții și renovări la cheie în Chișinău",
     "ogLocale": "ro_MD",
     "skipToContent": "Sari la conținut",
@@ -30,7 +30,6 @@
     "eyebrow": "Construcții & Renovări · în toată Moldova",
     "h1": "Casa ta la cheie, fără să coordonezi singur echipele",
     "sub": "Construcții și renovări complete: venim, măsurăm gratuit și construim la cheie.",
-    "priceTitle": "160 lei/m² preț înghețat pentru 2026",
     "priceLine1": "−10% la programări anticipate",
     "ctaPrimary": "Solicită ofertă gratuită",
     "ctaSecondary": "Sună acum",
@@ -41,8 +40,7 @@
     },
     "panelAlt": "Armătură de stâlp în lucru, echipă pe schelă într-o clădire în construcție",
     "highlights": {
-      "0": "−10% la programări anticipate",
-      "2": "preț înghețat 160 lei/m² pentru 2026"
+      "0": "−10% la programări anticipate"
     }
   },
   "stats": {
@@ -448,7 +446,7 @@
   },
   "footer": {
     "description": "Construcții și renovări la cheie în toată Moldova, cu garanție scrisă și materiale certificate UE.",
-    "offer": "−10% la programări anticipate · preț înghețat 160 lei/m² pentru 2026",
+    "offer": "−10% la programări anticipate",
     "navHeading": "Companie",
     "servicesHeading": "Servicii",
     "contactHeading": "Contact",

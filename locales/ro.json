@@ -168,6 +168,32 @@
     "matt": "Mat",
     "gloss": "Lucios"
   },
+  "copertine": {
+    "eyebrow": "Copertine",
+    "chooserH2": "Cum alegi copertina",
+    "chooserLede": "Alegerea pornește de la curte: cât loc este, unde poate sta un stâlp și de ce se poate prinde structura.",
+    "modelsH2": "12 modele",
+    "modelsLede": "Fiecare se face pe dimensiunile curții. Prețul se stabilește după măsurare.",
+    "stepsH2": "De la măsurare la montaj",
+    "steps": {
+      "0": {
+        "title": "Măsurare la fața locului",
+        "text": "Verificăm deschiderea, terenul și accesul mașinii. Fără măsurare nu dăm preț."
+      },
+      "1": {
+        "title": "Ofertă cu prețul final",
+        "text": "Configurația exactă și prețul final, nu o estimare pe metru pătrat."
+      },
+      "2": {
+        "title": "Fabricare la comandă",
+        "text": "Pentru modelul și deschiderea alese."
+      },
+      "3": {
+        "title": "Montaj",
+        "text": "Structura, acoperișul și scurgerea, predate curat și funcționale."
+      }
+    }
+  },
   "process": {
     "eyebrow": "Cum lucrăm",
     "h2": "De la fundație la predare",

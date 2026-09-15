@@ -33,7 +33,7 @@ the final `main` and stays mergeable.
 | RC-108 | W14-08 Acoperișuri offer cards, S-02 | SELF | `w14/rc-108-offer-cards` | shipped without images (Q-W14-07); homepage over R-J until RC-113 |
 | RC-109 | W14-09 Before/after slider, S-03 | SELF | `w14/rc-109-before-after` | shipped, empty until client before/after pairs exist |
 | RC-110 | W14-10 Țiglă metalică grid, S-04 | SELF | `w14/rc-110-tigla-grid` | shipped without images (Q-W14-07); prices to confirm (Q-W14-08) |
-| RC-111 | W14-11 Copertine, S-06 | SELF | `w14/rc-111-copertine` | todo |
+| RC-111 | W14-11 Copertine, S-06 | SELF | `w14/rc-111-copertine` | shipped without images (Q-W14-07); homepage 53% over R-J |
 | RC-112 | W14-12 Garduri, S-05, component only | SELF | `w14/rc-112-garduri` | todo |
 | RC-113 | W14-13 Height re-measure, new budget ruling | STOP | none | **blocked** on RC-103 and RC-104 |
 | RC-114 | W14-14a Ruling R-X, no pressure selling | STOP | `w14/rc-114-ruling-rx` | PR #3, awaiting owner |

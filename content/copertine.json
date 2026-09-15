@@ -1,0 +1,34 @@
+{
+  "_note": "W14-11. Carports (S-06). Source: the wave 14 audit, sections 2.3 and 4.2. Twelve models renamed to Rapid Construct designations C-01 to C-12; the structural category chip and the one-line descriptor of each are kept, translated. Five structural families for the chooser, each listing its models. No prices anywhere: a carport is quoted after a site measurement. The mapping of models onto families is W14-11's and is flagged for ratification. build.js refuses a model in no family or in two, a family that names an unknown model, a duplicate designation, a field that is not real in both locales, and any competitor model code.",
+  "families": [
+    { "id": "stalpi", "models": ["c01", "c04", "c05", "c08", "c10"],
+      "title": { "ro": "Pe stâlpi", "ru": "На опорах" },
+      "text": { "ro": "Acoperișul stă pe stâlpi, la colțuri sau pe laturi.", "ru": "Крыша опирается на стойки, по углам или по сторонам." } },
+    { "id": "consola", "models": ["c02", "c09"],
+      "title": { "ro": "În consolă", "ru": "Консольные" },
+      "text": { "ro": "Stâlpi doar pe o parte, spațiu liber dedesubt.", "ru": "Опоры только с одной стороны, под навесом свободно." } },
+    { "id": "perete", "models": ["c03"],
+      "title": { "ro": "Prinsă de perete", "ru": "Пристенные" },
+      "text": { "ro": "Ancorată de peretele clădirii.", "ru": "Крепится к стене здания." } },
+    { "id": "arcuita", "models": ["c06", "c07"],
+      "title": { "ro": "Arcuită", "ru": "Арочные" },
+      "text": { "ro": "Acoperiș curbat, arcuit sau semiarcuit.", "ru": "Изогнутая крыша, арочная или полуарочная." } },
+    { "id": "arhitecturala", "models": ["c11", "c12"],
+      "title": { "ro": "Arhitecturală", "ru": "Архитектурные" },
+      "text": { "ro": "Structuri deschise sau asimetrice, după proiect.", "ru": "Открытые или асимметричные конструкции, по проекту." } }
+  ],
+  "models": [
+    { "id": "c01", "designation": "C-01", "category": { "ro": "Pe stâlpi", "ru": "На опорах" }, "descriptor": { "ro": "Copertină standard pentru una sau două mașini.", "ru": "Стандартный навес на одну или две машины." } },
+    { "id": "c02", "designation": "C-02", "category": { "ro": "Consolă, deschidere mare", "ru": "Консольный, большой пролёт" }, "descriptor": { "ro": "Consolă de până la 6 m.", "ru": "Консоль до 6 м." } },
+    { "id": "c03", "designation": "C-03", "category": { "ro": "Prinsă de perete", "ru": "Пристенный" }, "descriptor": { "ro": "Ancorată de clădire.", "ru": "Крепится к зданию." } },
+    { "id": "c04", "designation": "C-04", "category": { "ro": "În două ape", "ru": "Двускатный" }, "descriptor": { "ro": "Scurgere pe ambele părți.", "ru": "Сток на обе стороны." } },
+    { "id": "c05", "designation": "C-05", "category": { "ro": "Pe stâlpi", "ru": "На опорах" }, "descriptor": { "ro": "Acoperiș plat, pentru una sau două mașini.", "ru": "Плоская крыша, на одну или две машины." } },
+    { "id": "c06", "designation": "C-06", "category": { "ro": "Arcuită", "ru": "Арочный" }, "descriptor": { "ro": "Elemente forjate, opțional.", "ru": "Кованые элементы по желанию." } },
+    { "id": "c07", "designation": "C-07", "category": { "ro": "Arcuită sau semiarcuită", "ru": "Арочный или полуарочный" }, "descriptor": { "ro": "Dimensionată după tipul fermei.", "ru": "Размеры под тип фермы." } },
+    { "id": "c08", "designation": "C-08", "category": { "ro": "Pe stâlpi, bordură închisă", "ru": "На опорах, закрытый карниз" }, "descriptor": { "ro": "Bordură închisă, integrată cu casa.", "ru": "Закрытый карниз в едином стиле с домом." } },
+    { "id": "c09", "designation": "C-09", "category": { "ro": "Consolă", "ru": "Консольный" }, "descriptor": { "ro": "Stâlpi pe o singură parte.", "ru": "Опоры только с одной стороны." } },
+    { "id": "c10", "designation": "C-10", "category": { "ro": "Stâlpi înclinați", "ru": "Наклонные опоры" }, "descriptor": { "ro": "Deschidere liberă mai largă.", "ru": "Более широкий свободный проём." } },
+    { "id": "c11", "designation": "C-11", "category": { "ro": "Arhitecturală", "ru": "Архитектурный" }, "descriptor": { "ro": "Profile masive, structură deschisă.", "ru": "Массивные профили, открытая конструкция." } },
+    { "id": "c12", "designation": "C-12", "category": { "ro": "Arhitecturală, după proiect", "ru": "Архитектурный, по проекту" }, "descriptor": { "ro": "Asimetrică, cu iluminare integrată.", "ru": "Асимметричный, со встроенной подсветкой." } }
+  ]
+}

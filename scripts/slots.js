@@ -77,6 +77,12 @@ const SLOTS = [
   // (Q-W14-07); R-W holds each file to a provenance row.
   ...require('../content/tigla-metalica.json').models
     .map((m) => ({ id: `tigla-${m.id}`, w: 480, h: 480, ratio: '1:1', retina: false, placeholder: false })),
+  // W14-11. Carport images: one per structural family (8:5) and one per model
+  // (4:3), rendered only when the file exists (Q-W14-07).
+  ...require('../content/copertine.json').families
+    .map((f) => ({ id: `copertina-fam-${f.id}`, w: 800, h: 500, ratio: '8:5', retina: true, placeholder: false })),
+  ...require('../content/copertine.json').models
+    .map((m) => ({ id: `copertina-${m.id}`, w: 800, h: 600, ratio: '4:3', retina: true, placeholder: false })),
   // Social card. Never retina: og consumers take one fixed size.
   { id: 'og-image', w: 1200, h: 630, ratio: '1200x630', retina: false, branded: true },
 ];

@@ -3861,3 +3861,44 @@ Status metadata only, per R-S; no question body is edited.
 | Q-W14-07 | answered: approved image origins added to R-W (RC-118) |
 | Q-W14-08 | part (b) answered: RAL swatches permitted in the tile grid; part (a), prices, stays open |
 | Q-W14-10 | answered: the 160 lei/m² figure leaves the meta description and the price field (RC-105b). The question was opened on the RC-105 branch and exists only in PR #14, so its status is set there |
+
+## W14-02b · R-W amended: legacy status by fingerprint, approved origins, 2026-09-15
+
+**STOP: PR only.** It edits `docs/rulings/R-W.md`, in the STOP set. The amendment
+is appended under R-T; the ruling's body is untouched.
+
+**What changes in the gate.** `scripts/check-asset-provenance.js` accepts
+`legacy, licence unverified` only for a file whose path and sha256 match
+`docs/assets/LEGACY-IMAGES.txt`, the 149 images in f5e4eb6's first parent
+(e49e02e). Every other image needs an `https://` licence URL, or `supplier
+permission: ...` for a supplier pack. The old `unrecorded before R-W` value is
+retired and refused; the 131 rows that carried it now carry the legacy status.
+Forbidden hostnames apply to every row, legacy or not. The list is frozen at 149
+and the gate fails if it grows.
+
+**Why a fingerprint and not a date or git history.** CI checks out one commit
+with no history, so "was this file on main before f5e4eb6" cannot be asked of git
+there. A filename alone would let an overwritten legacy file keep its status. The
+hash closes both.
+
+**The approved origins are recorded, not enforced as an allow-list,** because
+the dispatch makes them additive to a ruling that only forbade. Recorded as a
+reading for ratification.
+
+**One escape hatch, stated:** a row whose licence URL is `n/a, generated in this
+repo` passes without a URL. It exists for files built by this repo's own scripts
+(og-image, the port placeholders). The source cell must name the script.
+
+### Negative-tested before it was trusted
+
+| Arm | Planted | Exit |
+|---|---|---|
+| New file claiming legacy | a new image whose row says `legacy, licence unverified` | 1 |
+| New file, no licence URL | a new image with an empty licence URL | 1 |
+| New file, real licence | the same image with `https://unsplash.com/license` | 0, as it should |
+| Legacy row, bytes changed | one byte appended to a legacy project cover | 1 |
+| Forbidden host on a legacy row | a supplier logo source rewritten to a dasterum.md host | 1 |
+| Legacy list grown | a 150th entry appended to the list | 1 |
+
+The first run of the bytes arm used `port-01.jpg`, whose row is `generated in
+this repo`, not legacy, so it correctly passed; the arm was rerun on a legacy row.

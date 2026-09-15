@@ -44,7 +44,7 @@ ratifications); PRs #1, #2, #3 merged at the owner's instruction.
 
 | Ticket | Card | Mode | Branch | Status |
 |---|---|---|---|---|
-| RC-102 | W14-02b R-W amendment: legacy status, approved origins | STOP | `w14/rc-102-rw-amendment` | todo |
+| RC-102 | W14-02b R-W amendment: legacy status, approved origins | STOP | `w14/rc-102-rw-amendment` | **STOP**, PR open, awaiting owner |
 | RC-115 | W14-15 Header breakpoint to 1100px | SELF | `w14/rc-115-header-breakpoint` | todo |
 | RC-116 | W14-16 Page split: tigla-metalica, copertine, garduri | SELF | `w14/rc-116-page-split` | todo |
 | RC-117 | W14-17 Origin cutover to rapidconstruct.md | STOP | `w14/rc-117-origin-cutover` | todo |

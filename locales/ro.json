@@ -149,6 +149,25 @@
     "before": "Înainte",
     "after": "După"
   },
+  "tigla": {
+    "eyebrow": "Țiglă metalică",
+    "h2": "Modele și prețuri",
+    "standart": "Standart",
+    "premium": "Premium",
+    "thickness": "Grosime",
+    "workingWidth": "Lățime utilă",
+    "pieceArea": "Suprafață pe bucată",
+    "warranty": "Garanție",
+    "years": "ani",
+    "yearsMany": "de ani",
+    "mm": "mm",
+    "m2": "m²",
+    "perM2": "lei/m²",
+    "perPiece": "lei/bucată",
+    "colours": "Culori",
+    "matt": "Mat",
+    "gloss": "Lucios"
+  },
   "process": {
     "eyebrow": "Cum lucrăm",
     "h2": "De la fundație la predare",

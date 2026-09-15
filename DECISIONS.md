@@ -3591,3 +3591,82 @@ is excluded.
 
 Lighthouse, desktop, localhost, as shipped: **RO 99 / 100 / 100 / 100, RU 100 /
 100 / 100 / 100**.
+
+## W14-10 · The metal tile grid, 2026-09-15
+
+**Card RC-110, ruling R-X.** Four metal tile models as cards on the homepage,
+directly after the acoperișuri offer cards, both locales. **Shipped without
+images** (Q-W14-07). **Prices and supplier to confirm** (Q-W14-08).
+
+### Every value, and where it comes from
+
+`content/tigla-metalica.json` holds the data, and every value in it is from the
+wave 14 audit section 2.1, read on 2026-09-15 from the manufacturer's published
+listing and product pages. The file's `_note` says so. Nothing is derived here
+except the decimal comma.
+
+| Model | Grade | Thickness | Working width | Warranty | List price | Colours |
+|---|---|---|---|---|---|---|
+| Monterrey | Standart | 0.45 mm | 1100 mm | 10 years | 184 lei/m² | 5 matt, 8 gloss |
+| Monterrey | Premium | 0.50 mm | 1100 mm | 20 years | 207 lei/m² | 4 matt, 1 gloss |
+| Valencia | Standart | 0.45 mm | 1100 mm | 10 years | 184 lei/m² | 5 matt, 7 gloss |
+| Valencia | Premium | 0.50 mm | 1100 mm | 20 years | 207 lei/m² | 4 matt, 1 gloss |
+| Kascad | Standart | 0.45 mm | 1080 mm | 10 years | 189 lei/m² | 5 matt, 8 gloss |
+| Kascad | Premium | 0.50 mm | 1080 mm | 20 years | 213 lei/m² | 4 matt, 1 gloss |
+| Țiglă metalică modulară | Premium | 0.45 mm | not applicable | 10 years | 188 lei/bucată, 0.83 m² per piece | 2 matt |
+
+**Econom is excluded, as the card says, and the build enforces it:** a grade
+other than standart or premium fails the build. **R-X is kept by construction:**
+list prices only, no discount badge, no percentage, no struck price. The audit
+records a discounted figure and a sticker for every product; neither is in the
+file. The modular tile has no working width because it is sold by the piece, so
+that row is absent rather than filled.
+
+The colour names are the RAL names in Romanian and Russian, not the
+manufacturer's labels, which carry spelling errors ("Vin rosu", "Ciocolata
+maro"). The codes are the manufacturer's.
+
+### Colour chips carry no colour, on purpose
+
+Each chip reads code and name, grouped under "Mat" and "Lucios". A swatch would
+be a colour value, `docs/CLAUDE.md` section 3 allows ten on the site, and the
+legend holds fifteen. Text chips keep the section inside the rule; whether
+product swatches get a named exception is Q-W14-08 (b).
+
+### The prices are the open risk, and they are flagged, not hidden
+
+The dispatch named both the list price field and the audit as its source, so the
+grid shipped with them. But the repo holds no evidence that Rapid Construct buys
+from that manufacturer or sells at its list prices, and section 5 says a price is
+never invented. Q-W14-08 asks for the supplier and the prices in writing. If they
+differ, the answer is a data edit.
+
+### Build refusals, each watched failing and the data restored byte-identical
+
+A grade of `econom`; a colour code not in the legend; an empty list price; a
+per-piece variant with no piece area.
+
+### Tested
+
+Headless Chrome against the local build, **90 of 90**, every rendered value
+checked against the data file rather than against numbers written into the test:
+placement after `#acoperisuri`, model order, grades per model, no Econom
+anywhere, each price and its unit, each spec row and no extra rows, each variant's
+chips in data order with matt first, every chip code in the legend, groups split
+by finish, no working width on the modular tile, no struck price or percentage,
+no swatch background, no image column, four across at 1440, two at 1024, one at
+390 and 320, no overflow, and the section under the 1,400px cap.
+
+### Measured
+
+| Page | Before (d39c93b) | After | R-J budget | Over by |
+|---|---|---|---|---|
+| Homepage RO | 9,998 | **11,320** | 8,851 | **2,469** |
+| Homepage RU | 10,267 | **11,639** | 9,065 | **2,574** |
+| Six service pages | unchanged | unchanged | 6,000 | inside |
+
+Measured before merge, per section 2. The budgets are RC-113's (blocked,
+Q-W14-02).
+
+Lighthouse, desktop, localhost: **RO 99 / 100 / 100 / 100, RU 99 / 100 / 100 /
+100**.

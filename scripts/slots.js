@@ -72,6 +72,11 @@ const SLOTS = [
   ...require('../content/before-after.json').projects
     .flatMap((p) => [p.before, p.after])
     .map((id) => ({ id, w: 1180, h: 664, ratio: '1180:664', retina: true, placeholder: false })),
+  // W14-10. One profile image per metal tile model, square, rendered only when
+  // the file exists. The source must be the manufacturer with permission
+  // (Q-W14-07); R-W holds each file to a provenance row.
+  ...require('../content/tigla-metalica.json').models
+    .map((m) => ({ id: `tigla-${m.id}`, w: 480, h: 480, ratio: '1:1', retina: false, placeholder: false })),
   // Social card. Never retina: og consumers take one fixed size.
   { id: 'og-image', w: 1200, h: 630, ratio: '1200x630', retina: false, branded: true },
 ];

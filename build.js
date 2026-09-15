@@ -131,7 +131,7 @@ const PAGES = [
 
 // Keys whose value is already HTML built by this file. Everything else is
 // escaped on substitution.
-const RAW_KEYS = new Set(['beforeAfter', 'roofOffers', 'socialRow',
+const RAW_KEYS = new Set(['tiglaGrid', 'beforeAfter', 'roofOffers', 'socialRow',
   // demoAttr is a whole attribute, ` data-demo="..."`, not an attribute value:
   // it is either present or absent. Its inner text is escaped where it is
   // built, so what lands here is already safe. Escaping it again turned the
@@ -749,6 +749,100 @@ ${items}
 `;
 }
 
+// --- W14-10, the metal tile grid (S-04) --------------------------------------
+
+/* Standart and Premium metal tile, one card per model, from
+   content/tigla-metalica.json. Every value comes from the wave 14 audit 2.1 and
+   the file says so; nothing is derived or rounded here except the decimal
+   separator, which follows the locale.
+
+   Ruling R-X: list prices only. No discount badge, no percentage, no struck
+   price, and the scarcity gate would fail the build's output if one appeared.
+
+   Colour chips carry the code, the finish and the colour's name as text. They
+   carry no swatch: a swatch is a colour value, docs/CLAUDE.md section 3 allows
+   ten, and the legend would add up to fifteen. Q-W14-08.
+
+   Presence, not silence: a missing models array or legend fails the build, as
+   does a grade other than standart or premium (Econom is excluded by the
+   dispatch, and a third grade must not slip in by data), a colour code that is
+   not in the legend, and a required field that is empty. */
+const TIGLA_FILE = 'content/tigla-metalica.json';
+const TIGLA = JSON.parse(fs.readFileSync(TIGLA_FILE, 'utf8'));
+if (!Array.isArray(TIGLA.models) || !Array.isArray(TIGLA.legend)) die(`${TIGLA_FILE} needs both a "models" and a "legend" array.`);
+const TIGLA_LEGEND = new Map(TIGLA.legend.map((c) => [c.code, c]));
+const TIGLA_GRADES = ['standart', 'premium'];
+
+function tiglaGrid(l) {
+  if (TIGLA.models.length === 0) return '';
+  const t = (k) => l.strings[`tigla.${k}`];
+  const dec = (v) => (l.code === 'ro' || l.code === 'ru') ? String(v).replace('.', ',') : String(v);
+  const cards = TIGLA.models.map((m, i) => {
+    const where = `models[${i}]`;
+    if (!m.name || !REAL(m.name[l.code])) die(`${TIGLA_FILE}: ${where}.name is not real for ${l.code}.`);
+    if (!Array.isArray(m.variants) || m.variants.length === 0) die(`${TIGLA_FILE}: ${where} has no variants.`);
+    const img = `public/img/tigla-${m.id}.jpg`;
+    let media = '';
+    if (fs.existsSync(img)) {
+      const alt = l.strings[`tigla.alt.${m.id}`];
+      if (!REAL(alt)) die(`${img} exists but tigla.alt.${m.id} is not real in ${l.code}.`);
+      media = `\n        <div class="tile__media"><img src="${BASE}/img/tigla-${m.id}.jpg" alt="${esc(alt)}" width="480" height="480" loading="lazy" decoding="async"></div>`;
+    }
+    const variants = m.variants.map((v, j) => {
+      const w = `${where}.variants[${j}]`;
+      if (!TIGLA_GRADES.includes(v.grade)) die(`${TIGLA_FILE}: ${w}.grade "${v.grade}" is not standart or premium.`);
+      for (const f of ['thickness_mm', 'warranty_years', 'unit', 'list_price_lei']) {
+        if (!REAL(v[f])) die(`${TIGLA_FILE}: ${w}.${f} is empty.`);
+      }
+      if (!['m2', 'piece'].includes(v.unit)) die(`${TIGLA_FILE}: ${w}.unit "${v.unit}" is not m2 or piece.`);
+      if (v.unit === 'piece' && !REAL(v.piece_area_m2)) die(`${TIGLA_FILE}: ${w} is sold by the piece but has no piece_area_m2.`);
+      if (!Array.isArray(v.colours) || v.colours.length === 0) die(`${TIGLA_FILE}: ${w} has no colours.`);
+      const unknown = v.colours.filter((c) => !TIGLA_LEGEND.has(c));
+      if (unknown.length) die(`${TIGLA_FILE}: ${w} lists colour codes not in the legend: ${unknown.join(', ')}.`);
+      const chips = (matt) => v.colours.filter((c) => c.endsWith('M') === matt).map((c) =>
+        `<li class="tile__colour"><span class="tile__code">${esc(c)}</span> ${esc(TIGLA_LEGEND.get(c).name[l.code])}</li>`).join('');
+      const group = (matt) => {
+        const html = chips(matt);
+        return html ? `
+              <p class="tile__finish">${esc(t(matt ? 'matt' : 'gloss'))}</p>
+              <ul class="tile__colours">${html}</ul>` : '';
+      };
+      const unit = v.unit === 'm2' ? t('perM2') : t('perPiece');
+      const rows = [
+        [t('thickness'), `${dec(v.thickness_mm)} ${t('mm')}`],
+        REAL(v.working_width_mm) ? [t('workingWidth'), `${v.working_width_mm} ${t('mm')}`] : null,
+        v.unit === 'piece' ? [t('pieceArea'), `${dec(v.piece_area_m2)} ${t('m2')}`] : null,
+        // Romanian counts from 20 take "de": 10 ani, 20 de ani. yearsMany carries it.
+        [t('warranty'), `${v.warranty_years} ${Number(v.warranty_years) >= 20 ? t('yearsMany') : t('years')}`],
+      ].filter(Boolean).map(([k, val]) => `
+              <div><dt>${esc(k)}</dt><dd>${esc(val)}</dd></div>`).join('');
+      return `
+          <div class="tile__variant tile__variant--${v.grade}">
+            <h4 class="tile__grade">${esc(t(v.grade))}</h4>
+            <p class="tile__price"><span class="tile__amount">${esc(v.list_price_lei)}</span> ${esc(unit)}</p>
+            <dl class="tile__specs">${rows}
+            </dl>
+            <div class="tile__palette">
+              <p class="tile__palette-h">${esc(t('colours'))}</p>${group(true)}${group(false)}
+            </div>
+          </div>`;
+    }).join('');
+    return `      <article class="tile" data-reveal data-stagger="${Math.min(i, 6)}">
+        <h3 class="tile__name">${esc(m.name[l.code])}</h3>${media}${variants}
+      </article>`;
+  }).join('\n');
+  return `<section class="section section--light section--divided" id="tigla-metalica" aria-labelledby="tigla-h">
+  <div class="container">
+    <p class="eyebrow" data-reveal>${esc(t('eyebrow'))}</p>
+    <h2 id="tigla-h" data-reveal>${esc(t('h2'))}</h2>
+    <div class="tiles">
+${cards}
+    </div>
+  </div>
+</section>
+`;
+}
+
 // --- W12-01, the portfolio end tile -----------------------------------------
 
 /* The seventh cell of the homepage portfolio grid. It is not a project and not
@@ -991,6 +1085,7 @@ for (const l of loaded) {
   vars.supplierChips = renderSupplierChips(l, BASE);
   vars.heroPanelMedia = heroPanelMedia(l, BASE);
   vars.promoBar = promoBar(l);
+  vars.tiglaGrid = tiglaGrid(l);
   vars.beforeAfter = beforeAfter(l);
   vars.roofOffers = roofOffers(l);
   vars.socialRow = socialRow(l);

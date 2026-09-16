@@ -51,6 +51,7 @@ Measured at a desktop width, settled, with every reveal applied.
 |---|---|
 | Homepage RO and RU | ~~DECISIONS.md, ruling R-J~~ **AMENDED (W14-13): `docs/rulings/R-Y.md`, ruling R-Y** |
 | Țiglă metalică, copertine and garduri pages, either locale | **`docs/rulings/R-Y.md`, ruling R-Y** |
+| Catalog category pages, either locale | **`docs/rulings/R-Y.md`, ruling R-Y**, its latest dated block for those pages |
 | Service pages, either locale | **RELEASE-NOTES.md, wave 7 acceptance** |
 
 The homepage budgets are **derived, not chosen**: a corrected baseline plus the
@@ -175,6 +176,17 @@ The copy source is the predecessor build at `rapidconstruct-web.vercel.app`.
 Permitted edits: shortening a sentence, converting a heading to uppercase,
 splitting a paragraph into a card. Not permitted: inventing anything.
 *Source: master plan section 6.*
+
+**AMENDED (W17-02): one authorized exception, the catalog category pages.** Their
+lede and two paragraphs are authored general trade knowledge, written at the
+owner's instruction in RC-133: what the material is, what it is for, how it is
+applied, how its subcategories differ, what a buyer should weigh. They carry **no
+claim about Rapid Construct**: not its stock, brands, prices, lead times,
+warranties, capacity or experience, no superlative, no certification, no
+manufacturer name. `scripts/check-catalog-pages.js` enforces the prohibitions on
+the built pages and prints its term lists. **The exception is that scope only.**
+Every other page still takes copy from a source or omits it.
+*Source: DECISIONS.md W17-02, closing Q-W16-01.*
 
 When there is no source for a value, **mark it or omit it — never fill it**:
 

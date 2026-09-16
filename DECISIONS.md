@@ -5980,3 +5980,167 @@ failing on its own message:
 
 Every plant was restored from a file copy, not from git, and `git status` showed
 only the two intended script changes afterwards.
+
+## W17-02 · The category pages get their prose: a lede and two paragraphs each, general trade knowledge only, 2026-09-16
+
+**Card RC-133. SELF. Closes Q-W16-01**, with option (b): all three pieces per
+category, in both locales.
+
+### What the owner authorized, as given
+
+> PERMITTED: what the material is, what it is used for, how it is applied, what
+> distinguishes the subcategories from one another, what a buyer should consider
+> when choosing. General trade knowledge, written plainly.
+> FORBIDDEN: any claim about Rapid Construct's stock, brands carried, prices, lead
+> times, warranties, capacity or experience. No superlatives. No invented
+> certifications. No manufacturer names.
+
+This is the first authored copy the site has shipped since `docs/CLAUDE.md`
+section 5 forbade inventing any. **Section 5 is amended in place** to name this
+one exception and its scope, so a later card cannot read "no copy is ever
+invented" and conclude that these pages are in breach, or read these pages and
+conclude that section 5 no longer holds.
+
+### What shipped
+
+Seven ledes and fourteen paragraphs in Romanian, then the Russian parity set: 42
+strings, in `locales/ro.json` and `locales/ru.json` under
+`catalogPages.items.N.{lede,p1,p2}`, where N is the category's position in
+`content/catalog.json`. The locale files are the site's copy home and `build.js`
+already refuses a key present in one locale and not the other.
+
+| Where | What |
+|---|---|
+| Hero, under the H1 | the lede, in the product page's own hero line markup |
+| Block, first | paragraph 1: what the material is, what it is for, how it is applied |
+| Block, second | paragraph 2: how the types or subcategories differ, and what to weigh when choosing |
+| Block, then | the subcategory list where one exists, and the related service line and link, both unchanged |
+| Page close | the existing quote form, unchanged |
+
+**No new CSS and no new colour.** The lede reuses `.hero__sub` exactly as the
+product template does; the paragraphs reuse `.lede`, the 720px measure the service
+line below them already uses.
+
+`build.js` refuses to build a category page unless all three strings are real in
+that locale, and names the missing key.
+
+### Judgment calls inside the permitted list
+
+- **No figures at all.** No thicknesses, densities, conductivities, classes or
+  standard numbers. A figure with no source is exactly what section 5 refuses, and
+  the permitted list asks for trade knowledge, not specifications.
+- **Units and rating systems named, never valued.** "measured in lumens", "the IP
+  protection rating", "the wet scrub resistance class" tell a buyer what to ask
+  about without asserting a number.
+- **The "Alte materiale" page describes the kind of material, not an inventory.**
+  Membranes, reinforcing mesh, primers, profiles and fixings are named as what the
+  category covers, which is the category's meaning, never as what is stocked.
+- **The electrical line says the mains connection is made by a qualified
+  electrician.** General safety knowledge about the work, not a claim about who
+  does it for this company.
+- **Ledes are 94 to 113 characters**, inside the 90 to 120 Q-W16-01 asked for.
+
+### The meta description is now the lede
+
+**Deviation, for ratification.** The card does not mention it. Q-W16-01 recorded
+that the lede "is what the meta description and the page hero most want", and
+W16-02's composed description (category label plus the related service's
+description) was a stand-in for exactly this string. Each page's description is
+now its own lede, 94 to 114 characters; the composed form remains as the fallback
+rungs. Not prefixed with the title, because several ledes open on the category's
+own word ("Vopsele. Vopsele pentru...").
+
+### The gate: RC-129's, extended rather than a one-off grep
+
+The card asks for a grep. The owner has just kept RC-129's gate as a **permanent**
+gate, overturning a narrower scope, and these prohibitions are standing in the same
+way, so `scripts/check-catalog-pages.js` carries them. **Deviation, for
+ratification**, in the direction the owner ratified last wave.
+
+| Assertion | Scope |
+|---|---|
+| exactly one lede, one first and one second paragraph per page, each over a minimum length | each of the 14 built pages |
+| each in its page's own locale: RO with zero Cyrillic letters and Romanian diacritics present; RU at least 95% Cyrillic letters | the prose |
+| no two pages in a locale share a lede or a paragraph | the prose |
+| no manufacturer named in the wave 14 audit: Dasterum, Imperlux, Fațade 3D, with domains and Cyrillic forms | the whole page |
+| no price, currency word or amount in lei, MDL or лей | the whole page, as before |
+| no first-person capability claim and no superlative, four authored term lists (RO and RU capability, RO and RU superlative), 142 terms | **the prose only** |
+
+**Why the term lists read the prose only.** The page's existing header, quote form
+and footer speak in the first person on purpose: "Te sunăm noi dacă e mai ușor",
+"мы свяжемся с вами", "garanție scrisă și materiale certificate UE". Probed before
+choosing: a whole-page scan fires on those on every page. They are not this card's
+copy and the card keeps the CTA unchanged, so the lists are scoped to the three
+`data-cat-prose` blocks and the gate says so in its header and on every run.
+
+The term lists live in the script, which prints all four on every run. Diacritics
+fold to their bare letters in the Romanian lists, so a claim typed without
+diacritics is still caught; edges are letter-aware, so "насколько" is not "нас"
+and "улучшает" is not "лучш*". Both are in the gate's self-test as clean samples.
+
+### Negative-tested on nine arms, control watched green before and after
+
+| Arm | exit | Fired on |
+|---|---|---|
+| A: a lede removed (RO) | 1 | `0 "lede" prose block(s), expected exactly 1` |
+| B: an RU paragraph replaced with Romanian | 1 | `"p2" is not Russian (0 of 228 letters Cyrillic)` |
+| C: "Oferim livrare rapidă" planted in RO prose | 1 | `[capability-ro, "oferim"]` |
+| D: "Лучшие материалы" planted in RU prose | 1 | `[superlative-ru, "лучш*"]` |
+| E: "Dasterum" planted | 1 | `[manufacturer name, manufacturer]` |
+| F: "De la 150 lei" planted | 1 | `[price, money-amount]` |
+| G: "Oferim livrare" planted **outside** the prose | **0** | nothing, as the scope requires |
+| H: one RO lede copied onto another page | 1 | `category pages share an identical "lede"` |
+| I: an RU paragraph set to `TODO:` | 1 | `node build.js`: `catalogPages.items.3.{p2} must be real in ru` |
+
+**Arm B fired for the wrong reason the first time, and the harness said so.** The
+planted Romanian text was 219 characters, so the page failed the length minimum
+instead of the locale test. The arm harness checks the message, not the exit code,
+and marked it FAILED; it was re-run with a 277-character plant against a fresh
+green control and fired on the locale test. That is ruling R-AB's second case
+caught as it happened rather than afterwards.
+
+### Acceptance, by grep, with its own controls
+
+Run under bash over the 14 built pages:
+
+| Check | Count |
+|---|---|
+| files read (presence) | 14 |
+| positive control: `<h1>` | 14 |
+| positive control: `data-cat-prose=` | 42 |
+| `lei` as a substring, any case | 0 |
+| `lei`, `MDL` or `лей` as a word | 0 |
+| a number followed by a currency | 0 |
+| a manufacturer name | 0 |
+
+Watched failing: with "De la 150 lei, Dasterum" planted, the four forbidden counts
+each read 1; restored, 0.
+
+**The first run of these greps was hollow and is not the evidence.** It ran in zsh,
+which does not word-split `$F`, so it read zero files and printed zeros. Its own
+"files: 0" line exposed it. The bash version asserts the file count before
+reporting any other figure.
+
+### Measured
+
+Heights re-measured and **R-Y amended in the same PR**, with an R-T block holding
+the fourteen new budgets, still labelled LOCAL; `scripts/verify-live.js` carries the
+new figures. The prose cost RO 385 to 472px and RU 385 to 499px a page. The eight
+other pages R-Y holds re-measured identical. W16-02's figures are now
+known-superseded values in `scripts/check-stale-docs.js` (`budget-cat-w16`),
+watched failing on a planted "2,747px" in a scanned document.
+
+**Phone width, checked separately.** At a 390px mobile viewport all fourteen pages
+have `scrollWidth` equal to `clientWidth` and every prose block inside the 16px
+gutters; watched failing with a 600px element planted. A headless screenshot at 390
+had appeared to crop the text, and the viewport check showed that was the
+screenshot tool's window, not the page.
+
+### Documents amended
+
+- `docs/CLAUDE.md` section 5: the authorized exception and its scope.
+- `docs/CLAUDE.md` section 2: a pointer row for the category page budgets, which
+  R-Y has held since W16-02 without section 2 naming them.
+- `docs/rulings/R-Y.md`: the W17-02 block.
+- `docs/QUESTIONS.md`: Q-W16-01 marked answered; its body untouched.
+- `src/category.html`: the header comment no longer says the page has no lede.

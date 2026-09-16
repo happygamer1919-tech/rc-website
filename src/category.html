@@ -4,7 +4,8 @@
 
      No JSON-LD: a materials category is not a Service, and a BreadcrumbList
      would have to name a catalog index page that does not exist.
-     No hero lede: no sourced one-line description exists for any category.
+     The hero lede and the two paragraphs that open the block are authored
+     general trade copy (W17-02, RC-133), from locales catalogPages.items.N.
 
      What this page must never carry is enumerated in
      scripts/check-catalog-pages.js, which fails on the built output. Those words
@@ -127,6 +128,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     </nav>
     <p class="eyebrow">{{header.catalogHeading}}</p>
     <h1>{{cat.title}}</h1>
+    <p class="hero__sub" data-cat-prose="lede" style="margin: 16px 0 0;">{{cat.lede}}</p>
     <div class="cta-row" style="justify-content: flex-start; margin-top: 32px;">
       <a class="btn btn--primary" href="#oferta">{{hero.ctaPrimary}}</a>
     </div>

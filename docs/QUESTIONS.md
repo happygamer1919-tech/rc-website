@@ -1840,7 +1840,7 @@ different things.
 **Recommended: (b)** unless the product really is sold from the RAL palette, in
 which case (a). This is a product fact this executor does not have.
 
-## Q-W16-01 · The category pages have no descriptive copy, because none exists · OPEN, opened 2026-09-16 (W16-02)
+## Q-W16-01 · The category pages have no descriptive copy, because none exists · ANSWERED 2026-09-16, option (b): a lede and two paragraphs per page, authored as general trade knowledge under the owner's permitted and forbidden lists (RC-133, W17-02) · opened 2026-09-16 (W16-02)
 
 **Shipped default: the pages carry sourced content only, and no invented prose.**
 

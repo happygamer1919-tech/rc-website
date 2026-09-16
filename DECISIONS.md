@@ -6371,3 +6371,239 @@ which R-T otherwise forbids, where R-T's standing form is an appended block. It
 was done because the card says "strike the LOCAL labels under R-R" in as many
 words, and done in R-R's inline form so both the struck word and the amendment
 naming W17-03 stay visible. Every other change to R-Y is appended.
+
+## W18 ratifications · The owner's rulings on wave 17, 2026-09-16
+
+Recorded at the owner's instruction, from the wave 18 dispatch, before any wave 18
+card was worked. #39 (R-AB) and #43 (RC-134) were verified merged first, as the
+dispatch requires, each merge commit and each PR head checked an ancestor of
+`origin/main` with `git merge-base --is-ancestor`, exit 0 on all four:
+
+| PR | Merge commit | Head |
+|---|---|---|
+| #39, RC-137, ruling R-AB | `1cb075c` | `3597cf5` |
+| #43, RC-134, R-Y category budgets under R-P | `41ec827` | `cd60847` |
+
+**Wave 17 deviations 1, 2, 3, 5, 7, 8 and 9, ratified as reported.** In the form the
+wave 17 report put them:
+
+1. RC-133 made the lede each category page's meta description.
+2. RC-133 extended the permanent RC-129 gate instead of running a one-off grep.
+3. RC-133's first-person and superlative term lists scan the new prose only.
+5. RC-136 read "phone pill gap" as `.header__pill`, 24px to 20px.
+7. The dispatch's "RC-129 mapping gate" was recorded as
+   `scripts/check-catalog-pages.js`.
+8. W16-02 was wrong on one figure: the template comment tripped two patterns, not
+   three, corrected at W17-01 without editing W16-02.
+9. The executor's own misses, each caught before anything shipped: an RC-133 arm
+   that first fired for the wrong reason, and acceptance greps that read zero files
+   under zsh.
+
+**Deviation 4 ratified with scope.** RC-133 amended `docs/CLAUDE.md` section 5 to
+name the category prose as the one authorized exception to "no invented copy". The
+exception covers **category-page material description only**: what a material is,
+what it is used for and how it is chosen. It does not extend to service pages,
+product pages, or any claim about Rapid Construct. Section 5 now carries that
+boundary in its own text.
+
+- **How the RC-133 list is read against it.** RC-133's permitted list had five
+  items, the owner's boundary names three. Read as the same scope, summarised: how a
+  material is applied falls under what it is used for, and how subcategories differ
+  and what a buyer should weigh fall under how it is chosen. On that reading the
+  shipped prose is inside the boundary and nothing on the category pages changes.
+  **Recorded as an interpretation.** If the owner meant the narrower reading, the
+  application sentences in paragraph 1 are what would move.
+
+**Deviation 6 reclassified.** RC-134 struck R-Y's two LOCAL labels in place, and
+wave 17 reported that as an edit to sentences inside a ruling, an exception to R-T.
+**It is not.** Striking a value in place is R-R conduct, and R-R permits it where the
+value has documentary purpose. The W17-03 entry above says "the strike edits two
+sentences inside a ruling, which R-T otherwise forbids"; that sentence is corrected
+here, under R-S, and its body is untouched.
+
+- **The ruling body's own note is corrected in place, in R-R's form.** R-Y's W17-03
+  block said the labels were struck "at the owner's direction; no other sentence
+  above this block was edited", which framed the strike as a sentence edit. That
+  clause is struck, and an inline amendment naming these ratifications says the
+  strike is R-R conduct and not an exception to R-T.
+- **`docs/CLAUDE.md` section 17 amended to match.** It said "what is still
+  forbidden inside a ruling: editing a sentence that is already there", which is the
+  sentence wave 17 read the strike against. It now says an R-R strike is not an edit
+  in that sense. **Beyond the letter of the dispatch, recorded for ratification:**
+  without it, the next card to strike a value in a ruling reads section 17 and
+  reports the same false exception.
+
+**Q-W14-11b is closed by RC-138. The Dasterum renders are abandoned.** The tile grid
+gets original profile diagrams instead; the question's heading is updated by that
+card, its body untouched.
+
+**The fence installation claims in RC-120 are confirmed by the owner.** W14-20 left
+two claims for a check by someone who installs these fences: panels may be stepped
+on sloping ground, and posts may be fixed to a sound existing plinth. **Both are
+recorded as owner confirmation.** The FAQ answers 3 and 5 on the fences page, and
+the chooser tiles 1 and 2 that carry the same claims, stand as shipped.
+
+## W18-01 · The tile grid gets its profile diagrams: one original drawing per model, widths as drawn dimensions, 2026-09-16
+
+**Card RC-138. SELF. Closes Q-W14-11b**, whose renders the owner abandoned in the W18
+ratifications. Four inline SVG cross-section diagrams, one above each model's name
+on the tile page, both locales. **Zero image files added.**
+
+### The mapping
+
+| Model | Diagram | Shape family drawn | Dimensions drawn |
+|---|---|---|---|
+| Monterrey | `rounded` | tall round arches over a short, narrow valley | total 1190 mm, working 1100 mm |
+| Valencia | `broad` | a broad, shallow, even wave | total 1190 mm, working 1100 mm |
+| Kascad | `flat` | a wide flat top between short straight flanks, a narrow valley | total 1160 mm, working 1080 mm |
+| Țiglă metalică modulară | `roll` | a flat pan, then a rounded roll | none: the audit gives none |
+
+The widths are the wave 14 audit's, table 2.1, "Sheet width total / working", checked
+row by row. Working width was already in `content/tigla-metalica.json` per grade;
+**`total_width_mm` is added per model**, from the same column, because every grade
+of a model shares it. The modular tile is "sold per piece, 0.83 m² each" in the
+audit, with no widths, so its data carries none and its diagram draws none.
+
+### How they are drawn
+
+W14-23's conventions, which RC-127 kept, so the tile and carport pages read as one
+hand: the 160 by 100 frame; one stroke weight of 2, held at any size by
+`vector-effect`; round caps and joins; no fill on any line; **exactly one accent
+element**, here the profile path, in `--brand` through `d-accent`; everything else
+`currentColor`, which is the card's ink. The profile is one `<path>` with two
+subpaths, so the accent stays a single element across the break.
+
+Each diagram is a transverse section: the repeating section twice or three times,
+a break mark (two slanted strokes) where the sheet continues, and under it the
+working width and then the total width, each as a dimension line with end ticks
+and its label centred above. **Schematic, not to scale.** No wave pitch, wave
+height or wave count is drawn as a figure or implied as one; the break mark is what
+says the sheet goes on. The one proportion taken from data is the overlap: the
+working width's left tick sits (total − working) / total along the sheet, so the
+two audit figures and the drawing agree.
+
+### Recorded for ratification
+
+1. **The diagrams carry text.** W14-23's diagrams carry none. The card requires the
+   widths "as drawn dimensions", and a dimension is a figure, so each diagram with
+   widths carries two labels, `Lățime utilă 1100 mm` and `Lățime totală 1190 mm`
+   (RU `Полезная ширина`, `Общая ширина`), in the card's ink at 9 units: 12.9px at
+   1440px, larger on a phone. Everything else about the style is W14-23's.
+2. **They are labelled images, not decoration.** The carport diagrams are
+   `aria-hidden`, because their heading says everything they show. These carry
+   figures a screen reader would otherwise never reach, so each is `role="img"`
+   with a label naming the model and both widths ("Profil: Monterrey, lățime totală
+   1190 mm, lățime utilă 1100 mm"). The modular tile's label names the model only.
+3. **Two new strings per locale**, `tigla.totalWidth` and `tigla.profile`, added to
+   both locales in this commit (section 8). Labels for a sourced figure, the same
+   kind as the existing `tigla.workingWidth`; not copy in section 5's sense.
+4. **The diagram sits above the model's name**, where the carport diagrams sit above
+   their headings.
+5. **The depiction is this executor's**, as RC-127's two carport drawings were. The
+   audit records no profile shapes. To draw the right shape family rather than
+   invent one, the supplier's four public product pages were read on 2026-09-16:
+   their text (Kascad's "model în relief drept, uniform și caneluri decorative" and
+   "forma originală a unui baton clasic de ciocolată"; the modular tile's "valului
+   mare" and its locking zone) and their published
+   section drawings, viewed to confirm which family each profile belongs to.
+   **Nothing was traced and no figure was taken from them.** Every coordinate is
+   authored in `build.js`; the only numbers on a diagram are the audit's. The
+   modular tile's supplier drawing carries sheet widths the audit does not record,
+   and they are deliberately not used. The downloaded references were deleted from
+   the scratch directory and never entered the repo.
+
+### The build refuses a gap, a share, or a copy
+
+`build.js` fails, naming the models or diagrams involved, if:
+
+- a tile model has no diagram;
+- a diagram is defined and used by no model;
+- **two models map to one diagram**;
+- **two diagram names draw the same profile geometry**, which is how a share would
+  otherwise come back under a new name;
+- a model's widths are partial (working without total, or total without working),
+  disagree between its grades, are not whole millimetres, or put working at or above
+  total.
+
+**Negative-tested on five arms**, against a scratch copy, control `node build.js`
+exit 0 before and after, each arm exiting 1 on its own message:
+
+| Arm | exit | Fired on |
+|---|---|---|
+| A: Valencia mapped to `rounded` | 1 | `monterrey and valencia share the profile diagram "rounded"` |
+| B: `broad` redefined as a copy of `rounded` | 1 | `tile profile diagrams "rounded" and "broad" draw the same profile` |
+| C: the modular tile's mapping removed | 1 | `no profile diagram for modulara` |
+| D: Kascad's `total_width_mm` removed | 1 | `models[2] has working_width_mm but no total_width_mm` |
+| E: Kascad's total set to 1000 | 1 | `widths must be whole millimetres with working below total (total 1000, working 1080)` |
+
+### Acceptance
+
+**Static, over clean builds** of `main` (`41ec827`, exported with `git archive`) and
+of this branch's tree, because the working `dist/` carries leftovers of old builds
+that `build.js` never deletes: a first run against it counted ten image files main
+lacked, none of them this card's. Files read asserted first: 4 of 4.
+
+| Check | Result |
+|---|---|
+| palette blocks, main vs branch, both locales | 7 and 7, **byte-identical** |
+| swatch spans, in order | 55 and 55, identical |
+| `<img>` inside the tile section | 0 |
+| diagrams in the tile section | 4 per locale |
+| image files in `dist/` | main 157, branch 157, identical list |
+| image files added to git on the branch | 0 |
+
+**Rendered, headless Chrome, both locales at 1440 and 390px: 264 of 264.** Per run:
+four cards in data order; exactly one diagram per card and the mapped one; four
+distinct diagram names and four distinct geometries; the diagram above the name;
+one accent, a path, computing to `rgb(246, 83, 8)`; every other line in the card's
+ink; no fill; stroke weight 2 held by `vector-effect` in the 160 by 100 frame; a
+real rendered size; `role="img"` with the model's name; for the three models with
+widths, the two labels equal to the data's figures in that locale's words, both
+widths in the accessible label, the labels inside the drawing and at least 12px; for
+the modular tile, no label and no width in the data; no `<img>`; no horizontal
+overflow.
+
+**The harness was watched failing** against a scratch build, control 264 of 264
+before and after: with Monterrey and Valencia's diagrams swapped (still unique, so
+the build allows it) it failed 8, the two cards at four runs; with Kascad's total
+built as 1170 against data saying 1160 it failed 8, the label and the accessible
+label at four runs.
+
+**Lighthouse on the tile page**, which gate 5 does not floor: the gate's own script,
+re-pointed at the two tile pages in a scratch copy, exit 0, **performance 100 and
+accessibility 100 in both locales**.
+
+### Measured
+
+`EXPECT_SHA=<dist build-sha> node scripts/verify-live.js http://127.0.0.1:8791`
+against a local server of this branch's `dist/`, 1440x900. The baseline first, on the
+ratifications commit before any diagram: all 28 pages VERIFIED and equal to R-Y's
+figures, tile 3,781 RO and 3,815 RU, so the instrument reproduced the record before
+it was trusted.
+
+| Page | Before | After | Budget was | Budget now |
+|---|---|---|---|---|
+| Tile RO | 3,781 | **3,940** | 3,841 | **4,000** |
+| Tile RU | 3,815 | **3,973** | 3,875 | **4,033** |
+
+Two runs with the old budgets, identical, exit 1 on exactly the two tile rows OVER
+and nothing else moved; two runs with the new budgets, identical, exit 0, 28 of 28
+VERIFIED. **R-Y amended in the same PR**, a W18-01 block, labelled LOCAL until a live
+reading exists.
+
+**A marker added for this build**: the `tigla` marker set asserts
+`tileDiagrams: 4`. Watched failing on two arms, control exit 0 before and after:
+against main's own pre-diagram build it reported both tile pages UNVERIFIED,
+`tileDiagrams expected 4, got 0`, **with heights of 3,781 and 3,815, inside the new
+budgets**, which is exactly the stale copy R-P exists to catch; with 5 expected, both
+UNVERIFIED on `expected 5, got 4`.
+
+The tail's 3,841 and 3,875 are now known-superseded values
+(`budget-tigla-w14` in `scripts/check-stale-docs.js`), watched failing on a planted
+"3,841px" in `docs/BACKLOG.md`, control exit 0 before and after.
+
+### Documents amended
+
+- `docs/rulings/R-Y.md`: the W18-01 block.
+- `docs/QUESTIONS.md`: Q-W14-11b marked answered; its body and its addendum untouched.
+- `content/tigla-metalica.json`: `total_width_mm` on three models, and its note.

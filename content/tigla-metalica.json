@@ -1,5 +1,5 @@
 {
-  "_note": "W14-10. Metal tile grid (S-04). Every value is from the wave 14 audit, section 2.1, read on 2026-09-15 from the manufacturer's published listing and product pages. Standart and Premium grades only: the dispatch excludes Econom. List prices only: no discounted figure, no percentage, no struck price (ruling R-X). The legend holds all 15 colour codes from the audit; each variant lists the codes offered in that grade, matt codes end in M. A field with no source is left out, never filled: the modular tile has no working width because it is sold by the piece. Whether these are Rapid Construct's selling prices, and which supplier they come from, is Q-W14-08. build.js refuses a variant whose grade is not standart or premium, a colour code not in the legend, and a missing required field. W15-04: each legend entry carries the manufacturer colour code, the colour name as it ships, and an approximate sRGB value authored in this repo for the swatch. The values are our own approximations of the named colours; no standards body published colour data is reproduced here and no external colour table is the source. A matt code and its gloss twin share one value: the finish is shown by the swatch surface, not by a different colour. On screen the colour is indicative and the physical sample decides, which both locales say on the page. build.js refuses a legend entry that carries a source URL or a ral field.",
+  "_note": "W14-10. Metal tile grid (S-04). Every value is from the wave 14 audit, section 2.1, read on 2026-09-15 from the manufacturer's published listing and product pages. Standart and Premium grades only: the dispatch excludes Econom. List prices only: no discounted figure, no percentage, no struck price (ruling R-X). The legend holds all 15 colour codes from the audit; each variant lists the codes offered in that grade, matt codes end in M. A field with no source is left out, never filled: the modular tile has no working width because it is sold by the piece. Whether these are Rapid Construct's selling prices, and which supplier they come from, is Q-W14-08. build.js refuses a variant whose grade is not standart or premium, a colour code not in the legend, and a missing required field. W15-04: each legend entry carries the manufacturer colour code, the colour name as it ships, and an approximate sRGB value authored in this repo for the swatch. The values are our own approximations of the named colours; no standards body published colour data is reproduced here and no external colour table is the source. A matt code and its gloss twin share one value: the finish is shown by the swatch surface, not by a different colour. On screen the colour is indicative and the physical sample decides, which both locales say on the page. build.js refuses a legend entry that carries a source URL or a ral field. W18-01: total_width_mm is the sheet width total from the same audit table, per model, because every grade of a model shares it; the profile diagram draws it with the working width. The modular tile has neither, being sold by the piece, so its diagram draws no dimension.",
   "legend": [
     { "code": "3005M", "base": "3005", "hex": "#5A2430", "name": { "ro": "Roșu vin", "ru": "Винно-красный" } },
     { "code": "3005", "base": "3005", "hex": "#5A2430", "name": { "ro": "Roșu vin", "ru": "Винно-красный" } },
@@ -21,6 +21,7 @@
     {
       "id": "monterrey",
       "name": { "ro": "Monterrey", "ru": "Monterrey" },
+      "total_width_mm": "1190",
       "variants": [
         { "grade": "standart", "thickness_mm": "0.45", "working_width_mm": "1100", "warranty_years": "10", "unit": "m2", "list_price_lei": "184",
           "colours": ["3005M", "7016M", "8017M", "8019M", "9005M", "3005", "5005", "6005", "8017", "9003", "7016", "7024", "9006"] },
@@ -31,6 +32,7 @@
     {
       "id": "valencia",
       "name": { "ro": "Valencia", "ru": "Valencia" },
+      "total_width_mm": "1190",
       "variants": [
         { "grade": "standart", "thickness_mm": "0.45", "working_width_mm": "1100", "warranty_years": "10", "unit": "m2", "list_price_lei": "184",
           "colours": ["3005M", "7016M", "8017M", "8019M", "9005M", "3005", "5005", "6005", "8017", "9003", "7016", "9006"] },
@@ -41,6 +43,7 @@
     {
       "id": "kascad",
       "name": { "ro": "Kascad", "ru": "Kascad" },
+      "total_width_mm": "1160",
       "variants": [
         { "grade": "standart", "thickness_mm": "0.45", "working_width_mm": "1080", "warranty_years": "10", "unit": "m2", "list_price_lei": "189",
           "colours": ["3005M", "7016M", "8017M", "8019M", "9005M", "3005", "5005", "6005", "8017", "9003", "7016", "7024", "9006"] },

@@ -924,6 +924,118 @@ for (const [i, c] of TIGLA.legend.entries()) {
 }
 const TIGLA_GRADES = ['standart', 'premium'];
 
+/* W18-01 (RC-138). Original profile diagrams, one per tile model, drawn in this
+   repo. Closes Q-W14-11b: the supplier renders are abandoned, so nothing is
+   photographed, traced or copied, and no image file exists for them.
+
+   Each is a transverse section through the sheet: the profile's repeating
+   section drawn twice or three times, a break mark where the sheet continues,
+   and under it the two widths as drawn dimensions. Schematic, not to scale: no
+   wave pitch, wave height or wave count is claimed, only the shape family. The
+   ONLY figures on a diagram are total and working width, read from the model's
+   own data, which takes them from the wave 14 audit. A model the audit gives no
+   widths (the modular tile, sold by the piece) shows its profile and no
+   dimension at all.
+
+   Drawn to W14-23's conventions, so the tile page and the carport page read as
+   one hand: the 160 by 100 frame, one stroke weight of 2 held by vector-effect,
+   round caps and joins, no fill on any line, and exactly one accent element, the
+   profile itself, through the d-accent class. Everything else is currentColor.
+   One departure the card requires: dimensions are text, so each diagram carries
+   its two labels, and because they carry figures the diagram is an image with a
+   label, not decoration.
+
+   Presence, not silence: the build fails if a model has no diagram, if a diagram
+   is defined and used by no model, if two models share a diagram, if two
+   diagrams draw the same profile under different names, or if a model's widths
+   are missing, partial, disagree between its grades, or put working above total. */
+const TIGLA_X0 = 12, TIGLA_X1 = 148, TIGLA_BASE = 40;
+const tiglaN = (v) => Number(v.toFixed(2));
+/* One repeat, from the valley at (x, TIGLA_BASE) to the next valley p along.
+   A cubic whose two control points sit 4/3 h above the base peaks at exactly h. */
+const TIGLA_PROFILES = {
+  // Monterrey: tall round arches over a short, narrow valley.
+  rounded: { p: 22, h: 14, left: 2, right: 3,
+    rep: (x, p, b, h) => `L${tiglaN(x + p * 0.14)} ${b}C${tiglaN(x + p * 0.17)} ${tiglaN(b - h * 4 / 3)} ${tiglaN(x + p * 0.97)} ${tiglaN(b - h * 4 / 3)} ${tiglaN(x + p)} ${b}` },
+  // Valencia: a broad, shallow, even wave.
+  broad: { p: 30, h: 8, left: 2, right: 2,
+    rep: (x, p, b, h) => `C${tiglaN(x + p * 0.25)} ${b} ${tiglaN(x + p * 0.25)} ${b - h} ${tiglaN(x + p * 0.5)} ${b - h}C${tiglaN(x + p * 0.75)} ${b - h} ${tiglaN(x + p * 0.75)} ${b} ${tiglaN(x + p)} ${b}` },
+  // Kascad: a wide flat top between short straight flanks and a narrow valley.
+  flat: { p: 24, h: 10, left: 2, right: 3,
+    rep: (x, p, b, h) => `L${tiglaN(x + p * 0.12)} ${b}L${tiglaN(x + p * 0.24)} ${b - h}L${tiglaN(x + p * 0.76)} ${b - h}L${tiglaN(x + p * 0.88)} ${b}L${tiglaN(x + p)} ${b}` },
+  // The modular tile: a flat pan, then a rounded roll.
+  roll: { p: 28, h: 12, left: 2, right: 2,
+    rep: (x, p, b, h) => `L${tiglaN(x + p * 0.4)} ${b}C${tiglaN(x + p * 0.44)} ${tiglaN(b - h * 4 / 3)} ${tiglaN(x + p * 0.96)} ${tiglaN(b - h * 4 / 3)} ${tiglaN(x + p)} ${b}` },
+};
+const TIGLA_MODEL_DIAGRAM = { monterrey: 'rounded', valencia: 'broad', kascad: 'flat', modulara: 'roll' };
+const tiglaLine = (x1, y1, x2, y2) => `<line x1="${tiglaN(x1)}" y1="${tiglaN(y1)}" x2="${tiglaN(x2)}" y2="${tiglaN(y2)}" vector-effect="non-scaling-stroke"/>`;
+/* The profile as ONE path element with two subpaths, the left run and the right
+   run, so the accent stays a single element across the break. */
+function tiglaProfilePath(key) {
+  const { p, h, left, right, rep } = TIGLA_PROFILES[key];
+  const b = TIGLA_BASE;
+  const run = (x0, n) => `M${x0} ${b}` + Array.from({ length: n }, (_, i) => rep(x0 + i * p, p, b, h)).join('');
+  const xa = TIGLA_X0 + left * p, xb = TIGLA_X1 - right * p;
+  if (xb - xa < 12) die(`tile diagram ${key}: ${left} + ${right} repeats of ${p} leave no room for the break.`);
+  return { d: run(TIGLA_X0, left) + run(xb, right), xa, xb, h };
+}
+/* A drawn dimension: the line, a tick at each end, the label centred above. */
+const tiglaDim = (x1, x2, y, label) => tiglaLine(x1, y, x2, y) + tiglaLine(x1, y - 4, x1, y + 4) + tiglaLine(x2, y - 4, x2, y + 4)
+  + `<text x="${tiglaN((x1 + x2) / 2)}" y="${y - 5}" text-anchor="middle" fill="currentColor" stroke="none" font-size="9">${esc(label)}</text>`;
+function tiglaDiagram(l, m, widths) {
+  const t = (k) => l.strings[`tigla.${k}`];
+  const key = TIGLA_MODEL_DIAGRAM[m.id];
+  const { d, xa, xb, h } = tiglaProfilePath(key);
+  const cx = (xa + xb) / 2, b = TIGLA_BASE;
+  const brk = tiglaLine(cx - 5, b + 4, cx - 1, b - h - 4) + tiglaLine(cx + 1, b + 4, cx + 5, b - h - 4);
+  let dims = '';
+  let label = `${t('profile')}: ${m.name[l.code]}`;
+  if (widths) {
+    const lc = (s) => s.charAt(0).toLocaleLowerCase(l.code) + s.slice(1);
+    const total = Number(widths.total), working = Number(widths.working);
+    // The overlap is drawn in proportion, from the left edge: the one place the
+    // two audit figures meet the drawing.
+    const xw = TIGLA_X0 + (TIGLA_X1 - TIGLA_X0) * (total - working) / total;
+    dims = tiglaDim(xw, TIGLA_X1, 64, `${t('workingWidth')} ${widths.working} ${t('mm')}`)
+      + tiglaDim(TIGLA_X0, TIGLA_X1, 88, `${t('totalWidth')} ${widths.total} ${t('mm')}`);
+    label += `, ${lc(t('totalWidth'))} ${widths.total} ${t('mm')}, ${lc(t('workingWidth'))} ${widths.working} ${t('mm')}`;
+  }
+  return `
+        <div class="tile-diagram" data-tile-diagram="${key}"><svg class="tile-diagram__svg" viewBox="0 0 160 100" width="160" height="100" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="${esc(label)}" focusable="false"><path class="d-accent" d="${d}" vector-effect="non-scaling-stroke"/>${brk}${dims}</svg></div>`;
+}
+(() => {
+  const unmapped = TIGLA.models.filter((m) => !TIGLA_PROFILES[TIGLA_MODEL_DIAGRAM[m.id]]).map((m) => m.id);
+  if (unmapped.length) die(`${TIGLA_FILE}: no profile diagram for ${unmapped.join(', ')}.`);
+  const byKey = new Map();
+  for (const m of TIGLA.models) {
+    const k = TIGLA_MODEL_DIAGRAM[m.id];
+    if (byKey.has(k)) die(`${TIGLA_FILE}: ${byKey.get(k)} and ${m.id} share the profile diagram "${k}". Every tile model draws its own profile.`);
+    byKey.set(k, m.id);
+  }
+  const unused = Object.keys(TIGLA_PROFILES).filter((k) => !byKey.has(k));
+  if (unused.length) die(`tile profile diagrams defined but used by no model: ${unused.join(', ')}.`);
+  const byPath = new Map();
+  for (const k of Object.keys(TIGLA_PROFILES)) {
+    const { d } = tiglaProfilePath(k);
+    if (byPath.has(d)) die(`tile profile diagrams "${byPath.get(d)}" and "${k}" draw the same profile. Every tile model draws its own profile.`);
+    byPath.set(d, k);
+  }
+})();
+/* A model's widths for its diagram: total from the model, working from its
+   grades, which must all agree. Both or neither. */
+function tiglaWidths(m, where) {
+  const working = [...new Set(m.variants.map((v) => v.working_width_mm).filter(REAL))];
+  const partial = m.variants.some((v) => REAL(v.working_width_mm)) && m.variants.some((v) => !REAL(v.working_width_mm));
+  if (partial || working.length > 1) die(`${TIGLA_FILE}: ${where} grades disagree on working_width_mm (${m.variants.map((v) => v.working_width_mm || 'none').join(', ')}).`);
+  const hasTotal = REAL(m.total_width_mm);
+  if (!working.length && !hasTotal) return null;
+  if (!working.length || !hasTotal) die(`${TIGLA_FILE}: ${where} has ${hasTotal ? 'total_width_mm but no working_width_mm' : 'working_width_mm but no total_width_mm'}. Its diagram draws both widths or neither.`);
+  if (!/^\d+$/.test(m.total_width_mm) || !/^\d+$/.test(working[0]) || Number(working[0]) >= Number(m.total_width_mm)) {
+    die(`${TIGLA_FILE}: ${where} widths must be whole millimetres with working below total (total ${m.total_width_mm}, working ${working[0]}).`);
+  }
+  return { total: m.total_width_mm, working: working[0] };
+}
+
 function tiglaGrid(l) {
   if (TIGLA.models.length === 0) return '';
   const t = (k) => l.strings[`tigla.${k}`];
@@ -981,7 +1093,7 @@ function tiglaGrid(l) {
             </div>
           </div>`;
     }).join('');
-    return `      <article class="tile" data-reveal data-stagger="${Math.min(i, 6)}">
+    return `      <article class="tile" data-reveal data-stagger="${Math.min(i, 6)}">${tiglaDiagram(l, m, tiglaWidths(m, where))}
         <h3 class="tile__name">${esc(m.name[l.code])}</h3>${media}${variants}
       </article>`;
   }).join('\n');

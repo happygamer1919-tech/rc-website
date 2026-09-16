@@ -218,7 +218,10 @@ rows, figures replaced. The W16-02 figures are now known-superseded values in
 ### Amended 2026-09-16 by W17-03 (RC-134) · the category budgets confirmed under R-P
 
 Added under R-T. The two LOCAL labels above are struck in place under R-R, at the
-owner's direction; no other sentence above this block was edited.
+owner's direction; ~~no other sentence above this block was edited~~. **AMENDED
+2026-09-16 (W18 ratifications): the strike is R-R conduct, not an exception to R-T.
+R-R permits striking a value in place where it has documentary purpose, so the two
+strikes edited no sentence in R-T's sense, and nothing else above this block changed.**
 
 **Measured under R-P on the live domain `https://rapidconstruct.md`**, after the
 last wave 17 merge that changes a page (#42), with the deployed commit's
@@ -260,3 +263,45 @@ figures above: homepage 10,447 RO and 10,747 RU; tile 3,781 and 3,815; carports
 
 **Still no promo-bar revert figure for the category pages.** Not measured, so not
 stated.
+
+### Amended 2026-09-16 by W18-01 (RC-138) · the tile page with its profile diagrams
+
+Added under R-T; nothing above this block was edited. RC-138 put an original
+profile diagram above each of the four models in the tile grid, closing Q-W14-11b
+in place of the renders "What moves a budget" named. The drawings are inline SVG:
+no image file, and no request. **These budgets supersede the tile page row of the
+wave 14 tail block above.** Nothing else moved: the other 26 pages `scripts/verify-live.js` holds,
+service pages included, were re-measured in the same run and each was identical to
+its current figure.
+
+**These figures are LOCAL, and stated as such.** The diagrams are not deployed
+until this merges, so an R-P reading cannot exist yet. Measured by
+`scripts/verify-live.js` against a local server of this branch's `dist/`, at
+1440x900: every request cache-busted, `build-sha` asserted in the same page load and
+matching on all 28 pages, markers asserted, every `[data-reveal]` applied and settled
+before `scrollHeight` was read. **A marker unique to this build was added first**:
+the tile page asserts four `[data-tile-diagram]` elements, which a tile page built
+before RC-138 cannot carry. Two full runs, identical to the pixel.
+
+Each budget is the measured height plus the **60px headroom term**, R-J's, not
+re-derived.
+
+| Page | Product block now | RO measured | RO budget, under | RU measured | RU budget, under |
+|---|---|---|---|---|---|
+| `/servicii/tigla-metalica/` | the tile grid, a profile diagram above each model (W18-01), swatches unchanged | 3,940 | **4,000** | 3,973 | **4,033** |
+
+**4,000 is a sum, not a rounding.** 3,940 measured plus 60 headroom. It is stated
+here because a round-looking budget is exactly what this method exists to rule out.
+
+**What the diagrams cost**, measured minus the wave 14 tail figure: RO +159, RU
++158. One grid row, so one diagram's height plus its margin; the four cards share
+the row and the tallest sets it.
+
+Promo bar removed by data: the tile page budget still drops by 44, a figure this
+card did not re-measure. The diagrams sit inside the grid, below the promo bar, and
+change nothing above it.
+
+**Where they are enforced:** `scripts/verify-live.js`, `PAGES`, the two tile rows,
+now of type `tigla`, whose marker set adds `tileDiagrams: 4`. The tail's 3,841 and
+3,875 are known-superseded values in `scripts/check-stale-docs.js`
+(`budget-tigla-w14`), per R-Q.

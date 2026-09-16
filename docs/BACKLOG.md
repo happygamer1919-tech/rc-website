@@ -8,6 +8,22 @@ Status values: `todo` · `in progress` · `blocked` · `shipped`.
 Waves 1 to 5 predate this file; their tickets are reconstructed from the git
 history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 
+## Wave 18
+
+Dispatch of 2026-09-16. No ruling this wave. #39 (R-AB) and #43 (RC-134) were both
+merged by the owner before this run and verified as ancestors of `origin/main`
+before any card was worked: #39 as `1cb075c`, #43 as `41ec827`. The owner's
+rulings on wave 17 are recorded in DECISIONS.md, W18 ratifications, and ride the
+first wave 18 PR, as wave 17's rode R-AB.
+
+| Ticket | Card | Mode | Branch | Status |
+|---|---|---|---|---|
+| RC-138 | W18-01 Tile profile diagrams, closes Q-W14-11b | SELF | `w18/rc-138-tile-profiles` | shipped: four original inline SVG profiles, four distinct by mapping and by geometry, widths drawn from the audit on three and none on the modular tile; zero image files; swatches byte-identical; 264 of 264 rendered assertions; 5 build arms, 2 harness arms, 2 marker arms; tile page RO 3,940 / RU 3,973, R-Y extended (LOCAL) |
+| RC-139 | W18-02 Header slack floor, 8px | SELF | `w18/rc-139-header-slack-floor` | todo |
+| RC-140 | W18-03 Acceptance-grep integrity | SELF | `w18/rc-140-grep-integrity` | todo |
+
+**The W18 numbers follow the dispatch's order.**
+
 ## Wave 17
 
 Dispatch of 2026-09-16. **Ruling R-AB** (`docs/rulings/R-AB.md`) ships first, as a

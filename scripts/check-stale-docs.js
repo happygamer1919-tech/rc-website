@@ -169,6 +169,7 @@ const SCAN_SOURCE = [
   'src/styles.css',
   'src/template.html',
   'src/service.html',
+  'src/product.html',
   'src/category.html',
   'src/privacy.html',
   'src/404.html',
@@ -419,6 +420,21 @@ function scan(rel, isSource) {
 SCAN.forEach((rel) => scan(rel, false));
 SCAN_SOURCE.forEach((rel) => scan(rel, true));
 
+/* RC-135 (W17-04). Every template in src/ is in SCAN_SOURCE, asserted by count.
+   src/product.html sat outside the list from W14-16 until this card, reported at
+   W16-02. A template added later fails here until it is registered. */
+const srcDir = path.join(ROOT, 'src');
+const srcTemplates = fs.existsSync(srcDir) ? fs.readdirSync(srcDir).filter((f) => f.endsWith('.html')).map((f) => `src/${f}`).sort() : [];
+const listedTemplates = SCAN_SOURCE.filter((f) => /^src\/[^/]+\.html$/.test(f)).sort();
+const unlistedTemplates = srcTemplates.filter((f) => !listedTemplates.includes(f));
+const templateCountBad = srcTemplates.length === 0 || listedTemplates.length !== srcTemplates.length;
+console.log(`templates scanned: ${listedTemplates.length} of ${srcTemplates.length} in src/ (${listedTemplates.join(', ')})`);
+if (templateCountBad) {
+  console.error(srcTemplates.length === 0
+    ? 'TEMPLATE COUNT: src/ holds zero .html templates, so the count proves nothing.\n'
+    : `TEMPLATE COUNT MISMATCH: templates scanned: ${listedTemplates.length}, templates in src/: ${srcTemplates.length}; not in SCAN_SOURCE: ${unlistedTemplates.join(', ') || '(none)'}\n`);
+}
+
 /* A file that vanished is not a pass. */
 if (missingFiles.length) {
   console.error('SCANNED FILE MISSING — the scan list names a file that is not there:');
@@ -457,6 +473,6 @@ if (deadExceptions.length) {
   console.error('');
 }
 
-const failed = hits.length + deadExceptions.length + missingFiles.length;
-if (failed) { console.error(`FAIL — ${hits.length} unmarked, ${deadExceptions.length} dead exceptions, ${missingFiles.length} missing files\n`); process.exit(1); }
+const failed = hits.length + deadExceptions.length + missingFiles.length + (templateCountBad ? 1 : 0);
+if (failed) { console.error(`FAIL — ${hits.length} unmarked, ${deadExceptions.length} dead exceptions, ${missingFiles.length} missing files, template count ${templateCountBad ? 'MISMATCH' : 'ok'}\n`); process.exit(1); }
 console.log('every known-superseded value is amended, excepted or absent.\n');

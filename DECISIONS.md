@@ -5919,3 +5919,64 @@ direction it was taken.
 Nine pass: merge artifacts, build, links, stale docs, provenance, scarcity, origin,
 catalog pages, and **Lighthouse**. For the first time, that last entry is a
 measurement rather than an apology.
+
+## W17-04 · The scan gap closed: every template in src/ is scanned, asserted by count, 2026-09-16
+
+**Card RC-135. SELF.** Wave 16 deviation 6, reported at W16-02 and ratified in the
+W17 ratifications: `src/product.html` sat in neither template scan list from
+W14-16, when it was created, until this card.
+
+### Which scans cover the templates
+
+Measured by reading every script under `scripts/` for the paths it names. **Two**
+scans read the source templates, and both now carry `src/product.html`:
+
+| Scan | List | Before | After |
+|---|---|---|---|
+| `scripts/check-scarcity.js` (R-X) | `CODE` | 5 of 6 templates | 6 of 6 |
+| `scripts/check-stale-docs.js` (R-Q, R-R) | `SCAN_SOURCE` | 5 of 6 templates | 6 of 6 |
+
+The other gates read the **built** site, not `src/`: `check-links`, `check-origin`,
+`check-catalog-pages`, `check-asset-provenance` and `check-lighthouse` all walk
+`dist/`, where the product pages were always present. `check-merge-artifacts` reads
+every tracked text file, so it always read `src/product.html`. None of them needed
+a change.
+
+### The count assertion
+
+Each of the two scans now lists the `.html` files in `src/`, counts the templates
+in its own list, and **fails when the two counts differ**, naming the unlisted
+file. It also fails when `src/` yields zero templates, so an empty directory cannot
+pass as 0 of 0. Both print `templates scanned: N of M in src/` every run. A
+template added later therefore fails both gates until it is registered, rather than
+going unscanned in silence, which is how `src/product.html` went unnoticed for two
+waves.
+
+`docs/CLAUDE.md` section 16 lists it as the third thing that fails rather than
+passing as housekeeping.
+
+### What the newly scanned file fails
+
+**Nothing.** `node scripts/check-scarcity.js` exit 0 and `node
+scripts/check-stale-docs.js` exit 0 with `src/product.html` in both lists: zero R-X
+strings and zero unmarked superseded values in its source.
+
+### The gap was real, and is shown closed
+
+**`main`'s own scripts miss it.** With a financing string and a superseded colour
+planted in comments in `src/product.html`, and `dist/` not rebuilt so only the
+source scan could see them, `main`'s `check-scarcity.js` exited 0 and `main`'s
+`check-stale-docs.js` exited 0.
+
+**Negative-tested on four arms**, control watched green before and after, each arm
+failing on its own message:
+
+| Arm | Command | exit | Fired on |
+|---|---|---|---|
+| `plata în rate` planted in a `src/product.html` comment | `node scripts/check-scarcity.js` | 1 | `src/product.html [instalment, ro-rate]` |
+| `#F26419` planted in a `src/product.html` comment | `node scripts/check-stale-docs.js` | 1 | `src/product.html:289 (in a comment)`, the `--brand` value |
+| an unregistered `src/zz-arm.html` | both | 1, 1 | `templates scanned: 6, templates in src/: 7; not in ...: src/zz-arm.html` |
+| `src/product.html` taken back out of both lists | both | 1, 1 | `templates scanned: 5, templates in src/: 6; not in ...: src/product.html` |
+
+Every plant was restored from a file copy, not from git, and `git status` showed
+only the two intended script changes afterwards.

@@ -528,13 +528,16 @@ three on every run so the scope is never implicit.
 **Adding a value to that list is part of recording a ruling that supersedes a
 measurement**, not a follow-up card. That obligation is written into R-Q.
 
-Two things fail that would ordinarily be treated as housekeeping, because both
-are how a gate stops being one:
+Three things fail that would ordinarily be treated as housekeeping, because all
+three are how a gate stops being one:
 
 - **A named exception that no longer matches anything.** It has outlived the
   occurrence it excused and is now an unreviewed licence sitting inside a gate.
 - **A scanned document that has gone missing.** A file that vanished is not a
   file that passed.
+- **A template in `src/` that is not in the scan list.** Asserted by count, in
+  this gate and in `scripts/check-scarcity.js`, the other scan that reads the
+  templates. `src/product.html` went unscanned by both from W14-16 until RC-135.
 
 **Its limit, stated plainly.** It is a value search with a proximity rule. It
 catches a superseded value arriving with nothing beside it, which is every

@@ -344,6 +344,16 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     marker anywhere in the tracked text files, and no duplicate row key in
     `DECISIONS.md`, `docs/BACKLOG.md`, `docs/QUESTIONS.md` or
     `docs/assets/PROVENANCE.md`.
+11. `node scripts/check-header-fit.js` clean. **Since W18-02 (RC-139)**, run by
+    `quality`. The header pill in every template that carries it, both locales,
+    at every width the header has been measured at: no two targets intersecting,
+    no sideways scroll, the Servicii caret wherever the nav shows, the phone number
+    whole from 1280px, and **slack at or above the owner's floor**, which lives in
+    the script as `SLACK_FLOOR` and fails naming the locale, the width and the
+    measured value. The fit and the floor are separate assertions with separate
+    messages: a header can fit with nothing to spare. It fails, never skips, when
+    the Inter webfont does not load, because a width measured in a fallback font
+    is not a measurement of this site.
 
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number — Q-W14-03 was found "at gate 9" — and those bodies are immutable under
@@ -353,7 +363,10 @@ even where that puts it out of running order.
 **What `quality` runs on every pull request**, in order: gate 10 first (it names
 the damage precisely), then gates 1, 2 and 3, then
 `scripts/check-asset-provenance.js` (R-W), `scripts/check-scarcity.js` (R-X) and
-`scripts/check-origin.js` (W14-17). Those last three enforce rulings that
+`scripts/check-origin.js` (W14-17). **AMENDED (W18-02):** gate 11 runs last,
+after `check-origin.js`. `scripts/check-catalog-pages.js` (W16-02) and gate 5
+(W16-04) also run, between `check-scarcity.js` and `check-origin.js`; the
+sentence above predates both. Those last three enforce rulings that
 postdate this list and were never given numbers; they are gates in every sense,
 and are named here so the numbered list is not read as the complete set.
 

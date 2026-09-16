@@ -5919,3 +5919,89 @@ direction it was taken.
 Nine pass: merge artifacts, build, links, stale docs, provenance, scarcity, origin,
 catalog pages, and **Lighthouse**. For the first time, that last entry is a
 measurement rather than an apology.
+
+## W17 ratifications · The owner's rulings on wave 16, 2026-09-16
+
+Recorded at the owner's instruction, from the wave 17 dispatch, before any wave 17
+card was worked. PR #35 (R-AA) was verified merged first, as the dispatch requires:
+`8f786ad`, with its head `c1b2473` an ancestor of `origin/main`.
+
+**Wave 16 deviations 1 through 7, ratified as reported.** In the form the wave 16
+report put them:
+
+1. RC-129 ships no descriptive prose, because none exists in the repo (Q-W16-01).
+2. RC-129 added a permanent gate where the card asked only for acceptance.
+3. Nine, not eight, catalog rows resolved to Fațade.
+4. R-Y's category page budgets are labelled LOCAL, not R-P readings, with no
+   promo-bar revert figure because none was measured.
+5. R-AA ships no gate.
+6. A pre-existing gap reported, not fixed: `src/product.html` is in neither scan
+   list.
+7. RC-131's delete branch was never fully achievable, because 55 of 56 Lighthouse
+   mentions sit in immutable records.
+
+**The strategy chat's "eight rows" was wrong. Nine is correct.** W16 ratifications
+already recorded nine as measured; the owner confirms the measurement.
+
+**The RC-129 gate is kept as a permanent gate**, overturning the card's narrower
+scope, which asked for the zero-price assertion as one-off acceptance.
+
+- **Which gate that is.** The dispatch calls it "the RC-129 mapping gate". The gate
+  deviation 2 reported is `scripts/check-catalog-pages.js`, which refuses prices,
+  stock, cart and product records on the category pages; RC-129 added no other.
+  The menu mapping assertion is RC-130's, lives in `build.js`, was never reported as
+  a deviation, and stands on its own card. **Read as the deviation 2 gate**, since
+  that is the one whose scope was in question. Both stay either way.
+
+**Q-W15-01 is reopened and authorized.** Option (c): take 4px off the header's
+internal gap, freeing 12px, and spend it on the Servicii caret. Card RC-136 carries
+it, with a revert-and-report condition if it does not fit.
+
+## W17-01 · Ruling R-AB: a gate's result is its own exit code and its own output, 2026-09-16
+
+**Card RC-137. STOP, shipped ahead of every other wave 17 card**, as the dispatch
+directs. The ruling is `docs/rulings/R-AB.md`; this entry records what shipped with
+it.
+
+**RC-137 is this executor's numbering.** The dispatch named R-AB without a ticket
+id, and RC-133 to RC-136 are the dispatch's own, so R-AB took the next free number.
+
+### The two cases, recorded in the ruling body
+
+Both from wave 16, both this executor's, both re-derived from the run's own command
+output rather than from the wave 16 report's summary of them.
+
+| Case | Card | What was read | What it actually said |
+|---|---|---|---|
+| A wrapper's exit code | RC-131 | the background job's "exit code 0", from a trailing `echo` | the gate printed `LIGHTHOUSE GATE FAILED ... spawnSync npx ETIMEDOUT` and `exit=1` |
+| A control never watched green | RC-129 | four arms each printing `exit=1 (want 1)` | the control ran first and was red, 28 hits on the template's own comment, so three arms fired for the wrong reason |
+
+### A correction to W16-02
+
+W16-02 says the template comment "trips three of the six patterns on all fourteen
+pages". **It tripped two**: `price-word` and `cart`, once each per page, 28 hits in
+all. The gate matches each pattern at most once per page and the comment was
+identical on all fourteen, so 28 hits is two patterns per page; the 20 lines the
+gate printed name only those two. `stock` could not have fired: `stoc` is guarded
+at its trailing letter edge and does not match the English "stock". Recorded here under R-S rather than by editing
+W16-02's body.
+
+### There is no gate, and that is the finding
+
+Same finding as R-AA, for a different reason. R-AB's subject is **reports**, what a
+run says about a gate, and reports live in terminals, PR bodies and prose entries
+that `quality` cannot execute against. A prose scanner over `DECISIONS.md` would
+pass or fail on phrasing, and would have to exempt every immutable body written
+before it. **R-AB is a practice ruling**, enforced by conduct and by this record,
+following R-Z clause 2 and R-AA.
+
+Five interpretations are recorded in the ruling for ratification. The first keeps
+the merge authority exactly where the dispatch puts it (a SELF card merges on green
+`quality`) and applies R-AB to what a run **reports** about individual gates, which
+in CI means reading and naming the step.
+
+### How this wave applies it
+
+Every gate reported in wave 17 names its command and the `exit=` it printed,
+captured on the line immediately after the gate, unpiped. Every negative arm runs
+against a control watched green in the same command and fails on its own message.

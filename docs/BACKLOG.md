@@ -8,6 +8,29 @@ Status values: `todo` · `in progress` · `blocked` · `shipped`.
 Waves 1 to 5 predate this file; their tickets are reconstructed from the git
 history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 
+## Wave 17
+
+Dispatch of 2026-09-16. **Ruling R-AB** (`docs/rulings/R-AB.md`) ships first, as a
+STOP PR, ahead of every other card. #35 (R-AA) was merged by the owner before this
+run and verified as an ancestor of `main` before any card was worked: `8f786ad`.
+
+| Ticket | Card | Mode | Branch | Status |
+|---|---|---|---|---|
+| RC-137 | W17-01 Ruling R-AB, a gate's result is its own exit code and its own output | STOP | `w17/rc-137-ruling-rab` | STOP PR, awaiting owner |
+| RC-133 | W17-02 Category page prose, closes Q-W16-01 | SELF | `w17/rc-133-category-prose` | todo |
+| RC-134 | W17-03 Upgrade the R-Y category budgets from LOCAL to R-P | STOP | `w17/rc-134-ry-live-budgets` | todo, runs after RC-133 is merged and deployed |
+| RC-135 | W17-04 Close the scan gap, `src/product.html` | SELF | `w17/rc-135-scan-gap` | todo |
+| RC-136 | W17-05 Header caret, Q-W15-01 option (c) | SELF | `w17/rc-136-header-caret` | todo |
+
+**RC-137 is this executor's numbering.** The dispatch named R-AB without a ticket
+id; RC-133 to RC-136 are the dispatch's own, so R-AB took the next free number. The
+W17 numbers follow the dispatch's order, not the order the cards are worked in.
+
+**This section is added by whichever wave 17 card merges first.** RC-137 and RC-134
+are STOP and wait for the owner, so the SELF cards reach `main` ahead of them and
+carry it in. Each open STOP branch then takes `main` forward by merge and resolves
+this section by union, locally, per `docs/CLAUDE.md` section 10 and R-Z.
+
 ## Wave 16
 
 Dispatch of 2026-09-16. **Ruling R-AA** (`docs/rulings/R-AA.md`) ships first, as a

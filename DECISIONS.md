@@ -5158,3 +5158,126 @@ card adds no element, no image and no text, and changes two SVG drawings inside
 existing decorative containers that are already aria-hidden, so there is no new
 accessible surface. That is an argument, not a score, and it is recorded as
 unverified.
+
+## W15-04 · Swatch provenance corrected: the values are ours, 2026-09-15
+
+**Card RC-128. This entry corrects W14-22**, whose body stays exactly as written.
+R-S: an error inside a recorded body is corrected by the next entry, never by the
+pen. This is that entry.
+
+### What W14-22 shipped, and what was wrong with it
+
+It set each tile swatch to the sRGB value RAL gGmbH publishes for that code, and
+sourced every legend row to that code's page on a third-party colour site. In the
+same entry it recorded that the publisher states its technical colour values are
+protected by copyright and that a user agreement is required to use them. So the
+repo claimed a provenance it had no licence for, and made a decorative swatch
+depend on somebody else's data.
+
+### What ships now
+
+Fifteen legend entries over ten base codes, each carrying an **approximate sRGB
+value authored in this repo**, by eye, from the colour name the code already had.
+Nothing is copied from any published table.
+
+| Base | Name (RO) | Was | Now |
+|---|---|---|---|
+| 3005 | Roșu vin | `#561E27` | **`#5A2430`** |
+| 5005 | Albastru semnal | `#134A85` | **`#12508E`** |
+| 6005 | Verde mușchi | `#234235` | **`#27483A`** |
+| 7016 | Gri antracit | `#3B4044` | **`#3D4247`** |
+| 7024 | Gri grafit | `#45494E` | **`#494D52`** |
+| 8017 | Maro ciocolată | `#42332E` | **`#45352F`** |
+| 8019 | Maro gri | `#3B3736` | **`#3E3A38`** |
+| 9003 | Alb semnal | `#EBECEA` | **`#EDEEEB`** |
+| 9005 | Negru intens | `#131516` | **`#15181A`** |
+| 9006 | Aluminiu alb | `#9A9D9D` | **`#9DA0A0`** |
+
+**Kept unchanged:** the colour codes, which are the manufacturer's; the colour
+names exactly as they shipped; the swatch and its matt and gloss treatment; and
+the indicative-colour line in both locales.
+
+**Removed:** every ral-farben.de URL, the `source` field, the `ral` field name
+(now `base`), the `data-ral` attribute (now `data-code`), and every phrase in our
+own prose presenting the values as a standards body's published data.
+
+**The build now refuses the claim coming back.** `source` and `ral` are not
+ignored, they **fail the build**, each with its own message. A later card cannot
+reintroduce the provenance by data without the gate stopping it.
+
+### Three things the card asked for that the repo does not have
+
+1. **"Rename the data file so it does not claim to be a RAL table."** There is no
+   such file. The legend lives inside `content/tigla-metalica.json`, the product
+   data file, which claims nothing by its name. The RAL claim lived in a field
+   name, a URL on every row, the file's own `_note`, two build comments, an HTML
+   attribute and a `docs/CLAUDE.md` bullet. All six are corrected. Nothing was
+   renamed because nothing was named for RAL.
+
+2. **"Keep the colour codes and Dasterum's own colour names."** The codes are kept
+   and they are the manufacturer's. **The names are not Dasterum's.** W14-10
+   recorded that the names are the RAL names in Romanian and Russian, and that the
+   manufacturer's own labels were rejected for carrying spelling errors, "Vin
+   rosu" and "Ciocolata maro". Reading the instruction as "adopt the
+   manufacturer's labels" would reintroduce copy this repo has already refused, so
+   it is read as **keep the names as they ship**, and they are untouched.
+
+3. **The supplier is not established.** Dasterum appears nowhere in `content/` or
+   `build.js`; the data file says "the manufacturer's published listing", and
+   **Q-W14-08(a) is still open** on which supplier that is and whether the prices
+   are ours at all. The card names Dasterum. The repo does not. Recorded rather
+   than assumed.
+
+### The acceptance grep, and where it is scoped
+
+**Zero** ral-farben.de URLs and **zero** occurrences of "RAL colour values" across
+50 tracked text files, and zero in the built output, checked separately. Three
+files are excluded, each for a stated reason rather than for convenience:
+
+- `DECISIONS.md` and `docs/QUESTIONS.md` are the append-only records, already
+  exempt from the staleness gate by ruling. W14-22's body necessarily contains
+  both the URLs and the phrase, and deleting them is precisely what R-S forbids.
+  **This entry is the correction that R-S calls for instead.**
+- `docs/audits/wave-14-competitor-structure.md` records what competitors' pages
+  show, for example "Antracit RAL 7016" on a rival's listing. It is a record of
+  other people's sites, not a claim about ours, and editing it would falsify it.
+
+### What still says RAL, on purpose
+
+Four customer-facing strings, two per locale, say the colour is chosen from the
+RAL palette. **They are the indicative-colour lines the card says to keep**, and
+they describe the palette a customer chooses a product from, not the values this
+repo draws. Changing customer-facing copy about what a product is available in is
+a product decision, so it was not made here. **Q-W15-02** logs it with options and
+a recommendation.
+
+### Tested
+
+**52 of 52 assertions**, headless Chrome, both locales at 1440 and 390px. Per run:
+55 chips render; every chip has exactly one swatch; **every swatch computes to the
+value authored in this repo**; **no swatch renders any of the ten superseded
+figures**, which is the assertion that makes the test non-circular rather than
+comparing the page to the file it came from; every swatch carries `data-code` and
+no `data-ral` survives anywhere; matt is flat and gloss is highlighted; every
+colour the models offer has a chip and no chip sits outside the legend; the chip
+count equals the colours offered, 14; the indicative-colour line closes all seven
+palettes and matches that locale's string; the page carries no ral-farben
+reference; and no horizontal overflow.
+
+**The card says "12/12 unchanged". The real figures are 55 chips over 14 distinct
+colours.** W14-22's "12 of 12" was its own assertion count, not a chip count.
+Reported as measured rather than made to match.
+
+### Measured
+
+Ten page heights at 1440px, local A/B against main, reveals settled. **All ten
+identical.** No R-Y amendment is owed.
+
+### Gates
+
+Six pass: build, links, stale docs, provenance, scarcity, origin.
+
+**Lighthouse (gate 5) NOT RUN, and not claimed**, for the reason at W15-02. This
+card changes colour values inside an existing `aria-hidden` swatch and adds no
+element and no text. The swatch was already decorative and the code and name beside
+it are the real information, so contrast is not carried by the swatch.

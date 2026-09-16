@@ -5609,3 +5609,106 @@ its source is scanned for neither scarcity strings nor stale values. `src/catego
 was registered in both when it was added. Closing the product template's gap is a
 one-line change in each list, and it is **reported rather than done**, being outside
 this card.
+
+## W16-03 · Every catalog row opens its own category page; the header still cannot afford a caret, 2026-09-16
+
+**Card RC-130. Closes Q-W15-01.**
+
+### The repoint
+
+The owner overturned the RC-106b mapping because the menu read as a broken link.
+Measured before this card: **nine of fourteen rows** resolved to
+`/servicii/fatade/`, three to `/servicii/finisaje/`, one to
+`/servicii/instalatii/` and one to `/servicii/case-la-cheie/`.
+
+After: each of the seven top-level rows opens **its own** `/catalog/<slug>/` page,
+and each of the seven subcategory rows opens **its parent's** page, which is what
+the card directs. **Zero rows resolve to a service page**, in either locale.
+
+| Row | Opens |
+|---|---|
+| Sisteme de termoizolație, and all five children | `/catalog/termoizolatie/` |
+| Tencuieli decorative | `/catalog/tencuieli-decorative/` |
+| Plăci ceramice | `/catalog/placi-ceramice/` |
+| Elemente decorative | `/catalog/elemente-decorative/` |
+| Vopsele, and both children | `/catalog/vopsele/` |
+| Sisteme de iluminare | `/catalog/sisteme-iluminare/` |
+| Alte materiale de construcții | `/catalog/alte-materiale/` |
+
+### The mapping assertion, negative-tested on two distinct arms
+
+`build.js` now refuses a menu row that opens anything but a category page, and
+refuses a subcategory that opens a category other than its parent. It sits beside
+the other catalog validators, so the mapping cannot regress by a data edit.
+
+Watched failing, control green before and after, each arm firing its **own**
+message rather than one arm firing twice:
+
+- a row repointed at a service page: *"menu row(s) do not open a category page"*,
+  naming `Tencuieli decorative [ro] -> /servicii/fatade/`;
+- a subcategory pointed at another category's page: *"does not open its parent
+  page"*, naming `Polistiren expandat (/catalog/vopsele/ vs /catalog/termoizolatie/)`.
+
+### The header: re-measured, and nothing fits
+
+Baseline on this branch **after** the repoint, identical on all four page
+templates. The repoint costs no width: the menu is a panel, and the nav is
+untouched.
+
+| | 769–1100 | 1180 | 1280 / 1440 / 1920 |
+|---|---|---|---|
+| RO | 357–688 | 68 | **53** |
+| RU | 353–684 | 31 | **15** |
+
+Each candidate was then applied **alone**, from that baseline, and measured, so the
+three costs are independently attributable:
+
+| Candidate | Cost at 1280+ | RO 1280+ | RU 1280+ | Verdict |
+|---|---|---|---|---|
+| RC-121 font revert, 16 to 17px | **16** | 37 | **−1** | fails RU |
+| Servicii caret, 14px glyph + 4px gap | **18** | 35 | **−3** | fails RU |
+| RC-121 gap revert, 20 to 28px | **24** | 29 | **−9** | fails RU |
+
+**Cheapest first, as the card directs. The font revert is the cheapest at 16px and
+comes closest: it misses by a single pixel.** RU carries 15px of slack at 1280px
+and above, and nothing on the list costs less than 16.
+
+Every candidate failed in **RU only**, at 1280, 1440 and 1920, on all four
+templates: twelve failing combinations each. All three pass at 1180 and below,
+where the media block already runs a smaller nav.
+
+**So the header ships unchanged, exactly as RC-126 left it.** Q-W15-01 is closed by
+measurement rather than by preference, and now carries the figure for how much is
+missing: **1px** for the font revert, **3px** for the caret, **9px** for the gap.
+
+**What would change the answer.** RU is the binding locale at every width from
+1280px. Freeing 1px in RU buys the font revert; 3px buys the caret. Q-W15-01's
+option (c), taking 4px off the header pill's own 24px gap, frees 12px and would
+afford the caret comfortably. It was not done: it edits a value outside the RC-121
+ladder the owner fixed at step 3, and this card did not authorise that either.
+
+### Acceptance matrix, shipped state
+
+Slack in px. Nine widths, both locales, all four templates that ship. Zero pairwise
+intersections, slack at or above zero, no horizontal scroll, at every cell: **72 of
+72 combinations pass.**
+
+| Template | 769 | 900 | 1024 | 1099 | 1100 | 1180 | 1280 | 1440 | 1920 |
+|---|---|---|---|---|---|---|---|---|---|
+| home RO | 357 | 488 | 612 | 687 | 688 | 68 | 53 | 53 | 53 |
+| home RU | 353 | 484 | 608 | 683 | 684 | 31 | 15 | 15 | 15 |
+| service RO | 357 | 488 | 612 | 687 | 688 | 68 | 53 | 53 | 53 |
+| service RU | 353 | 484 | 608 | 683 | 684 | 31 | 15 | 15 | 15 |
+| product RO | 357 | 488 | 612 | 687 | 688 | 68 | 53 | 53 | 53 |
+| product RU | 353 | 484 | 608 | 683 | 684 | 31 | 15 | 15 | 15 |
+| category RO | 357 | 488 | 612 | 687 | 688 | 68 | 53 | 53 | 53 |
+| category RU | 353 | 484 | 608 | 683 | 684 | 31 | 15 | 15 | 15 |
+
+The category template is included because wave 16 added it; the header is shared,
+but a matrix that omits a shipping template is not a full matrix.
+
+### Gates
+
+Eight pass: merge artifacts, build, links, stale docs, provenance, scarcity,
+origin, catalog pages. **Lighthouse (gate 5) NOT RUN**; RC-131 decides whether that
+gate can exist here at all.

@@ -1766,7 +1766,7 @@ Monterrey, Valencia, Kascad and the modular tile, unwatermarked, square, at leas
 960px, with written permission. Never the price list. R-W's supplier-pack origin
 covers the provenance row, and the grid already renders
 `public/img/tigla-<model>.jpg` the moment the file and its alt text exist.
-## Q-W15-01 · The Servicii disclosure has no caret, because a caret does not fit · ANSWERED 2026-09-16, re-measured at RC-130: none of the three candidates fits, the cheapest missing by 1px (W16-03) · opened 2026-09-15 (W15-02)
+## Q-W15-01 · The Servicii disclosure has no caret, because a caret does not fit · ANSWERED 2026-09-16, option (c): the owner reopened it and authorized 4px off the header pill's gap; the caret ships with RU at 9px slack (RC-136, W17-05). Earlier answered by measurement at RC-130 (W16-03) · opened 2026-09-15 (W15-02)
 
 **Shipped default: no caret.** The toggle is exactly as wide as the link it
 replaced, so the menu costs no width and the header fits at every width in both

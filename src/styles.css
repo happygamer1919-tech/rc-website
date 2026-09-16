@@ -221,12 +221,15 @@ p { margin: 0; }
   max-width: var(--container); margin: 0 auto; width: 100%;
   padding: 0 var(--gutter);
 }
+/* W17-05 (RC-136). The gap between the pill's four children is 20px, down 4px,
+   which frees 12px across its three gaps for the Servicii caret below. Authorized
+   by the owner as Q-W15-01 option (c); every other header value is RC-121's. */
 .header__pill {
   background: var(--bg-dark);
   border-radius: 999px;
   height: 64px;
   padding: 0 12px 0 24px;
-  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
 }
 .header__logo { display: flex; align-items: center; flex: none; }
 /* W13-03. The mark is sized to the SAME 8px vertical clearance the CTA button
@@ -365,12 +368,11 @@ p { margin: 0; }
    The toggle takes its size from the .nav rule above, alongside .nav a, so the
    nav's font is set in one place and a later step up or down moves both.
 
-   NO CARET, and that is measured rather than chosen. A 14px caret with a 4px
-   gap adds 18px to the nav. RU had 15px of slack at 1280px and up before this
-   card, so a caret put the header 3px over at 1280, 1440 and 1920px, on all
-   three templates. The toggle is therefore exactly as wide as the link it
-   replaces and the menu costs no width at all. Q-W15-01 records the
-   alternatives that were measured and what each would cost. */
+   The caret: shipped at W17-05 (RC-136), after W15-02 and W16-03 both measured
+   it failing. A 14px caret with a 4px gap adds 18px to the nav, and RU had 15px
+   of slack at 1280px and up. The owner then authorized taking 4px off the header
+   pill's gap, which frees 12px, so RU now carries the caret with room to spare.
+   Q-W15-01 and DECISIONS.md W17-05 hold the measurements. */
 .svcmenu { position: relative; display: flex; align-items: center; }
 .svcmenu__toggle {
   display: inline-flex; align-items: center;
@@ -379,6 +381,7 @@ p { margin: 0; }
   color: var(--bg-light); white-space: nowrap;
 }
 .svcmenu__toggle[aria-expanded='true'] { color: var(--brand); }
+.svcmenu__caret { display: block; flex: none; margin-left: 4px; }
 .svcmenu__panel {
   position: absolute; top: calc(100% + 28px); left: 50%; margin-left: -140px; z-index: 101;
   width: 280px;

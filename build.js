@@ -700,7 +700,7 @@ function serviciiMenu(l) {
   if (items.length !== expected) die(`serviciiMenu: ${items.length} rows, expected ${expected}.`);
   const label = esc(l.strings['header.navServices']);
   return `<div class="svcmenu">
-      <button class="svcmenu__toggle" type="button" id="svcmenu-toggle" aria-expanded="false" aria-controls="svcmenu-panel">${label}</button>
+      <button class="svcmenu__toggle" type="button" id="svcmenu-toggle" aria-expanded="false" aria-controls="svcmenu-panel">${label}<svg class="svcmenu__caret" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
       <div class="svcmenu__panel" id="svcmenu-panel" hidden>
         <ul class="svcmenu__list" aria-label="${label}">
 ${items.join('\n')}

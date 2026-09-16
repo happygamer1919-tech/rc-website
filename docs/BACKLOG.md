@@ -8,6 +8,29 @@ Status values: `todo` · `in progress` · `blocked` · `shipped`.
 Waves 1 to 5 predate this file; their tickets are reconstructed from the git
 history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 
+## Wave 16
+
+Dispatch of 2026-09-16. **Ruling R-AA** (`docs/rulings/R-AA.md`) ships first, as a
+STOP PR, ahead of every other card. #25 and #31 were both merged by the owner
+before this run and verified as ancestors of `main` before any card was worked:
+#25 as `29fd10b`, #31 as `47f967f`.
+
+| Ticket | Card | Mode | Branch | Status |
+|---|---|---|---|---|
+| RC-132 | W16-01 Ruling R-AA, destructive git commands and worktree hygiene | STOP | `w16/rc-132-ruling-raa` | PR #35, awaiting owner |
+| RC-129 | W16-02 Catalog category pages, seven pages both locales | SELF | `w16/rc-129-category-pages` | shipped: 14 pages, 14 sitemap URLs, 8 gates green, budgets added to R-Y (local) and 14 rows to verify-live; descriptive prose omitted as unsourced (Q-W16-01); a standing gate added beyond the card, for ratification |
+| RC-130 | W16-03 Repoint the catalog menu, closes Q-W15-01 | SELF | `w16/rc-130-repoint-catalog` | todo, after RC-129 |
+| RC-131 | W16-04 Lighthouse gate: make gate 5 execute or delete it | SELF | `w16/rc-131-lighthouse-gate` | todo |
+
+**RC-132 is this executor's numbering.** The dispatch named R-AA without a ticket
+id; RC-129 to RC-131 are the dispatch's own, so R-AA took the next free number.
+
+**This section is added by whichever wave 16 card merges first.** RC-132 is STOP
+and waits for the owner, so the SELF cards reach `main` ahead of it and carry it
+in. PR #35 adds the same section on its own branch; when `main` is merged forward
+into it, the two are resolved by union, locally, per `docs/CLAUDE.md` section 10
+and rulings R-Z and R-AA.
+
 ## Wave 15
 
 Dispatch of 2026-09-15. **Ruling R-Z** (`docs/rulings/R-Z.md`) ships first, as a

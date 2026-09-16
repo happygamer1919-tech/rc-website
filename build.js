@@ -50,6 +50,10 @@ const LOCALES = [
 // well as /ru/, because a static host serves one 404 for the whole origin.
 const PRIVACY_PATH = { ro: '/confidentialitate/', ru: '/ru/konfidentsialnost/' };
 const SERVICES_ROOT = { ro: '/servicii/', ru: '/ru/servicii/' };
+// W16-02. The catalog category pages sit on their own root: they are materials,
+// not services, and /servicii/ would both misdescribe them and risk colliding
+// with a service slug.
+const CATALOG_ROOT = { ro: '/catalog/', ru: '/ru/catalog/' };
 // The city already named in meta.title, band.coverageLine and areaServed.
 const PRIMARY_CITY = { ro: 'Chișinău', ru: 'Кишинёве' };
 
@@ -1260,16 +1264,103 @@ function gardFaqSchema(l) {
    row of three links to these pages. All six URLs go in the sitemap, which the
    owner's card asks for; the fences page is listed while its block is still
    empty (Q-W14-09), because the card says all three. */
+/* W16-02, RC-129. One page per top-level catalog category.
+
+   `i` indexes content/catalog.json, which is the single source of both labels
+   and subcategories in both locales, so nothing is restated here. `service` is
+   the service whose shipped description says what Rapid Construct does with the
+   material; it is the association the catalog menu already encoded before
+   RC-130 repointed the rows, and it is the only prose on the page that is not a
+   label. Nothing here is invented: every string on a category page comes from
+   content/catalog.json or from an existing services.items entry. */
+const CATEGORIES = [
+  { slug: 'termoizolatie',        i: 0, service: 'fatade' },
+  { slug: 'tencuieli-decorative', i: 1, service: 'fatade' },
+  { slug: 'placi-ceramice',       i: 2, service: 'finisaje' },
+  { slug: 'elemente-decorative',  i: 3, service: 'fatade' },
+  { slug: 'vopsele',              i: 4, service: 'finisaje' },
+  { slug: 'sisteme-iluminare',    i: 5, service: 'instalatii' },
+  { slug: 'alte-materiale',       i: 6, service: 'case-la-cheie' },
+];
+(() => {
+  if (CATEGORIES.length !== CATALOG.categories.length) {
+    die(`CATEGORIES has ${CATEGORIES.length} entries but ${CATALOG_FILE} has ${CATALOG.categories.length} top-level categories.`);
+  }
+  const bad = CATEGORIES.filter((c) => !SERVICE_SLUGS.includes(c.service));
+  if (bad.length) die(`category page maps to an unknown service: ${bad.map((c) => c.slug + ' -> ' + c.service).join(', ')}`);
+  const dupes = CATEGORIES.map((c) => c.slug).filter((s, i, a) => a.indexOf(s) !== i);
+  if (dupes.length) die(`duplicate category slug: ${dupes.join(', ')}`);
+})();
+
+/* The category page body. Labels and subcategory names come from catalog.json;
+   the sentence about the work is the related service's own shipped description,
+   followed by a link to that service page labelled with the service's own title.
+
+   There are no section headings, deliberately: no sourced heading exists for
+   either block, and inventing one is exactly what section 5 forbids. */
+function categoryBlock(l, c) {
+  const entry = CATALOG.categories[c.i];
+  const where = `${CATALOG_FILE}: categories[${c.i}]`;
+  const kids = Array.isArray(entry.children) ? entry.children : [];
+  const si = SERVICE_SLUGS.indexOf(c.service);
+  const svcTitle = l.strings[`services.items.${si}.title`];
+  const svcDesc = l.strings[`services.items.${si}.desc`];
+  if (!REAL(svcTitle) || !REAL(svcDesc)) die(`services.items.${si} is not real for ${l.code}, needed by category ${c.slug}.`);
+
+  const subs = kids.length ? `
+    <ul class="cat-subs">
+${kids.map((k, j) => `      <li>${esc(catalogField(k, 'label', l, `${where}.children[${j}]`))}</li>`).join('\n')}
+    </ul>` : '';
+
+  return `<section class="section section--light section--divided">
+  <div class="container">${subs}
+    <p class="lede" data-reveal style="margin-top: ${kids.length ? '32px' : '0'};">${esc(svcDesc)}</p>
+    <a class="link-arrow" href="${BASE}${SERVICES_ROOT[l.code]}${c.service}/" data-reveal>${esc(svcTitle)}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+  </div>
+</section>`;
+}
+
+/* Meta for a category page. The title ladder is the one every other page type
+   uses. The description composes two sourced strings, the category label and the
+   related service's description, so it is distinct per page and invents nothing.
+   coverageLine is not used here: "Inclusiv:" plus twenty localities is far over
+   DESC_MAX on its own. */
+function categoryHeadVars(l, c) {
+  const title = catalogField(CATALOG.categories[c.i], 'label', l, `${CATALOG_FILE}: categories[${c.i}]`);
+  const inCity = l.code === 'ro' ? ` în ${PRIMARY_CITY.ro}` : ` в ${PRIMARY_CITY.ru}`;
+  const metaTitle = [title + inCity + BRAND, title + BRAND, title].find((s) => s.length <= TITLE_MAX) || title;
+  const si = SERVICE_SLUGS.indexOf(c.service);
+  const desc = l.strings[`services.items.${si}.desc`];
+  const metaDesc = [`${title}. ${desc}`, desc, title].find((s) => s.length <= DESC_MAX) || title;
+  if (/\bundefined\b/.test(metaDesc)) die(`meta description for category ${c.slug} (${l.code}) contains "undefined"`);
+  return { title, metaTitle, metaDesc };
+}
+
 const PRODUCT_PAGES = [
   { slug: 'tigla-metalica', key: 'tigla', block: (l) => tiglaGrid(l), sources: ['content/tigla-metalica.json'] },
   { slug: 'copertine', key: 'copertine', block: (l) => copertine(l), sources: ['content/copertine.json'] },
   { slug: 'garduri', key: 'garduri', block: (l) => gardPage(l), faqSchema: (l) => gardFaqSchema(l), sources: [] },
 ];
+/* W16-02. Deferred to here on purpose: PRODUCT_PAGES is declared immediately
+   above, so this check cannot live in the CATEGORIES block, which evaluates
+   earlier and would read it in its temporal dead zone. A category slug that
+   collided with a product or service slug would write one page over another
+   silently, so the check is kept rather than dropped. */
+(() => {
+  const collide = CATEGORIES.filter((c) => SERVICE_SLUGS.includes(c.slug) || PRODUCT_PAGES.some((p) => p.slug === c.slug));
+  if (collide.length) die(`category slug collides with a service or product slug: ${collide.map((c) => c.slug).join(', ')}`);
+})();
 const PROD_RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu',
   'demoAttr', 'promoBar', 'areaServedJson', 'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
   'prod.block', 'prod.footerLinks', 'prod.faqSchema',
 ]);
 const productTemplate = fs.readFileSync('src/product.html', 'utf8');
+const CAT_RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu',
+  'demoAttr', 'promoBar', 'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
+  'cat.block', 'cat.footerLinks',
+]);
+const categoryTemplate = fs.readFileSync('src/category.html', 'utf8');
+const CAT_SOURCES = ['src/category.html', 'build.js', CATALOG_FILE, ...LOCALES.map((l) => l.file)];
 const PROD_SOURCES = ['src/product.html', 'build.js', ...LOCALES.map((l) => l.file)];
 
 function productTeaser(l) {
@@ -1624,6 +1715,36 @@ for (const l of loaded) {
     servicePages.push({ loc: SITE + BASE + SERVICES_ROOT[l.code] + slug + '/', lang: l.code });
   }
 
+  // --- W16-02, the seven catalog category pages -----------------------------
+  for (const c of CATEGORIES) {
+    const out = 'dist' + CATALOG_ROOT[l.code] + c.slug + '/index.html';
+    const head = categoryHeadVars(l, c);
+    const catVars = {
+      ...vars,
+      'cat.title': head.title,
+      'cat.metaTitle': head.metaTitle,
+      'cat.metaDesc': head.metaDesc,
+      'cat.canonical': SITE + BASE + CATALOG_ROOT[l.code] + c.slug + '/',
+      'cat.urlRo': SITE + BASE + CATALOG_ROOT.ro + c.slug + '/',
+      'cat.urlRu': SITE + BASE + CATALOG_ROOT.ru + c.slug + '/',
+      'cat.pathRo': BASE + CATALOG_ROOT.ro + c.slug + '/',
+      'cat.pathRu': BASE + CATALOG_ROOT.ru + c.slug + '/',
+      'cat.subject': `[${l.code.toUpperCase()}] ${head.title} - ${CATALOG_ROOT[l.code]}${c.slug}/`,
+      'cat.block': categoryBlock(l, c),
+      'cat.footerLinks': SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
+        `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join(''),
+    };
+    const missing = new Set();
+    const html = categoryTemplate.replace(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/g, (_, key) => {
+      if (key in catVars) return CAT_RAW_KEYS.has(key) ? catVars[key] : esc(catVars[key]);
+      missing.add(key); return `{{${key}}}`;
+    });
+    if (missing.size) die(`src/category.html references unknown keys for ${l.code}/${c.slug}: ${[...missing].join(', ')}`);
+    if (html.includes('{{')) die(`unsubstituted placeholder survived in ${out}`);
+    fs.mkdirSync(path.dirname(out), { recursive: true });
+    fs.writeFileSync(out, html);
+  }
+
   // --- W14-16, the three product pages --------------------------------------
   for (const p of PRODUCT_PAGES) {
     const out = 'dist' + SERVICES_ROOT[l.code] + p.slug + '/index.html';
@@ -1717,6 +1838,14 @@ const productPairs = PRODUCT_PAGES.map((p) => ({
   lastmod: lastmodOf(...PROD_SOURCES, ...p.sources),
 }));
 servicePairs.push(...productPairs);
+// W16-02. The seven category pages, always listed: they carry no data that can
+// make them empty, so there is no condition under which they should drop out.
+const categoryPairs = CATEGORIES.map((c) => ({
+  ro: SITE + BASE + CATALOG_ROOT.ro + c.slug + '/',
+  ru: SITE + BASE + CATALOG_ROOT.ru + c.slug + '/',
+  lastmod: lastmodOf(...CAT_SOURCES),
+}));
+servicePairs.push(...categoryPairs);
 fs.writeFileSync('dist/sitemap.xml',
   '<?xml version="1.0" encoding="UTF-8"?>\n' +
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +

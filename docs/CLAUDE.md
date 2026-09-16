@@ -51,6 +51,7 @@ Measured at a desktop width, settled, with every reveal applied.
 |---|---|
 | Homepage RO and RU | ~~DECISIONS.md, ruling R-J~~ **AMENDED (W14-13): `docs/rulings/R-Y.md`, ruling R-Y** |
 | Țiglă metalică, copertine and garduri pages, either locale | **`docs/rulings/R-Y.md`, ruling R-Y** |
+| Catalog category pages, either locale | **`docs/rulings/R-Y.md`, ruling R-Y**, its latest dated block for those pages |
 | Service pages, either locale | **RELEASE-NOTES.md, wave 7 acceptance** |
 
 The homepage budgets are **derived, not chosen**: a corrected baseline plus the
@@ -175,6 +176,17 @@ The copy source is the predecessor build at `rapidconstruct-web.vercel.app`.
 Permitted edits: shortening a sentence, converting a heading to uppercase,
 splitting a paragraph into a card. Not permitted: inventing anything.
 *Source: master plan section 6.*
+
+**AMENDED (W17-02): one authorized exception, the catalog category pages.** Their
+lede and two paragraphs are authored general trade knowledge, written at the
+owner's instruction in RC-133: what the material is, what it is for, how it is
+applied, how its subcategories differ, what a buyer should weigh. They carry **no
+claim about Rapid Construct**: not its stock, brands, prices, lead times,
+warranties, capacity or experience, no superlative, no certification, no
+manufacturer name. `scripts/check-catalog-pages.js` enforces the prohibitions on
+the built pages and prints its term lists. **The exception is that scope only.**
+Every other page still takes copy from a source or omits it.
+*Source: DECISIONS.md W17-02, closing Q-W16-01.*
 
 When there is no source for a value, **mark it or omit it — never fill it**:
 
@@ -528,13 +540,16 @@ three on every run so the scope is never implicit.
 **Adding a value to that list is part of recording a ruling that supersedes a
 measurement**, not a follow-up card. That obligation is written into R-Q.
 
-Two things fail that would ordinarily be treated as housekeeping, because both
-are how a gate stops being one:
+Three things fail that would ordinarily be treated as housekeeping, because all
+three are how a gate stops being one:
 
 - **A named exception that no longer matches anything.** It has outlived the
   occurrence it excused and is now an unreviewed licence sitting inside a gate.
 - **A scanned document that has gone missing.** A file that vanished is not a
   file that passed.
+- **A template in `src/` that is not in the scan list.** Asserted by count, in
+  this gate and in `scripts/check-scarcity.js`, the other scan that reads the
+  templates. `src/product.html` went unscanned by both from W14-16 until RC-135.
 
 **Its limit, stated plainly.** It is a value search with a proximity rule. It
 catches a superseded value arriving with nothing beside it, which is every

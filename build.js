@@ -700,7 +700,7 @@ function serviciiMenu(l) {
   if (items.length !== expected) die(`serviciiMenu: ${items.length} rows, expected ${expected}.`);
   const label = esc(l.strings['header.navServices']);
   return `<div class="svcmenu">
-      <button class="svcmenu__toggle" type="button" id="svcmenu-toggle" aria-expanded="false" aria-controls="svcmenu-panel">${label}</button>
+      <button class="svcmenu__toggle" type="button" id="svcmenu-toggle" aria-expanded="false" aria-controls="svcmenu-panel">${label}<svg class="svcmenu__caret" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
       <div class="svcmenu__panel" id="svcmenu-panel" hidden>
         <ul class="svcmenu__list" aria-label="${label}">
 ${items.join('\n')}
@@ -1326,12 +1326,27 @@ const CATEGORIES = [
   if (bad.length) die(`${CATALOG_FILE}: ${bad.length} menu row(s) do not open a category page:\n  ${bad.join('\n  ')}`);
 })();
 
-/* The category page body. Labels and subcategory names come from catalog.json;
-   the sentence about the work is the related service's own shipped description,
-   followed by a link to that service page labelled with the service's own title.
+/* W17-02, RC-133. The authored copy for one category page: a lede for the hero
+   and two paragraphs for the block, from locales catalogPages.items.N, where N
+   is the category's position in content/catalog.json. General trade knowledge
+   only, under the permitted and forbidden lists recorded in DECISIONS.md W17-02.
+   A page without all three, real, in its own locale, does not build. */
+function categoryProse(l, c) {
+  const k = `catalogPages.items.${c.i}`;
+  const prose = { lede: l.strings[`${k}.lede`], p1: l.strings[`${k}.p1`], p2: l.strings[`${k}.p2`] };
+  const missing = Object.keys(prose).filter((f) => !REAL(prose[f]));
+  if (missing.length) die(`${k}.{${missing.join(', ')}} must be real in ${l.code}, needed by category ${c.slug}.`);
+  return prose;
+}
+
+/* The category page body. The two authored paragraphs open it (W17-02). Labels
+   and subcategory names come from catalog.json; the sentence about the work is
+   the related service's own shipped description, followed by a link to that
+   service page labelled with the service's own title.
 
    There are no section headings, deliberately: no sourced heading exists for
-   either block, and inventing one is exactly what section 5 forbids. */
+   any block. Each prose paragraph carries data-cat-prose so that
+   scripts/check-catalog-pages.js can find it on the built page. */
 function categoryBlock(l, c) {
   const entry = CATALOG.categories[c.i];
   const where = `${CATALOG_FILE}: categories[${c.i}]`;
@@ -1340,6 +1355,7 @@ function categoryBlock(l, c) {
   const svcTitle = l.strings[`services.items.${si}.title`];
   const svcDesc = l.strings[`services.items.${si}.desc`];
   if (!REAL(svcTitle) || !REAL(svcDesc)) die(`services.items.${si} is not real for ${l.code}, needed by category ${c.slug}.`);
+  const prose = categoryProse(l, c);
 
   const subs = kids.length ? `
     <ul class="cat-subs">
@@ -1347,25 +1363,30 @@ ${kids.map((k, j) => `      <li>${esc(catalogField(k, 'label', l, `${where}.chil
     </ul>` : '';
 
   return `<section class="section section--light section--divided">
-  <div class="container">${subs}
-    <p class="lede" data-reveal style="margin-top: ${kids.length ? '32px' : '0'};">${esc(svcDesc)}</p>
+  <div class="container">
+    <p class="lede" data-cat-prose="p1" data-reveal style="margin-top: 0;">${esc(prose.p1)}</p>
+    <p class="lede" data-cat-prose="p2" data-reveal>${esc(prose.p2)}</p>${subs}
+    <p class="lede" data-reveal style="margin-top: 32px;">${esc(svcDesc)}</p>
     <a class="link-arrow" href="${BASE}${SERVICES_ROOT[l.code]}${c.service}/" data-reveal>${esc(svcTitle)}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
   </div>
 </section>`;
 }
 
 /* Meta for a category page. The title ladder is the one every other page type
-   uses. The description composes two sourced strings, the category label and the
-   related service's description, so it is distinct per page and invents nothing.
-   coverageLine is not used here: "Inclusiv:" plus twenty localities is far over
-   DESC_MAX on its own. */
+   uses. The description is the page's own lede (W17-02), which Q-W16-01 named
+   as what the meta description most wanted. It is not prefixed with the title:
+   several ledes open on the category's own word. The W16-02 composition of the
+   category label and the related service's description stays as the fallback
+   rungs. coverageLine is not used here: "Inclusiv:" plus twenty localities is far
+   over DESC_MAX on its own. */
 function categoryHeadVars(l, c) {
   const title = catalogField(CATALOG.categories[c.i], 'label', l, `${CATALOG_FILE}: categories[${c.i}]`);
   const inCity = l.code === 'ro' ? ` în ${PRIMARY_CITY.ro}` : ` в ${PRIMARY_CITY.ru}`;
   const metaTitle = [title + inCity + BRAND, title + BRAND, title].find((s) => s.length <= TITLE_MAX) || title;
   const si = SERVICE_SLUGS.indexOf(c.service);
   const desc = l.strings[`services.items.${si}.desc`];
-  const metaDesc = [`${title}. ${desc}`, desc, title].find((s) => s.length <= DESC_MAX) || title;
+  const lede = categoryProse(l, c).lede;
+  const metaDesc = [lede, `${title}. ${desc}`, desc, title].find((s) => s.length <= DESC_MAX) || title;
   if (/\bundefined\b/.test(metaDesc)) die(`meta description for category ${c.slug} (${l.code}) contains "undefined"`);
   return { title, metaTitle, metaDesc };
 }
@@ -1756,6 +1777,7 @@ for (const l of loaded) {
     const catVars = {
       ...vars,
       'cat.title': head.title,
+      'cat.lede': categoryProse(l, c).lede,
       'cat.metaTitle': head.metaTitle,
       'cat.metaDesc': head.metaDesc,
       'cat.canonical': SITE + BASE + CATALOG_ROOT[l.code] + c.slug + '/',

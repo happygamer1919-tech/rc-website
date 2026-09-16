@@ -6005,3 +6005,319 @@ in CI means reading and naming the step.
 Every gate reported in wave 17 names its command and the `exit=` it printed,
 captured on the line immediately after the gate, unpiped. Every negative arm runs
 against a control watched green in the same command and fails on its own message.
+
+## W17-04 · The scan gap closed: every template in src/ is scanned, asserted by count, 2026-09-16
+
+**Card RC-135. SELF.** Wave 16 deviation 6, reported at W16-02 and ratified in the
+W17 ratifications: `src/product.html` sat in neither template scan list from
+W14-16, when it was created, until this card.
+
+### Which scans cover the templates
+
+Measured by reading every script under `scripts/` for the paths it names. **Two**
+scans read the source templates, and both now carry `src/product.html`:
+
+| Scan | List | Before | After |
+|---|---|---|---|
+| `scripts/check-scarcity.js` (R-X) | `CODE` | 5 of 6 templates | 6 of 6 |
+| `scripts/check-stale-docs.js` (R-Q, R-R) | `SCAN_SOURCE` | 5 of 6 templates | 6 of 6 |
+
+The other gates read the **built** site, not `src/`: `check-links`, `check-origin`,
+`check-catalog-pages`, `check-asset-provenance` and `check-lighthouse` all walk
+`dist/`, where the product pages were always present. `check-merge-artifacts` reads
+every tracked text file, so it always read `src/product.html`. None of them needed
+a change.
+
+### The count assertion
+
+Each of the two scans now lists the `.html` files in `src/`, counts the templates
+in its own list, and **fails when the two counts differ**, naming the unlisted
+file. It also fails when `src/` yields zero templates, so an empty directory cannot
+pass as 0 of 0. Both print `templates scanned: N of M in src/` every run. A
+template added later therefore fails both gates until it is registered, rather than
+going unscanned in silence, which is how `src/product.html` went unnoticed for two
+waves.
+
+`docs/CLAUDE.md` section 16 lists it as the third thing that fails rather than
+passing as housekeeping.
+
+### What the newly scanned file fails
+
+**Nothing.** `node scripts/check-scarcity.js` exit 0 and `node
+scripts/check-stale-docs.js` exit 0 with `src/product.html` in both lists: zero R-X
+strings and zero unmarked superseded values in its source.
+
+### The gap was real, and is shown closed
+
+**`main`'s own scripts miss it.** With a financing string and a superseded colour
+planted in comments in `src/product.html`, and `dist/` not rebuilt so only the
+source scan could see them, `main`'s `check-scarcity.js` exited 0 and `main`'s
+`check-stale-docs.js` exited 0.
+
+**Negative-tested on four arms**, control watched green before and after, each arm
+failing on its own message:
+
+| Arm | Command | exit | Fired on |
+|---|---|---|---|
+| `plata în rate` planted in a `src/product.html` comment | `node scripts/check-scarcity.js` | 1 | `src/product.html [instalment, ro-rate]` |
+| `#F26419` planted in a `src/product.html` comment | `node scripts/check-stale-docs.js` | 1 | `src/product.html:289 (in a comment)`, the `--brand` value |
+| an unregistered `src/zz-arm.html` | both | 1, 1 | `templates scanned: 6, templates in src/: 7; not in ...: src/zz-arm.html` |
+| `src/product.html` taken back out of both lists | both | 1, 1 | `templates scanned: 5, templates in src/: 6; not in ...: src/product.html` |
+
+Every plant was restored from a file copy, not from git, and `git status` showed
+only the two intended script changes afterwards.
+
+## W17-02 · The category pages get their prose: a lede and two paragraphs each, general trade knowledge only, 2026-09-16
+
+**Card RC-133. SELF. Closes Q-W16-01**, with option (b): all three pieces per
+category, in both locales.
+
+### What the owner authorized, as given
+
+> PERMITTED: what the material is, what it is used for, how it is applied, what
+> distinguishes the subcategories from one another, what a buyer should consider
+> when choosing. General trade knowledge, written plainly.
+> FORBIDDEN: any claim about Rapid Construct's stock, brands carried, prices, lead
+> times, warranties, capacity or experience. No superlatives. No invented
+> certifications. No manufacturer names.
+
+This is the first authored copy the site has shipped since `docs/CLAUDE.md`
+section 5 forbade inventing any. **Section 5 is amended in place** to name this
+one exception and its scope, so a later card cannot read "no copy is ever
+invented" and conclude that these pages are in breach, or read these pages and
+conclude that section 5 no longer holds.
+
+### What shipped
+
+Seven ledes and fourteen paragraphs in Romanian, then the Russian parity set: 42
+strings, in `locales/ro.json` and `locales/ru.json` under
+`catalogPages.items.N.{lede,p1,p2}`, where N is the category's position in
+`content/catalog.json`. The locale files are the site's copy home and `build.js`
+already refuses a key present in one locale and not the other.
+
+| Where | What |
+|---|---|
+| Hero, under the H1 | the lede, in the product page's own hero line markup |
+| Block, first | paragraph 1: what the material is, what it is for, how it is applied |
+| Block, second | paragraph 2: how the types or subcategories differ, and what to weigh when choosing |
+| Block, then | the subcategory list where one exists, and the related service line and link, both unchanged |
+| Page close | the existing quote form, unchanged |
+
+**No new CSS and no new colour.** The lede reuses `.hero__sub` exactly as the
+product template does; the paragraphs reuse `.lede`, the 720px measure the service
+line below them already uses.
+
+`build.js` refuses to build a category page unless all three strings are real in
+that locale, and names the missing key.
+
+### Judgment calls inside the permitted list
+
+- **No figures at all.** No thicknesses, densities, conductivities, classes or
+  standard numbers. A figure with no source is exactly what section 5 refuses, and
+  the permitted list asks for trade knowledge, not specifications.
+- **Units and rating systems named, never valued.** "measured in lumens", "the IP
+  protection rating", "the wet scrub resistance class" tell a buyer what to ask
+  about without asserting a number.
+- **The "Alte materiale" page describes the kind of material, not an inventory.**
+  Membranes, reinforcing mesh, primers, profiles and fixings are named as what the
+  category covers, which is the category's meaning, never as what is stocked.
+- **The electrical line says the mains connection is made by a qualified
+  electrician.** General safety knowledge about the work, not a claim about who
+  does it for this company.
+- **Ledes are 94 to 113 characters**, inside the 90 to 120 Q-W16-01 asked for.
+
+### The meta description is now the lede
+
+**Deviation, for ratification.** The card does not mention it. Q-W16-01 recorded
+that the lede "is what the meta description and the page hero most want", and
+W16-02's composed description (category label plus the related service's
+description) was a stand-in for exactly this string. Each page's description is
+now its own lede, 94 to 114 characters; the composed form remains as the fallback
+rungs. Not prefixed with the title, because several ledes open on the category's
+own word ("Vopsele. Vopsele pentru...").
+
+### The gate: RC-129's, extended rather than a one-off grep
+
+The card asks for a grep. The owner has just kept RC-129's gate as a **permanent**
+gate, overturning a narrower scope, and these prohibitions are standing in the same
+way, so `scripts/check-catalog-pages.js` carries them. **Deviation, for
+ratification**, in the direction the owner ratified last wave.
+
+| Assertion | Scope |
+|---|---|
+| exactly one lede, one first and one second paragraph per page, each over a minimum length | each of the 14 built pages |
+| each in its page's own locale: RO with zero Cyrillic letters and Romanian diacritics present; RU at least 95% Cyrillic letters | the prose |
+| no two pages in a locale share a lede or a paragraph | the prose |
+| no manufacturer named in the wave 14 audit: Dasterum, Imperlux, Fațade 3D, with domains and Cyrillic forms | the whole page |
+| no price, currency word or amount in lei, MDL or лей | the whole page, as before |
+| no first-person capability claim and no superlative, four authored term lists (RO and RU capability, RO and RU superlative), 142 terms | **the prose only** |
+
+**Why the term lists read the prose only.** The page's existing header, quote form
+and footer speak in the first person on purpose: "Te sunăm noi dacă e mai ușor",
+"мы свяжемся с вами", "garanție scrisă și materiale certificate UE". Probed before
+choosing: a whole-page scan fires on those on every page. They are not this card's
+copy and the card keeps the CTA unchanged, so the lists are scoped to the three
+`data-cat-prose` blocks and the gate says so in its header and on every run.
+
+The term lists live in the script, which prints all four on every run. Diacritics
+fold to their bare letters in the Romanian lists, so a claim typed without
+diacritics is still caught; edges are letter-aware, so "насколько" is not "нас"
+and "улучшает" is not "лучш*". Both are in the gate's self-test as clean samples.
+
+### Negative-tested on nine arms, control watched green before and after
+
+| Arm | exit | Fired on |
+|---|---|---|
+| A: a lede removed (RO) | 1 | `0 "lede" prose block(s), expected exactly 1` |
+| B: an RU paragraph replaced with Romanian | 1 | `"p2" is not Russian (0 of 228 letters Cyrillic)` |
+| C: "Oferim livrare rapidă" planted in RO prose | 1 | `[capability-ro, "oferim"]` |
+| D: "Лучшие материалы" planted in RU prose | 1 | `[superlative-ru, "лучш*"]` |
+| E: "Dasterum" planted | 1 | `[manufacturer name, manufacturer]` |
+| F: "De la 150 lei" planted | 1 | `[price, money-amount]` |
+| G: "Oferim livrare" planted **outside** the prose | **0** | nothing, as the scope requires |
+| H: one RO lede copied onto another page | 1 | `category pages share an identical "lede"` |
+| I: an RU paragraph set to `TODO:` | 1 | `node build.js`: `catalogPages.items.3.{p2} must be real in ru` |
+
+**Arm B fired for the wrong reason the first time, and the harness said so.** The
+planted Romanian text was 219 characters, so the page failed the length minimum
+instead of the locale test. The arm harness checks the message, not the exit code,
+and marked it FAILED; it was re-run with a 277-character plant against a fresh
+green control and fired on the locale test. That is ruling R-AB's second case
+caught as it happened rather than afterwards.
+
+### Acceptance, by grep, with its own controls
+
+Run under bash over the 14 built pages:
+
+| Check | Count |
+|---|---|
+| files read (presence) | 14 |
+| positive control: `<h1>` | 14 |
+| positive control: `data-cat-prose=` | 42 |
+| `lei` as a substring, any case | 0 |
+| `lei`, `MDL` or `лей` as a word | 0 |
+| a number followed by a currency | 0 |
+| a manufacturer name | 0 |
+
+Watched failing: with "De la 150 lei, Dasterum" planted, the four forbidden counts
+each read 1; restored, 0.
+
+**The first run of these greps was hollow and is not the evidence.** It ran in zsh,
+which does not word-split `$F`, so it read zero files and printed zeros. Its own
+"files: 0" line exposed it. The bash version asserts the file count before
+reporting any other figure.
+
+### Measured
+
+Heights re-measured and **R-Y amended in the same PR**, with an R-T block holding
+the fourteen new budgets, still labelled LOCAL; `scripts/verify-live.js` carries the
+new figures. The prose cost RO 385 to 472px and RU 385 to 499px a page. The eight
+other pages R-Y holds re-measured identical. W16-02's figures are now
+known-superseded values in `scripts/check-stale-docs.js` (`budget-cat-w16`),
+watched failing on a planted "2,747px" in a scanned document.
+
+**Phone width, checked separately.** At a 390px mobile viewport all fourteen pages
+have `scrollWidth` equal to `clientWidth` and every prose block inside the 16px
+gutters; watched failing with a 600px element planted. A headless screenshot at 390
+had appeared to crop the text, and the viewport check showed that was the
+screenshot tool's window, not the page.
+
+### Documents amended
+
+- `docs/CLAUDE.md` section 5: the authorized exception and its scope.
+- `docs/CLAUDE.md` section 2: a pointer row for the category page budgets, which
+  R-Y has held since W16-02 without section 2 naming them.
+- `docs/rulings/R-Y.md`: the W17-02 block.
+- `docs/QUESTIONS.md`: Q-W16-01 marked answered; its body untouched.
+- `src/category.html`: the header comment no longer says the page has no lede.
+
+## W17-05 · The Servicii caret ships: 4px off the header pill's gap pays for it, 2026-09-16
+
+**Card RC-136. SELF. Q-W15-01 option (c)**, reopened and authorized by the owner in
+the W17 ratifications, after W15-02 and W16-03 had each measured the caret failing
+in RU.
+
+### What changed
+
+| Value | Before | After |
+|---|---|---|
+| `.header__pill` gap, between its four children | 24px | **20px** |
+| Servicii toggle | the word only | the word plus a **14px down caret** with a 4px gap, `aria-hidden`, drawn in the site's existing chevron stroke |
+
+**No new colour** (the caret is `currentColor`), **no motion** (it does not rotate
+or transition), and the toggle's accessible name is unchanged. Every other header
+value is RC-121's ladder step 3, untouched.
+
+### Which gap, read from the dispatch
+
+The dispatch says "reduce the phone pill's own internal gap by 4px, freeing 12px".
+**Read as the header pill**, the dark rounded bar that holds the phone, for two
+measured reasons: `.header__pill` has four children and three 24px gaps, so 4px
+off it frees exactly the 12px the dispatch names, and it is the value Q-W15-01
+option (c) describes in the same words. `.header__phone`'s own gap, icon to number,
+is 8px; 4px off it frees 4px, which would not pay for an 18px caret. **Recorded
+for ratification.**
+
+### The instrument, validated before it was trusted
+
+The wave 16 header harness, reused, with the privacy and 404 templates added
+because the card says all template types and both carry the same header pill. On
+unchanged `main` (`432c65b`) it reproduced W16-03's recorded matrix **to the pixel**
+on all eight rows W16-03 held (RO 53, RU 15 at 1280px and up; RO 68, RU 31 at
+1180). Two assertions were added: the caret present wherever the desktop nav shows,
+and from 1280px up the phone number visible, inside the pill, unclipped and reading
+`+373 76 837 180`.
+
+### The matrix, shipped state
+
+Slack in px. Nine widths, six template types, both locales: **108 of 108
+combinations pass**: zero pairwise intersections, slack at or above zero, no
+horizontal scroll, the caret 14px wide at every width where the nav shows (1180px
+and up on the four templates that have a nav), and the phone number fully visible
+in **36 of 36** combinations from 1280px up.
+
+| Template | 769 | 900 | 1024 | 1099 | 1100 | 1180 | 1280 | 1440 | 1920 |
+|---|---|---|---|---|---|---|---|---|---|
+| home RO | 365 | 496 | 620 | 695 | 696 | 62 | 47 | 47 | 47 |
+| home RU | 361 | 492 | 616 | 691 | 692 | 25 | **9** | **9** | **9** |
+| service RO | 365 | 496 | 620 | 695 | 696 | 62 | 47 | 47 | 47 |
+| service RU | 361 | 492 | 616 | 691 | 692 | 25 | **9** | **9** | **9** |
+| product RO | 365 | 496 | 620 | 695 | 696 | 62 | 47 | 47 | 47 |
+| product RU | 361 | 492 | 616 | 691 | 692 | 25 | **9** | **9** | **9** |
+| category RO | 365 | 496 | 620 | 695 | 696 | 62 | 47 | 47 | 47 |
+| category RU | 361 | 492 | 616 | 691 | 692 | 25 | **9** | **9** | **9** |
+| privacy RO | 588 | 719 | 843 | 918 | 919 | 695 | 711 | 711 | 711 |
+| privacy RU | 588 | 719 | 843 | 918 | 919 | 695 | 711 | 711 | 711 |
+| 404 RO | 588 | 719 | 843 | 918 | 919 | 695 | 711 | 711 | 711 |
+| 404 RU | 588 | 719 | 843 | 918 | 919 | 695 | 711 | 711 | 711 |
+
+**The arithmetic closes.** RU at 1280px and up: 15 before, plus 12 freed, minus the
+caret's 18, is 9, which is what was measured. RO: 53 + 12 − 18 = 47. At 1180px: RU
+31 + 12 − 18 = 25, RO 68 + 12 − 18 = 62. The collapsed header (1100px and below)
+gains 8px, two gaps, and the privacy and 404 pills gain 4px, one gap. **RU is still
+the binding locale, now with 9px** where it had 15, and a later string change of
+more than 9px in the RU nav would break the fit again; that figure is the one to
+watch.
+
+### Negative-tested on three arms, control watched green before and after
+
+| Arm | exit | Fired on |
+|---|---|---|
+| the caret with the pill gap put back to 24px | 1 | `slack -3` on **12** combinations: RU, 1280/1440/1920, four templates. **Reproduces W16-03's recorded −3** |
+| the caret removed from the markup | 1 | `caret missing` on **32** combinations: 1180px and up, eight pages |
+| the phone number clipped to 90px | 1 | `phone not fully visible` on **36** combinations |
+
+### Behaviour
+
+64 assertions at 1440px across the four nav-bearing templates in both locales:
+starts closed; the caret is `aria-hidden` inside the button; the accessible name is
+the word alone; the caret's centre hit-tests to the toggle; a press on the caret
+opens the menu and a second closes it; a press on the word opens it; a press
+outside closes it. **64 of 64.** Watched failing: with the toggle's handler
+disconnected in the built `main.js`, exactly the 16 "opens" assertions failed.
+
+### Heights
+
+`scripts/verify-live.js` against a local build of this branch: all 28 pages
+VERIFIED, inside budget, and every height identical to the RC-133 run. The header
+is fixed and its height did not change, so no budget moves.

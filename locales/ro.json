@@ -308,6 +308,45 @@
       "teaser": "Garduri din lamele metalice."
     }
   },
+  "catalogPages": {
+    "items": {
+      "0": {
+        "lede": "Materiale care reduc pierderile de căldură prin pereți și se montează ca un sistem, strat cu strat.",
+        "p1": "Un sistem de termoizolație pentru fațade este format din mai multe straturi care lucrează împreună. Plăcile izolante se lipesc de perete cu adeziv și, de regulă, se fixează suplimentar cu dibluri. Peste ele se aplică o masă de șpaclu armată cu plasă din fibră de sticlă, apoi amorsa și tencuiala decorativă de finisaj. Izolația păstrează căldura iarna, limitează supraîncălzirea vara și reduce riscul de condens pe fața interioară a pereților.",
+        "p2": "Polistirenul expandat este ușor, se taie simplu și se folosește frecvent pe pereții exteriori. Polistirenul extrudat are o structură închisă și absoarbe foarte puțină apă, de aceea se alege pentru soclu, fundație și zonele expuse umezelii. Vata minerală nu arde și lasă vaporii să treacă prin perete, de aceea se folosește acolo unde contează protecția la foc. La alegere contează grosimea stratului, tipul peretelui și ca adezivul, masa de șpaclu și plasa să fie compatibile, din același sistem."
+      },
+      "1": {
+        "lede": "Straturi subțiri de finisaj care dau fațadei sau pereților interiori textura și culoarea finală.",
+        "p1": "Tencuiala decorativă este stratul final, aplicat peste un suport pregătit: masa de șpaclu a unui sistem de termoizolație sau o tencuială de bază netedă și uscată. Se întinde cu fierul de glet într-un strat subțire, iar textura se formează la drișcuire, cu drișca de plastic. Înainte de aplicare, suportul se tratează cu amorsă, care egalizează absorbția și îmbunătățește aderența. Pe fațade, tencuiala protejează straturile de dedesubt de ploaie și de radiația solară.",
+        "p2": "Tipurile se deosebesc prin liant. Tencuielile minerale au la bază ciment sau var și sunt permeabile la vapori. Cele acrilice sunt elastice și se colorează într-o gamă largă de nuanțe, dar lasă vaporii să treacă mai greu. Cele siliconice resping apa și murdăria și rămân permeabile, iar cele silicatice se potrivesc bine pe vată minerală. Aspectul, de tip bob de orez sau scoarță de copac, depinde de granulație și de felul în care se drișcuiește. La alegere contează suportul, cât de expusă este fațada la ploaie și soare și ca amorsa să fie din același sistem cu tencuiala."
+      },
+      "2": {
+        "lede": "Plăci pentru pardoseli și pereți, rezistente la apă și ușor de întreținut, în băi, bucătării și pe terase.",
+        "p1": "Plăcile ceramice se fac din argilă presată și arsă la temperatură înaltă, de obicei cu o suprafață glazurată. Se folosesc pe pardoseli și pereți în băi, bucătării și holuri, iar în varianta rezistentă la îngheț pe terase și scări exterioare. Se montează pe un suport plan, curat și stabil, cu adeziv pentru plăci întins cu gletiera dințată. După ce adezivul se întărește, rosturile dintre plăci se umplu cu chit de rosturi.",
+        "p2": "Gresia porțelanată absoarbe foarte puțină apă, este densă și rezistă la uzură și la îngheț, de aceea se alege pentru pardoseli solicitate și pentru exterior. Faianța are o absorbție mai mare și se folosește mai ales pe pereții interiori. La alegere contează locul de montaj, rezistența la alunecare în băi și afară, rezistența la uzură în zonele de trecere și formatul plăcii: plăcile mari cer un suport foarte plan și un adeziv potrivit."
+      },
+      "3": {
+        "lede": "Profile, cornișe, ancadramente și ornamente care conturează ferestrele, colțurile și partea de sus a fațadei.",
+        "p1": "Elementele decorative de fațadă sunt profile prefabricate care redau detaliile arhitecturale: cornișe sub streașină, ancadramente în jurul ferestrelor și ușilor, brâuri între etaje, pilaștri și bosaje la colțuri. Se lipesc pe perete cu adeziv, profilele mari sau grele se fixează și mecanic, iar îmbinările dintre bucăți se umplu și se șlefuiesc. La final se vopsesc odată cu fațada sau într-o nuanță care le scoate în evidență.",
+        "p2": "Profilele se fac de regulă din polistiren acoperit cu un strat protector pe bază de ciment, din poliuretan sau din materiale compozite. Cele din polistiren sunt ușoare și se pot monta direct peste termoizolație. Poliuretanul redă detalii fine și se folosește des la interior, pentru cornișe și rozete de tavan. La alegere contează dacă elementul stă afară sau înăuntru, cât este expus la apă, greutatea lui față de suport și ca profilul să se potrivească la scară și stil cu restul clădirii."
+      },
+      "4": {
+        "lede": "Vopsele pentru fațade și pereți interiori, care protejează suprafața și îi dau culoarea finală.",
+        "p1": "Vopseaua formează o peliculă subțire care colorează și protejează suprafața. Se aplică pe un suport curat, uscat și amorsat, cu pensula, cu trafaletul sau prin pulverizare, de regulă în două straturi, lăsând fiecare strat să se usuce cât indică ambalajul. Pe fațade se folosește peste tencuieli și sisteme de termoizolație, iar la interior pe glet, pe gips-carton sau pe tencuială.",
+        "p2": "Vopselele de exterior sunt făcute să reziste la ploaie, îngheț și radiații ultraviolete și să lase peretele să respire. După liant, pot fi acrilice, siliconice sau silicatice, la fel ca tencuielile. La vopselele de interior sunt importante puterea de acoperire, rezistența la spălare și emisiile reduse de compuși organici volatili, iar pentru băi și bucătării există variante rezistente la umezeală. La alegere contează tipul suportului, clasa de rezistență la frecare umedă și compatibilitatea cu amorsa și cu stratul de dedesubt."
+      },
+      "5": {
+        "lede": "Corpuri de iluminat, benzi LED și accesorii pentru iluminatul general, decorativ și de fațadă.",
+        "p1": "Un sistem de iluminare cuprinde corpurile de iluminat, sursele de lumină și elementele care le alimentează și le comandă: surse de alimentare, transformatoare, variatoare și întrerupătoare. Se folosește pentru iluminatul general al încăperilor, pentru lumina de accent pe tavane false, în nișe și pe trepte, precum și pentru evidențierea fațadelor și a curților. Montajul se face în etapa instalațiilor electrice, iar racordarea la rețea o face un electrician calificat.",
+        "p2": "Lumina se descrie prin fluxul luminos, măsurat în lumeni, și prin temperatura de culoare, măsurată în kelvini: nuanțele calde se potrivesc în spațiile de odihnă, cele neutre în bucătării și zone de lucru. Pentru exterior și încăperi umede contează gradul de protecție IP al corpului de iluminat. Benzile LED au nevoie de o sursă de alimentare dimensionată pentru lungimea lor și de profile din aluminiu care preiau căldura. La alegere mai contează indicele de redare a culorilor și posibilitatea de reglare a intensității."
+      },
+      "6": {
+        "lede": "Materiale auxiliare care completează lucrările: membrane, plase de armare, amorse, profile și elemente de fixare.",
+        "p1": "Pe lângă materialele principale, orice lucrare de construcție are nevoie de produse auxiliare care nu se mai văd la final, dar de care depinde cât rezistă lucrarea. Membranele de difuzie se montează sub învelitoarea acoperișului: opresc apa și lasă vaporii să iasă. Plasa din fibră de sticlă armează straturile de șpaclu, amorsele pregătesc suportul, iar profilele de colț și de soclu protejează muchiile și marginile sistemelor de fațadă.",
+        "p2": "Aceste produse se aleg după sistemul din care fac parte, nu separat. Membrana se alege după tipul acoperișului și permeabilitatea la vapori, plasa de armare după rezistența la alcalii, iar diblurile după materialul peretelui, pentru că betonul, cărămida plină și blocurile cu goluri cer tipuri diferite de fixare. Compatibilitatea cu celelalte straturi contează mai mult decât calitățile unui singur produs."
+      }
+    }
+  },
   "process": {
     "eyebrow": "Cum lucrăm",
     "h2": "De la fundație la predare",

@@ -173,3 +173,44 @@ fourteen budgets need a re-measure.
 **Where they are enforced:** `scripts/verify-live.js`, `PAGES`, fourteen rows with
 a `category` marker set. That marker set asserts `areaServed: 0`, because these
 pages carry no JSON-LD by design.
+
+### Amended 2026-09-16 by W17-02 (RC-133) · the category pages with their authored prose
+
+Added under R-T; nothing above this block was edited. RC-133 gave each of the
+fourteen category pages a lede under the H1 and two paragraphs opening the block,
+which is what "What moves a budget" requires a measurement for. **These budgets
+supersede the ones in the W16-02 block above.** Nothing else moved: the eight
+other pages this ruling holds, both homepages and the six product pages, were
+re-measured in the same run and each was identical to its current figure above.
+
+**Still LOCAL, and stated as such.** The prose is not deployed until this merges,
+so an R-P reading cannot exist yet. Measured by `scripts/verify-live.js` against a
+local server of this branch's `dist/`, at 1440x900: every request cache-busted,
+`build-sha` asserted in the same page load and matching on all 28 pages, markers
+asserted, every `[data-reveal]` applied and settled before `scrollHeight` was read.
+Two full runs over all 28 pages the script holds, identical to the pixel. RC-134 re-measures them live
+under R-P and replaces this label.
+
+Each budget is the measured height plus the **60px headroom term**, R-J's, not
+re-derived.
+
+| Page | RO measured | RO budget, under | RU measured | RU budget, under |
+|---|---|---|---|---|
+| `/catalog/termoizolatie/` | 3,072 | **3,132** | 3,127 | **3,187** |
+| `/catalog/tencuieli-decorative/` | 2,974 | **3,034** | 3,028 | **3,088** |
+| `/catalog/placi-ceramice/` | 2,892 | **2,952** | 2,974 | **3,034** |
+| `/catalog/elemente-decorative/` | 2,919 | **2,979** | 3,001 | **3,061** |
+| `/catalog/vopsele/` | 2,991 | **3,051** | 3,018 | **3,078** |
+| `/catalog/sisteme-iluminare/` | 2,947 | **3,007** | 2,947 | **3,007** |
+| `/catalog/alte-materiale/` | 2,919 | **2,979** | 2,919 | **2,979** |
+
+**What the prose cost**, measured minus the W16-02 figure: RO 385 to 472px, RU 385
+to 499px. The spread is paragraph length at the 720px measure, not layout: every
+page carries exactly one lede and two paragraphs.
+
+**Still no promo-bar revert figure**, for the reason the W16-02 block gives: it was
+not measured, so it is absent rather than guessed.
+
+**Where they are enforced:** `scripts/verify-live.js`, `PAGES`, the same fourteen
+rows, figures replaced. The W16-02 figures are now known-superseded values in
+`scripts/check-stale-docs.js` (`budget-cat-w16`), per R-Q.

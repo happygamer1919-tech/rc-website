@@ -50,5 +50,14 @@ jobs:
       - name: Catalog category pages carry no prices, stock, cart or product records (RC-129)
         run: node scripts/check-catalog-pages.js
 
+      # RC-131. Gate 5 executes from here. Installed at a PINNED version rather
+      # than vendored: the repo still has no package.json, no lockfile and
+      # nothing in node_modules, which is a documented property of this build.
+      - name: Install Lighthouse, pinned (RC-131)
+        run: npm install -g lighthouse@13.4.1
+
+      - name: Lighthouse floors, both locales (gate 5)
+        run: node scripts/check-lighthouse.js
+
       - name: The built site names rapidconstruct.md and never the retired origin (W14-17)
         run: node scripts/check-origin.js

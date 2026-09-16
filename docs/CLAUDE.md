@@ -145,6 +145,11 @@ refused once: the `form-bg` slot was struck for needing exactly that.
 Both locales, desktop preset. Best practices and SEO are not floored but have
 been 100 since 2026-08-28 and a drop should be explained.
 
+**Enforced by `scripts/check-lighthouse.js` since W16-04**, run by `quality` on
+every pull request. The two figures above are restated in that script because a
+script cannot read prose, the same arrangement `scripts/verify-live.js` has with
+R-Y's budgets: change one and the other must change with it.
+
 One expected exception: a service page scores SEO ~69 while it is `noindex`.
 That is the indexability gate working, not a regression — the page carries
 `noindex, nofollow` until one of its projects has a real cover photograph, and
@@ -303,7 +308,11 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
    known-superseded value appears in a governing document without an amendment
    beside it. See section 16.
 4. Heights inside the section 2 budgets, measured settled.
-5. Lighthouse at or above the section 4 floors, both locales.
+5. Lighthouse at or above the section 4 floors, both locales. **Executes since
+   W16-04**: `node scripts/check-lighthouse.js`, run by `quality`. It never
+   skips. If lighthouse cannot be run, or a category score is missing rather than
+   low, it fails: for its whole life before W16-04 this gate was reported NOT RUN
+   by every card, which is the condition section 13 exists to forbid.
 6. No new colour value.
 7. `prefers-reduced-motion` still disables every effect.
 8. `DECISIONS.md` appended, `BACKLOG.md` status updated, and any question the

@@ -132,7 +132,7 @@ const PAGES = [
 
 // Keys whose value is already HTML built by this file. Everything else is
 // escaped on substitution.
-const RAW_KEYS = new Set(['catalogMenu', 'productTeaser', 'beforeAfter', 'roofOffers', 'socialRow',
+const RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu', 'productTeaser', 'beforeAfter', 'roofOffers', 'socialRow',
   // demoAttr is a whole attribute, ` data-demo="..."`, not an attribute value:
   // it is either present or absent. Its inner text is escaped where it is
   // built, so what lands here is already safe. Escaping it again turned the
@@ -144,7 +144,7 @@ const RAW_KEYS = new Set(['catalogMenu', 'productTeaser', 'beforeAfter', 'roofOf
   ...Array.from({ length: 9 }, (_, i) => `svcMedia${i}`),
 ]);
 // Same idea for the service-page template.
-const SVC_RAW_KEYS = new Set(['catalogMenu',
+const SVC_RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu',
   'demoAttr', 'svc.imageObjects', 'svc.answer', 'svc.table', 'svc.faqSection', 'svc.faqSchema',
   'svc.gallerySection', 'svc.priceSection', 'svc.footerLinks', 'svc.media',
   // W12-06. The bar is site-wide, so the service template needs it raw too.
@@ -657,6 +657,54 @@ ${rows}
     `;
 }
 
+// --- W15-02, the Servicii dropdown (RC-126) ----------------------------------
+
+/* Q-W14-15 asked how the fences page reaches the desktop header when a fifth
+   flat nav link does not fit at any width in either locale. It does not: the
+   Servicii link becomes a disclosure listing every service and product page, so
+   the header gains a destination list without gaining a target.
+
+   Same interaction model as the catalog menu: a button, click to open, never
+   hover. One level deep, so no expand chevron per row and no back button.
+
+   No copy is invented. The toggle reuses header.navServices, the first row
+   reuses it again as the overview link (the catalog's --title row pattern), and
+   every other row reuses a page title that already ships.
+
+   Presence, not silence (docs/CLAUDE.md section 13): every label must be real
+   and the row count must be the overview plus every service plus every product
+   page, so a page added or dropped in data fails the build rather than quietly
+   leaving the header. That assertion is what "every service page reachable from
+   the desktop header" rests on. */
+function serviciiMenu(l) {
+  const need = (v, where) => {
+    if (!REAL(v)) die(`serviciiMenu: ${where} is not real for ${l.code}.`);
+    return v;
+  };
+  const row = (href, text, cls) =>
+    `          <li class="svcmenu__row${cls ? ' ' + cls : ''}"><a class="svcmenu__link" href="${href}">${esc(text)}</a></li>`;
+  const items = [
+    row(BASE + l.home + '#servicii', need(l.strings['header.navServices'], 'header.navServices'), 'svcmenu__row--title'),
+    ...SERVICE_SLUGS.map((sg, i) => row(
+      `${BASE}${SERVICES_ROOT[l.code]}${sg}/`,
+      need(l.strings[`services.items.${i}.title`], `services.items.${i}.title`))),
+    ...PRODUCT_PAGES.map((p) => row(
+      `${BASE}${SERVICES_ROOT[l.code]}${p.slug}/`,
+      need(l.strings[`pages.${p.key}.title`], `pages.${p.key}.title`))),
+  ];
+  const expected = 1 + SERVICE_SLUGS.length + PRODUCT_PAGES.length;
+  if (items.length !== expected) die(`serviciiMenu: ${items.length} rows, expected ${expected}.`);
+  const label = esc(l.strings['header.navServices']);
+  return `<div class="svcmenu">
+      <button class="svcmenu__toggle" type="button" id="svcmenu-toggle" aria-expanded="false" aria-controls="svcmenu-panel">${label}</button>
+      <div class="svcmenu__panel" id="svcmenu-panel" hidden>
+        <ul class="svcmenu__list" aria-label="${label}">
+${items.join('\n')}
+        </ul>
+      </div>
+    </div>`;
+}
+
 // --- W14-07, the social row on the hero card (S-07) --------------------------
 
 /* Three profile links under the hero claim's CTA, read from content/social.json,
@@ -835,8 +883,9 @@ ${items}
    price, and the scarcity gate would fail the build's output if one appeared.
 
    Colour chips carry the code, the finish and the colour's name as text, and
-   since W14-22 a swatch in the value RAL publishes for the code: the tile grid
-   exception to docs/CLAUDE.md section 3. A matt code's swatch is flat; a gloss
+   since W14-22 a swatch: the tile grid exception to docs/CLAUDE.md section 3.
+   Since W15-04 the swatch value is an approximation authored in this repo, not
+   a figure taken from anyone's published colour table. A matt code's swatch is flat; a gloss
    code's carries a highlight. A line under the swatches says screen colour is
    indicative and the physical sample decides.
 
@@ -848,17 +897,26 @@ const TIGLA_FILE = 'content/tigla-metalica.json';
 const TIGLA = JSON.parse(fs.readFileSync(TIGLA_FILE, 'utf8'));
 if (!Array.isArray(TIGLA.models) || !Array.isArray(TIGLA.legend)) die(`${TIGLA_FILE} needs both a "models" and a "legend" array.`);
 const TIGLA_LEGEND = new Map(TIGLA.legend.map((c) => [c.code, c]));
-/* W14-22. Every legend entry must carry its RAL Classic code (the code without
-   the matt M), a #RRGGBB value, and the RAL colour page the value was read from.
-   A code and its matt twin must agree, because RAL defines the colour, not the
-   finish. A missing or malformed value fails the build; a swatch is never guessed. */
+/* W15-04. Every legend entry must carry its base code (the code without the matt
+   M), a #RRGGBB value, and nothing presenting that value as a standards body's
+   published colour data. The value is an approximation authored in this repo.
+   A code and its matt twin must agree, because the finish is shown by the swatch
+   surface and not by a different colour. A missing or malformed value fails the
+   build; a swatch is never guessed.
+
+   The source and ral fields are REFUSED rather than ignored. W14-22 sourced each
+   value to a third-party colour page, which both claimed a provenance we did not
+   have and pointed at data its owner says needs a licence. A field reintroducing
+   either fails the build, so the claim cannot come back by data. No host is named
+   here on purpose: the repo carries no such URL at all, in code or in comment. */
 for (const [i, c] of TIGLA.legend.entries()) {
   const where = `${TIGLA_FILE}: legend[${i}] ${c.code}`;
-  if (c.ral !== String(c.code).replace(/M$/, '') || !/^\d{4}$/.test(c.ral)) die(`${where} has ral "${c.ral}", expected its code without the M.`);
+  if (c.base !== String(c.code).replace(/M$/, '') || !/^\d{4}$/.test(c.base)) die(`${where} has base "${c.base}", expected its code without the M.`);
   if (!/^#[0-9A-F]{6}$/.test(c.hex || '')) die(`${where} has no #RRGGBB hex.`);
-  if (!new RegExp(`^https://www\\.ral-farben\\.de/en/colour/ral-classic/ral-${c.ral}/\\d+$`).test(c.source || '')) die(`${where} has no RAL colour page for ${c.ral} as its source.`);
-  const twin = TIGLA_LEGEND.get(String(c.code).endsWith('M') ? c.ral : `${c.ral}M`);
-  if (twin && twin.hex !== c.hex) die(`${where} and ${twin.code} are one RAL colour but carry ${c.hex} and ${twin.hex}.`);
+  if ('source' in c) die(`${where} carries a source field. W15-04 removed it: these values are ours, and a URL here would claim otherwise.`);
+  if ('ral' in c) die(`${where} carries a ral field. W15-04 renamed it to base: the code is the manufacturer's, and the value is ours.`);
+  const twin = TIGLA_LEGEND.get(String(c.code).endsWith('M') ? c.base : `${c.base}M`);
+  if (twin && twin.hex !== c.hex) die(`${where} and ${twin.code} are one colour but carry ${c.hex} and ${twin.hex}.`);
 }
 const TIGLA_GRADES = ['standart', 'premium'];
 
@@ -890,7 +948,7 @@ function tiglaGrid(l) {
       if (unknown.length) die(`${TIGLA_FILE}: ${w} lists colour codes not in the legend: ${unknown.join(', ')}.`);
       const chips = (matt) => v.colours.filter((c) => c.endsWith('M') === matt).map((c) => {
         const e = TIGLA_LEGEND.get(c);
-        return `<li class="tile__colour"><span class="tile__swatch${matt ? ' tile__swatch--matt' : ''}" style="background-color: ${e.hex};" data-ral="${e.ral}" aria-hidden="true"></span><span class="tile__code">${esc(c)}</span> ${esc(e.name[l.code])}</li>`;
+        return `<li class="tile__colour"><span class="tile__swatch${matt ? ' tile__swatch--matt' : ''}" style="background-color: ${e.hex};" data-code="${e.base}" aria-hidden="true"></span><span class="tile__code">${esc(c)}</span> ${esc(e.name[l.code])}</li>`;
       }).join('');
       const group = (matt) => {
         const html = chips(matt);
@@ -994,15 +1052,31 @@ const COP_DIAGRAMS = {
   gable: copSvg('<polyline class="d-accent" points="16,50 80,22 144,50" vector-effect="non-scaling-stroke"/>' + copLine(30, 44, 30, 88) + copLine(130, 44, 130, 88)),
   // Two posts under a curved roof.
   arched: copSvg('<path class="d-accent" d="M16 50 Q80 2 144 50" vector-effect="non-scaling-stroke"/>' + copLine(30, 44, 30, 88) + copLine(130, 44, 130, 88)),
+  // Raked posts, each foot outside its head, under a roof that runs past both.
+  inclined: copSvg(copLine(12, 34, 148, 34, true) + copLine(40, 34, 28, 88) + copLine(120, 34, 132, 88)),
+  // A deep roof slab on two off-centre posts: 42px of overhang left, 22 right.
+  architectural: copSvg('<polyline class="d-accent" points="10,36 10,26 150,26 150,36" vector-effect="non-scaling-stroke"/>' + copLine(52, 36, 52, 88) + copLine(128, 36, 128, 88)),
 };
 /* Which diagram each card shows. A model takes its structural category from the
    wave 14 audit 2.3, matched model for model to C-01 to C-12: C-04 drains both
-   sides, so it is the gable; the inclined-post and architectural models stand on
-   posts. A family tile takes its family's structure; the architectural family
-   stands on posts. Every family and model must be mapped and every diagram used,
-   or the build fails. */
-const COP_MODEL_DIAGRAM = { c01: 'posts', c02: 'cantilever', c03: 'wall', c04: 'gable', c05: 'posts', c06: 'arched', c07: 'arched', c08: 'posts', c09: 'cantilever', c10: 'posts', c11: 'posts', c12: 'posts' };
-const COP_FAMILY_DIAGRAM = { stalpi: 'posts', consola: 'cantilever', perete: 'wall', arcuita: 'arched', arhitecturala: 'posts' };
+   sides, so it is the gable.
+
+   W15-03 draws the two structures that had no drawing of their own. Until it,
+   C-10, C-11, C-12 and the Arhitecturală family all showed the posts drawing,
+   which was recorded as a deviation at W14-23 rather than left implicit. C-10
+   is "Stâlpi înclinați" and now shows inclined; C-11 and C-12 are
+   "Arhitecturală" and now show architectural, as does that family's tile.
+
+   A model takes its own category, which is not always its family's structure:
+   C-10 sits in the stalpi family because that is how the range is sold, so the
+   family tile still shows posts while C-10's own card shows inclined. Each card
+   is labelled by its own heading, so each agrees with what it says.
+
+   Every family and model must be mapped and every diagram used, or the build
+   fails. The posts drawing is still used, by C-01, C-05, C-08 and the family
+   tile. */
+const COP_MODEL_DIAGRAM = { c01: 'posts', c02: 'cantilever', c03: 'wall', c04: 'gable', c05: 'posts', c06: 'arched', c07: 'arched', c08: 'posts', c09: 'cantilever', c10: 'inclined', c11: 'architectural', c12: 'architectural' };
+const COP_FAMILY_DIAGRAM = { stalpi: 'posts', consola: 'cantilever', perete: 'wall', arcuita: 'arched', arhitecturala: 'architectural' };
 (() => {
   const unmapped = [...COP.models.filter((m) => !COP_DIAGRAMS[COP_MODEL_DIAGRAM[m.id]]).map((m) => m.id), ...COP.families.filter((f) => !COP_DIAGRAMS[COP_FAMILY_DIAGRAM[f.id]]).map((f) => f.id)];
   if (unmapped.length) die(`${COP_FILE}: no diagram for ${unmapped.join(', ')}.`);
@@ -1191,7 +1265,7 @@ const PRODUCT_PAGES = [
   { slug: 'copertine', key: 'copertine', block: (l) => copertine(l), sources: ['content/copertine.json'] },
   { slug: 'garduri', key: 'garduri', block: (l) => gardPage(l), faqSchema: (l) => gardFaqSchema(l), sources: [] },
 ];
-const PROD_RAW_KEYS = new Set(['catalogMenu',
+const PROD_RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu',
   'demoAttr', 'promoBar', 'areaServedJson', 'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
   'prod.block', 'prod.footerLinks', 'prod.faqSchema',
 ]);
@@ -1470,6 +1544,7 @@ for (const l of loaded) {
   vars.heroPanelMedia = heroPanelMedia(l, BASE);
   vars.promoBar = promoBar(l);
   vars.catalogMenu = catalogMenu(l);
+  vars.serviciiMenu = serviciiMenu(l);
   vars.productTeaser = productTeaser(l);
   vars.beforeAfter = beforeAfter(l);
   vars.roofOffers = roofOffers(l);

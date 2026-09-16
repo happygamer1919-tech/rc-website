@@ -1713,7 +1713,7 @@ be new copy, and a placeholder a visitor can see reverses master plan section 7.
 
 **Recommended: (a),** with (c) if the photographer wants to see the shapes.
 
-## Q-W14-15 · The fences page cannot take a header nav link without breaking the header fit · OPEN, opened 2026-09-15 (W14-20)
+## Q-W14-15 · The fences page cannot take a header nav link without breaking the header fit · ANSWERED 2026-09-15, the Servicii dropdown puts every service page in the header without a fifth nav link (RC-126, W15-02) · opened 2026-09-15 (W14-20)
 
 **Shipped default: no header nav link.** The fences page is linked from the
 homepage teaser row and listed in the sitemap, as it has been since W14-16.
@@ -1750,3 +1750,77 @@ and the images the audit saw are watermarked and sit on dasterum.md, which R-W f
 modular tile, unwatermarked, square, at least 960px, with written permission. The
 grid already renders `public/img/tigla-<model>.jpg` when the file and its alt text
 exist, and R-W's supplier-pack origin covers the provenance row.
+
+## Q-W15-01 · The Servicii disclosure has no caret, because a caret does not fit · OPEN, opened 2026-09-15 (W15-02)
+
+**Shipped default: no caret.** The toggle is exactly as wide as the link it
+replaced, so the menu costs no width and the header fits at every width in both
+locales.
+
+**The measurement.** A 14px caret with a 4px gap adds 18px to the nav. RU had 15px
+of slack at 1280px and up before RC-126, so the caret put the header 3px over at
+1280, 1440 and 1920px on all three templates. It was built that way first and
+measured failing; the caret came out.
+
+**What this costs.** A nav item that opens a panel now looks exactly like a nav item
+that navigates. Clicking Servicii no longer jumps to the services section, it opens
+a list whose first row is that same destination. There is no visual signal of the
+change. The catalog button does not have this problem because it sits in its own
+bordered pill.
+
+**Options, each measured:**
+
+  (a) **No caret** (shipped). Costs nothing. RU keeps its 15px.
+  (b) **An 8px CSS caret**, a border triangle rather than an SVG, with a 2px gap:
+      12px, leaving RU 3px. It fits, but 3px is inside the noise of a font
+      fallback or a future string change, and RU is the locale that breaks first.
+  (c) **Take 4px off the header pill's own 24px gap** between its four children,
+      recovering 12px, and spend it on a proper 14px caret. This fits comfortably
+      in both locales. It edits a value outside the RC-121 ladder the owner fixed
+      at step 3, which is why it was not done without asking.
+
+**Recommended: (c)** if the caret is wanted, (a) if the header spacing is not to be
+touched. Not (b): it fits only until the next string changes.
+
+**Related:** RC-121's ladder cannot be reverted either, for the same reason. The nav
+gap alone costs 24px against RU's 15px. See DECISIONS.md W15-02.
+
+## Q-W15-02 · Four customer-facing strings still say "paleta RAL" · OPEN, opened 2026-09-15 (W15-04)
+
+**Shipped default: unchanged.** All four strings stay exactly as they are.
+
+W15-04 removed every claim that **our swatch values** are a standards body's
+published data. It deliberately did not touch these four, two per locale, in the
+tile page copy: one process step and one FAQ answer.
+
+> Alegi culoarea din paleta RAL, în finisaj mat sau lucios. Pe ecran culoarea e
+> orientativă; decide mostra fizică.
+
+> Цвет выбирается по палитре RAL, матовый или глянцевый. Цвет на экране
+> ориентировочный; решает физический образец.
+
+**Why they were kept.** They are the indicative-colour lines the card explicitly
+says to keep in both locales. And they describe **the palette a customer chooses a
+product from**, which is a fact about the product, not a claim about the hex values
+this repo draws. The wave 14 audit records that the manufacturer's codes are
+RAL-style four-digit numbers and that the competitor's own site prints them without
+the RAL prefix.
+
+**Why it still deserves a ruling.** A visitor who reads "paleta RAL" and then looks
+at our swatches may reasonably take the swatches to be RAL colours, which is the
+impression W15-04 exists to remove. The copy and the swatch now say slightly
+different things.
+
+**Options:**
+
+  (a) **Leave them** (shipped). Correct if the product genuinely is sold as a RAL
+      palette.
+  (b) **Delete the two words.** "Alegi culoarea în finisaj mat sau lucios" and the
+      Russian equivalent. A deletion, not invented copy, and the indicative
+      sentence is untouched.
+  (c) **Keep RAL and attribute it**, saying the codes are the manufacturer's
+      reference. This needs new copy and needs to know who the manufacturer is,
+      which is Q-W14-08(a), still open.
+
+**Recommended: (b)** unless the product really is sold from the RAL palette, in
+which case (a). This is a product fact this executor does not have.

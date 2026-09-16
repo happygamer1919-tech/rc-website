@@ -113,6 +113,41 @@
     });
   })();
 
+  /* --- W15-02 Servicii dropdown (RC-126) ---------------------------------- */
+  /* The same model as the catalog menu above: a button, click to open, never on
+     hover. One level, so there is no drill-down and no back button. Opening
+     either menu closes the other, and the burger closes both. No animation, and
+     no handler touches scrolling. */
+  (function () {
+    var btn = document.getElementById('svcmenu-toggle');
+    var sheet = document.getElementById('svcmenu-panel');
+    if (!btn || !sheet) return;
+    function isOpen() { return !sheet.hasAttribute('hidden'); }
+    function setOpen(open) {
+      if (open) {
+        var cat = document.getElementById('catalog-panel');
+        var catBtn = document.getElementById('catalog-toggle');
+        if (cat && catBtn && !cat.hasAttribute('hidden')) catBtn.click();
+        sheet.removeAttribute('hidden');
+      } else {
+        sheet.setAttribute('hidden', '');
+      }
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    btn.addEventListener('click', function () { setOpen(!isOpen()); });
+    document.addEventListener('click', function (e) {
+      if (isOpen() && !e.target.closest('.svcmenu')) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && isOpen()) { setOpen(false); btn.focus(); }
+    });
+    var catToggle = document.getElementById('catalog-toggle');
+    if (catToggle) catToggle.addEventListener('click', function () { if (isOpen()) setOpen(false); });
+    var burgerBtn = document.getElementById('menu-toggle');
+    if (burgerBtn) burgerBtn.addEventListener('click', function () { if (isOpen()) setOpen(false); });
+    window.addEventListener('resize', function () { if (isOpen()) setOpen(false); });
+  })();
+
   /* --- W14-09 before/after slider ------------------------------------------- */
   /* Present only when content/before-after.json has projects. Pointer down
      anywhere on the frame jumps the divider there and a drag follows it; hover

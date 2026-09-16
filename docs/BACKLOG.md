@@ -8,6 +8,33 @@ Status values: `todo` · `in progress` · `blocked` · `shipped`.
 Waves 1 to 5 predate this file; their tickets are reconstructed from the git
 history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 
+## Wave 15
+
+Dispatch of 2026-09-15. **Ruling R-Z** (`docs/rulings/R-Z.md`) ships first, as a
+STOP PR, ahead of every other card, as the dispatch directs.
+
+**R-V's autonomy did not carry.** R-V scopes itself to wave 14, cards RC-101 to
+RC-114, and says so in as many words. The wave 15 dispatch grants SELF per card
+instead, and the three content cards carry it; R-Z is STOP because it is a
+ruling, which is the one path `docs/rulings/` has always taken.
+
+| Ticket | Card | Mode | Branch | Status |
+|---|---|---|---|---|
+| RC-125 | W15-01 Ruling R-Z, merge hygiene and supplier pricing | STOP | `w15/rc-125-ruling-rz` | PR #31, awaiting owner |
+| RC-126 | W15-02 Servicii dropdown, closes Q-W14-15 | SELF | `w15/rc-126-servicii-dropdown` | shipped: 13 destinations, 54 of 54 header-fit combinations, 76 of 76 behaviour assertions, heights unmoved; slack unchanged RO 53 / RU 15 at 1280px and up; no caret and no RC-121 revert, both refused by measurement (Q-W15-01) |
+| RC-127 | W15-03 Two missing carport diagrams | SELF | `w15/rc-127-carport-diagrams` | shipped: inclined and architectural drawn, C-10, C-11, C-12 and the Arhitecturală tile remapped, 56 of 56 assertions, heights unmoved, zero image files; the depiction is for ratification |
+| RC-128 | W15-04 Swatch provenance correction | SELF | `w15/rc-128-swatch-provenance` | shipped: 15 legend values reauthored as ours, source URLs and the ral field removed and now refused by the build, 52 of 52 assertions, heights unmoved; three premise corrections and Q-W15-02 recorded |
+
+**RC-125 is this executor's numbering.** The dispatch named R-Z without a ticket
+id and RC-124 was the last one used, so R-Z took the next. RC-126, RC-127 and
+RC-128 are the dispatch's own numbers.
+
+**This section is added by whichever wave 15 card merges first.** RC-125 is STOP
+and waits for the owner, so the SELF cards reach `main` ahead of it and carry it
+in. PR #31 adds the same section on its own branch; when `main` is merged forward
+into it the two are resolved by union, locally, per `docs/CLAUDE.md` section 10
+and ruling R-Z itself.
+
 ## Wave 14
 
 Dispatch of 2026-09-15. **Ruling R-V** (`docs/rulings/R-V.md`): a SELF card
@@ -67,7 +94,7 @@ ratifications). #16 and #20 were merged by the owner before the run; #25 was not
 | RC-121 | W14-21 Header fit, unblocks #7 | SELF | `w14/rc-121-header-fit` | shipped: ladder step 3; with the catalog, slack at 1280px and up RO 52px, RU 15px |
 | RC-106b | W14-06b Merge the catalog menu | SELF | `w14/rc-106-catalog-menu` | shipped: 67 of 67, data 16 of 16, header fit 116 of 116 with the catalog; #7 merged |
 | RC-120 | W14-20 Garduri service page, closes Q-W14-09 | SELF | `w14/rc-120-garduri-page` | shipped: page rebuilt, 34 of 34; the header nav link **blocked** (Q-W14-15) |
-| RC-122 | W14-22 Tile colour swatches, closes Q-W14-11 | SELF | `w14/rc-122-tile-swatches` | shipped: RAL swatches on every chip, 12 of 12; Dasterum renders still open (Q-W14-11b) |
+| RC-122 | W14-22 Tile colour swatches, closes Q-W14-11 | SELF | `w14/rc-122-tile-swatches` | shipped: swatches on every chip, 12 of 12; Dasterum renders still open (Q-W14-11b); the values shipped as RAL figures and were reauthored as our own approximations at W15-04 |
 | RC-123 | W14-23 Carport diagrams, closes Q-W14-12 | SELF | `w14/rc-123-carport-diagrams` | shipped: five line diagrams on 5 tiles and 12 models, 22 of 22, zero image files |
 
 ## Wave 13

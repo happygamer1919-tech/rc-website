@@ -5031,3 +5031,321 @@ not move, so its budgets stand.
 
 #25 was also brought up to date with main: its `quality` check had failed on the
 provenance table the web merges broke, which W14-24a repaired.
+## W15-02 · The Servicii dropdown: every service page in the header, no new target, 2026-09-15
+
+**Card RC-126. Closes Q-W14-15.** The desktop nav's Servicii link becomes a
+disclosure listing every service and product page. The header gains thirteen
+destinations and **no new target**, which is what Q-W14-15 said could not be done
+with a fifth flat link.
+
+Thirteen rows: the services overview (the link that was there before), the nine
+service pages, and the three product pages including `garduri`. Same interaction
+model as the catalog menu, one level deep, so no per-row chevron and no back
+button. Built by `serviciiMenu()` in `build.js`, one shared value reaching all
+three templates.
+
+**No copy is invented.** The toggle reuses `header.navServices`; the first row
+reuses it again as the overview link, which is the catalog's `--title` row
+pattern; every other row reuses a page title that already ships. Zero new locale
+strings in either locale.
+
+**Presence, not silence** (`docs/CLAUDE.md` section 13): the build fails if any
+label is not real, and fails if the row count is not the overview plus every
+service plus every product page. "Every service page reachable from the desktop
+header" is asserted by the build, not by inspection.
+
+### The caret, and why there is not one
+
+**Refused by measurement, not by taste.** A 14px caret with a 4px gap adds 18px to
+the nav. RU had **15px** of slack at 1280px and up before this card. Built with the
+caret, the header came out **3px over at 1280, 1440 and 1920px on all three
+templates**: 9 of 54 combinations failed, with no intersection yet, the nav simply
+squeezed below its natural width. The caret was removed, and the toggle is now
+exactly as wide as the link it replaced.
+
+So the disclosure has no visual affordance, which is a real loss against a flat
+link. **Q-W15-01** records it with the three measured alternatives and what each
+costs. Shipped default is the one that fits.
+
+### RC-121 step 3 is not reverted, and that is measured too
+
+The dispatch says to revert it **if slack permits**. It does not. The nav gap alone,
+20px back to 28px, is 8px across three gaps, **24px against RU's 15px**, before the
+16px to 17px font increase costs anything further. RO could afford it at 53px, but
+spending it only in RO would leave the two locales with headers of different font
+size and spacing, which no card has done and which this one will not start.
+**Step 1 and 2 label changes are kept**, as directed.
+
+### Slack per locale, measured
+
+Nine widths, both locales, three templates, headless Chrome against a local build.
+Slack is the pill's available inner width minus what its children need, with the
+nav measured at its **natural** width rather than its stretched one: the nav is
+`flex: 1 1 auto`, so summing its rendered box makes slack come out as zero at every
+width by construction. The instrument was validated by reproducing RC-121's own
+figures on unmodified main before it was used here.
+
+| | 769-1100 | 1180 | 1280, 1440, 1920 |
+|---|---|---|---|
+| RO, before (home) | 357-688 | 68 | 53 |
+| **RO, after (every template)** | 357-688 | **68** | **53** |
+| RU, before (home) | 353-684 | 31 | 15 |
+| **RU, after (every template)** | 353-684 | **31** | **15** |
+
+**The homepage is unchanged to the pixel: the menu costs no width.** At 1100px and
+below the desktop nav is collapsed and the toggle goes with it, as the link did.
+
+### What the card recovered on the service and product pages
+
+Those two templates read **tighter** than the homepage before this card, RO 49 and
+RU 13 at 1280px, because their nav marked Servicii `aria-current="page"`, and
+`font-weight: 700` is wider than the plain label. A disclosure button is not a page,
+so the marker is gone and all three templates now read alike. **For ratification:**
+the current-page marker no longer appears on Servicii when a service or product
+page is open. The rule that draws it, `.nav a[aria-current='page']`, is untouched
+and still marks any other nav link.
+
+### Heights: nothing moved
+
+Local A/B at 1440px across ten pages, reveals applied and settled per
+`docs/CLAUDE.md` section 2, built from this branch and from main in the same run.
+**All ten identical.** No R-Y amendment is owed. The local figures also match R-Y's
+live amendment exactly where they overlap, which is corroboration of both.
+
+### Tested
+
+**76 of 76 behaviour assertions**, headless Chrome, driving the real thing rather
+than reading the markup: RO and RU home at 1280, RO product at 1280, RU service at
+1440, plus both locales at 1024. Per page: the toggle's accessible name in that
+locale, `aria-controls` resolving to the panel, collapsed at rest, thirteen rows,
+the hidden panel's links at zero size so they are out of the tab order, click
+opens, all thirteen visible with real hrefs, no horizontal overflow with the panel
+open, the panel inside the viewport, Escape closes **and returns focus to the
+toggle**, outside click closes, opening the catalog closes this and opening this
+closes the catalog, and resize closes. At 1024 the toggle is collapsed with the nav
+and the mobile panel still carries its five links.
+
+**54 of 54 header-fit combinations**: zero pairwise intersections, slack at or above
+zero, no horizontal scroll, at 769, 900, 1024, 1099, 1100, 1180, 1280, 1440 and
+1920px on three templates in both locales. Pairwise rather than overflow on
+purpose: a flex child slides under its neighbour without `scrollWidth` ever
+exceeding `clientWidth`.
+
+### Gates
+
+Six pass: build, links, stale docs, provenance, scarcity, origin.
+
+**Lighthouse (gate 5) NOT RUN, and not claimed.** There is no lighthouse binary on
+this machine and the repo has no dependencies by design, so the floors could not be
+measured. This card changes a link into a button with `aria-expanded`,
+`aria-controls` and a hidden thirteen-link panel, which is exactly the shape that
+can move an accessibility score, so the behaviour above was asserted directly
+instead. That is evidence about the mechanism, **not** a Lighthouse score, and it is
+recorded as unverified rather than passed, per `docs/CLAUDE.md` section 13.
+
+## W15-03 · The two carport diagrams that did not exist, 2026-09-15
+
+**Card RC-127.** W14-23 drew five diagrams and mapped C-10, C-11, C-12 and the
+Arhitecturală family onto the posts drawing because no drawing existed for their
+structure. It recorded that as a deviation open for ratification rather than
+leaving it implicit. This card draws the two that were missing and completes the
+mapping. **Zero image files added:** one changed file, build.js.
+
+### The two drawings
+
+**inclined**, for C-10, "Stâlpi înclinați", whose descriptor is a wider free
+opening. The two verticals of the posts drawing become rakes, each foot set
+outside its head, under a roof that runs past both. That is the whole visual
+difference from posts, and it is the difference the card exists to draw.
+
+**architectural**, for C-11, C-12 and the Arhitecturală family tile, whose
+descriptors are massive profiles, an open structure, and asymmetry. The roof is a
+deep slab rather than a single line, drawn as one open-bottomed polyline so the
+accent stays a single element, carried on two off-centre posts with 42px of
+overhang on the left against 22px on the right.
+
+Both are drawn to W14-23's own conventions, which is what matching its stroke
+weight and accent means here: the shared 160 by 100 frame, the ground line at y 88
+supplied by copSvg, one stroke weight of 2 held by vector-effect, no fill, no
+text, and **exactly one accent element** carrying the roof.
+
+**For ratification: the depiction is this executor's.** The wave 14 audit has no
+reference drawing for either structure, so both were drawn from the model
+descriptors in content/copertine.json and nothing else. If either reads wrong to
+the owner, it is one entry in COP_DIAGRAMS to redraw and no other file changes.
+
+### The remap
+
+| Card | Category | Was | Now |
+|---|---|---|---|
+| C-10 | Stâlpi înclinați | posts | **inclined** |
+| C-11 | Arhitecturală | posts | **architectural** |
+| C-12 | Arhitecturală, după proiect | posts | **architectural** |
+| Arhitecturală (family tile) | architectural | posts | **architectural** |
+
+**C-10 keeps its family and changes only its drawing.** It sits in the stalpi
+family because that is how the range is sold, so the family tile still shows posts
+while C-10's own card shows inclined. Each card is labelled by its own heading, so
+each agrees with what it says rather than with its neighbour. **Recorded for
+ratification** as the one place a model and its family tile now differ.
+
+### The build still refuses a gap
+
+W14-23's guards are unchanged and still hold: the build fails if any family or
+model has no diagram, and fails if a diagram is defined and used by no card. That
+second guard is what proves nothing went dead here: **posts is still in use**, by
+C-01, C-05, C-08 and the family tile.
+
+### Tested
+
+**56 of 56 assertions**, headless Chrome against a local build, both locales at
+1440 and 390px. Per run: 5 family tiles and 12 model cards; exactly one diagram on
+every card and **the right one**, checked card by card against the mapping table
+above, models by their own designation and families by render order; all seven
+diagrams in use and no key outside the seven; 17 diagrams on the page; exactly one
+accent per diagram computing to rgb(246, 83, 8); every other line computing to its
+own card's text colour, which is what lets one drawing read on the light chooser
+and the dark model band; one frame, one stroke weight, no fill and no text on
+every diagram; every diagram rendering at a real size; the two new drawings
+present on all four cards that now take them; no img element in either carport
+section; and no horizontal overflow.
+
+### Measured
+
+Ten page heights at 1440px, local A/B against main, reveals applied and settled.
+**All ten identical.** The new drawings use the same frame as the old ones, so the
+rendered box is the same size. No R-Y amendment is owed.
+
+### Gates
+
+Six pass: build, links, stale docs, provenance, scarcity, origin.
+
+**Lighthouse (gate 5) NOT RUN, and not claimed**, for the reason recorded at
+W15-02: no lighthouse binary is available and the repo has no dependencies. This
+card adds no element, no image and no text, and changes two SVG drawings inside
+existing decorative containers that are already aria-hidden, so there is no new
+accessible surface. That is an argument, not a score, and it is recorded as
+unverified.
+
+## W15-04 · Swatch provenance corrected: the values are ours, 2026-09-15
+
+**Card RC-128. This entry corrects W14-22**, whose body stays exactly as written.
+R-S: an error inside a recorded body is corrected by the next entry, never by the
+pen. This is that entry.
+
+### What W14-22 shipped, and what was wrong with it
+
+It set each tile swatch to the sRGB value RAL gGmbH publishes for that code, and
+sourced every legend row to that code's page on a third-party colour site. In the
+same entry it recorded that the publisher states its technical colour values are
+protected by copyright and that a user agreement is required to use them. So the
+repo claimed a provenance it had no licence for, and made a decorative swatch
+depend on somebody else's data.
+
+### What ships now
+
+Fifteen legend entries over ten base codes, each carrying an **approximate sRGB
+value authored in this repo**, by eye, from the colour name the code already had.
+Nothing is copied from any published table.
+
+| Base | Name (RO) | Was | Now |
+|---|---|---|---|
+| 3005 | Roșu vin | `#561E27` | **`#5A2430`** |
+| 5005 | Albastru semnal | `#134A85` | **`#12508E`** |
+| 6005 | Verde mușchi | `#234235` | **`#27483A`** |
+| 7016 | Gri antracit | `#3B4044` | **`#3D4247`** |
+| 7024 | Gri grafit | `#45494E` | **`#494D52`** |
+| 8017 | Maro ciocolată | `#42332E` | **`#45352F`** |
+| 8019 | Maro gri | `#3B3736` | **`#3E3A38`** |
+| 9003 | Alb semnal | `#EBECEA` | **`#EDEEEB`** |
+| 9005 | Negru intens | `#131516` | **`#15181A`** |
+| 9006 | Aluminiu alb | `#9A9D9D` | **`#9DA0A0`** |
+
+**Kept unchanged:** the colour codes, which are the manufacturer's; the colour
+names exactly as they shipped; the swatch and its matt and gloss treatment; and
+the indicative-colour line in both locales.
+
+**Removed:** every ral-farben.de URL, the `source` field, the `ral` field name
+(now `base`), the `data-ral` attribute (now `data-code`), and every phrase in our
+own prose presenting the values as a standards body's published data.
+
+**The build now refuses the claim coming back.** `source` and `ral` are not
+ignored, they **fail the build**, each with its own message. A later card cannot
+reintroduce the provenance by data without the gate stopping it.
+
+### Three things the card asked for that the repo does not have
+
+1. **"Rename the data file so it does not claim to be a RAL table."** There is no
+   such file. The legend lives inside `content/tigla-metalica.json`, the product
+   data file, which claims nothing by its name. The RAL claim lived in a field
+   name, a URL on every row, the file's own `_note`, two build comments, an HTML
+   attribute and a `docs/CLAUDE.md` bullet. All six are corrected. Nothing was
+   renamed because nothing was named for RAL.
+
+2. **"Keep the colour codes and Dasterum's own colour names."** The codes are kept
+   and they are the manufacturer's. **The names are not Dasterum's.** W14-10
+   recorded that the names are the RAL names in Romanian and Russian, and that the
+   manufacturer's own labels were rejected for carrying spelling errors, "Vin
+   rosu" and "Ciocolata maro". Reading the instruction as "adopt the
+   manufacturer's labels" would reintroduce copy this repo has already refused, so
+   it is read as **keep the names as they ship**, and they are untouched.
+
+3. **The supplier is not established.** Dasterum appears nowhere in `content/` or
+   `build.js`; the data file says "the manufacturer's published listing", and
+   **Q-W14-08(a) is still open** on which supplier that is and whether the prices
+   are ours at all. The card names Dasterum. The repo does not. Recorded rather
+   than assumed.
+
+### The acceptance grep, and where it is scoped
+
+**Zero** ral-farben.de URLs and **zero** occurrences of "RAL colour values" across
+50 tracked text files, and zero in the built output, checked separately. Three
+files are excluded, each for a stated reason rather than for convenience:
+
+- `DECISIONS.md` and `docs/QUESTIONS.md` are the append-only records, already
+  exempt from the staleness gate by ruling. W14-22's body necessarily contains
+  both the URLs and the phrase, and deleting them is precisely what R-S forbids.
+  **This entry is the correction that R-S calls for instead.**
+- `docs/audits/wave-14-competitor-structure.md` records what competitors' pages
+  show, for example "Antracit RAL 7016" on a rival's listing. It is a record of
+  other people's sites, not a claim about ours, and editing it would falsify it.
+
+### What still says RAL, on purpose
+
+Four customer-facing strings, two per locale, say the colour is chosen from the
+RAL palette. **They are the indicative-colour lines the card says to keep**, and
+they describe the palette a customer chooses a product from, not the values this
+repo draws. Changing customer-facing copy about what a product is available in is
+a product decision, so it was not made here. **Q-W15-02** logs it with options and
+a recommendation.
+
+### Tested
+
+**52 of 52 assertions**, headless Chrome, both locales at 1440 and 390px. Per run:
+55 chips render; every chip has exactly one swatch; **every swatch computes to the
+value authored in this repo**; **no swatch renders any of the ten superseded
+figures**, which is the assertion that makes the test non-circular rather than
+comparing the page to the file it came from; every swatch carries `data-code` and
+no `data-ral` survives anywhere; matt is flat and gloss is highlighted; every
+colour the models offer has a chip and no chip sits outside the legend; the chip
+count equals the colours offered, 14; the indicative-colour line closes all seven
+palettes and matches that locale's string; the page carries no ral-farben
+reference; and no horizontal overflow.
+
+**The card says "12/12 unchanged". The real figures are 55 chips over 14 distinct
+colours.** W14-22's "12 of 12" was its own assertion count, not a chip count.
+Reported as measured rather than made to match.
+
+### Measured
+
+Ten page heights at 1440px, local A/B against main, reveals settled. **All ten
+identical.** No R-Y amendment is owed.
+
+### Gates
+
+Six pass: build, links, stale docs, provenance, scarcity, origin.
+
+**Lighthouse (gate 5) NOT RUN, and not claimed**, for the reason at W15-02. This
+card changes colour values inside an existing `aria-hidden` swatch and adds no
+element and no text. The swatch was already decorative and the code and name beside
+it are the real information, so contrast is not carried by the swatch.

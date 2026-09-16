@@ -22,7 +22,7 @@ ruling, which is the one path `docs/rulings/` has always taken.
 |---|---|---|---|---|
 | RC-125 | W15-01 Ruling R-Z, merge hygiene and supplier pricing | STOP | `w15/rc-125-ruling-rz` | PR #31, awaiting owner |
 | RC-126 | W15-02 Servicii dropdown, closes Q-W14-15 | SELF | `w15/rc-126-servicii-dropdown` | shipped: 13 destinations, 54 of 54 header-fit combinations, 76 of 76 behaviour assertions, heights unmoved; slack unchanged RO 53 / RU 15 at 1280px and up; no caret and no RC-121 revert, both refused by measurement (Q-W15-01) |
-| RC-127 | W15-03 Two missing carport diagrams | SELF | `w15/rc-127-carport-diagrams` | todo |
+| RC-127 | W15-03 Two missing carport diagrams | SELF | `w15/rc-127-carport-diagrams` | shipped: inclined and architectural drawn, C-10, C-11, C-12 and the Arhitecturală tile remapped, 56 of 56 assertions, heights unmoved, zero image files; the depiction is for ratification |
 | RC-128 | W15-04 Swatch provenance correction | SELF | `w15/rc-128-swatch-provenance` | todo |
 
 **RC-125 is this executor's numbering.** The dispatch named R-Z without a ticket

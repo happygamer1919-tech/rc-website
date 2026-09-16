@@ -5074,3 +5074,87 @@ measured. This card changes a link into a button with `aria-expanded`,
 can move an accessibility score, so the behaviour above was asserted directly
 instead. That is evidence about the mechanism, **not** a Lighthouse score, and it is
 recorded as unverified rather than passed, per `docs/CLAUDE.md` section 13.
+
+## W15-03 · The two carport diagrams that did not exist, 2026-09-15
+
+**Card RC-127.** W14-23 drew five diagrams and mapped C-10, C-11, C-12 and the
+Arhitecturală family onto the posts drawing because no drawing existed for their
+structure. It recorded that as a deviation open for ratification rather than
+leaving it implicit. This card draws the two that were missing and completes the
+mapping. **Zero image files added:** one changed file, build.js.
+
+### The two drawings
+
+**inclined**, for C-10, "Stâlpi înclinați", whose descriptor is a wider free
+opening. The two verticals of the posts drawing become rakes, each foot set
+outside its head, under a roof that runs past both. That is the whole visual
+difference from posts, and it is the difference the card exists to draw.
+
+**architectural**, for C-11, C-12 and the Arhitecturală family tile, whose
+descriptors are massive profiles, an open structure, and asymmetry. The roof is a
+deep slab rather than a single line, drawn as one open-bottomed polyline so the
+accent stays a single element, carried on two off-centre posts with 42px of
+overhang on the left against 22px on the right.
+
+Both are drawn to W14-23's own conventions, which is what matching its stroke
+weight and accent means here: the shared 160 by 100 frame, the ground line at y 88
+supplied by copSvg, one stroke weight of 2 held by vector-effect, no fill, no
+text, and **exactly one accent element** carrying the roof.
+
+**For ratification: the depiction is this executor's.** The wave 14 audit has no
+reference drawing for either structure, so both were drawn from the model
+descriptors in content/copertine.json and nothing else. If either reads wrong to
+the owner, it is one entry in COP_DIAGRAMS to redraw and no other file changes.
+
+### The remap
+
+| Card | Category | Was | Now |
+|---|---|---|---|
+| C-10 | Stâlpi înclinați | posts | **inclined** |
+| C-11 | Arhitecturală | posts | **architectural** |
+| C-12 | Arhitecturală, după proiect | posts | **architectural** |
+| Arhitecturală (family tile) | architectural | posts | **architectural** |
+
+**C-10 keeps its family and changes only its drawing.** It sits in the stalpi
+family because that is how the range is sold, so the family tile still shows posts
+while C-10's own card shows inclined. Each card is labelled by its own heading, so
+each agrees with what it says rather than with its neighbour. **Recorded for
+ratification** as the one place a model and its family tile now differ.
+
+### The build still refuses a gap
+
+W14-23's guards are unchanged and still hold: the build fails if any family or
+model has no diagram, and fails if a diagram is defined and used by no card. That
+second guard is what proves nothing went dead here: **posts is still in use**, by
+C-01, C-05, C-08 and the family tile.
+
+### Tested
+
+**56 of 56 assertions**, headless Chrome against a local build, both locales at
+1440 and 390px. Per run: 5 family tiles and 12 model cards; exactly one diagram on
+every card and **the right one**, checked card by card against the mapping table
+above, models by their own designation and families by render order; all seven
+diagrams in use and no key outside the seven; 17 diagrams on the page; exactly one
+accent per diagram computing to rgb(246, 83, 8); every other line computing to its
+own card's text colour, which is what lets one drawing read on the light chooser
+and the dark model band; one frame, one stroke weight, no fill and no text on
+every diagram; every diagram rendering at a real size; the two new drawings
+present on all four cards that now take them; no img element in either carport
+section; and no horizontal overflow.
+
+### Measured
+
+Ten page heights at 1440px, local A/B against main, reveals applied and settled.
+**All ten identical.** The new drawings use the same frame as the old ones, so the
+rendered box is the same size. No R-Y amendment is owed.
+
+### Gates
+
+Six pass: build, links, stale docs, provenance, scarcity, origin.
+
+**Lighthouse (gate 5) NOT RUN, and not claimed**, for the reason recorded at
+W15-02: no lighthouse binary is available and the repo has no dependencies. This
+card adds no element, no image and no text, and changes two SVG drawings inside
+existing decorative containers that are already aria-hidden, so there is no new
+accessible surface. That is an argument, not a score, and it is recorded as
+unverified.

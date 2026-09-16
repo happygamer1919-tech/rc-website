@@ -147,6 +147,13 @@ const SUPERSEDED = [
     what: "W16-02's LOCAL category page budgets, set before the pages carried any prose",
     clear: /R-Y|AMENDED|W16-02|W17-02/,
   },
+  {
+    id: 'budget-tigla-w14',
+    find: /3,841|3,875/g,
+    ruling: 'R-Y as amended by W18-01 (docs/rulings/R-Y.md)',
+    what: "the wave 14 tail's tile page budgets, set before the page carried its profile diagrams",
+    clear: /R-Y|AMENDED|W14-22|W18-01/,
+  },
 ];
 
 /* --- what is scanned ------------------------------------------------------ */

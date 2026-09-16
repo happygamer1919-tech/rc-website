@@ -1108,6 +1108,13 @@ p { margin: 0; }
   background: var(--bg-light); border: 1px solid var(--line); border-top: 4px solid var(--brand);
   padding: 20px;
 }
+/* W18-01 (RC-138). The profile diagram above each model's name, drawn to the
+   carport diagrams' rules below: lines in the card's text colour, the profile
+   in --brand. Wider than a carport diagram, because it carries its dimension
+   labels as text and they must stay legible. */
+.tile-diagram { margin-bottom: 16px; color: var(--ink); }
+.tile-diagram__svg { display: block; width: 100%; max-width: 280px; height: auto; }
+.tile-diagram .d-accent { stroke: var(--brand); }
 .tile__name { font-size: 20px; text-transform: uppercase; letter-spacing: 0; }
 .tile__media { margin-top: 16px; aspect-ratio: 1 / 1; border: 1px solid var(--line); overflow: hidden; background: var(--bg-grey); }
 .tile__media img { width: 100%; height: 100%; object-fit: contain; display: block; }

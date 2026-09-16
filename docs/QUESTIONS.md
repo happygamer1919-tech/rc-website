@@ -1736,7 +1736,7 @@ cannot both hold.
 **Recommended: (b).** It puts the page one tap away on phones, where most visitors
 are, without reopening the desktop header.
 
-## Q-W14-11b · Metal tile profile renders from Dasterum · OPEN, opened 2026-09-15 (W14-22)
+## Q-W14-11b · Metal tile profile renders from Dasterum · ANSWERED 2026-09-16, the renders are abandoned; each model gets an original profile diagram instead (RC-138, W18-01) · opened 2026-09-15 (W14-22)
 
 Carried from Q-W14-11, whose swatch half the owner answered in the tail dispatch.
 

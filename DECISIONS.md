@@ -6144,3 +6144,94 @@ screenshot tool's window, not the page.
 - `docs/rulings/R-Y.md`: the W17-02 block.
 - `docs/QUESTIONS.md`: Q-W16-01 marked answered; its body untouched.
 - `src/category.html`: the header comment no longer says the page has no lede.
+
+## W17-05 · The Servicii caret ships: 4px off the header pill's gap pays for it, 2026-09-16
+
+**Card RC-136. SELF. Q-W15-01 option (c)**, reopened and authorized by the owner in
+the W17 ratifications, after W15-02 and W16-03 had each measured the caret failing
+in RU.
+
+### What changed
+
+| Value | Before | After |
+|---|---|---|
+| `.header__pill` gap, between its four children | 24px | **20px** |
+| Servicii toggle | the word only | the word plus a **14px down caret** with a 4px gap, `aria-hidden`, drawn in the site's existing chevron stroke |
+
+**No new colour** (the caret is `currentColor`), **no motion** (it does not rotate
+or transition), and the toggle's accessible name is unchanged. Every other header
+value is RC-121's ladder step 3, untouched.
+
+### Which gap, read from the dispatch
+
+The dispatch says "reduce the phone pill's own internal gap by 4px, freeing 12px".
+**Read as the header pill**, the dark rounded bar that holds the phone, for two
+measured reasons: `.header__pill` has four children and three 24px gaps, so 4px
+off it frees exactly the 12px the dispatch names, and it is the value Q-W15-01
+option (c) describes in the same words. `.header__phone`'s own gap, icon to number,
+is 8px; 4px off it frees 4px, which would not pay for an 18px caret. **Recorded
+for ratification.**
+
+### The instrument, validated before it was trusted
+
+The wave 16 header harness, reused, with the privacy and 404 templates added
+because the card says all template types and both carry the same header pill. On
+unchanged `main` (`432c65b`) it reproduced W16-03's recorded matrix **to the pixel**
+on all eight rows W16-03 held (RO 53, RU 15 at 1280px and up; RO 68, RU 31 at
+1180). Two assertions were added: the caret present wherever the desktop nav shows,
+and from 1280px up the phone number visible, inside the pill, unclipped and reading
+`+373 76 837 180`.
+
+### The matrix, shipped state
+
+Slack in px. Nine widths, six template types, both locales: **108 of 108
+combinations pass**: zero pairwise intersections, slack at or above zero, no
+horizontal scroll, the caret 14px wide at every width where the nav shows (1180px
+and up on the four templates that have a nav), and the phone number fully visible
+in **36 of 36** combinations from 1280px up.
+
+| Template | 769 | 900 | 1024 | 1099 | 1100 | 1180 | 1280 | 1440 | 1920 |
+|---|---|---|---|---|---|---|---|---|---|
+| home RO | 365 | 496 | 620 | 695 | 696 | 62 | 47 | 47 | 47 |
+| home RU | 361 | 492 | 616 | 691 | 692 | 25 | **9** | **9** | **9** |
+| service RO | 365 | 496 | 620 | 695 | 696 | 62 | 47 | 47 | 47 |
+| service RU | 361 | 492 | 616 | 691 | 692 | 25 | **9** | **9** | **9** |
+| product RO | 365 | 496 | 620 | 695 | 696 | 62 | 47 | 47 | 47 |
+| product RU | 361 | 492 | 616 | 691 | 692 | 25 | **9** | **9** | **9** |
+| category RO | 365 | 496 | 620 | 695 | 696 | 62 | 47 | 47 | 47 |
+| category RU | 361 | 492 | 616 | 691 | 692 | 25 | **9** | **9** | **9** |
+| privacy RO | 588 | 719 | 843 | 918 | 919 | 695 | 711 | 711 | 711 |
+| privacy RU | 588 | 719 | 843 | 918 | 919 | 695 | 711 | 711 | 711 |
+| 404 RO | 588 | 719 | 843 | 918 | 919 | 695 | 711 | 711 | 711 |
+| 404 RU | 588 | 719 | 843 | 918 | 919 | 695 | 711 | 711 | 711 |
+
+**The arithmetic closes.** RU at 1280px and up: 15 before, plus 12 freed, minus the
+caret's 18, is 9, which is what was measured. RO: 53 + 12 − 18 = 47. At 1180px: RU
+31 + 12 − 18 = 25, RO 68 + 12 − 18 = 62. The collapsed header (1100px and below)
+gains 8px, two gaps, and the privacy and 404 pills gain 4px, one gap. **RU is still
+the binding locale, now with 9px** where it had 15, and a later string change of
+more than 9px in the RU nav would break the fit again; that figure is the one to
+watch.
+
+### Negative-tested on three arms, control watched green before and after
+
+| Arm | exit | Fired on |
+|---|---|---|
+| the caret with the pill gap put back to 24px | 1 | `slack -3` on **12** combinations: RU, 1280/1440/1920, four templates. **Reproduces W16-03's recorded −3** |
+| the caret removed from the markup | 1 | `caret missing` on **32** combinations: 1180px and up, eight pages |
+| the phone number clipped to 90px | 1 | `phone not fully visible` on **36** combinations |
+
+### Behaviour
+
+64 assertions at 1440px across the four nav-bearing templates in both locales:
+starts closed; the caret is `aria-hidden` inside the button; the accessible name is
+the word alone; the caret's centre hit-tests to the toggle; a press on the caret
+opens the menu and a second closes it; a press on the word opens it; a press
+outside closes it. **64 of 64.** Watched failing: with the toggle's handler
+disconnected in the built `main.js`, exactly the 16 "opens" assertions failed.
+
+### Heights
+
+`scripts/verify-live.js` against a local build of this branch: all 28 pages
+VERIFIED, inside budget, and every height identical to the RC-133 run. The header
+is fixed and its height did not change, so no budget moves.

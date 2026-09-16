@@ -1292,6 +1292,40 @@ const CATEGORIES = [
   if (dupes.length) die(`duplicate category slug: ${dupes.join(', ')}`);
 })();
 
+/* W16-03, RC-130. Every catalog menu row opens its own category page, and a
+   subcategory row opens its parent's. Zero rows resolve to a service page.
+
+   This is the acceptance of the card that overturned the RC-106b mapping, and it
+   is asserted here rather than inspected: a row repointed at a service page by a
+   later data edit fails the build. It runs after CATEGORIES is validated, so the
+   set of legal destinations is already known to be sound. */
+(() => {
+  const legal = new Set();
+  for (const c of CATEGORIES) {
+    legal.add(`${CATALOG_ROOT.ro}${c.slug}/`);
+    legal.add(`${CATALOG_ROOT.ru}${c.slug}/`);
+  }
+  const bad = [];
+  const walk = (list, parentSlug) => {
+    list.forEach((row, i) => {
+      for (const code of ['ro', 'ru']) {
+        const href = row.href && row.href[code];
+        if (!legal.has(href)) bad.push(`${row.label && row.label.ro} [${code}] -> ${href}`);
+      }
+      if (row.children) {
+        // A subcategory must open its parent's page, not some other category's.
+        const want = row.href && row.href.ro;
+        row.children.forEach((k) => {
+          if (k.href && k.href.ro !== want) bad.push(`${k.label && k.label.ro} does not open its parent page (${k.href && k.href.ro} vs ${want})`);
+        });
+        walk(row.children, row.href && row.href.ro);
+      }
+    });
+  };
+  walk(CATALOG.categories, null);
+  if (bad.length) die(`${CATALOG_FILE}: ${bad.length} menu row(s) do not open a category page:\n  ${bad.join('\n  ')}`);
+})();
+
 /* The category page body. Labels and subcategory names come from catalog.json;
    the sentence about the work is the related service's own shipped description,
    followed by a link to that service page labelled with the service's own title.

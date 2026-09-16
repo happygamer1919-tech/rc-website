@@ -17,7 +17,7 @@ run and verified as an ancestor of `main` before any card was worked: `8f786ad`.
 | Ticket | Card | Mode | Branch | Status |
 |---|---|---|---|---|
 | RC-137 | W17-01 Ruling R-AB, a gate's result is its own exit code and its own output | STOP | `w17/rc-137-ruling-rab` | STOP PR #39, awaiting owner |
-| RC-133 | W17-02 Category page prose, closes Q-W16-01 | SELF | `w17/rc-133-category-prose` | todo |
+| RC-133 | W17-02 Category page prose, closes Q-W16-01 | SELF | `w17/rc-133-category-prose` | shipped: 42 strings, a lede and two paragraphs on each of 14 pages in its own locale; zero prices, lei, manufacturer names, capability or superlative terms; gate extended and negative-tested on 9 arms; R-Y amended (LOCAL); meta description is now the lede |
 | RC-134 | W17-03 Upgrade the R-Y category budgets from LOCAL to R-P | STOP | `w17/rc-134-ry-live-budgets` | todo, runs after RC-133 is merged and deployed |
 | RC-135 | W17-04 Close the scan gap, `src/product.html` | SELF | `w17/rc-135-scan-gap` | shipped: both template scans carry it, 6 of 6 asserted by count in each; it fails nothing; main's scans shown missing a plant; 4 arms negative-tested |
 | RC-136 | W17-05 Header caret, Q-W15-01 option (c) | SELF | `w17/rc-136-header-caret` | todo |

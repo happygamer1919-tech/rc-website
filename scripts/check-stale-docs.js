@@ -140,6 +140,13 @@ const SUPERSEDED = [
     what: 'the 1600px long-edge minimum stated as universal. Three rulings lower it per slot group; slots.js holds the per-slot floors',
     clear: /AMENDED|W7-02|W8-03|not universal|default for every slot/,
   },
+  {
+    id: 'budget-cat-w16',
+    find: /2,747|2,774|2,562|2,589|2,665|2,693/g,
+    ruling: 'R-Y as amended by W17-02 (docs/rulings/R-Y.md)',
+    what: "W16-02's LOCAL category page budgets, set before the pages carried any prose",
+    clear: /R-Y|AMENDED|W16-02|W17-02/,
+  },
 ];
 
 /* --- what is scanned ------------------------------------------------------ */

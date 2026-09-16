@@ -58,9 +58,22 @@ jobs:
 
       # HTML only. Compressed image data contains the bytes '{{' by chance, and
       # GNU grep -r happily matches inside binaries where BSD grep skips them.
+      #
+      # W18-03 (RC-140). The files are counted before the grep, and a missing one
+      # fails. The guard this replaces was `test -f a && test -f b` on its own
+      # line, which bash -e does NOT exit on (errexit ignores a failure anywhere
+      # but the last command of an && list), and grep on a missing file is
+      # simply "no match": with no pages built this step printed "no
+      # placeholders survived" and passed, having read nothing.
       - name: Fail if any placeholder survived
         run: |
-          test -f dist/index.html && test -f dist/ru/index.html
+          read=0
+          for f in dist/index.html dist/ru/index.html; do
+            if [ ! -f "$f" ]; then echo "$f is missing: a grep that reads nothing is not a pass"; exit 1; fi
+            read=$((read+1))
+          done
+          echo "files read: $read of 2"
+          if [ "$read" -ne 2 ]; then echo "expected 2 files"; exit 1; fi
           if grep -l '{{' dist/index.html dist/ru/index.html; then
             echo "unsubstituted placeholder in generated HTML"; exit 1
           fi

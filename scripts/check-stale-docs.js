@@ -385,6 +385,7 @@ let excepted = 0;
 const usedException = new Set();
 const perValue = new Map(SUPERSEDED.map((v) => [v.id, 0]));
 const missingFiles = [];
+const filesRead = { documents: 0, source: 0 };
 
 console.log('\nstaleness gate — R-Q and R-R, seeded W12-29');
 console.log(`root:   ${ROOT}`);
@@ -401,6 +402,7 @@ function scan(rel, isSource) {
   const file = path.join(ROOT, rel);
   if (!fs.existsSync(file)) { missingFiles.push(rel); return; }
   const raw = fs.readFileSync(file, 'utf8');
+  filesRead[isSource ? 'source' : 'documents']++;
 
   /* Documents are read whole. Source files are read as their COMMENTS ONLY,
      with every other character blanked. Offsets survive the blanking, so a hit
@@ -433,6 +435,15 @@ function scan(rel, isSource) {
 
 SCAN.forEach((rel) => scan(rel, false));
 SCAN_SOURCE.forEach((rel) => scan(rel, true));
+
+/* W18-03 (RC-140). The files read, counted as they are read, before any result.
+   With the document list emptied this gate used to fail only by accident, on
+   known exceptions left matching nothing; with no exceptions listed it would
+   have passed having read no document at all. Zero of either kind now fails in
+   its own words. */
+console.log(`files read: ${filesRead.documents} of ${SCAN.length} documents, ${filesRead.source} of ${SCAN_SOURCE.length} source files`);
+const zeroRead = filesRead.documents === 0 || filesRead.source === 0;
+if (zeroRead) console.error(`ZERO FILES READ: ${filesRead.documents} documents and ${filesRead.source} source files read; a scan of nothing is not a pass.\n`);
 
 /* RC-135 (W17-04). Every template in src/ is in SCAN_SOURCE, asserted by count.
    src/product.html sat outside the list from W14-16 until this card, reported at
@@ -487,6 +498,6 @@ if (deadExceptions.length) {
   console.error('');
 }
 
-const failed = hits.length + deadExceptions.length + missingFiles.length + (templateCountBad ? 1 : 0);
-if (failed) { console.error(`FAIL — ${hits.length} unmarked, ${deadExceptions.length} dead exceptions, ${missingFiles.length} missing files, template count ${templateCountBad ? 'MISMATCH' : 'ok'}\n`); process.exit(1); }
+const failed = hits.length + deadExceptions.length + missingFiles.length + (templateCountBad ? 1 : 0) + (zeroRead ? 1 : 0);
+if (failed) { console.error(`FAIL — ${hits.length} unmarked, ${deadExceptions.length} dead exceptions, ${missingFiles.length} missing files, template count ${templateCountBad ? 'MISMATCH' : 'ok'}, files read ${zeroRead ? 'ZERO' : 'ok'}\n`); process.exit(1); }
 console.log('every known-superseded value is amended, excepted or absent.\n');

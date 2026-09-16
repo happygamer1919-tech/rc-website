@@ -20,7 +20,7 @@ first wave 18 PR, as wave 17's rode R-AB.
 |---|---|---|---|---|
 | RC-138 | W18-01 Tile profile diagrams, closes Q-W14-11b | SELF | `w18/rc-138-tile-profiles` | shipped: four original inline SVG profiles, four distinct by mapping and by geometry, widths drawn from the audit on three and none on the modular tile; zero image files; swatches byte-identical; 264 of 264 rendered assertions; 5 build arms, 2 harness arms, 2 marker arms; tile page RO 3,940 / RU 3,973, R-Y extended (LOCAL) |
 | RC-139 | W18-02 Header slack floor, 8px | SELF | `w18/rc-139-header-slack-floor` | shipped: no header check existed in the repo, so the wave 17 harness became `scripts/check-header-fit.js`, run by `quality`; fit and floor asserted separately; reproduced W17-05's matrix 108 of 108; one RU letter took slack to 0 and only the floor fired; fails if Inter does not load |
-| RC-140 | W18-03 Acceptance-grep integrity | SELF | `w18/rc-140-grep-integrity` | todo |
+| RC-140 | W18-03 Acceptance-grep integrity | SELF | `w18/rc-140-grep-integrity` | shipped: 11 acceptance checks audited by running each against zero inputs; 6 lacked it and passed having read nothing (check-links, check-stale-docs, check-lighthouse, verify-live, W18-02's own check-header-fit, and the deploy workflow's placeholder grep); all 6 now print their count and fail on zero, each watched failing; 5 already had it, shown by their own zero arms |
 
 **The W18 numbers follow the dispatch's order.**
 

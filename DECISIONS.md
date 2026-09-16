@@ -6695,3 +6695,104 @@ above. Ruling R-AB's second case, caught in the run.
   `quality` runs" sentence is amended in place: it predated the catalog page gate
   and gate 5 as well as this one.
 - `.github/workflows/quality.yml`: the step, last.
+
+## W18-03 · Every acceptance check says how many files it read, and fails on none, 2026-09-16
+
+**Card RC-140. SELF.** Stacked on W18-02's branch, for the reason W18-02 gives.
+
+Wave 17's fix was one acceptance grep that asserted its file count before its
+result, after its first run under zsh read zero files and printed zeros (W17-02).
+This card generalises it: **every acceptance check in the repo prints the number
+of files it read before any result, and exits non-zero when that number is zero.**
+`docs/CLAUDE.md` section 13 now carries it as a rule, so a check written later is
+held to it.
+
+### The audit: run, not read
+
+Reading a script says what its author meant. So each acceptance check was **run
+against zero inputs** in a scratch copy of this branch (W18-02's head), its own exit
+code and its own last line read, and the tree restored between arms. Zero inputs
+means what the check reads, emptied: `dist/` for the built-site readers, the page
+list for the checks that walk a fixed list, the image tree, the document list, a
+git repository with nothing tracked.
+
+| Check | Reads | Zero-input arm | Before | Verdict |
+|---|---|---|---|---|
+| `check-merge-artifacts.js` | tracked text files, via `git ls-files` | a git repository with nothing tracked | exit 1, `git ls-files returned nothing, so nothing was scanned` | **had it** |
+| `check-asset-provenance.js` | images under `public/`, ledger rows | every image under `public/` removed | exit 1, `walked public/ and found no images` | **had it** |
+| `check-scarcity.js` | built pages, locale files, templates | empty `dist/` | exit 1, `dist/index.html is missing, so a locale was not built` | **had it** |
+| `check-catalog-pages.js` | the 14 category pages | empty `dist/` | exit 1, `dist/catalog is missing` | **had it** |
+| `check-origin.js` | built files | empty `dist/` | exit 1, `dist/ holds only 0 indexable pages` | **had it** |
+| `check-links.js` | every HTML page in `dist/` | empty `dist/` | **exit 0**, `pages: 0 href/src checked: 0 dead: 0`, `every internal link and anchor resolves.` | **lacked it** |
+| `check-stale-docs.js` | 7 documents, 15 source files | document list and exception list emptied | **exit 0**, `every known-superseded value is amended, excepted or absent.` | **lacked it** |
+| `check-lighthouse.js` | 2 built pages, 2 reports | page list emptied | **exit 0**, `both locales at or above the section 4 floors.` | **lacked it** |
+| `verify-live.js` | 28 live pages, then a crawl | page list emptied | **exit 0**, `PASS — 0 unverified, 0 failed` | **lacked it** |
+| `check-header-fit.js` (W18-02) | 12 pages at 9 widths | page list emptied | **exit 0**, `0 of 0 combinations: zero intersections ...` | **lacked it**, and it is this wave's |
+| `pages.yml`, step "Fail if any placeholder survived" | the two homepages | the step extracted verbatim and run under `bash -e` with no pages built | **exit 0**, `no placeholders survived` | **lacked it** |
+
+**Six of eleven lacked it.** Three details are worth keeping:
+
+- **`check-stale-docs.js` looked guarded and was not.** With the document list
+  emptied it failed, but only because its known exceptions were left matching
+  nothing. With those emptied too it passed, having read no document. A guard
+  that fires by accident is the case-2 failure R-AB records.
+- **`check-header-fit.js` shipped with the gap one card ago.** It asserted 108 of
+  108 against the matrix it held, and an empty matrix held zero. W18-02 is not
+  edited; this entry is the correction.
+- **The deploy workflow's guard was hollow by shell semantics.** It read
+  `test -f dist/index.html && test -f dist/ru/index.html` on its own line. Under
+  `bash -e`, which is the shell GitHub Actions uses (the `quality` log for #45
+  prints `shell: /usr/bin/bash -e {0}`), errexit does not fire on a failure
+  anywhere but the last command of an `&&` list, and `grep` on a missing file is
+  simply no match. So with nothing built the step passed. The build step before it
+  would normally have failed first, which is why it never mattered; it is still a
+  grep that could report clean having read nothing.
+
+**Out of scope, with the reason.** `build.js` is the build, not a scan of a
+result; its refusals each name the file they need. `gen-og-image.js`,
+`gen-placeholders.js`, `gen-service-svgs.js` and `process-photos.js` generate
+files rather than accept them. `slots.js` is a data module. `quality.yml` runs the
+scripts above and greps nothing itself. No tracked shell script exists (R-AA).
+
+### The fix, in each check's own words
+
+| Check | Prints, before any result | Fails when |
+|---|---|---|
+| `check-links.js` | `files read: N HTML pages in dist/` | zero pages; or pages read but zero `href` or `src` found |
+| `check-stale-docs.js` | `files read: N of 7 documents, M of 15 source files` | zero documents or zero source files read, as its own `files read ZERO` failure |
+| `check-lighthouse.js` | `files read: 2 of 2 pages in dist/`, then `reports read: 2 of 2` | an empty page list; fewer reports than pages |
+| `verify-live.js` | `pages to read: 28`, then `pages read: 28 of 28; reachable URLs crawled: 33` | an empty page list; fewer pages read than listed; a crawl that reached nothing |
+| `check-header-fit.js` | `pages read: 12 of 12` (already) | an empty page list or width list |
+| `pages.yml` placeholder step | `files read: 2 of 2` | either homepage missing, each named, before the grep runs |
+
+### Watched failing, and green
+
+**After**, the same eleven zero-input arms against a scratch copy of the fixed tree:
+**all eleven exit 1**, each on its own message. The six that changed:
+
+| Check | exit | Fired on |
+|---|---|---|
+| `check-links.js` | 1 | `zero HTML pages read in dist/, so nothing was checked` |
+| `check-stale-docs.js`, no documents and no exceptions | 1 | `files read ZERO`, with `0 dead exceptions` in the same line, so nothing else fired |
+| `check-lighthouse.js` | 1 | `zero pages to audit, so no floor was checked.` |
+| `verify-live.js` | 1 | `zero pages to verify, so nothing was measured.` |
+| `check-header-fit.js` | 1 | `the matrix is empty (0 pages, 9 widths)` |
+| `pages.yml` step | 1 | `dist/index.html is missing: a grep that reads nothing is not a pass` |
+
+**Controls on the real tree, same run:** all ten `quality` gates exit 0, each gate's
+own process, with the new lines reading `files read: 7 of 7 documents, 15 of 15
+source files` and `files read: 2 of 2 pages in dist/`; the extracted `pages.yml`
+step exit 0 on the real build, `files read: 2 of 2`; `verify-live.js` against a
+local server of this build exit 0, `pages read: 28 of 28; reachable URLs crawled:
+33`, 28 VERIFIED.
+
+**`pages.yml` cannot be exercised by a pull request.** It runs only on push to
+`main`, so the change is evidenced by the extracted step run both ways above and by
+both workflow files parsing as YAML (`ruby -ryaml`). Its first real run is the
+deploy after this merges, and the Pages run for that commit is what confirms it.
+
+### Documents amended
+
+- `docs/CLAUDE.md` section 13: the rule.
+- Five scripts and `.github/workflows/pages.yml`, each change carrying a comment
+  naming W18-03 and the case it closes.

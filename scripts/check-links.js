@@ -31,6 +31,16 @@ const pages = [];
   }
 })(ROOT);
 
+/* W18-03 (RC-140). The count first, and zero is a failure. An empty dist/ used
+   to print "pages: 0 ... dead: 0" and then "every internal link and anchor
+   resolves", exit 0: a scan that read nothing reporting a clean result, which
+   ruling R-AB calls non-evidence. */
+console.log(`\nfiles read: ${pages.length} HTML pages in ${ROOT}/`);
+if (pages.length === 0) {
+  console.error(`\nLINK CHECK FAILED: zero HTML pages read in ${ROOT}/, so nothing was checked. Run node build.js.\n`);
+  process.exit(1);
+}
+
 const idCache = new Map();
 const idsOf = (file) => {
   if (!idCache.has(file)) {
@@ -73,6 +83,10 @@ for (const page of pages) {
 }
 
 console.log(`\npages: ${pages.length}   href/src checked: ${checked}   dead: ${dead.length}`);
+if (checked === 0) {
+  console.error(`\nLINK CHECK FAILED: ${pages.length} pages read but zero href or src attributes found, so nothing was checked.\n`);
+  process.exit(1);
+}
 if (dead.length) {
   console.error('\nDEAD LINKS:');
   dead.forEach((d) => console.error('  · ' + d));

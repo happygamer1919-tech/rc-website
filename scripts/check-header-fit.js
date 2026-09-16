@@ -84,6 +84,9 @@ const fail = (msg) => { console.error(`\nHEADER FIT GATE FAILED: ${msg}\n`); pro
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 /* --- presence of the inputs ------------------------------------------------ */
+/* W18-03 (RC-140). An empty matrix measured nothing and printed "0 of 0
+   combinations", exit 0. This gate shipped with that gap in W18-02. */
+if (PAGES.length === 0 || WIDTHS.length === 0) fail(`the matrix is empty (${PAGES.length} pages, ${WIDTHS.length} widths), so nothing would be measured.`);
 const distFile = (u) => path.join(DIST, u.endsWith('/') ? path.join(u, 'index.html') : u);
 const missing = PAGES.filter((p) => !fs.existsSync(distFile(p.url))).map((p) => p.url);
 if (missing.length) fail(`${missing.length} page(s) not in dist/: ${missing.join(', ')}. Run node build.js first.`);

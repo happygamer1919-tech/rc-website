@@ -147,11 +147,15 @@ async function runLighthouse(url, outFile) {
 
 async function main() {
   if (!fs.existsSync(DIST)) fail('no dist/, run: node build.js');
+  /* W18-03 (RC-140). An empty PAGES list used to audit nothing and print "both
+     locales at or above the section 4 floors", exit 0. */
+  if (PAGES.length === 0) fail('zero pages to audit, so no floor was checked.');
   for (const p of PAGES) {
     const f = path.join(DIST, p.path === '/' ? 'index.html' : path.join(p.path, 'index.html'));
     if (!fs.existsSync(f)) fail(`${path.relative(ROOT, f)} is missing, so a locale was not built`);
   }
 
+  console.log(`files read: ${PAGES.length} of ${PAGES.length} pages in dist/ (${PAGES.map((p) => p.label).join(', ')})`);
   const server = await serve();
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'rc-lh-'));
   const rows = [];
@@ -189,6 +193,8 @@ async function main() {
     console.log(line + (under.length ? `   UNDER FLOOR: ${under.join(', ')}` : ''));
   }
   console.log(`\nfloors: performance ${FLOORS.performance * 100}, accessibility ${FLOORS.accessibility * 100}`);
+  console.log(`reports read: ${rows.length} of ${PAGES.length}`);
+  if (rows.length !== PAGES.length) fail(`${rows.length} lighthouse reports read for ${PAGES.length} pages.`);
 
   if (bad) {
     console.error(`\n${bad} category score(s) below the section 4 floors.`);

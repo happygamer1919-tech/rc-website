@@ -19,7 +19,7 @@ before this run and verified as ancestors of `main` before any card was worked:
 |---|---|---|---|---|
 | RC-132 | W16-01 Ruling R-AA, destructive git commands and worktree hygiene | STOP | `w16/rc-132-ruling-raa` | PR #35, awaiting owner |
 | RC-129 | W16-02 Catalog category pages, seven pages both locales | SELF | `w16/rc-129-category-pages` | shipped: 14 pages, 14 sitemap URLs, 8 gates green, budgets added to R-Y (local) and 14 rows to verify-live; descriptive prose omitted as unsourced (Q-W16-01); a standing gate added beyond the card, for ratification |
-| RC-130 | W16-03 Repoint the catalog menu, closes Q-W15-01 | SELF | `w16/rc-130-repoint-catalog` | todo, after RC-129 |
+| RC-130 | W16-03 Repoint the catalog menu, closes Q-W15-01 | SELF | `w16/rc-130-repoint-catalog` | shipped: 14 rows repointed, zero to a service page, build-time mapping assertion negative-tested on two arms; header unchanged, all three candidates measured and none fits RU (cheapest misses by 1px), 72 of 72 matrix combinations pass |
 | RC-131 | W16-04 Lighthouse gate: make gate 5 execute or delete it | SELF | `w16/rc-131-lighthouse-gate` | todo |
 
 **RC-132 is this executor's numbering.** The dispatch named R-AA without a ticket

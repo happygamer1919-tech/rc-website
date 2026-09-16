@@ -1042,15 +1042,31 @@ const COP_DIAGRAMS = {
   gable: copSvg('<polyline class="d-accent" points="16,50 80,22 144,50" vector-effect="non-scaling-stroke"/>' + copLine(30, 44, 30, 88) + copLine(130, 44, 130, 88)),
   // Two posts under a curved roof.
   arched: copSvg('<path class="d-accent" d="M16 50 Q80 2 144 50" vector-effect="non-scaling-stroke"/>' + copLine(30, 44, 30, 88) + copLine(130, 44, 130, 88)),
+  // Raked posts, each foot outside its head, under a roof that runs past both.
+  inclined: copSvg(copLine(12, 34, 148, 34, true) + copLine(40, 34, 28, 88) + copLine(120, 34, 132, 88)),
+  // A deep roof slab on two off-centre posts: 42px of overhang left, 22 right.
+  architectural: copSvg('<polyline class="d-accent" points="10,36 10,26 150,26 150,36" vector-effect="non-scaling-stroke"/>' + copLine(52, 36, 52, 88) + copLine(128, 36, 128, 88)),
 };
 /* Which diagram each card shows. A model takes its structural category from the
    wave 14 audit 2.3, matched model for model to C-01 to C-12: C-04 drains both
-   sides, so it is the gable; the inclined-post and architectural models stand on
-   posts. A family tile takes its family's structure; the architectural family
-   stands on posts. Every family and model must be mapped and every diagram used,
-   or the build fails. */
-const COP_MODEL_DIAGRAM = { c01: 'posts', c02: 'cantilever', c03: 'wall', c04: 'gable', c05: 'posts', c06: 'arched', c07: 'arched', c08: 'posts', c09: 'cantilever', c10: 'posts', c11: 'posts', c12: 'posts' };
-const COP_FAMILY_DIAGRAM = { stalpi: 'posts', consola: 'cantilever', perete: 'wall', arcuita: 'arched', arhitecturala: 'posts' };
+   sides, so it is the gable.
+
+   W15-03 draws the two structures that had no drawing of their own. Until it,
+   C-10, C-11, C-12 and the Arhitecturală family all showed the posts drawing,
+   which was recorded as a deviation at W14-23 rather than left implicit. C-10
+   is "Stâlpi înclinați" and now shows inclined; C-11 and C-12 are
+   "Arhitecturală" and now show architectural, as does that family's tile.
+
+   A model takes its own category, which is not always its family's structure:
+   C-10 sits in the stalpi family because that is how the range is sold, so the
+   family tile still shows posts while C-10's own card shows inclined. Each card
+   is labelled by its own heading, so each agrees with what it says.
+
+   Every family and model must be mapped and every diagram used, or the build
+   fails. The posts drawing is still used, by C-01, C-05, C-08 and the family
+   tile. */
+const COP_MODEL_DIAGRAM = { c01: 'posts', c02: 'cantilever', c03: 'wall', c04: 'gable', c05: 'posts', c06: 'arched', c07: 'arched', c08: 'posts', c09: 'cantilever', c10: 'inclined', c11: 'architectural', c12: 'architectural' };
+const COP_FAMILY_DIAGRAM = { stalpi: 'posts', consola: 'cantilever', perete: 'wall', arcuita: 'arched', arhitecturala: 'architectural' };
 (() => {
   const unmapped = [...COP.models.filter((m) => !COP_DIAGRAMS[COP_MODEL_DIAGRAM[m.id]]).map((m) => m.id), ...COP.families.filter((f) => !COP_DIAGRAMS[COP_FAMILY_DIAGRAM[f.id]]).map((f) => f.id)];
   if (unmapped.length) die(`${COP_FILE}: no diagram for ${unmapped.join(', ')}.`);

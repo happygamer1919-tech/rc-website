@@ -1800,7 +1800,7 @@ touched. Not (b): it fits only until the next string changes.
 **Related:** RC-121's ladder cannot be reverted either, for the same reason. The nav
 gap alone costs 24px against RU's 15px. See DECISIONS.md W15-02.
 
-## Q-W15-02 · Four customer-facing strings still say "paleta RAL" · OPEN, opened 2026-09-15 (W15-04)
+## Q-W15-02 · Four customer-facing strings still say "paleta RAL" · ANSWERED 2026-09-16, the four strings stay exactly as shipped (W16 ratifications) · opened 2026-09-15 (W15-04)
 
 **Shipped default: unchanged.** All four strings stay exactly as they are.
 

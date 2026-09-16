@@ -115,12 +115,13 @@ image-placeholder fill.
   dark band**. These sit on `#141414` and read as one lighter line, not as a
   new background.
 - `rgba(0, 0, 0, 0.08)` and `rgba(0, 0, 0, 0.12)` card and header shadows.
-- RAL swatches inside the metal tile grid colour chips, and nowhere else. They
-  depict a product finish, so they are data, not palette, and each value comes
-  from the 15-code legend in the wave 14 audit. **One component only: no other
-  element may use them.**
+- Product colour swatches inside the metal tile grid colour chips, and nowhere
+  else. They depict a product finish, so they are data, not palette. Each value
+  is an approximation authored in this repo against the 15-code legend in the
+  wave 14 audit, and reproduces no standards body's published colour data.
+  **One component only: no other element may use them.**
   *Source: owner ratification of wave 14 deviation 9, DECISIONS.md, W14
-  ratifications.*
+  ratifications; the values corrected and the claim removed at W15-04.*
 - `rgba(0, 0, 0, 0.6)`, the lead-capture modal scrim. **The single permitted
   translucency on the site: an overlay, not a section.**
   *Source: `src/styles.css` comment at `.modal`.*

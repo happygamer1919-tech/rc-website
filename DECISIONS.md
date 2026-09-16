@@ -5823,3 +5823,99 @@ but a matrix that omits a shipping template is not a full matrix.
 Eight pass: merge artifacts, build, links, stale docs, provenance, scarcity,
 origin, catalog pages. **Lighthouse (gate 5) NOT RUN**; RC-131 decides whether that
 gate can exist here at all.
+
+## W16-04 · Gate 5 executes, for the first time since wave 1, 2026-09-16
+
+**Card RC-131.** The card said: either make gate 5 run, negative-tested on a
+deliberately failing page, or delete it and every line that reports it. **It runs.**
+That was decided by measurement, not by preference.
+
+### Why implement rather than delete
+
+Probed before choosing: `lighthouse` 13.4.1 resolves from the npx cache in about a
+second, the npm registry answers in 1.3s, Chrome is present, and **a real desktop
+audit of the homepage completes in 10.7 seconds**. Nothing about this environment
+prevents the gate from running, so deleting it would have been throwing away a
+check that works.
+
+**No dependency is added.** The repo still has no `package.json`, no lockfile and
+nothing vendored, which is a documented property of this build. Lighthouse is
+reached through a resolution ladder with **no silent fallback**: `LIGHTHOUSE_BIN`
+if set, then `lighthouse` on PATH, then a cached `npx --no-install`. If no rung
+works the gate **fails**. `quality` installs it globally at a pinned version in a
+prior step, which is how CI reaches rung two.
+
+### The gate found two bugs in itself, and both are the point
+
+**First, `--yes`.** The initial version used `npx --yes lighthouse@13.4.1`, which
+sends npx down an install path that hung past a 300s timeout. Both the bare and the
+pinned spec are in fact cached, so the install was never needed; `--no-install`
+audits in eleven seconds.
+
+**Second, and this is the real one: the gate blocked its own server.** It serves
+`dist/` **in this process**, then called `execFileSync`, which blocks the Node
+event loop for its whole duration. The server could not answer a single request, so
+lighthouse sat waiting for a page that could never arrive and burned the entire
+timeout. The identical command against a server in a **separate** process finished
+in 10.7s. Fixed by running lighthouse through `spawn` and awaiting it, so the loop
+stays free. The function is async and a comment says why it must stay that way.
+
+**Both bugs surfaced only because the gate refuses to skip.** A gate that treated
+"could not measure" as "nothing to report" would have gone green twice over while
+measuring nothing, which is precisely the condition `docs/CLAUDE.md` section 13
+exists to forbid, and precisely what gate 5 had been for its entire life.
+
+### Negative-tested on three arms, each firing its own failure
+
+Control watched green first, and again after every arm.
+
+| Arm | Exit | Fired on |
+|---|---|---|
+| A locale was not built | 1 | the presence assertion, before any audit runs |
+| `LIGHTHOUSE_BIN` pointed at a missing binary | 1 | *"is set to … but it does not run"* |
+| An `<img>` with no `alt` injected into the homepage | 1 | accessibility **96**, *"UNDER FLOOR: accessibility"* |
+
+The third is the card's "deliberately failing page": a real accessibility defect,
+caught as a real score drop from 100 to 96, not as a simulated one.
+
+### Measured
+
+| Page | Performance | Accessibility |
+|---|---|---|
+| homepage RO | 99–100 | **100** |
+| homepage RU | 99–100 | **100** |
+
+Floors are 95 and 100. **Performance read 100 on one run and 99 on the next**, which
+is ordinary Lighthouse run-to-run variance, recorded here so that a future 99 is not
+mistaken for a regression. Accessibility was 100 on every clean run. The gate audits
+both locale homepages at the desktop preset, which is what section 4 specifies.
+
+**Cost:** roughly 25 to 30 seconds of audit per run, plus the pinned global install
+in CI. That is the price of the card's own instruction and is recorded rather than
+hidden.
+
+### Documents amended
+
+- `docs/CLAUDE.md` **section 4** gains the reciprocal pointer R-Q asks for: the
+  floors are enforced by `scripts/check-lighthouse.js`, and the two figures are
+  restated there because a script cannot read prose, the same arrangement
+  `verify-live.js` has with R-Y's budgets.
+- `docs/CLAUDE.md` **section 11 gate 5** no longer reads as an aspiration. It names
+  the script, says it never skips, and records that every card before this one
+  reported this gate NOT RUN.
+
+### The delete branch was not achievable in full, and that is worth recording
+
+Had deletion been chosen, "every line that reports it" could not have been honoured.
+Lighthouse is named 56 times outside the gate itself: 35 in `DECISIONS.md`, 16 in
+`RELEASE-NOTES.md`, three in `docs/QUESTIONS.md` and one in `docs/BACKLOG.md`, all
+inside append-only records whose bodies R-S forbids editing, plus one unrelated
+crawlable-anchors comment in `build.js`. **Only the four lines in `docs/CLAUDE.md`
+were ever deletable.** The instruction was therefore only fully satisfiable in the
+direction it was taken.
+
+### Gates
+
+Nine pass: merge artifacts, build, links, stale docs, provenance, scarcity, origin,
+catalog pages, and **Lighthouse**. For the first time, that last entry is a
+measurement rather than an apology.

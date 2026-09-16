@@ -4973,6 +4973,110 @@ Ruling R-Y (#25, not merged) holds the carports budget at the text-only page; it
 amendment is owed when #25 merges. Lighthouse, desktop, localhost: **RO 100 / 100 / 100 / 100,
 RU 100 / 100 / 100 / 100**.
 
+ w15/rc-125-ruling-rz
+## W15 ratifications · The owner's rulings on the wave 14 close, 2026-09-15
+
+Recorded at the owner's instruction, from the wave 15 dispatch, before any wave 15
+card was worked. Nine items. Five confirm a ruling already recorded at the W14 tail,
+one upgrades its wording, and three are new here.
+
+| Item | Ruling | Standing |
+|---|---|---|
+| #14 ordering: it merged before RC-117 | ratified | **new.** The W14 tail recorded this as "noted, no action", not as ratified. It is now ratified |
+| The section 7 photo rule amended for product slots only (W14-18) | ratified | confirms the W14 tail |
+| The alt text written for the four offer card images (W14-18) | ratified | confirms the W14 tail |
+| Merging main forward into a published branch instead of rebasing (W14-06b) | ratified | confirms the W14 tail |
+| RC-119 leaving existing project data intact (W14-19) | ratified | confirms the W14 tail |
+| All four recorded interpretations in ruling R-Y (W14-13) | ratified | confirms the W14 tail |
+| The RC-106b menu row to page mapping, **as printed** (W14-06b) | ratified | **upgraded.** The W14 tail recorded it "ratified in principle"; the qualifier is now gone |
+| RC-121 stopping at ladder step 3 (W14-21) | ratified | **new** |
+| The privacy pages carrying no Open Graph tags, by design (W14-24) | ratified | **new** |
+
+**The R-Y readings are ratified while R-Y is still unmerged.** That is unchanged
+from the W14 tail, which ratified them the same way and for the same reason: #25 is
+a STOP card and the merge is the owner's.
+
+**Premise corrected, again, and it is the same premise.** The wave 15 dispatch
+opens "#16, #20 and #25 are merged. No PRs are waiting on Ivan." **#16 and #20 are
+merged. #25 is not.** It is open, its head is `w14/rc-113-remeasure`, it is
+MERGEABLE with mergeStateStatus CLEAN, and its `quality` check is now **green**
+(it was red at the W14 tail; the defect it had inherited was repaired by W14-24a,
+and the branch has since been brought up to date). So one PR *is* waiting on the
+owner, and it is the ruling that holds every current height budget.
+
+The W14 tail corrected this same premise on the previous dispatch. It is recorded
+twice because it was asserted twice, not because anything changed: the consequence
+still stands, that until #25 merges there is **no R-Y on main** for a later card to
+amend, and main's `scripts/verify-live.js` still carries R-J's budgets and reports
+both homepages OVER.
+
+**Where the ratifications were recorded.** The dispatch says `docs/DECISIONS.md`.
+The file is `DECISIONS.md`, at the repo root; `docs/` holds the backlog, the
+questions and the rulings. Recorded in the real one.
+
+## W15-01 · Ruling R-Z: merge hygiene, and supplier pricing stays out, 2026-09-15
+
+**Card RC-125. STOP, shipped ahead of every other wave 15 card**, as the dispatch
+directs. The ruling is `docs/rulings/R-Z.md`; this entry records what shipped with
+it.
+
+**RC-125 is this executor's numbering.** The dispatch named R-Z without a ticket id
+and RC-124 was the last used, so R-Z took the next one.
+
+**R-V did not carry into wave 15.** R-V scopes itself to wave 14, cards RC-101 to
+RC-114, in as many words. The wave 15 dispatch grants SELF per card instead, and the
+three content cards carry it. R-Z is STOP because it is a ruling, and `docs/rulings`
+has been in the STOP set since R-V.
+
+### The gate
+
+`scripts/check-merge-artifacts.js`, wired into `quality` as its **first** step.
+First deliberately: W14-24a surfaced as "PROVENANCE.md table has no rows" from the
+provenance check, three steps away from its cause.
+
+Two arms, because the web conflict editor fails in two ways. Arm 1 is the ordinary
+conflict marker, four line-start forms across every tracked text file. Arm 2 is the
+duplicate row key, in the four files the ruling names, and **arm 2 is the one that
+matters**: the editor strips the markers, so the file that lands is marker-free and
+silently carries one side twice. A marker grep would have returned clean on all
+three files W14-24a repaired.
+
+**Keys are whole headings and whole rows, never a parsed identifier.** Load-bearing:
+`docs/QUESTIONS.md` legitimately carries both `## Q-W12-07-LEGAL · …` and
+`## Q-W12-07-LEGAL, addendum · …`, which a parsed-ID key collides into a false
+duplicate, failing the gate on current main against a correct record.
+
+### Negative-tested before it was trusted
+
+Per `docs/CLAUDE.md` section 13, with the control arm watched passing first. On a
+scratch copy: a planted marker fired arm 1; a planted duplicate row fired arm 2 and
+named both line numbers; a keyed file emptied of its rows failed the presence
+assertion; a keyed file deleted failed the missing-file assertion. **Four failures
+watched, exit 1 each time.** On the real repo it passes: 36 self-test assertions, 53
+tracked text files, 24,290 lines, and 86 + 94 + 49 + 157 row keys with no duplicate.
+
+### Documents amended
+
+- `docs/CLAUDE.md` **section 10**: conflicts are never resolved in the web editor,
+  with the mechanism and the incident named.
+- `docs/CLAUDE.md` **section 11**: the new gate is appended as item 10. **The list
+  is appended to, never renumbered** — Q-W14-03 cites "gate 9" and its body is
+  immutable under R-S, so renumbering would falsify a record. The same edit names
+  the three ruling-era gates `quality` runs that the numbered list never got
+  (R-W, R-X, W14-17), so the list is not read as the complete set.
+
+### Clause 2, supplier pricing
+
+Enforced by review, not by a gate, and the ruling says so rather than implying
+coverage it does not have: a wholesale price and a retail price are the same shape,
+and a gate claiming to tell them apart would be exactly the false assurance section
+13 warns about. **The metal tile list prices already in `content/tigla-metalica.json`
+are retail and stay** — read from the manufacturer's published listing, which is the
+category clause 2 permits. **Q-W14-11b is narrowed, not closed:** the Dasterum
+wholesale price list is barred from the repo in every form by clause 2, and carries
+no images in any case, so it cannot answer the question. What is wanted there is an
+image pack with written permission, never the price list.
+
  w14/rc-113-remeasure
 
 ## W14-13 · Re-measured after the close-out; ruling R-Y holds the new budgets, STOP, 2026-09-15
@@ -5031,6 +5135,7 @@ not move, so its budgets stand.
 
 #25 was also brought up to date with main: its `quality` check had failed on the
 provenance table the web merges broke, which W14-24a repaired.
+ main
 ## W15-02 · The Servicii dropdown: every service page in the header, no new target, 2026-09-15
 
 **Card RC-126. Closes Q-W14-15.** The desktop nav's Servicii link becomes a
@@ -5143,6 +5248,29 @@ can move an accessibility score, so the behaviour above was asserted directly
 instead. That is evidence about the mechanism, **not** a Lighthouse score, and it is
 recorded as unverified rather than passed, per `docs/CLAUDE.md` section 13.
 
+## W15-01a · The first conflict resolved under R-Z, and what union means for a row, 2026-09-15
+
+**Not a card.** RC-126 reached main before RC-125, so the wave 15 backlog section
+arrived there first, and main was merged forward into the R-Z branch to keep PR #31
+mergeable. Three files conflicted. Resolved **locally**, which is the ruling being
+applied to its own pull request on the day it was written.
+
+DECISIONS.md and docs/QUESTIONS.md were pure tail appends of whole entries with no
+overlap, so both sides were kept in order. That is docs/CLAUDE.md section 10 exactly.
+
+docs/BACKLOG.md was not, and it is the instructive one. **Both sides had added the
+same four ticket rows**, one side stale (RC-126 todo, the PR number not yet known)
+and one current (RC-126 shipped, PR #31). Keeping "every entry from both sides"
+literally would have produced two RC-125 rows and two RC-126 rows.
+
+**Union is over entries, not over versions of an entry.** Where both sides carry the
+same row key, the row is kept once, at its current status. The stale twin is not a
+discarded side; it is the same side, earlier. Section 10 and R-Z agree once that is
+said out loud, and they contradict each other if it is not.
+
+**Recorded for ratification** as the reading of section 10 that R-Z's duplicate-row
+arm requires. scripts/check-merge-artifacts.js passes on the result, which is the
+first time it has run against a real resolved conflict rather than a planted one.
 ## W15-03 · The two carport diagrams that did not exist, 2026-09-15
 
 **Card RC-127.** W14-23 drew five diagrams and mapped C-10, C-11, C-12 and the

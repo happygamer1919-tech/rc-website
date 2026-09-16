@@ -1319,7 +1319,6 @@ about 2026-09-10, which matches the manual re-run of the W13-03 deploy that day.
 404 costs indexing. Until then, wave 14's live verifications run against
 `https://rapidconstruct.md`, because that is where the deployed build is.
 
-
 ## Q-W14-04 · What the catalog menu lists, and where each row goes · ANSWERED 2026-09-15, the audit 1.2 taxonomy (RC-106b) · opened 2026-09-15 (W14-06)
 
 **Shipped default: the menu is built and switched off.** `content/catalog.json`
@@ -1751,6 +1750,22 @@ modular tile, unwatermarked, square, at least 960px, with written permission. Th
 grid already renders `public/img/tigla-<model>.jpg` when the file and its alt text
 exist, and R-W's supplier-pack origin covers the provenance row.
 
+## Q-W14-11b, addendum · The wholesale price list is barred, and could not have answered this · 2026-09-15 (W15-01, under R-Z)
+
+**The question stays OPEN and its shipped default is unchanged:** no profile image
+in the tile grid, text and swatches only.
+
+R-Z clause 2 bars supplier trade pricing, wholesale price lists and supplier cost
+data from this repo in every form. The Dasterum price list the owner supplied is
+therefore barred. It also carries no images, so it could not have answered this
+question even had it been permitted: the two facts are independent, and either one
+alone closes that route.
+
+**What to send is narrowed to exactly one thing:** the product image pack for
+Monterrey, Valencia, Kascad and the modular tile, unwatermarked, square, at least
+960px, with written permission. Never the price list. R-W's supplier-pack origin
+covers the provenance row, and the grid already renders
+`public/img/tigla-<model>.jpg` the moment the file and its alt text exist.
 ## Q-W15-01 · The Servicii disclosure has no caret, because a caret does not fit · OPEN, opened 2026-09-15 (W15-02)
 
 **Shipped default: no caret.** The toggle is exactly as wide as the link it

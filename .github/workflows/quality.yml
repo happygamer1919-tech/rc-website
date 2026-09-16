@@ -26,6 +26,12 @@ jobs:
         with:
           node-version: '22'
 
+      # First, deliberately. A merge artifact otherwise surfaces as a confusing
+      # failure in a later gate: W14-24a was found as "PROVENANCE.md table has
+      # no rows" from the provenance check, three steps away from the cause.
+      - name: No conflict markers or duplicate rows (R-Z)
+        run: node scripts/check-merge-artifacts.js
+
       - name: Build both locales
         run: node build.js
 

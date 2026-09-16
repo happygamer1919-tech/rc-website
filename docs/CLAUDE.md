@@ -284,6 +284,13 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
 - Conflicts in `DECISIONS.md`, `QUESTIONS.md` or `BACKLOG.md` are resolved by
   **union**: keep every entry from both sides in chronological order. Never
   discard a side.
+- **Never in the GitHub web conflict editor.** Resolve locally, or merge main
+  forward. The editor strips the marker characters, leaves their tails behind as
+  text, and keeps both sides, so the file that lands is marker-free and silently
+  carrying one side twice. It has already damaged three files on this repo and
+  reached production, because the deploy workflow runs no gates. Enforced by
+  `scripts/check-merge-artifacts.js`.
+  *Source: ruling R-Z, `docs/rulings/R-Z.md`; the incident is DECISIONS.md W14-24a.*
 - `main` deploys to GitHub Pages on push. Pushing `main` is a publish.
 
 ---
@@ -303,6 +310,22 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
    card raised written to `QUESTIONS.md` with a shipped default.
 9. After any deploy, `node scripts/verify-live.js` exits 0. A live figure quoted
    without it is unverified, per section 12.
+10. `node scripts/check-merge-artifacts.js` clean. Ruling R-Z: no conflict
+    marker anywhere in the tracked text files, and no duplicate row key in
+    `DECISIONS.md`, `docs/BACKLOG.md`, `docs/QUESTIONS.md` or
+    `docs/assets/PROVENANCE.md`.
+
+**This list is appended to, never renumbered.** Recorded entries cite gates by
+number — Q-W14-03 was found "at gate 9" — and those bodies are immutable under
+R-S, so renumbering would falsify them. A gate added later takes the next number
+even where that puts it out of running order.
+
+**What `quality` runs on every pull request**, in order: gate 10 first (it names
+the damage precisely), then gates 1, 2 and 3, then
+`scripts/check-asset-provenance.js` (R-W), `scripts/check-scarcity.js` (R-X) and
+`scripts/check-origin.js` (W14-17). Those last three enforce rulings that
+postdate this list and were never given numbers; they are gates in every sense,
+and are named here so the numbered list is not read as the complete set.
 
 ---
 

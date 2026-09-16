@@ -49,15 +49,18 @@ Measured at a desktop width, settled, with every reveal applied.
 
 | Page | Budget lives in |
 |---|---|
-| Homepage RO and RU | **DECISIONS.md, ruling R-J** |
+| Homepage RO and RU | ~~DECISIONS.md, ruling R-J~~ **AMENDED (W14-13): `docs/rulings/R-Y.md`, ruling R-Y** |
+| Țiglă metalică, copertine and garduri pages, either locale | **`docs/rulings/R-Y.md`, ruling R-Y** |
 | Service pages, either locale | **RELEASE-NOTES.md, wave 7 acceptance** |
 
 The homepage budgets are **derived, not chosen**: a corrected baseline plus the
 measured cost of each element above the fold plus a stated headroom term. R-J
 carries the derivation, the current figures, and the revert values for when the
-promo bar or the 100+ tile is removed by data. Read them there.
+promo bar or the 100+ tile is removed by data. Read them there. **AMENDED
+(W14-13): R-J keeps the method; the current figures and the revert values are
+now ruling R-Y's, which also holds the three product pages.**
 
-They have been superseded twice, by R-I and then by R-J, and this file has
+They have been superseded three times, by R-I, then by R-J, then by R-Y, and this file has
 already carried a stale copy once. Per R-Q it now carries the pointer only.
 
 **Measure it the same way every time.** An unrevealed `[data-reveal]` is

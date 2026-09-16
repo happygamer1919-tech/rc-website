@@ -62,7 +62,7 @@ the final `main` and stays mergeable.
 | RC-110 | W14-10 Țiglă metalică grid, S-04 | SELF | `w14/rc-110-tigla-grid` | shipped without images (Q-W14-07); prices to confirm (Q-W14-08) |
 | RC-111 | W14-11 Copertine, S-06 | SELF | `w14/rc-111-copertine` | shipped without images (Q-W14-07); homepage 53% over R-J |
 | RC-112 | W14-12 Garduri, S-05, component only | SELF | `w14/rc-112-garduri` | **blocked**, Q-W14-09; component and empty data file merged |
-| RC-113 | W14-13 Height re-measure, new budget ruling | STOP | none | **blocked** on RC-103 and RC-104 |
+| RC-113 | W14-13 Height re-measure, new budget ruling | STOP | none | carried into the close-out board below |
 | RC-114 | W14-14a Ruling R-X, no pressure selling | STOP | `w14/rc-114-ruling-rx` | PR #3, awaiting owner |
 | RC-114 | W14-14 Scarcity gate | SELF | `w14/rc-114-scarcity-gate` | shipped |
 
@@ -82,7 +82,7 @@ ratifications); PRs #1, #2, #3 merged at the owner's instruction.
 | RC-104 | W14-04 Section 1 copy, RU parity | SELF | `w14/rc-104-copy-ru` | shipped |
 | RC-118 | W14-18 Product and visualisation images | SELF | `w14/rc-118-images` | shipped: four offer card images (RC-108); tile renders and RAL chips **blocked** (Q-W14-11); carport images **blocked** (Q-W14-12) |
 | RC-119 | W14-19 Real-photo placeholders and pending manifest | SELF | `w14/rc-119-pending-photos` | manifest shipped (`docs/assets/PENDING-PHOTOS.md`); placeholders **blocked**, no host section exists for them (Q-W14-14) |
-| RC-113 | W14-13 Re-measure, per-page budgets ruling | STOP | `w14/rc-113-remeasure` | todo, after all of the above |
+| RC-113 | W14-13 Re-measure, per-page budgets ruling | STOP | `w14/rc-113-remeasure` | PR open, STOP: ruling R-Y, owner merges |
 | RC-112 | W14-12 Garduri data | SELF | none | **blocked**, Q-W14-09 |
 
 **Tail dispatch, 2026-09-15.** Ratifications recorded (DECISIONS.md, W14 tail
@@ -317,7 +317,7 @@ service pages. Costs exactly 44px and stays inside budget on its own.
 against 9,044. Not trimmed, per the card. **AMENDED: those budgets are R-I's and
 were superseded by R-J on 2026-09-06, which set 8,851 and 9,065. The figures here
 are the then-current ones this card was measured against, kept as the record of
-what was reported; do not budget against them.** Also corrected a 142px error in the
+what was reported; do not budget against them.** **AMENDED again 2026-09-15: R-J's figures are themselves superseded by ruling R-Y (W14-13).** Also corrected a 142px error in the
 recorded baseline that had stood since wave 8. See W12-03 in DECISIONS.md.
 
 ## W12-05 · Full-width tile

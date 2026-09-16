@@ -586,6 +586,8 @@ one page evaluation, and exits non-zero on any mismatch:
 
 **Homepage, both locales: ruling R-J**, `DECISIONS.md`, W12-04, amended by
 W12-10. **Service pages: the wave 7 acceptance table** in this file.
+**AMENDED 2026-09-15 (W14-13): the homepage and the three product pages are held
+by ruling R-Y, `docs/rulings/R-Y.md`. R-J keeps the derivation method.**
 
 They are **not repeated here, and that is deliberate.** R-Q: a number lives in
 exactly one place, the ruling that set it. Four separate staleness findings in
@@ -599,7 +601,8 @@ Three things a card picking this up needs to know, none of which are figures:
    element without measuring it spends headroom nobody allocated, which is what
    happened twice in wave 12.
 2. **They move when the promo bar or the 100+ tile is removed by data.** R-J
-   carries the revert figures for each case.
+   carries the revert figures for each case. **AMENDED (W14-13): R-Y carries
+   them now.**
 3. **RO has less room than RU, and RO is the constraint.** Nothing goes on the
    RO homepage without a measurement first or a new ruling.
 

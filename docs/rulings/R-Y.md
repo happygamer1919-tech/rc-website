@@ -218,7 +218,10 @@ rows, figures replaced. The W16-02 figures are now known-superseded values in
 ### Amended 2026-09-16 by W17-03 (RC-134) · the category budgets confirmed under R-P
 
 Added under R-T. The two LOCAL labels above are struck in place under R-R, at the
-owner's direction; no other sentence above this block was edited.
+owner's direction; ~~no other sentence above this block was edited~~. **AMENDED
+2026-09-16 (W18 ratifications): the strike is R-R conduct, not an exception to R-T.
+R-R permits striking a value in place where it has documentary purpose, so the two
+strikes edited no sentence in R-T's sense, and nothing else above this block changed.**
 
 **Measured under R-P on the live domain `https://rapidconstruct.md`**, after the
 last wave 17 merge that changes a page (#42), with the deployed commit's

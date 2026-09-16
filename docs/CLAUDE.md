@@ -188,6 +188,15 @@ the built pages and prints its term lists. **The exception is that scope only.**
 Every other page still takes copy from a source or omits it.
 *Source: DECISIONS.md W17-02, closing Q-W16-01.*
 
+**AMENDED (W18 ratifications): the boundary, as the owner ratified it.** The
+exception covers **category-page material description only**, meaning what a
+material is, what it is used for and how it is chosen. The RC-133 list above sits
+inside those three: how a material is applied is part of what it is used for, and
+how its subcategories differ and what a buyer should weigh are part of how it is
+chosen. **It does not extend to service pages, to product pages, or to any claim
+about Rapid Construct**, on any page, including the category pages themselves.
+*Source: DECISIONS.md, W18 ratifications, ratifying wave 17 deviation 4 with scope.*
+
 When there is no source for a value, **mark it or omit it — never fill it**:
 
 - `TODO: <what is missing>` in a locale file or in `content/projects.json`.
@@ -633,4 +642,11 @@ W12-29 — stand, and are the pattern. **R-J's in-place corrections of figures i
 
 What is still forbidden inside a ruling: editing a sentence that is already
 there. An amendment is added below, dated and attributed. Nothing above it moves.
+
+**AMENDED (W18 ratifications): an R-R strike is not an edit in that sense.**
+Striking a superseded value in place, with the amendment naming its authority
+beside it, is R-R conduct. R-R permits it wherever the value has documentary
+purpose, inside a ruling as anywhere else, and it is not an exception to R-T. The
+struck value stays readable; no sentence is rewritten.
+*Source: DECISIONS.md, W18 ratifications, reclassifying wave 17 deviation 6.*
 

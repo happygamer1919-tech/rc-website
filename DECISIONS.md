@@ -6371,3 +6371,74 @@ which R-T otherwise forbids, where R-T's standing form is an appended block. It
 was done because the card says "strike the LOCAL labels under R-R" in as many
 words, and done in R-R's inline form so both the struck word and the amendment
 naming W17-03 stay visible. Every other change to R-Y is appended.
+
+## W18 ratifications · The owner's rulings on wave 17, 2026-09-16
+
+Recorded at the owner's instruction, from the wave 18 dispatch, before any wave 18
+card was worked. #39 (R-AB) and #43 (RC-134) were verified merged first, as the
+dispatch requires, each merge commit and each PR head checked an ancestor of
+`origin/main` with `git merge-base --is-ancestor`, exit 0 on all four:
+
+| PR | Merge commit | Head |
+|---|---|---|
+| #39, RC-137, ruling R-AB | `1cb075c` | `3597cf5` |
+| #43, RC-134, R-Y category budgets under R-P | `41ec827` | `cd60847` |
+
+**Wave 17 deviations 1, 2, 3, 5, 7, 8 and 9, ratified as reported.** In the form the
+wave 17 report put them:
+
+1. RC-133 made the lede each category page's meta description.
+2. RC-133 extended the permanent RC-129 gate instead of running a one-off grep.
+3. RC-133's first-person and superlative term lists scan the new prose only.
+5. RC-136 read "phone pill gap" as `.header__pill`, 24px to 20px.
+7. The dispatch's "RC-129 mapping gate" was recorded as
+   `scripts/check-catalog-pages.js`.
+8. W16-02 was wrong on one figure: the template comment tripped two patterns, not
+   three, corrected at W17-01 without editing W16-02.
+9. The executor's own misses, each caught before anything shipped: an RC-133 arm
+   that first fired for the wrong reason, and acceptance greps that read zero files
+   under zsh.
+
+**Deviation 4 ratified with scope.** RC-133 amended `docs/CLAUDE.md` section 5 to
+name the category prose as the one authorized exception to "no invented copy". The
+exception covers **category-page material description only**: what a material is,
+what it is used for and how it is chosen. It does not extend to service pages,
+product pages, or any claim about Rapid Construct. Section 5 now carries that
+boundary in its own text.
+
+- **How the RC-133 list is read against it.** RC-133's permitted list had five
+  items, the owner's boundary names three. Read as the same scope, summarised: how a
+  material is applied falls under what it is used for, and how subcategories differ
+  and what a buyer should weigh fall under how it is chosen. On that reading the
+  shipped prose is inside the boundary and nothing on the category pages changes.
+  **Recorded as an interpretation.** If the owner meant the narrower reading, the
+  application sentences in paragraph 1 are what would move.
+
+**Deviation 6 reclassified.** RC-134 struck R-Y's two LOCAL labels in place, and
+wave 17 reported that as an edit to sentences inside a ruling, an exception to R-T.
+**It is not.** Striking a value in place is R-R conduct, and R-R permits it where the
+value has documentary purpose. The W17-03 entry above says "the strike edits two
+sentences inside a ruling, which R-T otherwise forbids"; that sentence is corrected
+here, under R-S, and its body is untouched.
+
+- **The ruling body's own note is corrected in place, in R-R's form.** R-Y's W17-03
+  block said the labels were struck "at the owner's direction; no other sentence
+  above this block was edited", which framed the strike as a sentence edit. That
+  clause is struck, and an inline amendment naming these ratifications says the
+  strike is R-R conduct and not an exception to R-T.
+- **`docs/CLAUDE.md` section 17 amended to match.** It said "what is still
+  forbidden inside a ruling: editing a sentence that is already there", which is the
+  sentence wave 17 read the strike against. It now says an R-R strike is not an edit
+  in that sense. **Beyond the letter of the dispatch, recorded for ratification:**
+  without it, the next card to strike a value in a ruling reads section 17 and
+  reports the same false exception.
+
+**Q-W14-11b is closed by RC-138. The Dasterum renders are abandoned.** The tile grid
+gets original profile diagrams instead; the question's heading is updated by that
+card, its body untouched.
+
+**The fence installation claims in RC-120 are confirmed by the owner.** W14-20 left
+two claims for a check by someone who installs these fences: panels may be stepped
+on sloping ground, and posts may be fixed to a sound existing plinth. **Both are
+recorded as owner confirmation.** The FAQ answers 3 and 5 on the fences page, and
+the chooser tiles 1 and 2 that carry the same claims, stand as shipped.

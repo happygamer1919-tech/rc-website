@@ -1128,8 +1128,9 @@ p { margin: 0; }
   border: 1px solid var(--line); border-radius: var(--radius-control); color: var(--ink);
 }
 .tile__code { font-weight: 700; }
-/* W14-22. The swatch is the value RAL publishes for the code, set inline from the
-   data (the section 3 exception, tile grid only). Gloss carries a highlight from
+/* W14-22, corrected by W15-04. The swatch is an approximate value authored in
+   this repo, set inline from the data (the section 3 exception, tile grid only).
+   It is not any standards body's published colour figure. Gloss carries a highlight from
    top left; matt is flat, which is its surface treatment. The highlight and the
    edge reuse values this file already has, so no colour value is added here. */
 .tile__colour { display: inline-flex; align-items: center; gap: 6px; }

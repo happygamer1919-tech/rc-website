@@ -883,8 +883,9 @@ ${items}
    price, and the scarcity gate would fail the build's output if one appeared.
 
    Colour chips carry the code, the finish and the colour's name as text, and
-   since W14-22 a swatch in the value RAL publishes for the code: the tile grid
-   exception to docs/CLAUDE.md section 3. A matt code's swatch is flat; a gloss
+   since W14-22 a swatch: the tile grid exception to docs/CLAUDE.md section 3.
+   Since W15-04 the swatch value is an approximation authored in this repo, not
+   a figure taken from anyone's published colour table. A matt code's swatch is flat; a gloss
    code's carries a highlight. A line under the swatches says screen colour is
    indicative and the physical sample decides.
 
@@ -896,17 +897,26 @@ const TIGLA_FILE = 'content/tigla-metalica.json';
 const TIGLA = JSON.parse(fs.readFileSync(TIGLA_FILE, 'utf8'));
 if (!Array.isArray(TIGLA.models) || !Array.isArray(TIGLA.legend)) die(`${TIGLA_FILE} needs both a "models" and a "legend" array.`);
 const TIGLA_LEGEND = new Map(TIGLA.legend.map((c) => [c.code, c]));
-/* W14-22. Every legend entry must carry its RAL Classic code (the code without
-   the matt M), a #RRGGBB value, and the RAL colour page the value was read from.
-   A code and its matt twin must agree, because RAL defines the colour, not the
-   finish. A missing or malformed value fails the build; a swatch is never guessed. */
+/* W15-04. Every legend entry must carry its base code (the code without the matt
+   M), a #RRGGBB value, and nothing presenting that value as a standards body's
+   published colour data. The value is an approximation authored in this repo.
+   A code and its matt twin must agree, because the finish is shown by the swatch
+   surface and not by a different colour. A missing or malformed value fails the
+   build; a swatch is never guessed.
+
+   The source and ral fields are REFUSED rather than ignored. W14-22 sourced each
+   value to a third-party colour page, which both claimed a provenance we did not
+   have and pointed at data its owner says needs a licence. A field reintroducing
+   either fails the build, so the claim cannot come back by data. No host is named
+   here on purpose: the repo carries no such URL at all, in code or in comment. */
 for (const [i, c] of TIGLA.legend.entries()) {
   const where = `${TIGLA_FILE}: legend[${i}] ${c.code}`;
-  if (c.ral !== String(c.code).replace(/M$/, '') || !/^\d{4}$/.test(c.ral)) die(`${where} has ral "${c.ral}", expected its code without the M.`);
+  if (c.base !== String(c.code).replace(/M$/, '') || !/^\d{4}$/.test(c.base)) die(`${where} has base "${c.base}", expected its code without the M.`);
   if (!/^#[0-9A-F]{6}$/.test(c.hex || '')) die(`${where} has no #RRGGBB hex.`);
-  if (!new RegExp(`^https://www\\.ral-farben\\.de/en/colour/ral-classic/ral-${c.ral}/\\d+$`).test(c.source || '')) die(`${where} has no RAL colour page for ${c.ral} as its source.`);
-  const twin = TIGLA_LEGEND.get(String(c.code).endsWith('M') ? c.ral : `${c.ral}M`);
-  if (twin && twin.hex !== c.hex) die(`${where} and ${twin.code} are one RAL colour but carry ${c.hex} and ${twin.hex}.`);
+  if ('source' in c) die(`${where} carries a source field. W15-04 removed it: these values are ours, and a URL here would claim otherwise.`);
+  if ('ral' in c) die(`${where} carries a ral field. W15-04 renamed it to base: the code is the manufacturer's, and the value is ours.`);
+  const twin = TIGLA_LEGEND.get(String(c.code).endsWith('M') ? c.base : `${c.base}M`);
+  if (twin && twin.hex !== c.hex) die(`${where} and ${twin.code} are one colour but carry ${c.hex} and ${twin.hex}.`);
 }
 const TIGLA_GRADES = ['standart', 'premium'];
 
@@ -938,7 +948,7 @@ function tiglaGrid(l) {
       if (unknown.length) die(`${TIGLA_FILE}: ${w} lists colour codes not in the legend: ${unknown.join(', ')}.`);
       const chips = (matt) => v.colours.filter((c) => c.endsWith('M') === matt).map((c) => {
         const e = TIGLA_LEGEND.get(c);
-        return `<li class="tile__colour"><span class="tile__swatch${matt ? ' tile__swatch--matt' : ''}" style="background-color: ${e.hex};" data-ral="${e.ral}" aria-hidden="true"></span><span class="tile__code">${esc(c)}</span> ${esc(e.name[l.code])}</li>`;
+        return `<li class="tile__colour"><span class="tile__swatch${matt ? ' tile__swatch--matt' : ''}" style="background-color: ${e.hex};" data-code="${e.base}" aria-hidden="true"></span><span class="tile__code">${esc(c)}</span> ${esc(e.name[l.code])}</li>`;
       }).join('');
       const group = (matt) => {
         const html = chips(matt);

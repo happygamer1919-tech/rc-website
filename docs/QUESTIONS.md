@@ -1784,3 +1784,43 @@ touched. Not (b): it fits only until the next string changes.
 
 **Related:** RC-121's ladder cannot be reverted either, for the same reason. The nav
 gap alone costs 24px against RU's 15px. See DECISIONS.md W15-02.
+
+## Q-W15-02 · Four customer-facing strings still say "paleta RAL" · OPEN, opened 2026-09-15 (W15-04)
+
+**Shipped default: unchanged.** All four strings stay exactly as they are.
+
+W15-04 removed every claim that **our swatch values** are a standards body's
+published data. It deliberately did not touch these four, two per locale, in the
+tile page copy: one process step and one FAQ answer.
+
+> Alegi culoarea din paleta RAL, în finisaj mat sau lucios. Pe ecran culoarea e
+> orientativă; decide mostra fizică.
+
+> Цвет выбирается по палитре RAL, матовый или глянцевый. Цвет на экране
+> ориентировочный; решает физический образец.
+
+**Why they were kept.** They are the indicative-colour lines the card explicitly
+says to keep in both locales. And they describe **the palette a customer chooses a
+product from**, which is a fact about the product, not a claim about the hex values
+this repo draws. The wave 14 audit records that the manufacturer's codes are
+RAL-style four-digit numbers and that the competitor's own site prints them without
+the RAL prefix.
+
+**Why it still deserves a ruling.** A visitor who reads "paleta RAL" and then looks
+at our swatches may reasonably take the swatches to be RAL colours, which is the
+impression W15-04 exists to remove. The copy and the swatch now say slightly
+different things.
+
+**Options:**
+
+  (a) **Leave them** (shipped). Correct if the product genuinely is sold as a RAL
+      palette.
+  (b) **Delete the two words.** "Alegi culoarea în finisaj mat sau lucios" and the
+      Russian equivalent. A deletion, not invented copy, and the indicative
+      sentence is untouched.
+  (c) **Keep RAL and attribute it**, saying the codes are the manufacturer's
+      reference. This needs new copy and needs to know who the manufacturer is,
+      which is Q-W14-08(a), still open.
+
+**Recommended: (b)** unless the product really is sold from the RAL palette, in
+which case (a). This is a product fact this executor does not have.

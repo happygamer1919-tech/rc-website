@@ -134,7 +134,7 @@ category pages in each locale, on their own root `/catalog/`. They are new pages
 needing budgets. **Nothing existing moved:** the ten pages this ruling already
 holds were re-measured in the same run and every one was identical.
 
-**These figures are LOCAL, and that is stated rather than glossed.** R-Y's other
+**These figures are ~~LOCAL~~, and that is stated rather than glossed.** **AMENDED 2026-09-16 (W17-03): never read under R-P. W17-02 replaced them before any live reading was recorded, and W17-03 below confirms W17-02's figures under R-P.** R-Y's other
 budgets are R-P readings taken on the live domain after a deploy. These pages are
 not deployed yet, so an R-P reading of them cannot exist before this merges. They
 were measured on a local build at 1440x900, every `[data-reveal]` applied and
@@ -183,7 +183,7 @@ supersede the ones in the W16-02 block above.** Nothing else moved: the eight
 other pages this ruling holds, both homepages and the six product pages, were
 re-measured in the same run and each was identical to its current figure above.
 
-**Still LOCAL, and stated as such.** The prose is not deployed until this merges,
+**Still ~~LOCAL~~, and stated as such.** **AMENDED 2026-09-16 (W17-03): confirmed under R-P on the live domain, identical to the pixel on all fourteen pages; the W17-03 block below holds the R-P reading.** The prose is not deployed until this merges,
 so an R-P reading cannot exist yet. Measured by `scripts/verify-live.js` against a
 local server of this branch's `dist/`, at 1440x900: every request cache-busted,
 `build-sha` asserted in the same page load and matching on all 28 pages, markers
@@ -214,3 +214,49 @@ not measured, so it is absent rather than guessed.
 **Where they are enforced:** `scripts/verify-live.js`, `PAGES`, the same fourteen
 rows, figures replaced. The W16-02 figures are now known-superseded values in
 `scripts/check-stale-docs.js` (`budget-cat-w16`), per R-Q.
+
+### Amended 2026-09-16 by W17-03 (RC-134) · the category budgets confirmed under R-P
+
+Added under R-T. The two LOCAL labels above are struck in place under R-R, at the
+owner's direction; no other sentence above this block was edited.
+
+**Measured under R-P on the live domain `https://rapidconstruct.md`**, after the
+last wave 17 merge that changes a page (#42), with the deployed commit's
+`build-sha` asserted equal to that merge commit on every page, in the same page
+load as the height. Every request cache-busted with a token unique to the run;
+browser cache disabled; 1440x900; every `[data-reveal]` applied and settled before
+`scrollHeight` was read. The merge commit is not restated here, for the reason the
+ruling gives at the top.
+
+**A content marker unique to the prose build was added for this reading.** The
+category marker set now also asserts three `data-cat-prose` blocks per page. A
+category page built before W17-02 carries none, so a stale copy returning plausible
+heights cannot pass it. Watched failing: with four blocks expected, all fourteen
+category pages reported UNVERIFIED on that marker and the run exited 1.
+
+**Four full runs, identical to the pixel on all 28 pages the script holds.** One
+before the marker was added and three with it, the last taken after the negative
+arm as its control. Every page VERIFIED, every page inside budget, and the
+reachability crawl found zero visible TODO across 33 URLs.
+
+| Page | RO measured, R-P | RO budget, under | RU measured, R-P | RU budget, under |
+|---|---|---|---|---|
+| `/catalog/termoizolatie/` | 3,072 | **3,132** | 3,127 | **3,187** |
+| `/catalog/tencuieli-decorative/` | 2,974 | **3,034** | 3,028 | **3,088** |
+| `/catalog/placi-ceramice/` | 2,892 | **2,952** | 2,974 | **3,034** |
+| `/catalog/elemente-decorative/` | 2,919 | **2,979** | 3,001 | **3,061** |
+| `/catalog/vopsele/` | 2,991 | **3,051** | 3,018 | **3,078** |
+| `/catalog/sisteme-iluminare/` | 2,947 | **3,007** | 2,947 | **3,007** |
+| `/catalog/alte-materiale/` | 2,919 | **2,979** | 2,919 | **2,979** |
+
+**Identical to W17-02's LOCAL figures on every page, so no budget changes.** Local
+and live agreeing to the pixel is what wave 15 found too. Identical figures are
+also exactly what a stale edge copy returns, which is why identity rests on the
+`build-sha` and the prose marker read in the same load, not on the numbers.
+
+The eight other pages this ruling holds read the same live as their current
+figures above: homepage 10,447 RO and 10,747 RU; tile 3,781 and 3,815; carports
+5,433 and 5,509; fences 4,756 and 4,778.
+
+**Still no promo-bar revert figure for the category pages.** Not measured, so not
+stated.

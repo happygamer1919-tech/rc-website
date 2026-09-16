@@ -80,6 +80,9 @@ const MARKERS = {
     promoBar: 1,
     profileAnchors: 0,
     areaServed: 0,
+    // W17-03 (RC-134). The lede and two paragraphs W17-02 added. A category page
+    // built before the prose carries 0, so a stale copy cannot match this.
+    catProse: 3,
   },
 };
 
@@ -101,9 +104,8 @@ const PAGES = [
   { path: '/servicii/garduri/',            type: 'product', label: 'garduri RO',     budget: 4816 },
   { path: '/ru/servicii/garduri/',         type: 'product', label: 'garduri RU',     budget: 4838 },
   // W16-02, RC-129. The seven catalog category pages. Budgets from R-Y's
-  // amendment by W17-02 (RC-133), which re-measured them with the authored prose
-  // and still records them as LOCAL measurements awaiting their first R-P
-  // confirmation (RC-134).
+  // amendment by W17-02 (RC-133), measured with the authored prose, and confirmed
+  // under R-P on the live domain by W17-03 (RC-134).
   { path: '/catalog/termoizolatie/',            type: 'category', label: 'cat RO termo',   budget: 3132 },
   { path: '/ru/catalog/termoizolatie/',         type: 'category', label: 'cat RU termo',   budget: 3187 },
   { path: '/catalog/tencuieli-decorative/',     type: 'category', label: 'cat RO tencu',   budget: 3034 },
@@ -167,6 +169,7 @@ const PROBE = `(async () => {
     promoBar: q('.promo'),
     statTiles: q('.stat'),
     areaServed: area ? area.areaServed.length : 0,
+    catProse: q('[data-cat-prose]'),
   };
   const facts = {
     sameAsProfile: biz ? biz.sameAs.includes('https://maps.google.com/?cid=1981309119616115698') : null,

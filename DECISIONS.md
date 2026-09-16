@@ -6235,3 +6235,53 @@ disconnected in the built `main.js`, exactly the 16 "opens" assertions failed.
 `scripts/verify-live.js` against a local build of this branch: all 28 pages
 VERIFIED, inside budget, and every height identical to the RC-133 run. The header
 is fixed and its height did not change, so no budget moves.
+
+## W17-03 · The category budgets confirmed under R-P, and the LOCAL labels struck, 2026-09-16
+
+**Card RC-134. STOP, PR only.** Run after RC-133 merged, as the card directs, and
+after RC-136 too, so the reading belongs to the last wave 17 commit that changes a
+page.
+
+### The reading
+
+`EXPECT_SHA=<the #42 merge commit> node scripts/verify-live.js https://rapidconstruct.md`,
+after the Pages deploy of that commit reported success, and after
+`gh api .../pages` confirmed the custom domain is `rapidconstruct.md`.
+
+| Run | Marker set | exit | Result |
+|---|---|---|---|
+| 1 | as on main | 0 | 28 of 28 VERIFIED, all inside budget |
+| 2 | with `catProse: 3` | 0 | 28 of 28 VERIFIED, all inside budget |
+| 3 | with `catProse: 3` | 0 | 28 of 28 VERIFIED, all inside budget |
+| arm | `catProse: 4` expected | 1 | **14 UNVERIFIED**, each `marker mismatch: catProse expected 4, got 3` |
+| 4, control after the arm | with `catProse: 3` | 0 | 28 of 28 VERIFIED, all inside budget |
+
+All four clean runs are identical to the pixel on all 28 rows, and the fourteen
+category rows are identical to W17-02's LOCAL figures. **No budget changes.**
+
+### Why a marker was added
+
+R-P's own warning is that a stale page returns a plausible number, and here the
+number was not merely plausible but identical to the proposal. The existing
+category marker set (promo bar, zero profile anchors, zero `areaServed`) was
+equally true of the page before RC-133, so it proved the page type, not the build.
+`build-sha` proves the commit; **`catProse: 3` proves the prose is on the page
+being measured**, and it was watched failing before it was trusted.
+
+### Amended under R-R and R-T
+
+- **The two LOCAL labels in R-Y are struck in place** (`~~LOCAL~~`), each with an
+  inline amendment naming W17-03, at the owner's direction.
+  - W16-02's block: those figures were **never read under R-P**. W17-02 replaced
+    them first. Checked, not assumed: the wave 16 session ran `verify-live.js`
+    against the live domain zero times.
+  - W17-02's block: confirmed, identical to the pixel.
+- **A dated W17-03 block is appended to R-Y** with the R-P figures and the method.
+- **`scripts/verify-live.js`**: the `catProse` marker, and its category comment no
+  longer says the budgets await confirmation.
+
+**Recorded for ratification: the strike edits two sentences inside a ruling**,
+which R-T otherwise forbids, where R-T's standing form is an appended block. It
+was done because the card says "strike the LOCAL labels under R-R" in as many
+words, and done in R-R's inline form so both the struck word and the amendment
+naming W17-03 stay visible. Every other change to R-Y is appended.

@@ -115,7 +115,7 @@ for (const must of ['dist/index.html', 'dist/ru/index.html']) {
 if (roPages.length === 0 || ruPages.length === 0) fail(`dist/ holds ${roPages.length} RO and ${ruPages.length} RU pages; both must be non-zero`);
 pages.forEach((p) => sources.push({ where: rel(p), text: fs.readFileSync(p, 'utf8'), locale: rel(p).startsWith('dist/ru/') ? 'ru' : 'ro' }));
 
-const CODE = ['src/main.js', 'src/template.html', 'src/service.html', 'src/privacy.html', 'src/404.html', 'src/styles.css', 'build.js'];
+const CODE = ['src/main.js', 'src/template.html', 'src/service.html', 'src/category.html', 'src/privacy.html', 'src/404.html', 'src/styles.css', 'build.js'];
 for (const f of CODE) {
   const abs = path.join(ROOT, f);
   if (!fs.existsSync(abs)) fail(`${f} is missing from the code scan list`);

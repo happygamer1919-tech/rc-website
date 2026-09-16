@@ -169,6 +169,7 @@ const SCAN_SOURCE = [
   'src/styles.css',
   'src/template.html',
   'src/service.html',
+  'src/category.html',
   'src/privacy.html',
   'src/404.html',
   'build.js',

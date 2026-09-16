@@ -5589,3 +5589,134 @@ Five interpretations are recorded in the ruling for ratification, including that
 "reachable by shell fall-through" is read to cover `;` as well as `||`, and that a
 found worktree is removed **only** once its branch is merged or its tree is clean,
 so clause 2 never becomes a licence to discard unpushed work.
+## W16-02 · Seven catalog category pages, on their own root, 2026-09-16
+
+**Card RC-129.** Fourteen pages, seven categories in each locale, at
+`/catalog/<slug>/` and `/ru/catalog/<slug>/`. All fourteen are in the sitemap, each
+with its own H1 in its own language. **Zero image files added:** the card allows
+diagrams or licensed stock, and the page works without either.
+
+**Their own root, not under `/servicii/`.** These are materials, not services.
+Putting them under the services root would misdescribe them and would risk a slug
+colliding with a service; the build now refuses such a collision outright.
+
+### The template is the product template, transformed
+
+`src/category.html` is generated from `src/product.html` rather than hand-written,
+so the header, promo bar, quote form and footer are **identical** to the pages they
+must match, which is what the card means by the same form as the service pages.
+Three removals, each for a stated reason:
+
+- **Both JSON-LD blocks.** A materials category is not a `Service`, and a
+  `BreadcrumbList` would have to name a catalog index page that does not exist.
+  Emitting structured data that misdescribes the page is worse than emitting none.
+- **The hero lede.** See below.
+- **The FAQ schema slot.** Categories have no FAQ.
+
+The breadcrumb's middle crumb pointed at `/servicii/`; it is now the catalog label
+the header already ships. The eyebrow names the catalog rather than the services.
+
+### What is on the page, and what is missing
+
+**Everything on these pages is sourced. Nothing was invented.**
+
+| Element | Source |
+|---|---|
+| H1 | the category label in `content/catalog.json`, both locales |
+| Subcategory names, as content not links | the same file's `children` |
+| The sentence about the work, and the link under it | the related service's already-shipped `services.items.N` title and description |
+| Breadcrumb, eyebrow, CTA heading, the whole quote form | existing locale strings |
+
+**What is missing is the prose the card asks for**, and it is missing because it
+does not exist anywhere in this repo. The card asks each page to say what the
+category covers and what Rapid Construct does with the material. The wave 14 audit
+section 1.2, which is the only source for this taxonomy, carries **labels and
+counts only, no descriptive prose**. Writing it would be inventing copy, which
+`docs/CLAUDE.md` section 5 forbids outright.
+
+So the pages ship with the sourced content above and **no invented lede and no
+invented prose block**, per section 5's "mark it or omit it, never fill it".
+**Q-W16-01** records what is wanted, in what quantity, with options.
+
+**This is also why the product template could not simply be reused.** Its
+`prod.lede` is load-bearing in three places: a build-time `REAL()` check, the meta
+description, and the JSON-LD `description`. The only lede available from sourced
+material would have been a *service* description reused across up to six category
+pages, which is both duplicated and about the wrong thing. A dedicated template
+takes its meta title from the existing ladder and composes its meta description
+from two sourced strings, the category label and the related service description,
+so every page has a distinct, honest description.
+
+### A gate was added, which is more than the card asked for
+
+**Deviation, for ratification.** The card asks for the zero-price assertion as
+*acceptance*. It shipped as `scripts/check-catalog-pages.js`, wired into
+`quality`, because the prohibition is **standing**: R-X already gates the
+neighbouring prohibitions site-wide but says nothing about a plain price, so a
+later card could put a figure on these pages and nothing would notice. Scoped to
+`dist/catalog/**` and `dist/ru/catalog/**` only, so it can never fire on the metal
+tile page, which carries published list prices on purpose. Overturn it and the
+acceptance still stands as a one-off grep.
+
+### The gate caught its own author, twice
+
+**First, the self-test refused to run the scan.** The Russian cart pattern was the
+literal `корзина`, which cannot match the inflected `корзину` in its own sample,
+because the letter-aware word helper guards the trailing edge. The same bug sat in
+the stock pattern (`наличие` against `в наличии`). Both are now stemmed, the way
+`check-scarcity.js` already stems its Russian.
+
+**Second, and worse, the first negative test run was invalid and said so.** The
+control was red: the template's own header comment read "No prices, no product
+records, no stock, no cart", which trips three of the six patterns on all fourteen
+pages. Three planted arms "failed" as required **for the wrong reason** — they were
+firing on that comment, not on what was planted. A negative test that passes for
+the wrong reason proves nothing.
+
+Fixed by **rewording the comment, not by stripping HTML comments from the scan.**
+Stripping would have created a blind spot where a real price could hide in shipped
+bytes. The gate scans these pages whole, comments included, and its header now says
+so.
+
+**Negative-tested properly, on five arms, control watched green first:** a planted
+price fired `money-amount`; a planted cart string fired `cart`; a planted
+`data-sku` fired `product-record`; a planted stock string fired `stock`; and a
+missing locale of pages failed the presence assertion. Each arm was checked to fire
+on **its own pattern id**, not merely to exit non-zero. 106 self-test assertions.
+
+### Measured
+
+Fourteen pages at 1440px on a local build, reveals settled, markers asserted in the
+same pass. Budgets are the measurement plus R-J's 60px headroom term, recorded in
+an R-T amendment block appended to R-Y and enforced by fourteen new `PAGES` rows in
+`scripts/verify-live.js` with a `category` marker set.
+
+**The figures are labelled LOCAL in the ruling, not passed off as R-P readings**,
+because these pages are not deployed yet and an R-P reading of them cannot exist
+until this merges. The first live verification confirms or corrects them. **No
+promo-bar revert figure is stated**, because it was not measured; R-Y's method is
+that a revert value is measured, never inherited from another page type.
+
+The ten pages R-Y already held were re-measured in the same run: **all ten
+identical.** Nothing existing moved.
+
+### Gates
+
+Eight pass: merge artifacts, build, links, stale docs, provenance, scarcity,
+origin, and the new catalog page gate. Sitemap verified at exactly **fourteen**
+category `<loc>` entries. All fourteen pages verified for no surviving JSON-LD, no
+unsubstituted placeholder, correct canonical and hreflang, the changed breadcrumb
+and eyebrow, the promo bar, the service link, the quote form, and a subcategory
+list on exactly the two categories that have children.
+
+**Lighthouse (gate 5) NOT RUN, and not claimed.** RC-131 in this same wave decides
+whether that gate can exist at all.
+
+### Reported, not fixed: a pre-existing registration gap
+
+`src/product.html` is in neither `check-scarcity.js`'s CODE list nor
+`check-stale-docs.js`'s `SCAN_SOURCE`, and has not been since W14-16 created it. So
+its source is scanned for neither scarcity strings nor stale values. `src/category.html`
+was registered in both when it was added. Closing the product template's gap is a
+one-line change in each list, and it is **reported rather than done**, being outside
+this card.

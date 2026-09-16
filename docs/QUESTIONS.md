@@ -1839,3 +1839,41 @@ different things.
 
 **Recommended: (b)** unless the product really is sold from the RAL palette, in
 which case (a). This is a product fact this executor does not have.
+
+## Q-W16-01 · The category pages have no descriptive copy, because none exists · OPEN, opened 2026-09-16 (W16-02)
+
+**Shipped default: the pages carry sourced content only, and no invented prose.**
+
+RC-129 asks each category page to say **what the category covers** and **what Rapid
+Construct does with the material**, plus the one-line lede every other page type
+carries. None of that text exists anywhere in this repo. The wave 14 audit section
+1.2 is the only source for this taxonomy and it holds **labels and counts only**.
+Writing the prose would be inventing copy, which `docs/CLAUDE.md` section 5 forbids.
+
+**What the pages therefore carry today,** all of it sourced: the category name as
+the H1, its subcategory names as content where it has any, the related service's
+own shipped description with a link to that service, and the standard quote form.
+
+**What is wanted, if you want it:** per category, in **both** locales, so seven of
+each in RO and seven in RU:
+
+1. a **lede**, one line under the H1, roughly 90 to 120 characters;
+2. a short paragraph on **what the category covers**;
+3. a short paragraph on **what Rapid Construct does with the material**.
+
+That is 14 ledes and 28 paragraphs in total. Supplying only item 1 is a useful
+half-step: the lede is what the meta description and the page hero most want.
+
+**Options:**
+
+  (a) **Leave them as they are** (shipped). Honest, thin, and five of the seven
+      categories have no subcategory list either, so those pages are H1 plus one
+      sourced sentence plus the form.
+  (b) **Supply all three pieces per category.** The pages then read like the
+      product pages do.
+  (c) **Supply the lede only.** Restores the hero line and gives each page a
+      written meta description rather than a composed one.
+
+**Recommended: (c) first, then (b) if these pages are meant to rank.** All fourteen
+are in the sitemap, as the card directs, so they are indexable today; thin pages in
+a sitemap are a real cost, and (a) accepts it knowingly rather than by oversight.

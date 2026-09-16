@@ -126,3 +126,50 @@ Promo bar removed by data: each product page budget still drops by 44.
 
 The fences budget is no longer the empty page's. Metal tile renders (Q-W14-11b) would
 still move the tile grid budget.
+
+### Amended 2026-09-16 by W16-02 (RC-129) · the seven catalog category pages
+
+Added under R-T; nothing above this block was edited. RC-129 created seven
+category pages in each locale, on their own root `/catalog/`. They are new pages
+needing budgets. **Nothing existing moved:** the ten pages this ruling already
+holds were re-measured in the same run and every one was identical.
+
+**These figures are LOCAL, and that is stated rather than glossed.** R-Y's other
+budgets are R-P readings taken on the live domain after a deploy. These pages are
+not deployed yet, so an R-P reading of them cannot exist before this merges. They
+were measured on a local build at 1440x900, every `[data-reveal]` applied and
+settled per `docs/CLAUDE.md` section 2, with each page's markers asserted in the
+same pass: promo bar present, zero profile anchors, no horizontal overflow, a
+non-empty H1 in that locale. **They are proposed budgets**, and the first live
+verification after this merges confirms or corrects them under R-P. Wave 15 found
+local and live agreeing to the pixel on every page the two shared, which is why a
+local figure is worth proposing rather than leaving fourteen pages unbudgeted.
+
+Each budget is the measured height plus the **60px headroom term**, R-J's, not
+re-derived.
+
+| Page | RO measured | RO budget, under | RU measured | RU budget, under |
+|---|---|---|---|---|
+| `/catalog/termoizolatie/` | 2,687 | **2,747** | 2,714 | **2,774** |
+| `/catalog/tencuieli-decorative/` | 2,502 | **2,562** | 2,529 | **2,589** |
+| `/catalog/placi-ceramice/` | 2,502 | **2,562** | 2,529 | **2,589** |
+| `/catalog/elemente-decorative/` | 2,502 | **2,562** | 2,529 | **2,589** |
+| `/catalog/vopsele/` | 2,605 | **2,665** | 2,633 | **2,693** |
+| `/catalog/sisteme-iluminare/` | 2,502 | **2,562** | 2,502 | **2,562** |
+| `/catalog/alte-materiale/` | 2,502 | **2,562** | 2,502 | **2,562** |
+
+**Why they differ at all.** Every category page is the same template: header,
+promo bar, hero with breadcrumb and H1, the block, the quote form, footer. The
+only variable is the block. Five categories have no subcategories and measure the
+floor, 2,502 RO. Termoizolație carries five subcategory names (+185) and Vopsele
+two (+103). That is the entire spread.
+
+**No promo-bar revert figure is stated for these pages.** R-Y's method is that a
+revert value is *measured* by taking the element out and reading the height again,
+never assumed from another page type. That measurement was not taken here, so the
+figure is absent rather than guessed. If the promo bar is removed by data, these
+fourteen budgets need a re-measure.
+
+**Where they are enforced:** `scripts/verify-live.js`, `PAGES`, fourteen rows with
+a `category` marker set. That marker set asserts `areaServed: 0`, because these
+pages carry no JSON-LD by design.

@@ -5478,6 +5478,117 @@ card changes colour values inside an existing `aria-hidden` swatch and adds no
 element and no text. The swatch was already decorative and the code and name beside
 it are the real information, so contrast is not carried by the swatch.
 
+## W16 ratifications · The owner's rulings on wave 15, 2026-09-16
+
+Recorded at the owner's instruction, from the wave 16 dispatch, before any wave 16
+card was worked.
+
+**Wave 15 deviations 1 through 9, ratified as reported.** In the form the wave 15
+report put them: (1) no caret on the Servicii toggle, (2) RC-121 step 3 not
+reverted, (3) the current-page marker gone from Servicii, (4) the two diagram
+depictions, (5) C-10 differing from its family tile, (6) RC-128's three premise
+corrections, (7) the acceptance grep scoping, (8) the 12/12 correction, (9)
+Q-W15-02 opened.
+
+Three of those the dispatch names explicitly, so they are restated here:
+
+- **The 12/12 correction.** The tile page renders **55 chips over 14 distinct
+  colours**. W14-22's "12 of 12" was its own assertion count, never a chip count.
+- **The grep scoping at W15-04.** `DECISIONS.md` and `docs/QUESTIONS.md` are
+  excluded because R-S freezes recorded bodies, and the competitor audit is
+  excluded because it records other people's pages rather than claims about ours.
+- **Both diagram depictions at W15-03**, inclined-post and architectural, which the
+  report flagged as this executor's own drawings with no reference in the audit.
+
+**Dasterum is the confirmed tile supplier. Q-W14-08(a) is closed.** This supplies
+exactly the fact wave 15 deviation 6 reported as missing: the repo said only "the
+manufacturer's published listing", and Dasterum appeared nowhere in `content/` or
+`build.js`. Nothing in W15-04 is disturbed by it. The swatch values stay ours, the
+`source` and `ral` fields stay refused by the build, and **the colour names stay as
+they ship** — W14-10 recorded those as the RAL names in Romanian and Russian, the
+manufacturer's own labels having been rejected for carrying spelling errors, and a
+confirmed supplier does not reopen that.
+
+**Q-W15-02 is closed: the four "paleta RAL" customer strings stay**, exactly as
+shipped. The shipped default was to leave them; the owner confirms it.
+
+### The RC-106b menu mapping is OVERTURNED
+
+Ratified in wave 14, overturned here.
+
+> Reason, as given: eight of fourteen rows resolve to Fațade, which reads as a
+> broken link.
+
+**Measured: nine of fourteen, not eight.** Reported as measured rather than
+transcribed. The nine rows whose RO destination is `/servicii/fatade/`:
+Sisteme de termoizolație and all five of its children (Polistiren expandat,
+Polistiren extrudat, Vată minerală, Adezivi și mase de șpaclu, Alte produse), plus
+Tencuieli decorative, Elemente decorative, and Vopsele de exterior. The remaining
+five go to `/servicii/finisaje/` (Plăci ceramice, Vopsele, Vopsele de interior),
+`/servicii/instalatii/` (Sisteme de iluminare) and `/servicii/case-la-cheie/`
+(Alte materiale de construcții).
+
+**The overturn stands on the same reason; only the count changes.** Nine of
+fourteen is a stronger case for it, not a weaker one. RC-129 builds the seven
+category pages and RC-130 repoints every row onto them.
+
+## W16-01 · Ruling R-AA: destructive git commands and worktree hygiene, 2026-09-16
+
+**Card RC-132. STOP, shipped ahead of every other wave 16 card**, as the dispatch
+directs. The ruling is `docs/rulings/R-AA.md`; this entry records what shipped with
+it and what was found.
+
+**RC-132 is this executor's numbering.** The dispatch named R-AA without a ticket
+id, and RC-129, RC-130 and RC-131 are the dispatch's own, so R-AA took the next
+free number after them.
+
+### The incident clause 1 is built on was this executor's
+
+Wave 15, on this repo. `git checkout X 2>/dev/null || git checkout -b X origin/X`
+followed by `git reset --hard origin/X`. **Both** the checkout and its fallback
+failed, because `X` was held by another worktree, and the reset then ran on the
+branch that was still checked out, moving `w15/rc-125-ruling-rz` onto another
+branch's commit. It was recoverable only because that branch had already been
+pushed, so `origin` held the real commit and PR #31 was untouched.
+
+### The worktree, found and removed
+
+Reported before any card was worked, as clause 2 requires.
+
+| | |
+|---|---|
+| Path | `/private/tmp/claude-501/-Users-ivan/87a213fe-fce4-4d19-9dd1-40c2809f9539/scratchpad/wt-113` |
+| Held | `w14/rc-113-remeasure` at `d0b8729` |
+| Created by | an earlier session, not this run |
+| Disposition | **removed**, then `git worktree prune`; one worktree remains |
+
+Removed under four guards, each able to refuse: the path matched, the branch
+matched, its commit was verified an ancestor of `origin/main` so nothing unmerged
+was discarded, and its tree carried zero uncommitted changes.
+
+**The two clauses are one incident.** That worktree is why the branch would not
+check out, and therefore why the fall-through happened at all.
+
+### There is no gate, and that is the finding
+
+**Neither clause can be gated in this repo.** Clause 1 has nothing to scan: zero
+tracked shell scripts, zero tracked files containing the string, every script under
+`scripts/` being `.js`. Clause 2 cannot fail where it would run: `quality` uses a
+runner that checks out exactly one fresh worktree, so such a check is green by
+construction.
+
+`docs/CLAUDE.md` section 13 is explicit that an assertion nobody has watched fail
+is not a gate, and section 16 treats an exception matching nothing as a defect.
+R-Z set the precedent in its own clause 2, enforcing supplier pricing by review and
+saying so. **R-AA is therefore recorded as a practice ruling**, binding how a run is
+conducted, enforced by conduct and by this record rather than by `quality`. Writing
+that down is the point: a ruling that implies an automated check it does not have
+is the failure section 13 exists to prevent.
+
+Five interpretations are recorded in the ruling for ratification, including that
+"reachable by shell fall-through" is read to cover `;` as well as `||`, and that a
+found worktree is removed **only** once its branch is merged or its tree is clean,
+so clause 2 never becomes a licence to discard unpushed work.
 ## W16-02 · Seven catalog category pages, on their own root, 2026-09-16
 
 **Card RC-129.** Fourteen pages, seven categories in each locale, at

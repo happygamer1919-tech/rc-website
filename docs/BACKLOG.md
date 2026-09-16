@@ -43,7 +43,7 @@ ruling, which is the one path `docs/rulings/` has always taken.
 
 | Ticket | Card | Mode | Branch | Status |
 |---|---|---|---|---|
-| RC-125 | W15-01 Ruling R-Z, merge hygiene and supplier pricing | STOP | `w15/rc-125-ruling-rz` | PR #31, awaiting owner |
+| RC-125 | W15-01 Ruling R-Z, merge hygiene and supplier pricing | STOP | `w15/rc-125-ruling-rz` | merged by the owner, #31 (`47f967f`) |
 | RC-126 | W15-02 Servicii dropdown, closes Q-W14-15 | SELF | `w15/rc-126-servicii-dropdown` | shipped: 13 destinations, 54 of 54 header-fit combinations, 76 of 76 behaviour assertions, heights unmoved; slack unchanged RO 53 / RU 15 at 1280px and up; no caret and no RC-121 revert, both refused by measurement (Q-W15-01) |
 | RC-127 | W15-03 Two missing carport diagrams | SELF | `w15/rc-127-carport-diagrams` | shipped: inclined and architectural drawn, C-10, C-11, C-12 and the Arhitecturală tile remapped, 56 of 56 assertions, heights unmoved, zero image files; the depiction is for ratification |
 | RC-128 | W15-04 Swatch provenance correction | SELF | `w15/rc-128-swatch-provenance` | shipped: 15 legend values reauthored as ours, source URLs and the ral field removed and now refused by the build, 52 of 52 assertions, heights unmoved; three premise corrections and Q-W15-02 recorded |
@@ -105,7 +105,7 @@ ratifications); PRs #1, #2, #3 merged at the owner's instruction.
 | RC-104 | W14-04 Section 1 copy, RU parity | SELF | `w14/rc-104-copy-ru` | shipped |
 | RC-118 | W14-18 Product and visualisation images | SELF | `w14/rc-118-images` | shipped: four offer card images (RC-108); tile renders and RAL chips **blocked** (Q-W14-11); carport images **blocked** (Q-W14-12) |
 | RC-119 | W14-19 Real-photo placeholders and pending manifest | SELF | `w14/rc-119-pending-photos` | manifest shipped (`docs/assets/PENDING-PHOTOS.md`); placeholders **blocked**, no host section exists for them (Q-W14-14) |
-| RC-113 | W14-13 Re-measure, per-page budgets ruling | STOP | `w14/rc-113-remeasure` | PR open, STOP: ruling R-Y, owner merges |
+| RC-113 | W14-13 Re-measure, per-page budgets ruling | STOP | `w14/rc-113-remeasure` | merged by the owner, #25 (`29fd10b`) |
 | RC-112 | W14-12 Garduri data | SELF | none | **blocked**, Q-W14-09 |
 
 **Tail dispatch, 2026-09-15.** Ratifications recorded (DECISIONS.md, W14 tail

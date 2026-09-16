@@ -437,6 +437,13 @@ silence as approval. The three fixes are the same fix: assert what must be there
 - `scripts/verify-live.js` requires a `build-sha` tag to be **present and equal**
   to the expected commit. A missing tag is `UNVERIFIED` and exit 1, never a skip.
 - A gate whose evidence is missing reports **unverified**, never passed.
+- **AMENDED (W18-03): a gate that reads files says how many, and fails on
+  none.** Every acceptance script prints the number of files or pages it read
+  before any result, and exits non-zero when that number is zero. Where a gate
+  reads a fixed list, an emptied list is the zero case and fails the same way. A
+  scan that read nothing has concluded nothing, and ruling R-AB makes reporting it
+  as a pass non-evidence. Six scripts lacked it until W18-03, including the deploy
+  workflow's own placeholder grep.
 
 The corollary is what makes this operational: **an assertion nobody has watched
 fail is not a gate.** Every assertion added under R-P and W12-23 was

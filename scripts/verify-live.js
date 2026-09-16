@@ -207,7 +207,11 @@ async function main() {
   for (let i = 0; i < 80 && !up; i++) { try { up = await rq(`http://127.0.0.1:${PORT}/json/version`); } catch { await sleep(250); } }
   if (!up) { chrome.kill(); throw new Error('chrome did not start'); }
 
+  /* W18-03 (RC-140). An empty PAGES list used to verify nothing and print
+     "PASS — 0 unverified, 0 failed", exit 0. */
+  if (PAGES.length === 0) { chrome.kill(); console.error('\nFAIL — zero pages to verify, so nothing was measured.\n'); process.exit(1); }
   console.log(`R-P live verification of ${ORIGIN}`);
+  console.log(`pages to read: ${PAGES.length}`);
   console.log(`cache-buster for this run: ?${BUST}=1`);
   console.log(`expected build-sha:        ${EXPECT_SHA}\n`);
 
@@ -283,6 +287,9 @@ async function main() {
   console.log(`  ${reach.size} reachable URLs, ${todoPages} with a visible TODO, ${privacyLinks} privacy pages reachable by link`);
 
   ws.close(); chrome.kill();
+  console.log(`\npages read: ${seen.length} of ${PAGES.length}; reachable URLs crawled: ${reach.size}`);
+  if (seen.length !== PAGES.length || seen.length === 0) { console.log(`FAIL — ${seen.length} pages read for ${PAGES.length} listed`); failures++; }
+  if (reach.size === 0) { console.log('FAIL — the crawl reached zero URLs'); failures++; }
   console.log(`\n${failures === 0 && unverified === 0 ? 'PASS' : 'FAIL'} — ${unverified} unverified, ${failures} failed`);
   process.exit(failures === 0 && unverified === 0 ? 0 : 1);
 }

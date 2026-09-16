@@ -71,6 +71,16 @@ const MARKERS = {
     profileAnchors: 0,
     promoBar: 1,
   },
+  // W16-02. The category pages carry no JSON-LD at all: a materials category is
+  // not a Service and there is no catalog index page for a BreadcrumbList to
+  // name. areaServed is therefore 0 BY DESIGN, and asserting the zero is what
+  // holds that decision in place: if a later card adds a schema block, this
+  // fires rather than passing quietly.
+  category: {
+    promoBar: 1,
+    profileAnchors: 0,
+    areaServed: 0,
+  },
 };
 
 const PAGES = [
@@ -90,6 +100,23 @@ const PAGES = [
   { path: '/ru/servicii/copertine/',       type: 'product', label: 'copertine RU',   budget: 5569 },
   { path: '/servicii/garduri/',            type: 'product', label: 'garduri RO',     budget: 4816 },
   { path: '/ru/servicii/garduri/',         type: 'product', label: 'garduri RU',     budget: 4838 },
+  // W16-02, RC-129. The seven catalog category pages. Budgets from R-Y's
+  // amendment of 2026-09-16, which records them as LOCAL measurements awaiting
+  // their first R-P confirmation.
+  { path: '/catalog/termoizolatie/',            type: 'category', label: 'cat RO termo',   budget: 2747 },
+  { path: '/ru/catalog/termoizolatie/',         type: 'category', label: 'cat RU termo',   budget: 2774 },
+  { path: '/catalog/tencuieli-decorative/',     type: 'category', label: 'cat RO tencu',   budget: 2562 },
+  { path: '/ru/catalog/tencuieli-decorative/',  type: 'category', label: 'cat RU tencu',   budget: 2589 },
+  { path: '/catalog/placi-ceramice/',           type: 'category', label: 'cat RO placi',   budget: 2562 },
+  { path: '/ru/catalog/placi-ceramice/',        type: 'category', label: 'cat RU placi',   budget: 2589 },
+  { path: '/catalog/elemente-decorative/',      type: 'category', label: 'cat RO elem',    budget: 2562 },
+  { path: '/ru/catalog/elemente-decorative/',   type: 'category', label: 'cat RU elem',    budget: 2589 },
+  { path: '/catalog/vopsele/',                  type: 'category', label: 'cat RO vopsele', budget: 2665 },
+  { path: '/ru/catalog/vopsele/',               type: 'category', label: 'cat RU vopsele', budget: 2693 },
+  { path: '/catalog/sisteme-iluminare/',        type: 'category', label: 'cat RO ilumin',  budget: 2562 },
+  { path: '/ru/catalog/sisteme-iluminare/',     type: 'category', label: 'cat RU ilumin',  budget: 2562 },
+  { path: '/catalog/alte-materiale/',           type: 'category', label: 'cat RO alte',    budget: 2562 },
+  { path: '/ru/catalog/alte-materiale/',        type: 'category', label: 'cat RU alte',    budget: 2562 },
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

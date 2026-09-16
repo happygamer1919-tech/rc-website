@@ -115,7 +115,19 @@ for (const must of ['dist/index.html', 'dist/ru/index.html']) {
 if (roPages.length === 0 || ruPages.length === 0) fail(`dist/ holds ${roPages.length} RO and ${ruPages.length} RU pages; both must be non-zero`);
 pages.forEach((p) => sources.push({ where: rel(p), text: fs.readFileSync(p, 'utf8'), locale: rel(p).startsWith('dist/ru/') ? 'ru' : 'ro' }));
 
-const CODE = ['src/main.js', 'src/template.html', 'src/service.html', 'src/category.html', 'src/privacy.html', 'src/404.html', 'src/styles.css', 'build.js'];
+const CODE = ['src/main.js', 'src/template.html', 'src/service.html', 'src/product.html', 'src/category.html', 'src/privacy.html', 'src/404.html', 'src/styles.css', 'build.js'];
+
+/* RC-135 (W17-04). Every template in src/ is in the list above, asserted by
+   count. src/product.html sat outside it from W14-16 until this card, reported at
+   W16-02, so a template added later fails here until it is registered rather
+   than going unscanned in silence. */
+const srcTemplates = fs.readdirSync(path.join(ROOT, 'src')).filter((f) => f.endsWith('.html')).map((f) => `src/${f}`).sort();
+const listedTemplates = CODE.filter((f) => /^src\/[^/]+\.html$/.test(f)).sort();
+if (srcTemplates.length === 0) fail('src/ holds zero .html templates, so the template count proves nothing');
+if (listedTemplates.length !== srcTemplates.length) {
+  const unlisted = srcTemplates.filter((f) => !listedTemplates.includes(f));
+  fail(`templates scanned: ${listedTemplates.length}, templates in src/: ${srcTemplates.length}; not in CODE: ${unlisted.join(', ') || '(none)'}`);
+}
 for (const f of CODE) {
   const abs = path.join(ROOT, f);
   if (!fs.existsSync(abs)) fail(`${f} is missing from the code scan list`);
@@ -137,6 +149,7 @@ for (const s of sources) {
 const count = (loc) => sources.filter((s) => s.locale === loc).length;
 console.log(`patterns: ${PATTERNS.length}   self-test assertions: ${selfTested}`);
 console.log(`scanned: ${count('ro')} RO sources (${roPages.length} pages), ${count('ru')} RU sources (${ruPages.length} pages), ${count('code')} code files`);
+console.log(`templates scanned: ${listedTemplates.length} of ${srcTemplates.length} in src/ (${listedTemplates.join(', ')})`);
 if (hits.length) {
   console.error(`\n${hits.length} R-X violation(s):`);
   hits.forEach((h) => console.error('  ' + h));

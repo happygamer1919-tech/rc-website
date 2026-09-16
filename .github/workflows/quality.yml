@@ -61,3 +61,10 @@ jobs:
 
       - name: The built site names rapidconstruct.md and never the retired origin (W14-17)
         run: node scripts/check-origin.js
+
+      # RC-139. The header fits in every template, both locales, at nine widths,
+      # with at least the slack floor to spare. Drives the runner's own Chrome
+      # (CHROME_BIN, or google-chrome on PATH) and needs the Inter webfont to load:
+      # a width measured in a fallback font is not a measurement, so it fails.
+      - name: Header fits with an 8px slack floor, both locales (RC-139)
+        run: node scripts/check-header-fit.js

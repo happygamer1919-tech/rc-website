@@ -6607,3 +6607,91 @@ The tail's 3,841 and 3,875 are now known-superseded values
 - `docs/rulings/R-Y.md`: the W18-01 block.
 - `docs/QUESTIONS.md`: Q-W14-11b marked answered; its body and its addendum untouched.
 - `content/tigla-metalica.json`: `total_width_mm` on three models, and its note.
+
+## W18-02 · The header gets a gate: fit and an 8px slack floor, both locales, run by quality, 2026-09-16
+
+**Card RC-139. SELF.** Stacked on W18-01's branch, because the harness refused
+W18-01's self-merge and both cards append to this file and the wave 18 board.
+
+### The premise: there was no header-fit check in the repo
+
+The card says "add a gate to the existing header-fit check". **No such check was
+committed.** Every header measurement since RC-121 (W14-21, W15-02, W16-03, W17-05)
+was taken with a scratch harness in a session's scratch directory; W15-02's copy
+says so in its own header, "Scratch tool, not committed: RC-121 measured the same
+way and committed nothing." It still sat in wave 17's scratch directory, which a
+restart would have erased. Nothing in `quality` measured the header, so nothing
+could "fail the build".
+
+**Read as: make that harness a gate, then add the floor to it.** A margin that no
+build runs is not a gate, and the card's acceptance ("fail the build") is only
+reachable that way. **Recorded for ratification**, as a premise correction.
+
+### What shipped
+
+`scripts/check-header-fit.js`, run by `quality` as its last step, and gate 11 in
+`docs/CLAUDE.md` section 11. The wave 17 harness carried over unchanged in what it
+measures: six templates (home, service, product, category, privacy, 404) in both
+locales at nine widths, 108 combinations, the pill's visible targets and its slack
+by natural width. What changed from the harness:
+
+| | Harness | Gate |
+|---|---|---|
+| Fit: pairwise intersections, slack below 0, sideways scroll | asserted | asserted, message kind `FIT` |
+| **Slack floor** | none | **slack below `SLACK_FLOOR` (8) fails**, kind `SLACK FLOOR`: `locale RU, width 1280px, measured slack 5px, floor 8px`, with the template and URL |
+| Caret wherever the nav shows | behind `REQUIRE_CARET=1` | always |
+| Phone whole from 1280px | asserted | asserted |
+| Inter loaded before measuring | `document.fonts.ready` only | waits for an Inter face loaded and none loading; **fails at once if Inter never loads** |
+| Presence | none | fails on a page missing from `dist/`, a missing pill, zero targets, or fewer than 108 combinations measured; prints pages read and combinations measured first |
+| Chrome | a hardcoded macOS path | `CHROME_BIN`, then macOS, then `google-chrome`, `chromium` on PATH; fails naming what it tried |
+
+**Why the font assertion.** `document.fonts.ready` resolves at once when no font
+load has started, and Inter arrives through an asynchronous stylesheet, so
+`readyState` "complete" can precede it. Every figure the gate reads is a text
+width. On a runner where Google Fonts did not load, the header would be measured
+in a fallback font, which is a different header: the floor could pass or fail on
+widths this site never renders. That is a gate passing because it could not
+measure, which section 13 forbids.
+
+### The instrument, validated before it was trusted
+
+On this branch's build, before any arm: **108 of 108, and every cell of the slack
+matrix equal to W17-05's recorded matrix**, RU 9px and RO 47px at 1280px and up,
+RU 25 and RO 62 at 1180. `node scripts/check-header-fit.js` exit 0.
+
+### Negative-tested: an RU nav label lengthened until it fires, then reverted
+
+In a scratch copy, `header.navContacts` lengthened one character at a time, the
+site rebuilt and the gate run after each; control watched green before and after
+each series, and `locales/ru.json` restored byte-identical to its original.
+
+| Arm | Label | RU slack at 1280px and up | exit | Fired on |
+|---|---|---|---|---|
+| 1 | `Контакты.` | 5px | 1 | **`SLACK FLOOR` only**, 12 problems: RU at 1280, 1440 and 1920 on the four nav templates, each `measured slack 5px, floor 8px` |
+| 2 | `Контактыа` | **0px** | 1 | **`SLACK FLOOR` only**, 12 problems, `measured slack 0px` |
+| 3 | `Контактыаа` | −9px | 1 | **`FIT` and `SLACK FLOOR`**, 24 problems: `slack -9px: the pill cannot hold its children` and the floor |
+
+Both fired at the first character added. **Arm 2 is the case the card exists
+for**: one Cyrillic letter leaves the header fitting with exactly nothing to spare,
+which the fit assertion passes and only the floor catches. Arm 3 shows the two
+assertions are separate and both live.
+
+Two presence arms, control green before and after, each firing on its own message:
+
+| Arm | exit | Fired on |
+|---|---|---|
+| the Google Fonts stylesheet repointed at a closed port in all 44 built pages | 1 | `the Inter webfont did not load for RO at 769px (home, /)` |
+| `dist/ru/404.html` removed | 1 | `1 page(s) not in dist/: /ru/404.html` |
+
+**The font arm was hollow the first time, and is not that evidence.** It was run
+under zsh, which expanded an unquoted `--include=*.html` and repointed zero files;
+the gate ran on an unchanged build and exited 0. The arm's own "repointed: 0" line
+showed it had not applied. Re-run under bash, 44 files repointed, and it fired as
+above. Ruling R-AB's second case, caught in the run.
+
+### Documents amended
+
+- `docs/CLAUDE.md` section 11: gate 11, appended, never renumbered. The "what
+  `quality` runs" sentence is amended in place: it predated the catalog page gate
+  and gate 5 as well as this one.
+- `.github/workflows/quality.yml`: the step, last.

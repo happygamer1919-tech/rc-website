@@ -6796,3 +6796,70 @@ deploy after this merges, and the Pages run for that commit is what confirms it.
 - `docs/CLAUDE.md` section 13: the rule.
 - Five scripts and `.github/workflows/pages.yml`, each change carrying a comment
   naming W18-03 and the case it closes.
+
+## W19 R-V amendment and ratifications · Self-merge withdrawn; the owner's rulings on wave 18, 2026-09-17
+
+Recorded at the owner's instruction, from the wave 19 dispatch, before any wave 19
+card was worked. It rides RC-141's pull request, in one commit, as the dispatch
+directs. #44, #45 and #46 were verified merged first, each merge commit and each
+head an ancestor of `origin/main` (`git merge-base --is-ancestor`, exit 0 on all
+six):
+
+| PR | Merge commit | Head |
+|---|---|---|
+| #44, RC-138 and the W18 ratifications | `fd25d5d` | `31341be` |
+| #45, RC-139 | `a48a034` | `0694bd1` |
+| #46, RC-140 | `47957f3` | `b635168` |
+
+**`origin/main` had also moved past them.** #47, the wave 19 critic's cards and taste
+report (docs only), was merged as `b6f4a7d` at 11:25 UTC on 2026-09-17. It is the
+commit deployed when this wave began; its Pages run succeeded and the live
+`build-sha` equals it.
+
+### R-V amended: self-merge is withdrawn
+
+> Self-merge is withdrawn. The harness refuses merge without review and branch
+> protection is not being relaxed. Every card from wave 19 onward opens a PR and
+> stops. SELF and STOP no longer differ; drop SELF from card authoring.
+
+- **`docs/rulings/R-V.md`** carries a dated amendment block under R-T. A ruling is
+  read forward, so the amendment lives in the ruling, not only here.
+- **`docs/rulings/R-AB.md`** carries a dated block too. Its interpretation 1 names a
+  SELF card self-merging on green `quality`, and that case no longer exists. The
+  rest of interpretation 1 (name the CI steps a report relies on) stands.
+- **`.github/workflows/quality.yml`**: its header comment said R-V permits a SELF
+  card to self-merge on this job. It now says every card takes the job green and
+  stops. The dead instruction is removed rather than struck: nobody reads a
+  workflow comment for its history (R-T, the stylesheet comment case).
+- **`docs/BACKLOG.md`**: the wave 19 table has no Mode column. The wave 14 to 18
+  tables keep theirs as written.
+- **Not changed:** the R-V STOP set is not withdrawn; it still names the sensitive
+  paths. Every card now stops, so it no longer changes what a card does.
+
+### Wave 18 deviations 1 through 9, ratified as reported
+
+In the form the wave 18 report put them:
+
+1. **RC-139 made the throwaway header script a gate.** No header-fit check existed in
+   the repo, so `scripts/check-header-fit.js` was created, not extended.
+2. **RC-139's gate fails when the Inter webfont does not load in CI**, rather than
+   passing on fallback-font widths.
+3. **RC-138's diagrams carry text labels and are exposed to screen readers** as
+   labelled images; the carport diagrams have neither.
+4. **RC-138's profile shapes are the executor's drawings.** The supplier's public
+   pages were read and its section drawings viewed to get each shape family right.
+   Nothing was traced and no figure was taken from them.
+5. **The `docs/CLAUDE.md` section 17 sentence:** an R-R strike is not an R-T edit.
+6. **Wave 17 deviation 4's boundary was read as covering RC-133's five permitted
+   items.** The category prose stays as shipped.
+7. **The `pages.yml` fix could only be confirmed on a real deploy.** Confirmed since:
+   the Pages run for `b6f4a7d` printed `files read: 2 of 2` and `no placeholders
+   survived` from that step, and the step concluded success.
+8. **The `docs/CLAUDE.md` section 11 correction**, the "what `quality` runs"
+   sentence, amended in RC-139.
+9. **The executor's own misses, each caught before it shipped:** a hollow font arm
+   under zsh, a push that silently never ran, and the header gate's empty-matrix gap,
+   closed in RC-140.
+
+The dispatch names three of these explicitly: the header script made a gate (1), the
+section 17 sentence (5) and the section 11 correction (8).

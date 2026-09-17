@@ -54,3 +54,27 @@ report.
    `@type: GeneralContractor`, a schema.org subtype of LocalBusiness. It is in
    the STOP set. The service pages' `FAQPage` and `BreadcrumbList` nodes are
    not.
+
+### Amended 2026-09-17 by the wave 19 dispatch · self-merge withdrawn
+
+Added under R-T; nothing above this block was edited. Recorded at the owner's
+instruction, from the wave 19 dispatch:
+
+> Self-merge is withdrawn. The harness refuses merge without review and branch
+> protection is not being relaxed. Every card from wave 19 onward opens a PR and
+> stops. SELF and STOP no longer differ; drop SELF from card authoring.
+
+**From wave 19 onward no card self-merges**, whatever this ruling or a later
+dispatch granted before. Every card opens a pull request, takes `quality` green,
+and stops for the owner. A card is no longer marked SELF or STOP, because the two no
+longer lead to different outcomes.
+
+**The STOP set above is not withdrawn by this.** It still names the paths the owner
+treats as sensitive. Because every card now stops, it no longer changes what a card
+does.
+
+The dispatch's reason is that the harness refuses merge without review, and that
+branch protection is not being relaxed. The refusal on record: the Claude Code harness
+refused `gh pr merge` as "Merge Without Review" on #44 in wave 18, after accepting
+the identical call for #40 to #42 in wave 17. DECISIONS.md, W19 R-V amendment,
+records this.

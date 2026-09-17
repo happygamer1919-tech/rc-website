@@ -138,3 +138,11 @@ section 13 exists to prevent, and it would be this ruling's own case 2.
 5. **This ruling binds the executor, not the repo.** Nothing in the shipped site
    changes and no gate is added. The only artifacts are this file and the decision
    record.
+
+### Amended 2026-09-17 by the wave 19 dispatch · interpretation 1 no longer has a SELF card to apply to
+
+Added under R-T; nothing above this block was edited. Interpretation 1 says a SELF
+card still self-merges on green `quality`. **Ruling R-V, as amended on this date,
+withdraws self-merge for every card from wave 19 onward.** The part of
+interpretation 1 that R-AB itself governs still stands: when a run reports which
+gates passed in CI, it reads and names the steps.

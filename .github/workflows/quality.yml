@@ -7,7 +7,8 @@
 #
 # Deliberately sets no build environment. build.js defaults the site origin and
 # base path to their production values, and the form stays in demo mode without
-# a key, which is correct for a check.
+# a key, which is correct for a check. The one exception is the last step
+# (RC-145), which rebuilds with a stand-in key to check the form wiring.
 name: quality
 
 on:
@@ -74,3 +75,16 @@ jobs:
       # a width measured in a fallback font is not a measurement, so it fails.
       - name: Header fits with an 8px slack floor, both locales (RC-139)
         run: node scripts/check-header-fit.js
+
+      # RC-145. Every form POSTs to build.js's FORM_ENDPOINT_URL, armed, with the
+      # configured recipient (the Web3Forms access key) and a subject, and every
+      # sitemap page carries its form. A check has no secret, so this step alone
+      # builds with a stand-in key and compares every form against it. LAST on
+      # purpose: it rebuilds dist/ armed, which no earlier gate may measure. It never
+      # sends, and it does not assert the endpoint's status (Q-W20-01).
+      - name: Every form posts to the configured endpoint with the configured recipient (RC-145)
+        env:
+          WEB3FORMS_KEY: quality-wiring-standin
+        run: |
+          node build.js
+          node scripts/check-form-wiring.js

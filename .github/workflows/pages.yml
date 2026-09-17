@@ -79,6 +79,18 @@ jobs:
           fi
           echo "no placeholders survived"
 
+      # RC-145. The one place the real configuration exists: the artifact about to
+      # be published, built with the real secret. Every form must POST to
+      # build.js's FORM_ENDPOINT_URL, armed, with WEB3FORMS_KEY as its access key
+      # (the recipient), and every sitemap page must carry its form. A missing or
+      # emptied secret builds a site whose forms cannot send, and this stops it
+      # before upload rather than publishing it in demo mode. Wiring only: it never
+      # sends a submission.
+      - name: Every form posts to the configured endpoint with the configured recipient (RC-145)
+        env:
+          WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_KEY }}
+        run: node scripts/check-form-wiring.js
+
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

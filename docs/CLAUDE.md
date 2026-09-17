@@ -368,6 +368,18 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     non-empty `<desc>` inside it. Any text a diagram draws takes the tile
     treatment. It fails, never passes vacuously, on no pages, no svg, or no
     diagram of either family.
+13. `WEB3FORMS_KEY=<key> node scripts/check-form-wiring.js` clean, against a build
+    made with the same key. **Since W20-02 (RC-145)**, run by `quality` as its last
+    step with a stand-in key, and by `pages.yml` on the real artifact with the real
+    secret before anything is published. Every form on every built page POSTs to
+    `FORM_ENDPOINT_URL`, which the gate reads from its one line in `build.js`; is
+    armed; carries exactly one access key equal to `WEB3FORMS_KEY`, which is the
+    recipient, since the key picks the inbox; and has a subject. Every sitemap page
+    carries its `#quote-form` except the privacy pages, and the homepages also carry
+    `#lead-form`. **Wiring, not delivery:** it never sends, and it does not assert
+    the endpoint's status, which Web3Forms answers 2xx only to a delivered
+    submission (Q-W20-01). It fails with no key set, with no endpoint line, and on
+    zero pages or zero forms.
 
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number — Q-W14-03 was found "at gate 9" — and those bodies are immutable under
@@ -383,6 +395,8 @@ after `check-origin.js`. `scripts/check-catalog-pages.js` (W16-02) and gate 5
 sentence above predates both. Those last three enforce rulings that
 postdate this list and were never given numbers; they are gates in every sense,
 and are named here so the numbered list is not read as the complete set.
+**AMENDED (W20-02):** gate 13 runs after gate 11, as the very last step, because it
+rebuilds `dist/` armed with a stand-in key that no earlier gate may measure.
 
 ---
 

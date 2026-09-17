@@ -1877,3 +1877,46 @@ half-step: the lede is what the meta description and the page hero most want.
 **Recommended: (c) first, then (b) if these pages are meant to rank.** All fourteen
 are in the sitemap, as the card directs, so they are indexable today; thin pages in
 a sitemap are a real cost, and (a) accepts it knowingly rather than by oversight.
+
+## Q-W20-01 · "The endpoint returns 2xx" cannot be asserted without sending a real lead · OPEN · opened 2026-09-17 (W20-02, RC-145)
+
+**Shipped default: the gate asserts wiring only, and says so in its own output.**
+`scripts/check-form-wiring.js` (gate 13) holds every form to the configured endpoint,
+the configured recipient (the access key) and the page inventory. It does not assert
+the endpoint's HTTP status.
+
+**Why the status half could not be built as dispatched.** RC-145 asks for three
+assertions: every form posts to the configured endpoint, **the endpoint returns 2xx**,
+and the recipient matches config, "wiring, not delivery". Measured on 2026-09-17,
+against `https://api.web3forms.com/submit`, with no submission sent:
+
+| Request | Answer |
+|---|---|
+| `curl` GET, HEAD and OPTIONS | 403, JSON: "This method is not allowed. Use our API in client side or contact support with server IP address (Pro plan is required)" |
+| the same with a desktop Chrome user agent | 403, a Cloudflare "Just a moment..." challenge page |
+| headless Chrome 153, a `fetch` POST with **no access key** (so it could not reach any inbox) | the request left the browser and no response reached the page: "Failed to fetch" |
+
+Web3Forms' API reference documents two endpoints, both submission POSTs, and no route
+that validates a key or tests a form. Its own caveat: "Server side usage requires paid
+plan + server IP whitelisting". So the only request it answers 2xx is a submission it
+delivers, from a real browser. That is delivery, which the card rules out, and it
+matches the readiness sweep's finding that the send step was blocked in the test
+browser.
+
+**Options:**
+
+  (a) **Wiring only** (shipped). Automated on every PR and on every deploy. A template
+      that drops the key, posts elsewhere, or ships disarmed fails. A revoked key, a
+      full Web3Forms quota or a bouncing inbox is not caught.
+  (b) **Wiring, plus a real submission per locale done by hand** after any deploy
+      that touches a form, with the subjects `[RO] ... — /` and `[RU] ... — /ru/`
+      checked in the inbox. This also closes the half of Q-W9-06 the record never
+      held: one submission is recorded, locale unknown.
+  (c) **An automated delivery probe.** Web3Forms Pro, plus a fixed egress IP for the
+      runner, since GitHub-hosted runners have no stable IP; or a self-hosted runner.
+      A new paid tier and new infrastructure, and every run lands a real email in the
+      inbox.
+
+**Recommended: (b).** (a) is already shipped, and (b) costs a minute per form change and
+catches the failures (a) cannot. (c) buys automation at a recurring cost and an inbox
+full of probe mail, for a site whose forms change rarely.

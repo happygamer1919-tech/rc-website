@@ -270,6 +270,24 @@
     });
   });
 
+  /* --- W21-04 (RC-149), product card CTA ---------------------------------- */
+  /* A category page's quote form carries a hidden `serviciu` field naming the
+     category. A product card's button names the product instead, so the lead
+     says which one it is about. Capture phase, so the value is set before the
+     anchor scroll below moves the page. The button is a link to #oferta, so
+     W19-D6's popup suppression treats it like any other quote button. */
+  (function () {
+    var quote = document.getElementById('quote-form');
+    if (!quote) return;
+    var field = quote.querySelector('input[name="serviciu"]');
+    if (!field) return;
+    document.addEventListener('click', function (e) {
+      var cta = e.target.closest && e.target.closest('[data-product]');
+      if (!cta) return;
+      field.value = cta.getAttribute('data-product');
+    }, true);
+  })();
+
   /* --- anchor scroll, offset for the 72px sticky header -------------------- */
   document.addEventListener('click', function (e) {
     var link = e.target.closest('a[href^="#"]');

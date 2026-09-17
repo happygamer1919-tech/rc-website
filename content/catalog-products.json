@@ -1,0 +1,12 @@
+{
+  "_note": "RC-149 (W21-04), 2026-09-17. Product records for the seven catalog category pages, STRUCTURE ONLY. Every array is empty on purpose: the card is BLOCKED on the product list itself and forbids inventing one. The wave 14 audit records products from three other companies (Dasterum tiles, Imperlux fences and carports, a Fațade 3D own-brand membrane) and scripts/check-catalog-pages.js already refuses those manufacturer names on these pages, so none of them is a Rapid Construct catalog record. See docs/QUESTIONS.md Q-W21-01. Shape, per category slug: [ { id, name: {ro, ru}, manufacturer, pack: {ro, ru}, spec: {ro, ru} } ]. build.js renders the section only where the array has records, refuses a record whose name, pack or spec is not real in both locales, and refuses a manufacturer the catalog gate forbids. NEVER in a record: a price, a currency, a stock or availability claim, a discount, or an image file. Images are requested through docs/assets/CATALOG-IMAGE-SLOTS.md (RC-150) and rendered only once an approved source exists.",
+  "categories": {
+    "termoizolatie": [],
+    "tencuieli-decorative": [],
+    "placi-ceramice": [],
+    "elemente-decorative": [],
+    "vopsele": [],
+    "sisteme-iluminare": [],
+    "alte-materiale": []
+  }
+}

@@ -785,6 +785,63 @@ function notFoundLocale(l) {
 </script>`;
 }
 
+// --- W21-04 (RC-149), catalog product records, structure only -----------------
+
+/* The category pages describe a material and ask for a quote. This adds the
+   place a PRODUCT RECORD goes when the owner supplies one: a card with the
+   product's name, its manufacturer, how it is packed or how far it goes, one
+   key specification, and a button that asks for a price rather than printing
+   one. No price, no stock, no availability, no cart, no image: those are the
+   category pages' standing prohibitions (scripts/check-catalog-pages.js) and
+   this card does not touch them.
+
+   THE SECTION RENDERS ONLY WHERE THERE ARE RECORDS, which today is nowhere:
+   content/catalog-products.json ships with seven empty arrays because the card
+   is blocked on the product list and the only products any repo file records
+   belong to three other companies. That is the same shape as the before/after
+   slider and the specification table: data absent, section absent.
+
+   The button carries the product's own name in data-product. src/main.js copies
+   it into the quote form's hidden `serviciu` field before the page jumps to the
+   form, so a lead says which product it is about. Nothing else about the form
+   changes. */
+function catalogProducts(l, slug) {
+  const records = (CATALOG_PRODUCTS[slug] || []);
+  if (!records.length) return '';
+  const need = (v, where) => {
+    if (!REAL(v)) die(`catalogProducts: ${where} is not real for ${l.code} (${slug}).`);
+    return v;
+  };
+  const cards = records.map((r, i) => {
+    const name = need(r.name && r.name[l.code], `record ${i} name`);
+    const mfr = need(r.manufacturer, `record ${i} manufacturer`);
+    const pack = need(r.pack && r.pack[l.code], `record ${i} pack`);
+    const spec = need(r.spec && r.spec[l.code], `record ${i} spec`);
+    for (const forbidden of CATALOG_FORBIDDEN_MANUFACTURERS) {
+      if (mfr.toLowerCase().includes(forbidden)) {
+        die(`catalogProducts: record ${i} names "${mfr}", which scripts/check-catalog-pages.js forbids on a category page.`);
+      }
+    }
+    return `      <article class="prod" data-product-card data-reveal data-stagger="${Math.min(i, 6)}">
+        <h3 class="prod__name">${esc(name)}</h3>
+        <dl class="prod__facts">
+          <div><dt>${esc(l.strings['catalogProducts.mfr'])}</dt><dd>${esc(mfr)}</dd></div>
+          <div><dt>${esc(l.strings['catalogProducts.pack'])}</dt><dd>${esc(pack)}</dd></div>
+          <div><dt>${esc(l.strings['catalogProducts.spec'])}</dt><dd>${esc(spec)}</dd></div>
+        </dl>
+        <a class="btn btn--outline prod__cta" href="#oferta" data-product="${esc(name)}">${esc(l.strings['catalogProducts.cta'])}</a>
+      </article>`;
+  });
+  return `<section class="section section--light section--divided" id="produse">
+  <div class="container">
+    <h2 data-reveal>${esc(l.strings['catalogProducts.h2'])}</h2>
+    <div class="grid grid--3" style="margin-top: 40px;">
+${cards.join('\n')}
+    </div>
+  </div>
+</section>`;
+}
+
 // --- W19-D5, the homepage portfolio filter chips ------------------------------
 
 /* The chips were six hardcoded buttons, "Toate" and five categories, while the
@@ -1634,6 +1691,19 @@ function categoryHeadVars(l, c) {
   return { title, metaTitle, metaDesc };
 }
 
+/* RC-149. Product records per category slug, structure only; see the file's own
+   _note. The manufacturer names the catalog gate refuses are restated here so the
+   build refuses a record before the gate has to: change one and the other must
+   change with it, the same arrangement check-lighthouse.js has with the floors. */
+const CATALOG_PRODUCTS = (() => {
+  const f = 'content/catalog-products.json';
+  if (!fs.existsSync(f)) die(`${f} is missing.`);
+  const raw = JSON.parse(fs.readFileSync(f, 'utf8'));
+  if (!raw.categories || typeof raw.categories !== 'object') die(`${f} has no categories object.`);
+  return raw.categories;
+})();
+const CATALOG_FORBIDDEN_MANUFACTURERS = ['dasterum', 'imperlux', 'fațade 3d', 'fatade 3d', 'fatade3d'];
+
 const PRODUCT_PAGES = [
   { slug: 'tigla-metalica', key: 'tigla', block: (l) => tiglaGrid(l), sources: ['content/tigla-metalica.json'] },
   { slug: 'copertine', key: 'copertine', block: (l) => copertine(l), sources: ['content/copertine.json'] },
@@ -1655,7 +1725,7 @@ const PROD_RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu',
 const productTemplate = fs.readFileSync('src/product.html', 'utf8');
 const CAT_RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu',
   'demoAttr', 'promoBar', 'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
-  'cat.block', 'cat.footerLinks',
+  'cat.block', 'cat.products', 'cat.footerLinks',
 ]);
 const categoryTemplate = fs.readFileSync('src/category.html', 'utf8');
 const CAT_SOURCES = ['src/category.html', 'build.js', CATALOG_FILE, ...LOCALES.map((l) => l.file)];
@@ -2027,6 +2097,7 @@ for (const l of loaded) {
       'cat.pathRu': BASE + CATALOG_ROOT.ru + c.slug + '/',
       'cat.subject': `[${l.code.toUpperCase()}] ${head.title} - ${CATALOG_ROOT[l.code]}${c.slug}/`,
       'cat.block': categoryBlock(l, c),
+      'cat.products': catalogProducts(l, c.slug),
       'cat.footerLinks': SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
         `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join(''),
     };

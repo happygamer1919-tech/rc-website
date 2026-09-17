@@ -234,6 +234,26 @@ p { margin: 0; }
   .spec tr + tr { border-top: 1px solid var(--line); }
 }
 
+/* --- W21-04 (RC-149), catalog product record cards --------------------------- */
+/* The card carries facts and a button that asks for a price. No colour value is
+   added: the border is --line, the label text --ink-muted, and the button is the
+   outline button the site already has. No image slot renders until an approved
+   source exists (docs/assets/CATALOG-IMAGE-SLOTS.md). */
+.prod {
+  display: flex; flex-direction: column; gap: 16px;
+  padding: 24px; background: var(--bg-light);
+  border: 1px solid var(--line); border-radius: var(--radius-card);
+}
+.prod__name { margin: 0; }
+.prod__facts { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.prod__facts > div { display: flex; flex-direction: column; gap: 2px; }
+.prod__facts dt {
+  font-size: 13px; font-weight: 700; line-height: 1.2; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--ink-muted);
+}
+.prod__facts dd { margin: 0; font-size: 16px; line-height: 1.45; }
+.prod__cta { margin-top: auto; align-self: flex-start; }
+
 /* --- header ---------------------------------------------------------------- */
 
 /* Two layers. The BAND is a full-width solid #FFFFFF strip, fixed, opaque at

@@ -149,7 +149,7 @@ const RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu', 'productTeaser', 'befor
   'demoAttr',
   'portfolioCards', 'googleLink', 'supplierChips', 'heroPanelMedia', 'promoBar',
   'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
-  'areaServedJson', 'workTypeOptions',
+  'areaServedJson', 'workTypeOptions', 'notFoundLocale',
   ...Array.from({ length: 9 }, (_, i) => `svcMedia${i}`),
 ]);
 // Same idea for the service-page template.
@@ -741,6 +741,48 @@ function workTypeOptions(l) {
   const expected = SERVICE_SLUGS.length + PRODUCT_PAGES.length + 1;
   if (labels.length !== expected) die(`workTypeOptions: ${labels.length} options, expected ${expected}.`);
   return labels.map((t) => `            <option>${esc(t)}</option>`).join('\n');
+}
+
+// --- W19-D9, the Russian 404 ---------------------------------------------------
+
+/* A static host answers every unknown path on the origin with the ONE root
+   /404.html, so a broken link under /ru/ showed the Romanian page, and
+   dist/ru/404.html was never served. The host cannot choose a 404 by directory,
+   so the page does, before it paints:
+
+   - the root 404 (RO), for a path under /ru/, replaces the location with the
+     Russian 404, carrying the broken path along. It is the first script in
+     <head>, ahead of every stylesheet, so nothing Romanian renders first. A path
+     that merely starts with the letters "ru" (/rus/, /ruta/) is not Russian.
+   - the Russian 404 puts the broken path back in the address bar with
+     history.replaceState, so the visitor still sees what they asked for. It
+     accepts only a path under /ru/, which also keeps the value on this origin.
+
+   The broken URL's own response stays 404; both pages stay noindex. Without
+   JavaScript the Romanian page shows, as before. The script is emitted into the
+   two 404 pages only. */
+function notFoundLocale(l) {
+  const ruRoot = `${BASE}/ru/`;
+  const ruPage = `${BASE}/ru/404.html`;
+  if (l.code === 'ro') {
+    return `<script>
+(function () {
+  var p = location.pathname;
+  if (p.indexOf(${JSON.stringify(ruRoot)}) !== 0 || p === ${JSON.stringify(ruPage)}) return;
+  location.replace(${JSON.stringify(ruPage)} + '?from=' + encodeURIComponent(p + location.search + location.hash));
+})();
+</script>`;
+  }
+  return `<script>
+(function () {
+  var m = /[?&]from=([^&#]*)/.exec(location.search);
+  if (!m || !history.replaceState) return;
+  var from;
+  try { from = decodeURIComponent(m[1]); } catch (e) { return; }
+  if (from.indexOf(${JSON.stringify(ruRoot)}) !== 0) return;
+  history.replaceState(null, '', from);
+})();
+</script>`;
 }
 
 // --- W14-07, the social row on the hero card (S-07) --------------------------
@@ -1856,6 +1898,7 @@ for (const l of loaded) {
   vars.catalogMenu = catalogMenu(l);
   vars.serviciiMenu = serviciiMenu(l);
   vars.workTypeOptions = workTypeOptions(l);
+  vars.notFoundLocale = notFoundLocale(l);
   vars.productTeaser = productTeaser(l);
   vars.beforeAfter = beforeAfter(l);
   vars.roofOffers = roofOffers(l);

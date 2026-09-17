@@ -8534,3 +8534,56 @@ deploy; a failed one is.**
 2. **No gate.** Neither fact is a property of the built site that a check could
    assert; both are instructions for reading evidence. The gates that already exist
    (`verify-live.js` for 18.2, the RC-146 browser check for 18.1) are named in place.
+
+## W22-03 · The catalogue product form, written as a form to fill, 2026-09-17
+
+**Card RC-152.** Docs only, no build. PR only, stops for the owner. Stacked on RC-151.
+**No product is named in it**, none was looked up and none was invented.
+
+### The note
+
+**`docs/CATALOG-PRODUCT-FORM.md`.** It is written as a form because that is what the
+card asks for: the owner fills it from a supplier's answer, and the filled values go
+into `content/catalog-products.json` unchanged.
+
+| Section | What it states |
+|---|---|
+| 1. The fields | **Nine values per product**: `id`, `name` RO and RU, `manufacturer`, `pack` RO and RU, `spec` RO and RU, and the category. Each with what it is and its rule, including the three manufacturer names the build and the gate refuse. Then what may never be in a record: price, currency, discount, stock, availability, lead time, warranty claim, superlative, capability claim, image file |
+| 2. The minimum viable record | **All nine.** There is no shorter version: a record missing one value fails the build rather than rendering a partial card. What is *not* needed is listed too: an image, a subcategory, a second specification |
+| 3. Fewer than three records | **Measured**, not asserted, on a test build at 1280px |
+| 4. The form | One block per product, nine lines, to copy and fill. "A line you cannot answer is a question for the supplier, not a value to guess" |
+| 5. The seven categories | Their slugs, and a column for how many records are wanted in each |
+| 6. After it comes back | The five things that follow, including the R-Y re-measure that wave 21 deferred and the standing rule that a person sends one real lead per locale |
+
+### What a page with fewer than three records does, measured
+
+| Records | What renders |
+|---|---|
+| 0 | no section at all, as today |
+| 1 | the heading and one card at the left of a three-column row, two thirds empty |
+| 2 | the heading and two cards, one third empty |
+| 3 | a full row |
+| 4 to 6 | a full row, then the remainder wraps, as the portfolio grid does |
+
+Read off a fixture build, at 1280px, one card on one category page and two on another.
+The three options are stated with a recommendation, **(b) hold a category back until it
+has three**, and the default is named as such because it is the owner's call and costs
+nothing to change: two records in the file instead of three.
+
+### The count that is deliberately not in it
+
+The first draft carried a "records today" column, all zeros. It was removed: a count
+copied into a second document is precisely how the stub count drifted for thirteen waves
+(RC-148, this wave's neighbour). The form states **what is wanted**; the live count lives
+in `content/catalog-products.json` and is printed per category by
+`docs/assets/CATALOG-IMAGE-SLOTS.md` whenever it is generated.
+
+The file is added to `scripts/check-stale-docs.js`'s scan list, so a superseded value
+cannot settle in it unmarked.
+
+### Recorded for ratification
+
+1. **The minimum viable record is all nine values**, because the build already refuses
+   anything less. Loosening that would mean a card with an empty line on it.
+2. **The short-row default is (b)**, hold a category back until three records exist.
+3. **No count in the form.**

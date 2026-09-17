@@ -165,6 +165,7 @@ const SCAN = [
   'docs/BACKLOG.md',
   'docs/RC-PHOTO-MANIFEST.md',
   'docs/SHOOT-SHEET.md',
+  'docs/CATALOG-PRODUCT-FORM.md',
   'RELEASE-NOTES.md',
   'README.md',
 ];

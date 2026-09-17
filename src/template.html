@@ -335,12 +335,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     <h2 data-reveal>{{portfolio.h2}}</h2>
 
     <div class="filters" role="group" aria-label="{{portfolio.filterAria}}">
-      <button class="filter" type="button" data-filter="all" aria-pressed="true">{{portfolio.filters.all}}</button>
-      <button class="filter" type="button" data-filter="case-la-cheie" aria-pressed="false">{{portfolio.filters.case}}</button>
-      <button class="filter" type="button" data-filter="acoperisuri" aria-pressed="false">{{portfolio.filters.acoperis}}</button>
-      <button class="filter" type="button" data-filter="fatade" aria-pressed="false">{{portfolio.filters.fatade}}</button>
-      <button class="filter" type="button" data-filter="reparatii" aria-pressed="false">{{portfolio.filters.renovari}}</button>
-      <button class="filter" type="button" data-filter="finisaje" aria-pressed="false">{{portfolio.filters.finisaje}}</button>
+{{portfolioFilters}}
     </div>
 
     {{portfolioCards}}

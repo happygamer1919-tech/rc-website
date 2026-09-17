@@ -147,7 +147,7 @@ const RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu', 'productTeaser', 'befor
   // built, so what lands here is already safe. Escaping it again turned the
   // quotes into &quot; and truncated the notice at its first space.
   'demoAttr',
-  'portfolioCards', 'googleLink', 'supplierChips', 'heroPanelMedia', 'promoBar',
+  'portfolioCards', 'portfolioFilters', 'googleLink', 'supplierChips', 'heroPanelMedia', 'promoBar',
   'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
   'areaServedJson', 'workTypeOptions', 'notFoundLocale',
   ...Array.from({ length: 9 }, (_, i) => `svcMedia${i}`),
@@ -783,6 +783,43 @@ function notFoundLocale(l) {
   history.replaceState(null, '', from);
 })();
 </script>`;
+}
+
+// --- W19-D5, the homepage portfolio filter chips ------------------------------
+
+/* The chips were six hardcoded buttons, "Toate" and five categories, while the
+   cards come from content/projects.json: the first renderable project of each
+   service, six cards. The sixth became a proiectare-3d project and no chip could
+   show it. The chip row is now rendered from the cards actually rendered, in their
+   order, so every card has its chip by construction.
+
+   Labels are existing strings only (docs/CLAUDE.md section 5). The five categories
+   that had a chip keep their short portfolio.filters label exactly; any other
+   takes its service title, services.items.N.title, which the site already prints
+   for that service. */
+const FILTER_LABEL_KEY = {
+  'case-la-cheie': 'portfolio.filters.case',
+  acoperisuri: 'portfolio.filters.acoperis',
+  fatade: 'portfolio.filters.fatade',
+  reparatii: 'portfolio.filters.renovari',
+  finisaje: 'portfolio.filters.finisaje',
+};
+function portfolioFilters(l, featured) {
+  const need = (v, where) => {
+    if (!REAL(v)) die(`portfolioFilters: ${where} is not real for ${l.code}.`);
+    return v;
+  };
+  const cats = [...new Set(featured.map((p) => p.service))];
+  const chip = (value, label, pressed) =>
+    `      <button class="filter" type="button" data-filter="${value}" aria-pressed="${pressed}">${esc(label)}</button>`;
+  const rows = [chip('all', need(l.strings['portfolio.filters.all'], 'portfolio.filters.all'), 'true')];
+  for (const slug of cats) {
+    const i = SERVICE_SLUGS.indexOf(slug);
+    const key = FILTER_LABEL_KEY[slug] || `services.items.${i}.title`;
+    rows.push(chip(slug, need(l.strings[key], key), 'false'));
+  }
+  if (rows.length !== cats.length + 1) die(`portfolioFilters: ${rows.length} chips for ${cats.length} categories.`);
+  return rows.join('\n');
 }
 
 // --- W14-07, the social row on the hero card (S-07) --------------------------
@@ -1908,6 +1945,7 @@ for (const l of loaded) {
   vars['band.coverageLine'] = coverageLine(l);
   vars.areaServedJson = areaServedJson(l, '    ');
   SERVICE_SLUGS.forEach((_, i) => { vars[`svcMedia${i}`] = serviceMedia(l, BASE, i, 'card'); });
+  vars.portfolioFilters = portfolioFilters(l, featured);
   vars.portfolioCards = '<div class="grid grid--3" id="portfolio-grid">\n' +
     featured.map((p, i) => {
       const href = BASE + SERVICES_ROOT[l.code] + p.service + '/#project-' + p.id;

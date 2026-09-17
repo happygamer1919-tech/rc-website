@@ -7939,3 +7939,59 @@ fit on a line of its own still breaks rather than overflows.
 
 Item 2 now reads: on Safari, which ignores `hyphenate-limit-chars`, a shorter word in an
 **h1 or h2** may hyphenate; h3 never hyphenates in any browser. Items 1, 3 and 4 stand.
+
+## W19-D5 · The homepage portfolio chips are rendered from the cards, so the 3D project has its chip, 2026-09-17
+
+**Card W19-D5**, the last in the wave 20 order, rank 5 of the first critic pass. PR only,
+stops for the owner. Stacked on W19-D4, after W19-D1a was merged into that branch.
+
+### The change
+
+The chip row was six hardcoded buttons in `src/template.html`: "Toate" and five
+categories. The six cards come from `content/projects.json` through `build.js`'s
+`featured` list, the first renderable project of each service, and the sixth is now a
+`proiectare-3d` project, so no chip but "Toate" could show it.
+
+- `src/template.html`: the six buttons became `{{portfolioFilters}}`.
+- `build.js`: `portfolioFilters(l, featured)` renders "Toate" and then one chip per
+  category among the cards actually rendered, in their order; `portfolioFilters` joins
+  `RAW_KEYS`. The build refuses a label that is not real, or a chip count that is not
+  one per category plus "Toate".
+- **Labels are existing strings only** (section 5). The five categories that had a chip
+  keep their `portfolio.filters.*` short label, so those six buttons are
+  **byte-identical to `main`**. A category with no short label takes its service title,
+  `services.items.N.title`: "Proiectare și vizualizare 3D" / "Проектирование и
+  3D-визуализация". No locale file changes.
+
+### Acceptance, the card's own checks
+
+**Check 1**, scratch script over `dist/index.html` and `dist/ru/index.html`: every
+`article.project` and its `data-cat`, and every `button.filter`.
+
+| Build | Cards | Categories | Chips | Result |
+|---|---|---|---|---|
+| `main` (**check 2**, watched failing first) | 6 and 6 | the five, plus `proiectare-3d` | `all` + the five | exit 1: "RO: no chip for proiectare-3d", "RU: no chip for proiectare-3d" |
+| this branch | 6 and 6 | the same | `all` + the five + `proiectare-3d` | exit 0 |
+
+**Check 3, negative arms**, on scratch copies of this branch's pages: one RO card's
+`data-cat` changed to `garduri`, which has no chip: exit 1, "RO: no chip for garduri".
+An empty directory: exit 1, "read zero pages".
+
+**Check 4, browser, real clicks at 1280 and real taps at 390, both locales:** 7 chips per
+page and width, **28 chip presses**. "Toate" / "Все" shows 6 of 6; every other chip
+shows 1 card, of its own category; `#portfolio-empty` stays hidden throughout; the 3D
+chip shows the 3D card. **Check 5:** RO 7 chips, RU 7.
+
+**Heights:** `verify-live.js` against this build reads the homepages at 10,447px (RO) and
+10,747px (RU) at 1440, equal to `main`'s; the chip row stays on one line there, both
+locales. At 390 the RU row wraps to three lines, which is outside the R-Y measurement.
+
+### Found during this card: W19-D1 had also moved two heights
+
+Before W19-D1a, W19-D1's h3 hyphenation took a line out of an h3 on two pages, and
+`verify-live.js` read, at 1440, `/ru/` at **10,721px** against `main`'s 10,747, and
+`/ru/servicii/acoperisuri/` at **5,543px** against 5,568. Both were inside budget, so no
+gate failed; the card's "must not move the height budgets" was not met. **W19-D1a
+restores both**: this branch's base reads 10,747 and 5,568 before W19-D4's band
+removal. The only height changes left in the wave are W19-D4's, the six measured band
+pages each 175 or 176px shorter.

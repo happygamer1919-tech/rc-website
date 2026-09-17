@@ -205,6 +205,22 @@ p { margin: 0; }
   .spec th, .spec td { padding: 12px 14px; }
 }
 
+/* W19-D7. Below 512px the column is narrower than the table's 480px minimum, so
+   the description column was cut at the edge of its scrolling box, mid-word, with
+   no scrollbar to say so. Here each row stacks instead: the label on its own line,
+   its description under it at the full width. Long words may break rather than
+   push the box wider, which is what kept five RU tables overflowing at 320 with
+   the minimum removed. .table-wrap stays, as the guard W9-08 put there. */
+@media (max-width: 511px) {
+  .spec { min-width: 0; }
+  .spec, .spec tbody, .spec tr, .spec th, .spec td { display: block; }
+  .spec th, .spec td { width: auto; overflow-wrap: anywhere; }
+  .spec th { padding: 12px 14px 0; }
+  .spec td { padding: 4px 14px 12px; }
+  .spec tr + tr th, .spec tr + tr td { border-top: 0; }
+  .spec tr + tr { border-top: 1px solid var(--line); }
+}
+
 /* --- header ---------------------------------------------------------------- */
 
 /* Two layers. The BAND is a full-width solid #FFFFFF strip, fixed, opaque at

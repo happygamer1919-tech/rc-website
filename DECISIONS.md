@@ -7543,3 +7543,80 @@ in width and height. **Check 6:** `verify-live.js` and the gates are in the PR.
    "Теплоизоляция" mid-word. Stacked, no word breaks.
 2. **The breakpoint is 511px**, the card's "below 512px". Between 512 and 768 the
    table keeps its columns, and fits.
+
+## W19-D10 · A phone held sideways gets the catalog as a scrolling sheet, so every category is reachable, 2026-09-17
+
+**Card W19-D10**, sixth in the wave 20 order. PR only, stops for the owner. Stacked on
+W19-D7, and **serialized with W19-D3**, which changes the same block of `src/main.js`
+and is worked next, on top of this branch.
+
+### The change
+
+Above 768px the catalog was a flyout, `position: absolute` inside the fixed header,
+with no height limit and no scrolling, its bottom at 447px. A landscape phone is wider
+than 768px and 375 to 430px tall, so its last categories were below the screen.
+
+- **`src/styles.css`:** a viewport **wider than 768px and at most 500px tall** takes the
+  phone's treatment: the panel becomes a fixed sheet from the header's bottom edge to
+  the bottom of the screen, scrolling on its own, with the subcategories as a
+  drill-down and the back button shown. The rules are the ≤768px block's, restated for
+  this query. The sheet starts at 80px up to 1100px wide and 96px above it, where the
+  header itself changes height (W14-15).
+- **`src/main.js`:** the catalog block's two media queries follow the CSS. `mobile`
+  (the body scroll lock and the back button's focus) is now "the sheet":
+  `(max-width: 768px), (min-width: 769px) and (max-height: 500px)`. `flyout` (hover
+  opens a subcategory list) gains `and (min-height: 501px)`. A comment in each file
+  names the other.
+
+**Why the sheet and not a height limit on the flyout.** The flyout's subcategory list
+opens to the right of the panel, outside its box. Giving the panel `overflow-y: auto`
+also clips it horizontally, which would hide every subcategory list on exactly the
+screens being fixed.
+
+### Acceptance, the card's own checks
+
+Scratch harness, headless Chrome, a local build. `mobile: true` and touch below 1280,
+mouse at 1280 and up; the popup suppressed with its own `sessionStorage` key so it
+cannot cover the menu.
+
+**Check 1**, 10 viewports × `/`, `/ru/`, `/servicii/garduri/`, `/ru/catalog/vopsele/`,
+**40 combinations read**. The catalog opened by tap or click in all 40; each of the 7
+top-level links brought into view with `scrollIntoView({ block: 'nearest' })`, then its
+centre inside the viewport and `elementFromPoint` there the link.
+
+| Viewport | `main` | this branch |
+|---|---|---|
+| 812×375 | **fail on 4 of 4**: Sisteme de iluminare; Alte materiale de construcții (RU: Системы освещения; Другие строительные материалы) | 4 of 4 |
+| 844×390, 896×414, 915×412 | **fail on 4 of 4 each**: Alte materiale de construcții / Другие строительные материалы | 12 of 12 |
+| 932×430, 1024×600, 390×844, 768×1024, 1280×720, 1920×960 | 24 of 24 | 24 of 24 |
+
+**Check 4**, watched failing first: `main` failed exactly those 16, naming exactly
+those categories. **Check 2**, the six viewports from 812×375 to 1024×600, both parent
+rows on all 4 pages, each chevron tapped, every link in its list checked the same way:
+48 lists and 216 links, all reachable, on `main` and on the branch.
+
+**Check 3, nothing else moved.** 32 boxes compared with `main`, all identical within
+1px, in fact to the 0.1px: `#catalog-panel` at 1280×720 and 1920×960 on 4 pages, each
+subcategory list opened by hover there, and the sheet at 390×844 and 768×1024.
+**Check 5:** the gates, `check-header-fit.js` included, are in the PR.
+
+**Beyond the card:**
+- **The sheet meets the header.** Panel top equal to the header's bottom and panel
+  bottom equal to the screen's: 812×375, 915×412, 932×430 and 1100×480 at 80px;
+  1101×480, 1280×480 and 1280×500 at 96px. At 1280×501 the flyout is back, unchanged.
+  The first build put the sheet at 96px everywhere, which left a 16px strip of page
+  between the header and the sheet below 1101px; found by this check, fixed before
+  commit.
+- A 812×375 screenshot of `/` was read: the sheet under the header, rows full width.
+- **The two sibling menus were probed at landscape, for the report only.** The
+  hamburger panel already scrolls; its one unreachable link is the current language,
+  `pointer-events: none` by design. The Servicii dropdown reaches all 13 links at
+  1280×600 and 1366×600. Neither needs a change.
+
+### Recorded for ratification
+
+1. **The threshold is 500px tall.** It covers every landscape phone in the card and
+   leaves the 1024×600 tablet and every laptop on the flyout. A desktop browser window
+   under 501px tall also gets the sheet, which is the behaviour that fits it.
+2. **A mouse on a window under 501px tall no longer opens subcategories on hover**; the
+   chevron opens them as a drill-down, as on a phone.

@@ -375,6 +375,34 @@ p { margin: 0; }
 .catalog__sub[hidden] { display: none; }
 .catalog__back { display: none; }
 
+/* W19-D10. A phone held sideways is wider than 768px but only 375 to 430px tall,
+   so it got the flyout above, which cannot scroll and whose bottom sits 447px down:
+   the last categories were below the screen and out of reach. A viewport wider than
+   768px and at most 500px tall takes the phone's treatment instead, a fixed sheet
+   under the header that scrolls, with the subcategories as a drill-down and a
+   back button. The header is 80px up to 1100px and 96px above it (W14-15), and
+   the sheet starts where the header ends. 500px clears every landscape phone and leaves the 1024x600 tablet and
+   every laptop on the flyout. src/main.js holds the same two queries, and the two
+   must change together. */
+@media (min-width: 769px) and (max-height: 500px) {
+  .catalog__panel {
+    position: fixed; top: 96px; left: 0; right: 0; bottom: 0;
+    width: auto; border-width: 1px 0 0; border-radius: 0; box-shadow: none; overflow-y: auto;
+  }
+  .catalog__sub {
+    top: 0; left: 0; right: 0; bottom: 0; width: auto; min-height: 100%;
+    border: 0; border-radius: 0; box-shadow: none;
+  }
+  .catalog__back {
+    display: flex; align-items: center; gap: 8px; width: 100%;
+    padding: 14px 16px; background: transparent; border: 0; border-bottom: 1px solid var(--line);
+    font-family: inherit; font-size: 15px; font-weight: 700; color: var(--ink); cursor: pointer; text-align: left;
+  }
+}
+@media (min-width: 769px) and (max-width: 1100px) and (max-height: 500px) {
+  .catalog__panel { top: 80px; }
+}
+
 /* --- W15-02, the Servicii dropdown (RC-126) -------------------------------- */
 /* Q-W14-15: a fifth flat nav link does not fit at any width in either locale,
    so Servicii becomes a disclosure instead of growing the nav. It reuses the

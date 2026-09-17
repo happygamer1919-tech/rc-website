@@ -47,8 +47,11 @@
     var btn = document.getElementById('catalog-toggle');
     var sheet = document.getElementById('catalog-panel');
     if (!btn || !sheet) return;
-    var flyout = window.matchMedia('(hover: hover) and (min-width: 769px)');
-    var mobile = window.matchMedia('(max-width: 768px)');
+    /* W19-D10. The sheet is also what a short viewport wider than 768px gets (a
+       phone held sideways), so "mobile" is the sheet, not the width, and the
+       hover flyout needs the height to hold it. Same queries as src/styles.css. */
+    var flyout = window.matchMedia('(hover: hover) and (min-width: 769px) and (min-height: 501px)');
+    var mobile = window.matchMedia('(max-width: 768px), (min-width: 769px) and (max-height: 500px)');
     var top = sheet.querySelectorAll('.catalog__list--top > .catalog__row');
     var parents = sheet.querySelectorAll('.catalog__list--top > .catalog__row--parent');
 

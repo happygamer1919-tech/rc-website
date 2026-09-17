@@ -7685,3 +7685,56 @@ branch. **Step 7:** gates in the PR.
    click the visitor meant as "open".
 2. **Enter on a chevron while the mouse rests on that row** counts as that first click:
    the list stays open, and a second Enter closes it.
+
+## W19-D2 · Between 401 and 768px the hero photo takes its column's full width again, 2026-09-17
+
+**Card W19-D2**, eighth in the wave 20 order, rank 2 of the first critic pass. PR only,
+stops for the owner. Stacked on W19-D3.
+
+### The change
+
+`src/styles.css`, inside `@media (max-width: 768px)`, directly under the
+`.media--4x3, .media--3x2 { max-height: 300px; }` cap: `.hero-panel-media,
+.svc-hero__art { width: 100%; }`, with a comment.
+
+The card images stretch to their column, so the cap only crops them. The two hero
+boxes are grid items with `aspect-ratio: 4 / 3`, and a grid item with an aspect ratio
+takes its width from its height: under the 300px cap they became 300 × 4/3 = 400px
+wide and sat at the left of any wider column. Given the column's width, they keep the
+cap and crop by height, which the photos already do with `object-fit: cover`.
+
+**Both variants** take the rule, the photograph (`--photo`) and the SVG fallback
+`build.js` renders when a hero slot has no photo (`heroPanelMedia()` and
+`serviceMedia()` give both the same `media media--4x3` box). Every hero slot has a
+photo today, so the fallback path renders nowhere and was not exercised in a browser.
+The card image rule is untouched.
+
+### Acceptance, the card's own checks
+
+Scratch harness, headless Chrome, `mobile: true` at 768 and below, a local build.
+Pages `/`, `/ru/` and the 18 service pages: **20 pages, each with exactly one** element
+matching `.hero-panel-media--photo, .svc-hero__art--photo`.
+
+**Check 1**, widths 420, 480, 600, 700, 768, **100 combinations read**: the photo's
+width within 1px of its parent's width minus the parent's horizontal padding.
+
+| Width | `main`: failing | example on `main` | this branch: failing | example |
+|---|---|---|---|---|
+| 420 | 0 of 20 | `/`: 388 in 388 | 0 of 20 | 388 in 388 |
+| 480 | **20 of 20** | 400 in 448 | 0 of 20 | 448 in 448 |
+| 600 | **20 of 20** | 400 in 568 | 0 of 20 | 568 in 568 |
+| 700 | **20 of 20** | 400 in 668 | 0 of 20 | 668 in 668 |
+| 768 | **20 of 20** | 400 in 736 | 0 of 20 | 736 in 736 |
+
+**Check 4**, watched failing first: `main` failed exactly 80, all 20 pages at 480, 600,
+700 and 768. **Check 3:** no page scrolls sideways at any of the 100. **Check 2,
+unchanged elsewhere:** at 390, 1024 and 1280 the photo's width and height on all 20
+pages equal `main`'s, 60 of 60, delta 0 (`/`: 358×268.5, 976×732 and 564×423).
+**Check 5:** `verify-live.js` and the gates are in the PR. A 600px screenshot of
+`/servicii/fatade/` was read: the photo spans the column, 300px tall.
+
+### Recorded for ratification
+
+1. **The SVG fallback hero box takes the same rule**, beyond the card's photo-only
+   scope, because it has the same box and would collapse the same way the day a slot
+   loses its photo.

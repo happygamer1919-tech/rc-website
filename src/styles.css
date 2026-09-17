@@ -1570,6 +1570,13 @@ p { margin: 0; }
      tall and the services section balloons. No effect at the 390px reference
      width, where a 4:3 slot is already only 268px. */
   .media--4x3, .media--3x2 { max-height: 300px; }
+  /* W19-D2. The card images above stretch to their column, so the cap only crops
+     them. The two hero boxes do not: a grid item with an aspect ratio sizes its
+     width from its height, so under the 300px cap they shrank to 300 x 4/3 = 400px
+     and hung left in any column wider than that (401 to 768px). Given the column's
+     width, they keep the cap and crop by height the way the cards do. Both
+     variants, the photograph and the SVG fallback, carry the same 4:3 box. */
+  .hero-panel-media, .svc-hero__art { width: 100%; }
 
   .hero-claim { padding: 24px; }
   .hero-claim h2 { font-size: 22px; }

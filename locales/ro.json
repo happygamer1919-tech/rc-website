@@ -605,18 +605,7 @@
     "sideNote": "Îți răspundem în maximum 2 ore lucrătoare.",
     "phoneEyebrow": "Telefon",
     "hours": "Lun-Sâm 08:00-17:00 · Dum: închis",
-    "options": {
-      "0": "Construcție case la cheie",
-      "1": "Acoperișuri",
-      "2": "Fațade",
-      "3": "Renovări la cheie",
-      "4": "Finisaje",
-      "5": "Proiectare și vizualizare 3D",
-      "6": "Instalații",
-      "7": "Construcții industriale",
-      "8": "Lucrări de terasament și excavare",
-      "9": "Altceva"
-    }
+    "optionOther": "Altceva"
   },
   "footer": {
     "description": "Construcții și renovări la cheie în toată Moldova, cu garanție scrisă și materiale certificate UE.",

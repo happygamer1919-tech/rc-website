@@ -8409,3 +8409,89 @@ The fixture data was never committed; the shipped manifest lists zero slots.
    committed, and the generator is what keeps it true.
 2. **4:3 at 400 x 300**, taken from the site's existing card treatment rather than
    chosen, so a supplier's file fits the design that exists.
+
+## W22 ratifications · The owner's rulings on wave 21, and the Q-W21-01 ruling, 2026-09-17
+
+Recorded at the owner's instruction, from the wave 22 dispatch, before any wave 22 card
+was worked.
+
+**Wave 21's deviations are ratified as reported.** The dispatch names three explicitly:
+
+1. **RC-148 corrected five stale statements, not the two the card named.** Four of them
+   were in `docs/RC-PHOTO-MANIFEST.md`. Ratified.
+2. **RC-150's manifest is generated rather than typed**, with gate 16 failing when it and
+   the records disagree. Ratified.
+3. **R-Y was not extended by RC-149**, because nothing renders and no height moved. The
+   extension belongs to the card that ships the first product records. Ratified.
+
+### The ruling on Q-W21-01, part 2
+
+> "Preț la cerere" and "Цена по запросу" are permitted as exact strings on catalogue
+> product cards only. The no-price check allows them there and nowhere else.
+
+**Part 1 of that question, the product list itself, stays open.** No product record
+exists, so no card renders and the permitted phrase appears nowhere on the built site
+today. The question's heading records both halves.
+
+### One correction to the dispatch, and it matters
+
+The dispatch writes the Russian string as **"Цена по запросu"**, ending in a **Latin
+"u"** (U+0075). The string the site ships, and the only one a Russian reader would read,
+ends in **Cyrillic "у"** (U+0443): `43f 43e 20 437 430 43f 440 43e 441 443`. The ruling
+is implemented on the Cyrillic string. The Latin-u spelling is **not** permitted, and the
+gate refuses it like any other price word; that is an arm below, not an assumption.
+
+## W22-01 · The price-on-request phrase: permitted on a product card, refused everywhere else, 2026-09-17
+
+**Card W22-01**, the ruling's implementation. PR only, stops for the owner. It carries
+the wave 21 ratifications above.
+
+### The change, in `scripts/check-catalog-pages.js`
+
+Both halves of "there and nowhere else", because the first alone cannot hold the second:
+
+- **Permitted, and bounded:** a permitted occurrence is the **whole text of a product
+  card's quote button** (`a.prod__cta` carrying `data-product`), in the page's own
+  locale, on a catalog category page. Such an occurrence is blanked (with spaces, so
+  every other offset stays true) before the price patterns run. Anything the patterns
+  then find is by construction not the permitted one.
+- **Nowhere else:** a new scan reads **every** built page, 45 today, and fails on either
+  phrase found outside that one place: as prose on a category page, or anywhere at all on
+  a service page, a product page, a homepage, a privacy page, a 404 or `/review/`. The
+  gate scanned only the 14 category pages before this card, so "and nowhere else" was
+  not checkable.
+- Every other prohibition is untouched: a figure, any other price word, stock, cart,
+  product-record markup and the three manufacturer names all fail exactly as before.
+
+`docs/CLAUDE.md` section 5 carries the rule. The gate prints, on every run: the phrases,
+how many product card buttons it read, how many carried the permitted phrase, and how
+many built pages it scanned for the phrase elsewhere.
+
+**Shipped state:** exit 0. Product card buttons read **0**, permitted phrases **0**, built
+pages scanned **45**. The allowance matches nothing today because no product record
+exists; that is stated in the output rather than left to be assumed.
+
+### Negative-tested, eight arms
+
+Arms a to c and f to h use the three fixture records from RC-149 (never committed);
+d and e plant the phrase in a built page.
+
+| Arm | Result |
+|---|---|
+| a. fixture cards carrying the two ruled labels | **exit 0**: 6 buttons read, 6 permitted. Before this card the same build failed on all six |
+| b. the RU label spelled with a Latin "u", as the dispatch wrote it | exit 1, 3 violations, `[price, price-word]` on each RU card |
+| c. "Preț la cerere" as plain text on a category page, outside a button | exit 1: `outside a product card button` |
+| d. "Preț la cerere" on a service page (`/servicii/fatade/`) | exit 1: `on a page that is not a catalog category page` |
+| e. "Цена по запросу" on a product page (`/ru/servicii/garduri/`) | exit 1, the same |
+| f. a real price inside a permitted button, `160 lei/m²` | exit 1: `[price, money-amount]` |
+| g. a different price wording in the button, "Preț de listă" | exit 1: `[price, price-word]` |
+| h. a stock claim in the button, "В наличии" | exit 1: `[stock, stock]` |
+
+Control, the shipped state with no records: exit 0.
+
+### Recorded for ratification
+
+1. **The gate now scans every built page**, not only the 14 category pages, for these two
+   strings. That is new scope, and it is what makes the ruling's "nowhere else" true.
+2. **Exact means exact.** A button whose text is the permitted phrase with anything else
+   around it is not permitted, and a near spelling is refused.

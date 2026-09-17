@@ -8,6 +8,22 @@ Status values: `todo` · `in progress` · `blocked` · `shipped`.
 Waves 1 to 5 predate this file; their tickets are reconstructed from the git
 history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 
+## Wave 22
+
+Dispatch of 2026-09-17. #63 to #67 were merged by the owner and verified as ancestors of
+`origin/main` (`b6ff0a7`) before any card was worked: `c7cecbe`, `76261a8`, `be91c39`,
+`9ae19cb`, `b6ff0a7`. Every card opens a pull request and stops (R-V as amended at wave
+19). The wave 21 ratifications and the owner's ruling on Q-W21-01 ride the first PR.
+
+| Ticket | Card | Branch | Status |
+|---|---|---|---|
+| W22-01 | The Q-W21-01 ruling: the price-on-request phrase, permitted on a product card and nowhere else | `w22/w22-01-price-on-request-ruling` | PR open, awaiting owner: permitted only as a product card button's whole text, blanked before the price patterns run; a new site-wide scan of all 45 built pages refuses it anywhere else; 8 arms fired, including the dispatch's Latin-u spelling and a real price inside a permitted button; the dispatch's RU string is corrected to its Cyrillic spelling |
+| RC-151 | W22-02 Two environment facts a future terminal will find | `w22/rc-151-environment-facts` | todo |
+| RC-152 | W22-03 Catalogue readiness: the form the product list is filled into | `w22/rc-152-catalogue-readiness` | todo |
+
+**The dispatch assigned no RC number to the ruling card**, so it is tracked by its wave
+id, the way the critic's defect cards were in wave 20.
+
 ## Wave 21
 
 Dispatch of 2026-09-17. #52 to #62 were merged by the owner in order and verified as

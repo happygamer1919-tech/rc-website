@@ -407,6 +407,19 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     not scroll. It fails, never skips, when Inter does not load, when the sitemap is
     missing or empty, when a page shows no heading, and when fewer combinations were
     measured than the matrix holds.
+15. `node scripts/check-stub-count.js` clean. **Since W21-03 (RC-148)**, run by
+    `quality`. **A stub count is data, not a ruling-held measurement**, so section
+    16's staleness gate never covered it, and W6-02's count survived in four
+    documents while the data moved to 16. This measures the count
+    from `content/projects.json` with `build.js`'s own rule, per locale, and holds
+    every stub count stated in the scanned documents to it: forward, by reading the
+    number each stub sentence states, and backward, by refusing a known stale count
+    near the word "stub". A value struck under R-R is history and is passed over.
+    `DECISIONS.md`, the audits and the board cards are records and are not scanned;
+    `docs/QUESTIONS.md` is scanned in its headings only. It fails when the data
+    cannot be read or is empty, when a scanned document is missing, when the locales
+    disagree so that no single number can be true, when no document states the
+    current count, and when a named exception matches nothing.
 
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number — Q-W14-03 was found "at gate 9" — and those bodies are immutable under
@@ -425,6 +438,7 @@ and are named here so the numbered list is not read as the complete set.
 **AMENDED (W20-02):** gate 13 runs after gate 11, as the very last step, because it
 rebuilds `dist/` armed with a stand-in key that no earlier gate may measure.
 **AMENDED (W19-D1, wave 20):** gate 14 runs between gate 11 and gate 13.
+**AMENDED (W21-03):** gate 15 runs before gate 14, with the other static checks.
 
 ---
 

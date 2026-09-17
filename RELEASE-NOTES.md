@@ -696,7 +696,7 @@ that shipped. **All are owner-input questions except the last two.**
 
 | Question | Whose | What unblocks it |
 |---|---|---|
-| **Q-04** · 44 stub projects have no real content | client | Titles and summaries. Stubs are safe: a project renders only when both are real in that locale, so none of the 44 reaches a visitor and none ever has |
+| **Q-04** · ~~44~~ **16** stub projects have no real content | client | Titles and summaries. Stubs are safe: a project renders only when both are real in that locale, so none of the ~~44~~ **16** reaches a visitor and none ever has. **AMENDED (W21-03, RC-148): 16 on 2026-09-17, measured from `content/projects.json`; `scripts/check-stub-count.js` holds it** |
 | **Q-W9-04** · Nine photographs fail the "real Rapid Construct work" rule | client | A ruling on the nine, file by file. It also owns the open half of Q-09: whether the hero photograph belongs in a hero slot under master plan section 7. A default shipped; the ruling replaces it |
 | **Q-W12-07-LEGAL** · The privacy pages have no operator section | client | The registry extract. The reversal is the four steps below and it has been rehearsed end to end |
 | **Q-W9-06** · Two live form submissions, one per locale | Ivan | One remains. The key is set and the site is published, so it is a minute. Expect the subjects `[RO] Solicită ofertă gratuită — /` and `[RU] Запросите бесплатную оферту — /ru/` |

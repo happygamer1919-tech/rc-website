@@ -8180,3 +8180,87 @@ hold for a quieter log.
    more outlier of tolerance.
 2. **WIDE_SPREAD is 3 points**, where wave 20's noise sat, and it only labels.
 3. **`quality` now runs 6 audits instead of 2** on every pull request.
+
+## W21-03 · The stub count corrected in every document, and gate 15 to hold it, 2026-09-17
+
+**Card RC-148.** PR only, stops for the owner. Stacked on RC-147.
+
+### The corrections, under R-R
+
+The count is **16**, measured from `content/projects.json` with `build.js`'s rule (a
+project renders when its title and summary are both real in that locale): 54 projects,
+16 stubs in RO and 16 in RU. The dispatch named two documents and the Q-04 heading; the
+scan found **five live statements**, four of them in the photo manifest:
+
+| Where | Was | Now |
+|---|---|---|
+| `docs/RC-PHOTO-MANIFEST.md`, Part B | "the other 44 are stubs" | ~~44~~ **16**, with the amendment |
+| `docs/RC-PHOTO-MANIFEST.md`, the 95-slot paragraph | "44 of the covers belong to stub projects" | ~~44~~ **16**, with the amendment |
+| `docs/RC-PHOTO-MANIFEST.md`, the totals table | "including 44 stubs" | ~~44~~ **16** |
+| `docs/RC-PHOTO-MANIFEST.md`, the seeded-projects paragraph | "the same position as the 44 stubs" | ~~44~~ **16** |
+| `RELEASE-NOTES.md`, the open-questions handoff | "44 stub projects…none of the 44 reaches a visitor" | ~~44~~ **16** twice, with the amendment |
+| `docs/QUESTIONS.md`, the Q-04 heading | "Real content for 44 stub projects" | ~~44~~ **16**, with the amendment |
+
+Every amendment names the card, the date and where the number is measured. **Two
+records were deliberately left alone:** `RELEASE-NOTES.md`'s dated wave 6 section ("10
+projects became 54. The 44 new ones are stubs"), which states what W6-02 did on the day,
+and the bodies of `docs/QUESTIONS.md`, which are snapshots (R-S). `DECISIONS.md` and the
+audits are records for the same reason.
+
+### Gate 15: `scripts/check-stub-count.js`
+
+It measures, then holds the documents to the measurement, in **two directions**:
+
+- **Forward**, so a new phrasing cannot drift: in every sentence that mentions a stub,
+  four claim patterns read the number that quantifies the stubs ("16 stubs" or "16 stub
+  projects", "the other 16 are stubs", "16 of the covers belong to stub projects",
+  "none of the 16 reaches"). Each must equal the measured count. The patterns and how
+  often each matched are printed on every run.
+
+  The first pattern deliberately does **not** read a bare singular "stub" followed by
+  another noun: this card's own backlog row said "71 stub sentences read", the first
+  version read that as a stub count, and a gate that flags a sentence count is a gate
+  people learn to ignore (section 16's own argument). The row now states no such
+  figure either.
+- **Backward**, so the value that did drift cannot return: 44 is refused anywhere within
+  60 characters of "stub", whatever the phrasing. Appending to that list is part of
+  correcting a count, the way R-Q makes the staleness list part of recording a ruling.
+
+A value struck under R-R is history: strikes are removed before any pattern reads the
+sentence, and struck values are counted and printed (7 today). Ids and dates are blanked
+first, so "W21-03 Stub count" cannot read as "3 stubs".
+
+**Scope, printed on every run:** seven governing and reference documents whole, plus
+`docs/QUESTIONS.md`'s headings only. `DECISIONS.md`, `docs/audits/`, `docs/board/` and
+the source tree are not scanned, each with its reason.
+
+**The scan reads flowed paragraphs, not lines.** A line-by-line first version passed
+while two of this card's own corrections were invisible to it, because the manifest's
+sentence "16 of the covers belong to / stub projects" straddles a line break. Paragraphs
+are flowed into one string and sentences still break at `.`, `!`, `?` and `|`, so table
+rows do not bleed into each other.
+
+**Shipped state:** exit 0; 76 sentences mentioning a stub read across 8 documents; every
+stated count equal to 16; 7 struck values passed over; 1 named exception, used.
+
+### Negative-tested, seven arms, each on a scratch root
+
+| Arm | Result |
+|---|---|
+| a. a new sentence "the 44 stub projects" planted in `docs/SHOOT-SHEET.md` | exit 1, twice: as a stated count and as the known stale value |
+| b. "the 12 stub projects", a number never used before | exit 1: `12, stated as a stub count by "N stubs"` |
+| c. one RO stub given content, so RO 15 and RU 16 | exit 1: `the locales disagree (ro 15, ru 16), so no document can state one stub count` |
+| d. every stub filled, so the data says 0 | exit 1, naming all 8 documents' figures as stale, and that no document states the current count |
+| e. `docs/RC-PHOTO-MANIFEST.md` deleted | exit 1: a file that vanished is not a file that passed |
+| f. `content/projects.json` emptied | exit 1: the count would be vacuous |
+| g. the named exception pointed at a sentence no document contains | exit 1: an exception that has outlived its occurrence |
+
+Control, an unmutated copy: exit 0.
+
+### Recorded for ratification
+
+1. **Five live statements, not three.** The dispatch named two documents and a heading;
+   the manifest carried four of the five. All are corrected.
+2. **The dated wave 6 record keeps its 44**, as a named exception with its reason,
+   because it is a record of that day (R-S).
+3. **Gate 15 is new** and runs on every pull request. It reads files only, no browser.

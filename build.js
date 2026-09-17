@@ -68,9 +68,9 @@ const SERVICE_SLUGS = [
   'case-la-cheie', 'acoperisuri', 'fatade', 'reparatii', 'finisaje',
   'proiectare-3d', 'instalatii', 'industrial', 'terasamente',
 ];
-// PROVISIONAL, pending a client ruling: the per-m2 figure and the early-booking
-// discount are shown only on these five. See DECISIONS.md.
-const PRICED_SLUGS = ['case-la-cheie', 'acoperisuri', 'fatade', 'reparatii', 'finisaje'];
+// W19-D4. PRICED_SLUGS is gone with the price band it chose pages for. W14-05
+// removed the band's price, and the early-booking line it kept is in every
+// service page's footer already (footer.offer). See DECISIONS.md, W19-D4.
 
 const SLOT_FOR_SLUG = {
   'case-la-cheie': 'svc-case-la-cheie', 'acoperisuri': 'svc-acoperisuri', 'fatade': 'svc-fatade',
@@ -155,7 +155,7 @@ const RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu', 'productTeaser', 'befor
 // Same idea for the service-page template.
 const SVC_RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu',
   'demoAttr', 'svc.imageObjects', 'svc.answer', 'svc.table', 'svc.faqSection', 'svc.faqSchema',
-  'svc.gallerySection', 'svc.priceSection', 'svc.footerLinks', 'svc.media',
+  'svc.gallerySection', 'svc.footerLinks', 'svc.media',
   // W12-06. The bar is site-wide, so the service template needs it raw too.
   'promoBar',
   // W12-09. Generated JSON-LD fragment, must not be escaped.
@@ -1946,12 +1946,6 @@ for (const l of loaded) {
       'svc.urlRu': SITE + BASE + SERVICES_ROOT.ru + slug + '/',
       'svc.pathRo': BASE + SERVICES_ROOT.ro + slug + '/',
       'svc.pathRu': BASE + SERVICES_ROOT.ru + slug + '/',
-      'svc.priceSection': PRICED_SLUGS.includes(slug) ? `<section class="section section--dark section--compact">
-  <div class="container">
-    <p class="eyebrow" data-reveal>${esc(l.strings['servicePage.priceH'])}</p>
-    <p class="lede" data-reveal style="color: #FFFFFF; opacity: 0.75;">${esc(l.strings['hero.priceLine1'])}</p>
-  </div>
-</section>` : '',
       // Indexable only when this service has at least one renderable project
       // whose cover is a real photograph rather than a generated placeholder.
       // Same shape as the privacy-page gate: it clears itself.

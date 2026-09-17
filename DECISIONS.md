@@ -7833,6 +7833,61 @@ amendment.
 4. The RU privacy page's h1 is now three lines at desktop. Privacy pages have no height
    budget.
 
+## W19-D4 · The empty "Preț și condiții" band is removed from five service pages, 2026-09-17
+
+**Card W19-D4**, tenth in the wave 20 order, rank 4 of the first critic pass. PR only,
+stops for the owner. Stacked on W19-D1.
+
+### The change: the card's recommended default, removal
+
+On Construcție case la cheie, Acoperișuri, Fațade, Renovări la cheie and Finisaje, both
+locales, a full-width dark band headed "Preț și condiții" / "Цена и условия" held one
+line, "−10% la programări anticipate" / "−10% при ранней записи". W14-05 removed the
+price that was its heading and left the box. The same line is in the footer of every
+service page (`footer.offer`), so a visitor loses nothing.
+
+- `build.js`: the `svc.priceSection` fragment and its `SVC_RAW_KEYS` entry are removed,
+  and so is `PRICED_SLUGS`, whose only use was choosing the pages for that band. A
+  comment where it stood says why.
+- `src/service.html`: the `{{svc.priceSection}}` placeholder and its comment.
+- `locales/ro.json` and `locales/ru.json`, **in the same commit** (section 8):
+  `servicePage.priceH` and `hero.priceLine1`, both used by that band and nothing else,
+  searched across `build.js`, `src/`, `scripts/` and `content/`. The homepage's
+  "−10%" line comes from a different key and is untouched.
+
+The alternative, a band with real price or conditions content, needs a source and the
+owner's word (R-X, W14-05). It is not taken.
+
+### Acceptance, the card's own checks
+
+**Check 1**, scratch script over every `.html` under `dist/`, **45 files read** (the 44
+live pages plus `/review/`): a `<section>` with no `h1` or `h2` whose text, with tags,
+`script`, `style` and `p.eyebrow` stripped and whitespace collapsed, is under 60
+characters.
+
+| Build | Sections read | Matches |
+|---|---|---|
+| `main` (**check 2**, watched failing first) | 189 | **exactly the card's 10**: the five RO pages at 29 characters, "−10% la programări anticipate", and the five RU pages at 22, "−10% при ранней записи"; exit 1 |
+| this branch | 179 | 0; exit 0 |
+
+**Check 3, the band removed:** no built page contains "Preț și condiții" or "Цена и
+условия", 0 of 45; the footer line is on **18 of 18** service pages.
+
+**Negative arms**, on scratch copies: a dark section holding only an eyebrow "Preț și
+condiții" and one short line, planted in `/servicii/instalatii/`, fails both rules,
+exit 1; an empty directory fails with "zero files read", exit 1. **Check 5:** the gates,
+`check-links.js` among them, are in the PR; `verify-live.js` holds the service pages
+inside their wave 7 budgets, which a shorter page can only stay inside.
+
+### Recorded for ratification
+
+1. **Removal, the card's recommended default.** It is reversible, and a band with real
+   content needs a source first.
+2. **The rule is not added to a standing gate.** The card recommends it without
+   requiring it. Under 60 characters with no heading is a heuristic, a short CTA band
+   would trip it, and no existing built-site gate is about section content. Wave 20
+   already added two gates.
+
 ## W19-D1a · Correction to W19-D1: hyphenation is limited to h1 and h2, because it re-wrapped 31 h3 titles that fitted, 2026-09-17
 
 **Corrects W19-D1**, whose body stands as recorded (R-S). Same card, same PR, a second

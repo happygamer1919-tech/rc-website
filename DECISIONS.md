@@ -8355,3 +8355,57 @@ a stand-in form key:
 2. **`build.js` refuses the forbidden manufacturers itself**, so a record cannot reach
    the gate.
 3. **No image markup at all** until a source exists, rather than an empty box.
+
+## W21-05 · The catalogue image slot manifest, generated from the records, 2026-09-17
+
+**Card RC-150.** PR only, stops for the owner. Stacked on RC-149. Facts only, as the
+card directs: the file states what a supplier is being asked for, and nothing about
+price, stock or availability.
+
+### What it is
+
+`docs/assets/CATALOG-IMAGE-SLOTS.md`, the request list, **generated** by
+`scripts/gen-catalog-image-slots.js` from `content/catalog-products.json`. One row per
+product record: **category, product, brand, file names, aspect, size**. It is not typed:
+a request list that disagrees with the records would send someone shopping for the wrong
+photographs, and a hand-kept list drifting from the data is the failure RC-148 spent this
+wave correcting.
+
+**Today it lists 0 slots**, from 7 categories with 0 records, because RC-149 is blocked
+on the product list (Q-W21-01). The file says so in those words and fills itself when
+records land.
+
+### What a slot requires, and where each requirement comes from
+
+Nothing here is chosen by this card; each line is read off what the site already does:
+
+| Property | Value | Source |
+|---|---|---|
+| Aspect | 4:3 landscape | the card image treatment, `media media--4x3 media--card` |
+| Rendered | 400 x 300 CSS px, plus an 800 x 600 file at 2x | the `width`, `height` and `srcset` on every card image on the site |
+| Named | `catalog-<category>-<product id>.jpg` and `@2x` | the slot naming the repo already uses in `public/img/` |
+| Licensed | a provenance row in the same commit, real licence or supplier permission | ruling R-W |
+| Permitted sources | a supplier photograph or licensed stock, because a product slot is not a proof slot | master plan section 7 as amended by W14-18 |
+
+### Gate 16
+
+`node scripts/gen-catalog-image-slots.js --check`, run by `quality`, fails when the
+committed file and the data disagree. `docs/CLAUDE.md` section 11 gains gate 16.
+
+### Negative-tested
+
+| Arm | Result |
+|---|---|
+| a. three fixture records added to the data, manifest not regenerated | exit 1: `does not match content/catalog-products.json`, with the command to run |
+| b. the same three records, manifest regenerated | exit 0, and the table lists 3 slots with their categories, brands and file names |
+| c. a record with no `id` | exit 1: its image cannot be requested |
+| d. the shipped state, no records | exit 0, and the file says no slot is requestable yet and why |
+
+The fixture data was never committed; the shipped manifest lists zero slots.
+
+### Recorded for ratification
+
+1. **Generated, not written.** The card says "produce a committed manifest"; it is
+   committed, and the generator is what keeps it true.
+2. **4:3 at 400 x 300**, taken from the site's existing card treatment rather than
+   chosen, so a supplier's file fits the design that exists.

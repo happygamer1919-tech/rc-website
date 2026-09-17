@@ -420,6 +420,13 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     cannot be read or is empty, when a scanned document is missing, when the locales
     disagree so that no single number can be true, when no document states the
     current count, and when a named exception matches nothing.
+16. `node scripts/gen-catalog-image-slots.js --check` clean. **Since W21-05
+    (RC-150)**, run by `quality`. `docs/assets/CATALOG-IMAGE-SLOTS.md` is the
+    request list a supplier is sent, and it is **generated** from
+    `content/catalog-products.json` rather than typed, so it cannot drift from the
+    records the site builds. The check fails when the committed file and the data
+    disagree, when the file is absent, when a record has no id, name or
+    manufacturer, and when a category slug has no catalog category.
 
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number — Q-W14-03 was found "at gate 9" — and those bodies are immutable under
@@ -439,6 +446,7 @@ and are named here so the numbered list is not read as the complete set.
 rebuilds `dist/` armed with a stand-in key that no earlier gate may measure.
 **AMENDED (W19-D1, wave 20):** gate 14 runs between gate 11 and gate 13.
 **AMENDED (W21-03):** gate 15 runs before gate 14, with the other static checks.
+**AMENDED (W21-05):** gate 16 runs beside gate 15, and is static too.
 
 ---
 

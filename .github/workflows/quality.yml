@@ -81,6 +81,11 @@ jobs:
       - name: The stub count in the documents equals the data (RC-148)
         run: node scripts/check-stub-count.js
 
+      # RC-150. The supplier request list is generated from the product records,
+      # so it cannot disagree with them. This fails if the committed file is stale.
+      - name: The catalog image slot manifest matches the records (RC-150)
+        run: node scripts/gen-catalog-image-slots.js --check
+
       # W19-D1. No heading is wider than its box and no page scrolls sideways, on
       # every sitemap page and both 404 pages, at 360px and 1280px. Same Chrome and
       # Inter requirement as the header gate. Before RC-145's step, which rebuilds.

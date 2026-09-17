@@ -225,8 +225,13 @@ locale.** Real means neither empty nor `TODO:`-prefixed. Without both, the
 project is invisible everywhere: not on its service page, not in the homepage
 portfolio, not in the sitemap.
 
-That is what makes an empty project safe to commit. 44 of the 54 projects in
-`content/projects.json` are stubs and none of them reaches a visitor.
+That is what makes an empty project safe to commit. ~~44 of the 54 projects~~ **16
+of the 54 projects** in `content/projects.json` are stubs and none of them reaches
+a visitor. **AMENDED (W20-01, RC-144): 44 was the W6-02 count and stopped being true
+as projects were written. 16 in each locale, counted on 2026-09-17 by
+`docs/audits/wave-19-readiness.md` section 3 and re-counted by RC-144; the count
+moves whenever a stub gains its title and summary, and the build is what decides
+it.**
 
 Every other field — `location`, `year`, `work_type`, `area_sqm`, `duration`,
 `main_materials`, `challenge` — is optional and drops out of the render **on its

@@ -366,7 +366,7 @@ later is a data-only change: no template, no build, no photo reprocessing.
 
 ---
 
-## Q-W9-06 · The two live form submissions are blocked on a publish
+## Q-W9-06 · The two live form submissions are blocked on a publish — **CLOSED 2026-09-17 (W20-01, RC-144), settled by Q-W10-01, CLOSED 2026-09-06 (W12-04): the key is set and a real browser submission landed at 08:57 on 2026-09-06; the same evidence is in `docs/BACKLOG.md`, wave 12. The wave 12 handoff in `RELEASE-NOTES.md` still records one of the two per-locale submissions as remaining; closed at the owner's instruction on the Q-W10-01 evidence, with form wiring now asserted by RC-145** (opened 2026-09-01, W9-05)
 
 **Raised:** W9-05, 2026-09-01. **Status:** blocked, not failed.
 
@@ -829,7 +829,7 @@ about the existing copy and much bigger than this link.
 
 ---
 
-## Q-W12-07-LEGAL · The privacy pages are unlinked until the registry extract arrives — OPEN, opened 2026-09-06 (W12-17, W12-21)
+## Q-W12-07-LEGAL · The privacy pages are unlinked until the registry extract arrives — ~~OPEN~~ **CLOSED 2026-09-17 (W20-01, RC-144), settled by W12-26 (RC-072, commit `8c3b9ce`): the fallback page was published and linked on an explicit switch, `PRIVACY_PUBLISHABLE_WITHOUT_OPERATOR` in `build.js`, without waiting for the extract. The operator section itself is still absent (`docs/audits/wave-19-readiness.md` section 3); the addendum below is how to add it when the extract arrives** · opened 2026-09-06 (W12-17, W12-21)
 
 **UPDATED 2026-09-06 by W12-21.** A fallback policy page is drafted on
 `w12/rc-072-privacy-fallback`, unmerged and awaiting review. It names no legal
@@ -1486,7 +1486,7 @@ depict work the company does, so a real photo is both allowed and more
 convincing than stock. Treat stock as a last resort for the carport group only,
 under an explicit ruling.
 
-## Q-W14-08 · The metal tile prices are a manufacturer's published list prices; confirm they are ours, and whether chips may show colour · PART (b) ANSWERED 2026-09-15, RAL swatches permitted in the tile grid; (a) OPEN · opened 2026-09-15 (W14-10)
+## Q-W14-08 · The metal tile prices are a manufacturer's published list prices; confirm they are ours, and whether chips may show colour · PART (b) ANSWERED 2026-09-15, RAL swatches permitted in the tile grid; (a) ~~OPEN~~ **CLOSED 2026-09-16, settled by `DECISIONS.md`, W16 ratifications: "Dasterum is the confirmed tile supplier. Q-W14-08(a) is closed." Heading updated 2026-09-17 (W20-01, RC-144)** · opened 2026-09-15 (W14-10)
 
 **Shipped default: the grid as the dispatch specified it,** with every value from
 the wave 14 audit section 2.1, Standart and Premium only, list prices only, and

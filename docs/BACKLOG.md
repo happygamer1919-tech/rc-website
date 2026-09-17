@@ -8,6 +8,41 @@ Status values: `todo` · `in progress` · `blocked` · `shipped`.
 Waves 1 to 5 predate this file; their tickets are reconstructed from the git
 history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 
+## Wave 20
+
+Dispatch of 2026-09-17. #48, #49, #50 and #51 were merged by the owner and verified
+as ancestors of `origin/main` before any card was worked: `27bf5f5`, `00006b8`,
+`ff102c6` and `207ddf0`.
+
+**The whole defect backlog, W19-D1 to W19-D10.** D1 to D5 came from the first critic
+pass and were never worked; the second pass re-measured them as still live. Every
+card opens a pull request and stops for the owner (R-V as amended at wave 19).
+**The order is by client impact, as dispatched**, not by card number: D6, D8, D9, D7,
+D10, then D1 to D5 in their recorded rank order (D3, D2, D1, D4, D5). RC-144 rides the
+first PR. RC-145 follows D8, the other form card.
+
+**Every PR is stacked on the one before it, and each targets `main`.** Merge them in
+the table's order; a merged PR shrinks the next one's diff with no rebase. W19-D3 and
+W19-D10 both change `src/main.js` and are worked in sequence, never in parallel.
+
+The critic's cards carry no RC number, and none was assigned by the dispatch, so they
+are tracked by their card IDs.
+
+| Ticket | Card | Branch | Status |
+|---|---|---|---|
+| RC-144 | W20-01 Document drift: the stub count in `docs/CLAUDE.md` section 6, and three question headings | `w20/w19-d6-quote-cta-popup` (rides the first PR) | PR open, awaiting owner: section 6 struck under R-R, 44 to 16, re-counted from `content/projects.json` (RO 16, RU 16); Q-W14-08(a), Q-W9-06 and Q-W12-07-LEGAL closed in their headings with a pointer each, no body edited; Q-W9-06 recorded as settled in part |
+| W19-D6 | The quote buttons land on the form with the callback popup covering it, both homepages | `w20/w19-d6-quote-cta-popup` | PR open, awaiting owner: a click on any quote button, or focus entering the form, stands the popup down as a submit did; check 1 24 of 24 on the branch, 24 of 24 failing on `main` with focus on `#lead-phone`; 31s of typing uninterrupted, 77 of 77 characters; popup unchanged for other visitors, 6 of 6 on both builds; live repeat owed after deploy |
+| W19-D8 | Țiglă metalică, Copertine and Garduri in the "Tipul lucrării" list, both locales | `w20/w19-d8-work-type-list` | todo |
+| RC-145 | W20-02 Form wiring gate: every form posts to the configured endpoint | `w20/rc-145-form-wiring-gate` | todo |
+| W19-D9 | The Russian 404 is never served | `w20/w19-d9-ru-404` | todo |
+| W19-D7 | The spec table is cut on phones | `w20/w19-d7-spec-table-phones` | todo |
+| W19-D10 | Landscape phones cannot reach the last catalog categories | `w20/w19-d10-landscape-catalog` | todo |
+| W19-D3 | The desktop catalog chevron click closes what hover opened | `w20/w19-d3-catalog-chevron` | todo |
+| W19-D2 | The hero photo shrinks to 400px between 401 and 768px | `w20/w19-d2-hero-photo-width` | todo |
+| W19-D1 | Long one-word headings overflow; the RU privacy page scrolls sideways | `w20/w19-d1-heading-overflow` | todo |
+| W19-D4 | The empty "Preț și condiții" band on five service pages | `w20/w19-d4-empty-price-band` | todo |
+| W19-D5 | The homepage portfolio has no chip for the 3D project | `w20/w19-d5-portfolio-3d-chip` | todo |
+
 ## Wave 19
 
 Dispatch of 2026-09-17. #44, #45 and #46 were merged by the owner and verified as

@@ -486,11 +486,21 @@
       }
     }
 
-    // Suppress permanently once the main form has been submitted.
+    /* Suppress permanently once the visitor has asked for the main form, not only
+       once they have submitted it (W19-D6). The form sits past 50% depth on both
+       homepages, so a jump to it crossed the depth trigger and the popup opened
+       over the form on arrival. A click on any link to #oferta, or focus entering
+       the form, is now the same signal a submit is. Capture phase, so the
+       triggers are down before the anchor scroll above has moved the page. */
+    function suppress() { markSeen(); teardownTriggers(); }
     var mainForm = document.getElementById('quote-form');
     if (mainForm) {
-      mainForm.addEventListener('submit', function () { markSeen(); teardownTriggers(); });
+      mainForm.addEventListener('submit', suppress);
+      mainForm.addEventListener('focusin', suppress);
     }
+    document.addEventListener('click', function (e) {
+      if (e.target.closest && e.target.closest('a[href="#oferta"]')) suppress();
+    }, true);
 
     /* Same validation rule and same demo-mode contract as the main form. */
     leadForm.addEventListener('submit', function (e) {

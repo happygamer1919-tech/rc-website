@@ -7076,3 +7076,136 @@ Lighthouse reports.
 - **The headings of Q-04, Q-W12-07-LEGAL and Q-W14-08** do not reflect the later
   records above. Under R-S a heading is status metadata and may be updated in place.
   No heading was touched here.
+
+## W20-01 · Document drift: the stub count corrected under R-R, and three question headings closed, 2026-09-17
+
+**Card RC-144.** Rides the first wave 20 pull request, as its own commit, as the
+dispatch directs. Docs only. Nothing rendered changes.
+
+### Before any card: the four merges
+
+`gh pr view` on each, then `git merge-base --is-ancestor` against `origin/main`
+(`207ddf0`), both the merge commit and the PR head:
+
+| PR | Merge commit | Head | Ancestor of `origin/main` |
+|---|---|---|---|
+| #48 | `27bf5f5` | `2ae3bc2` | yes, both |
+| #49 | `00006b8` | `0bde0e4` | yes, both |
+| #50 | `ff102c6` | `8db3183` | yes, both |
+| #51 | `207ddf0` | `de5e4ce` | yes, both |
+
+### `docs/CLAUDE.md` section 6, corrected under R-R
+
+"44 of the 54 projects are stubs" was struck in place, with the live figure beside it
+and an amendment naming this card. **Re-counted, not transcribed:** over
+`content/projects.json`, a project is renderable when its `title` and `summary` are
+both real in that locale (not empty, not `TODO:`), which is `build.js`'s rule. 54
+projects; RO 38 renderable and 16 stubs; RU 38 renderable and 16 stubs. That equals
+`docs/audits/wave-19-readiness.md` section 3.
+
+The value is not added to `scripts/check-stale-docs.js`. It is not a ruling-held
+measurement, and two other documents still carry it: `docs/RC-PHOTO-MANIFEST.md`
+lines 362 and 367, and the wave 12 handoff in `RELEASE-NOTES.md` (the Q-04 row).
+Both are outside this card's scope and are reported, not changed.
+
+### Three question headings, closed as status metadata under R-S
+
+Only the headings changed. No question body and no later record was edited.
+
+| Question | Heading now | The later record that settles it |
+|---|---|---|
+| Q-W14-08(a) | CLOSED 2026-09-16 | `DECISIONS.md`, W16 ratifications: "Dasterum is the confirmed tile supplier. Q-W14-08(a) is closed." |
+| Q-W9-06 | CLOSED 2026-09-17 | Q-W10-01, CLOSED 2026-09-06 (W12-04): the key is set and a real browser submission landed at 08:57 on 2026-09-06; the same evidence is in `docs/BACKLOG.md`, wave 12 |
+| Q-W12-07-LEGAL | CLOSED 2026-09-17 | W12-26, RC-072, commit `8c3b9ce`: the fallback privacy page published and linked on an explicit switch |
+
+### Recorded for the owner
+
+1. **Q-W9-06 is settled by the record only in part.** It asked for one live
+   submission per locale. Q-W10-01 records one submission, without its locale, and the
+   wave 12 handoff in `RELEASE-NOTES.md` says "One remains". It is closed as
+   dispatched, and its heading says so. RC-145 now asserts the wiring of every form in
+   both locales, which is not delivery.
+2. **Q-W12-07-LEGAL's heading question is settled; the operator section is not.** The
+   pages are linked and indexed, and `privacy.opName` and `privacy.opIdno` are still
+   absent in both locales. The heading points at its own addendum, which holds the
+   steps for when the registry extract arrives. No other open question tracks the
+   extract.
+3. **Q-04's heading still says 44 stubs.** The readiness audit flagged it with the
+   other two, and it is still open, so the dispatch did not name it. Left unchanged.
+
+## W19-D6 · Reaching for the quote form now stands the callback popup down, the way submitting it did, 2026-09-17
+
+**Card W19-D6**, first in the wave 20 order. PR only, stops for the owner.
+
+### The defect, and the change
+
+On `/` and `/ru/` the quote form sits past 50% of the scrollable height, so every jump
+to `#oferta` crossed the popup's depth trigger, and "Te sunăm noi" opened over the
+form on arrival with focus in its phone field. `src/main.js` block 5 already stood the
+triggers down for good once the main form was **submitted**. It now does the same, with
+the same two calls (`markSeen()` and `teardownTriggers()`), when:
+- **any `a[href="#oferta"]` is clicked**, on a capture-phase listener, so the triggers
+  are down before the anchor scroll moves the page; or
+- **focus enters `#quote-form`**, which covers a visitor who reached the form some
+  other way and started typing before the 30 seconds ran out.
+
+Nothing else in the popup changed: its 30-second timer, 50% depth and desktop exit
+intent triggers are untouched for every other visitor. No CSS, no strings, no markup.
+
+### Acceptance, the card's own checks
+
+Scratch harness, headless Chrome 153 over CDP, a local build served at the site root,
+`sessionStorage` cleared before every load. Clicks are real `Input.dispatchMouseEvent`
+at 1280×800 (`mobile: false`); taps are real `Input.dispatchTouchEvent` at 390×844
+(`mobile: true`, touch emulation on).
+
+**Check 1, the form paths.** Header or phone menu, hero, and the four offer cards;
+`/` and `/ru/`; 1280 and 390. Each link brought to centre with an instant
+`scrollIntoView`, the popup asserted closed first, then clicked or tapped and read after
+2.5s.
+
+| Build | Combinations read | Popup open on arrival | Focus on `#lead-phone` | `#oferta` top within the header height + 2px |
+|---|---|---|---|---|
+| `main` (`207ddf0`) | 24 of 24 | **24** | **24** | 24 |
+| this branch | 24 of 24 | **0** | **0** | 24 |
+
+The form's top lands at 95.8 or 96px at 1280 (header 96) and 80px at 390 (header 80)
+on both builds. Only the popup differs.
+
+**Check 2, typing is not interrupted.** 1280, `/`: hero quote button clicked, `#f-name`
+focused, one character every 400ms for 31s.
+- `main`: the popup was already open over the form when typing began. FAIL.
+- This branch: 77 characters typed, 77 held, identical; the popup opened 0 times, read by
+  a MutationObserver installed before the click. PASS.
+
+**Check 3, unchanged for everyone else**, both homepages, 1280×800, a fresh session each:
+
+| | `main` | this branch |
+|---|---|---|
+| (a) no click, instant scroll to 60% depth | opens in 25 to 26ms | opens in 26ms |
+| (b) no click, no scroll, 31s | opens | opens |
+| (c) once closed, a quote button click | stays closed | stays closed |
+
+6 of 6 pass on both builds.
+
+**Check 4, watched failing first:** check 1 failed on all 24 combinations on `main`,
+with focus on `#lead-phone`, as the card measured live on `ff102c6`; check 3 passed on
+`main`. **Check 5:** the gates and `verify-live.js` are in the PR, each from its own
+process. The live repeat of check 1 at 1280 is owed after deploy (R-P).
+
+### Recorded for ratification
+
+1. **A click on a quote button stands the popup down for the rest of the session**, not
+   just for that scroll. That is what "the same signal that submitting it already is"
+   means in this code: the submit path marks the session seen. A visitor who asked for
+   the quote form is not offered the callback popup later in the same visit.
+2. **Focus entering the form counts too.** The card's fix direction names it as an
+   example. It is the one change here that reaches a visitor who never clicked a quote
+   button.
+3. **The footer's quote link is covered by the same selector.** It is outside the
+   matrix because reaching the footer crosses 50% depth before any click, which is
+   unchanged.
+4. **The header's Portofoliu, Despre and Contacte jumps still open the popup** on
+   arrival. The card records them as the depth trigger working as designed, and out of
+   scope; whether the popup should auto-open at all stays with the owner (first critic
+   pass, taste report item 3).

@@ -1878,7 +1878,7 @@ half-step: the lede is what the meta description and the page hero most want.
 are in the sitemap, as the card directs, so they are indexable today; thin pages in
 a sitemap are a real cost, and (a) accepts it knowingly rather than by oversight.
 
-## Q-W20-01 · "The endpoint returns 2xx" cannot be asserted without sending a real lead · OPEN · opened 2026-09-17 (W20-02, RC-145)
+## Q-W20-01 · "The endpoint returns 2xx" cannot be asserted without sending a real lead · ~~OPEN~~ **ANSWERED 2026-09-17 (W21 ratifications), option (b) and now a standing rule: Web3Forms answers 2xx only to a real send, so gate 13 asserts wiring and a person sends one real lead per locale after any form change. The rule is `docs/CLAUDE.md` section 11, gate 13** · opened 2026-09-17 (W20-02, RC-145)
 
 **Shipped default: the gate asserts wiring only, and says so in its own output.**
 `scripts/check-form-wiring.js` (gate 13) holds every form to the configured endpoint,

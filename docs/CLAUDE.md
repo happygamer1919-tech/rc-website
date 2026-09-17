@@ -354,6 +354,15 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     messages: a header can fit with nothing to spare. It fails, never skips, when
     the Inter webfont does not load, because a width measured in a fallback font
     is not a measurement of this site.
+12. `node scripts/check-svg-a11y.js` clean. **Since W19-02 (RC-142)**, run by
+    `quality` after the catalog page gate. Every inline `<svg>` on every built
+    page is either decorative, `aria-hidden="true"` inside a control that already
+    names itself, or an image, `role="img"` with a non-empty `aria-label`. Every
+    diagram (the carport structures, the tile profiles) is an image, never
+    decorative, and carries a description: an `aria-describedby` naming a
+    non-empty `<desc>` inside it. Any text a diagram draws takes the tile
+    treatment. It fails, never passes vacuously, on no pages, no svg, or no
+    diagram of either family.
 
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number — Q-W14-03 was found "at gate 9" — and those bodies are immutable under

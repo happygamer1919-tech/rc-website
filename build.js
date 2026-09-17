@@ -990,6 +990,9 @@ function tiglaDiagram(l, m, widths) {
   const brk = tiglaLine(cx - 5, b + 4, cx - 1, b - h - 4) + tiglaLine(cx + 1, b + 4, cx + 5, b - h - 4);
   let dims = '';
   let label = `${t('profile')}: ${m.name[l.code]}`;
+  // W19-02 (RC-142). A description of the profile's form, as the carport diagrams carry.
+  const desc = t(`diagrams.${key}.desc`);
+  if (!REAL(desc)) die(`tile diagram "${key}" needs a real tigla.diagrams.${key}.desc in ${l.code}.`);
   if (widths) {
     const lc = (s) => s.charAt(0).toLocaleLowerCase(l.code) + s.slice(1);
     const total = Number(widths.total), working = Number(widths.working);
@@ -1001,7 +1004,7 @@ function tiglaDiagram(l, m, widths) {
     label += `, ${lc(t('totalWidth'))} ${widths.total} ${t('mm')}, ${lc(t('workingWidth'))} ${widths.working} ${t('mm')}`;
   }
   return `
-        <div class="tile-diagram" data-tile-diagram="${key}"><svg class="tile-diagram__svg" viewBox="0 0 160 100" width="160" height="100" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="${esc(label)}" focusable="false"><path class="d-accent" d="${d}" vector-effect="non-scaling-stroke"/>${brk}${dims}</svg></div>`;
+        <div class="tile-diagram" data-tile-diagram="${key}"><svg class="tile-diagram__svg" viewBox="0 0 160 100" width="160" height="100" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="${esc(label)}" aria-describedby="tile-diagram-desc-${m.id}" focusable="false"><desc id="tile-diagram-desc-${m.id}">${esc(desc)}</desc><path class="d-accent" d="${d}" vector-effect="non-scaling-stroke"/>${brk}${dims}</svg></div>`;
 }
 (() => {
   const unmapped = TIGLA.models.filter((m) => !TIGLA_PROFILES[TIGLA_MODEL_DIAGRAM[m.id]]).map((m) => m.id);
@@ -1153,10 +1156,17 @@ if (/\bIL\s?\d{3}\b/i.test(JSON.stringify({ families: COP.families, models: COP.
    Shared frame 160x100 with the ground at y 88; one stroke weight (2, held by
    vector-effect at any size); no fill; no text. The roof line carries the brand
    accent through the d-accent class; every other line is currentColor, so a
-   diagram reads on the light chooser and the dark model band alike. Decorative:
-   the card heading names what it shows. */
+   diagram reads on the light chooser and the dark model band alike.
+
+   W19-02 (RC-142). No longer decorative. Each diagram is an image with an
+   accessible name and a description of the structural form it draws, both from
+   the locale files (copertine.diagrams.<key>.name and .desc), the same standard
+   as the tile profiles. The drawing itself is unchanged: COP_DIAGRAMS holds only
+   the geometry, and copDiagram wraps it per locale. No label is drawn, because
+   no carport has a measured dimension to draw; a label added later takes the
+   tile treatment, which scripts/check-svg-a11y.js enforces. */
 const copLine = (x1, y1, x2, y2, accent) => `<line${accent ? ' class="d-accent"' : ''} x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" vector-effect="non-scaling-stroke"/>`;
-const copSvg = (body) => `<svg class="cop-diagram__svg" viewBox="0 0 160 100" width="160" height="100" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${body}${copLine(8, 88, 152, 88)}</svg>`;
+const copSvg = (body) => `${body}${copLine(8, 88, 152, 88)}`;
 const COP_DIAGRAMS = {
   // A flat roof on a post at each end.
   posts: copSvg(copLine(18, 34, 142, 34, true) + copLine(30, 34, 30, 88) + copLine(130, 34, 130, 88)),
@@ -1200,7 +1210,15 @@ const COP_FAMILY_DIAGRAM = { stalpi: 'posts', consola: 'cantilever', perete: 'wa
   const unused = Object.keys(COP_DIAGRAMS).filter((k) => !used.has(k));
   if (unused.length) die(`carport diagrams defined but used by no card: ${unused.join(', ')}.`);
 })();
-const copDiagram = (key) => `<div class="cop-diagram" data-diagram="${key}">${COP_DIAGRAMS[key]}</div>`;
+/* uid makes the description's id unique on the page: a family id or a model id,
+   which never collide (stalpi, consola ... against c01 ... c12). */
+const copDiagram = (l, key, uid) => {
+  const name = l.strings[`copertine.diagrams.${key}.name`];
+  const desc = l.strings[`copertine.diagrams.${key}.desc`];
+  if (!REAL(name) || !REAL(desc)) die(`carport diagram "${key}" needs a real copertine.diagrams.${key}.name and .desc in ${l.code}.`);
+  const id = `cop-diagram-desc-${uid}`;
+  return `<div class="cop-diagram" data-diagram="${key}"><svg class="cop-diagram__svg" viewBox="0 0 160 100" width="160" height="100" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="${esc(name)}" aria-describedby="${id}" focusable="false"><desc id="${id}">${esc(desc)}</desc>${COP_DIAGRAMS[key]}</svg></div>`;
+};
 
 function copertine(l) {
   if (COP.models.length === 0) return '';
@@ -1213,7 +1231,7 @@ function copertine(l) {
 
   const tiles = COP.families.map((f, i) => {
     const w = `families[${i}]`;
-    const media = copDiagram(COP_FAMILY_DIAGRAM[f.id]);
+    const media = copDiagram(l, COP_FAMILY_DIAGRAM[f.id], f.id);
     const chips = f.models.map((id) => `<li class="model-chip">${esc(byId.get(id).designation)}</li>`).join('');
     return `      <article class="bento__tile${i === 0 ? ' bento__tile--wide' : ''}" data-reveal data-stagger="${Math.min(i, 6)}">
         ${media}<h3 class="bento__title">${txt(f.title, `${w}.title`)}</h3>
@@ -1224,7 +1242,7 @@ function copertine(l) {
 
   const models = COP.models.map((m, i) => {
     const w = `models[${i}]`;
-    const media = copDiagram(COP_MODEL_DIAGRAM[m.id]);
+    const media = copDiagram(l, COP_MODEL_DIAGRAM[m.id], m.id);
     return `      <article class="model" data-reveal data-stagger="${Math.min(i, 6)}">
         ${media}<p class="model__cat">${txt(m.category, `${w}.category`)}</p>
         <h3 class="model__name">${esc(m.designation)}</h3>

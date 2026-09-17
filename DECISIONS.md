@@ -7738,3 +7738,97 @@ pages equal `main`'s, 60 of 60, delta 0 (`/`: 358×268.5, 976×732 and 564×423)
 1. **The SVG fallback hero box takes the same rule**, beyond the card's photo-only
    scope, because it has the same box and would collapse the same way the day a slot
    loses its photo.
+
+## W19-D1 · Long one-word headings hyphenate instead of overflowing, and gate 14 watches for the next one, 2026-09-17
+
+**Card W19-D1**, ninth in the wave 20 order, rank 3 of the first critic pass. PR only,
+stops for the owner. Stacked on W19-D2.
+
+### The change
+
+`src/styles.css`, the base `h1, h2, h3` rule gains, with a comment:
+
+    overflow-wrap: break-word; -webkit-hyphens: auto; hyphens: auto; hyphenate-limit-chars: 14 6 4;
+
+A word of **14 characters or more** may hyphenate, with at least 6 letters before the
+break and 4 after; both locales set `lang`, so the browser picks the dictionary. A word
+that still cannot fit breaks rather than overflows. Nothing else in the typography
+moved: no size, no weight, no spacing.
+
+**Three candidates were measured**, each through the full acceptance below:
+
+| Candidate | Check 2 | Check 4: h1/h2 that fit on `main` and changed line count | The RU privacy h1 at 1280 |
+|---|---|---|---|
+| A. `overflow-wrap: break-word` only | 264 of 264 | 0 of 346 | "КОНФИДЕНЦИАЛЬНОСТ / И", broken at the last letter |
+| B. A + `hyphens: auto` | 264 of 264 | **3 of 346**: "Lucrări de terasament și excavare" at 390 and 1280, "Другие строительные материалы" at 390, 3 lines to 2 | "КОНФИДЕНЦИАЛЬНО- / СТИ" |
+| **C. B + `hyphenate-limit-chars: 14 6 4`** (shipped) | **264 of 264** | **0 of 346** | "КОНФИДЕНЦИАЛЬ- / НОСТИ" |
+
+A fixed the overflow and read badly. B hyphenated headings that already fitted. C does
+neither. The shipped rule was then reformatted onto separate lines with its comment, and
+the whole acceptance re-run on that build; the figures below are that run's.
+
+### Acceptance, the card's own checks
+
+Scratch harness, headless Chrome 153, a local build, `mobile: true` at 390 and below,
+every reveal applied, a popup-suppressing session key.
+
+**Check 1, font precondition:** Inter loaded, none loading, on all 264 loads of every
+run, `main` and branch. **Check 2:** all 42 sitemap pages plus both 404 pages, **44**,
+at 360, 375, 390, 768, 1280 and 1920, **264 combinations read**: no sideways scroll, and
+no visible `h1`, `h2` or `h3` with `scrollWidth > clientWidth + 1`.
+
+| Page | Width | `main` (**check 3**, watched failing first: exactly these 6) | this branch |
+|---|---|---|---|
+| `/ru/konfidentsialnost/` | 360 | page scrolls 83px, h1 +99px | pass |
+| `/ru/konfidentsialnost/` | 375 | page scrolls 68px, h1 +84px | pass |
+| `/ru/konfidentsialnost/` | 390 | page scrolls 53px, h1 +69px | pass |
+| `/ru/konfidentsialnost/` | 1280 | h1 +25px | pass |
+| `/ru/konfidentsialnost/` | 1920 | h1 +25px | pass |
+| `/ru/servicii/tigla-metalica/` | 360 | h1 +14px | pass |
+
+Every figure equals the card's. The other 258 pass on both builds.
+
+**Check 4, nothing that fit moved:** every `h1` and `h2` that passed on `main`, 346 at
+390 and 1280 across the 44 pages, line counts read with a DOM range: **0 changed.** No
+heading is listed, because none wraps differently.
+
+**Check 5:** `verify-live.js` and every gate, gate 11 included, are in the PR.
+
+Screenshots read: the RU privacy h1 at 1280 and at 360 ("КОНФИДЕНЦИАЛЬ- / НОСТИ"), and
+the RU tile h1 at 360 ("МЕТАЛЛОЧЕРЕ- / ПИЦА").
+
+### Gate 14: `scripts/check-heading-fit.js`
+
+The card recommends making check 2 a standing gate. It is one, run by `quality` after
+gate 11 and before RC-145's rebuild, **at 360px (mobile) and 1280px**, where the two
+kinds of failure were measured: the phone overflow and the desktop column overflow.
+The other four widths added no failure in any run. 44 pages × 2 = 88 combinations,
+1,104 visible headings read. The Chrome, server and protocol code is the header gate's,
+copied, as every script here is standalone. It fails, never skips, on no Inter, no or
+empty sitemap, a page missing from `dist/`, a page with no heading, or a short matrix.
+`docs/CLAUDE.md` section 11 gains gate 14, appended, and the run-order paragraph an
+amendment.
+
+**Negative-tested.** Control, this branch: exit 0, 88 of 88.
+
+| Arm | Result |
+|---|---|
+| a. `main`'s build | exit 1: `/ru/konfidentsialnost/` at 360 scrolls 83px and its h1 +99px; tile h1 +14px at 360; privacy h1 +25px at 1280 |
+| b. this branch's build with the new declarations removed from `styles.css` | exit 1, the same four problems |
+| c. arm b plus a 48-letter Romanian word planted in a `/servicii/garduri/` h2 | exit 1, seven problems, including `/servicii/garduri/` at 360 scrolling 424px |
+| d. `sitemap.xml` deleted | exit 1: the sitemap is missing |
+| e. every page's Google Fonts host changed to `fonts.invalid` | exit 1: the Inter webfont did not load for `/` at 360px |
+| f. **the rule in place**, 48- and 36-letter words planted in the h1 and an h2 of `/servicii/garduri/` and `/ru/servicii/garduri/` | **exit 0**: the fix holds for a heading string that does not exist yet; the RU h1 at 360 read "ЭЛЕКТРОГИДРАВ- / ЛИЧЕСКИМОРОЗО- / УСТОЙЧИВЫЕ" |
+
+### Recorded for ratification
+
+1. **Hyphenation limited to words of 14+ characters**, chosen by measurement over the
+   two alternatives the card names.
+2. **Browser support differs, and only Chrome was measured.** Safari reads
+   `-webkit-hyphens` but not `hyphenate-limit-chars`, so on an iPhone a shorter word may
+   hyphenate too, as candidate B did in Chrome on 3 headings. A browser without a
+   dictionary for the page's language falls back to `overflow-wrap`, candidate A's
+   break. Neither case overflows.
+3. **Gate 14 is new** and adds 88 page loads to `quality`.
+4. The RU privacy page's h1 is now three lines at desktop. Privacy pages have no height
+   budget.

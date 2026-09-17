@@ -80,7 +80,16 @@ a:hover { color: var(--brand-dark); }
 .btn--primary:focus-visible,
 .floating__call:focus-visible { outline-color: var(--ink); outline-offset: 3px; }
 
-h1, h2, h3 { font-family: var(--font-heading), var(--font-fallback); margin: 0; line-height: 1.15; }
+/* W19-D1. An uppercase heading cannot wrap inside a word, and a long Russian word
+   ("КОНФИДЕНЦИАЛЬНОСТИ", "МЕТАЛЛОЧЕРЕПИЦА") ran out of its column, and on phones
+   pushed the page sideways. A word of 14 characters or more may hyphenate (both
+   locales set lang, so the browser has the dictionary); a word that still cannot
+   fit breaks rather than overflow. Shorter words never hyphenate, so a heading that
+   already fits wraps exactly as before. scripts/check-heading-fit.js holds it. */
+h1, h2, h3 {
+  font-family: var(--font-heading), var(--font-fallback); margin: 0; line-height: 1.15;
+  overflow-wrap: break-word; -webkit-hyphens: auto; hyphens: auto; hyphenate-limit-chars: 14 6 4;
+}
 h1 { font-size: 56px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; }
 h2 { font-size: 40px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; }
 h3 { font-size: 22px; font-weight: 700; }

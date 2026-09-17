@@ -380,6 +380,14 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     the endpoint's status, which Web3Forms answers 2xx only to a delivered
     submission (Q-W20-01). It fails with no key set, with no endpoint line, and on
     zero pages or zero forms.
+14. `node scripts/check-heading-fit.js` clean. **Since W19-D1 (wave 20)**, run by
+    `quality` after gate 11 and before gate 13. Every page in the sitemap and both
+    404 pages, at 360px with mobile emulation and at 1280px: the page does not
+    scroll sideways, and no visible `h1`, `h2` or `h3` is wider inside than its own
+    box, which is how a word that cannot wrap shows itself even where the page does
+    not scroll. It fails, never skips, when Inter does not load, when the sitemap is
+    missing or empty, when a page shows no heading, and when fewer combinations were
+    measured than the matrix holds.
 
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number — Q-W14-03 was found "at gate 9" — and those bodies are immutable under
@@ -397,6 +405,7 @@ postdate this list and were never given numbers; they are gates in every sense,
 and are named here so the numbered list is not read as the complete set.
 **AMENDED (W20-02):** gate 13 runs after gate 11, as the very last step, because it
 rebuilds `dist/` armed with a stand-in key that no earlier gate may measure.
+**AMENDED (W19-D1, wave 20):** gate 14 runs between gate 11 and gate 13.
 
 ---
 

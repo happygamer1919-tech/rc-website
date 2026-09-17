@@ -274,7 +274,7 @@ wave 14 tail block above.** Nothing else moved: the other 26 pages `scripts/veri
 service pages included, were re-measured in the same run and each was identical to
 its current figure.
 
-**These figures are LOCAL, and stated as such.** The diagrams are not deployed
+**These figures are ~~LOCAL~~, and stated as such.** **AMENDED 2026-09-17 (W19-01): confirmed under R-P on the live domain, identical to the pixel on both tile pages; the W19-01 block below holds the R-P reading.** The diagrams are not deployed
 until this merges, so an R-P reading cannot exist yet. Measured by
 `scripts/verify-live.js` against a local server of this branch's `dist/`, at
 1440x900: every request cache-busted, `build-sha` asserted in the same page load and
@@ -305,3 +305,49 @@ change nothing above it.
 now of type `tigla`, whose marker set adds `tileDiagrams: 4`. The tail's 3,841 and
 3,875 are known-superseded values in `scripts/check-stale-docs.js`
 (`budget-tigla-w14`), per R-Q.
+
+### Amended 2026-09-17 by W19-01 (RC-141) · the tile budgets confirmed under R-P
+
+Added under R-T. The LOCAL label in the W18-01 block above is struck in place under
+R-R, with an inline amendment naming W19-01. That strike is R-R conduct, not an edit
+in R-T's sense (`docs/CLAUDE.md` section 17, as amended at the W18 ratifications).
+No other sentence above this block was edited.
+
+**Measured under R-P on the live domain `https://rapidconstruct.md`**, after #44
+(RC-138) deployed. The build measured is the latest deployed commit, which contains
+#44 and changes no page after it: #45 and #46 changed scripts and workflows, #47
+added documents. The deployed commit's `build-sha` was asserted equal to the
+expected commit on every page, in the same page load as the height. Every request
+was cache-busted with a token unique to the run; the browser cache was disabled;
+1440x900; every `[data-reveal]` was applied and settled before `scrollHeight` was
+read. The commit is not restated here, for the reason the ruling gives at the top.
+
+**Three clean runs, identical to the pixel on all 28 pages the script holds.** Every
+page was VERIFIED and inside budget, 28 of 28 read, and the reachability crawl found
+zero visible TODO across 33 URLs. The third run was the control after two negative
+arms, each failing on its own message:
+- expecting `tileDiagrams: 5`, both tile pages reported UNVERIFIED on
+  `marker mismatch: tileDiagrams expected 5, got 4`;
+- expecting the commit before the deployed one, all 28 pages reported UNVERIFIED on
+  `build-sha mismatch`.
+
+| Page | RO measured, R-P | RO budget, under | RU measured, R-P | RU budget, under |
+|---|---|---|---|---|
+| `/servicii/tigla-metalica/` | 3,940 | **4,000** | 3,973 | **4,033** |
+
+**Identical to W18-01's LOCAL figures, so no budget changes.** Identical figures are
+also exactly what a stale edge copy returns. Identity rests on the `build-sha` and
+the four `[data-tile-diagram]` markers read in the same load, not on the numbers.
+
+**Every other page this ruling holds also read live exactly as its last local reading,
+delta 0 on all 28:**
+- homepage 10,447 RO and 10,747 RU;
+- carports 5,433 and 5,509;
+- fences 4,756 and 4,778;
+- the fourteen category pages as in the W17-03 block.
+The six service page rows `scripts/verify-live.js` also checks read the same, under
+their wave 7 budget.
+
+**Still no promo-bar revert figure measured for the tile page's current state.** The
+44 stated in the wave 14 tail block was measured before the diagrams, and was not
+re-measured here.

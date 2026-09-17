@@ -1,7 +1,8 @@
 # The `quality` check, created by W14-02 (RC-102) under ruling R-V.
 #
 # Runs the machine-checkable gates from docs/CLAUDE.md section 11 on every pull
-# request. R-V permits a SELF card to self-merge only when this job is green.
+# request. Since the wave 19 amendment to R-V no card self-merges: every card
+# takes this job green and stops for the owner.
 # It never deploys: publishing stays in pages.yml, on push to main.
 #
 # Deliberately sets no build environment. build.js defaults the site origin and

@@ -65,6 +65,7 @@
     }
     function openSub(row) {
       closeSubs(row);
+      row.hoverOpened = false;
       row.classList.add('is-active');
       row.querySelector('.catalog__expand').setAttribute('aria-expanded', 'true');
       row.querySelector('.catalog__sub').removeAttribute('hidden');
@@ -98,16 +99,28 @@
     Array.prototype.forEach.call(top, function (row) {
       row.addEventListener('mouseenter', function () {
         if (!flyout.matches) return;
-        if (row.classList.contains('catalog__row--parent')) openSub(row); else closeSubs(null);
+        if (row.classList.contains('catalog__row--parent')) {
+          if (row.querySelector('.catalog__sub').hasAttribute('hidden')) { openSub(row); row.hoverOpened = true; }
+        } else {
+          closeSubs(null);
+        }
       });
     });
     Array.prototype.forEach.call(parents, function (row) {
       var expand = row.querySelector('.catalog__expand');
       var backBtn = row.querySelector('.catalog__back');
+      /* W19-D3. A mouse cannot reach the chevron without entering its row, so on
+         a hover screen the list is already open when the click lands, and a plain
+         toggle closed what the visitor was asking to see. The first click on a
+         list that hover opened keeps it open; from then on the chevron toggles as
+         before. Keyboard (the pointer elsewhere), touch and the phone drill-down
+         never set the flag, so they toggle exactly as they did. */
       expand.addEventListener('click', function () {
         if (row.querySelector('.catalog__sub').hasAttribute('hidden')) {
           openSub(row);
           if (mobile.matches) backBtn.focus();
+        } else if (row.hoverOpened) {
+          row.hoverOpened = false;
         } else {
           closeSubs(null);
         }

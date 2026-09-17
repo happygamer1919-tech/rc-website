@@ -98,7 +98,8 @@ const MARKERS = {
 const PAGES = [
   // Homepage and product page budgets: ruling R-Y (docs/rulings/R-Y.md, W14-13;
   // product pages as amended by the wave 14 tail; the tile page as amended by
-  // W18-01, RC-138, with its profile diagrams).
+  // W18-01, RC-138, with its profile diagrams, and confirmed under R-P on the live
+  // domain by W19-01, RC-141).
   { path: '/',                             type: 'home',    label: 'homepage RO',    budget: 10507 },
   { path: '/ru/',                          type: 'home',    label: 'homepage RU',    budget: 10807 },
   { path: '/servicii/case-la-cheie/',      type: 'service', label: 'svc RO case',    budget: 6000 },

@@ -6863,3 +6863,59 @@ In the form the wave 18 report put them:
 
 The dispatch names three of these explicitly: the header script made a gate (1), the
 section 17 sentence (5) and the section 11 correction (8).
+
+## W19-01 · The tile budgets confirmed under R-P, and the LOCAL label struck, 2026-09-17
+
+**Card RC-141.** PR only, stops for the owner, under the amended R-V. #44 (RC-138) is
+deployed, so the W18-01 figures can now be read live.
+
+### The reading
+
+`EXPECT_SHA=<deployed commit> node scripts/verify-live.js https://rapidconstruct.md`,
+run after checking two things:
+- `gh api .../pages` reports the custom domain `rapidconstruct.md`, status `built`;
+- the Pages run for the deployed commit succeeded.
+
+The deployed commit is `b6f4a7d` (#47). It contains #44 and changes no page after
+it: #45 and #46 changed scripts and workflows, and #47 added documents.
+
+| Run | Expected | exit | Result |
+|---|---|---|---|
+| 1 | the deployed commit, markers as on `main` | 0 | 28 of 28 read, all VERIFIED, all inside budget, 33 URLs crawled, 0 visible TODO |
+| 2 | the same | 0 | identical to run 1 on every row |
+| arm A | `tileDiagrams: 5` | 1 | **2 UNVERIFIED**, both tile pages, `marker mismatch: tileDiagrams expected 5, got 4` |
+| arm B | the previous commit, `47957f3` | 1 | **28 UNVERIFIED**, each `build-sha mismatch` |
+| 3, control after the arms | the deployed commit | 0 | identical to runs 1 and 2 |
+
+### Live against local, every page
+
+The local reading is W18-01's run of the same script against a local server of the
+RC-138 branch build, the figures that went into R-Y as LOCAL. **All 28 rows are
+identical live, delta 0 on every page:**
+
+| Pages | Local and live |
+|---|---|
+| Homepage RO, RU | 10,447, 10,747 |
+| Tile page RO, RU | **3,940, 3,973** |
+| Carports RO, RU | 5,433, 5,509 |
+| Fences RO, RU | 4,756, 4,778 |
+| Six service page rows | 5,542, 5,460, 5,649, 5,667, 5,568, 5,587 |
+| Fourteen category pages | as W17-03's R-P reading, unchanged |
+
+**No page differs, so no budget changes:** tile 4,000 RO and 4,033 RU stand. As R-P
+warns, identical numbers are what a stale copy would return. Identity rests on the
+`build-sha` and the `tileDiagrams: 4` marker read in the same page load, and arms A
+and B show both assertions firing live.
+
+### Amended
+
+- **`docs/rulings/R-Y.md`**: the LOCAL label in the W18-01 block is struck in place
+  under R-R, with an inline amendment naming W19-01. A dated W19-01 block is appended
+  under R-T with the R-P reading, the method and both arms.
+- **`scripts/verify-live.js`**: the tile rows' comment names the R-P confirmation.
+  The figures are unchanged.
+- **`docs/BACKLOG.md`**: the wave 19 section, with no Mode column under the amended
+  R-V.
+
+**Not measured, and said so:** the tile page's promo-bar revert figure in its current
+state. The wave 14 tail's 44 predates the diagrams.

@@ -8,6 +8,26 @@ Status values: `todo` · `in progress` · `blocked` · `shipped`.
 Waves 1 to 5 predate this file; their tickets are reconstructed from the git
 history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 
+## Wave 19
+
+Dispatch of 2026-09-17. #44, #45 and #46 were merged by the owner and verified as
+ancestors of `origin/main` before any card was worked: `fd25d5d`, `a48a034` and
+`47957f3`. #47, the wave 19 critic's cards (docs only), was also merged, as
+`b6f4a7d`.
+
+**Ruling R-V is amended: self-merge is withdrawn.** Every card opens a pull request
+and stops for the owner. This table therefore has no Mode column; SELF and STOP no
+longer differ. The amendment and the wave 18 ratifications ride RC-141.
+
+| Ticket | Card | Branch | Status |
+|---|---|---|---|
+| RC-141 | W19-01 Live tile budgets under R-P | `w19/rc-141-live-tile-budgets` | PR open, awaiting owner: 3 live R-P runs of 28 pages, identical, 28 of 28 VERIFIED against the deployed build-sha; live equals local on all 28, delta 0; tile budgets unchanged; W18-01's LOCAL label struck and a W19-01 block added to R-Y; two negative arms fired |
+| RC-142 | W19-02 Diagram accessibility parity | `w19/rc-142-diagram-a11y` | todo |
+| RC-143 | W19-03 Pre-review sweep, `docs/audits/wave-19-readiness.md` | `w19/rc-143-readiness-sweep` | todo |
+
+**The W19 numbers follow the dispatch's order.** The critic's cards W19-D1 to W19-D5
+in `docs/board/` are a separate series and carry no RC number yet.
+
 ## Wave 18
 
 Dispatch of 2026-09-16. No ruling this wave. #39 (R-AB) and #43 (RC-134) were both

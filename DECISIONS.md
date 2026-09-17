@@ -7029,3 +7029,50 @@ RO and RU, tile RO and RU all **performance 100 and accessibility 100**, exit 0,
 4. **The 22 strings are authored accessibility text** describing drawings made in this
    repo. That is the same kind as the offer card alt text written at W14-18 and
    ratified at W15, not copy in section 5's sense.
+
+## W19-03 · The pre-review sweep: `docs/audits/wave-19-readiness.md`, 2026-09-17
+
+**Card RC-143.** PR only, stops for the owner, under the amended R-V. Stacked on
+RC-142's branch. **Facts only, no recommendations**, as the card directs. It is the
+wave 19 CRITIC's input and the owner's demo checklist.
+
+### What the report holds, and how each part was measured
+
+All of it against the live site, `build-sha` `b6f4a7d`, on 2026-09-17.
+
+| Part | Method | Result, in one line |
+|---|---|---|
+| 1. Sitemap URLs and status codes | the live `/sitemap.xml`, one `curl` GET per URL, redirects not followed | 42 of 42 return 200. Both 404 pages return 200 when requested directly; an unknown path returns 404 |
+| 2. Lighthouse, four categories, both locales | Lighthouse 13.4.1 via `npx --no-install`, `--preset=desktop` (gate 5's preset), one run per page, 42 sitemap pages plus the two 404 pages; every report read | 44 of 44 read, 0 errors. Every page scores 100 in all four categories except RO homepage performance 99, and 404 SEO 66 on both locales (`is-crawlable`: the pages are `noindex`) |
+| 3. Sections hidden because their data is empty | every render path in `build.js` that returns nothing on empty or absent data, against the data files and the built and live HTML | Absent: the before/after slider (both homepages), the specification table on 3 of 9 services, the tile model photos (0 of 4), and the privacy page's operator section. Content kept off every page: 16 of 54 projects are stubs. The data-driven sections that do render are listed with their values |
+| 4. PENDING-PHOTOS slots, by page | `docs/assets/PENDING-PHOTOS.md`, grouped by page | 63 slots plus the roofing galleries: 5 filled and 58 not. Of the 58, 9 have a host component on the site and 49 have none |
+| 5. Open questions with age in waves | every `## Q-` heading in `docs/QUESTIONS.md`; a heading with no status is read from its body's `Status:` line; age = 19 minus the opening wave; later records quoted where they exist | 10 open: 13 waves (Q-04), 10 waves (Q-W9-04, Q-W9-06, Q-W9-07), 7 (Q-W12-07-LEGAL), 6 (Q-W13-01), 5 (Q-W14-01, Q-W14-06, Q-W14-08(a), Q-W14-14) |
+
+The Lighthouse and status tables were generated from the measured files, not
+transcribed. The generator refused to write unless it read 42 status rows and 44
+Lighthouse reports.
+
+### Interpretations, recorded
+
+- **"Hidden because its data file is empty" is read as any render path whose data
+  is empty or absent.** That covers a JSON data file (`before-after.json`), locale
+  keys (the specification table, the privacy operator fields) and image files (the
+  tile photos). Each row names which kind it is.
+- **The two 404 pages are included in the Lighthouse table** beside the 42 sitemap
+  pages, because the card says every page.
+- **Contradictions between a question and a later record are stated side by side,
+  not resolved.**
+  - Q-W14-08(a): its heading says OPEN, while the W16 ratifications say closed.
+  - Q-W9-06: its body says blocked, while the backlog says a live submission
+    landed on 2026-09-06.
+  - Q-W12-07-LEGAL: its heading says the privacy pages are unlinked, while they are
+    linked and indexed live.
+
+### Found, and left unchanged, because the card is facts only
+
+- **`docs/CLAUDE.md` section 6** says "44 of the 54 projects in
+  `content/projects.json` are stubs". The data now holds 16 stubs; 38 render in each
+  locale.
+- **The headings of Q-04, Q-W12-07-LEGAL and Q-W14-08** do not reflect the later
+  records above. Under R-S a heading is status metadata and may be updated in place.
+  No heading was touched here.

@@ -7299,3 +7299,94 @@ chosen by value with a `change` event:
 3. **The option is chosen programmatically in check 5.** A native `<select>` opens an
    OS picker that CDP input cannot drive; the name, phone, consent and submit are real
    input.
+
+## W20-02 · Gate 13: every form on the site is held to the configured endpoint and recipient, on every PR and before every deploy, 2026-09-17
+
+**Card RC-145.** PR only, stops for the owner. Stacked on W19-D8.
+
+### The forms that exist, and where each one posts
+
+Measured on the **live site**, build `207ddf0`: the 42 sitemap pages and both 404
+pages, fetched with a cache-buster, 44 files read, then run through the new gate with
+the live access key as its configuration.
+
+| Form | Pages | Count | Method | Posts to | Recipient (access key) | Extra hidden field |
+|---|---|---|---|---|---|---|
+| `#quote-form` | `/`, `/ru/` | 2 | POST | `https://api.web3forms.com/submit` | one 36-character key, `sha256:34a57476c7` | `tip_lucrari` is a visible list (W19-D8) |
+| `#quote-form` | the 18 service pages | 18 | POST | same | same key | `serviciu`, the service name |
+| `#quote-form` | the 6 product pages | 6 | POST | same | same key | `serviciu`, the product name |
+| `#quote-form` | the 14 category pages | 14 | POST | same | same key | `serviciu`, the category name |
+| `#lead-form`, the callback popup | `/`, `/ru/` | 2 | POST | same | same key | none; phone only |
+
+**42 forms on 40 pages, all armed, one endpoint, one recipient key.** Every subject
+carries the locale tag and the page path. The privacy pages, both 404 pages and
+`/review/` carry no form. `src/main.js` submits by `fetch(form.action, FormData)`, so
+the `action` attribute is where a lead goes. The key is public in every armed page by
+Web3Forms' design, and is recorded here by fingerprint only.
+
+### The gate: `scripts/check-form-wiring.js`, gate 13
+
+For every `<form>` in every built page: method POST; `action` equal to
+`FORM_ENDPOINT_URL`, read from its one line in `build.js`; `data-armed="1"` and no demo
+notice; exactly one hidden `access_key`, equal to `WEB3FORMS_KEY`; a non-empty subject.
+Then the inventory, derived from `dist/sitemap.xml`: every sitemap page carries one
+`#quote-form` except the two privacy pages, the homepages also carry `#lead-form`, and
+a form with any other id fails. It prints the endpoint and the recipient fingerprint it
+compares against, the files, forms and sitemap pages read, and the whole table.
+
+**The recipient is the access key.** Web3Forms routes a submission to the inbox its
+access key was created for, and the form carries no address. "The configured recipient
+matches the value in config" is therefore read as each form's `access_key` equal to
+`WEB3FORMS_KEY`.
+
+**`build.js`:** the endpoint URL, previously an inline string in the `formAction`
+expression, is now `FORM_ENDPOINT_URL`, the one line the gate reads, so the two cannot
+hold different values. No rendered byte changes.
+
+**Where it runs:**
+- **`quality`, last step:** `node build.js` then the gate, both with
+  `WEB3FORMS_KEY=quality-wiring-standin`. Last, because it rebuilds `dist/` armed, and
+  no earlier gate may measure that build.
+- **`pages.yml`, after the build and before upload,** with the real secret. It is the
+  only place the real configuration exists, and a missing or emptied secret now stops
+  the deploy instead of publishing forms that cannot send.
+
+`docs/CLAUDE.md` section 11 gains gate 13, appended, and the run-order paragraph an
+amendment.
+
+### Negative-tested, each arm on a scratch copy of an armed build
+
+Control, unmutated: exit 0. Every arm exit 1, on its own message:
+
+| Arm | Fired on |
+|---|---|
+| a. one form's `action` pointed at a wrong endpoint (`/servicii/garduri/`, `.../submitx`) | `posts to "https://api.web3forms.com/submitx", not the configured endpoint` |
+| b. **the recipient emptied**, `access_key=""` (the first form on `/ru/`) | `the recipient is empty (access_key="")` |
+| c. `WEB3FORMS_KEY` unset | `there is no configured recipient to compare any form against` |
+| d. a different key configured | 42 forms: `the recipient is sha256:8995456822, not the configured sha256:bb2c17c581` |
+| e. one form disarmed (`/catalog/vopsele/`) | `data-armed="0", the form will not post` |
+| f. the quote form removed from `/servicii/fatade/` | `0 #quote-form, want 1` |
+| g. an empty build directory | `zero HTML files read, so no form was checked` |
+| h. `FORM_ENDPOINT_URL` renamed in a copy of `build.js` | `must hold exactly one "const FORM_ENDPOINT_URL = '...';" line, found 0` |
+
+Also: the gate against today's unarmed repo build fails on every form (posts to
+`#oferta`, disarmed, demo notice, placeholder key), which is why `quality` builds armed
+for this step.
+
+### Not built, and why: the endpoint's status
+
+**"The endpoint returns 2xx" is not asserted.** Web3Forms answers 2xx only to a
+submission it delivers; `curl` gets 403 on every method, a browser user agent gets a
+Cloudflare challenge, and headless Chrome's keyless POST got no response. Measurements
+and options are in **Q-W20-01**. The default shipped is wiring only, and the gate's
+last line says so in words, so its pass cannot be read as a delivery or status check.
+
+### Recorded for ratification
+
+1. **The deploy now stops if the forms are not armed.** Before this card, a deploy with
+   no `WEB3FORMS_KEY` published the site in demo mode. That was the intended behaviour
+   before the key existed; the key has been set since 2026-09-06.
+2. **The recipient is read as the access key**, above.
+3. **The status assertion is replaced by Q-W20-01** rather than approximated. A probe
+   that accepted a 403 or a challenge page as "reachable" would be a gate that passes
+   on a complaint.

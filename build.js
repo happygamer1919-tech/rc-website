@@ -40,6 +40,11 @@ const BUILD_SHA = (() => {
 })();
 const FORM_ARMED = FORM_KEY.length > 0;
 const FORM_ENDPOINT = FORM_ARMED ? FORM_KEY : 'WEB3FORMS_ACCESS_KEY_PLACEHOLDER';
+/* RC-145. Where every form on the site posts when armed, written once. Despite
+   its name, FORM_ENDPOINT above is the Web3Forms access key, which is what picks
+   the inbox a submission lands in; this is the URL. scripts/check-form-wiring.js
+   reads this exact line, so the gate and the build cannot hold two values. */
+const FORM_ENDPOINT_URL = 'https://api.web3forms.com/submit';
 
 const LOCALES = [
   { code: 'ro', file: 'locales/ro.json', out: 'dist/index.html', home: '/', alt: '/ru/' },
@@ -1754,7 +1759,7 @@ for (const l of loaded) {
     formEndpoint: FORM_ENDPOINT,
     formArmed: FORM_ARMED ? '1' : '0',
     // With no key the form must not post anywhere: it validates, then says so.
-    formAction: FORM_ARMED ? 'https://api.web3forms.com/submit' : '#oferta',
+    formAction: FORM_ARMED ? FORM_ENDPOINT_URL : '#oferta',
     base: BASE,
     buildSha: BUILD_SHA,
     homeHref: BASE + l.home,

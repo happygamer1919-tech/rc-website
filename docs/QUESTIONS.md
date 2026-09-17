@@ -48,7 +48,7 @@ Cost of the alternative, for comparison: 216 photo slots instead of 89.
 
 ---
 
-## Q-04 · Real content for 44 stub projects — OPEN, opened 2026-08-31 (W6-02) · still open at wave 8
+## Q-04 · Real content for ~~44~~ **16** stub projects — OPEN, opened 2026-08-31 (W6-02) · still open at wave 8 · **count AMENDED (W21-03, RC-148): 16 on 2026-09-17, measured from `content/projects.json` and held by `scripts/check-stub-count.js`; 44 was the W6-02 count**
 
 Every stub ships with empty fields and is invisible on the site: `build.js`
 drops any project without a real title and summary. They become visible only

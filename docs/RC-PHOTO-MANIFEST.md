@@ -93,7 +93,8 @@ not because a separate cover was shot for it.
 
 **Six projects per service, nine services, 54 in all.** The card asked for 5 to
 7; six is the midpoint and divides evenly. Ten of the 54 carry real content
-inherited from the live site; the other 44 are stubs.
+inherited from the live site; the other ~~44~~ **16** are stubs.
+**AMENDED (W21-03, RC-148): 16 on 2026-09-17; the count is measured from `content/projects.json` by `scripts/check-stub-count.js`, which holds every document's figure to it.**
 
 **Per project: 1 cover + 3 to 4 gallery.** Cover is 3:2 landscape 1400x933.
 Gallery is 3:2 landscape 1400x933. Gallery slot 04 is optional.
@@ -347,8 +348,10 @@ both cases the SVG is not deleted, it becomes the fallback.
 | Supplier logos | 11 |
 | **Total assets tracked** | **130** |
 
-**95 photo slots, but 95 is not the shooting plan.** 44 of the covers belong to
-stub projects with no content. A stub becomes a real project only when someone
+**95 photo slots, but 95 is not the shooting plan.** ~~44~~ **16** of the covers belong to
+stub projects with no content.
+**AMENDED (W21-03, RC-148): 16 on 2026-09-17; the count is measured from `content/projects.json` by `scripts/check-stub-count.js`, which holds every document's figure to it.**
+ A stub becomes a real project only when someone
 writes its title and summary, and only then does its cover need a photograph.
 
 The number to plan shooting days around is unchanged from V2's first pass:
@@ -359,12 +362,12 @@ The number to plan shooting days around is unchanged from V2's first pass:
 | The 10 slots that currently render an SVG fallback (hero panel + 9 cards) | 10 |
 | Those 6 projects complete, covers and galleries | 29 |
 | The 10 seeded projects complete, if the 4 without content get content | 45 |
-| Every slot in the manifest, including 44 stubs | 105 |
+| Every slot in the manifest, including ~~44~~ **16** stubs | 105 |
 
 Six of the ten seeded projects have real titles and summaries and therefore
 render. The other four (`proiectare-3d-01`, `instalatii-01`, `industrial-01`,
 `terasamente-01`) keep their reserved gallery slots but carry `TODO:` content,
-so they are in the same position as the 44 stubs: invisible until written.
+so they are in the same position as the ~~44~~ **16** stubs: invisible until written.
 
 ---
 

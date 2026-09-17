@@ -31,7 +31,7 @@ are tracked by their card IDs.
 | Ticket | Card | Branch | Status |
 |---|---|---|---|
 | RC-144 | W20-01 Document drift: the stub count in `docs/CLAUDE.md` section 6, and three question headings | `w20/w19-d6-quote-cta-popup` (rides the first PR) | PR open, awaiting owner: section 6 struck under R-R, 44 to 16, re-counted from `content/projects.json` (RO 16, RU 16); Q-W14-08(a), Q-W9-06 and Q-W12-07-LEGAL closed in their headings with a pointer each, no body edited; Q-W9-06 recorded as settled in part |
-| W19-D6 | The quote buttons land on the form with the callback popup covering it, both homepages | `w20/w19-d6-quote-cta-popup` | todo |
+| W19-D6 | The quote buttons land on the form with the callback popup covering it, both homepages | `w20/w19-d6-quote-cta-popup` | PR open, awaiting owner: a click on any quote button, or focus entering the form, stands the popup down as a submit did; check 1 24 of 24 on the branch, 24 of 24 failing on `main` with focus on `#lead-phone`; 31s of typing uninterrupted, 77 of 77 characters; popup unchanged for other visitors, 6 of 6 on both builds; live repeat owed after deploy |
 | W19-D8 | Țiglă metalică, Copertine and Garduri in the "Tipul lucrării" list, both locales | `w20/w19-d8-work-type-list` | todo |
 | RC-145 | W20-02 Form wiring gate: every form posts to the configured endpoint | `w20/rc-145-form-wiring-gate` | todo |
 | W19-D9 | The Russian 404 is never served | `w20/w19-d9-ru-404` | todo |

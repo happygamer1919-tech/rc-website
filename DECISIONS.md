@@ -7132,3 +7132,80 @@ Only the headings changed. No question body and no later record was edited.
    extract.
 3. **Q-04's heading still says 44 stubs.** The readiness audit flagged it with the
    other two, and it is still open, so the dispatch did not name it. Left unchanged.
+
+## W19-D6 · Reaching for the quote form now stands the callback popup down, the way submitting it did, 2026-09-17
+
+**Card W19-D6**, first in the wave 20 order. PR only, stops for the owner.
+
+### The defect, and the change
+
+On `/` and `/ru/` the quote form sits past 50% of the scrollable height, so every jump
+to `#oferta` crossed the popup's depth trigger, and "Te sunăm noi" opened over the
+form on arrival with focus in its phone field. `src/main.js` block 5 already stood the
+triggers down for good once the main form was **submitted**. It now does the same, with
+the same two calls (`markSeen()` and `teardownTriggers()`), when:
+- **any `a[href="#oferta"]` is clicked**, on a capture-phase listener, so the triggers
+  are down before the anchor scroll moves the page; or
+- **focus enters `#quote-form`**, which covers a visitor who reached the form some
+  other way and started typing before the 30 seconds ran out.
+
+Nothing else in the popup changed: its 30-second timer, 50% depth and desktop exit
+intent triggers are untouched for every other visitor. No CSS, no strings, no markup.
+
+### Acceptance, the card's own checks
+
+Scratch harness, headless Chrome 153 over CDP, a local build served at the site root,
+`sessionStorage` cleared before every load. Clicks are real `Input.dispatchMouseEvent`
+at 1280×800 (`mobile: false`); taps are real `Input.dispatchTouchEvent` at 390×844
+(`mobile: true`, touch emulation on).
+
+**Check 1, the form paths.** Header or phone menu, hero, and the four offer cards;
+`/` and `/ru/`; 1280 and 390. Each link brought to centre with an instant
+`scrollIntoView`, the popup asserted closed first, then clicked or tapped and read after
+2.5s.
+
+| Build | Combinations read | Popup open on arrival | Focus on `#lead-phone` | `#oferta` top within the header height + 2px |
+|---|---|---|---|---|
+| `main` (`207ddf0`) | 24 of 24 | **24** | **24** | 24 |
+| this branch | 24 of 24 | **0** | **0** | 24 |
+
+The form's top lands at 95.8 or 96px at 1280 (header 96) and 80px at 390 (header 80)
+on both builds. Only the popup differs.
+
+**Check 2, typing is not interrupted.** 1280, `/`: hero quote button clicked, `#f-name`
+focused, one character every 400ms for 31s.
+- `main`: the popup was already open over the form when typing began. FAIL.
+- This branch: 77 characters typed, 77 held, identical; the popup opened 0 times, read by
+  a MutationObserver installed before the click. PASS.
+
+**Check 3, unchanged for everyone else**, both homepages, 1280×800, a fresh session each:
+
+| | `main` | this branch |
+|---|---|---|
+| (a) no click, instant scroll to 60% depth | opens in 25 to 26ms | opens in 26ms |
+| (b) no click, no scroll, 31s | opens | opens |
+| (c) once closed, a quote button click | stays closed | stays closed |
+
+6 of 6 pass on both builds.
+
+**Check 4, watched failing first:** check 1 failed on all 24 combinations on `main`,
+with focus on `#lead-phone`, as the card measured live on `ff102c6`; check 3 passed on
+`main`. **Check 5:** the gates and `verify-live.js` are in the PR, each from its own
+process. The live repeat of check 1 at 1280 is owed after deploy (R-P).
+
+### Recorded for ratification
+
+1. **A click on a quote button stands the popup down for the rest of the session**, not
+   just for that scroll. That is what "the same signal that submitting it already is"
+   means in this code: the submit path marks the session seen. A visitor who asked for
+   the quote form is not offered the callback popup later in the same visit.
+2. **Focus entering the form counts too.** The card's fix direction names it as an
+   example. It is the one change here that reaches a visitor who never clicked a quote
+   button.
+3. **The footer's quote link is covered by the same selector.** It is outside the
+   matrix because reaching the footer crosses 50% depth before any click, which is
+   unchanged.
+4. **The header's Portofoliu, Despre and Contacte jumps still open the popup** on
+   arrival. The card records them as the depth trigger working as designed, and out of
+   scope; whether the popup should auto-open at all stays with the owner (first critic
+   pass, taste report item 3).

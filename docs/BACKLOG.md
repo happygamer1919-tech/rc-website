@@ -8,6 +8,24 @@ Status values: `todo` · `in progress` · `blocked` · `shipped`.
 Waves 1 to 5 predate this file; their tickets are reconstructed from the git
 history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 
+## Wave 21
+
+Dispatch of 2026-09-17. #52 to #62 were merged by the owner in order and verified as
+ancestors of `origin/main` (`c37e9ec`) before any card was worked: `d5d89b7`, `910d82c`,
+`646c5b9`, `77fa01c`, `292639e`, `051edc0`, `5f0cbc4`, `9cc8310`, `dfa0df0`, `92e4096`,
+`c37e9ec`. Every card opens a pull request and stops (R-V as amended at wave 19). The
+wave 20 ratifications and the standing rule answering Q-W20-01 ride RC-146.
+
+| Ticket | Card | Branch | Status |
+|---|---|---|---|
+| RC-146 | W21-01 The owed live checks, and the wave 20 ratifications | `w21/rc-146-live-checks` | PR open, awaiting owner: live `build-sha` equals `origin/main`; W19-D6 12 of 12 at 1280 in both locales; a timestamped `/ru/` path answers 404 and renders the Russian 404 with its address kept; RC-145's step green in deploy run 35255945622 with the real secret (42 forms); `verify-live` 28 of 28 VERIFIED; Q-W20-01 answered as a standing rule |
+| RC-147 | W21-02 Lighthouse gate stability: the median of three runs | `w21/rc-147-lighthouse-median` | todo |
+| RC-148 | W21-03 Stub count drift corrected, and a check that holds it | `w21/rc-148-stub-count-drift` | todo |
+| RC-149 | W21-04 Catalogue product records, structure only | `w21/rc-149-catalog-product-records` | todo |
+| RC-150 | W21-05 Image slot manifest for the catalogue | `w21/rc-150-image-slot-manifest` | todo |
+
+**The W21 numbers follow the dispatch's order.**
+
 ## Wave 20
 
 Dispatch of 2026-09-17. #48, #49, #50 and #51 were merged by the owner and verified

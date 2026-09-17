@@ -380,6 +380,12 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     the endpoint's status, which Web3Forms answers 2xx only to a delivered
     submission (Q-W20-01). It fails with no key set, with no endpoint line, and on
     zero pages or zero forms.
+    **AMENDED (W21 ratifications), the owner's standing rule answering Q-W20-01:**
+    the gate asserts wiring, and **a person sends one real lead per locale after any
+    change to a form** and confirms both arrive. Delivery is never asserted by a
+    machine here: Web3Forms answers 2xx only to a submission it delivers, refuses
+    server-side clients without a paid plan, and challenges headless browsers. A card
+    that touches a form carries that step in its PR checklist.
 14. `node scripts/check-heading-fit.js` clean. **Since W19-D1 (wave 20)**, run by
     `quality` after gate 11 and before gate 13. Every page in the sitemap and both
     404 pages, at 360px with mobile emulation and at 1280px: the page does not

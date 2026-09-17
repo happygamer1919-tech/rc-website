@@ -7995,3 +7995,112 @@ gate failed; the card's "must not move the height budgets" was not met. **W19-D1
 restores both**: this branch's base reads 10,747 and 5,568 before W19-D4's band
 removal. The only height changes left in the wave are W19-D4's, the six measured band
 pages each 175 or 176px shorter.
+
+## W21 ratifications · The owner's rulings on wave 20, and the standing rule on form delivery, 2026-09-17
+
+Recorded at the owner's instruction, from the wave 21 dispatch, before any wave 21 card
+was worked.
+
+**Wave 20's deviations are ratified as reported**, in the form the wave 20 report put
+them. The dispatch names five explicitly, so they are restated here:
+
+1. **The W19-D1a correction stands.** Hyphenation is limited to `h1` and `h2`; the first
+   W19-D1 commit had re-wrapped 31 `h3` titles that fitted and moved two heights inside
+   budget. The correction, and the word-level measurement that found it, are the record.
+2. **Gate 14, `scripts/check-heading-fit.js`**, is ratified as a standing gate, with its
+   88 page loads on every pull request.
+3. **A deploy now fails when `WEB3FORMS_KEY` is missing**, instead of publishing the site
+   with its forms in demo mode. Ratified.
+4. **The out-of-scope stub counts were correctly left alone** by RC-144; correcting them
+   is RC-148, this wave.
+5. **Q-W20-01 is answered with option (b), and it is a standing rule**, below.
+
+### The standing rule on form delivery
+
+> Web3Forms answers 2xx only to a submission it delivers, refuses server-side clients
+> without a paid plan, and challenges headless browsers. So **gate 13 asserts wiring,
+> and a person sends one real lead per locale after any change to a form**, and confirms
+> both arrive.
+
+It lives in `docs/CLAUDE.md` section 11, at gate 13, as an amendment: that is where the
+gate's scope is stated, and the rule is the other half of it. `docs/QUESTIONS.md`'s
+Q-W20-01 heading is moved from OPEN to ANSWERED, naming the rule's home. The question's
+body, with the three measurements that closed off the automated path, is untouched
+(R-S). **A card that touches a form carries the two submissions in its PR checklist.**
+
+## W21-01 · The owed live checks, on the deployed wave 20 build, 2026-09-17
+
+**Card RC-146.** Evidence only: no source file changes. Stops for the owner with the
+ratifications above.
+
+### What was deployed, and when
+
+The owner merged #52 to #62 in order at 17:57 to 17:58 UTC. `pages.yml` runs on every
+push to `main` under `concurrency: pages, cancel-in-progress: true`, so the first ten
+deploy runs were **cancelled by the eleventh**, which is the workflow working as
+configured: only the final tree is published. Run **35255945622**, head `c37e9ec`: build
+job success, deploy job success. Between 17:58 and the deploy finishing, the live
+`build-sha` was `292639e` (#56's merge), which is a rollout in progress, not a stale
+edge copy.
+
+**Live `build-sha` after the deploy, read with a cache-buster:**
+`c37e9ecf347727e86b699a6756f6c0b3785a2dd6`, equal to `origin/main`.
+
+### 1. W19-D6, the quote buttons, live at 1280 in both locales
+
+The wave 20 harness against the live origin, one cache-buster per load,
+`sessionStorage` cleared before every load so the popup was armed, real
+`Input.dispatchMouseEvent` clicks. Six links per page: header, hero and the four
+roofing offer cards. **12 of 12 PASS.**
+
+| Page | Buttons | Popup on arrival | Focus in `#lead-phone` | `#oferta` top |
+|---|---|---|---|---|
+| `/` | 6 of 6 | 0 | 0 | 95.8px, header 96 |
+| `/ru/` | 6 of 6 | 0 | 0 | 96px, header 96 |
+
+On live `ff102c6` the critic measured the same 12 combinations failing.
+
+### 2. W19-D9, a timestamped broken Russian path, live
+
+`https://rapidconstruct.md/ru/nu-exista-<timestamp>/`, in headless Chrome with a
+cache-buster: **first response 404**, visible `h1` "Страница не найдена",
+`documentElement.lang` `ru`, the primary button's `href` `/ru/`,
+`<meta name="robots" content="noindex">`, and the address bar still showing the
+requested path. PASS.
+
+**The raw bytes are the Romanian 404, and that is the design.** `curl` on three
+timestamped paths, no JavaScript:
+
+| Path | Status | Bytes | `html lang` | `h1` before JavaScript |
+|---|---|---|---|---|
+| `/ru/nu-exista-<ts>/` | 404 | 4,561 | ro | Pagina nu există |
+| `/ru/servicii/nu-exista-<ts>/` | 404 | 4,561 | ro | Pagina nu există |
+| `/rus-<ts>/` | 404 | 4,561 | ro | Pagina nu există |
+
+A static host serves one 404 for the whole origin; the page chooses the language. So a
+`curl`-only check of this fix reads as a failure and is not one, and `/rus-<ts>/`
+correctly stays Romanian in the browser too.
+
+### 3. RC-145's form wiring step in the deploy run
+
+Run 35255945622, build job, step "Every form posts to the configured endpoint with the
+configured recipient (RC-145)", with the real secret: **green**. Its output:
+configured endpoint `https://api.web3forms.com/submit` from `build.js`'s
+`FORM_ENDPOINT_URL`; configured recipient access key `sha256:34a57476c7`, the same
+fingerprint wave 20 measured in the live HTML; **45 html files read, 42 forms, 42
+sitemap pages**.
+
+### 4. The whole live site under R-P, beyond the card
+
+`EXPECT_SHA=c37e9ec node scripts/verify-live.js https://rapidconstruct.md`: **exit 0,
+28 of 28 pages VERIFIED**, every marker matched, every page inside its budget, 33
+reachable URLs crawled with zero visible TODO. Wave 20's measured figures are the live
+figures: homepage RO 10,447px and RU 10,747px, the five priced service pages shorter by
+the removed band (RO case-la-cheie 5,366px, RU finisaje 5,411px), catalog RO vopsele
+2,991px.
+
+### Recorded for ratification
+
+1. **The ten cancelled deploy runs are not a defect.** Eleven merges inside one minute,
+   one publish. Nothing between them was ever live for a visitor except `292639e`,
+   which was a complete build of its own.

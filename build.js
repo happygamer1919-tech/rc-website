@@ -144,7 +144,7 @@ const RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu', 'productTeaser', 'befor
   'demoAttr',
   'portfolioCards', 'googleLink', 'supplierChips', 'heroPanelMedia', 'promoBar',
   'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
-  'areaServedJson',
+  'areaServedJson', 'workTypeOptions',
   ...Array.from({ length: 9 }, (_, i) => `svcMedia${i}`),
 ]);
 // Same idea for the service-page template.
@@ -707,6 +707,35 @@ ${items.join('\n')}
         </ul>
       </div>
     </div>`;
+}
+
+// --- W19-D8, the quote form's "Tipul lucrării" list -------------------------
+
+/* The homepage quote form asks which service the lead is for. Its list was
+   hardcoded as ten locale strings, the nine services and "Altceva", and wave 14
+   added three product pages that the list never gained: a visitor who came for a
+   fence, a carport or metal tile had to pick "Altceva", and the owner received a
+   lead that said "something else" for a page the site sells.
+
+   So the options are the Servicii menu's own rows, from the same two sources in
+   the same order (SERVICE_SLUGS, then PRODUCT_PAGES), with "Altceva" last. The
+   value sent as `tip_lucrari` is the label itself, identical to the menu's, so
+   a product page added to PRODUCT_PAGES reaches the list with no second edit.
+   Presence, not silence: every label must be real, and the count must be every
+   service plus every product page plus the catch-all. */
+function workTypeOptions(l) {
+  const need = (v, where) => {
+    if (!REAL(v)) die(`workTypeOptions: ${where} is not real for ${l.code}.`);
+    return v;
+  };
+  const labels = [
+    ...SERVICE_SLUGS.map((_, i) => need(l.strings[`services.items.${i}.title`], `services.items.${i}.title`)),
+    ...PRODUCT_PAGES.map((p) => need(l.strings[`pages.${p.key}.title`], `pages.${p.key}.title`)),
+    need(l.strings['form.optionOther'], 'form.optionOther'),
+  ];
+  const expected = SERVICE_SLUGS.length + PRODUCT_PAGES.length + 1;
+  if (labels.length !== expected) die(`workTypeOptions: ${labels.length} options, expected ${expected}.`);
+  return labels.map((t) => `            <option>${esc(t)}</option>`).join('\n');
 }
 
 // --- W14-07, the social row on the hero card (S-07) --------------------------
@@ -1821,6 +1850,7 @@ for (const l of loaded) {
   vars.promoBar = promoBar(l);
   vars.catalogMenu = catalogMenu(l);
   vars.serviciiMenu = serviciiMenu(l);
+  vars.workTypeOptions = workTypeOptions(l);
   vars.productTeaser = productTeaser(l);
   vars.beforeAfter = beforeAfter(l);
   vars.roofOffers = roofOffers(l);

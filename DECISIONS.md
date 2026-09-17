@@ -7209,3 +7209,93 @@ process. The live repeat of check 1 at 1280 is owed after deploy (R-P).
    arrival. The card records them as the depth trigger working as designed, and out of
    scope; whether the popup should auto-open at all stays with the owner (first critic
    pass, taste report item 3).
+
+## W19-D8 · The quote form's "Tipul lucrării" list is the Servicii menu's own list: metal tile, carports and fences added, both locales, 2026-09-17
+
+**Card W19-D8**, second in the wave 20 order. PR only, stops for the owner. Stacked on
+W19-D6.
+
+**Ruled by the owner in the wave 20 dispatch:** the nine-item list is stale, not
+deliberate. The card's close-by-ruling path (its check 6) is therefore not taken.
+
+### The change
+
+The homepage quote form's `#f-type` list was ten hardcoded locale strings,
+`form.options.0` to `form.options.9`: the nine services and "Altceva". Wave 14 added
+three product pages and wave 15 put them in the Servicii menu; the list never gained
+them. It is now **rendered by `build.js` from the same two sources as the Servicii
+menu, in the same order**: `SERVICE_SLUGS` (the nine `services.items.N.title`), then
+`PRODUCT_PAGES` (`pages.<key>.title`: Țiglă metalică, Copertine, Garduri), then the
+catch-all. A product page added to `PRODUCT_PAGES` reaches the form with no second
+edit. The build refuses a label that is not real, and a count that is not every service
+plus every product page plus one, the same presence rule `serviciiMenu()` holds.
+
+- `src/template.html`: the ten `<option>` lines became `{{workTypeOptions}}`.
+- `build.js`: `workTypeOptions(l)`, and the key added to `RAW_KEYS` (the options are
+  escaped where they are built).
+- `locales/ro.json` and `locales/ru.json`, **in the same commit** (section 8):
+  `form.options` (ten keys) is replaced by `form.optionOther`, "Altceva" / "Другое".
+  The nine removed strings were exact duplicates of `services.items.N.title`, character
+  for character, which is what the card measured. No string is new.
+
+**What a lead email carries does not change for the nine existing services**:
+`tip_lucrari` is the label, and each label is identical to what was sent before.
+
+### Every other form on the site, checked for the same stale list
+
+Over all 45 built HTML files, every `<form>` read: **42 forms**.
+
+| Form | Where | Pages | Carries a work-type list |
+|---|---|---|---|
+| `#quote-form` | `/`, `/ru/` | 2 | **yes, and it was stale.** The only one |
+| `#quote-form` | the 18 service pages, 6 product pages and 14 category pages | 38 | no: no `<select>`; a hidden `serviciu` field names the page |
+| `#lead-form` (the callback popup) | `/`, `/ru/` | 2 | no: phone only |
+
+The privacy pages, both 404 pages and `/review/` carry no form.
+
+### Acceptance, the card's own checks
+
+**Check 1, built-site assertion**, scratch script over `dist/index.html` and
+`dist/ru/index.html`: every `a.svcmenu__link` to a `/servicii/<slug>/` page (RU
+`/ru/servicii/<slug>/`) needs an `#f-type` option with identical trimmed text; zero
+labels or zero options fails.
+
+| Build | RO menu labels / options | RU menu labels / options | Result |
+|---|---|---|---|
+| `main` | 12 / 10 | 12 / 10 | exit 1: "RO: no option for Țiglă metalică, Copertine, Garduri", "RU: no option for Металлочерепица, Навесы, Заборы" (**check 2**, watched failing first) |
+| this branch | 12 / 13 | 12 / 13 | exit 0 |
+
+**Check 3, negative arms**, on scratch copies of this branch's pages:
+- `<option>Copertine</option>` removed from RO: exit 1, "RO: no option for Copertine"
+  and "RO has 12 options, RU has 13".
+- an empty directory: exit 1, "read zero pages".
+
+**Check 4:** RO 13, RU 13; the last option is "Altceva" / "Другое".
+
+**Check 5, the value is sent.** A scratch build armed with a dummy `WEB3FORMS_KEY`
+(never committed; `quality` and the repo build stay in demo mode). Headless Chrome;
+`window.fetch` replaced in the page with a stub that records its `FormData` and
+resolves `{ success: true }`, so nothing left the page. Name and phone typed, consent
+ticked and the form submitted by real clicks at 1280 and real taps at 390, the option
+chosen by value with a `change` event:
+
+| Page | Width | Posts | `tip_lucrari` | Success message |
+|---|---|---|---|---|
+| `/` | 390 | 1, to `https://api.web3forms.com/submit` | Garduri | shown, equals `data-ok` |
+| `/` | 1280 | 1 | Garduri | shown |
+| `/ru/` | 390 | 1 | Заборы | shown |
+| `/ru/` | 1280 | 1 | Заборы | shown |
+
+4 of 4. **Check 7:** the gates, each from its own process, are in the PR.
+
+### Recorded for ratification
+
+1. **The list is generated rather than extended.** The card offers both; generating
+   it is the one that cannot drift again, and it is why `form.options` was replaced
+   rather than grown to 13 keys.
+2. **Order is the menu's**: the nine services, then the three product pages, then
+   "Altceva". The card names the menu's order as the reasonable default and the order
+   as the owner's call.
+3. **The option is chosen programmatically in check 5.** A native `<select>` opens an
+   OS picker that CDP input cannot drive; the name, phone, consent and submit are real
+   input.

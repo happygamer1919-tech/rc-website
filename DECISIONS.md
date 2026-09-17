@@ -7620,3 +7620,68 @@ subcategory list opened by hover there, and the sheet at 390×844 and 768×1024.
    under 501px tall also gets the sheet, which is the behaviour that fits it.
 2. **A mouse on a window under 501px tall no longer opens subcategories on hover**; the
    chevron opens them as a drill-down, as on a phone.
+
+## W19-D3 · Desktop catalog: clicking a chevron keeps open the list that hover already opened, 2026-09-17
+
+**Card W19-D3**, seventh in the wave 20 order and the first of the first critic pass's
+five, by their recorded rank. PR only, stops for the owner. **Serialized after
+W19-D10**, which changed the same block of `src/main.js`; stacked on its branch.
+
+### The change
+
+`src/main.js`, the catalog block. On a hover screen a mouse enters a parent row before
+it reaches that row's chevron, so `mouseenter` had already opened the subcategory list
+and the chevron's plain toggle closed it: the one visible "show subcategories" control
+hid them on the first click.
+
+- When `mouseenter` opens a row's list, the row is marked as opened by hover. Entering
+  a row whose list is already open changes nothing.
+- A chevron click on a list that hover opened **keeps it open** and clears the mark.
+  From then on the chevron toggles, as before.
+- `openSub()` clears the mark whenever a list opens any other way.
+
+Keyboard focus without the pointer on the row, touch, and the phone drill-down never
+set the mark, so they behave exactly as they did. Closing still works by moving to
+another row, Escape, a click outside, the keyboard toggle, and now a second click.
+
+### Acceptance, the card's own checks
+
+Scratch harness, headless Chrome, a local build, real `Input.dispatchMouseEvent` moves
+and clicks, `mobile: false`, height 900.
+
+**Steps 1 to 3**, `/`, `/ru/`, `/servicii/garduri/`, `/ru/catalog/vopsele/` × 1024,
+1280, 1920: **12 of 12 combinations, 24 parent rows.** The precondition
+`matchMedia('(hover: hover) and (min-width: 769px)')` was true in all 12, and so was
+W19-D10's amended flyout query with `min-height: 501px`. For every row, the pointer
+moved to the label (the list opened) and then to the chevron, one click:
+
+| Build | Rows with `aria-expanded="true"`, list shown, links with a box |
+|---|---|
+| `main` (`207ddf0`) | **0 of 24**: `aria-expanded="false"`, list hidden, 0 links (**step 6**, watched failing first) |
+| W19-D10's build, the base of this branch | 0 of 24, the same |
+| this branch | **24 of 24** |
+
+**Step 4, keyboard**, pointer parked in the bottom-right corner, first chevron focused,
+Enter with `text: "\r"`: `true`, then `false`, at 1024, 1280 and 1920, on `main` and on
+the branch. **Step 5, phone**, 390 with touch on `/` and `/ru/`: the chevron shows the
+list and the back button returns to 7 reachable top-level links, on `main` and on the
+branch. **Step 7:** gates in the PR.
+
+**Beyond the card:**
+- Hover, then three clicks on the same chevron at 1280: `true → true → false → true` on
+  the branch; `true → false → true → false` on `main`.
+- Hover row 1 (row 0 closes), back to row 0 (it reopens), click: stays `true` on the
+  branch, `false` on `main`.
+- A 1024×600 touch screen, where `(hover: hover)` is false: two taps give
+  `false → true → false` on both builds, unchanged.
+- **W19-D10's acceptance re-run on this build:** 40 of 40, 48 subcategory lists, and
+  its 32 boxes identical to `main`.
+
+### Recorded for ratification
+
+1. **The first click keeps the list; the second closes it.** The card's words are that a
+   click on a showing list should leave it showing. A chevron that could never close its
+   own list by mouse would be the opposite surprise, so the toggle comes back after the
+   click the visitor meant as "open".
+2. **Enter on a chevron while the mouse rests on that row** counts as that first click:
+   the list stays open, and a second Enter closes it.

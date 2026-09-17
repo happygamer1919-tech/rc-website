@@ -7390,3 +7390,88 @@ last line says so in words, so its pass cannot be read as a delivery or status c
 3. **The status assertion is replaced by Q-W20-01** rather than approximated. A probe
    that accepted a 403 or a challenge page as "reachable" would be a gate that passes
    on a complaint.
+
+## W19-D9 · A broken Russian link now shows the Russian 404, and keeps its address, 2026-09-17
+
+**Card W19-D9**, fourth in the wave 20 order. PR only, stops for the owner. Stacked on
+RC-145.
+
+### The change
+
+GitHub Pages answers every unknown path with the root `/404.html`, so `/ru/<anything>`
+showed "Pagina nu există" in Romanian with a button to `/`, and `dist/ru/404.html` was
+never served. The card's option (b), with the address kept:
+
+- **The root 404 (RO)** carries one inline script, first in `<head>` and ahead of every
+  stylesheet. For a path under `/ru/` it calls `location.replace('/ru/404.html?from=' +
+  <the broken path>)`. `/rus/` and `/ruta/` are not under `/ru/` and stay Romanian.
+- **The Russian 404** reads `from`, accepts it only if it starts with `/ru/`, and puts it
+  back with `history.replaceState`. The visitor sees the Russian page at the address
+  they typed.
+
+Both scripts come from `notFoundLocale(l)` in `build.js`, emitted by a
+`{{notFoundLocale}}` placeholder that only `src/404.html` carries. No string, no style,
+no other page changes. `dist/.htaccess` is unchanged: any host that serves the root
+404 for an unknown path now gets the same result, Apache included.
+
+### Acceptance, the card's own checks
+
+Scratch harness: a local server that answers a missing path with the bytes of
+`dist/404.html` and status 404, as GitHub Pages does. Headless Chrome, JavaScript on,
+390 (`mobile: true`) and 1280.
+
+**Check 1**, 7 paths × 2 widths, **14 combinations read**. For each: the `h1` equals
+the `h1` of the matching built 404, `lang`, and the primary button's `href`. Also
+asserted, beyond the card: the address bar still shows the requested path.
+
+| Path | `main` | this branch |
+|---|---|---|
+| `/ru/nu-exista/`, `/ru/servicii/nu-exista/`, `/ru/a/b/c/` | **6 of 6 fail**: h1 "Pagina nu există", `lang` ro, button `/` | 6 of 6: h1 "Страница не найдена", `lang` ru, button `/ru/`, address kept |
+| `/nu-exista/`, `/servicii/nu-exista/`, `/rus/`, `/ruta/` | 8 of 8 pass | 8 of 8 pass: h1 "Pagina nu există", `lang` ro, button `/` |
+
+**Check 2:** the server's first response for all 14 was 404, read with no redirect
+followed; the page the visitor ends on carries `<meta name="robots" content="noindex">`
+in all 14. **Check 3**, watched failing first: `main` failed exactly the 6 RU
+combinations and passed the 8 RO ones.
+
+**Beyond the card, same harness, this branch:**
+- the back button from `/ru/nu-exista/` returns to the page before it, `/ru/`; the
+  redirect adds no history entry;
+- a reload of `/ru/nu-exista/` shows the Russian page again at the same address;
+- `/ru/404.html?from=` with `https://evil.example/x`, `//evil.example/ru/`, `/nu-ru/`
+  and `javascript:alert(1)`: the address is left alone in all four;
+- `/404.html` and `/ru/404.html` requested directly are unchanged, RO and RU.
+
+**Check 4**, the live repeat on `https://rapidconstruct.md/ru/nu-exista-<timestamp>/`,
+is owed after deploy. **Check 5:** gates in the PR, `check-header-fit.js` included,
+which loads both 404 pages.
+
+### Recorded for ratification
+
+1. **Option (b), with the address restored**, rather than (a). Option (a) would swap
+   every string on the root 404 in place, including the header, the footer and the
+   language switch, which is a second copy of the Russian page kept in script. (b)
+   serves the real Russian page. The cost the card names for (b), losing the broken
+   URL, is removed by `replaceState`.
+2. **Without JavaScript, a Russian path still shows the Romanian 404.** A static host
+   cannot do better, and it is what every visitor saw before.
+
+### Found during the wave, not caused by it: gate 5 is noisy on a cold CI runner
+
+`quality` failed twice today on the Lighthouse step, each time on the **RO** homepage's
+performance and never on accessibility or on RU:
+
+| Run | Branch | RO performance | RU performance |
+|---|---|---|---|
+| 35240073930, attempt 1 | W19-D6 | **88** | 99 |
+| 35240073930, attempt 2, same commit | W19-D6 | 99 | 99 |
+| 35240798893, attempt 1 | W19-D8 | **93** | 99 |
+
+Across the eight `quality` runs before this wave, RO scored 97 once and 99 seven times.
+**Locally, 4 runs each of `main`'s build and W19-D6's build:** RO performance 99 in all
+8, first contentful paint 322 to 405ms, largest contentful paint 884 to 925ms, total
+blocking time 0, layout shift 0.002, identical between the two builds. The RO homepage
+is the first audit of the job, on a runner that has just installed Lighthouse, and it
+is the only one that moves. **Not changed here:** a warm-up audit, or a best-of-N
+reading, would change what gate 5 measures and is a card of its own. Recorded so a red
+Lighthouse step on an RO homepage reading is read against this first.

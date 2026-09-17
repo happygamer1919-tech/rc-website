@@ -8104,3 +8104,79 @@ the removed band (RO case-la-cheie 5,366px, RU finisaje 5,411px), catalog RO vop
 1. **The ten cancelled deploy runs are not a defect.** Eleven merges inside one minute,
    one publish. Nothing between them was ever live for a visitor except `292639e`,
    which was a complete build of its own.
+
+## W21-02 · Gate 5 judges the median of three runs per page, and the floor does not move, 2026-09-17
+
+**Card RC-147.** PR only, stops for the owner. Stacked on RC-146.
+
+### Why
+
+Wave 20 took **two false reds** on `quality`, both on the RO homepage's performance
+against the 95 floor: 88 on #52 and 93 on #53. The same commit re-run read 99, and
+locally `main` and the changed build each read 99 on 4 of 4 runs with identical metrics
+(FCP 322 to 405ms, LCP 884 to 925ms, TBT 0, CLS 0.002). RU never moved. The RO homepage
+is the first audit of the job, on a runner that has just installed Lighthouse. A gate
+that cries wolf gets ignored, which is the failure section 16 names in its own words.
+
+### The change, in `scripts/check-lighthouse.js`
+
+- **Three runs per page** (`RUNS = 3`, the card's number: the smallest odd count with a
+  median, and one outlier short of changing it). Each run prints its own scores as it
+  happens.
+- **The median of each category is what the floor judges.** One bad run cannot fail the
+  build; two agreeing bad runs still do.
+- **The spread (max minus min) is printed for every page and category, passing or
+  failing**, and a spread of 3 points or more is labelled WIDE with the reason: a
+  single-run reading there is not evidence. `WIDE_SPREAD` is a reporting threshold only
+  and never decides a pass.
+- **The floors are untouched**: performance 95, accessibility 100. On a breach the gate
+  prints all three readings, the spread, and how to read them: a wide spread with one
+  reading far from the others points at the runner, a tight spread at the build. It
+  says in its own output that the floor is section 4's and is not lowered here.
+- **Presence, not silence:** it fails when fewer than three reports arrive for a page,
+  because then there is no median to judge, and it still fails on a missing or
+  non-numeric category score.
+- **The statistic is asserted before any audit**, on five known vectors printed every
+  run, including wave 20's two false reds: `[88 99 99] -> 99`, `[93 99 99] -> 99`,
+  `[99 93 88] -> 93`, `[94 94 99] -> 94`, `[100 100 100] -> 100`.
+
+`docs/CLAUDE.md` section 4 and section 11 gate 5 each carry an amendment. Runtime on
+this workstation: 6 audits, about 90 seconds.
+
+### Shipped state, on this build
+
+`node scripts/check-lighthouse.js` exit 0. Both homepages: median performance 99,
+accessibility 100; **the three runs read 99, 99, 99 and 100, 100, 100 on both pages, so
+the spread is 0 on this workstation.**
+
+### Negative-tested, five arms
+
+| Arm | What it plants | Result |
+|---|---|---|
+| A. a genuine accessibility failure | an `<img>` with no `alt` on the RO homepage | exit 1: RO accessibility **96, 96, 96**, median 96, UNDER FLOOR; spread 0 |
+| B. a genuine performance failure | a 4-second blocking script in the RU homepage's `<head>` | exit 1: RU performance **59, 59, 59**, median 59, UNDER FLOOR; spread 0 |
+| C. **one outlier run**, wave 20's own number | run 1 of the RO homepage forced to 88 in a scratch copy | **exit 0**: readings 88, 99, 99, median 99, and the page labelled WIDE with an 11-point spread |
+| D. a category never measured | a scratch copy asking Lighthouse for performance only | exit 1: `homepage RO, run 1 of 3: lighthouse returned no "accessibility" category` |
+| E. the statistic itself wrong | `median` replaced by the maximum in a scratch copy | exit 1 before any audit: `median(0.99, 0.93, 0.88) returned 0.99, want 0.93` |
+
+Arms A and B are the card's "a genuinely failing page still fires", one per category.
+Arm C is the false red this card exists for, and it now passes while saying loudly that
+the runner was noisy.
+
+### The CI spread, and the recommendation
+
+The card asks what to do if CI variance still breaches the floor on an unchanged build.
+**It does not on this card's own CI run** (`quality` on this PR, read from the job log
+and quoted in the PR). If a future median breach comes with a wide spread on an
+unchanged build, the recommendation is written into the gate's own failure text and is
+this: report the spread, re-run once to get a second median, and if the two medians
+disagree treat it as a runner finding and raise `RUNS`. **Do not lower the floor**, and
+do not pin performance to a warm-up run: both trade the property the gate exists to
+hold for a quieter log.
+
+### Recorded for ratification
+
+1. **Three runs, not five.** The card's number. Five would cost 10 audits a PR for one
+   more outlier of tolerance.
+2. **WIDE_SPREAD is 3 points**, where wave 20's noise sat, and it only labels.
+3. **`quality` now runs 6 audits instead of 2** on every pull request.

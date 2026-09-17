@@ -17,6 +17,21 @@
    the exact failure section 13 exists to prevent, and is how gate 5 spent its
    whole life until now.
 
+   THREE RUNS PER PAGE, AND THE MEDIAN IS WHAT IS JUDGED (W21-02, RC-147). Wave
+   20 took two false reds on the RO homepage's performance, 88 and 93 against the
+   95 floor, while the same commit read 99 on the re-run and 99 on 8 of 8 local
+   runs with identical metrics. A single audit on a cold CI runner is noisy, and a
+   gate that cries wolf gets ignored, which is the failure mode section 16 warns
+   about. So each page is audited three times and the MEDIAN of each category is
+   compared with the floor: one bad run cannot fail the build, and two agreeing
+   bad runs still do.
+
+   THE FLOOR IS NOT LOWERED, and this file must not lower it. If the median
+   breaches it, the run fails and prints all three readings and their spread, so
+   the report says whether the cause is the build or the runner. Every run prints
+   the spread whether it passes or fails, and says so when the spread is wide
+   enough to be worth reading.
+
    Usage:  node build.js && node scripts/check-lighthouse.js
    Override the binary with CHROME_PATH if Chrome is not where lighthouse looks. */
 
@@ -39,6 +54,27 @@ const fail = (msg) => { console.error(`\nLIGHTHOUSE GATE FAILED: ${msg}\n`); pro
    place they are enforced. Section 4 carries the reciprocal pointer: change one
    and the other must change with it. */
 const FLOORS = { performance: 0.95, accessibility: 1.0 };
+
+/* RC-147. Three is the card's number: the smallest odd count that has a median,
+   and one outlier short of changing it. WIDE_SPREAD is only a reporting
+   threshold, never a pass or fail: 3 points is where wave 20's noise sat. */
+const RUNS = 3;
+const WIDE_SPREAD = 0.03;
+
+/* The median of an odd-length list of scores. Asserted below on known vectors,
+   printed every run: a statistic nobody has watched work is not evidence. */
+const median = (xs) => [...xs].sort((a, b) => a - b)[(xs.length - 1) / 2];
+const MEDIAN_VECTORS = [
+  { in: [0.88, 0.99, 0.99], want: 0.99 },   // wave 20's first false red, twice agreed against
+  { in: [0.93, 0.99, 0.99], want: 0.99 },   // wave 20's second
+  { in: [0.99, 0.93, 0.88], want: 0.93 },   // two low readings: the median is low too
+  { in: [0.94, 0.94, 0.99], want: 0.94 },   // under the floor on two of three
+  { in: [1, 1, 1], want: 1 },
+];
+for (const v of MEDIAN_VECTORS) {
+  if (median(v.in) !== v.want) fail(`the median is wrong: median(${v.in.join(', ')}) returned ${median(v.in)}, want ${v.want}.`);
+}
+console.log(`median asserted on ${MEDIAN_VECTORS.length} known vectors, including wave 20's two false reds (${MEDIAN_VECTORS.map((v) => `[${v.in.map((x) => Math.round(x * 100)).join(' ')}]->${Math.round(v.want * 100)}`).join(', ')})`);
 
 /* Section 4: both locales, desktop preset. */
 const PAGES = [
@@ -156,26 +192,41 @@ async function main() {
   }
 
   console.log(`files read: ${PAGES.length} of ${PAGES.length} pages in dist/ (${PAGES.map((p) => p.label).join(', ')})`);
+  console.log(`runs per page: ${RUNS}; the median of each category is what the floor judges\n`);
   const server = await serve();
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'rc-lh-'));
   const rows = [];
   let bad = 0;
+  let reports = 0;
 
   try {
     for (const p of PAGES) {
       const url = `http://127.0.0.1:${PORT}${p.path}`;
-      const out = path.join(tmp, `${p.label.replace(/\W+/g, '-')}.json`);
-      const report = await runLighthouse(url, out);
-
-      const row = { label: p.label, scores: {} };
-      for (const cat of Object.keys(FLOORS)) {
-        const c = report.categories && report.categories[cat];
-        if (!c) fail(`${p.label}: lighthouse returned no "${cat}" category`);
-        if (typeof c.score !== 'number') {
-          fail(`${p.label}: "${cat}" has no numeric score (got ${JSON.stringify(c.score)}).\n  A missing score is not a pass.`);
+      const row = { label: p.label, runs: [], scores: {}, spread: {} };
+      for (let i = 1; i <= RUNS; i++) {
+        const out = path.join(tmp, `${p.label.replace(/\W+/g, '-')}-${i}.json`);
+        const report = await runLighthouse(url, out);
+        reports++;
+        const run = {};
+        for (const cat of Object.keys(FLOORS)) {
+          const c = report.categories && report.categories[cat];
+          if (!c) fail(`${p.label}, run ${i} of ${RUNS}: lighthouse returned no "${cat}" category`);
+          if (typeof c.score !== 'number') {
+            fail(`${p.label}, run ${i} of ${RUNS}: "${cat}" has no numeric score (got ${JSON.stringify(c.score)}).\n  A missing score is not a pass.`);
+          }
+          run[cat] = c.score;
         }
-        row.scores[cat] = c.score;
-        if (c.score + 1e-9 < FLOORS[cat]) bad++;
+        row.runs.push(run);
+        console.log(`  ${p.label}, run ${i} of ${RUNS}: ${Object.keys(FLOORS).map((cat) => `${cat} ${Math.round(run[cat] * 100)}`).join(', ')}`);
+      }
+      /* Presence, not silence: a page with fewer readings than RUNS has no median
+         anybody may judge, so it fails rather than being judged on what arrived. */
+      if (row.runs.length !== RUNS) fail(`${p.label}: ${row.runs.length} of ${RUNS} runs produced a score, so there is no median to compare.`);
+      for (const cat of Object.keys(FLOORS)) {
+        const xs = row.runs.map((r) => r[cat]);
+        row.scores[cat] = median(xs);
+        row.spread[cat] = Math.max(...xs) - Math.min(...xs);
+        if (row.scores[cat] + 1e-9 < FLOORS[cat]) bad++;
       }
       rows.push(row);
     }
@@ -184,23 +235,35 @@ async function main() {
   }
 
   console.log(`lighthouse ${LH_VERSION} via ${RUNNER.cmd}${RUNNER.pre.length ? ' ' + RUNNER.pre.join(' ') : ''}, desktop preset, floors from docs/CLAUDE.md section 4\n`);
-  console.log('page'.padEnd(16) + 'performance'.padStart(13) + 'accessibility'.padStart(15));
+  const pc = (x) => `${Math.round(x * 100)}`;
+  console.log('\npage'.padEnd(17) + 'performance'.padStart(13) + 'accessibility'.padStart(15) + '   median of the three runs, then the three runs');
   for (const r of rows) {
     const line = r.label.padEnd(16)
-      + `${Math.round(r.scores.performance * 100)}`.padStart(13)
-      + `${Math.round(r.scores.accessibility * 100)}`.padStart(15);
+      + pc(r.scores.performance).padStart(13)
+      + pc(r.scores.accessibility).padStart(15)
+      + `   perf [${r.runs.map((x) => pc(x.performance)).join(' ')}] a11y [${r.runs.map((x) => pc(x.accessibility)).join(' ')}]`;
     const under = Object.keys(FLOORS).filter((c) => r.scores[c] + 1e-9 < FLOORS[c]);
     console.log(line + (under.length ? `   UNDER FLOOR: ${under.join(', ')}` : ''));
   }
-  console.log(`\nfloors: performance ${FLOORS.performance * 100}, accessibility ${FLOORS.accessibility * 100}`);
-  console.log(`reports read: ${rows.length} of ${PAGES.length}`);
-  if (rows.length !== PAGES.length) fail(`${rows.length} lighthouse reports read for ${PAGES.length} pages.`);
+  console.log('\nspread of the three runs, per page and category (max minus min):');
+  for (const r of rows) {
+    console.log(`  ${r.label.padEnd(16)}${Object.keys(FLOORS).map((cat) => `${cat} ${pc(r.spread[cat])}`).join(', ')}`
+      + (Object.keys(FLOORS).some((cat) => r.spread[cat] + 1e-9 >= WIDE_SPREAD) ? `   WIDE: ${WIDE_SPREAD * 100} points or more between runs on this page, so a single-run reading here is not evidence` : ''));
+  }
+  console.log(`\nfloors: performance ${FLOORS.performance * 100}, accessibility ${FLOORS.accessibility * 100} (docs/CLAUDE.md section 4; this gate never lowers them)`);
+  console.log(`reports read: ${reports} of ${PAGES.length * RUNS}; pages with a median: ${rows.length} of ${PAGES.length}`);
+  if (reports !== PAGES.length * RUNS) fail(`${reports} lighthouse reports read for ${PAGES.length} pages at ${RUNS} runs each.`);
+  if (rows.length !== PAGES.length) fail(`${rows.length} pages produced a median for ${PAGES.length} pages.`);
 
   if (bad) {
-    console.error(`\n${bad} category score(s) below the section 4 floors.`);
+    console.error(`\n${bad} MEDIAN category score(s) below the section 4 floors.`);
+    console.error('  The median of three runs is below the floor, so this is not one noisy run.');
+    console.error('  Read the three readings and the spread above: a wide spread with one reading');
+    console.error('  far from the others points at the runner, a tight spread at the build. Report');
+    console.error('  the spread and recommend; the floor is section 4\'s and is not lowered here.');
     process.exit(1);
   }
-  console.log('both locales at or above the section 4 floors.');
+  console.log('both locales at or above the section 4 floors, on the median of three runs each.');
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

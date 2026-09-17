@@ -151,6 +151,13 @@ every pull request. The two figures above are restated in that script because a
 script cannot read prose, the same arrangement `scripts/verify-live.js` has with
 R-Y's budgets: change one and the other must change with it.
 
+**A floor is judged on the median of three runs (W21-02, RC-147), not on one.**
+The floor is the same number; what changed is how many readings stand behind the
+reading it judges. A single audit of the RO homepage on a cold CI runner read 88
+and 93 twice in wave 20 while the same commit read 99 on a re-run and on 8 of 8
+local runs. The floors here are never lowered to accommodate a runner: a breach
+of the median is reported with its three readings and their spread.
+
 One expected exception: a service page scores SEO ~69 while it is `noindex`.
 That is the indexability gate working, not a regression — the page carries
 `noindex, nofollow` until one of its projects has a real cover photograph, and
@@ -339,6 +346,12 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
    skips. If lighthouse cannot be run, or a category score is missing rather than
    low, it fails: for its whole life before W16-04 this gate was reported NOT RUN
    by every card, which is the condition section 13 exists to forbid.
+   **AMENDED (W21-02, RC-147): each page is audited three times and the MEDIAN of
+   each category is what the floor judges.** One noisy run cannot fail the build
+   and two agreeing bad runs still do. Every run prints all three readings and
+   their spread, passing or failing. The floors do not move: they are section 4's,
+   and a breach is reported with its spread, never accommodated. It fails when
+   fewer than three reports arrive for a page, because then there is no median.
 6. No new colour value.
 7. `prefers-reduced-motion` still disables every effect.
 8. `DECISIONS.md` appended, `BACKLOG.md` status updated, and any question the

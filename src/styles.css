@@ -82,14 +82,18 @@ a:hover { color: var(--brand-dark); }
 
 /* W19-D1. An uppercase heading cannot wrap inside a word, and a long Russian word
    ("КОНФИДЕНЦИАЛЬНОСТИ", "МЕТАЛЛОЧЕРЕПИЦА") ran out of its column, and on phones
-   pushed the page sideways. A word of 14 characters or more may hyphenate (both
-   locales set lang, so the browser has the dictionary); a word that still cannot
-   fit breaks rather than overflow. Shorter words never hyphenate, so a heading that
-   already fits wraps exactly as before. scripts/check-heading-fit.js holds it. */
+   pushed the page sideways. Any heading word that cannot fit on a line of its own
+   now breaks rather than overflows; that alone moves no heading that fits.
+   W19-D1a: h1 and h2 may also hyphenate a word of 14 characters or more (both
+   locales set lang, so the browser has the dictionary), so the break reads as a
+   hyphen. h3 does not: the card and FAQ titles are sentence case and wrap a long
+   word whole, and hyphenation split 31 of them that fitted. Measured word by word,
+   no h1 or h2 that fits wraps differently. scripts/check-heading-fit.js holds it. */
 h1, h2, h3 {
   font-family: var(--font-heading), var(--font-fallback); margin: 0; line-height: 1.15;
-  overflow-wrap: break-word; -webkit-hyphens: auto; hyphens: auto; hyphenate-limit-chars: 14 6 4;
+  overflow-wrap: break-word;
 }
+h1, h2 { -webkit-hyphens: auto; hyphens: auto; hyphenate-limit-chars: 14 6 4; }
 h1 { font-size: 56px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; }
 h2 { font-size: 40px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; }
 h3 { font-size: 22px; font-weight: 700; }

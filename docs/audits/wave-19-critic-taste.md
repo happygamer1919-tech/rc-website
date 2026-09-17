@@ -162,3 +162,177 @@ Each looked like a defect and was shown not to be one before anything was writte
   under a test that had suppressed it with the wrong storage key.
 - The Catalog label "overflowing" at 360px is deliberately clipped to an icon button
   below 375px (W14-06).
+
+---
+
+# Second pass · 2026-09-17, live build `ff102c6`
+
+A second critic pass at the wave 19 boundary, dispatched after wave 19's executor
+PRs #48, #49 and #50 merged. **The first pass above is left exactly as written.**
+Where this pass contradicts it, the correction is its own section below.
+
+This time `docs/audits/wave-19-readiness.md` existed, and it was read first. The
+live `build-sha` was `ff102c64e0c5f76868c4f76bf1d650b1363ef32f`, equal to
+`origin/main`. The site was reviewed as a visitor, in Romanian and Russian, at 390,
+768, 1280 and 1920px. Checks were extended to other widths and heights where a
+finding needed its edges.
+
+**Treated as already recorded, and not re-carded:**
+- the first pass's five cards, its sixth defect and its twelve taste items;
+- every open question listed in the readiness audit, section 5;
+- every photo slot listed in the readiness audit, section 4;
+- recorded decisions, such as the project description line clamp (DECISIONS.md,
+  W9-08).
+
+## Cards issued in this pass
+
+**Five defects were found, and five cards issued.** The count is not padded.
+W19-D9 and W19-D10 are real but narrow (a broken Russian link, a phone held
+sideways), and are ranked last for that reason. No sixth defect was found.
+
+| Card | Defect | Rank | Acceptance run on live, failing |
+|---|---|---|---|
+| [W19-D6](../board/W19-D6-quote-cta-opens-callback-popup.md) | On both homepages, the "Solicită ofertă" buttons land on the quote form with the callback popup covering it and holding the focus | 1 | 24 of 24 |
+| [W19-D7](../board/W19-D7-spec-table-cut-on-phones.md) | On phones, the specification table on six service pages, both locales, is cut mid-word at the screen edge | 2 | 84 of 120 |
+| [W19-D8](../board/W19-D8-homepage-form-missing-three-services.md) | The homepage form's work-type list cannot name metal tile, carports or fences | 3 | 3 labels missing, per locale |
+| [W19-D9](../board/W19-D9-ru-404-served-in-romanian.md) | A broken `/ru/` link shows the Romanian 404; the Russian one is never served | 4 | 3 of 3 RU paths, at 2 widths |
+| [W19-D10](../board/W19-D10-landscape-catalog-cut-off.md) | On a phone held sideways, the catalog's last categories cannot be reached | 5 | 16 of 40 |
+
+Each card's acceptance was run against the live site before the card was written.
+Each fails there on exactly the set its card names.
+
+## The first pass's cards are all still open on the live build
+
+Wave 19's executor cards (RC-141 to RC-143) did not take them. Each was re-measured
+on `ff102c6`:
+
+| Card | Measured on `ff102c6` |
+|---|---|
+| W19-D1 | `/ru/konfidentsialnost/` at 390: the page scrolls sideways by 53px; the h1 overflows by 69px |
+| W19-D2 | `/servicii/fatade/` at 600: the hero photo is 400px wide in a 568px column |
+| W19-D3 | `/` at 1280: hover the first parent row, click its chevron, and `aria-expanded` is `"false"` |
+| W19-D4 | "Preț și condiții" is still in the live HTML of `/servicii/fatade/` |
+| W19-D5 | `/`: 6 chips, none for `proiectare-3d`, while the cards include a `proiectare-3d` project |
+
+The first pass's sixth defect, cross-page `/#section` links landing under the header,
+was not re-measured.
+
+## A correction to the first pass
+
+Taste item 3 says the "Te sunăm noi" popup "is present on the homepages and service
+pages". **It is on the two homepages only.** `src/template.html` carries
+`lead-modal`, and `src/service.html`, `src/product.html` and `src/category.html` do
+not. That was equally true at the first pass's build, `47957f3`: `git show` of each
+template counts 3, 0, 0 and 0 at both commits. The live HTML of 8 non-homepage pages
+fetched in this pass carries no `id="lead-modal"`.
+
+## Taste, second pass
+
+Judgements, not defects. None of them are carded.
+
+1. **Two section heading styles on the same service page.** "Sisteme de fațadă"
+   (the spec table) and "Întrebări frecvente" have no eyebrow, and leave 28px
+   between the heading and what follows. Their neighbours on the same page,
+   "Proiecte recente" and "Cere o ofertă", carry an eyebrow and leave 40px before
+   their cards or form. The first two are wave 9's (W9-08); the neighbours are
+   later. Measured at 1280 and 390.
+2. **The homepage roofing offer cards' buttons sit at different heights** within a
+   row. Each button follows its card's text, so card 01's is lower than card 02's,
+   and card 03's than card 04's. The services grid and the product cards pin their
+   links to the card bottom.
+3. **The homepage's row of three product cards** (Țiglă metalică, Copertine,
+   Garduri) is its own section, with no eyebrow and no heading. It sits between the
+   roofing offers and "Cum lucrăm".
+4. **On phones, the menu has no list of services.** It holds Acasă, Servicii (a
+   link to the homepage grid), Portofoliu, Despre and Contacte. Desktop has a
+   dropdown of twelve services. On a phone, the three product pages are reachable
+   only through the homepage's product row. They are reachable, so this is not a
+   defect.
+5. **Carport models share drawings.** 12 models use 7 distinct diagrams:
+   - C-01, C-05 and C-08 are one drawing;
+   - C-02 and C-09 are one;
+   - C-06 and C-07 are one;
+   - C-11 and C-12 are one.
+
+   Each pair carries the same `<desc>`, so the text alternative agrees with the
+   drawing. The drawings just do not tell the models apart.
+6. **The quote form's "Trimite mesajul" button** keeps its natural width at 390,
+   aligned left (`align-self: flex-start`). Every other primary button on a phone is
+   full width: the hero, the offer cards, the phone menu and the footer.
+7. **The service pages' project cards carry chips** ("Fațadă ventilată", "Placaj
+   piatră fațadă") styled like the homepage filter chips, and they do nothing. This
+   is the same family as the first pass's item 11.
+8. **Copy, flagged only, in both locales:**
+   - "15+ ani de experiență" in the stats sits beside "Echipă cu 10+ ani experiență"
+     under Despre;
+   - "500+ proiecte finalizate" sits beside the portfolio's "Și peste 100 de alte
+     proiecte finalizate".
+
+## Checked in this pass, and clean
+
+All on the live site in headless Chrome, with Inter asserted loaded, each check
+printing what it read.
+
+- **What leaves the browser.** The network was recorded on all 44 pages at 1280.
+  - The only hosts contacted are `rapidconstruct.md`, `fonts.googleapis.com` and
+    `fonts.gstatic.com`.
+  - No cookie is set. `localStorage` stays empty.
+  - This matches the privacy page's own sections 3 and 4.
+- **Images.** 780 rendered image boxes, over 44 pages at 390, 1280 and 1920.
+  - None is stretched out of its aspect ratio.
+  - None is drawn larger than its file at 1x (scale above 1.05).
+  - Every image that fails to finish loading is a marquee duplicate the first pass
+    already explained.
+- **RO and RU numbers.** On all 22 page pairs, every number matches in both
+  locales: prices, dimensions, colour codes, stats and years. The comparison was
+  negative-tested with a planted change, which it caught.
+- **Contact targets.** 10 pages were fetched:
+  - one phone, `tel:+37376837180`, 56 links;
+  - one WhatsApp number, `wa.me/37376837180`;
+  - one email;
+  - the three social profiles.
+
+  They agree everywhere.
+- **Forms.** The quote form was tested on 5 pages at 390 and 1280: `/`, `/ru/`, a
+  service page, an RU product page and a category page. `window.fetch` was replaced
+  in the page and the endpoint was blocked at the network layer. **No request
+  reached Web3Forms.**
+  - On success, the confirmation appears in view and the form clears.
+  - On failure, the message with the phone number appears and the input is kept.
+  - The honeypot sits 9,995px off-screen.
+- **Short screens.** Measured bottom edges: the Servicii dropdown at 618px, the
+  catalog at 455px.
+  - Both fit at 1280×650, 1366×657, 1536×730 and 1920×960.
+  - The phone sheets scroll at 375×667 and 390×844.
+  - The popup fits at 375×667 and 844×390.
+  - At 390 and 768, at scroll 0 and at 2000, the catalog sheet and the phone menu
+    meet the header's bottom edge exactly.
+- **Type across templates.** The h1, eyebrow, lede, breadcrumb and body text are
+  identical on the home, service, product, category, privacy and 404 templates, at
+  390 and 1280.
+- **Scroll reveal.** 176 natural scroll-throughs: 44 pages at 375×667, 844×390,
+  390×844 and 1280×720. Every `[data-reveal]` element was revealed.
+- **Buttons.** Every `<button>` on the 10 fetched pages has a handler in
+  `src/main.js`.
+- **Deep 404s.** The 404 page served at `/ru/servicii/a/b/` still loads its
+  stylesheet, logo and fonts, because every asset path is absolute. Its language is
+  W19-D9.
+- **Overlapping targets.** Every visible link, button and field, pairwise, on 176
+  page loads at 390, 768, 1280 and 1920. The only overlap is 3px, between a footer
+  social icon and "Politica de confidențialitate", at 390 and 768 on 3 pages per
+  locale. A visitor cannot see it.
+
+## Discarded in this pass as the reviewer's own artifacts
+
+- **A thin light strip at the right edge of dark bands**, in captures scaled to
+  0.75. Every section measured exactly the viewport width at 390 and 768.
+- **Blank white captures of an open menu.** A clip at y=0 on a page scrolled to
+  2000 captures the top of the document, not the viewport.
+- **Two card bodies left unrevealed** on `/ru/` at 844×390, in one fast
+  scroll-through. Eight reruns at two scroll speeds revealed everything.
+- **"Preț și condiții" not found by `innerText`.** CSS uppercases it. It is in the
+  HTML, and W19-D4 is still live.
+- **"Acasă" and "Servicii" opening the popup** in the nav-jump test. Scrolling the
+  footer rows into view had already crossed 50% depth before the click.
+- **"Sisteme de iluminare" counted unreachable at 844×390** by its bottom edge. Its
+  centre can be tapped, and W19-D10's acceptance uses the centre.

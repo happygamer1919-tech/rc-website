@@ -18,7 +18,7 @@ Dispatch of 2026-09-17. #63 to #67 were merged by the owner and verified as ance
 | Ticket | Card | Branch | Status |
 |---|---|---|---|
 | W22-01 | The Q-W21-01 ruling: the price-on-request phrase, permitted on a product card and nowhere else | `w22/w22-01-price-on-request-ruling` | PR open, awaiting owner: permitted only as a product card button's whole text, blanked before the price patterns run; a new site-wide scan of all 45 built pages refuses it anywhere else; 8 arms fired, including the dispatch's Latin-u spelling and a real price inside a permitted button; the dispatch's RU string is corrected to its Cyrillic spelling |
-| RC-151 | W22-02 Two environment facts a future terminal will find | `w22/rc-151-environment-facts` | todo |
+| RC-151 | W22-02 Two environment facts a future terminal will find | `w22/rc-151-environment-facts` | PR open, awaiting owner: `docs/CLAUDE.md` section 18, with both facts, how to verify each properly and the inverse trap; pointers from section 12 and from the RELEASE-NOTES reading list |
 | RC-152 | W22-03 Catalogue readiness: the form the product list is filled into | `w22/rc-152-catalogue-readiness` | todo |
 
 **The dispatch assigned no RC number to the ruling card**, so it is tracked by its wave

@@ -498,6 +498,10 @@ it. The stronger form is a deployment fingerprint emitted into every page and
 asserted by the verifier; that is not built, and is recorded as a recommendation
 in QUESTIONS.md rather than assumed.
 
+**Two things about this environment read as broken output and are not: the
+Russian 404 under `curl`, and the cancelled deploy runs after a stack of merges.
+Section 18 has both, with how to verify each properly.**
+
 **Prove the assertions fire.** They were negative-tested against a build with the
 review panel removed: three markers mismatched and the run exited 1, while the
 heights it reported were inside budget and looked correct. An assertion nobody
@@ -760,3 +764,55 @@ purpose, inside a ruling as anywhere else, and it is not an exception to R-T. Th
 struck value stays readable; no sentence is rewritten.
 *Source: DECISIONS.md, W18 ratifications, reclassifying wave 17 deviation 6.*
 
+
+---
+
+## 18. What the environment does that looks like a defect
+
+> Two behaviours of the hosting and the deploy have already been mistaken for
+> broken output, once each. Neither is a defect, and neither is fixable in this
+> repo. **Check this section before reporting either as one.**
+*Source: card RC-151 (W22-02), from the live checks of RC-146, DECISIONS.md W21-01.*
+
+### 18.1 The Russian 404 cannot be verified from the command line
+
+**`curl` on a `/ru/` path that does not exist returns the ROMANIAN page, and that
+is correct.** A static host serves **one 404 body for the whole origin**, the file
+at `/404.html`. There is no per-directory error page to serve. W19-D9's fix runs
+**in the page**: the root 404 carries a script that, for a path under `/ru/`,
+replaces the location with `/ru/404.html` and puts the broken address back in the
+bar. A client that does not run JavaScript never reaches that step.
+
+| Client | What it gets on `/ru/nu-exista/` | Reading |
+|---|---|---|
+| `curl` | 404, the Romanian body, `lang="ro"` | **expected**, not a defect |
+| any real browser | 404 first, then the Russian page, `lang="ru"`, button to `/ru/`, the typed address kept | the fix working |
+
+**Verify it in a browser, never with `curl` alone.** The RC-146 live check is the
+pattern: request the path, read the first response's status, then read the
+rendered `h1`, `documentElement.lang` and the primary button's `href`. A
+`curl`-only check of this page reports a failure that is not there, and a
+`curl`-only check that *passes* would mean the script had stopped running.
+
+The same is true of the Apache deploy path, and of `/rus/` or `/ruta/`: a path
+that merely starts with the letters "ru" stays Romanian in the browser too.
+
+### 18.2 The publish workflow keeps only the last run
+
+**`pages.yml` runs on every push to `main` under `concurrency: pages` with
+`cancel-in-progress: true`.** Merging a stack of pull requests in quick
+succession therefore leaves a row of **cancelled** deploy runs and one that
+publishes. That is the workflow working as configured: one publish, from the
+final tree.
+
+Wave 21 saw it plainly: eleven merges inside one minute, ten runs cancelled, run
+35255945622 (`c37e9ec`) succeeded, and for the minute in between the live
+`build-sha` was an intermediate merge, which is a rollout in progress and not a
+stale edge copy.
+
+**So verify live against the final merge only.** Take the sha of the last merge
+commit on `main`, wait for its deploy run to report success, then run
+`EXPECT_SHA=<that sha> node scripts/verify-live.js https://rapidconstruct.md`.
+Verifying against an intermediate merge fails on the `build-sha` assertion and
+proves nothing about the deploy. A cancelled run in the list is not a failed
+deploy and needs no investigation; a **failed** one does.

@@ -8495,3 +8495,42 @@ Control, the shipped state with no records: exit 0.
    strings. That is new scope, and it is what makes the ruling's "nowhere else" true.
 2. **Exact means exact.** A button whose text is the permitted phrase with anything else
    around it is not permitted, and a near spelling is refused.
+
+## W22-02 · Two environment behaviours that read as defects, written where a terminal will find them, 2026-09-17
+
+**Card RC-151.** Docs only. PR only, stops for the owner. Stacked on W22-01.
+
+### Where they went, and why there
+
+**`docs/CLAUDE.md` section 18, "What the environment does that looks like a
+defect".** A new numbered section, because both facts are rules for reading
+evidence, which is what sections 12 and 13 already are, and because a future
+terminal greps the rules file first. Two pointers lead to it: **section 12**, the
+live-verification rule, and the **reading list at the foot of `RELEASE-NOTES.md`**,
+which is the first thing a card picking up the work is told to read.
+
+### 18.1 The Russian 404 cannot be verified from the command line
+
+A static host serves one 404 body for the whole origin, so `curl` on a `/ru/` path
+gets the Romanian page. W19-D9's fix runs in the page. The section carries the two
+readings side by side, says to verify in a browser with the first response's status
+plus the rendered `h1`, `lang` and button target, and notes the trap the other way
+round: **a `curl`-only check that passed would mean the script had stopped running.**
+
+### 18.2 The publish workflow keeps only the last run
+
+`pages.yml` runs under `concurrency: pages` with `cancel-in-progress: true`, so a
+stack of merges leaves a row of cancelled runs and one publish. The section records
+wave 21's instance (eleven merges in a minute, ten cancelled, run 35255945622 on
+`c37e9ec` successful), says to verify against the final merge only with
+`EXPECT_SHA`, and draws the line that matters: **a cancelled run is not a failed
+deploy; a failed one is.**
+
+### Recorded for ratification
+
+1. **A new section rather than an appendix to section 12.** Section 12 is R-P, a
+   ruling about what a measurement may conclude; these are facts about the host and
+   the workflow. They are cross-referenced instead of merged.
+2. **No gate.** Neither fact is a property of the built site that a check could
+   assert; both are instructions for reading evidence. The gates that already exist
+   (`verify-live.js` for 18.2, the RC-146 browser check for 18.1) are named in place.

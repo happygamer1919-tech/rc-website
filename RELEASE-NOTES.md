@@ -722,7 +722,8 @@ official locality names appears anywhere in the file.
 
 1. `docs/CLAUDE.md` — the rules. Section 11 is the gate list, section 16 is the
    staleness gate, sections 12 and 13 are what a measurement and a gate may
-   conclude.
+   conclude, and **section 18 is what this environment does that looks like a
+   defect** (the Russian 404 under `curl`, the cancelled deploy runs).
 2. This handoff.
 3. `DECISIONS.md` from ruling R-J onward — twelve rulings landed in wave 12 and
    they are what the master plan now loses to. Two govern how you write:

@@ -7475,3 +7475,71 @@ is the first audit of the job, on a runner that has just installed Lighthouse, a
 is the only one that moves. **Not changed here:** a warm-up audit, or a best-of-N
 reading, would change what gate 5 measures and is a card of its own. Recorded so a red
 Lighthouse step on an RO homepage reading is read against this first.
+
+## W19-D7 · On phones the specification table stacks each row, so nothing is cut at the screen edge, 2026-09-17
+
+**Card W19-D7**, fifth in the wave 20 order. PR only, stops for the owner. Stacked on
+W19-D9.
+
+### The change
+
+`src/styles.css`, beside the W9-08 table rules, one new query, `max-width: 511px`
+("below 512px", where the column becomes narrower than the table's 480px minimum):
+- the table, its body, rows and cells become blocks, so each row is its label on one
+  line and its description under it at the full column width;
+- `min-width` drops to 0 there, and cells may break a long word (`overflow-wrap:
+  anywhere`) rather than widen the box, which the card measured as the reason five RU
+  tables still overflowed at 320 with the minimum removed;
+- a single `--line` rule separates rows, as before, and the cell padding keeps the
+  768px query's 14px sides.
+
+`.table-wrap` and its `overflow-x: auto` stay, as W9-08's guard. From 512px up nothing
+changes: the 768px query and the desktop table are untouched. No colour, no string, no
+markup.
+
+### Acceptance, the card's own checks
+
+Scratch harness, headless Chrome, a local build; `mobile: true` at 768 and below. **The
+font precondition** held on all 240 loads (Inter loaded, none loading), main and branch.
+
+**Check 2**: the sitemap's `/servicii/` and `/ru/servicii/` pages, 24 read, 12 carrying
+`#ce-include` (case-la-cheie, acoperisuri, fatade, finisaje, instalatii, terasamente,
+both locales); 10 widths; **120 combinations read**.
+
+| Width | `main`: failing, widest hidden | this branch: failing, widest hidden |
+|---|---|---|
+| 320 | 12, 192px | 0, 0 |
+| 360 | 12, 152px | 0, 0 |
+| 375 | 12, 137px | 0, 0 |
+| 390 | 12, 122px | 0, 0 |
+| 414 | 12, 98px | 0, 0 |
+| 430 | 12, 82px | 0, 0 |
+| 480 | 12, 32px | 0, 0 |
+| 768, 1280, 1920 | 0 | 0 |
+
+**Check 3**, watched failing first: `main` failed exactly 84, the 12 table pages at
+320 to 480, with the card's own per-width figures, and passed at 768, 1280 and 1920.
+On the branch, every combination has one `.table-wrap`, no sideways scroll in it,
+every `th` and `td` inside its box, no clipped cell, and no page scroll.
+
+**Check 4, no content lost:** on all 12 pages the text of every `th` and `td`, in
+order, is identical to `main`'s. **Check 5, desktop unchanged:** at 1280 and 1920 the
+table's box is identical to `main`'s on all 12 pages, 24 comparisons, delta 0.00px
+in width and height. **Check 6:** `verify-live.js` and the gates are in the PR.
+
+**Beyond the card:**
+- **No word actually breaks.** Every word in the 12 tables, 754, measured with a DOM
+  range at 320, 360 and 390: 0 split across lines. `overflow-wrap: anywhere` is a
+  guard, not in use today.
+- **Table semantics survive the block display.** Chrome's accessibility tree at 390
+  over the 12 pages: 58 row headers and 58 cells, the same as `main`.
+- A 360px screenshot of `/ru/servicii/fatade/` was read: four rows, bold label, the
+  description under it, a hairline between rows.
+
+### Recorded for ratification
+
+1. **Stacking rather than a narrower table.** The card offers both. A two-column table
+   at 320 leaves the label column about 90px, which would break "Вентилируемый" and
+   "Теплоизоляция" mid-word. Stacked, no word breaks.
+2. **The breakpoint is 511px**, the card's "below 512px". Between 512 and 768 the
+   table keeps its columns, and fits.

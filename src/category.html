@@ -138,6 +138,13 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
 <!-- 2 · The block that moved off the homepage (W14-16) -->
 {{cat.block}}
 
+<!-- 3 · Product records (RC-149). Renders only where content/catalog-products.json
+     has records for this category; absent everywhere until the owner supplies the
+     list. What a card may never carry is enumerated in
+     scripts/check-catalog-pages.js and, as the note at the top of this file says,
+     those words are deliberately not repeated here: that gate scans comments too. -->
+{{cat.products}}
+
 <!-- 5 · CTA, the same form as the homepage -->
 <section class="section section--light section--divided" id="oferta">
   <div class="container">

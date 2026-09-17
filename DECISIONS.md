@@ -8264,3 +8264,94 @@ Control, an unmutated copy: exit 0.
 2. **The dated wave 6 record keeps its 44**, as a named exception with its reason,
    because it is a record of that day (R-S).
 3. **Gate 15 is new** and runs on every pull request. It reads files only, no browser.
+
+## W21-04 · The catalogue gets the place a product record goes, and nothing to put in it, 2026-09-17
+
+**Card RC-149, structure only.** PR only, stops for the owner. Stacked on RC-148.
+**The card is blocked on the product list**, as it anticipated, and the block is total:
+see the fill count below and Q-W21-01.
+
+### What the audit can fill: 0 of the 14 pages
+
+The card allows products "already recorded in the wave 14 audit" and forbids browsing,
+inventing or recalling any. The audit records **38 product rows in four families**:
+
+| Family | Rows | Whose | Fillable slots on a category page |
+|---|---|---|---|
+| Dasterum metal tile (2.1) | 10 | Rapid Construct's confirmed tile supplier | **0**: roofing has no catalog category, and these render on the tile product page already |
+| Imperlux louvre fences (2.2) | 12 | a competitor | **0** |
+| Imperlux carports (2.3) | 12 | a competitor | **0** |
+| Fațade 3D diffusion membrane (2.4) | 4 | a competitor's own brand | **0** |
+
+**14 category pages, 14 empty.** Three of the four families are another company's goods,
+and `scripts/check-catalog-pages.js` has refused those three manufacturer names on these
+pages since W17-02. Nothing was invented, and no site was visited.
+
+### What ships
+
+- **`content/catalog-products.json`**, seven categories, every array empty, with the
+  record shape and the prohibitions in its `_note`.
+- **`build.js`: `catalogProducts(l, slug)`** renders a "Produse din această categorie"
+  section only where a category has records: one card per record with the product name,
+  manufacturer, pack or coverage, one key specification, and a button. It **refuses**, at
+  build time, a record whose name, pack or specification is not real in either locale,
+  and a manufacturer the catalog gate forbids. The forbidden names are restated in
+  `build.js` beside the gate's own list, the arrangement `check-lighthouse.js` has with
+  the floors.
+- **`src/category.html`**: one `{{cat.products}}` slot. **No image markup**: the card
+  forbids product images, so a slot renders nothing until an approved source exists, and
+  the requests are listed by RC-150.
+- **`src/main.js`**: a capture-phase click listener copies a button's `data-product` into
+  the page's hidden `serviciu` field before the page jumps to the form, so the lead names
+  the product rather than the category. The button is a link to `#oferta`, so W19-D6's
+  popup suppression already covers it.
+- **`src/styles.css`**: the `.prod` card, in existing tokens. No colour value added.
+- **Five strings per locale**, in the same commit (section 8): the section heading, the
+  three field labels and the button label.
+
+**Nothing renders today**, on any of the 14 pages, which is the same contract the
+before/after slider and the specification table have: data absent, section absent.
+
+### Acceptance, on a fixture that is not committed
+
+Three obviously synthetic records ("Produs fixture A" and B in Vopsele, C in
+Termoizolație, manufacturer "Fixture SRL") in a scratch copy of the data file, built with
+a stand-in form key:
+
+1. **Every product card's button sends its own product name.** Headless Chrome, real
+   clicks at 1280 and real taps at 390, `window.fetch` replaced in the page so nothing
+   leaves it, the whole form filled and submitted **once per card**: **12 of 12** sent
+   `serviciu` equal to that card's product name, where the field had held the category
+   name ("Vopsele", "Краски", "Sisteme de termoizolație", "Системы теплоизоляции").
+2. **The existing no-price gate**, `scripts/check-catalog-pages.js`, on the shipped
+   state: **exit 0**, zero price strings, zero stock strings, zero cart markup, zero
+   product records, zero manufacturer names, 42 prose blocks intact.
+3. **The build refuses a bad record.** `Imperlux` as a manufacturer: `BUILD FAILED:
+   catalogProducts: record 0 names "Imperlux", which scripts/check-catalog-pages.js
+   forbids on a category page.` An emptied RU specification: `BUILD FAILED:
+   catalogProducts: record 1 spec is not real for ru (vopsele).`
+4. **Heights:** nothing renders, so nothing moves. `verify-live.js` against the local
+   build reads the category pages at their recorded figures, inside R-Y. **R-Y is not
+   extended**, because no page changed; the extension belongs to the card that ships the
+   first records.
+
+### The two findings this card is reporting rather than deciding
+
+1. **The CTA label the card names collides with a standing gate.** "Preț la cerere" and
+   "Цена по запросу" are refused on category pages by the `price-word` pattern, whose own
+   sample list contains "цена по запросу". On the fixture, every page carrying a card
+   failed the gate; the same cards with a neutral label passed it. The card also requires
+   that gate to stay green, so the two cannot both hold. Q-W21-01 carries the options and
+   a recommendation; the strings ship as the card wrote them and render nowhere.
+2. **A harness lesson, not a site defect.** The first run of the submit test missed three
+   of twelve taps at 390px: the box was measured while the card's reveal was still
+   moving it, and the tap landed on a `<dd>`. The harness now settles the reveals and
+   asserts `elementFromPoint` is the button before tapping. A visitor sees the reveal
+   finish in under 400ms.
+
+### Recorded for ratification
+
+1. **Zero records is the honest fill**, and the card's own rule produced it.
+2. **`build.js` refuses the forbidden manufacturers itself**, so a record cannot reach
+   the gate.
+3. **No image markup at all** until a source exists, rather than an empty box.

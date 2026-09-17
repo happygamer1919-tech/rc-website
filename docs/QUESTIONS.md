@@ -1920,3 +1920,64 @@ browser.
 **Recommended: (b).** (a) is already shipped, and (b) costs a minute per form change and
 catches the failures (a) cannot. (c) buys automation at a recurring cost and an inbox
 full of probe mail, for a site whose forms change rarely.
+
+## Q-W21-01 · The catalogue has no product list, and the CTA label the card names collides with the no-price gate · OPEN · opened 2026-09-17 (W21-04, RC-149)
+
+**Shipped default: the structure, with no product records.** `content/catalog-products.json`
+carries the seven categories with empty arrays, `build.js` renders the section only
+where a category has records, and nothing renders today. Two things are needed before a
+card can appear.
+
+### 1. The product list itself
+
+RC-149 restricts the executor to "products already recorded in the wave 14 audit" and
+forbids browsing, inventing or remembering any. Measured against that audit
+(`docs/audits/wave-14-competitor-structure.md`), **the audit can fill 0 of the 14
+category pages**:
+
+| Audit section | Records | Whose products | Category page they could fill |
+|---|---|---|---|
+| 2.1 Dasterum metal tile | 10 | Dasterum, **Rapid Construct's confirmed tile supplier** (W16 ratifications) | none: roofing has no catalog category, and these already render on `/servicii/tigla-metalica/` |
+| 2.2 Imperlux louvre fences | 12 | Imperlux, a competitor with its own plant | none |
+| 2.3 Imperlux carports | 12 | Imperlux | none |
+| 2.4 Fațade 3D diffusion membrane | 4 | fatade3d.md's own brand | "Alte materiale de construcții" is where **that site** files it |
+| 1.2 Taxonomy | 7 categories, 7 subcategories | — | already built as the 14 pages (W16-02) |
+
+**38 product records in the audit, 0 of them Rapid Construct's to list.** Three of the
+four families are another company's goods, and `scripts/check-catalog-pages.js` already
+refuses the names Dasterum, Imperlux and Fațade 3D anywhere on a category page (W17-02).
+`build.js` now refuses such a record too, so the prohibition fails the build rather than
+the gate.
+
+**What a record needs, per category:** product name (RO and RU), manufacturer, pack size
+or coverage (RO and RU), one key specification (RO and RU). No price, no stock, no
+availability, no discount, no image. **Sixteen fields per product**, and the file's
+`_note` carries the shape.
+
+### 2. The CTA label
+
+The card specifies **"Preț la cerere" / "Цена по запросу"**. Measured on a fixture build
+with three synthetic cards: `scripts/check-catalog-pages.js` fails on every page that
+carries one, because its `price-word` pattern refuses `preț` and `цена` on these pages,
+and its own self-test sample list contains "цена по запросу". The same fixture cards with
+a neutral label pass the gate, so the collision is the wording alone and nothing else in
+the card.
+
+**Options:**
+
+  (a) **Allow the exact phrase, both locales, as a named occurrence exception in the
+      gate.** It is the absence of a price, not a price. Every other price word still
+      fails, and a figure still fails.
+  (b) **Use a label from the site's existing vocabulary**, for example "Cere ofertă
+      pentru acest produs" / "Запросить смету на этот товар". No gate change; the label
+      is longer and says the same thing.
+  (c) Drop the label to the plain quote wording already on the page,
+      "Solicită ofertă gratuită" / "Получить бесплатную смету".
+
+**Recommended: (a).** The phrase is what a buyer looks for, and the gate exists to keep
+figures off these pages, not the word. If you prefer no gate change, (b) ships as it
+stands.
+
+**Until this is answered, no product card renders.** The structure, the quote wiring and
+the gate are in place and were proven on a fixture: 12 of 12 submits sent the card's own
+product name.

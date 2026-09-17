@@ -353,6 +353,13 @@
       "teaser": "Garduri din lamele metalice."
     }
   },
+  "catalogProducts": {
+    "h2": "Produse din această categorie",
+    "cta": "Preț la cerere",
+    "mfr": "Producător",
+    "pack": "Ambalare / acoperire",
+    "spec": "Specificație"
+  },
   "catalogPages": {
     "items": {
       "0": {

@@ -7076,3 +7076,59 @@ Lighthouse reports.
 - **The headings of Q-04, Q-W12-07-LEGAL and Q-W14-08** do not reflect the later
   records above. Under R-S a heading is status metadata and may be updated in place.
   No heading was touched here.
+
+## W20-01 · Document drift: the stub count corrected under R-R, and three question headings closed, 2026-09-17
+
+**Card RC-144.** Rides the first wave 20 pull request, as its own commit, as the
+dispatch directs. Docs only. Nothing rendered changes.
+
+### Before any card: the four merges
+
+`gh pr view` on each, then `git merge-base --is-ancestor` against `origin/main`
+(`207ddf0`), both the merge commit and the PR head:
+
+| PR | Merge commit | Head | Ancestor of `origin/main` |
+|---|---|---|---|
+| #48 | `27bf5f5` | `2ae3bc2` | yes, both |
+| #49 | `00006b8` | `0bde0e4` | yes, both |
+| #50 | `ff102c6` | `8db3183` | yes, both |
+| #51 | `207ddf0` | `de5e4ce` | yes, both |
+
+### `docs/CLAUDE.md` section 6, corrected under R-R
+
+"44 of the 54 projects are stubs" was struck in place, with the live figure beside it
+and an amendment naming this card. **Re-counted, not transcribed:** over
+`content/projects.json`, a project is renderable when its `title` and `summary` are
+both real in that locale (not empty, not `TODO:`), which is `build.js`'s rule. 54
+projects; RO 38 renderable and 16 stubs; RU 38 renderable and 16 stubs. That equals
+`docs/audits/wave-19-readiness.md` section 3.
+
+The value is not added to `scripts/check-stale-docs.js`. It is not a ruling-held
+measurement, and two other documents still carry it: `docs/RC-PHOTO-MANIFEST.md`
+lines 362 and 367, and the wave 12 handoff in `RELEASE-NOTES.md` (the Q-04 row).
+Both are outside this card's scope and are reported, not changed.
+
+### Three question headings, closed as status metadata under R-S
+
+Only the headings changed. No question body and no later record was edited.
+
+| Question | Heading now | The later record that settles it |
+|---|---|---|
+| Q-W14-08(a) | CLOSED 2026-09-16 | `DECISIONS.md`, W16 ratifications: "Dasterum is the confirmed tile supplier. Q-W14-08(a) is closed." |
+| Q-W9-06 | CLOSED 2026-09-17 | Q-W10-01, CLOSED 2026-09-06 (W12-04): the key is set and a real browser submission landed at 08:57 on 2026-09-06; the same evidence is in `docs/BACKLOG.md`, wave 12 |
+| Q-W12-07-LEGAL | CLOSED 2026-09-17 | W12-26, RC-072, commit `8c3b9ce`: the fallback privacy page published and linked on an explicit switch |
+
+### Recorded for the owner
+
+1. **Q-W9-06 is settled by the record only in part.** It asked for one live
+   submission per locale. Q-W10-01 records one submission, without its locale, and the
+   wave 12 handoff in `RELEASE-NOTES.md` says "One remains". It is closed as
+   dispatched, and its heading says so. RC-145 now asserts the wiring of every form in
+   both locales, which is not delivery.
+2. **Q-W12-07-LEGAL's heading question is settled; the operator section is not.** The
+   pages are linked and indexed, and `privacy.opName` and `privacy.opIdno` are still
+   absent in both locales. The heading points at its own addendum, which holds the
+   steps for when the registry extract arrives. No other open question tracks the
+   extract.
+3. **Q-04's heading still says 44 stubs.** The readiness audit flagged it with the
+   other two, and it is still open, so the dispatch did not name it. Left unchanged.

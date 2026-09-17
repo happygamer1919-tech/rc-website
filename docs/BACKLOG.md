@@ -23,7 +23,7 @@ longer differ. The amendment and the wave 18 ratifications ride RC-141.
 |---|---|---|---|
 | RC-141 | W19-01 Live tile budgets under R-P | `w19/rc-141-live-tile-budgets` | PR open, awaiting owner: 3 live R-P runs of 28 pages, identical, 28 of 28 VERIFIED against the deployed build-sha; live equals local on all 28, delta 0; tile budgets unchanged; W18-01's LOCAL label struck and a W19-01 block added to R-Y; two negative arms fired |
 | RC-142 | W19-02 Diagram accessibility parity | `w19/rc-142-diagram-a11y` | PR open, awaiting owner: the 7 carport diagrams (34 instances) are named, described images, and the 4 tile diagrams gained descriptions; drawings pixel-identical; gate 12 `check-svg-a11y.js` failed main with 76 problems, 8 arms each fired on its own message; AX tree 130 of 130; Lighthouse 100/100 on both diagram pages in both locales |
-| RC-143 | W19-03 Pre-review sweep, `docs/audits/wave-19-readiness.md` | `w19/rc-143-readiness-sweep` | todo |
+| RC-143 | W19-03 Pre-review sweep, `docs/audits/wave-19-readiness.md` | `w19/rc-143-readiness-sweep` | PR open, awaiting owner: 42 of 42 sitemap URLs return 200; Lighthouse 44 of 44 runs, all 100 except RO homepage performance 99 and 404 SEO 66; 4 hidden sections plus 16 stub projects; 58 of 63 photo slots unfilled; 10 open questions, oldest 13 waves |
 
 **The W19 numbers follow the dispatch's order.** The critic's cards W19-D1 to W19-D5
 in `docs/board/` are a separate series and carry no RC number yet.

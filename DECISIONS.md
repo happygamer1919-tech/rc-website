@@ -7832,3 +7832,55 @@ amendment.
 3. **Gate 14 is new** and adds 88 page loads to `quality`.
 4. The RU privacy page's h1 is now three lines at desktop. Privacy pages have no height
    budget.
+
+## W19-D1a · Correction to W19-D1: hyphenation is limited to h1 and h2, because it re-wrapped 31 h3 titles that fitted, 2026-09-17
+
+**Corrects W19-D1**, whose body stands as recorded (R-S). Same card, same PR, a second
+commit.
+
+### What W19-D1 got wrong
+
+W19-D1 recorded that "shorter words never hyphenate, so a heading that already fits
+wraps exactly as before", and its check 4 read **line counts of h1 and h2**, as the
+card specifies. Both were true of what they measured. Neither covered **h3**, and a line
+count cannot see a word that moves while the count stays the same.
+
+Found during W19-D5, in a 1440px screenshot of `/ru/`: the card title "Кровля из
+металлочерепицы цвета антрацит" read "Кровля из металлочере- / пицы". On `main` the
+long word wraps whole to the second line. Chrome hyphenates a word of 14+ characters at
+a line end even where the whole word would fit on the next line, and a character limit
+cannot separate "металлочерепицы" (15, fits) from "МЕТАЛЛОЧЕРЕПИЦА" (15, overflows).
+
+### The measurement that replaces check 4's reading
+
+Every visible `h1`, `h2` and `h3` on the 44 pages at all six widths, 3,312 headings per
+build. For each word, the line or lines it renders on, read with a DOM range; a
+heading's signature is its words and their lines. Compared with `main` for every
+heading that fits on `main` (3,306):
+
+| Build | Headings whose wrapping changed |
+|---|---|
+| W19-D1 as committed, `h1, h2, h3` hyphenating | **31, all h3**: 9 distinct titles in 15 distinct wrap patterns, every one a Russian or Romanian card or FAQ title with a 14+ character word, at 360 to 390 and at 1280 and 1920 |
+| this correction | **0** |
+
+### The change
+
+`src/styles.css`: `overflow-wrap: break-word` stays on `h1, h2, h3`. The hyphenation
+declarations move to their own rule, `h1, h2 { -webkit-hyphens: auto; hyphens: auto;
+hyphenate-limit-chars: 14 6 4; }`. The comment says why h3 is left out.
+
+Both failures the card measured are h1s, so they still hyphenate: "КОНФИДЕНЦИАЛЬ- /
+НОСТИ" and "МЕТАЛЛОЧЕРЕ- / ПИЦА", unchanged from W19-D1. An h3 with a word that cannot
+fit on a line of its own still breaks rather than overflows.
+
+### Re-run on this build
+
+- **The card's acceptance:** 264 of 264 combinations; `main` still fails exactly the 6;
+  check 4, 346 h1/h2 line counts, 0 changed.
+- **Word-level wrapping, all heading levels, all six widths:** 0 of 3,306 changed.
+- **Gate 14** and every other gate: in the PR.
+
+### What still holds from W19-D1's ratification list, and what changes
+
+Item 2 now reads: on Safari, which ignores `hyphenate-limit-chars`, a shorter word in an
+**h1 or h2** may hyphenate; h3 never hyphenates in any browser. Items 1, 3 and 4 stand.

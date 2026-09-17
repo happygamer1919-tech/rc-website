@@ -51,6 +51,11 @@ jobs:
       - name: Catalog category pages carry no prices, stock, cart or product records (RC-129)
         run: node scripts/check-catalog-pages.js
 
+      # RC-142. Every inline svg is decorative (aria-hidden) or a named image, and
+      # every diagram is a named, described image. Static, over the built HTML.
+      - name: Every svg is decorative or a named image; every diagram is described (RC-142)
+        run: node scripts/check-svg-a11y.js
+
       # RC-131. Gate 5 executes from here. Installed at a PINNED version rather
       # than vendored: the repo still has no package.json, no lockfile and
       # nothing in node_modules, which is a documented property of this build.

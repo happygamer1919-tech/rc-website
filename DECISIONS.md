@@ -6919,3 +6919,113 @@ and B show both assertions firing live.
 
 **Not measured, and said so:** the tile page's promo-bar revert figure in its current
 state. The wave 14 tail's 44 predates the diagrams.
+
+## W19-02 · Diagram accessibility parity: the carport diagrams become named, described images, and a gate holds every svg, 2026-09-17
+
+**Card RC-142.** PR only, stops for the owner, under the amended R-V. Stacked on
+RC-141's branch.
+
+### What changed on the pages
+
+**The seven carport diagrams** (RC-123, RC-127) were `aria-hidden`, with no name
+and no text. They are now images.
+- Across the 17 diagrams on each carport page, per locale:
+  - `role="img"`;
+  - an `aria-label` naming the structure ("Schemă: copertină pe stâlpi" / "Схема:
+    навес на опорах");
+  - an `aria-describedby` pointing at a `<desc>` inside the svg that describes the
+    form drawn ("Acoperiș orizontal pe doi stâlpi verticali, câte unul la fiecare
+    capăt.").
+- The ids take the family or model id (`cop-diagram-desc-stalpi`,
+  `cop-diagram-desc-c10`), so they are unique on the page.
+
+**The four tile diagrams** (RC-138) already had a name. Each now also carries a
+described `<desc>` of its profile's form, so every diagram on the site meets the
+same standard.
+
+**The drawings are unchanged.** `COP_DIAGRAMS` still holds the same geometry; only
+the wrapper that names it changed.
+- **Carport pages, both locales, 1440 and 390:** the full-page captures are
+  byte-identical PNGs against `main`'s build, same height.
+- **Tile pages:** byte-identical at RU 1440, RO 390 and RU 390. At RO 1440 the
+  full-page capture was not deterministic even `main` against `main`. Every element
+  outside `<desc>` has identical geometry there (628 of 628), and the tile section's
+  capture is identical.
+
+**A `<desc>` referenced by `aria-describedby`**, not a `<title>`: a `<title>` would
+show a hover tooltip, which is a visual change.
+
+### The strings
+
+**22 new strings, both locales**, in `locales/*.json`:
+- `copertine.diagrams.<key>.name` and `.desc` for 7 structures (14);
+- `tigla.diagrams.<key>.desc` for 4 profiles (8).
+
+`build.js` refuses a diagram whose name or description is not real in that locale.
+The names are composed of the category terms the carport data already uses. The
+descriptions describe only what each drawing shows: posts, braces, the roof's
+shape, overhangs. There are no figures and no claims.
+
+### The gate: `scripts/check-svg-a11y.js`, gate 12, run by `quality`
+
+Over every built page. Every inline svg is either:
+- **decorative**: `aria-hidden="true"`, no role; or
+- **an image**: `role="img"`, non-empty `aria-label`, not hidden.
+
+Every **diagram** is an image and carries an `aria-describedby` naming a non-empty
+`<desc>` inside it. Every `<text>` a diagram draws takes the tile treatment:
+`fill="currentColor"`, `stroke="none"`, `font-size="9"`. It prints the files, svgs
+and diagrams read, and fails on zero of any.
+
+**Shipped state:** `node scripts/check-svg-a11y.js` exit 0. 45 pages, 648 svgs
+(606 decorative, 42 named images), 34 carport and 8 tile diagrams.
+
+**Watched failing first on `main`'s own build:** exit 1, 76 problems. 34 carport
+diagrams hidden, 34 carport diagrams with no description, 8 tile diagrams with no
+description. That is exactly the gap this card closes.
+
+**Negative-tested on eight arms**, each mutating a copy of this branch's built site
+one way. Control exit 0 before and after; each arm exit 1 on exactly one problem, its
+own:
+
+| Arm | Fired on |
+|---|---|
+| a carport diagram's `aria-label` removed | `is neither decorative ... nor a named image` |
+| a carport diagram set back to `aria-hidden` | `is a carport structure diagram hidden from assistive technology` |
+| a carport `<desc>` removed | `is described by "cop-diagram-desc-c10", which is not a <desc> inside that svg` |
+| a tile `<desc>` emptied | `is described by an empty <desc id="tile-diagram-desc-kascad">` |
+| a decorative icon's `aria-hidden` removed (the Servicii caret) | `is neither decorative ... nor a named image` |
+| a tile label at `font-size="8"` | `draws a label off the tile treatment: font-size "8", want "9"` |
+| every carport diagram removed | `zero carport structure diagrams (svg.cop-diagram__svg) in the built site` |
+| an empty `dist/` | `zero HTML pages read in dist/, so no svg was checked` |
+
+### Acceptance in the browser
+
+Chrome's accessibility tree (`Accessibility.getFullAXTree`), against a local build,
+1440px, both locales: **130 of 130 assertions on names and descriptions** (and the 8 pixel comparisons above: 7 byte-identical, 1 resolved by geometry).
+- The carport pages expose 17 unignored image nodes for the diagrams. Each is named
+  with the locale name for its mapped structure (the family and model mapping
+  unchanged), and its computed description equals the locale string exactly.
+- The tile pages expose 4, named as before, each described exactly.
+
+Lighthouse, desktop, the scratch copy of gate 5 re-pointed at these pages: carport
+RO and RU, tile RO and RU all **performance 100 and accessibility 100**, exit 0,
+4 of 4 reports read.
+
+### Recorded for ratification
+
+1. **"Every inline SVG on the site has an accessible name" is read as "every svg is
+   decorative or named".** 606 of the site's svgs are icons inside links and buttons
+   that already name themselves: the phone glyph, the menu bars, the caret, the
+   social icons. Naming them too would make a screen reader announce each of those
+   controls twice. The gate holds them explicitly hidden, and holds every diagram
+   named and described, so a diagram cannot pass by being hidden (arm 2).
+2. **The tile diagrams got descriptions too.** The card scopes the seven carport
+   diagrams; the four tile descriptions are beyond its letter, added so that "the
+   same standard" is one rule the gate can hold for every diagram.
+3. **No label is drawn on a carport diagram.** No carport has a measured dimension,
+   so there is nothing sourced to draw. The gate holds any future drawn label to the
+   tile treatment.
+4. **The 22 strings are authored accessibility text** describing drawings made in this
+   repo. That is the same kind as the offer card alt text written at W14-18 and
+   ratified at W15, not copy in section 5's sense.

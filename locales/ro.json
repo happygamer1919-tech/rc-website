@@ -180,7 +180,21 @@
     "colours": "Culori",
     "matt": "Mat",
     "gloss": "Lucios",
-    "swatchNote": "Culoarea de pe ecran este orientativă; decisivă este mostra fizică."
+    "swatchNote": "Culoarea de pe ecran este orientativă; decisivă este mostra fizică.",
+    "diagrams": {
+      "rounded": {
+        "desc": "Secțiune transversală schematică prin foaie: valuri înalte și rotunjite, cu văi scurte și înguste, întreruptă la mijloc acolo unde foaia continuă."
+      },
+      "broad": {
+        "desc": "Secțiune transversală schematică prin foaie: valuri late, joase și uniforme, întreruptă la mijloc acolo unde foaia continuă."
+      },
+      "flat": {
+        "desc": "Secțiune transversală schematică prin foaie: nervuri cu vârf plat și flancuri drepte scurte, cu văi înguste, întreruptă la mijloc acolo unde foaia continuă."
+      },
+      "roll": {
+        "desc": "Secțiune transversală schematică prin foaie: o zonă plată urmată de un val rotunjit, repetate, întreruptă la mijloc acolo unde foaia continuă."
+      }
+    }
   },
   "copertine": {
     "eyebrow": "Copertine",
@@ -205,6 +219,36 @@
       "3": {
         "title": "Montaj",
         "text": "Structura, acoperișul și scurgerea, predate curat și funcționale."
+      }
+    },
+    "diagrams": {
+      "posts": {
+        "name": "Schemă: copertină pe stâlpi",
+        "desc": "Acoperiș orizontal pe doi stâlpi verticali, câte unul la fiecare capăt."
+      },
+      "cantilever": {
+        "name": "Schemă: copertină în consolă",
+        "desc": "Un singur stâlp vertical lângă un capăt, cu o contrafișă înclinată; acoperișul orizontal continuă mult dincolo de stâlp, fără sprijin la celălalt capăt."
+      },
+      "wall": {
+        "name": "Schemă: copertină prinsă de perete",
+        "desc": "Un perete vertical în stânga; acoperișul pornește din perete, ușor înclinat, și este sprijinit de o contrafișă, fără stâlpi."
+      },
+      "gable": {
+        "name": "Schemă: copertină în două ape",
+        "desc": "Doi stâlpi verticali sub un acoperiș în două ape, cu coama la mijloc."
+      },
+      "arched": {
+        "name": "Schemă: copertină arcuită",
+        "desc": "Doi stâlpi verticali sub un acoperiș curbat în arc."
+      },
+      "inclined": {
+        "name": "Schemă: copertină cu stâlpi înclinați",
+        "desc": "Doi stâlpi înclinați spre exterior, cu baza mai largă decât vârful, sub un acoperiș orizontal care îi depășește la ambele capete."
+      },
+      "architectural": {
+        "name": "Schemă: copertină arhitecturală",
+        "desc": "Un acoperiș gros, ca o placă, pe doi stâlpi verticali așezați asimetric, cu o consolă mai lungă în stânga."
       }
     }
   },

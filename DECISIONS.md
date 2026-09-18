@@ -8587,3 +8587,54 @@ cannot settle in it unmarked.
    anything less. Loosening that would mean a card with an empty line on it.
 2. **The short-row default is (b)**, hold a category back until three records exist.
 3. **No count in the form.**
+
+## W23 rulings · Client-supplied originals as an approved origin, and the supplier answer's weight, 2026-09-18
+
+Recorded at the owner's instruction, from the wave 23 dispatch, before any wave 23 card
+was worked.
+
+### R-W amendment: client-supplied originals are an approved origin
+
+> Client-supplied originals are an approved origin. The provenance row reads: source
+> "client direct transfer, Mihai, 18.09.2026", licence "owned by Rapid Construct,
+> supplied for site use", and **no URL is required for this origin only**. All EXIF and
+> GPS is stripped before commit, verified by exiftool showing no GPS tags.
+
+Added to `docs/rulings/R-W.md` as an amendment block (R-T: a ruling is read forward).
+Every other origin keeps its licence and URL requirement, and
+`scripts/check-asset-provenance.js` still refuses a row with an empty cell.
+
+**What the amendment does not do, and this wave met both limits on the first day.** The
+licence line is a statement about the file's origin, not a fact about its content. A file
+that is visibly somebody else's work contradicts it, and the ruling cannot make it true:
+
+- **a third-party watermark** on the frame (two files in this batch), and
+- **a 3D visualisation** rather than a photograph, where the slot's own rule requires a
+  photograph of real work (four files in this batch).
+
+Those files are held with the reason recorded, not published under this licence. W23-01
+carries the evidence.
+
+### Q-SUPPLIERS ruled: what "Da on all 20 brands" is, and is not
+
+> The all-Da answer is Mihai's claim of supply per brand, usable for catalogue listing.
+> It is NOT evidence of a manufacturer account and NOT a photo licence. Manufacturer
+> imagery enters only with a per-brand licence row per R-W.
+
+The 20 brands: Dasterum, Ruukki, Blachotrapez, Budmat, Bilka, Pruszynski, Lindab,
+Creaton, Wienerberger/Tondach, IKO, Tegola Canadese, Katepal, TechnoNICOL/Shinglas,
+Baumit, Caparol, Supraten, Rockwool, Knauf Insulation, Bicomplex, Lafarge.
+
+**Consequences, recorded so no later card has to re-reason them:**
+
+1. A brand may be named as a product's manufacturer in a catalogue record, because the
+   owner states he supplies it.
+2. **No manufacturer image may be committed** on the strength of it. W23-04 is the
+   licence scan that decides that, brand by brand, and downloads nothing.
+3. It says nothing about stock, availability, lead time, dealer status or an account, and
+   none of those may appear on the site (R-X, and the category page gate).
+4. **Dasterum, Imperlux and Fațade 3D remain refused by name on the catalogue category
+   pages** (W17-02). Dasterum is a confirmed supplier and may be named elsewhere, as it
+   already is on the tile page; the catalogue-page prohibition is a separate rule and this
+   ruling does not touch it.
+

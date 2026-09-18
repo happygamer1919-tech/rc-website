@@ -76,3 +76,27 @@ instruction from the wave 14 close-out dispatch.
 
 The old `unrecorded before R-W` value is retired: the 131 rows that carried it
 now say `legacy, licence unverified`, and each of their files is in the list.
+
+---
+
+### Amended 2026-09-18 by the wave 23 dispatch · client-supplied originals
+
+Added under R-T; nothing above this block was edited. Recorded at the owner's
+instruction, from the wave 23 dispatch:
+
+> Client-supplied originals are an approved origin. Provenance row: source "client
+> direct transfer, Mihai, 18.09.2026", licence "owned by Rapid Construct, supplied
+> for site use", no URL required for this origin only. All EXIF and GPS stripped
+> before commit, verified by exiftool showing no GPS tags.
+
+**Scope: this origin only.** Every other image still needs a real licence and a
+licence URL, or `supplier permission: ...` for a supplier pack, and the provenance
+gate still refuses an empty cell.
+
+**The licence line describes the origin, not the content.** A client transfer cannot
+make Rapid Construct the owner of a frame that is visibly someone else's: a
+third-party watermark on the image, or a 3D visualisation standing in for a
+photograph of real work, contradicts it. Such a file is held with its reason
+recorded rather than published under this row. Both cases occurred in the first
+batch this amendment covered; the evidence is in DECISIONS.md, W23-01.
+

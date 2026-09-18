@@ -28,6 +28,15 @@
    footer speak in the first person on purpose ("Te sunăm noi") and are not this
    card's copy. Price, currency and manufacturer patterns still scan whole pages.
 
+   W22-01 rules ONE exception, and bounds it. "Preț la cerere" and "Цена по
+   запросу" are permitted as EXACT strings, in the page's own locale, and only as
+   the whole text of a product card's quote button (RC-149's `.prod__cta`, which
+   carries the product's name in data-product). Everywhere else they are refused,
+   including as plain text on a category page and anywhere on a service, product
+   or other page: that second half is a site-wide scan this gate did not have
+   before, because "permitted there and nowhere else" cannot be checked by looking
+   only at the place it is permitted.
+
    Usage:  node build.js && node scripts/check-catalog-pages.js
    No dependencies. */
 
@@ -63,6 +72,15 @@ const PATTERNS = [
   },
 ];
 const MANUFACTURER_NAMES = ['Dasterum', 'Imperlux', 'Fațade 3D (fatade3d)'];
+
+/* W22-01, the owner's ruling on Q-W21-01. The exact string, per locale, and the
+   only shape it may take: the whole text of a product card's quote button. Exact
+   means exact: the wave 22 dispatch wrote the Russian with a Latin "u", and that
+   spelling is NOT this string and is refused like any other price word. */
+const PRICE_ON_REQUEST = { ro: 'Preț la cerere', ru: 'Цена по запросу' };
+/* The button RC-149 renders: an anchor to the quote form, carrying the product's
+   own name. Text captured so it can be compared with the permitted string. */
+const PRODUCT_CTA = /<a\b[^>]*class="[^"]*\bprod__cta\b[^"]*"[^>]*\bdata-product="[^"]*"[^>]*>([^<]*)<\/a>/g;
 
 /* Phrases that are ON these pages, or near misses a careless pattern catches.
    If one of these ever matches, the pattern is wrong, not the page. */
@@ -236,14 +254,67 @@ for (const loc of ['ro', 'ru']) {
   }
 }
 
+/* --- W22-01: the one permitted phrase, and only where it is permitted -------- */
+/* A permitted occurrence is blanked (spaces, so every other offset stays true)
+   before the patterns run. Anything the patterns then find is by definition not
+   the permitted one: the same phrase as plain text on the page still fires. */
+let ctaSeen = 0, ctaAllowed = 0;
+const ctaProblems = [];
+for (const pg of pages) {
+  pg.scan = pg.text;
+  for (const m of pg.text.matchAll(PRODUCT_CTA)) {
+    ctaSeen++;
+    const label = m[1];
+    if (label.trim() !== PRICE_ON_REQUEST[pg.locale]) {
+      /* Not the permitted string. Nothing is blanked, so if it is a price word at
+         all the patterns below report it, and a button with ordinary wording is
+         simply left alone. */
+      continue;
+    }
+    ctaAllowed++;
+    const start = m.index + m[0].indexOf(label);
+    pg.scan = pg.scan.slice(0, start) + ' '.repeat(label.length) + pg.scan.slice(start + label.length);
+  }
+}
+
 /* --- scan ----------------------------------------------------------------- */
 const hits = [];
 for (const pg of pages) {
   for (const p of PATTERNS) {
     const g = new RegExp(p.re.source, p.re.flags.includes('g') ? p.re.flags : p.re.flags + 'g');
-    for (const m of pg.text.matchAll(g)) {
+    for (const m of pg.scan.matchAll(g)) {
       const at = Math.max(0, m.index - 50);
       hits.push(`${pg.where}  [${p.kind}, ${p.id}]  ...${pg.text.slice(at, m.index + m[0].length + 50).replace(/\s+/g, ' ')}...`);
+    }
+  }
+}
+
+/* --- W22-01: "and nowhere else", which only a site-wide scan can assert ------ */
+const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) =>
+  e.isDirectory() ? walk(path.join(d, e.name)) : e.name.endsWith('.html') ? [path.join(d, e.name)] : []);
+const DIST = path.join(ROOT, 'dist');
+if (!fs.existsSync(DIST)) fail('dist/ is missing; run node build.js');
+const allPages = walk(DIST);
+if (!allPages.length) fail('zero built pages read for the site-wide phrase scan.');
+const categoryFiles = new Set(pages.map((p) => path.join(ROOT, p.where)));
+const elsewhere = [];
+let elsewhereRead = 0;
+for (const f of allPages) {
+  const text = fs.readFileSync(f, 'utf8');
+  elsewhereRead++;
+  const isCategory = categoryFiles.has(f);
+  let scan = text;
+  if (isCategory) {
+    /* On a category page the permitted occurrences are blanked first, so what is
+       left is an occurrence outside a product card button. */
+    const pg = pages.find((p) => path.join(ROOT, p.where) === f);
+    scan = pg.scan;
+  }
+  for (const [locale, phrase] of Object.entries(PRICE_ON_REQUEST)) {
+    let i = scan.indexOf(phrase);
+    while (i >= 0) {
+      elsewhere.push(`${path.relative(ROOT, f)}: "${phrase}" (${locale}) ${isCategory ? 'outside a product card button' : 'on a page that is not a catalog category page'}`);
+      i = scan.indexOf(phrase, i + phrase.length);
     }
   }
 }
@@ -255,6 +326,8 @@ console.log(`scanned: ${pages.length} category pages (${ro} RO, ${ru} RU)`);
 console.log(`manufacturer names, whole page: ${MANUFACTURER_NAMES.join(', ')}`);
 for (const [list, terms] of Object.entries(TERMS)) console.log(`${list} terms, prose only (${terms.length}): ${terms.join(' | ')}`);
 console.log(`prose: ${proseBlocks} blocks found of ${pages.length * PROSE_FIELDS.length} required (a lede and two paragraphs per page, each in its page's locale)`);
+console.log(`W22-01: "${PRICE_ON_REQUEST.ro}" / "${PRICE_ON_REQUEST.ru}" permitted only as a product card button's whole text`);
+console.log(`  product card buttons read: ${ctaSeen}; carrying the permitted phrase: ${ctaAllowed}; built pages scanned for the phrase anywhere else: ${elsewhereRead}`);
 let failed = false;
 if (hits.length) {
   console.error(`\n${hits.length} violation(s) on the catalog category pages:`);
@@ -272,7 +345,13 @@ if (proseHits.length) {
   proseHits.slice(0, 20).forEach((h) => console.error('  ' + h));
   failed = true;
 }
+if (elsewhere.length) {
+  console.error(`\n${elsewhere.length} occurrence(s) of a price-on-request phrase where it is not permitted:`);
+  elsewhere.slice(0, 20).forEach((h) => console.error('  ' + h));
+  console.error('\nW22-01 permits it as a product card button\'s whole text on a catalog category page, and nowhere else.');
+  failed = true;
+}
 if (proseBlocks === 0) { console.error('\nzero prose blocks read, so the term scan proves nothing'); failed = true; }
 if (failed) process.exit(1);
-console.log('zero price strings, zero stock strings, zero cart markup, zero product records, zero manufacturer names.');
+console.log(`zero price strings, zero stock strings, zero cart markup, zero product records, zero manufacturer names; the permitted phrase appears on ${elsewhereRead} built pages only where W22-01 allows it.`);
 console.log(`every page has a lede and two paragraphs in its own locale; zero capability or superlative terms in ${proseBlocks} prose blocks.`);

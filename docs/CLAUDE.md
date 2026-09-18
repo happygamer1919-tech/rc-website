@@ -204,6 +204,18 @@ chosen. **It does not extend to service pages, to product pages, or to any claim
 about Rapid Construct**, on any page, including the category pages themselves.
 *Source: DECISIONS.md, W18 ratifications, ratifying wave 17 deviation 4 with scope.*
 
+**A catalogue product card may ask for a price, in two exact strings, and nowhere
+else may they appear (W22-01, ruling on Q-W21-01).** "Preț la cerere" and "Цена по
+запросу", each in its page's own locale, are permitted **only as the whole text of a
+product card's quote button** on a catalog category page. Not as prose on that page,
+not on a service page, not on a product page, not anywhere else. Every other price
+word, and any figure, stays refused on the category pages exactly as before.
+`scripts/check-catalog-pages.js` holds both halves: it blanks a permitted button
+before its price patterns run, and it scans **every** built page for the two strings
+outside that one place. Exact means exact: a near spelling is not the permitted
+string and is refused.
+*Source: DECISIONS.md, W22 ratifications and W22-01; the question is Q-W21-01.*
+
 When there is no source for a value, **mark it or omit it — never fill it**:
 
 - `TODO: <what is missing>` in a locale file or in `content/projects.json`.

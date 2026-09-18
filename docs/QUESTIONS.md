@@ -1921,7 +1921,7 @@ browser.
 catches the failures (a) cannot. (c) buys automation at a recurring cost and an inbox
 full of probe mail, for a site whose forms change rarely.
 
-## Q-W21-01 · The catalogue has no product list, and the CTA label the card names collides with the no-price gate · OPEN · opened 2026-09-17 (W21-04, RC-149)
+## Q-W21-01 · The catalogue has no product list, and the CTA label the card names collides with the no-price gate · ~~OPEN~~ **PART 2 RULED 2026-09-17 (W22-01), option (a): "Preț la cerere" and "Цена по запросу" are permitted as exact strings on catalogue product cards only, and the gate now allows them there and refuses them everywhere else. PART 1, the product list itself, STAYS OPEN: no product record exists and no card renders.** · opened 2026-09-17 (W21-04, RC-149)
 
 **Shipped default: the structure, with no product records.** `content/catalog-products.json`
 carries the seven categories with empty arrays, `build.js` renders the section only

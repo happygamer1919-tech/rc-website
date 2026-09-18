@@ -8728,3 +8728,67 @@ Controls: both gates green on the shipped tree.
    the legacy Exif gap reported rather than closed.
 4. **`acoperisuri-06` has its cover but stays invisible** until the project has a title
    and a summary (Q-04), and its locality is unknown (Q-W23-01).
+
+## W23-02 · Before/after: four pairs read, four rejected, the slider stays off, 2026-09-18
+
+**Card W23-02.** PR only, stops for the owner. Stacked on W23-01. **No code, no data and
+no page changes**: `content/before-after.json` keeps its empty `projects` array, so the
+section does not render, exactly as before.
+
+### The pairs, and the same-angle check the card asks for
+
+The eight files pair by their names. Both halves of each pair were opened and looked at,
+side by side.
+
+| Pair | Files | Same house? | Same angle? | Verdict |
+|---|---|---|---|---|
+| 1 | `Before_1` 1080x1101, `After_1` 1024x1044 | yes: the gable overhang, the balcony and the window rhythm match | close: the same three-quarter view from the front left, the render sits slightly lower and wider | **rejected** |
+| 2 | `Before_2` 1200x2133, `After_2` 768x1364 | yes: the block retaining wall and the massing match; the render adds a chimney | close: the same corner at dusk, portrait both | **rejected** |
+| 3 | `Before_3` 604x404, `After_3` 1264x845 | plausibly: two storeys with a wooden eave, the same proportions | **not the same**: the render is more frontal and from the other side of the plot | **rejected** |
+| 4 | `Before_4` 736x981, `After_4` 896x1194 | yes: the flat-roofed massing and the terrace column grid match | close: frontal in both | **rejected** |
+
+**All four are rejected for the same reason, and it is not the angle.**
+
+### Why every pair is rejected
+
+**The "after" of each pair is a 3D visualisation, not a photograph of finished work.**
+Rendered planting and paving, dusk lighting with no shadow noise, catalogue furniture and
+cars, and no trace of the building site the "before" frame shows a few metres away. Three
+of the four also carry `Software: Picasa`.
+
+A before/after slot is a **proof** slot. Master plan section 7, as amended by W14-18,
+admits real Rapid Construct work only there, never stock and never a visualisation. A
+render published as the finished house claims a completed job that the batch does not
+evidence, to a visitor who is being shown it precisely as evidence.
+
+**Pair 3 would have been rejected on the card's own test as well**: the render is taken
+from a different position than its photograph, so it is not the same angle.
+
+### What the acceptance means when nothing publishes
+
+The card's acceptance is "the section renders, R-Y green, Lighthouse green". With no pair
+publishable, **the section does not render and must not**, so the acceptance is this
+report, as the card's own text says. For completeness, measured on this branch:
+
+- `content/before-after.json` unchanged, `projects: []`.
+- `node build.js`: no `#inainte-dupa` section in any built page, RO or RU.
+- `node scripts/verify-live.js` against the local build: 28 of 28 VERIFIED, every page
+  inside its R-Y budget, homepages unchanged at 10,447px and 10,747px.
+- `node scripts/check-lighthouse.js`: both homepages at the median of three runs, inside
+  the section 4 floors.
+
+Every one of those exit codes is reported in the PR, each read from its own process.
+
+### What turns the slider on
+
+**One photograph of one finished house, taken from the same point as its "before".** The
+data shape is ready and the pipeline is proven: `content/before-after.json` takes a pair,
+`scripts/slots.js` registers the two slots from it, and `build.js` renders the section
+the moment a pair exists. Recorded in Q-W23-01.
+
+### Recorded for ratification
+
+1. **Zero of four**, on content rather than on framing, with the framing checked anyway
+   because the card asks for it.
+2. **The "before" halves are held too**, in W23-01: a before with no publishable after
+   has no slot to go to.

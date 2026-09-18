@@ -185,3 +185,5 @@ rows now carry `legacy, licence unverified`.
 | `public/review/held-3-reparatii-736x981.jpg` | client-supplied WhatsApp original in Services_real images/, named in build.js (DECISIONS.md W11-01/02) | legacy, licence unverified | legacy, licence unverified | 2026-09-01 |
 | `public/review/held-4-terasamente-1200x1500.jpg` | client-supplied WhatsApp original in Services_real images/, named in build.js (DECISIONS.md W11-01/02) | legacy, licence unverified | legacy, licence unverified | 2026-09-01 |
 | `public/review/held-5-finisaje-350x350.jpg` | client-supplied WhatsApp original in Services_real images/, named in build.js (DECISIONS.md W11-01/02) | legacy, licence unverified | legacy, licence unverified | 2026-09-01 |
+| `public/img/proj-acoperisuri-06-cover.jpg` | client direct transfer, Mihai, 18.09.2026 | owned by Rapid Construct, supplied for site use | not required for this origin (R-W amendment, 2026-09-18) | 2026-09-18 |
+| `public/img/proj-acoperisuri-06-cover@2x.jpg` | client direct transfer, Mihai, 18.09.2026 | owned by Rapid Construct, supplied for site use | not required for this origin (R-W amendment, 2026-09-18) | 2026-09-18 |

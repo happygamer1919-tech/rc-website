@@ -28,7 +28,7 @@ today. *Aspect* is the one the photo must be cropped to.
 | F-BA-4A | homepage, before/after | before/after slider (empty) | Job 4 after | 1180:664 |
 | F-BA-4B | homepage, before/after | before/after slider (empty) | Job 4 before, same framing | 1180:664 |
 | F-PORT-1 to F-PORT-5 | /servicii/acoperisuri/, projects | project covers | **Filled.** Client photos already render as `proj-acoperisuri-01-cover` to `05-cover` | 4:3 |
-| F-PORT-6 | /servicii/acoperisuri/, projects | project cover `proj-acoperisuri-06-cover` (stub project, not rendered) | A finished roof by Rapid Construct, drone or high angle, with the village named; the project also needs its title and summary | 4:3, 800x600 minimum |
+| F-PORT-6 | /servicii/acoperisuri/, projects | project cover `proj-acoperisuri-06-cover` (stub project, not rendered) | **FILLED 2026-09-18 (W23-01)** from batch 2, a drone frame of a finished dark metal tile roof. The project still needs its title and summary before it renders, and its locality is unknown (Q-04, Q-W23-01) | 4:3, 800x600 minimum |
 | F-PORT-7 | /servicii/acoperisuri/, projects | none; no seventh roofing project exists | As F-PORT-6, for a further job | 4:3, 800x600 minimum |
 | F-PORT-GAL | /servicii/acoperisuri/, projects | project gallery slots (not rendered) | Further photos of each roofing job | 3:2, 1400x933 |
 | F-TEST-01 to F-TEST-13 | homepage, reviews | none; reviews are text only | Video: a client, named with consent, speaking at their house | 16:9 video, 2:1 tile |

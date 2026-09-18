@@ -1981,3 +1981,53 @@ stands.
 **Until this is answered, no product card renders.** The structure, the quote wiring and
 the gate are in place and were proven on a fixture: 12 of 12 submits sent the card's own
 product name.
+
+## Q-W23-01 · Batch 2: four "after" images are visualisations and two roof frames are watermarked · OPEN · opened 2026-09-18 (W23-01)
+
+**Shipped default: one file of twenty-two published, twenty-one held.** Nothing was
+deleted; the source folder is untouched and every held file is listed with its reason in
+`docs/audits/wave-23-photo-intake.md`.
+
+Three things need an answer from Mihai, and the first two are the reason the before/after
+slider is still empty.
+
+### 1. The four "after" images are 3D visualisations
+
+`After_1` to `After_4` are renders, not photographs: rendered planting and paving, dusk
+lighting with no shadow noise, catalogue furniture and cars, no trace of the building
+site their own "before" frame shows. Three carry `Software: Picasa`.
+
+A before/after slot is a proof slot (master plan section 7, as amended by W14-18): real
+Rapid Construct work only, never stock and never a visualisation. Publishing a render as
+the "after" of a real house claims a finished job the batch does not evidence.
+
+**What unblocks it:** a photograph of each finished house, taken from the same point as
+its "before". One pair is enough to turn the section on.
+
+### 2. Two roof frames carry someone else's watermark
+
+`Acoperisuri/…4.19.47 AM (1).jpeg` and `…4.19.48 AM.jpeg` carry a translucent wordmark
+in the sky. The R-W amendment of 2026-09-18 makes the client's own files an approved
+origin, and says in its own words that the licence line describes the origin, not the
+content: a watermarked frame is somebody else's and cannot be published as ours.
+
+**What unblocks it:** confirmation of where those two files came from, and a licence if
+they are a supplier's or a photographer's.
+
+### 3. Twelve files have nowhere to go on the site
+
+Six garduri photos, `echipa.jpeg`, four roof frames and the "before" halves map to slots
+that **have no host component**: the garduri page renders no photo gallery, the site has
+no team section, and the roof covers 01 to 05 are filled. This is not a photo problem.
+
+**Options:**
+
+  (a) **Hold them** (shipped). They stay in the batch folder, listed and reasoned.
+  (b) **Build the hosts**, which is a card each: a fence gallery on `/servicii/garduri/`,
+      a team block, further roof projects in `content/projects.json`.
+  (c) Fill the remaining roof project, `acoperisuri-06`, which already has its cover from
+      this batch but stays invisible until it has a title and a summary (Q-04).
+
+**Recommended: (c) first**, because the cover is already in place and two sentences from
+Mihai turn a held photo into a visible project. Then (b), one card per host, if the fence
+and team photographs are meant to be seen.

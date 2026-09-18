@@ -432,6 +432,17 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     cannot be read or is empty, when a scanned document is missing, when the locales
     disagree so that no single number can be true, when no document states the
     current count, and when a named exception matches nothing.
+17. `node scripts/check-image-metadata.js` clean. **Since W23-01 (wave 23)**, run by
+    `quality`. **No committed image carries GPS**, anywhere under `public/`: a GPS tag on
+    a photograph of a client's house publishes where that client lives. **An image whose
+    provenance row names the client-supplied origin carries no metadata at all**, which
+    is the condition the R-W amendment of 2026-09-18 puts on that origin; the rows are
+    read from `docs/assets/PROVENANCE.md`. It is deliberately not "no Exif anywhere":
+    about 128 images already on `main` carry an Exif block, none carries GPS, and
+    stripping them would rewrite the bytes `docs/assets/LEGACY-IMAGES.txt` matches, which
+    is what their legacy licence status rests on. The Exif count is printed every run so
+    the gap stays visible. Zero dependency, so CI needs no exiftool; exiftool is what a
+    workstation verifies a strip with. It fails on zero images read.
 16. `node scripts/gen-catalog-image-slots.js --check` clean. **Since W21-05
     (RC-150)**, run by `quality`. `docs/assets/CATALOG-IMAGE-SLOTS.md` is the
     request list a supplier is sent, and it is **generated** from
@@ -459,6 +470,8 @@ rebuilds `dist/` armed with a stand-in key that no earlier gate may measure.
 **AMENDED (W19-D1, wave 20):** gate 14 runs between gate 11 and gate 13.
 **AMENDED (W21-03):** gate 15 runs before gate 14, with the other static checks.
 **AMENDED (W21-05):** gate 16 runs beside gate 15, and is static too.
+**AMENDED (W23-01):** gate 17 runs before gate 15. It is numbered after 16 because this
+list is appended to, never renumbered, and it runs before them because it is the cheapest.
 
 ---
 

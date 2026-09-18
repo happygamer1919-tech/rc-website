@@ -8638,3 +8638,93 @@ Baumit, Caparol, Supraten, Rockwool, Knauf Insulation, Bicomplex, Lafarge.
    already is on the tile page; the catalogue-page prohibition is a separate rule and this
    ruling does not touch it.
 
+## W23-01 · Photo batch 2 intake: 22 files read, 1 published, 21 held with reasons, 2026-09-18
+
+**Card W23-01.** PR only, stops for the owner. It carries the wave 23 rulings and the
+five wave 23 board cards.
+
+### What arrived, and what happened
+
+22 images in `/Users/ivan/RC-pics_2nd batch`, read only, never modified: `Acoperisuri/`
+7, `Before_after/` 8, `Garduri/` 6, `echipa.jpeg`. Copertine absent, as dispatched.
+The full inventory, with dimensions, bytes, sha256 and a decision per file, is
+`docs/audits/wave-23-photo-intake.md`.
+
+**Published: one.** File 2, a drone frame of a finished dark metal tile roof, into
+**F-PORT-6**, `public/img/proj-acoperisuri-06-cover.jpg` and its `@2x`, through
+`scripts/process-photos.js` (centre crop to 4:3, 400x300 and 800x600, R-B so nothing is
+upscaled), then stripped.
+
+**Held: twenty-one**, each with its reason, in three groups:
+
+| Group | Files | Reason |
+|---|---|---|
+| Content refuses them | 4 | the `After_*` images are **3D visualisations**, and a before/after slot is a proof slot (master plan section 7 as amended by W14-18) |
+| Provenance refuses them | 2 | a **third-party watermark** in the sky; the R-W amendment says the licence line describes the origin, not the content |
+| The site has nowhere to put them | 15 | the four unused roof frames (covers 01 to 05 filled, 06 taken), the four "before" halves whose "after" cannot publish, the six garduri photos and `echipa.jpeg`, whose slots have **no host component** |
+
+**Nothing was deleted and nothing was altered in the source folder.**
+
+### The privacy review, which the card asks for by name
+
+Every frame was opened and looked at. **No house number is legible in any frame. No
+licence plate is legible.** The only faces in the batch are the two workers in
+`echipa.jpeg`, one in profile behind sunglasses and a hard hat, the other obscured;
+that file is **not published**, and not because of the faces but because its slot has no
+host. **No published file carries a face, a plate or a number.**
+
+### Stripping, and how it is verified
+
+`exiftool -all= -overwrite_original` on both outputs, then:
+
+- `exiftool -s -G` on each: only exiftool's own File and Composite values remain. No
+  Exif, no IPTC, no XMP, no ICC, no GPS.
+- `exiftool -r -if '$gps:all' public/img`: 152 image files read, **none matched**.
+- The sources themselves carried no GPS either, 22 of 22.
+
+**exiftool 13.55 was installed for this card** (`brew install exiftool`), because the
+ruling names it as the verification tool and the machine did not have it. It is a
+workstation tool, not a repo dependency: nothing in the build or the gates needs it.
+
+### Gate 17: `scripts/check-image-metadata.js`
+
+The ruling's condition is now held on every pull request, with **no dependency**: the
+script walks JPEG segments and PNG chunks itself, so CI needs no exiftool.
+
+- **No GPS in any image under `public/`**, the whole tree.
+- **No metadata at all in an image whose provenance row names the client-supplied
+  origin**, which is the amendment's own condition. The rows are read from
+  `docs/assets/PROVENANCE.md`, so a file joins that set by being recorded.
+- Deliberately **not** "no Exif anywhere": 128 images already on `main` carry an Exif
+  block and 3 carry IPTC, from before the ruling. **None carries GPS.** Stripping them
+  would rewrite bytes that `docs/assets/LEGACY-IMAGES.txt` matches, and that match is
+  what their legacy licence status rests on. The Exif count prints every run.
+
+`scripts/check-asset-provenance.js` learned the new origin too, and learned it
+**narrowly**: the source cell must read `client direct transfer, <name>, DD.MM.YYYY` and
+the licence cell must be the ruling's sentence character for character, and only then may
+the licence URL say none is required. Every other row keeps the https-or-supplier-
+permission rule.
+
+### Negative-tested, six arms
+
+| Arm | Result |
+|---|---|
+| a. a GPS tag planted in a committed image | exit 1, naming the file |
+| b. a client-supplied file committed with its metadata intact | exit 1: `Exif, IPTC` |
+| c. no images at all | exit 1: zero images read, so nothing was checked |
+| d. the client row's licence sentence reworded | exit 1: the amendment's sentence is quoted back |
+| e. the client row's source without a date | exit 1: the required shape is quoted back |
+| f. a non-client row with no licence URL | exit 1, the unchanged rule still firing |
+
+Controls: both gates green on the shipped tree.
+
+### Recorded for ratification
+
+1. **One file of twenty-two is the honest yield**, and fifteen of the holds are the
+   site's missing hosts rather than anything about the photographs.
+2. **exiftool installed on the workstation**, not added to the repo or to CI.
+3. **Gate 17 holds GPS for the whole corpus and full stripping for the new origin**, with
+   the legacy Exif gap reported rather than closed.
+4. **`acoperisuri-06` has its cover but stays invisible** until the project has a title
+   and a summary (Q-04), and its locality is unknown (Q-W23-01).

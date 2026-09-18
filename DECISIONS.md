@@ -8792,3 +8792,64 @@ the moment a pair exists. Recorded in Q-W23-01.
    because the card asks for it.
 2. **The "before" halves are held too**, in W23-01: a before with no publishable after
    has no slot to go to.
+
+## W23-03 · Portfolio, team and garduri: one slot of 63 filled, and why the other twenty-one files have nowhere to go, 2026-09-18
+
+**Card W23-03.** PR only, stops for the owner. Stacked on W23-02. **No page changes**:
+the one file this batch could fill was committed in W23-01, and the project it belongs to
+is still a stub, so nothing renders differently.
+
+### The count, against the manifest's 63
+
+| | Before batch 2 | After |
+|---|---|---|
+| Filled | 5 (F-PORT-1 to F-PORT-5) | **6** |
+| Not filled, **with** a host component on the site | 9 | **8** |
+| Not filled, **no host component** | 49 | 49 |
+| Total | 63 | 63 |
+
+**One slot moved: F-PORT-6**, `proj-acoperisuri-06-cover`, filled from the batch in
+W23-01. The other 21 files of the batch could not fill a slot, and the reasons are not
+photographic:
+
+| Files | Where they would go | Why they cannot |
+|---|---|---|
+| 6 garduri photos | I-G-PORT-01 to 24, I-G-HERO-1 | **the garduri page renders no photograph**: those slots have no host component |
+| `echipa.jpeg` | F-CONS-1, I-G-HERO-1 | **the site has no team block**; no host component |
+| 4 roof frames | F-PORT-1 to 7 | covers 01 to 05 are filled and 06 is taken by the frame published in W23-01. **No seventh roofing project exists** |
+| 2 roof frames | F-PORT-6 or 7 | watermarked; held on provenance (W23-01, Q-W23-01) |
+| 8 before/after frames | F-BA-1A to 4B | four are visualisations; a "before" alone cannot publish (W23-02) |
+
+**The batch is larger than the site's empty hosted slots.** 49 of the 63 manifest slots
+have had no host component since the manifest was written, which the wave 19 readiness
+audit already recorded; batch 2 does not change that, and building those hosts is a card
+each, not a photo task.
+
+### Locality, which the card says may only come from a name
+
+**The file and folder names carry no locality.** The roof files are WhatsApp names
+(`WhatsApp Image 2026-09-18 at 4.19.47 AM (2).jpeg`), the folders are `Acoperisuri`,
+`Before_after` and `Garduri`. So **no locality was taken, and none was guessed**, which
+is what the card asks for.
+
+**It is also what R-U already requires.** `location` is permanently empty on every
+project: nobody recorded where each photograph was taken, and mapping the coverage list
+onto projects would be inventing copy. So `acoperisuri-06.location` stays `""`, and the
+question that matters for it is not the locality but Q-04: **a title and a summary**,
+without which the project and its new cover stay invisible.
+
+### Acceptance, each read from its own process
+
+- Slot count filled, reported against 63: **6 of 63**, one of them new.
+- `node build.js`: exit 0.
+- `node scripts/verify-live.js http://127.0.0.1:8899` against the local build: exit 0, 28
+  of 28 VERIFIED. **No page changed in this card**, so the pages carrying the batch's one
+  file are the same pages as before: the cover belongs to a stub project and renders
+  nowhere until Q-04 is answered.
+- Every other gate: exit 0, listed in the PR.
+
+### Recorded for ratification
+
+1. **6 of 63**, and the limit is the site's missing hosts, not the photographs.
+2. **No locality was taken from anywhere**, and R-U keeps `location` empty regardless.
+3. **`acoperisuri-06` waits on two sentences** (Q-04), not on a photograph.

@@ -8902,3 +8902,69 @@ terms page returned HTTP 404. Both say so in the row, with what was read instead
    here is what was published on 2026-09-18.
 3. **No account is claimed.** Most media licences turn on being a dealer; the client's
    answer was ruled a supply claim, and nothing on the site says otherwise.
+
+## W23-05 · Catalogue draft: three candidates, no category reaching three, nothing rendered, 2026-09-18
+
+**Card W23-05.** Docs only. PR only, stops for the owner. Stacked on W23-04.
+`docs/CATALOG-DRAFT.md` is the whole output; `content/catalog-products.json` is untouched
+and still holds seven empty arrays, so the catalogue pages are unchanged.
+
+### The count the card asks for
+
+**No category reaches three records.**
+
+| Category | Candidates | Complete under the form |
+|---|---|---|
+| `termoizolatie` | 2 | 0 |
+| `vopsele` | 1 | 0 |
+| `tencuieli-decorative`, `placi-ceramice`, `elemente-decorative`, `sisteme-iluminare`, `alte-materiale` | 0 | 0 |
+
+### The three candidates, each value with its source
+
+- **Knauf Insulation Unifit 035** (`termoizolatie`): rolls 1.200 mm wide, 6,00 m²/roll at
+  100 mm, λ 0,035 W/mK, all from the manufacturer's own Romanian product page.
+- **ROCKWOOL Frontrock MD** (`termoizolatie`): λ 0,035 W/m·K (EN 12667) from the
+  manufacturer's product page. **The pack figure is not published there**, so the line
+  reads NOT PUBLISHED rather than a number from a retailer.
+- **Caparol Muresko-plus** (`vopsele`): 2,5 l, 10 l and 15 l containers, consumption about
+  140 ml/m² per coat on smooth surfaces, from the manufacturer's Romanian product page.
+  It is also the only brand whose media terms would permit its image (W23-04).
+
+**A discrepancy is flagged, not averaged:** the Knauf page states λ = 0,032 W/mK in one
+place and 0,035 W/(mK) in its technical data. The draft carries 0,035, the product's own
+name, and says so.
+
+### Why four categories have nothing, and it is not for want of looking
+
+**`placi-ceramice`, `elemente-decorative` and `sisteme-iluminare` have no candidate
+because none of the 20 brands makes those products.** The list is roofing, insulation,
+renders, paints and cement, plus two Moldovan retailers. **No lighting brand is on it at
+all.** For `tencuieli-decorative` the obvious Baumit product page returned HTTP 404 on the
+day and every consumption figure otherwise available came from retailers, so none was
+used. For `alte-materiale`, candidates exist in principle (Holcim/Lafarge cement, a
+TechnoNICOL membrane) but no value was taken from a manufacturer page in this card, so
+nothing was half-drafted.
+
+### The blocker no amount of research removes
+
+**No manufacturer on this list publishes a Russian product page for the Moldovan market.**
+So every Russian name, pack and specification is unsourced. Writing them here would be a
+value with no source URL, which this card forbids, so each reads NOT PUBLISHED and the
+owner confirms them. **That, and not the Romanian values, is what keeps every record
+incomplete.**
+
+### Acceptance
+
+- **Every value carries a source URL**: every drafted value does, and every value that
+  could not be sourced says NOT PUBLISHED instead of carrying a number.
+- **No trade or wholesale price anywhere** (R-Z): zero price strings, zero currency
+  strings in the file. The price line is the ruled "Preț la cerere" / "Цена по запросу".
+- **The catalogue gate is unchanged and green**: `node scripts/check-catalog-pages.js`
+  exit 0, and the draft is a document, not a built page, so the W22-01 site-wide phrase
+  scan is untouched by it.
+
+### Recorded for ratification
+
+1. **Three candidates, none complete**, and the incompleteness is stated per line.
+2. **Retailer figures were refused**, even where they were the only ones available.
+3. **The Russian half needs the owner**, not more research.

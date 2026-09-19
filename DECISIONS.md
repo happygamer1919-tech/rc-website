@@ -9065,3 +9065,33 @@ Items 1 to 4 stand; item 3 now holds for every format. One item is added:
    origin fails gate 17, because its metadata is read for GPS only and the amendment asks
    for all of it stripped. `scripts/process-photos.js` already writes JPEG, so this binds
    only a file committed around the pipeline.
+
+## W23 ratifications · The owner's rulings on wave 23 and on W23-01a, 2026-09-19
+
+Recorded at the owner's instruction, from the wave 23 second dispatch, before either of
+its two cards was worked. #71 to #75 were verified merged, and `origin/main` green on
+`quality`, first: `origin/main` is `5e4050d`, and run 35441684157 on that sha concluded
+success with every one of its steps success, read per step (R-AB).
+
+**Ratified as reported:**
+
+1. **Wave 23 cards W23-01 to W23-05**, including **holding the four "after" renders and
+   the two watermarked roof frames** rather than publishing them. Q-W23-01 stays open for
+   what would unblock them: its body asks Mihai for real "after" photographs and for the
+   watermarks' source, and the ratification confirms the default shipped while those are
+   awaited.
+2. **W23-01a**, the correction to gate 17, including its added ratification item:
+   **a client-supplied photo must be JPEG, PNG, WebP or TIFF, and HEIC is refused.**
+   `scripts/check-image-metadata.js` already holds it, so nothing changes in code.
+
+**Confirmed by the owner:**
+
+3. **The batch 2 location** is `/Users/ivan/RC-pics_2nd batch`, the folder W23-01 read.
+4. **Q-SUPPLIERS: "Da" means Mihai can supply the brand.** That is the reading the W23
+   rulings recorded, and every consequence listed there stands: a brand may be named as
+   a product's manufacturer in a catalogue record; no manufacturer image is committed on
+   the strength of it; it says nothing about stock, dealer status or an account.
+
+The dispatch adds two cards, **W23-06** (the Servicii dropdown's invisible rows, shipped
+first) and **W23-07** ("Despre" becomes "Despre noi" in the RO nav). Their board cards
+are `docs/board/W23-06-dropdown-contrast.md` and `docs/board/W23-07-despre-noi.md`.

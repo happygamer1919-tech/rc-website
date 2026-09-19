@@ -24,6 +24,15 @@ the five board cards ride the first PR.
 | W23-04 | Supplier record, and a per-brand licence scan | `w23/w23-04-supplier-licence-scan` | PR open, awaiting owner: the answer recorded verbatim with its ruling; all 20 brands scanned, **1 permitted** (Caparol, with conditions and a licence URL), 6 editorial or press only, 3 reserved, 10 with nothing published; no image downloaded; two rows record a page that could not be read (Ruukki certificate expired, Creaton 404) |
 | W23-05 | Catalogue draft, not rendered | `w23/w23-05-catalogue-draft` | PR open, awaiting owner: `docs/CATALOG-DRAFT.md`, **3 candidates in 2 of 7 categories, none complete, no category reaching three**; every drafted value carries a manufacturer source URL and every unsourced line reads NOT PUBLISHED; three categories have no candidate because no listed brand makes those products and none makes lighting; zero price or currency strings; nothing rendered |
 
+**Second dispatch, 2026-09-19.** #71 to #75 were merged by the owner and verified before
+either card was worked: `origin/main` is `5e4050d`, and `quality` run 35441684157 on it
+is green, every step read. The W23 ratifications ride the first PR.
+
+| Ticket | Card | Branch | Status |
+|---|---|---|---|
+| W23-06 | DEFECT: the Servicii dropdown's rows are invisible until hover | `w23/w23-06-dropdown-contrast` | todo |
+| W23-07 | The RO nav label "Despre" becomes "Despre noi" | `w23/w23-07-despre-noi` | todo |
+
 ## Wave 22
 
 Dispatch of 2026-09-17. #63 to #67 were merged by the owner and verified as ancestors of

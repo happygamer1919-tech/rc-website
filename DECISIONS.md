@@ -9227,3 +9227,50 @@ own `--shots` option. PNGs from headless Chrome, with no Exif, XMP or GPS (exift
 3. **The phone menu is not read.** It is a sheet, not a dropdown, its primary button is
    white on `--brand` under the large-text threshold that `docs/CLAUDE.md` section 4
    records, so a flat 4.5:1 would fail it by design. Covering it is a separate card.
+
+## W23-07 · The RO nav label "Despre" becomes "Despre noi", and the header still fits, 2026-09-19
+
+**Card W23-07.** PR only, stops for the owner. Stacked on W23-06.
+
+### The change
+
+One string: `locales/ro.json` `header.navAbout`, "Despre" to **"Despre noi"**. The Russian
+string, "О нас", is unchanged, and `locales/ru.json` has no diff. The wording is the
+owner's, from the dispatch; nothing is invented (section 5).
+
+**The one key is the label in three places**, on each of the four templates that carry a
+nav (home, service, product, category): the header nav, the phone menu, and the footer's
+link list. All three now read "Despre noi", so the same link carries the same name
+wherever it appears. Splitting the key to change the header alone would have named one
+link two ways, so it was not done; recorded for ratification below.
+
+### Header fit, measured before anything else was touched
+
+`node scripts/check-header-fit.js` exit 0, 108 of 108 combinations. RO's least slack moves
+from **47px to 19px** at 1280, 1440 and 1920px, and is 37px at 1180px; the floor is 8px.
+RU is unchanged at 9px. **No type or spacing was touched**, and none needed to be: the
+card's stop condition did not arise.
+
+### "Despre noi" in the RO nav of every RO page
+
+Read from `dist/` after `node build.js`: **23 RO built pages; 20 carry a header nav, and
+"Despre noi" is in all 20.** The other three carry a header with no nav at all:
+`404.html`, `confidentialitate/` and `review/`. No RO page shows a bare "Despre" any more.
+In RU, all 20 pages with a nav still read "О нас", and "Despre noi" appears on none.
+
+### Gates on this branch, each its own process, each exit code read
+
+`node build.js` 0 · `node scripts/check-merge-artifacts.js` 0 · **`node
+scripts/check-links.js` 0** · `node scripts/check-stale-docs.js` 0 · `node
+scripts/check-asset-provenance.js` 0 · `node scripts/check-scarcity.js` 0 · `node
+scripts/check-catalog-pages.js` 0 · `node scripts/check-svg-a11y.js` 0 · `node
+scripts/check-origin.js` 0 · `node scripts/check-image-metadata.js` 0 · `node
+scripts/check-stub-count.js` 0 · `node scripts/gen-catalog-image-slots.js --check` 0 ·
+**`node scripts/check-header-fit.js` 0** · `node scripts/check-heading-fit.js` 0, 88 of 88
+· `node scripts/check-nav-contrast.js` 0, 56 of 56 · `node scripts/check-lighthouse.js` 0 ·
+`node scripts/check-form-wiring.js` 0 with the stand-in key.
+
+### Recorded for ratification
+
+1. **The label changes in the phone menu and the footer too**, because they are the same
+   string. The dispatch names the nav; the alternative was one link with two names.

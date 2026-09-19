@@ -19,7 +19,7 @@ the five board cards ride the first PR.
 | Ticket | Card | Branch | Status |
 |---|---|---|---|
 | W23-01 | Photo batch 2 intake: inventory, strip, review, map, provenance | `w23/w23-01-photo-intake` | PR open, awaiting owner: 22 files read, **1 published** (F-PORT-6), 21 held with reasons; no GPS in the originals or the tree; new gate 17 `check-image-metadata.js`, 6 arms; Q-W23-01 opened; **corrected by W23-01a**: gate 17 reads every image by its bytes, in every format, with a parser self-test; nine review findings closed; 13 new arms each passed W23-01's gate and fail this one |
-| W23-02 | Before/after: pair, check the angle, publish only what passes | `w23/w23-02-before-after` | todo |
+| W23-02 | Before/after: pair, check the angle, publish only what passes | `w23/w23-02-before-after` | PR open, awaiting owner: 4 pairs read and looked at, **4 rejected**, every one because its "after" is a 3D visualisation and a before/after slot is a proof slot (pair 3 also fails the same-angle test); no data or page change, the slider stays off; one real photograph of a finished house turns it on |
 | W23-03 | Portfolio roofs, team portrait, garduri photos | `w23/w23-03-portfolio-team-garduri` | todo |
 | W23-04 | Supplier record, and a per-brand licence scan | `w23/w23-04-supplier-licence-scan` | todo |
 | W23-05 | Catalogue draft, not rendered | `w23/w23-05-catalogue-draft` | todo |

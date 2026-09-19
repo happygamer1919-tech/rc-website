@@ -9065,3 +9065,165 @@ Items 1 to 4 stand; item 3 now holds for every format. One item is added:
    origin fails gate 17, because its metadata is read for GPS only and the amendment asks
    for all of it stripped. `scripts/process-photos.js` already writes JPEG, so this binds
    only a file committed around the pipeline.
+
+## W23 ratifications · The owner's rulings on wave 23 and on W23-01a, 2026-09-19
+
+Recorded at the owner's instruction, from the wave 23 second dispatch, before either of
+its two cards was worked. #71 to #75 were verified merged, and `origin/main` green on
+`quality`, first: `origin/main` is `5e4050d`, and run 35441684157 on that sha concluded
+success with every one of its steps success, read per step (R-AB).
+
+**Ratified as reported:**
+
+1. **Wave 23 cards W23-01 to W23-05**, including **holding the four "after" renders and
+   the two watermarked roof frames** rather than publishing them. Q-W23-01 stays open for
+   what would unblock them: its body asks Mihai for real "after" photographs and for the
+   watermarks' source, and the ratification confirms the default shipped while those are
+   awaited.
+2. **W23-01a**, the correction to gate 17, including its added ratification item:
+   **a client-supplied photo must be JPEG, PNG, WebP or TIFF, and HEIC is refused.**
+   `scripts/check-image-metadata.js` already holds it, so nothing changes in code.
+
+**Confirmed by the owner:**
+
+3. **The batch 2 location** is `/Users/ivan/RC-pics_2nd batch`, the folder W23-01 read.
+4. **Q-SUPPLIERS: "Da" means Mihai can supply the brand.** That is the reading the W23
+   rulings recorded, and every consequence listed there stands: a brand may be named as
+   a product's manufacturer in a catalogue record; no manufacturer image is committed on
+   the strength of it; it says nothing about stock, dealer status or an account.
+
+The dispatch adds two cards, **W23-06** (the Servicii dropdown's invisible rows, shipped
+first) and **W23-07** ("Despre" becomes "Despre noi" in the RO nav). Their board cards
+are `docs/board/W23-06-dropdown-contrast.md` and `docs/board/W23-07-despre-noi.md`.
+
+## W23-06 · DEFECT: the Servicii dropdown's rows were white on white; fixed, and gate 18 reads every header dropdown open, 2026-09-19
+
+**Card W23-06.** PR only, stops for the owner. Shipped first, as dispatched. The W23
+ratifications ride this PR.
+
+### Reproduced on the live site, in a real browser
+
+Headless Chrome 153 over the DevTools protocol, against `https://rapidconstruct.md`
+serving `build-sha` `5e4050d`, cache disabled and every URL cache-busted. The dropdown was
+opened by a real mouse click on the Servicii toggle, so the pointer ended on the toggle and
+nothing in the panel was hovered (0 of 13 rows matched `:hover`).
+
+| Locale | Width | Rows | Worst row | Text on panel |
+|---|---|---|---|---|
+| RO | 1280 | 13 | 1:1 | 255,255,255 on 255,255,255 |
+| RO | 1440 | 13 | 1:1 | 255,255,255 on 255,255,255 |
+| RU | 1280 | 13 | 1:1 | 255,255,255 on 255,255,255 |
+| RU | 1440 | 13 | 1:1 | 255,255,255 on 255,255,255 |
+
+Every row, in every case. `docs/audits/w23-06/before-live-RO-1280.png` and
+`before-live-RU-1280.png` are the open panel at rest: thirteen empty white rows.
+
+### The cause
+
+`src/styles.css` gives the nav bar's links their white with `.nav a`, specificity (0,1,1).
+The Servicii panel is **inside** `<nav class="nav">`, so every row's link matches it too, and
+it outranks the panel's own `.svcmenu__link`, (0,1,0), which asks for `--ink`. Hover
+showed the rows because `.nav a:hover` turned them `--brand` orange. **It has been so since
+the panel was built**: at W15-02's own commit, `62a705d`, the panel already sat inside
+`.nav` with both rules as they are now. It went live with #32 on 2026-09-15 and stayed four
+days. No gate saw it: Lighthouse audits a page as it loads, and a closed panel has no text.
+
+The same rule carried three more properties into the panel: the bar's 16px, `line-height:
+1`, and `white-space: nowrap`. So the panel never rendered the treatment it was built with
+(the Catalog panel's: 15px, line height 1.35, wrapping), and four rows ran past its right
+edge, unseen because they were white: "Lucrări de terasament și excavare" by 8px in RO, and
+in RU "Строительство домов под ключ" by 4px, "Проектирование и 3D-визуализация" by 40px
+and "Земляные работы и выемка грунта" by 30px.
+
+### The change
+
+`.nav a` becomes `.nav > a`, in all four places: the base rule, its hover, its
+`aria-current` state and the 1180px step. The child combinator keeps the bar's type and
+colour on the bar's own links, which are the nav's direct children, and nothing inside the
+panel matches it. No colour value, no size and no spacing is added or changed; the bar's
+own links render exactly as before (`check-header-fit.js`, below, measures them).
+
+After it, on the branch build, at rest: every row **17.4:1**, `--ink` on white. The rows
+take 15px and line height 1.35, and **no row passes the panel's edge**; two RU rows wrap.
+
+**The cost, recorded as Q-W23-02.** The panel is taller: 534px before, **589px in RO and
+630px in RU** after, so its bottom moves from 618px to **673px and 713px** down the window.
+The header is fixed, so on a window shorter than that the last rows cannot be scrolled to.
+The shipped default leaves it, the question recommends letting the panel scroll inside
+itself, and tightening the rows is refused as a type change nobody asked for.
+
+A colour-only patch was weighed and not taken: raising `.svcmenu__link`'s specificity for
+colour alone keeps the panel at 534px, but leaves the leak in place for any later property,
+and **makes the four overflowing rows visible**, sticking out of the panel by up to 40px.
+
+### Gate 18: `scripts/check-nav-contrast.js`
+
+The dispatch asks for every nav dropdown item. The Catalog panel is the header's other
+dropdown, built the same way and closed on load the same way, so it is read too, with each
+category's sub-list opened in turn.
+
+- A panel is opened by the toggle's own `click()`, which moves no pointer, and the pointer
+  is parked at the window's bottom-left corner. **A measurement is refused** if anything
+  in the panel matches `:hover`.
+- Every element in the open panel that directly holds visible text is read: its painted
+  colour (`-webkit-text-fill-color`, which equals `color` unless something sets it),
+  composited over its background, which is composited up the tree through any translucent
+  layer to the first opaque one. **4.5:1 or better**, WCAG's normal-text threshold, quoted
+  as the external standard it is. Every text element must also rest at opacity 1.
+- **Pages are found, not listed**: every built page that carries either panel, 40 today
+  (20 RO, 20 RU), at 1280px; one page per template that carries them (home, service,
+  product, category, both locales) also at 1101px, the collapse edge, and 1440px. 56
+  combinations, 2,576 text elements, 112 sub-lists opened. The privacy and 404 templates
+  carry a header with no nav and no catalog, so there is nothing there to open.
+- It fails when a panel does not open, when an open panel shows no text, when a colour
+  cannot be read, when a template page carries no dropdown, when either locale carries
+  none, when `dist/` is missing, and when fewer combinations were measured than expected.
+
+Wired into `quality` after gate 14 and before gate 13, which rebuilds `dist/` armed.
+`docs/CLAUDE.md` section 11 gains item 18 and its running-order amendment.
+
+### Negative-tested under R-AB: one scratch copy, one run, controls either side
+
+Each arm was built with `node build.js` and measured with
+`node scripts/check-nav-contrast.js`, whose exit code was read on the next line, and each
+was checked for **its own** message in the gate's output.
+
+| Arm | `check-nav-contrast.js` exit | Its own message |
+|---|---|---|
+| control: this branch | 0 | "56 of 56 combinations: every text element ... 4.5:1 or better" |
+| **A. the defect reintroduced**: `.nav > a` back to `.nav a` | **1** | 728 CONTRAST problems, exactly 13 rows × 56 combinations, each `Servicii: "…" 1:1, text 255,255,255 on 255,255,255`; no Catalog line |
+| B. Catalog links painted `var(--line)` | 1 | `Catalog: "Sisteme de termoizolație" 1.3:1, text 226,226,226 on 255,255,255` |
+| C. the Servicii script cannot find its toggle | 1 | `Servicii: the panel did not open` |
+| D. the Servicii panel at opacity 0.5 | 1 | `Servicii: "…" rests at opacity 0.5` |
+| E. no `dist/` | 1 | `dist/ does not exist` |
+| control again, after the last arm | 0 | "56 of 56 combinations ..." |
+
+### Gates on this branch, each its own process, each exit code read
+
+`node build.js` 0 · `node scripts/check-merge-artifacts.js` 0 · `node scripts/check-links.js`
+0 · `node scripts/check-stale-docs.js` 0 · `node scripts/check-asset-provenance.js` 0 ·
+`node scripts/check-scarcity.js` 0 · `node scripts/check-catalog-pages.js` 0 · `node
+scripts/check-svg-a11y.js` 0 · `node scripts/check-origin.js` 0 · `node
+scripts/check-image-metadata.js` 0 · `node scripts/check-stub-count.js` 0 · `node
+scripts/gen-catalog-image-slots.js --check` 0 · **`node scripts/check-header-fit.js` 0**,
+108 of 108, least slack RO 47px and RU 9px, unchanged · `node scripts/check-heading-fit.js`
+0, 88 of 88 · **`node scripts/check-nav-contrast.js` 0**, 56 of 56 · `node
+scripts/check-lighthouse.js` 0 · `node scripts/check-form-wiring.js` 0 with the stand-in
+key, 42 forms on 40 pages. `verify-live.js` is in the PR.
+
+### Screenshots
+
+`docs/audits/w23-06/`: `before-live-RO-1280.png` and `before-live-RU-1280.png` from the
+live site, and `after-RO-1280.png`, `after-RO-1440.png`, `after-RU-1280.png` and
+`after-RU-1440.png` from this branch, each the open panel at rest, written by the gate's
+own `--shots` option. PNGs from headless Chrome, with no Exif, XMP or GPS (exiftool).
+
+### Recorded for ratification
+
+1. **The fix is the selector, not the colour**, and it restores the panel's built type
+   along with its colour. The panel grows, and Q-W23-02 asks what a short window should do.
+2. **Gate 18 reads the Catalog panel as well as Servicii**, beyond the card's "nav
+   dropdown", because the Catalog is the header's other dropdown and was just as unread.
+3. **The phone menu is not read.** It is a sheet, not a dropdown, its primary button is
+   white on `--brand` under the large-text threshold that `docs/CLAUDE.md` section 4
+   records, so a flat 4.5:1 would fail it by design. Covering it is a separate card.

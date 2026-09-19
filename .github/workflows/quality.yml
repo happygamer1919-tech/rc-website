@@ -78,7 +78,8 @@ jobs:
 
       # W23-01. No committed image carries GPS, and an image from the client-supplied
       # origin (R-W amendment, 2026-09-18) carries no metadata at all. Zero dependency:
-      # the JPEG and PNG segment walk is in the script, so CI needs no exiftool.
+      # the format walks and the byte scan are in the script, so CI needs no exiftool.
+      # Corrected by W23-01a: every format, a file read by its bytes, and a self-test.
       - name: No GPS in any image, and client-supplied images stripped (W23-01)
         run: node scripts/check-image-metadata.js
 

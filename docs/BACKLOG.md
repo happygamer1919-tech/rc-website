@@ -30,7 +30,7 @@ is green, every step read. The W23 ratifications ride the first PR.
 
 | Ticket | Card | Branch | Status |
 |---|---|---|---|
-| W23-06 | DEFECT: the Servicii dropdown's rows are invisible until hover | `w23/w23-06-dropdown-contrast` | todo |
+| W23-06 | DEFECT: the Servicii dropdown's rows are invisible until hover | `w23/w23-06-dropdown-contrast` | PR open, awaiting owner: reproduced live on `5e4050d`, 13 of 13 rows 1:1 white on white in RO and RU at 1280 and 1440; cause `.nav a` (0,1,1) outranking `.svcmenu__link` (0,1,0), present since W15-02; fixed as `.nav > a`, rows now 17.4:1; new gate 18 `check-nav-contrast.js`, 56 combinations on 40 pages, 5 arms each red on its own message between two green controls; the rows' built type restored too, so the panel is taller (Q-W23-02 opened) |
 | W23-07 | The RO nav label "Despre" becomes "Despre noi" | `w23/w23-07-despre-noi` | todo |
 
 ## Wave 22

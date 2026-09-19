@@ -295,9 +295,14 @@ p { margin: 0; }
 /* W14-21. One step down from 28px and 17px, so the header holds the catalog button
    beside the nav, phone, CTA and language switch at every desktop width. */
 .nav { display: flex; align-items: center; justify-content: center; gap: 20px; flex: 1 1 auto; min-width: 0; }
-.nav a, .nav .svcmenu__toggle { font-size: 16px; line-height: 1; white-space: nowrap; color: var(--bg-light); }
-.nav a:hover, .nav .svcmenu__toggle:hover { color: var(--brand); }
-.nav a[aria-current='page'] { color: var(--brand); font-weight: 700; }
+/* W23-06. The bar's own links only, by the child combinator. `.nav a` also matched
+   every link in the Servicii panel, which sits inside .nav, and at (0,1,1) it beat
+   .svcmenu__link's (0,1,0): the panel's rows took the bar's white, on the panel's
+   white, until hover turned them orange. It also took their size, line height and
+   no-wrap, so the panel never had the catalog panel's treatment it was built with. */
+.nav > a, .nav .svcmenu__toggle { font-size: 16px; line-height: 1; white-space: nowrap; color: var(--bg-light); }
+.nav > a:hover, .nav .svcmenu__toggle:hover { color: var(--brand); }
+.nav > a[aria-current='page'] { color: var(--brand); font-weight: 700; }
 
 .header__actions { display: flex; align-items: center; gap: 16px; flex: none; }
 .header__phone {
@@ -442,7 +447,7 @@ p { margin: 0; }
    catalog panel's treatment exactly, so no colour value and no new shape is
    added. One level deep: no per-row chevron, no back button.
 
-   The toggle takes its size from the .nav rule above, alongside .nav a, so the
+   The toggle takes its size from the .nav rule above, alongside .nav > a, so the
    nav's font is set in one place and a later step up or down moves both.
 
    The caret: shipped at W17-05 (RC-136), after W15-02 and W16-03 both measured
@@ -1458,7 +1463,7 @@ p { margin: 0; }
 @media (max-width: 1180px) {
   /* W14-21: one step below the desktop values above. */
   .nav { gap: 16px; }
-  .nav a, .nav .svcmenu__toggle { font-size: 15px; }
+  .nav > a, .nav .svcmenu__toggle { font-size: 15px; }
   .header__actions { gap: 12px; }
 }
 

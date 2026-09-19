@@ -459,6 +459,22 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     format, on an Exif block it cannot read, when a provenance row naming the origin does
     not parse, and when a client-supplied file is one it did not read or is in a format it
     reads for GPS only (HEIC, AVIF, GIF), since that cannot be shown stripped.
+18. `node scripts/check-nav-contrast.js` clean. **Since W23-06 (wave 23)**, run by
+    `quality`. **Every header dropdown is read open, at rest.** The Servicii panel shipped
+    at W15-02 with every row white on its white panel, visible only under the pointer,
+    and stayed live for four days behind green gates: Lighthouse audits a page as it
+    loads, when the panel is closed and holds no text to audit. This opens the Servicii
+    panel and the Catalog panel, and each category's sub-list in turn, by the toggle's own
+    `click()` with the pointer parked outside the header, and refuses a measurement if
+    anything in the panel matches `:hover`. Every element in an open panel that holds
+    visible text must paint at 4.5:1 or better against the background it sits on,
+    composited through any translucent layer, and must rest fully opaque. 4.5:1 is WCAG's
+    normal-text threshold, quoted as the external standard it is. Every built page that
+    carries a dropdown is measured at 1280px, found in `dist/` rather than listed, and one
+    page per template that carries them also at 1101px and 1440px. It fails when a panel
+    does not open, when an open panel shows no text, when a colour cannot be read, when a
+    template page carries no dropdown, when either locale carries none, and when fewer
+    combinations were measured than the matrix holds.
 
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number — Q-W14-03 was found "at gate 9" — and those bodies are immutable under
@@ -481,6 +497,8 @@ rebuilds `dist/` armed with a stand-in key that no earlier gate may measure.
 **AMENDED (W21-05):** gate 16 runs beside gate 15, and is static too.
 **AMENDED (W23-01):** gate 17 runs before gate 15. It is numbered after 16 because this
 list is appended to, never renumbered, and it runs before them because it is the cheapest.
+**AMENDED (W23-06):** gate 18 runs after gate 14 and before gate 13, with the other
+browser gates, because gate 13 rebuilds `dist/` armed.
 
 ---
 

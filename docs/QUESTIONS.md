@@ -2031,3 +2031,34 @@ no team section, and the roof covers 01 to 05 are filled. This is not a photo pr
 **Recommended: (c) first**, because the cover is already in place and two sentences from
 Mihai turn a held photo into a visible project. Then (b), one card per host, if the fence
 and team photographs are meant to be seen.
+
+## Q-W23-02 · On a window shorter than 713px, the last rows of the Servicii panel cannot be reached · OPEN · opened 2026-09-19 (W23-06)
+
+**Shipped default: (a), the panel as it was built, with no scrolling of its own.**
+
+W23-06 fixed the rule that painted the Servicii panel's rows white. The same rule had also
+given them the nav bar's 16px type on one line with a line height of 1, so the panel was
+534px tall, its bottom sat 618px down the window, and four rows ran past its right edge
+unseen: "Lucrări de terasament și excavare" by 8px, and in RU three rows by 4, 30 and
+40px. With the rule scoped, the rows take the treatment the panel was built with at W15-02,
+the Catalog panel's: 15px, line height 1.35, wrapping. Nothing runs past the edge now, two
+RU rows wrap to a second line, and the panel's bottom sits at **673px in RO and 713px in
+RU**, measured at 1280 and 1440px wide.
+
+The header is fixed, so the panel does not move when the page scrolls. **In a browser
+window whose page area is shorter than that, the last rows are below the window and cannot
+be scrolled to.** A 1366×768 laptop screen leaves less than 713px once the browser's own
+bars are drawn. Before W23-06 the same was true below 618px, though then no row could be
+read at any height.
+
+**Options:**
+
+  (a) **Leave it** (shipped).
+  (b) **Let the panel scroll inside itself** when the window is short: a maximum height of
+      the window below the panel's top, and the rest scrolls within the panel. No new
+      colour or shape. The Catalog already becomes a scrolling sheet on a short landscape
+      phone (W19-D10).
+  (c) Tighten the rows, with smaller type or line height. Not shipped: it changes type
+      the owner has not asked to change.
+
+**Recommended: (b)**, one small card: every row reachable at any window height.

@@ -99,6 +99,14 @@ jobs:
       - name: No heading wider than its box, every page, 360 and 1280 (W19-D1)
         run: node scripts/check-heading-fit.js
 
+      # W23-06. Every header dropdown, opened at rest with nothing under the pointer:
+      # every text element in the Servicii panel and in the Catalog panel and its
+      # sub-lists at 4.5:1 or better against what it is painted on, every page that
+      # carries them, both locales. Same Chrome as the header gate. Before RC-145's
+      # step, which rebuilds.
+      - name: Every header dropdown item readable at rest, 4.5:1 (W23-06)
+        run: node scripts/check-nav-contrast.js
+
       # RC-145. Every form POSTs to build.js's FORM_ENDPOINT_URL, armed, with the
       # configured recipient (the Web3Forms access key) and a subject, and every
       # sitemap page carries its form. A check has no secret, so this step alone

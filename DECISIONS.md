@@ -8854,6 +8854,55 @@ without which the project and its new cover stay invisible.
 2. **No locality was taken from anywhere**, and R-U keeps `location` empty regardless.
 3. **`acoperisuri-06` waits on two sentences** (Q-04), not on a photograph.
 
+## W23-04 · The supplier answer recorded, and twenty brands scanned for an image licence, 2026-09-18
+
+**Card W23-04.** Docs only, no image downloaded, as the card instructs. PR only, stops
+for the owner. Stacked on W23-03.
+
+### The client answer, recorded verbatim
+
+`docs/client-answers/2026-09-18-supplier-checklist.md`: Mihai's "Da" on all 20 brands,
+with the date, how it was given, and the W23 ruling quoted beside it so the record
+carries its own reading. It is a record of what was said on a day, not a fact about the
+world, and the file says so in its first line.
+
+### The scan: `docs/SUPPLIER-LICENCE-SCAN.md`
+
+All 20 brands, each with what was checked, whether dealer or reseller web use is
+permitted, the URL, and a verdict.
+
+| Verdict | Brands |
+|---|---|
+| **Permitted, with conditions** | **1**: Caparol |
+| Editorial or press only | 6: Lindab, ROCKWOOL, Knauf Insulation, Wienerberger/Tondach, Creaton, Baumit |
+| Reserved (rights reserved, or personal use only) | 3: Holcim/Lafarge, Supraten, IKO |
+| No published licence found | 10 |
+
+**Every "permitted" row carries a licence URL**, which is the card's acceptance, and only
+one row is permitted: Caparol's media database, whose terms allow a registered trade
+partner to use the files in its own advertising **including its own website**, only to
+promote Caparol products, unmodified, with the copyright notices intact and no passing
+on. Quoted in the file.
+
+**The six "editorial or press only" verdicts are the important ones**, because they read
+as permission until you read them: ROCKWOOL's images are "for press purposes only" and
+"may not be reproduced for commercial or any other purposes"; Lindab's are free "in
+non-commercial situations"; Wienerberger's are "free to use for editorial purposes".
+A reseller's commercial website is none of those things.
+
+**Two rows record a failure to read rather than a finding:** Ruukki's trademark page
+could not be fetched on the day (the server's certificate has expired) and Creaton's
+terms page returned HTTP 404. Both say so in the row, with what was read instead.
+
+### Recorded for ratification
+
+1. **One brand of twenty**, and conditionally. Nineteen need a written permission before
+   any picture is committed.
+2. **The scan is dated evidence**, not a standing permission: terms change, and a row
+   here is what was published on 2026-09-18.
+3. **No account is claimed.** Most media licences turn on being a dealer; the client's
+   answer was ruled a supply claim, and nothing on the site says otherwise.
+
 ## W23-01a · Correction to W23-01: gate 17 reads every image by its bytes, and nine review findings are closed, 2026-09-18
 
 **Corrects W23-01**, whose body stands as recorded (R-S). Same card, same PR, a second

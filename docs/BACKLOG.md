@@ -8,6 +8,22 @@ Status values: `todo` · `in progress` · `blocked` · `shipped`.
 Waves 1 to 5 predate this file; their tickets are reconstructed from the git
 history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 
+## Wave 23
+
+Dispatch of 2026-09-18. #68, #69 and #70 were merged by the owner and verified as
+ancestors of `origin/main` (`d756298`) before any card was worked: `7c7654d`, `fb938fc`,
+`d756298`. Every card opens a pull request and stops (R-V as amended at wave 19). The
+wave 23 rulings (the R-W amendment for client-supplied originals, and Q-SUPPLIERS) and
+the five board cards ride the first PR.
+
+| Ticket | Card | Branch | Status |
+|---|---|---|---|
+| W23-01 | Photo batch 2 intake: inventory, strip, review, map, provenance | `w23/w23-01-photo-intake` | PR open, awaiting owner: 22 files read, **1 published** (F-PORT-6), 21 held with reasons; no GPS in the originals or the tree; new gate 17 `check-image-metadata.js`, 6 arms; Q-W23-01 opened; **corrected by W23-01a**: gate 17 reads every image by its bytes, in every format, with a parser self-test; nine review findings closed; 13 new arms each passed W23-01's gate and fail this one |
+| W23-02 | Before/after: pair, check the angle, publish only what passes | `w23/w23-02-before-after` | todo |
+| W23-03 | Portfolio roofs, team portrait, garduri photos | `w23/w23-03-portfolio-team-garduri` | todo |
+| W23-04 | Supplier record, and a per-brand licence scan | `w23/w23-04-supplier-licence-scan` | todo |
+| W23-05 | Catalogue draft, not rendered | `w23/w23-05-catalogue-draft` | todo |
+
 ## Wave 22
 
 Dispatch of 2026-09-17. #63 to #67 were merged by the owner and verified as ancestors of

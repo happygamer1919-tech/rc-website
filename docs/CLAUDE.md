@@ -439,6 +439,26 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     records the site builds. The check fails when the committed file and the data
     disagree, when the file is absent, when a record has no id, name or
     manufacturer, and when a category slug has no catalog category.
+17. `node scripts/check-image-metadata.js` clean. **Since W23-01 (wave 23)**, run by
+    `quality`; corrected by W23-01a. **No committed image carries GPS**, anywhere under
+    `public/`: a GPS tag on a photograph of a client's house publishes where that client
+    lives. A file is an image by its bytes, not its name, so a HEIC renamed `.jpg` is read
+    as a HEIC. JPEG, PNG and WebP are walked segment by segment, a TIFF by its first IFD,
+    and every image of every format is also scanned for any TIFF structure pointing to a
+    GPS IFD (an Exif block is one in every container) and any XMP GPS property; that scan
+    is what reads HEIC, AVIF and GIF, and an SVG is read for the rasters it embeds. **An
+    image whose provenance row names the client-supplied origin carries no metadata at
+    all**, which is the condition the R-W amendment of 2026-09-18 puts on that origin; the
+    rows are read from `docs/assets/PROVENANCE.md`. It is deliberately not "no Exif
+    anywhere": about 128 images already on `main` carry an Exif block, none carries GPS,
+    and stripping them would rewrite the bytes `docs/assets/LEGACY-IMAGES.txt` matches,
+    which is what their legacy licence status rests on. The Exif count is printed every run
+    so the gap stays visible. Zero dependency, so CI needs no exiftool; exiftool is what a
+    workstation verifies a strip with. It fails when its parser self-test misses a planted
+    GPS tag, on zero images read, on a file with an image extension that is no known
+    format, on an Exif block it cannot read, when a provenance row naming the origin does
+    not parse, and when a client-supplied file is one it did not read or is in a format it
+    reads for GPS only (HEIC, AVIF, GIF), since that cannot be shown stripped.
 
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number — Q-W14-03 was found "at gate 9" — and those bodies are immutable under
@@ -459,6 +479,8 @@ rebuilds `dist/` armed with a stand-in key that no earlier gate may measure.
 **AMENDED (W19-D1, wave 20):** gate 14 runs between gate 11 and gate 13.
 **AMENDED (W21-03):** gate 15 runs before gate 14, with the other static checks.
 **AMENDED (W21-05):** gate 16 runs beside gate 15, and is static too.
+**AMENDED (W23-01):** gate 17 runs before gate 15. It is numbered after 16 because this
+list is appended to, never renumbered, and it runs before them because it is the cheapest.
 
 ---
 

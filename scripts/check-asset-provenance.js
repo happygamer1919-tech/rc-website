@@ -39,6 +39,15 @@ const BANNED = ['fatade3d.md', 'imperlux.md', 'dasterum.md'];
    AND sha256 must match docs/assets/LEGACY-IMAGES.txt, the images in f5e4eb6's
    first parent. The list is committed because CI has no git history. */
 const LEGACY = 'legacy, licence unverified';
+/* R-W amendment, 2026-09-18 (wave 23). The client's own files are an approved
+   origin and are the ONE origin that needs no licence URL. It is held exactly, so
+   it cannot become a way to skip a URL for anything else: the source cell must
+   name the origin and a date, and the licence cell must be the ruling's own
+   sentence, character for character. The stripping half of the amendment is
+   scripts/check-image-metadata.js. The name may be several words ("Ion
+   Popescu"), and may not be empty or hold a comma, which would move the date. */
+const CLIENT_SOURCE = /^client direct transfer,\s*[^,\s][^,]*,\s*\d{2}\.\d{2}\.\d{4}$/;
+const CLIENT_LICENCE = 'owned by Rapid Construct, supplied for site use';
 const RETIRED = 'unrecorded before R-W';
 const LEGACY_LIST = 'docs/assets/LEGACY-IMAGES.txt';
 const LEGACY_COUNT = 149;
@@ -72,6 +81,17 @@ const SELF_TEST = [
 for (const [cell, want] of SELF_TEST) {
   const got = hostsIn(cell).map(bannedHost).find(Boolean) || null;
   if (got !== want) fail(`matcher self-test: "${cell}" gave ${got}, expected ${want}`);
+}
+/* The client-supplied source shape, held the same way (W23-01a). */
+const CLIENT_SELF_TEST = [
+  ['client direct transfer, Mihai, 18.09.2026', true],
+  ['client direct transfer, Ion Popescu, 18.09.2026', true],
+  ['client direct transfer, Mihai', false],
+  ['client direct transfer, , 18.09.2026', false],
+  ['client direct transfer, Mihai, 2026-09-18', false],
+];
+for (const [cell, want] of CLIENT_SELF_TEST) {
+  if (CLIENT_SOURCE.test(cell) !== want) fail(`client-source self-test: "${cell}" gave ${!want}, expected ${want}`);
 }
 
 /* --- the ledger ----------------------------------------------------------- */
@@ -130,7 +150,18 @@ for (const { line, c } of rows) {
   if (claimsLegacy && !isLegacy) {
     problems.push(`${where} ${file} says "${LEGACY}" but is not a legacy image with its original bytes (${legacy.has(file) ? 'bytes changed since f5e4eb6' : 'not in ' + LEGACY_LIST})`);
   }
-  if (!claimsLegacy && onDisk && !isLegacy) {
+  /* The client-supplied origin: source and licence must both be exact, and only
+     then is the licence URL allowed to say that none is required. */
+  const claimsClient = licence === CLIENT_LICENCE || /client direct transfer/i.test(source);
+  if (claimsClient) {
+    if (!CLIENT_SOURCE.test(source)) {
+      problems.push(`${where} ${file} claims the client-supplied origin but its source is "${source}"; the R-W amendment reads "client direct transfer, <name>, DD.MM.YYYY"`);
+    }
+    if (licence !== CLIENT_LICENCE) {
+      problems.push(`${where} ${file} claims the client-supplied origin but its licence is "${licence}"; the R-W amendment reads "${CLIENT_LICENCE}"`);
+    }
+  }
+  if (!claimsLegacy && !claimsClient && onDisk && !isLegacy) {
     if (!/^https:\/\/\S+/.test(licenceUrl) && !/^supplier permission:\s*\S/.test(licenceUrl) && !/^n\/a, generated in this repo/.test(licenceUrl)) {
       problems.push(`${where} ${file} is not a legacy image, so its licence URL must be an https URL or "supplier permission: ..."; got "${licenceUrl}"`);
     }
@@ -145,6 +176,7 @@ unlisted.forEach((f) => problems.push(`${f} has no row in ${LEDGER}`));
 
 console.log(`walked ${TREE}/: ${images.length} images   ledger rows: ${rows.length}   banned hosts: ${BANNED.join(', ')}`);
 console.log(`matcher self-test: ${SELF_TEST.length} of ${SELF_TEST.length} passed`);
+console.log(`client-source self-test: ${CLIENT_SELF_TEST.length} of ${CLIENT_SELF_TEST.length} passed`);
 console.log(`legacy fingerprints: ${legacy.size} (images present before f5e4eb6)`);
 if (problems.length) {
   console.error(`\n${problems.length} problem(s):`);

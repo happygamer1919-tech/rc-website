@@ -8587,3 +8587,241 @@ cannot settle in it unmarked.
    anything less. Loosening that would mean a card with an empty line on it.
 2. **The short-row default is (b)**, hold a category back until three records exist.
 3. **No count in the form.**
+
+## W23 rulings · Client-supplied originals as an approved origin, and the supplier answer's weight, 2026-09-18
+
+Recorded at the owner's instruction, from the wave 23 dispatch, before any wave 23 card
+was worked.
+
+### R-W amendment: client-supplied originals are an approved origin
+
+> Client-supplied originals are an approved origin. The provenance row reads: source
+> "client direct transfer, Mihai, 18.09.2026", licence "owned by Rapid Construct,
+> supplied for site use", and **no URL is required for this origin only**. All EXIF and
+> GPS is stripped before commit, verified by exiftool showing no GPS tags.
+
+Added to `docs/rulings/R-W.md` as an amendment block (R-T: a ruling is read forward).
+Every other origin keeps its licence and URL requirement, and
+`scripts/check-asset-provenance.js` still refuses a row with an empty cell.
+
+**What the amendment does not do, and this wave met both limits on the first day.** The
+licence line is a statement about the file's origin, not a fact about its content. A file
+that is visibly somebody else's work contradicts it, and the ruling cannot make it true:
+
+- **a third-party watermark** on the frame (two files in this batch), and
+- **a 3D visualisation** rather than a photograph, where the slot's own rule requires a
+  photograph of real work (four files in this batch).
+
+Those files are held with the reason recorded, not published under this licence. W23-01
+carries the evidence.
+
+### Q-SUPPLIERS ruled: what "Da on all 20 brands" is, and is not
+
+> The all-Da answer is Mihai's claim of supply per brand, usable for catalogue listing.
+> It is NOT evidence of a manufacturer account and NOT a photo licence. Manufacturer
+> imagery enters only with a per-brand licence row per R-W.
+
+The 20 brands: Dasterum, Ruukki, Blachotrapez, Budmat, Bilka, Pruszynski, Lindab,
+Creaton, Wienerberger/Tondach, IKO, Tegola Canadese, Katepal, TechnoNICOL/Shinglas,
+Baumit, Caparol, Supraten, Rockwool, Knauf Insulation, Bicomplex, Lafarge.
+
+**Consequences, recorded so no later card has to re-reason them:**
+
+1. A brand may be named as a product's manufacturer in a catalogue record, because the
+   owner states he supplies it.
+2. **No manufacturer image may be committed** on the strength of it. W23-04 is the
+   licence scan that decides that, brand by brand, and downloads nothing.
+3. It says nothing about stock, availability, lead time, dealer status or an account, and
+   none of those may appear on the site (R-X, and the category page gate).
+4. **Dasterum, Imperlux and Fațade 3D remain refused by name on the catalogue category
+   pages** (W17-02). Dasterum is a confirmed supplier and may be named elsewhere, as it
+   already is on the tile page; the catalogue-page prohibition is a separate rule and this
+   ruling does not touch it.
+
+## W23-01 · Photo batch 2 intake: 22 files read, 1 published, 21 held with reasons, 2026-09-18
+
+**Card W23-01.** PR only, stops for the owner. It carries the wave 23 rulings and the
+five wave 23 board cards.
+
+### What arrived, and what happened
+
+22 images in `/Users/ivan/RC-pics_2nd batch`, read only, never modified: `Acoperisuri/`
+7, `Before_after/` 8, `Garduri/` 6, `echipa.jpeg`. Copertine absent, as dispatched.
+The full inventory, with dimensions, bytes, sha256 and a decision per file, is
+`docs/audits/wave-23-photo-intake.md`.
+
+**Published: one.** File 2, a drone frame of a finished dark metal tile roof, into
+**F-PORT-6**, `public/img/proj-acoperisuri-06-cover.jpg` and its `@2x`, through
+`scripts/process-photos.js` (centre crop to 4:3, 400x300 and 800x600, R-B so nothing is
+upscaled), then stripped.
+
+**Held: twenty-one**, each with its reason, in three groups:
+
+| Group | Files | Reason |
+|---|---|---|
+| Content refuses them | 4 | the `After_*` images are **3D visualisations**, and a before/after slot is a proof slot (master plan section 7 as amended by W14-18) |
+| Provenance refuses them | 2 | a **third-party watermark** in the sky; the R-W amendment says the licence line describes the origin, not the content |
+| The site has nowhere to put them | 15 | the four unused roof frames (covers 01 to 05 filled, 06 taken), the four "before" halves whose "after" cannot publish, the six garduri photos and `echipa.jpeg`, whose slots have **no host component** |
+
+**Nothing was deleted and nothing was altered in the source folder.**
+
+### The privacy review, which the card asks for by name
+
+Every frame was opened and looked at. **No house number is legible in any frame. No
+licence plate is legible.** The only faces in the batch are the two workers in
+`echipa.jpeg`, one in profile behind sunglasses and a hard hat, the other obscured;
+that file is **not published**, and not because of the faces but because its slot has no
+host. **No published file carries a face, a plate or a number.**
+
+### Stripping, and how it is verified
+
+`exiftool -all= -overwrite_original` on both outputs, then:
+
+- `exiftool -s -G` on each: only exiftool's own File and Composite values remain. No
+  Exif, no IPTC, no XMP, no ICC, no GPS.
+- `exiftool -r -if '$gps:all' public/img`: 152 image files read, **none matched**.
+- The sources themselves carried no GPS either, 22 of 22.
+
+**exiftool 13.55 was installed for this card** (`brew install exiftool`), because the
+ruling names it as the verification tool and the machine did not have it. It is a
+workstation tool, not a repo dependency: nothing in the build or the gates needs it.
+
+### Gate 17: `scripts/check-image-metadata.js`
+
+The ruling's condition is now held on every pull request, with **no dependency**: the
+script walks JPEG segments and PNG chunks itself, so CI needs no exiftool.
+
+- **No GPS in any image under `public/`**, the whole tree.
+- **No metadata at all in an image whose provenance row names the client-supplied
+  origin**, which is the amendment's own condition. The rows are read from
+  `docs/assets/PROVENANCE.md`, so a file joins that set by being recorded.
+- Deliberately **not** "no Exif anywhere": 128 images already on `main` carry an Exif
+  block and 3 carry IPTC, from before the ruling. **None carries GPS.** Stripping them
+  would rewrite bytes that `docs/assets/LEGACY-IMAGES.txt` matches, and that match is
+  what their legacy licence status rests on. The Exif count prints every run.
+
+`scripts/check-asset-provenance.js` learned the new origin too, and learned it
+**narrowly**: the source cell must read `client direct transfer, <name>, DD.MM.YYYY` and
+the licence cell must be the ruling's sentence character for character, and only then may
+the licence URL say none is required. Every other row keeps the https-or-supplier-
+permission rule.
+
+### Negative-tested, six arms
+
+| Arm | Result |
+|---|---|
+| a. a GPS tag planted in a committed image | exit 1, naming the file |
+| b. a client-supplied file committed with its metadata intact | exit 1: `Exif, IPTC` |
+| c. no images at all | exit 1: zero images read, so nothing was checked |
+| d. the client row's licence sentence reworded | exit 1: the amendment's sentence is quoted back |
+| e. the client row's source without a date | exit 1: the required shape is quoted back |
+| f. a non-client row with no licence URL | exit 1, the unchanged rule still firing |
+
+Controls: both gates green on the shipped tree.
+
+### Recorded for ratification
+
+1. **One file of twenty-two is the honest yield**, and fifteen of the holds are the
+   site's missing hosts rather than anything about the photographs.
+2. **exiftool installed on the workstation**, not added to the repo or to CI.
+3. **Gate 17 holds GPS for the whole corpus and full stripping for the new origin**, with
+   the legacy Exif gap reported rather than closed.
+4. **`acoperisuri-06` has its cover but stays invisible** until the project has a title
+   and a summary (Q-04), and its locality is unknown (Q-W23-01).
+
+## W23-01a · Correction to W23-01: gate 17 reads every image by its bytes, and nine review findings are closed, 2026-09-18
+
+**Corrects W23-01**, whose body stands as recorded (R-S). Same card, same PR, a second
+commit, merged forward into the stacked W23-02 to W23-05 branches.
+
+### What W23-01 got wrong
+
+A cloud code review of the wave 23 stack returned nine findings. All nine are in
+W23-01's own diff, all nine were confirmed by reading the code, and each defect was
+reproduced before it was fixed (the arms below).
+
+| # | Finding | Effect |
+|---|---|---|
+| 1 | PNG: the `eXIf` chunk was noticed, never read | a PNG with GPS passed |
+| 2 | only `.jpg`, `.jpeg` and `.png` were read | a WebP, TIFF, HEIC, AVIF, GIF or SVG with GPS passed, though gate 17 says "anywhere under `public/`" |
+| 3 | a `.jpg` whose bytes are not JPEG was skipped silently | a phone HEIC renamed `.jpg`, with GPS, passed and was counted as read |
+| 4 | JPEG fill bytes (runs of 0xFF before a marker, which the standard permits) were read as a marker | the walk jumped past the Exif segment, so a JPEG with GPS passed |
+| 5 | the header promised a failure when client rows exist but none parse, and no code did it | a changed table shape would leave assertion 2 holding nothing, green |
+| 6 | the client source pattern took the name as a single word | `client direct transfer, Ion Popescu, 18.09.2026` failed the provenance gate |
+| 7 | gate 17 was inserted above gate 16 in `docs/CLAUDE.md` | Markdown numbers a list by position, so it rendered as 16, and 16 as 17 |
+| 8 | the script header said about 130 images carry Exif | every record says 128, and exiftool counts 128 |
+| 9 | `claimsClient` tested the exact source pattern, then a looser test that pattern implies | dead code |
+
+Findings 1 to 4 are one promise broken four ways: "no committed image carries GPS"
+held only for a JPEG without fill bytes, and for a PNG that happened to carry no GPS.
+
+### The change
+
+`scripts/check-image-metadata.js`:
+
+- **A file is an image by its first bytes**, not its name. Every file under `public/` is
+  read. A file with an image extension whose bytes are no known format fails.
+- **JPEG** walk skips fill bytes, and fails on a segment it cannot read. **PNG** walk reads
+  `eXIf` as the TIFF structure it is, and decodes text chunks, including the hex-encoded
+  "Raw profile type exif" that ImageMagick writes and compressed XMP. **WebP** walk reads
+  its `EXIF` chunk. **TIFF** is read by its first IFD.
+- **A byte scan under every walk**: any TIFF structure anywhere in the file that reads as
+  TIFF and points to a GPS IFD, and any XMP GPS property. This is what reads HEIC, AVIF,
+  GIF, BMP and ICO. An SVG's embedded data-URI rasters are decoded and read in turn.
+- **An Exif block that cannot be read fails**, since its GPS cannot be ruled out.
+- **Client rows**: every table row that names the origin is counted, and the count must
+  equal the rows that parse. A client-supplied file must be among the images read, in a
+  walked format (JPEG, PNG, WebP, TIFF). A HEIC or AVIF under that origin fails, with the
+  instruction to publish it as JPEG through `scripts/process-photos.js`.
+- **A parser self-test runs first, every run**: 14 buffers built in the script, one per
+  format and carrier, with and without GPS. A misread one fails the run.
+- The header says 128.
+
+`scripts/check-asset-provenance.js`: the name in the client source is `[^,\s][^,]*`
+(several words allowed, not empty, no comma), held by a five-case self-test printed
+beside the host matcher's; the dead disjunct is removed.
+
+`docs/CLAUDE.md`: gate 17 moved below gate 16 and its text rewritten to what the script
+now does. **Its number does not change**; the list is appended to, never renumbered.
+`.github/workflows/quality.yml`: the step's comment.
+
+### Negative-tested, every fixture made by a real tool, against both versions
+
+GPS was written by exiftool 13.55 into copies of the published
+`proj-acoperisuri-06-cover.jpg`, converted with `sips`; the WebP is a 1x1 lossless file
+that exiftool wrote GPS into. exiftool reads the GPS back from every fixture. Each was
+planted as `public/img/arm.*` in a scratch copy of the tree.
+
+| Arm | W23-01's gate | This gate |
+|---|---|---|
+| PNG, GPS in `eXIf` | exit 0 | exit 1 |
+| JPEG, three fill bytes before the Exif marker | exit 0 | exit 1 |
+| HEIC with GPS, renamed `.jpg` | exit 0 | exit 1 |
+| WebP, GPS | exit 0 | exit 1 |
+| TIFF, GPS | exit 0 | exit 1 |
+| HEIC, GPS | exit 0 | exit 1 |
+| GIF, XMP GPS | exit 0 | exit 1 |
+| JPEG, XMP GPS only | exit 0 | exit 1 |
+| PNG, GPS in a compressed raw Exif profile | exit 0 | exit 1 |
+| SVG embedding a GPS-tagged JPEG | exit 0 | exit 1 |
+| random bytes named `.jpg` | exit 0 | exit 1 |
+| a client row naming a stripped HEIC | exit 0 | exit 1 |
+| the client rows gain a column before the source | exit 0 | exit 1 |
+| W23-01's arms a, b and c | exit 1 | exit 1 |
+| controls: the same PNG, WebP, TIFF, HEIC, GIF and JPEG without GPS | exit 0 | exit 0 |
+
+Provenance gate: a two-word client name, exit 1 before and exit 0 now; W23-01's arms d,
+e and f and an empty name, exit 1 on both; the shipped tree, exit 0 on both.
+
+**On the shipped tree:** 159 images read (134 JPEG, 6 PNG, 19 SVG; W23-01's gate read
+140, JPEG and PNG only), 128 carrying an Exif block, 0 carrying GPS. exiftool agrees on
+both counts.
+
+### What changes in W23-01's ratification list
+
+Items 1 to 4 stand; item 3 now holds for every format. One item is added:
+
+5. **A client-supplied file must be JPEG, PNG, WebP or TIFF.** A HEIC or AVIF under that
+   origin fails gate 17, because its metadata is read for GPS only and the amendment asks
+   for all of it stripped. `scripts/process-photos.js` already writes JPEG, so this binds
+   only a file committed around the pipeline.

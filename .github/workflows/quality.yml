@@ -76,6 +76,13 @@ jobs:
       - name: Header fits with an 8px slack floor, both locales (RC-139)
         run: node scripts/check-header-fit.js
 
+      # W23-01. No committed image carries GPS, and an image from the client-supplied
+      # origin (R-W amendment, 2026-09-18) carries no metadata at all. Zero dependency:
+      # the format walks and the byte scan are in the script, so CI needs no exiftool.
+      # Corrected by W23-01a: every format, a file read by its bytes, and a self-test.
+      - name: No GPS in any image, and client-supplied images stripped (W23-01)
+        run: node scripts/check-image-metadata.js
+
       # RC-148. Every stub count stated in the governing and reference documents
       # equals the count measured from content/projects.json. Static, no browser.
       - name: The stub count in the documents equals the data (RC-148)

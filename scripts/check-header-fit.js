@@ -74,6 +74,12 @@ const PAGES = [
   // page with its own sections; measured on its own.
   { template: 'novatik', locale: 'RO', url: '/servicii/roca-vulcanica/' },
   { template: 'novatik', locale: 'RU', url: '/ru/servicii/roca-vulcanica/' },
+  // W24-08. The copertine page now carries a dark full-width hero of its own,
+  // and the fence models page is a second mirror; both measured on their own.
+  { template: 'cop-hero', locale: 'RO', url: '/servicii/copertine/' },
+  { template: 'cop-hero', locale: 'RU', url: '/ru/servicii/copertine/' },
+  { template: 'gard-modele', locale: 'RO', url: '/servicii/modele-garduri/' },
+  { template: 'gard-modele', locale: 'RU', url: '/ru/servicii/modele-garduri/' },
   { template: 'product', locale: 'RO', url: '/servicii/garduri/' },
   { template: 'product', locale: 'RU', url: '/ru/servicii/garduri/' },
   { template: 'category', locale: 'RO', url: '/catalog/termoizolatie/' },

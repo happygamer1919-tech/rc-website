@@ -9845,3 +9845,58 @@ would have taken one second and saved this.
 The card's height budgets are re-measured after the rename and the figures in R-Y's
 W24-07 block are the corrected ones: the acoperisuri page reads 7,598 RO and 7,736 RU, not
 the 7,684 and 7,822 the broken layout produced.
+
+## W24-08 · Garduri gets the same bento, copertine gets a hero, and the claims record closes at 54, 2026-09-20
+
+**The fence bento is the same component with different data**, which is what the source
+proves: its two bentos are byte-for-byte the same markup. Four tiles, and the
+`Prețuri și oferte` tile is inert exactly as `Reduceri` is: a `<div>`, `aria-disabled`, no
+hover, no pointer.
+
+One tile differs in kind. `Garduri tip jaluzele` opens **this page's own content**, so it
+is an in-page anchor rather than a link elsewhere. The bento's destination validator
+accepts three shapes now, a product page, the shared "in construcție" page, and an
+in-page anchor, and still requires exactly one tile with none of them.
+
+**`/servicii/modele-garduri/` is new**, eight cards, four designations in two materials, in
+the source's own order, which is IL12, IL30, IL100, IL40: not numeric, and copied rather
+than tidied.
+
+**It is a child of the garduri page, which is itself a product page.** W24-06 allowed a
+product page to have a service page as a parent; this needed a product page as one. The
+chain is asserted to be two deep and no more: a parent that is itself parented would make
+the breadcrumb three levels, which it has no room for and nothing needs.
+
+**The copertine page gained a dark full-width hero**, which REPLACES its standard light
+hero rather than sitting above it. Both heroes stay in the template and exactly one
+renders, so a reader can see the choice rather than having to infer it from a missing
+block.
+
+**One of the hero's three facts survived R6, and the dispatch anticipated that**: it asks
+for the three "only if they survive". `Policarbonat, tablă sau panouri sandwich` is a
+material list and renders. `Măsurători gratuite` is a free service and `Toată Moldova` is
+a coverage claim; both are held.
+
+**The cross-sell row has two cards, not three.** The middle one is `Soffit metalic` and
+Rapid Construct has no soffit page. A card opening a page that does not exist is a 404
+with a photograph on it, so it is omitted, which is what "only if RC has such a page else
+omit" asks for. Each remaining card's body is Rapid Construct's own existing teaser for
+the page it opens; the source's own third body claims an own workshop and is held.
+
+**Finding F-02: every product page is now in the phone menu**, five of them, indented one
+step under Catalog. Four of the five were reachable on a phone only through the Servicii
+panel, and W24-06 took the tile page out of that panel's top level, so on a phone it had
+become reachable from the acoperisuri page alone. The count is asserted rather than
+assumed: every product page this build emits gets a row, so a page added later is in the
+menu or the build fails.
+
+**`docs/W24-CLAIMS-HELD.md` closes at 54 claims** across three source pages: 32 from the
+rocă vulcanică hub, 17 from the fence models page, 5 from the copertine page. Every one
+carries the page and the position it came from. **No price from `imperlux.md` is published
+anywhere on this site**, and `GARD_FORBIDDEN` is untouched.
+
+**Six new height budgets**, which closes wave 24's amendments to R-Y at eleven pages.
+
+Lighthouse accessibility by hand on all three changed pages, because gate 5 audits only
+the two homepages: **1.0 with zero failing audits** on the copertine page with its dark
+hero, on the fence models page, and on the garduri page with its bento.

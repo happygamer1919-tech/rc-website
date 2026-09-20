@@ -106,11 +106,22 @@ const MARKERS = {
     areaServed: 0,
     roofOffers: 0,
   },
+  /* W24-08. A product page that carries a bento hub: the garduri page. Four
+     tiles, exactly three of them links, the same assertion the roofing hub has. */
+  'product-hub': {
+    promoBar: 1,
+    profileAnchors: 0,
+    areaServed: 20,
+    bentoTiles: 4,
+    bentoLinks: 3,
+  },
   // W14-13. The three product pages carry the service page's site-wide parts.
   product: {
     promoBar: 1,
     profileAnchors: 0,
     areaServed: 20,
+    // W24-08. A plain product page carries no hub. The zero holds that.
+    bentoTiles: 0,
   },
   // W18-01 (RC-138). The tile page is a product page that now carries one
   // profile diagram per model. A tile page built before W18-01 carries 0, so a
@@ -192,10 +203,14 @@ const PAGES = [
   { path: '/ru/servicii/finisaje/',        type: 'service', label: 'svc RU finis',   budget: 6000 },
   { path: '/servicii/tigla-metalica/',     type: 'tigla',   label: 'tigla RO',       budget: 4000 },
   { path: '/ru/servicii/tigla-metalica/',  type: 'tigla',   label: 'tigla RU',       budget: 4033 },
-  { path: '/servicii/copertine/',          type: 'product', label: 'copertine RO',   budget: 5493 },
-  { path: '/ru/servicii/copertine/',       type: 'product', label: 'copertine RU',   budget: 5569 },
-  { path: '/servicii/garduri/',            type: 'product', label: 'garduri RO',     budget: 4816 },
-  { path: '/ru/servicii/garduri/',         type: 'product', label: 'garduri RU',     budget: 4838 },
+  { path: '/servicii/copertine/',          type: 'product', label: 'copertine RO',   budget: 6615 },
+  { path: '/ru/servicii/copertine/',       type: 'product', label: 'copertine RU',   budget: 6691 },
+  /* W24-08. The garduri page gained the fence bento; the copertine page gained a
+     dark hero and a cross-sell row; modele de garduri is new. All under W24-R4. */
+  { path: '/servicii/garduri/',            type: 'product-hub', label: 'garduri RO',  budget: 5728 },
+  { path: '/ru/servicii/garduri/',         type: 'product-hub', label: 'garduri RU',  budget: 5750 },
+  { path: '/servicii/modele-garduri/',     type: 'product', label: 'gard modele RO', budget: 3780 },
+  { path: '/ru/servicii/modele-garduri/',  type: 'product', label: 'gard modele RU', budget: 3802 },
   // ~~W16-02, RC-129. The seven catalog category pages.~~
   // AMENDED (W24-04): thirty pages, and every budget re-measured. The catalogue
   // index at /catalog/ is new (it answered 404), every subcategory has a page of

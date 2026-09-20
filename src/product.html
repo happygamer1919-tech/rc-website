@@ -121,6 +121,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   <a class="mobile-nav-link" href="{{homeHref}}">{{header.navHome}}</a>
   <a class="mobile-nav-link" href="{{servicesHref}}">{{header.navServices}}</a>
   <a class="mobile-nav-link" href="{{catalogHref}}">{{header.catalog}}</a>
+{{mobileProducts}}
   <a class="mobile-nav-link" href="{{portfolioHref}}">{{header.navPortfolio}}</a>
   <a class="mobile-nav-link" href="{{aboutHref}}">{{header.navAbout}}</a>
   <a class="mobile-nav-link" href="{{contactHref}}">{{header.navContacts}}</a>
@@ -140,8 +141,17 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
 {{promoBar}}
 <main id="continut">
 
-<!-- 1 · Page hero, W14-16. Breadcrumb, H1, one line, CTA; the block follows. -->
-<section class="section section--light svc-hero">
+<!-- 0 · W24-08. The bento hub, the FIRST section after the header on the pages
+     that have one. Empty everywhere else. -->
+{{prod.bento}}
+
+<!-- 1a · W24-08. The dark full-width hero, on the copertine page only. Where it
+     renders, the standard light hero below does not. -->
+{{prod.hero}}
+
+<!-- 1 · Page hero, W14-16. Breadcrumb, H1, one line, CTA; the block follows.
+     Absent on a page that carries its own hero above. -->
+<section class="section section--light svc-hero"{{prod.heroHidden}}>
   <div class="container">
     <!-- W24-06. Built by build.js: a product page with a parent service reads
          Acasă / <that service> / <this page>, and one without reads
@@ -160,6 +170,9 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
 <!-- 2 · The block that moved off the homepage (W14-16) -->
 {{prod.block}}
+
+<!-- 2b · W24-08. The cross-sell row, on the copertine page only. -->
+{{prod.crossSell}}
 
 <!-- 5 · CTA, the same form as the homepage -->
 <section class="section section--light section--divided" id="oferta">

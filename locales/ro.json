@@ -357,6 +357,11 @@
       "title": "Rocă vulcanică Novatik",
       "lede": "Țiglă Novatik cu granule de rocă vulcanică: aspect natural, silențioasă.",
       "teaser": "Patru modele Novatik cu granule de rocă vulcanică."
+    },
+    "gardModele": {
+      "title": "Modele de garduri",
+      "lede": "Patru modele de gard tip jaluzele, fiecare în două materiale.",
+      "teaser": "Patru modele de gard tip jaluzele."
     }
   },
   "catalogProducts": {
@@ -1145,6 +1150,28 @@
     "roofTigla": "Țiglă metalică",
     "roofNovatik": "Rocă vulcanică Novatik",
     "roofCalc": "Calculează prețul acoperișului",
-    "roofOffers": "Reduceri"
+    "roofOffers": "Reduceri",
+    "fenceH": "Garduri",
+    "fenceHMuted": "tip jaluzele",
+    "fenceJaluzele": "Garduri tip jaluzele",
+    "fenceCalc": "Calculează prețul gardului",
+    "fenceModele": "Modele de garduri",
+    "fencePreturi": "Prețuri și oferte"
+  },
+  "gardModele": {
+    "h2": "Modele",
+    "lede": "Patru modele, fiecare în două materiale.",
+    "thickness": "Grosime",
+    "colours": "Culori"
+  },
+  "copHero": {
+    "h1a": "Copertine metalice.",
+    "h1b": "Douăsprezece modele.",
+    "lede": "De la structura standard pe piloni până la variante în consolă, fără niciun stâlp în calea manevrei, și modele arhitecturale executate pe proiect.",
+    "fact1": "Policarbonat, tablă sau panouri sandwich",
+    "ctaPrimary": "Cere ofertă",
+    "ctaSecondary": "Vezi cele 12 modele",
+    "crossH2": "Alte materiale pentru casa ta",
+    "crossLink": "Vezi"
   }
 }

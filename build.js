@@ -141,7 +141,7 @@ const PAGES = [
 
 // Keys whose value is already HTML built by this file. Everything else is
 // escaped on substitution.
-const RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu', 'productTeaser', 'socialRow',
+const RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu', 'productTeaser', 'socialRow',
   // demoAttr is a whole attribute, ` data-demo="..."`, not an attribute value:
   // it is either present or absent. Its inner text is escaped where it is
   // built, so what lands here is already safe. Escaping it again turned the
@@ -153,7 +153,7 @@ const RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu', 'productTeaser', 'socia
   ...Array.from({ length: 9 }, (_, i) => `svcMedia${i}`),
 ]);
 // Same idea for the service-page template.
-const SVC_RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu',
+const SVC_RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu',
   'demoAttr', 'svc.imageObjects', 'svc.answer', 'svc.table', 'svc.faqSection', 'svc.faqSchema',
   'svc.gallerySection', 'svc.footerLinks', 'svc.media',
   // W24-05. The before/after slider, on the case la cheie page only.
@@ -684,7 +684,7 @@ function placeholder(id, opts = {}) {
 function bentoSection(l, cfg) {
   const need = (v, where) => { if (!REAL(v)) die(`bento ${cfg.id}: ${where} is not real for ${l.code}.`); return v; };
   if (!Array.isArray(cfg.tiles) || cfg.tiles.length !== 4) die(`bento ${cfg.id}: ${(cfg.tiles || []).length} tiles, expected exactly 4.`);
-  const inert = cfg.tiles.filter((x) => !x.page && !x.inConstructie).length;
+  const inert = cfg.tiles.filter((x) => !x.page && !x.inConstructie && !x.anchor).length;
   if (inert !== 1) die(`bento ${cfg.id}: ${inert} tile(s) with no destination, expected exactly 1.`);
   for (const x of cfg.tiles) {
     if (x.page && !PRODUCT_PAGES.some((p) => p.slug === x.page) && !SERVICE_SLUGS.includes(x.page)) {
@@ -694,7 +694,8 @@ function bentoSection(l, cfg) {
 
   const tiles = cfg.tiles.map((x, i) => {
     const label = esc(need(l.strings[x.label], x.label));
-    x = { ...x, href: x.page ? `${BASE}${SERVICES_ROOT[l.code]}${x.page}/` : (x.inConstructie ? BASE + IN_CONSTRUCTIE[l.code] : null) };
+    x = { ...x, href: x.page ? `${BASE}${SERVICES_ROOT[l.code]}${x.page}/`
+      : (x.inConstructie ? BASE + IN_CONSTRUCTIE[l.code] : (x.anchor ? `#${x.anchor}` : null)) };
     const ph = placeholder(x.slot, { variant: 'dark', className: 'hub__ph' });
     const body = `${ph}<span class="hub__grad" aria-hidden="true"></span><span class="hub__label">${label}</span>`;
     const cls = `hub__tile hub__tile--${i + 1}`;
@@ -1233,6 +1234,21 @@ const BENTOS = {
       { label: 'bento.roofNovatik', slot: 'ACOP-02', page: 'roca-vulcanica' },
       { label: 'bento.roofCalc', slot: 'ACOP-03', inConstructie: true },
       { label: 'bento.roofOffers', slot: 'ACOP-04' },
+    ],
+  },
+  /* W24-08. The same component, the same four slots, different data. The source
+     proves the reuse: its two bentos are byte-for-byte the same markup.
+     Tile 1 opens the garduri page's own content, which is this page, so it is an
+     in-page anchor rather than a link to somewhere else. */
+  garduri: {
+    id: 'garduri-hub',
+    head: 'bento.fenceH',
+    headMuted: 'bento.fenceHMuted',
+    tiles: [
+      { label: 'bento.fenceJaluzele', slot: 'GARDB-01', anchor: 'garduri' },
+      { label: 'bento.fenceCalc', slot: 'GARDB-02', inConstructie: true },
+      { label: 'bento.fenceModele', slot: 'GARDB-03', page: 'modele-garduri' },
+      { label: 'bento.fencePreturi', slot: 'GARDB-04' },
     ],
   },
 };
@@ -2212,16 +2228,190 @@ ${faq}
 `;
 }
 
+/* W24-08, the fence models page. Mirrors imperlux.md/garduri/garduri under
+   W24-R6 and W24-R7. Eight cards, four designations in two materials, exactly as
+   the source lays them out and in the source's own order, which is IL12, IL30,
+   IL100, IL40: not numeric, and copied rather than tidied.
+
+   Rendered: the designation, the material, the style label, the sheet thickness,
+   the colour count. Held and listed in docs/W24-CLAIMS-HELD.md: every price, every
+   struck price, every discount badge, the anticorrosion warranty in years, the
+   hidden-fixing claim and the local-production claim. GARD_FORBIDDEN is untouched
+   (W24-R7). */
+const GARD_MODELE_FILE = 'content/garduri-modele.json';
+const GARD_MODELE = JSON.parse(fs.readFileSync(GARD_MODELE_FILE, 'utf8'));
+if (!Array.isArray(GARD_MODELE.models) || GARD_MODELE.models.length === 0) {
+  die(`${GARD_MODELE_FILE} has no "models", so its grid would be a heading over a gap.`);
+}
+
+function gardModelePage(l) {
+  const s = (k) => {
+    const v = l.strings[`gardModele.${k}`];
+    if (!REAL(v)) die(`gardModele.${k} must be real in ${l.code}.`);
+    return esc(v);
+  };
+  const askLabel = l.strings['catalogProducts.ask'];
+  if (!REAL(askLabel)) die(`catalogProducts.ask must be real in ${l.code}.`);
+  const need = (v, where) => { if (!REAL(v)) die(`${GARD_MODELE_FILE}: ${where} is not real for ${l.code}.`); return v; };
+
+  const cards = GARD_MODELE.models.map((m, i) => {
+    const name = `${need(m.designation, `models[${i}].designation`)} ${need(m.material, `models[${i}].material`)}`;
+    return `      <article class="nvk" data-reveal data-stagger="${Math.min(i, 6)}">
+        <div class="nvk__media">${placeholder(`GARD-${String(i + 1).padStart(2, '0')}`, { variant: 'light', className: 'nvk__ph' })}</div>
+        <div class="nvk__body">
+          <h3 class="nvk__name">${esc(m.designation)} <span class="nvk__material">${esc(m.material)}</span></h3>
+          <p class="nvk__desc">${esc(need(m.style && m.style[l.code], `models[${i}].style`))}</p>
+          <dl class="nvk__facts">
+            <div><dt>${s('thickness')}</dt><dd>${esc(need(m.thickness, `models[${i}].thickness`))}</dd></div>
+            <div><dt>${s('colours')}</dt><dd>${esc(need(m.colours, `models[${i}].colours`))}</dd></div>
+          </dl>
+          <p class="nvk__ask"><span class="prod__ask" data-product="${esc(name)}">${esc(askLabel)}</span></p>
+        </div>
+      </article>`;
+  }).join('\n');
+
+  return `<section class="section section--light section--divided" id="modele" aria-labelledby="modele-h">
+  <div class="container">
+    <h2 id="modele-h" data-reveal>${s('h2')}</h2>
+    <p class="lede" data-reveal>${s('lede')}</p>
+    <div class="nvk-grid nvk-grid--4" style="margin-top: 40px;">
+${cards}
+    </div>
+  </div>
+</section>
+`;
+}
+
+/* W24-08, the copertine hero and its cross-sell row. Mirrors
+   imperlux.md/acoperisuri/copertine/ under W24-R6 and W24-R7.
+
+   THE HERO IS DARK AND FULL WIDTH, which is the one place on this site a section
+   carries an image behind text, so it carries a gradient for the same reason a
+   bento tile does and under the same ruling (W24-R5): the gradient is inside the
+   hero, over an image, and creates no fourth off-white.
+
+   THREE DOT-SEPARATED FACTS, "only if they survive R6", and one of the three
+   does. "Măsurători gratuite" is a free service claimed about the company and
+   "Toată Moldova" is a coverage claim; both are held and listed. The material
+   list is a product fact and renders.
+
+   THE SECONDARY CTA SCROLLS TO THE EXISTING TWELVE MODELS. It is an in-page
+   anchor to the section content/copertine.json already builds, not a new list. */
+function copertineHero(l) {
+  const s = (k) => {
+    const v = l.strings[`copHero.${k}`];
+    if (!REAL(v)) die(`copHero.${k} must be real in ${l.code}.`);
+    return esc(v);
+  };
+  const down = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>';
+  return `<section class="cop-hero">
+  ${placeholder('COP-HERO', { variant: 'dark', className: 'cop-hero__ph' })}
+  <span class="cop-hero__grad" aria-hidden="true"></span>
+  <div class="container cop-hero__inner">
+    <nav class="breadcrumb cop-hero__crumb" aria-label="${esc(l.strings['servicePage.breadcrumbAria'])}">
+      <a href="${BASE + l.home}">${esc(l.strings['servicePage.home'])}</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">${esc(l.strings['pages.copertine.title'])}</span>
+    </nav>
+    <h1 class="cop-hero__h1">${s('h1a')}<span class="cop-hero__line">${s('h1b')}</span></h1>
+    <p class="cop-hero__lede">${s('lede')}</p>
+    <ul class="cop-hero__facts">
+      <li>${s('fact1')}</li>
+    </ul>
+    <div class="cop-hero__cta">
+      <a class="btn btn--primary" href="#oferta">${s('ctaPrimary')}</a>
+      <a class="cop-hero__more" href="#copertine">${s('ctaSecondary')}${down}</a>
+    </div>
+  </div>
+</section>
+`;
+}
+
+/* W24-08. The cross-sell row at the foot of the copertine page. The source has
+   three cards; this has TWO, because the middle one is "Soffit metalic" and Rapid
+   Construct has no soffit page. A card linking to a page that does not exist is a
+   404 with a photograph on it, so it is omitted and named in the report, which is
+   what the dispatch's "only if RC has such a page else omit" asks for.
+
+   Each card's body is Rapid Construct's OWN existing teaser for the page it opens.
+   The source's third body reads "produse în atelier propriu", an own-workshop
+   claim, and is held. */
+const CROSS_SELL = [
+  { key: 'acoperisuri', service: 'acoperisuri', slot: 'COPX-01' },
+  { key: 'garduri', product: 'garduri', slot: 'COPX-02' },
+];
+function copertineCrossSell(l) {
+  const s = (k) => {
+    const v = l.strings[`copHero.${k}`];
+    if (!REAL(v)) die(`copHero.${k} must be real in ${l.code}.`);
+    return esc(v);
+  };
+  const arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 5 16 12 9 19"></polyline></svg>';
+  const cards = CROSS_SELL.map((c, i) => {
+    let href, title, body;
+    if (c.service) {
+      const si = SERVICE_SLUGS.indexOf(c.service);
+      if (si < 0) die(`cross-sell: "${c.service}" is not a service page.`);
+      href = `${BASE}${SERVICES_ROOT[l.code]}${c.service}/`;
+      title = l.strings[`services.items.${si}.title`];
+      body = l.strings[`services.items.${si}.desc`];
+    } else {
+      const p = PRODUCT_PAGES.find((x) => x.slug === c.product);
+      if (!p) die(`cross-sell: "${c.product}" is not a product page.`);
+      href = `${BASE}${SERVICES_ROOT[l.code]}${p.slug}/`;
+      title = l.strings[`pages.${p.key}.title`];
+      body = l.strings[`pages.${p.key}.teaser`];
+    }
+    if (!REAL(title) || !REAL(body)) die(`cross-sell card ${i} has no real title or body for ${l.code}.`);
+    return `      <a class="xsell" href="${href}" data-reveal data-stagger="${i}">
+        <div class="xsell__media">${placeholder(c.slot, { variant: 'light', className: 'xsell__ph' })}</div>
+        <div class="xsell__body">
+          <h3 class="xsell__title">${esc(title)}</h3>
+          <p class="xsell__text">${esc(body)}</p>
+          <span class="xsell__more">${s('crossLink')}${arrow}</span>
+        </div>
+      </a>`;
+  }).join('\n');
+  return `<section class="section section--light section--divided" id="alte-materiale" aria-labelledby="alte-materiale-h">
+  <div class="container">
+    <h2 id="alte-materiale-h" data-reveal>${s('crossH2')}</h2>
+    <div class="xsell-row">
+${cards}
+    </div>
+  </div>
+</section>
+`;
+}
+
 const PRODUCT_PAGES = [
   { slug: 'tigla-metalica', key: 'tigla', parent: 'acoperisuri', block: (l) => tiglaGrid(l), sources: ['content/tigla-metalica.json'] },
   { slug: 'roca-vulcanica', key: 'novatik', parent: 'acoperisuri', block: (l) => novatikPage(l), sources: ['content/novatik.json'] },
   { slug: 'copertine', key: 'copertine', block: (l) => copertine(l), sources: ['content/copertine.json'] },
   { slug: 'garduri', key: 'garduri', block: (l) => gardPage(l), faqSchema: (l) => gardFaqSchema(l), sources: [] },
+  { slug: 'modele-garduri', key: 'gardModele', parent: 'garduri', block: (l) => gardModelePage(l), sources: ['content/garduri-modele.json'] },
 ];
 const TOP_LEVEL_PRODUCT_PAGES = PRODUCT_PAGES.filter((p) => !p.parent);
+/* The title of a page another page is a child of, from whichever list holds it. */
+function parentTitle(l, slug) {
+  const i = SERVICE_SLUGS.indexOf(slug);
+  if (i >= 0) return l.strings[`services.items.${i}.title`];
+  const p = PRODUCT_PAGES.find((x) => x.slug === slug);
+  if (!p) die(`parentTitle: "${slug}" is neither a service nor a product page.`);
+  return l.strings[`pages.${p.key}.title`];
+}
 (() => {
-  const bad = PRODUCT_PAGES.filter((p) => p.parent && !SERVICE_SLUGS.includes(p.parent));
-  if (bad.length) die(`product page parent is not a service: ${bad.map((p) => p.slug + ' -> ' + p.parent).join(', ')}`);
+  /* AMENDED (W24-08): a parent may be a service page OR another product page.
+     Modele de garduri is a child of the garduri page, which is itself a product
+     page, so the chain is two deep and the breadcrumb reads
+     Acasă / Garduri / Modele de garduri. A parent that is itself parented would
+     make it three, which the breadcrumb has no room for and nothing needs. */
+  const isService = (s) => SERVICE_SLUGS.includes(s);
+  const isProduct = (s) => PRODUCT_PAGES.some((p) => p.slug === s);
+  const bad = PRODUCT_PAGES.filter((p) => p.parent && !isService(p.parent) && !isProduct(p.parent));
+  if (bad.length) die(`product page parent is neither a service nor a product page: ${bad.map((p) => p.slug + ' -> ' + p.parent).join(', ')}`);
+  const deep = PRODUCT_PAGES.filter((p) => p.parent && isProduct(p.parent)
+    && PRODUCT_PAGES.find((x) => x.slug === p.parent).parent);
+  if (deep.length) die(`product page parent is itself parented, which would be three levels: ${deep.map((p) => p.slug).join(', ')}`);
   if (TOP_LEVEL_PRODUCT_PAGES.length === PRODUCT_PAGES.length) die('W24-06 makes one product page a child; none is marked.');
 })();
 /* W16-02. Deferred to here on purpose: PRODUCT_PAGES is declared immediately
@@ -2233,14 +2423,16 @@ const TOP_LEVEL_PRODUCT_PAGES = PRODUCT_PAGES.filter((p) => !p.parent);
   const collide = CATEGORIES.filter((c) => SERVICE_SLUGS.includes(c.slug) || PRODUCT_PAGES.some((p) => p.slug === c.slug));
   if (collide.length) die(`category slug collides with a service or product slug: ${collide.map((c) => c.slug).join(', ')}`);
 })();
-const PROD_RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu',
+const PROD_RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu',
   'demoAttr', 'promoBar', 'areaServedJson', 'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
   'prod.block', 'prod.footerLinks', 'prod.faqSchema',
+  // W24-08. The garduri bento, and the copertine hero and cross-sell row.
+  'prod.bento', 'prod.hero', 'prod.crossSell', 'prod.heroHidden',
   // W24-06. Three levels on a parented product page, two on the others.
   'prod.breadcrumb',
 ]);
 const productTemplate = fs.readFileSync('src/product.html', 'utf8');
-const CAT_RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu',
+const CAT_RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu',
   'demoAttr', 'promoBar', 'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
   'cat.block', 'cat.products', 'cat.footerLinks',
   // W24-04. Built here because a parent page and a subcategory page differ in
@@ -2510,6 +2702,22 @@ for (const l of loaded) {
     // phone menu can reach it; before this card the root of the catalogue was the
     // one thing on the site nothing linked to, because nothing was there.
     catalogHref: BASE + CATALOG_ROOT[l.code],
+    /* W24-08, finding F-02. Every product page is in the phone menu. Four of the
+       five were reachable on a phone only through the Servicii panel, and
+       W24-06 took the tile page out of that panel's top level, so on a phone it
+       had become reachable from the acoperisuri page alone. A page in the sitemap
+       that a phone cannot navigate to is the defect F-02 names.
+       The count is asserted, not assumed: every product page this build emits has
+       a row, so a page added later is in the menu or the build fails. */
+    mobileProducts: (() => {
+      const rows = PRODUCT_PAGES.map((p) => {
+        const title = l.strings[`pages.${p.key}.title`];
+        if (!REAL(title)) die(`mobileProducts: pages.${p.key}.title is not real for ${l.code}.`);
+        return `  <a class="mobile-nav-link mobile-nav-link--sub" href="${BASE}${SERVICES_ROOT[l.code]}${p.slug}/">${esc(title)}</a>`;
+      });
+      if (rows.length !== PRODUCT_PAGES.length) die(`mobileProducts: ${rows.length} rows for ${PRODUCT_PAGES.length} product pages.`);
+      return rows.join('\n');
+    })(),
     // JSON-LD `item` must be an absolute URL. servicesHref is a path, correct
     // for an <a href> and invalid inside the BreadcrumbList.
     servicesUrl: SITE + BASE + l.home + '#servicii',
@@ -2768,8 +2976,11 @@ for (const l of loaded) {
       /* W24-06. A parented product page reads Acasă / <parent> / <page>. The
          middle crumb is the parent SERVICE page, not the services overview, which
          is what makes the page a child of it rather than a sibling. */
+      /* The middle crumb names the parent, whether that is a service page or
+         another product page: W24-08 makes modele de garduri a child of the
+         garduri product page. */
       'prod.breadcrumb': p.parent
-        ? `      <a href="${BASE + l.home}">${esc(l.strings['servicePage.home'])}</a>\n      <span aria-hidden="true">/</span>\n      <a href="${BASE}${SERVICES_ROOT[l.code]}${p.parent}/">${esc(l.strings[`services.items.${SERVICE_SLUGS.indexOf(p.parent)}.title`])}</a>\n      <span aria-hidden="true">/</span>\n      <span aria-current="page">${esc(title)}</span>`
+        ? `      <a href="${BASE + l.home}">${esc(l.strings['servicePage.home'])}</a>\n      <span aria-hidden="true">/</span>\n      <a href="${BASE}${SERVICES_ROOT[l.code]}${p.parent}/">${esc(parentTitle(l, p.parent))}</a>\n      <span aria-hidden="true">/</span>\n      <span aria-current="page">${esc(title)}</span>`
         : `      <a href="${BASE + l.home}">${esc(l.strings['servicePage.home'])}</a>\n      <span aria-hidden="true">/</span>\n      <a href="${BASE + l.home}#servicii">${esc(l.strings['servicePage.all'])}</a>\n      <span aria-hidden="true">/</span>\n      <span aria-current="page">${esc(title)}</span>`,
       'prod.lede': l.strings[`pages.${p.key}.lede`],
       'prod.metaTitle': head.metaTitle,
@@ -2781,6 +2992,17 @@ for (const l of loaded) {
       'prod.pathRu': BASE + SERVICES_ROOT.ru + p.slug + '/',
       'prod.subject': `[${l.code.toUpperCase()}] ${title} - ${SERVICES_ROOT[l.code]}${p.slug}/`,
       'prod.block': p.block(l),
+      /* W24-08. The garduri bento is the first section after the header on its
+         page; the copertine hero replaces that page's standard hero and its
+         cross-sell row closes the page. Empty on every other product page. */
+      'prod.bento': BENTOS[p.slug] ? bentoSection(l, BENTOS[p.slug]) : '',
+      'prod.hero': p.slug === 'copertine' ? copertineHero(l) : '',
+      'prod.crossSell': p.slug === 'copertine' ? copertineCrossSell(l) : '',
+      /* A page with its own hero does not also render the standard one. The
+         attribute is hidden rather than the section being removed from the
+         template, so the two heroes stay side by side in one file and a reader
+         can see that exactly one of them shows. */
+      'prod.heroHidden': p.slug === 'copertine' ? ' hidden' : '',
       'prod.faqSchema': p.faqSchema ? p.faqSchema(l) : '',
       'prod.footerLinks': SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
         `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join(''),

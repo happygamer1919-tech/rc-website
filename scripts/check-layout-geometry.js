@@ -229,7 +229,31 @@ const PROBE = `(async () => {
   const hub = document.querySelector('.hub__grid');
   if (hub) {
     const tiles = [...hub.children].filter(painted);
-    out.hub = { grid: box(hub), tiles: tiles.map(box), total: hub.children.length };
+    /* W25-01. A hub tile's label is white, and what keeps it legible over a
+       photograph is the W24-R5 gradient. Once a tile is FILLED the label sits on
+       a picture rather than on #141414, so the gradient stops being decoration
+       and becomes the contrast mechanism. Measured on a filled tile at W25-01:
+       6.77:1 worst case against white, against a 3:1 large-text threshold.
+       This asserts the MECHANISM, which is geometric and cheap: the gradient
+       exists and covers the label's box. The pixel ratio itself is re-measured by
+       hand per filled tile, because a bright packshot could drop it and no cheap
+       assertion sees that. */
+    out.hub = {
+      grid: box(hub), tiles: tiles.map(box), total: hub.children.length,
+      labels: tiles.map((t) => {
+        const label = t.querySelector('.hub__label');
+        const grad = t.querySelector('.hub__grad');
+        const ph = t.querySelector('[data-photo-slot]');
+        if (!label) return null;
+        const lb = label.getBoundingClientRect(), gb = grad ? grad.getBoundingClientRect() : null;
+        return {
+          slot: ph ? ph.getAttribute('data-photo-slot') : null,
+          filled: !!(ph && ph.tagName.toLowerCase() === 'picture'),
+          hasGrad: !!grad,
+          covers: !!(gb && gb.top <= lb.top + 1 && gb.bottom >= lb.bottom - 1 && gb.left <= lb.left + 1 && gb.right >= lb.right - 1),
+        };
+      }).filter(Boolean),
+    };
   }
 
   const grid = document.querySelector('[data-prod-grid]');
@@ -300,7 +324,14 @@ function judgeHub(r, where, w) {
     }
     const narrow = t.filter((x) => x.w < MIN_TILE_PX);
     for (const n of narrow) p.push({ id: 'hub-narrow', text: `${where}: a tile is ${n.w}px wide, under the ${MIN_TILE_PX}px floor` });
-  } else {
+  }
+  /* Both widths: a label on a photograph needs its gradient at every size. */
+  for (const lb of (r.labels || [])) {
+    if (!lb.filled) continue;
+    if (!lb.hasGrad) p.push({ id: 'hub-no-gradient', text: `${where}: filled tile ${lb.slot} has a white label and no W24-R5 gradient under it` });
+    else if (!lb.covers) p.push({ id: 'hub-no-gradient', text: `${where}: filled tile ${lb.slot}'s gradient does not cover its label's box` });
+  }
+  if (w < 1024) {
     const lefts = new Set(t.map((x) => x.x));
     if (lefts.size !== 1) p.push({ id: 'hub-cols', text: `${where}: ${lefts.size} columns, expected 1 on a phone` });
   }

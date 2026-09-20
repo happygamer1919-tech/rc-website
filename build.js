@@ -644,7 +644,36 @@ PHOTO_SLOTS.slots.forEach((s, i) => {
 
 /* variant is 'light' or 'dark'. Nothing else: the two are the section rhythm's
    own two backgrounds and a third would be a new colour value. */
-function placeholder(id, opts = {}) {
+/* W25-01. ONE call site, two outcomes. Every caller in this file asks for a slot by
+   id and gets back either the placeholder box it has always got, or a real
+   <picture>, decided by the LEDGER and by nothing at the call site. That is the
+   whole design: the eighteen places that render an image do not learn about
+   images, and a slot flips from empty to filled by one field in one JSON file.
+
+   A filled slot needs `provenance` and `alt` (the schema says so, and this
+   refuses to render without them), because an image with no provenance row is
+   exactly what R-W exists to prevent, and an image with no alt is a hole in the
+   page for anyone not looking at it.
+
+   THE FRAME DOES NOT MOVE. The <picture> takes the same box the placeholder had,
+   from the same `--ph-ratio`, so filling a slot changes no layout and no height
+   budget. `object-fit: contain` on white is what a packshot needs: a tall bottle
+   and a square tile both sit inside the square without being cropped, and a
+   cropped packshot is a different product.
+
+   `width` and `height` are emitted explicitly so the box is reserved before the
+   bytes arrive; the ratio still comes from the ledger, and these are derived from
+   it rather than written a second time (section 14).
+
+   WEBP IS EMITTED WHEN THE FILE EXISTS AND NOT OTHERWISE. The dispatch asks for
+   WebP plus a JPEG fallback. This machine cannot encode WebP: `sips` exits 13,
+   macOS 26.6.2's ImageIO lists public.jpeg, public.png and public.jpeg-2000 as
+   its writable types and not WebP, and there is no cwebp, no ImageMagick and no
+   npm package in a repo that has no package.json by design. Adding one is a new
+   dependency, which needs the owner's word (Q-W25-01). So the markup is written
+   to carry a <source type="image/webp"> the day a .webp sits beside the .jpg, and
+   to leave it out until then. No call site and no template changes when it does. */
+function slotImage(id, opts = {}) {
   const row = PHOTO_SLOTS.slots.find((s) => s.id === id);
   if (!row) {
     die(`placeholder: slot "${id}" has no row in ${PHOTO_SLOTS_FILE}. A placeholder and its ledger row land in the same commit.`);
@@ -654,8 +683,43 @@ function placeholder(id, opts = {}) {
     die(`placeholder: slot "${id}" asks for variant "${variant}". Only "light" and "dark" exist.`);
   }
   const extra = opts.className ? ' ' + opts.className : '';
-  return `<div class="ph ph--${variant}${extra}" data-photo-slot="${esc(id)}" style="--ph-ratio: ${esc(row.ratio)};"><span class="ph__id">${esc(id)}</span></div>`;
+
+  if (row.state !== 'filled') {
+    if (row.state !== 'placeholder') die(`slot "${id}" has state "${row.state}". Only "placeholder" and "filled" exist.`);
+    return `<div class="ph ph--${variant}${extra}" data-photo-slot="${esc(id)}" style="--ph-ratio: ${esc(row.ratio)};"><span class="ph__id">${esc(id)}</span></div>`;
+  }
+
+  if (!REAL(row.provenance)) die(`slot "${id}" is filled and names no provenance row. R-W: an image and its row land in the same commit.`);
+  const alt = row.alt && row.alt[opts.locale || 'ro'];
+  if (!REAL(alt)) die(`slot "${id}" is filled and has no alt text for ${opts.locale || 'ro'}.`);
+  /* `provenance` is the repo path, `public/img/...`. The site serves public/ at
+     the root, so the URL is BASE + the path with `public/` removed. Written this
+     way rather than as BASE + '/img/' + name, which was the first version and
+     emitted /img/img/... for every filled slot: the path already carries its own
+     img/ and a second one was pasted in front of it. */
+  const rel = row.provenance.replace(/^public\//, '');
+  if (!fs.existsSync(path.join('public', rel))) die(`slot "${id}" is filled and names ${row.provenance}, which does not exist.`);
+  const webpRel = rel.replace(/\.jpe?g$/i, '.webp');
+  const hasWebp = fs.existsSync(path.join('public', webpRel));
+
+  /* The box, from the ledger's ratio, so the frame is reserved before the bytes
+     land and nothing reflows. min_px is the delivery floor, not the render size. */
+  const [rw, rh] = String(row.ratio).split('/').map((n) => Number(n.trim()));
+  if (!(rw > 0 && rh > 0)) die(`slot "${id}" has ratio "${row.ratio}", which is not two positive numbers.`);
+  const W = 800, H = Math.round((800 * rh) / rw);
+
+  /* W25-01. The first row of a catalogue grid is above the fold on a phone and
+     must not be lazy; everything after it is. The caller says which, because only
+     the caller knows where in a list it is. */
+  const loading = opts.eager ? 'eager' : 'lazy';
+  const sources = hasWebp ? `<source type="image/webp" srcset="${BASE}/${esc(webpRel)}">` : '';
+  return `<picture class="ph ph--filled ph--${variant}${extra}" data-photo-slot="${esc(id)}" style="--ph-ratio: ${esc(row.ratio)};">${sources}<img src="${BASE}/${esc(rel)}" alt="${esc(alt)}" width="${W}" height="${H}" loading="${loading}" decoding="async"></picture>`;
 }
+
+/* The name every call site has used since W24-01. Kept, because renaming it would
+   touch eighteen call sites to say the same thing, and because a slot that is
+   still empty IS a placeholder. */
+const placeholder = slotImage;
 
 // --- W24-07, the bento hub section (W24-R5, W24-R8) --------------------------
 
@@ -696,7 +760,7 @@ function bentoSection(l, cfg) {
     const label = esc(need(l.strings[x.label], x.label));
     x = { ...x, href: x.page ? `${BASE}${SERVICES_ROOT[l.code]}${x.page}/`
       : (x.inConstructie ? BASE + IN_CONSTRUCTIE[l.code] : (x.anchor ? `#${x.anchor}` : null)) };
-    const ph = placeholder(x.slot, { variant: 'dark', className: 'hub__ph' });
+    const ph = placeholder(x.slot, { variant: 'dark', className: 'hub__ph', locale: l.code, eager: i < 2 });
     const body = `${ph}<span class="hub__grad" aria-hidden="true"></span><span class="hub__label">${label}</span>`;
     const cls = `hub__tile hub__tile--${i + 1}`;
     return x.href
@@ -990,7 +1054,7 @@ function catalogProducts(l, slug) {
        uses. */
     const lead = `${name} (${r.slot})`;
     const parts = [];
-    parts.push(`        <div class="prod__media">${placeholder(r.slot, { variant: 'light', className: 'prod__ph' })}</div>`);
+    parts.push(`        <div class="prod__media">${placeholder(r.slot, { variant: 'light', className: 'prod__ph', locale: l.code, eager: i < 4 })}</div>`);
     parts.push('        <div class="prod__body">');
     /* W24-09, the owner's answer to Q-W24-03 part 2. `brand_hidden` withholds the
        brand LINE while the brand itself stays in the record, which is how the 27
@@ -1101,7 +1165,7 @@ function catalogIndexTiles(l) {
        so a screen-reader user hears "CATEG-01" before every category, seven times
        a page. */
     return `      <a class="cat-tile" href="${BASE}${CATALOG_ROOT[l.code]}${c.slug}/" aria-label="${esc(label)}" data-reveal data-stagger="${Math.min(i, 6)}">
-        ${placeholder(`CATEG-${String(i + 1).padStart(2, '0')}`, { variant: 'dark', className: 'cat-tile__ph' })}
+        ${placeholder(`CATEG-${String(i + 1).padStart(2, '0')}`, { variant: 'dark', className: 'cat-tile__ph', locale: l.code, eager: i < 4 })}
         <span class="cat-tile__body"><span class="cat-tile__label">${esc(label)}</span></span>
       </a>`;
   }).join('\n');
@@ -1335,7 +1399,7 @@ function beforeAfter(l) {
       const retina = fs.existsSync(`public/img/${id}@2x.jpg`) ? ` srcset="${BASE}/img/${id}.jpg 1x, ${BASE}/img/${id}@2x.jpg 2x"` : '';
       return `<img class="${cls}" src="${BASE}/img/${id}.jpg"${retina} alt="${esc(alt)}" width="1180" height="664" loading="lazy" decoding="async" draggable="false">`;
     }
-    return placeholder(id, { variant, className: `${cls} ba__ph` });
+    return placeholder(id, { variant, className: `${cls} ba__ph`, locale: l.code, eager: true });
   };
   const items = projects.map((p, i) => {
     const where = `projects[${i}]`;
@@ -2241,7 +2305,7 @@ function novatikPage(l) {
   /* Model cards. The price slot carries the W22-01 phrase, which is what W24-R7
      leaves for a price this site does not publish. */
   const cards = NOVATIK.models.map((m, i) => `      <article class="nvk" data-reveal data-stagger="${Math.min(i, 6)}">
-        <div class="nvk__media">${placeholder(`NVK-${String(i + 1).padStart(2, '0')}`, { variant: 'light', className: 'nvk__ph' })}</div>
+        <div class="nvk__media">${placeholder(`NVK-${String(i + 1).padStart(2, '0')}`, { variant: 'light', className: 'nvk__ph', locale: l.code, eager: i < 2 })}</div>
         <div class="nvk__body">
           <h3 class="nvk__name">${esc(need(m.name, `models[${i}].name`))}</h3>
           <p class="nvk__desc">${esc(need(m.desc && m.desc[l.code], `models[${i}].desc`))}</p>
@@ -2322,7 +2386,7 @@ function gardModelePage(l) {
   const cards = GARD_MODELE.models.map((m, i) => {
     const name = `${need(m.designation, `models[${i}].designation`)} ${need(m.material, `models[${i}].material`)}`;
     return `      <article class="nvk" data-reveal data-stagger="${Math.min(i, 6)}">
-        <div class="nvk__media">${placeholder(`GARD-${String(i + 1).padStart(2, '0')}`, { variant: 'light', className: 'nvk__ph' })}</div>
+        <div class="nvk__media">${placeholder(`GARD-${String(i + 1).padStart(2, '0')}`, { variant: 'light', className: 'nvk__ph', locale: l.code, eager: i < 2 })}</div>
         <div class="nvk__body">
           <h3 class="nvk__name">${esc(m.designation)} <span class="nvk__material">${esc(m.material)}</span></h3>
           <p class="nvk__desc">${esc(need(m.style && m.style[l.code], `models[${i}].style`))}</p>
@@ -2370,7 +2434,7 @@ function copertineHero(l) {
   };
   const down = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>';
   return `<section class="cop-hero">
-  ${placeholder('COP-HERO', { variant: 'dark', className: 'cop-hero__ph' })}
+  ${placeholder('COP-HERO', { variant: 'dark', className: 'cop-hero__ph', locale: l.code, eager: true })}
   <span class="cop-hero__grad" aria-hidden="true"></span>
   <div class="container cop-hero__inner">
     <nav class="breadcrumb cop-hero__crumb" aria-label="${esc(l.strings['servicePage.breadcrumbAria'])}">
@@ -2429,7 +2493,7 @@ function copertineCrossSell(l) {
     }
     if (!REAL(title) || !REAL(body)) die(`cross-sell card ${i} has no real title or body for ${l.code}.`);
     return `      <a class="xsell" href="${href}" data-reveal data-stagger="${i}">
-        <div class="xsell__media">${placeholder(c.slot, { variant: 'light', className: 'xsell__ph' })}</div>
+        <div class="xsell__media">${placeholder(c.slot, { variant: 'light', className: 'xsell__ph', locale: l.code })}</div>
         <div class="xsell__body">
           <h3 class="xsell__title">${esc(title)}</h3>
           <p class="xsell__text">${esc(body)}</p>

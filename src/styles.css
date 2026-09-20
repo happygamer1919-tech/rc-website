@@ -1300,6 +1300,25 @@ p { margin: 0; }
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;
   pointer-events: none;
 }
+/* W24-05. A slot with no photograph renders the W24-01 placeholder in the same
+   box the img would fill. The frame supplies the aspect ratio, so the
+   placeholder's own is overridden here rather than being written per slot, and
+   its rounded corners are the frame's. The before slot is the light variant and
+   the after slot the dark one, which is what makes the drag visibly work with no
+   photographs in place. */
+.ba__ph {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  aspect-ratio: auto; border: 0; border-radius: 0;
+  pointer-events: none;
+}
+/* The frame is 1180x664, so the slot id sits larger than it does on a card. */
+.ba__ph .ph__id { font-size: 16px; letter-spacing: 0.12em; }
+
+/* W24-05. The heading is two lines and the second is brand orange, which is the
+   reference's geometry and hierarchy (W24-R8) and no new colour: --brand is the
+   first of the ten. It is a span inside the h2 rather than a second heading, so
+   the page's heading levels are unchanged and a screen reader reads one heading. */
+.ba__h-line { display: block; color: var(--brand); }
 .ba__before { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--position)) 0 0); }
 .ba__handle {
   position: absolute; top: 0; bottom: 0; left: var(--position); width: 44px;

@@ -14,6 +14,62 @@
   },
   "slots": [
     {
+      "id": "BA-01-before",
+      "page": "/servicii/case-la-cheie/",
+      "ratio": "1180 / 664",
+      "min_px": "2360x1328",
+      "shows": "\"Casă la cheie\" INAINTE de lucrari. Acelasi unghi, aceeasi distanta si aceeasi inaltime a aparatului ca la fotografia DUPA, pe cat posibil aceeasi lumina. Fara persoane in cadru, fara utilaje, fara data sau marcaj pe imagine."
+    },
+    {
+      "id": "BA-01-after",
+      "page": "/servicii/case-la-cheie/",
+      "ratio": "1180 / 664",
+      "min_px": "2360x1328",
+      "shows": "\"Casă la cheie\" DUPA lucrari. EXACT acelasi unghi si cadru ca fotografia INAINTE: perechea se compara prin glisare, deci un unghi diferit face comparatia falsa. Fotografie reala a lucrarii terminate, niciodata o vizualizare 3D."
+    },
+    {
+      "id": "BA-02-before",
+      "page": "/servicii/case-la-cheie/",
+      "ratio": "1180 / 664",
+      "min_px": "2360x1328",
+      "shows": "\"Fațadă\" INAINTE de lucrari. Acelasi unghi, aceeasi distanta si aceeasi inaltime a aparatului ca la fotografia DUPA, pe cat posibil aceeasi lumina. Fara persoane in cadru, fara utilaje, fara data sau marcaj pe imagine."
+    },
+    {
+      "id": "BA-02-after",
+      "page": "/servicii/case-la-cheie/",
+      "ratio": "1180 / 664",
+      "min_px": "2360x1328",
+      "shows": "\"Fațadă\" DUPA lucrari. EXACT acelasi unghi si cadru ca fotografia INAINTE: perechea se compara prin glisare, deci un unghi diferit face comparatia falsa. Fotografie reala a lucrarii terminate, niciodata o vizualizare 3D."
+    },
+    {
+      "id": "BA-03-before",
+      "page": "/servicii/case-la-cheie/",
+      "ratio": "1180 / 664",
+      "min_px": "2360x1328",
+      "shows": "\"Acoperiș\" INAINTE de lucrari. Acelasi unghi, aceeasi distanta si aceeasi inaltime a aparatului ca la fotografia DUPA, pe cat posibil aceeasi lumina. Fara persoane in cadru, fara utilaje, fara data sau marcaj pe imagine."
+    },
+    {
+      "id": "BA-03-after",
+      "page": "/servicii/case-la-cheie/",
+      "ratio": "1180 / 664",
+      "min_px": "2360x1328",
+      "shows": "\"Acoperiș\" DUPA lucrari. EXACT acelasi unghi si cadru ca fotografia INAINTE: perechea se compara prin glisare, deci un unghi diferit face comparatia falsa. Fotografie reala a lucrarii terminate, niciodata o vizualizare 3D."
+    },
+    {
+      "id": "BA-04-before",
+      "page": "/servicii/case-la-cheie/",
+      "ratio": "1180 / 664",
+      "min_px": "2360x1328",
+      "shows": "\"Renovare interioară\" INAINTE de lucrari. Acelasi unghi, aceeasi distanta si aceeasi inaltime a aparatului ca la fotografia DUPA, pe cat posibil aceeasi lumina. Fara persoane in cadru, fara utilaje, fara data sau marcaj pe imagine."
+    },
+    {
+      "id": "BA-04-after",
+      "page": "/servicii/case-la-cheie/",
+      "ratio": "1180 / 664",
+      "min_px": "2360x1328",
+      "shows": "\"Renovare interioară\" DUPA lucrari. EXACT acelasi unghi si cadru ca fotografia INAINTE: perechea se compara prin glisare, deci un unghi diferit face comparatia falsa. Fotografie reala a lucrarii terminate, niciodata o vizualizare 3D."
+    },
+    {
       "id": "CAT-0001",
       "page": "/catalog/termoizolatie/",
       "ratio": "1 / 1",

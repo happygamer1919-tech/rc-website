@@ -61,6 +61,17 @@ const MARKERS = {
     profileAnchors: 0,
     areaServed: 20,
   },
+  /* W24-05. The case la cheie page, and only that one, carries the before/after
+     slider. Its own type rather than an extra marker on `service`, because the
+     other five service rows carry no slider and an exact count is what a marker
+     is. A build made before this card renders 0, so a stale copy returning
+     plausible heights cannot match it. */
+  'service-ba': {
+    promoBar: 1,
+    profileAnchors: 0,
+    areaServed: 20,
+    baItems: 4,
+  },
   // W14-13. The three product pages carry the service page's site-wide parts.
   product: {
     promoBar: 1,
@@ -126,9 +137,14 @@ const PAGES = [
   // domain by W19-01, RC-141).
   { path: '/',                             type: 'home',    label: 'homepage RO',    budget: 10507 },
   { path: '/ru/',                          type: 'home',    label: 'homepage RU',    budget: 10807 },
-  { path: '/servicii/case-la-cheie/',      type: 'service', label: 'svc RO case',    budget: 6000 },
+  /* W24-05. The before/after slider moved onto this page, so these two rows leave
+     the shared 6,000px service budget that RELEASE-NOTES's wave 7 acceptance
+     holds and take their own, measured plus 60, under W24-R4. The other four
+     service rows are untouched and stay on 6,000. docs/rulings/R-Y.md carries the
+     measurement each one came from. */
+  { path: '/servicii/case-la-cheie/',      type: 'service-ba', label: 'svc RO case', budget: 6436 },
   { path: '/servicii/fatade/',             type: 'service', label: 'svc RO fatade',  budget: 6000 },
-  { path: '/ru/servicii/case-la-cheie/',   type: 'service', label: 'svc RU case',    budget: 6000 },
+  { path: '/ru/servicii/case-la-cheie/',   type: 'service-ba', label: 'svc RU case', budget: 6543 },
   { path: '/ru/servicii/fatade/',          type: 'service', label: 'svc RU fatade',  budget: 6000 },
   { path: '/ru/servicii/acoperisuri/',     type: 'service', label: 'svc RU acoper',  budget: 6000 },
   { path: '/ru/servicii/finisaje/',        type: 'service', label: 'svc RU finis',   budget: 6000 },
@@ -228,6 +244,7 @@ const PROBE = `(async () => {
     areaServed: area ? area.areaServed.length : 0,
     catProse: q('[data-cat-prose]'),
     productCards: q('[data-product-card]'),
+    baItems: q('[data-ba-item]'),
     catTiles: q('.cat-tile'),
     tileDiagrams: q('[data-tile-diagram]'),
   };

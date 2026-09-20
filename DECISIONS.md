@@ -9615,3 +9615,73 @@ thicknesses (copied verbatim, which is what the dispatch asks); ten RU names tha
 Romanian common noun (W24-R9 exactly); and the claim that a catalogue page scores 0.98 on
 accessibility, which was measured against the draft before the heading fix. Measured
 after: **accessibility 1.0 with zero failing audits on the 88-card page.**
+
+## W24-05 · The before/after slider is turned on, on the page the work is on, 2026-09-20
+
+The `.ba` component has existed since W14-09 and has never rendered: `content/before-after.json`
+was empty by design, so the section did not exist on any page. W23-02 read four candidate
+pairs and rejected all four, because every "after" was a 3D visualisation and a before/after
+slot is a proof slot. The component was therefore complete, wired and invisible.
+
+**It is on now, with placeholders.** Four projects, eight slots, `BA-01-before` through
+`BA-04-after`, every one a row in `docs/PHOTO-SLOTS-W24.json`. The ruling "a render is never
+a proof image" is untouched and applies to the photo session that fills them, not to this
+card.
+
+**It moved off the homepage and onto the case la cheie service page**, both locales, which is
+where the dispatch places it. A before and after belongs beside the work it is a before and
+after of, and the homepage already carries the portfolio grid. `src/service.html` renders it
+for that one slug; the homepage's slot is gone.
+
+**The before slot is the light placeholder and the after slot the dark one, and that is not
+decoration.** With two identical boxes the drag would move nothing a person could see, and
+nobody could tell the component works before a single photograph exists. With one light and
+one dark the divider is obvious at any position, which is exactly what the dispatch asks for.
+
+**A slot decides for itself.** `build.js` renders a photograph where `public/img/<slot>.jpg`
+exists and the placeholder where it does not, so the first real pair renders photographs
+while the other three still render boxes. That is `docs/CLAUDE.md` section 7's per-slot rule,
+and it is the change from the previous behaviour, which failed the build on a missing file.
+
+**Twenty of twenty assertions, driven in a real browser, in both locales:**
+
+| Assertion | Read |
+|---|---|
+| four projects, one visible | 4 items, project 0 |
+| before light, after dark | `.ph--dark` on the after and not on the before |
+| starts at the middle | `--position: 50%`, `aria-valuenow="50"` |
+| drag moves the handle | 554px to 208px |
+| drag changes the clip | `inset(0 50% 0 0)` to `inset(0 80% 0 0)` |
+| `aria-valuenow` follows it | 50 to 20 |
+| arrow keys move it | 20 to 45 after five ArrowRight, five points each |
+| the next arrow changes project | 0 to 1 |
+| the previous arrow goes back | 1 to 0 |
+| no auto-advance after 3s | project unchanged |
+
+**The drag read as broken twice before it read as working, and neither time was the
+component's fault.** The first run dispatched pointer events through a harness that
+produced none the handler accepted. The second dispatched them at viewport coordinates
+while the slider sits about 1,470px down the page, so every event landed on empty space and
+the element's own listeners never fired: the log of received events was empty. A check that
+drives nothing reports the same thing as a check that drives something broken, and only
+reading the event log told them apart. The harness scrolls the frame into view first.
+
+**Two things were found and fixed while doing it.**
+
+The ledger's slot id rule was `^[A-Z0-9-]+$`, uppercase only, and refused `BA-01-before`,
+which is **the dispatch's own example**. The rule is now letters, digits and hyphens: what it
+exists for is that a slot id goes into a filename, a URL and an attribute, so it carries no
+space and no punctuation. The case was never the point.
+
+And the case la cheie page leaves the shared 6,000px service budget, measured 6,376 RO and
+6,483 RU against it, and takes its own under W24-R4. `scripts/verify-live.js` gains a
+`service-ba` page type asserting four `[data-ba-item]`, so a build made without the slider
+cannot match the markers while returning plausible heights. The other five service rows are
+untouched.
+
+**The homepage did not move**: 10,447 RO and 10,747 RU, identical to before the card, which
+is the evidence that removing a slot that had never rendered cost nothing.
+
+Lighthouse accessibility on the case la cheie page, by hand because gate 5 audits only the
+two homepages: **1.0, zero failing audits**, with the slider's handle, arrows and eight
+placeholders on the page.

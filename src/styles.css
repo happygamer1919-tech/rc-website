@@ -485,6 +485,95 @@ p { margin: 0; }
   .hub__label { left: 20px; right: 20px; bottom: 20px; font-size: 21px; }
 }
 
+/* --- W24-08, the copertine hero and the cross-sell row ---------------------- */
+/* The dark full-width hero. It is the one place on this site where text sits over
+   an image, so it carries a gradient for the same reason a bento tile does and
+   under the same ruling (W24-R5): the gradient is INSIDE the hero, it paints over
+   an image, and it creates no fourth off-white. The section's own ground is
+   --bg-dark, which is the section rhythm's second value.
+
+   Geometry copied from the reference: no fixed height, the height comes from the
+   copy block's padding, 80px top and bottom and 112px from 1024px up. The copy
+   column is capped at 576px and sits left, which is why the photograph wants its
+   subject on the right. */
+.cop-hero {
+  position: relative; overflow: hidden;
+  background: var(--bg-dark); color: var(--bg-light);
+}
+.cop-hero__ph {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  aspect-ratio: auto; border: 0; border-radius: 0;
+}
+.cop-hero__grad {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to right, rgba(20, 20, 20, 0.96) 0%, rgba(20, 20, 20, 0.92) 42%, rgba(20, 20, 20, 0.55) 68%, rgba(20, 20, 20, 0.15) 100%);
+}
+.cop-hero__inner { position: relative; padding-top: 80px; padding-bottom: 80px; }
+.cop-hero__crumb { color: var(--bg-light); }
+.cop-hero__crumb a { color: var(--bg-light); }
+.cop-hero__h1 { margin: 24px 0 0; max-width: 576px; color: var(--bg-light); }
+.cop-hero__line { display: block; }
+.cop-hero__lede { margin: 24px 0 0; max-width: 576px; font-size: 19px; line-height: 1.6; color: var(--bg-light); }
+.cop-hero__facts {
+  margin: 32px 0 0; padding: 0; list-style: none; max-width: 576px;
+  display: flex; flex-wrap: wrap; gap: 8px 20px;
+  font-size: 15px; color: var(--bg-light);
+}
+/* A round separator between facts, the reference's own device, drawn as a
+   pseudo-element so the list stays a list for a screen reader. */
+.cop-hero__facts li + li::before {
+  content: ""; display: inline-block; width: 4px; height: 4px; border-radius: 999px;
+  background: var(--bg-light); vertical-align: middle; margin-right: 20px;
+}
+.cop-hero__cta { margin-top: 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
+.cop-hero__more {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 15px; font-weight: 700; color: var(--bg-light);
+}
+.cop-hero__more:hover { color: var(--brand); }
+@media (min-width: 1024px) {
+  .cop-hero__inner { padding-top: 112px; padding-bottom: 112px; }
+}
+
+/* The cross-sell row. Two cards, not the reference's three: the middle one is a
+   soffit page this site does not have, and a card opening a page that does not
+   exist is a 404 with a photograph on it. */
+.xsell-row {
+  display: grid; gap: 16px; margin-top: 48px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.xsell {
+  display: block; overflow: hidden; border-radius: 32px;
+  background: var(--bg-light); border: 1px solid var(--line);
+  transition: border-color var(--hover-dur) var(--ease-out);
+}
+.xsell:hover { border-color: var(--brand); color: var(--ink); }
+.xsell__ph { border-radius: 0; border-width: 0 0 1px; }
+.xsell__body { padding: 28px; }
+.xsell__title { margin: 0; font-size: 19px; font-weight: 700; line-height: 1.3; }
+.xsell__text { margin: 8px 0 0; font-size: 15px; line-height: 1.6; color: var(--ink-muted); }
+.xsell__more {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 20px; font-size: 15px; font-weight: 700; color: var(--brand-dark);
+}
+
+/* W24-08. Eight fence models, so four across where the roof page has four. */
+.nvk__material { color: var(--ink-muted); font-weight: 400; }
+
+@media (max-width: 768px) {
+  .xsell-row { grid-template-columns: minmax(0, 1fr); }
+  .cop-hero__inner { padding-top: 56px; padding-bottom: 56px; }
+  .cop-hero__grad {
+    background: linear-gradient(to bottom, rgba(20, 20, 20, 0.94) 0%, rgba(20, 20, 20, 0.88) 45%, rgba(20, 20, 20, 0.6) 100%);
+  }
+}
+
+/* W24-08, finding F-02. The product pages in the phone menu, indented one step
+   so the list reads as a group under Catalog rather than as five more top-level
+   destinations. Same type and same colour as the rows above them: the indent is
+   the only difference, because a second type size in a menu is a new decision. */
+.mobile-nav-link--sub { padding-left: 16px; }
+
 /* --- header ---------------------------------------------------------------- */
 
 /* Two layers. The BAND is a full-width solid #FFFFFF strip, fixed, opaque at

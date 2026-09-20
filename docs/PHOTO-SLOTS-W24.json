@@ -14,6 +14,111 @@
   },
   "slots": [
     {
+      "id": "GARD-01",
+      "page": "/servicii/modele-garduri/",
+      "ratio": "4 / 5",
+      "min_px": "1000x1250",
+      "shows": "Gardul \"IL12 Metal Plus\" montat, fotografiat frontal si drept, format PORTRET, ca sa se vada profilul lamelelor si distanta dintre ele. Fundal simplu."
+    },
+    {
+      "id": "GARD-02",
+      "page": "/servicii/modele-garduri/",
+      "ratio": "4 / 5",
+      "min_px": "1000x1250",
+      "shows": "Gardul \"IL12 Metal PlusDV\" montat, fotografiat frontal si drept, format PORTRET, ca sa se vada profilul lamelelor si distanta dintre ele. Fundal simplu."
+    },
+    {
+      "id": "GARD-03",
+      "page": "/servicii/modele-garduri/",
+      "ratio": "4 / 5",
+      "min_px": "1000x1250",
+      "shows": "Gardul \"IL30 Metal Plus\" montat, fotografiat frontal si drept, format PORTRET, ca sa se vada profilul lamelelor si distanta dintre ele. Fundal simplu."
+    },
+    {
+      "id": "GARD-04",
+      "page": "/servicii/modele-garduri/",
+      "ratio": "4 / 5",
+      "min_px": "1000x1250",
+      "shows": "Gardul \"IL30 Metal PlusDV\" montat, fotografiat frontal si drept, format PORTRET, ca sa se vada profilul lamelelor si distanta dintre ele. Fundal simplu."
+    },
+    {
+      "id": "GARD-05",
+      "page": "/servicii/modele-garduri/",
+      "ratio": "4 / 5",
+      "min_px": "1000x1250",
+      "shows": "Gardul \"IL100 Metal Plus\" montat, fotografiat frontal si drept, format PORTRET, ca sa se vada profilul lamelelor si distanta dintre ele. Fundal simplu."
+    },
+    {
+      "id": "GARD-06",
+      "page": "/servicii/modele-garduri/",
+      "ratio": "4 / 5",
+      "min_px": "1000x1250",
+      "shows": "Gardul \"IL100 Metal PlusDV\" montat, fotografiat frontal si drept, format PORTRET, ca sa se vada profilul lamelelor si distanta dintre ele. Fundal simplu."
+    },
+    {
+      "id": "GARD-07",
+      "page": "/servicii/modele-garduri/",
+      "ratio": "4 / 5",
+      "min_px": "1000x1250",
+      "shows": "Gardul \"IL40 Metal Plus\" montat, fotografiat frontal si drept, format PORTRET, ca sa se vada profilul lamelelor si distanta dintre ele. Fundal simplu."
+    },
+    {
+      "id": "GARD-08",
+      "page": "/servicii/modele-garduri/",
+      "ratio": "4 / 5",
+      "min_px": "1000x1250",
+      "shows": "Gardul \"IL40 Metal PlusDV\" montat, fotografiat frontal si drept, format PORTRET, ca sa se vada profilul lamelelor si distanta dintre ele. Fundal simplu."
+    },
+    {
+      "id": "GARDB-01",
+      "page": "/servicii/garduri/",
+      "ratio": "5 / 6",
+      "min_px": "1000x1200",
+      "shows": "Garduri tip jaluzele: un gard terminat, vedere de ansamblu de-a lungul liniei gardului, format PORTRET (tila inalta)."
+    },
+    {
+      "id": "GARDB-02",
+      "page": "/servicii/garduri/",
+      "ratio": "7 / 2",
+      "min_px": "1750x500",
+      "shows": "Calcularea pretului gardului: masuratori pe teren, ruleta sau plan, cadru LAT si jos (tila panoramica)."
+    },
+    {
+      "id": "GARDB-03",
+      "page": "/servicii/garduri/",
+      "ratio": "7 / 4",
+      "min_px": "900x520",
+      "shows": "Modele de garduri: trei profile de lamele alaturate, ca sa se vada diferenta. Orizontal."
+    },
+    {
+      "id": "GARDB-04",
+      "page": "/servicii/garduri/",
+      "ratio": "7 / 4",
+      "min_px": "900x520",
+      "shows": "Preturi si oferte: lamele de gard stivuite in depozit. Orizontal. Fara pret, fara eticheta, fara procent in cadru."
+    },
+    {
+      "id": "COPX-01",
+      "page": "/servicii/copertine/",
+      "ratio": "16 / 10",
+      "min_px": "1600x1000",
+      "shows": "Materiale de acoperis: tigla metalica si accesorii, cadru 16:10, in depozit sau pe santier."
+    },
+    {
+      "id": "COPX-02",
+      "page": "/servicii/copertine/",
+      "ratio": "16 / 10",
+      "min_px": "1600x1000",
+      "shows": "Garduri metalice: un gard metalic terminat, cadru 16:10."
+    },
+    {
+      "id": "COP-HERO",
+      "page": "/servicii/copertine/",
+      "ratio": "16 / 7",
+      "min_px": "2400x1050",
+      "shows": "Copertina metalica peste o masina parcata, fotografiata din lateral-dreapta, cu loc liber in STANGA cadrului pentru text alb. Lumina de seara sau zi innorata. Format foarte lat."
+    },
+    {
       "id": "NVK-01",
       "page": "/servicii/roca-vulcanica/",
       "ratio": "4 / 3",

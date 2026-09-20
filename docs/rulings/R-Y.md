@@ -514,3 +514,30 @@ rendered white on a 10px radius with 24px of padding instead of `#141414` on 24p
 tall tile came out **128px wide against an intended 373**. Renamed to `.hub__*`. Every
 gate was green throughout, because no gate reads a layout, and the figures in the table
 above are from after the rename.
+
+### Amended 2026-09-20 by W24-08 · the garduri bento, the copertine hero, and a second mirror page
+
+Added under R-T; nothing above this block was edited.
+
+The garduri page gained the fence bento as its first section, the copertine page gained a
+dark full-width hero and a cross-sell row, and `/servicii/modele-garduri/` is new.
+
+| Page | RO measured | RO budget | RU measured | RU budget |
+|---|---|---|---|---|
+| `/servicii/garduri/` | 5,668 | **5,728** | 5,690 | **5,750** |
+| `/servicii/modele-garduri/` | 3,720 | **3,780** | 3,742 | **3,802** |
+| `/servicii/copertine/` | 6,555 | **6,615** | 6,631 | **6,691** |
+
+The copertine figure moved by 1,062px in RO: the dark hero replaces the standard light one
+rather than sitting above it, so the growth is the hero's extra padding plus the
+cross-sell row, not a whole second hero.
+
+**The copertine page's twelve SVG models are untouched**, and the secondary CTA in the new
+hero is an in-page anchor to them.
+
+`scripts/verify-live.js` asserts four bento tiles of which exactly three are links on the
+garduri page, the same assertion the roofing hub has, and **zero** on a plain product page,
+which is what keeps a hub from appearing where none belongs.
+
+This is the last amendment of wave 24. Eleven pages in this ruling now carry a budget set
+under W24-R4, and every one is measured plus 60 on the tree that shipped.

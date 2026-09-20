@@ -137,3 +137,110 @@ form and at `/in-constructie/`.
 slot on a mirrored page renders the exact W22-01 phrase in its own locale.
 
 W24-08 appends its own sections to this file for the garduri and copertine mirrors.
+
+---
+
+## Source: `imperlux.md/garduri/garduri`
+
+Mirrored as `/servicii/modele-garduri/` (W24-08).
+
+### Hero
+
+| # | Position | Held sentence, verbatim from the source | Why |
+|---|---|---|---|
+| 33 | hero lede | `4 modele, fiecare în Metal Plus (20 ani garanție) sau Metal PlusDV (30 ani garanție).` | two warranties |
+| 34 | hero lede | `Sistem de fixare ascuns, producție locală.` | own production |
+| 35 | hero lede | `De la 500 lei/m².` | price |
+
+**Rendered instead:** Rapid Construct's own line for the page, which says four models in
+two materials and claims nothing about who makes them.
+
+### The summary card above the grid, five lines
+
+**The whole card is held and is not rendered at all.** Every line is a price or a warranty.
+
+| # | Position | Held | Why |
+|---|---|---|---|
+| 36 | line 1 | `IL12 - de la 500-680 lei/m²` | price |
+| 37 | line 2 | `IL30 - de la 668-822 lei/m²` | price |
+| 38 | line 3 | `IL100 - de la 906-1128 lei/m²` | price |
+| 39 | line 4 | `IL40 - de la 749-926 lei/m²` | price |
+| 40 | line 5 | `Toate cu sistem fixare ascuns, 3 culori RAL pe Metal Plus, 2 pe Metal PlusDV, Metal Plus 20 ani / Metal PlusDV 30 ani anticoroziune` | own fixing system and two warranties |
+
+### The eight model cards
+
+| # | Position | Held | Why |
+|---|---|---|---|
+| 41 | badge, card 1 | `-17%` | discount figure |
+| 42 | badge, cards 2 to 8 | `-10%`, seven times | discount figure |
+| 43 | price row, all eight | a struck price and a current price, `602/500`, `756/680`, `742/668`, `913/822`, `1007/906`, `1254/1128`, `832/749`, `1029/926` | price, and a struck price, which R-X forbids outright |
+| 44 | spec strip, all eight | `Garanție 20 ani anticoroziune` and `Garanție 30 ani anticoroziune` | warranty |
+
+**Rendered instead:** the designation, the material, the style label, the sheet thickness,
+the colour count, and the W22-01 phrase in the price slot.
+
+### The helper section and the form section
+
+**Both are held whole and are not rendered at all.**
+
+| # | Position | Held | Why |
+|---|---|---|---|
+| 45 | helper body | `Echipa noastră te ajută să găsești gardul perfect. Consultație gratuită, măsurători la fața locului.` | a team, a free consultation and a free site visit |
+| 46 | helper footnote | `Manager Vlada, L-V: 9:00-17:30, Sâmbătă: 9:00-14:00` | a named member of staff and their hours |
+| 47 | form lede | `Completează formularul și te contactăm în maxim 2 ore.` | a response time |
+| 48 | form trust row | `Răspundem în maxim 2 ore` | a response time |
+| 49 | form heading | `Solicită măsurare gratuită.` | a free site visit |
+
+**Rendered instead:** Rapid Construct's own quote form, which every page on this site
+already carries and which promises nothing about how fast anyone answers.
+
+---
+
+## Source: `imperlux.md/acoperisuri/copertine/`
+
+Mirrored into the existing `/servicii/copertine/` page as its hero and its cross-sell row
+(W24-08). The twelve models that page already had are untouched.
+
+### Dark hero
+
+| # | Position | Held | Why |
+|---|---|---|---|
+| 50 | lede, second sentence | `Confecționate în Moldova, montate de echipele Imperlux.` | own production and own teams |
+| 51 | fact 2 of 3 | `Măsurători gratuite` | a free service |
+| 52 | fact 3 of 3 | `Toată Moldova` | coverage |
+
+**Rendered instead:** the first sentence of the lede, which describes the structures, and
+**one** of the three facts, `Policarbonat, tablă sau panouri sandwich`, which is a
+material list. The dispatch asks for the three facts "only if they survive R6"; one does.
+
+### Cross-sell row
+
+| # | Position | Held | Why |
+|---|---|---|---|
+| 53 | section lede | `Copertina se poate executa în același finisaj cu acoperișul, streașina și gardul, totul de la aceeași echipă.` | one team doing all of it |
+| 54 | card 3 body | `Garduri tip jaluzele, produse în atelier propriu, cu montaj inclus.` | own workshop, and montage included |
+
+**Rendered instead:** each card's body is Rapid Construct's own existing teaser for the
+page it opens.
+
+**Card 2 of 3 is not rendered at all.** It is `Soffit metalic`, and Rapid Construct has no
+soffit page. The dispatch says "only if RC has such a page else omit", so the row carries
+two cards.
+
+---
+
+## Summary, whole wave
+
+| Source page | Mirrored as | Claims held |
+|---|---|---|
+| `/acoperisuri/produse/tigla-roca-vulcanica/` | `/servicii/roca-vulcanica/` | 32 |
+| `/garduri/garduri` | `/servicii/modele-garduri/` | 17 |
+| `/acoperisuri/copertine/` | `/servicii/copertine/` hero and cross-sell | 5 |
+| **Total** | | **54** |
+
+**No price from `imperlux.md` is published anywhere on this site.** Every price slot on a
+mirrored page renders the exact W22-01 phrase in its own locale, and
+`scripts/check-catalog-pages.js` holds that shape everywhere, not just on the catalogue.
+
+**`GARD_FORBIDDEN` is untouched** (W24-R7), and the `Reduceri` and `Prețuri și oferte`
+tiles carry no percentage.

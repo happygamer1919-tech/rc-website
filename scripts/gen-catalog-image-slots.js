@@ -46,27 +46,62 @@ for (const c of catalog.categories) {
   labelFor[slug] = c.label.ro;
 }
 
-const slugs = Object.keys(raw.categories);
-if (!slugs.length) fail('no categories in content/catalog-products.json.');
-const unknown = slugs.filter((s) => !labelFor[s]);
-if (unknown.length) fail(`${unknown.length} category slug(s) with no catalog category: ${unknown.join(', ')}.`);
+/* AMENDED (W24-03). The data changed shape: `categories` now maps a slug to a
+   list of record ids and `products` holds the records, because ten product names
+   are used by two products each on the source and a name cannot be the key. A
+   subcategory slug is written parent/child, so the catalogue label lookup reads
+   the last segment's own category where the whole path has none.
 
+   And a brand is now optional. RC-150 failed the whole run on a record with no
+   manufacturer; 9 of the 223 records carry no brand on the source and 27 carry
+   one W17-02 refuses on a catalogue page, which build.js nulls. A slot with no
+   brand is a slot that has to be requested by product, so it is listed with the
+   brand column reading "not stated" rather than being fatal. What is still fatal
+   is a record with no id or no name: that slot cannot be named at all. */
+if (!Array.isArray(raw.products)) fail('content/catalog-products.json has no products array.');
+const byId = new Map(raw.products.filter((r) => r && r.id).map((r) => [r.id, r]));
+
+/* The request list is written by top-level category, which is how a supplier
+   reads it, and a top-level list is already rolled up over its subcategories. So
+   the subcategory slugs are walked past here, not dropped: the count assertion
+   below fails if rolling up ever stops covering every record. */
+const all = Object.keys(raw.categories);
+if (!all.length) fail('no categories in content/catalog-products.json.');
+const labelOf = (s) => labelFor[s] || null;
+const slugs = all.filter((s) => labelOf(s));
+const orphan = all.filter((s) => !labelOf(s) && !slugs.some((p) => s.startsWith(p + '/')));
+if (orphan.length) fail(`${orphan.length} category slug(s) with no catalog category and no parent that has one: ${orphan.join(', ')}.`);
+if (slugs.length !== catalog.categories.length) fail(`${slugs.length} top-level slugs in the data for ${catalog.categories.length} catalog categories.`);
+
+/* One row per product, in catalogue order, never one per membership: a product in
+   two categories needs one photograph, not two. Its first category names it. */
 const rows = [];
+const seen = new Set();
 for (const slug of slugs) {
-  const records = raw.categories[slug] || [];
-  records.forEach((r, i) => {
+  const ids = raw.categories[slug] || [];
+  ids.forEach((id, i) => {
+    const r = byId.get(id);
+    if (!r) fail(`${slug} entry ${i} names ${id}, which no record has, so its image cannot be requested.`);
     const name = r.name && r.name.ro;
-    const brand = r.manufacturer;
-    if (!name || !brand || !r.id) fail(`${slug} record ${i} has no id, name or manufacturer, so its image cannot be requested.`);
+    if (!name || !r.id) fail(`${slug} record ${i} has no id or name, so its image cannot be requested.`);
+    if (seen.has(r.id)) return;
+    seen.add(r.id);
     rows.push({
-      slug, category: labelFor[slug], product: name, brand,
-      file: `catalog-${slug}-${r.id}`,
+      slug, category: labelOf(slug), product: name,
+      brand: r.brand || 'not stated',
+      slot: r.slot || 'not assigned',
+      file: `catalog-${slug.replace(/\//g, '-')}-${r.id}`,
     });
   });
 }
 
+/* Presence, not silence: every record the data holds must have been named by one
+   of the top-level lists, or the request list is short and nobody can see it. */
+const unlisted = raw.products.filter((r) => r && r.id && !seen.has(r.id));
+if (unlisted.length) fail(`${unlisted.length} record(s) are in no top-level category, so no image would be requested for them: ${unlisted.slice(0, 5).map((r) => r.id).join(', ')}${unlisted.length > 5 ? ' ...' : ''}.`);
+
 const today = new Date().toISOString().slice(0, 10);
-const counts = slugs.map((s) => `${labelFor[s]} ${raw.categories[s].length}`).join(', ');
+const counts = slugs.map((s) => `${labelOf(s)} ${raw.categories[s].length}`).join(', ');
 
 const body = `# Catalog product image slots
 
@@ -82,9 +117,10 @@ renders a card image at. **Facts only.** No price, no stock, no availability.
 
 | Property | Value | Where it comes from |
 |---|---|---|
-| Aspect | **4:3**, landscape | the card image treatment the site already uses, \`media media--4x3 media--card\` |
-| Rendered size | 400 x 300 CSS px | the \`width\` and \`height\` attributes on every card image on the site |
-| Files | \`<name>.jpg\` and \`<name>@2x.jpg\` (800 x 600) | every card image on the site ships a 1x and a 2x file |
+| Aspect | **1:1**, square | AMENDED (W24-03): the catalogue card the wave 24 dispatch specifies has a square image area on top, not the 4:3 the site's other cards use |
+| Rendered size | 600 x 600 CSS px | the largest a catalogue card is rendered at, 306px wide at 1400px and above, taken at 2x |
+| Files | \`<name>.jpg\` and \`<name>@2x.jpg\` (1200 x 1200) | every card image on the site ships a 1x and a 2x file |
+| Photo slot | the \`Slot\` column, which is the same id \`docs/PHOTO-SLOTS-W24.json\` carries | W24-01: the placeholder on the card prints that id, so a supplier photograph and a session photograph fill the same named slot |
 | Location | \`public/img/\` | where \`build.js\` reads image files from |
 | Provenance | one row in \`docs/assets/PROVENANCE.md\`, in the same commit, with a real licence or supplier permission | ruling R-W |
 | Permitted sources | a supplier's own product photograph, or licensed stock: a product slot is not a proof slot | master plan section 7 as amended by W14-18 |
@@ -101,13 +137,13 @@ ${rows.length === 0
 list is blocked: \`docs/QUESTIONS.md\` Q-W21-01 records why, and what a record needs. This
 file fills itself from the data as soon as records land, and \`quality\` fails if it does
 not.`
-  : `| # | Category | Product | Brand | File name | Aspect | Size |
-|---|---|---|---|---|---|---|
-${rows.map((r, i) => `| ${i + 1} | ${r.category} | ${r.product} | ${r.brand} | \`${r.file}.jpg\` + \`${r.file}@2x.jpg\` | 4:3 | 400 x 300 (800 x 600 at 2x) |`).join('\n')}`}
+  : `| # | Slot | Category | Product | Brand | File name | Aspect | Size |
+|---|---|---|---|---|---|---|---|
+${rows.map((r, i) => `| ${i + 1} | \`${r.slot}\` | ${r.category} | ${r.product} | ${r.brand} | \`${r.file}.jpg\` + \`${r.file}@2x.jpg\` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |`).join('\n')}`}
 
 ---
 
-Generated ${today} from ${slugs.length} categories and ${rows.length} product records.
+Generated ${today} from ${slugs.length} categories and ${rows.length} product records, of ${raw.products.length} in the data.
 `;
 
 if (CHECK) {

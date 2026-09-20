@@ -2167,3 +2167,64 @@ in a real browser, RO and RU, 1440 and 375, at rest and open: all eight pass.
       so it is never lowered to accommodate a measurement.
 
 **Recommended: (a), as shipped.**
+
+## Q-W24-03 · Five product names carry a typo on the source, and a competitor's house brand is on 64 records · OPEN · opened 2026-09-19 (W24-03)
+
+**Shipped defaults: the typos are copied verbatim, and the house brand is stored and will
+render. Both are reversible in one line.**
+
+W24-03 copied all 223 products from `fatade3d.md` under W24-R1. Three things in that data
+need a word from you, and none of them blocked the card.
+
+### 1. Five names carry a capitalisation typo on the source
+
+`f3d-4853`, `f3d-4864`, `f3d-4875`, `f3d-4886` and `f3d-4897` are spelled **`PLacă`**
+rather than `Placă` on the live source, in the middle of a category where every other row
+is spelled correctly.
+
+The dispatch says "variant line exactly as shown" and "exact name with diacritics", so
+they are stored and will render exactly as the source spells them. That also means
+**Rapid Construct's site would carry a competitor's typo five times.**
+
+  (a) **Copy verbatim** (shipped). "Exactly as shown" read literally.
+  (b) **Correct the capitalisation** and record the correction in
+      `docs/CATALOG-SOURCE-W24.md` beside the verbatim source string, which is already
+      stored in `source.name`. A spelling fix is not inventing copy under
+      `docs/CLAUDE.md` section 5, but it is a deviation from "exactly as shown", which is
+      why it is not shipped without a word from you.
+
+**Recommended: (b).** Five characters, and nobody wants a typo on their own site.
+
+### 2. Sixty-four records carry the brand "RedConstruct"
+
+Every product in **Elemente decorative** carries it. It looks like the source's own house
+brand for that range, not a third-party manufacturer. It is not on the refused list, so
+`build.js` and the catalogue gate both allow it, and it will render as a small brand line
+on each of those 64 cards.
+
+W23 ruled that a brand may be named as a product's manufacturer because you state you
+supply it. That ruling was made about the twenty brands you answered on, and
+**RedConstruct is not one of the twenty.**
+
+  (a) **Render it** (shipped). It is the brand the source states, and the dispatch says to
+      copy the data.
+  (b) **Withhold the brand line on those 64**, the same way the 27 records whose brand is
+      a refused name are handled: the value stays in `source.brand`, nothing renders.
+  (c) Add RedConstruct to the refused list, which would also keep it out of any later card.
+
+**Recommended: (b) unless you supply RedConstruct.** Printing another company's house
+brand on your own catalogue reads as reselling their range, which is a claim about the
+business rather than a product fact.
+
+### 3. Two products' names carry a refused manufacturer, and are rendered with it removed
+
+`f3d-2576` and `f3d-2583` are named with **FAȚADE 3D** in the name itself. W17-02 refuses
+that name on a catalogue page and W24-R1 does not touch W17-02, so the names render as
+`Plasă de armare`, `Армирующая сетка`, `Colțar PVC` and `ПВХ уголок`, with the untouched
+source string kept in `source.name`.
+
+  (a) **Render with the name removed** (shipped). Shortening is permitted under section 5;
+      the refused name is the only thing taken out.
+  (b) **Hold both records** and list them instead. Two fewer products.
+
+**Recommended: (a), as shipped.**

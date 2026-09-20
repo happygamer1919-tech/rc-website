@@ -496,11 +496,24 @@ p { margin: 0; }
 .nvk__ask { margin: auto 0 0; padding-top: 16px; font-size: 16px; font-weight: 700; color: var(--ink-muted); }
 
 /* --- W24-07, the question list ---------------------------------------------- */
-.faq { margin: 40px 0 0; }
-.faq > div { padding: 20px 0; border-top: 1px solid var(--line); }
-.faq > div:last-child { border-bottom: 1px solid var(--line); }
-.faq dt { font-size: 19px; font-weight: 700; line-height: 1.35; }
-.faq dd { margin: 8px 0 0; color: var(--ink-muted); line-height: 1.6; }
+/* CORRECTED (W24-09b). These were written as `.faq`, which the service pages
+   have owned since wave 14 for a different shape: a div of `.faq__item`s, not a
+   dl of dt/dd pairs. Both `.faq` declarations are (0,1,0) and this one is later
+   in the file, so it won, and `.faq > div` (0,1,1) beat `.faq__item` (0,1,0) on
+   top of that. Measured on the built pages: EVERY ONE OF THE 20 SERVICE PAGES
+   grew by exactly 99px, from a 28px top margin becoming 40 and four items going
+   from 18px of top padding to 20 top and 20 bottom. It shipped at W24-07 and was
+   live for two days behind green gates, surfacing only as case la cheie breaching
+   its own budget by 39px -- the other 18 sit under a shared 6,000px budget with
+   room to hide in.
+   THE SECOND COLLISION OF THIS EXACT KIND IN ONE WAVE, after `.bento__tile`.
+   Renamed to `.nvk-faq`, which matches the rest of that page's namespace and
+   which nothing else uses. See docs/CLAUDE.md section 3.1 and gate 22. */
+.nvk-faq { margin: 40px 0 0; }
+.nvk-faq > div { padding: 20px 0; border-top: 1px solid var(--line); }
+.nvk-faq > div:last-child { border-bottom: 1px solid var(--line); }
+.nvk-faq dt { font-size: 19px; font-weight: 700; line-height: 1.35; }
+.nvk-faq dd { margin: 8px 0 0; color: var(--ink-muted); line-height: 1.6; }
 
 @media (max-width: 1024px) {
   .nvk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

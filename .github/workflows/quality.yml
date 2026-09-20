@@ -45,6 +45,14 @@ jobs:
       - name: Build both locales
         run: node build.js
 
+      # W24-09b. Gate 22. Wave 24 shipped the same class collision TWICE with every
+      # gate green: `.bento__tile` (found by eye) and `.faq`, which silently added
+      # 99px to all 20 service pages and was live for two days. Neither is a thing
+      # a browser gate looks at unless someone thought to point one at it. Static,
+      # zero dependency; its self-test is both real collisions, read from git.
+      - name: No class declared twice with contradicting properties (W24-09b)
+        run: node scripts/check-css-collisions.js
+
       - name: Links resolve
         run: node scripts/check-links.js
 

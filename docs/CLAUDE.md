@@ -170,8 +170,22 @@ with it.** W24-07a renamed the CSS and left `scripts/verify-live.js` probing
 the hub: six rows came back UNVERIFIED on the first run after wave 24 merged,
 none of them a defect on the page and all six a defect in the marker. Grep the
 whole repo for the old prefix, not just the stylesheet.
-*Source: DECISIONS.md, the W24 ratification block; `src/styles.css` at `.hub__h`;
-gate 20.*
+**AMENDED (W24-09b): it happened a SECOND time in the same commit, and that one was
+not found by eye.** W24-07 also added a bare `.faq` block for the rocă vulcanică page.
+The service pages had owned `.faq` since wave 14, for a different shape: a div of
+`.faq__item`s rather than a `dl` of `dt`/`dd` pairs. Same (0,1,0), same later-wins, and
+`.faq > div` (0,1,1) beat `.faq__item` (0,1,0) on top of it. **All twenty service pages
+grew by exactly 99px and it was live for two days.** Nobody saw it, because a 99px
+change to a page with slack looks like nothing; it surfaced only as case la cheie
+breaching the budget W24-05 had just given it, by 39px.
+
+**Two lessons, and the second is the one that cost more.** A prefix nobody else uses is
+not enough: `.faq` was a perfectly good name and the problem was that it was already
+taken. And **the damage from a collision is not always visible**, so "it looks right" is
+not a check. Gate 22 is the check, and it reads the stylesheet rather than the page.
+
+*Source: DECISIONS.md, the W24 ratification block and W24-09b; `src/styles.css` at
+`.hub__h` and `.nvk-faq`; gates 20 and 22.*
 
 ---
 
@@ -633,6 +647,28 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     which exits non-zero, and on a backtick planted in an intact probe, with the shipping
     file watched clean immediately before and after (R-AB).
 
+22. `node scripts/check-css-collisions.js` clean. **Since W24-09b (wave 24)**, run by
+    `quality` with the other static checks. **Wave 24 shipped the same class collision
+    twice, in one commit, and every gate was green both times.** `.bento__tile` is
+    recorded at gate 20. The second was `.faq`: W24-07 added a bare `.faq` block for the
+    rocă vulcanică page, the service pages had owned `.faq` since wave 14 for a different
+    shape, the later declaration won, and **all twenty service pages silently grew by
+    exactly 99px**. It was live for two days. It surfaced only because case la cheie had
+    just taken a budget of its own at W24-05 and breached it by 39px; the other eighteen
+    sit under a shared 6,000px budget with room to hide in, and gate 20 does not look at
+    a FAQ list. So this one is static and general: in `src/styles.css`, no class used as
+    a **bare** selector may be declared twice, more than 25 rules apart, setting the same
+    property to different values. Shorthands are expanded, which is what makes
+    `margin-top: 28px` against `margin: 40px 0 0` a clash rather than a miss.
+    **It is narrow on purpose.** Three looser rules were measured against the clean
+    stylesheet first: "declared far apart" gives 9 false positives, "bare class declared
+    twice" gives 12, this gives 0. A noisy gate gets worked around. It fails on a missing
+    stylesheet, on zero rules parsed and on zero bare class selectors.
+    **Its self-test is both real defects**: it reads `src/styles.css` as it stood at
+    `3392bb4` and requires this gate to name `.faq` AND `.bento__tile`, with the shipping
+    stylesheet watched clean immediately before and after (R-AB). An unreachable commit
+    is a failure, never a skip.
+
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number — Q-W14-03 was found "at gate 9" — and those bodies are immutable under
 R-S, so renumbering would falsify them. A gate added later takes the next number
@@ -662,6 +698,8 @@ browser gates, and like them before gate 13, which rebuilds `dist/` armed.
 **AMENDED (W24-09a):** gate 21 runs before gate 1. It needs no build and no browser, and
 it guards the script gate 9 runs after the deploy, so it should fail before anything
 expensive does.
+**AMENDED (W24-09b):** gate 22 runs after gate 1 and before gate 2, with the other static
+checks. It reads the source stylesheet, not the build, so it needs neither.
 
 ---
 

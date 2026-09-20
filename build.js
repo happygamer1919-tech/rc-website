@@ -2266,7 +2266,7 @@ ${priceRow}
 <section class="section section--light section--divided" id="intrebari" aria-labelledby="intrebari-h">
   <div class="container">
     <h2 id="intrebari-h" data-reveal>${s('faqH2')}</h2>
-    <dl class="faq" data-reveal>
+    <dl class="nvk-faq" data-reveal>
 ${faq}
     </dl>
   </div>

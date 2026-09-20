@@ -9685,3 +9685,63 @@ is the evidence that removing a slot that had never rendered cost nothing.
 Lighthouse accessibility on the case la cheie page, by hand because gate 5 audits only the
 two homepages: **1.0, zero failing audits**, with the slider's handle, arrows and eight
 placeholders on the page.
+
+## W24-06 · The roof offers leave the homepage, and tigla metalica becomes a child of acoperisuri, 2026-09-20
+
+**Four changes to where things live, and one new page.**
+
+**"Patru lucrări de acoperiș" moved off the homepage onto the acoperisuri service page.**
+Four roofing offers belong on the roofing page; the homepage keeps the services grid and
+the portfolio. **The homepage lost 1,312px in RO and 1,371px in RU**, which is the first
+time a budget in R-Y has gone down.
+
+`scripts/verify-live.js` now asserts `roofOffers: 0` on the homepage and `roofOffers: 4` on
+the roofing page. Asserting the zero is what holds the move in place: a build with the
+section back on the homepage fires the marker rather than passing quietly, which is the
+same arrangement a category page's `areaServed: 0` already has.
+
+**The first teaser became ACOPERIȘURI.** It was ȚIGLĂ METALICĂ, which skipped the parent
+and went straight to one of its children, and now leads to a page that has something to
+show. **No copy is invented**: the title and the line are `services.items.N.title` and
+`.desc`, the service's own shipped strings, which the homepage services grid already
+prints.
+
+**Tigla metalica became a child of acoperisuri.** Its breadcrumb reads Acasă / Acoperișuri
+/ Țiglă metalică, the middle crumb being the parent service page rather than the services
+overview, which is what makes it a child rather than a sibling. It left the top-level list
+in the header's Servicii panel, and the panel's own row-count assertion moved with it, so
+the count is still asserted rather than merely reduced.
+
+**Its URL does not move.** GitHub Pages serves no redirects, so a moved URL is a dead link,
+and the dispatch says so.
+
+**It would have been an orphan, and that is worth recording.** Removing it from the header
+panel removed the only thing on the site that linked to it: the panel appears on every
+page, so the page was reachable from everywhere and from nowhere else. The section this
+card moves onto the acoperisuri page carries a link to it, in the same commit, so the
+sitemap never advertises a page nothing reaches. W24-07 replaces that link with the bento
+tile the dispatch specifies.
+
+**`/in-constructie/` is new**, RO and RU. W24-07 and W24-08 each put a bento tile on a
+service page asking a visitor to calculate a price, and there is no calculator: a tile that
+links nowhere is a dead tile and one that links to a 404 is worse. The page carries the
+header, the footer, one line and a link back, and nothing else. It is `noindex` and out of
+the sitemap, for the reason the privacy page was while its operator fields were unfilled: a
+page that says "not yet" has nothing for a search engine.
+
+**It carries no quote form**, deliberately. The form gate reads every sitemap page and this
+page is not one, and a page that says "not yet" is not the place to ask for a lead. Its
+header and phone-menu CTAs point at the homepage's form rather than at a `#oferta` that
+does not exist on it, which `check-links.js` caught: four dead anchors, fixed before the
+gate ran green.
+
+**Five new height budgets** in R-Y under W24-R4, and the two superseded homepage figures
+registered in the staleness gate per R-Q. The acoperisuri page leaves the shared 6,000px
+service budget exactly as the case la cheie page did at W24-05, and for the same reason.
+
+`src/in-constructie.html` is registered in both gates that assert the template count, and
+in `check-header-fit.js`'s matrix, which now reads 18 pages and 162 combinations.
+
+Lighthouse accessibility by hand on both changed pages, because gate 5 audits only the two
+homepages: **1.0 with zero failing audits** on the acoperisuri page and on
+`/in-constructie/`.

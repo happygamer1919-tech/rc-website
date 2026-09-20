@@ -81,6 +81,9 @@ const PAGES = [
   { template: 'catalog-index', locale: 'RU', url: '/ru/catalog/' },
   { template: 'subcategory', locale: 'RO', url: '/catalog/termoizolatie/polistiren-expandat/' },
   { template: 'subcategory', locale: 'RU', url: '/ru/catalog/termoizolatie/polistiren-expandat/' },
+  // W24-06. The shared "in construcție" page carries the full header too.
+  { template: 'in-constructie', locale: 'RO', url: '/in-constructie/' },
+  { template: 'in-constructie', locale: 'RU', url: '/ru/in-constructie/' },
   { template: 'privacy', locale: 'RO', url: '/confidentialitate/' },
   { template: 'privacy', locale: 'RU', url: '/ru/konfidentsialnost/' },
   { template: '404', locale: 'RO', url: '/404.html' },

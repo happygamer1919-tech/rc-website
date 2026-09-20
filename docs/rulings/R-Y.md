@@ -442,3 +442,37 @@ figures are the evidence that the move changed no other page.
 **The slider's own height is the frame's aspect ratio, 1180 by 664**, so it does not grow
 when the photographs land: a placeholder and a photograph occupy the same box. That is
 why these two budgets are safe to set before the photo session rather than after it.
+
+### Amended 2026-09-20 by W24-06 · the homepage loses a section, the roofing page gains it
+
+Added under R-T; nothing above this block was edited.
+
+**"Patru lucrări de acoperiș" moved off the homepage onto the acoperisuri service page**,
+where the dispatch puts it. Both pages therefore take new budgets under W24-R4, and the
+homepage's are the first figures in this ruling to go DOWN.
+
+| Page | RO measured | RO budget | RU measured | RU budget |
+|---|---|---|---|---|
+| `/` | 9,135 | **9,195** | 9,376 | **9,436** |
+| `/servicii/acoperisuri/` | 6,708 | **6,768** | 6,846 | **6,906** |
+| `/in-constructie/` | 1,122 | **1,182** | 1,122 | **1,182** |
+
+**The homepage lost 1,312px in RO and 1,371px in RU**, which is what the section cost. The
+old figures, 10,507 and 10,807, are superseded and are registered in
+`scripts/check-stale-docs.js` so nothing can quote them again. R-J's derivation and its
+revert values are about the promo bar and the 100+ tile and are untouched by this: what
+changed is that a whole section left, not that a term in the derivation moved.
+
+**The acoperisuri page leaves the shared 6,000px service budget** that RELEASE-NOTES's wave
+7 acceptance holds, exactly as the case la cheie page did at W24-05 and for the same
+reason: a page that gains a section is no longer the page that figure was measured on. The
+remaining service rows stay on 6,000.
+
+**`/in-constructie/` is new**: a shared page the calculate-a-price tiles of W24-07 and
+W24-08 land on until a calculator exists. It is `noindex` and out of the sitemap, so it is
+not measured by gate 14, which reads the sitemap; `scripts/verify-live.js` lists it with
+its own marker set, and `scripts/check-header-fit.js` measures its header, because it
+carries one.
+
+Measured the section 2 way: 1440px, every `[data-reveal]` applied and settled, Inter loaded
+and asserted loaded. Local, not live: R-P's confirmation is owed after the deploy.

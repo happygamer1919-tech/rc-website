@@ -49,6 +49,11 @@ const bust = (p) => `${ORIGIN}${p}${p.includes('?') ? '&' : '?'}${BUST}=1`;
    as the height, never in a separate request. */
 const MARKERS = {
   home: {
+    /* W24-06. The four roofing offers left the homepage for the acoperisuri page.
+       Asserting the ZERO is what holds that in place: a build with the section
+       back on the homepage fires this rather than passing quietly, the same way
+       a category page's areaServed: 0 holds its own decision. */
+    roofOffers: 0,
     ratingPanel: 1,        // the R-N review panel is present
     portfolioTiles: 7,     // six project cards plus the W12-05 closing tile
     profileAnchors: 0,     // R-O: no visible anchor to the Google profile
@@ -71,6 +76,23 @@ const MARKERS = {
     profileAnchors: 0,
     areaServed: 20,
     baItems: 4,
+  },
+  /* W24-06. The acoperisuri page, and only that one, carries the four roofing
+     offers that were on the homepage. Four offer cards: a build made before this
+     card renders 0 here and 4 on the homepage, so neither can pass for the other. */
+  'service-roof': {
+    promoBar: 1,
+    profileAnchors: 0,
+    areaServed: 20,
+    roofOffers: 4,
+  },
+  /* W24-06. The shared "in construcție" page: header, footer, one line, a link
+     back. No form, no coverage list, no offers. */
+  inconstructie: {
+    promoBar: 1,
+    profileAnchors: 0,
+    areaServed: 0,
+    roofOffers: 0,
   },
   // W14-13. The three product pages carry the service page's site-wide parts.
   product: {
@@ -135,18 +157,23 @@ const PAGES = [
   // product pages as amended by the wave 14 tail; the tile page as amended by
   // W18-01, RC-138, with its profile diagrams, and confirmed under R-P on the live
   // domain by W19-01, RC-141).
-  { path: '/',                             type: 'home',    label: 'homepage RO',    budget: 10507 },
-  { path: '/ru/',                          type: 'home',    label: 'homepage RU',    budget: 10807 },
+  { path: '/',                             type: 'home',    label: 'homepage RO',    budget: 9195 },
+  { path: '/ru/',                          type: 'home',    label: 'homepage RU',    budget: 9436 },
   /* W24-05. The before/after slider moved onto this page, so these two rows leave
      the shared 6,000px service budget that RELEASE-NOTES's wave 7 acceptance
      holds and take their own, measured plus 60, under W24-R4. The other four
      service rows are untouched and stay on 6,000. docs/rulings/R-Y.md carries the
      measurement each one came from. */
+  { path: '/in-constructie/',              type: 'inconstructie', label: 'in constr RO', budget: 1182 },
+  { path: '/ru/in-constructie/',           type: 'inconstructie', label: 'in constr RU', budget: 1182 },
   { path: '/servicii/case-la-cheie/',      type: 'service-ba', label: 'svc RO case', budget: 6436 },
   { path: '/servicii/fatade/',             type: 'service', label: 'svc RO fatade',  budget: 6000 },
   { path: '/ru/servicii/case-la-cheie/',   type: 'service-ba', label: 'svc RU case', budget: 6543 },
   { path: '/ru/servicii/fatade/',          type: 'service', label: 'svc RU fatade',  budget: 6000 },
-  { path: '/ru/servicii/acoperisuri/',     type: 'service', label: 'svc RU acoper',  budget: 6000 },
+  /* W24-06. The four roofing offers moved onto this page, so it leaves the shared
+     6,000px service budget and takes its own, measured plus 60, under W24-R4. */
+  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 6768 },
+  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 6906 },
   { path: '/ru/servicii/finisaje/',        type: 'service', label: 'svc RU finis',   budget: 6000 },
   { path: '/servicii/tigla-metalica/',     type: 'tigla',   label: 'tigla RO',       budget: 4000 },
   { path: '/ru/servicii/tigla-metalica/',  type: 'tigla',   label: 'tigla RU',       budget: 4033 },
@@ -245,6 +272,7 @@ const PROBE = `(async () => {
     catProse: q('[data-cat-prose]'),
     productCards: q('[data-product-card]'),
     baItems: q('[data-ba-item]'),
+    roofOffers: q('#acoperisuri .offer'),
     catTiles: q('.cat-tile'),
     tileDiagrams: q('[data-tile-diagram]'),
   };

@@ -14,6 +14,62 @@
   },
   "slots": [
     {
+      "id": "NVK-01",
+      "page": "/servicii/roca-vulcanica/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Tigla \"Novatik Classic\" montata pe un acoperis, fotografiata de aproape ca sa se vada granulatia de roca vulcanica. Lumina de zi, fara soare direct puternic. Orizontal."
+    },
+    {
+      "id": "NVK-02",
+      "page": "/servicii/roca-vulcanica/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Tigla \"Novatik Slate\" montata pe un acoperis, fotografiata de aproape ca sa se vada granulatia de roca vulcanica. Lumina de zi, fara soare direct puternic. Orizontal."
+    },
+    {
+      "id": "NVK-03",
+      "page": "/servicii/roca-vulcanica/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Tigla \"Novatik Roman\" montata pe un acoperis, fotografiata de aproape ca sa se vada granulatia de roca vulcanica. Lumina de zi, fara soare direct puternic. Orizontal."
+    },
+    {
+      "id": "NVK-04",
+      "page": "/servicii/roca-vulcanica/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Tigla \"Novatik Wood\" montata pe un acoperis, fotografiata de aproape ca sa se vada granulatia de roca vulcanica. Lumina de zi, fara soare direct puternic. Orizontal."
+    },
+    {
+      "id": "ACOP-01",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "5 / 6",
+      "min_px": "1000x1200",
+      "shows": "Tigla metalica: un acoperis terminat cu tigla metalica, vedere de ansamblu, format PORTRET (tila inalta a bento-ului)."
+    },
+    {
+      "id": "ACOP-02",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "7 / 2",
+      "min_px": "1750x500",
+      "shows": "Roca vulcanica Novatik: un acoperis cu tigla Novatik, cadru LAT si jos (tila panoramica), cu cer deasupra."
+    },
+    {
+      "id": "ACOP-03",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "7 / 4",
+      "min_px": "900x520",
+      "shows": "Calcularea pretului: santier de acoperis cu masuratori in curs, ruleta sau plan pe masa. Orizontal."
+    },
+    {
+      "id": "ACOP-04",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "7 / 4",
+      "min_px": "900x520",
+      "shows": "Reduceri: material de acoperis stivuit in depozit sau pe santier. Orizontal. Fara pret, fara eticheta, fara procent in cadru."
+    },
+    {
       "id": "BA-01-before",
       "page": "/servicii/case-la-cheie/",
       "ratio": "1180 / 664",

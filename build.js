@@ -160,6 +160,8 @@ const SVC_RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu',
   'svc.beforeAfter',
   // W24-06. The four roofing offers, on the acoperisuri page only.
   'svc.roofOffers',
+  // W24-07. The bento hub, the first section after the header on its page.
+  'svc.bento',
   // W12-06. The bar is site-wide, so the service template needs it raw too.
   'promoBar',
   // W12-09. Generated JSON-LD fragment, must not be escaped.
@@ -653,6 +655,63 @@ function placeholder(id, opts = {}) {
   }
   const extra = opts.className ? ' ' + opts.className : '';
   return `<div class="ph ph--${variant}${extra}" data-photo-slot="${esc(id)}" style="--ph-ratio: ${esc(row.ratio)};"><span class="ph__id">${esc(id)}</span></div>`;
+}
+
+// --- W24-07, the bento hub section (W24-R5, W24-R8) --------------------------
+
+/* A heading whose second part is muted, then four tiles: one tall on the left
+   spanning both rows and about a third of the width, one wide at the top right,
+   and two equal below it. Large radius, the label bottom left in white, and each
+   tile a #141414 placeholder carrying its slot id.
+
+   GEOMETRY IS COPIED AND NOTHING ELSE IS (W24-R8). The reference's own numbers,
+   measured: 3 equal columns at 1024px and above, rows of a fixed 244px, a 16px
+   gap both ways, a 24px tile radius, the label bottom left at 24px of padding,
+   and one column below 1024px with the tall tile first. Its colours and its type
+   are not copied and no eleventh colour value is added.
+
+   THE GRADIENT IS PERMITTED HERE AND ONLY HERE (W24-R5): a bottom gradient
+   INSIDE a tile, for the label to be legible over a photograph once one lands.
+   The section-level overlay ban is untouched, and this is not a section
+   background: it is 40% of one tile, it paints over an image rather than over a
+   band, and it creates no fourth off-white.
+
+   A TILE THAT IS NOT A LINK IS NOT A LINK. The dispatch gives each bento one
+   tile that goes nowhere: it renders as a <div>, not an <a>, carries
+   aria-disabled, and takes no hover and no pointer cursor. A disabled <a> with an
+   href is still a link to a keyboard and to a screen reader, which is why it is
+   not one. */
+function bentoSection(l, cfg) {
+  const need = (v, where) => { if (!REAL(v)) die(`bento ${cfg.id}: ${where} is not real for ${l.code}.`); return v; };
+  if (!Array.isArray(cfg.tiles) || cfg.tiles.length !== 4) die(`bento ${cfg.id}: ${(cfg.tiles || []).length} tiles, expected exactly 4.`);
+  const inert = cfg.tiles.filter((x) => !x.page && !x.inConstructie).length;
+  if (inert !== 1) die(`bento ${cfg.id}: ${inert} tile(s) with no destination, expected exactly 1.`);
+  for (const x of cfg.tiles) {
+    if (x.page && !PRODUCT_PAGES.some((p) => p.slug === x.page) && !SERVICE_SLUGS.includes(x.page)) {
+      die(`bento ${cfg.id}: tile "${x.label}" opens /${x.page}/, which this build emits no page for.`);
+    }
+  }
+
+  const tiles = cfg.tiles.map((x, i) => {
+    const label = esc(need(l.strings[x.label], x.label));
+    x = { ...x, href: x.page ? `${BASE}${SERVICES_ROOT[l.code]}${x.page}/` : (x.inConstructie ? BASE + IN_CONSTRUCTIE[l.code] : null) };
+    const ph = placeholder(x.slot, { variant: 'dark', className: 'hub__ph' });
+    const body = `${ph}<span class="hub__grad" aria-hidden="true"></span><span class="hub__label">${label}</span>`;
+    const cls = `hub__tile hub__tile--${i + 1}`;
+    return x.href
+      ? `      <a class="${cls}" href="${x.href}" data-reveal data-stagger="${i}">${body}</a>`
+      : `      <div class="${cls} hub__tile--inert" aria-disabled="true" data-reveal data-stagger="${i}">${body}</div>`;
+  }).join('\n');
+
+  return `<section class="section section--light section--divided hub" id="${cfg.id}" aria-labelledby="${cfg.id}-h">
+  <div class="container">
+    <h2 id="${cfg.id}-h" class="hub__h" data-reveal>${esc(need(l.strings[cfg.head], cfg.head))}<span class="hub__h-muted">${esc(need(l.strings[cfg.headMuted], cfg.headMuted))}</span></h2>
+    <div class="hub__grid">
+${tiles}
+    </div>
+  </div>
+</section>
+`;
 }
 
 // --- W14-06, the catalog mega-menu (S-01) ------------------------------------
@@ -1157,6 +1216,26 @@ const BEFORE_AFTER_SLUG = 'case-la-cheie';
 /* W24-06. The page the four roofing offers render on, and the page tigla metalica
    is a child of. One constant, so the two cannot drift apart. */
 const ROOF_OFFERS_SLUG = 'acoperisuri';
+
+/* W24-07. The bento hubs, by the page each is the first section of. One table, so
+   a tile's destination, its label key and its photo slot are written once.
+
+   Every href must be a page this build emits, which is asserted below: the
+   dispatch's tiles point at the tile page, a new page, the shared "in
+   construcție" page, and nowhere. */
+const BENTOS = {
+  acoperisuri: {
+    id: 'acoperisuri-hub',
+    head: 'bento.roofH',
+    headMuted: 'bento.roofHMuted',
+    tiles: [
+      { label: 'bento.roofTigla', slot: 'ACOP-01', page: 'tigla-metalica' },
+      { label: 'bento.roofNovatik', slot: 'ACOP-02', page: 'roca-vulcanica' },
+      { label: 'bento.roofCalc', slot: 'ACOP-03', inConstructie: true },
+      { label: 'bento.roofOffers', slot: 'ACOP-04' },
+    ],
+  },
+};
 if (!SERVICE_SLUGS.includes(BEFORE_AFTER_SLUG)) die(`the before/after slider names the service "${BEFORE_AFTER_SLUG}", which is not a service page.`);
 
 function beforeAfter(l) {
@@ -2041,8 +2120,101 @@ const CATALOG_PRODUCTS = Object.fromEntries(
    It must still be reachable, or it is an orphan the sitemap advertises: the
    section this card moves onto the acoperisuri page carries a link to it, and
    W24-07 replaces that link with the bento tile the dispatch specifies. */
+/* W24-07, the rocă vulcanică page. Mirrors the imperlux.md hub section by
+   section under W24-R6 and W24-R7. What is rendered is PRODUCT fact: a model
+   name, a profile description, a thickness, a weight, a colour count, and four
+   of the source's five questions. What is not rendered is every company fact and
+   every price, all 32 of them listed in docs/W24-CLAIMS-HELD.md with the page and
+   the position each came from.
+
+   Three of the source's eight sections render nothing and are therefore absent,
+   not empty: the benefit bento, the portfolio and the "De ce Imperlux" stat wall
+   are company facts end to end. A section with nothing in it is a heading over a
+   gap, and this repo already refuses that shape for the before/after slider and
+   the specification table. */
+const NOVATIK_FILE = 'content/novatik.json';
+const NOVATIK = JSON.parse(fs.readFileSync(NOVATIK_FILE, 'utf8'));
+for (const k of ['models', 'compare', 'faq']) {
+  if (!Array.isArray(NOVATIK[k])) die(`${NOVATIK_FILE} has no "${k}" array.`);
+  if (NOVATIK[k].length === 0) die(`${NOVATIK_FILE}: "${k}" is empty, so its section would be a heading over a gap.`);
+}
+
+function novatikPage(l) {
+  const s = (k) => {
+    const v = l.strings[`novatik.${k}`];
+    if (!REAL(v)) die(`novatik.${k} must be real in ${l.code}.`);
+    return esc(v);
+  };
+  /* W24-R7: an imperlux price is not published, and the slot renders the W22-01
+     phrase. It takes THE SAME SHAPE the catalogue card uses, a .prod__ask
+     carrying its own product, because that shape is what
+     scripts/check-catalog-pages.js permits the phrase in; a loose phrase on a
+     page is refused here exactly as it is on a catalogue page. */
+  const ask = (product) => {
+    const v = l.strings['catalogProducts.ask'];
+    if (!REAL(v)) die(`catalogProducts.ask must be real in ${l.code}.`);
+    return `<span class="prod__ask" data-product="${esc(product)}">${esc(v)}</span>`;
+  };
+  const need = (v, where) => { if (!REAL(v)) die(`${NOVATIK_FILE}: ${where} is not real for ${l.code}.`); return v; };
+
+  /* Model cards. The price slot carries the W22-01 phrase, which is what W24-R7
+     leaves for a price this site does not publish. */
+  const cards = NOVATIK.models.map((m, i) => `      <article class="nvk" data-reveal data-stagger="${Math.min(i, 6)}">
+        <div class="nvk__media">${placeholder(`NVK-${String(i + 1).padStart(2, '0')}`, { variant: 'light', className: 'nvk__ph' })}</div>
+        <div class="nvk__body">
+          <h3 class="nvk__name">${esc(need(m.name, `models[${i}].name`))}</h3>
+          <p class="nvk__desc">${esc(need(m.desc && m.desc[l.code], `models[${i}].desc`))}</p>
+          <dl class="nvk__facts">
+            <div><dt>${s('thickness')}</dt><dd>${esc(need(m.thickness, `models[${i}].thickness`))}</dd></div>
+            <div><dt>${s('weight')}</dt><dd>${esc(need(m.weight, `models[${i}].weight`))}</dd></div>
+            <div><dt>${s('colours')}</dt><dd>${esc(need(m.colours, `models[${i}].colours`))}</dd></div>
+          </dl>
+          <p class="nvk__ask">${ask(m.name)}</p>
+        </div>
+      </article>`).join('\n');
+
+  const head = NOVATIK.models.map((m) => `<th scope="col">${esc(m.name)}</th>`).join('');
+  const rows = NOVATIK.compare.map((r, i) => `          <tr><th scope="row">${esc(need(r.label && r.label[l.code], `compare[${i}].label`))}</th>${NOVATIK.models.map((m) => `<td>${esc(m[r.key])}</td>`).join('')}</tr>`).join('\n');
+  const priceRow = `          <tr><th scope="row">${s('priceRow')}</th>${NOVATIK.models.map((m) => `<td>${ask(m.name)}</td>`).join('')}</tr>`;
+
+  const faq = NOVATIK.faq.map((f, i) => `        <div><dt>${esc(need(f.q && f.q[l.code], `faq[${i}].q`))}</dt><dd>${esc(need(f.a && f.a[l.code], `faq[${i}].a`))}</dd></div>`).join('\n');
+
+  return `<section class="section section--light section--divided" id="modele" aria-labelledby="modele-h">
+  <div class="container">
+    <h2 id="modele-h" data-reveal>${s('modelsH2')}</h2>
+    <div class="nvk-grid">
+${cards}
+    </div>
+  </div>
+</section>
+<section class="section section--dark section--divided" id="comparatie" aria-labelledby="comparatie-h">
+  <div class="container">
+    <h2 id="comparatie-h" data-reveal>${s('compareH2')}</h2>
+    <div class="table-wrap" data-reveal>
+      <table class="spec">
+        <thead><tr><th scope="col">${s('specCol')}</th>${head}</tr></thead>
+        <tbody>
+${rows}
+${priceRow}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<section class="section section--light section--divided" id="intrebari" aria-labelledby="intrebari-h">
+  <div class="container">
+    <h2 id="intrebari-h" data-reveal>${s('faqH2')}</h2>
+    <dl class="faq" data-reveal>
+${faq}
+    </dl>
+  </div>
+</section>
+`;
+}
+
 const PRODUCT_PAGES = [
   { slug: 'tigla-metalica', key: 'tigla', parent: 'acoperisuri', block: (l) => tiglaGrid(l), sources: ['content/tigla-metalica.json'] },
+  { slug: 'roca-vulcanica', key: 'novatik', parent: 'acoperisuri', block: (l) => novatikPage(l), sources: ['content/novatik.json'] },
   { slug: 'copertine', key: 'copertine', block: (l) => copertine(l), sources: ['content/copertine.json'] },
   { slug: 'garduri', key: 'garduri', block: (l) => gardPage(l), faqSchema: (l) => gardFaqSchema(l), sources: [] },
 ];
@@ -2449,6 +2621,10 @@ for (const l of loaded) {
     /* W24-06. "Patru lucrări de acoperiș" was on the homepage. It is roofing, so
        it is on the roofing page. W24-07 puts the bento above it. */
     svcVars['svc.roofOffers'] = slug === ROOF_OFFERS_SLUG ? roofOffers(l) : '';
+    /* W24-07. The bento is the FIRST section after the header on its page, which
+       the dispatch is explicit about, so it renders above the hero block rather
+       than below it. W24-08 adds the garduri one from the same table. */
+    svcVars['svc.bento'] = BENTOS[slug] ? bentoSection(l, BENTOS[slug]) : '';
     svcVars['svc.gallerySection'] = renderGallerySection(l, slug, vars);
     svcVars['svc.footerLinks'] = SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
       `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join('');

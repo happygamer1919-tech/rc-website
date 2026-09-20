@@ -9745,3 +9745,103 @@ in `check-header-fit.js`'s matrix, which now reads 18 pages and 162 combinations
 Lighthouse accessibility by hand on both changed pages, because gate 5 audits only the two
 homepages: **1.0 with zero failing audits** on the acoperisuri page and on
 `/in-constructie/`.
+
+## W24-07 · Acoperisuri becomes a hub, and a mirror page that holds 32 claims, 2026-09-20
+
+**The bento is the first section after the header on the acoperisuri page**, which the
+dispatch is explicit about. Four tiles: a tall one on the left spanning both rows, a wide
+one at the top right, and two equal below it.
+
+**Geometry is copied and nothing else is** (W24-R8). The reference's own numbers, measured
+off it: three equal columns from 1024px, rows of a fixed 244px, a 16px gap both ways, a
+24px tile radius, the label bottom left at 24px of padding, one column below 1024px with
+the tall tile first. Its colours and its type are not copied and **no eleventh colour
+value is added**: the tile is `--bg-dark`, the label `--bg-light`, and the gradient is
+black at two alphas.
+
+**The gradient is W24-R5's exception and is kept to it.** It is 40% of one tile, it paints
+over an image rather than over a band, and it creates no fourth off-white. The
+section-level overlay ban is untouched.
+
+**THE REDUCERI TILE IS NOT A LINK, and it is not a disabled link either.** It renders as a
+`<div>`, carries `aria-disabled`, takes no hover and no pointer cursor. A disabled `<a>`
+with an `href` is still a link to a keyboard and to a screen reader, so it is not one.
+`build.js` asserts exactly one inert tile per bento, and `scripts/verify-live.js` asserts
+four tiles of which exactly three are links, so a later card making the fourth a link
+fires rather than passing quietly.
+
+**`/servicii/roca-vulcanica/` is new**, mirroring the `imperlux.md` hub section by section
+under W24-R6 and W24-R7.
+
+**Thirty-two claims are held**, every one listed in `docs/W24-CLAIMS-HELD.md` with the
+page and the position it came from: every price and struck price, the 60-year warranty in
+five places, a 15% discount on four cards, 36 interest-free instalments, 24-hour delivery,
+three portfolio projects with their localities and areas, an unattributed five-star
+testimonial, and the eight-tile "De ce Imperlux" wall entire, which is 2015, 6,000
+clients, 4 showrooms, 11 exclusive models, 25 models, 60 years, 180 specialists and three
+ISO certificates.
+
+**Three of the source's eight sections render nothing and are therefore absent, not
+empty.** The benefit bento, the portfolio and the stat wall are company facts end to end.
+A section with nothing in it is a heading over a gap, and this repo already refuses that
+shape for the before/after slider and the specification table.
+
+**What IS rendered is product fact**: a model name, a profile description, a thickness, a
+weight, a colour count, and four of the source's five questions. The fifth is held because
+its question is about the warranty.
+
+**The W22-01 phrase was widened to its SHAPE, not to a page.** W24-R7 puts the phrase on
+mirrored pages, which are product pages, so it needed a permitted place off the catalogue.
+The catalogue gate refused it there, correctly, on 18 occurrences, and the fix is that the
+phrase is permitted as the whole text of a `.prod__ask` carrying its own product
+**anywhere**, which is the same shape W22-01 gave the quote button and W24-R3 the price. A
+page-level exemption would have been the easy fix and the wrong one: it would have made
+the phrase free on a page rather than bound to a slot. Four arms, each firing on its own
+message between two clean controls: the phrase as plain prose on a mirrored page, the
+phrase on a page that is not mirrored, a `.prod__ask` with no `data-product`, and the
+Russian phrase on a Romanian page.
+
+**Two new height budgets in R-Y.** The acoperisuri page's figure is the third this wave:
+5,313 before it, 6,708 when W24-06 moved the roofing offers onto it, 7,684 now. The
+bento's own height is fixed by its geometry, so it does not grow when the photographs
+land.
+
+Lighthouse accessibility by hand on both pages, because gate 5 audits only the two
+homepages: **1.0 with zero failing audits**, with the bento's inert tile and eight
+placeholders on the page.
+
+## W24-07a · Correction to W24-07: the bento's classes collided with the garduri page's, 2026-09-20
+
+**The bento was visibly broken and every gate was green.**
+
+Its classes were written as `.bento__*`. The garduri page has carried `.bento` and
+`.bento__tile` since W16 for its chooser tiles, both declarations are (0,1,0), and the
+garduri one is later in the stylesheet, so it won every conflicting property.
+
+Measured on the built page before the fix:
+
+| Property | Intended | Rendered |
+|---|---|---|
+| section `display` | `block` | `grid`, three columns of 464px |
+| tile background | `#141414` | `#FFFFFF` |
+| tile radius | 24px | 10px |
+| tile padding | 0 | 24px |
+| tall tile width | 373px | **128px** |
+
+Renamed to `.hub__*`, which nothing else uses. The garduri page's own tiles are untouched
+and still render.
+
+**No gate caught it, and none could have.** Every one of the eighteen was green on the
+broken tree: the build wrote the file, the links resolved, the headings fitted, the
+contrast passed, the ledger matched, Lighthouse scored 99 and 100. **No gate in this repo
+reads a layout**, and a class collision produces valid HTML and valid CSS. It was found by
+reading the computed style of the first tile in a browser, which is the check W24-04's
+review taught: measure the rendered thing, not the source that describes it.
+
+The lesson generalises and is worth stating: **a new component's class prefix has to be
+checked against the stylesheet before it is written, not after.** `grep -c '\.bento__'`
+would have taken one second and saved this.
+
+The card's height budgets are re-measured after the rename and the figures in R-Y's
+W24-07 block are the corrected ones: the acoperisuri page reads 7,598 RO and 7,736 RU, not
+the 7,684 and 7,822 the broken layout produced.

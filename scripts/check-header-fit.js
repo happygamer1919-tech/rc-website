@@ -70,6 +70,10 @@ const PAGES = [
   { template: 'home', locale: 'RU', url: '/ru/' },
   { template: 'service', locale: 'RO', url: '/servicii/acoperisuri/' },
   { template: 'service', locale: 'RU', url: '/ru/servicii/acoperisuri/' },
+  // W24-07. The rocă vulcanică page uses the product template but is a mirror
+  // page with its own sections; measured on its own.
+  { template: 'novatik', locale: 'RO', url: '/servicii/roca-vulcanica/' },
+  { template: 'novatik', locale: 'RU', url: '/ru/servicii/roca-vulcanica/' },
   { template: 'product', locale: 'RO', url: '/servicii/garduri/' },
   { template: 'product', locale: 'RU', url: '/ru/servicii/garduri/' },
   { template: 'category', locale: 'RO', url: '/catalog/termoizolatie/' },

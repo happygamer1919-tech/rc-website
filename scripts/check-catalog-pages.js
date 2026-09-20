@@ -503,6 +503,10 @@ const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) =>
 const DIST = path.join(ROOT, 'dist');
 if (!fs.existsSync(DIST)) fail('dist/ is missing; run node build.js');
 const allPages = walk(DIST);
+/* Which locale a built page is in, from its path: dist/ru/... is RU, the rest RO.
+   The permitted phrase is locale-keyed, so a page's locale has to be known before
+   its phrase can be judged. */
+const localeOf = (f) => (path.relative(DIST, f).split(path.sep)[0] === 'ru' ? 'ru' : 'ro');
 if (!allPages.length) fail('zero built pages read for the site-wide phrase scan.');
 const categoryFiles = new Set(pages.map((p) => path.join(ROOT, p.where)));
 const elsewhere = [];
@@ -517,6 +521,28 @@ for (const f of allPages) {
        left is an occurrence outside a product card button. */
     const pg = pages.find((p) => path.join(ROOT, p.where) === f);
     scan = pg.scan;
+  } else {
+    /* W24-R7 (W24-07): "Imperlux prices are not published. Slots render 'Preț la
+       cerere'." The mirrored pages are product pages, not catalogue pages, so the
+       phrase now has a permitted place off the catalogue. What travels with it is
+       THE SHAPE, not a page exemption: it is permitted as the whole text of a
+       .prod__ask element carrying its own product, which is the same shape W22-01
+       gave the quote button and W24-R3 gave the price. A loose phrase on one of
+       these pages is refused exactly as it is on a catalogue page, and every
+       other page still has no permitted place at all, which the arms prove. */
+    for (const m of text.matchAll(PRODUCT_ASK)) {
+      askSeen++;
+      const label = m[2];
+      if (label.trim() !== PRICE_ON_REQUEST[localeOf(f)]) continue;
+      askAllowed++;
+      const at = m.index + m[0].lastIndexOf(label);
+      scan = scan.slice(0, at) + ' '.repeat(label.length) + scan.slice(at + label.length);
+    }
+    const occ = (text.match(ASK_CLASS) || []).length;
+    const shaped = [...text.matchAll(PRODUCT_ASK)].length;
+    if (occ !== shaped) {
+      elsewhere.push(`${path.relative(ROOT, f)}: ${occ} occurrence(s) of the prod__ask class and ${shaped} in the permitted shape`);
+    }
   }
   for (const [locale, phrase] of Object.entries(PRICE_ON_REQUEST)) {
     let i = scan.indexOf(phrase);

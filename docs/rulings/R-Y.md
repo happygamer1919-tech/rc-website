@@ -476,3 +476,41 @@ carries one.
 
 Measured the section 2 way: 1440px, every `[data-reveal]` applied and settled, Inter loaded
 and asserted loaded. Local, not live: R-P's confirmation is owed after the deploy.
+
+### Amended 2026-09-20 by W24-07 · the acoperisuri bento, and a new mirror page
+
+Added under R-T; nothing above this block was edited.
+
+The bento hub became the first section after the header on the acoperisuri page, and
+`/servicii/roca-vulcanica/` is new: the rocă vulcanică page, mirroring the `imperlux.md`
+hub section by section under W24-R6 and W24-R7.
+
+| Page | RO measured | RO budget | RU measured | RU budget |
+|---|---|---|---|---|
+| `/servicii/acoperisuri/` | 7,598 | **7,658** | 7,736 | **7,796** |
+| `/servicii/roca-vulcanica/` | 4,288 | **4,348** | 4,386 | **4,446** |
+
+The acoperisuri figure is the third this wave: 5,313 before wave 24, 6,708 when W24-06
+moved the roofing offers onto it, and 7,598 now that the bento sits above them.
+
+**7,598 is the second measurement.** The first read 7,684 on a bento whose tiles were
+rendering with the wrong stylesheet rules, because its classes collided with the garduri
+page's; the correction below reports it. Only the
+last is live; the other two are superseded within the wave and are recorded here so the
+sequence is readable rather than inferred.
+
+**The bento's own height is fixed by its geometry**, two rows of 244px and a 16px gap, so
+it does not grow when the photographs land: a placeholder and a photograph occupy the same
+tile. The mirror page's four model cards are the same.
+
+`scripts/verify-live.js` asserts four bento tiles of which exactly three are links, which
+is what holds the inert tile inert: a build that made the fourth a link would fire.
+
+**Corrected within the card.** The bento's classes were written as `.bento__*`, and the
+garduri page has carried `.bento` and `.bento__tile` since W16 for its chooser tiles. Both
+declarations are (0,1,0) and the garduri one is later in the stylesheet, so it won.
+Measured on the built page: the section itself became a three-column grid, the tiles
+rendered white on a 10px radius with 24px of padding instead of `#141414` on 24px, and the
+tall tile came out **128px wide against an intended 373**. Renamed to `.hub__*`. Every
+gate was green throughout, because no gate reads a layout, and the figures in the table
+above are from after the rename.

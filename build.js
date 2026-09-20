@@ -943,11 +943,23 @@ function notFoundLocale(l) {
    data-product, and it carries the record id too so two products that share a name
    do not send an identical lead line. */
 /* W24-09. How many cards a phone shows before the first press, and how many each
-   press adds. One number, because the dispatch specifies one: the first twelve,
-   then twelve more per press. It is emitted onto the grid as `data-prod-step` so
-   main.js reads it from the markup rather than carrying a second copy, and so the
-   layout gate can assert the rendered count against the number the page states. */
-const PROD_STEP = 12;
+   press adds. One number, because the dispatch specifies one. It is emitted onto
+   the grid as `data-prod-step` so main.js reads it from the markup rather than
+   carrying a second copy, and so the layout gate can assert the rendered count
+   against the number the page states.
+
+   ~~the first twelve, then twelve more per press.~~
+   AMENDED (W24-10, the owner's answer to Q-W24-04): NINE. Twelve could not reach
+   the dispatch's target of under 9,000px at 390 -- twelve one-column cards on a
+   ledgered 1/1 placeholder are 6,181px and the rest of the page is 4,008 -- and
+   nine was measured at 8,696px before the question was opened. The owner took
+   nine. Changing this constant is the whole change: the CSS, main.js, gate 20 and
+   the live markers all read the count off the markup.
+
+   IT IS ALSO SUBSTITUTED INTO THE BUTTON'S ACCESSIBLE NAME below, because the
+   first version of that string said "12" in words and would have quietly lied the
+   moment this number moved. A number that appears twice is a number that drifts. */
+const PROD_STEP = 9;
 
 function catalogProducts(l, slug) {
   const records = CATALOG_PRODUCTS[slug] || [];
@@ -1036,10 +1048,17 @@ function catalogProducts(l, slug) {
      The button is `hidden` in the markup and main.js unhides it only when it has
      actually folded something. So a visitor with no JS is never shown a control
      that would do nothing, and neither is a desktop visitor. */
+  /* {n} is PROD_STEP, substituted here so the spoken label and the behaviour
+     cannot disagree. A locale string that states the count in words would have to
+     be edited in two files every time the count moves, and would be wrong in the
+     window between them. The build refuses a string that lost its placeholder. */
+  const ariaRaw = label('moreAria');
+  if (!ariaRaw.includes('{n}')) die(`catalogProducts.moreAria for ${l.code} has no {n} placeholder, so the reveal button's accessible name cannot state the count.`);
+  const ariaLabel = ariaRaw.replace('{n}', String(PROD_STEP));
   const more = cards.length > PROD_STEP
     ? `
     <div class="prod-more" data-prod-more hidden>
-      <button class="btn btn--outline prod-more__btn" type="button" data-prod-more-btn aria-controls="produse-grid" aria-label="${esc(label('moreAria'))}">${esc(label('more'))}</button>
+      <button class="btn btn--outline prod-more__btn" type="button" data-prod-more-btn aria-controls="produse-grid" aria-label="${esc(ariaLabel)}">${esc(label('more'))}</button>
     </div>`
     : '';
   return `<section class="section section--light section--divided" id="produse" aria-labelledby="produse-h">

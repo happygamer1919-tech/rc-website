@@ -713,6 +713,45 @@ checks. It reads the source stylesheet, not the build, so it needs neither.
 
 ## 12. Live verification
 
+### 12.0 A card is not complete until the deployed build passes (W24-10)
+
+**Recorded at the owner's instruction, W24-10 dispatch, 2026-09-20.**
+
+> A card is complete only when `verify-live.js` passes against the deployed sha after its
+> merge. The terminal runs it after every owner merge without being asked and reports the
+> process and exit code (R-AB).
+
+**What this changes.** Gate 9 already said "after any deploy, `verify-live` exits 0", and
+it was read as something owed by the next card. It is not. **The card that merged owes
+it, and the run is unprompted**: nobody has to ask, and no card is reported complete
+before it.
+
+**What "against the deployed sha" means, exactly**, because each half has already gone
+wrong once:
+
+1. Wait for the Pages deploy to finish, then **wait for the edge to actually serve the
+   new sha** before measuring anything. Fetch the homepage with a cache-buster until its
+   `build-sha` equals the merge commit. Deploy success is not propagation.
+2. Pass the **full forty-character sha**. `EXPECT_SHA` is compared by equality, not by
+   prefix. W24-09 passed a short sha and got 51 spurious `build-sha mismatch` rows, which
+   is a false red that costs as much trust as a false green.
+3. Report the **process and its own exit code** (R-AB). Not "it looked fine".
+
+**Why the owner asked for it, in one wave's evidence.** Wave 24's post-merge runs found
+three things that every pre-merge gate had passed: `verify-live.js` itself shipped in a
+state where loading it threw (W24-09a), a `.faq` class collision that had silently added
+99px to all twenty service pages (W24-09b), and, before those, six markers left stale by
+W24-07a's rename. **None of them could have been found before a deploy**, and two were
+found only because the run happened at all.
+
+**And the run is where a wrong diagnosis gets caught.** W24-09 read one of those failures
+as a budget set too early and recommended moving the budget; the real cause was a
+collision on twenty pages, and moving the budget would have written the defect into a
+ruling. The rule is therefore not only "run it" but **"when it fails, find the cause by
+measurement before proposing a fix"**.
+
+---
+
 > A live measurement is valid only when taken with a cache-buster **and** with
 > content markers asserted in the same pass. Height alone is never sufficient
 > evidence, because a stale page returns a plausible number. Every live

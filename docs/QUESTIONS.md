@@ -2107,3 +2107,63 @@ before this card.
 **Recommended: (a), and the owner names the line if it was a different one.** The shipped
 default costs nothing if it is wrong: the memory file is outside the repo and the backlog
 is unchanged.
+
+## Q-W24-02 · The Catalog button could not take the hero button's paint at its old size, and one fix was needed · OPEN · opened 2026-09-19 (W24-02)
+
+**Shipped default: the one fix proposed below. The dispatch asked for it to be proposed,
+and it is shipped so the card is not left half-done. Say the word if you want a different
+one and it is a one-line change either way.**
+
+The dispatch said: "Button background = the exact token of the hero 'Solicita oferta'
+button, same text colour, same hover. Header-fit gate green in RO and RU. RU has 9px
+slack: if it fails, stop and propose one fix, never shrink type."
+
+It failed. Here is exactly why, and what was done.
+
+**The paint cannot be worn at the old size.** The hero button is `--brand` with a white
+label and `--brand-dark` on hover. Measured:
+
+| Pairing | Ratio | Verdict |
+|---|---|---|
+| white on `--brand` | 3.41:1 | passes WCAG AA only above the large-text threshold, 18.66px bold |
+| white on `--brand-dark` | 5.93:1 | passes at any size |
+| `--ink` on `--brand` | 5.10:1 | passes at any size |
+| `--ink` on `--brand-dark` | 2.94:1 | fails at every size, large text included |
+
+So **no single label colour is legible in both states at the old 15px.** White fails at
+rest, `--ink` fails on hover. The site already resolved this for every other primary
+button: `docs/CLAUDE.md` section 4 records that button text is sized to clear the
+large-text threshold so white on `--brand` is judged against 3:1. Wearing the paint means
+wearing the size: 19px/700, which is `.btn`'s own.
+
+**That cost the header 15px in RO and 16px in RU**, and the fit gate went from RO 19px /
+RU 9px of slack to **RO 4px / RU -7px**, red on both the floor and the fit, 36 of 108
+combinations.
+
+**The one fix: the nav gap goes from 20px to 14px.** Four nav items have three gaps
+between them, so six pixels off each returns eighteen, which is more than the type cost.
+No type was shrunk. Measured after: **RO 22px, RU 9px, 108 of 108 green.** RU is left with
+exactly the slack it had before this card.
+
+**A second, smaller thing came out of the same measurement.** Below 768px the toggle's
+label is 14px and there is no room to raise it: a 19px label measured at 375px leaves RO
+8px and RU 3px against the same 8px floor, where 14px leaves RO 23px and RU 19px. So on a
+phone the label is `--ink` on `--brand`, 5.10:1, and the fill is the same `--brand` as
+everywhere. Only the label colour moves, and only where the size is fixed. Eight readings
+in a real browser, RO and RU, 1440 and 375, at rest and open: all eight pass.
+
+**Options, if the shipped fix is not the one you want:**
+
+  (a) **Nav gap 20px to 14px** (shipped). Costs nothing visible; the nav items sit six
+      pixels closer.
+  (b) **Toggle padding 16px to 8px.** Returns exactly the 16px, and leaves RU at 9px too.
+      Not shipped: a filled pill with 19px/700 text and 8px of side padding looks wrong
+      beside a site whose buttons use 28px.
+  (c) **Keep the label at 15px and use `--ink` at every width.** Costs no header width at
+      all and needs no nav change, but the button then reads as the promo bar's pairing
+      rather than as the site's primary CTA, which is the opposite of what the card asks
+      for.
+  (d) **Lower the 8px slack floor.** Refused: the floor is yours, and the gate is written
+      so it is never lowered to accommodate a measurement.
+
+**Recommended: (a), as shipped.**

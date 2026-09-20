@@ -173,6 +173,34 @@ p { margin: 0; }
 .media--card { border-bottom: 1px solid var(--line); }
 .media--framed { border: 1px solid var(--line); border-radius: var(--radius-card); }
 
+/* --- W24-01, the wave 24 photo placeholder ---------------------------------
+   Every image wave 24 renders is a placeholder; a separate photo session fills
+   them. One component, two variants, used by every one of them, so the photo
+   session is handed a single shape and a single ledger.
+
+   No new colour value. The border is --line on the light variant and the
+   rgba(255,255,255) hairline that docs/CLAUDE.md section 3 already permits on
+   the dark band. The id text is --ink-muted on white (7.0:1) and --bg-light on
+   #141414 (17.4:1), so both clear WCAG's 4.5:1 for normal text.
+
+   The ratio is passed per slot as --ph-ratio and comes from the slot's row in
+   docs/PHOTO-SLOTS-W24.json, which is the one place a ratio is written. */
+.ph {
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  aspect-ratio: var(--ph-ratio, 4 / 3);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.ph--light { background: var(--bg-light); color: var(--ink-muted); }
+.ph--dark { background: var(--bg-dark); color: var(--bg-light); border-color: rgba(255, 255, 255, 0.18); }
+.ph__id {
+  font-size: 12px; font-weight: 600; line-height: 1;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  padding: 0 8px; text-align: center;
+}
+
 .card {
   background: var(--bg-light);
   border: 1px solid var(--line);

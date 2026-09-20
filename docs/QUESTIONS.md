@@ -2062,3 +2062,48 @@ read at any height.
       the owner has not asked to change.
 
 **Recommended: (b)**, one small card: every row reachable at any window height.
+
+## Q-W24-01 · What "move the wave index line into the repo memory folder" names · OPEN · opened 2026-09-19 (W24-01)
+
+**Shipped default: (a). The current-wave state now lives in the session memory folder for
+this repo, and the governing documents keep only what they own.**
+
+The wave 24 dispatch asks W24-01 to "move the wave index line into the repo memory folder
+(F-28)". F-23 and F-28 are findings from an audit the owner holds and that this repo does
+not carry, so neither the exact line nor the exact destination is written anywhere the
+executor can read. F-23 was unambiguous and is done: the seven wave 23 rows in
+`docs/BACKLOG.md` said "PR open, awaiting owner" and every one of those pull requests is
+merged, so each row now names its number and its merge sha.
+
+F-28 is not unambiguous, on two points.
+
+**Which line.** There is no line anywhere in the repo that calls itself a wave index.
+`grep -ri "wave index"` over `docs/`, `DECISIONS.md`, `RELEASE-NOTES.md` and `README.md`
+returns nothing. What does exist, and is the only thing that behaves like one, is the
+per-wave dispatch paragraph at the head of each wave section in `docs/BACKLOG.md`: which
+pull requests were verified merged, what `origin/main` was, which rulings ride the first
+pull request. That is **state**, and `docs/CLAUDE.md` opens by saying this repo's rule
+files hold "rules only, never state".
+
+**Which folder.** The repo has no folder named `memory`. It has no root `CLAUDE.md`
+either. What does exist is the session memory folder this executor is given for this repo,
+`~/.claude/projects/-Users-ivan-Documents-Projects-rc-website/memory/`, which was empty
+before this card.
+
+**Options:**
+
+  (a) **Read it as the current-wave state, and the session memory folder as the
+      destination** (shipped). A `wave-index` memory now holds which wave is live, what
+      `origin/main` was at dispatch, and the branch stack, with a pointer line in that
+      folder's `MEMORY.md`. `docs/BACKLOG.md` keeps its per-wave dispatch paragraphs,
+      because they are the dated record of what was true when each wave opened and R-S
+      makes those bodies immutable.
+  (b) **Read it as a folder inside the repo**, `docs/memory/` or `.claude/memory/`, and
+      move the dispatch paragraphs there. Not shipped: it would move an append-only record
+      out of the file that indexes it, and it creates a fourth place a reader has to look.
+  (c) **A line the owner can point at.** If F-28 names a specific line this reading missed,
+      the fix is one edit and the memory file is harmless either way.
+
+**Recommended: (a), and the owner names the line if it was a different one.** The shipped
+default costs nothing if it is wrong: the memory file is outside the repo and the backlog
+is unchanged.

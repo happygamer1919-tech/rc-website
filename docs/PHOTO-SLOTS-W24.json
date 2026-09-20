@@ -1,0 +1,16 @@
+{
+  "_note": "W24-01, 2026-09-19. The wave 24 photo slot ledger. Every placeholder wave 24 renders has exactly one row here, and every row here is rendered by a built page. scripts/check-photo-slots-w24.js holds both directions against dist/ and fails on either. This file is the input the photo session is handed: it is what a photographer is given, so 'shows' is written for a person with a camera, not for a developer. A row is added in the same commit as the placeholder that renders it, which is why this file starts empty: W24-01 ships the component, the ledger and the gate, and the first rows arrive with W24-04. build.js refuses to render a placeholder whose slot id has no row here.",
+  "_schema": {
+    "id": "The slot id, printed inside the placeholder box. Uppercase, digits and hyphens only.",
+    "page": "The site path the placeholder renders on, locale-independent where the two locales share a slot.",
+    "ratio": "The aspect ratio, written as a CSS aspect-ratio value, for example \"1 / 1\". This is the one place a ratio is written; the stylesheet reads it through --ph-ratio.",
+    "min_px": "The minimum pixel size of the delivered photograph, written WIDTHxHEIGHT.",
+    "shows": "What the photograph must show, in plain words, for the person taking it."
+  },
+  "capture": {
+    "wave": "W24",
+    "opened": "2026-09-19",
+    "filled": 0
+  },
+  "slots": []
+}

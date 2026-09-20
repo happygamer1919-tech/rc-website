@@ -73,10 +73,17 @@ those offsets:
     // wait ~1.5s for the staggered transitions, then:
     document.documentElement.scrollHeight
 
-No section may exceed 1,400px, with two standing exceptions: the services grid
+No section may exceed 1,400px, with ~~two~~ **three** standing exceptions: the services grid
 and the portfolio grid, which are the same object and cannot fit nine and six
 cards respectively under the cap.
 *Source: master plan section 10, DECISIONS.md "Approved exceptions".*
+
+**AMENDED (W24-R4, wave 24): the catalogue grid is the third exception.** A catalogue
+category page renders every product in its category, which is as many as 64 cards, and
+no cap can be met by a grid whose length is data. The cap still holds on every other
+section. **And every page changed or created in wave 24 takes a new budget of measured
+plus 60 at ship**, recorded in `docs/rulings/R-Y.md` with the measurement it came from.
+*Source: DECISIONS.md, W24-R, ruling R4.*
 
 ---
 
@@ -296,6 +303,17 @@ stock or visualisations, each file with its R-W provenance row. **If a slot has
 no permitted image, the slot is removed rather than filled.**
 *Source: master plan section 7, amended by W14-18.*
 
+**AMENDED (W24-01, wave 24): a wave 24 slot renders a placeholder and waits.** Every
+image wave 24 renders is the shared `.ph` placeholder component, because the photographs
+are taken in a separate session after the layouts exist. It is not a third answer beside
+"fill it" and "remove it": the slot is declared, sized and visible, and
+`docs/PHOTO-SLOTS-W24.json` is the list the session is handed. Gate 19 holds every
+placeholder and every row to each other in both directions, and `build.js` refuses a
+placeholder whose slot id has no row. **No image, logo or asset from `fatade3d.md`,
+`imperlux.md` or `dasterum.md` enters the repo** (W24-R2); their pages are fetched to read
+text and measure layout, and nothing else crosses.
+*Source: DECISIONS.md, W24-R, rulings R2 and the W24-01 card.*
+
 ---
 
 ## 8. Both locales, always
@@ -476,6 +494,26 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     template page carries no dropdown, when either locale carries none, and when fewer
     combinations were measured than the matrix holds.
 
+19. `node scripts/check-photo-slots-w24.js` clean. **Since W24-01 (wave 24)**, run by
+    `quality`. **Every image wave 24 renders is a placeholder**, and
+    `docs/PHOTO-SLOTS-W24.json` is the list the photo session is handed. The two are held
+    together in both directions over the built tree: every rendered placeholder has a
+    ledger row, and every ledger row is rendered by at least one page. A row nothing
+    renders sends a photographer out for a photograph nothing will show; a placeholder
+    with no row leaves a box on the site nobody was asked to photograph. The rendered
+    ratio must equal the row's, because the row is the one place a ratio is written
+    (section 14). `build.js` holds the same forward rule at build time and refuses to
+    render a placeholder whose slot id has no row. It fails on zero HTML pages read, on a
+    ledger that is missing or does not parse, and on a `slots` key that is not an array.
+    **Its three-arm self-test is what makes it a gate while the ledger is still filling**:
+    W24-01 ships the component, the ledger and the gate together, so both real counts are
+    zero on that card and both assertions would hold vacuously. Before any real result it
+    runs a planted unledgered placeholder, a planted unrendered row and a planted ratio
+    disagreement against synthetic pages, each between two controls watched clean in the
+    same run, and fails if any arm does not fire on its own message. Same arrangement as
+    gate 17's parser self-test, and the same reason: an assertion nobody has watched fail
+    is not a gate (section 13).
+
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number — Q-W14-03 was found "at gate 9" — and those bodies are immutable under
 R-S, so renumbering would falsify them. A gate added later takes the next number
@@ -499,6 +537,7 @@ rebuilds `dist/` armed with a stand-in key that no earlier gate may measure.
 list is appended to, never renumbered, and it runs before them because it is the cheapest.
 **AMENDED (W23-06):** gate 18 runs after gate 14 and before gate 13, with the other
 browser gates, because gate 13 rebuilds `dist/` armed.
+**AMENDED (W24-01):** gate 19 runs before gate 15, with the other static checks.
 
 ---
 

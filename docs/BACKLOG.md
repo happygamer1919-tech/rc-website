@@ -8,6 +8,33 @@ Status values: `todo` · `in progress` · `blocked` · `shipped`.
 Waves 1 to 5 predate this file; their tickets are reconstructed from the git
 history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 
+## Wave 24
+
+Dispatch of 2026-09-19. #71 to #77 were merged by the owner and verified before any card
+was worked: `origin/main` is `7ab06dd`, and local `main` was stale at `5e4050d` and was
+fast-forwarded first. Every card opens a pull request and stops (R-V as amended at wave
+19), branches are stacked, and the owner merges them in order. Skip, never halt.
+
+The nine owner rulings W24-R1 to W24-R9 ride the first pull request, recorded verbatim in
+`DECISIONS.md` as block **W24-R**. The eight board cards are
+`docs/board/W24-01-placeholder-system.md` through
+`docs/board/W24-08-garduri-copertine.md`.
+
+**Every image in this wave is a placeholder.** A separate photo session fills them. No
+card sources, downloads or requests an image, and nothing from `fatade3d.md`,
+`imperlux.md` or `dasterum.md` enters the repo as a file (W24-R2).
+
+| Ticket | Card | Branch | Status |
+|---|---|---|---|
+| W24-01 | The shared placeholder component and the photo slot ledger | `w24/w24-01-placeholder-system` | todo |
+| W24-02 | The Catalog button moves next to the logo, in every header copy | `w24/w24-02-header-catalog-button` | todo |
+| W24-03 | Every fatade3d product, extracted into the repo's own records | `w24/w24-03-catalogue-data` | todo |
+| W24-04 | The catalogue gets a card, a grid, a page per subcategory and an index | `w24/w24-04-catalogue-layout` | todo |
+| W24-05 | The before/after slider is turned on, with placeholders that prove it moves | `w24/w24-05-before-after` | todo |
+| W24-06 | The roof offers leave the homepage, and tigla metalica becomes a child of acoperisuri | `w24/w24-06-homepage-ia` | todo |
+| W24-07 | Acoperisuri becomes a hub, with a bento at the top and a new Novatik page | `w24/w24-07-acoperisuri-hub` | todo |
+| W24-08 | Garduri gets the same bento, and copertine gets a hero and a cross-sell row | `w24/w24-08-garduri-copertine` | todo |
+
 ## Wave 23
 
 Dispatch of 2026-09-18. #68, #69 and #70 were merged by the owner and verified as
@@ -18,11 +45,11 @@ the five board cards ride the first PR.
 
 | Ticket | Card | Branch | Status |
 |---|---|---|---|
-| W23-01 | Photo batch 2 intake: inventory, strip, review, map, provenance | `w23/w23-01-photo-intake` | PR open, awaiting owner: 22 files read, **1 published** (F-PORT-6), 21 held with reasons; no GPS in the originals or the tree; new gate 17 `check-image-metadata.js`, 6 arms; Q-W23-01 opened; **corrected by W23-01a**: gate 17 reads every image by its bytes, in every format, with a parser self-test; nine review findings closed; 13 new arms each passed W23-01's gate and fail this one |
-| W23-02 | Before/after: pair, check the angle, publish only what passes | `w23/w23-02-before-after` | PR open, awaiting owner: 4 pairs read and looked at, **4 rejected**, every one because its "after" is a 3D visualisation and a before/after slot is a proof slot (pair 3 also fails the same-angle test); no data or page change, the slider stays off; one real photograph of a finished house turns it on |
-| W23-03 | Portfolio roofs, team portrait, garduri photos | `w23/w23-03-portfolio-team-garduri` | PR open, awaiting owner: **6 of 63** filled, one new (F-PORT-6, committed in W23-01); the other 21 files have no empty hosted slot, 49 manifest slots still have no host component; no locality taken, the names carry none and R-U keeps `location` empty; `acoperisuri-06` waits on a title and summary (Q-04) |
-| W23-04 | Supplier record, and a per-brand licence scan | `w23/w23-04-supplier-licence-scan` | PR open, awaiting owner: the answer recorded verbatim with its ruling; all 20 brands scanned, **1 permitted** (Caparol, with conditions and a licence URL), 6 editorial or press only, 3 reserved, 10 with nothing published; no image downloaded; two rows record a page that could not be read (Ruukki certificate expired, Creaton 404) |
-| W23-05 | Catalogue draft, not rendered | `w23/w23-05-catalogue-draft` | PR open, awaiting owner: `docs/CATALOG-DRAFT.md`, **3 candidates in 2 of 7 categories, none complete, no category reaching three**; every drafted value carries a manufacturer source URL and every unsourced line reads NOT PUBLISHED; three categories have no candidate because no listed brand makes those products and none makes lighting; zero price or currency strings; nothing rendered |
+| W23-01 | Photo batch 2 intake: inventory, strip, review, map, provenance | `w23/w23-01-photo-intake` | merged #71 `d011449`: 22 files read, **1 published** (F-PORT-6), 21 held with reasons; no GPS in the originals or the tree; new gate 17 `check-image-metadata.js`, 6 arms; Q-W23-01 opened; **corrected by W23-01a**: gate 17 reads every image by its bytes, in every format, with a parser self-test; nine review findings closed; 13 new arms each passed W23-01's gate and fail this one |
+| W23-02 | Before/after: pair, check the angle, publish only what passes | `w23/w23-02-before-after` | merged #72 `b3af2e8`: 4 pairs read and looked at, **4 rejected**, every one because its "after" is a 3D visualisation and a before/after slot is a proof slot (pair 3 also fails the same-angle test); no data or page change, the slider stays off; one real photograph of a finished house turns it on |
+| W23-03 | Portfolio roofs, team portrait, garduri photos | `w23/w23-03-portfolio-team-garduri` | merged #73 `6b97d26`: **6 of 63** filled, one new (F-PORT-6, committed in W23-01); the other 21 files have no empty hosted slot, 49 manifest slots still have no host component; no locality taken, the names carry none and R-U keeps `location` empty; `acoperisuri-06` waits on a title and summary (Q-04) |
+| W23-04 | Supplier record, and a per-brand licence scan | `w23/w23-04-supplier-licence-scan` | merged #74 `5c89b4c`: the answer recorded verbatim with its ruling; all 20 brands scanned, **1 permitted** (Caparol, with conditions and a licence URL), 6 editorial or press only, 3 reserved, 10 with nothing published; no image downloaded; two rows record a page that could not be read (Ruukki certificate expired, Creaton 404) |
+| W23-05 | Catalogue draft, not rendered | `w23/w23-05-catalogue-draft` | merged #75 `5e4050d`: `docs/CATALOG-DRAFT.md`, **3 candidates in 2 of 7 categories, none complete, no category reaching three**; every drafted value carries a manufacturer source URL and every unsourced line reads NOT PUBLISHED; three categories have no candidate because no listed brand makes those products and none makes lighting; zero price or currency strings; nothing rendered |
 
 **Second dispatch, 2026-09-19.** #71 to #75 were merged by the owner and verified before
 either card was worked: `origin/main` is `5e4050d`, and `quality` run 35441684157 on it
@@ -30,8 +57,8 @@ is green, every step read. The W23 ratifications ride the first PR.
 
 | Ticket | Card | Branch | Status |
 |---|---|---|---|
-| W23-06 | DEFECT: the Servicii dropdown's rows are invisible until hover | `w23/w23-06-dropdown-contrast` | PR open, awaiting owner: reproduced live on `5e4050d`, 13 of 13 rows 1:1 white on white in RO and RU at 1280 and 1440; cause `.nav a` (0,1,1) outranking `.svcmenu__link` (0,1,0), present since W15-02; fixed as `.nav > a`, rows now 17.4:1; new gate 18 `check-nav-contrast.js`, 56 combinations on 40 pages, 5 arms each red on its own message between two green controls; the rows' built type restored too, so the panel is taller (Q-W23-02 opened) |
-| W23-07 | The RO nav label "Despre" becomes "Despre noi" | `w23/w23-07-despre-noi` | PR open, awaiting owner: one string, `header.navAbout` in RO; RU unchanged; header fit green at every width, RO least slack 47px to 19px against the 8px floor, no type or spacing touched; "Despre noi" in the nav of 20 of 20 RO pages that carry one (three RO pages carry no nav); the phone menu and footer read it too, being the same string |
+| W23-06 | DEFECT: the Servicii dropdown's rows are invisible until hover | `w23/w23-06-dropdown-contrast` | merged #76 `801dfe7`: reproduced live on `5e4050d`, 13 of 13 rows 1:1 white on white in RO and RU at 1280 and 1440; cause `.nav a` (0,1,1) outranking `.svcmenu__link` (0,1,0), present since W15-02; fixed as `.nav > a`, rows now 17.4:1; new gate 18 `check-nav-contrast.js`, 56 combinations on 40 pages, 5 arms each red on its own message between two green controls; the rows' built type restored too, so the panel is taller (Q-W23-02 opened) |
+| W23-07 | The RO nav label "Despre" becomes "Despre noi" | `w23/w23-07-despre-noi` | merged #77 `7ab06dd`: one string, `header.navAbout` in RO; RU unchanged; header fit green at every width, RO least slack 47px to 19px against the 8px floor, no type or spacing touched; "Despre noi" in the nav of 20 of 20 RO pages that carry one (three RO pages carry no nav); the phone menu and footer read it too, being the same string |
 
 ## Wave 22
 

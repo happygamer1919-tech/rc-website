@@ -9274,3 +9274,98 @@ scripts/check-stub-count.js` 0 · `node scripts/gen-catalog-image-slots.js --che
 
 1. **The label changes in the phone menu and the footer too**, because they are the same
    string. The dispatch names the nav; the alternative was one link with two names.
+
+## W24-R · The owner's wave 24 rulings, recorded verbatim, 2026-09-19
+
+Recorded at the owner's instruction, from the wave 24 dispatch, before any wave 24 card
+was worked. `origin/main` is `7ab06dd`, with #76 and #77 merged, and local `main` was
+stale at `5e4050d` and was fast-forwarded first.
+
+The dispatch's framing, recorded because it is what the rulings answer: the owner wants
+three reference sites merged into `rapidconstruct.md`, `fatade3d.md` for the catalogue and
+before/after, `imperlux.md` for acoperisuri, garduri and copertine. Two prior waves
+under-delivered because gates blocked the work. This wave the owner has re-ruled. All
+layouts, text and numbers are built now. **Every image in this wave is a placeholder**, a
+separate photo session fills them later, and no card sources, downloads or requests an
+image.
+
+### The nine rulings, as given
+
+> **R1.** The "do not copy fatade3d catalogue" drop is REVERSED for text data. Product
+> names, variant lines, prices and category structure are copied from fatade3d.md. Owner
+> states the client sells all of them and authorises listing. Do not question this.
+>
+> **R2.** R-W is UNCHANGED for files: no image, logo or asset from fatade3d.md,
+> imperlux.md or dasterum.md enters the repo. You may FETCH their pages to read text and
+> measure layout. Nothing else.
+>
+> **R3.** Q-W21-01 amended: catalogue cards show the fatade3d price. "Pret la cerere" /
+> "Цена по запросу" appears only where no price exists. Re-scope the catalogue price gate
+> accordingly: prices allowed only inside .prod__price on catalogue pages, still forbidden
+> elsewhere it was forbidden. No cart, no SKU, no schema.org Offer. Negative-test the
+> re-scoped gate.
+>
+> **R4.** R-Y amended: pages changed or created in W24 get new height budgets = measured +
+> 60 at ship. The 1400px section cap does not apply to catalogue grids. Record each new
+> number.
+>
+> **R5.** Bento tiles (W24-06/07/08) may carry a bottom gradient inside the tile for label
+> legibility. Section-level overlay ban stays.
+>
+> **R6.** Imperlux pages: copy structure and text, replace "Imperlux" with "Rapid
+> Construct". Any sentence asserting a company fact (own workshop, team, years, warranty,
+> discount figure, counts, coverage, certificates) is NOT rendered. Write it to
+> docs/W24-CLAIMS-HELD.md with page and position, leave the layout slot in place with
+> neutral existing RC copy or empty. Owner ticks them later.
+>
+> **R7.** Imperlux prices are not published. Slots render "Pret la cerere".
+> GARD_FORBIDDEN stays as is. Reduceri tile reads "Reduceri" / RU equivalent, no
+> percentage.
+>
+> **R8.** Brand palette, fonts, ten-colour cap, white/#141414 section rhythm stay. Copy
+> GEOMETRY from references (grid, proportions, radius, spacing, hierarchy), never their
+> colours or fonts.
+>
+> **R9.** RU parity gate stays. Pull RU strings from the reference sites' RU versions.
+> Where none exists, reuse RO for product proper names and list every such key in the PR.
+
+### What each ruling supersedes, recorded so no later card has to re-reason it
+
+1. **R1 supersedes the wave 21 drop.** W21-04 recorded that the fatade3d catalogue was not
+   to be copied, and W23-05 drafted from manufacturer pages instead and reached three
+   candidates in two of seven categories. R1 reverses that **for text data only**. It says
+   nothing about files, which R2 holds.
+2. **R2 restates R-W rather than amending it.** No new origin is approved. Fetching a page
+   to read its text is not committing a file, and the provenance gate is untouched.
+3. **R3 amends Q-W21-01 and the W22-01 ruling on it.** W22-01 permitted "Preț la cerere"
+   and "Цена по запросу" as the whole text of a product card's quote button and refused
+   every price figure on a catalogue page. R3 keeps the two strings, narrows them to the
+   no-price case, and opens a single new permitted place for a figure: inside
+   `.prod__price` on a catalogue page. Everywhere the W22-01 gate refused a price before,
+   it still refuses one. The gate is re-scoped in W24-04 and negative-tested there.
+4. **R4 amends R-Y.** The amendment block is added to `docs/rulings/R-Y.md` under R-T,
+   which permits a ruling to carry appended amendment blocks. The 1,400px section cap in
+   `docs/CLAUDE.md` section 2 gains a third standing exception, the catalogue grid, beside
+   the services grid and the portfolio grid.
+5. **R5 is a narrow exception to `docs/CLAUDE.md` section 3.** A gradient inside a bento
+   tile is not a section background and does not create a fourth off-white. The
+   section-level overlay ban, which already refused the `form-bg` slot, is unchanged.
+6. **R6 is the mechanism that keeps section 5 intact.** Copy is taken from a source, which
+   is what section 5 requires. A sentence that would assert a fact about Rapid Construct
+   that no Rapid Construct source states is held rather than rendered, which is section 5's
+   "mark it or omit it, never fill it" applied to a copied sentence.
+7. **R7 keeps `GARD_FORBIDDEN` and R-X where they are.** No imperlux figure is published
+   and no discount percentage is rendered anywhere.
+8. **R8 is the boundary of what "mirror" means.** Geometry crosses. Colour and type do
+   not. The ten-value cap in section 3 is unchanged and no card in this wave adds an
+   eleventh.
+9. **R9 keeps section 8.** RO and RU stay in key-for-key sync and `build.js` still refuses
+   to write output when they disagree. A RO string reused as a RU product proper name is a
+   deliberate, listed exception, not a parity failure.
+
+### The wave 24 board
+
+Eight cards, `docs/board/W24-01-placeholder-system.md` through
+`docs/board/W24-08-garduri-copertine.md`. R-V as amended at wave 19 holds: one card, one
+pull request, stop, no self-merge, branches stacked, and the owner merges them in order.
+Skip, never halt: a blocked card is recorded with its question and the run moves on.

@@ -1,4 +1,73 @@
 {
-  "_note": "W14-09. Before/after pairs for the slider (S-03), audit section 3.3. EMPTY BY DESIGN: while projects is [] the section does not exist on the page, so there is no heading, no padding and no gap. Every pair must be a real Rapid Construct job photographed before and after (audit 5.1 classifies these as RC photo only). Shape: projects[] of { id, title: {ro, ru}, before: slot id, after: slot id, alt_before: {ro, ru}, alt_after: {ro, ru} }. Slot ids name files in public/img/ at 1180x664 (plus @2x); scripts/slots.js registers them from this file, and each image needs its R-W provenance row. build.js refuses a missing projects array, a field that is not real in both locales, and a missing image file.",
-  "projects": []
+  "_note": "W14-09. Before/after pairs for the slider (S-03), audit section 3.3. AMENDED (W24-05): four projects, eight slots, every one a placeholder. The section renders on the case la cheie service page and nowhere else. While a slot has no file in public/img/ it renders the W24-01 placeholder and the slot's row in docs/PHOTO-SLOTS-W24.json says what the photograph must show; the slot decides for itself, so the first real pair renders photographs while the other three still render boxes. The before slot takes the light placeholder and the after slot the dark one, so the drag is visibly doing something before any photograph exists. Every pair must be a real Rapid Construct job photographed before and after (audit 5.1 classifies these as RC photo only). Shape: projects[] of { id, title: {ro, ru}, before: slot id, after: slot id, alt_before: {ro, ru}, alt_after: {ro, ru} }. Slot ids name files in public/img/ at 1180x664 (plus @2x); scripts/slots.js registers them from this file, and each image needs its R-W provenance row. build.js refuses a missing projects array, a field that is not real in both locales, and a missing image file. The titles and alt texts are the site's own vocabulary for the kinds of work it already names; nothing about a specific job is claimed, and no project is dated, located or attributed.",
+  "projects": [
+    {
+      "id": "BA-01",
+      "title": {
+        "ro": "Casă la cheie",
+        "ru": "Дом под ключ"
+      },
+      "before": "BA-01-before",
+      "after": "BA-01-after",
+      "alt_before": {
+        "ro": "Casă la cheie, înainte de lucrări",
+        "ru": "Дом под ключ, до работ"
+      },
+      "alt_after": {
+        "ro": "Casă la cheie, după lucrări",
+        "ru": "Дом под ключ, после работ"
+      }
+    },
+    {
+      "id": "BA-02",
+      "title": {
+        "ro": "Fațadă",
+        "ru": "Фасад"
+      },
+      "before": "BA-02-before",
+      "after": "BA-02-after",
+      "alt_before": {
+        "ro": "Fațadă, înainte de lucrări",
+        "ru": "Фасад, до работ"
+      },
+      "alt_after": {
+        "ro": "Fațadă, după lucrări",
+        "ru": "Фасад, после работ"
+      }
+    },
+    {
+      "id": "BA-03",
+      "title": {
+        "ro": "Acoperiș",
+        "ru": "Кровля"
+      },
+      "before": "BA-03-before",
+      "after": "BA-03-after",
+      "alt_before": {
+        "ro": "Acoperiș, înainte de lucrări",
+        "ru": "Кровля, до работ"
+      },
+      "alt_after": {
+        "ro": "Acoperiș, după lucrări",
+        "ru": "Кровля, после работ"
+      }
+    },
+    {
+      "id": "BA-04",
+      "title": {
+        "ro": "Renovare interioară",
+        "ru": "Внутренний ремонт"
+      },
+      "before": "BA-04-before",
+      "after": "BA-04-after",
+      "alt_before": {
+        "ro": "Renovare interioară, înainte de lucrări",
+        "ru": "Внутренний ремонт, до работ"
+      },
+      "alt_after": {
+        "ro": "Renovare interioară, după lucrări",
+        "ru": "Внутренний ремонт, после работ"
+      }
+    }
+  ]
 }

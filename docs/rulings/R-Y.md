@@ -414,3 +414,31 @@ those changes, on the tree that is committed.
 `scripts/verify-live.js` restates these thirty budgets, which is the arrangement
 section 4 already has with the Lighthouse floors: change one and the other must
 change with it.
+
+### Amended 2026-09-20 by W24-05 · the case la cheie page leaves the shared service budget
+
+Added under R-T; nothing above this block was edited.
+
+The before/after slider moved off the homepage, where it had never rendered because
+`content/before-after.json` was empty, onto the **case la cheie** service page, which is
+where the wave 24 dispatch places it. Four projects, eight placeholder slots.
+
+**That page therefore leaves the shared 6,000px service budget** that RELEASE-NOTES's
+wave 7 acceptance holds for all eighteen service pages, and takes its own under W24-R4.
+The other service pages are untouched and stay on 6,000.
+
+| Page | RO measured | RO budget | RU measured | RU budget |
+|---|---|---|---|---|
+| `/servicii/case-la-cheie/` | 6,376 | **6,436** | 6,483 | **6,543** |
+
+Measured the section 2 way: 1440px, every `[data-reveal]` applied and settled, Inter
+loaded and asserted loaded, in the workstation's own Chrome. Local, not live: R-P's
+confirmation is owed after the deploy.
+
+**The homepage did not move**, 10,447 RO and 10,747 RU, identical to before the card. The
+slot it lost had never rendered anything, so removing it cost nothing, and the identical
+figures are the evidence that the move changed no other page.
+
+**The slider's own height is the frame's aspect ratio, 1180 by 664**, so it does not grow
+when the photographs land: a placeholder and a photograph occupy the same box. That is
+why these two budgets are safe to set before the photo session rather than after it.

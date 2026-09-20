@@ -141,7 +141,7 @@ const PAGES = [
 
 // Keys whose value is already HTML built by this file. Everything else is
 // escaped on substitution.
-const RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu', 'productTeaser', 'beforeAfter', 'roofOffers', 'socialRow',
+const RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu', 'productTeaser', 'roofOffers', 'socialRow',
   // demoAttr is a whole attribute, ` data-demo="..."`, not an attribute value:
   // it is either present or absent. Its inner text is escaped where it is
   // built, so what lands here is already safe. Escaping it again turned the
@@ -156,6 +156,8 @@ const RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu', 'productTeaser', 'befor
 const SVC_RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu',
   'demoAttr', 'svc.imageObjects', 'svc.answer', 'svc.table', 'svc.faqSection', 'svc.faqSchema',
   'svc.gallerySection', 'svc.footerLinks', 'svc.media',
+  // W24-05. The before/after slider, on the case la cheie page only.
+  'svc.beforeAfter',
   // W12-06. The bar is site-wide, so the service template needs it raw too.
   'promoBar',
   // W12-09. Generated JSON-LD fragment, must not be escaped.
@@ -626,7 +628,12 @@ PHOTO_SLOTS.slots.forEach((s, i) => {
   for (const f of ['id', 'page', 'ratio', 'min_px', 'shows']) {
     if (!REAL(s[f])) die(`${PHOTO_SLOTS_FILE}: slots[${i}] has no real "${f}".`);
   }
-  if (!/^[A-Z0-9-]+$/.test(s.id)) die(`${PHOTO_SLOTS_FILE}: slots[${i}].id "${s.id}" is not uppercase, digits and hyphens.`);
+  /* Letters, digits and hyphens. ~~Uppercase only~~: the dispatch's own examples
+     are `CAT-0042` and `BA-01-before`, and the second is the shape a paired slot
+     wants, so the case is not the rule. What the rule is for is that a slot id
+     goes into a filename, a URL and an attribute, so it carries no space and no
+     punctuation. */
+  if (!/^[A-Za-z0-9-]+$/.test(s.id)) die(`${PHOTO_SLOTS_FILE}: slots[${i}].id "${s.id}" is not letters, digits and hyphens.`);
   if (PHOTO_SLOT_IDS.has(s.id)) die(`${PHOTO_SLOTS_FILE}: slot id "${s.id}" appears twice. One row per slot.`);
   PHOTO_SLOT_IDS.add(s.id);
 });
@@ -1130,15 +1137,34 @@ ${cards}
 const BA_FILE = 'content/before-after.json';
 const BEFORE_AFTER = JSON.parse(fs.readFileSync(BA_FILE, 'utf8'));
 if (!Array.isArray(BEFORE_AFTER.projects)) die(`${BA_FILE} has no "projects" array. No projects is [], never a missing key.`);
+/* W24-05. The one page the slider renders on. A before and after belongs beside
+   the work it is a before and after OF, and the dispatch names this page. */
+const BEFORE_AFTER_SLUG = 'case-la-cheie';
+if (!SERVICE_SLUGS.includes(BEFORE_AFTER_SLUG)) die(`the before/after slider names the service "${BEFORE_AFTER_SLUG}", which is not a service page.`);
 
 function beforeAfter(l) {
   const projects = BEFORE_AFTER.projects;
   if (projects.length === 0) return '';
   const t = (k) => esc(l.strings[`beforeAfter.${k}`]);
-  const img = (id, alt, cls) => {
-    if (!fs.existsSync(`public/img/${id}.jpg`)) die(`${BA_FILE}: public/img/${id}.jpg does not exist.`);
-    const retina = fs.existsSync(`public/img/${id}@2x.jpg`) ? ` srcset="${BASE}/img/${id}.jpg 1x, ${BASE}/img/${id}@2x.jpg 2x"` : '';
-    return `<img class="${cls}" src="${BASE}/img/${id}.jpg"${retina} alt="${esc(alt)}" width="1180" height="664" loading="lazy" decoding="async" draggable="false">`;
+  /* AMENDED (W24-05): a slot with no photograph renders the W24-01 placeholder
+     rather than failing the build. Every image wave 24 renders is a placeholder
+     and a separate photo session fills them; the slot decides for itself, per
+     docs/CLAUDE.md section 7, so the first real pair renders photographs while
+     the other three still render boxes.
+
+     THE BEFORE IS THE LIGHT VARIANT AND THE AFTER THE DARK ONE, which is not
+     decoration: with two identical boxes the drag would move nothing visible and
+     nobody could tell the component works before a single photograph exists. The
+     dispatch asks for exactly that.
+
+     A placeholder is not draggable and takes no pointer of its own, the same as
+     the img it stands in for. */
+  const img = (id, alt, cls, variant) => {
+    if (fs.existsSync(`public/img/${id}.jpg`)) {
+      const retina = fs.existsSync(`public/img/${id}@2x.jpg`) ? ` srcset="${BASE}/img/${id}.jpg 1x, ${BASE}/img/${id}@2x.jpg 2x"` : '';
+      return `<img class="${cls}" src="${BASE}/img/${id}.jpg"${retina} alt="${esc(alt)}" width="1180" height="664" loading="lazy" decoding="async" draggable="false">`;
+    }
+    return placeholder(id, { variant, className: `${cls} ba__ph` });
   };
   const items = projects.map((p, i) => {
     const where = `projects[${i}]`;
@@ -1148,8 +1174,8 @@ function beforeAfter(l) {
     return `      <figure class="ba__item" data-ba-item${i === 0 ? '' : ' hidden'}>
         <h3 class="sr-only">${esc(p.title[l.code])}</h3>
         <div class="ba__compare" style="--position: 50%;">
-          ${img(p.after, p.alt_after[l.code], 'ba__after')}
-          <div class="ba__before">${img(p.before, p.alt_before[l.code], 'ba__before-img')}</div>
+          ${img(p.after, p.alt_after[l.code], 'ba__after', 'dark')}
+          <div class="ba__before">${img(p.before, p.alt_before[l.code], 'ba__before-img', 'light')}</div>
           <div class="ba__handle" role="slider" tabindex="0" aria-label="${t('handle')}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
             <span class="ba__pill" aria-hidden="true"><span></span><span></span><span></span></span>
           </div>
@@ -1170,7 +1196,7 @@ function beforeAfter(l) {
     <div class="ba__head">
       <div>
         <p class="eyebrow" data-reveal>${t('eyebrow')}</p>
-        <h2 id="ba-h" data-reveal>${t('h2')}</h2>
+        <h2 id="ba-h" data-reveal>${t('h2')}<span class="ba__h-line">${t('h2Line2')}</span></h2>
       </div>${nav}
     </div>
     <div class="ba__stage">
@@ -2300,7 +2326,6 @@ for (const l of loaded) {
   vars.workTypeOptions = workTypeOptions(l);
   vars.notFoundLocale = notFoundLocale(l);
   vars.productTeaser = productTeaser(l);
-  vars.beforeAfter = beforeAfter(l);
   vars.roofOffers = roofOffers(l);
   vars.socialRow = socialRow(l);
   // Overrides nothing: band.coverageLine is no longer a locale key, it is
@@ -2354,6 +2379,10 @@ for (const l of loaded) {
         ? 'index, follow' : 'noindex, nofollow',
     };
     svcVars['svc.media'] = serviceMedia(l, BASE, i, 'hero');
+    /* W24-05. The slider goes on the case la cheie page and nowhere else, which
+       is where the dispatch places it. It was on the homepage, where it had never
+       rendered because the data was empty. */
+    svcVars['svc.beforeAfter'] = slug === BEFORE_AFTER_SLUG ? beforeAfter(l) : '';
     svcVars['svc.gallerySection'] = renderGallerySection(l, slug, vars);
     svcVars['svc.footerLinks'] = SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
       `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join('');

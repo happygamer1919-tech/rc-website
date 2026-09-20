@@ -1118,5 +1118,10 @@
   },
   "catalogIndex": {
     "title": "Catalog"
+  },
+  "inConstructie": {
+    "title": "În construcție",
+    "line": "Pagina se pregătește. Revino în curând.",
+    "back": "Înapoi la pagina principală"
   }
 }

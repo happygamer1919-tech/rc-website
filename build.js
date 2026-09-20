@@ -141,7 +141,7 @@ const PAGES = [
 
 // Keys whose value is already HTML built by this file. Everything else is
 // escaped on substitution.
-const RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu', 'productTeaser', 'roofOffers', 'socialRow',
+const RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu', 'productTeaser', 'socialRow',
   // demoAttr is a whole attribute, ` data-demo="..."`, not an attribute value:
   // it is either present or absent. Its inner text is escaped where it is
   // built, so what lands here is already safe. Escaping it again turned the
@@ -158,6 +158,8 @@ const SVC_RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu',
   'svc.gallerySection', 'svc.footerLinks', 'svc.media',
   // W24-05. The before/after slider, on the case la cheie page only.
   'svc.beforeAfter',
+  // W24-06. The four roofing offers, on the acoperisuri page only.
+  'svc.roofOffers',
   // W12-06. The bar is site-wide, so the service template needs it raw too.
   'promoBar',
   // W12-09. Generated JSON-LD fragment, must not be escaped.
@@ -751,11 +753,13 @@ function serviciiMenu(l) {
     ...SERVICE_SLUGS.map((sg, i) => row(
       `${BASE}${SERVICES_ROOT[l.code]}${sg}/`,
       need(l.strings[`services.items.${i}.title`], `services.items.${i}.title`))),
-    ...PRODUCT_PAGES.map((p) => row(
+    /* W24-06: the top-level product pages only. Tigla metalica is a child of
+       acoperisuri and is reached from that page, not from this list. */
+    ...TOP_LEVEL_PRODUCT_PAGES.map((p) => row(
       `${BASE}${SERVICES_ROOT[l.code]}${p.slug}/`,
       need(l.strings[`pages.${p.key}.title`], `pages.${p.key}.title`))),
   ];
-  const expected = 1 + SERVICE_SLUGS.length + PRODUCT_PAGES.length;
+  const expected = 1 + SERVICE_SLUGS.length + TOP_LEVEL_PRODUCT_PAGES.length;
   if (items.length !== expected) die(`serviciiMenu: ${items.length} rows, expected ${expected}.`);
   const label = esc(l.strings['header.navServices']);
   return `<div class="svcmenu">
@@ -1105,6 +1109,16 @@ function roofOffers(l) {
         </div>
       </article>`;
   }).join('\n');
+  /* W24-06. The section moved off the homepage onto the acoperisuri service page,
+     where the dispatch puts it: four roofing offers belong on the roofing page.
+
+     It carries a link to the tile page, which is the same card's other half: tigla
+     metalica became a child of this page and left the header's top-level list, so
+     something here has to reach it or the sitemap advertises an orphan. W24-07
+     replaces this link with the bento tile the dispatch specifies. */
+  const tigla = PRODUCT_PAGES.find((p) => p.parent === 'acoperisuri');
+  const toTigla = tigla ? `
+    <a class="link-arrow" href="${BASE}${SERVICES_ROOT[l.code]}${tigla.slug}/" data-reveal style="margin-top: 32px;">${esc(l.strings[`pages.${tigla.key}.title`])}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>` : '';
   return `<section class="section section--light section--divided" id="acoperisuri" aria-labelledby="acoperisuri-h">
   <div class="container">
     <p class="eyebrow" data-reveal>${esc(s('eyebrow'))}</p>
@@ -1112,7 +1126,7 @@ function roofOffers(l) {
     <p class="lede" data-reveal>${esc(s('lede'))}</p>
     <div class="offers">
 ${cards}
-    </div>
+    </div>${toTigla}
   </div>
 </section>
 `;
@@ -1140,6 +1154,9 @@ if (!Array.isArray(BEFORE_AFTER.projects)) die(`${BA_FILE} has no "projects" arr
 /* W24-05. The one page the slider renders on. A before and after belongs beside
    the work it is a before and after OF, and the dispatch names this page. */
 const BEFORE_AFTER_SLUG = 'case-la-cheie';
+/* W24-06. The page the four roofing offers render on, and the page tigla metalica
+   is a child of. One constant, so the two cannot drift apart. */
+const ROOF_OFFERS_SLUG = 'acoperisuri';
 if (!SERVICE_SLUGS.includes(BEFORE_AFTER_SLUG)) die(`the before/after slider names the service "${BEFORE_AFTER_SLUG}", which is not a service page.`);
 
 function beforeAfter(l) {
@@ -2012,11 +2029,29 @@ const CATALOG_PRODUCTS = Object.fromEntries(
   if (emptyPage.length) die(`${emptyPage.length} catalogue page(s) would render an empty grid: ${emptyPage.join(', ')}. A category with no product is not a page.`);
 })();
 
+/* W24-06. `parent` names the service page a product page sits under. Only the
+   tile page has one: the dispatch makes tigla metalica a child of acoperisuri,
+   because a metal tile is a roof and the page reads as one of several roofing
+   answers rather than as a service of its own.
+
+   A page with a parent takes a three-level breadcrumb and LEAVES THE TOP-LEVEL
+   LIST in the header's Servicii panel. Its URL does not move: GitHub Pages serves
+   no redirects, so a moved URL is a dead link, and the dispatch says so.
+
+   It must still be reachable, or it is an orphan the sitemap advertises: the
+   section this card moves onto the acoperisuri page carries a link to it, and
+   W24-07 replaces that link with the bento tile the dispatch specifies. */
 const PRODUCT_PAGES = [
-  { slug: 'tigla-metalica', key: 'tigla', block: (l) => tiglaGrid(l), sources: ['content/tigla-metalica.json'] },
+  { slug: 'tigla-metalica', key: 'tigla', parent: 'acoperisuri', block: (l) => tiglaGrid(l), sources: ['content/tigla-metalica.json'] },
   { slug: 'copertine', key: 'copertine', block: (l) => copertine(l), sources: ['content/copertine.json'] },
   { slug: 'garduri', key: 'garduri', block: (l) => gardPage(l), faqSchema: (l) => gardFaqSchema(l), sources: [] },
 ];
+const TOP_LEVEL_PRODUCT_PAGES = PRODUCT_PAGES.filter((p) => !p.parent);
+(() => {
+  const bad = PRODUCT_PAGES.filter((p) => p.parent && !SERVICE_SLUGS.includes(p.parent));
+  if (bad.length) die(`product page parent is not a service: ${bad.map((p) => p.slug + ' -> ' + p.parent).join(', ')}`);
+  if (TOP_LEVEL_PRODUCT_PAGES.length === PRODUCT_PAGES.length) die('W24-06 makes one product page a child; none is marked.');
+})();
 /* W16-02. Deferred to here on purpose: PRODUCT_PAGES is declared immediately
    above, so this check cannot live in the CATEGORIES block, which evaluates
    earlier and would read it in its temporal dead zone. A category slug that
@@ -2029,6 +2064,8 @@ const PRODUCT_PAGES = [
 const PROD_RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu',
   'demoAttr', 'promoBar', 'areaServedJson', 'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
   'prod.block', 'prod.footerLinks', 'prod.faqSchema',
+  // W24-06. Three levels on a parented product page, two on the others.
+  'prod.breadcrumb',
 ]);
 const productTemplate = fs.readFileSync('src/product.html', 'utf8');
 const CAT_RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu',
@@ -2043,15 +2080,42 @@ const CAT_RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu',
 ]);
 const categoryTemplate = fs.readFileSync('src/category.html', 'utf8');
 const catalogIndexTemplate = fs.readFileSync('src/catalog-index.html', 'utf8');
+const inConstructieTemplate = fs.readFileSync('src/in-constructie.html', 'utf8');
+/* W24-06. The shared "not yet" page the calculate-a-price tiles land on. */
+const IN_CONSTRUCTIE = { ro: '/in-constructie/', ru: '/ru/in-constructie/' };
 const CAT_SOURCES = ['src/category.html', 'build.js', CATALOG_FILE, 'content/catalog-products.json', ...LOCALES.map((l) => l.file)];
 const PROD_SOURCES = ['src/product.html', 'build.js', ...LOCALES.map((l) => l.file)];
 
 function productTeaser(l) {
   const t = (k) => esc(l.strings[`pages.${k}`]);
   const arrow = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
-  const items = PRODUCT_PAGES.map((p, i) => `      <a class="teaser" href="${BASE}${SERVICES_ROOT[l.code]}${p.slug}/" data-reveal data-stagger="${i}">
-        <h3 class="teaser__title">${t(`${p.key}.title`)}</h3>
-        <p class="teaser__line">${t(`${p.key}.teaser`)}</p>
+  /* W24-06. The first teaser was ȚIGLĂ METALICĂ and is now ACOPERIȘURI, opening
+     the roofing service page. The tile page became a child of it, so a teaser
+     that skipped the parent and went straight to one of its children was the
+     wrong door; and the four roofing offers moved to that page in the same card,
+     so the teaser now leads somewhere that has something to show.
+
+     NO COPY IS INVENTED (docs/CLAUDE.md section 5). The title and the line are
+     the service's own shipped strings, services.items.N.title and .desc, which
+     the homepage services grid already prints. */
+  const roofIndex = SERVICE_SLUGS.indexOf(ROOF_OFFERS_SLUG);
+  const need = (v, where) => { if (!REAL(v)) die(`productTeaser: ${where} is not real for ${l.code}.`); return v; };
+  const tiles = [
+    {
+      href: `${BASE}${SERVICES_ROOT[l.code]}${ROOF_OFFERS_SLUG}/`,
+      title: esc(need(l.strings[`services.items.${roofIndex}.title`], `services.items.${roofIndex}.title`)),
+      line: esc(need(l.strings[`services.items.${roofIndex}.desc`], `services.items.${roofIndex}.desc`)),
+    },
+    ...TOP_LEVEL_PRODUCT_PAGES.map((p) => ({
+      href: `${BASE}${SERVICES_ROOT[l.code]}${p.slug}/`,
+      title: t(`${p.key}.title`),
+      line: t(`${p.key}.teaser`),
+    })),
+  ];
+  if (tiles.length !== 3) die(`productTeaser: ${tiles.length} tiles, expected 3.`);
+  const items = tiles.map((x, i) => `      <a class="teaser" href="${x.href}" data-reveal data-stagger="${i}">
+        <h3 class="teaser__title">${x.title}</h3>
+        <p class="teaser__line">${x.line}</p>
         <span class="teaser__more">${esc(l.strings['services.linkLabel'])}${arrow}</span>
       </a>`).join('\n');
   return `<section class="section section--light section--divided section--teaser" aria-label="${t('teaserAria')}">
@@ -2326,7 +2390,6 @@ for (const l of loaded) {
   vars.workTypeOptions = workTypeOptions(l);
   vars.notFoundLocale = notFoundLocale(l);
   vars.productTeaser = productTeaser(l);
-  vars.roofOffers = roofOffers(l);
   vars.socialRow = socialRow(l);
   // Overrides nothing: band.coverageLine is no longer a locale key, it is
   // composed here so the sentence and the schema cannot disagree.
@@ -2383,6 +2446,9 @@ for (const l of loaded) {
        is where the dispatch places it. It was on the homepage, where it had never
        rendered because the data was empty. */
     svcVars['svc.beforeAfter'] = slug === BEFORE_AFTER_SLUG ? beforeAfter(l) : '';
+    /* W24-06. "Patru lucrări de acoperiș" was on the homepage. It is roofing, so
+       it is on the roofing page. W24-07 puts the bento above it. */
+    svcVars['svc.roofOffers'] = slug === ROOF_OFFERS_SLUG ? roofOffers(l) : '';
     svcVars['svc.gallerySection'] = renderGallerySection(l, slug, vars);
     svcVars['svc.footerLinks'] = SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
       `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join('');
@@ -2400,6 +2466,36 @@ for (const l of loaded) {
     fs.mkdirSync(path.dirname(out), { recursive: true });
     fs.writeFileSync(out, html);
     servicePages.push({ loc: SITE + BASE + SERVICES_ROOT[l.code] + slug + '/', lang: l.code });
+  }
+
+  // --- W24-06, the shared "in construcție" page ------------------------------
+  {
+    const out = 'dist' + IN_CONSTRUCTIE[l.code] + 'index.html';
+    const title = l.strings['inConstructie.title'];
+    for (const k of ['title', 'line', 'back']) {
+      if (!REAL(l.strings[`inConstructie.${k}`])) die(`inConstructie.${k} must be real in ${l.code}.`);
+    }
+    const icVars = {
+      ...vars,
+      'ic.metaTitle': title + BRAND,
+      'ic.metaDesc': l.strings['inConstructie.line'],
+      'ic.canonical': SITE + BASE + IN_CONSTRUCTIE[l.code],
+      'ic.urlRo': SITE + BASE + IN_CONSTRUCTIE.ro,
+      'ic.urlRu': SITE + BASE + IN_CONSTRUCTIE.ru,
+      'ic.pathRo': BASE + IN_CONSTRUCTIE.ro,
+      'ic.pathRu': BASE + IN_CONSTRUCTIE.ru,
+      'ic.footerLinks': SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
+        `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join(''),
+    };
+    const missing = new Set();
+    const html = inConstructieTemplate.replace(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/g, (_, key) => {
+      if (key in icVars) return CAT_RAW_KEYS.has(key) || key === 'ic.footerLinks' ? icVars[key] : esc(icVars[key]);
+      missing.add(key); return `{{${key}}}`;
+    });
+    if (missing.size) die(`src/in-constructie.html references unknown keys for ${l.code}: ${[...missing].join(', ')}`);
+    if (html.includes('{{')) die(`unsubstituted placeholder survived in ${out}`);
+    fs.mkdirSync(path.dirname(out), { recursive: true });
+    fs.writeFileSync(out, html);
   }
 
   // --- W24-04, the catalog index at /catalog/ -------------------------------
@@ -2493,6 +2589,12 @@ for (const l of loaded) {
     const prodVars = {
       ...vars,
       'prod.title': title,
+      /* W24-06. A parented product page reads Acasă / <parent> / <page>. The
+         middle crumb is the parent SERVICE page, not the services overview, which
+         is what makes the page a child of it rather than a sibling. */
+      'prod.breadcrumb': p.parent
+        ? `      <a href="${BASE + l.home}">${esc(l.strings['servicePage.home'])}</a>\n      <span aria-hidden="true">/</span>\n      <a href="${BASE}${SERVICES_ROOT[l.code]}${p.parent}/">${esc(l.strings[`services.items.${SERVICE_SLUGS.indexOf(p.parent)}.title`])}</a>\n      <span aria-hidden="true">/</span>\n      <span aria-current="page">${esc(title)}</span>`
+        : `      <a href="${BASE + l.home}">${esc(l.strings['servicePage.home'])}</a>\n      <span aria-hidden="true">/</span>\n      <a href="${BASE + l.home}#servicii">${esc(l.strings['servicePage.all'])}</a>\n      <span aria-hidden="true">/</span>\n      <span aria-current="page">${esc(title)}</span>`,
       'prod.lede': l.strings[`pages.${p.key}.lede`],
       'prod.metaTitle': head.metaTitle,
       'prod.metaDesc': head.metaDesc,

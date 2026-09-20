@@ -1,20 +1,34 @@
+<!-- W24-06. A shared "in constructie" page. W24-07 and W24-08 each put a bento
+     tile on a service page that asks a visitor to calculate a price, and there is
+     no calculator: a tile that links nowhere is a dead tile, and one that links to
+     a 404 is worse. This page is where those tiles land until a calculator exists.
+
+     It is noindex and out of the sitemap, for the same reason the privacy page was
+     while its operator fields were unfilled: a page that says "not yet" has nothing
+     for a search engine. It carries the header, the footer, one line and a link
+     back, and nothing else.
+
+     Frame copied from src/catalog-index.html so the header, the promo bar and the
+     footer are identical to every other page. It carries NO quote form: the form
+     gate reads every sitemap page, this page is not one, and a page that says
+     "not yet" is not the place to ask for a lead. -->
 <!doctype html>
 <html lang="{{meta.lang}}" dir="{{meta.dir}}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{prod.metaTitle}}</title>
-<meta name="description" content="{{prod.metaDesc}}">
-<meta name="robots" content="index, follow">
+<title>{{ic.metaTitle}}</title>
+<meta name="description" content="{{ic.metaDesc}}">
+<meta name="robots" content="noindex, nofollow">
 <meta name="build-sha" content="{{buildSha}}">
-<link rel="canonical" href="{{prod.canonical}}">
-<link rel="alternate" hreflang="ro" href="{{prod.urlRo}}">
-<link rel="alternate" hreflang="ru" href="{{prod.urlRu}}">
-<link rel="alternate" hreflang="x-default" href="{{prod.urlRo}}">
+<link rel="canonical" href="{{ic.canonical}}">
+<link rel="alternate" hreflang="ro" href="{{ic.urlRo}}">
+<link rel="alternate" hreflang="ru" href="{{ic.urlRu}}">
+<link rel="alternate" hreflang="x-default" href="{{ic.urlRo}}">
 <meta property="og:type" content="website">
-<meta property="og:title" content="{{prod.metaTitle}}">
-<meta property="og:description" content="{{prod.metaDesc}}">
-<meta property="og:url" content="{{prod.canonical}}">
+<meta property="og:title" content="{{ic.metaTitle}}">
+<meta property="og:description" content="{{ic.metaDesc}}">
+<meta property="og:url" content="{{ic.canonical}}">
 <meta property="og:locale" content="{{meta.ogLocale}}">
 <meta property="og:image" content="{{ogImage}}">
 <meta property="og:image:width" content="1200">
@@ -31,43 +45,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap"></noscript>
 <link rel="stylesheet" href="{{base}}/styles.css">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "{{prod.title}}",
-  "description": "{{prod.lede}}",
-  "serviceType": "{{prod.title}}",
-  "url": "{{prod.canonical}}",
-  "areaServed": [
-{{areaServedJson}}
-  ],
-  "provider": {
-    "@type": "GeneralContractor",
-    "@id": "{{urlRo}}#business",
-    "name": "Rapid Construct",
-    "telephone": "+37376837180",
-    "email": "rapidconstructmd@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Nicolae Zelinski 24",
-      "addressLocality": "Chișinău",
-      "addressCountry": "MD"
-    }
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "{{servicePage.home}}", "item": "{{canonical}}" },
-    { "@type": "ListItem", "position": 2, "name": "{{servicePage.all}}", "item": "{{servicesUrl}}" },
-    { "@type": "ListItem", "position": 3, "name": "{{prod.title}}" }
-  ]
-}
-</script>{{prod.faqSchema}}
 </head>
 <body>
 
@@ -96,11 +73,11 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
         <span>{{header.phone}}</span>
       </a>
-      <a class="btn btn--primary" href="#oferta">{{header.cta}}</a>
+      <a class="btn btn--primary" href="{{homeHref}}#oferta">{{header.cta}}</a>
       <div class="lang" data-lang="{{meta.lang}}">
-        <a class="lang__ro" href="{{prod.pathRo}}" hreflang="ro" aria-label="RO — Comută pe română">RO</a>
+        <a class="lang__ro" href="{{ic.pathRo}}" hreflang="ro" aria-label="RO — Comută pe română">RO</a>
         <span class="lang__sep" aria-hidden="true"></span>
-        <a class="lang__ru" href="{{prod.pathRu}}" hreflang="ru" aria-label="RU — Переключить на русский">RU</a>
+        <a class="lang__ru" href="{{ic.pathRu}}" hreflang="ru" aria-label="RU — Переключить на русский">RU</a>
       </div>
     </div>
 
@@ -124,13 +101,13 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   <a class="mobile-nav-link" href="{{portfolioHref}}">{{header.navPortfolio}}</a>
   <a class="mobile-nav-link" href="{{aboutHref}}">{{header.navAbout}}</a>
   <a class="mobile-nav-link" href="{{contactHref}}">{{header.navContacts}}</a>
-  <a class="btn btn--primary" href="#oferta">{{header.cta}}</a>
+  <a class="btn btn--primary" href="{{homeHref}}#oferta">{{header.cta}}</a>
   <div class="mobile-panel__foot">
     <a href="tel:+37376837180">{{header.phone}}</a>
     <div class="lang" data-lang="{{meta.lang}}">
-      <a class="lang__ro" href="{{prod.pathRo}}" hreflang="ro" aria-label="RO — Comută pe română">RO</a>
+      <a class="lang__ro" href="{{ic.pathRo}}" hreflang="ro" aria-label="RO — Comută pe română">RO</a>
       <span class="lang__sep" aria-hidden="true"></span>
-      <a class="lang__ru" href="{{prod.pathRu}}" hreflang="ru" aria-label="RU — Переключить на русский">RU</a>
+      <a class="lang__ru" href="{{ic.pathRu}}" hreflang="ru" aria-label="RU — Переключить на русский">RU</a>
     </div>
   </div>
 </div>
@@ -140,96 +117,23 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
 {{promoBar}}
 <main id="continut">
 
-<!-- 1 · Page hero, W14-16. Breadcrumb, H1, one line, CTA; the block follows. -->
+<!-- 1 · One line and a way back. Nothing else. -->
 <section class="section section--light svc-hero">
   <div class="container">
-    <!-- W24-06. Built by build.js: a product page with a parent service reads
-         Acasă / <that service> / <this page>, and one without reads
-         Acasă / Servicii / <this page> as it always has. -->
     <nav class="breadcrumb" aria-label="{{servicePage.breadcrumbAria}}">
-{{prod.breadcrumb}}
+      <a href="{{homeHref}}">{{servicePage.home}}</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{{inConstructie.title}}</span>
     </nav>
-    <p class="eyebrow">{{services.eyebrow}}</p>
-    <h1>{{prod.title}}</h1>
-    <p class="hero__sub" style="margin: 16px 0 0;">{{prod.lede}}</p>
+    <h1>{{inConstructie.title}}</h1>
+    <p class="hero__sub" style="margin: 16px 0 0;">{{inConstructie.line}}</p>
     <div class="cta-row" style="justify-content: flex-start; margin-top: 32px;">
-      <a class="btn btn--primary" href="#oferta">{{hero.ctaPrimary}}</a>
+      <a class="btn btn--primary" href="{{homeHref}}">{{inConstructie.back}}</a>
     </div>
   </div>
 </section>
 
-<!-- 2 · The block that moved off the homepage (W14-16) -->
-{{prod.block}}
-
-<!-- 5 · CTA, the same form as the homepage -->
-<section class="section section--light section--divided" id="oferta">
-  <div class="container">
-    <p class="eyebrow" data-reveal>{{form.eyebrow}}</p>
-    <h2 data-reveal>{{servicePage.ctaH}}</h2>
-    <p class="lede" data-reveal>{{form.intro}}</p>
-
-    <div class="form-layout" style="margin-top: 40px;">
-      <form class="form-card form-card--stack" id="quote-form" method="POST" action="{{formAction}}" novalidate data-armed="{{formArmed}}" data-ok="{{form.ok}}" data-fail="{{form.fail}}"{{demoAttr}}>
-        <input type="hidden" name="access_key" value="{{formEndpoint}}">
-        <input type="hidden" name="subject" value="{{prod.subject}}">
-        <input type="hidden" name="from_name" value="Rapid Construct">
-        <input type="hidden" name="serviciu" value="{{prod.title}}">
-        <div class="honeypot" aria-hidden="true"><label for="botcheck">{{form.honeypotLabel}}</label><input id="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></div>
-
-        <h3>{{form.cardTitle}}</h3>
-
-        <div class="field">
-          <label for="f-name">{{form.labelName}}</label>
-          <input id="f-name" name="nume" type="text" placeholder="{{form.phName}}" autocomplete="name" required aria-describedby="e-name">
-          <p class="field__error" id="e-name" hidden>{{form.errName}}</p>
-        </div>
-
-        <div class="field">
-          <label for="f-phone">{{form.labelPhone}}</label>
-          <input id="f-phone" name="telefon" type="tel" placeholder="{{form.phPhone}}" autocomplete="tel" required aria-describedby="h-phone e-phone">
-          <p class="field__hint" id="h-phone">{{form.hintPhone}}</p>
-          <p class="field__error" id="e-phone" hidden>{{form.errPhone}}</p>
-        </div>
-
-        <div class="field">
-          <label for="f-city">{{form.labelCity}}</label>
-          <input id="f-city" name="localitate" type="text" placeholder="{{form.phCity}}" autocomplete="address-level2" aria-describedby="h-city">
-          <p class="field__hint" id="h-city">{{form.hintCity}}</p>
-        </div>
-
-        <div class="field">
-          <label for="f-message">{{form.labelMessage}}</label>
-          <textarea id="f-message" name="mesaj" rows="4" placeholder="{{form.phMessage}}"></textarea>
-        </div>
-
-        <div class="consent">
-          <input id="f-consent" name="acord" type="checkbox" required aria-describedby="e-consent">
-          <label for="f-consent">{{form.consentPre}} {{privacyLinkOpen}}{{form.consentLink}}{{privacyLinkClose}}{{form.consentPost}}</label>
-        </div>
-        <p class="field__error" id="e-consent" hidden>{{form.errConsent}}</p>
-
-        <button class="btn btn--primary" type="submit" style="align-self: flex-start;">{{form.submit}}</button>
-        <p class="form-status" id="form-status" role="status" hidden></p>
-      </form>
-
-      <div class="form-aside">
-        <div class="form-card">
-          <h3>{{form.sideTitle}}</h3>
-          <p class="muted" style="margin-top: 12px;">{{form.sideBody}}</p>
-          <p class="muted" style="margin-top: 12px;">{{form.sideNote}}</p>
-        </div>
-        <div class="form-card">
-          <p class="eyebrow">{{form.phoneEyebrow}}</p>
-          <a class="aside__phone" href="tel:+37376837180">{{header.phone}}</a>
-          <p class="muted">{{form.hours}}</p>
-        </div>
-        <a class="link-arrow" href="{{servicesHref}}">{{servicePage.backToServices}}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-</main>
+<!-- No quote form: this page is not in the sitemap and says "not yet". -->
 
 <footer class="footer" id="contacte">
   <div class="container">
@@ -253,7 +157,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         </div>
         <div>
           <p class="footer__heading">{{footer.servicesHeading}}</p>
-          <div class="footer__links">{{prod.footerLinks}}</div>
+          <div class="footer__links">{{ic.footerLinks}}</div>
         </div>
       </div>
       <div>

@@ -161,6 +161,16 @@ const SUPERSEDED = [
     clear: /R-Y|AMENDED|W17-02|W17-03|W24-04|W24-R4/,
   },
   {
+    /* W24-06, R-Q. The homepage budgets R-Y held before the roofing offers moved
+       off it. They are heights of a page with a section on it that is no longer
+       there, and R-Y's W24-06 amendment carries the two that replace them. */
+    id: 'budget-home-w14',
+    find: /10,507|10,807/g,
+    ruling: 'R-Y as amended by W24-06 (docs/rulings/R-Y.md), under W24-R4',
+    what: "the homepage budgets measured while the four roofing offers were still on the homepage",
+    clear: /R-Y|AMENDED|W14-13|W24-06|W24-R4/,
+  },
+  {
     id: 'budget-tigla-w14',
     find: /3,841|3,875/g,
     ruling: 'R-Y as amended by W18-01 (docs/rulings/R-Y.md)',
@@ -202,6 +212,8 @@ const SCAN_SOURCE = [
   // W24-04. The catalogue index. Registered here in the same commit that creates
   // it, which is what the template-count assertion below exists to force.
   'src/catalog-index.html',
+  // W24-06. The shared "in construcție" page.
+  'src/in-constructie.html',
   'src/privacy.html',
   'src/404.html',
   'build.js',

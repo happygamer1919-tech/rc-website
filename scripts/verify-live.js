@@ -306,22 +306,26 @@ const PROBE = `(async () => {
     productCards: q('[data-product-card]'),
     baItems: q('[data-ba-item]'),
     roofOffers: q('#acoperisuri .offer'),
-    /* CORRECTED (W24-09). These probed `.bento__tile` and were left behind by
-       W24-07a, which renamed the hub's classes to `.hub__*` precisely because
-       `.bento__tile` already belonged to the garduri chooser. The markers kept
-       counting the OLD name, so from W24-07 onwards they measured the chooser and
-       never the hub: the acoperisuri pages reported 0 tiles where 4 render, the
-       garduri pages reported the chooser's 5 where the hub's 4 were expected, and
-       the copertine page reported 5 where 0 were expected. Six rows UNVERIFIED on
-       the first run after the merge of #78 to #85, none of them a real defect on
-       the page and all six a defect here.
-       A marker that is not renamed with the thing it names is not a marker. */
+    /* CORRECTED (W24-09). These probed the OLD bento tile class and were left
+       behind by W24-07a, which renamed the hub's classes to hub__* precisely
+       because bento__tile already belonged to the garduri chooser. The markers
+       kept counting the old name, so from W24-07 onwards they measured the
+       chooser and never the hub: the acoperisuri pages reported 0 tiles where 4
+       render, the garduri pages reported the chooser's 5 where the hub's 4 were
+       expected, and the copertine page reported 5 where 0 were expected. Six rows
+       UNVERIFIED on the first run after the merge of #78 to #85, none of them a
+       real defect on the page and all six a defect here.
+       A marker that is not renamed with the thing it names is not a marker.
+       NO BACKTICK IN THIS COMMENT, and none anywhere else inside PROBE: this
+       whole block is a template literal, so a backtick here ends the string and
+       the file stops parsing. W24-09 shipped exactly that and broke this script
+       on main; W24-09a is the correction. See the guard at the bottom. */
     bentoTiles: q('.hub__tile'),
     bentoLinks: q('a.hub__tile'),
     catTiles: q('.cat-tile'),
     /* W24-09. This run measures at 1440, where the phone reveal folds nothing.
        The ZERO is the assertion: the fold is a class main.js adds, and the rule
-       that paints it lives inside a max-width: 768px query, so a desktop card
+       that paints it lives inside a max-width 768px query, so a desktop card
        carrying it would be a regression this catches on the live tree. Counted on
        every catalogue page, so a build that shipped the fold to desktop fires on
        thirty rows rather than passing quietly. */
@@ -447,4 +451,57 @@ async function main() {
   console.log(`\n${failures === 0 && unverified === 0 ? 'PASS' : 'FAIL'} — ${unverified} unverified, ${failures} failed`);
   process.exit(failures === 0 && unverified === 0 ? 0 : 1);
 }
+/* --- W24-09a, the self-check ------------------------------------------------
+   `node scripts/verify-live.js --self-check` loads this file, asserts that every
+   string it evaluates in the browser is real JavaScript, and exits. It touches no
+   network and starts no Chrome, so `quality` can run it on every pull request.
+
+   IT EXISTS BECAUSE W24-09 BROKE THIS FILE AND SHIPPED IT. A comment written
+   inside PROBE, which is a template literal, put backticks around the class names
+   it discussed. Two of them closed and reopened the template, which turned the
+   surrounding expression into a TAGGED TEMPLATE whose tag was a string. The file
+   still PARSED — `node --check` exits 0 on it, and so would any parse gate — and
+   it threw `TypeError: "(async () => {` the moment it was loaded.
+
+   Nineteen gates were green and `quality` passed, because this script measures the
+   DEPLOYED site and therefore cannot run before a deploy: nothing in CI ever
+   loaded it. A script CI never loads is a script whose load-time errors are found
+   after the merge, which is exactly when this one was found.
+
+   So the check is LOADING, not parsing. Reaching this line at all is most of the
+   assertion; compiling the probe strings is the rest, and would catch a probe
+   broken in a way that only shows when it is evaluated in the page.
+
+   NO BACKTICK MAY APPEAR INSIDE PROBE. That is what this guards. */
+if (process.argv.includes('--self-check')) {
+  const strings = { PROBE, FONTS: typeof FONTS === 'string' ? FONTS : null };
+  let checked = 0;
+  for (const [name, src] of Object.entries(strings)) {
+    if (src == null) continue;
+    if (/`/.test(src)) {
+      console.error(`\nVERIFY-LIVE SELF-CHECK FAILED: ${name} contains a backtick, which ends the template literal it lives in. That is the W24-09 defect.\n`);
+      process.exit(1);
+    }
+    try { new Function(`return (${src});`); } catch (e) {
+      console.error(`\nVERIFY-LIVE SELF-CHECK FAILED: ${name} is not valid JavaScript: ${e.message}\n`);
+      process.exit(1);
+    }
+    checked++;
+  }
+  if (!checked) { console.error('\nVERIFY-LIVE SELF-CHECK FAILED: no probe strings were checked, so nothing was asserted.\n'); process.exit(1); }
+  if (!PAGES.length) { console.error('\nVERIFY-LIVE SELF-CHECK FAILED: PAGES is empty.\n'); process.exit(1); }
+  const noMarkers = PAGES.filter((p) => !MARKERS[p.type]);
+  if (noMarkers.length) {
+    console.error(`\nVERIFY-LIVE SELF-CHECK FAILED: ${noMarkers.length} page(s) name a type with no marker set: ${[...new Set(noMarkers.map((p) => p.type))].join(', ')}\n`);
+    process.exit(1);
+  }
+  const noBudget = PAGES.filter((p) => !(p.budget > 0));
+  if (noBudget.length) {
+    console.error(`\nVERIFY-LIVE SELF-CHECK FAILED: ${noBudget.length} page(s) carry no budget: ${noBudget.map((p) => p.label).join(', ')}\n`);
+    process.exit(1);
+  }
+  console.log(`verify-live self-check: the module loads, ${checked} probe string(s) compile and carry no backtick, ${PAGES.length} pages each have a marker set and a budget.`);
+  process.exit(0);
+}
+
 main().catch((e) => { console.error(e); process.exit(1); });

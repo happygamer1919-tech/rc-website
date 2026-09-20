@@ -615,6 +615,24 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     red). It fails on zero hub pages, zero grid pages, either family in one locale
     only, fewer combinations than the matrix holds, and when Inter does not load.
 
+21. `node scripts/verify-live.js --self-check` clean. **Since W24-09a (wave 24)**, run by
+    `quality` as its FIRST build-ish step. **Gate 9's script is the one script `quality`
+    never loaded.** It measures the deployed site, so it cannot run before a deploy, and
+    nothing else in CI imports it. W24-09 edited it and shipped it broken: a comment
+    written inside `PROBE`, which is a template literal, put backticks around the class
+    names it discussed, two of them closed and reopened the template, and the surrounding
+    expression became a **tagged template whose tag was a string**. The file still parsed
+    — `node --check` exits 0 on it, so a parse gate would not have caught it either — and
+    it threw `TypeError` on load. Nineteen gates were green and `quality` passed in 6m10s.
+    It reached `main` and was found by the post-merge run that gate 9 owes.
+    **The check is LOADING, not parsing**: reaching the assertion at all is most of it.
+    It then refuses any backtick inside a probe string, compiles each probe with
+    `new Function`, and requires every page in `PAGES` to carry a marker set and a budget.
+    No network and no Chrome, so it costs milliseconds. It fails on zero probe strings
+    checked and on an empty `PAGES`. Negative-tested on the shipped-broken file itself,
+    which exits non-zero, and on a backtick planted in an intact probe, with the shipping
+    file watched clean immediately before and after (R-AB).
+
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number — Q-W14-03 was found "at gate 9" — and those bodies are immutable under
 R-S, so renumbering would falsify them. A gate added later takes the next number
@@ -641,6 +659,9 @@ browser gates, because gate 13 rebuilds `dist/` armed.
 **AMENDED (W24-01):** gate 19 runs before gate 15, with the other static checks.
 **AMENDED (W24-09):** gate 20 runs after gate 14 and before gate 18, with the other
 browser gates, and like them before gate 13, which rebuilds `dist/` armed.
+**AMENDED (W24-09a):** gate 21 runs before gate 1. It needs no build and no browser, and
+it guards the script gate 9 runs after the deploy, so it should fail before anything
+expensive does.
 
 ---
 

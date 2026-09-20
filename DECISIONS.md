@@ -9969,3 +9969,66 @@ unfinished until every reader of the old name is renamed with it.
 recorded here so they are not lost: `/servicii/case-la-cheie/` reads 6,475 against a 6,436
 budget in RO and 6,582 against 6,543 in RU. The cause is W24-05 turning the before/after
 slider on; the page grew and its budget was not re-measured with it. **Q-W24-05** carries it.
+
+## W24-09a · Correction to W24-09: `verify-live.js` shipped broken, and the gate that would have caught it, 2026-09-20
+
+`scripts/verify-live.js` was merged in #86 in a state where **loading it threw**. This
+block records the defect, why every gate was green, and what now holds it.
+
+### What was wrong
+
+W24-09 corrected the bento markers and wrote a comment beside them explaining the
+correction. The comment lives **inside `PROBE`, which is a template literal**, and it put
+backticks around the class names it was discussing. Two of those backticks closed and
+reopened the template, which turned the surrounding expression into a **tagged template
+whose tag was a string**. Running the script produced:
+
+    TypeError: "(async () => {
+
+### Why nothing caught it
+
+**The file parses.** `node --check` exits 0 on the shipped version, so a parse gate would
+not have caught it either; it is a load-time error, not a syntax error.
+
+**And `quality` never loads this script.** It is the one gate whose subject is the
+DEPLOYED site, so by construction it cannot run before a deploy, and nothing else in CI
+imports it. Nineteen gates were green and `quality` passed in 6m10s on a file that could
+not be executed. **A script CI never loads is a script whose load-time errors are found
+after the merge**, which is exactly when this one was found: by the post-merge run that
+gate 9 itself owes.
+
+### The process failure, named
+
+The edit to `verify-live.js` was made **after** the only run of `verify-live.js` in that
+card's session, and the script was never executed again before it was committed. The gate
+table in #86 was accurate and is not the problem: `verify-live` was not in it, because it
+cannot be. **A script that is edited is a script that must be re-run**, and nothing in the
+card's own process required that. Gate 21 now does, on every pull request.
+
+### What holds it now
+
+**Gate 21**, `node scripts/verify-live.js --self-check`, run by `quality` before gate 1.
+It needs no network and no browser. **The assertion is LOADING, not parsing**: reaching
+the check at all is most of it. It then refuses any backtick inside a probe string,
+compiles each probe with `new Function`, and requires every page in `PAGES` to carry a
+marker set and a budget.
+
+Negative-tested on **the shipped-broken file itself**, which exits non-zero, and on a
+backtick planted in an otherwise intact probe, with the shipping file watched clean
+immediately before and immediately after both arms (R-AB).
+
+A parse gate was written first and **thrown away**, because the defect disproved its
+premise: it would have passed this file. That is recorded because the wrong gate passing
+is worse than no gate.
+
+### The live run gate 9 owes, now that it can run
+
+Against `dac281d`, the merge of #86, with the edge confirmed serving that sha:
+
+**0 unverified**, down from the 6 the pre-W24-09 run returned. The bento marker correction
+is confirmed on all six rows, and all thirty re-measured catalogue budgets verified live
+against the figures W24-09 recorded, to the pixel.
+
+**2 failed**, unchanged and already known: `/servicii/case-la-cheie/` at 6,475 against
+6,436 in RO and 6,582 against 6,543 in RU. That is **Q-W24-05**, opened by W24-09, and it
+is not this correction's to close.

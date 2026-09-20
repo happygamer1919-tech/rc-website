@@ -34,6 +34,14 @@ jobs:
       - name: No conflict markers or duplicate rows (R-Z)
         run: node scripts/check-merge-artifacts.js
 
+      # W24-09a. Gate 21. `verify-live.js` measures the DEPLOYED site, so it cannot
+      # run here and nothing in CI ever loaded it. W24-09 shipped it with backticks
+      # inside its probe, which is a template literal: the file still PARSED, and it
+      # threw a TypeError the moment it was loaded. Nineteen gates were green.
+      # This loads the module and compiles its probe strings. No network, no Chrome.
+      - name: verify-live loads and its probes compile (W24-09a)
+        run: node scripts/verify-live.js --self-check
+
       - name: Build both locales
         run: node build.js
 

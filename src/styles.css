@@ -383,6 +383,100 @@ p { margin: 0; }
   .prod__body { padding: 16px; }
 }
 
+/* --- W24-07, the bento hub (W24-R5, W24-R8) --------------------------------- */
+/* Geometry measured off the reference and copied; its colour and its type are
+   not. Three equal columns from 1024px up, rows of a fixed 244px, a 16px gap
+   both ways, a 24px tile radius, the label bottom left at 24px of padding. One
+   column below 1024px with the tall tile first, which is DOM order, so no
+   reordering is needed and the tab order matches the reading order.
+
+   No new colour value: the tile is --bg-dark, the label --bg-light, and the
+   gradient is black at two alphas over the tile's own dark fill, which is the
+   same kind of value as the modal scrim and the dark band's hairlines. */
+.bento__h { margin: 0; }
+.bento__h-muted { color: var(--ink-muted); }
+.bento__h-muted::before { content: " "; }
+.bento__grid {
+  display: grid; gap: 16px; margin-top: 48px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 244px;
+}
+.bento__tile {
+  position: relative; overflow: hidden; border-radius: 24px;
+  display: block; color: var(--bg-light);
+  background: var(--bg-dark);
+}
+/* The tall tile takes the left column and both rows; the wide one takes the top
+   right; the last two sit under it. */
+.bento__tile--1 { grid-column: 1; grid-row: 1 / span 2; }
+.bento__tile--2 { grid-column: 2 / span 2; grid-row: 1; }
+.bento__tile--3 { grid-column: 2; grid-row: 2; }
+.bento__tile--4 { grid-column: 3; grid-row: 2; }
+.bento__ph {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  aspect-ratio: auto; border: 0; border-radius: 0;
+}
+/* W24-R5. A bottom gradient INSIDE the tile, so a white label stays legible over
+   a photograph once one lands. It is 40% of one tile and paints over an image,
+   never over a section: the section-level overlay ban is untouched. */
+.bento__grad {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 40%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
+  pointer-events: none;
+}
+.bento__label {
+  position: absolute; left: 24px; right: 24px; bottom: 24px;
+  font-size: 24px; font-weight: 700; line-height: 1.2; color: var(--bg-light);
+}
+.bento__tile:hover .bento__label { color: var(--bg-light); }
+.bento__tile:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+/* The inert tile is a div, never a disabled link: a disabled <a> with an href is
+   still a link to a keyboard and to a screen reader. It takes no hover and no
+   pointer, which is the dispatch's own wording. */
+.bento__tile--inert { cursor: default; }
+
+/* --- W24-07, the Novatik model cards ---------------------------------------- */
+.nvk-grid {
+  display: grid; gap: var(--gap); margin-top: 40px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+}
+.nvk {
+  display: flex; flex-direction: column;
+  background: var(--bg-light); border: 1px solid var(--line); border-radius: 20px;
+  overflow: hidden;
+}
+.nvk__media { padding: 12px 12px 0; }
+.nvk__ph { border-radius: 12px; }
+.nvk__body { display: flex; flex-direction: column; flex: 1; padding: 16px 20px 20px; }
+.nvk__name { margin: 0; font-size: 19px; font-weight: 700; line-height: 1.3; }
+.nvk__desc { margin: 8px 0 0; font-size: 15px; line-height: 1.45; color: var(--ink-muted); }
+.nvk__facts { margin: 16px 0 0; display: flex; flex-direction: column; gap: 8px; }
+.nvk__facts > div { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; }
+.nvk__facts dt { color: var(--ink-muted); }
+.nvk__facts dd { margin: 0; font-weight: 700; }
+.nvk__ask { margin: auto 0 0; padding-top: 16px; font-size: 16px; font-weight: 700; color: var(--ink-muted); }
+
+/* --- W24-07, the question list ---------------------------------------------- */
+.faq { margin: 40px 0 0; }
+.faq > div { padding: 20px 0; border-top: 1px solid var(--line); }
+.faq > div:last-child { border-bottom: 1px solid var(--line); }
+.faq dt { font-size: 19px; font-weight: 700; line-height: 1.35; }
+.faq dd { margin: 8px 0 0; color: var(--ink-muted); line-height: 1.6; }
+
+@media (max-width: 1024px) {
+  .nvk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* One column, tall tile first, which is already the DOM order. */
+  .bento__grid { grid-template-columns: minmax(0, 1fr); grid-auto-rows: auto; }
+  .bento__tile--1, .bento__tile--2, .bento__tile--3, .bento__tile--4 {
+    grid-column: auto; grid-row: auto; min-height: 280px;
+  }
+}
+@media (max-width: 511px) {
+  .nvk-grid { grid-template-columns: minmax(0, 1fr); }
+  .bento__label { left: 20px; right: 20px; bottom: 20px; font-size: 21px; }
+}
+
 /* --- header ---------------------------------------------------------------- */
 
 /* Two layers. The BAND is a full-width solid #FFFFFF strip, fixed, opaque at

@@ -85,6 +85,18 @@ const MARKERS = {
     profileAnchors: 0,
     areaServed: 20,
     roofOffers: 4,
+    // W24-07. The bento hub: four tiles, exactly three of them links.
+    bentoTiles: 4,
+    bentoLinks: 3,
+  },
+  /* W24-07. The rocă vulcanică page: four model cards, and no price anywhere.
+     `bentoTiles: 0` is asserted because this page is a bento DESTINATION, not a
+     hub: a build that put the hub here instead would fire. */
+  novatik: {
+    promoBar: 1,
+    profileAnchors: 0,
+    areaServed: 20,
+    bentoTiles: 0,
   },
   /* W24-06. The shared "in construcție" page: header, footer, one line, a link
      back. No form, no coverage list, no offers. */
@@ -172,8 +184,11 @@ const PAGES = [
   { path: '/ru/servicii/fatade/',          type: 'service', label: 'svc RU fatade',  budget: 6000 },
   /* W24-06. The four roofing offers moved onto this page, so it leaves the shared
      6,000px service budget and takes its own, measured plus 60, under W24-R4. */
-  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 6768 },
-  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 6906 },
+  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 7744 },
+  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 7882 },
+  /* W24-07. The rocă vulcanică mirror page. */
+  { path: '/servicii/roca-vulcanica/',     type: 'novatik', label: 'novatik RO',  budget: 4348 },
+  { path: '/ru/servicii/roca-vulcanica/',  type: 'novatik', label: 'novatik RU',  budget: 4446 },
   { path: '/ru/servicii/finisaje/',        type: 'service', label: 'svc RU finis',   budget: 6000 },
   { path: '/servicii/tigla-metalica/',     type: 'tigla',   label: 'tigla RO',       budget: 4000 },
   { path: '/ru/servicii/tigla-metalica/',  type: 'tigla',   label: 'tigla RU',       budget: 4033 },
@@ -273,6 +288,8 @@ const PROBE = `(async () => {
     productCards: q('[data-product-card]'),
     baItems: q('[data-ba-item]'),
     roofOffers: q('#acoperisuri .offer'),
+    bentoTiles: q('.bento__tile'),
+    bentoLinks: q('a.bento__tile'),
     catTiles: q('.cat-tile'),
     tileDiagrams: q('[data-tile-diagram]'),
   };

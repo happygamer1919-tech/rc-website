@@ -250,6 +250,19 @@ arms, each firing on its own message between two controls watched clean in the s
 **No cart, no SKU, no `schema.org` `Offer`.**
 *Source: DECISIONS.md, W24-R ruling R3, and W24-04.*
 
+**AMENDED (W24-R7, wave 24): the two phrases are permitted by their SHAPE, not by the
+page.** The owner's ruling: "Imperlux prices are not published. Slots render 'Preț la
+cerere'." The mirrored pages W24-07 and W24-08 create are product pages, not catalogue
+pages, so the phrase needed a permitted place off the catalogue. What travels with it is
+the shape: **the whole text of a `.prod__ask` element carrying its own product in
+`data-product`**, which is the same shape W22-01 gave the quote button and W24-R3 gave the
+price. A loose phrase on a mirrored page is refused exactly as it is on a catalogue page,
+and a page carrying neither shape still has no permitted place at all. Negative-tested on
+four arms: the phrase as plain prose on a mirrored page, the phrase on a page that is not
+mirrored, a `.prod__ask` with no `data-product`, and the Russian phrase on a Romanian
+page. Each fired on its own message between two clean controls.
+*Source: DECISIONS.md, W24-R ruling R7, and W24-07.*
+
 When there is no source for a value, **mark it or omit it — never fill it**:
 
 - `TODO: <what is missing>` in a locale file or in `content/projects.json`.

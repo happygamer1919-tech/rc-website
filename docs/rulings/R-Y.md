@@ -476,3 +476,28 @@ carries one.
 
 Measured the section 2 way: 1440px, every `[data-reveal]` applied and settled, Inter loaded
 and asserted loaded. Local, not live: R-P's confirmation is owed after the deploy.
+
+### Amended 2026-09-20 by W24-07 · the acoperisuri bento, and a new mirror page
+
+Added under R-T; nothing above this block was edited.
+
+The bento hub became the first section after the header on the acoperisuri page, and
+`/servicii/roca-vulcanica/` is new: the rocă vulcanică page, mirroring the `imperlux.md`
+hub section by section under W24-R6 and W24-R7.
+
+| Page | RO measured | RO budget | RU measured | RU budget |
+|---|---|---|---|---|
+| `/servicii/acoperisuri/` | 7,684 | **7,744** | 7,822 | **7,882** |
+| `/servicii/roca-vulcanica/` | 4,288 | **4,348** | 4,386 | **4,446** |
+
+The acoperisuri figure is the third this wave: 5,313 before wave 24, 6,708 when W24-06
+moved the roofing offers onto it, and 7,684 now that the bento sits above them. Only the
+last is live; the other two are superseded within the wave and are recorded here so the
+sequence is readable rather than inferred.
+
+**The bento's own height is fixed by its geometry**, two rows of 244px and a 16px gap, so
+it does not grow when the photographs land: a placeholder and a photograph occupy the same
+tile. The mirror page's four model cards are the same.
+
+`scripts/verify-live.js` asserts four bento tiles of which exactly three are links, which
+is what holds the inert tile inert: a build that made the fourth a link would fire.

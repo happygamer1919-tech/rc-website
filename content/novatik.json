@@ -1,0 +1,120 @@
+{
+  "_note": "W24-07. The rocă vulcanică page, mirroring the imperlux.md hub section by section under rulings W24-R6 and W24-R7. R6: structure and text are copied and 'Imperlux' becomes 'Rapid Construct', but any sentence asserting a COMPANY fact (own workshop, team, years, warranty, discount figure, counts, coverage, certificates) is NOT rendered; it is written to docs/W24-CLAIMS-HELD.md with its page and position and the layout slot is left with neutral existing copy or empty. R7: no imperlux price is published; a price slot renders the W22-01 phrase. Everything in this file is a PRODUCT fact taken from the source: a model name, a profile description, a thickness, a weight, a colour count. No warranty, no price, no delivery time, no financing, no project count, no certificate, no locality. Those are all in the claims-held document. Shape: models[] of { id, name, desc {ro,ru}, thickness, weight, colours }, compare.rows[] of { label {ro,ru}, key }, faq[] of { q {ro,ru}, a {ro,ru} }.",
+  "source": {
+    "host": "imperlux.md",
+    "page": "/acoperisuri/produse/tigla-roca-vulcanica/",
+    "captured": "2026-09-19",
+    "ruling": "W24-R6, W24-R7"
+  },
+  "models": [
+    {
+      "id": "novatik-classic",
+      "name": "Novatik Classic",
+      "desc": {
+        "ro": "Versatilitate și eleganță, design simetric.",
+        "ru": "Универсальность и элегантность, симметричный дизайн."
+      },
+      "thickness": "2,1 mm",
+      "weight": "6 kg/m²",
+      "colours": "3"
+    },
+    {
+      "id": "novatik-slate",
+      "name": "Novatik Slate",
+      "desc": {
+        "ro": "Design minimalist, atipic și modern.",
+        "ru": "Минималистичный, нетипичный и современный дизайн."
+      },
+      "thickness": "2,1 mm",
+      "weight": "6,2 kg/m²",
+      "colours": "3"
+    },
+    {
+      "id": "novatik-roman",
+      "name": "Novatik Roman",
+      "desc": {
+        "ro": "Farmec mediteranean, performanță imbatabilă.",
+        "ru": "Средиземноморское очарование, непревзойдённые характеристики."
+      },
+      "thickness": "2,1 mm",
+      "weight": "6,0 kg/m²",
+      "colours": "5"
+    },
+    {
+      "id": "novatik-wood",
+      "name": "Novatik Wood",
+      "desc": {
+        "ro": "Aspectul natural al șindrilei, în metal durabil.",
+        "ru": "Натуральный вид гонта, в прочном металле."
+      },
+      "thickness": "0,50 mm",
+      "weight": "2,28 kg/modul",
+      "colours": "4"
+    }
+  ],
+  "compare": [
+    {
+      "key": "thickness",
+      "label": {
+        "ro": "Grosime",
+        "ru": "Толщина"
+      }
+    },
+    {
+      "key": "weight",
+      "label": {
+        "ro": "Greutate",
+        "ru": "Вес"
+      }
+    },
+    {
+      "key": "colours",
+      "label": {
+        "ro": "Culori",
+        "ru": "Цвета"
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "ro": "E silențioasă la ploaie?",
+        "ru": "Тихая ли она во время дождя?"
+      },
+      "a": {
+        "ro": "Da, semnificativ mai silențioasă decât țigla metalică clasică. Granulele de rocă vulcanică absorb sunetul picăturilor de ploaie și al grindinei.",
+        "ru": "Да, значительно тише классической металлочерепицы. Гранулы вулканического камня поглощают звук капель дождя и града."
+      }
+    },
+    {
+      "q": {
+        "ro": "Ce culori sunt disponibile?",
+        "ru": "Какие цвета доступны?"
+      },
+      "a": {
+        "ro": "Brown Earth (maro pământ), Dark Moon (gri închis) și Graphite Grey (gri grafit).",
+        "ru": "Brown Earth (землисто-коричневый), Dark Moon (тёмно-серый) и Graphite Grey (графитово-серый)."
+      }
+    },
+    {
+      "q": {
+        "ro": "Care e diferența între Classic și Slate?",
+        "ru": "В чём разница между Classic и Slate?"
+      },
+      "a": {
+        "ro": "Classic are profil simetric tradițional cu linii curbe. Slate are design minimalist, plat, și arată atipic pentru o țiglă metalică. Materialul este identic.",
+        "ru": "У Classic традиционный симметричный профиль с изогнутыми линиями. У Slate минималистичный плоский дизайн, нетипичный для металлочерепицы. Материал одинаковый."
+      }
+    },
+    {
+      "q": {
+        "ro": "De ce pantă minimă 16 grade?",
+        "ru": "Почему минимальный уклон 16 градусов?"
+      },
+      "a": {
+        "ro": "Designul plat al modelului Slate necesită o pantă mai mare, 16 grade față de 12 grade la Classic, pentru drenajul optim al apei.",
+        "ru": "Плоский дизайн модели Slate требует большего уклона, 16 градусов против 12 у Classic, для оптимального отвода воды."
+      }
+    }
+  ]
+}

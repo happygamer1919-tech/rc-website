@@ -352,6 +352,11 @@
       "title": "Garduri",
       "lede": "Venim, măsurăm și îți facem oferta pentru gard.",
       "teaser": "Garduri din lamele metalice."
+    },
+    "novatik": {
+      "title": "Rocă vulcanică Novatik",
+      "lede": "Țiglă Novatik cu granule de rocă vulcanică: aspect natural, silențioasă.",
+      "teaser": "Patru modele Novatik cu granule de rocă vulcanică."
     }
   },
   "catalogProducts": {
@@ -1123,5 +1128,23 @@
     "title": "În construcție",
     "line": "Pagina se pregătește. Revino în curând.",
     "back": "Înapoi la pagina principală"
+  },
+  "novatik": {
+    "modelsH2": "Modele",
+    "compareH2": "Compară modelele",
+    "faqH2": "Întrebări despre țigla cu rocă vulcanică",
+    "specCol": "Specificație",
+    "priceRow": "Preț",
+    "thickness": "Grosime",
+    "weight": "Greutate",
+    "colours": "Culori"
+  },
+  "bento": {
+    "roofH": "Acoperișuri",
+    "roofHMuted": "metalice",
+    "roofTigla": "Țiglă metalică",
+    "roofNovatik": "Rocă vulcanică Novatik",
+    "roofCalc": "Calculează prețul acoperișului",
+    "roofOffers": "Reduceri"
   }
 }

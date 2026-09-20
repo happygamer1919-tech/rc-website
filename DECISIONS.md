@@ -10168,3 +10168,83 @@ It also carries the harder half: **when the run fails, find the cause by measure
 proposing a fix.** W24-09 read a live failure as a budget set too early and recommended
 moving the budget; the cause was a collision on twenty pages, and the recommendation would
 have written the defect into a ruling.
+
+## W24-10 ratification · wave 24 closed, and its three deviations accepted, 2026-09-20
+
+Recorded at the owner's instruction, from the wave 25 dispatch, before any wave 25 work.
+
+> RATIFIED: W24-10 and its deviations (two hub bentos, RU page 9,182px accepted, single-source
+> reveal count).
+
+**Wave 24 is closed.** All five of its questions are answered, eleven cards shipped
+(W24-01 to W24-10 plus the corrections W24-07a, W24-09a and W24-09b), and three gates
+exist that did not before it: 20, 21 and 22.
+
+The three ratified deviations, each recorded on its own card above and not restated here
+beyond naming it:
+
+1. **Two hub bentos, not the three the dispatch counted.** `BENTOS` in `build.js` has
+   exactly two entries. Gate 20 reports four hub PAGES because each builds in both
+   locales, which is the likely origin of the three.
+2. **The RU catalogue page at 9,182px is accepted**, over the 9,000 the dispatch named for
+   the Romanian path. No locale was shaved to a number nobody set.
+3. **The reveal count is single-source.** `PROD_STEP` is stated once and read from the
+   markup by main.js, by gate 20's fold arm and by the button's accessible name, which the
+   build refuses to render without its `{n}` placeholder.
+
+**Section 12.0 had its first application on this ratification's own precondition**:
+`#89` merged as `9de1fb4`, the deploy succeeded, the edge was polled until it served that
+sha, and `node scripts/verify-live.js https://rapidconstruct.md` **exited 0, PASS, 0
+unverified and 0 failed across 51 pages**. Run unprompted, process and exit code named.
+
+---
+
+## W25-R · The owner's wave 25 rulings, recorded verbatim, 2026-09-20
+
+Recorded at the owner's instruction, from the wave 25 dispatch, before any wave 25 card
+was worked. `origin/main` is `9de1fb4`, with #89 merged.
+
+The wave's subject: **product pictures.** Every image on the site is a placeholder today.
+
+### The four rulings, as given
+
+> **R1.** R-W gains an approved origin: MANUFACTURER OFFICIAL SITE. For a product in
+> content/catalog-products.json, the packshot may be downloaded from the manufacturer's own
+> domain (or its official national distributor domain named on the manufacturer's site).
+> Provenance row: source page URL, image URL, manufacturer, capture date, licence field
+> exactly "manufacturer packshot, reseller display, licence not verified, owner accepted
+> 2026-09-20". Caparol rows cite the W23-04 permission instead.
+>
+> **R2.** Forbidden hosts UNCHANGED: fatade3d.md, imperlux.md, dasterum.md. Never an origin:
+> retailers, marketplaces, other resellers, search result thumbnails, stock sites other than
+> those already approved, any image carrying a watermark, a retailer logo, a person's face,
+> or another seller's branding.
+>
+> **R3.** R-W gains an approved origin: OWNER AI GENERATED. Provenance: "AI generated for
+> Rapid Construct, tool named by owner, date", no URL. Allowed ONLY on product, hub, hero and
+> cross-sell slots. NEVER on project, portfolio or before/after slots: "a render is never a
+> proof image" stands. Alt text describes the material or product, never claims a finished
+> Rapid Construct job.
+>
+> **R4.** A slot with no compliant image stays a placeholder. Never fill a slot with a near
+> match, a different variant, or a different brand.
+
+### What they change, in one line each
+
+**R1** is the first origin that permits DOWNLOADING from a third party since R-W was
+written. Its licence string is fixed text and carries the owner's acceptance of
+reseller-display risk in the row itself, on every affected file. It is not softened
+anywhere and it is not extended to any host R2 forbids.
+
+**R2** changes nothing and is restated so the widened permission cannot be read as
+widening the host list. The three competitor hosts stay forbidden, and the enumerated
+never-origins (retailers, marketplaces, watermarks, faces, other sellers' branding) are
+new and are enforced, not merely recorded.
+
+**R3** permits generated images for the first time, and confines them. **The project,
+portfolio and before/after slots are excluded by name**, because those slots are evidence:
+a before/after pair is a claim that Rapid Construct did that work. "A render is never a
+proof image" is the existing rule and it stands.
+
+**R4** is the one that decides how the wave reads. **A placeholder is an acceptable
+outcome and a wrong photograph is not.** Every slot left empty is reported with its reason.

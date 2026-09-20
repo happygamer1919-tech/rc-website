@@ -201,6 +201,38 @@ p { margin: 0; }
   padding: 0 8px; text-align: center;
 }
 
+/* --- W25-01, a filled slot ------------------------------------------------- */
+/* A <picture> that takes the SAME box the placeholder had, from the same
+   --ph-ratio, so filling a slot moves no layout and no height budget. It carries
+   .ph as well as .ph--filled on purpose: every rule above already sizes and
+   clips it, and only the fill behaviour is new.
+
+   CONTAIN, NOT COVER. A packshot is the product and nothing else: a tall bottle
+   of primer and a square tile both have to sit inside the square untouched. cover
+   would crop the bottle's cap off, and a cropped packshot is a picture of a
+   different product. The white behind it is the manufacturer's own background
+   continuing to the edge of the frame, not a new colour value: it is --bg-light.
+
+   The dark variant keeps its dark ground, because a hub tile is a photograph on
+   #141414 with a white label over it and a white letterbox would break the label
+   gradient W24-R5 permits. */
+.ph--filled { display: block; padding: 0; }
+.ph--filled img {
+  display: block; width: 100%; height: 100%;
+  object-fit: contain; object-position: center;
+}
+.ph--light.ph--filled { background: var(--bg-light); }
+.ph--dark.ph--filled { background: var(--bg-dark); }
+
+/* A hub tile, a category tile and the copertine hero are photographs with a label
+   painted over them, and those labels are white. On those, and only on those, the
+   image FILLS the frame: they are scene photographs, not packshots, and a
+   letterboxed scene behind a bottom gradient reads as a mistake. The gradient
+   W24-R5 permits stays exactly as it is and is what keeps the label legible. */
+.hub__ph.ph--filled img,
+.cat-tile__ph.ph--filled img,
+.cop-hero__ph.ph--filled img { object-fit: cover; }
+
 .card {
   background: var(--bg-light);
   border: 1px solid var(--line);

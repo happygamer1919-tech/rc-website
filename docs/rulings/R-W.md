@@ -100,3 +100,47 @@ photograph of real work, contradicts it. Such a file is held with its reason
 recorded rather than published under this row. Both cases occurred in the first
 batch this amendment covered; the evidence is in DECISIONS.md, W23-01.
 
+
+### Amended 2026-09-20 by the wave 25 dispatch · two new approved origins, and the never-origins made enforceable
+
+Added under R-T; nothing above this block was edited. The rulings are recorded verbatim in
+`DECISIONS.md` as block **W25-R**; this block records what changes for `public/`.
+
+**New approved origin 1: MANUFACTURER OFFICIAL SITE.** For a product in
+`content/catalog-products.json`, a packshot may be downloaded from the manufacturer's own
+domain, or from its official national distributor domain **named on the manufacturer's own
+site**. The row carries the source page URL, the image URL, the manufacturer, the capture
+date, and the licence field exactly:
+
+    manufacturer packshot, reseller display, licence not verified, owner accepted 2026-09-20
+
+**That string is fixed text and is not paraphrased on any row.** It states plainly that no
+licence was verified and that the owner accepted the reseller-display risk on a named date.
+A row that softens it is a row that misrepresents what was checked. **Caparol rows cite the
+W23-04 permission instead**, which is a real permission with conditions and a licence URL.
+
+**New approved origin 2: OWNER AI GENERATED.** Provenance
+`AI generated for Rapid Construct, tool named by owner, date`, with no URL, because there
+is no source page. **Confined by slot kind**: permitted on product, hub, hero and
+cross-sell slots, and **forbidden on project, portfolio and before/after slots**. Those
+three are evidence slots: a before/after pair asserts that Rapid Construct did that work,
+and a generated image there is a false claim rather than a decoration. *A render is never
+a proof image* is the existing rule and this amendment does not touch it. Alt text on a
+generated image describes the material or the product and never states that a pictured job
+is Rapid Construct's.
+
+**The forbidden hosts are UNCHANGED**: `fatade3d.md`, `imperlux.md`, `dasterum.md`,
+subdomains included. Restated here on purpose, so a widened permission is not read as a
+widened host list.
+
+**The never-origins are now a list, and it is enforced rather than recorded.** No image may
+come from a retailer, a marketplace, another reseller, a search result thumbnail, or a
+stock site other than those already approved; and no image may carry a watermark, a
+retailer logo, a person's face, or another seller's branding. The first five are hostnames
+and are machine-checkable. **The last four are properties of the picture, not of the URL,
+and no gate can see them**: they are checked by a person looking at the file before it is
+committed, and that is stated here rather than implied, because an unenforceable rule
+presented as enforced is worse than one presented plainly.
+
+**A slot with no compliant image stays a placeholder** (W25-R4). Never a near match, never
+a different variant, never a different brand. A placeholder is an acceptable outcome.

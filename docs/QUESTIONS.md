@@ -2303,3 +2303,49 @@ that figure was taken before the slider settled at its final height.
 **Recommended: (a).** The budget is wrong, not the page: 39px on a 6,475px page is the
 slider being measured before it settled, and a budget that was never a measurement of the
 shipped page is not a budget worth defending.
+
+## Q-W25-01 · WebP cannot be encoded on this machine, and every route to it is a new dependency · OPEN · opened 2026-09-20 (W25-01)
+
+**Shipped default: JPEG only, with the markup already written to carry WebP the day one
+exists. No dependency was added, because adding one needs your word.**
+
+The wave 25 dispatch asks for "WebP plus JPEG fallback" on every filled slot. The JPEG half
+ships. The WebP half does not, and the reason is not a preference.
+
+**Every built-in route was tried and each is recorded rather than summarised:**
+
+| Route | Result |
+|---|---|
+| `sips -s format webp` | **exit 13**, no file written |
+| macOS ImageIO writable types | `public.jpeg`, `public.png`, `public.jpeg-2000`. **No WebP.** Read support exists; write support does not |
+| `cwebp` | not installed |
+| ImageMagick (`magick`, `convert`) | not installed |
+| `sharp` or any npm package | **this repo has no `package.json`, no lockfile and no `node_modules`**, which is a documented property of the build |
+
+macOS 26.6.2. So WebP needs something new on the machine or in the repo, and
+`docs/CLAUDE.md` is explicit: **no new third-party dependency or vendor without asking
+first.** That is why this is a question and not a decision.
+
+**What the JPEG-only cost actually is.** A 800px packshot at quality 88 lands around
+200KB. WebP at visually equal quality is typically 25 to 35 percent smaller. On a
+catalogue page showing nine cards on a phone that is roughly 500KB against 700KB. It is a
+real saving and it is not a correctness problem: every browser renders the JPEG.
+
+**Nothing has to be rebuilt when you answer.** `build.js` already emits
+`<source type="image/webp">` the moment a `.webp` sits beside the `.jpg`, and leaves it
+out when one does not. No template, no call site and no gate changes.
+
+  (a) **JPEG only** (shipped). Nothing installed, nothing to maintain, pages a third
+      heavier than they could be.
+  (b) **Install `cwebp`** (the Google `webp` package, via Homebrew). One binary, one line
+      in `scripts/process-packshot.js`. It is a workstation tool, not a repo dependency:
+      CI never converts, because converted files are committed. **This is the smallest
+      change that gets the saving.**
+  (c) **Add `sharp` and a `package.json`.** Rejected unless you want it for other reasons:
+      it would end the repo's zero-dependency property, which several gates and the CI
+      workflow are written around, to solve one conversion step.
+  (d) **Ask the manufacturers for WebP.** Not realistic; packshots come as JPEG or PNG.
+
+**Recommended: (b).** It is one binary on one machine, it changes no property of the repo,
+and it is reversible by deleting a line. If you would rather not install anything, (a) is
+perfectly serviceable and the site is correct either way.

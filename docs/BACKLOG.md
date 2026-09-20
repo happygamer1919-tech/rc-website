@@ -8,6 +8,38 @@ Status values: `todo` · `in progress` · `blocked` · `shipped`.
 Waves 1 to 5 predate this file; their tickets are reconstructed from the git
 history and are all `shipped`. `RELEASE-NOTES.md` carries what each one changed.
 
+## Wave 25
+
+Dispatch of 2026-09-20. **Product pictures.** #89 was merged by the owner and verified
+before any card was worked: `origin/main` is `9de1fb4`, and section 12.0's first
+application returned `node scripts/verify-live.js` **exit 0, PASS, 0 unverified and 0
+failed across 51 pages** against the deployed sha. Every card opens a pull request and
+stops (R-V as amended at wave 19), branches are stacked, and the owner merges them in
+order. **After each merge the terminal runs verify-live on the deployed sha unprompted and
+names the process and its exit code** (section 12.0).
+
+The four owner rulings W25-R1 to W25-R4 ride the first pull request, recorded verbatim in
+`DECISIONS.md` as block **W25-R**, with the `public/` consequences amended into
+`docs/rulings/R-W.md`.
+
+**R-W gains two approved origins this wave**: the manufacturer's official site, and owner
+AI generated. The three forbidden hosts are unchanged, and a generated image is refused on
+project, portfolio and before/after slots, which are evidence slots. **W25-R4 decides how
+the wave reads: a slot with no compliant image stays a placeholder.** Every empty slot is
+reported with its reason; a near match is never installed.
+
+| Ticket | Card | Branch | Status |
+|---|---|---|---|
+| W25-01 | The image pipeline: a filled slot, its provenance, and the gate that holds them | `w25/w25-01-image-pipeline` | PR open, awaiting owner: one component renders a placeholder box or a real `<picture>`, decided by the ledger and by nothing at the call site; ledger gains `state`, `provenance` and `alt`, all 261 slots ship `placeholder`; gate 19 extended to the filled half with **8 arms**, including the dispatch's two by name (a fatade3d URL, a missing row) plus an unapproved licence, a render on an evidence slot and a state disagreement, against **two** controls; `scripts/process-packshot.js` refuses a non-image, an undersized source and surviving metadata, all three watched firing; gate 20 gains the W24-R5 gradient assertion on filled tiles; **proof run filled two real slots end to end**, found a doubled `/img/img/` path and fixed it, measured the hub label at **6.77:1** over a photograph, then reverted; **WebP is not shipped and Q-W25-01 says why** |
+| W25-02 | Packshots: termoizolație, tencuieli, vopsele, alte materiale | `w25/w25-02-packshots-termo` | todo, 46 products |
+| W25-03 | Packshots: plăci ceramice | `w25/w25-03-packshots-placi` | todo, 88 products, single-tile face not a room scene |
+| W25-04 | Packshots: sisteme de iluminare | `w25/w25-04-packshots-iluminat` | todo, 25 products |
+| W25-05 | The AI prompt pack, written outside the repo | `w25/w25-05-ai-prompts` | todo, no repo images; one entry per slot with no manufacturer |
+| W25-06 | AI intake | `w25/w25-06-ai-intake` | **blocked on the owner**: waits for files in `/Users/ivan/RC-pics-ai/` |
+
+**A brand-hidden product is skipped by W25-02 to W25-04 and goes to W25-05.** The 64
+RedConstruct records carry `brand_hidden` and have no manufacturer to fetch from.
+
 ## Wave 24
 
 Dispatch of 2026-09-19. #71 to #77 were merged by the owner and verified before any card

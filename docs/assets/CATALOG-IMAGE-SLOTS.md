@@ -107,11 +107,11 @@ Product records today: **223** (Sisteme de termoizolație 25, Tencuieli decorati
 | 76 | `CAT-0076` | Plăci ceramice | Placă Sairo Off-White | Phomi | `catalog-placi-ceramice-f3d-4248.jpg` + `catalog-placi-ceramice-f3d-4248@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
 | 77 | `CAT-0077` | Plăci ceramice | Placă H06 | Phomi | `catalog-placi-ceramice-f3d-4260.jpg` + `catalog-placi-ceramice-f3d-4260@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
 | 78 | `CAT-0078` | Plăci ceramice | Placă Medium Grey | Phomi | `catalog-placi-ceramice-f3d-4673.jpg` + `catalog-placi-ceramice-f3d-4673@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 79 | `CAT-0079` | Plăci ceramice | PLacă Fawn Grey | Phomi | `catalog-placi-ceramice-f3d-4853.jpg` + `catalog-placi-ceramice-f3d-4853@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 80 | `CAT-0080` | Plăci ceramice | PLacă Fog | Phomi | `catalog-placi-ceramice-f3d-4864.jpg` + `catalog-placi-ceramice-f3d-4864@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 81 | `CAT-0081` | Plăci ceramice | PLacă Dark Brown | Phomi | `catalog-placi-ceramice-f3d-4875.jpg` + `catalog-placi-ceramice-f3d-4875@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 82 | `CAT-0082` | Plăci ceramice | PLacă Dark Grey | Phomi | `catalog-placi-ceramice-f3d-4886.jpg` + `catalog-placi-ceramice-f3d-4886@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 83 | `CAT-0083` | Plăci ceramice | PLacă Ink-Dyed | Phomi | `catalog-placi-ceramice-f3d-4897.jpg` + `catalog-placi-ceramice-f3d-4897@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 79 | `CAT-0079` | Plăci ceramice | Placă Fawn Grey | Phomi | `catalog-placi-ceramice-f3d-4853.jpg` + `catalog-placi-ceramice-f3d-4853@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 80 | `CAT-0080` | Plăci ceramice | Placă Fog | Phomi | `catalog-placi-ceramice-f3d-4864.jpg` + `catalog-placi-ceramice-f3d-4864@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 81 | `CAT-0081` | Plăci ceramice | Placă Dark Brown | Phomi | `catalog-placi-ceramice-f3d-4875.jpg` + `catalog-placi-ceramice-f3d-4875@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 82 | `CAT-0082` | Plăci ceramice | Placă Dark Grey | Phomi | `catalog-placi-ceramice-f3d-4886.jpg` + `catalog-placi-ceramice-f3d-4886@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 83 | `CAT-0083` | Plăci ceramice | Placă Ink-Dyed | Phomi | `catalog-placi-ceramice-f3d-4897.jpg` + `catalog-placi-ceramice-f3d-4897@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
 | 84 | `CAT-0084` | Plăci ceramice | Placă Sunis White | Phomi | `catalog-placi-ceramice-f3d-4907.jpg` + `catalog-placi-ceramice-f3d-4907@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
 | 85 | `CAT-0085` | Plăci ceramice | Placă Andes Yellow | Phomi | `catalog-placi-ceramice-f3d-4915.jpg` + `catalog-placi-ceramice-f3d-4915@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
 | 86 | `CAT-0086` | Plăci ceramice | Placă Loki Mountain Light Grey | Phomi | `catalog-placi-ceramice-f3d-4925.jpg` + `catalog-placi-ceramice-f3d-4925@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |

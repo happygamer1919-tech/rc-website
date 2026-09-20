@@ -295,6 +295,71 @@
     }, true);
   })();
 
+  /* --- W24-09, the phone reveal on a catalogue grid ------------------------ */
+  /* Below 768px a catalogue grid shows the first `data-prod-step` cards and one
+     button that reveals that many more per press. Placi ceramice is 88 cards
+     deep and ran the page past 33,000px at 390; nothing about that is navigable.
+
+     THIS CODE NEVER HIDES ANYTHING BY ITSELF. It adds `.prod--folded`, and the
+     only rule that acts on that class lives inside a max-width: 768px query in
+     styles.css. So the desktop grid cannot regress from here however wrong a
+     width test in JS might be, and with JS off nothing is folded at all: every
+     card shows, which is the no-dependency behaviour the card asks for.
+
+     The step is read off the markup (`data-prod-step`), so the number lives in
+     build.js once and the gate can assert the rendered count against the number
+     the page itself states.
+
+     matchMedia, not innerWidth: a rotation or a resized window past the
+     breakpoint re-runs `apply`, so a phone turned landscape is not left with
+     seventy-six cards folded behind a button CSS has just stopped painting.
+     The revealed count is kept across those changes, so a visitor who pressed
+     three times and rotated does not lose what they had opened. */
+  (function () {
+    var grids = document.querySelectorAll('[data-prod-grid]');
+    if (!grids.length) return;
+    var mq = window.matchMedia('(max-width: 768px)');
+
+    Array.prototype.forEach.call(grids, function (grid) {
+      var cards = grid.querySelectorAll('[data-product-card]');
+      var step = parseInt(grid.getAttribute('data-prod-step'), 10);
+      if (!step || step < 1 || cards.length <= step) return;
+      var wrap = grid.parentNode.querySelector('[data-prod-more]');
+      var button = wrap && wrap.querySelector('[data-prod-more-btn]');
+      if (!wrap || !button) return;
+      var shown = step;
+
+      function apply() {
+        /* Above the breakpoint every card is unfolded and the button is put back
+           behind `hidden`, so the accessibility tree matches what is painted:
+           CSS alone would leave a control that is invisible but still focusable. */
+        var folding = mq.matches;
+        for (var i = 0; i < cards.length; i++) {
+          var fold = folding && i >= shown;
+          cards[i].classList.toggle('prod--folded', fold);
+        }
+        wrap.hidden = !folding || shown >= cards.length;
+      }
+
+      button.addEventListener('click', function () {
+        var first = shown;
+        shown = Math.min(shown + step, cards.length);
+        apply();
+        /* Focus the first card revealed by THIS press. Without it a keyboard or
+           screen reader visitor presses the button, the button vanishes on the
+           last press, and focus falls back to the body at the top of the page. */
+        if (cards[first]) {
+          cards[first].setAttribute('tabindex', '-1');
+          cards[first].focus();
+        }
+      });
+
+      apply();
+      if (mq.addEventListener) mq.addEventListener('change', apply);
+      else if (mq.addListener) mq.addListener(apply); // Safari below 14
+    });
+  })();
+
   /* --- anchor scroll, offset for the 72px sticky header -------------------- */
   document.addEventListener('click', function (e) {
     var link = e.target.closest('a[href^="#"]');

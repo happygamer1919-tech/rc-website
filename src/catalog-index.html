@@ -131,13 +131,12 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     </nav>
     <p class="eyebrow">{{header.catalogHeading}}</p>
     <h1 class="cat-h1">{{cat.title}}</h1>
-    <div class="cta-row" style="justify-content: flex-start; margin-top: 32px;">
-      <a class="btn btn--primary" href="#oferta">{{hero.ctaPrimary}}</a>
-    </div>
   </div>
 </section>
 
-<!-- 2 · The seven category tiles -->
+<!-- 2 · The seven category tiles. W24-09 moved the hero's quote button below
+     them, for the reason it moved below the grid on a category page: the tiles
+     are what the visitor came to the catalogue for. -->
 <section class="section section--light section--divided" id="categorii">
   <div class="container">
     <div class="cat-tiles">
@@ -145,6 +144,15 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     </div>
   </div>
 </section>
+
+<!-- A div, not a section: one button, no heading. -->
+<div class="section section--light cat-offer">
+  <div class="container">
+    <div class="cta-row" style="justify-content: flex-start;">
+      <a class="btn btn--primary" href="#oferta">{{hero.ctaPrimary}}</a>
+    </div>
+  </div>
+</div>
 
 <!-- 5 · CTA, the same form as the homepage -->
 <section class="section section--light section--divided" id="oferta">

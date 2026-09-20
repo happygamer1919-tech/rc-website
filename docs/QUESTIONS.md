@@ -2063,7 +2063,7 @@ read at any height.
 
 **Recommended: (b)**, one small card: every row reachable at any window height.
 
-## Q-W24-01 · What "move the wave index line into the repo memory folder" names · OPEN · opened 2026-09-19 (W24-01)
+## Q-W24-01 · What "move the wave index line into the repo memory folder" names · ~~OPEN~~ **CLOSED 2026-09-20 by the W24 ratification: the shipped default stands. See `DECISIONS.md`, "W24 ratifications". No body below is edited (R-S)** · opened 2026-09-19 (W24-01)
 
 **Shipped default: (a). The current-wave state now lives in the session memory folder for
 this repo, and the governing documents keep only what they own.**
@@ -2168,7 +2168,7 @@ in a real browser, RO and RU, 1440 and 375, at rest and open: all eight pass.
 
 **Recommended: (a), as shipped.**
 
-## Q-W24-03 · Five product names carry a typo on the source, and a competitor's house brand is on 64 records · OPEN · opened 2026-09-19 (W24-03)
+## Q-W24-03 · Five product names carry a typo on the source, and a competitor's house brand is on 64 records · PARTS 1 AND 2 ANSWERED 2026-09-20 (W24-09): the owner took **(b)** on both. The five names are corrected in `name.ro` with `source.name` left verbatim, and the 64 RedConstruct records are kept with their brand line withheld behind `brand_hidden`. Part 3 ~~OPEN~~ stays OPEN, shipped default (a) stands · opened 2026-09-19 (W24-03)
 
 **Shipped defaults: the typos are copied verbatim, and the house brand is stored and will
 render. Both are reversible in one line.**
@@ -2228,3 +2228,78 @@ source string kept in `source.name`.
   (b) **Hold both records** and list them instead. Two fewer products.
 
 **Recommended: (a), as shipped.**
+
+## Q-W24-04 · Twelve cards on a phone cannot reach the dispatch's 9,000px target, and the gap is one number · OPEN · opened 2026-09-20 (W24-09)
+
+**Shipped default: twelve, exactly as the dispatch specifies. `/catalog/placi-ceramice/`
+measures 10,189px at 390px on load, against a stated target of under 9,000px.**
+
+The W24-09 dispatch asks for two things that cannot both be true:
+
+> every catalogue grid shows the first 12 cards, then one full-width button "Arata mai
+> multe" ... Target: /catalog/placi-ceramice/ under 9,000px at 390 on load.
+
+**The arithmetic, all of it measured rather than estimated.** Below 512px the catalogue
+grid is one column. A card's image is a placeholder at a `1 / 1` ratio, which is what
+`docs/PHOTO-SLOTS-W24.json` specifies for all 223 catalogue slots, so it is square by
+decision and will stay square when the photographs land. On a 390px viewport that makes a
+card plus its gap **515px**, and twelve of them **6,181px**.
+
+The rest of the page is **4,008px**: header 80, promo bar 36, hero 323, the prose block
+750, the moved offer button 104, the quote form 1,461, the footer 1,254. None of it is
+this card's, and none of it is unreasonable.
+
+6,181 + 4,008 = **10,189**.
+
+**What each first-screen count measures.** Every row below was built and read in a real
+browser at 390px with mobile emulation, not derived from the card height:
+
+| First-screen cards | `/catalog/placi-ceramice/` at 390 |
+|---|---|
+| 12 (shipped) | 10,189px |
+| 9 | **8,696px** |
+| 8 | **8,198px** |
+
+**It is one number.** `PROD_STEP` in `build.js` sets both the first-screen count and the
+step per press. Changing it to 9 or 8 reaches the target and needs nothing else: the CSS,
+the JS, gate 20 and the live markers all read the count off the markup rather than
+carrying their own copy.
+
+  (a) **Twelve** (shipped). The dispatch's own number, read literally. Misses the target
+      by 1,189px.
+  (b) **Nine.** Reaches the target with the least movement from what was asked.
+  (c) **Eight.** Reaches it with more headroom, and eight is two full rows at the 2-column
+      regime between 512 and 768px, where twelve is six rows.
+  (d) **Keep twelve on the first screen but reveal more per press.** Does not touch the
+      target, which is an on-load measurement.
+
+**Recommended: (b).** The target is the thing the owner can see and the twelve is an
+implementation number. But it is the owner's call, and it was not worth blocking the card
+over: the change from 47,917px to 10,189px is 98 percent of the win either way.
+
+## Q-W24-05 · The case la cheie page is over its height budget in both locales, and W24-05 is the cause · OPEN · opened 2026-09-20 (W24-09)
+
+**No default shipped. This is not W24-09's page and W24-09 did not touch it.**
+
+The live verification owed since F-22, run on `2ab3a4b` with all eight wave 24 cards
+merged, returned two hard budget failures:
+
+| Page | Measured live | Budget | Over by |
+|---|---|---|---|
+| `/servicii/case-la-cheie/` | 6,475px | 6,436 | 39px |
+| `/ru/servicii/case-la-cheie/` | 6,582px | 6,543 | 39px |
+
+Both are over by exactly 39px, which is what says it is one cause and not two.
+
+**The cause is W24-05**, which turned the before/after slider on, on this page and only
+this page. The page grew and **its budget was not re-measured with it**. W24-05's own R-Y
+amendment took the page out of the shared service-page budget and gave it one of its own;
+that figure was taken before the slider settled at its final height.
+
+  (a) **Re-measure and re-budget under W24-R4**, measured plus 60, as every other wave 24
+      page was. One R-Y amendment and two numbers in `scripts/verify-live.js`.
+  (b) **Find the 39px on the page** and keep the budget where it is.
+
+**Recommended: (a).** The budget is wrong, not the page: 39px on a 6,475px page is the
+slider being measured before it settled, and a budget that was never a measurement of the
+shipped page is not a budget worth defending.

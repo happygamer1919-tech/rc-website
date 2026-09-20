@@ -541,3 +541,88 @@ which is what keeps a hub from appearing where none belongs.
 
 This is the last amendment of wave 24. Eleven pages in this ruling now carry a budget set
 under W24-R4, and every one is measured plus 60 on the tree that shipped.
+
+### Amended 2026-09-20 by W24-09 · the phone reveal, the catalogue section order, and a brand line withheld
+
+Added under R-T; nothing above this block was edited. **The line in the W24-08 block
+calling itself "the last amendment of wave 24" is superseded by this one.**
+
+Three W24-09 changes move a catalogue page's height, and all three move it in the same
+direction on a phone and a small one on the desktop:
+
+1. **The hero's quote button and the prose block moved below the product grid**, so the
+   cards are what a visitor meets first. The button left the hero, where it carried
+   `margin-top: 32px`, and landed in a `.cat-offer` wrapper with no top padding. Net on
+   the desktop measurement: **+64px on a category page**, and nothing on a subcategory
+   page, which renders no prose block.
+2. **The RedConstruct brand line is withheld on 64 records** (Q-W24-03 part 2, the owner's
+   default). Sixty-four `.prod__brand` lines left the elemente decorative page and took
+   **281px of RO and 300px of RU** with them.
+3. **The phone reveal**, which changes no desktop measurement at all and is the reason
+   this card exists. It is recorded below in its own table, because a budget in this
+   ruling is a desktop figure and these are not budgets.
+
+#### The budgets, measured at 1440px settled, plus 60 under W24-R4
+
+| Page | RO measured | RO budget | RU measured | RU budget |
+|---|---|---|---|---|
+| `/catalog/` | 3,623 | **3,683** | 3,648 | **3,708** |
+| `/catalog/termoizolatie/` | 6,801 | **6,861** | 6,718 | **6,778** |
+| `/catalog/termoizolatie/polistiren-expandat/` | 3,547 | **3,607** | 3,464 | **3,524** |
+| `/catalog/termoizolatie/polistiren-extrudat/` | 3,024 | **3,084** | 3,068 | **3,128** |
+| `/catalog/termoizolatie/vata-minerala/` | 3,504 | **3,564** | 3,506 | **3,566** |
+| `/catalog/termoizolatie/adezivi-si-mase-de-spaclu/` | 4,021 | **4,081** | 3,944 | **4,004** |
+| `/catalog/termoizolatie/alte-produse/` | 2,997 | **3,057** | 2,956 | **3,016** |
+| `/catalog/tencuieli-decorative/` | 5,250 | **5,310** | 5,356 | **5,416** |
+| `/catalog/placi-ceramice/` | 12,669 | **12,729** | 13,552 | **13,612** |
+| `/catalog/elemente-decorative/` | 10,141 | **10,201** | 10,576 | **10,636** |
+| `/catalog/vopsele/` | 4,244 | **4,304** | 4,339 | **4,399** |
+| `/catalog/vopsele/vopsele-de-exterior/` | 3,004 | **3,064** | 3,026 | **3,086** |
+| `/catalog/vopsele/vopsele-de-interior/` | 3,026 | **3,086** | 3,072 | **3,132** |
+| `/catalog/sisteme-iluminare/` | 6,258 | **6,318** | 6,202 | **6,262** |
+| `/catalog/alte-materiale/` | 3,647 | **3,707** | 3,647 | **3,707** |
+
+Every figure above supersedes the W24-04 block's for the same page. The elemente
+decorative pair is the only one that FELL, and it fell by exactly the 64 brand lines.
+
+#### What the phone reveal did, measured at 390px with mobile emulation, on load
+
+**These are measurements, not budgets.** Section 2 defines a budget as a desktop figure
+and this ruling holds desktop figures; these are recorded here so the next card does not
+have to re-measure them to know what moved.
+
+Every figure in this table was read in a real browser on both trees: `origin/main` at
+`2ab3a4b` built into a worktree for the "before" column, and this branch for the "after",
+both at 390px with mobile emulation, every reveal applied and settled.
+
+| Page | RO before | RO after | RU before | RU after |
+|---|---|---|---|---|
+| `/catalog/placi-ceramice/` | 47,917 | **10,189** | 49,963 | **10,760** |
+| `/catalog/elemente-decorative/` | 37,820 | **10,306** | 38,067 | **10,552** |
+| `/catalog/termoizolatie/` | 17,543 | **10,778** | 17,357 | **10,902** |
+| `/catalog/sisteme-iluminare/` | 16,844 | **10,383** | 16,685 | **10,450** |
+| `/catalog/tencuieli-decorative/` | 11,338 | **10,885** | 11,573 | **11,121** |
+
+The RU ceramic plates page was the longest page on the site at **49,963px**, which is
+about 128 screens of a 390px phone. It is now 10,760.
+
+A page with 12 or fewer products is unchanged, because nothing folds: `/catalog/vopsele/`
+reads 6,884 before and 6,908 after in RO, 7,102 and 7,126 in RU, and the 24px both times
+is the moved button, not the reveal.
+
+**Tencuieli decorative is the page this helps least**, 11,573 to 11,121 in RU, because 13
+products fold to 12 and the one card removed is all the reveal can take. Its length is its
+prose block and its form, not its grid.
+
+**The dispatch's target of under 9,000px at 390 is NOT met, and cannot be met at twelve
+cards.** The arithmetic is in the open: below 512px the grid is one column, the card's
+media is a ledgered `1 / 1` placeholder, and twelve cards measure 6,181px on a 390px
+viewport. The rest of the page — header, hero, prose block, offer button, quote form and
+footer — is 4,008px, and none of it is this card's. 6,181 + 4,008 = 10,189. Reaching 9,000
+needs the first-screen count at **nine** or **eight**, which is one number in `build.js`
+(`PROD_STEP`). Both were built and measured rather than derived: nine reads **8,696px** and
+eight reads **8,198px**. Twelve is what the dispatch specifies, so twelve shipped.
+**Q-W24-04** carries the question with all three figures.
+
+The reveal is held by gate 20, which asserts the painted count equals the page's own
+`data-prod-step` at 390 and equals every card at 1440.

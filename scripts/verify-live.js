@@ -148,6 +148,8 @@ const MARKERS = {
     // W17-03 (RC-134). The lede and two paragraphs W17-02 added. A category page
     // built before the prose carries 0, so a stale copy cannot match this.
     catProse: 3,
+    // W24-09. Nothing is folded at the width this runs at. See the probe.
+    foldedCards: 0,
     // W24-04. A category page rolls up its subcategories' products, so every one
     // of the seven renders at least one card. A build made before wave 24 carries
     // 0, so a stale copy returning plausible heights cannot match this.
@@ -163,6 +165,7 @@ const MARKERS = {
     areaServed: 0,
     catProse: 0,
     productCards: 'atLeast1',
+    foldedCards: 0,
   },
   // W24-04. The catalogue index: seven tiles, no prose, no product card.
   index: {
@@ -220,36 +223,36 @@ const PAGES = [
   // docs/rulings/R-Y.md carries the measurement each one came from.
   // The 1,400px section cap does not apply to a catalogue grid (W24-R4), which is
   // why a category page rolling up 88 products is 12,613px and inside budget.
-  { path: '/catalog/',                                      type: 'index',         label: 'idx RO',           budget: 3619 },
-  { path: '/ru/catalog/',                                   type: 'index',         label: 'idx RU',           budget: 3644 },
-  { path: '/catalog/termoizolatie/',                        type: 'category',      label: 'cat RO termo',     budget: 6797 },
-  { path: '/ru/catalog/termoizolatie/',                     type: 'category',      label: 'cat RU termo',     budget: 6714 },
-  { path: '/catalog/termoizolatie/polistiren-expandat/',    type: 'subcategory',   label: 'sub RO eps',       budget: 3543 },
-  { path: '/ru/catalog/termoizolatie/polistiren-expandat/',  type: 'subcategory',   label: 'sub RU eps',       budget: 3460 },
-  { path: '/catalog/termoizolatie/polistiren-extrudat/',    type: 'subcategory',   label: 'sub RO xps',       budget: 3020 },
-  { path: '/ru/catalog/termoizolatie/polistiren-extrudat/',  type: 'subcategory',   label: 'sub RU xps',       budget: 3064 },
-  { path: '/catalog/termoizolatie/vata-minerala/',          type: 'subcategory',   label: 'sub RO vata',      budget: 3500 },
-  { path: '/ru/catalog/termoizolatie/vata-minerala/',       type: 'subcategory',   label: 'sub RU vata',      budget: 3502 },
-  { path: '/catalog/termoizolatie/adezivi-si-mase-de-spaclu/',  type: 'subcategory',   label: 'sub RO adez',      budget: 4017 },
-  { path: '/ru/catalog/termoizolatie/adezivi-si-mase-de-spaclu/',  type: 'subcategory',   label: 'sub RU adez',      budget: 3940 },
-  { path: '/catalog/termoizolatie/alte-produse/',           type: 'subcategory',   label: 'sub RO altep',     budget: 2993 },
-  { path: '/ru/catalog/termoizolatie/alte-produse/',        type: 'subcategory',   label: 'sub RU altep',     budget: 2952 },
-  { path: '/catalog/tencuieli-decorative/',                 type: 'category',      label: 'cat RO tencu',     budget: 5246 },
-  { path: '/ru/catalog/tencuieli-decorative/',              type: 'category',      label: 'cat RU tencu',     budget: 5352 },
-  { path: '/catalog/placi-ceramice/',                       type: 'category',      label: 'cat RO placi',     budget: 12665 },
-  { path: '/ru/catalog/placi-ceramice/',                    type: 'category',      label: 'cat RU placi',     budget: 13548 },
-  { path: '/catalog/elemente-decorative/',                  type: 'category',      label: 'cat RO elem',      budget: 10482 },
-  { path: '/ru/catalog/elemente-decorative/',               type: 'category',      label: 'cat RU elem',      budget: 10917 },
-  { path: '/catalog/vopsele/',                              type: 'category',      label: 'cat RO vopsele',   budget: 4240 },
-  { path: '/ru/catalog/vopsele/',                           type: 'category',      label: 'cat RU vopsele',   budget: 4335 },
-  { path: '/catalog/vopsele/vopsele-de-exterior/',          type: 'subcategory',   label: 'sub RO vopext',    budget: 3000 },
-  { path: '/ru/catalog/vopsele/vopsele-de-exterior/',       type: 'subcategory',   label: 'sub RU vopext',    budget: 3022 },
-  { path: '/catalog/vopsele/vopsele-de-interior/',          type: 'subcategory',   label: 'sub RO vopint',    budget: 3022 },
-  { path: '/ru/catalog/vopsele/vopsele-de-interior/',       type: 'subcategory',   label: 'sub RU vopint',    budget: 3068 },
-  { path: '/catalog/sisteme-iluminare/',                    type: 'category',      label: 'cat RO ilumin',    budget: 6254 },
-  { path: '/ru/catalog/sisteme-iluminare/',                 type: 'category',      label: 'cat RU ilumin',    budget: 6198 },
-  { path: '/catalog/alte-materiale/',                       type: 'category',      label: 'cat RO alte',      budget: 3643 },
-  { path: '/ru/catalog/alte-materiale/',                    type: 'category',      label: 'cat RU alte',      budget: 3643 },
+  { path: '/catalog/',                                      type: 'index',         label: 'idx RO',           budget: 3683 },
+  { path: '/ru/catalog/',                                   type: 'index',         label: 'idx RU',           budget: 3708 },
+  { path: '/catalog/termoizolatie/',                        type: 'category',      label: 'cat RO termo',     budget: 6861 },
+  { path: '/ru/catalog/termoizolatie/',                     type: 'category',      label: 'cat RU termo',     budget: 6778 },
+  { path: '/catalog/termoizolatie/polistiren-expandat/',    type: 'subcategory',   label: 'sub RO eps',       budget: 3607 },
+  { path: '/ru/catalog/termoizolatie/polistiren-expandat/',  type: 'subcategory',   label: 'sub RU eps',       budget: 3524 },
+  { path: '/catalog/termoizolatie/polistiren-extrudat/',    type: 'subcategory',   label: 'sub RO xps',       budget: 3084 },
+  { path: '/ru/catalog/termoizolatie/polistiren-extrudat/',  type: 'subcategory',   label: 'sub RU xps',       budget: 3128 },
+  { path: '/catalog/termoizolatie/vata-minerala/',          type: 'subcategory',   label: 'sub RO vata',      budget: 3564 },
+  { path: '/ru/catalog/termoizolatie/vata-minerala/',       type: 'subcategory',   label: 'sub RU vata',      budget: 3566 },
+  { path: '/catalog/termoizolatie/adezivi-si-mase-de-spaclu/',  type: 'subcategory',   label: 'sub RO adez',      budget: 4081 },
+  { path: '/ru/catalog/termoizolatie/adezivi-si-mase-de-spaclu/',  type: 'subcategory',   label: 'sub RU adez',      budget: 4004 },
+  { path: '/catalog/termoizolatie/alte-produse/',           type: 'subcategory',   label: 'sub RO altep',     budget: 3057 },
+  { path: '/ru/catalog/termoizolatie/alte-produse/',        type: 'subcategory',   label: 'sub RU altep',     budget: 3016 },
+  { path: '/catalog/tencuieli-decorative/',                 type: 'category',      label: 'cat RO tencu',     budget: 5310 },
+  { path: '/ru/catalog/tencuieli-decorative/',              type: 'category',      label: 'cat RU tencu',     budget: 5416 },
+  { path: '/catalog/placi-ceramice/',                       type: 'category',      label: 'cat RO placi',     budget: 12729 },
+  { path: '/ru/catalog/placi-ceramice/',                    type: 'category',      label: 'cat RU placi',     budget: 13612 },
+  { path: '/catalog/elemente-decorative/',                  type: 'category',      label: 'cat RO elem',      budget: 10201 },
+  { path: '/ru/catalog/elemente-decorative/',               type: 'category',      label: 'cat RU elem',      budget: 10636 },
+  { path: '/catalog/vopsele/',                              type: 'category',      label: 'cat RO vopsele',   budget: 4304 },
+  { path: '/ru/catalog/vopsele/',                           type: 'category',      label: 'cat RU vopsele',   budget: 4399 },
+  { path: '/catalog/vopsele/vopsele-de-exterior/',          type: 'subcategory',   label: 'sub RO vopext',    budget: 3064 },
+  { path: '/ru/catalog/vopsele/vopsele-de-exterior/',       type: 'subcategory',   label: 'sub RU vopext',    budget: 3086 },
+  { path: '/catalog/vopsele/vopsele-de-interior/',          type: 'subcategory',   label: 'sub RO vopint',    budget: 3086 },
+  { path: '/ru/catalog/vopsele/vopsele-de-interior/',       type: 'subcategory',   label: 'sub RU vopint',    budget: 3132 },
+  { path: '/catalog/sisteme-iluminare/',                    type: 'category',      label: 'cat RO ilumin',    budget: 6318 },
+  { path: '/ru/catalog/sisteme-iluminare/',                 type: 'category',      label: 'cat RU ilumin',    budget: 6262 },
+  { path: '/catalog/alte-materiale/',                       type: 'category',      label: 'cat RO alte',      budget: 3707 },
+  { path: '/ru/catalog/alte-materiale/',                    type: 'category',      label: 'cat RU alte',      budget: 3707 },
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -303,9 +306,26 @@ const PROBE = `(async () => {
     productCards: q('[data-product-card]'),
     baItems: q('[data-ba-item]'),
     roofOffers: q('#acoperisuri .offer'),
-    bentoTiles: q('.bento__tile'),
-    bentoLinks: q('a.bento__tile'),
+    /* CORRECTED (W24-09). These probed `.bento__tile` and were left behind by
+       W24-07a, which renamed the hub's classes to `.hub__*` precisely because
+       `.bento__tile` already belonged to the garduri chooser. The markers kept
+       counting the OLD name, so from W24-07 onwards they measured the chooser and
+       never the hub: the acoperisuri pages reported 0 tiles where 4 render, the
+       garduri pages reported the chooser's 5 where the hub's 4 were expected, and
+       the copertine page reported 5 where 0 were expected. Six rows UNVERIFIED on
+       the first run after the merge of #78 to #85, none of them a real defect on
+       the page and all six a defect here.
+       A marker that is not renamed with the thing it names is not a marker. */
+    bentoTiles: q('.hub__tile'),
+    bentoLinks: q('a.hub__tile'),
     catTiles: q('.cat-tile'),
+    /* W24-09. This run measures at 1440, where the phone reveal folds nothing.
+       The ZERO is the assertion: the fold is a class main.js adds, and the rule
+       that paints it lives inside a max-width: 768px query, so a desktop card
+       carrying it would be a regression this catches on the live tree. Counted on
+       every catalogue page, so a build that shipped the fold to desktop fires on
+       thirty rows rather than passing quietly. */
+    foldedCards: q('.prod--folded'),
     tileDiagrams: q('[data-tile-diagram]'),
   };
   const facts = {

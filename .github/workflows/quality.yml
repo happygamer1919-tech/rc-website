@@ -107,6 +107,15 @@ jobs:
       - name: No heading wider than its box, every page, 360 and 1280 (W19-D1)
         run: node scripts/check-heading-fit.js
 
+      # W24-09. Gate 20. The one kind of defect nineteen gates cannot see: a layout.
+      # W24-07 shipped a bento whose class names collided with the garduri page's,
+      # the tall tile rendered 128px wide against an intended 380, and every gate
+      # was green, because none of them reads a painted box. This measures computed
+      # geometry in a real browser at 1440 and 390, both locales. Same Chrome and
+      # Inter requirement as the header gate. Before RC-145's step, which rebuilds.
+      - name: Every bento and catalogue grid is the geometry it is specified as (W24-09)
+        run: node scripts/check-layout-geometry.js
+
       # W23-06. Every header dropdown, opened at rest with nothing under the pointer:
       # every text element in the Servicii panel and in the Catalog panel and its
       # sub-lists at 4.5:1 or better against what it is painted on, every page that

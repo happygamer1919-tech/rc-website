@@ -853,40 +853,24 @@ function notFoundLocale(l) {
    form, so a lead says which product it is about. Nothing else about the form
    changes. */
 function catalogProducts(l, slug) {
-  const records = (CATALOG_PRODUCTS[slug] || []);
-  if (!records.length) return '';
-  const need = (v, where) => {
-    if (!REAL(v)) die(`catalogProducts: ${where} is not real for ${l.code} (${slug}).`);
-    return v;
-  };
-  const cards = records.map((r, i) => {
-    const name = need(r.name && r.name[l.code], `record ${i} name`);
-    const mfr = need(r.manufacturer, `record ${i} manufacturer`);
-    const pack = need(r.pack && r.pack[l.code], `record ${i} pack`);
-    const spec = need(r.spec && r.spec[l.code], `record ${i} spec`);
-    for (const forbidden of CATALOG_FORBIDDEN_MANUFACTURERS) {
-      if (mfr.toLowerCase().includes(forbidden)) {
-        die(`catalogProducts: record ${i} names "${mfr}", which scripts/check-catalog-pages.js forbids on a category page.`);
-      }
-    }
-    return `      <article class="prod" data-product-card data-reveal data-stagger="${Math.min(i, 6)}">
-        <h3 class="prod__name">${esc(name)}</h3>
-        <dl class="prod__facts">
-          <div><dt>${esc(l.strings['catalogProducts.mfr'])}</dt><dd>${esc(mfr)}</dd></div>
-          <div><dt>${esc(l.strings['catalogProducts.pack'])}</dt><dd>${esc(pack)}</dd></div>
-          <div><dt>${esc(l.strings['catalogProducts.spec'])}</dt><dd>${esc(spec)}</dd></div>
-        </dl>
-        <a class="btn btn--outline prod__cta" href="#oferta" data-product="${esc(name)}">${esc(l.strings['catalogProducts.cta'])}</a>
-      </article>`;
-  });
-  return `<section class="section section--light section--divided" id="produse">
-  <div class="container">
-    <h2 data-reveal>${esc(l.strings['catalogProducts.h2'])}</h2>
-    <div class="grid grid--3" style="margin-top: 40px;">
-${cards.join('\n')}
-    </div>
-  </div>
-</section>`;
+  /* W24-03 holds the data and W24-04 builds the card. The records validated
+     above are not rendered by this card: its scope is the extraction, the
+     shape and docs/CATALOG-SOURCE-W24.md, and the dispatch splits the layout
+     into its own card so the grid, the square placeholder, the price element
+     and the re-scoped catalogue price gate land together with the negative
+     test that proves the gate still refuses a price everywhere else.
+
+     RC-149's card is gone with the fields it read. It printed a manufacturer,
+     a pack and a specification per record, and none of those three exists in
+     the W24-03 shape: a record now carries a name, an optional brand, an
+     optional variant line and a price. Rendering the old card against the new
+     data would print three empty rows, so it renders nothing until W24-04
+     replaces it, and the pages are exactly what they were before this card.
+
+     The records are loaded, validated and counted above whatever this returns,
+     so a bad record is reported by this build and not by the next one. */
+  void slug; void l;
+  return '';
 }
 
 // --- W19-D5, the homepage portfolio filter chips ------------------------------
@@ -1738,18 +1722,83 @@ function categoryHeadVars(l, c) {
   return { title, metaTitle, metaDesc };
 }
 
-/* RC-149. Product records per category slug, structure only; see the file's own
-   _note. The manufacturer names the catalog gate refuses are restated here so the
-   build refuses a record before the gate has to: change one and the other must
-   change with it, the same arrangement check-lighthouse.js has with the floors. */
-const CATALOG_PRODUCTS = (() => {
+/* ~~RC-149. Product records per category slug, structure only.~~
+   AMENDED (W24-03): the records are real and there are 223 of them, copied from
+   fatade3d.md under ruling W24-R1, which reverses the wave 21 drop for text data
+   only. The file's own _note carries the shape; docs/CATALOG-SOURCE-W24.md carries
+   the method, the counts and every field that could not be read.
+
+   ONE BAD RECORD FAILS THAT RECORD, NOT THE BUILD. That is the dispatch's own
+   words, and it is the change from RC-149, where `need()` called die() on the
+   first record missing a field and took 222 good ones with it. A record that does
+   not validate is skipped, named, with the field that failed it, and the count of
+   skipped records is printed every run. The build still fails on the things that
+   are not one record's problem: a missing or unparseable file, a missing
+   `products` array or `categories` map, a category slug with no catalogue
+   category, a duplicate id, and an id a category names that no record has.
+
+   The manufacturer names the catalog gate refuses are restated here so the build
+   refuses a record before the gate has to: change one and the other must change
+   with it, the same arrangement check-lighthouse.js has with the floors. W24-R1
+   authorises copying product names, variant lines, prices and the category
+   structure. It does not touch W17-02, so a refused name never renders, and a
+   record whose rendered fields still carry one is skipped here rather than left
+   for the gate to find in dist/. */
+const CATALOG_FORBIDDEN_MANUFACTURERS = ['dasterum', 'imperlux', 'fațade 3d', 'fatade 3d', 'fatade3d'];
+const CATALOG_FORBIDDEN_RE = /(dasterum(?:\.md)?|imperlux(?:\.md)?|fa[țţt]ade\s*3\s*d|fatade\s*3\s*d|fatade3d(?:\.md)?|дастерум|имперлюкс|фасады\s*3[dд]|фатаде\s*3[dд])/i;
+
+const CATALOG_DATA = (() => {
   const f = 'content/catalog-products.json';
   if (!fs.existsSync(f)) die(`${f} is missing.`);
-  const raw = JSON.parse(fs.readFileSync(f, 'utf8'));
+  let raw;
+  try { raw = JSON.parse(fs.readFileSync(f, 'utf8')); } catch (e) { die(`${f} did not parse: ${e.message}`); }
   if (!raw.categories || typeof raw.categories !== 'object') die(`${f} has no categories object.`);
-  return raw.categories;
+  if (!Array.isArray(raw.products)) die(`${f} has no products array. An empty catalogue is [], never a missing key.`);
+
+  const byId = new Map();
+  const skipped = [];
+  const skip = (id, why) => skipped.push(`${id}: ${why}`);
+
+  for (const [i, r] of raw.products.entries()) {
+    const where = r && r.id ? r.id : `products[${i}]`;
+    if (!r || typeof r !== 'object') { skip(where, 'is not an object'); continue; }
+    if (!REAL(r.id)) { skip(where, 'has no id'); continue; }
+    if (byId.has(r.id)) { skip(where, 'has an id another record already used'); continue; }
+    if (!REAL(r.slot)) { skip(where, 'has no slot id, so its placeholder cannot be ledgered'); continue; }
+    let bad = null;
+    for (const lc of ['ro', 'ru']) {
+      if (!REAL(r.name && r.name[lc])) { bad = `has no real name for ${lc}`; break; }
+      if (CATALOG_FORBIDDEN_RE.test(r.name[lc])) { bad = `names a manufacturer W17-02 refuses on a catalogue page, in its ${lc} name`; break; }
+    }
+    if (!bad && r.brand != null && (!REAL(r.brand) || CATALOG_FORBIDDEN_RE.test(r.brand))) bad = 'has a brand that is empty or that W17-02 refuses on a catalogue page';
+    if (!bad && !Array.isArray(r.categories)) bad = 'has no categories array';
+    if (!bad && !r.price) bad = 'has no price object';
+    if (!bad && r.price.render != null && !REAL(r.price.render)) bad = 'has an empty price.render; a price that does not exist is null, never ""';
+    if (bad) { skip(where, bad); continue; }
+    byId.set(r.id, r);
+  }
+
+  const missing = [];
+  const index = {};
+  for (const [slug, ids] of Object.entries(raw.categories)) {
+    if (!Array.isArray(ids)) die(`${f}: categories.${slug} is not an array of ids.`);
+    index[slug] = ids.filter((id) => {
+      if (byId.has(id)) return true;
+      if (!raw.products.some((p) => p && p.id === id)) missing.push(`${slug} names ${id}, which no record has`);
+      return false;
+    });
+  }
+  if (missing.length) die(`${f}: ${missing.length} category entry/entries name a record that does not exist:\n  ${missing.join('\n  ')}`);
+
+  console.log(`catalog records: ${byId.size} of ${raw.products.length} read from ${f}` + (skipped.length ? `, ${skipped.length} skipped` : ''));
+  for (const s of skipped) console.log(`  SKIPPED ${s}`);
+  if (raw.products.length && byId.size === 0) die(`${f} holds ${raw.products.length} records and not one of them validated.`);
+
+  return { byId, index };
 })();
-const CATALOG_FORBIDDEN_MANUFACTURERS = ['dasterum', 'imperlux', 'fațade 3d', 'fatade 3d', 'fatade3d'];
+/* Kept as the name every call site already uses: a category slug to its records. */
+const CATALOG_PRODUCTS = Object.fromEntries(
+  Object.entries(CATALOG_DATA.index).map(([slug, ids]) => [slug, ids.map((id) => CATALOG_DATA.byId.get(id))]));
 
 const PRODUCT_PAGES = [
   { slug: 'tigla-metalica', key: 'tigla', block: (l) => tiglaGrid(l), sources: ['content/tigla-metalica.json'] },

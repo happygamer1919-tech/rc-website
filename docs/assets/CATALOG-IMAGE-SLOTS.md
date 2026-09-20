@@ -12,9 +12,10 @@ renders a card image at. **Facts only.** No price, no stock, no availability.
 
 | Property | Value | Where it comes from |
 |---|---|---|
-| Aspect | **4:3**, landscape | the card image treatment the site already uses, `media media--4x3 media--card` |
-| Rendered size | 400 x 300 CSS px | the `width` and `height` attributes on every card image on the site |
-| Files | `<name>.jpg` and `<name>@2x.jpg` (800 x 600) | every card image on the site ships a 1x and a 2x file |
+| Aspect | **1:1**, square | AMENDED (W24-03): the catalogue card the wave 24 dispatch specifies has a square image area on top, not the 4:3 the site's other cards use |
+| Rendered size | 600 x 600 CSS px | the largest a catalogue card is rendered at, 306px wide at 1400px and above, taken at 2x |
+| Files | `<name>.jpg` and `<name>@2x.jpg` (1200 x 1200) | every card image on the site ships a 1x and a 2x file |
+| Photo slot | the `Slot` column, which is the same id `docs/PHOTO-SLOTS-W24.json` carries | W24-01: the placeholder on the card prints that id, so a supplier photograph and a session photograph fill the same named slot |
 | Location | `public/img/` | where `build.js` reads image files from |
 | Provenance | one row in `docs/assets/PROVENANCE.md`, in the same commit, with a real licence or supplier permission | ruling R-W |
 | Permitted sources | a supplier's own product photograph, or licensed stock: a product slot is not a proof slot | master plan section 7 as amended by W14-18 |
@@ -24,13 +25,234 @@ image markup on a product card at all, rather than an empty box.
 
 ## The slots
 
-Product records today: **0** (Sisteme de termoizolație 0, Tencuieli decorative 0, Plăci ceramice 0, Elemente decorative 0, Vopsele 0, Sisteme de iluminare 0, Alte materiale de construcții 0).
+Product records today: **223** (Sisteme de termoizolație 25, Tencuieli decorative 13, Plăci ceramice 88, Elemente decorative 64, Vopsele 5, Sisteme de iluminare 25, Alte materiale de construcții 3).
 
-**No slot is requestable yet, because no product record exists.** The catalog product
-list is blocked: `docs/QUESTIONS.md` Q-W21-01 records why, and what a record needs. This
-file fills itself from the data as soon as records land, and `quality` fails if it does
-not.
+| # | Slot | Category | Product | Brand | File name | Aspect | Size |
+|---|---|---|---|---|---|---|---|
+| 1 | `CAT-0001` | Sisteme de termoizolație | Polistiren Dalmatina | Caparol | `catalog-termoizolatie-f3d-1788.jpg` + `catalog-termoizolatie-f3d-1788@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 2 | `CAT-0002` | Sisteme de termoizolație | Polistiren expandat CT80F | Caparol | `catalog-termoizolatie-f3d-1858.jpg` + `catalog-termoizolatie-f3d-1858@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 3 | `CAT-0003` | Sisteme de termoizolație | Polistiren expandat EPS-50 | EPS-70 | EPS-80 | EPS-200 | not stated | `catalog-termoizolatie-f3d-1879.jpg` + `catalog-termoizolatie-f3d-1879@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 4 | `CAT-0004` | Sisteme de termoizolație | Polistiren expandat STOP FIRE | not stated | `catalog-termoizolatie-f3d-1924.jpg` + `catalog-termoizolatie-f3d-1924@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 5 | `CAT-0005` | Sisteme de termoizolație | CT 80 F - Polistiren expandat | Caparol | `catalog-termoizolatie-f3d-3283.jpg` + `catalog-termoizolatie-f3d-3283@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 6 | `CAT-0006` | Sisteme de termoizolație | Polistiren Penoplex | Penoplex | `catalog-termoizolatie-f3d-1937.jpg` + `catalog-termoizolatie-f3d-1937@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 7 | `CAT-0007` | Sisteme de termoizolație | Polistiren Tehnoplex XPS Carbon | SWEETONDALE | `catalog-termoizolatie-f3d-1956.jpg` + `catalog-termoizolatie-f3d-1956@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 8 | `CAT-0008` | Sisteme de termoizolație | Vată minerală Thermowool Fas Efect | SWEETONDALE | `catalog-termoizolatie-f3d-1962.jpg` + `catalog-termoizolatie-f3d-1962@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 9 | `CAT-0009` | Sisteme de termoizolație | Vată minerală OBIO 165 | IZOVAT | `catalog-termoizolatie-f3d-1970.jpg` + `catalog-termoizolatie-f3d-1970@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 10 | `CAT-0010` | Sisteme de termoizolație | Vată minerală Rockton Super | ROCKWOOL | `catalog-termoizolatie-f3d-1983.jpg` + `catalog-termoizolatie-f3d-1983@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 11 | `CAT-0011` | Sisteme de termoizolație | Vată minerală FAWORI | FAWORI | `catalog-termoizolatie-f3d-2356.jpg` + `catalog-termoizolatie-f3d-2356@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 12 | `CAT-0012` | Sisteme de termoizolație | Vată minerală Novoterm | NOVOTERM | `catalog-termoizolatie-f3d-4686.jpg` + `catalog-termoizolatie-f3d-4686@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 13 | `CAT-0013` | Sisteme de termoizolație | Klebespachtel 100R - Adeziv de armare polistiren și vată | Caparol | `catalog-termoizolatie-f3d-2021.jpg` + `catalog-termoizolatie-f3d-2021@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 14 | `CAT-0014` | Sisteme de termoizolație | Kleber 90R Adeziv lipire polistiren | Caparol | `catalog-termoizolatie-f3d-2025.jpg` + `catalog-termoizolatie-f3d-2025@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 15 | `CAT-0015` | Sisteme de termoizolație | Mortar universal Caparol ArmaReno 700 | Caparol | `catalog-termoizolatie-f3d-2031.jpg` + `catalog-termoizolatie-f3d-2031@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 16 | `CAT-0016` | Sisteme de termoizolație | Adeziv Kreisel 215 | KREISEL | `catalog-termoizolatie-f3d-2368.jpg` + `catalog-termoizolatie-f3d-2368@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 17 | `CAT-0017` | Sisteme de termoizolație | Adeziv Baumit - Bianco Alb | Baumit | `catalog-termoizolatie-f3d-2377.jpg` + `catalog-termoizolatie-f3d-2377@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 18 | `CAT-0018` | Sisteme de termoizolație | Adeziv DuoContact Baumit | Baumit | `catalog-termoizolatie-f3d-2386.jpg` + `catalog-termoizolatie-f3d-2386@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 19 | `CAT-0019` | Sisteme de termoizolație | Baumit Pro Contact - Adeziv și Masă de Șpaclu | Baumit | `catalog-termoizolatie-f3d-2393.jpg` + `catalog-termoizolatie-f3d-2393@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 20 | `CAT-0020` | Sisteme de termoizolație | Meșterul Dibaci Universal - Adeziv pentru plăci ceramice | not stated | `catalog-termoizolatie-f3d-2400.jpg` + `catalog-termoizolatie-f3d-2400@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 21 | `CAT-0021` | Sisteme de termoizolație | CERESIT CT 82 - Mortar adeziv și masă de șpaclu pentru polistiren | Ceresit | `catalog-termoizolatie-f3d-2406.jpg` + `catalog-termoizolatie-f3d-2406@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 22 | `CAT-0022` | Sisteme de termoizolație | Mesterul dibaci POLISTIREN | not stated | `catalog-termoizolatie-f3d-5591.jpg` + `catalog-termoizolatie-f3d-5591@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 23 | `CAT-0023` | Sisteme de termoizolație | Mesterul dibaci VATĂ MINERALĂ | not stated | `catalog-termoizolatie-f3d-5595.jpg` + `catalog-termoizolatie-f3d-5595@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 24 | `CAT-0024` | Sisteme de termoizolație | Diblu din plastic LTX | not stated | `catalog-termoizolatie-f3d-1992.jpg` + `catalog-termoizolatie-f3d-1992@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 25 | `CAT-0025` | Sisteme de termoizolație | Diblu din oțel LGX | not stated | `catalog-termoizolatie-f3d-2007.jpg` + `catalog-termoizolatie-f3d-2007@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 26 | `CAT-0026` | Tencuieli decorative | Baumit SilikonTop - Tencuială decorativă siliconică | Baumit | `catalog-tencuieli-decorative-f3d-2040.jpg` + `catalog-tencuieli-decorative-f3d-2040@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 27 | `CAT-0027` | Tencuieli decorative | Baumit DuoTop Tencuială decorativă acrilică | Baumit | `catalog-tencuieli-decorative-f3d-2051.jpg` + `catalog-tencuieli-decorative-f3d-2051@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 28 | `CAT-0028` | Tencuieli decorative | ProjektPutz R și K Tencuială decorativă acrilică Caparol | Caparol | `catalog-tencuieli-decorative-f3d-2060.jpg` + `catalog-tencuieli-decorative-f3d-2060@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 29 | `CAT-0029` | Tencuieli decorative | Carbon Fassadenputz K si R - Tencuială decorativă carbonică | Caparol | `catalog-tencuieli-decorative-f3d-2416.jpg` + `catalog-tencuieli-decorative-f3d-2416@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 30 | `CAT-0030` | Tencuieli decorative | Silicon-Fassadenputz K si R - Tencuială decorativă | Caparol | `catalog-tencuieli-decorative-f3d-2427.jpg` + `catalog-tencuieli-decorative-f3d-2427@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 31 | `CAT-0031` | Tencuieli decorative | Tencuială decorativă silacrilică Caparol Silacril Fassadenputz | Caparol | `catalog-tencuieli-decorative-f3d-2438.jpg` + `catalog-tencuieli-decorative-f3d-2438@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 32 | `CAT-0032` | Tencuieli decorative | Duraziv Standard TDS cu silicon - Tencuială decorativă siliconică | DURAZIV | `catalog-tencuieli-decorative-f3d-2449.jpg` + `catalog-tencuieli-decorative-f3d-2449@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 33 | `CAT-0033` | Tencuieli decorative | Tencuială decorativă Roko - Omítka Silikon | ROKO AquaMix | `catalog-tencuieli-decorative-f3d-2462.jpg` + `catalog-tencuieli-decorative-f3d-2462@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 34 | `CAT-0034` | Tencuieli decorative | Tencuială decorativă siliconică STICKY | not stated | `catalog-tencuieli-decorative-f3d-2475.jpg` + `catalog-tencuieli-decorative-f3d-2475@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 35 | `CAT-0035` | Tencuieli decorative | Tencuială decorativă pentru soclu Caparol Buntsteinputz | Caparol | `catalog-tencuieli-decorative-f3d-2486.jpg` + `catalog-tencuieli-decorative-f3d-2486@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 36 | `CAT-0036` | Tencuieli decorative | Projekt Grund pentru tencuieli decorative | Caparol | `catalog-tencuieli-decorative-f3d-2595.jpg` + `catalog-tencuieli-decorative-f3d-2595@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 37 | `CAT-0037` | Tencuieli decorative | Tencuială de cuarţ colorat DURAZIV Clima Protect® cu Kauciuc® | DURAZIV | `catalog-tencuieli-decorative-f3d-2606.jpg` + `catalog-tencuieli-decorative-f3d-2606@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 38 | `CAT-0038` | Tencuieli decorative | Tencuială decorativă mozaicată Omitka Rokomozaikova | ROKO AquaMix | `catalog-tencuieli-decorative-f3d-2619.jpg` + `catalog-tencuieli-decorative-f3d-2619@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 39 | `CAT-0039` | Plăci ceramice | Placă Kamu Red | Phomi | `catalog-placi-ceramice-f3d-1424.jpg` + `catalog-placi-ceramice-f3d-1424@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 40 | `CAT-0040` | Plăci ceramice | Placă Kamu Yellow | Phomi | `catalog-placi-ceramice-f3d-1653.jpg` + `catalog-placi-ceramice-f3d-1653@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 41 | `CAT-0041` | Plăci ceramice | Placă White Sesame | Phomi | `catalog-placi-ceramice-f3d-1662.jpg` + `catalog-placi-ceramice-f3d-1662@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 42 | `CAT-0042` | Plăci ceramice | Placă Mountain Medium Grey | Phomi | `catalog-placi-ceramice-f3d-1665.jpg` + `catalog-placi-ceramice-f3d-1665@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 43 | `CAT-0043` | Plăci ceramice | Placă Mount Lion Yellow | Phomi | `catalog-placi-ceramice-f3d-1668.jpg` + `catalog-placi-ceramice-f3d-1668@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 44 | `CAT-0044` | Plăci ceramice | Placă Mountain Light Grey | Phomi | `catalog-placi-ceramice-f3d-1671.jpg` + `catalog-placi-ceramice-f3d-1671@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 45 | `CAT-0045` | Plăci ceramice | Placă Mountain Light Grey | Phomi | `catalog-placi-ceramice-f3d-1674.jpg` + `catalog-placi-ceramice-f3d-1674@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 46 | `CAT-0046` | Plăci ceramice | Placă Blue Grey | Phomi | `catalog-placi-ceramice-f3d-1677.jpg` + `catalog-placi-ceramice-f3d-1677@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 47 | `CAT-0047` | Plăci ceramice | Placă Dandy Gray | Phomi | `catalog-placi-ceramice-f3d-1686.jpg` + `catalog-placi-ceramice-f3d-1686@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 48 | `CAT-0048` | Plăci ceramice | Placă Veil White | Phomi | `catalog-placi-ceramice-f3d-1689.jpg` + `catalog-placi-ceramice-f3d-1689@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 49 | `CAT-0049` | Plăci ceramice | Placă Castol Grey | Phomi | `catalog-placi-ceramice-f3d-1692.jpg` + `catalog-placi-ceramice-f3d-1692@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 50 | `CAT-0050` | Plăci ceramice | Placă Tunguska Yellow | Phomi | `catalog-placi-ceramice-f3d-1696.jpg` + `catalog-placi-ceramice-f3d-1696@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 51 | `CAT-0051` | Plăci ceramice | Placă Elsa Black Grey | Phomi | `catalog-placi-ceramice-f3d-1699.jpg` + `catalog-placi-ceramice-f3d-1699@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 52 | `CAT-0052` | Plăci ceramice | Placă Snowy White | Phomi | `catalog-placi-ceramice-f3d-1702.jpg` + `catalog-placi-ceramice-f3d-1702@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 53 | `CAT-0053` | Plăci ceramice | Placă Stellar Red | Phomi | `catalog-placi-ceramice-f3d-1705.jpg` + `catalog-placi-ceramice-f3d-1705@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 54 | `CAT-0054` | Plăci ceramice | Placă Plain White | Phomi | `catalog-placi-ceramice-f3d-1708.jpg` + `catalog-placi-ceramice-f3d-1708@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 55 | `CAT-0055` | Plăci ceramice | Placă Y001-01-02 | Phomi | `catalog-placi-ceramice-f3d-1711.jpg` + `catalog-placi-ceramice-f3d-1711@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 56 | `CAT-0056` | Plăci ceramice | Placă Medium Grey | Phomi | `catalog-placi-ceramice-f3d-3464.jpg` + `catalog-placi-ceramice-f3d-3464@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 57 | `CAT-0057` | Plăci ceramice | Placă Egyptian Yellow | Phomi | `catalog-placi-ceramice-f3d-3469.jpg` + `catalog-placi-ceramice-f3d-3469@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 58 | `CAT-0058` | Plăci ceramice | Placă Autumn | Phomi | `catalog-placi-ceramice-f3d-3474.jpg` + `catalog-placi-ceramice-f3d-3474@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 59 | `CAT-0059` | Plăci ceramice | Placă Ash Grey | Phomi | `catalog-placi-ceramice-f3d-3479.jpg` + `catalog-placi-ceramice-f3d-3479@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 60 | `CAT-0060` | Plăci ceramice | Placă Sandstorm | Phomi | `catalog-placi-ceramice-f3d-3484.jpg` + `catalog-placi-ceramice-f3d-3484@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 61 | `CAT-0061` | Plăci ceramice | Placă Ink-Dyed | Phomi | `catalog-placi-ceramice-f3d-3489.jpg` + `catalog-placi-ceramice-f3d-3489@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 62 | `CAT-0062` | Plăci ceramice | Placă Perth Grey | Phomi | `catalog-placi-ceramice-f3d-3494.jpg` + `catalog-placi-ceramice-f3d-3494@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 63 | `CAT-0063` | Plăci ceramice | Placă Steinburg Yellow | Phomi | `catalog-placi-ceramice-f3d-3501.jpg` + `catalog-placi-ceramice-f3d-3501@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 64 | `CAT-0064` | Plăci ceramice | Placă HY001 | Phomi | `catalog-placi-ceramice-f3d-3505.jpg` + `catalog-placi-ceramice-f3d-3505@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 65 | `CAT-0065` | Plăci ceramice | Placă Silk-mist Brown | Phomi | `catalog-placi-ceramice-f3d-3509.jpg` + `catalog-placi-ceramice-f3d-3509@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 66 | `CAT-0066` | Plăci ceramice | Placă Plain Brown | Phomi | `catalog-placi-ceramice-f3d-3513.jpg` + `catalog-placi-ceramice-f3d-3513@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 67 | `CAT-0067` | Plăci ceramice | Placă Orange | Phomi | `catalog-placi-ceramice-f3d-3521.jpg` + `catalog-placi-ceramice-f3d-3521@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 68 | `CAT-0068` | Plăci ceramice | Placă Light Brown | Phomi | `catalog-placi-ceramice-f3d-3529.jpg` + `catalog-placi-ceramice-f3d-3529@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 69 | `CAT-0069` | Plăci ceramice | Placă Portoro | Phomi | `catalog-placi-ceramice-f3d-3537.jpg` + `catalog-placi-ceramice-f3d-3537@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 70 | `CAT-0070` | Plăci ceramice | Placă Blue Grey | Phomi | `catalog-placi-ceramice-f3d-3545.jpg` + `catalog-placi-ceramice-f3d-3545@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 71 | `CAT-0071` | Plăci ceramice | Placă Veil Dark Grey | Phomi | `catalog-placi-ceramice-f3d-3925.jpg` + `catalog-placi-ceramice-f3d-3925@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 72 | `CAT-0072` | Plăci ceramice | Placă Sunis White | Phomi | `catalog-placi-ceramice-f3d-4195.jpg` + `catalog-placi-ceramice-f3d-4195@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 73 | `CAT-0073` | Plăci ceramice | Placă Andes Yellow | Phomi | `catalog-placi-ceramice-f3d-4225.jpg` + `catalog-placi-ceramice-f3d-4225@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 74 | `CAT-0074` | Plăci ceramice | Placă Greek Yellow | Phomi | `catalog-placi-ceramice-f3d-4228.jpg` + `catalog-placi-ceramice-f3d-4228@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 75 | `CAT-0075` | Plăci ceramice | Placă Andes White | Phomi | `catalog-placi-ceramice-f3d-4240.jpg` + `catalog-placi-ceramice-f3d-4240@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 76 | `CAT-0076` | Plăci ceramice | Placă Sairo Off-White | Phomi | `catalog-placi-ceramice-f3d-4248.jpg` + `catalog-placi-ceramice-f3d-4248@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 77 | `CAT-0077` | Plăci ceramice | Placă H06 | Phomi | `catalog-placi-ceramice-f3d-4260.jpg` + `catalog-placi-ceramice-f3d-4260@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 78 | `CAT-0078` | Plăci ceramice | Placă Medium Grey | Phomi | `catalog-placi-ceramice-f3d-4673.jpg` + `catalog-placi-ceramice-f3d-4673@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 79 | `CAT-0079` | Plăci ceramice | PLacă Fawn Grey | Phomi | `catalog-placi-ceramice-f3d-4853.jpg` + `catalog-placi-ceramice-f3d-4853@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 80 | `CAT-0080` | Plăci ceramice | PLacă Fog | Phomi | `catalog-placi-ceramice-f3d-4864.jpg` + `catalog-placi-ceramice-f3d-4864@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 81 | `CAT-0081` | Plăci ceramice | PLacă Dark Brown | Phomi | `catalog-placi-ceramice-f3d-4875.jpg` + `catalog-placi-ceramice-f3d-4875@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 82 | `CAT-0082` | Plăci ceramice | PLacă Dark Grey | Phomi | `catalog-placi-ceramice-f3d-4886.jpg` + `catalog-placi-ceramice-f3d-4886@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 83 | `CAT-0083` | Plăci ceramice | PLacă Ink-Dyed | Phomi | `catalog-placi-ceramice-f3d-4897.jpg` + `catalog-placi-ceramice-f3d-4897@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 84 | `CAT-0084` | Plăci ceramice | Placă Sunis White | Phomi | `catalog-placi-ceramice-f3d-4907.jpg` + `catalog-placi-ceramice-f3d-4907@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 85 | `CAT-0085` | Plăci ceramice | Placă Andes Yellow | Phomi | `catalog-placi-ceramice-f3d-4915.jpg` + `catalog-placi-ceramice-f3d-4915@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 86 | `CAT-0086` | Plăci ceramice | Placă Loki Mountain Light Grey | Phomi | `catalog-placi-ceramice-f3d-4925.jpg` + `catalog-placi-ceramice-f3d-4925@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 87 | `CAT-0087` | Plăci ceramice | Placă Veil Dark Grey | Phomi | `catalog-placi-ceramice-f3d-4930.jpg` + `catalog-placi-ceramice-f3d-4930@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 88 | `CAT-0088` | Plăci ceramice | Placă Castol Yellow | Phomi | `catalog-placi-ceramice-f3d-4940.jpg` + `catalog-placi-ceramice-f3d-4940@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 89 | `CAT-0089` | Plăci ceramice | Placă Romam Red | Phomi | `catalog-placi-ceramice-f3d-4949.jpg` + `catalog-placi-ceramice-f3d-4949@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 90 | `CAT-0090` | Plăci ceramice | Placă Castle Rock Grey | Phomi | `catalog-placi-ceramice-f3d-4957.jpg` + `catalog-placi-ceramice-f3d-4957@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 91 | `CAT-0091` | Plăci ceramice | Placă Sairo Off-White | Phomi | `catalog-placi-ceramice-f3d-4960.jpg` + `catalog-placi-ceramice-f3d-4960@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 92 | `CAT-0092` | Plăci ceramice | Placă Agean White | Phomi | `catalog-placi-ceramice-f3d-4966.jpg` + `catalog-placi-ceramice-f3d-4966@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 93 | `CAT-0093` | Plăci ceramice | Placă Plain Cloud Grey | Phomi | `catalog-placi-ceramice-f3d-4970.jpg` + `catalog-placi-ceramice-f3d-4970@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 94 | `CAT-0094` | Plăci ceramice | Placă Maca Blue | Phomi | `catalog-placi-ceramice-f3d-4974.jpg` + `catalog-placi-ceramice-f3d-4974@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 95 | `CAT-0095` | Plăci ceramice | Placă Romam Red | Phomi | `catalog-placi-ceramice-f3d-4982.jpg` + `catalog-placi-ceramice-f3d-4982@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 96 | `CAT-0096` | Plăci ceramice | Placă Veil Grey | Phomi | `catalog-placi-ceramice-f3d-4986.jpg` + `catalog-placi-ceramice-f3d-4986@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 97 | `CAT-0097` | Plăci ceramice | Placă Moonlight | Phomi | `catalog-placi-ceramice-f3d-4991.jpg` + `catalog-placi-ceramice-f3d-4991@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 98 | `CAT-0098` | Plăci ceramice | Placă Romam Grey | Phomi | `catalog-placi-ceramice-f3d-5038.jpg` + `catalog-placi-ceramice-f3d-5038@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 99 | `CAT-0099` | Plăci ceramice | Placă Portoro | Phomi | `catalog-placi-ceramice-f3d-5039.jpg` + `catalog-placi-ceramice-f3d-5039@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 100 | `CAT-0100` | Plăci ceramice | 35 Piece Stone | Phomi | `catalog-placi-ceramice-f3d-6117.jpg` + `catalog-placi-ceramice-f3d-6117@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 101 | `CAT-0101` | Plăci ceramice | Rough Surface | Phomi | `catalog-placi-ceramice-f3d-6120.jpg` + `catalog-placi-ceramice-f3d-6120@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 102 | `CAT-0102` | Plăci ceramice | Stone Alpes | Phomi | `catalog-placi-ceramice-f3d-6134.jpg` + `catalog-placi-ceramice-f3d-6134@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 103 | `CAT-0103` | Plăci ceramice | Oceanic Travertine | Phomi | `catalog-placi-ceramice-f3d-6140.jpg` + `catalog-placi-ceramice-f3d-6140@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 104 | `CAT-0104` | Plăci ceramice | Skyline | Phomi | `catalog-placi-ceramice-f3d-6145.jpg` + `catalog-placi-ceramice-f3d-6145@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 105 | `CAT-0105` | Plăci ceramice | Rome Travertine | Phomi | `catalog-placi-ceramice-f3d-6149.jpg` + `catalog-placi-ceramice-f3d-6149@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 106 | `CAT-0106` | Plăci ceramice | Ghana Travertine | Phomi | `catalog-placi-ceramice-f3d-6155.jpg` + `catalog-placi-ceramice-f3d-6155@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 107 | `CAT-0107` | Plăci ceramice | Concrete Pouring Slab | Phomi | `catalog-placi-ceramice-f3d-6157.jpg` + `catalog-placi-ceramice-f3d-6157@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 108 | `CAT-0108` | Plăci ceramice | Mount Celestial | Phomi | `catalog-placi-ceramice-f3d-6163.jpg` + `catalog-placi-ceramice-f3d-6163@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 109 | `CAT-0109` | Plăci ceramice | Marble | Phomi | `catalog-placi-ceramice-f3d-6170.jpg` + `catalog-placi-ceramice-f3d-6170@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 110 | `CAT-0110` | Plăci ceramice | Polished Concrete Wall | Phomi | `catalog-placi-ceramice-f3d-6175.jpg` + `catalog-placi-ceramice-f3d-6175@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 111 | `CAT-0111` | Plăci ceramice | Rusty Slab | Phomi | `catalog-placi-ceramice-f3d-6188.jpg` + `catalog-placi-ceramice-f3d-6188@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 112 | `CAT-0112` | Plăci ceramice | Polish Concrete Wall | Phomi | `catalog-placi-ceramice-f3d-6192.jpg` + `catalog-placi-ceramice-f3d-6192@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 113 | `CAT-0113` | Plăci ceramice | Devine Mushroom Stone | Phomi | `catalog-placi-ceramice-f3d-6196.jpg` + `catalog-placi-ceramice-f3d-6196@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 114 | `CAT-0114` | Plăci ceramice | Sawtooth Wood | Phomi | `catalog-placi-ceramice-f3d-6199.jpg` + `catalog-placi-ceramice-f3d-6199@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 115 | `CAT-0115` | Plăci ceramice | Original Wood | Phomi | `catalog-placi-ceramice-f3d-6204.jpg` + `catalog-placi-ceramice-f3d-6204@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 116 | `CAT-0116` | Plăci ceramice | Spliced Wood | Phomi | `catalog-placi-ceramice-f3d-6207.jpg` + `catalog-placi-ceramice-f3d-6207@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 117 | `CAT-0117` | Plăci ceramice | Rope Wave B | Phomi | `catalog-placi-ceramice-f3d-6209.jpg` + `catalog-placi-ceramice-f3d-6209@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 118 | `CAT-0118` | Plăci ceramice | Polished Wood 4.0 | Phomi | `catalog-placi-ceramice-f3d-6211.jpg` + `catalog-placi-ceramice-f3d-6211@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 119 | `CAT-0119` | Plăci ceramice | Stackle Square 4.0 | Phomi | `catalog-placi-ceramice-f3d-6214.jpg` + `catalog-placi-ceramice-f3d-6214@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 120 | `CAT-0120` | Plăci ceramice | Poly Wood | Phomi | `catalog-placi-ceramice-f3d-6216.jpg` + `catalog-placi-ceramice-f3d-6216@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 121 | `CAT-0121` | Plăci ceramice | Rammed Earth Wall | Phomi | `catalog-placi-ceramice-f3d-6218.jpg` + `catalog-placi-ceramice-f3d-6218@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 122 | `CAT-0122` | Plăci ceramice | Polished Stone | Phomi | `catalog-placi-ceramice-f3d-6221.jpg` + `catalog-placi-ceramice-f3d-6221@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 123 | `CAT-0123` | Plăci ceramice | Oman Linear Stone | Phomi | `catalog-placi-ceramice-f3d-6223.jpg` + `catalog-placi-ceramice-f3d-6223@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 124 | `CAT-0124` | Plăci ceramice | Chiseled Stone | Phomi | `catalog-placi-ceramice-f3d-6225.jpg` + `catalog-placi-ceramice-f3d-6225@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 125 | `CAT-0125` | Plăci ceramice | Bush Hammered | Phomi | `catalog-placi-ceramice-f3d-6228.jpg` + `catalog-placi-ceramice-f3d-6228@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 126 | `CAT-0126` | Plăci ceramice | Stone Ridged | Phomi | `catalog-placi-ceramice-f3d-6231.jpg` + `catalog-placi-ceramice-f3d-6231@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 127 | `CAT-0127` | Elemente decorative | Element decorativ RED 01 | RedConstruct | `catalog-elemente-decorative-f3d-3004.jpg` + `catalog-elemente-decorative-f3d-3004@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 128 | `CAT-0128` | Elemente decorative | Element decorativ RED 02 | RedConstruct | `catalog-elemente-decorative-f3d-3014.jpg` + `catalog-elemente-decorative-f3d-3014@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 129 | `CAT-0129` | Elemente decorative | Element decorativ RED 03 | RedConstruct | `catalog-elemente-decorative-f3d-3019.jpg` + `catalog-elemente-decorative-f3d-3019@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 130 | `CAT-0130` | Elemente decorative | Element decorativ RED 04 | RedConstruct | `catalog-elemente-decorative-f3d-3026.jpg` + `catalog-elemente-decorative-f3d-3026@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 131 | `CAT-0131` | Elemente decorative | Element decorativ RED 05 | RedConstruct | `catalog-elemente-decorative-f3d-3033.jpg` + `catalog-elemente-decorative-f3d-3033@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 132 | `CAT-0132` | Elemente decorative | Element decorativ RED 06 | RedConstruct | `catalog-elemente-decorative-f3d-3040.jpg` + `catalog-elemente-decorative-f3d-3040@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 133 | `CAT-0133` | Elemente decorative | Element decorativ RED 07 | RedConstruct | `catalog-elemente-decorative-f3d-3047.jpg` + `catalog-elemente-decorative-f3d-3047@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 134 | `CAT-0134` | Elemente decorative | Element decorativ RED 08 | RedConstruct | `catalog-elemente-decorative-f3d-3054.jpg` + `catalog-elemente-decorative-f3d-3054@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 135 | `CAT-0135` | Elemente decorative | Element decorativ RED 09 | RedConstruct | `catalog-elemente-decorative-f3d-3061.jpg` + `catalog-elemente-decorative-f3d-3061@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 136 | `CAT-0136` | Elemente decorative | Element decorativ RED 10 | RedConstruct | `catalog-elemente-decorative-f3d-3068.jpg` + `catalog-elemente-decorative-f3d-3068@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 137 | `CAT-0137` | Elemente decorative | Element decorativ RED 12 | RedConstruct | `catalog-elemente-decorative-f3d-3181.jpg` + `catalog-elemente-decorative-f3d-3181@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 138 | `CAT-0138` | Elemente decorative | Element decorativ RED 14 | RedConstruct | `catalog-elemente-decorative-f3d-3200.jpg` + `catalog-elemente-decorative-f3d-3200@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 139 | `CAT-0139` | Elemente decorative | Element decorativ RED 15 | RedConstruct | `catalog-elemente-decorative-f3d-3207.jpg` + `catalog-elemente-decorative-f3d-3207@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 140 | `CAT-0140` | Elemente decorative | Element decorativ RED 17 | RedConstruct | `catalog-elemente-decorative-f3d-3222.jpg` + `catalog-elemente-decorative-f3d-3222@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 141 | `CAT-0141` | Elemente decorative | Element decorativ RED 18 | RedConstruct | `catalog-elemente-decorative-f3d-3229.jpg` + `catalog-elemente-decorative-f3d-3229@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 142 | `CAT-0142` | Elemente decorative | Element decorativ RED 19 | RedConstruct | `catalog-elemente-decorative-f3d-3236.jpg` + `catalog-elemente-decorative-f3d-3236@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 143 | `CAT-0143` | Elemente decorative | Element decorativ RED 20 | RedConstruct | `catalog-elemente-decorative-f3d-3243.jpg` + `catalog-elemente-decorative-f3d-3243@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 144 | `CAT-0144` | Elemente decorative | Element decorativ RED 21 | RedConstruct | `catalog-elemente-decorative-f3d-3250.jpg` + `catalog-elemente-decorative-f3d-3250@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 145 | `CAT-0145` | Elemente decorative | Element decorativ RED 22 | RedConstruct | `catalog-elemente-decorative-f3d-3257.jpg` + `catalog-elemente-decorative-f3d-3257@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 146 | `CAT-0146` | Elemente decorative | Element decorativ RED 23 | RedConstruct | `catalog-elemente-decorative-f3d-3268.jpg` + `catalog-elemente-decorative-f3d-3268@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 147 | `CAT-0147` | Elemente decorative | Element decorativ RED 24 | RedConstruct | `catalog-elemente-decorative-f3d-3275.jpg` + `catalog-elemente-decorative-f3d-3275@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 148 | `CAT-0148` | Elemente decorative | Element decorativ RED 25 | RedConstruct | `catalog-elemente-decorative-f3d-3291.jpg` + `catalog-elemente-decorative-f3d-3291@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 149 | `CAT-0149` | Elemente decorative | Element decorativ RED 26 | RedConstruct | `catalog-elemente-decorative-f3d-3298.jpg` + `catalog-elemente-decorative-f3d-3298@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 150 | `CAT-0150` | Elemente decorative | Element decorativ RED 27 | RedConstruct | `catalog-elemente-decorative-f3d-3305.jpg` + `catalog-elemente-decorative-f3d-3305@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 151 | `CAT-0151` | Elemente decorative | Element decorativ RED 28 | RedConstruct | `catalog-elemente-decorative-f3d-3312.jpg` + `catalog-elemente-decorative-f3d-3312@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 152 | `CAT-0152` | Elemente decorative | Element decorativ RED 29 | RedConstruct | `catalog-elemente-decorative-f3d-3319.jpg` + `catalog-elemente-decorative-f3d-3319@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 153 | `CAT-0153` | Elemente decorative | Element decorativ RED 30 | RedConstruct | `catalog-elemente-decorative-f3d-3330.jpg` + `catalog-elemente-decorative-f3d-3330@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 154 | `CAT-0154` | Elemente decorative | Element decorativ RED 31 | RedConstruct | `catalog-elemente-decorative-f3d-3337.jpg` + `catalog-elemente-decorative-f3d-3337@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 155 | `CAT-0155` | Elemente decorative | Element decorativ RED 32 | RedConstruct | `catalog-elemente-decorative-f3d-3344.jpg` + `catalog-elemente-decorative-f3d-3344@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 156 | `CAT-0156` | Elemente decorative | Element decorativ RED 33 | RedConstruct | `catalog-elemente-decorative-f3d-3352.jpg` + `catalog-elemente-decorative-f3d-3352@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 157 | `CAT-0157` | Elemente decorative | Element decorativ RED 34 | RedConstruct | `catalog-elemente-decorative-f3d-3359.jpg` + `catalog-elemente-decorative-f3d-3359@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 158 | `CAT-0158` | Elemente decorative | Element decorativ RED 35 | RedConstruct | `catalog-elemente-decorative-f3d-3367.jpg` + `catalog-elemente-decorative-f3d-3367@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 159 | `CAT-0159` | Elemente decorative | Element decorativ RED 37 | RedConstruct | `catalog-elemente-decorative-f3d-3383.jpg` + `catalog-elemente-decorative-f3d-3383@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 160 | `CAT-0160` | Elemente decorative | Element decorativ RED 38 | RedConstruct | `catalog-elemente-decorative-f3d-3394.jpg` + `catalog-elemente-decorative-f3d-3394@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 161 | `CAT-0161` | Elemente decorative | Element decorativ RED 39 | RedConstruct | `catalog-elemente-decorative-f3d-3401.jpg` + `catalog-elemente-decorative-f3d-3401@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 162 | `CAT-0162` | Elemente decorative | Element decorativ RED 41 | RedConstruct | `catalog-elemente-decorative-f3d-3594.jpg` + `catalog-elemente-decorative-f3d-3594@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 163 | `CAT-0163` | Elemente decorative | Element decorativ RED 42 | RedConstruct | `catalog-elemente-decorative-f3d-3604.jpg` + `catalog-elemente-decorative-f3d-3604@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 164 | `CAT-0164` | Elemente decorative | Element decorativ RED 43 | RedConstruct | `catalog-elemente-decorative-f3d-3613.jpg` + `catalog-elemente-decorative-f3d-3613@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 165 | `CAT-0165` | Elemente decorative | Element decorativ RED 44 | RedConstruct | `catalog-elemente-decorative-f3d-3623.jpg` + `catalog-elemente-decorative-f3d-3623@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 166 | `CAT-0166` | Elemente decorative | Element decorativ RED 45 | RedConstruct | `catalog-elemente-decorative-f3d-3632.jpg` + `catalog-elemente-decorative-f3d-3632@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 167 | `CAT-0167` | Elemente decorative | Element decorativ RED 46 | RedConstruct | `catalog-elemente-decorative-f3d-3641.jpg` + `catalog-elemente-decorative-f3d-3641@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 168 | `CAT-0168` | Elemente decorative | Element decorativ RED 47 | RedConstruct | `catalog-elemente-decorative-f3d-3648.jpg` + `catalog-elemente-decorative-f3d-3648@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 169 | `CAT-0169` | Elemente decorative | Element decorativ RED 49 | RedConstruct | `catalog-elemente-decorative-f3d-3663.jpg` + `catalog-elemente-decorative-f3d-3663@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 170 | `CAT-0170` | Elemente decorative | Element decorativ RED 50 | RedConstruct | `catalog-elemente-decorative-f3d-3670.jpg` + `catalog-elemente-decorative-f3d-3670@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 171 | `CAT-0171` | Elemente decorative | Element decorativ RED 53 | RedConstruct | `catalog-elemente-decorative-f3d-3694.jpg` + `catalog-elemente-decorative-f3d-3694@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 172 | `CAT-0172` | Elemente decorative | Element decorativ RED 55 | RedConstruct | `catalog-elemente-decorative-f3d-3707.jpg` + `catalog-elemente-decorative-f3d-3707@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 173 | `CAT-0173` | Elemente decorative | Element decorativ RED 56 | RedConstruct | `catalog-elemente-decorative-f3d-3714.jpg` + `catalog-elemente-decorative-f3d-3714@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 174 | `CAT-0174` | Elemente decorative | Element decorativ RED 57 | RedConstruct | `catalog-elemente-decorative-f3d-3721.jpg` + `catalog-elemente-decorative-f3d-3721@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 175 | `CAT-0175` | Elemente decorative | Element decorativ RED 58 | RedConstruct | `catalog-elemente-decorative-f3d-3728.jpg` + `catalog-elemente-decorative-f3d-3728@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 176 | `CAT-0176` | Elemente decorative | Element decorativ RED 61 | RedConstruct | `catalog-elemente-decorative-f3d-3780.jpg` + `catalog-elemente-decorative-f3d-3780@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 177 | `CAT-0177` | Elemente decorative | Element decorativ RED 62 | RedConstruct | `catalog-elemente-decorative-f3d-3799.jpg` + `catalog-elemente-decorative-f3d-3799@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 178 | `CAT-0178` | Elemente decorative | Element decorativ RED 63 | RedConstruct | `catalog-elemente-decorative-f3d-3806.jpg` + `catalog-elemente-decorative-f3d-3806@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 179 | `CAT-0179` | Elemente decorative | Element decorativ RED 64 | RedConstruct | `catalog-elemente-decorative-f3d-3813.jpg` + `catalog-elemente-decorative-f3d-3813@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 180 | `CAT-0180` | Elemente decorative | Element decorativ RED 65 | RedConstruct | `catalog-elemente-decorative-f3d-3822.jpg` + `catalog-elemente-decorative-f3d-3822@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 181 | `CAT-0181` | Elemente decorative | Element decorativ RED 66 | RedConstruct | `catalog-elemente-decorative-f3d-3828.jpg` + `catalog-elemente-decorative-f3d-3828@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 182 | `CAT-0182` | Elemente decorative | Element decorativ RED 67 | RedConstruct | `catalog-elemente-decorative-f3d-3835.jpg` + `catalog-elemente-decorative-f3d-3835@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 183 | `CAT-0183` | Elemente decorative | Element decorativ RED 68 | RedConstruct | `catalog-elemente-decorative-f3d-3843.jpg` + `catalog-elemente-decorative-f3d-3843@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 184 | `CAT-0184` | Elemente decorative | Element decorativ RED 69 | RedConstruct | `catalog-elemente-decorative-f3d-3884.jpg` + `catalog-elemente-decorative-f3d-3884@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 185 | `CAT-0185` | Elemente decorative | Element decorativ RED 70 | RedConstruct | `catalog-elemente-decorative-f3d-3891.jpg` + `catalog-elemente-decorative-f3d-3891@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 186 | `CAT-0186` | Elemente decorative | Element decorativ RED 73 | RedConstruct | `catalog-elemente-decorative-f3d-4043.jpg` + `catalog-elemente-decorative-f3d-4043@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 187 | `CAT-0187` | Elemente decorative | Element decorativ RED 74 | RedConstruct | `catalog-elemente-decorative-f3d-4050.jpg` + `catalog-elemente-decorative-f3d-4050@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 188 | `CAT-0188` | Elemente decorative | Element decorativ RED 76 | RedConstruct | `catalog-elemente-decorative-f3d-4057.jpg` + `catalog-elemente-decorative-f3d-4057@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 189 | `CAT-0189` | Elemente decorative | Element decorativ RED 77 | RedConstruct | `catalog-elemente-decorative-f3d-4064.jpg` + `catalog-elemente-decorative-f3d-4064@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 190 | `CAT-0190` | Elemente decorative | Element decorativ RED 78 | RedConstruct | `catalog-elemente-decorative-f3d-4070.jpg` + `catalog-elemente-decorative-f3d-4070@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 191 | `CAT-0191` | Vopsele | Amphibolin - Vopsea acrilică universală | Caparol | `catalog-vopsele-f3d-2076.jpg` + `catalog-vopsele-f3d-2076@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 192 | `CAT-0192` | Vopsele | Isomat Flexcoat - Vopsea hidroizolantă | ISOMAT | `catalog-vopsele-f3d-2085.jpg` + `catalog-vopsele-f3d-2085@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 193 | `CAT-0193` | Vopsele | Vopsea de fațadă universală - Muresko-plus | Caparol | `catalog-vopsele-f3d-2509.jpg` + `catalog-vopsele-f3d-2509@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 194 | `CAT-0194` | Vopsele | Ultrapal - Vopsea universală | STANCOLAC | `catalog-vopsele-f3d-2532.jpg` + `catalog-vopsele-f3d-2532@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 195 | `CAT-0195` | Vopsele | Caparol Tiefgrund - Amorsă acrilică, pentru interior și exterior | Caparol | `catalog-vopsele-f3d-2521.jpg` + `catalog-vopsele-f3d-2521@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 196 | `CAT-0196` | Sisteme de iluminare | Lampă GMD-881F | not stated | `catalog-sisteme-iluminare-f3d-1716.jpg` + `catalog-sisteme-iluminare-f3d-1716@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 197 | `CAT-0197` | Sisteme de iluminare | Lampă GMD-881Y | not stated | `catalog-sisteme-iluminare-f3d-1726.jpg` + `catalog-sisteme-iluminare-f3d-1726@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 198 | `CAT-0198` | Sisteme de iluminare | Lampă GMD-F841F-2 | not stated | `catalog-sisteme-iluminare-f3d-1729.jpg` + `catalog-sisteme-iluminare-f3d-1729@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 199 | `CAT-0199` | Sisteme de iluminare | Lampă K1207 | not stated | `catalog-sisteme-iluminare-f3d-1733.jpg` + `catalog-sisteme-iluminare-f3d-1733@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 200 | `CAT-0200` | Sisteme de iluminare | Lampă K1212S | not stated | `catalog-sisteme-iluminare-f3d-1736.jpg` + `catalog-sisteme-iluminare-f3d-1736@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 201 | `CAT-0201` | Sisteme de iluminare | Lampă K1213M | not stated | `catalog-sisteme-iluminare-f3d-1749.jpg` + `catalog-sisteme-iluminare-f3d-1749@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 202 | `CAT-0202` | Sisteme de iluminare | Lampă K1241 | not stated | `catalog-sisteme-iluminare-f3d-1753.jpg` + `catalog-sisteme-iluminare-f3d-1753@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 203 | `CAT-0203` | Sisteme de iluminare | Lampă K1247 | not stated | `catalog-sisteme-iluminare-f3d-1756.jpg` + `catalog-sisteme-iluminare-f3d-1756@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 204 | `CAT-0204` | Sisteme de iluminare | Lampă K2148 | not stated | `catalog-sisteme-iluminare-f3d-1759.jpg` + `catalog-sisteme-iluminare-f3d-1759@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 205 | `CAT-0205` | Sisteme de iluminare | Lampă K2276 | not stated | `catalog-sisteme-iluminare-f3d-1762.jpg` + `catalog-sisteme-iluminare-f3d-1762@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 206 | `CAT-0206` | Sisteme de iluminare | Lampă K5014 | not stated | `catalog-sisteme-iluminare-f3d-1765.jpg` + `catalog-sisteme-iluminare-f3d-1765@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 207 | `CAT-0207` | Sisteme de iluminare | Lampă K5016 | not stated | `catalog-sisteme-iluminare-f3d-1770.jpg` + `catalog-sisteme-iluminare-f3d-1770@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 208 | `CAT-0208` | Sisteme de iluminare | Lampă K41041 | not stated | `catalog-sisteme-iluminare-f3d-1771.jpg` + `catalog-sisteme-iluminare-f3d-1771@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 209 | `CAT-0209` | Sisteme de iluminare | Lampă K41047 | not stated | `catalog-sisteme-iluminare-f3d-1774.jpg` + `catalog-sisteme-iluminare-f3d-1774@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 210 | `CAT-0210` | Sisteme de iluminare | Lampă K41059 | not stated | `catalog-sisteme-iluminare-f3d-1777.jpg` + `catalog-sisteme-iluminare-f3d-1777@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 211 | `CAT-0211` | Sisteme de iluminare | Lampă K41061 | not stated | `catalog-sisteme-iluminare-f3d-1780.jpg` + `catalog-sisteme-iluminare-f3d-1780@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 212 | `CAT-0212` | Sisteme de iluminare | Lampă K45015 | not stated | `catalog-sisteme-iluminare-f3d-1783.jpg` + `catalog-sisteme-iluminare-f3d-1783@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 213 | `CAT-0213` | Sisteme de iluminare | Lampă K1247 | not stated | `catalog-sisteme-iluminare-f3d-5395.jpg` + `catalog-sisteme-iluminare-f3d-5395@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 214 | `CAT-0214` | Sisteme de iluminare | Lampă K2146 | not stated | `catalog-sisteme-iluminare-f3d-5405.jpg` + `catalog-sisteme-iluminare-f3d-5405@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 215 | `CAT-0215` | Sisteme de iluminare | Lampă K2880 | not stated | `catalog-sisteme-iluminare-f3d-5417.jpg` + `catalog-sisteme-iluminare-f3d-5417@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 216 | `CAT-0216` | Sisteme de iluminare | Lampă K2088L | not stated | `catalog-sisteme-iluminare-f3d-5428.jpg` + `catalog-sisteme-iluminare-f3d-5428@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 217 | `CAT-0217` | Sisteme de iluminare | Lampă K2222 | not stated | `catalog-sisteme-iluminare-f3d-5432.jpg` + `catalog-sisteme-iluminare-f3d-5432@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 218 | `CAT-0218` | Sisteme de iluminare | Lampă K2841 | not stated | `catalog-sisteme-iluminare-f3d-5437.jpg` + `catalog-sisteme-iluminare-f3d-5437@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 219 | `CAT-0219` | Sisteme de iluminare | Lampă K2842 | not stated | `catalog-sisteme-iluminare-f3d-5440.jpg` + `catalog-sisteme-iluminare-f3d-5440@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 220 | `CAT-0220` | Sisteme de iluminare | Lampă K1823 | not stated | `catalog-sisteme-iluminare-f3d-5444.jpg` + `catalog-sisteme-iluminare-f3d-5444@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 221 | `CAT-0221` | Alte materiale de construcții | Membrana de DIFUZIE pentru acoperișuri | not stated | `catalog-alte-materiale-f3d-2569.jpg` + `catalog-alte-materiale-f3d-2569@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 222 | `CAT-0222` | Alte materiale de construcții | Plasă de armare | not stated | `catalog-alte-materiale-f3d-2576.jpg` + `catalog-alte-materiale-f3d-2576@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 223 | `CAT-0223` | Alte materiale de construcții | Colțar PVC | not stated | `catalog-alte-materiale-f3d-2583.jpg` + `catalog-alte-materiale-f3d-2583@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
 
 ---
 
-Generated 2026-09-17 from 7 categories and 0 product records.
+Generated 2026-09-20 from 7 categories and 223 product records, of 223 in the data.

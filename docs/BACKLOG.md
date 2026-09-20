@@ -26,9 +26,9 @@ card sources, downloads or requests an image, and nothing from `fatade3d.md`,
 
 | Ticket | Card | Branch | Status |
 |---|---|---|---|
-| W24-01 | The shared placeholder component and the photo slot ledger | `w24/w24-01-placeholder-system` | todo |
-| W24-02 | The Catalog button moves next to the logo, in every header copy | `w24/w24-02-header-catalog-button` | todo |
-| W24-03 | Every fatade3d product, extracted into the repo's own records | `w24/w24-03-catalogue-data` | todo |
+| W24-01 | The shared placeholder component and the photo slot ledger | `w24/w24-01-placeholder-system` | PR #78 open, awaiting owner: one `.ph` component, `docs/PHOTO-SLOTS-W24.json` and gate 19 holding them to each other in both directions; the ledger ships empty on purpose and the gate's three-arm self-test is what makes it a gate meanwhile; W24-R recorded verbatim; the seven wave 23 backlog rows corrected (F-23); the wave index moved to the session memory folder (F-28, Q-W24-01) |
+| W24-02 | The Catalog button moves next to the logo, in every header copy | `w24/w24-02-header-catalog-button` | PR #79 open, awaiting owner: the control moved right of the logo in all four templates and took `.btn--primary`'s paint; white on `--brand` is 3.41:1 so the label went to 19px/700 with the colour, which cost 15px RO and 16px RU and took the fit gate red; **one fix**, the nav gap 20px to 14px, returns 18px and leaves RO 22px / RU 9px, 108 of 108 green; on a phone the label is `--ink` at 14px, 5.10:1; 8 browser readings, 0 failing; Q-W24-02 |
+| W24-03 | Every fatade3d product, extracted into the repo's own records | `w24/w24-03-catalogue-data` | PR #80 open, awaiting owner: **223 products**, 14 categories, all six control samples matched; `content/catalog-products.json` reshaped to `products` plus a category index because ten names are used by two products each; **one bad record now fails that record with a named error, not the build**, watched on four arms; 27 brands withheld and 2 names rendered with a refused manufacturer removed (W17-02); 37 RU names reuse RO under W24-R9 and are listed; `docs/CATALOG-SOURCE-W24.md`; nothing rendered yet, W24-04 builds the card; Q-W24-03 |
 | W24-04 | The catalogue gets a card, a grid, a page per subcategory and an index | `w24/w24-04-catalogue-layout` | todo |
 | W24-05 | The before/after slider is turned on, with placeholders that prove it moves | `w24/w24-05-before-after` | todo |
 | W24-06 | The roof offers leave the homepage, and tigla metalica becomes a child of acoperisuri | `w24/w24-06-homepage-ia` | todo |

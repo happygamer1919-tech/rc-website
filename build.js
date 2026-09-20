@@ -599,6 +599,53 @@ function promoBar(l) {
 `;
 }
 
+// --- W24-01, the wave 24 photo placeholder -----------------------------------
+
+/* Every image wave 24 renders is a placeholder. One component renders all of
+   them, and docs/PHOTO-SLOTS-W24.json is the ledger the photo session is handed.
+
+   The two are held together in both directions. Here, at build time: a
+   placeholder whose slot id has no ledger row fails the build, naming the id and
+   the file. And in scripts/check-photo-slots-w24.js, over the built tree: every
+   rendered placeholder has a row, and every row is rendered.
+
+   Presence, not silence (docs/CLAUDE.md section 13): a ledger file that is
+   missing, unparseable, or has no `slots` array fails the build rather than
+   reading as "no placeholders to check". An empty array is a real, stated state
+   and is written [], never omitted.
+
+   The ratio lives in the ledger row and nowhere else (docs/CLAUDE.md section
+   14). The stylesheet reads it through --ph-ratio. */
+const PHOTO_SLOTS_FILE = 'docs/PHOTO-SLOTS-W24.json';
+const PHOTO_SLOTS = JSON.parse(fs.readFileSync(PHOTO_SLOTS_FILE, 'utf8'));
+if (!Array.isArray(PHOTO_SLOTS.slots)) {
+  die(`${PHOTO_SLOTS_FILE} has no "slots" array. An empty ledger is [], never a missing key.`);
+}
+const PHOTO_SLOT_IDS = new Set();
+PHOTO_SLOTS.slots.forEach((s, i) => {
+  for (const f of ['id', 'page', 'ratio', 'min_px', 'shows']) {
+    if (!REAL(s[f])) die(`${PHOTO_SLOTS_FILE}: slots[${i}] has no real "${f}".`);
+  }
+  if (!/^[A-Z0-9-]+$/.test(s.id)) die(`${PHOTO_SLOTS_FILE}: slots[${i}].id "${s.id}" is not uppercase, digits and hyphens.`);
+  if (PHOTO_SLOT_IDS.has(s.id)) die(`${PHOTO_SLOTS_FILE}: slot id "${s.id}" appears twice. One row per slot.`);
+  PHOTO_SLOT_IDS.add(s.id);
+});
+
+/* variant is 'light' or 'dark'. Nothing else: the two are the section rhythm's
+   own two backgrounds and a third would be a new colour value. */
+function placeholder(id, opts = {}) {
+  const row = PHOTO_SLOTS.slots.find((s) => s.id === id);
+  if (!row) {
+    die(`placeholder: slot "${id}" has no row in ${PHOTO_SLOTS_FILE}. A placeholder and its ledger row land in the same commit.`);
+  }
+  const variant = opts.variant || 'light';
+  if (variant !== 'light' && variant !== 'dark') {
+    die(`placeholder: slot "${id}" asks for variant "${variant}". Only "light" and "dark" exist.`);
+  }
+  const extra = opts.className ? ' ' + opts.className : '';
+  return `<div class="ph ph--${variant}${extra}" data-photo-slot="${esc(id)}" style="--ph-ratio: ${esc(row.ratio)};"><span class="ph__id">${esc(id)}</span></div>`;
+}
+
 // --- W14-06, the catalog mega-menu (S-01) ------------------------------------
 
 /* Data-driven from content/catalog.json, taxonomy shape from the wave 14 audit

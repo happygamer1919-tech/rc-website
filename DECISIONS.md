@@ -10102,3 +10102,69 @@ The first was found by eye. The second was found only because one page of twenty
 budget tight enough to notice 99px. Gate 20 reads geometry and would not have caught it:
 nothing pointed it at a FAQ list. **A height budget is a good alarm and a poor detector**,
 and `docs/CLAUDE.md` section 3.1 now says so alongside the rule itself.
+
+## W24 closing · wave 24 ratified and closed, four questions answered, and a new completion rule, 2026-09-20
+
+Recorded at the owner's instruction, from the W24-10 dispatch, before the W24-10 card was
+worked. `origin/main` is `c3d6b6b`, with #88 merged.
+
+**The precondition was met and is recorded as a result, not an assumption.** The deployed
+build was verified before any of this was written: the Pages run for `c3d6b6b` succeeded,
+the edge was polled until it served that sha, and then
+`node scripts/verify-live.js https://rapidconstruct.md` **exited 0, PASS, 0 unverified and
+0 failed across 51 pages**. That is the first fully clean live run of wave 24. Case la
+cheie reads 6,376 against 6,436 and 6,483 against 6,543, which is W24-09b's fix confirmed
+on the deployed tree rather than on a workstation.
+
+### The ratification, as given
+
+> RATIFIED by strategy, record in DECISIONS.md as the W24 closing block: W24-09, W24-09a,
+> W24-09b and every deviation in them. Q-W24-02 CLOSED, shipped header state is final.
+> Q-W24-03 CLOSED, owner decision 2026-09-20: keep the 64 RedConstruct records, brand line
+> hidden. Q-W24-04 CLOSED: 9 cards. Q-W24-05 stays closed.
+
+### What this closes
+
+**W24-09, W24-09a and W24-09b are ratified with every deviation recorded on them.** They
+are not restated here: each is recorded in its own block above, those bodies are immutable
+under R-S, and section 14 forbids a governing document restating what lives elsewhere.
+
+Worth naming once, because it is the wave's real lesson: **the same defect class shipped
+three times in wave 24** and the gate suite saw none of them. Two class collisions
+(`.bento__tile`, `.faq`) and one load-time error in the script that checks the deploy. All
+three are now held by gates that did not exist a day ago: **20** reads computed geometry,
+**21** loads the script CI never loaded, **22** reads the stylesheet for contradicting
+declarations. Gate 22's self-test is both collisions, and it fails `origin/main` as it
+stood before W24-09b.
+
+**Q-W24-02 is CLOSED. The shipped header state is final**: the nav gap at 14px, the
+Catalog button wearing `.btn--primary` at 19px/700. Re-measured on this tree by reverting
+the fix and restoring it, so the question's own figures are now reproduced rather than
+quoted: with the 20px gap, RO 4px and **RU -7px** of slack, 90 of 216 combinations red;
+as shipped, **RO 22px and RU 9px, 216 of 216 green**.
+
+**Q-W24-03 is CLOSED.** Owner decision of 2026-09-20: **keep the 64 RedConstruct records,
+brand line hidden.** That is the `brand_hidden` default W24-09 shipped, and no change
+follows from the answer. Part 1, the five `PLacă` typos, was already answered (b) and
+shipped; the Romanian names are corrected and `source.name` keeps the source's spelling.
+Part 3 stays as shipped.
+
+**Q-W24-04 is CLOSED: nine cards.** W24-10 implements it. See below.
+
+**Q-W24-05 stays closed**, by W24-09b, with its own recommendation recorded as wrong.
+
+### The new doctrine
+
+> A card is complete only when `verify-live.js` passes against the deployed sha after its
+> merge. The terminal runs it after every owner merge without being asked and reports the
+> process and exit code (R-AB).
+
+Recorded in `docs/CLAUDE.md` as **section 12.0**, with the two mechanical traps that have
+already cost this wave a false red and a false diagnosis: the edge must be polled until it
+serves the merge sha (deploy success is not propagation), and `EXPECT_SHA` is compared by
+equality so a short sha produces 51 spurious mismatches.
+
+It also carries the harder half: **when the run fails, find the cause by measurement before
+proposing a fix.** W24-09 read a live failure as a budget set too early and recommended
+moving the budget; the cause was a collision on twenty pages, and the recommendation would
+have written the defect into a ruling.

@@ -672,3 +672,48 @@ the measurement beside it is corrected here under R-R.
 **What this says about height budgets generally**, recorded because it is the useful part:
 a budget caught this, but only on the one page of twenty that happened to have a tight one.
 A budget is a good alarm and a poor detector. Gate 22 is the detector.
+
+### Amended 2026-09-20 by W24-10 · the phone reveal moves to nine cards; no desktop budget changes
+
+Added under R-T; nothing above this block was edited.
+
+The owner answered Q-W24-04 with **nine**. `PROD_STEP` in `build.js` is 9.
+
+**NO BUDGET IN THIS RULING MOVES.** A budget here is a measurement at 1440px, and at
+1440px nothing folds: every catalogue page paints every card at every step value. The
+five pages with a reveal were re-measured at 1440 to prove it rather than to assume it,
+and every one is identical to the W24-09 figure: placi ceramice 12,669, elemente
+decorative 10,141, termoizolație 6,801, sisteme iluminare 6,258, tencuieli decorative
+5,250. The thirty budgets set by W24-09 stand unchanged.
+
+#### What changed, measured at 390px with mobile emulation, on load
+
+These are measurements, not budgets, for the reason the W24-09 block gives.
+
+| Page | RO at 12 | RO at 9 | RU at 12 | RU at 9 |
+|---|---|---|---|---|
+| `/catalog/placi-ceramice/` | 10,189 | **8,696** | 10,760 | **9,182** |
+| `/catalog/elemente-decorative/` | 10,306 | **8,793** | 10,552 | **9,039** |
+| `/catalog/sisteme-iluminare/` | 10,383 | **8,870** | 10,450 | **8,937** |
+| `/catalog/termoizolatie/` | 10,778 | **9,197** | 10,902 | **9,324** |
+| `/catalog/tencuieli-decorative/` | 10,885 | **9,241** | 11,003 | **9,477** |
+
+**The dispatch's target is met on the page it named.** `/catalog/placi-ceramice/` reads
+**8,696px**, under 9,000, and it is the figure Q-W24-04 predicted from the measurement
+taken before the question was opened.
+
+**Two things that are true and less tidy, recorded because they are true.**
+
+**The RU copy of that page is 9,182px**, over 9,000. The target names one path and that
+path is the Romanian one; the Russian page carries the same nine cards and a longer
+header, heading and prose, and it is 486px longer. Nothing was done about it: the owner's
+answer was a card count, not a per-locale target, and shaving a locale to a number nobody
+set would be inventing a requirement.
+
+**Three pages are now LONGER than placi ceramice**, which was the longest page on the
+site by a wide margin an hour ago: tencuieli decorative reads 9,241 RO against placi
+ceramice's 8,696, on thirteen products against eighty-eight. **With the grid capped at
+nine cards, a catalogue page's length is no longer its data.** It is the prose block, the
+quote form and the footer, which are the same on every one of them and total about
+4,000px. That is where the next reduction has to come from, and it is not a catalogue
+change.

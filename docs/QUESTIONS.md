@@ -2108,7 +2108,7 @@ before this card.
 default costs nothing if it is wrong: the memory file is outside the repo and the backlog
 is unchanged.
 
-## Q-W24-02 · The Catalog button could not take the hero button's paint at its old size, and one fix was needed · OPEN · opened 2026-09-19 (W24-02)
+## Q-W24-02 · The Catalog button could not take the hero button's paint at its old size, and one fix was needed · ~~OPEN~~ **CLOSED 2026-09-20 by the W24 closing ratification: the shipped header state is FINAL** (option (a), the nav gap at 14px). Re-measured on the W24-09 tree by reverting the fix and restoring it: with the 20px gap RO 4px and RU **-7px**, 90 of 216 red; as shipped RO 22px and RU 9px, 216 of 216 green. See `DECISIONS.md`, "W24 closing". No body below is edited (R-S) · opened 2026-09-19 (W24-02)
 
 **Shipped default: the one fix proposed below. The dispatch asked for it to be proposed,
 and it is shipped so the card is not left half-done. Say the word if you want a different
@@ -2168,7 +2168,7 @@ in a real browser, RO and RU, 1440 and 375, at rest and open: all eight pass.
 
 **Recommended: (a), as shipped.**
 
-## Q-W24-03 · Five product names carry a typo on the source, and a competitor's house brand is on 64 records · PARTS 1 AND 2 ANSWERED 2026-09-20 (W24-09): the owner took **(b)** on both. The five names are corrected in `name.ro` with `source.name` left verbatim, and the 64 RedConstruct records are kept with their brand line withheld behind `brand_hidden`. Part 3 ~~OPEN~~ stays OPEN, shipped default (a) stands · opened 2026-09-19 (W24-03)
+## Q-W24-03 · Five product names carry a typo on the source, and a competitor's house brand is on 64 records · ~~OPEN~~ **CLOSED 2026-09-20 by the W24 closing ratification.** Owner decision: keep the 64 RedConstruct records with the brand line hidden, which is the `brand_hidden` default W24-09 shipped, so no change follows. Parts 1 and 2 were answered 2026-09-20 (W24-09): the owner took **(b)** on both. The five names are corrected in `name.ro` with `source.name` left verbatim, and the 64 RedConstruct records are kept with their brand line withheld behind `brand_hidden`. Part 3 ~~OPEN~~ stays OPEN, shipped default (a) stands · opened 2026-09-19 (W24-03)
 
 **Shipped defaults: the typos are copied verbatim, and the house brand is stored and will
 render. Both are reversible in one line.**
@@ -2229,7 +2229,7 @@ source string kept in `source.name`.
 
 **Recommended: (a), as shipped.**
 
-## Q-W24-04 · Twelve cards on a phone cannot reach the dispatch's 9,000px target, and the gap is one number · OPEN · opened 2026-09-20 (W24-09)
+## Q-W24-04 · Twelve cards on a phone cannot reach the dispatch's 9,000px target, and the gap is one number · ~~OPEN~~ **CLOSED 2026-09-20 by the W24 closing ratification: NINE, option (b).** Implemented by W24-10; `PROD_STEP` in `build.js` is 9. Measured on the shipped tree: `/catalog/placi-ceramice/` reads **8,696px** at 390, under the target, which is the figure this question predicted. The RU copy reads 9,182 and is recorded in `docs/rulings/R-Y.md` rather than acted on, the target having named one path. No body below is edited (R-S) · opened 2026-09-20 (W24-09)
 
 **Shipped default: twelve, exactly as the dispatch specifies. `/catalog/placi-ceramice/`
 measures 10,189px at 390px on load, against a stated target of under 9,000px.**

@@ -388,8 +388,13 @@ const SELF = [
 `,
     /* The fold class is only ever ON the cards when main.js has put it there, and
        main.js only does that below 768px. So the arm also forces the class on, the
-       way a mistaken JS width test would. */
-    js: `document.querySelectorAll('[data-product-card]').forEach((c, i) => { if (i >= 12) c.classList.add('prod--folded'); });`,
+       way a mistaken JS width test would.
+       THE COUNT IS READ OFF THE PAGE, never written here. This line said `i >= 12`
+       when the step was twelve, and W24-10 moved the step to nine; an arm carrying
+       its own copy of a number the page also states is an arm that goes quietly
+       wrong the day the number moves. It would still have fired here, which is
+       worse: it would have fired for the wrong reason. */
+    js: `(() => { const g = document.querySelector('[data-prod-grid]'); const step = parseInt(g.getAttribute('data-prod-step'), 10); g.querySelectorAll('[data-product-card]').forEach((c, i) => { if (i >= step) c.classList.add('prod--folded'); }); })();`,
   },
 ];
 

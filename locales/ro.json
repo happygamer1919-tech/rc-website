@@ -373,7 +373,7 @@
     "ask": "Preț la cerere",
     "ctaAria": "Solicită ofertă pentru",
     "more": "Arată mai multe",
-    "moreAria": "Arată încă 12 produse din această categorie"
+    "moreAria": "Arată încă {n} produse din această categorie"
   },
   "catalogPages": {
     "items": {

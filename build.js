@@ -695,18 +695,18 @@ function bentoSection(l, cfg) {
   const tiles = cfg.tiles.map((x, i) => {
     const label = esc(need(l.strings[x.label], x.label));
     x = { ...x, href: x.page ? `${BASE}${SERVICES_ROOT[l.code]}${x.page}/` : (x.inConstructie ? BASE + IN_CONSTRUCTIE[l.code] : null) };
-    const ph = placeholder(x.slot, { variant: 'dark', className: 'bento__ph' });
-    const body = `${ph}<span class="bento__grad" aria-hidden="true"></span><span class="bento__label">${label}</span>`;
-    const cls = `bento__tile bento__tile--${i + 1}`;
+    const ph = placeholder(x.slot, { variant: 'dark', className: 'hub__ph' });
+    const body = `${ph}<span class="hub__grad" aria-hidden="true"></span><span class="hub__label">${label}</span>`;
+    const cls = `hub__tile hub__tile--${i + 1}`;
     return x.href
       ? `      <a class="${cls}" href="${x.href}" data-reveal data-stagger="${i}">${body}</a>`
-      : `      <div class="${cls} bento__tile--inert" aria-disabled="true" data-reveal data-stagger="${i}">${body}</div>`;
+      : `      <div class="${cls} hub__tile--inert" aria-disabled="true" data-reveal data-stagger="${i}">${body}</div>`;
   }).join('\n');
 
-  return `<section class="section section--light section--divided bento" id="${cfg.id}" aria-labelledby="${cfg.id}-h">
+  return `<section class="section section--light section--divided hub" id="${cfg.id}" aria-labelledby="${cfg.id}-h">
   <div class="container">
-    <h2 id="${cfg.id}-h" class="bento__h" data-reveal>${esc(need(l.strings[cfg.head], cfg.head))}<span class="bento__h-muted">${esc(need(l.strings[cfg.headMuted], cfg.headMuted))}</span></h2>
-    <div class="bento__grid">
+    <h2 id="${cfg.id}-h" class="hub__h" data-reveal>${esc(need(l.strings[cfg.head], cfg.head))}<span class="hub__h-muted">${esc(need(l.strings[cfg.headMuted], cfg.headMuted))}</span></h2>
+    <div class="hub__grid">
 ${tiles}
     </div>
   </div>

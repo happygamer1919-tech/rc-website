@@ -184,8 +184,8 @@ const PAGES = [
   { path: '/ru/servicii/fatade/',          type: 'service', label: 'svc RU fatade',  budget: 6000 },
   /* W24-06. The four roofing offers moved onto this page, so it leaves the shared
      6,000px service budget and takes its own, measured plus 60, under W24-R4. */
-  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 7744 },
-  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 7882 },
+  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 7658 },
+  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 7796 },
   /* W24-07. The rocă vulcanică mirror page. */
   { path: '/servicii/roca-vulcanica/',     type: 'novatik', label: 'novatik RO',  budget: 4348 },
   { path: '/ru/servicii/roca-vulcanica/',  type: 'novatik', label: 'novatik RU',  budget: 4446 },

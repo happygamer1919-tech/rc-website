@@ -9809,3 +9809,39 @@ land.
 Lighthouse accessibility by hand on both pages, because gate 5 audits only the two
 homepages: **1.0 with zero failing audits**, with the bento's inert tile and eight
 placeholders on the page.
+
+## W24-07a · Correction to W24-07: the bento's classes collided with the garduri page's, 2026-09-20
+
+**The bento was visibly broken and every gate was green.**
+
+Its classes were written as `.bento__*`. The garduri page has carried `.bento` and
+`.bento__tile` since W16 for its chooser tiles, both declarations are (0,1,0), and the
+garduri one is later in the stylesheet, so it won every conflicting property.
+
+Measured on the built page before the fix:
+
+| Property | Intended | Rendered |
+|---|---|---|
+| section `display` | `block` | `grid`, three columns of 464px |
+| tile background | `#141414` | `#FFFFFF` |
+| tile radius | 24px | 10px |
+| tile padding | 0 | 24px |
+| tall tile width | 373px | **128px** |
+
+Renamed to `.hub__*`, which nothing else uses. The garduri page's own tiles are untouched
+and still render.
+
+**No gate caught it, and none could have.** Every one of the eighteen was green on the
+broken tree: the build wrote the file, the links resolved, the headings fitted, the
+contrast passed, the ledger matched, Lighthouse scored 99 and 100. **No gate in this repo
+reads a layout**, and a class collision produces valid HTML and valid CSS. It was found by
+reading the computed style of the first tile in a browser, which is the check W24-04's
+review taught: measure the rendered thing, not the source that describes it.
+
+The lesson generalises and is worth stating: **a new component's class prefix has to be
+checked against the stylesheet before it is written, not after.** `grep -c '\.bento__'`
+would have taken one second and saved this.
+
+The card's height budgets are re-measured after the rename and the figures in R-Y's
+W24-07 block are the corrected ones: the acoperisuri page reads 7,598 RO and 7,736 RU, not
+the 7,684 and 7,822 the broken layout produced.

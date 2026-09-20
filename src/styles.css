@@ -384,6 +384,14 @@ p { margin: 0; }
 }
 
 /* --- W24-07, the bento hub (W24-R5, W24-R8) --------------------------------- */
+/* CORRECTED, same card. These were written as .bento__* and the garduri page has
+   carried a .bento and .bento__tile since W16 for its chooser tiles. Both
+   declarations are (0,1,0) and the garduri one is later in the file, so it won.
+   Measured on the built page before the rename: the section itself became a
+   three-column grid, the tiles rendered white on a 10px radius with 24px of
+   padding instead of #141414 on 24px, and the tall tile came out 128px wide
+   against an intended 380. The bento was visibly broken and every gate was green,
+   because no gate reads a layout. Renamed to .hub__*, which nothing else uses. */
 /* Geometry measured off the reference and copied; its colour and its type are
    not. Three equal columns from 1024px up, rows of a fixed 244px, a 16px gap
    both ways, a 24px tile radius, the label bottom left at 24px of padding. One
@@ -393,47 +401,47 @@ p { margin: 0; }
    No new colour value: the tile is --bg-dark, the label --bg-light, and the
    gradient is black at two alphas over the tile's own dark fill, which is the
    same kind of value as the modal scrim and the dark band's hairlines. */
-.bento__h { margin: 0; }
-.bento__h-muted { color: var(--ink-muted); }
-.bento__h-muted::before { content: " "; }
-.bento__grid {
+.hub__h { margin: 0; }
+.hub__h-muted { color: var(--ink-muted); }
+.hub__h-muted::before { content: " "; }
+.hub__grid {
   display: grid; gap: 16px; margin-top: 48px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-auto-rows: 244px;
 }
-.bento__tile {
+.hub__tile {
   position: relative; overflow: hidden; border-radius: 24px;
   display: block; color: var(--bg-light);
   background: var(--bg-dark);
 }
 /* The tall tile takes the left column and both rows; the wide one takes the top
    right; the last two sit under it. */
-.bento__tile--1 { grid-column: 1; grid-row: 1 / span 2; }
-.bento__tile--2 { grid-column: 2 / span 2; grid-row: 1; }
-.bento__tile--3 { grid-column: 2; grid-row: 2; }
-.bento__tile--4 { grid-column: 3; grid-row: 2; }
-.bento__ph {
+.hub__tile--1 { grid-column: 1; grid-row: 1 / span 2; }
+.hub__tile--2 { grid-column: 2 / span 2; grid-row: 1; }
+.hub__tile--3 { grid-column: 2; grid-row: 2; }
+.hub__tile--4 { grid-column: 3; grid-row: 2; }
+.hub__ph {
   position: absolute; inset: 0; width: 100%; height: 100%;
   aspect-ratio: auto; border: 0; border-radius: 0;
 }
 /* W24-R5. A bottom gradient INSIDE the tile, so a white label stays legible over
    a photograph once one lands. It is 40% of one tile and paints over an image,
    never over a section: the section-level overlay ban is untouched. */
-.bento__grad {
+.hub__grad {
   position: absolute; left: 0; right: 0; bottom: 0; height: 40%;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
   pointer-events: none;
 }
-.bento__label {
+.hub__label {
   position: absolute; left: 24px; right: 24px; bottom: 24px;
   font-size: 24px; font-weight: 700; line-height: 1.2; color: var(--bg-light);
 }
-.bento__tile:hover .bento__label { color: var(--bg-light); }
-.bento__tile:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+.hub__tile:hover .hub__label { color: var(--bg-light); }
+.hub__tile:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
 /* The inert tile is a div, never a disabled link: a disabled <a> with an href is
    still a link to a keyboard and to a screen reader. It takes no hover and no
    pointer, which is the dispatch's own wording. */
-.bento__tile--inert { cursor: default; }
+.hub__tile--inert { cursor: default; }
 
 /* --- W24-07, the Novatik model cards ---------------------------------------- */
 .nvk-grid {
@@ -467,14 +475,14 @@ p { margin: 0; }
 @media (max-width: 1024px) {
   .nvk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   /* One column, tall tile first, which is already the DOM order. */
-  .bento__grid { grid-template-columns: minmax(0, 1fr); grid-auto-rows: auto; }
-  .bento__tile--1, .bento__tile--2, .bento__tile--3, .bento__tile--4 {
+  .hub__grid { grid-template-columns: minmax(0, 1fr); grid-auto-rows: auto; }
+  .hub__tile--1, .hub__tile--2, .hub__tile--3, .hub__tile--4 {
     grid-column: auto; grid-row: auto; min-height: 280px;
   }
 }
 @media (max-width: 511px) {
   .nvk-grid { grid-template-columns: minmax(0, 1fr); }
-  .bento__label { left: 20px; right: 20px; bottom: 20px; font-size: 21px; }
+  .hub__label { left: 20px; right: 20px; bottom: 20px; font-size: 21px; }
 }
 
 /* --- header ---------------------------------------------------------------- */

@@ -275,14 +275,21 @@
      category. A product card's button names the product instead, so the lead
      says which one it is about. Capture phase, so the value is set before the
      anchor scroll below moves the page. The button is a link to #oferta, so
-     W19-D6's popup suppression treats it like any other quote button. */
+     W19-D6's popup suppression treats it like any other quote button.
+
+     AMENDED (W24-04): the selector is `a[data-product]`, not `[data-product]`.
+     The W24-04 card carries the product on three elements, so the lead line can
+     name it and two products that share a name are still told apart: the button,
+     the price and the price-on-request slot. Only the button navigates, so only
+     the button should set the field; a click on the price would otherwise arm the
+     form for a product the visitor never asked about. */
   (function () {
     var quote = document.getElementById('quote-form');
     if (!quote) return;
     var field = quote.querySelector('input[name="serviciu"]');
     if (!field) return;
     document.addEventListener('click', function (e) {
-      var cta = e.target.closest && e.target.closest('[data-product]');
+      var cta = e.target.closest && e.target.closest('a[data-product]');
       if (!cta) return;
       field.value = cta.getAttribute('data-product');
     }, true);

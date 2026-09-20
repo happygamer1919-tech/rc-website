@@ -9369,3 +9369,249 @@ Eight cards, `docs/board/W24-01-placeholder-system.md` through
 `docs/board/W24-08-garduri-copertine.md`. R-V as amended at wave 19 holds: one card, one
 pull request, stop, no self-merge, branches stacked, and the owner merges them in order.
 Skip, never halt: a blocked card is recorded with its question and the run moves on.
+
+## W24-01 · One placeholder component, one ledger, and gate 19 holding them to each other, 2026-09-19
+
+Wave 24 builds every layout now and photographs nothing: every image the wave renders is
+a placeholder, and a separate photo session fills them. This card ships the three things
+that makes workable, and changes no rendered page.
+
+**The component.** One `.ph` box, a `--bg-light` variant and a `--bg-dark` variant, a 1px
+`--line` border, and the slot id centred in it. No new colour value: the two variants are
+the section rhythm's own two backgrounds, the dark border is the `rgba(255,255,255)`
+hairline section 3 already permits on the dark band, and the id text reads at 7.0:1 on
+white and 17.4:1 on `#141414`.
+
+**The ledger.** `docs/PHOTO-SLOTS-W24.json`, one row per slot: id, page, ratio, minimum
+pixel size, and what the photograph must show, written for the person holding the camera.
+The ratio lives there and nowhere else (section 14); the stylesheet reads it through
+`--ph-ratio`.
+
+**Gate 19, both directions.** Every placeholder rendered in `dist/` has a row, every row
+is rendered, and the rendered ratio equals the row's. `build.js` holds the forward half
+at build time and refuses a placeholder whose slot id has no row.
+
+**The self-test is what makes it a gate on the day it ships.** The component, the ledger
+and the gate ship together, so both real counts are zero and both assertions would hold
+vacuously. Before any real result the gate plants an unledgered placeholder, an
+unrendered row and a ratio disagreement against synthetic pages, each between two
+controls watched clean in the same run, and fails if any arm does not fire on its own
+message. Same arrangement as gate 17's parser self-test, same reason (section 13).
+
+Three real-tree arms were also watched, between two green controls: a planted placeholder
+reported `[unledgered]` exit 1, a planted row reported `[unrendered]` exit 1, and a
+placeholder with no row failed the build naming the slot, exit 1.
+
+**Also in this card.** The seven wave 23 backlog rows stopped saying "PR open, awaiting
+owner" when #71 to #77 were all merged (finding F-23); each row now names its number and
+its merge sha. The wave index moved out of the governing documents into this repo's
+session memory folder (finding F-28), the only reading the repo supports, recorded as
+Q-W24-01 with what the owner should correct if it was a different line. Twenty-three
+rows from waves 19 to 22 still say "PR open" and are also merged; the dispatch asked for
+the wave 23 lines and that is what was changed.
+
+## W24-02 · The Catalog button moves right of the logo and takes the hero button's paint, 2026-09-19
+
+The control sat to the LEFT of the logo, as the first child of the header pill, where
+W14-06 put it. It now sits immediately to the right of the logo, before the nav items, in
+all four templates that carry a header. `src/404.html` and `src/privacy.html` carry the
+reduced header and have never had a catalog control; neither gains one.
+
+**Wearing the paint meant wearing the size, and that is the whole of this card.** White on
+`--brand` is 3.41:1, which clears WCAG AA only above the large-text threshold of 18.66px,
+and section 4 records that the site's primary buttons are sized 19px/700 for exactly that
+reason. `--ink` on `--brand` is 5.10:1 and would have passed at 15px, but `--ink` on
+`--brand-dark` is 2.94:1 and fails at every size, **so a 15px toggle has no label colour
+that is legible both at rest and on hover.** The toggle took `.btn`'s 19px/700 with the
+colour.
+
+That cost 15px in RO and 16px in RU. The header fit gate went from RO 19px / RU 9px of
+slack to **RO 4px and RU -7px**, red on the floor and red on the fit, 36 of 108
+combinations. The dispatch said to stop and propose one fix, and never to shrink type.
+
+**The one fix: the nav gap from 20px to 14px.** Four nav items have three gaps between
+them, so six pixels off each returns eighteen, which is more than the type cost. No type
+was shrunk. Measured after: RO 22px, RU 9px, 108 of 108. **RU is left with exactly the
+slack it had before this card**, which is also the ceiling: the nav gap cannot be cut
+again without touching type, and no later wave 24 card may add a nav item or lengthen a
+header label without re-measuring.
+
+**On a phone the label stays 14px and takes `--ink` instead.** There is no room to raise
+it: measured at 375px a 19px label leaves RO 8px and RU 3px against the same floor, where
+14px leaves RO 23px and RU 19px, the baseline. The fill is the same `--brand` at every
+width; only the label moves, and only where the size is fixed.
+
+Eight readings in a real browser, RO and RU, 1440 and 375, at rest and with the panel
+open, pointer parked outside the header: 3.41:1 against a 3:1 need, 5.93:1, 5.10:1 against
+4.5:1, 5.93:1. Eight of eight pass, and Lighthouse accessibility held at 100.
+
+Q-W24-02 records the fix, the three alternatives measured beside it, and the
+recommendation, which is what "propose one fix" asks for.
+
+## W24-03 · Every fatade3d product, 223 of them, extracted into the repo's own records, 2026-09-19
+
+Ruling W24-R1 reverses the wave 21 drop for TEXT DATA: names, variant lines, prices and
+the category structure are copied, and the owner states the client sells all of them.
+W24-R2 is unchanged for files: nothing from that host, from `imperlux.md` or from
+`dasterum.md` entered the repo, and no image was downloaded.
+
+All six control samples matched, and the values read are what the records now hold.
+
+**The shape changed because it had to.** Ten product names are used by two products each
+on the source, so a name cannot be a key. `content/catalog-products.json` is now
+`products`, one record per product keyed by `id`, plus `categories`, a slug to a list of
+ids with a parent already rolled up over its subcategories. Each record carries what a
+card prints beside what the host published, unchanged.
+
+**One bad record fails that record, not the build**, which is the fix the dispatch asked
+for. RC-149's loader called `die()` on the first record missing a field and would have
+taken 222 good ones with it. Watched on four arms: two records broken one at a time were
+skipped and named, exit 0; a dangling category id and an entirely invalid set both failed
+the build on their own messages, exit 1.
+
+**W17-02 is untouched by W24-R1.** 27 records carry the brand `Fatade3D`: the value stays
+in `source.brand` and no brand line renders. 2 records carry `FAȚADE 3D` in the name
+itself: the untouched string stays in `source.name` and the name renders with it removed.
+`build.js` refuses such a record at load rather than leaving it for the gate to find in
+`dist/`.
+
+**W24-R9:** 37 products have no RU product on the source. Each reuses the RO proper name,
+`source.ru_name` stays null so the reuse is never read as a translation, and all 37 are
+listed in `docs/CATALOG-SOURCE-W24.md` and in the pull request.
+
+Two transforms, both recorded: plain hyphens on every rendered string, because the
+dispatch writes nothing else and its own control sample spells CT 80 F with one; and a
+refused name removed. Zero rendered fields carry an en or em dash and zero carry a refused
+manufacturer, both asserted over the file.
+
+Q-W24-03 opened: five source names carry a capitalisation typo, and 64 records carry the
+source's own house brand, which is not one of the twenty the owner answered on.
+
+## W24-04 · The catalogue gets a card, a grid, a page per subcategory and an index, 2026-09-19
+
+Fourteen catalogue pages become thirty, and all 223 products are rendered: 512 cards
+across the two locales.
+
+**Finding F-03 was written into a gate, and that is why it survived.** Every subcategory
+menu row opened its PARENT's page, so a visitor clicking "Polistiren expandat" landed on
+the top of "Sisteme de termoizolație" and had to find it. `build.js` did not merely permit
+that, it **required** it: the menu validator failed the build if a child's href differed
+from its parent's. Each subcategory now has a page of its own at
+`/catalog/<parent>/<child>/`, and the assertion is the one that was meant: every menu href
+is a page this build emits, and a child's page sits under its parent's. The legal set is
+computed from the emitted routes, so it can never name a page that does not exist.
+
+**`/catalog/` answered 404 on the live site.** Fourteen pages were indexed under a root
+that was nothing. It is a real page now, seven tiles, in the sitemap, in the footer and in
+the phone menu.
+
+**The card.** White, 20px radius, a square placeholder on top carrying its slot id, the
+brand as a small text line and never a logo, the name bold, the variant line muted, and a
+bottom row with the price bold on the left and a square brand-orange icon button on the
+right. Equal heights per row and the price pinned come from the grid stretching and the
+name absorbing the slack, not from the reference's hard 400px card height, which clips a
+long name. The button opens the existing quote form with the product in it; no cart, no
+SKU, no `schema.org` `Offer`. Geometry was copied and colour and type were not (W24-R8),
+and no eleventh colour value was added.
+
+**The price gate, re-scoped and negative-tested.** W24-R3 amends Q-W21-01: a card shows
+the price, and the two permitted phrases are left for the one case where the source
+publishes none, of which there is exactly one in 223. A figure is permitted only as the
+whole text of a `.prod__price` carrying its own `data-product`, on a catalogue page. The
+relaxation is by KIND: cart markup, a stock claim, a product record and a manufacturer
+name all still fire **inside** a price element, so it cannot be used as a hiding place.
+The whole element is blanked, opening tag included, because the class token `prod__price`
+matches the price-word pattern on its own.
+
+**Thirteen arms, each firing on its own message, between two controls watched clean in
+the same run** (R-AB): the permitted case green; a figure as plain prose; a price element
+with no `data-product`; cart wording, a refused manufacturer and a product record each
+planted inside a permitted price; a price element on a page that is not a catalogue page;
+attributes reordered on a price element and on a quote button; every price removed from a
+page; a subcategory losing its grid; prose planted on a subcategory; the index losing its
+tiles.
+
+**Two silent weakenings were found while doing it, and both are closed.** The quote-button
+pattern required the button's whole content to be text, and the new button is an icon, so
+the W22-01 half of the gate read **zero buttons** and concluded nothing while exiting 0.
+The gate now requires the number of recognised buttons to equal the number of product
+cards, and the number of price elements plus price-on-request elements to equal it too, so
+a card carries exactly one of the two and an attribute reorder is caught. And `src/main.js`
+prefilled the quote form from any `[data-product]`, which three elements now carry; it is
+scoped to `a[data-product]`, so only the button that navigates sets the field.
+
+**Each kind of page is held to what it must carry.** A category page to its authored lede
+and two paragraphs, a subcategory page to a product grid, the index to its tiles. A
+subcategory repeating its parent's paragraphs would be the same copy on eight pages, which
+the gate's own no-duplicate rule refuses.
+
+**Thirty height budgets**, measured at 1440px settled and recorded in `docs/rulings/R-Y.md`
+as measured plus 60 (W24-R4), with the fourteen figures they supersede registered in the
+staleness gate per R-Q. `scripts/verify-live.js` carries the thirty and two new page kinds
+with their own markers; a catalogue page's product-card count is asserted as at least one
+rather than as an exact figure, because the exact figure is data and section 14 forbids
+copying it into a second place.
+
+`src/catalog-index.html` is registered in both gates that assert the template count, which
+is what that assertion exists to force.
+
+### The first draft of this card was reviewed before it was committed, and twenty-two defects were confirmed in it
+
+Six independent readings of the staged diff raised 32 candidates and each was then given
+to a separate reader told to refute it. 22 survived and are fixed here; 10 were refuted
+and are not. The ones worth recording, because each is a shape that will recur:
+
+1. **The price relaxation could be escaped.** `PRODUCT_PRICE_SHAPE` closed on
+   `[\s\S]*?</\1>`, a lazy run bounded only by the next closing tag of the same NAME. A
+   price element closed with the wrong tag made the match run 970 characters into the next
+   card, blanking a planted struck price and a financing line out of the scan, and the gate
+   exited 0. The body is now `[^<]*`: a price is a string, so no tag may open inside the
+   permitted element, and a malformed one stops matching the shape and is named by the
+   count assertion instead of silently blanking a region.
+2. **"Exactly one of a price and a price-on-request per card" was a page total.** One card
+   carrying two prices while its neighbour carried none balanced the sum and passed. It is
+   now asserted per card, the page split at each card's opening tag, and the region before
+   the first card is asserted to carry neither.
+3. **The page walk read only `index.html` per directory.** A page at
+   `/catalog/promotii.html` was outside every prohibition the gate enforces while the gate
+   still called itself a catalogue scan. Every `.html` under the catalogue root is read.
+4. **Gate 14 was red on 56 combinations and the first draft did not notice**, because the
+   visually hidden section heading has a 1x1px box and text wider than one pixel. A
+   clipped heading is not a visible heading; the gate now says so. This is a latent bug it
+   has always had, and W24-05 would have hit it too, since the before/after slider's
+   project titles are `.sr-only`.
+5. **100 of 223 cards printed a price without its unit.** The card recomposed the figure
+   from the bounds, so `129,00 lei / m` rendered as `129,00 lei`: a decorative element sold
+   by the metre read as sold by the piece. The card now prints the source's own display
+   string, per locale.
+6. **The catalogue index carried invented copy.** Its lede read "Categoriile de materiale
+   pe care le livram si le punem in opera", which is a first-person capability claim about
+   Rapid Construct that no source states. The same sentence in a category page's lede fails
+   the catalogue gate on the term "livram"; it passed here only because an index page
+   carries no `data-cat-prose` block. **A gate being unable to see a thing is not permission
+   to write it.** Removed.
+7. **The tile product count was ungrammatical in both languages**, five of seven tiles in
+   Russian and four of seven in Romanian, from a two-form plural rule. The count is gone:
+   the dispatch asks for seven category tiles and a correct rule is a grammar table for a
+   number nobody asked for.
+8. **The card published the source's own record id**, `f3d-3004`, in the markup of all 223
+   cards and in every lead email. The lead line names Rapid Construct's own slot id
+   instead, which is unique, is printed on the card, and is what the photo session uses.
+9. **The product name absorbed the row's slack**, so a card with a short name opened a
+   73px hole between its name and its variant line, 95px at the worst measured width. The
+   slack belongs below the variant, where the foot's `margin-top: auto` already puts it.
+   Measured after: a constant 8px at every width on every page.
+10. **The foot wrapped at 511px and below**, dropping the button onto its own line,
+    left-aligned, whenever a price needed two lines. It does not wrap; the price takes the
+    slack.
+
+Four of the ten changed a page's height, so every budget in R-Y's amendment is the second
+measurement, taken on the tree that is committed.
+
+**What was refuted, and is therefore deliberate:** the variant line present in one locale
+only on 80 records (the source's own asymmetry, and writing the missing one would be
+authoring a specification); three RU variant lines that state a sheet size where RO states
+thicknesses (copied verbatim, which is what the dispatch asks); ten RU names that reuse a
+Romanian common noun (W24-R9 exactly); and the claim that a catalogue page scores 0.98 on
+accessibility, which was measured against the draft before the heading fix. Measured
+after: **accessibility 1.0 with zero failing audits on the 88-card page.**

@@ -1,25 +1,42 @@
+<!-- W24-04. The catalogue index, /catalog/, which answered 404 on the live site:
+     every menu row opened a category page and the root of the catalogue opened
+     nothing. Seven tiles, one per top-level category, each a W24-01 placeholder
+     with its label and the number of products behind it.
+
+     It is a copy of src/category.html's frame, so the header, the promo bar, the
+     quote form and the footer are identical to every other page, and it differs
+     only in its one section: no authored prose, no product grid, and the tiles
+     instead.
+
+     Every variable is prefixed cat. so the two templates take the same vars
+     object, and this page's own values are built in build.js.
+
+     What this page must never carry is enumerated in
+     scripts/check-catalog-pages.js, which fails on the built output. Those words
+     are deliberately NOT repeated here: that gate scans built pages whole,
+     comments included. -->
 <!doctype html>
 <html lang="{{meta.lang}}" dir="{{meta.dir}}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{svc.metaTitle}}</title>
-<meta name="description" content="{{svc.metaDesc}}">
-<meta name="robots" content="{{svc.robots}}">
+<title>{{cat.metaTitle}}</title>
+<meta name="description" content="{{cat.metaDesc}}">
+<meta name="robots" content="index, follow">
 <meta name="build-sha" content="{{buildSha}}">
-<link rel="canonical" href="{{svc.canonical}}">
-<link rel="alternate" hreflang="ro" href="{{svc.urlRo}}">
-<link rel="alternate" hreflang="ru" href="{{svc.urlRu}}">
-<link rel="alternate" hreflang="x-default" href="{{svc.urlRo}}">
+<link rel="canonical" href="{{cat.canonical}}">
+<link rel="alternate" hreflang="ro" href="{{cat.urlRo}}">
+<link rel="alternate" hreflang="ru" href="{{cat.urlRu}}">
+<link rel="alternate" hreflang="x-default" href="{{cat.urlRo}}">
 <meta property="og:type" content="website">
-<meta property="og:title" content="{{svc.metaTitle}}">
-<meta property="og:description" content="{{svc.metaDesc}}">
-<meta property="og:url" content="{{svc.canonical}}">
+<meta property="og:title" content="{{cat.metaTitle}}">
+<meta property="og:description" content="{{cat.metaDesc}}">
+<meta property="og:url" content="{{cat.canonical}}">
 <meta property="og:locale" content="{{meta.ogLocale}}">
-<meta property="og:image" content="{{svc.ogImage}}">
-<meta property="og:image:width" content="{{svc.ogImageW}}">
-<meta property="og:image:height" content="{{svc.ogImageH}}">
-<meta property="og:image:alt" content="{{svc.ogImageAlt}}">
+<meta property="og:image" content="{{ogImage}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{meta.ogImageAlt}}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F65308">
 <link rel="icon" href="{{base}}/favicon-512.png" sizes="512x512" type="image/png">
@@ -31,43 +48,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap"></noscript>
 <link rel="stylesheet" href="{{base}}/styles.css">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "{{svc.title}}",
-  "description": "{{svc.desc}}",
-  "serviceType": "{{svc.title}}"{{svc.imageObjects}},
-  "url": "{{svc.canonical}}",
-  "areaServed": [
-{{areaServedJson}}
-  ],
-  "provider": {
-    "@type": "GeneralContractor",
-    "@id": "{{urlRo}}#business",
-    "name": "Rapid Construct",
-    "telephone": "+37376837180",
-    "email": "rapidconstructmd@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Nicolae Zelinski 24",
-      "addressLocality": "Chișinău",
-      "addressCountry": "MD"
-    }
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "{{servicePage.home}}", "item": "{{canonical}}" },
-    { "@type": "ListItem", "position": 2, "name": "{{servicePage.all}}", "item": "{{servicesUrl}}" },
-    { "@type": "ListItem", "position": 3, "name": "{{svc.title}}" }
-  ]
-}
-</script>{{svc.faqSchema}}
 </head>
 <body>
 
@@ -98,9 +78,9 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
       </a>
       <a class="btn btn--primary" href="#oferta">{{header.cta}}</a>
       <div class="lang" data-lang="{{meta.lang}}">
-        <a class="lang__ro" href="{{svc.pathRo}}" hreflang="ro" aria-label="RO — Comută pe română">RO</a>
+        <a class="lang__ro" href="{{cat.pathRo}}" hreflang="ro" aria-label="RO — Comută pe română">RO</a>
         <span class="lang__sep" aria-hidden="true"></span>
-        <a class="lang__ru" href="{{svc.pathRu}}" hreflang="ru" aria-label="RU — Переключить на русский">RU</a>
+        <a class="lang__ru" href="{{cat.pathRu}}" hreflang="ru" aria-label="RU — Переключить на русский">RU</a>
       </div>
     </div>
 
@@ -128,9 +108,9 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   <div class="mobile-panel__foot">
     <a href="tel:+37376837180">{{header.phone}}</a>
     <div class="lang" data-lang="{{meta.lang}}">
-      <a class="lang__ro" href="{{svc.pathRo}}" hreflang="ro" aria-label="RO — Comută pe română">RO</a>
+      <a class="lang__ro" href="{{cat.pathRo}}" hreflang="ro" aria-label="RO — Comută pe română">RO</a>
       <span class="lang__sep" aria-hidden="true"></span>
-      <a class="lang__ru" href="{{svc.pathRu}}" hreflang="ru" aria-label="RU — Переключить на русский">RU</a>
+      <a class="lang__ru" href="{{cat.pathRu}}" hreflang="ru" aria-label="RU — Переключить на русский">RU</a>
     </div>
   </div>
 </div>
@@ -140,42 +120,30 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
 {{promoBar}}
 <main id="continut">
 
-<!-- 1 · Service hero, illustration on #141414 -->
+<!-- 1 · Page hero. Breadcrumb, H1, one line. -->
 <section class="section section--light svc-hero">
   <div class="container">
     <nav class="breadcrumb" aria-label="{{servicePage.breadcrumbAria}}">
       <a href="{{homeHref}}">{{servicePage.home}}</a>
       <span aria-hidden="true">/</span>
-      <a href="{{servicesHref}}">{{servicePage.all}}</a>
-      <span aria-hidden="true">/</span>
-      <span aria-current="page">{{svc.title}}</span>
+      <span aria-current="page">{{cat.title}}</span>
     </nav>
-
-    <div class="svc-hero__grid">
-      <div>
-        <p class="eyebrow">{{services.eyebrow}}</p>
-        <h1>{{svc.title}}</h1>
-        <div class="svc-answer">
-        {{svc.answer}}
-        </div>
-        <div class="cta-row" style="justify-content: flex-start; margin-top: 32px;">
-          <a class="btn btn--primary" href="#oferta">{{hero.ctaPrimary}}</a>
-        </div>
-      </div>
-      {{svc.media}}
+    <p class="eyebrow">{{header.catalogHeading}}</p>
+    <h1 class="cat-h1">{{cat.title}}</h1>
+    <div class="cta-row" style="justify-content: flex-start; margin-top: 32px;">
+      <a class="btn btn--primary" href="#oferta">{{hero.ctaPrimary}}</a>
     </div>
   </div>
 </section>
 
-<!-- 2b · What it includes. Present only where the page's own content
-     already supports a table; three services legitimately have none. -->
-{{svc.table}}
-
-<!-- 4 · Projects. Omitted entirely when nothing renderable exists. -->
-{{svc.gallerySection}}
-
-<!-- 4b · FAQ, sibling links and the updated date. -->
-{{svc.faqSection}}
+<!-- 2 · The seven category tiles -->
+<section class="section section--light section--divided" id="categorii">
+  <div class="container">
+    <div class="cat-tiles">
+{{cat.tiles}}
+    </div>
+  </div>
+</section>
 
 <!-- 5 · CTA, the same form as the homepage -->
 <section class="section section--light section--divided" id="oferta">
@@ -187,9 +155,9 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     <div class="form-layout" style="margin-top: 40px;">
       <form class="form-card form-card--stack" id="quote-form" method="POST" action="{{formAction}}" novalidate data-armed="{{formArmed}}" data-ok="{{form.ok}}" data-fail="{{form.fail}}"{{demoAttr}}>
         <input type="hidden" name="access_key" value="{{formEndpoint}}">
-        <input type="hidden" name="subject" value="{{svc.subject}}">
+        <input type="hidden" name="subject" value="{{cat.subject}}">
         <input type="hidden" name="from_name" value="Rapid Construct">
-        <input type="hidden" name="serviciu" value="{{svc.title}}">
+        <input type="hidden" name="serviciu" value="{{cat.title}}">
         <div class="honeypot" aria-hidden="true"><label for="botcheck">{{form.honeypotLabel}}</label><input id="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></div>
 
         <h3>{{form.cardTitle}}</h3>
@@ -269,7 +237,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         </div>
         <div>
           <p class="footer__heading">{{footer.servicesHeading}}</p>
-          <div class="footer__links">{{svc.footerLinks}}</div>
+          <div class="footer__links">{{cat.footerLinks}}</div>
         </div>
       </div>
       <div>

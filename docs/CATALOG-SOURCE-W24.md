@@ -284,3 +284,57 @@ are listed in section 5.
 No image. No logo. No stylesheet, script or font from the source. `git diff --stat` on
 this card adds no binary file at all. The raw captures live outside the repo, in this
 session's scratch directory, and are not committed.
+
+## 9. The price, as the source prints it
+
+**AMENDED by W24-04.** The first draft of these records recomposed the price from its
+lower and upper bounds and printed `129,00 lei`. The source prints
+`129,00 lei / m`. **100 of the 223 products state a unit after the figure**, 57 per
+linear metre, 41 per piece and 2 per square metre, and a price printed without its unit
+is a different price: a decorative element sold at 129 lei the metre read as 129 lei the
+element.
+
+So `price.render` is now the source's own display string, per locale, with two things
+done to it and nothing else:
+
+- the en dash between the two ends of a range becomes a plain hyphen, which is the same
+  transform section 4 records for names, and
+- a range whose lower bound is `0,00` renders its non-zero end alone, which the dispatch
+  directs. One product, `f3d-1924`.
+
+`price.min`, `price.max` and `price.source_display` keep the values as the API and the
+card gave them, untouched, beside it.
+
+### Where the two locales disagree, and why they are not reconciled
+
+The source disagrees with itself on some records, and each locale is copied as that
+locale prints it rather than being made to agree:
+
+- `f3d-3004` and the rest of the decorative elements print `129,00 lei / m` in RO and
+  `129,00 lei` in RU. The RU card states no unit.
+- `f3d-4686` prints `/ bucata` in RO and `/ м2` in RU.
+- `f3d-1924` prints a `0,00` lower bound in RO and `1,00` in RU, so RO renders
+  `110,00 lei` under the zero-bound rule and RU renders `1,00 lei - 110,00 lei`.
+
+**37 of the 222 priced products have no RU price display on the source**, because they
+have no RU product at all. Each reuses the RO string, which is the same W24-R9 treatment
+their names get, and `price.source_display` is the RO one for both. They are the same 37
+records listed in section 5.
+
+### One product has no price at all
+
+`f3d-3925` Placă Veil Dark Grey. The source publishes no figure for it. Its card asks for
+a price instead, which is the one case W24-R3 leaves the W22-01 phrase.
+
+## 10. The variant line is present in one locale only on 80 records
+
+19 records show a variant line in RO and not in RU, and 61 the other way round. This is
+the source's own asymmetry, not a rendering choice: the 61 are the ceramic plates whose
+RO page answers HTTP 301 and therefore never renders a card to read a line from, while
+their RU counterparts do render one. The effect on the site is visible and worth stating
+plainly: **`/catalog/placi-ceramice/` shows no variant line on any card and
+`/ru/catalog/placi-ceramice/` shows one on 61 of 88.**
+
+Nothing is invented to close the gap. A variant line is mostly dimensions, and writing a
+Romanian one from the Russian card would be authoring a specification for a product this
+repo has never seen.

@@ -1,5 +1,5 @@
 {
-  "_note": "W14-06, filled at RC-106b (Q-W14-04 closed by the wave 14 close-out dispatch). Catalog mega-menu data (S-01): exactly the 7 top-level categories and 7 subcategories of the wave 14 audit section 1.2, RO labels verbatim and in order, RU labels translated in the site's existing vocabulary. The site has no product pages, so each row opens the service page that does that work: insulation, plaster, decorative elements and exterior paint open Fațade; ceramic tiles, paints and interior paint open Finisaje; lighting opens Instalații; other building materials opens Case la cheie. That mapping is recorded in DECISIONS.md W14-06b for ratification. Shape: categories[] of { label: {ro, ru}, href: {ro, ru}, children?: [ { label: {ro, ru}, href: {ro, ru} } ] }. Two levels, never three: build.js refuses a child with children, a label that is not real in both locales, and a row with no href.",
+  "_note": "W14-06, filled at RC-106b (Q-W14-04 closed by the wave 14 close-out dispatch). Catalog mega-menu data (S-01): exactly the 7 top-level categories and 7 subcategories of the wave 14 audit section 1.2, RO labels verbatim and in order, RU labels translated in the site's existing vocabulary. AMENDED (W24-04): every row opens its own page. RC-130 repointed each row from a service page to its category page, and until wave 24 a SUBCATEGORY row opened its parent's page, which is finding F-03: a visitor clicking Polistiren expandat landed on the top of Sisteme de termoizolație. Each subcategory now has a real page of its own at /catalog/<parent>/<child>/, and build.js asserts that every menu href is a page this build emits and that a child's page sits under its parent's. Shape: categories[] of { label: {ro, ru}, href: {ro, ru}, children?: [ { label: {ro, ru}, href: {ro, ru} } ] }. Two levels, never three: build.js refuses a child with children, a label that is not real in both locales, and a row with no href.",
   "categories": [
     {
       "label": {
@@ -17,8 +17,8 @@
             "ru": "Пенополистирол"
           },
           "href": {
-            "ro": "/catalog/termoizolatie/",
-            "ru": "/ru/catalog/termoizolatie/"
+            "ro": "/catalog/termoizolatie/polistiren-expandat/",
+            "ru": "/ru/catalog/termoizolatie/polistiren-expandat/"
           }
         },
         {
@@ -27,8 +27,8 @@
             "ru": "Экструдированный пенополистирол"
           },
           "href": {
-            "ro": "/catalog/termoizolatie/",
-            "ru": "/ru/catalog/termoizolatie/"
+            "ro": "/catalog/termoizolatie/polistiren-extrudat/",
+            "ru": "/ru/catalog/termoizolatie/polistiren-extrudat/"
           }
         },
         {
@@ -37,8 +37,8 @@
             "ru": "Минеральная вата"
           },
           "href": {
-            "ro": "/catalog/termoizolatie/",
-            "ru": "/ru/catalog/termoizolatie/"
+            "ro": "/catalog/termoizolatie/vata-minerala/",
+            "ru": "/ru/catalog/termoizolatie/vata-minerala/"
           }
         },
         {
@@ -47,8 +47,8 @@
             "ru": "Клеи и шпаклёвочные смеси"
           },
           "href": {
-            "ro": "/catalog/termoizolatie/",
-            "ru": "/ru/catalog/termoizolatie/"
+            "ro": "/catalog/termoizolatie/adezivi-si-mase-de-spaclu/",
+            "ru": "/ru/catalog/termoizolatie/adezivi-si-mase-de-spaclu/"
           }
         },
         {
@@ -57,8 +57,8 @@
             "ru": "Другие продукты"
           },
           "href": {
-            "ro": "/catalog/termoizolatie/",
-            "ru": "/ru/catalog/termoizolatie/"
+            "ro": "/catalog/termoizolatie/alte-produse/",
+            "ru": "/ru/catalog/termoizolatie/alte-produse/"
           }
         }
       ]
@@ -109,8 +109,8 @@
             "ru": "Фасадные краски"
           },
           "href": {
-            "ro": "/catalog/vopsele/",
-            "ru": "/ru/catalog/vopsele/"
+            "ro": "/catalog/vopsele/vopsele-de-exterior/",
+            "ru": "/ru/catalog/vopsele/vopsele-de-exterior/"
           }
         },
         {
@@ -119,8 +119,8 @@
             "ru": "Интерьерные краски"
           },
           "href": {
-            "ro": "/catalog/vopsele/",
-            "ru": "/ru/catalog/vopsele/"
+            "ro": "/catalog/vopsele/vopsele-de-interior/",
+            "ru": "/ru/catalog/vopsele/vopsele-de-interior/"
           }
         }
       ]

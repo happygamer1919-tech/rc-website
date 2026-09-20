@@ -97,6 +97,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
 <div class="mobile-panel" id="mobile-panel" data-open="false">
   <a class="mobile-nav-link" href="{{homeHref}}">{{header.navHome}}</a>
   <a class="mobile-nav-link" href="{{servicesHref}}">{{header.navServices}}</a>
+  <a class="mobile-nav-link" href="{{catalogHref}}">{{header.catalog}}</a>
   <a class="mobile-nav-link" href="{{portfolioHref}}">{{header.navPortfolio}}</a>
   <a class="mobile-nav-link" href="{{aboutHref}}">{{header.navAbout}}</a>
   <a class="mobile-nav-link" href="{{contactHref}}">{{header.navContacts}}</a>
@@ -119,16 +120,15 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
 <!-- 1 · Page hero, W14-16. Breadcrumb, H1, one line, CTA; the block follows. -->
 <section class="section section--light svc-hero">
   <div class="container">
+    <!-- W24-04. Built by build.js: a category page has three levels and a
+         subcategory four, and the catalog crumb is now a link because /catalog/
+         is a real page. -->
     <nav class="breadcrumb" aria-label="{{servicePage.breadcrumbAria}}">
-      <a href="{{homeHref}}">{{servicePage.home}}</a>
-      <span aria-hidden="true">/</span>
-      <span>{{header.catalog}}</span>
-      <span aria-hidden="true">/</span>
-      <span aria-current="page">{{cat.title}}</span>
+{{cat.breadcrumb}}
     </nav>
-    <p class="eyebrow">{{header.catalogHeading}}</p>
-    <h1>{{cat.title}}</h1>
-    <p class="hero__sub" data-cat-prose="lede" style="margin: 16px 0 0;">{{cat.lede}}</p>
+    <p class="eyebrow">{{cat.eyebrow}}</p>
+    <h1 class="cat-h1">{{cat.title}}</h1>
+{{cat.ledeBlock}}
     <div class="cta-row" style="justify-content: flex-start; margin-top: 32px;">
       <a class="btn btn--primary" href="#oferta">{{hero.ctaPrimary}}</a>
     </div>
@@ -232,6 +232,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
             <a href="{{portfolioHref}}">{{header.navPortfolio}}</a>
             <a href="{{aboutHref}}">{{header.navAbout}}</a>
             <a href="{{contactHref}}">{{header.navContacts}}</a>
+            <a href="{{catalogHref}}">{{header.catalog}}</a>
           </div>
         </div>
         <div>

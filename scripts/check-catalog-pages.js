@@ -37,13 +37,41 @@
    before, because "permitted there and nowhere else" cannot be checked by looking
    only at the place it is permitted.
 
-   Usage:  node build.js && node scripts/check-catalog-pages.js
+   W24-04 (ruling W24-R3) amends Q-W21-01 and re-scopes this gate in three ways.
+
+   ONE. A PRICE IS PERMITTED, in one place. A catalogue product card shows the
+   price, so a figure is allowed as the whole text of a `.prod__price` element
+   that carries its own product in data-product, which is the same shape W22-01
+   gave the quote button. Everywhere the price patterns were refused before, they
+   are refused still, including inside a `.prod__price` on a page that is not a
+   catalogue page. The relaxation is by KIND: only the price patterns read the
+   relaxed text. Cart markup, a stock claim, a product record and a manufacturer
+   name still fire inside a `.prod__price`, so the element cannot be used as a
+   hiding place. The whole element is blanked, opening tag included, because the
+   class token `prod__price` matches the price-word pattern on its own.
+
+   TWO. THE PAGES ARE WALKED, NOT LISTED ONE LEVEL DEEP. Every subcategory now has
+   a page of its own at /catalog/<parent>/<child>/ (F-03), so the tree is walked
+   to any depth.
+
+   THREE. EACH KIND OF PAGE IS HELD TO WHAT IT MUST CARRY. W17-02's authored lede
+   and two paragraphs belong to a CATEGORY page and are required on all seven in
+   each locale. A SUBCATEGORY page carries the breadcrumb, the heading and the
+   grid, and is required to carry a product grid instead; repeating its parent's
+   paragraphs would break this gate's own no-duplicate-prose rule. The INDEX page
+   at /catalog/ carries neither and is required to carry the category tiles. None
+   of the three is exempt from the prohibitions: all of them are scanned whole.
+
+   Usage:  node build.js && node scripts/check-catalog-pages.js [tree]
    No dependencies. */
 
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = path.join(__dirname, '..');
+/* W24-04. A tree can be named on the command line so the gate can be
+   negative-tested against a scratch copy of dist/ rather than by editing the real
+   one, which is what check-stub-count.js and check-heading-fit.js already do. */
+const ROOT = path.resolve(process.argv[2] || path.join(__dirname, '..'));
 const fail = (msg) => { console.error(`\nCATALOG PAGE CHECK FAILED: ${msg}\n`); process.exit(1); };
 
 /* Letter-aware word edges, the same helper check-scarcity.js uses: \b is
@@ -80,7 +108,21 @@ const MANUFACTURER_NAMES = ['Dasterum', 'Imperlux', 'Fațade 3D (fatade3d)'];
 const PRICE_ON_REQUEST = { ro: 'Preț la cerere', ru: 'Цена по запросу' };
 /* The button RC-149 renders: an anchor to the quote form, carrying the product's
    own name. Text captured so it can be compared with the permitted string. */
-const PRODUCT_CTA = /<a\b[^>]*class="[^"]*\bprod__cta\b[^"]*"[^>]*\bdata-product="[^"]*"[^>]*>([^<]*)<\/a>/g;
+/* AMENDED (W24-04): the inside of the button may hold markup. W22-01's button
+   was a text button and `[^<]*` was enough; the W24-04 card's button is an icon,
+   so the capture is lazy and may hold an svg. The captured label is compared to
+   the permitted phrase RAW, and that is correct rather than an oversight: the
+   permitted shape is a button whose WHOLE text is the phrase, and a button
+   holding an svg does not have that whole text. So the comparison never matches
+   on a W24-04 card, which is right, because that card does not ask for a price
+   with its button: the .prod__ask element below does, in the place the price
+   would have taken.
+   What the pattern still does is COUNT the buttons, and that matters: before
+   this amendment it matched nothing at all, so the W22-01 half of this gate read
+   zero buttons and concluded nothing while exiting 0. The count assertion below
+   turns that from a vacuous pass into a failure. */
+const PRODUCT_CTA = /<a\b[^>]*class="[^"]*\bprod__cta\b[^"]*"[^>]*\bdata-product="[^"]*"[^>]*>([\s\S]*?)<\/a>/g;
+const PRODUCT_CARD = /<article\b[^>]*\bdata-product-card\b[^>]*>/g;
 
 /* Phrases that are ON these pages, or near misses a careless pattern catches.
    If one of these ever matches, the pattern is wrong, not the page. */
@@ -200,18 +242,51 @@ const ROOTS = [
   { dir: path.join(ROOT, 'dist', 'ru', 'catalog'), locale: 'ru' },
 ];
 
+/* W24-04. Walked to any depth, and each page classified by that depth: the index
+   at the root, a category one level down, a subcategory two. */
+const walkDirs = (d) => fs.readdirSync(d, { withFileTypes: true })
+  .filter((e) => e.isDirectory())
+  .flatMap((e) => [path.join(d, e.name), ...walkDirs(path.join(d, e.name))]);
+
 const pages = [];
 for (const r of ROOTS) {
   if (!fs.existsSync(r.dir)) fail(`${path.relative(ROOT, r.dir)} is missing; run node build.js`);
-  const slugs = fs.readdirSync(r.dir, { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => e.name);
-  if (slugs.length < 7) fail(`${path.relative(ROOT, r.dir)} holds ${slugs.length} categories, expected at least 7`);
-  for (const s of slugs) {
-    const f = path.join(r.dir, s, 'index.html');
-    if (!fs.existsSync(f)) fail(`${path.relative(ROOT, f)} is missing`);
+  const wanted = [path.join(r.dir, 'index.html'), ...walkDirs(r.dir).map((d) => path.join(d, 'index.html'))];
+  const absent = wanted.filter((f) => !fs.existsSync(f));
+  if (absent.length) fail(`${absent.length} catalogue director(y/ies) hold no index.html: ${absent.map((f) => path.relative(ROOT, f)).join(', ')}`);
+  /* EVERY html file under the catalogue root, not only the index.html of each
+     directory. A page at /catalog/promotii.html is a catalogue page to a visitor
+     and to a crawler, and a scan that reads only index.html would leave it
+     outside every prohibition this gate enforces while still calling itself a
+     catalogue scan. */
+  const walkFiles = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) =>
+    e.isDirectory() ? walkFiles(path.join(d, e.name)) : e.name.endsWith('.html') ? [path.join(d, e.name)] : []);
+  const present = walkFiles(r.dir);
+  const extra = present.filter((f) => !wanted.includes(f));
+  if (extra.length) console.log(`note: ${extra.length} catalogue page(s) are not a directory index and are scanned as such: ${extra.map((f) => path.relative(ROOT, f)).join(', ')}`);
+  for (const f of present) {
+    const isIndex = path.basename(f) === 'index.html';
+    const rel = path.relative(r.dir, path.dirname(f));
+    const depth = rel === '' ? 0 : rel.split(path.sep).length;
+    if (depth > 2) fail(`${path.relative(ROOT, f)} is ${depth} levels below /catalog/; the catalogue is two levels, never three`);
     const text = fs.readFileSync(f, 'utf8');
     if (text.length < 500) fail(`${path.relative(ROOT, f)} is suspiciously small (${text.length} bytes)`);
-    pages.push({ where: path.relative(ROOT, f), text, locale: r.locale });
+    pages.push({
+      where: path.relative(ROOT, f), text, locale: r.locale, depth,
+      /* A file that is not a directory index carries no structure requirement of
+         its own, because nothing says what it should be; it is scanned whole for
+         every prohibition, which is the part that matters. */
+      kind: !isIndex ? 'other' : depth === 0 ? 'index' : depth === 1 ? 'category' : 'subcategory',
+    });
   }
+  const cats = present.filter((f) => path.relative(r.dir, path.dirname(f)).split(path.sep).length === 1 && path.relative(r.dir, path.dirname(f)) !== '');
+  if (cats.length < 7) fail(`${path.relative(ROOT, r.dir)} holds ${cats.length} categories, expected at least 7`);
+  if (!present.some((f) => path.dirname(f) === r.dir)) fail(`${path.relative(ROOT, r.dir)} has no index.html, so the catalogue root answers nothing`);
+}
+const byKind = { index: 0, category: 0, subcategory: 0, other: 0 };
+for (const pg of pages) byKind[pg.kind]++;
+if (byKind.category === 0 || byKind.subcategory === 0 || byKind.index === 0) {
+  fail(`the walk found ${byKind.index} index, ${byKind.category} category and ${byKind.subcategory} subcategory page(s); each kind must be present or its own assertion proves nothing.`);
 }
 
 /* --- W17-02: the prose on each page --------------------------------------- */
@@ -221,7 +296,32 @@ const decode = (s) => s.replace(/<[^>]+>/g, '').replace(/&quot;/g, '"').replace(
 const proseHits = [];
 const proseProblems = [];
 let proseBlocks = 0;
+/* W24-04. Each kind of page is held to what it must carry, and none of the three
+   is exempt from the prohibitions below.
+     category    the authored lede and two paragraphs (W17-02)
+     subcategory a product grid: the breadcrumb, heading and grid the dispatch
+                 specifies, and no authored prose, which would duplicate its
+                 parent's and break the no-duplicate rule below
+     index       the seven category tiles
+   Presence, not silence: a page of a kind that carries none of its own thing is
+   a page that has been emptied, and that fails here rather than passing quietly. */
+const STRUCTURE = {
+  subcategory: { re: /<div class="prod-grid"[^>]*>[\s\S]*?<article class="prod"/, what: 'a product grid' },
+  index: { re: /<div class="cat-tiles"[^>]*>[\s\S]*?<a class="cat-tile"/, what: 'the category tiles' },
+};
 for (const pg of pages) {
+  const article = pg.kind === 'index' ? 'an' : 'a';
+  const need = STRUCTURE[pg.kind];
+  if (need && !need.re.test(pg.text)) proseProblems.push(`${pg.where}: ${article} ${pg.kind} page carries ${need.what}, and this one does not`);
+  if (pg.kind !== 'category') {
+    /* A page that is not a category page must carry NO authored prose block: the
+       parent's three paragraphs repeated on seven subcategories is exactly what
+       the duplicate check below exists to refuse. */
+    const stray = [...pg.text.matchAll(/data-cat-prose="([a-z0-9]+)"/g)].map((m) => m[1]);
+    if (stray.length) proseProblems.push(`${pg.where}: ${article} ${pg.kind} page carries ${stray.length} authored prose block(s) (${[...new Set(stray)].join(', ')}), which belong to a category page`);
+    pg.prose = {};
+    continue;
+  }
   pg.prose = {};
   for (const f of PROSE_FIELDS) {
     const found = [...pg.text.matchAll(new RegExp(`<(p)\\b[^>]*\\bdata-cat-prose="${f}"[^>]*>([\\s\\S]*?)</\\1>`, 'g'))];
@@ -248,7 +348,7 @@ for (const pg of pages) {
 }
 for (const loc of ['ro', 'ru']) {
   for (const f of PROSE_FIELDS) {
-    const vals = pages.filter((p) => p.locale === loc && p.prose[f]).map((p) => p.prose[f]);
+    const vals = pages.filter((p) => p.locale === loc && p.kind === 'category' && p.prose[f]).map((p) => p.prose[f]);
     const dup = vals.filter((v, i) => vals.indexOf(v) !== i);
     if (dup.length) proseProblems.push(`${loc}: ${dup.length} category pages share an identical "${f}"`);
   }
@@ -258,10 +358,38 @@ for (const loc of ['ro', 'ru']) {
 /* A permitted occurrence is blanked (spaces, so every other offset stays true)
    before the patterns run. Anything the patterns then find is by definition not
    the permitted one: the same phrase as plain text on the page still fires. */
-let ctaSeen = 0, ctaAllowed = 0;
+/* W24-R3 moves the phrase, and narrows when it may be used at all. W22-01
+   permitted it as the whole text of a product card's quote button, because a card
+   then showed no price. A card now shows the price, and the phrase is left for
+   the one case where the source publishes none, where it takes the place the
+   price would have taken. So the permitted shape is either:
+     the quote button's whole text   (W22-01, unchanged and still accepted), or
+     a .prod__ask element's whole text, carrying its own data-product
+   and in both the string must be exact, in the page's own locale. Exact still
+   means exact: a near spelling is not the permitted string.
+
+   A card may carry a price or the phrase, never both. That is asserted per card
+   below, because "only where no price exists" is the whole of the ruling. */
+const PRODUCT_ASK = /<(span|p|div|dd|strong)\b[^>]*\bclass="[^"]*\bprod__ask\b[^"]*"[^>]*\bdata-product="[^"]*"[^>]*>([^<]*)<\/\1>/g;
+/* The same shape the price relaxation below permits, declared here so a card can
+   be held to carrying exactly one of a price and a price-on-request. One place:
+   the relaxation reads this constant too.
+
+   THE CONTENT IS `[^<]*`, NOT `[\s\S]*?`, and that is the whole safety of the
+   relaxation. A lazy any-character match is not bounded by its own element: give
+   the price element a closing tag of a different name and the match runs on to
+   the next `</span>` anywhere on the page, blanking everything in between, so a
+   struck price and a financing line planted after it are never scanned. Even with
+   a matching closing tag, a lazy match happily swallows a sibling element that
+   states a second, non-permitted price. A price is a string, so the permitted
+   element holds text and nothing else: no tag may open inside it. */
+const PRODUCT_PRICE_SHAPE = /<(span|p|div|dd|strong)\b[^>]*\bclass="[^"]*\bprod__price\b[^"]*"[^>]*\bdata-product="[^"]*"[^>]*>[^<]*<\/\1>/g;
+const ASK_CLASS = /\bprod__ask\b/g;
+let ctaSeen = 0, ctaAllowed = 0, askSeen = 0, askAllowed = 0;
 const ctaProblems = [];
 for (const pg of pages) {
   pg.scan = pg.text;
+  const blank = (start, len) => { pg.scan = pg.scan.slice(0, start) + ' '.repeat(len) + pg.scan.slice(start + len); };
   for (const m of pg.text.matchAll(PRODUCT_CTA)) {
     ctaSeen++;
     const label = m[1];
@@ -272,8 +400,87 @@ for (const pg of pages) {
       continue;
     }
     ctaAllowed++;
-    const start = m.index + m[0].indexOf(label);
-    pg.scan = pg.scan.slice(0, start) + ' '.repeat(label.length) + pg.scan.slice(start + label.length);
+    blank(m.index + m[0].indexOf(label), label.length);
+  }
+  for (const m of pg.text.matchAll(PRODUCT_ASK)) {
+    askSeen++;
+    const label = m[2];
+    if (label.trim() !== PRICE_ON_REQUEST[pg.locale]) continue;
+    askAllowed++;
+    blank(m.index + m[0].lastIndexOf(label), label.length);
+  }
+  const askOnPage = [...pg.text.matchAll(PRODUCT_ASK)].length;
+  const askOccurrences = (pg.text.match(ASK_CLASS) || []).length;
+  if (askOccurrences !== askOnPage) {
+    ctaProblems.push(`${pg.where}: ${askOccurrences} occurrence(s) of the prod__ask class and ${askOnPage} in the permitted shape. It must be a span, p, div, dd or strong with class="... prod__ask ..." then data-product.`);
+  }
+  /* Every product card has exactly one quote button, and this gate must
+     recognise every one of them. A button whose attributes are reordered stops
+     matching PRODUCT_CTA, and the W22-01 half would then read fewer buttons than
+     there are cards and conclude nothing while exiting 0. */
+  const cards = (pg.text.match(PRODUCT_CARD) || []).length;
+  const buttons = [...pg.text.matchAll(PRODUCT_CTA)].length;
+  if (cards !== buttons) {
+    ctaProblems.push(`${pg.where}: ${cards} product card(s) and ${buttons} quote button(s) in the permitted shape. A button must carry class="... prod__cta ..." then data-product, in that order.`);
+  }
+  /* W24-R3: a card shows a price OR asks for one, never both and never neither.
+     ASSERTED PER CARD, not as a page total. A page total balances when one card
+     carries two prices and its neighbour carries none, which is precisely the
+     state that puts an unexplained second figure on the page. The page is split
+     at each card's opening tag and each slice counted on its own. */
+  const slices = pg.text.split(/(?=<article\b[^>]*\bdata-product-card\b)/).slice(1);
+  if (slices.length !== cards) {
+    ctaProblems.push(`${pg.where}: ${cards} product card(s) but the page split into ${slices.length} card region(s).`);
+  }
+  slices.forEach((s, i) => {
+    const np = [...s.matchAll(PRODUCT_PRICE_SHAPE)].length;
+    const na = [...s.matchAll(PRODUCT_ASK)].length;
+    if (np + na !== 1) {
+      ctaProblems.push(`${pg.where}: product card ${i + 1} carries ${np} price element(s) and ${na} price-on-request element(s). Each card carries exactly one of the two.`);
+    }
+  });
+  /* And nothing outside a card may carry either: the region before the first card
+     is the page's own chrome, where a price has never been permitted. */
+  const chrome = pg.text.split(/(?=<article\b[^>]*\bdata-product-card\b)/)[0];
+  const chromePrices = [...chrome.matchAll(PRODUCT_PRICE_SHAPE)].length + [...chrome.matchAll(PRODUCT_ASK)].length;
+  if (chromePrices) {
+    ctaProblems.push(`${pg.where}: ${chromePrices} price or price-on-request element(s) outside any product card.`);
+  }
+}
+
+/* --- W24-R3: a price, in one place ------------------------------------------ */
+/* The permitted shape is a `.prod__price` element carrying its own product in
+   data-product, which is the shape W22-01 already gave the quote button: being
+   permitted is a SHAPE, not a class anyone can paint on.
+
+   The WHOLE element is blanked, opening tag included, and not just its text. The
+   class token `prod__price` matches the price-word pattern on its own, because
+   `_` and `"` are not letters and the pattern's letter-aware edges therefore
+   both pass. Blanking only the text would leave the class firing the gate on
+   every card.
+
+   The blanked copy is a SECOND buffer. `pg.scan` keeps the price elements, so
+   the other kinds still read them: a cart, a stock claim, a product record or a
+   manufacturer name inside a `.prod__price` still fires. Only the price kind is
+   relaxed, and only there. */
+const PRODUCT_PRICE = PRODUCT_PRICE_SHAPE;
+const PRICE_CLASS = /\bprod__price\b/g;
+let priceEls = 0, priceClassSeen = 0;
+const shapeProblems = [];
+for (const pg of pages) {
+  pg.priceScan = pg.scan;
+  let matched = 0;
+  for (const m of pg.scan.matchAll(PRODUCT_PRICE)) {
+    priceEls++; matched++;
+    pg.priceScan = pg.priceScan.slice(0, m.index) + ' '.repeat(m[0].length) + pg.priceScan.slice(m.index + m[0].length);
+  }
+  const occurrences = (pg.scan.match(PRICE_CLASS) || []).length;
+  priceClassSeen += occurrences;
+  /* Each permitted element carries the class once. An occurrence the shape did
+     not match is a price element built the wrong way, and it is named as that
+     rather than left to surface as a confusing raw price hit. */
+  if (occurrences !== matched) {
+    shapeProblems.push(`${pg.where}: ${occurrences} occurrence(s) of the prod__price class and ${matched} permitted element(s). A price element must be a span, p, div, dd or strong, carry class="... prod__price ..." and carry data-product, in that order.`);
   }
 }
 
@@ -281,8 +488,9 @@ for (const pg of pages) {
 const hits = [];
 for (const pg of pages) {
   for (const p of PATTERNS) {
+    const text = p.kind === 'price' ? pg.priceScan : pg.scan;
     const g = new RegExp(p.re.source, p.re.flags.includes('g') ? p.re.flags : p.re.flags + 'g');
-    for (const m of pg.scan.matchAll(g)) {
+    for (const m of text.matchAll(g)) {
       const at = Math.max(0, m.index - 50);
       hits.push(`${pg.where}  [${p.kind}, ${p.id}]  ...${pg.text.slice(at, m.index + m[0].length + 50).replace(/\s+/g, ' ')}...`);
     }
@@ -313,26 +521,54 @@ for (const f of allPages) {
   for (const [locale, phrase] of Object.entries(PRICE_ON_REQUEST)) {
     let i = scan.indexOf(phrase);
     while (i >= 0) {
-      elsewhere.push(`${path.relative(ROOT, f)}: "${phrase}" (${locale}) ${isCategory ? 'outside a product card button' : 'on a page that is not a catalog category page'}`);
+      elsewhere.push(`${path.relative(ROOT, f)}: "${phrase}" (${locale}) ${isCategory ? 'outside a product card button' : 'on a page that is not a catalog page'}`);
       i = scan.indexOf(phrase, i + phrase.length);
     }
+  }
+  /* W24-R3's "and nowhere else" for the price element itself. Prices elsewhere on
+     the site are legitimate and this gate must never fire on the metal tile page,
+     so what is asserted off the catalogue is the CLASS, not a figure: a
+     prod__price element on another page is a catalogue card's price that has
+     escaped its card. */
+  if (!isCategory) {
+    const n = (text.match(PRICE_CLASS) || []).length;
+    if (n) elsewhere.push(`${path.relative(ROOT, f)}: ${n} prod__price element(s) on a page that is not a catalog page`);
   }
 }
 
 const ro = pages.filter((p) => p.locale === 'ro').length;
 const ru = pages.filter((p) => p.locale === 'ru').length;
 console.log(`patterns: ${PATTERNS.length}   self-test assertions: ${selfTested}`);
-console.log(`scanned: ${pages.length} category pages (${ro} RO, ${ru} RU)`);
+console.log(`scanned: ${pages.length} catalogue pages (${ro} RO, ${ru} RU)`);
 console.log(`manufacturer names, whole page: ${MANUFACTURER_NAMES.join(', ')}`);
 for (const [list, terms] of Object.entries(TERMS)) console.log(`${list} terms, prose only (${terms.length}): ${terms.join(' | ')}`);
-console.log(`prose: ${proseBlocks} blocks found of ${pages.length * PROSE_FIELDS.length} required (a lede and two paragraphs per page, each in its page's locale)`);
+/* The denominator is the CATEGORY pages, not every catalogue page: a subcategory
+   page and the index carry no authored prose by rule. Printed against every page
+   it read "42 blocks found of 90 required" on a green run, which is a gate
+   reporting a shortfall it does not have. */
+console.log(`prose: ${proseBlocks} blocks found of ${byKind.category * PROSE_FIELDS.length} required (a lede and two paragraphs per CATEGORY page, each in its page's locale)`);
+console.log(`pages by kind: ${byKind.index} index, ${byKind.category} category, ${byKind.subcategory} subcategory`);
+console.log(`W24-R3: a price is permitted only as a product card's .prod__price element carrying its own data-product`);
+console.log(`  price elements read: ${priceEls}; prod__price class occurrences on catalogue pages: ${priceClassSeen}; pages scanned for the class elsewhere: ${elsewhereRead}`);
+console.log(`  only the price patterns read the relaxed text: cart, stock, product record and manufacturer name still fire inside a price element`);
 console.log(`W22-01: "${PRICE_ON_REQUEST.ro}" / "${PRICE_ON_REQUEST.ru}" permitted only as a product card button's whole text`);
-console.log(`  product card buttons read: ${ctaSeen}; carrying the permitted phrase: ${ctaAllowed}; built pages scanned for the phrase anywhere else: ${elsewhereRead}`);
+console.log(`  product card buttons read: ${ctaSeen}; carrying the permitted phrase: ${ctaAllowed}`);
+console.log(`  price-on-request elements read: ${askSeen}; carrying the permitted phrase: ${askAllowed}; built pages scanned for the phrase anywhere else: ${elsewhereRead}`);
 let failed = false;
 if (hits.length) {
   console.error(`\n${hits.length} violation(s) on the catalog category pages:`);
   hits.slice(0, 20).forEach((h) => console.error('  ' + h));
   console.error('\nThese pages carry no prices, no stock, no cart, no product records and no manufacturer names.');
+  failed = true;
+}
+if (ctaProblems.length) {
+  console.error(`\n${ctaProblems.length} price-on-request element(s) not built in the permitted shape:`);
+  ctaProblems.slice(0, 20).forEach((h) => console.error('  ' + h));
+  failed = true;
+}
+if (shapeProblems.length) {
+  console.error(`\n${shapeProblems.length} price element(s) not built in the permitted shape:`);
+  shapeProblems.slice(0, 20).forEach((h) => console.error('  ' + h));
   failed = true;
 }
 if (proseProblems.length) {
@@ -354,4 +590,5 @@ if (elsewhere.length) {
 if (proseBlocks === 0) { console.error('\nzero prose blocks read, so the term scan proves nothing'); failed = true; }
 if (failed) process.exit(1);
 console.log(`zero price strings, zero stock strings, zero cart markup, zero product records, zero manufacturer names; the permitted phrase appears on ${elsewhereRead} built pages only where W22-01 allows it.`);
-console.log(`every page has a lede and two paragraphs in its own locale; zero capability or superlative terms in ${proseBlocks} prose blocks.`);
+console.log(`every category page has a lede and two paragraphs in its own locale; zero capability or superlative terms in ${proseBlocks} prose blocks.`);
+console.log(`every subcategory page carries a product grid and every index page the category tiles; no page but a category page carries authored prose.`);

@@ -92,6 +92,30 @@ const MARKERS = {
     // W17-03 (RC-134). The lede and two paragraphs W17-02 added. A category page
     // built before the prose carries 0, so a stale copy cannot match this.
     catProse: 3,
+    // W24-04. A category page rolls up its subcategories' products, so every one
+    // of the seven renders at least one card. A build made before wave 24 carries
+    // 0, so a stale copy returning plausible heights cannot match this.
+    productCards: 'atLeast1',
+  },
+  // W24-04. A subcategory page: breadcrumb, heading, grid. No authored prose, so
+  // the zero is asserted on purpose the way the category page's areaServed is: a
+  // later card repeating the parent's paragraphs here fires this rather than
+  // passing quietly.
+  subcategory: {
+    promoBar: 1,
+    profileAnchors: 0,
+    areaServed: 0,
+    catProse: 0,
+    productCards: 'atLeast1',
+  },
+  // W24-04. The catalogue index: seven tiles, no prose, no product card.
+  index: {
+    promoBar: 1,
+    profileAnchors: 0,
+    areaServed: 0,
+    catProse: 0,
+    productCards: 0,
+    catTiles: 7,
   },
 };
 
@@ -114,23 +138,45 @@ const PAGES = [
   { path: '/ru/servicii/copertine/',       type: 'product', label: 'copertine RU',   budget: 5569 },
   { path: '/servicii/garduri/',            type: 'product', label: 'garduri RO',     budget: 4816 },
   { path: '/ru/servicii/garduri/',         type: 'product', label: 'garduri RU',     budget: 4838 },
-  // W16-02, RC-129. The seven catalog category pages. Budgets from R-Y's
-  // amendment by W17-02 (RC-133), measured with the authored prose, and confirmed
-  // under R-P on the live domain by W17-03 (RC-134).
-  { path: '/catalog/termoizolatie/',            type: 'category', label: 'cat RO termo',   budget: 3132 },
-  { path: '/ru/catalog/termoizolatie/',         type: 'category', label: 'cat RU termo',   budget: 3187 },
-  { path: '/catalog/tencuieli-decorative/',     type: 'category', label: 'cat RO tencu',   budget: 3034 },
-  { path: '/ru/catalog/tencuieli-decorative/',  type: 'category', label: 'cat RU tencu',   budget: 3088 },
-  { path: '/catalog/placi-ceramice/',           type: 'category', label: 'cat RO placi',   budget: 2952 },
-  { path: '/ru/catalog/placi-ceramice/',        type: 'category', label: 'cat RU placi',   budget: 3034 },
-  { path: '/catalog/elemente-decorative/',      type: 'category', label: 'cat RO elem',    budget: 2979 },
-  { path: '/ru/catalog/elemente-decorative/',   type: 'category', label: 'cat RU elem',    budget: 3061 },
-  { path: '/catalog/vopsele/',                  type: 'category', label: 'cat RO vopsele', budget: 3051 },
-  { path: '/ru/catalog/vopsele/',               type: 'category', label: 'cat RU vopsele', budget: 3078 },
-  { path: '/catalog/sisteme-iluminare/',        type: 'category', label: 'cat RO ilumin',  budget: 3007 },
-  { path: '/ru/catalog/sisteme-iluminare/',     type: 'category', label: 'cat RU ilumin',  budget: 3007 },
-  { path: '/catalog/alte-materiale/',           type: 'category', label: 'cat RO alte',    budget: 2979 },
-  { path: '/ru/catalog/alte-materiale/',        type: 'category', label: 'cat RU alte',    budget: 2979 },
+  // ~~W16-02, RC-129. The seven catalog category pages.~~
+  // AMENDED (W24-04): thirty pages, and every budget re-measured. The catalogue
+  // index at /catalog/ is new (it answered 404), every subcategory has a page of
+  // its own (F-03), and every page now renders the product grid, so the old
+  // 2,952 to 3,187 figures are all superseded. Each budget below is the settled
+  // height measured at 1440px on this branch plus 60, which is ruling W24-R4;
+  // docs/rulings/R-Y.md carries the measurement each one came from.
+  // The 1,400px section cap does not apply to a catalogue grid (W24-R4), which is
+  // why a category page rolling up 88 products is 12,613px and inside budget.
+  { path: '/catalog/',                                      type: 'index',         label: 'idx RO',           budget: 3619 },
+  { path: '/ru/catalog/',                                   type: 'index',         label: 'idx RU',           budget: 3644 },
+  { path: '/catalog/termoizolatie/',                        type: 'category',      label: 'cat RO termo',     budget: 6797 },
+  { path: '/ru/catalog/termoizolatie/',                     type: 'category',      label: 'cat RU termo',     budget: 6714 },
+  { path: '/catalog/termoizolatie/polistiren-expandat/',    type: 'subcategory',   label: 'sub RO eps',       budget: 3543 },
+  { path: '/ru/catalog/termoizolatie/polistiren-expandat/',  type: 'subcategory',   label: 'sub RU eps',       budget: 3460 },
+  { path: '/catalog/termoizolatie/polistiren-extrudat/',    type: 'subcategory',   label: 'sub RO xps',       budget: 3020 },
+  { path: '/ru/catalog/termoizolatie/polistiren-extrudat/',  type: 'subcategory',   label: 'sub RU xps',       budget: 3064 },
+  { path: '/catalog/termoizolatie/vata-minerala/',          type: 'subcategory',   label: 'sub RO vata',      budget: 3500 },
+  { path: '/ru/catalog/termoizolatie/vata-minerala/',       type: 'subcategory',   label: 'sub RU vata',      budget: 3502 },
+  { path: '/catalog/termoizolatie/adezivi-si-mase-de-spaclu/',  type: 'subcategory',   label: 'sub RO adez',      budget: 4017 },
+  { path: '/ru/catalog/termoizolatie/adezivi-si-mase-de-spaclu/',  type: 'subcategory',   label: 'sub RU adez',      budget: 3940 },
+  { path: '/catalog/termoizolatie/alte-produse/',           type: 'subcategory',   label: 'sub RO altep',     budget: 2993 },
+  { path: '/ru/catalog/termoizolatie/alte-produse/',        type: 'subcategory',   label: 'sub RU altep',     budget: 2952 },
+  { path: '/catalog/tencuieli-decorative/',                 type: 'category',      label: 'cat RO tencu',     budget: 5246 },
+  { path: '/ru/catalog/tencuieli-decorative/',              type: 'category',      label: 'cat RU tencu',     budget: 5352 },
+  { path: '/catalog/placi-ceramice/',                       type: 'category',      label: 'cat RO placi',     budget: 12665 },
+  { path: '/ru/catalog/placi-ceramice/',                    type: 'category',      label: 'cat RU placi',     budget: 13548 },
+  { path: '/catalog/elemente-decorative/',                  type: 'category',      label: 'cat RO elem',      budget: 10482 },
+  { path: '/ru/catalog/elemente-decorative/',               type: 'category',      label: 'cat RU elem',      budget: 10917 },
+  { path: '/catalog/vopsele/',                              type: 'category',      label: 'cat RO vopsele',   budget: 4240 },
+  { path: '/ru/catalog/vopsele/',                           type: 'category',      label: 'cat RU vopsele',   budget: 4335 },
+  { path: '/catalog/vopsele/vopsele-de-exterior/',          type: 'subcategory',   label: 'sub RO vopext',    budget: 3000 },
+  { path: '/ru/catalog/vopsele/vopsele-de-exterior/',       type: 'subcategory',   label: 'sub RU vopext',    budget: 3022 },
+  { path: '/catalog/vopsele/vopsele-de-interior/',          type: 'subcategory',   label: 'sub RO vopint',    budget: 3022 },
+  { path: '/ru/catalog/vopsele/vopsele-de-interior/',       type: 'subcategory',   label: 'sub RU vopint',    budget: 3068 },
+  { path: '/catalog/sisteme-iluminare/',                    type: 'category',      label: 'cat RO ilumin',    budget: 6254 },
+  { path: '/ru/catalog/sisteme-iluminare/',                 type: 'category',      label: 'cat RU ilumin',    budget: 6198 },
+  { path: '/catalog/alte-materiale/',                       type: 'category',      label: 'cat RO alte',      budget: 3643 },
+  { path: '/ru/catalog/alte-materiale/',                    type: 'category',      label: 'cat RU alte',      budget: 3643 },
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -181,6 +227,8 @@ const PROBE = `(async () => {
     statTiles: q('.stat'),
     areaServed: area ? area.areaServed.length : 0,
     catProse: q('[data-cat-prose]'),
+    productCards: q('[data-product-card]'),
+    catTiles: q('.cat-tile'),
     tileDiagrams: q('[data-tile-diagram]'),
   };
   const facts = {
@@ -237,7 +285,15 @@ async function main() {
     await load(bust(page.path));
     const r = await cdp.ev(PROBE);
     const want = MARKERS[page.type];
-    const bad = Object.entries(want).filter(([k, v]) => r.markers[k] !== v);
+    /* W24-04. A marker is an exact count, except where the count is data: a
+       catalogue page renders as many product cards as its category holds, and
+       restating 88 here would be a measurement copied into a second place, which
+       is what section 14 forbids. `atLeast1` asserts the section is present and
+       non-empty, which is what a stale copy would fail; the exact figure lives in
+       content/catalog-products.json and is asserted by build.js and by gate 19.
+       It is not a skip: 0 fails it. */
+    const bad = Object.entries(want).filter(([k, v]) =>
+      (v === 'atLeast1' ? !(r.markers[k] >= 1) : r.markers[k] !== v));
 
     /* Identity is part of whether the page is VERIFIED, not a note under it.
        ABSENCE is a failure, never a skip: an assertion that disables itself when

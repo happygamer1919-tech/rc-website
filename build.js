@@ -852,25 +852,129 @@ function notFoundLocale(l) {
    it into the quote form's hidden `serviciu` field before the page jumps to the
    form, so a lead says which product it is about. Nothing else about the form
    changes. */
+/* W24-04. The catalogue product grid, mirroring the reference site's GEOMETRY and
+   none of its colour or type (W24-R8): a white card with a large radius, a square
+   image area on top, a small brand line, the name in bold over two to three lines,
+   the variant line in muted text, and a bottom row with the price bold on the left
+   and a square brand-orange icon button on the right.
+
+   THE IMAGE AREA IS THE W24-01 PLACEHOLDER. Every image wave 24 renders is one,
+   and every one has a row in docs/PHOTO-SLOTS-W24.json that gate 19 holds it to.
+
+   THE PRICE IS THE SOURCE'S, inside .prod__price and nowhere else. W24-R3 amends
+   Q-W21-01: a card shows the price, and the W22-01 phrase is left for the one case
+   where the source publishes none. scripts/check-catalog-pages.js is re-scoped to
+   match: a price is permitted only inside a .prod__price that carries its own
+   product name, and is refused everywhere it was refused before.
+
+   NO CART, NO SKU, NO schema.org Offer. The button opens the existing quote form
+   with the product name already in it, which is what src/main.js already does with
+   data-product, and it carries the record id too so two products that share a name
+   do not send an identical lead line. */
 function catalogProducts(l, slug) {
-  /* W24-03 holds the data and W24-04 builds the card. The records validated
-     above are not rendered by this card: its scope is the extraction, the
-     shape and docs/CATALOG-SOURCE-W24.md, and the dispatch splits the layout
-     into its own card so the grid, the square placeholder, the price element
-     and the re-scoped catalogue price gate land together with the negative
-     test that proves the gate still refuses a price everywhere else.
+  const records = CATALOG_PRODUCTS[slug] || [];
+  if (!records.length) return '';
+  const label = (k) => {
+    const v = l.strings[`catalogProducts.${k}`];
+    if (!REAL(v)) die(`catalogProducts.${k} must be real in ${l.code}.`);
+    return v;
+  };
+  const arrow = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
 
-     RC-149's card is gone with the fields it read. It printed a manufacturer,
-     a pack and a specification per record, and none of those three exists in
-     the W24-03 shape: a record now carries a name, an optional brand, an
-     optional variant line and a price. Rendering the old card against the new
-     data would print three empty rows, so it renders nothing until W24-04
-     replaces it, and the pages are exactly what they were before this card.
+  const cards = records.map((r, i) => {
+    const name = r.name[l.code];
+    const variant = r.variant && r.variant[l.code];
+    /* The price is the source's own string for this locale, unit included. It is
+       not recomposed from the bounds: 100 of the 223 products state a unit after
+       the figure ("129,00 lei / m"), and a price printed without its unit is a
+       different price. The two locales can disagree, because the source
+       disagrees with itself on some records; each is copied as that locale shows
+       it, and docs/CATALOG-SOURCE-W24.md lists every disagreement. */
+    const price = r.price.render && r.price.render[l.code];
+    /* The lead line names the product and RAPID CONSTRUCT'S OWN slot id, never the
+       source's record id. Ten names are used by two products each, so something
+       must disambiguate them or two products send an identical lead; `f3d-3004`
+       would do that, and would also publish the source's own identifier in the
+       markup of 223 cards and in every lead email. CAT-0042 is this repo's id for
+       the same product, it is unique, and it is the id the photo session already
+       uses. */
+    const lead = `${name} (${r.slot})`;
+    const parts = [];
+    parts.push(`        <div class="prod__media">${placeholder(r.slot, { variant: 'light', className: 'prod__ph' })}</div>`);
+    parts.push('        <div class="prod__body">');
+    if (REAL(r.brand)) parts.push(`          <p class="prod__brand">${esc(r.brand)}</p>`);
+    parts.push(`          <h3 class="prod__name">${esc(name)}</h3>`);
+    if (REAL(variant)) parts.push(`          <p class="prod__variant">${esc(variant)}</p>`);
+    parts.push('          <div class="prod__foot">');
+    parts.push(price == null
+      ? `            <span class="prod__ask" data-product="${esc(lead)}">${esc(label('ask'))}</span>`
+      : `            <span class="prod__price" data-product="${esc(lead)}">${esc(price)}</span>`);
+    /* The button's accessible name has to tell two cards apart, and two cards can
+       carry the same product name: the source uses ten names twice, so nine
+       buttons on the ceramic plates page would otherwise share a name while
+       leading to different outcomes.
+       It names the slot, not the price. A price in an aria-label is a price
+       outside .prod__price, which W24-R3 refuses and the catalogue gate reports:
+       it was written that way first and the gate caught it, on 1,230 hits. The
+       slot id is this repo's own unique handle for the product, it is printed on
+       the card's placeholder, and it is what the photo session uses. */
+    parts.push(`            <a class="prod__cta" href="#oferta" data-product="${esc(lead)}" aria-label="${esc(label('ctaAria'))}: ${esc(lead)}">${arrow}</a>`);
+    parts.push('          </div>');
+    parts.push('        </div>');
+    return `      <article class="prod" data-product-card data-reveal data-stagger="${Math.min(i, 6)}">\n${parts.join('\n')}\n      </article>`;
+  });
 
-     The records are loaded, validated and counted above whatever this returns,
-     so a bad record is reported by this build and not by the next one. */
-  void slug; void l;
-  return '';
+  /* The dispatch specifies the page as breadcrumb, heading and grid, with no
+     visible section heading. A card's name is an h3, so without an h2 between
+     them the page runs h1 straight to h3, which is a heading-order defect: a
+     screen reader reports a level that was never opened. The section heading is
+     therefore present and visually hidden, in the .sr-only the before/after
+     slider already uses for exactly this, and it reuses catalogProducts.h2,
+     which the site already ships. Nothing new is written and nothing is shown. */
+  return `<section class="section section--light section--divided" id="produse" aria-labelledby="produse-h">
+  <div class="container">
+    <h2 class="sr-only" id="produse-h">${esc(label('h2'))}</h2>
+    <div class="prod-grid">
+${cards.join('\n')}
+    </div>
+  </div>
+</section>`;
+}
+
+/* W24-04. The /catalog/ index, which 404'd on the live site: every menu row opened
+   a category page and the root of the catalogue opened nothing. Seven tiles, one
+   per category, each a W24-01 placeholder with its label and its product count. */
+/* NO PRODUCT COUNT ON A TILE, and no lede on this page. Both were written in the
+   first draft of this card and both were wrong.
+
+   The count needed a plural, and a two-form rule produced bad Russian on five of
+   the seven tiles ("25 товара" where Russian needs "товаров") and dropped the
+   Romanian "de" on four ("25 produse" where Romanian needs "25 de produse"). A
+   correct rule is a grammar table for a number nobody asked for: the dispatch
+   specifies the index as seven category tiles.
+
+   The lede was worse. It read "Categoriile de materiale pe care le livram si le
+   punem in opera", which is a first-person capability claim about Rapid Construct
+   that no source states: invented copy, refused by docs/CLAUDE.md section 5. The
+   catalogue gate would have caught the same sentence one directory down, in a
+   category page's lede, on the term "livram"; it is blind to it here only because
+   an index page carries no data-cat-prose block. A gate being unable to see a
+   thing is not permission to write it.
+
+   The tile carries the category's own label and nothing else. The eyebrow above
+   the grid already says what the page lists, from header.catalogHeading. */
+function catalogIndexTiles(l) {
+  return PARENT_CATEGORIES.map((c, i) => {
+    const label = categoryLabel(l, c);
+    /* The tile's name is the category, stated. Without it the accessible name is
+       assembled from the contents and opens with the placeholder's own slot id,
+       so a screen-reader user hears "CATEG-01" before every category, seven times
+       a page. */
+    return `      <a class="cat-tile" href="${BASE}${CATALOG_ROOT[l.code]}${c.slug}/" aria-label="${esc(label)}" data-reveal data-stagger="${Math.min(i, 6)}">
+        ${placeholder(`CATEG-${String(i + 1).padStart(2, '0')}`, { variant: 'dark', className: 'cat-tile__ph' })}
+        <span class="cat-tile__body"><span class="cat-tile__label">${esc(label)}</span></span>
+      </a>`;
+  }).join('\n');
 }
 
 // --- W19-D5, the homepage portfolio filter chips ------------------------------
@@ -1604,7 +1708,7 @@ function gardFaqSchema(l) {
    RC-130 repointed the rows, and it is the only prose on the page that is not a
    label. Nothing here is invented: every string on a category page comes from
    content/catalog.json or from an existing services.items entry. */
-const CATEGORIES = [
+const PARENT_CATEGORIES = [
   { slug: 'termoizolatie',        i: 0, service: 'fatade' },
   { slug: 'tencuieli-decorative', i: 1, service: 'fatade' },
   { slug: 'placi-ceramice',       i: 2, service: 'finisaje' },
@@ -1613,10 +1717,43 @@ const CATEGORIES = [
   { slug: 'sisteme-iluminare',    i: 5, service: 'instalatii' },
   { slug: 'alte-materiale',       i: 6, service: 'case-la-cheie' },
 ];
+
+/* W24-04, finding F-03. Every subcategory gets a real page of its own, under its
+   parent, so a menu row stops landing on the parent page's top. The slug is
+   parent/child, which is the URL, and the label, the RU label and the order all
+   come from content/catalog.json's children: nothing about a subcategory is
+   restated here except which parent page it sits under, which is the file's own
+   nesting read back.
+
+   A subcategory page carries the breadcrumb, the H1 and the grid, and no authored
+   prose. W17-02 authorised authored material description on a CATEGORY page and
+   the dispatch specifies the subcategory page as breadcrumb, heading and grid; a
+   subcategory that repeated its parent's three paragraphs would also break the
+   gate's own no-duplicate-prose rule. scripts/check-catalog-pages.js holds each
+   kind to what it must carry: a parent to its lede and two paragraphs, a
+   subcategory to a product grid. */
+const SUB_CATEGORIES = PARENT_CATEGORIES.flatMap((p) => {
+  const kids = CATALOG.categories[p.i].children || [];
+  return kids.map((k, ki) => {
+    const href = k.href && k.href.ro;
+    if (!REAL(href)) die(`${CATALOG_FILE}: categories[${p.i}].children[${ki}] has no RO href.`);
+    const m = href.match(/^\/catalog\/([^/]+)\/([^/]+)\/$/);
+    if (!m) die(`${CATALOG_FILE}: categories[${p.i}].children[${ki}] href "${href}" is not /catalog/<parent>/<child>/.`);
+    if (m[1] !== p.slug) die(`${CATALOG_FILE}: "${k.label.ro}" opens ${href}, which is not under its parent ${p.slug}.`);
+    return { slug: `${p.slug}/${m[2]}`, i: p.i, ki, parent: p.slug, service: p.service };
+  });
+});
+
+const CATEGORIES = [...PARENT_CATEGORIES, ...SUB_CATEGORIES];
+const CATEGORY_ROUTES = new Set(CATEGORIES.map((c) => c.slug));
+
 (() => {
-  if (CATEGORIES.length !== CATALOG.categories.length) {
-    die(`CATEGORIES has ${CATEGORIES.length} entries but ${CATALOG_FILE} has ${CATALOG.categories.length} top-level categories.`);
+  if (PARENT_CATEGORIES.length !== CATALOG.categories.length) {
+    die(`PARENT_CATEGORIES has ${PARENT_CATEGORIES.length} entries but ${CATALOG_FILE} has ${CATALOG.categories.length} top-level categories.`);
   }
+  const kids = CATALOG.categories.reduce((n, c) => n + (c.children || []).length, 0);
+  if (SUB_CATEGORIES.length !== kids) die(`SUB_CATEGORIES has ${SUB_CATEGORIES.length} entries but ${CATALOG_FILE} has ${kids} subcategories.`);
+  if (CATEGORIES.length === 0) die(`no catalogue pages would be built from ${CATALOG_FILE}.`);
   const bad = CATEGORIES.filter((c) => !SERVICE_SLUGS.includes(c.service));
   if (bad.length) die(`category page maps to an unknown service: ${bad.map((c) => c.slug + ' -> ' + c.service).join(', ')}`);
   const dupes = CATEGORIES.map((c) => c.slug).filter((s, i, a) => a.indexOf(s) !== i);
@@ -1631,30 +1768,33 @@ const CATEGORIES = [
    later data edit fails the build. It runs after CATEGORIES is validated, so the
    set of legal destinations is already known to be sound. */
 (() => {
+  /* The legal set is computed from the pages this build actually emits, so a row
+     can never point at a page that does not exist, and the assertion cannot go
+     stale when a category is added.
+     AMENDED (W24-04): a subcategory row used to be required to open its PARENT's
+     page, which is finding F-03 written into a gate. It now opens its own page,
+     and what is asserted is that its page sits under its parent's. */
   const legal = new Set();
   for (const c of CATEGORIES) {
     legal.add(`${CATALOG_ROOT.ro}${c.slug}/`);
     legal.add(`${CATALOG_ROOT.ru}${c.slug}/`);
   }
+  if (legal.size !== CATEGORIES.length * 2) die(`the catalogue menu's legal destination set is ${legal.size} for ${CATEGORIES.length} pages in two locales.`);
   const bad = [];
-  const walk = (list, parentSlug) => {
+  const walk = (list, parentHref) => {
     list.forEach((row, i) => {
       for (const code of ['ro', 'ru']) {
         const href = row.href && row.href[code];
         if (!legal.has(href)) bad.push(`${row.label && row.label.ro} [${code}] -> ${href}`);
       }
-      if (row.children) {
-        // A subcategory must open its parent's page, not some other category's.
-        const want = row.href && row.href.ro;
-        row.children.forEach((k) => {
-          if (k.href && k.href.ro !== want) bad.push(`${k.label && k.label.ro} does not open its parent page (${k.href && k.href.ro} vs ${want})`);
-        });
-        walk(row.children, row.href && row.href.ro);
+      if (parentHref && row.href && row.href.ro && !row.href.ro.startsWith(parentHref)) {
+        bad.push(`${row.label && row.label.ro} opens ${row.href.ro}, which is not under its parent page ${parentHref}`);
       }
+      if (row.children) walk(row.children, row.href && row.href.ro);
     });
   };
   walk(CATALOG.categories, null);
-  if (bad.length) die(`${CATALOG_FILE}: ${bad.length} menu row(s) do not open a category page:\n  ${bad.join('\n  ')}`);
+  if (bad.length) die(`${CATALOG_FILE}: ${bad.length} menu row(s) do not open a category page this build emits:\n  ${bad.join('\n  ')}`);
 })();
 
 /* W17-02, RC-133. The authored copy for one category page: a lede for the hero
@@ -1662,7 +1802,21 @@ const CATEGORIES = [
    is the category's position in content/catalog.json. General trade knowledge
    only, under the permitted and forbidden lists recorded in DECISIONS.md W17-02.
    A page without all three, real, in its own locale, does not build. */
+/* W24-04. A page's own label: a parent's is the category's, a subcategory's is
+   its own row's in content/catalog.json. One place, so a heading, a breadcrumb,
+   a meta title and a form subject cannot disagree. */
+function categoryLabel(l, c) {
+  const entry = CATALOG.categories[c.i];
+  if (c.parent == null) return catalogField(entry, 'label', l, `${CATALOG_FILE}: categories[${c.i}]`);
+  const kid = (entry.children || [])[c.ki];
+  if (!kid) die(`${CATALOG_FILE}: categories[${c.i}] has no children[${c.ki}], needed by ${c.slug}.`);
+  return catalogField(kid, 'label', l, `${CATALOG_FILE}: categories[${c.i}].children[${c.ki}]`);
+}
+
+/* W17-02's authored paragraphs belong to a CATEGORY. A subcategory page carries
+   the breadcrumb, the heading and the grid, and no prose: see SUB_CATEGORIES. */
 function categoryProse(l, c) {
+  if (c.parent != null) die(`categoryProse called for the subcategory ${c.slug}; a subcategory carries no authored prose.`);
   const k = `catalogPages.items.${c.i}`;
   const prose = { lede: l.strings[`${k}.lede`], p1: l.strings[`${k}.p1`], p2: l.strings[`${k}.p2`] };
   const missing = Object.keys(prose).filter((f) => !REAL(prose[f]));
@@ -1688,9 +1842,15 @@ function categoryBlock(l, c) {
   if (!REAL(svcTitle) || !REAL(svcDesc)) die(`services.items.${si} is not real for ${l.code}, needed by category ${c.slug}.`);
   const prose = categoryProse(l, c);
 
+  /* W24-04. The subcategories were listed as plain text, because until this card
+     they had no page of their own to open. They do now, and a visitor on the
+     parent page had no way to reach one except the header menu. */
   const subs = kids.length ? `
     <ul class="cat-subs">
-${kids.map((k, j) => `      <li>${esc(catalogField(k, 'label', l, `${where}.children[${j}]`))}</li>`).join('\n')}
+${kids.map((k, j) => {
+    const w = `${where}.children[${j}]`;
+    return `      <li><a href="${catalogHref(k, l, w)}">${esc(catalogField(k, 'label', l, w))}</a></li>`;
+  }).join('\n')}
     </ul>` : '';
 
   return `<section class="section section--light section--divided">
@@ -1711,13 +1871,16 @@ ${kids.map((k, j) => `      <li>${esc(catalogField(k, 'label', l, `${where}.chil
    rungs. coverageLine is not used here: "Inclusiv:" plus twenty localities is far
    over DESC_MAX on its own. */
 function categoryHeadVars(l, c) {
-  const title = catalogField(CATALOG.categories[c.i], 'label', l, `${CATALOG_FILE}: categories[${c.i}]`);
+  const title = categoryLabel(l, c);
   const inCity = l.code === 'ro' ? ` în ${PRIMARY_CITY.ro}` : ` в ${PRIMARY_CITY.ru}`;
   const metaTitle = [title + inCity + BRAND, title + BRAND, title].find((s) => s.length <= TITLE_MAX) || title;
   const si = SERVICE_SLUGS.indexOf(c.service);
   const desc = l.strings[`services.items.${si}.desc`];
-  const lede = categoryProse(l, c).lede;
-  const metaDesc = [lede, `${title}. ${desc}`, desc, title].find((s) => s.length <= DESC_MAX) || title;
+  /* A subcategory has no lede of its own, so its description falls to the next
+     rung of the same ladder: its own label and the related service's shipped
+     description. Nothing is invented for it. */
+  const lede = c.parent == null ? categoryProse(l, c).lede : null;
+  const metaDesc = [lede, `${title}. ${desc}`, desc, title].filter(Boolean).find((s) => s.length <= DESC_MAX) || title;
   if (/\bundefined\b/.test(metaDesc)) die(`meta description for category ${c.slug} (${l.code}) contains "undefined"`);
   return { title, metaTitle, metaDesc };
 }
@@ -1773,7 +1936,11 @@ const CATALOG_DATA = (() => {
     if (!bad && r.brand != null && (!REAL(r.brand) || CATALOG_FORBIDDEN_RE.test(r.brand))) bad = 'has a brand that is empty or that W17-02 refuses on a catalogue page';
     if (!bad && !Array.isArray(r.categories)) bad = 'has no categories array';
     if (!bad && !r.price) bad = 'has no price object';
-    if (!bad && r.price.render != null && !REAL(r.price.render)) bad = 'has an empty price.render; a price that does not exist is null, never ""';
+    if (!bad && r.price.render != null) {
+      for (const lc of ['ro', 'ru']) {
+        if (!REAL(r.price.render[lc])) { bad = `has no real price.render for ${lc}; a price that does not exist is null for the whole record, never "" for one locale`; break; }
+      }
+    }
     if (bad) { skip(where, bad); continue; }
     byId.set(r.id, r);
   }
@@ -1800,6 +1967,25 @@ const CATALOG_DATA = (() => {
 const CATALOG_PRODUCTS = Object.fromEntries(
   Object.entries(CATALOG_DATA.index).map(([slug, ids]) => [slug, ids.map((id) => CATALOG_DATA.byId.get(id))]));
 
+/* W24-04. Deferred to here on purpose: CATEGORIES is declared above and the
+   records are loaded here, so this is the first point at which the two can be
+   held to each other. Every category slug the records name must be a page this
+   build emits, and every page must have an entry: a record list with nowhere to
+   render is a silent drop, and a page with no entry is a grid that renders
+   nothing without saying so. */
+(() => {
+  const orphanData = Object.keys(CATALOG_DATA.index).filter((s) => !CATEGORY_ROUTES.has(s));
+  if (orphanData.length) die(`content/catalog-products.json names ${orphanData.length} category slug(s) this build emits no page for: ${orphanData.join(', ')}.`);
+  const orphanPage = CATEGORIES.map((c) => c.slug).filter((s) => !(s in CATALOG_DATA.index));
+  if (orphanPage.length) die(`${orphanPage.length} catalogue page(s) have no entry in content/catalog-products.json: ${orphanPage.join(', ')}.`);
+  /* An entry that is present and EMPTY is the silent case: the page still builds,
+     renders a heading and no grid, and every gate passes on it. A catalogue page
+     with no product is a page with nothing on it, so it fails here and names
+     itself. Presence, not silence (docs/CLAUDE.md section 13). */
+  const emptyPage = CATEGORIES.map((c) => c.slug).filter((s) => (CATALOG_DATA.index[s] || []).length === 0);
+  if (emptyPage.length) die(`${emptyPage.length} catalogue page(s) would render an empty grid: ${emptyPage.join(', ')}. A category with no product is not a page.`);
+})();
+
 const PRODUCT_PAGES = [
   { slug: 'tigla-metalica', key: 'tigla', block: (l) => tiglaGrid(l), sources: ['content/tigla-metalica.json'] },
   { slug: 'copertine', key: 'copertine', block: (l) => copertine(l), sources: ['content/copertine.json'] },
@@ -1822,9 +2008,16 @@ const productTemplate = fs.readFileSync('src/product.html', 'utf8');
 const CAT_RAW_KEYS = new Set(['catalogMenu', 'serviciiMenu',
   'demoAttr', 'promoBar', 'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
   'cat.block', 'cat.products', 'cat.footerLinks',
+  // W24-04. Built here because a parent page and a subcategory page differ in
+  // both: a parent has three breadcrumb levels and an authored lede, a
+  // subcategory has four and none.
+  'cat.breadcrumb', 'cat.ledeBlock',
+  // W24-04. The catalogue index's seven tiles.
+  'cat.tiles',
 ]);
 const categoryTemplate = fs.readFileSync('src/category.html', 'utf8');
-const CAT_SOURCES = ['src/category.html', 'build.js', CATALOG_FILE, ...LOCALES.map((l) => l.file)];
+const catalogIndexTemplate = fs.readFileSync('src/catalog-index.html', 'utf8');
+const CAT_SOURCES = ['src/category.html', 'build.js', CATALOG_FILE, 'content/catalog-products.json', ...LOCALES.map((l) => l.file)];
 const PROD_SOURCES = ['src/product.html', 'build.js', ...LOCALES.map((l) => l.file)];
 
 function productTeaser(l) {
@@ -2051,6 +2244,10 @@ for (const l of loaded) {
     privacyFooterLegal: privacyIncomplete ? ''
       : `<div class="footer__legal"><a href="${BASE + PRIVACY_PATH[l.code]}">${esc(l.strings['footer.privacy'])}</a></div>`,
     servicesHref: BASE + l.home + '#servicii',
+    // W24-04. The catalogue index. It is a real page now, so the footer and the
+    // phone menu can reach it; before this card the root of the catalogue was the
+    // one thing on the site nothing linked to, because nothing was there.
+    catalogHref: BASE + CATALOG_ROOT[l.code],
     // JSON-LD `item` must be an absolute URL. servicesHref is a path, correct
     // for an <a href> and invalid inside the BreadcrumbList.
     servicesUrl: SITE + BASE + l.home + '#servicii',
@@ -2176,14 +2373,64 @@ for (const l of loaded) {
     servicePages.push({ loc: SITE + BASE + SERVICES_ROOT[l.code] + slug + '/', lang: l.code });
   }
 
-  // --- W16-02, the seven catalog category pages -----------------------------
+  // --- W24-04, the catalog index at /catalog/ -------------------------------
+  {
+    const out = 'dist' + CATALOG_ROOT[l.code] + 'index.html';
+    const title = l.strings['catalogIndex.title'];
+    if (!REAL(title)) die(`catalogIndex.title must be real in ${l.code}.`);
+    const inCity = l.code === 'ro' ? ` în ${PRIMARY_CITY.ro}` : ` в ${PRIMARY_CITY.ru}`;
+    /* The description is the seven category labels, which are data and not copy,
+       trimmed to the same limit every other page's is. Nothing is invented for
+       it and nothing is claimed by it. */
+    const labels = PARENT_CATEGORIES.map((c) => categoryLabel(l, c)).join(', ');
+    const idxVars = {
+      ...vars,
+      'cat.title': title,
+      'cat.metaTitle': [title + inCity + BRAND, title + BRAND, title].find((s) => s.length <= TITLE_MAX) || title,
+      'cat.metaDesc': [`${title}: ${labels}`, labels, title].find((s) => s.length <= DESC_MAX) || title,
+      'cat.canonical': SITE + BASE + CATALOG_ROOT[l.code],
+      'cat.urlRo': SITE + BASE + CATALOG_ROOT.ro,
+      'cat.urlRu': SITE + BASE + CATALOG_ROOT.ru,
+      'cat.pathRo': BASE + CATALOG_ROOT.ro,
+      'cat.pathRu': BASE + CATALOG_ROOT.ru,
+      'cat.subject': `[${l.code.toUpperCase()}] ${title} - ${CATALOG_ROOT[l.code]}`,
+      'cat.tiles': catalogIndexTiles(l),
+      'cat.footerLinks': SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
+        `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join(''),
+    };
+    const missing = new Set();
+    const html = catalogIndexTemplate.replace(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/g, (_, key) => {
+      if (key in idxVars) return CAT_RAW_KEYS.has(key) ? idxVars[key] : esc(idxVars[key]);
+      missing.add(key); return `{{${key}}}`;
+    });
+    if (missing.size) die(`src/catalog-index.html references unknown keys for ${l.code}: ${[...missing].join(', ')}`);
+    if (html.includes('{{')) die(`unsubstituted placeholder survived in ${out}`);
+    fs.mkdirSync(path.dirname(out), { recursive: true });
+    fs.writeFileSync(out, html);
+  }
+
+  // --- ~~W16-02, the seven catalog category pages~~ --------------------------
+  // AMENDED (W24-04): fourteen, seven categories and seven subcategories, each
+  // with a page of its own. F-03 was a subcategory menu row landing on the top of
+  // its parent's page; it now opens its own.
   for (const c of CATEGORIES) {
     const out = 'dist' + CATALOG_ROOT[l.code] + c.slug + '/index.html';
     const head = categoryHeadVars(l, c);
+    const parent = c.parent == null ? null : PARENT_CATEGORIES.find((x) => x.slug === c.parent);
+    if (c.parent != null && !parent) die(`${c.slug} names the parent ${c.parent}, which is not a category page.`);
+    const crumb = (href, text) => `      <a href="${href}">${esc(text)}</a>\n      <span aria-hidden="true">/</span>`;
     const catVars = {
       ...vars,
       'cat.title': head.title,
-      'cat.lede': categoryProse(l, c).lede,
+      'cat.eyebrow': parent ? categoryLabel(l, parent) : l.strings['header.catalogHeading'],
+      'cat.breadcrumb': [
+        crumb(BASE + l.home, l.strings['servicePage.home']),
+        crumb(BASE + CATALOG_ROOT[l.code], l.strings['header.catalog']),
+        parent ? crumb(BASE + CATALOG_ROOT[l.code] + parent.slug + '/', categoryLabel(l, parent)) : '',
+        `      <span aria-current="page">${esc(head.title)}</span>`,
+      ].filter(Boolean).join('\n'),
+      'cat.ledeBlock': c.parent != null ? ''
+        : `<p class="hero__sub" data-cat-prose="lede" style="margin: 16px 0 0;">${esc(categoryProse(l, c).lede)}</p>`,
       'cat.metaTitle': head.metaTitle,
       'cat.metaDesc': head.metaDesc,
       'cat.canonical': SITE + BASE + CATALOG_ROOT[l.code] + c.slug + '/',
@@ -2192,7 +2439,7 @@ for (const l of loaded) {
       'cat.pathRo': BASE + CATALOG_ROOT.ro + c.slug + '/',
       'cat.pathRu': BASE + CATALOG_ROOT.ru + c.slug + '/',
       'cat.subject': `[${l.code.toUpperCase()}] ${head.title} - ${CATALOG_ROOT[l.code]}${c.slug}/`,
-      'cat.block': categoryBlock(l, c),
+      'cat.block': c.parent == null ? categoryBlock(l, c) : '',
       'cat.products': catalogProducts(l, c.slug),
       'cat.footerLinks': SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
         `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join(''),
@@ -2303,11 +2550,21 @@ const productPairs = PRODUCT_PAGES.map((p) => ({
 servicePairs.push(...productPairs);
 // W16-02. The seven category pages, always listed: they carry no data that can
 // make them empty, so there is no condition under which they should drop out.
-const categoryPairs = CATEGORIES.map((c) => ({
-  ro: SITE + BASE + CATALOG_ROOT.ro + c.slug + '/',
-  ru: SITE + BASE + CATALOG_ROOT.ru + c.slug + '/',
-  lastmod: lastmodOf(...CAT_SOURCES),
-}));
+/* W24-04. The catalogue index first, then every category and subcategory page.
+   The index was never in the sitemap because it did not exist; it answered 404 on
+   the live site while fourteen pages under it were indexed. */
+const categoryPairs = [
+  {
+    ro: SITE + BASE + CATALOG_ROOT.ro,
+    ru: SITE + BASE + CATALOG_ROOT.ru,
+    lastmod: lastmodOf(...CAT_SOURCES, 'src/catalog-index.html'),
+  },
+  ...CATEGORIES.map((c) => ({
+    ro: SITE + BASE + CATALOG_ROOT.ro + c.slug + '/',
+    ru: SITE + BASE + CATALOG_ROOT.ru + c.slug + '/',
+    lastmod: lastmodOf(...CAT_SOURCES),
+  })),
+];
 servicePairs.push(...categoryPairs);
 fs.writeFileSync('dist/sitemap.xml',
   '<?xml version="1.0" encoding="UTF-8"?>\n' +

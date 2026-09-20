@@ -12,5 +12,1616 @@
     "opened": "2026-09-19",
     "filled": 0
   },
-  "slots": []
+  "slots": [
+    {
+      "id": "CAT-0001",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Polistiren Dalmatina\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0002",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Polistiren expandat CT80F\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0003",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Polistiren expandat EPS-50 | EPS-70 | EPS-80 | EPS-200\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0004",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Polistiren expandat STOP FIRE\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0005",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"CT 80 F - Polistiren expandat\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0006",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Polistiren Penoplex\" (Penoplex), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0007",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Polistiren Tehnoplex XPS Carbon\" (SWEETONDALE), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0008",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Vată minerală Thermowool Fas Efect\" (SWEETONDALE), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0009",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Vată minerală OBIO 165\" (IZOVAT), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0010",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Vată minerală Rockton Super\" (ROCKWOOL), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0011",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Vată minerală FAWORI\" (FAWORI), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0012",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Vată minerală Novoterm\" (NOVOTERM), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0013",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Klebespachtel 100R - Adeziv de armare polistiren și vată\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0014",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Kleber 90R Adeziv lipire polistiren\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0015",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Mortar universal Caparol ArmaReno 700\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0016",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Adeziv Kreisel 215\" (KREISEL), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0017",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Adeziv Baumit - Bianco Alb\" (Baumit), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0018",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Adeziv DuoContact Baumit\" (Baumit), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0019",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Baumit Pro Contact - Adeziv și Masă de Șpaclu\" (Baumit), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0020",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Meșterul Dibaci Universal - Adeziv pentru plăci ceramice\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0021",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"CERESIT CT 82 - Mortar adeziv și masă de șpaclu pentru polistiren\" (Ceresit), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0022",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Mesterul dibaci POLISTIREN\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0023",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Mesterul dibaci VATĂ MINERALĂ\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0024",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Diblu din plastic LTX\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0025",
+      "page": "/catalog/termoizolatie/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Diblu din oțel LGX\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0026",
+      "page": "/catalog/tencuieli-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Baumit SilikonTop - Tencuială decorativă siliconică\" (Baumit), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0027",
+      "page": "/catalog/tencuieli-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Baumit DuoTop Tencuială decorativă acrilică\" (Baumit), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0028",
+      "page": "/catalog/tencuieli-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"ProjektPutz R și K Tencuială decorativă acrilică Caparol\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0029",
+      "page": "/catalog/tencuieli-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Carbon Fassadenputz K si R - Tencuială decorativă carbonică\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0030",
+      "page": "/catalog/tencuieli-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Silicon-Fassadenputz K si R - Tencuială decorativă\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0031",
+      "page": "/catalog/tencuieli-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Tencuială decorativă silacrilică Caparol Silacril Fassadenputz\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0032",
+      "page": "/catalog/tencuieli-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Duraziv Standard TDS cu silicon - Tencuială decorativă siliconică\" (DURAZIV), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0033",
+      "page": "/catalog/tencuieli-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Tencuială decorativă Roko - Omítka Silikon\" (ROKO AquaMix), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0034",
+      "page": "/catalog/tencuieli-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Tencuială decorativă siliconică STICKY\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0035",
+      "page": "/catalog/tencuieli-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Tencuială decorativă pentru soclu Caparol Buntsteinputz\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0036",
+      "page": "/catalog/tencuieli-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Projekt Grund pentru tencuieli decorative\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0037",
+      "page": "/catalog/tencuieli-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Tencuială de cuarţ colorat DURAZIV Clima Protect® cu Kauciuc®\" (DURAZIV), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0038",
+      "page": "/catalog/tencuieli-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Tencuială decorativă mozaicată Omitka Rokomozaikova\" (ROKO AquaMix), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0039",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Kamu Red\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0040",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Kamu Yellow\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0041",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă White Sesame\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0042",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Mountain Medium Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0043",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Mount Lion Yellow\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0044",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Mountain Light Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0045",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Mountain Light Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0046",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Blue Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0047",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Dandy Gray\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0048",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Veil White\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0049",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Castol Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0050",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Tunguska Yellow\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0051",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Elsa Black Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0052",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Snowy White\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0053",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Stellar Red\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0054",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Plain White\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0055",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Y001-01-02\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0056",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Medium Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0057",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Egyptian Yellow\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0058",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Autumn\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0059",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Ash Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0060",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Sandstorm\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0061",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Ink-Dyed\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0062",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Perth Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0063",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Steinburg Yellow\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0064",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă HY001\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0065",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Silk-mist Brown\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0066",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Plain Brown\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0067",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Orange\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0068",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Light Brown\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0069",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Portoro\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0070",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Blue Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0071",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Veil Dark Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0072",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Sunis White\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0073",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Andes Yellow\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0074",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Greek Yellow\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0075",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Andes White\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0076",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Sairo Off-White\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0077",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă H06\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0078",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Medium Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0079",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"PLacă Fawn Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0080",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"PLacă Fog\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0081",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"PLacă Dark Brown\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0082",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"PLacă Dark Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0083",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"PLacă Ink-Dyed\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0084",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Sunis White\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0085",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Andes Yellow\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0086",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Loki Mountain Light Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0087",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Veil Dark Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0088",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Castol Yellow\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0089",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Romam Red\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0090",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Castle Rock Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0091",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Sairo Off-White\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0092",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Agean White\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0093",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Plain Cloud Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0094",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Maca Blue\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0095",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Romam Red\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0096",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Veil Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0097",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Moonlight\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0098",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Romam Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0099",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Placă Portoro\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0100",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"35 Piece Stone\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0101",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Rough Surface\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0102",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Stone Alpes\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0103",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Oceanic Travertine\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0104",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Skyline\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0105",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Rome Travertine\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0106",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Ghana Travertine\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0107",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Concrete Pouring Slab\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0108",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Mount Celestial\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0109",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Marble\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0110",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Polished Concrete Wall\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0111",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Rusty Slab\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0112",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Polish Concrete Wall\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0113",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Devine Mushroom Stone\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0114",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Sawtooth Wood\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0115",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Original Wood\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0116",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Spliced Wood\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0117",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Rope Wave B\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0118",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Polished Wood 4.0\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0119",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Stackle Square 4.0\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0120",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Poly Wood\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0121",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Rammed Earth Wall\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0122",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Polished Stone\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0123",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Oman Linear Stone\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0124",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Chiseled Stone\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0125",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Bush Hammered\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0126",
+      "page": "/catalog/placi-ceramice/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Stone Ridged\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0127",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 01\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0128",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 02\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0129",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 03\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0130",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 04\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0131",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 05\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0132",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 06\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0133",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 07\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0134",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 08\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0135",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 09\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0136",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 10\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0137",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 12\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0138",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 14\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0139",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 15\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0140",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 17\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0141",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 18\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0142",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 19\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0143",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 20\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0144",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 21\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0145",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 22\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0146",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 23\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0147",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 24\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0148",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 25\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0149",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 26\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0150",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 27\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0151",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 28\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0152",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 29\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0153",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 30\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0154",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 31\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0155",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 32\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0156",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 33\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0157",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 34\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0158",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 35\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0159",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 37\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0160",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 38\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0161",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 39\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0162",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 41\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0163",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 42\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0164",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 43\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0165",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 44\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0166",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 45\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0167",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 46\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0168",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 47\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0169",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 49\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0170",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 50\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0171",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 53\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0172",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 55\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0173",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 56\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0174",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 57\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0175",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 58\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0176",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 61\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0177",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 62\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0178",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 63\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0179",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 64\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0180",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 65\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0181",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 66\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0182",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 67\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0183",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 68\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0184",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 69\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0185",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 70\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0186",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 73\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0187",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 74\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0188",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 76\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0189",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 77\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0190",
+      "page": "/catalog/elemente-decorative/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element decorativ RED 78\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0191",
+      "page": "/catalog/vopsele/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Amphibolin - Vopsea acrilică universală\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0192",
+      "page": "/catalog/vopsele/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Isomat Flexcoat - Vopsea hidroizolantă\" (ISOMAT), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0193",
+      "page": "/catalog/vopsele/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Vopsea de fațadă universală - Muresko-plus\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0194",
+      "page": "/catalog/vopsele/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Ultrapal - Vopsea universală\" (STANCOLAC), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0195",
+      "page": "/catalog/vopsele/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Caparol Tiefgrund - Amorsă acrilică, pentru interior și exterior\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0196",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă GMD-881F\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0197",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă GMD-881Y\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0198",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă GMD-F841F-2\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0199",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă K1207\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0200",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă K1212S\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0201",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă K1213M\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0202",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă K1241\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0203",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă K1247\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0204",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă K2148\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0205",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă K2276\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0206",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă K5014\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0207",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă K5016\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0208",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă K41041\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0209",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă K41047\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0210",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă K41059\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0211",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă K41061\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0212",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă K45015\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0213",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă K1247\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0214",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă K2146\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0215",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă K2880\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0216",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă K2088L\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0217",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă K2222\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0218",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă K2841\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0219",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă K2842\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0220",
+      "page": "/catalog/sisteme-iluminare/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Lampă K1823\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0221",
+      "page": "/catalog/alte-materiale/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Membrana de DIFUZIE pentru acoperișuri\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0222",
+      "page": "/catalog/alte-materiale/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Plasă de armare\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CAT-0223",
+      "page": "/catalog/alte-materiale/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Colțar PVC\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru."
+    },
+    {
+      "id": "CATEG-01",
+      "page": "/catalog/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Categoria \"Sisteme de termoizolație\": un material sau un grup de materiale din aceasta categorie, fotografiat pe santier sau in depozit, orizontal, cu loc liber jos-stanga pentru eticheta."
+    },
+    {
+      "id": "CATEG-02",
+      "page": "/catalog/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Categoria \"Tencuieli decorative\": un material sau un grup de materiale din aceasta categorie, fotografiat pe santier sau in depozit, orizontal, cu loc liber jos-stanga pentru eticheta."
+    },
+    {
+      "id": "CATEG-03",
+      "page": "/catalog/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Categoria \"Plăci ceramice\": un material sau un grup de materiale din aceasta categorie, fotografiat pe santier sau in depozit, orizontal, cu loc liber jos-stanga pentru eticheta."
+    },
+    {
+      "id": "CATEG-04",
+      "page": "/catalog/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Categoria \"Elemente decorative\": un material sau un grup de materiale din aceasta categorie, fotografiat pe santier sau in depozit, orizontal, cu loc liber jos-stanga pentru eticheta."
+    },
+    {
+      "id": "CATEG-05",
+      "page": "/catalog/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Categoria \"Vopsele\": un material sau un grup de materiale din aceasta categorie, fotografiat pe santier sau in depozit, orizontal, cu loc liber jos-stanga pentru eticheta."
+    },
+    {
+      "id": "CATEG-06",
+      "page": "/catalog/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Categoria \"Sisteme de iluminare\": un material sau un grup de materiale din aceasta categorie, fotografiat pe santier sau in depozit, orizontal, cu loc liber jos-stanga pentru eticheta."
+    },
+    {
+      "id": "CATEG-07",
+      "page": "/catalog/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Categoria \"Alte materiale de construcții\": un material sau un grup de materiale din aceasta categorie, fotografiat pe santier sau in depozit, orizontal, cu loc liber jos-stanga pentru eticheta."
+    }
+  ]
 }

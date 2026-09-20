@@ -74,6 +74,13 @@ const PAGES = [
   { template: 'product', locale: 'RU', url: '/ru/servicii/garduri/' },
   { template: 'category', locale: 'RO', url: '/catalog/termoizolatie/' },
   { template: 'category', locale: 'RU', url: '/ru/catalog/termoizolatie/' },
+  // W24-04. One page per template, and wave 24 adds two: the catalogue index and
+  // a subcategory page. The subcategory uses the category template but is a level
+  // deeper, and a deeper page is where a relative header asset would break.
+  { template: 'catalog-index', locale: 'RO', url: '/catalog/' },
+  { template: 'catalog-index', locale: 'RU', url: '/ru/catalog/' },
+  { template: 'subcategory', locale: 'RO', url: '/catalog/termoizolatie/polistiren-expandat/' },
+  { template: 'subcategory', locale: 'RU', url: '/ru/catalog/termoizolatie/polistiren-expandat/' },
   { template: 'privacy', locale: 'RO', url: '/confidentialitate/' },
   { template: 'privacy', locale: 'RU', url: '/ru/konfidentsialnost/' },
   { template: '404', locale: 'RO', url: '/404.html' },

@@ -148,6 +148,19 @@ const SUPERSEDED = [
     clear: /R-Y|AMENDED|W16-02|W17-02/,
   },
   {
+    /* W24-04, R-Q: adding the value to this list is part of recording the ruling
+       that supersedes it. These are the fourteen category page budgets W17-02
+       measured on a page that carried no products. W24-03 put 223 records in and
+       W24-04 renders them, so every one of the fourteen is a height of a page
+       that no longer exists. R-Y's W24-04 amendment carries the thirty that
+       replace them. */
+    id: 'budget-cat-w17',
+    find: /3,132|3,187|3,034|3,088|2,952|2,979|3,061|3,051|3,078|3,007/g,
+    ruling: 'R-Y as amended by W24-04 (docs/rulings/R-Y.md), under W24-R4',
+    what: "W17-02's LOCAL category page budgets, measured before the pages carried any product record",
+    clear: /R-Y|AMENDED|W17-02|W17-03|W24-04|W24-R4/,
+  },
+  {
     id: 'budget-tigla-w14',
     find: /3,841|3,875/g,
     ruling: 'R-Y as amended by W18-01 (docs/rulings/R-Y.md)',
@@ -186,6 +199,9 @@ const SCAN_SOURCE = [
   'src/service.html',
   'src/product.html',
   'src/category.html',
+  // W24-04. The catalogue index. Registered here in the same commit that creates
+  // it, which is what the template-count assertion below exists to force.
+  'src/catalog-index.html',
   'src/privacy.html',
   'src/404.html',
   'build.js',

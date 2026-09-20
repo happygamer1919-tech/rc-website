@@ -351,3 +351,66 @@ their wave 7 budget.
 **Still no promo-bar revert figure measured for the tile page's current state.** The
 44 stated in the wave 14 tail block was measured before the diagrams, and was not
 re-measured here.
+
+### Amended 2026-09-19 by W24-04 · every catalogue page re-measured, and thirty budgets
+
+Added under R-T; nothing above this block was edited.
+
+**Ruling W24-R4, as the owner gave it:**
+
+> R-Y amended: pages changed or created in W24 get new height budgets = measured +
+> 60 at ship. The 1400px section cap does not apply to catalogue grids. Record each
+> new number.
+
+**What changed under the catalogue's feet.** Until this card a catalogue category
+page carried a hero, two authored paragraphs, a subcategory list and a quote form,
+and its product section was absent because there were no records: the W17-02
+budgets, 2,952 to 3,187, are heights of a page with no products on it. W24-03 put
+223 records in, W24-04 renders them, every subcategory gained a page of its own
+(finding F-03), and `/catalog/` became a real page instead of a 404. **All fourteen
+old figures are superseded and sixteen more are new, thirty in all.**
+
+**Measured the way section 2 requires**: 1440px, every `[data-reveal]` applied and
+settled for 1.6s before `scrollHeight` was read, Inter loaded and asserted loaded on
+every page, in the workstation's own Chrome over CDP against the built tree. These
+are LOCAL measurements on this branch, not live readings: R-P's live confirmation is
+owed after the deploy and is recorded as owed, not as taken.
+
+| Page | Category | RO measured | RO budget | RU measured | RU budget |
+|---|---|---|---|---|---|
+| `/catalog/` | Catalogue index | 3,559 | **3,619** | 3,584 | **3,644** |
+| `/catalog/termoizolatie/` | Sisteme de termoizolatie | 6,737 | **6,797** | 6,654 | **6,714** |
+| `/catalog/termoizolatie/polistiren-expandat/` | Polistiren expandat | 3,483 | **3,543** | 3,400 | **3,460** |
+| `/catalog/termoizolatie/polistiren-extrudat/` | Polistiren extrudat | 2,960 | **3,020** | 3,004 | **3,064** |
+| `/catalog/termoizolatie/vata-minerala/` | Vata minerala | 3,440 | **3,500** | 3,442 | **3,502** |
+| `/catalog/termoizolatie/adezivi-si-mase-de-spaclu/` | Adezivi si mase de spaclu | 3,957 | **4,017** | 3,880 | **3,940** |
+| `/catalog/termoizolatie/alte-produse/` | Alte produse | 2,933 | **2,993** | 2,892 | **2,952** |
+| `/catalog/tencuieli-decorative/` | Tencuieli decorative | 5,186 | **5,246** | 5,292 | **5,352** |
+| `/catalog/placi-ceramice/` | Placi ceramice | 12,605 | **12,665** | 13,488 | **13,548** |
+| `/catalog/elemente-decorative/` | Elemente decorative | 10,422 | **10,482** | 10,857 | **10,917** |
+| `/catalog/vopsele/` | Vopsele | 4,180 | **4,240** | 4,275 | **4,335** |
+| `/catalog/vopsele/vopsele-de-exterior/` | Vopsele de exterior | 2,940 | **3,000** | 2,962 | **3,022** |
+| `/catalog/vopsele/vopsele-de-interior/` | Vopsele de interior | 2,962 | **3,022** | 3,008 | **3,068** |
+| `/catalog/sisteme-iluminare/` | Sisteme de iluminare | 6,194 | **6,254** | 6,138 | **6,198** |
+| `/catalog/alte-materiale/` | Alte materiale de constructii | 3,583 | **3,643** | 3,583 | **3,643** |
+
+**The 1,400px section cap does not apply to a catalogue grid.** `docs/CLAUDE.md`
+section 2 carries the amendment: the grid is the third standing exception beside the
+services grid and the portfolio grid. Placi ceramice rolls up 88 products and Elemente
+decorative 64, and no cap can be met by a section whose length is data. The cap still
+holds on every other section of these pages.
+
+**The widest gap between the locales is `/catalog/placi-ceramice/`, 883px**, because the Russian
+product names are longer and more of them wrap to a third line. The narrowest is `/catalog/alte-materiale/`,
+0px.
+
+**These are the second measurement, not the first.** The first draft of this card was
+reviewed before it was committed and twenty-two defects were confirmed in it, four of
+which changed a page's height: the catalogue index lost an invented lede, the card's
+price gained the unit the source states after it, the product name stopped absorbing the
+row's slack, and the foot stopped wrapping. Every figure above was re-measured after
+those changes, on the tree that is committed.
+
+`scripts/verify-live.js` restates these thirty budgets, which is the arrangement
+section 4 already has with the Lighthouse floors: change one and the other must
+change with it.

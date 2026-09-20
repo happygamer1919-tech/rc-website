@@ -358,7 +358,9 @@
     "cta": "Preț la cerere",
     "mfr": "Producător",
     "pack": "Ambalare / acoperire",
-    "spec": "Specificație"
+    "spec": "Specificație",
+    "ask": "Preț la cerere",
+    "ctaAria": "Solicită ofertă pentru"
   },
   "catalogPages": {
     "items": {
@@ -1112,5 +1114,8 @@
         "sentence": "Terasamentele sunt prima etapă, fie că urmează o casă la {0}, fie o lucrare de {1}."
       }
     }
+  },
+  "catalogIndex": {
+    "title": "Catalog"
   }
 }

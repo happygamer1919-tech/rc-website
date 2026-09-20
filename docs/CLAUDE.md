@@ -191,6 +191,16 @@ Permitted edits: shortening a sentence, converting a heading to uppercase,
 splitting a paragraph into a card. Not permitted: inventing anything.
 *Source: master plan section 6.*
 
+**AMENDED (W24-04): the authored prose belongs to a CATEGORY page, and only to one.**
+Each of the seven categories carries its lede and two paragraphs in each locale. A
+SUBCATEGORY page, of which wave 24 adds seven, carries the breadcrumb, the heading and
+the product grid and **no authored prose at all**: repeating the parent's paragraphs
+would be the same copy on eight pages, which the gate's own no-duplicate rule refuses.
+The catalogue index at `/catalog/` carries the category tiles and no prose either. All
+three kinds are scanned whole for every prohibition; what differs is only what each must
+carry, and the gate fails a page of any kind that carries none of its own thing.
+*Source: W24-04, and the W24 dispatch's specification of the subcategory page.*
+
 **AMENDED (W17-02): one authorized exception, the catalog category pages.** Their
 lede and two paragraphs are authored general trade knowledge, written at the
 owner's instruction in RC-133: what the material is, what it is for, how it is
@@ -222,6 +232,23 @@ before its price patterns run, and it scans **every** built page for the two str
 outside that one place. Exact means exact: a near spelling is not the permitted
 string and is refused.
 *Source: DECISIONS.md, W22 ratifications and W22-01; the question is Q-W21-01.*
+
+**AMENDED (W24-R3, wave 24): a catalogue card shows the price, and the phrase is left
+for the case where there is none.** The owner's ruling, verbatim in DECISIONS.md block
+W24-R: "catalogue cards show the fatade3d price. 'Pret la cerere' / 'Цена по запросу'
+appears only where no price exists." So a figure is permitted **only as the whole text of
+a `.prod__price` element carrying its own product in `data-product`, on a catalogue
+page**, which is the same shape W22-01 gave the quote button. Everywhere a price was
+refused before it is refused still, including inside a `.prod__price` on a page that is
+not a catalogue page. The relaxation is by KIND: cart markup, a stock claim, a product
+record and a manufacturer name all still fire inside a price element, so it cannot be
+used as a hiding place. The two permitted strings keep their exactness and gain one more
+permitted shape, a `.prod__ask` element in the place the price would have taken; a card
+carries exactly one of the two, never both and never neither.
+`scripts/check-catalog-pages.js` holds all of it and was negative-tested on thirteen
+arms, each firing on its own message between two controls watched clean in the same run.
+**No cart, no SKU, no `schema.org` `Offer`.**
+*Source: DECISIONS.md, W24-R ruling R3, and W24-04.*
 
 When there is no source for a value, **mark it or omit it — never fill it**:
 

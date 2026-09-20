@@ -144,7 +144,25 @@ const FONTS = `(async () => {
    for its entrance is measured where it will sit. */
 const PROBE = `(() => {
   document.querySelectorAll('[data-reveal]').forEach((n) => n.classList.add('is-revealed'));
-  const vis = (el) => { const r = el.getBoundingClientRect(); const cs = getComputedStyle(el); return r.width > 0 && r.height > 0 && cs.visibility !== 'hidden'; };
+  /* AMENDED (W24-04). A VISUALLY HIDDEN heading is not a visible one, and this
+     gate's own sentence is about visible headings. The site's .sr-only pattern is
+     the standard one: absolutely positioned, clipped to a 1x1px box. Such an
+     element has a non-zero rect and visibility: visible, so it passed vis() and
+     then failed the overflow test by construction, because its text is always
+     wider than one pixel. Nothing had ever tripped it: the only .sr-only headings
+     on the site are the before/after slider's, and that section has never
+     rendered. W24-04 adds a hidden section heading to every catalogue grid so the
+     page does not run h1 straight to h3, and it turned this gate red on 56
+     combinations for a heading no one can see. W24-05 turns the slider on and
+     would have done the same.
+     Clipped is judged by the box, not by the class name: a 1x1px heading is
+     hidden however it was hidden, and a real heading is never 1px. */
+  const clipped = (el, r) => {
+    const cs = getComputedStyle(el);
+    if (r.width < 2 || r.height < 2) return true;
+    return cs.clip === 'rect(0px, 0px, 0px, 0px)' || cs.clipPath === 'inset(50%)';
+  };
+  const vis = (el) => { const r = el.getBoundingClientRect(); const cs = getComputedStyle(el); return r.width > 0 && r.height > 0 && cs.visibility !== 'hidden' && !clipped(el, r); };
   const heads = [...document.querySelectorAll('h1, h2, h3')].filter(vis);
   const over = heads.filter((h) => h.scrollWidth > h.clientWidth + 1)
     .map((h) => h.tagName.toLowerCase() + ' +' + (h.scrollWidth - h.clientWidth) + 'px "' + h.textContent.trim().replace(/\\s+/g, ' ').slice(0, 48) + '"');

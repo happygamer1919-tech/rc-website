@@ -1,5 +1,5 @@
 {
-  "_note": "W24-03, 2026-09-19. Every product fatade3d.md publishes in the seven catalogue categories and seven subcategories that content/catalog.json already holds, copied under ruling W24-R1, which reverses the wave 21 drop for TEXT DATA ONLY. W24-R2 is unchanged for files: no image, logo or asset from that host is in this repo, and none was downloaded. Method, counts and every field that could not be read are in docs/CATALOG-SOURCE-W24.md. SHAPE. `products` holds one record per product, keyed by `id`, never by `name`: ten names are used by two products each on the source. `categories` maps a repo category slug to the ids that category renders, a parent already rolled up over its subcategories. RENDERING. `name`, `variant` and `price.render` are what a card prints. `source` keeps the string as the host published it, unchanged, beside it. A null renders nothing: a null brand prints no brand line, a null variant prints no variant line, and a null price.render prints the W22-01 phrase, which W24-R3 narrowed to exactly that case. NEVER RENDERED: a name W17-02 refuses on a catalogue page. `brand` is null where the source brand is one, and `name` carries it removed, with the untouched original in `source.name`.",
+  "_note": "W24-03, 2026-09-19. Every product fatade3d.md publishes in the seven catalogue categories and seven subcategories that content/catalog.json already holds, copied under ruling W24-R1, which reverses the wave 21 drop for TEXT DATA ONLY. W24-R2 is unchanged for files: no image, logo or asset from that host is in this repo, and none was downloaded. Method, counts and every field that could not be read are in docs/CATALOG-SOURCE-W24.md. SHAPE. `products` holds one record per product, keyed by `id`, never by `name`: ten names are used by two products each on the source. `categories` maps a repo category slug to the ids that category renders, a parent already rolled up over its subcategories. RENDERING. `name`, `variant` and `price.render` are what a card prints. `source` keeps the string as the host published it, unchanged, beside it. A null renders nothing: a null brand prints no brand line, a null variant prints no variant line, and a null price.render prints the W22-01 phrase, which W24-R3 narrowed to exactly that case. NEVER RENDERED: a name W17-02 refuses on a catalogue page. `brand` is null where the source brand is one, and `name` carries it removed, with the untouched original in `source.name`. PRICE UNIT: `price.unit` is the unit the source states after the figure (m, m2, bucata) or null, and `price.render_unit` is how a card prints it per locale. A price rendered without its unit is a different price: 129,00 lei for a decorative element the source sells at 129,00 lei per linear metre is wrong on the page, and 100 of the 223 records state a unit.",
   "capture": {
     "source": "fatade3d.md",
     "date": "2026-09-19",
@@ -312,7 +312,10 @@
         "min": "20,00",
         "max": "165,00",
         "source_display": "20,00 lei – 165,00 lei",
-        "render": "20,00 lei - 165,00 lei"
+        "render": {
+          "ro": "20,00 lei - 165,00 lei",
+          "ru": "20,00 lei - 165,00 lei"
+        }
       },
       "categories": [
         "termoizolatie/polistiren-expandat"
@@ -345,7 +348,10 @@
         "min": "7,62",
         "max": "76,20",
         "source_display": "7,62 lei – 76,20 lei",
-        "render": "7,62 lei - 76,20 lei"
+        "render": {
+          "ro": "7,62 lei - 76,20 lei",
+          "ru": "7,62 lei - 76,20 lei"
+        }
       },
       "categories": [
         "termoizolatie/polistiren-expandat"
@@ -378,7 +384,10 @@
         "min": "6,60",
         "max": "91,00",
         "source_display": "6,60 lei – 91,00 lei",
-        "render": "6,60 lei - 91,00 lei"
+        "render": {
+          "ro": "6,60 lei - 91,00 lei",
+          "ru": "6,60 lei - 91,00 lei"
+        }
       },
       "categories": [
         "termoizolatie/polistiren-expandat"
@@ -411,7 +420,10 @@
         "min": "0,00",
         "max": "110,00",
         "source_display": "0,00 lei – 110,00 lei",
-        "render": "110,00 lei"
+        "render": {
+          "ro": "110,00 lei",
+          "ru": "1,00 lei - 110,00 lei"
+        }
       },
       "categories": [
         "termoizolatie/polistiren-expandat"
@@ -444,7 +456,10 @@
         "min": "6,50",
         "max": "65,00",
         "source_display": "6,50 lei – 65,00 lei",
-        "render": "6,50 lei - 65,00 lei"
+        "render": {
+          "ro": "6,50 lei - 65,00 lei",
+          "ru": "6,50 lei - 65,00 lei"
+        }
       },
       "categories": [
         "termoizolatie/polistiren-expandat"
@@ -477,7 +492,10 @@
         "min": "31,60",
         "max": "138,50",
         "source_display": "31,60 lei – 138,50 lei",
-        "render": "31,60 lei - 138,50 lei"
+        "render": {
+          "ro": "31,60 lei - 138,50 lei",
+          "ru": "31,60 lei - 138,50 lei"
+        }
       },
       "categories": [
         "termoizolatie/polistiren-extrudat"
@@ -510,7 +528,10 @@
         "min": "40,00",
         "max": "133,00",
         "source_display": "40,00 lei – 133,00 lei",
-        "render": "40,00 lei - 133,00 lei"
+        "render": {
+          "ro": "40,00 lei - 133,00 lei",
+          "ru": "40,00 lei - 133,00 lei"
+        }
       },
       "categories": [
         "termoizolatie/polistiren-extrudat"
@@ -543,7 +564,10 @@
         "min": "106,00",
         "max": "213,00",
         "source_display": "106,00 lei – 213,00 lei",
-        "render": "106,00 lei - 213,00 lei"
+        "render": {
+          "ro": "106,00 lei - 213,00 lei",
+          "ru": "106,00 lei - 213,00 lei"
+        }
       },
       "categories": [
         "termoizolatie/vata-minerala"
@@ -576,7 +600,10 @@
         "min": "46,60",
         "max": "77,00",
         "source_display": "46,60 lei – 77,00 lei",
-        "render": "46,60 lei - 77,00 lei"
+        "render": {
+          "ro": "46,60 lei - 77,00 lei",
+          "ru": "46,60 lei - 77,00 lei"
+        }
       },
       "categories": [
         "termoizolatie/vata-minerala"
@@ -609,7 +636,10 @@
         "min": "62,00",
         "max": "123,00",
         "source_display": "62,00 lei – 123,00 lei",
-        "render": "62,00 lei - 123,00 lei"
+        "render": {
+          "ro": "62,00 lei - 123,00 lei",
+          "ru": "62,00 lei - 123,00 lei"
+        }
       },
       "categories": [
         "termoizolatie/vata-minerala"
@@ -642,7 +672,10 @@
         "min": "216,00",
         "max": "216,00",
         "source_display": "216,00 lei",
-        "render": "216,00 lei"
+        "render": {
+          "ro": "216,00 lei",
+          "ru": "216,00 lei"
+        }
       },
       "categories": [
         "termoizolatie/vata-minerala"
@@ -675,7 +708,10 @@
         "min": "94,00",
         "max": "185,00",
         "source_display": "94,00 lei – 185,00 lei / bucata",
-        "render": "94,00 lei - 185,00 lei"
+        "render": {
+          "ro": "94,00 lei - 185,00 lei / bucata",
+          "ru": "94,00 lei - 185,00 lei / м2"
+        }
       },
       "categories": [
         "termoizolatie/vata-minerala"
@@ -708,7 +744,10 @@
         "min": "229,00",
         "max": "229,00",
         "source_display": "229,00 lei",
-        "render": "229,00 lei"
+        "render": {
+          "ro": "229,00 lei",
+          "ru": "229,00 lei"
+        }
       },
       "categories": [
         "termoizolatie/adezivi-si-mase-de-spaclu"
@@ -741,7 +780,10 @@
         "min": "199,00",
         "max": "199,00",
         "source_display": "199,00 lei",
-        "render": "199,00 lei"
+        "render": {
+          "ro": "199,00 lei",
+          "ru": "199,00 lei"
+        }
       },
       "categories": [
         "termoizolatie/adezivi-si-mase-de-spaclu"
@@ -774,7 +816,10 @@
         "min": "499,00",
         "max": "499,00",
         "source_display": "499,00 lei",
-        "render": "499,00 lei"
+        "render": {
+          "ro": "499,00 lei",
+          "ru": "499,00 lei"
+        }
       },
       "categories": [
         "termoizolatie/adezivi-si-mase-de-spaclu"
@@ -807,7 +852,10 @@
         "min": "145,00",
         "max": "145,00",
         "source_display": "145,00 lei",
-        "render": "145,00 lei"
+        "render": {
+          "ro": "145,00 lei",
+          "ru": "145,00 lei"
+        }
       },
       "categories": [
         "termoizolatie/adezivi-si-mase-de-spaclu"
@@ -840,7 +888,10 @@
         "min": "260,00",
         "max": "260,00",
         "source_display": "260,00 lei",
-        "render": "260,00 lei"
+        "render": {
+          "ro": "260,00 lei",
+          "ru": "260,00 lei"
+        }
       },
       "categories": [
         "termoizolatie/adezivi-si-mase-de-spaclu"
@@ -873,7 +924,10 @@
         "min": "260,00",
         "max": "260,00",
         "source_display": "260,00 lei",
-        "render": "260,00 lei"
+        "render": {
+          "ro": "260,00 lei",
+          "ru": "260,00 lei"
+        }
       },
       "categories": [
         "termoizolatie/adezivi-si-mase-de-spaclu"
@@ -906,7 +960,10 @@
         "min": "325,00",
         "max": "325,00",
         "source_display": "325,00 lei",
-        "render": "325,00 lei"
+        "render": {
+          "ro": "325,00 lei",
+          "ru": "325,00 lei"
+        }
       },
       "categories": [
         "termoizolatie/adezivi-si-mase-de-spaclu"
@@ -939,7 +996,10 @@
         "min": "105,00",
         "max": "105,00",
         "source_display": "105,00 lei",
-        "render": "105,00 lei"
+        "render": {
+          "ro": "105,00 lei",
+          "ru": "105,00 lei"
+        }
       },
       "categories": [
         "termoizolatie/adezivi-si-mase-de-spaclu"
@@ -972,7 +1032,10 @@
         "min": "190,00",
         "max": "190,00",
         "source_display": "190,00 lei",
-        "render": "190,00 lei"
+        "render": {
+          "ro": "190,00 lei",
+          "ru": "190,00 lei"
+        }
       },
       "categories": [
         "termoizolatie/adezivi-si-mase-de-spaclu"
@@ -1005,7 +1068,10 @@
         "min": "105,00",
         "max": "105,00",
         "source_display": "105,00 lei",
-        "render": "105,00 lei"
+        "render": {
+          "ro": "105,00 lei",
+          "ru": "105,00 lei"
+        }
       },
       "categories": [
         "termoizolatie/adezivi-si-mase-de-spaclu"
@@ -1038,7 +1104,10 @@
         "min": "115,00",
         "max": "115,00",
         "source_display": "115,00 lei",
-        "render": "115,00 lei"
+        "render": {
+          "ro": "115,00 lei",
+          "ru": "115,00 lei"
+        }
       },
       "categories": [
         "termoizolatie/adezivi-si-mase-de-spaclu"
@@ -1071,7 +1140,10 @@
         "min": "1,00",
         "max": "1,20",
         "source_display": "1,00 lei – 1,20 lei",
-        "render": "1,00 lei - 1,20 lei"
+        "render": {
+          "ro": "1,00 lei - 1,20 lei",
+          "ru": "1,00 lei - 1,20 lei"
+        }
       },
       "categories": [
         "termoizolatie/alte-produse"
@@ -1104,7 +1176,10 @@
         "min": "0,80",
         "max": "1,86",
         "source_display": "0,80 lei – 1,86 lei",
-        "render": "0,80 lei - 1,86 lei"
+        "render": {
+          "ro": "0,80 lei - 1,86 lei",
+          "ru": "0,80 lei - 1,86 lei"
+        }
       },
       "categories": [
         "termoizolatie/alte-produse"
@@ -1137,7 +1212,10 @@
         "min": "1.700,00",
         "max": "1.700,00",
         "source_display": "1.700,00 lei",
-        "render": "1.700,00 lei"
+        "render": {
+          "ro": "1.700,00 lei",
+          "ru": "1.700,00 lei"
+        }
       },
       "categories": [
         "tencuieli-decorative"
@@ -1170,7 +1248,10 @@
         "min": "1.255,00",
         "max": "1.255,00",
         "source_display": "1.255,00 lei",
-        "render": "1.255,00 lei"
+        "render": {
+          "ro": "1.255,00 lei",
+          "ru": "1.255,00 lei"
+        }
       },
       "categories": [
         "tencuieli-decorative"
@@ -1203,7 +1284,10 @@
         "min": "1.149,00",
         "max": "1.250,00",
         "source_display": "1.149,00 lei – 1.250,00 lei",
-        "render": "1.149,00 lei - 1.250,00 lei"
+        "render": {
+          "ro": "1.149,00 lei - 1.250,00 lei",
+          "ru": "1.149,00 lei - 1.250,00 lei"
+        }
       },
       "categories": [
         "tencuieli-decorative"
@@ -1236,7 +1320,10 @@
         "min": "1.679,00",
         "max": "1.749,00",
         "source_display": "1.679,00 lei – 1.749,00 lei",
-        "render": "1.679,00 lei - 1.749,00 lei"
+        "render": {
+          "ro": "1.679,00 lei - 1.749,00 lei",
+          "ru": "1.679,00 lei - 1.749,00 lei"
+        }
       },
       "categories": [
         "tencuieli-decorative"
@@ -1269,7 +1356,10 @@
         "min": "1.679,00",
         "max": "1.749,00",
         "source_display": "1.679,00 lei – 1.749,00 lei",
-        "render": "1.679,00 lei - 1.749,00 lei"
+        "render": {
+          "ro": "1.679,00 lei - 1.749,00 lei",
+          "ru": "1.679,00 lei - 1.749,00 lei"
+        }
       },
       "categories": [
         "tencuieli-decorative"
@@ -1302,7 +1392,10 @@
         "min": "1.349,00",
         "max": "1.349,00",
         "source_display": "1.349,00 lei",
-        "render": "1.349,00 lei"
+        "render": {
+          "ro": "1.349,00 lei",
+          "ru": "1.349,00 lei"
+        }
       },
       "categories": [
         "tencuieli-decorative"
@@ -1335,7 +1428,10 @@
         "min": "1.150,00",
         "max": "1.250,00",
         "source_display": "1.150,00 lei – 1.250,00 lei",
-        "render": "1.150,00 lei - 1.250,00 lei"
+        "render": {
+          "ro": "1.150,00 lei - 1.250,00 lei",
+          "ru": "1.150,00 lei - 1.250,00 lei"
+        }
       },
       "categories": [
         "tencuieli-decorative"
@@ -1368,7 +1464,10 @@
         "min": "1.650,00",
         "max": "1.650,00",
         "source_display": "1.650,00 lei",
-        "render": "1.650,00 lei"
+        "render": {
+          "ro": "1.650,00 lei",
+          "ru": "1.650,00 lei"
+        }
       },
       "categories": [
         "tencuieli-decorative"
@@ -1401,7 +1500,10 @@
         "min": "840,00",
         "max": "840,00",
         "source_display": "840,00 lei",
-        "render": "840,00 lei"
+        "render": {
+          "ro": "840,00 lei",
+          "ru": "840,00 lei"
+        }
       },
       "categories": [
         "tencuieli-decorative"
@@ -1434,7 +1536,10 @@
         "min": "2.199,00",
         "max": "2.199,00",
         "source_display": "2.199,00 lei",
-        "render": "2.199,00 lei"
+        "render": {
+          "ro": "2.199,00 lei",
+          "ru": "2.199,00 lei"
+        }
       },
       "categories": [
         "tencuieli-decorative"
@@ -1467,7 +1572,10 @@
         "min": "449,00",
         "max": "1.349,00",
         "source_display": "449,00 lei – 1.349,00 lei",
-        "render": "449,00 lei - 1.349,00 lei"
+        "render": {
+          "ro": "449,00 lei - 1.349,00 lei",
+          "ru": "449,00 lei - 1.349,00 lei"
+        }
       },
       "categories": [
         "tencuieli-decorative"
@@ -1500,7 +1608,10 @@
         "min": "2.000,00",
         "max": "2.000,00",
         "source_display": "2.000,00 lei",
-        "render": "2.000,00 lei"
+        "render": {
+          "ro": "2.000,00 lei",
+          "ru": "2.000,00 lei"
+        }
       },
       "categories": [
         "tencuieli-decorative"
@@ -1533,7 +1644,10 @@
         "min": "1.750,00",
         "max": "1.750,00",
         "source_display": "1.750,00 lei",
-        "render": "1.750,00 lei"
+        "render": {
+          "ro": "1.750,00 lei",
+          "ru": "1.750,00 lei / bucata"
+        }
       },
       "categories": [
         "tencuieli-decorative"
@@ -1566,7 +1680,10 @@
         "min": "796,00",
         "max": "796,00",
         "source_display": "796,00 lei / bucata",
-        "render": "796,00 lei"
+        "render": {
+          "ro": "796,00 lei / bucata",
+          "ru": "796,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -1599,7 +1716,10 @@
         "min": "740,00",
         "max": "740,00",
         "source_display": "740,00 lei / bucata",
-        "render": "740,00 lei"
+        "render": {
+          "ro": "740,00 lei / bucata",
+          "ru": "740,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -1632,7 +1752,10 @@
         "min": "550,00",
         "max": "550,00",
         "source_display": "550,00 lei / bucata",
-        "render": "550,00 lei"
+        "render": {
+          "ro": "550,00 lei / bucata",
+          "ru": "550,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -1665,7 +1788,10 @@
         "min": "796,00",
         "max": "796,00",
         "source_display": "796,00 lei / bucata",
-        "render": "796,00 lei"
+        "render": {
+          "ro": "796,00 lei / bucata",
+          "ru": "796,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -1698,7 +1824,10 @@
         "min": "796,00",
         "max": "796,00",
         "source_display": "796,00 lei / bucata",
-        "render": "796,00 lei"
+        "render": {
+          "ro": "796,00 lei / bucata",
+          "ru": "796,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -1731,7 +1860,10 @@
         "min": "669,00",
         "max": "669,00",
         "source_display": "669,00 lei / bucata",
-        "render": "669,00 lei"
+        "render": {
+          "ro": "669,00 lei / bucata",
+          "ru": "669,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -1764,7 +1896,10 @@
         "min": "529,00",
         "max": "529,00",
         "source_display": "529,00 lei / bucata",
-        "render": "529,00 lei"
+        "render": {
+          "ro": "529,00 lei / bucata",
+          "ru": "529,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -1797,7 +1932,10 @@
         "min": "632,00",
         "max": "632,00",
         "source_display": "632,00 lei / bucata",
-        "render": "632,00 lei"
+        "render": {
+          "ro": "632,00 lei / bucata",
+          "ru": "632,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -1830,7 +1968,10 @@
         "min": "895,00",
         "max": "895,00",
         "source_display": "895,00 lei / bucata",
-        "render": "895,00 lei"
+        "render": {
+          "ro": "895,00 lei / bucata",
+          "ru": "895,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -1863,7 +2004,10 @@
         "min": "721,00",
         "max": "721,00",
         "source_display": "721,00 lei / bucata",
-        "render": "721,00 lei"
+        "render": {
+          "ro": "721,00 lei / bucata",
+          "ru": "721,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -1896,7 +2040,10 @@
         "min": "758,00",
         "max": "758,00",
         "source_display": "758,00 lei / bucata",
-        "render": "758,00 lei"
+        "render": {
+          "ro": "758,00 lei / bucata",
+          "ru": "758,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -1929,7 +2076,10 @@
         "min": "758,00",
         "max": "758,00",
         "source_display": "758,00 lei / bucata",
-        "render": "758,00 lei"
+        "render": {
+          "ro": "758,00 lei / bucata",
+          "ru": "758,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -1962,7 +2112,10 @@
         "min": "807,00",
         "max": "807,00",
         "source_display": "807,00 lei / bucata",
-        "render": "807,00 lei"
+        "render": {
+          "ro": "807,00 lei / bucata",
+          "ru": "807,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -1995,7 +2148,10 @@
         "min": "707,00",
         "max": "707,00",
         "source_display": "707,00 lei / bucata",
-        "render": "707,00 lei"
+        "render": {
+          "ro": "707,00 lei / bucata",
+          "ru": "707,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2028,7 +2184,10 @@
         "min": "779,00",
         "max": "779,00",
         "source_display": "779,00 lei / bucata",
-        "render": "779,00 lei"
+        "render": {
+          "ro": "779,00 lei / bucata",
+          "ru": "779,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2061,7 +2220,10 @@
         "min": "750,00",
         "max": "750,00",
         "source_display": "750,00 lei / bucata",
-        "render": "750,00 lei"
+        "render": {
+          "ro": "750,00 lei / bucata",
+          "ru": "750,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2094,7 +2256,10 @@
         "min": "756,00",
         "max": "756,00",
         "source_display": "756,00 lei / bucata",
-        "render": "756,00 lei"
+        "render": {
+          "ro": "756,00 lei / bucata",
+          "ru": "756,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2127,7 +2292,10 @@
         "min": "683,00",
         "max": "683,00",
         "source_display": "683,00 lei / bucata",
-        "render": "683,00 lei"
+        "render": {
+          "ro": "683,00 lei / bucata",
+          "ru": "683,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2160,7 +2328,10 @@
         "min": "3.270,00",
         "max": "3.270,00",
         "source_display": "3.270,00 lei / bucata",
-        "render": "3.270,00 lei"
+        "render": {
+          "ro": "3.270,00 lei / bucata",
+          "ru": "3.270,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2193,7 +2364,10 @@
         "min": "321,00",
         "max": "321,00",
         "source_display": "321,00 lei / bucata",
-        "render": "321,00 lei"
+        "render": {
+          "ro": "321,00 lei / bucata",
+          "ru": "321,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2226,7 +2400,10 @@
         "min": "986,00",
         "max": "986,00",
         "source_display": "986,00 lei / bucata",
-        "render": "986,00 lei"
+        "render": {
+          "ro": "986,00 lei / bucata",
+          "ru": "986,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2259,7 +2436,10 @@
         "min": "794,00",
         "max": "3.640,00",
         "source_display": "De la 794,00 lei",
-        "render": "794,00 lei - 3.640,00 lei"
+        "render": {
+          "ro": "De la 794,00 lei",
+          "ru": "794,00 lei - 3.640,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2292,7 +2472,10 @@
         "min": "794,00",
         "max": "3.640,00",
         "source_display": "De la 794,00 lei",
-        "render": "794,00 lei - 3.640,00 lei"
+        "render": {
+          "ro": "De la 794,00 lei",
+          "ru": "794,00 lei - 3.640,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2325,7 +2508,10 @@
         "min": "635,00",
         "max": "635,00",
         "source_display": "635,00 lei / bucata",
-        "render": "635,00 lei"
+        "render": {
+          "ro": "635,00 lei / bucata",
+          "ru": "635,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2358,7 +2544,10 @@
         "min": "635,00",
         "max": "635,00",
         "source_display": "635,00 lei / bucata",
-        "render": "635,00 lei"
+        "render": {
+          "ro": "635,00 lei / bucata",
+          "ru": "635,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2391,7 +2580,10 @@
         "min": "3.350,00",
         "max": "3.350,00",
         "source_display": "3.350,00 lei / bucata",
-        "render": "3.350,00 lei"
+        "render": {
+          "ro": "3.350,00 lei / bucata",
+          "ru": "3.350,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2424,7 +2616,10 @@
         "min": "3.246,00",
         "max": "3.246,00",
         "source_display": "3.246,00 lei / bucata",
-        "render": "3.246,00 lei"
+        "render": {
+          "ro": "3.246,00 lei / bucata",
+          "ru": "3.246,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2457,7 +2652,10 @@
         "min": "321,00",
         "max": "870,00",
         "source_display": "De la 321,00 lei",
-        "render": "321,00 lei - 870,00 lei"
+        "render": {
+          "ro": "De la 321,00 lei",
+          "ru": "321,00 lei - 870,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2490,7 +2688,10 @@
         "min": "321,00",
         "max": "784,00",
         "source_display": "De la 321,00 lei",
-        "render": "321,00 lei - 784,00 lei"
+        "render": {
+          "ro": "De la 321,00 lei",
+          "ru": "321,00 lei - 784,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2523,7 +2724,10 @@
         "min": "321,00",
         "max": "783,00",
         "source_display": "De la 321,00 lei",
-        "render": "321,00 lei - 783,00 lei"
+        "render": {
+          "ro": "De la 321,00 lei",
+          "ru": "321,00 lei - 783,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2556,7 +2760,10 @@
         "min": "680,00",
         "max": "2.838,00",
         "source_display": "De la 680,00 lei",
-        "render": "680,00 lei - 2.838,00 lei"
+        "render": {
+          "ro": "De la 680,00 lei",
+          "ru": "680,00 lei - 2.838,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2589,7 +2796,10 @@
         "min": "998,00",
         "max": "4.406,00",
         "source_display": "De la 998,00 lei",
-        "render": "998,00 lei - 4.406,00 lei"
+        "render": {
+          "ro": "De la 998,00 lei",
+          "ru": "998,00 lei - 4.406,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2655,7 +2865,10 @@
         "min": "796,00",
         "max": "796,00",
         "source_display": "796,00 lei / bucata",
-        "render": "796,00 lei"
+        "render": {
+          "ro": "796,00 lei / bucata",
+          "ru": "796,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2688,7 +2901,10 @@
         "min": "958,00",
         "max": "958,00",
         "source_display": "958,00 lei / bucata",
-        "render": "958,00 lei"
+        "render": {
+          "ro": "958,00 lei / bucata",
+          "ru": "958,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2721,7 +2937,10 @@
         "min": "740,00",
         "max": "4.463,00",
         "source_display": "De la 740,00 lei",
-        "render": "740,00 lei - 4.463,00 lei"
+        "render": {
+          "ro": "De la 740,00 lei",
+          "ru": "740,00 lei - 4.463,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2754,7 +2973,10 @@
         "min": "605,00",
         "max": "605,00",
         "source_display": "605,00 lei / bucata",
-        "render": "605,00 lei"
+        "render": {
+          "ro": "605,00 lei / bucata",
+          "ru": "605,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2787,7 +3009,10 @@
         "min": "833,00",
         "max": "833,00",
         "source_display": "833,00 lei / bucata",
-        "render": "833,00 lei"
+        "render": {
+          "ro": "833,00 lei / bucata",
+          "ru": "833,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2820,7 +3045,10 @@
         "min": "771,00",
         "max": "2.838,00",
         "source_display": "De la 771,00 lei",
-        "render": "771,00 lei - 2.838,00 lei"
+        "render": {
+          "ro": "De la 771,00 lei",
+          "ru": "771,00 lei - 2.838,00 lei / bucata"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2853,7 +3081,10 @@
         "min": "602,00",
         "max": "3.725,00",
         "source_display": "De la 602,00 lei",
-        "render": "602,00 lei - 3.725,00 lei"
+        "render": {
+          "ro": "De la 602,00 lei",
+          "ru": "602,00 lei - 3.725,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2886,7 +3117,10 @@
         "min": "550,00",
         "max": "3.725,00",
         "source_display": "De la 550,00 lei",
-        "render": "550,00 lei - 3.725,00 lei"
+        "render": {
+          "ro": "De la 550,00 lei",
+          "ru": "550,00 lei - 3.725,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2919,7 +3153,10 @@
         "min": "539,00",
         "max": "3.725,00",
         "source_display": "De la 539,00 lei",
-        "render": "539,00 lei - 3.725,00 lei"
+        "render": {
+          "ro": "De la 539,00 lei",
+          "ru": "539,00 lei - 3.725,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2952,7 +3189,10 @@
         "min": "550,00",
         "max": "3.725,00",
         "source_display": "De la 550,00 lei",
-        "render": "550,00 lei - 3.725,00 lei"
+        "render": {
+          "ro": "De la 550,00 lei",
+          "ru": "550,00 lei - 3.725,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -2985,7 +3225,10 @@
         "min": "550,00",
         "max": "3.725,00",
         "source_display": "De la 550,00 lei",
-        "render": "550,00 lei - 3.725,00 lei"
+        "render": {
+          "ro": "De la 550,00 lei",
+          "ru": "550,00 lei - 3.725,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3018,7 +3261,10 @@
         "min": "553,00",
         "max": "3.725,00",
         "source_display": "De la 553,00 lei",
-        "render": "553,00 lei - 3.725,00 lei"
+        "render": {
+          "ro": "De la 553,00 lei",
+          "ru": "553,00 lei - 3.725,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3051,7 +3297,10 @@
         "min": "553,00",
         "max": "3.725,00",
         "source_display": "De la 553,00 lei",
-        "render": "553,00 lei - 3.725,00 lei"
+        "render": {
+          "ro": "De la 553,00 lei",
+          "ru": "553,00 lei - 3.725,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3084,7 +3333,10 @@
         "min": "828,00",
         "max": "3.486,00",
         "source_display": "De la 828,00 lei",
-        "render": "828,00 lei - 3.486,00 lei"
+        "render": {
+          "ro": "De la 828,00 lei",
+          "ru": "828,00 lei - 3.486,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3117,7 +3369,10 @@
         "min": "3.486,00",
         "max": "3.486,00",
         "source_display": "3.486,00 lei / bucata",
-        "render": "3.486,00 lei"
+        "render": {
+          "ro": "3.486,00 lei / bucata",
+          "ru": "3.486,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3150,7 +3405,10 @@
         "min": "500,00",
         "max": "3.725,00",
         "source_display": "De la 500,00 lei",
-        "render": "500,00 lei - 3.725,00 lei"
+        "render": {
+          "ro": "De la 500,00 lei",
+          "ru": "500,00 lei - 3.725,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3183,7 +3441,10 @@
         "min": "613,00",
         "max": "4.134,00",
         "source_display": "De la 613,00 lei",
-        "render": "613,00 lei - 4.134,00 lei"
+        "render": {
+          "ro": "De la 613,00 lei",
+          "ru": "613,00 lei - 4.134,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3216,7 +3477,10 @@
         "min": "613,00",
         "max": "4.134,00",
         "source_display": "De la 613,00 lei",
-        "render": "613,00 lei - 4.134,00 lei"
+        "render": {
+          "ro": "De la 613,00 lei",
+          "ru": "613,00 lei - 4.134,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3249,7 +3513,10 @@
         "min": "3.640,00",
         "max": "3.640,00",
         "source_display": "3.640,00 lei / bucata",
-        "render": "3.640,00 lei"
+        "render": {
+          "ro": "3.640,00 lei / bucata",
+          "ru": "3.640,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3282,7 +3549,10 @@
         "min": "2.885,00",
         "max": "2.885,00",
         "source_display": "2.885,00 lei / bucata",
-        "render": "2.885,00 lei"
+        "render": {
+          "ro": "2.885,00 lei / bucata",
+          "ru": "2.885,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3315,7 +3585,10 @@
         "min": "651,00",
         "max": "651,00",
         "source_display": "651,00 lei / bucata",
-        "render": "651,00 lei"
+        "render": {
+          "ro": "651,00 lei / bucata",
+          "ru": "651,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3348,7 +3621,10 @@
         "min": "4.438,00",
         "max": "4.438,00",
         "source_display": "4.438,00 lei",
-        "render": "4.438,00 lei"
+        "render": {
+          "ro": "4.438,00 lei",
+          "ru": "4.438,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3381,7 +3657,10 @@
         "min": "646,00",
         "max": "4.250,00",
         "source_display": "De la 646,00 lei",
-        "render": "646,00 lei - 4.250,00 lei"
+        "render": {
+          "ro": "De la 646,00 lei",
+          "ru": "646,00 lei - 4.250,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3414,7 +3693,10 @@
         "min": "3.486,00",
         "max": "3.486,00",
         "source_display": "3.486,00 lei / bucata",
-        "render": "3.486,00 lei"
+        "render": {
+          "ro": "3.486,00 lei / bucata",
+          "ru": "3.486,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3447,7 +3729,10 @@
         "min": "618,00",
         "max": "3.945,00",
         "source_display": "De la 618,00 lei",
-        "render": "618,00 lei - 3.945,00 lei"
+        "render": {
+          "ro": "De la 618,00 lei",
+          "ru": "618,00 lei - 3.945,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3480,7 +3765,10 @@
         "min": "4.463,00",
         "max": "4.463,00",
         "source_display": "4.463,00 lei / bucata",
-        "render": "4.463,00 lei"
+        "render": {
+          "ro": "4.463,00 lei / bucata",
+          "ru": "4.463,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3513,7 +3801,10 @@
         "min": "3.806,00",
         "max": "3.806,00",
         "source_display": "3.806,00 lei / bucata",
-        "render": "3.806,00 lei"
+        "render": {
+          "ro": "3.806,00 lei / bucata",
+          "ru": "3.806,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3546,7 +3837,10 @@
         "min": "3.806,00",
         "max": "3.806,00",
         "source_display": "3.806,00 lei / bucata",
-        "render": "3.806,00 lei"
+        "render": {
+          "ro": "3.806,00 lei / bucata",
+          "ru": "3.806,00 lei / штуку"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3579,7 +3873,10 @@
         "min": "740,00",
         "max": "796,00",
         "source_display": "De la 740,00 lei",
-        "render": "740,00 lei - 796,00 lei"
+        "render": {
+          "ro": "De la 740,00 lei",
+          "ru": "De la 740,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3612,7 +3909,10 @@
         "min": "613,00",
         "max": "4.134,00",
         "source_display": "De la 613,00 lei",
-        "render": "613,00 lei - 4.134,00 lei"
+        "render": {
+          "ro": "De la 613,00 lei",
+          "ru": "De la 613,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3645,7 +3945,10 @@
         "min": "828,00",
         "max": "3.806,00",
         "source_display": "De la 828,00 lei",
-        "render": "828,00 lei - 3.806,00 lei"
+        "render": {
+          "ro": "De la 828,00 lei",
+          "ru": "De la 828,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3678,7 +3981,10 @@
         "min": "740,00",
         "max": "4.463,00",
         "source_display": "De la 740,00 lei",
-        "render": "740,00 lei - 4.463,00 lei"
+        "render": {
+          "ro": "De la 740,00 lei",
+          "ru": "De la 740,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3711,7 +4017,10 @@
         "min": "646,00",
         "max": "4.250,00",
         "source_display": "De la 646,00 lei",
-        "render": "646,00 lei - 4.250,00 lei"
+        "render": {
+          "ro": "De la 646,00 lei",
+          "ru": "De la 646,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3744,7 +4053,10 @@
         "min": "520,00",
         "max": "4.050,00",
         "source_display": "De la 520,00 lei",
-        "render": "520,00 lei - 4.050,00 lei"
+        "render": {
+          "ro": "De la 520,00 lei",
+          "ru": "De la 520,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3777,7 +4089,10 @@
         "min": "2.884,00",
         "max": "2.884,00",
         "source_display": "De la 2.884,00 lei",
-        "render": "2.884,00 lei"
+        "render": {
+          "ro": "De la 2.884,00 lei",
+          "ru": "De la 2.884,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3810,7 +4125,10 @@
         "min": "794,00",
         "max": "3.640,00",
         "source_display": "De la 794,00 lei",
-        "render": "794,00 lei - 3.640,00 lei"
+        "render": {
+          "ro": "De la 794,00 lei",
+          "ru": "De la 794,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3843,7 +4161,10 @@
         "min": "500,00",
         "max": "3.725,00",
         "source_display": "De la 500,00 lei",
-        "render": "500,00 lei - 3.725,00 lei"
+        "render": {
+          "ro": "De la 500,00 lei",
+          "ru": "De la 500,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3876,7 +4197,10 @@
         "min": "553,00",
         "max": "3.725,00",
         "source_display": "De la 553,00 lei",
-        "render": "553,00 lei - 3.725,00 lei"
+        "render": {
+          "ro": "De la 553,00 lei",
+          "ru": "De la 553,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3909,7 +4233,10 @@
         "min": "539,00",
         "max": "3.725,00",
         "source_display": "De la 539,00 lei",
-        "render": "539,00 lei - 3.725,00 lei"
+        "render": {
+          "ro": "De la 539,00 lei",
+          "ru": "De la 539,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3942,7 +4269,10 @@
         "min": "550,00",
         "max": "3.725,00",
         "source_display": "De la 550,00 lei",
-        "render": "550,00 lei - 3.725,00 lei"
+        "render": {
+          "ro": "De la 550,00 lei",
+          "ru": "De la 550,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -3975,7 +4305,10 @@
         "min": "602,00",
         "max": "3.725,00",
         "source_display": "De la 602,00 lei",
-        "render": "602,00 lei - 3.725,00 lei"
+        "render": {
+          "ro": "De la 602,00 lei",
+          "ru": "De la 602,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -4008,7 +4341,10 @@
         "min": "958,00",
         "max": "4.406,00",
         "source_display": "De la 958,00 lei",
-        "render": "958,00 lei - 4.406,00 lei"
+        "render": {
+          "ro": "De la 958,00 lei",
+          "ru": "De la 958,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -4041,7 +4377,10 @@
         "min": "321,00",
         "max": "784,00",
         "source_display": "De la 321,00 lei",
-        "render": "321,00 lei - 784,00 lei"
+        "render": {
+          "ro": "De la 321,00 lei",
+          "ru": "De la 321,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -4074,7 +4413,10 @@
         "min": "321,00",
         "max": "870,00",
         "source_display": "De la 321,00 lei",
-        "render": "321,00 lei - 870,00 lei"
+        "render": {
+          "ro": "De la 321,00 lei",
+          "ru": "De la 321,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -4107,7 +4449,10 @@
         "min": "3.246,00",
         "max": "3.246,00",
         "source_display": "De la 3.246,00 lei",
-        "render": "3.246,00 lei"
+        "render": {
+          "ro": "De la 3.246,00 lei",
+          "ru": "De la 3.246,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -4140,7 +4485,10 @@
         "min": "3.350,00",
         "max": "3.350,00",
         "source_display": "De la 3.350,00 lei",
-        "render": "3.350,00 lei"
+        "render": {
+          "ro": "De la 3.350,00 lei",
+          "ru": "De la 3.350,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -4173,7 +4521,10 @@
         "min": "635,00",
         "max": "635,00",
         "source_display": "De la 635,00 lei",
-        "render": "635,00 lei"
+        "render": {
+          "ro": "De la 635,00 lei",
+          "ru": "De la 635,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -4206,7 +4557,10 @@
         "min": "986,00",
         "max": "986,00",
         "source_display": "De la 986,00 lei",
-        "render": "986,00 lei"
+        "render": {
+          "ro": "De la 986,00 lei",
+          "ru": "De la 986,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -4239,7 +4593,10 @@
         "min": "321,00",
         "max": "321,00",
         "source_display": "De la 321,00 lei",
-        "render": "321,00 lei"
+        "render": {
+          "ro": "De la 321,00 lei",
+          "ru": "De la 321,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -4272,7 +4629,10 @@
         "min": "683,00",
         "max": "3.270,00",
         "source_display": "De la 683,00 lei",
-        "render": "683,00 lei - 3.270,00 lei"
+        "render": {
+          "ro": "De la 683,00 lei",
+          "ru": "De la 683,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -4305,7 +4665,10 @@
         "min": "721,00",
         "max": "721,00",
         "source_display": "De la 721,00 lei",
-        "render": "721,00 lei"
+        "render": {
+          "ro": "De la 721,00 lei",
+          "ru": "De la 721,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -4338,7 +4701,10 @@
         "min": "833,00",
         "max": "895,00",
         "source_display": "De la 833,00 lei",
-        "render": "833,00 lei - 895,00 lei"
+        "render": {
+          "ro": "De la 833,00 lei",
+          "ru": "De la 833,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -4371,7 +4737,10 @@
         "min": "796,00",
         "max": "796,00",
         "source_display": "De la 796,00 lei",
-        "render": "796,00 lei"
+        "render": {
+          "ro": "De la 796,00 lei",
+          "ru": "De la 796,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -4404,7 +4773,10 @@
         "min": "550,00",
         "max": "550,00",
         "source_display": "De la 550,00 lei",
-        "render": "550,00 lei"
+        "render": {
+          "ro": "De la 550,00 lei",
+          "ru": "De la 550,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -4437,7 +4809,10 @@
         "min": "605,00",
         "max": "605,00",
         "source_display": "De la 605,00 lei",
-        "render": "605,00 lei"
+        "render": {
+          "ro": "De la 605,00 lei",
+          "ru": "De la 605,00 lei"
+        }
       },
       "categories": [
         "placi-ceramice"
@@ -4470,7 +4845,10 @@
         "min": "129,00",
         "max": "129,00",
         "source_display": "129,00 lei / m",
-        "render": "129,00 lei"
+        "render": {
+          "ro": "129,00 lei / m",
+          "ru": "129,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -4503,7 +4881,10 @@
         "min": "124,00",
         "max": "124,00",
         "source_display": "124,00 lei / m",
-        "render": "124,00 lei"
+        "render": {
+          "ro": "124,00 lei / m",
+          "ru": "124,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -4536,7 +4917,10 @@
         "min": "75,00",
         "max": "75,00",
         "source_display": "75,00 lei / m",
-        "render": "75,00 lei"
+        "render": {
+          "ro": "75,00 lei / m",
+          "ru": "75,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -4569,7 +4953,10 @@
         "min": "86,00",
         "max": "86,00",
         "source_display": "86,00 lei / m",
-        "render": "86,00 lei"
+        "render": {
+          "ro": "86,00 lei / m",
+          "ru": "86,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -4602,7 +4989,10 @@
         "min": "131,00",
         "max": "131,00",
         "source_display": "131,00 lei / m",
-        "render": "131,00 lei"
+        "render": {
+          "ro": "131,00 lei / m",
+          "ru": "131,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -4635,7 +5025,10 @@
         "min": "105,00",
         "max": "105,00",
         "source_display": "105,00 lei / m",
-        "render": "105,00 lei"
+        "render": {
+          "ro": "105,00 lei / m",
+          "ru": "105,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -4668,7 +5061,10 @@
         "min": "129,00",
         "max": "129,00",
         "source_display": "129,00 lei / m",
-        "render": "129,00 lei"
+        "render": {
+          "ro": "129,00 lei / m",
+          "ru": "129,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -4701,7 +5097,10 @@
         "min": "92,00",
         "max": "92,00",
         "source_display": "92,00 lei / m",
-        "render": "92,00 lei"
+        "render": {
+          "ro": "92,00 lei / m",
+          "ru": "92,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -4734,7 +5133,10 @@
         "min": "129,00",
         "max": "129,00",
         "source_display": "129,00 lei / m",
-        "render": "129,00 lei"
+        "render": {
+          "ro": "129,00 lei / m",
+          "ru": "129,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -4767,7 +5169,10 @@
         "min": "120,00",
         "max": "120,00",
         "source_display": "120,00 lei / m",
-        "render": "120,00 lei"
+        "render": {
+          "ro": "120,00 lei / m",
+          "ru": "120,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -4800,7 +5205,10 @@
         "min": "105,00",
         "max": "105,00",
         "source_display": "105,00 lei / m",
-        "render": "105,00 lei"
+        "render": {
+          "ro": "105,00 lei / m",
+          "ru": "105,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -4833,7 +5241,10 @@
         "min": "105,00",
         "max": "105,00",
         "source_display": "105,00 lei / m",
-        "render": "105,00 lei"
+        "render": {
+          "ro": "105,00 lei / m",
+          "ru": "105,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -4866,7 +5277,10 @@
         "min": "92,00",
         "max": "92,00",
         "source_display": "92,00 lei / m",
-        "render": "92,00 lei"
+        "render": {
+          "ro": "92,00 lei / m",
+          "ru": "92,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -4899,7 +5313,10 @@
         "min": "96,00",
         "max": "96,00",
         "source_display": "96,00 lei / m",
-        "render": "96,00 lei"
+        "render": {
+          "ro": "96,00 lei / m",
+          "ru": "96,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -4932,7 +5349,10 @@
         "min": "132,00",
         "max": "132,00",
         "source_display": "132,00 lei / m",
-        "render": "132,00 lei"
+        "render": {
+          "ro": "132,00 lei / m",
+          "ru": "132,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -4965,7 +5385,10 @@
         "min": "125,00",
         "max": "125,00",
         "source_display": "125,00 lei / m",
-        "render": "125,00 lei"
+        "render": {
+          "ro": "125,00 lei / m",
+          "ru": "125,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -4998,7 +5421,10 @@
         "min": "85,00",
         "max": "85,00",
         "source_display": "85,00 lei / m",
-        "render": "85,00 lei"
+        "render": {
+          "ro": "85,00 lei / m",
+          "ru": "85,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5031,7 +5457,10 @@
         "min": "131,00",
         "max": "131,00",
         "source_display": "131,00 lei / m",
-        "render": "131,00 lei"
+        "render": {
+          "ro": "131,00 lei / m",
+          "ru": "131,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5064,7 +5493,10 @@
         "min": "158,00",
         "max": "158,00",
         "source_display": "158,00 lei / m",
-        "render": "158,00 lei"
+        "render": {
+          "ro": "158,00 lei / m",
+          "ru": "158,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5097,7 +5529,10 @@
         "min": "131,00",
         "max": "131,00",
         "source_display": "131,00 lei / m",
-        "render": "131,00 lei"
+        "render": {
+          "ro": "131,00 lei / m",
+          "ru": "131,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5130,7 +5565,10 @@
         "min": "158,00",
         "max": "158,00",
         "source_display": "158,00 lei / m",
-        "render": "158,00 lei"
+        "render": {
+          "ro": "158,00 lei / m",
+          "ru": "158,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5163,7 +5601,10 @@
         "min": "164,00",
         "max": "164,00",
         "source_display": "164,00 lei / m",
-        "render": "164,00 lei"
+        "render": {
+          "ro": "164,00 lei / m",
+          "ru": "164,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5196,7 +5637,10 @@
         "min": "226,00",
         "max": "226,00",
         "source_display": "226,00 lei / m",
-        "render": "226,00 lei"
+        "render": {
+          "ro": "226,00 lei / m",
+          "ru": "226,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5229,7 +5673,10 @@
         "min": "291,00",
         "max": "291,00",
         "source_display": "291,00 lei / m",
-        "render": "291,00 lei"
+        "render": {
+          "ro": "291,00 lei / m",
+          "ru": "291,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5262,7 +5709,10 @@
         "min": "262,00",
         "max": "262,00",
         "source_display": "262,00 lei / m",
-        "render": "262,00 lei"
+        "render": {
+          "ro": "262,00 lei / m",
+          "ru": "262,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5295,7 +5745,10 @@
         "min": "190,00",
         "max": "190,00",
         "source_display": "190,00 lei / m",
-        "render": "190,00 lei"
+        "render": {
+          "ro": "190,00 lei / m",
+          "ru": "190,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5328,7 +5781,10 @@
         "min": "246,00",
         "max": "246,00",
         "source_display": "246,00 lei / m",
-        "render": "246,00 lei"
+        "render": {
+          "ro": "246,00 lei / m",
+          "ru": "246,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5361,7 +5817,10 @@
         "min": "225,00",
         "max": "225,00",
         "source_display": "225,00 lei / m",
-        "render": "225,00 lei"
+        "render": {
+          "ro": "225,00 lei / m",
+          "ru": "225,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5394,7 +5853,10 @@
         "min": "229,00",
         "max": "229,00",
         "source_display": "229,00 lei / m",
-        "render": "229,00 lei"
+        "render": {
+          "ro": "229,00 lei / m",
+          "ru": "229,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5427,7 +5889,10 @@
         "min": "225,00",
         "max": "225,00",
         "source_display": "225,00 lei / m",
-        "render": "225,00 lei"
+        "render": {
+          "ro": "225,00 lei / m",
+          "ru": "225,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5460,7 +5925,10 @@
         "min": "180,00",
         "max": "180,00",
         "source_display": "180,00 lei / m",
-        "render": "180,00 lei"
+        "render": {
+          "ro": "180,00 lei / m",
+          "ru": "180,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5493,7 +5961,10 @@
         "min": "197,00",
         "max": "197,00",
         "source_display": "197,00 lei / m",
-        "render": "197,00 lei"
+        "render": {
+          "ro": "197,00 lei / m",
+          "ru": "197,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5526,7 +5997,10 @@
         "min": "291,00",
         "max": "291,00",
         "source_display": "291,00 lei / m",
-        "render": "291,00 lei"
+        "render": {
+          "ro": "291,00 lei / m",
+          "ru": "291,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5559,7 +6033,10 @@
         "min": "246,00",
         "max": "246,00",
         "source_display": "246,00 lei / m",
-        "render": "246,00 lei"
+        "render": {
+          "ro": "246,00 lei / m",
+          "ru": "246,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5592,7 +6069,10 @@
         "min": "317,00",
         "max": "317,00",
         "source_display": "317,00 lei / m",
-        "render": "317,00 lei"
+        "render": {
+          "ro": "317,00 lei / m",
+          "ru": "317,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5625,7 +6105,10 @@
         "min": "113,00",
         "max": "113,00",
         "source_display": "113,00 lei / m",
-        "render": "113,00 lei"
+        "render": {
+          "ro": "113,00 lei / m",
+          "ru": "113,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5658,7 +6141,10 @@
         "min": "251,00",
         "max": "251,00",
         "source_display": "251,00 lei / m",
-        "render": "251,00 lei"
+        "render": {
+          "ro": "251,00 lei / m",
+          "ru": "251,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5691,7 +6177,10 @@
         "min": "176,00",
         "max": "176,00",
         "source_display": "176,00 lei / m",
-        "render": "176,00 lei"
+        "render": {
+          "ro": "176,00 lei / m",
+          "ru": "176,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5724,7 +6213,10 @@
         "min": "205,00",
         "max": "205,00",
         "source_display": "205,00 lei / m",
-        "render": "205,00 lei"
+        "render": {
+          "ro": "205,00 lei / m",
+          "ru": "205,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5757,7 +6249,10 @@
         "min": "213,00",
         "max": "213,00",
         "source_display": "213,00 lei / m",
-        "render": "213,00 lei"
+        "render": {
+          "ro": "213,00 lei / m",
+          "ru": "213,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5790,7 +6285,10 @@
         "min": "262,00",
         "max": "262,00",
         "source_display": "262,00 lei / m",
-        "render": "262,00 lei"
+        "render": {
+          "ro": "262,00 lei / m",
+          "ru": "262,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5823,7 +6321,10 @@
         "min": "291,00",
         "max": "291,00",
         "source_display": "291,00 lei / m",
-        "render": "291,00 lei"
+        "render": {
+          "ro": "291,00 lei / m",
+          "ru": "291,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5856,7 +6357,10 @@
         "min": "158,00",
         "max": "158,00",
         "source_display": "158,00 lei / m",
-        "render": "158,00 lei"
+        "render": {
+          "ro": "158,00 lei / m",
+          "ru": "158,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5889,7 +6393,10 @@
         "min": "238,00",
         "max": "238,00",
         "source_display": "238,00 lei / m",
-        "render": "238,00 lei"
+        "render": {
+          "ro": "238,00 lei / m",
+          "ru": "238,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5922,7 +6429,10 @@
         "min": "218,00",
         "max": "218,00",
         "source_display": "218,00 lei / m",
-        "render": "218,00 lei"
+        "render": {
+          "ro": "218,00 lei / m",
+          "ru": "218,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5955,7 +6465,10 @@
         "min": "262,00",
         "max": "262,00",
         "source_display": "262,00 lei / m",
-        "render": "262,00 lei"
+        "render": {
+          "ro": "262,00 lei / m",
+          "ru": "262,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -5988,7 +6501,10 @@
         "min": "238,00",
         "max": "238,00",
         "source_display": "238,00 lei / m",
-        "render": "238,00 lei"
+        "render": {
+          "ro": "238,00 lei / m",
+          "ru": "238,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -6021,7 +6537,10 @@
         "min": "291,00",
         "max": "291,00",
         "source_display": "291,00 lei / m",
-        "render": "291,00 lei"
+        "render": {
+          "ro": "291,00 lei / m",
+          "ru": "291,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -6054,7 +6573,10 @@
         "min": "262,00",
         "max": "262,00",
         "source_display": "262,00 lei / m",
-        "render": "262,00 lei"
+        "render": {
+          "ro": "262,00 lei / m",
+          "ru": "262,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -6087,7 +6609,10 @@
         "min": "145,00",
         "max": "145,00",
         "source_display": "145,00 lei / m",
-        "render": "145,00 lei"
+        "render": {
+          "ro": "145,00 lei / m",
+          "ru": "145,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -6120,7 +6645,10 @@
         "min": "129,00",
         "max": "129,00",
         "source_display": "129,00 lei / m",
-        "render": "129,00 lei"
+        "render": {
+          "ro": "129,00 lei / m",
+          "ru": "129,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -6153,7 +6681,10 @@
         "min": "171,00",
         "max": "171,00",
         "source_display": "171,00 lei / m",
-        "render": "171,00 lei"
+        "render": {
+          "ro": "171,00 lei / m",
+          "ru": "171,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -6186,7 +6717,10 @@
         "min": "217,00",
         "max": "217,00",
         "source_display": "217,00 lei / m",
-        "render": "217,00 lei"
+        "render": {
+          "ro": "217,00 lei / m",
+          "ru": "217,00 lei / bucata"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -6219,7 +6753,10 @@
         "min": "242,00",
         "max": "242,00",
         "source_display": "242,00 lei / m",
-        "render": "242,00 lei"
+        "render": {
+          "ro": "242,00 lei / m",
+          "ru": "242,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -6252,7 +6789,10 @@
         "min": "282,00",
         "max": "282,00",
         "source_display": "282,00 lei / m",
-        "render": "282,00 lei"
+        "render": {
+          "ro": "282,00 lei / m",
+          "ru": "282,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -6285,7 +6825,10 @@
         "min": "314,00",
         "max": "314,00",
         "source_display": "314,00 lei / m",
-        "render": "314,00 lei"
+        "render": {
+          "ro": "314,00 lei / m",
+          "ru": "314,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -6318,7 +6861,10 @@
         "min": "373,00",
         "max": "373,00",
         "source_display": "373,00 lei / m",
-        "render": "373,00 lei"
+        "render": {
+          "ro": "373,00 lei / m",
+          "ru": "373,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -6351,7 +6897,10 @@
         "min": "225,00",
         "max": "225,00",
         "source_display": "225,00 lei",
-        "render": "225,00 lei"
+        "render": {
+          "ro": "225,00 lei",
+          "ru": "225,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -6384,7 +6933,10 @@
         "min": "165,00",
         "max": "165,00",
         "source_display": "165,00 lei",
-        "render": "165,00 lei"
+        "render": {
+          "ro": "165,00 lei",
+          "ru": "165,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -6417,7 +6969,10 @@
         "min": "388,00",
         "max": "388,00",
         "source_display": "388,00 lei / bucata",
-        "render": "388,00 lei"
+        "render": {
+          "ro": "388,00 lei / bucata",
+          "ru": "388,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -6450,7 +7005,10 @@
         "min": "376,00",
         "max": "376,00",
         "source_display": "376,00 lei",
-        "render": "376,00 lei"
+        "render": {
+          "ro": "376,00 lei",
+          "ru": "376,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -6483,7 +7041,10 @@
         "min": "209,00",
         "max": "209,00",
         "source_display": "209,00 lei",
-        "render": "209,00 lei"
+        "render": {
+          "ro": "209,00 lei",
+          "ru": "209,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -6516,7 +7077,10 @@
         "min": "163,00",
         "max": "163,00",
         "source_display": "163,00 lei",
-        "render": "163,00 lei"
+        "render": {
+          "ro": "163,00 lei",
+          "ru": "163,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -6549,7 +7113,10 @@
         "min": "241,00",
         "max": "241,00",
         "source_display": "241,00 lei",
-        "render": "241,00 lei"
+        "render": {
+          "ro": "241,00 lei",
+          "ru": "241,00 lei"
+        }
       },
       "categories": [
         "elemente-decorative"
@@ -6582,7 +7149,10 @@
         "min": "1.199,00",
         "max": "4.199,00",
         "source_display": "1.199,00 lei – 4.199,00 lei",
-        "render": "1.199,00 lei - 4.199,00 lei"
+        "render": {
+          "ro": "1.199,00 lei - 4.199,00 lei",
+          "ru": "1.199,00 lei - 4.199,00 lei"
+        }
       },
       "categories": [
         "vopsele/vopsele-de-exterior",
@@ -6616,7 +7186,10 @@
         "min": "970,00",
         "max": "3.078,00",
         "source_display": "970,00 lei – 3.078,00 lei",
-        "render": "970,00 lei - 3.078,00 lei"
+        "render": {
+          "ro": "970,00 lei - 3.078,00 lei",
+          "ru": "970,00 lei - 3.078,00 lei"
+        }
       },
       "categories": [
         "vopsele/vopsele-de-exterior",
@@ -6650,7 +7223,10 @@
         "min": "599,00",
         "max": "2.399,00",
         "source_display": "599,00 lei – 2.399,00 lei",
-        "render": "599,00 lei - 2.399,00 lei"
+        "render": {
+          "ro": "599,00 lei - 2.399,00 lei",
+          "ru": "599,00 lei - 2.399,00 lei"
+        }
       },
       "categories": [
         "vopsele/vopsele-de-exterior"
@@ -6683,7 +7259,10 @@
         "min": "1.800,00",
         "max": "1.800,00",
         "source_display": "1.800,00 lei",
-        "render": "1.800,00 lei"
+        "render": {
+          "ro": "1.800,00 lei",
+          "ru": "1.800,00 lei"
+        }
       },
       "categories": [
         "vopsele/vopsele-de-exterior",
@@ -6717,7 +7296,10 @@
         "min": "190,00",
         "max": "590,00",
         "source_display": "190,00 lei – 590,00 lei",
-        "render": "190,00 lei - 590,00 lei"
+        "render": {
+          "ro": "190,00 lei - 590,00 lei",
+          "ru": "190,00 lei - 590,00 lei / bucata"
+        }
       },
       "categories": [
         "vopsele/vopsele-de-interior"
@@ -6750,7 +7332,10 @@
         "min": "1.080,00",
         "max": "1.080,00",
         "source_display": "1.080,00 lei",
-        "render": "1.080,00 lei"
+        "render": {
+          "ro": "1.080,00 lei",
+          "ru": "1.080,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -6783,7 +7368,10 @@
         "min": "1.125,00",
         "max": "1.125,00",
         "source_display": "1.125,00 lei",
-        "render": "1.125,00 lei"
+        "render": {
+          "ro": "1.125,00 lei",
+          "ru": "1.125,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -6816,7 +7404,10 @@
         "min": "1.840,00",
         "max": "1.840,00",
         "source_display": "1.840,00 lei",
-        "render": "1.840,00 lei"
+        "render": {
+          "ro": "1.840,00 lei",
+          "ru": "1.840,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -6849,7 +7440,10 @@
         "min": "1.137,00",
         "max": "1.137,00",
         "source_display": "1.137,00 lei",
-        "render": "1.137,00 lei"
+        "render": {
+          "ro": "1.137,00 lei",
+          "ru": "1.137,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -6882,7 +7476,10 @@
         "min": "812,00",
         "max": "812,00",
         "source_display": "812,00 lei",
-        "render": "812,00 lei"
+        "render": {
+          "ro": "812,00 lei",
+          "ru": "812,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -6915,7 +7512,10 @@
         "min": "704,00",
         "max": "704,00",
         "source_display": "704,00 lei",
-        "render": "704,00 lei"
+        "render": {
+          "ro": "704,00 lei",
+          "ru": "704,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -6948,7 +7548,10 @@
         "min": "955,00",
         "max": "955,00",
         "source_display": "955,00 lei",
-        "render": "955,00 lei"
+        "render": {
+          "ro": "955,00 lei",
+          "ru": "955,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -6981,7 +7584,10 @@
         "min": "618,00",
         "max": "618,00",
         "source_display": "618,00 lei",
-        "render": "618,00 lei"
+        "render": {
+          "ro": "618,00 lei",
+          "ru": "618,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -7014,7 +7620,10 @@
         "min": "1.040,00",
         "max": "1.040,00",
         "source_display": "1.040,00 lei",
-        "render": "1.040,00 lei"
+        "render": {
+          "ro": "1.040,00 lei",
+          "ru": "1.040,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -7047,7 +7656,10 @@
         "min": "819,00",
         "max": "819,00",
         "source_display": "819,00 lei",
-        "render": "819,00 lei"
+        "render": {
+          "ro": "819,00 lei",
+          "ru": "819,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -7080,7 +7692,10 @@
         "min": "1.623,00",
         "max": "1.623,00",
         "source_display": "1.623,00 lei",
-        "render": "1.623,00 lei"
+        "render": {
+          "ro": "1.623,00 lei",
+          "ru": "1.623,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -7113,7 +7728,10 @@
         "min": "1.578,00",
         "max": "1.578,00",
         "source_display": "1.578,00 lei",
-        "render": "1.578,00 lei"
+        "render": {
+          "ro": "1.578,00 lei",
+          "ru": "1.578,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -7146,7 +7764,10 @@
         "min": "526,00",
         "max": "526,00",
         "source_display": "526,00 lei",
-        "render": "526,00 lei"
+        "render": {
+          "ro": "526,00 lei",
+          "ru": "526,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -7179,7 +7800,10 @@
         "min": "565,00",
         "max": "565,00",
         "source_display": "565,00 lei",
-        "render": "565,00 lei"
+        "render": {
+          "ro": "565,00 lei",
+          "ru": "565,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -7212,7 +7836,10 @@
         "min": "697,00",
         "max": "697,00",
         "source_display": "697,00 lei",
-        "render": "697,00 lei"
+        "render": {
+          "ro": "697,00 lei",
+          "ru": "697,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -7245,7 +7872,10 @@
         "min": "895,00",
         "max": "895,00",
         "source_display": "895,00 lei",
-        "render": "895,00 lei"
+        "render": {
+          "ro": "895,00 lei",
+          "ru": "895,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -7278,7 +7908,10 @@
         "min": "933,00",
         "max": "933,00",
         "source_display": "933,00 lei",
-        "render": "933,00 lei"
+        "render": {
+          "ro": "933,00 lei",
+          "ru": "933,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -7311,7 +7944,10 @@
         "min": "618,00",
         "max": "618,00",
         "source_display": "618,00 lei",
-        "render": "618,00 lei"
+        "render": {
+          "ro": "618,00 lei",
+          "ru": "618,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -7344,7 +7980,10 @@
         "min": "1.025,00",
         "max": "1.025,00",
         "source_display": "1.025,00 lei",
-        "render": "1.025,00 lei"
+        "render": {
+          "ro": "1.025,00 lei",
+          "ru": "1.025,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -7377,7 +8016,10 @@
         "min": "950,00",
         "max": "950,00",
         "source_display": "950,00 lei",
-        "render": "950,00 lei"
+        "render": {
+          "ro": "950,00 lei",
+          "ru": "950,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -7410,7 +8052,10 @@
         "min": "4.461,00",
         "max": "4.461,00",
         "source_display": "4.461,00 lei",
-        "render": "4.461,00 lei"
+        "render": {
+          "ro": "4.461,00 lei",
+          "ru": "4.461,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -7443,7 +8088,10 @@
         "min": "1.146,00",
         "max": "1.146,00",
         "source_display": "1.146,00 lei",
-        "render": "1.146,00 lei"
+        "render": {
+          "ro": "1.146,00 lei",
+          "ru": "1.146,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -7476,7 +8124,10 @@
         "min": "1.220,00",
         "max": "1.220,00",
         "source_display": "1.220,00 lei",
-        "render": "1.220,00 lei"
+        "render": {
+          "ro": "1.220,00 lei",
+          "ru": "1.220,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -7509,7 +8160,10 @@
         "min": "1.220,00",
         "max": "1.220,00",
         "source_display": "1.220,00 lei",
-        "render": "1.220,00 lei"
+        "render": {
+          "ro": "1.220,00 lei",
+          "ru": "1.220,00 lei"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -7542,7 +8196,10 @@
         "min": "6.800,00",
         "max": "6.800,00",
         "source_display": "6.800,00 lei / bucata",
-        "render": "6.800,00 lei"
+        "render": {
+          "ro": "6.800,00 lei / bucata",
+          "ru": "6.800,00 lei / bucata"
+        }
       },
       "categories": [
         "sisteme-iluminare"
@@ -7575,7 +8232,10 @@
         "min": "17,40",
         "max": "23,00",
         "source_display": "17,40 lei – 23,00 lei / m2",
-        "render": "17,40 lei - 23,00 lei"
+        "render": {
+          "ro": "17,40 lei - 23,00 lei / m2",
+          "ru": "17,40 lei - 23,00 lei"
+        }
       },
       "categories": [
         "alte-materiale"
@@ -7608,7 +8268,10 @@
         "min": "575,00",
         "max": "575,00",
         "source_display": "575,00 lei / m2",
-        "render": "575,00 lei"
+        "render": {
+          "ro": "575,00 lei / m2",
+          "ru": "575,00 lei"
+        }
       },
       "categories": [
         "alte-materiale"
@@ -7641,7 +8304,10 @@
         "min": "18,00",
         "max": "18,00",
         "source_display": "18,00 lei",
-        "render": "18,00 lei"
+        "render": {
+          "ro": "18,00 lei",
+          "ru": "18,00 lei"
+        }
       },
       "categories": [
         "alte-materiale"

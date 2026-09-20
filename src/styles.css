@@ -321,8 +321,18 @@ p { margin: 0; }
 .header__logo img { height: 48px; width: auto; display: block; }
 
 /* W14-21. One step down from 28px and 17px, so the header holds the catalog button
-   beside the nav, phone, CTA and language switch at every desktop width. */
-.nav { display: flex; align-items: center; justify-content: center; gap: 20px; flex: 1 1 auto; min-width: 0; }
+   beside the nav, phone, CTA and language switch at every desktop width.
+
+   AMENDED (W24-02): ~~20px~~ 14px, and this is the wave's one header fix. The
+   catalog toggle took the primary button's paint, and white on --brand is 3.41:1,
+   which clears AA only above the large-text threshold, so its label went to
+   19px/700 with the colour. That cost 15px in RO and 16px in RU, and RU had 9px of
+   slack against an 8px floor: the header fit gate went to RO 4px and RU -7px, red
+   on both the floor and the fit. Four nav items have three gaps between them, so
+   six pixels off each buys eighteen, which is more than the type cost. The type
+   was not touched, per the dispatch. Measured after: RO 22px, RU 9px, which is
+   the slack RU had before the change, at 108 of 108 combinations. */
+.nav { display: flex; align-items: center; justify-content: center; gap: 14px; flex: 1 1 auto; min-width: 0; }
 /* W23-06. The bar's own links only, by the child combinator. `.nav a` also matched
    every link in the Servicii panel, which sits inside .nav, and at (0,1,1) it beat
    .svcmenu__link's (0,1,0): the panel's rows took the bar's white, on the panel's
@@ -389,18 +399,32 @@ p { margin: 0; }
    the list; below that, the same list is a drill-down laid over the parent
    list with a back button. Nothing here transitions or animates.
 
-   The active row is --ink on --brand, the promo bar's 5.10:1 pairing. White on
-   --brand is 3.41:1 and fails AA at this text size. No new colour value. */
+   The active row is --ink on --brand, the promo bar's 5.10:1 pairing. ~~White on
+   --brand is 3.41:1 and fails AA at this text size.~~ No new colour value.
+
+   AMENDED (W24-02). The toggle moved to the right of the logo and took the hero
+   "Solicită ofertă" button's paint: --brand, white label, --brand-dark on hover,
+   which is .btn--primary exactly. **Its label went from 15px to 19px in the same
+   change, and that is not decoration.** White on --brand is 3.41:1, which clears
+   WCAG AA only above the large-text threshold of 18.66px, and 19px/700 is the
+   size docs/CLAUDE.md section 4 records the site's primary buttons being held at
+   for that reason. At 15px the same paint would have been 3.41:1 judged against
+   4.5:1, which is a failure, and gate 5 audits this control on load because it is
+   visible with the page. The struck sentence above was true of the 15px toggle
+   and is kept per R-R: it is why the size moved with the colour.
+
+   The open state is the hover state rather than a third look: --brand-dark and
+   white, 5.93:1. */
 .catalog { position: relative; flex: none; }
 .catalog__toggle {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   height: 40px; padding: 0 16px; border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.4); background: transparent;
-  color: var(--bg-light); font-family: inherit; font-size: 15px; font-weight: 700; line-height: 1;
+  border: 1px solid var(--brand); background: var(--brand);
+  color: var(--bg-light); font-family: inherit; font-size: 19px; font-weight: 700; line-height: 1;
   white-space: nowrap; cursor: pointer;
 }
-.catalog__toggle:hover { border-color: var(--brand); color: var(--brand); }
-.catalog__toggle[aria-expanded='true'] { background: var(--brand); border-color: var(--brand); color: var(--ink); }
+.catalog__toggle:hover { background: var(--brand-dark); border-color: var(--brand-dark); color: var(--bg-light); }
+.catalog__toggle[aria-expanded='true'] { background: var(--brand-dark); border-color: var(--brand-dark); color: var(--bg-light); }
 .catalog__icon { display: none; flex: none; }
 .catalog__panel {
   position: absolute; top: calc(100% + 28px); left: 0; z-index: 101;
@@ -1578,8 +1602,18 @@ p { margin: 0; }
   .offer__cta { width: 100%; align-self: stretch; }
 
   /* W14-06. Below 768px the catalog panel takes the same fixed sheet as the
-     hamburger panel, and a subcategory list is a drill-down over it. */
-  .catalog__toggle { height: 36px; padding: 0 12px; font-size: 14px; }
+     hamburger panel, and a subcategory list is a drill-down over it.
+
+     W24-02. The desktop toggle carries the primary button's white label at
+     19px/700, which is above WCAG's large-text threshold, where 3.41:1 is the
+     bar. Here the label is 14px and there is no room to raise it: measured at
+     375px, a 19px label leaves RO 8px and RU 3px of slack against the desktop
+     floor of 8px, where 14px leaves RO 23px and RU 19px. So the phone keeps the
+     small label and takes --ink on --brand instead, 5.10:1, which is legible at
+     any size. The fill is the same --brand as everywhere; only the label moves,
+     and it moves on the phone because that is where the size is fixed. Open and
+     hover are unchanged: white on --brand-dark, 5.93:1. */
+  .catalog__toggle { height: 36px; padding: 0 12px; font-size: 14px; color: var(--ink); }
   /* Only a pill that carries the catalog tightens its gap, so a page without
      one keeps the W13-03 layout exactly. Measured: at 24px the RU pill needs
      347px and a 360px viewport gives it 328. */

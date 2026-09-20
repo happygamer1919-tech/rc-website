@@ -3105,7 +3105,7 @@
       "slot": "CAT-0079",
       "slug": "placa-fawn-grey",
       "name": {
-        "ro": "PLacă Fawn Grey",
+        "ro": "Placă Fawn Grey",
         "ru": "Плитка Fawn Grey"
       },
       "brand": "Phomi",
@@ -3141,7 +3141,7 @@
       "slot": "CAT-0080",
       "slug": "placa-fog",
       "name": {
-        "ro": "PLacă Fog",
+        "ro": "Placă Fog",
         "ru": "Плитка Fog"
       },
       "brand": "Phomi",
@@ -3177,7 +3177,7 @@
       "slot": "CAT-0081",
       "slug": "placa-dark-brown",
       "name": {
-        "ro": "PLacă Dark Brown",
+        "ro": "Placă Dark Brown",
         "ru": "Плитка Dark Brown"
       },
       "brand": "Phomi",
@@ -3213,7 +3213,7 @@
       "slot": "CAT-0082",
       "slug": "placa-dark-grey",
       "name": {
-        "ro": "PLacă Dark Grey",
+        "ro": "Placă Dark Grey",
         "ru": "Плитка Dark Grey"
       },
       "brand": "Phomi",
@@ -3249,7 +3249,7 @@
       "slot": "CAT-0083",
       "slug": "placa-ink-dyed",
       "name": {
-        "ro": "PLacă Ink-Dyed",
+        "ro": "Placă Ink-Dyed",
         "ru": "Плитка Ink-Dyed"
       },
       "brand": "Phomi",
@@ -4837,6 +4837,7 @@
         "ru": "Декоративный элемент RED 01"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațadă",
         "ru": "для фасада"
@@ -4873,6 +4874,7 @@
         "ru": "Декоративный элемент RED 02"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațadă",
         "ru": "для фасада"
@@ -4909,6 +4911,7 @@
         "ru": "Декоративный элемент RED 03"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -4945,6 +4948,7 @@
         "ru": "Декоративный элемент RED 04"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațadă",
         "ru": "для фасада"
@@ -4981,6 +4985,7 @@
         "ru": "Декоративный элемент RED 05"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațadă",
         "ru": "для фасада"
@@ -5017,6 +5022,7 @@
         "ru": "Декоративный элемент RED 06"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațadă",
         "ru": "для фасада"
@@ -5053,6 +5059,7 @@
         "ru": "Декоративный элемент RED 07"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațadă",
         "ru": "для фасада"
@@ -5089,6 +5096,7 @@
         "ru": "Декоративный элемент RED 08"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațadă",
         "ru": "для фасада"
@@ -5125,6 +5133,7 @@
         "ru": "Декоративный элемент RED 09"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațadă",
         "ru": "для фасада"
@@ -5161,6 +5170,7 @@
         "ru": "Декоративный элемент RED 10"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5197,6 +5207,7 @@
         "ru": "Декоративный элемент RED 12"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5233,6 +5244,7 @@
         "ru": "Декоративный элемент RED 14"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5269,6 +5281,7 @@
         "ru": "Декоративный элемент RED 15"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5305,6 +5318,7 @@
         "ru": "Декоративный элемент RED 17"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5341,6 +5355,7 @@
         "ru": "Декоративный элемент RED 18"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5377,6 +5392,7 @@
         "ru": "Декоративный элемент RED 19"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5413,6 +5429,7 @@
         "ru": "Декоративный элемент RED 20"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5449,6 +5466,7 @@
         "ru": "Декоративный элемент RED 21"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5485,6 +5503,7 @@
         "ru": "Декоративный элемент RED 22"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5521,6 +5540,7 @@
         "ru": "Декоративный элемент RED 23"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5557,6 +5577,7 @@
         "ru": "Декоративный элемент RED 24"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5593,6 +5614,7 @@
         "ru": "Декоративный элемент RED 25"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5629,6 +5651,7 @@
         "ru": "Декоративный элемент RED 26"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5665,6 +5688,7 @@
         "ru": "Декоративный элемент RED 27"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5701,6 +5725,7 @@
         "ru": "Декоративный элемент RED 28"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5737,6 +5762,7 @@
         "ru": "Декоративный элемент RED 29"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5773,6 +5799,7 @@
         "ru": "Декоративный элемент RED 30"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5809,6 +5836,7 @@
         "ru": "Декоративный элемент RED 31"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5845,6 +5873,7 @@
         "ru": "Декоративный элемент RED 32"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5881,6 +5910,7 @@
         "ru": "Декоративный элемент RED 33"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5917,6 +5947,7 @@
         "ru": "Декоративный элемент RED 34"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5953,6 +5984,7 @@
         "ru": "Декоративный элемент RED 35"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -5989,6 +6021,7 @@
         "ru": "Декоративный элемент RED 37"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6025,6 +6058,7 @@
         "ru": "Декоративный элемент RED 38"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6061,6 +6095,7 @@
         "ru": "Декоративный элемент RED 39"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6097,6 +6132,7 @@
         "ru": "Декоративный элемент RED 41"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6133,6 +6169,7 @@
         "ru": "Декоративный элемент RED 42"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6169,6 +6206,7 @@
         "ru": "Декоративный элемент RED 43"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6205,6 +6243,7 @@
         "ru": "Декоративный элемент RED 44"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6241,6 +6280,7 @@
         "ru": "Декоративный элемент RED 45"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6277,6 +6317,7 @@
         "ru": "Декоративный элемент RED 46"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6313,6 +6354,7 @@
         "ru": "Декоративный элемент RED 47"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6349,6 +6391,7 @@
         "ru": "Декоративный элемент RED 49"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6385,6 +6428,7 @@
         "ru": "Декоративный элемент RED 50"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6421,6 +6465,7 @@
         "ru": "Декоративный элемент RED 53"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6457,6 +6502,7 @@
         "ru": "Декоративный элемент RED 55"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6493,6 +6539,7 @@
         "ru": "Декоративный элемент RED 56"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6529,6 +6576,7 @@
         "ru": "Декоративный элемент RED 57"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6565,6 +6613,7 @@
         "ru": "Декоративный элемент RED 58"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6601,6 +6650,7 @@
         "ru": "Декоративный элемент REd 61"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6637,6 +6687,7 @@
         "ru": "Декоративный элемент RED 62"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6673,6 +6724,7 @@
         "ru": "Декоративный элемент RED 63"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6709,6 +6761,7 @@
         "ru": "Декоративный элемент RED 64"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6745,6 +6798,7 @@
         "ru": "Декоративный элемент RED 65"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6781,6 +6835,7 @@
         "ru": "Декоративный элемент RED 66"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6817,6 +6872,7 @@
         "ru": "Декоративный элемент RED 67"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6853,6 +6909,7 @@
         "ru": "Декоративный элемент RED 68"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6889,6 +6946,7 @@
         "ru": "Декоративный элемент RED 69"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6925,6 +6983,7 @@
         "ru": "Декоративный элемент RED 70"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6961,6 +7020,7 @@
         "ru": "Декоративный элемент RED 73"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -6997,6 +7057,7 @@
         "ru": "Декоративный элемент RED 74"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -7033,6 +7094,7 @@
         "ru": "Декоративный элемент RED 76"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -7069,6 +7131,7 @@
         "ru": "Декоративный элемент RED 77"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"
@@ -7105,6 +7168,7 @@
         "ru": "Декоративный элемент RED 78"
       },
       "brand": "RedConstruct",
+      "brand_hidden": true,
       "variant": {
         "ro": "pentru fațade",
         "ru": "для фасадов"

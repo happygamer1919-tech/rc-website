@@ -383,6 +383,36 @@ p { margin: 0; }
   .prod__body { padding: 16px; }
 }
 
+/* --- W24-09, the phone reveal on a catalogue grid --------------------------- */
+/* The whole grid is always in the markup. What changes on a phone is how much of
+   it is painted, and that is decided HERE, not in JS: main.js only puts
+   `.prod--folded` on the cards past the step and unhides the button. Both rules
+   that act on those live inside this media query, so above 768px a folded class
+   paints nothing and the button cannot appear. Desktop is unchanged by
+   construction rather than by a width test that could be got wrong.
+
+   Outside the query the button wrapper is display: none as well, which is the
+   belt to that braces: even a page whose JS unhid the wrapper on a phone and was
+   then rotated to a tablet width shows no orphan control.
+
+   No new colour value and no new token: the button is .btn .btn--outline, which
+   the site already ships, laid out full width because the dispatch specifies one
+   full-width button. */
+.prod-more { display: none; margin-top: 24px; }
+.prod-more__btn { width: 100%; justify-content: center; }
+
+/* W24-09. The hero's quote button, moved below the grid and the prose block. It
+   carries no heading and belongs to the block above it, so it takes no top
+   padding of its own: a full .section pad here would put a screen of white
+   between the prose and one button, and would cost every catalogue page about
+   160px of height for nothing. */
+.cat-offer { padding-top: 0; }
+
+@media (max-width: 768px) {
+  .prod-grid[data-prod-grid] .prod--folded { display: none; }
+  .prod-more:not([hidden]) { display: block; }
+}
+
 /* --- W24-07, the bento hub (W24-R5, W24-R8) --------------------------------- */
 /* CORRECTED, same card. These were written as .bento__* and the garduri page has
    carried a .bento and .bento__tile since W16 for its chooser tiles. Both

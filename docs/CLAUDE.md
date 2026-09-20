@@ -141,6 +141,38 @@ Adding a translucent overlay to a *section* is forbidden, and has already been
 refused once: the `form-bg` slot was struck for needing exactly that.
 *Source: DECISIONS.md "Approved exceptions".*
 
+### 3.1 CSS namespaces: one block owns one prefix (W24-09)
+
+**A component's class prefix is its own, and no second component may take it.**
+`.bento__*` belongs to the garduri chooser, which has carried it since wave 16.
+`.hub__*` belongs to the bento hub. `.prod__*` belongs to the catalogue card,
+`.cat-*` to the catalogue category page, `.nvk-*` to the Novatik grid,
+`.xsell-*` to the cross-sell row.
+
+**Before writing a new block's first rule, grep `src/styles.css` for its prefix.**
+If anything comes back, the prefix is taken and the new block gets a different
+one. This is a thirty-second check and it is not optional, because the failure it
+prevents is silent.
+
+**Why it is a rule and not a preference.** W24-07 named the bento hub's tiles
+`.bento__tile`. The chooser had owned that name since wave 16. Both declarations
+are (0,1,0), so specificity settles nothing and the later one in the file wins;
+the chooser's was later. Measured on the built page: the hub became a
+three-column grid, its tiles rendered white on a 10px radius with 24px of
+padding instead of `#141414` on 24px, and the tall tile came out **128px wide
+against an intended 380**. It shipped that way and **all nineteen gates were
+green**, because not one of them read a painted box. W24-07a renamed it to
+`.hub__*` and W24-09 added gate 20, which measures geometry.
+
+**A rename is not finished until every reader of the old name has been renamed
+with it.** W24-07a renamed the CSS and left `scripts/verify-live.js` probing
+`.bento__tile`. From that point the live markers counted the chooser and never
+the hub: six rows came back UNVERIFIED on the first run after wave 24 merged,
+none of them a defect on the page and all six a defect in the marker. Grep the
+whole repo for the old prefix, not just the stylesheet.
+*Source: DECISIONS.md, the W24 ratification block; `src/styles.css` at `.hub__h`;
+gate 20.*
+
 ---
 
 ## 4. Lighthouse floors
@@ -554,6 +586,35 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     gate 17's parser self-test, and the same reason: an assertion nobody has watched fail
     is not a gate (section 13).
 
+20. `node scripts/check-layout-geometry.js` clean. **Since W24-09 (wave 24)**, run by
+    `quality`. **The nineteen gates above do not read a layout.** W24-07 shipped a
+    bento whose tiles were named `.bento__tile`, which the garduri chooser had owned
+    since wave 16; the later declaration won, the section became three equal columns,
+    and the tall tile rendered 128px wide against an intended 380. It was visibly
+    broken on the built page and every gate was green, because they read markup,
+    links, contrast, headings, metadata, counts and scores, and none of them reads a
+    painted box. This measures **computed geometry in a real browser** at 1440 and
+    390, both locales, on every page that carries the thing measured, found in
+    `dist/` rather than listed. For each bento hub: four tiles visible; at 1440 the
+    tall tile spans two rows, sits between 30 and 38 percent of the grid's width and
+    the wide tile is wider than each bottom tile, and no tile is under 280px; at 390
+    the hub is one column. For each catalogue grid: four column tracks at 1440 and
+    one at 390, read from the grid's own used tracks rather than from how many cards
+    happen to fill them, cross-checked against the cards actually painted; and the
+    W24-09 phone reveal paints exactly the page's own `data-prod-step` with its
+    button shown at 390, and every card with no button at 1440. Class names it takes
+    no view on: it measures boxes, which is the only thing that would have caught
+    either the collision or the stale `verify-live` marker it left behind.
+    **Its four-arm self-test is the wave 16 collision itself**: the chooser's
+    declarations are re-injected onto the hub page and the gate must fail on them,
+    the 128px collapse is planted so the width band and the 280px floor are watched
+    fail too, and two catalogue arms plant a lost desktop column and the phone fold
+    escaping into desktop. Each arm is asserted **by message id**, and the control —
+    both families — is read clean immediately before the arms and immediately after
+    (R-AB, whose second case is four arms read against a control that was already
+    red). It fails on zero hub pages, zero grid pages, either family in one locale
+    only, fewer combinations than the matrix holds, and when Inter does not load.
+
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number — Q-W14-03 was found "at gate 9" — and those bodies are immutable under
 R-S, so renumbering would falsify them. A gate added later takes the next number
@@ -578,6 +639,8 @@ list is appended to, never renumbered, and it runs before them because it is the
 **AMENDED (W23-06):** gate 18 runs after gate 14 and before gate 13, with the other
 browser gates, because gate 13 rebuilds `dist/` armed.
 **AMENDED (W24-01):** gate 19 runs before gate 15, with the other static checks.
+**AMENDED (W24-09):** gate 20 runs after gate 14 and before gate 18, with the other
+browser gates, and like them before gate 13, which rebuilds `dist/` armed.
 
 ---
 

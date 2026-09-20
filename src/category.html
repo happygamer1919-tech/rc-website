@@ -118,7 +118,13 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
 {{promoBar}}
 <main id="continut">
 
-<!-- 1 · Page hero, W14-16. Breadcrumb, H1, one line, CTA; the block follows. -->
+<!-- 1 · Page hero, W14-16. Breadcrumb, H1, one line; the cards follow.
+     ~~CTA; the block follows.~~ AMENDED (W24-09): the hero's own quote button and
+     the prose block have both moved below the grid, so the cards are what a
+     visitor meets first. What stays here is what identifies the page.
+     The owner's own wording for this change is in the W24-09 board card; it is
+     not quoted here, because the gate that scans this page reads comments too and
+     two of the words in it are ones it refuses. -->
 <section class="section section--light svc-hero">
   <div class="container">
     <!-- W24-04. Built by build.js: a category page has three levels and a
@@ -130,21 +136,36 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     <p class="eyebrow">{{cat.eyebrow}}</p>
     <h1 class="cat-h1">{{cat.title}}</h1>
 {{cat.ledeBlock}}
-    <div class="cta-row" style="justify-content: flex-start; margin-top: 32px;">
-      <a class="btn btn--primary" href="#oferta">{{hero.ctaPrimary}}</a>
-    </div>
   </div>
 </section>
 
-<!-- 2 · The block that moved off the homepage (W14-16) -->
+<!-- 2 · Product records (RC-149). Renders only where content/catalog-products.json
+     has records for this category. What a card may never carry is enumerated in
+     scripts/check-catalog-pages.js and, as the note at the top of this file says,
+     those words are deliberately not repeated here: that gate scans comments too.
+
+     W24-09 MOVED THIS ABOVE THE PROSE BLOCK. It was the third section, under a
+     hero button and a prose block of two paragraphs and a list, so a visitor who
+     came to the catalogue to see products met roughly a screen and a half of copy
+     before the first one. The heading order is unaffected: the block's own
+     heading and this section's are both h2, so h1 still runs to h2 either way. -->
+{{cat.products}}
+
+<!-- 3 · The block that moved off the homepage (W14-16), and the hero's quote
+     button, which W24-09 moved down here with it. The button keeps its #oferta
+     target, so it still lands on the form below; it simply no longer stands
+     between the visitor and the grid. -->
 {{cat.block}}
 
-<!-- 3 · Product records (RC-149). Renders only where content/catalog-products.json
-     has records for this category; absent everywhere until the owner supplies the
-     list. What a card may never carry is enumerated in
-     scripts/check-catalog-pages.js and, as the note at the top of this file says,
-     those words are deliberately not repeated here: that gate scans comments too. -->
-{{cat.products}}
+<!-- A div, not a section: this wrapper carries one button and no heading, and a
+     <section> with no accessible name adds an unnamed region to the page. -->
+<div class="section section--light cat-offer">
+  <div class="container">
+    <div class="cta-row" style="justify-content: flex-start;">
+      <a class="btn btn--primary" href="#oferta">{{hero.ctaPrimary}}</a>
+    </div>
+  </div>
+</div>
 
 <!-- 5 · CTA, the same form as the homepage -->
 <section class="section section--light section--divided" id="oferta">

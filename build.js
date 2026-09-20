@@ -942,6 +942,13 @@ function notFoundLocale(l) {
    with the product name already in it, which is what src/main.js already does with
    data-product, and it carries the record id too so two products that share a name
    do not send an identical lead line. */
+/* W24-09. How many cards a phone shows before the first press, and how many each
+   press adds. One number, because the dispatch specifies one: the first twelve,
+   then twelve more per press. It is emitted onto the grid as `data-prod-step` so
+   main.js reads it from the markup rather than carrying a second copy, and so the
+   layout gate can assert the rendered count against the number the page states. */
+const PROD_STEP = 12;
+
 function catalogProducts(l, slug) {
   const records = CATALOG_PRODUCTS[slug] || [];
   if (!records.length) return '';
@@ -973,7 +980,14 @@ function catalogProducts(l, slug) {
     const parts = [];
     parts.push(`        <div class="prod__media">${placeholder(r.slot, { variant: 'light', className: 'prod__ph' })}</div>`);
     parts.push('        <div class="prod__body">');
-    if (REAL(r.brand)) parts.push(`          <p class="prod__brand">${esc(r.brand)}</p>`);
+    /* W24-09, the owner's answer to Q-W24-03 part 2. `brand_hidden` withholds the
+       brand LINE while the brand itself stays in the record, which is how the 27
+       refused-name records already behave. The 64 Elemente decorative products
+       carry RedConstruct, the source's own house brand, and printing another
+       company's house brand on this catalogue reads as reselling their range.
+       The products are kept; only the line is withheld. One flag, so the owner's
+       other answer is a one-flag change either way. */
+    if (REAL(r.brand) && !r.brand_hidden) parts.push(`          <p class="prod__brand">${esc(r.brand)}</p>`);
     parts.push(`          <h3 class="prod__name">${esc(name)}</h3>`);
     if (REAL(variant)) parts.push(`          <p class="prod__variant">${esc(variant)}</p>`);
     parts.push('          <div class="prod__foot">');
@@ -1002,12 +1016,38 @@ function catalogProducts(l, slug) {
      therefore present and visually hidden, in the .sr-only the before/after
      slider already uses for exactly this, and it reuses catalogProducts.h2,
      which the site already ships. Nothing new is written and nothing is shown. */
+  /* W24-09. The phone reveal. A catalogue grid is one column below 768px, so
+     placi-ceramice ran 88 cards deep and the page was 33,000px long: a visitor
+     who wants the fourth product scrolls past none of them, and one who wants
+     the last scrolls past 87.
+
+     EVERY CARD IS IN THE HTML, always, on every width. Nothing here is rendered
+     conditionally and nothing is fetched: the fold is a class that main.js puts
+     on the cards past the first PROD_STEP, and the rule that acts on it lives
+     inside a max-width media query. Three things follow, and each is the reason
+     it is built this way rather than by slicing the array:
+
+       · a crawler reads the whole grid, because the whole grid is in the markup;
+       · with no JS nothing is folded, so every card shows, which is the
+         no-dependency behaviour the card asks for;
+       · desktop cannot regress, because the folding rule does not exist above
+         768px. It is held by CSS, not by a width test in JS that could be wrong.
+
+     The button is `hidden` in the markup and main.js unhides it only when it has
+     actually folded something. So a visitor with no JS is never shown a control
+     that would do nothing, and neither is a desktop visitor. */
+  const more = cards.length > PROD_STEP
+    ? `
+    <div class="prod-more" data-prod-more hidden>
+      <button class="btn btn--outline prod-more__btn" type="button" data-prod-more-btn aria-controls="produse-grid" aria-label="${esc(label('moreAria'))}">${esc(label('more'))}</button>
+    </div>`
+    : '';
   return `<section class="section section--light section--divided" id="produse" aria-labelledby="produse-h">
   <div class="container">
     <h2 class="sr-only" id="produse-h">${esc(label('h2'))}</h2>
-    <div class="prod-grid">
+    <div class="prod-grid" id="produse-grid" data-prod-grid data-prod-step="${PROD_STEP}">
 ${cards.join('\n')}
-    </div>
+    </div>${more}
   </div>
 </section>`;
 }
@@ -1911,7 +1951,16 @@ const CATEGORY_ROUTES = new Set(CATEGORIES.map((c) => c.slug));
      stale when a category is added.
      AMENDED (W24-04): a subcategory row used to be required to open its PARENT's
      page, which is finding F-03 written into a gate. It now opens its own page,
-     and what is asserted is that its page sits under its parent's. */
+     and what is asserted is that its page sits under its parent's.
+     ~~and what is asserted is that its page sits under its parent's.~~
+     AMENDED (W24-09 ratification): **the parent-href rule is REMOVED.** It
+     required a child row's href to begin with its parent row's href, which makes
+     the URL path carry the menu's shape: a subcategory could not be moved or
+     re-parented in the menu without also moving its page, and a category reached
+     from two parents could not exist at all. The owner's ratification removes it.
+     What survives is the assertion that MATTERS and was never the same thing:
+     every row, at every depth, opens a category page this build actually emits.
+     That is the `legal` set below, and it is untouched. */
   const legal = new Set();
   for (const c of CATEGORIES) {
     legal.add(`${CATALOG_ROOT.ro}${c.slug}/`);
@@ -1919,19 +1968,16 @@ const CATEGORY_ROUTES = new Set(CATEGORIES.map((c) => c.slug));
   }
   if (legal.size !== CATEGORIES.length * 2) die(`the catalogue menu's legal destination set is ${legal.size} for ${CATEGORIES.length} pages in two locales.`);
   const bad = [];
-  const walk = (list, parentHref) => {
-    list.forEach((row, i) => {
+  const walk = (list) => {
+    list.forEach((row) => {
       for (const code of ['ro', 'ru']) {
         const href = row.href && row.href[code];
         if (!legal.has(href)) bad.push(`${row.label && row.label.ro} [${code}] -> ${href}`);
       }
-      if (parentHref && row.href && row.href.ro && !row.href.ro.startsWith(parentHref)) {
-        bad.push(`${row.label && row.label.ro} opens ${row.href.ro}, which is not under its parent page ${parentHref}`);
-      }
-      if (row.children) walk(row.children, row.href && row.href.ro);
+      if (row.children) walk(row.children);
     });
   };
-  walk(CATALOG.categories, null);
+  walk(CATALOG.categories);
   if (bad.length) die(`${CATALOG_FILE}: ${bad.length} menu row(s) do not open a category page this build emits:\n  ${bad.join('\n  ')}`);
 })();
 
@@ -3048,11 +3094,25 @@ for (const l of loaded) {
    it governs Gemini and AI Overviews grounding only, never Google Search
    ranking, so allowing it costs nothing in ordinary search either way. */
 const AI_AGENTS = ['GPTBot', 'OAI-SearchBot', 'PerplexityBot', 'ClaudeBot', 'Google-Extended', 'CCBot'];
+/* W24-09. `/review/` is the internal photo-review page. It already carries
+   `noindex, nofollow` and it has never been in the sitemap, so nothing indexes
+   it; this stops it being CRAWLED as well, which is a different thing. The page
+   itself stays: the owner reviews held photographs on it.
+
+   THE LINE IS REPEATED IN EVERY GROUP, and that repetition is the whole point. A
+   robots.txt group is matched, not merged: a crawler that finds a group naming
+   its own token obeys that group and ignores `User-agent: *` entirely. Putting
+   Disallow only under `*` would therefore have left all six named answer engines
+   with a bare `Allow: /` and free to crawl the page, which is the opposite of
+   what this change is for. */
+const DISALLOW = `${BASE}/review/`;
+const group = (agent) => `User-agent: ${agent}\nAllow: /\nDisallow: ${DISALLOW}\n`;
 fs.writeFileSync('dist/robots.txt',
-  'User-agent: *\nAllow: /\n\n' +
+  group('*') + '\n' +
   '# Answer engines, allowed explicitly. Blocking these means the site cannot be\n' +
   '# cited in an AI answer; that is a decision to take on purpose, not by default.\n' +
-  AI_AGENTS.map((a) => `User-agent: ${a}\nAllow: /\n`).join('\n') +
+  '# Each repeats the Disallow: a group is matched, never merged with the wildcard.\n' +
+  AI_AGENTS.map(group).join('\n') +
   `\nSitemap: ${SITE}${BASE}/sitemap.xml\n`);
 
 const homeLastmod = lastmodOf(...HOME_SOURCES);

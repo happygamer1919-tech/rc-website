@@ -9900,3 +9900,72 @@ anywhere on this site**, and `GARD_FORBIDDEN` is untouched.
 Lighthouse accessibility by hand on all three changed pages, because gate 5 audits only
 the two homepages: **1.0 with zero failing audits** on the copertine page with its dark
 hero, on the fence models page, and on the garduri page with its bento.
+
+## W24 ratifications · every wave 24 deviation ratified, and the parent-href build rule removed, 2026-09-20
+
+Recorded at the owner's instruction, from the W24-09 dispatch, before the W24-09 card was
+worked. `origin/main` is `2ab3a4b`, with #78 to #85 merged: all eight wave 24 cards are on
+`main`, confirmed by `git log origin/main` before anything here was written.
+
+### The ratification, as given
+
+> RATIFIED by strategy: all deviations of W24-01 to W24-08, W24-07a, removal of the
+> parent-href build rule. Q-W24-01 closed: the shipped default stands. Q-W24-02 stays
+> open, default stands.
+
+### What this closes
+
+**Every deviation recorded on the eight wave 24 cards and the one correction is ratified.**
+They are not restated here: each is recorded in its own card's block above, those bodies
+are immutable under R-S, and section 14 forbids a governing document restating a
+measurement or a decision that lives elsewhere. This block is the pointer that they are
+now settled rather than pending.
+
+The cards covered: W24-01 (the placeholder component, the ledger and gate 19), W24-02 (the
+Catalog button and the nav gap that paid for it), W24-03 (223 product records), W24-04 (the
+catalogue card, grid, fourteen pages and the index), W24-05 (the before/after slider),
+W24-06 (the roof offers leaving the homepage), W24-07 (the acoperisuri hub and the mirror
+page), **W24-07a** (the bento class collision, corrected) and W24-08 (the garduri hub, the
+copertine hero and the 54-claim record).
+
+**The parent-href build rule is removed**, at `build.js` in the W16-03 catalogue menu
+assertion. It required a child menu row's href to BEGIN WITH its parent row's href, which
+made the URL path carry the menu's shape: a subcategory could not be moved or re-parented
+in the menu without its page moving too, and a category reachable from two parents could
+not exist at all. It is deleted, not downgraded to a warning: a rule that is "removed but
+still prints" is neither removed nor a rule.
+
+**What survives, and was never the same assertion**: every catalogue menu row, at every
+depth, still has to open a category page this build actually emits. That is the `legal`
+set, computed from the pages emitted rather than typed, and it is untouched. The rule that
+went was about the SHAPE of the href; the one that stays is about whether it resolves.
+
+**Q-W24-01 is closed. The shipped default stands**, and the question's heading is marked
+closed with a pointer here, per the W20-01 precedent: no body is edited, because a
+recorded body is immutable under R-S.
+
+**Q-W24-02 stays open and its shipped default stands.** That is the nav gap going from
+20px to 14px so the Catalog button could wear the hero button's paint at 19px/700. Its
+full text and its before-and-after header measurements are reproduced in the W24-09 report
+at the owner's request, read from the live tree rather than from the question.
+
+### What wave 24 cost, and the one thing it did not catch
+
+Eight cards shipped green and one of them shipped a **visibly broken layout**: W24-07's
+bento tiles were named `.bento__tile`, which the garduri chooser had owned since wave 16,
+and the later declaration won. The tall tile rendered 128px wide against an intended 380.
+Nineteen gates were green, because not one of them reads a painted box.
+
+W24-07a renamed the hub to `.hub__*` and **left `scripts/verify-live.js` still probing the
+old name**, so from that point the live markers counted the chooser and never the hub. The
+owed F-22 live run, taken on `2ab3a4b` before W24-09 was worked, returned **six UNVERIFIED
+rows** for exactly that reason, none of them a defect on the page.
+
+Both are answered by W24-09: **gate 20 measures computed geometry in a real browser**, and
+`docs/CLAUDE.md` section 3.1 makes a class prefix a component's own and a rename
+unfinished until every reader of the old name is renamed with it.
+
+**The same live run found two real budget breaches**, which are not W24-09's to fix and are
+recorded here so they are not lost: `/servicii/case-la-cheie/` reads 6,475 against a 6,436
+budget in RO and 6,582 against 6,543 in RU. The cause is W24-05 turning the before/after
+slider on; the page grew and its budget was not re-measured with it. **Q-W24-05** carries it.

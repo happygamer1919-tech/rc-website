@@ -1,0 +1,1977 @@
+/* ==========================================================================
+   Rapid Construct — landing page
+   Tokens follow docs/RC-WEBSITE-MASTER-PLAN.md section 4, with two overrides
+   approved by the owner: --brand and --ink are sampled from the logo file and
+   match the approved mockup, so they win over the (pre-logo) plan values.
+   ========================================================================== */
+
+:root {
+  /* Heading family. The Inter/Unbounded A/B is resolved: Inter stays, and
+     Unbounded is no longer loaded. Kept as a variable so the family is still a
+     single-value change; switching to a new family also means adding it to the
+     font link in the template. */
+  --font-heading: 'Inter';
+  --font-body: 'Inter';
+  --font-fallback: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+
+  --brand: #F65308;
+  --brand-dark: #B23C08;
+  --ink: #1A1A1A;
+  --ink-muted: #5A5A5A;
+
+  /* Phase 2 amendment: sections use only #FFFFFF and #141414. --bg-grey
+     survives solely as the image-placeholder fill, never as a section. */
+  --bg-light: #FFFFFF;
+  --bg-grey: #F2F2F2;
+  --bg-dark: #141414;
+
+  /* Motion. Every value here is disabled, not reduced, under
+     prefers-reduced-motion at the bottom of this file. */
+  --reveal-dur: 320ms;
+  --hover-dur: 200ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --line: #E2E2E2;
+
+  --container: 1200px;
+  --gutter: 24px;
+  --section-pad: 96px;
+  --band-pad: 56px;
+  --gap: 24px;
+
+  --radius-control: 6px;
+  --radius-card: 10px;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --control-h: 48px;
+}
+
+/* --- base ----------------------------------------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  padding-top: 96px;   /* constant spacer for the fixed band, never animated */
+  background: var(--bg-light);
+  color: var(--ink);
+  font-family: var(--font-body), var(--font-fallback);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+a:hover { color: var(--brand-dark); }
+::selection { background: var(--brand); color: var(--bg-light); }
+:focus-visible {
+  outline: 3px solid var(--brand-dark);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+/* On the two dark sections the dark ring would disappear. */
+.section--dark :focus-visible,
+.footer :focus-visible { outline-color: var(--bg-light); }
+/* Filled brand controls: ring sits outside the fill so it stays legible. */
+.btn--primary:focus-visible,
+.floating__call:focus-visible { outline-color: var(--ink); outline-offset: 3px; }
+
+/* W19-D1. An uppercase heading cannot wrap inside a word, and a long Russian word
+   ("КОНФИДЕНЦИАЛЬНОСТИ", "МЕТАЛЛОЧЕРЕПИЦА") ran out of its column, and on phones
+   pushed the page sideways. Any heading word that cannot fit on a line of its own
+   now breaks rather than overflows; that alone moves no heading that fits.
+   W19-D1a: h1 and h2 may also hyphenate a word of 14 characters or more (both
+   locales set lang, so the browser has the dictionary), so the break reads as a
+   hyphen. h3 does not: the card and FAQ titles are sentence case and wrap a long
+   word whole, and hyphenation split 31 of them that fitted. Measured word by word,
+   no h1 or h2 that fits wraps differently. scripts/check-heading-fit.js holds it. */
+h1, h2, h3 {
+  font-family: var(--font-heading), var(--font-fallback); margin: 0; line-height: 1.15;
+  overflow-wrap: break-word;
+}
+h1, h2 { -webkit-hyphens: auto; hyphens: auto; hyphenate-limit-chars: 14 6 4; }
+h1 { font-size: 56px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; }
+h2 { font-size: 40px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; }
+h3 { font-size: 22px; font-weight: 700; }
+p { margin: 0; }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 200;
+  background: var(--bg-light); color: var(--ink);
+  padding: 12px 16px; border: 1px solid var(--line); border-radius: var(--radius-control);
+}
+.skip-link:focus { left: 16px; top: 16px; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* --- layout primitives ---------------------------------------------------- */
+
+.container { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+.section { padding: var(--section-pad) 0; }
+.section--light { background: var(--bg-light); }
+.section--grey  { background: var(--bg-light); }
+/* White-on-white boundaries need a rule so sections still read as blocks.
+   Still a hard edge: 1px line, no gradient, no fade. */
+.section--divided { border-top: 1px solid var(--line); }
+.section--dark  { background: var(--bg-dark); color: var(--bg-light); padding: var(--band-pad) 0; }
+
+.eyebrow {
+  font-size: 13px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--brand-dark); margin-bottom: 16px;
+}
+.section--dark .eyebrow { color: var(--brand); }
+.lede { margin-top: 16px; max-width: 720px; }
+.muted { color: var(--ink-muted); }
+
+.grid { display: grid; gap: var(--gap); }
+.grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.grid--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+/* --- buttons -------------------------------------------------------------- */
+
+.btn {
+  height: var(--control-h); padding: 0 28px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-control); border: 1px solid transparent;
+  font-family: inherit; font-size: 19px; font-weight: 700; line-height: 1;
+  white-space: nowrap; cursor: pointer;
+}
+/* 19px bold clears the 18.66px WCAG large-text threshold, where AA asks 3:1
+   rather than 4.5:1. White on --brand is 3.41:1, so the button passes without
+   darkening the brand fill. Two pixels on a 48px control. */
+.btn--primary { background: var(--brand); color: var(--bg-light); }
+.btn--primary:hover { background: var(--brand-dark); color: var(--bg-light); }
+.btn--outline { background: transparent; border-color: var(--ink); color: var(--ink); }
+.btn--outline:hover { background: var(--ink); color: var(--bg-light); }
+.btn--outline-light { background: transparent; border-color: var(--bg-light); color: var(--bg-light); }
+.btn--outline-light:hover { background: var(--bg-light); color: var(--bg-dark); }
+
+.link-arrow {
+  margin-top: auto; align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 8px;
+  /* --brand as small text is 3.41:1 on white, below AA. --brand-dark is 5.93:1.
+     Brand orange is kept for fills and large numerals, which pass. */
+  font-weight: 700; line-height: 1.15; color: var(--brand-dark);
+}
+.link-arrow:hover { color: var(--brand-dark); }
+.link-arrow svg { display: block; flex: none; }
+
+/* --- media slots ---------------------------------------------------------- */
+
+.media { background: var(--bg-grey); overflow: hidden; }
+.media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.media--4x3 { aspect-ratio: 4 / 3; }
+.media--3x2 { aspect-ratio: 3 / 2; }
+.media--card { border-bottom: 1px solid var(--line); }
+.media--framed { border: 1px solid var(--line); border-radius: var(--radius-card); }
+
+/* --- W24-01, the wave 24 photo placeholder ---------------------------------
+   Every image wave 24 renders is a placeholder; a separate photo session fills
+   them. One component, two variants, used by every one of them, so the photo
+   session is handed a single shape and a single ledger.
+
+   No new colour value. The border is --line on the light variant and the
+   rgba(255,255,255) hairline that docs/CLAUDE.md section 3 already permits on
+   the dark band. The id text is --ink-muted on white (7.0:1) and --bg-light on
+   #141414 (17.4:1), so both clear WCAG's 4.5:1 for normal text.
+
+   The ratio is passed per slot as --ph-ratio and comes from the slot's row in
+   docs/PHOTO-SLOTS-W24.json, which is the one place a ratio is written. */
+.ph {
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  aspect-ratio: var(--ph-ratio, 4 / 3);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.ph--light { background: var(--bg-light); color: var(--ink-muted); }
+.ph--dark { background: var(--bg-dark); color: var(--bg-light); border-color: rgba(255, 255, 255, 0.18); }
+.ph__id {
+  font-size: 12px; font-weight: 600; line-height: 1;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  padding: 0 8px; text-align: center;
+}
+
+.card {
+  background: var(--bg-light);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.card__body { padding: 24px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+
+/* --- service page: spec table, FAQ, related ---------------------------------- */
+/* W9-08. No new colour: borders are --line, secondary text is --ink-muted, and
+   the row heading sits on --bg-light like every other card. */
+
+/* The table scrolls inside its own box. A long specification row must never be
+   the reason the page body scrolls sideways. */
+.table-wrap { overflow-x: auto; margin-top: 28px; -webkit-overflow-scrolling: touch; }
+
+.spec {
+  width: 100%; min-width: 480px;
+  border-collapse: collapse;
+  background: var(--bg-light);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+.spec th, .spec td { padding: 13px 20px; text-align: left; vertical-align: top; }
+.spec tr + tr th, .spec tr + tr td { border-top: 1px solid var(--line); }
+.spec th { font-weight: 700; width: 34%; white-space: nowrap; }
+.spec td { color: var(--ink-muted); }
+
+.faq { margin-top: 28px; display: flex; flex-direction: column; gap: 18px; }
+.faq__item { border-top: 1px solid var(--line); padding-top: 18px; }
+.faq__item:first-child { border-top: 0; padding-top: 0; }
+.faq__q { margin: 0 0 8px; }
+.faq__a { margin: 0; color: var(--ink-muted); max-width: 760px; }
+
+.svc-related { margin-top: 28px; max-width: 760px; }
+.svc-updated { margin-top: 16px; font-size: 14px; }
+
+@media (max-width: 768px) {
+  .spec th { white-space: normal; width: 40%; }
+  .spec th, .spec td { padding: 12px 14px; }
+}
+
+/* W19-D7. Below 512px the column is narrower than the table's 480px minimum, so
+   the description column was cut at the edge of its scrolling box, mid-word, with
+   no scrollbar to say so. Here each row stacks instead: the label on its own line,
+   its description under it at the full width. Long words may break rather than
+   push the box wider, which is what kept five RU tables overflowing at 320 with
+   the minimum removed. .table-wrap stays, as the guard W9-08 put there. */
+@media (max-width: 511px) {
+  .spec { min-width: 0; }
+  .spec, .spec tbody, .spec tr, .spec th, .spec td { display: block; }
+  .spec th, .spec td { width: auto; overflow-wrap: anywhere; }
+  .spec th { padding: 12px 14px 0; }
+  .spec td { padding: 4px 14px 12px; }
+  .spec tr + tr th, .spec tr + tr td { border-top: 0; }
+  .spec tr + tr { border-top: 1px solid var(--line); }
+}
+
+/* --- ~~W21-04 (RC-149), catalog product record cards~~ ------------------------ */
+/* AMENDED (W24-04). The card the wave 24 dispatch specifies, mirroring the
+   reference site's GEOMETRY and none of its colour or type (W24-R8): a white
+   card, a large radius, a square image area on top, a small brand line, the name
+   bold over two to three lines, the variant line muted, and a bottom row with the
+   price bold on the left and a square brand-orange icon button on the right.
+
+   RC-149's three-row definition list is gone with the fields it printed; the
+   record now carries a name, an optional brand, an optional variant line and a
+   price (W24-03).
+
+   No new colour value. The card is --bg-light on --line, the brand and variant
+   lines are --ink-muted, the price is --ink, and the button is --brand with white
+   on it. The button's glyph is an arrow and the label is its aria-label, so the
+   3.41:1 of white on --brand is never asked to carry text.
+
+   EQUAL HEIGHTS PER ROW, PRICE PINNED. The grid stretches its items, the card is
+   a column, the body is a column with the name absorbing the slack, and the foot
+   is pushed to the bottom by margin-top: auto. So the price sits the same
+   distance from the bottom of every card in a row whatever the name does above
+   it, which is the reference's behaviour reached the plain way: it hard-codes a
+   400px card height, and a hard height clips a long name.
+
+   THE RADIUS IS LARGE, 20px, not --radius-card's 10px. That is a measurement of
+   the reference, and it is written here rather than as an eleventh token because
+   one component uses it. */
+.prod-grid {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 30px var(--gap); align-items: stretch; margin-top: 40px;
+}
+.prod {
+  display: flex; flex-direction: column;
+  background: var(--bg-light);
+  border: 1px solid var(--line); border-radius: 20px;
+  overflow: hidden;
+}
+.prod__media { padding: 12px 12px 0; }
+.prod__ph { border-radius: 12px; }
+.prod__body { display: flex; flex-direction: column; flex: 1; padding: 16px 20px 20px; }
+.prod__brand {
+  margin: 0 0 6px; font-size: 13px; font-weight: 700; line-height: 1.2;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted);
+}
+/* The name does NOT absorb the row's slack. It did in the first draft, and the
+   effect was a card whose variant line floated in the middle of it: on a row
+   where one card's name runs to three lines and its neighbour's to two, the
+   short-named card opened a 73px hole between its name and its variant, 95px at
+   the worst measured width. The slack belongs below the variant line, where
+   .prod__foot's margin-top: auto already puts it, and that is what pins the foot
+   to the bottom of every card in the row. */
+.prod__name { margin: 0; font-size: 17px; font-weight: 700; line-height: 1.3; }
+.prod__variant {
+  margin: 8px 0 0; font-size: 14px; line-height: 1.45; color: var(--ink-muted);
+}
+/* The foot never wraps. It did at 511px and below, and a price long enough to
+   need two lines then pushed the button onto a line of its own, left-aligned,
+   which is the opposite of the row the card specifies. The price takes the slack
+   and wraps inside itself instead; min-width: 0 is what allows a flex item to
+   become narrower than its content and is the whole of the fix. */
+.prod__foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  margin-top: auto; padding-top: 16px;
+}
+/* Both share the button's height and centre in it, so a price, a wrapped price
+   and a price-on-request sit on the same line across a row instead of on three
+   baselines up to 12px apart. */
+.prod__price, .prod__ask {
+  display: flex; align-items: center; min-height: 44px;
+  flex: 1 1 auto; min-width: 0;
+}
+.prod__price { font-size: 20px; font-weight: 700; line-height: 1.2; color: var(--ink); }
+.prod__ask { font-size: 16px; font-weight: 700; line-height: 1.2; color: var(--ink-muted); }
+.prod__cta {
+  flex: none; width: 44px; height: 44px; border-radius: 12px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--brand); color: var(--bg-light);
+  transition: background var(--hover-dur) var(--ease-out);
+}
+.prod__cta:hover { background: var(--brand-dark); color: var(--bg-light); }
+.prod__cta svg { display: block; }
+
+/* W24-04. The catalogue index's seven category tiles. */
+.cat-tiles {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gap); margin-top: 40px;
+}
+.cat-tile {
+  display: flex; flex-direction: column;
+  background: var(--bg-light); border: 1px solid var(--line);
+  border-radius: 20px; overflow: hidden;
+  transition: border-color var(--hover-dur) var(--ease-out);
+}
+.cat-tile:hover { border-color: var(--brand); color: var(--ink); }
+.cat-tile__ph { border-radius: 0; border-width: 0 0 1px; }
+.cat-tile__body { display: flex; flex-direction: column; gap: 4px; padding: 20px; }
+.cat-tile__label { font-size: 19px; font-weight: 700; line-height: 1.3; }
+.cat-tile__count { font-size: 14px; line-height: 1.4; color: var(--ink-muted); }
+
+/* W24-04. The catalogue heading is uppercase, which is the reference's treatment
+   and a permitted edit under docs/CLAUDE.md section 5: a heading may be set
+   uppercase, and the string itself is unchanged. */
+.cat-h1 { text-transform: uppercase; }
+
+/* The dispatch's columns: 4 at 1440, 3 at 1024, 2 at 768, 1 at 390. The stated
+   widths are the breakpoints, so each rule takes effect at or below the width
+   above the one it names. */
+@media (max-width: 1180px) {
+  .prod-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 1024px) {
+  .cat-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .prod-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 511px) {
+  .prod-grid { grid-template-columns: minmax(0, 1fr); gap: var(--gap); }
+  .cat-tiles { grid-template-columns: minmax(0, 1fr); }
+  .prod__body { padding: 16px; }
+}
+
+/* --- W24-07, the bento hub (W24-R5, W24-R8) --------------------------------- */
+/* Geometry measured off the reference and copied; its colour and its type are
+   not. Three equal columns from 1024px up, rows of a fixed 244px, a 16px gap
+   both ways, a 24px tile radius, the label bottom left at 24px of padding. One
+   column below 1024px with the tall tile first, which is DOM order, so no
+   reordering is needed and the tab order matches the reading order.
+
+   No new colour value: the tile is --bg-dark, the label --bg-light, and the
+   gradient is black at two alphas over the tile's own dark fill, which is the
+   same kind of value as the modal scrim and the dark band's hairlines. */
+.bento__h { margin: 0; }
+.bento__h-muted { color: var(--ink-muted); }
+.bento__h-muted::before { content: " "; }
+.bento__grid {
+  display: grid; gap: 16px; margin-top: 48px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 244px;
+}
+.bento__tile {
+  position: relative; overflow: hidden; border-radius: 24px;
+  display: block; color: var(--bg-light);
+  background: var(--bg-dark);
+}
+/* The tall tile takes the left column and both rows; the wide one takes the top
+   right; the last two sit under it. */
+.bento__tile--1 { grid-column: 1; grid-row: 1 / span 2; }
+.bento__tile--2 { grid-column: 2 / span 2; grid-row: 1; }
+.bento__tile--3 { grid-column: 2; grid-row: 2; }
+.bento__tile--4 { grid-column: 3; grid-row: 2; }
+.bento__ph {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  aspect-ratio: auto; border: 0; border-radius: 0;
+}
+/* W24-R5. A bottom gradient INSIDE the tile, so a white label stays legible over
+   a photograph once one lands. It is 40% of one tile and paints over an image,
+   never over a section: the section-level overlay ban is untouched. */
+.bento__grad {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 40%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
+  pointer-events: none;
+}
+.bento__label {
+  position: absolute; left: 24px; right: 24px; bottom: 24px;
+  font-size: 24px; font-weight: 700; line-height: 1.2; color: var(--bg-light);
+}
+.bento__tile:hover .bento__label { color: var(--bg-light); }
+.bento__tile:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+/* The inert tile is a div, never a disabled link: a disabled <a> with an href is
+   still a link to a keyboard and to a screen reader. It takes no hover and no
+   pointer, which is the dispatch's own wording. */
+.bento__tile--inert { cursor: default; }
+
+/* --- W24-07, the Novatik model cards ---------------------------------------- */
+.nvk-grid {
+  display: grid; gap: var(--gap); margin-top: 40px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+}
+.nvk {
+  display: flex; flex-direction: column;
+  background: var(--bg-light); border: 1px solid var(--line); border-radius: 20px;
+  overflow: hidden;
+}
+.nvk__media { padding: 12px 12px 0; }
+.nvk__ph { border-radius: 12px; }
+.nvk__body { display: flex; flex-direction: column; flex: 1; padding: 16px 20px 20px; }
+.nvk__name { margin: 0; font-size: 19px; font-weight: 700; line-height: 1.3; }
+.nvk__desc { margin: 8px 0 0; font-size: 15px; line-height: 1.45; color: var(--ink-muted); }
+.nvk__facts { margin: 16px 0 0; display: flex; flex-direction: column; gap: 8px; }
+.nvk__facts > div { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; }
+.nvk__facts dt { color: var(--ink-muted); }
+.nvk__facts dd { margin: 0; font-weight: 700; }
+.nvk__ask { margin: auto 0 0; padding-top: 16px; font-size: 16px; font-weight: 700; color: var(--ink-muted); }
+
+/* --- W24-07, the question list ---------------------------------------------- */
+.faq { margin: 40px 0 0; }
+.faq > div { padding: 20px 0; border-top: 1px solid var(--line); }
+.faq > div:last-child { border-bottom: 1px solid var(--line); }
+.faq dt { font-size: 19px; font-weight: 700; line-height: 1.35; }
+.faq dd { margin: 8px 0 0; color: var(--ink-muted); line-height: 1.6; }
+
+@media (max-width: 1024px) {
+  .nvk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* One column, tall tile first, which is already the DOM order. */
+  .bento__grid { grid-template-columns: minmax(0, 1fr); grid-auto-rows: auto; }
+  .bento__tile--1, .bento__tile--2, .bento__tile--3, .bento__tile--4 {
+    grid-column: auto; grid-row: auto; min-height: 280px;
+  }
+}
+@media (max-width: 511px) {
+  .nvk-grid { grid-template-columns: minmax(0, 1fr); }
+  .bento__label { left: 20px; right: 20px; bottom: 20px; font-size: 21px; }
+}
+
+/* --- header ---------------------------------------------------------------- */
+
+/* Two layers. The BAND is a full-width solid #FFFFFF strip, fixed, opaque at
+   every scroll position, so nothing ever shows through or overlaps. The PILL
+   is a #141414 rounded bar sitting inside it. */
+.header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 96px;
+  background: var(--bg-light);
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: center;
+}
+.header__inner {
+  max-width: var(--container); margin: 0 auto; width: 100%;
+  padding: 0 var(--gutter);
+}
+/* W17-05 (RC-136). The gap between the pill's four children is 20px, down 4px,
+   which frees 12px across its three gaps for the Servicii caret below. Authorized
+   by the owner as Q-W15-01 option (c); every other header value is RC-121's. */
+.header__pill {
+  background: var(--bg-dark);
+  border-radius: 999px;
+  height: 64px;
+  padding: 0 12px 0 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+}
+.header__logo { display: flex; align-items: center; flex: none; }
+/* W13-03. The mark is sized to the SAME 8px vertical clearance the CTA button
+   already has inside the pill: 64 - 48 = 16, 8 top and 8 bottom. That makes the
+   figure derived rather than chosen, and it holds at every pill height below.
+
+   48px is the box, not the ink. logo-mono.png carries 76px of transparent
+   margin at the top of its 568px canvas and 24px at the bottom, so the ink is
+   82.4% of the box: 39.6px here. That is why the mark read small at 32px, where
+   only 26.4px of it was ever visible, and it is why the box may match the CTA's
+   48px without the mark out-shouting a solid filled button. */
+.header__logo img { height: 48px; width: auto; display: block; }
+
+/* W14-21. One step down from 28px and 17px, so the header holds the catalog button
+   beside the nav, phone, CTA and language switch at every desktop width.
+
+   AMENDED (W24-02): ~~20px~~ 14px, and this is the wave's one header fix. The
+   catalog toggle took the primary button's paint, and white on --brand is 3.41:1,
+   which clears AA only above the large-text threshold, so its label went to
+   19px/700 with the colour. That cost 15px in RO and 16px in RU, and RU had 9px of
+   slack against an 8px floor: the header fit gate went to RO 4px and RU -7px, red
+   on both the floor and the fit. Four nav items have three gaps between them, so
+   six pixels off each buys eighteen, which is more than the type cost. The type
+   was not touched, per the dispatch. Measured after: RO 22px, RU 9px, which is
+   the slack RU had before the change, at 108 of 108 combinations. */
+.nav { display: flex; align-items: center; justify-content: center; gap: 14px; flex: 1 1 auto; min-width: 0; }
+/* W23-06. The bar's own links only, by the child combinator. `.nav a` also matched
+   every link in the Servicii panel, which sits inside .nav, and at (0,1,1) it beat
+   .svcmenu__link's (0,1,0): the panel's rows took the bar's white, on the panel's
+   white, until hover turned them orange. It also took their size, line height and
+   no-wrap, so the panel never had the catalog panel's treatment it was built with. */
+.nav > a, .nav .svcmenu__toggle { font-size: 16px; line-height: 1; white-space: nowrap; color: var(--bg-light); }
+.nav > a:hover, .nav .svcmenu__toggle:hover { color: var(--brand); }
+.nav > a[aria-current='page'] { color: var(--brand); font-weight: 700; }
+
+.header__actions { display: flex; align-items: center; gap: 16px; flex: none; }
+.header__phone {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 17px; font-weight: 700; line-height: 1; white-space: nowrap;
+  color: var(--bg-light);
+}
+.header__phone:hover { color: var(--brand); }
+.header__phone svg { display: block; flex: none; }
+
+.lang {
+  display: flex; align-items: center; gap: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px; padding: 6px 10px;
+}
+.lang span, .lang a { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; line-height: 1; }
+.lang a { color: var(--bg-light); }
+.lang a:hover { color: var(--brand); }
+.lang[data-lang='ro'] .lang__ro,
+.lang[data-lang='ru'] .lang__ru { color: var(--brand); pointer-events: none; cursor: default; }
+.lang__sep { width: 1px; height: 12px; background: rgba(255, 255, 255, 0.4); }
+
+.icon-btn {
+  width: 44px; height: 44px; border-radius: 999px;
+  display: none; align-items: center; justify-content: center;
+  background: transparent; border: 0; color: var(--bg-light); cursor: pointer;
+}
+.icon-btn svg { display: block; }
+.icon-btn svg[hidden] { display: none; }
+.icon-btn--call { color: var(--brand); }
+.icon-btn:hover { background: rgba(255, 255, 255, 0.12); }
+.header__mobile { display: none; align-items: center; gap: 4px; flex: none; }
+
+.mobile-panel { display: none; }
+.mobile-panel[data-open='true'] { display: block; }
+.mobile-panel {
+  position: fixed; top: 96px; left: 0; right: 0; bottom: 0; z-index: 99;
+  background: var(--bg-light); border-top: 1px solid var(--line);
+  padding: 16px var(--gutter); overflow-y: auto;
+}
+.mobile-panel a.mobile-nav-link {
+  display: block; font-size: 16px; line-height: 1;
+  padding: 14px 0; border-bottom: 1px solid var(--line); white-space: nowrap;
+}
+.mobile-panel .btn { width: 100%; margin-top: 16px; }
+.mobile-panel__foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 16px; }
+.mobile-panel__foot a { font-size: 16px; font-weight: 700; white-space: nowrap; }
+.mobile-panel .lang { border-color: var(--line); }
+.mobile-panel .lang a { color: var(--ink-muted); }
+.mobile-panel .lang__sep { background: var(--line); }
+
+/* --- W14-06, catalog mega-menu (S-01) -------------------------------------- */
+/* Renders only when content/catalog.json has categories. The toggle is a
+   button: click opens it, hover never does. On a hover-capable screen wider
+   than 768px a parent row opens its subcategories as a flyout to the right of
+   the list; below that, the same list is a drill-down laid over the parent
+   list with a back button. Nothing here transitions or animates.
+
+   The active row is --ink on --brand, the promo bar's 5.10:1 pairing. ~~White on
+   --brand is 3.41:1 and fails AA at this text size.~~ No new colour value.
+
+   AMENDED (W24-02). The toggle moved to the right of the logo and took the hero
+   "Solicită ofertă" button's paint: --brand, white label, --brand-dark on hover,
+   which is .btn--primary exactly. **Its label went from 15px to 19px in the same
+   change, and that is not decoration.** White on --brand is 3.41:1, which clears
+   WCAG AA only above the large-text threshold of 18.66px, and 19px/700 is the
+   size docs/CLAUDE.md section 4 records the site's primary buttons being held at
+   for that reason. At 15px the same paint would have been 3.41:1 judged against
+   4.5:1, which is a failure, and gate 5 audits this control on load because it is
+   visible with the page. The struck sentence above was true of the 15px toggle
+   and is kept per R-R: it is why the size moved with the colour.
+
+   The open state is the hover state rather than a third look: --brand-dark and
+   white, 5.93:1. */
+.catalog { position: relative; flex: none; }
+.catalog__toggle {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 40px; padding: 0 16px; border-radius: 999px;
+  border: 1px solid var(--brand); background: var(--brand);
+  color: var(--bg-light); font-family: inherit; font-size: 19px; font-weight: 700; line-height: 1;
+  white-space: nowrap; cursor: pointer;
+}
+.catalog__toggle:hover { background: var(--brand-dark); border-color: var(--brand-dark); color: var(--bg-light); }
+.catalog__toggle[aria-expanded='true'] { background: var(--brand-dark); border-color: var(--brand-dark); color: var(--bg-light); }
+.catalog__icon { display: none; flex: none; }
+.catalog__panel {
+  position: absolute; top: calc(100% + 28px); left: 0; z-index: 101;
+  width: 300px;
+  background: var(--bg-light); color: var(--ink);
+  border: 1px solid var(--line); border-radius: var(--radius-card);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+.catalog__heading {
+  margin: 0; padding: 14px 16px; border-bottom: 1px solid var(--line);
+  font-size: 13px; font-weight: 700; line-height: 1; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--ink-muted);
+}
+.catalog__list { list-style: none; margin: 0; padding: 0; }
+.catalog__row { display: flex; align-items: stretch; border-bottom: 1px solid var(--line); }
+.catalog__row:last-child { border-bottom: 0; }
+.catalog__link {
+  flex: 1 1 auto; display: block; padding: 12px 16px;
+  font-size: 15px; line-height: 1.35; color: var(--ink);
+}
+.catalog__link:hover { color: var(--brand-dark); }
+.catalog__row--title .catalog__link { font-weight: 700; }
+.catalog__expand {
+  flex: none; width: 44px; display: flex; align-items: center; justify-content: center;
+  background: transparent; border: 0; border-left: 1px solid var(--line); color: var(--ink); cursor: pointer;
+}
+.catalog__row.is-active,
+.catalog__row.is-active > .catalog__link,
+.catalog__row.is-active > .catalog__expand { background: var(--brand); color: var(--ink); }
+.catalog__row.is-active > .catalog__link:hover { color: var(--ink); }
+.catalog__sub {
+  position: absolute; top: -1px; left: calc(100% + 4px);
+  width: 300px;
+  background: var(--bg-light); color: var(--ink);
+  border: 1px solid var(--line); border-radius: var(--radius-card);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+.catalog__sub[hidden] { display: none; }
+.catalog__back { display: none; }
+
+/* W19-D10. A phone held sideways is wider than 768px but only 375 to 430px tall,
+   so it got the flyout above, which cannot scroll and whose bottom sits 447px down:
+   the last categories were below the screen and out of reach. A viewport wider than
+   768px and at most 500px tall takes the phone's treatment instead, a fixed sheet
+   under the header that scrolls, with the subcategories as a drill-down and a
+   back button. The header is 80px up to 1100px and 96px above it (W14-15), and
+   the sheet starts where the header ends. 500px clears every landscape phone and leaves the 1024x600 tablet and
+   every laptop on the flyout. src/main.js holds the same two queries, and the two
+   must change together. */
+@media (min-width: 769px) and (max-height: 500px) {
+  .catalog__panel {
+    position: fixed; top: 96px; left: 0; right: 0; bottom: 0;
+    width: auto; border-width: 1px 0 0; border-radius: 0; box-shadow: none; overflow-y: auto;
+  }
+  .catalog__sub {
+    top: 0; left: 0; right: 0; bottom: 0; width: auto; min-height: 100%;
+    border: 0; border-radius: 0; box-shadow: none;
+  }
+  .catalog__back {
+    display: flex; align-items: center; gap: 8px; width: 100%;
+    padding: 14px 16px; background: transparent; border: 0; border-bottom: 1px solid var(--line);
+    font-family: inherit; font-size: 15px; font-weight: 700; color: var(--ink); cursor: pointer; text-align: left;
+  }
+}
+@media (min-width: 769px) and (max-width: 1100px) and (max-height: 500px) {
+  .catalog__panel { top: 80px; }
+}
+
+/* --- W15-02, the Servicii dropdown (RC-126) -------------------------------- */
+/* Q-W14-15: a fifth flat nav link does not fit at any width in either locale,
+   so Servicii becomes a disclosure instead of growing the nav. It reuses the
+   catalog panel's treatment exactly, so no colour value and no new shape is
+   added. One level deep: no per-row chevron, no back button.
+
+   The toggle takes its size from the .nav rule above, alongside .nav > a, so the
+   nav's font is set in one place and a later step up or down moves both.
+
+   The caret: shipped at W17-05 (RC-136), after W15-02 and W16-03 both measured
+   it failing. A 14px caret with a 4px gap adds 18px to the nav, and RU had 15px
+   of slack at 1280px and up. The owner then authorized taking 4px off the header
+   pill's gap, which frees 12px, so RU now carries the caret with room to spare.
+   Q-W15-01 and DECISIONS.md W17-05 hold the measurements. */
+.svcmenu { position: relative; display: flex; align-items: center; }
+.svcmenu__toggle {
+  display: inline-flex; align-items: center;
+  padding: 0; border: 0; background: transparent; cursor: pointer;
+  font-family: inherit; font-weight: inherit;
+  color: var(--bg-light); white-space: nowrap;
+}
+.svcmenu__toggle[aria-expanded='true'] { color: var(--brand); }
+.svcmenu__caret { display: block; flex: none; margin-left: 4px; }
+.svcmenu__panel {
+  position: absolute; top: calc(100% + 28px); left: 50%; margin-left: -140px; z-index: 101;
+  width: 280px;
+  background: var(--bg-light); color: var(--ink);
+  border: 1px solid var(--line); border-radius: var(--radius-card);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+.svcmenu__panel[hidden] { display: none; }
+.svcmenu__list { list-style: none; margin: 0; padding: 0; }
+.svcmenu__row { display: flex; align-items: stretch; border-bottom: 1px solid var(--line); }
+.svcmenu__row:last-child { border-bottom: 0; }
+.svcmenu__link {
+  flex: 1 1 auto; display: block; padding: 12px 16px;
+  font-size: 15px; line-height: 1.35; color: var(--ink);
+}
+.svcmenu__link:hover { color: var(--brand-dark); }
+.svcmenu__row--title .svcmenu__link { font-weight: 700; }
+
+/* --- promo bar (W12-02) ---------------------------------------------------- */
+
+/* A static offer strip in normal flow, directly beneath the fixed header and
+   above the hero. Ruling R-H in DECISIONS.md: CLAUDE.md section 1 forbids
+   ANIMATION above the fold, and this does not animate. It is not sticky, has no
+   transition, no transform and no keyframes, and it scrolls away with the page.
+
+   Text is --ink on --brand: 5.10:1, which clears WCAG AA for normal text at any
+   size. White on --brand is 3.41:1 and fails AA below the large-text threshold,
+   which is why the bar is dark-on-orange and not the site's usual white-on-
+   orange. Both ratios are measured and recorded in DECISIONS.md.
+
+   Height is a hard cap, not a minimum, and the text is centred inside it and
+   clipped rather than allowed to push the box open. That is what makes the
+   contribution to CLS exactly zero: the strip occupies 44px from first paint,
+   before the webfont resolves and whatever the string turns out to be. */
+.promo {
+  height: 44px;
+  background: var(--brand);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--gutter);
+  overflow: hidden;
+}
+.promo__text {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
+  /* One line, always. It may not wrap into a second and it may not grow the
+     bar; on a viewport too narrow for the string it is clipped by the rule
+     above, which is a visual loss and never a layout shift. */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+/* --- hero ----------------------------------------------------------------- */
+
+/* W5-01: the eyebrow sat 96px below the band, which read as a hole. Scoped to
+   the hero only; no negative margin, the hero never slides under the header. */
+.hero { text-align: center; padding-top: 64px; }
+.hero .eyebrow { margin-bottom: 24px; }
+.hero h1 { max-width: 900px; margin: 0 auto 24px; text-wrap: pretty; }
+.hero__sub { max-width: 640px; margin: 0 auto 40px; }
+
+.stats {
+  padding: 32px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 40px;
+}
+.stat__n { font-family: var(--font-heading), var(--font-fallback); font-size: 44px; font-weight: 800; line-height: 1.15; color: var(--brand); }
+.stat__label { color: var(--ink-muted); }
+
+.price-box {
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--brand);
+  border-radius: var(--radius-control);
+  padding: 24px 28px;
+  margin: 0 auto 40px;
+  max-width: 560px;
+}
+.price-box__title { font-size: 22px; font-weight: 700; line-height: 1.15; margin-bottom: 12px; }
+.price-box__line { color: var(--ink-muted); }
+
+.cta-row { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+
+/* --- services ------------------------------------------------------------- */
+
+.service__title { margin-bottom: 0; }
+.service__desc { color: var(--ink-muted); margin-bottom: 8px; }
+
+/* --- process -------------------------------------------------------------- */
+
+.step { display: flex; flex-direction: column; gap: 16px; }
+.step__n { font-family: var(--font-heading), var(--font-fallback); font-size: 44px; font-weight: 800; line-height: 1.15; color: var(--brand); }
+.step__title { margin-bottom: 8px; }
+.step__line { color: var(--ink-muted); }
+
+/* Process now sits on #141414. --ink-muted would be 1.5:1 there, so body text
+   goes full white and the placeholder frame switches to a white border. */
+.section--dark .step__title { color: var(--bg-light); }
+.section--dark .step__line { color: var(--bg-light); }
+.section--dark .media--framed { border-color: var(--bg-light); }
+.section--dark h2 { color: var(--bg-light); }
+
+/* --- portfolio ------------------------------------------------------------ */
+
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 40px; }
+.filter {
+  height: 40px; padding: 0 20px;
+  border-radius: var(--radius-control); border: 1px solid var(--line);
+  background: transparent; color: var(--ink);
+  font-family: inherit; font-size: 17px; font-weight: 400; line-height: 1;
+  white-space: nowrap; cursor: pointer;
+}
+.filter:hover { border-color: var(--brand); color: var(--brand-dark); }
+.filter[aria-pressed='true'] { background: var(--bg-light); border-color: var(--brand); color: var(--brand-dark); font-weight: 700; }
+
+.project__media { position: relative; }
+.chip {
+  position: absolute; top: 12px; left: 12px;
+  /* 13px uppercase cannot reach the large-text threshold without wrecking the
+     card, so the fill darkens instead: white on --brand-dark is 5.93:1. */
+  background: var(--brand-dark); color: var(--bg-light);
+  font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+  line-height: 1; padding: 7px 10px; border-radius: var(--radius-control);
+}
+.project[hidden] { display: none; }
+.project__link { display: flex; flex-direction: column; height: 100%; color: inherit; }
+.project__link:hover { color: inherit; }
+.project__link:hover h3 { color: var(--brand-dark); }
+.project__desc { color: var(--ink-muted); }
+
+/* W9-04. The homepage portfolio is a teaser grid, the service page is where a
+   project is read in full. The real descriptions run eleven to thirteen lines
+   in a 366px card, which put the homepage 326px (RO) and 322px (RU) over the
+   section 2 budgets. Clamped to four lines HERE ONLY: `#proiecte` on the
+   service page is untouched and still prints every sentence.
+
+   The text stays in the DOM, so nothing is hidden from a screen reader or from
+   a crawler, and the whole card is already a link to the full entry. */
+#portfolio-grid .project__desc,
+#proiecte .project__desc {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+/* Four lines on the homepage teaser, six on the service page, where the project
+   is the subject rather than a link to it. Both are visual only: the full
+   summary stays in the DOM for a screen reader and a crawler, and it is also
+   the `description` of that project's ImageObject in the page's JSON-LD. */
+#portfolio-grid .project__desc { -webkit-line-clamp: 4; line-clamp: 4; }
+#proiecte .project__desc { -webkit-line-clamp: 6; line-clamp: 6; }
+/* Two optional project facts too long to sit in the chip row: main materials
+   and the challenge. Each renders only when it has real content, so on a
+   project with neither, nothing at all is emitted and the card is unchanged. */
+.project__fact { font-size: 15px; color: var(--ink-muted); margin-top: 8px; }
+.project__fact span { font-weight: 700; color: var(--ink); }
+/* W12-01, W12-05. The closing tile of the portfolio grid. Same box as a project
+   card and nothing else: the `card` class already supplies the background,
+   border, radius and shadow, so this rule adds no colour value and no second
+   box style.
+
+   W12-05 made it span all three columns. As a single grid cell it was alone on
+   a third row, and a row exists whether or not anything sits beside the tile:
+   that cost 193px. Spanning the full width the row is only as tall as one line
+   of content, and the same tile costs 101px. It also stops reading as a
+   seventh card that failed to load.
+
+   The numeral is the .stat__n treatment at a smaller size (34px / 800 /
+   --brand). --brand on white is 3.41:1, which clears the WCAG 3:1 large-text
+   threshold at this size and weight, the same justification the hero stats have
+   carried since wave 1. */
+.card--more {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 18px 24px;
+}
+.more__n {
+  margin: 0;
+  font-family: var(--font-heading), var(--font-fallback);
+  font-size: 34px; font-weight: 800; line-height: 1.15;
+  color: var(--brand);
+}
+.more__line { margin: 0; color: var(--ink-muted); }
+
+.portfolio__foot { display: flex; justify-content: center; margin-top: 40px; }
+.portfolio__empty { color: var(--ink-muted); margin-top: 8px; }
+
+/* --- dark stats band ------------------------------------------------------ */
+
+.band__stats { margin-bottom: 32px; }
+.band .stat { text-align: center; }
+.band .stat__n { font-size: 64px; }
+.band .stat__label { color: var(--bg-light); }
+.band__coverage { text-align: center; color: var(--line); }
+.band__coverage strong { color: var(--bg-light); font-weight: 700; }
+
+/* --- trust + reviews ------------------------------------------------------ */
+
+.trust-grid { gap: 40px 24px; }
+.trust-item { display: flex; flex-direction: column; gap: 12px; }
+.trust-item svg { display: block; }
+.trust-item__line { color: var(--ink-muted); }
+
+.divider { height: 1px; background: var(--line); border: 0; margin: 64px 0; }
+
+.review {
+  background: var(--bg-light);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.review__quote { flex: 1; }
+.review__name { font-weight: 700; }
+.review__meta { color: var(--ink-muted); }
+
+/* --- form ----------------------------------------------------------------- */
+
+.form-layout { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--gap); align-items: start; }
+.form-card { background: var(--bg-light); border: 1px solid var(--line); border-radius: var(--radius-card); box-shadow: var(--shadow-card); padding: 32px; }
+.form-card--stack { display: flex; flex-direction: column; gap: 20px; }
+.form-aside { display: flex; flex-direction: column; gap: var(--gap); }
+
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand-dark); }
+.field input, .field select, .field textarea {
+  height: var(--control-h); padding: 0 16px;
+  border: 1px solid var(--line); border-radius: var(--radius-control);
+  background: var(--bg-light); color: var(--ink);
+  font-family: inherit; font-size: 17px; line-height: 1.6;
+}
+.field textarea { height: auto; padding: 12px 16px; resize: vertical; }
+.field__hint { font-size: 13px; color: var(--ink-muted); }
+.field__error { font-size: 13px; font-weight: 700; color: var(--brand-dark); }
+.field__error[hidden] { display: none; }
+.field input[aria-invalid='true'], .field select[aria-invalid='true'] { border-color: var(--brand); }
+
+.consent { display: flex; align-items: flex-start; gap: 12px; }
+.consent input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--brand); flex: none; }
+.consent label { font-size: 13px; line-height: 1.6; color: var(--ink-muted); }
+.consent a { text-decoration: underline; }
+
+.honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.form-status { font-weight: 700; }
+.form-status[hidden] { display: none; }
+
+.aside__phone {
+  display: block; font-family: var(--font-heading), var(--font-fallback);
+  font-size: 40px; font-weight: 800; line-height: 1.15; letter-spacing: -0.01em;
+  color: var(--brand); margin-bottom: 12px; white-space: nowrap;
+}
+.aside__phone:hover { color: var(--brand-dark); }
+
+/* --- footer --------------------------------------------------------------- */
+
+.footer { background: var(--bg-dark); color: var(--bg-light); padding-top: var(--section-pad); }
+.footer__cta { display: flex; gap: 16px; flex-wrap: wrap; padding-bottom: 40px; border-bottom: 1px solid var(--bg-light); margin-bottom: 40px; }
+.footer__cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); padding-bottom: var(--section-pad); }
+.footer__brand { display: flex; flex-direction: column; gap: 16px; }
+/* W13-03. Enlarged by the same 1.5x factor as the header mark, so the two move
+   together and the footer keeps its existing relationship to the header. */
+.footer__brand img { height: 66px; width: auto; display: block; align-self: flex-start; }
+.footer__desc { max-width: 340px; }
+.footer__offer { font-weight: 700; color: var(--brand); max-width: 340px; }
+.footer__heading { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand); margin-bottom: 16px; }
+.footer__links { display: flex; flex-direction: column; gap: 10px; }
+.footer__links a:hover { color: var(--brand); }
+.footer__lists { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); }
+.footer__contact { display: flex; flex-direction: column; gap: 12px; }
+.footer__contact dt { font-size: 13px; color: var(--line); }
+.footer__contact dd { margin: 0; font-weight: 700; }
+.footer__bar { border-top: 1px solid var(--bg-light); }
+.footer__bar-inner { max-width: var(--container); margin: 0 auto; padding: 20px var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: 13px; color: var(--line); }
+.footer__bar-inner a:hover { color: var(--brand); }
+.footer__legal { display: flex; gap: 20px; flex-wrap: wrap; }
+
+/* --- floating contact ----------------------------------------------------- */
+
+.floating { position: fixed; right: 24px; bottom: 24px; z-index: 90; display: flex; flex-direction: column; gap: 12px; }
+.floating a {
+  width: 56px; height: 56px; border-radius: 28px;
+  display: inline-flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-card);
+}
+.floating svg { display: block; }
+/* Official WhatsApp brand green with the white mark, so it is never mistaken
+   for SMS. #25D366 is WhatsApp's own colour and is not part of the site palette;
+   it appears on this one control. */
+.floating__wa { background: #25D366; border: 1px solid #1EBE5A; color: #FFFFFF; }
+.floating__wa:hover { background: #1EBE5A; color: #FFFFFF; }
+.floating__call { background: var(--brand); border: 1px solid var(--brand); color: var(--bg-light); }
+.floating__call:hover { background: var(--brand-dark); border-color: var(--brand-dark); color: var(--bg-light); }
+
+/* --- long-form pages (privacy) --------------------------------------------- */
+
+.prose { max-width: 760px; }
+.prose h1 { margin-bottom: 8px; }
+.prose h2 {
+  font-size: 22px; font-weight: 800; text-transform: none; letter-spacing: 0;
+  margin: 48px 0 12px;
+}
+.prose p { margin-bottom: 16px; }
+.prose__updated { color: var(--ink-muted); font-size: 13px; margin-bottom: 24px; }
+.prose__lead { font-size: 19px; }
+.prose__todo {
+  border-left: 4px solid var(--brand);
+  background: var(--bg-grey);
+  padding: 12px 16px;
+  color: var(--ink-muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+.prose ul { margin: 0 0 16px; padding-left: 22px; }
+.prose li { margin-bottom: 8px; }
+.prose a { text-decoration: underline; }
+.prose__dl { margin: 0 0 16px; display: flex; flex-direction: column; gap: 10px; }
+.prose__dl > div { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 12px; align-items: baseline; }
+.prose__dl dt { color: var(--ink-muted); font-size: 13px; }
+.prose__dl dd { margin: 0; font-weight: 700; }
+.prose__back { margin-top: 48px; }
+
+@media (max-width: 768px) {
+  .prose__lead { font-size: 17px; }
+  .prose h2 { font-size: 19px; margin-top: 32px; }
+  .prose__dl > div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+}
+
+/* ==========================================================================
+   PHASE 2 MOTION
+   Every effect below is opacity/transform only, never touches scroll, and is
+   switched off entirely by the prefers-reduced-motion block at the end.
+   ========================================================================== */
+
+/* --- 1. card hover -------------------------------------------------------- */
+/* @media (hover: hover) so touch devices never get a stuck hover state. */
+@media (hover: hover) {
+  .card, .trust-item, .review {
+    transition: transform var(--hover-dur) ease-out,
+                box-shadow var(--hover-dur) ease-out,
+                border-color var(--hover-dur) ease-out,
+                background-color var(--hover-dur) ease-out;
+  }
+  .card:hover, .review:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-color: var(--brand);
+  }
+  .trust-item {
+    border: 1px solid transparent;
+    border-radius: var(--radius-card);
+    padding: 16px;
+    margin: -16px;
+  }
+  .trust-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-color: var(--brand);
+    background: var(--bg-light);
+  }
+  /* Shadows do not read on #141414, so the dark sections lift with a wash. */
+  .section--dark .step {
+    border: 1px solid transparent;
+    border-radius: var(--radius-card);
+    padding: 16px;
+    margin: -16px;
+    transition: transform var(--hover-dur) ease-out,
+                background-color var(--hover-dur) ease-out,
+                border-color var(--hover-dur) ease-out;
+  }
+  .section--dark .step:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--brand);
+  }
+}
+
+/* --- 2. scroll reveal ------------------------------------------------------ */
+/* The hidden state is scoped to .js-motion, which an inline script sets on
+   <html>. Without JS nothing is ever hidden. */
+.js-motion [data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+}
+.js-motion [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+  transition: opacity var(--reveal-dur) ease-out, transform var(--reveal-dur) ease-out;
+}
+/* Stagger, capped at 6 so a nine-card grid completes in 360ms. */
+.js-motion [data-reveal].is-revealed { transition-delay: 0ms; }
+.js-motion [data-reveal][data-stagger="1"].is-revealed { transition-delay: 60ms; }
+.js-motion [data-reveal][data-stagger="2"].is-revealed { transition-delay: 120ms; }
+.js-motion [data-reveal][data-stagger="3"].is-revealed { transition-delay: 180ms; }
+.js-motion [data-reveal][data-stagger="4"].is-revealed { transition-delay: 240ms; }
+.js-motion [data-reveal][data-stagger="5"].is-revealed { transition-delay: 300ms; }
+.js-motion [data-reveal][data-stagger="6"].is-revealed { transition-delay: 360ms; }
+
+/* --- 3. sticky header refinement ------------------------------------------ */
+/* Past 40px the BAND keeps its 96px height (so nothing below ever moves) and
+   only the pill compresses, plus a shadow on the band. */
+.header { transition: box-shadow var(--hover-dur) ease-out; }
+.header__pill { transition: height var(--hover-dur) ease-out, padding var(--hover-dur) ease-out; }
+.header__logo img { transition: height var(--hover-dur) ease-out; }
+.header[data-scrolled="true"] { box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08); }
+.header[data-scrolled="true"] .header__pill { height: 56px; }
+/* 56 - 16 = 40, the same 8px clearance. */
+.header[data-scrolled="true"] .header__logo img { height: 40px; }
+
+/* --- 6. supplier marquee --------------------------------------------------- */
+.marquee { overflow: hidden; padding: var(--band-pad) 0; background: var(--bg-dark); }
+.marquee h2 { color: var(--bg-light); }
+/* Reduced opacity, not reduced size: the body keeps its 17px. */
+.marquee .lede { color: var(--bg-light); opacity: 0.75; }
+.marquee__viewport {
+  overflow: hidden;
+  /* html sets scroll-behavior: smooth. Inherited here it animates the sideways
+     scroll the browser performs to reveal a focused tile, which then races the
+     reset in main.js and wins. This box is never an anchor target, so it has no
+     use for smooth scrolling. */
+  scroll-behavior: auto;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 80px, #000 calc(100% - 80px), transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 80px, #000 calc(100% - 80px), transparent);
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  /* NOT `gap`. Flex puts n-1 gaps between n tiles, so the second copy of the
+     list starts 12px short of half the track width and the -50% keyframe lands
+     12px off its seam, jumping by half a gap every cycle. Measured at 12px with
+     8, 12 and 11 brands: it was always gap/2 and had been there since phase 1.
+     A trailing margin on every tile gives n gaps, so half the width falls
+     exactly on the first duplicate. Fixed W8-04. */
+  /* The track travels half its own width per cycle. 11 brands rendered twice is
+     22 tiles at 4,928px, so 66s holds ~37px/s, the speed phase 1 ran at with 16
+     tiles in 40s. With the trailing-margin fix above the -50% seam is exact at
+     any brand count, so adding or dropping a brand cannot reopen the jump. */
+  animation: marquee-scroll 66s linear infinite;
+}
+/* Pause is a pure CSS state change on an animation. It registers no wheel,
+   touch or scroll handler, so it cannot delay, capture or hijack scrolling.
+   Keyboard focus does exactly what hover does. */
+.marquee__viewport:hover .marquee__track,
+.marquee__viewport:focus-within .marquee__track { animation-play-state: paused; }
+@keyframes marquee-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  /* The track holds the list twice; -50% lands exactly on the seam. */
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+/* White logo tile. Sized for a wordmark, 2.5:1, not for a text label. The
+   height is deliberately unchanged from phase 1: the homepage has very little
+   headroom against its budget, and a logo needs width, not height.
+   AMENDED under R-R, W12-31: this comment carried a cap and a headroom figure
+   that ruling R-J superseded (DECISIONS.md, W12-04). The budgets are per
+   locale, derived, and held in R-J. No figure is restated here, per R-Q. */
+.supplier {
+  flex: none;
+  width: 200px; height: 80px;
+  margin-right: 24px;          /* the tile gap; see .marquee__track above */
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-card);
+  background: var(--bg-light);
+  padding: 14px 20px;
+}
+/* Default: greyscale and dimmed. One full-colour source file per brand and no
+   second asset; the grey state is this filter, and hover or keyboard focus
+   removes it. Scoped to the logo, never the tile: applied to the tile it also
+   dimmed the text fallback below AA. */
+.supplier__logo {
+  filter: grayscale(100%); opacity: 0.6;
+  transition: filter var(--hover-dur) ease-out, opacity var(--hover-dur) ease-out;
+}
+/* No CLS without an explicit box: the tile is a fixed 200x80 and the logo is
+   clamped inside it, whatever the file's own dimensions turn out to be. */
+.supplier__logo { max-width: 160px; max-height: 52px; width: auto; height: auto; }
+/* Guarded: on a touch device :hover sticks after a tap. Focus is not guarded,
+   it is exactly the keyboard equivalent and must always work. */
+@media (hover: hover) {
+  .supplier:hover .supplier__logo { filter: grayscale(0%); opacity: 1; }
+}
+.supplier:focus-visible .supplier__logo { filter: grayscale(0%); opacity: 1; }
+.supplier:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; }
+/* Text fallback until a logo file lands. Full-strength --ink on #FFFFFF,
+   17.40:1. It is not dimmed with the logo: contrast is worth more than the
+   visual consistency of a placeholder. */
+.supplier__label {
+  font-size: 15px; font-weight: 700; line-height: 1.2;
+  color: var(--ink); text-align: center;
+  word-break: break-word;
+}
+
+/* --- 6b. footer social links ------------------------------------------------ */
+/* Monochrome, drawn in currentColor. Brand colours are deliberately not used:
+   Instagram, Facebook and TikTok would add at least three values to a palette
+   that is fixed at ten, and the footer's own language is white on #141414.
+   Hover and focus move to --brand, which is already in the set. */
+/* It lives in the footer bar, not in a column: the bar already runs 62px tall
+   with 700px of unused width, so the row costs the page ZERO height. In the
+   contact column it cost 70px, which the homepage had no room for.
+   AMENDED under R-R, W12-31: the cap and the headroom figure this comment
+   carried were superseded by ruling R-J (DECISIONS.md, W12-04). R-J makes the
+   decision recorded here STRONGER, not weaker: the real headroom was a
+   fraction of the figure written at the time, so the 70px row would have blown
+   the budget outright rather than eaten part of it. Budgets are held in R-J
+   and no figure is restated here, per R-Q. */
+.footer__social { display: flex; gap: 4px; align-items: center; }
+.footer__social a {
+  /* 44x44 clears the WCAG 2.5.8 target minimum with room to spare. The bar's
+     line box is ~22px inside 20px of padding, so a negative block margin lets
+     the target overlap that padding rather than grow the bar: the hit area
+     stays 44px and the bar height does not move. */
+  width: 44px; height: 44px;
+  margin: -11px 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--bg-light);
+  border-radius: var(--radius-control);
+  transition: color var(--hover-dur) ease-out, background-color var(--hover-dur) ease-out;
+}
+.footer__social a:hover { color: var(--brand); background: rgba(255, 255, 255, 0.06); }
+.footer__social a:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.footer__social svg { display: block; }
+
+/* --- 7. hero two-panel block ---------------------------------------------- */
+.hero-panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap);
+  align-items: stretch;
+  margin-top: 32px;
+  text-align: left;
+}
+.hero-claim {
+  background: var(--bg-dark);
+  color: var(--bg-light);
+  border-radius: var(--radius-card);
+  padding: 32px;
+  display: flex; flex-direction: column;
+}
+.hero-claim h2 {
+  font-size: 28px; color: var(--bg-light);
+  text-transform: none; letter-spacing: 0; margin-bottom: 16px;
+}
+.hero-claim__line { color: var(--bg-light); margin-bottom: 8px; }
+
+/* CTA sits inside the card, left aligned, in the space above the divider. */
+.hero-claim__cta { align-self: flex-start; margin-top: 20px; }
+
+/* W14-07. The social row sits under the CTA on the dark card. Same 44px targets
+   as the footer row, so WCAG 2.5.8 is cleared, and the first icon is pulled left
+   by its own inset so the glyph lines up with the CTA's left edge. Hover changes
+   colour only; the transition is disabled under reduced motion by the global rule. */
+.hero-claim__social { list-style: none; margin: 12px 0 0 -11px; padding: 0; display: flex; gap: 4px; align-items: center; }
+.hero-claim__social a {
+  width: 44px; height: 44px;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--bg-light); border-radius: var(--radius-control);
+  transition: color var(--hover-dur) ease-out, background-color var(--hover-dur) ease-out;
+}
+.hero-claim__social a:hover { color: var(--brand); background: rgba(255, 255, 255, 0.06); }
+.hero-claim__social a:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.hero-claim__social svg { display: block; }
+
+.hero-claim__divider { height: 1px; background: rgba(255, 255, 255, 0.25); margin: 24px 0 16px; border: 0; margin-top: auto; }
+
+/* Three separate rows, each with its own middot marker. */
+.hero-claim__highlights { list-style: none; margin: 0; padding: 0; }
+.hero-claim__highlights li {
+  color: var(--brand); font-weight: 700; font-size: 16px; line-height: 1.5;
+  padding-left: 16px; position: relative;
+  /* one line each: never wrap into six rows */
+  text-wrap: pretty;
+}
+.hero-claim__highlights li::before {
+  content: '·'; position: absolute; left: 0; top: 0;
+}
+.hero-claim__highlights li + li { margin-top: 4px; }
+.hero-panel-media { border-radius: var(--radius-card); border: 1px solid var(--line); overflow: hidden; }
+/* W14-07 fix. The panel keeps a 4:3 ratio and stretches to the claim card's
+   height, so when the card grows (W14-07 added the social row) the ratio pushed
+   the panel wider than its column: 573px in a 514px column on RU at 1100px, 35px
+   past the viewport. Capping it at the column lets the stretched height stand and
+   the photo crop with object-fit, as it already does. */
+.hero-panels > .hero-panel-media { max-width: 100%; min-width: 0; }
+/* contain, not cover. The illustration is 4:3 and the box is 4:3, so the two
+   render identically today, but contain guarantees a future asset at a
+   different ratio is letterboxed rather than silently cropped. */
+.hero-panel-media img { object-fit: contain; }
+/* W6-03: with a real photograph the box should be filled, not letterboxed.
+   process-photos crops to exactly 4:3, so contain and cover agree, but the
+   intent differs and cover is right for a photo. */
+.hero-panel-media--photo img { object-fit: cover; }
+
+/* --- W14-08, acoperișuri offer cards (S-02) -------------------------------- */
+/* Anatomy from the wave 14 audit 3.2, in this site's tokens: a 4px --brand top
+   border, no radius, no shadow; a ghost numeral in --brand at 0.1 opacity behind
+   the title area; body in two columns, image left at 0.81:1 when a real image
+   exists, text right with the CTA at its foot. The ghost numeral is decorative
+   (aria-hidden) and is text at reduced opacity on a white card, not a
+   translucent section overlay, so docs/CLAUDE.md section 3 is not engaged. */
+.offers {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap); margin-top: 40px;
+}
+.offer {
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+  background: var(--bg-light);
+  border: 1px solid var(--line); border-top: 4px solid var(--brand);
+  padding: 28px;
+}
+.offer__n {
+  position: absolute; top: 4px; right: 20px; margin: 0;
+  font-size: 92px; font-weight: 800; line-height: 1;
+  color: var(--brand); opacity: 0.1; pointer-events: none; user-select: none;
+}
+.offer__title {
+  position: relative; max-width: 80%;
+  font-size: 22px; text-transform: uppercase; letter-spacing: 0;
+}
+.offer__body { flex: 1 1 auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; margin-top: 20px; }
+.offer--media .offer__body { grid-template-columns: minmax(0, 300fr) minmax(0, 262fr); }
+.offer__media { aspect-ratio: 81 / 100; border: 1px solid var(--line); overflow: hidden; background: var(--bg-grey); }
+.offer__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.offer__text { display: flex; flex-direction: column; min-width: 0; }
+.offer__desc { margin: 0; }
+.offer__options-label { margin: 16px 0 0; font-weight: 700; }
+.offer__options { margin: 8px 0 0; padding-left: 20px; list-style: disc; }
+.offer__options li::marker { color: var(--brand); }
+.offer__options li + li { margin-top: 4px; }
+/* The CTA sits under the paragraph on cards 02 and 04, which have no options
+   (audit 3.2). After an option list, on cards 01 and 03, it is pushed to the foot
+   of the right column, so it lines up with the bottom of a taller image; the
+   list keeps a 24px floor above it either way. */
+.offer__cta { align-self: flex-start; margin-top: 24px; }
+.offer__options { margin-bottom: 24px; }
+.offer__options + .offer__cta { margin-top: auto; }
+
+/* --- W14-09, before/after slider (S-03) ------------------------------------ */
+/* Renders only when content/before-after.json has projects. Per audit 3.3: the
+   after image fills the frame; the before image lies on top, clipped from the
+   right by --position, so before reads on the left and after on the right. The
+   handle is a full-height 4px white line with a centred 40x70 pill carrying three
+   grip bars. Labels are fixed to the frame corners, not to the divider.
+
+   Three departures from the audit, each for a rule here:
+   - touch-action is pan-y, not none. A vertical swipe over the photo still
+     scrolls the page (docs/CLAUDE.md section 1: never capture scroll); only a
+     horizontal drag moves the divider.
+   - The labels sit on solid --bg-dark, not 82% black: no new colour value and no
+     translucent overlay (section 3).
+   - The frame uses the site's --radius-card and card shadow, not 18px.
+   Nothing animates: the divider follows the pointer or a key, with no transition. */
+.ba__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+.ba__nav { display: flex; gap: 12px; flex: none; }
+.ba__arrow {
+  width: 56px; height: 56px; border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--bg-light); color: var(--ink); border: 1px solid var(--brand); cursor: pointer;
+}
+.ba__arrow:hover { background: var(--brand); color: var(--ink); }
+.ba__arrow:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+.ba__stage { margin-top: 40px; }
+.ba__item { margin: 0; }
+.ba__item[hidden] { display: none; }
+.ba__compare {
+  position: relative; overflow: hidden;
+  aspect-ratio: 1180 / 664;
+  border-radius: var(--radius-card); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  background: var(--bg-grey);
+  cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none;
+}
+.ba__after, .ba__before-img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;
+  pointer-events: none;
+}
+/* W24-05. A slot with no photograph renders the W24-01 placeholder in the same
+   box the img would fill. The frame supplies the aspect ratio, so the
+   placeholder's own is overridden here rather than being written per slot, and
+   its rounded corners are the frame's. The before slot is the light variant and
+   the after slot the dark one, which is what makes the drag visibly work with no
+   photographs in place. */
+.ba__ph {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  aspect-ratio: auto; border: 0; border-radius: 0;
+  pointer-events: none;
+}
+/* The frame is 1180x664, so the slot id sits larger than it does on a card. */
+.ba__ph .ph__id { font-size: 16px; letter-spacing: 0.12em; }
+
+/* W24-05. The heading is two lines and the second is brand orange, which is the
+   reference's geometry and hierarchy (W24-R8) and no new colour: --brand is the
+   first of the ten. It is a span inside the h2 rather than a second heading, so
+   the page's heading levels are unchanged and a screen reader reads one heading. */
+.ba__h-line { display: block; color: var(--brand); }
+.ba__before { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--position)) 0 0); }
+.ba__handle {
+  position: absolute; top: 0; bottom: 0; left: var(--position); width: 44px;
+  transform: translateX(-50%);
+  display: flex; align-items: center; justify-content: center;
+  cursor: ew-resize;
+}
+.ba__handle::before {
+  content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 4px; margin-left: -2px;
+  background: var(--bg-light);
+}
+.ba__handle:focus-visible { outline: none; }
+.ba__handle:focus-visible .ba__pill { outline: 2px solid var(--brand); outline-offset: 2px; }
+.ba__pill {
+  position: relative; width: 40px; height: 70px; border-radius: 999px;
+  background: var(--bg-light); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  display: flex; align-items: center; justify-content: center; gap: 5px;
+}
+.ba__pill span { width: 2px; height: 24px; background: var(--bg-dark); border-radius: 1px; }
+.ba__label {
+  position: absolute; bottom: 24px; height: 38px; padding: 0 14px;
+  display: flex; align-items: center;
+  background: var(--bg-dark); color: var(--bg-light);
+  font-size: 14px; font-weight: 700; line-height: 1; text-transform: uppercase; letter-spacing: 0.08em;
+  pointer-events: none;
+}
+.ba__label--before { left: 24px; }
+.ba__label--after { right: 24px; }
+
+/* --- W14-10, metal tile grid (S-04) ---------------------------------------- */
+/* One card per model, four across at desktop so the section stays under the
+   1,400px cap, two at 1024px and below, one below 768px. A card is a column of
+   grade blocks, each with its list price, its specs as a definition list, and
+   its colours as text chips grouped by finish. No swatch colour, no discount
+   styling, no struck price (R-X). */
+.tiles {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap); margin-top: 40px; align-items: start;
+}
+.tile {
+  background: var(--bg-light); border: 1px solid var(--line); border-top: 4px solid var(--brand);
+  padding: 20px;
+}
+/* W18-01 (RC-138). The profile diagram above each model's name, drawn to the
+   carport diagrams' rules below: lines in the card's text colour, the profile
+   in --brand. Wider than a carport diagram, because it carries its dimension
+   labels as text and they must stay legible. */
+.tile-diagram { margin-bottom: 16px; color: var(--ink); }
+.tile-diagram__svg { display: block; width: 100%; max-width: 280px; height: auto; }
+.tile-diagram .d-accent { stroke: var(--brand); }
+.tile__name { font-size: 20px; text-transform: uppercase; letter-spacing: 0; }
+.tile__media { margin-top: 16px; aspect-ratio: 1 / 1; border: 1px solid var(--line); overflow: hidden; background: var(--bg-grey); }
+.tile__media img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.tile__variant { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+.tile__grade {
+  margin: 0; font-size: 13px; font-weight: 700; line-height: 1; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--brand-dark);
+}
+.tile__price { margin: 8px 0 0; color: var(--ink); font-size: 15px; }
+.tile__amount { font-size: 28px; font-weight: 800; line-height: 1; }
+.tile__specs { margin: 12px 0 0; display: grid; gap: 4px; }
+.tile__specs div { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; }
+.tile__specs dt { color: var(--ink-muted); }
+.tile__specs dd { margin: 0; font-weight: 700; text-align: right; }
+.tile__palette { margin-top: 12px; }
+.tile__palette-h { margin: 0; font-size: 14px; color: var(--ink-muted); }
+.tile__finish { margin: 8px 0 0; font-size: 13px; font-weight: 700; }
+.tile__colours { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
+.tile__colour {
+  font-size: 12px; line-height: 1.3; padding: 2px 6px;
+  border: 1px solid var(--line); border-radius: var(--radius-control); color: var(--ink);
+}
+.tile__code { font-weight: 700; }
+/* W14-22, corrected by W15-04. The swatch is an approximate value authored in
+   this repo, set inline from the data (the section 3 exception, tile grid only).
+   It is not any standards body's published colour figure. Gloss carries a highlight from
+   top left; matt is flat, which is its surface treatment. The highlight and the
+   edge reuse values this file already has, so no colour value is added here. */
+.tile__colour { display: inline-flex; align-items: center; gap: 6px; }
+.tile__swatch {
+  width: 14px; height: 14px; flex: none; border-radius: 3px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.4), transparent 60%);
+}
+.tile__swatch--matt { background-image: none; }
+.tile__swatch-note { margin: 8px 0 0; font-size: 12px; line-height: 1.4; color: var(--ink-muted); }
+
+/* --- W14-11, carports (S-06) ----------------------------------------------- */
+/* Three sections, alternating white, #141414, white, so the dark process
+   section after them keeps the hard-edged rhythm. Structure per audit 4.2,
+   in this site's tokens:
+   - Chooser bento: five tiles in three columns, the first spanning two.
+   - Models: twelve cards on the dark band, three across. Card borders are the
+     permitted rgba(255, 255, 255, x) hairline on the dark band. The category
+     chip is --brand-dark with white text, the site's existing chip pairing.
+   - Steps: four white tiles with a 1px --line border. The audit's grey tile fill
+     is not used: --bg-grey is an image placeholder fill only (section 3). The
+     orange numeral circle carries a 19px bold digit, which clears WCAG's
+     large-text threshold, so white on --brand is judged at 3:1. */
+/* W14-23. The line diagram above each family tile and model card. Lines take the
+   card's text colour; the roof line takes --brand. */
+.cop-diagram { margin-bottom: 16px; color: var(--ink); }
+.cop-diagram__svg { display: block; width: 100%; max-width: 200px; height: auto; }
+.cop-diagram .d-accent { stroke: var(--brand); }
+.model .cop-diagram { color: var(--bg-light); }
+
+.bento { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); margin-top: 40px; }
+.bento__tile { background: var(--bg-light); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 24px; }
+.bento__tile--wide { grid-column: span 2; }
+.bento__title { font-size: 20px; }
+.bento__text { margin: 8px 0 0; }
+.bento__chips { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.model-chip {
+  font-size: 13px; font-weight: 700; line-height: 1; padding: 6px 10px;
+  border: 1px solid var(--line); border-radius: 999px; color: var(--ink);
+}
+
+.cop-lede--dark { color: var(--bg-light); }
+.models { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); margin-top: 40px; }
+.model { border: 1px solid rgba(255, 255, 255, 0.25); border-radius: var(--radius-card); padding: 20px; }
+.model__cat {
+  display: inline-block; margin: 0; padding: 4px 8px;
+  background: var(--brand-dark); color: var(--bg-light); border-radius: var(--radius-control);
+  font-size: 12px; font-weight: 700; line-height: 1.3; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.section--dark .model__name { margin-top: 12px; font-size: 22px; color: var(--bg-light); }
+.model__desc { margin: 6px 0 0; color: var(--bg-light); }
+
+.csteps { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.csteps__step { background: var(--bg-light); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 24px; }
+.csteps__n {
+  width: 40px; height: 40px; border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--brand); color: var(--bg-light); font-size: 19px; font-weight: 700; line-height: 1;
+}
+.csteps__title { margin-top: 16px; font-size: 19px; }
+.csteps__text { margin: 8px 0 0; }
+
+
+/* --- W14-16, the homepage teaser row -------------------------------------- */
+/* Three link cards to the product pages, one row, compact: no section heading,
+   the section carries an aria-label. White cards with the line border and a
+   brand top edge, the same family as the offer cards above. */
+.section--teaser { padding: 48px 0; }
+.teasers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+.teaser {
+  display: flex; flex-direction: column; gap: 8px;
+  background: var(--bg-light); border: 1px solid var(--line); border-top: 4px solid var(--brand);
+  padding: 20px 24px; color: var(--ink);
+}
+.teaser:hover .teaser__title { color: var(--brand-dark); }
+.teaser__title { font-size: 20px; text-transform: uppercase; letter-spacing: 0; }
+.teaser__line { margin: 0; color: var(--ink-muted); }
+.teaser__more { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; font-weight: 700; color: var(--brand-dark); }
+
+/* --- 8. service illustration box ------------------------------------------ */
+/* Fixed 4:3 box, illustration centred and contained. The <img> always resolves
+   because placeholder SVGs ship until the real ones land. */
+.media--illustration {
+  aspect-ratio: 4 / 3;
+  background: var(--bg-grey);
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.media--illustration img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* --- 5. lead capture modal -------------------------------------------------- */
+.modal[hidden] { display: none; }
+.modal {
+  position: fixed; inset: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  /* The single permitted translucency on the site: an overlay, not a section. */
+  background: rgba(0, 0, 0, 0.6);
+}
+.modal__panel {
+  background: var(--bg-light);
+  border-radius: var(--radius-card);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  padding: 32px;
+  width: 100%; max-width: 440px;
+  position: relative;
+}
+.modal__close {
+  position: absolute; top: 8px; right: 8px;
+  width: 44px; height: 44px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: transparent; border: 0; color: var(--ink-muted); cursor: pointer;
+  border-radius: var(--radius-control);
+}
+.modal__close:hover { background: var(--bg-grey); color: var(--ink); }
+.modal h2 { font-size: 26px; margin-bottom: 12px; padding-right: 40px; }
+.modal__sub { color: var(--ink-muted); margin-bottom: 20px; }
+.modal .field { margin-bottom: 16px; }
+/* The one gradient permitted on the site, on this button only. */
+.modal__submit {
+  width: 100%;
+  background: linear-gradient(135deg, #F65308 0%, #B23C08 100%);
+  color: var(--bg-light);
+  border: 0;
+}
+.modal__submit:hover { background: linear-gradient(135deg, #B23C08 0%, #B23C08 100%); color: var(--bg-light); }
+.modal__fine { font-size: 13px; color: var(--ink-muted); margin-top: 16px; }
+.modal__fine a { text-decoration: underline; }
+.modal__status { font-weight: 700; margin-top: 12px; }
+.modal__status[hidden] { display: none; }
+
+/* W12-21. The privacy page numbers its own sections.
+
+   The ordinals used to be typed into the heading strings, which meant inserting
+   a section at the top renumbered every heading below it: adding the operator
+   identity, when the registry extract lands, would have been a rewrite of five
+   strings in two locale files rather than an addition. A counter makes the new
+   section purely additive. No new colour, no new box. */
+.prose { counter-reset: prose-section; }
+.prose h2 { counter-increment: prose-section; }
+.prose h2::before { content: counter(prose-section) ". "; }
+
+/* --- reviews: aggregate panel + cards ------------------------------------- */
+.reviews-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  gap: 40px var(--gap);
+  align-items: start;
+}
+.rating {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 32px;
+  text-align: center;
+}
+.rating__score {
+  font-family: var(--font-heading), var(--font-fallback);
+  font-size: 64px; font-weight: 800; line-height: 1.15; color: var(--brand);
+}
+.rating__outof { color: var(--ink-muted); margin-bottom: 12px; }
+.rating__count { font-weight: 700; margin-top: 12px; }
+
+/* Five outline stars with a filled copy clipped to the real percentage.
+   No gradient: the overlay is width-clipped. */
+.stars { position: relative; display: inline-block; line-height: 0; }
+.stars__base, .stars__fill { display: flex; gap: 4px; }
+.stars__fill {
+  position: absolute; inset: 0;
+  overflow: hidden; white-space: nowrap;
+}
+.stars svg { display: block; flex: none; }
+
+.rating__google[hidden] { display: none; }
+.rating__google { margin-top: 16px; }
+
+.review__head { display: flex; flex-direction: column; gap: 4px; margin-bottom: 4px; }
+.review__name { font-weight: 700; }
+.review__tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.review__tag {
+  font-size: 13px; color: var(--ink-muted);
+  border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px;
+}
+.review__quote { flex: 1; }
+
+@media (max-width: 1024px) {
+  .reviews-layout { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* --- service pages --------------------------------------------------------- */
+/* W14-03. The service answer under the H1, one paragraph per line. Two classes
+   deep so the 768px `.hero__sub` margin does not reach it. */
+.svc-answer .svc-answer__p { margin: 12px 0 0; }
+.svc-answer .svc-answer__p:first-child { margin-top: 16px; }
+.breadcrumb {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--ink-muted); margin-bottom: 24px;
+}
+.breadcrumb a { text-decoration: underline; }
+.breadcrumb a:hover { color: var(--brand-dark); }
+.breadcrumb [aria-current='page'] { color: var(--ink); font-weight: 700; }
+
+.svc-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+  gap: 40px var(--gap);
+  align-items: center;
+}
+.svc-hero__art {
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--bg-dark);
+}
+.svc-hero__art img { width: 100%; height: 100%; object-fit: contain; display: block; }
+/* An illustration is contained on the dark field; a photograph fills it. */
+.svc-hero__art--photo img { object-fit: cover; }
+
+/* The dark price strip is a band, not a full section. */
+.section--compact { padding: var(--band-pad) 0; }
+
+@media (max-width: 1024px) {
+  .svc-hero__grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ==========================================================================
+   W14-15. Header: the desktop nav tightens at 1180px and collapses at 1100px
+   ========================================================================== */
+
+/* Between 1101 and 1180px the desktop nav did not fit at its full spacing: on
+   the live site the wordmark covered the first link and the last link ran into
+   the phone number, by up to 16px (RO) and 28px (RU) at 1101px. These are the
+   spacing values the 1024px block already used, moved up to where they are
+   needed. Nothing new is chosen. */
+@media (max-width: 1180px) {
+  /* W14-21: one step below the desktop values above. */
+  .nav { gap: 16px; }
+  .nav > a, .nav .svcmenu__toggle { font-size: 15px; }
+  .header__actions { gap: 12px; }
+}
+
+/* At 1100px and below the header collapses to the hamburger layout, which used
+   to start at 768px. Between 769 and 1100px the desktop nav overlapped itself on
+   the live site (Q-W14-05). These rules moved here unchanged from the 768px
+   block; the body spacer moves with them because it is the header's height. */
+@media (max-width: 1100px) {
+  body { padding-top: 80px; }
+  .nav, .header__actions { display: none; }
+  .header__mobile { display: flex; }
+  .icon-btn { display: inline-flex; }
+  .header { height: 80px; }
+  .header__pill { padding: 0 8px 0 16px; height: 56px; }
+  .header[data-scrolled="true"] .header__pill { height: 52px; }
+  /* Same 8px clearance as the desktop pill: 56 - 16 and 52 - 16. */
+  .header__logo img { height: 40px; }
+  .header[data-scrolled="true"] .header__logo img { height: 36px; }
+  .mobile-panel { top: 80px; }
+}
+
+/* ==========================================================================
+   Tablet — 1024px and below: 3-col grids become 2-col, 5-col process becomes 3
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  :root { --section-pad: 72px; }
+  .bento, .models, .csteps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid--5 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  h1 { font-size: 44px; }
+  .form-layout { grid-template-columns: minmax(0, 1fr); }
+  .hero-panels { grid-template-columns: minmax(0, 1fr); }
+  .footer__cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .footer__brand { grid-column: 1 / -1; }
+}
+
+/* ==========================================================================
+   Mobile — 768px and below: single column throughout
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  :root {
+    --gutter: 16px;
+    --section-pad: 56px;
+    --gap: 16px;
+  }
+
+  body { font-size: 16px; }
+  h1 { font-size: 32px; letter-spacing: -0.01em; }
+  h2 { font-size: 26px; letter-spacing: 0; }
+  h3 { font-size: 19px; }
+
+
+  /* W14-16. Teaser cards stack. */
+  .teasers { grid-template-columns: minmax(0, 1fr); }
+  .section--teaser { padding: 40px 0; }
+
+  /* W14-12. Fence cards, one column. */
+
+  /* W14-11. Carport chooser, models and steps go to one column. */
+  .bento, .models, .csteps { grid-template-columns: minmax(0, 1fr); }
+  .bento__tile--wide { grid-column: auto; }
+
+  /* W14-10. One tile card per row. */
+  .tiles { grid-template-columns: minmax(0, 1fr); }
+  .tile__amount { font-size: 24px; }
+
+  /* W14-09. The arrows drop below the heading, and the corner labels tighten. */
+  .ba__head { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .ba__arrow { width: 48px; height: 48px; }
+  .ba__label { bottom: 12px; height: 30px; padding: 0 10px; font-size: 12px; }
+  .ba__label--before { left: 12px; }
+  .ba__label--after { right: 12px; }
+
+  /* W14-08. Offer cards stack to one column, and a card with an image stacks its
+     image above its text. */
+  .offers { grid-template-columns: minmax(0, 1fr); }
+  .offer { padding: 24px; }
+  .offer__n { font-size: 72px; right: 16px; }
+  .offer__title { font-size: 19px; }
+  .offer--media .offer__body { grid-template-columns: minmax(0, 1fr); }
+  .offer__cta { width: 100%; align-self: stretch; }
+
+  /* W14-06. Below 768px the catalog panel takes the same fixed sheet as the
+     hamburger panel, and a subcategory list is a drill-down over it.
+
+     W24-02. The desktop toggle carries the primary button's white label at
+     19px/700, which is above WCAG's large-text threshold, where 3.41:1 is the
+     bar. Here the label is 14px and there is no room to raise it: measured at
+     375px, a 19px label leaves RO 8px and RU 3px of slack against the desktop
+     floor of 8px, where 14px leaves RO 23px and RU 19px. So the phone keeps the
+     small label and takes --ink on --brand instead, 5.10:1, which is legible at
+     any size. The fill is the same --brand as everywhere; only the label moves,
+     and it moves on the phone because that is where the size is fixed. Open and
+     hover are unchanged: white on --brand-dark, 5.93:1. */
+  .catalog__toggle { height: 36px; padding: 0 12px; font-size: 14px; color: var(--ink); }
+  /* Only a pill that carries the catalog tightens its gap, so a page without
+     one keeps the W13-03 layout exactly. Measured: at 24px the RU pill needs
+     347px and a 360px viewport gives it 328. */
+  .header__pill:has(.catalog) { gap: 8px; }
+  .catalog__panel {
+    position: fixed; top: 80px; left: 0; right: 0; bottom: 0;
+    width: auto; border-width: 1px 0 0; border-radius: 0; box-shadow: none; overflow-y: auto;
+  }
+  .catalog__sub {
+    top: 0; left: 0; right: 0; bottom: 0; width: auto; min-height: 100%;
+    border: 0; border-radius: 0; box-shadow: none;
+  }
+  .catalog__back {
+    display: flex; align-items: center; gap: 8px; width: 100%;
+    padding: 14px 16px; background: transparent; border: 0; border-bottom: 1px solid var(--line);
+    font-family: inherit; font-size: 15px; font-weight: 700; color: var(--ink); cursor: pointer; text-align: left;
+  }
+
+  /* Hard cap, 36px. The type shrinks to fit the line rather than the bar
+     growing or the text moving: 13px clipped the Russian string at 360px and
+     both strings at 320px, and the card's instruction there is to reduce the
+     font size, never to introduce motion. The floor of the clamp, 11px, is the
+     size at which the longer string (Russian, 331px at 13px) fits the 288px
+     available inside a 320px viewport. Measured widths are in DECISIONS.md.
+
+     A viewport-relative size is still a static size: it is fixed for a given
+     viewport and never animates, and the bar's height is capped independently
+     of it, so nothing here can shift layout. */
+  .promo { height: 36px; }
+  .promo__text { font-size: clamp(11px, 3.4vw, 13px); }
+
+  /* The grid is one column here, so the tile is full width already and the
+     numeral and sentence would be cramped side by side. Stack them. */
+  .card--more { flex-direction: column; text-align: center; gap: 4px; }
+
+  .grid--3, .grid--5 { grid-template-columns: minmax(0, 1fr); }
+  .grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  /* W5-03: desktop keeps the tightened 64px; mobile returns to the section
+     rhythm of 56px, which was already inside the intended range. */
+  .hero { padding-top: 56px; }
+  .hero .eyebrow { margin-bottom: 16px; }
+  .hero { text-align: left; }
+  .hero h1 { margin: 0 0 16px; }
+  .hero__sub { margin: 0 0 24px; }
+  .stats { padding: 24px 0; margin-bottom: 24px; }
+  .stat__n { font-size: 32px; }
+  .price-box { padding: 16px 20px; margin-bottom: 24px; }
+  .price-box__title { font-size: 19px; }
+  .cta-row { flex-direction: column; }
+  .cta-row .btn { width: 100%; }
+
+  /* Single column: without a cap, a 4:3 slot at a 736px container is 552px
+     tall and the services section balloons. No effect at the 390px reference
+     width, where a 4:3 slot is already only 268px. */
+  .media--4x3, .media--3x2 { max-height: 300px; }
+  /* W19-D2. The card images above stretch to their column, so the cap only crops
+     them. The two hero boxes do not: a grid item with an aspect ratio sizes its
+     width from its height, so under the 300px cap they shrank to 300 x 4/3 = 400px
+     and hung left in any column wider than that (401 to 768px). Given the column's
+     width, they keep the cap and crop by height the way the cards do. Both
+     variants, the photograph and the SVG fallback, carry the same 4:3 box. */
+  .hero-panel-media, .svc-hero__art { width: 100%; }
+
+  .hero-claim { padding: 24px; }
+  .hero-claim h2 { font-size: 22px; }
+  .hero-claim__cta { width: 100%; align-self: stretch; }
+  .hero-claim__highlights li { font-size: 15px; }
+  .modal__panel { padding: 24px; }
+  .modal h2 { font-size: 22px; }
+  .media--illustration { padding: 16px; }
+
+  .card__body { padding: 16px; }
+  .step__n { font-size: 32px; }
+  .filters { margin: 16px 0 24px; }
+  .filter { height: 44px; padding: 0 16px; font-size: 16px; }
+  .portfolio__foot .btn { width: 100%; }
+
+  .band .stat__n { font-size: 44px; }
+  .trust-grid { gap: 32px 16px; }
+  .divider { margin: 40px 0; }
+
+  .form-card { padding: 16px; }
+  .field input, .field select, .field textarea { font-size: 16px; }
+  .aside__phone { font-size: 26px; }
+
+  .footer__cta { flex-direction: column; }
+  .footer__cta .btn { width: 100%; }
+  .footer__cols { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .footer__lists { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .footer__bar-inner { flex-direction: column; gap: 8px; }
+
+  .floating { right: 16px; bottom: 16px; }
+}
+
+
+/* ==========================================================================
+   prefers-reduced-motion: every phase 2 effect OFF, not softened.
+   Elements render in their final state.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Reveals: final state immediately, regardless of observer. */
+  .js-motion [data-reveal],
+  .js-motion [data-reveal].is-revealed {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  /* Hover: no travel. Colour feedback stays, it is not motion. */
+  .card:hover, .review:hover, .trust-item:hover,
+  .section--dark .step:hover { transform: none !important; }
+  /* Marquee: stopped dead, static row. Nothing to pause, so hover and focus
+     have nothing to do and cannot error; they only ever set a play state. */
+  .marquee__track { animation: none !important; transform: none !important; }
+  .marquee__viewport { overflow-x: auto; }
+  /* Every logo full colour: the grey default is a motion-adjacent effect and
+     there is no hover reveal left to restore it. */
+  .supplier__logo { filter: none !important; opacity: 1 !important; transition: none !important; }
+  /* The second copy exists only to make the loop seamless. With no loop it is
+     twelve repeated tiles a reader has to scroll past. */
+  .supplier[aria-hidden="true"] { display: none; }
+  /* Header: no compression animation. */
+  .header, .header__logo img { transition: none !important; }
+  /* Modal: no entrance. */
+  .modal, .modal__panel { transition: none !important; animation: none !important; }
+}
+
+/* W14-06. At 374px and below even the tightened pill cannot fit the catalog
+   label beside the wordmark and the two mobile buttons, so the toggle becomes
+   a 36px icon button. The label stays in the accessibility tree, clipped rather
+   than removed, so the button keeps its name. */
+@media (max-width: 374px) {
+  .catalog__toggle { width: 36px; padding: 0; }
+  .catalog__icon { display: block; }
+  .catalog__label {
+    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+}

@@ -664,10 +664,18 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     stylesheet first: "declared far apart" gives 9 false positives, "bare class declared
     twice" gives 12, this gives 0. A noisy gate gets worked around. It fails on a missing
     stylesheet, on zero rules parsed and on zero bare class selectors.
-    **Its self-test is both real defects**: it reads `src/styles.css` as it stood at
-    `3392bb4` and requires this gate to name `.faq` AND `.bento__tile`, with the shipping
-    stylesheet watched clean immediately before and after (R-AB). An unreachable commit
-    is a failure, never a skip.
+    **Its self-test is both real defects**: `src/styles.css` as it stood at `3392bb4`,
+    which carried both collisions at once, and this gate must name `.faq` AND
+    `.bento__tile`, with the shipping stylesheet watched clean immediately before and
+    after (R-AB). That stylesheet is **vendored** at
+    `scripts/fixtures/styles-at-3392bb4.css`. The first version read it from git and
+    `quality` failed in five seconds, because `actions/checkout` makes a shallow clone: a
+    gate that depends on the clone depth of whoever runs it does not run everywhere, and
+    `fetch-depth: 0` would fetch 35MB of history on every run to serve one self-test.
+    The fixture is a historical snapshot, so it cannot drift; and **where the commit IS
+    reachable, it is verified byte-for-byte against git before use**, so a workstation
+    proves the fixture honest and CI trusts the proof. A missing fixture is a failure,
+    never a skip.
 
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number — Q-W14-03 was found "at gate 9" — and those bodies are immutable under

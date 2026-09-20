@@ -53,6 +53,10 @@
    stylesheet that ships, read clean immediately before and immediately after
    (R-AB). Neither arm is invented: each is a thing this repo actually shipped.
 
+   That stylesheet is VENDORED at `scripts/fixtures/styles-at-3392bb4.css`, and
+   where the commit is reachable it is verified byte-for-byte against git first.
+   See the comment at ARM_SHA for why it is committed rather than read from git.
+
    Zero dependencies, no browser, no build.
 
    Usage:  node scripts/check-css-collisions.js [stylesheet] */
@@ -180,18 +184,42 @@ if (controlBefore.problems.length) {
 }
 console.log(`self-test control (${path.relative(ROOT, SHIP)}): clean`);
 
-/* The arm is this repo's own stylesheet at W24-07, which carried both collisions
-   at once. Read from git rather than reconstructed, so the arm cannot drift away
-   from the thing it is about. If the commit is unreachable (a shallow clone),
-   that is a failure and not a skip: a self-test that quietly did not run is the
-   condition ruling R-AB exists to forbid. */
+/* The arm is this repo's own stylesheet at W24-07, which carried both collisions at
+   once. It is neither invented nor curated: it is that commit's file, whole.
+
+   IT IS VENDORED, not read from git at run time. The first version of this gate
+   ran `git show 3392bb4:src/styles.css`, and `quality` failed in five seconds:
+   `actions/checkout` makes a shallow clone, so the commit is not there. The gate
+   failed loudly rather than skipping, which was the right behaviour and is why
+   this comment can be written at all -- but a gate that depends on the clone
+   depth of whoever runs it is a gate that does not run everywhere. Setting
+   `fetch-depth: 0` would have fixed it by making every CI run fetch 35MB of
+   history to serve one self-test, which is the tail wagging the dog.
+
+   So the file is committed. It is a historical snapshot, so it cannot drift by
+   definition; and WHERE THE COMMIT IS REACHABLE, which is any full clone, the
+   fixture is checked byte-for-byte against git before it is used. A workstation
+   proves the fixture is honest; CI trusts the proof. */
 const ARM_SHA = '3392bb4';
 const ARM_WANT = ['faq', 'bento__tile'];
-let armCss;
+const ARM_FILE = path.join(__dirname, 'fixtures', `styles-at-${ARM_SHA}.css`);
+if (!fs.existsSync(ARM_FILE)) {
+  fail(`the self-test fixture ${path.relative(ROOT, ARM_FILE)} is missing. An assertion nobody has watched fail is not a gate.`);
+}
+const armCss = fs.readFileSync(ARM_FILE, 'utf8');
 try {
-  armCss = execFileSync('git', ['show', `${ARM_SHA}:src/styles.css`], { cwd: ROOT, encoding: 'utf8', maxBuffer: 8 << 20 });
+  // stderr piped, not inherited: in a shallow clone git prints "invalid object
+  // name" and that is an expected condition here, not something to show the reader.
+  const fromGit = execFileSync('git', ['show', `${ARM_SHA}:src/styles.css`], { cwd: ROOT, encoding: 'utf8', maxBuffer: 8 << 20, stdio: ['ignore', 'pipe', 'pipe'] });
+  if (fromGit !== armCss) {
+    fail(`the self-test fixture does not match src/styles.css at ${ARM_SHA}. The fixture is supposed to BE that file; regenerate it with:\n  git show ${ARM_SHA}:src/styles.css > ${path.relative(ROOT, ARM_FILE)}`);
+  }
+  console.log(`self-test fixture verified byte-for-byte against ${ARM_SHA}`);
 } catch (e) {
-  fail(`the self-test arm could not read src/styles.css at ${ARM_SHA}: ${e.message.split('\n')[0]}. An assertion nobody has watched fail is not a gate; fetch the full history rather than skipping it.`);
+  if (/does not match/.test(e.message)) throw e;
+  // A shallow clone cannot reach the commit. The fixture is still used; it is the
+  // verification that is unavailable here, not the arm.
+  console.log(`self-test fixture used as committed (${ARM_SHA} not reachable in this clone, so it could not be re-verified here)`);
 }
 const arm = collisions(armCss);
 const armClasses = new Set(arm.problems.map((p) => p.cls));

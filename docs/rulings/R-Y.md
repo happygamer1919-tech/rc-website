@@ -626,3 +626,49 @@ eight reads **8,198px**. Twelve is what the dispatch specifies, so twelve shippe
 
 The reveal is held by gate 20, which asserts the painted count equals the page's own
 `data-prod-step` at 390 and equals every card at 1440.
+
+### Amended 2026-09-20 by W24-09b · the service page budgets were never breached; a collision moved the pages
+
+Added under R-T; nothing above this block was edited. **This block RESTORES figures
+rather than setting new ones.**
+
+W24-09's live run reported `/servicii/case-la-cheie/` at 6,475px against the 6,436 budget
+this ruling gave it at W24-05, and W24-09 recorded that as W24-05 having measured before
+the slider settled. **That attribution was wrong, and it was corrected by measuring rather
+than by argument.**
+
+The page was built and measured at each wave 24 merge in turn:
+
+| Tree | `/servicii/case-la-cheie/` RO |
+|---|---|
+| #82, W24-05, where the budget was set | 6,376 |
+| #83, W24-06 | 6,376 |
+| **#84, W24-07** | **6,475** |
+| #85, #86 | 6,475 |
+
+**W24-05's measurement was correct.** W24-07 moved the page, and it moved every other
+service page by the same 99px: fațade 5,284 to 5,383, finisaje 5,339 to 5,438, instalații
+5,340 to 5,439, terasamente 5,487 to 5,586. The cause is the `.faq` class collision
+recorded in `DECISIONS.md` at W24-09b, not a budget taken too early.
+
+With the collision corrected, every service page returns to its pre-W24-07 height
+**exactly**, delta 0 on each one measured, and case la cheie reads **6,376 RO and 6,483
+RU**: the figures W24-05 recorded, inside the budgets W24-05 set.
+
+| Page | RO measured | RO budget | RU measured | RU budget |
+|---|---|---|---|---|
+| `/servicii/case-la-cheie/` | 6,376 | **6,436** (unchanged, W24-05's) | 6,483 | **6,543** (unchanged, W24-05's) |
+
+**No budget moves.** The other eighteen service pages stay on the shared 6,000px wave 7
+acceptance, which they never breached, having had enough slack to absorb 99px invisibly.
+
+**One figure in this ruling IS superseded.** `/servicii/roca-vulcanica/` was measured at
+4,288 RO for the W24-07 block, and that measurement was taken while the page was receiving
+the wave 14 `.faq` rules by accident: `display: flex` and an 18px gap it was never meant
+to have. With its own `.nvk-faq` prefix it measures **4,234**, which is the rendering
+W24-07 specified. It is inside its 4,348 budget either way, so the budget does not move;
+the measurement beside it is corrected here under R-R.
+
+**What this says about height budgets generally**, recorded because it is the useful part:
+a budget caught this, but only on the one page of twenty that happened to have a tight one.
+A budget is a good alarm and a poor detector. Gate 22 is the detector.

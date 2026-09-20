@@ -10032,3 +10032,73 @@ against the figures W24-09 recorded, to the pixel.
 **2 failed**, unchanged and already known: `/servicii/case-la-cheie/` at 6,475 against
 6,436 in RO and 6,582 against 6,543 in RU. That is **Q-W24-05**, opened by W24-09, and it
 is not this correction's to close.
+
+## W24-09b · The second class collision of wave 24: `.faq` moved all twenty service pages, 2026-09-20
+
+Found by the post-merge live run that gate 9 owes, on `3231a7e`. **W24-09 diagnosed the
+symptom and got the cause wrong; this block corrects it by measurement.**
+
+### What was wrong
+
+W24-07 added a bare `.faq` block for the rocă vulcanică page, which uses a `dl` of
+`dt`/`dd` pairs. **The service pages had owned `.faq` since wave 14** for a different
+shape, a div of `.faq__item`s. Both declarations are (0,1,0) and W24-07's is later in the
+file, so it won; and `.faq > div` (0,1,1) beat `.faq__item` (0,1,0) on top of that. A 28px
+top margin became 40, and four items went from 18px of top padding to 20 top and 20 bottom.
+
+**Every one of the twenty service pages grew by exactly 99px, and it was live for two
+days.**
+
+### The correction to W24-09's own record
+
+W24-09 reported `/servicii/case-la-cheie/` over budget and attributed it to W24-05 having
+measured before the slider settled, and **Q-W24-05 recommended re-budgeting the page.
+Both were wrong.** Taking that recommendation would have written a defect into a ruling.
+
+The page was built and measured at each wave 24 merge:
+
+| Tree | RO |
+|---|---|
+| #82, W24-05, where the budget was set | 6,376 |
+| #83, W24-06 | 6,376 |
+| **#84, W24-07** | **6,475** |
+
+**W24-05's measurement was correct.** The same +99px is on fațade, finisaje, instalații
+and terasamente, measured. Only case la cheie showed it, because W24-05 had just given
+that page a tight budget of its own while the other eighteen sit under a shared 6,000px
+budget with room to absorb 99px invisibly.
+
+### The fix
+
+W24-07's block takes its own prefix, `.nvk-faq`, matching the rest of that page's
+namespace. Every service page returns to its pre-W24-07 height **exactly**, delta 0 on
+each one measured. Case la cheie reads 6,376 RO and 6,483 RU, inside W24-05's budgets,
+which do not move.
+
+The rocă vulcanică page now renders as W24-07 specified rather than as the collision left
+it: it had been getting `display: flex` and an 18px gap from the wave 14 rules by
+accident. 4,288 becomes 4,234, inside its unchanged 4,348 budget. Looked at, not assumed.
+
+### What holds it now
+
+**Gate 22**, `check-css-collisions.js`: no class used as a bare selector may be declared
+twice, more than 25 rules apart, setting the same property to different values.
+Shorthands are expanded, which is what makes `margin-top: 28px` against `margin: 40px 0 0`
+a clash rather than a miss.
+
+**It is narrow on purpose**, and the narrowing was measured against the clean stylesheet
+before the gate was written: "declared far apart" gives 9 false positives, "bare class
+declared twice" gives 12, this gives 0. A noisy gate gets worked around.
+
+**Its self-test is both of wave 24's collisions**, read from `3392bb4`: the gate must name
+`.faq` AND `.bento__tile`, with the shipping stylesheet watched clean either side (R-AB).
+**It was also run against `origin/main` and fails it**, naming `.faq` and both clashing
+declarations, which is the proof that it catches the live defect and not just a fixture.
+
+### The honest summary
+
+**Wave 24 shipped this defect twice in one commit, and 22 gates could not see either.**
+The first was found by eye. The second was found only because one page of twenty had a
+budget tight enough to notice 99px. Gate 20 reads geometry and would not have caught it:
+nothing pointed it at a FAQ list. **A height budget is a good alarm and a poor detector**,
+and `docs/CLAUDE.md` section 3.1 now says so alongside the rule itself.

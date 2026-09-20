@@ -2277,7 +2277,7 @@ carrying their own copy.
 implementation number. But it is the owner's call, and it was not worth blocking the card
 over: the change from 47,917px to 10,189px is 98 percent of the win either way.
 
-## Q-W24-05 · The case la cheie page is over its height budget in both locales, and W24-05 is the cause · OPEN · opened 2026-09-20 (W24-09)
+## Q-W24-05 · The case la cheie page is over its height budget in both locales, and ~~W24-05 is the cause~~ · ~~OPEN~~ **CLOSED 2026-09-20 by W24-09b, and its recommendation was WRONG.** The cause is not W24-05 and not the budget: W24-07's `.faq` class collision added 99px to all twenty service pages, and case la cheie was the only one with a budget tight enough to show it. W24-05's measurement was correct, the budget does not move, and re-budgeting as recommended below would have written a defect into a ruling. See `DECISIONS.md`, W24-09b. No body below is edited (R-S) · opened 2026-09-20 (W24-09)
 
 **No default shipped. This is not W24-09's page and W24-09 did not touch it.**
 

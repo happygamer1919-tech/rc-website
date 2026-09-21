@@ -100,7 +100,18 @@ const APPROVED_ORIGINS = [
   'supplier permission',
   'client-supplied original',
   'legacy, licence unverified',
+  /* W25-R7, the direct supplier. Narrow on purpose: it names the host it belongs
+     to, so it cannot be used to launder any other origin. */
+  'direct supplier, dasterum.md',
 ];
+
+/* W25-R7. `dasterum.md` stays in FORBIDDEN_HOSTS and is lifted for ONE licence.
+   A filled slot may name a dasterum.md source only when its provenance row's
+   licence is the direct-supplier origin; any other licence on that host is the
+   refusal R-W has always been. Lifting the host by exception rather than removing
+   it means a row that drifts off the sentence loses the permission. */
+const DIRECT_SUPPLIER_HOST = 'dasterum.md';
+const DIRECT_SUPPLIER_ORIGIN = 'direct supplier, dasterum.md';
 
 /* The slot kinds R-W forbids a generated image on: a before/after pair and a
    project or portfolio tile are EVIDENCE, and "a render is never a proof image"
@@ -183,10 +194,20 @@ function check(pages, rows, provenance, brandBySlot) {
         problems.push({ id: 'no-provenance', text: `${ph.where} is filled and names "${row.provenance}", which has no row in docs/assets/PROVENANCE.md.` });
         continue;
       }
+      /* W25-R7 widened the leading boundary from [^a-z0-9.-] to [^a-z0-9-], so a
+         SUBDOMAIN is caught: `www.dasterum.md` used to slip past because the
+         character before the host was a dot, which the old class excluded. R-W's
+         own interpretation 3 says hostname matching includes subdomains, and it
+         did not. `notdasterum.md` is still not caught, because the character
+         before is a letter, and `dasterum.md.example.com` is still not caught,
+         because the trailing class still refuses a following dot. */
       const hay = `${prow.source} ${prow.licenceUrl}`.toLowerCase();
+      const directOk = prow.licence.toLowerCase().includes(DIRECT_SUPPLIER_ORIGIN);
       for (const host of FORBIDDEN_HOSTS) {
-        if (new RegExp(`(^|[^a-z0-9.-])${host.replace(/\./g, '\\.')}([^a-z0-9.-]|$)`, 'i').test(hay)) {
-          problems.push({ id: 'forbidden-host', text: `${ph.where} names a provenance row whose source is ${host}. R-W and W25-R2: that host is never an origin.` });
+        if (host === DIRECT_SUPPLIER_HOST && directOk) continue;
+        if (new RegExp(`(^|[^a-z0-9-])${host.replace(/\./g, '\\.')}([^a-z0-9.-]|$)`, 'i').test(hay)) {
+          problems.push({ id: 'forbidden-host', text: `${ph.where} names a provenance row whose source is ${host}. R-W and W25-R2: that host is never an origin.`
+            + (host === DIRECT_SUPPLIER_HOST ? ` W25-R7 lifts it only for a row whose licence names "${DIRECT_SUPPLIER_ORIGIN}"; this row's licence is "${prow.licence}".` : '') });
         }
       }
       if (!APPROVED_ORIGINS.some((o) => prow.licence.toLowerCase().includes(o.toLowerCase()))) {
@@ -280,6 +301,16 @@ const SELF = [
     pages: [{ rel: 'self-test/d.html', html: FILLED_HTML('SELFTEST-04', '1 / 1') }],
     rows: [FILLED_ROW('SELFTEST-04', 'public/img/selftest-04.jpg')],
     prov: [{ file: 'public/img/selftest-04.jpg', source: 'https://fatade3d.md/produs/ceva/ \u00b7 https://fatade3d.md/img/x.jpg', licence: GOOD_LICENCE, licenceUrl: 'https://fatade3d.md/produs/ceva/', date: '2026-09-20' }],
+  },
+  {
+    /* W25-R7. The host is lifted by ONE licence and by nothing else, so the arm
+       that has to fire is a Dasterum source under an ordinary licence. */
+    arm: 'a dasterum.md source on a row that does not carry the direct-supplier licence',
+    want: 'forbidden-host',
+    pages: [{ rel: 'self-test/ds.html', html: FILLED_HTML('SELFTEST-15', '1 / 1') }],
+    rows: [FILLED_ROW('SELFTEST-15', 'public/img/selftest-15.jpg')],
+    prov: [{ file: 'public/img/selftest-15.jpg', source: 'https://www.dasterum.md/ro/x/ \u00b7 https://www.dasterum.md/content/catalog/products/x.jpg', licence: GOOD_LICENCE, licenceUrl: 'https://www.dasterum.md/ro/x/', date: '2026-09-21' }],
+    brands: [['SELFTEST-15', 'Dasterum']],
   },
   {
     arm: 'a filled slot with no provenance row at all',

@@ -10810,3 +10810,45 @@ row. They ship `placeholder` and W25-10 fills them.
    without one.
 4. **The records carry no brand.**
 5. **Em dashes in copied product names became commas**, every word kept.
+
+## W25-10 · Seventy-one Dasterum photographs, watermark and all, 2026-09-21
+
+**Card W25-10.** PR only, stops for the owner. Stacked on `w25/w25-09-dasterum-data`. The
+full card is `docs/board/W25-10-dasterum-images.md`.
+
+### The result
+
+**89 of 333 before, 160 of 333 after.** All **71 of 71** Acoperișuri products pictured, from
+the supplier's own site under W25-R7.
+
+### Every condition held, none in prose
+
+Only `dasterum.md`, and only with an explicit `--dasterum` on `fetch-packshot.js`, which
+still refuses `fatade3d.md` with the flag set. **The watermark stays exactly as published**:
+nothing in this pipeline crops or inpaints and no crop was passed. **No upscaling**: all 71
+sources are 488x488 and all 71 are written at 488. The 450 floor is unchanged and 488 clears
+it by 38. **The source URL is in every row and asserted from the other side**: a row
+carrying this licence and naming no `dasterum.md` URL is a failure.
+
+The licence is fixed text that names its own host, and **the host is lifted by exception in
+three places rather than removed from any ban list**, so a row that drifts one word off the
+sentence stops being allowed without anyone having to put the host back.
+
+### Writing the self-test arm found a real defect in R-W
+
+The new arm plants a Dasterum source under an ordinary licence and must fire. **It did not**,
+and the cause was not the new code: **gate 19's forbidden-host pattern never matched a
+SUBDOMAIN**. It required a non-`[a-z0-9.-]` character before the host, and the character
+before `dasterum.md` in `www.dasterum.md` is a dot. R-W's own interpretation 3 says hostname
+matching includes subdomains and names `www.dasterum.md`; the gate did not do it. Every
+subdomain of every forbidden host had always slipped past.
+
+The leading class is now `[^a-z0-9-]`, and **both of interpretation 3's counter-examples
+still hold**: `notdasterum.md` is not caught, `dasterum.md.example.com` is not caught. Gate
+19 now runs 12 arms.
+
+### Recorded for ratification
+
+1. **The subdomain fix changes behaviour for `fatade3d.md` and `imperlux.md` too.** They
+   were always meant to be caught with a subdomain and now are.
+2. **`--dasterum` is a new required flag**, so the permission cannot be used by accident.

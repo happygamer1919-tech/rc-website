@@ -13,7 +13,7 @@
   "capture": {
     "wave": "W24",
     "opened": "2026-09-19",
-    "filled": 89
+    "filled": 160
   },
   "slots": [
     {
@@ -2499,7 +2499,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Țiglă metalică Monterrey\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0224.jpg",
+      "alt": {
+        "ro": "Țiglă metalică Monterrey, fotografia produsului",
+        "ru": "Țiglă metalică Monterrey, фотография продукта"
+      }
     },
     {
       "id": "CAT-0225",
@@ -2507,7 +2512,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Țiglă metalică Valencia\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0225.jpg",
+      "alt": {
+        "ro": "Țiglă metalică Valencia, fotografia produsului",
+        "ru": "Țiglă metalică Valencia, фотография продукта"
+      }
     },
     {
       "id": "CAT-0226",
@@ -2515,7 +2525,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Țiglă metalică modulară\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0226.jpg",
+      "alt": {
+        "ro": "Țiglă metalică modulară, fotografia produsului",
+        "ru": "Țiglă metalică modulară, фотография продукта"
+      }
     },
     {
       "id": "CAT-0227",
@@ -2523,7 +2538,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Țiglă metalică Kascad\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0227.jpg",
+      "alt": {
+        "ro": "Țiglă metalică Kascad, fotografia produsului",
+        "ru": "Țiglă metalică Kascad, фотография продукта"
+      }
     },
     {
       "id": "CAT-0228",
@@ -2531,7 +2551,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Tabla cutată T-12\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0228.jpg",
+      "alt": {
+        "ro": "Tabla cutată T-12, fotografia produsului",
+        "ru": "Tabla cutată T-12, фотография продукта"
+      }
     },
     {
       "id": "CAT-0229",
@@ -2539,7 +2564,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Tabla cutată VP-20 (ondulată)\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0229.jpg",
+      "alt": {
+        "ro": "Tabla cutată VP-20 (ondulată), fotografia produsului",
+        "ru": "Tabla cutată VP-20 (ondulată), фотография продукта"
+      }
     },
     {
       "id": "CAT-0230",
@@ -2547,7 +2577,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Tabla cutată PK-20\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0230.jpg",
+      "alt": {
+        "ro": "Tabla cutată PK-20, fotografia produsului",
+        "ru": "Tabla cutată PK-20, фотография продукта"
+      }
     },
     {
       "id": "CAT-0231",
@@ -2555,7 +2590,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Tabla cutată H-35\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0231.jpg",
+      "alt": {
+        "ro": "Tabla cutată H-35, fotografia produsului",
+        "ru": "Tabla cutată H-35, фотография продукта"
+      }
     },
     {
       "id": "CAT-0232",
@@ -2563,7 +2603,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Tabla cutată C-15\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0232.jpg",
+      "alt": {
+        "ro": "Tabla cutată C-15, fotografia produsului",
+        "ru": "Tabla cutată C-15, фотография продукта"
+      }
     },
     {
       "id": "CAT-0233",
@@ -2571,7 +2616,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Tabla cutată С-44\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0233.jpg",
+      "alt": {
+        "ro": "Tabla cutată С-44, fotografia produsului",
+        "ru": "Tabla cutată С-44, фотография продукта"
+      }
     },
     {
       "id": "CAT-0234",
@@ -2579,7 +2629,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Tabla cutată H-60\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0234.jpg",
+      "alt": {
+        "ro": "Tabla cutată H-60, fotografia produsului",
+        "ru": "Tabla cutată H-60, фотография продукта"
+      }
     },
     {
       "id": "CAT-0235",
@@ -2587,7 +2642,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"DRIPSTOP, acoperire anticondens pentru tablă profilată\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0235.jpg",
+      "alt": {
+        "ro": "DRIPSTOP, acoperire anticondens pentru tablă profilată, fotografia produsului",
+        "ru": "DRIPSTOP, acoperire anticondens pentru tablă profilată, фотография продукта"
+      }
     },
     {
       "id": "CAT-0236",
@@ -2595,7 +2655,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Membrana superdifuză DACHMASTER 100 1,5m*50m\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0236.jpg",
+      "alt": {
+        "ro": "Membrana superdifuză DACHMASTER 100 1,5m*50m, fotografia produsului",
+        "ru": "Membrana superdifuză DACHMASTER 100 1,5m*50m, фотография продукта"
+      }
     },
     {
       "id": "CAT-0237",
@@ -2603,7 +2668,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Eurovent grila Ventilare, RAL 8004. 500*8 cm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0237.jpg",
+      "alt": {
+        "ro": "Eurovent grila Ventilare, RAL 8004. 500*8 cm, fotografia produsului",
+        "ru": "Eurovent grila Ventilare, RAL 8004. 500*8 cm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0238",
@@ -2611,7 +2681,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Eurovent grila Ventilare, RAL 8019. 500*8 cm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0238.jpg",
+      "alt": {
+        "ro": "Eurovent grila Ventilare, RAL 8019. 500*8 cm, fotografia produsului",
+        "ru": "Eurovent grila Ventilare, RAL 8019. 500*8 cm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0239",
@@ -2619,7 +2694,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Membrana pentru acoperiș Eurovent HOME PRO 1,5m*50m\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0239.jpg",
+      "alt": {
+        "ro": "Membrana pentru acoperiș Eurovent HOME PRO 1,5m*50m, fotografia produsului",
+        "ru": "Membrana pentru acoperiș Eurovent HOME PRO 1,5m*50m, фотография продукта"
+      }
     },
     {
       "id": "CAT-0240",
@@ -2627,7 +2707,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Membrana superdifuză DACHMASTER 120 1,5m*50m\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0240.jpg",
+      "alt": {
+        "ro": "Membrana superdifuză DACHMASTER 120 1,5m*50m, fotografia produsului",
+        "ru": "Membrana superdifuză DACHMASTER 120 1,5m*50m, фотография продукта"
+      }
     },
     {
       "id": "CAT-0241",
@@ -2635,7 +2720,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Membrana superdifuză Decora 80 1,5m*50m\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0241.jpg",
+      "alt": {
+        "ro": "Membrana superdifuză Decora 80 1,5m*50m, fotografia produsului",
+        "ru": "Membrana superdifuză Decora 80 1,5m*50m, фотография продукта"
+      }
     },
     {
       "id": "CAT-0242",
@@ -2643,7 +2733,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Membrana superdifuză Decora 100 1,5m*50m\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0242.jpg",
+      "alt": {
+        "ro": "Membrana superdifuză Decora 100 1,5m*50m, fotografia produsului",
+        "ru": "Membrana superdifuză Decora 100 1,5m*50m, фотография продукта"
+      }
     },
     {
       "id": "CAT-0243",
@@ -2651,7 +2746,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Membrana superdifuză Decora 120 1,5m*50m\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0243.jpg",
+      "alt": {
+        "ro": "Membrana superdifuză Decora 120 1,5m*50m, fotografia produsului",
+        "ru": "Membrana superdifuză Decora 120 1,5m*50m, фотография продукта"
+      }
     },
     {
       "id": "CAT-0244",
@@ -2659,7 +2759,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Membrana superdifuză Decora 135 1,5m*50m\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0244.jpg",
+      "alt": {
+        "ro": "Membrana superdifuză Decora 135 1,5m*50m, fotografia produsului",
+        "ru": "Membrana superdifuză Decora 135 1,5m*50m, фотография продукта"
+      }
     },
     {
       "id": "CAT-0245",
@@ -2667,7 +2772,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Membrana superdifuză Decora 150 1,5m*50m\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0245.jpg",
+      "alt": {
+        "ro": "Membrana superdifuză Decora 150 1,5m*50m, fotografia produsului",
+        "ru": "Membrana superdifuză Decora 150 1,5m*50m, фотография продукта"
+      }
     },
     {
       "id": "CAT-0246",
@@ -2675,7 +2785,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Membrana superdifuză Decora 180 1,5m*50m\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0246.jpg",
+      "alt": {
+        "ro": "Membrana superdifuză Decora 180 1,5m*50m, fotografia produsului",
+        "ru": "Membrana superdifuză Decora 180 1,5m*50m, фотография продукта"
+      }
     },
     {
       "id": "CAT-0247",
@@ -2683,7 +2798,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Dachmaster Alu 80 PARAIZOLARE 1,5m*50m\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0247.jpg",
+      "alt": {
+        "ro": "Dachmaster Alu 80 PARAIZOLARE 1,5m*50m, fotografia produsului",
+        "ru": "Dachmaster Alu 80 PARAIZOLARE 1,5m*50m, фотография продукта"
+      }
     },
     {
       "id": "CAT-0248",
@@ -2691,7 +2811,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Pieptene streasina Eurovent Comb X, RAL 9005\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0248.jpg",
+      "alt": {
+        "ro": "Pieptene streasina Eurovent Comb X, RAL 9005, fotografia produsului",
+        "ru": "Pieptene streasina Eurovent Comb X, RAL 9005, фотография продукта"
+      }
     },
     {
       "id": "CAT-0249",
@@ -2699,7 +2824,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Bandă-etanșant Eurovent COMPRI\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0249.jpg",
+      "alt": {
+        "ro": "Bandă-etanșant Eurovent COMPRI, fotografia produsului",
+        "ru": "Bandă-etanșant Eurovent COMPRI, фотография продукта"
+      }
     },
     {
       "id": "CAT-0250",
@@ -2707,7 +2837,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Eurovent BUTYL banda adeziva dublă\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0250.jpg",
+      "alt": {
+        "ro": "Eurovent BUTYL banda adeziva dublă, fotografia produsului",
+        "ru": "Eurovent BUTYL banda adeziva dublă, фотография продукта"
+      }
     },
     {
       "id": "CAT-0251",
@@ -2715,7 +2850,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Bandă TOPBAND din polipropilenă cu autoadeziv unilateral\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0251.jpg",
+      "alt": {
+        "ro": "Bandă TOPBAND din polipropilenă cu autoadeziv unilateral, fotografia produsului",
+        "ru": "Bandă TOPBAND din polipropilenă cu autoadeziv unilateral, фотография продукта"
+      }
     },
     {
       "id": "CAT-0252",
@@ -2723,7 +2863,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"BANDĂ AUTOADEZIVĂ EUROVENT PUR\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0252.jpg",
+      "alt": {
+        "ro": "BANDĂ AUTOADEZIVĂ EUROVENT PUR, fotografia produsului",
+        "ru": "BANDĂ AUTOADEZIVĂ EUROVENT PUR, фотография продукта"
+      }
     },
     {
       "id": "CAT-0253",
@@ -2731,7 +2876,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Banda autoadezivă Eurovent DUO\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0253.jpg",
+      "alt": {
+        "ro": "Banda autoadezivă Eurovent DUO, fotografia produsului",
+        "ru": "Banda autoadezivă Eurovent DUO, фотография продукта"
+      }
     },
     {
       "id": "CAT-0254",
@@ -2739,7 +2889,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Banda FLEXBIT pentru lipirea și etanșarea acoperișurilor\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0254.jpg",
+      "alt": {
+        "ro": "Banda FLEXBIT pentru lipirea și etanșarea acoperișurilor, fotografia produsului",
+        "ru": "Banda FLEXBIT pentru lipirea și etanșarea acoperișurilor, фотография продукта"
+      }
     },
     {
       "id": "CAT-0255",
@@ -2747,7 +2902,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Banda coamă ROLL ECCO pentru ventilare\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0255.jpg",
+      "alt": {
+        "ro": "Banda coamă ROLL ECCO pentru ventilare, fotografia produsului",
+        "ru": "Banda coamă ROLL ECCO pentru ventilare, фотография продукта"
+      }
     },
     {
       "id": "CAT-0256",
@@ -2755,7 +2915,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Banda autocolantă Flex 3D\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0256.jpg",
+      "alt": {
+        "ro": "Banda autocolantă Flex 3D, fotografia produsului",
+        "ru": "Banda autocolantă Flex 3D, фотография продукта"
+      }
     },
     {
       "id": "CAT-0257",
@@ -2763,7 +2928,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Brațara jgheab 125mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0257.jpg",
+      "alt": {
+        "ro": "Brațara jgheab 125mm, fotografia produsului",
+        "ru": "Brațara jgheab 125mm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0258",
@@ -2771,7 +2941,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Racord jgheab 125mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0258.jpg",
+      "alt": {
+        "ro": "Racord jgheab 125mm, fotografia produsului",
+        "ru": "Racord jgheab 125mm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0259",
@@ -2779,7 +2954,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Capac Jgheab 125 mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0259.jpg",
+      "alt": {
+        "ro": "Capac Jgheab 125 mm, fotografia produsului",
+        "ru": "Capac Jgheab 125 mm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0260",
@@ -2787,7 +2967,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Colțar exterior 125mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0260.jpg",
+      "alt": {
+        "ro": "Colțar exterior 125mm, fotografia produsului",
+        "ru": "Colțar exterior 125mm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0261",
@@ -2795,7 +2980,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Colțar interior 125mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0261.jpg",
+      "alt": {
+        "ro": "Colțar interior 125mm, fotografia produsului",
+        "ru": "Colțar interior 125mm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0262",
@@ -2803,7 +2993,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Jgheab scurgere 125x2000 mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0262.jpg",
+      "alt": {
+        "ro": "Jgheab scurgere 125x2000 mm, fotografia produsului",
+        "ru": "Jgheab scurgere 125x2000 mm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0263",
@@ -2811,7 +3006,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Cot burlan 90 mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0263.jpg",
+      "alt": {
+        "ro": "Cot burlan 90 mm, fotografia produsului",
+        "ru": "Cot burlan 90 mm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0264",
@@ -2819,7 +3019,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Burlan scurgere 90x1000 mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0264.jpg",
+      "alt": {
+        "ro": "Burlan scurgere 90x1000 mm, fotografia produsului",
+        "ru": "Burlan scurgere 90x1000 mm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0265",
@@ -2827,7 +3032,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Burlan 90x3000 mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0265.jpg",
+      "alt": {
+        "ro": "Burlan 90x3000 mm, fotografia produsului",
+        "ru": "Burlan 90x3000 mm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0266",
@@ -2835,7 +3045,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Brațara burlan 90mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0266.jpg",
+      "alt": {
+        "ro": "Brațara burlan 90mm, fotografia produsului",
+        "ru": "Brațara burlan 90mm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0267",
@@ -2843,7 +3058,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Cot evacuare 90mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0267.jpg",
+      "alt": {
+        "ro": "Cot evacuare 90mm, fotografia produsului",
+        "ru": "Cot evacuare 90mm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0268",
@@ -2851,7 +3071,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Jgheab scurgere 125x4000 mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0268.jpg",
+      "alt": {
+        "ro": "Jgheab scurgere 125x4000 mm, fotografia produsului",
+        "ru": "Jgheab scurgere 125x4000 mm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0269",
@@ -2859,7 +3084,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Cîrlig jgheab scurt 125mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0269.jpg",
+      "alt": {
+        "ro": "Cîrlig jgheab scurt 125mm, fotografia produsului",
+        "ru": "Cîrlig jgheab scurt 125mm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0270",
@@ -2867,7 +3097,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Cîrlig jgheab lung 125 mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0270.jpg",
+      "alt": {
+        "ro": "Cîrlig jgheab lung 125 mm, fotografia produsului",
+        "ru": "Cîrlig jgheab lung 125 mm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0271",
@@ -2875,7 +3110,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Opritor de zapadă cilindric\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0271.jpg",
+      "alt": {
+        "ro": "Opritor de zapadă cilindric, fotografia produsului",
+        "ru": "Opritor de zapadă cilindric, фотография продукта"
+      }
     },
     {
       "id": "CAT-0272",
@@ -2883,7 +3123,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Coamă dreaptă\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0272.jpg",
+      "alt": {
+        "ro": "Coamă dreaptă, fotografia produsului",
+        "ru": "Coamă dreaptă, фотография продукта"
+      }
     },
     {
       "id": "CAT-0273",
@@ -2891,7 +3136,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Coamă semirotundă\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0273.jpg",
+      "alt": {
+        "ro": "Coamă semirotundă, fotografia produsului",
+        "ru": "Coamă semirotundă, фотография продукта"
+      }
     },
     {
       "id": "CAT-0274",
@@ -2899,7 +3149,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Bordura de fronton\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0274.jpg",
+      "alt": {
+        "ro": "Bordura de fronton, fotografia produsului",
+        "ru": "Bordura de fronton, фотография продукта"
+      }
     },
     {
       "id": "CAT-0275",
@@ -2907,7 +3162,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Reținător de zăpadă\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0275.jpg",
+      "alt": {
+        "ro": "Reținător de zăpadă, fotografia produsului",
+        "ru": "Reținător de zăpadă, фотография продукта"
+      }
     },
     {
       "id": "CAT-0276",
@@ -2915,7 +3175,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Dolie de sus\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0276.jpg",
+      "alt": {
+        "ro": "Dolie de sus, fotografia produsului",
+        "ru": "Dolie de sus, фотография продукта"
+      }
     },
     {
       "id": "CAT-0277",
@@ -2923,7 +3188,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Dolie interioară\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0277.jpg",
+      "alt": {
+        "ro": "Dolie interioară, fotografia produsului",
+        "ru": "Dolie interioară, фотография продукта"
+      }
     },
     {
       "id": "CAT-0278",
@@ -2931,7 +3201,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Placă de racordare cu margine\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0278.jpg",
+      "alt": {
+        "ro": "Placă de racordare cu margine, fotografia produsului",
+        "ru": "Placă de racordare cu margine, фотография продукта"
+      }
     },
     {
       "id": "CAT-0279",
@@ -2939,7 +3214,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Placă de racordare fără margine\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0279.jpg",
+      "alt": {
+        "ro": "Placă de racordare fără margine, fotografia produsului",
+        "ru": "Placă de racordare fără margine, фотография продукта"
+      }
     },
     {
       "id": "CAT-0280",
@@ -2947,7 +3227,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lacrimar\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0280.jpg",
+      "alt": {
+        "ro": "Lacrimar, fotografia produsului",
+        "ru": "Lacrimar, фотография продукта"
+      }
     },
     {
       "id": "CAT-0281",
@@ -2955,7 +3240,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Regleta frontală L 150*50mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0281.jpg",
+      "alt": {
+        "ro": "Regleta frontală L 150*50mm, fotografia produsului",
+        "ru": "Regleta frontală L 150*50mm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0282",
@@ -2963,7 +3253,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Parapet 100mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0282.jpg",
+      "alt": {
+        "ro": "Parapet 100mm, fotografia produsului",
+        "ru": "Parapet 100mm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0283",
@@ -2971,7 +3266,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lacrimar de fereastră 200mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0283.jpg",
+      "alt": {
+        "ro": "Lacrimar de fereastră 200mm, fotografia produsului",
+        "ru": "Lacrimar de fereastră 200mm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0284",
@@ -2979,7 +3279,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lacrimar de fereastră 150mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0284.jpg",
+      "alt": {
+        "ro": "Lacrimar de fereastră 150mm, fotografia produsului",
+        "ru": "Lacrimar de fereastră 150mm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0285",
@@ -2987,7 +3292,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Colțar interior 50*50mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0285.jpg",
+      "alt": {
+        "ro": "Colțar interior 50*50mm, fotografia produsului",
+        "ru": "Colțar interior 50*50mm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0286",
@@ -2995,7 +3305,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Colțar interior 100*100mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0286.jpg",
+      "alt": {
+        "ro": "Colțar interior 100*100mm, fotografia produsului",
+        "ru": "Colțar interior 100*100mm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0287",
@@ -3003,7 +3318,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Colțar exterior 50*50mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0287.jpg",
+      "alt": {
+        "ro": "Colțar exterior 50*50mm, fotografia produsului",
+        "ru": "Colțar exterior 50*50mm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0288",
@@ -3011,7 +3331,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Colțar exterior 100*100mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0288.jpg",
+      "alt": {
+        "ro": "Colțar exterior 100*100mm, fotografia produsului",
+        "ru": "Colțar exterior 100*100mm, фотография продукта"
+      }
     },
     {
       "id": "CAT-0289",
@@ -3019,7 +3344,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Spray vopsea\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0289.jpg",
+      "alt": {
+        "ro": "Spray vopsea, fotografia produsului",
+        "ru": "Spray vopsea, фотография продукта"
+      }
     },
     {
       "id": "CAT-0290",
@@ -3027,7 +3357,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Șurub pentru profil 5,5*32mm, zincat\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0290.jpg",
+      "alt": {
+        "ro": "Șurub pentru profil 5,5*32mm, zincat, fotografia produsului",
+        "ru": "Șurub pentru profil 5,5*32mm, zincat, фотография продукта"
+      }
     },
     {
       "id": "CAT-0291",
@@ -3035,7 +3370,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Șurub de acoperiș pentru metal 4,8*19mm.\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0291.jpg",
+      "alt": {
+        "ro": "Șurub de acoperiș pentru metal 4,8*19mm., fotografia produsului",
+        "ru": "Șurub de acoperiș pentru metal 4,8*19mm., фотография продукта"
+      }
     },
     {
       "id": "CAT-0292",
@@ -3043,7 +3383,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Fixator pentru Euro-gard cu surub autoforant\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0292.jpg",
+      "alt": {
+        "ro": "Fixator pentru Euro-gard cu surub autoforant, fotografia produsului",
+        "ru": "Fixator pentru Euro-gard cu surub autoforant, фотография продукта"
+      }
     },
     {
       "id": "CAT-0293",
@@ -3051,7 +3396,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Șuruburi de acoperiș pentru lemn 4.8*35 în asortiment\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0293.jpg",
+      "alt": {
+        "ro": "Șuruburi de acoperiș pentru lemn 4.8*35 în asortiment, fotografia produsului",
+        "ru": "Șuruburi de acoperiș pentru lemn 4.8*35 în asortiment, фотография продукта"
+      }
     },
     {
       "id": "CAT-0294",
@@ -3059,7 +3409,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Metize 3,5*9,5mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0294.jpg",
+      "alt": {
+        "ro": "Metize 3,5*9,5mm, fotografia produsului",
+        "ru": "Metize 3,5*9,5mm, фотография продукта"
+      }
     },
     {
       "id": "CATEG-01",

@@ -14,6 +14,9 @@
    WHAT IT REFUSES:
      · a forbidden host, on EITHER the image URL or the source page URL, matched
        on the registrable domain so a subdomain cannot slip past (R-W, W25-R2);
+     · dasterum.md WITHOUT --dasterum: W25-R7 allows the direct supplier, and
+       the run has to say so, or a Dasterum URL could arrive by accident in a run
+       meant for a manufacturer;
      · a host that looks like a shop or a marketplace, by a list of the patterns
        that actually turn up (amazon, ebay, emag, olx, 999.md, aliexpress, ...),
        because "never a retailer" is a rule and an unenforced rule is a comment;
@@ -43,9 +46,21 @@ const MAX_BYTES = 12 * 1024 * 1024;
 
 const die = (msg) => { console.error(`REFUSED: ${msg}`); process.exit(1); };
 
-/* R-W and W25-R2, unchanged. Matched on the registrable domain, so
-   cdn.fatade3d.md and www.fatade3d.md are the same refusal. */
-const FORBIDDEN = ['fatade3d.md', 'imperlux.md', 'dasterum.md'];
+/* R-W and W25-R2. Matched on the registrable domain, so cdn.fatade3d.md and
+   www.fatade3d.md are the same refusal.
+
+   AMENDED (W25-R7): **dasterum.md is no longer forbidden, and only dasterum.md.**
+   The owner states the client buys directly from Dasterum and accepts the use of
+   their product data, public prices and product images, on conditions that are
+   part of the permission rather than advice: the watermark stays exactly as
+   published, never cropped out and never painted over; nothing is upscaled; the
+   450 floor holds; and the ledger records the source URL per file. The first
+   three are enforced by `--dasterum` below and by process-packshot.js; the
+   fourth is enforced by gate 19 over the whole ledger.
+
+   `fatade3d.md` and `imperlux.md` are untouched and stay forbidden. */
+const FORBIDDEN = ['fatade3d.md', 'imperlux.md'];
+const DIRECT_SUPPLIER = 'dasterum.md';
 
 /* "Never a retailer, a marketplace, another reseller, a search result thumbnail."
    These are the hosts that actually come back when you search for a building
@@ -64,9 +79,19 @@ const SHOPS = [
 const host = (u) => { try { return new URL(u).hostname.toLowerCase(); } catch { return null; } };
 const registrable = (h) => h.split('.').slice(-2).join('.');
 
+/* W25-R7. The direct supplier is allowed, and it is allowed EXPLICITLY: the
+   caller has to say `--dasterum`, so a Dasterum URL cannot arrive by accident in
+   a run that was meant for a manufacturer. Without the flag the host is refused,
+   and the refusal names the flag that would allow it. */
+const DIRECT = process.argv.includes('--dasterum');
+
 function guard(u, what) {
   const h = host(u);
   if (!h) die(`${what} is not a URL: ${u}`);
+  if (h === DIRECT_SUPPLIER || h.endsWith('.' + DIRECT_SUPPLIER) || registrable(h) === DIRECT_SUPPLIER) {
+    if (!DIRECT) die(`${what} is on ${DIRECT_SUPPLIER}. W25-R7 allows it as the direct supplier, but only when the run says so: pass --dasterum. ${u}`);
+    return h;
+  }
   for (const f of FORBIDDEN) {
     if (h === f || h.endsWith('.' + f) || registrable(h) === f) {
       die(`${what} is on ${f}, which R-W and W25-R2 forbid as an origin. ${u}`);

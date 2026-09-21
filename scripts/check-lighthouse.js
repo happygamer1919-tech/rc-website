@@ -195,6 +195,11 @@ async function main() {
   console.log(`runs per page: ${RUNS}; the median of each category is what the floor judges\n`);
   const server = await serve();
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'rc-lh-'));
+
+  /* W25-03b. The report directory is removed however this process ends. It holds
+     three Lighthouse JSON reports per page and leaked one directory per run: 73
+     had accumulated. Not a Chrome profile, but the same omission. */
+  process.on('exit', () => { try { fs.rmSync(tmp, { recursive: true, force: true }); } catch {} });
   const rows = [];
   let bad = 0;
   let reports = 0;

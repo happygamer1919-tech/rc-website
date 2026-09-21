@@ -74,6 +74,32 @@ waiting for a generated one.
 **23 of 23 exit 0**, from `node scripts/run-gates.js`. Gate 24 is new and reads
 `160 installed, 162 empty, file matches the data`.
 
+## Section 12.0 on `2df8033`, owed by #98 to #102
+
+Run unprompted after the owner's merge, with the full forty-character `EXPECT_SHA` and the
+edge polled with a cache-buster until it served that sha.
+
+| Run | `node scripts/verify-live.js` | Result |
+|---|---|---|
+| 1 | exit **1** | FAIL, **1 unverified**, 0 failed, 67 of 67 pages |
+| 2 | exit **0** | PASS, 0 unverified, 0 failed, 67 of 67 pages |
+| 3 | exit **0** | PASS, 0 unverified, 0 failed, 67 of 67 pages |
+
+**The one unverified row was the instrument, and it was diagnosed by measurement before
+anything was proposed**, which is what section 12.0 asks for. `sub RU eps` read **900px with
+promoBar 0 and productCards 0** on run 1, and **3,464px, clean** on runs 2 and 3, agreeing to
+the pixel. The page answers 200 with 37,555 bytes of the right template on the edge and its
+RO twin passed all three times. A 900px page with no promo bar and no card is a page read
+**before its stylesheet applied**.
+
+**Every budget this dispatch set was confirmed live.** The sixteen new catalogue rows all
+read inside, including the parent at 11,857 against 11,917; the two lowered fence budgets
+read 3,686 and 3,707 against 3,746 and 3,767; the tigla page reads inside its raised 4,039
+and 4,072. 41 reachable URLs crawled, 0 with a visible TODO.
+
+**Q-W25-15 opened**: gate 9 reads each page once and gate 5 already takes the median of
+three for exactly this reason.
+
 ## Recorded for ratification
 
 1. **The review list is a gate.** Both W25-R5 and W25-R7 make a flag in it part of the

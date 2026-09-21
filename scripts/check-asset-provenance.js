@@ -35,6 +35,16 @@ const TREE = 'public';
 const LEDGER = 'docs/assets/PROVENANCE.md';
 const IMAGE_EXT = /\.(png|jpe?g|webp|gif|svg|avif|ico|bmp|tiff?|heic)$/i;
 const BANNED = ['fatade3d.md', 'imperlux.md', 'dasterum.md'];
+/* R-W amendment, 2026-09-21 (W25-R7). `dasterum.md` stays in BANNED and is
+   allowed on ONE condition, which is the shape the ruling has: the owner states
+   the client buys directly from Dasterum and accepts the use of their product
+   data, public prices and images, with the watermark left exactly as published.
+   So a row whose licence is the direct-supplier sentence, character for
+   character, may name dasterum.md, and nothing else may. Keeping the host banned
+   by default and lifting it only for that exact licence is deliberate: a row that
+   drifts one word from the sentence loses the permission and fails. */
+const DIRECT_SUPPLIER_HOST = 'dasterum.md';
+const DIRECT_SUPPLIER_LICENCE = 'direct supplier, dasterum.md, owner buys directly and accepts use of their product data and images, watermark as published, owner accepted 2026-09-21';
 /* R-W amendment, 2026-09-15 (W14-02b). Legacy status is a fingerprint: the path
    AND sha256 must match docs/assets/LEGACY-IMAGES.txt, the images in f5e4eb6's
    first parent. The list is committed because CI has no git history. */
@@ -166,9 +176,17 @@ for (const { line, c } of rows) {
       problems.push(`${where} ${file} is not a legacy image, so its licence URL must be an https URL or "supplier permission: ..."; got "${licenceUrl}"`);
     }
   }
+  const direct = licence === DIRECT_SUPPLIER_LICENCE;
   for (const host of hostsIn(source)) {
     const b = bannedHost(host);
-    if (b) problems.push(`${where} ${file} source host ${host} is banned by R-W (${b})`);
+    if (!b) continue;
+    /* W25-R7, and only this host with only this licence. */
+    if (direct && b === DIRECT_SUPPLIER_HOST) continue;
+    problems.push(`${where} ${file} source host ${host} is banned by R-W (${b})`
+      + (b === DIRECT_SUPPLIER_HOST ? `. W25-R7 allows it only on a row whose licence is exactly the direct-supplier sentence; this row's is "${licence}"` : ''));
+  }
+  if (direct && !hostsIn(source).some((h) => bannedHost(h) === DIRECT_SUPPLIER_HOST)) {
+    problems.push(`${where} ${file} carries the direct-supplier licence and its source names no ${DIRECT_SUPPLIER_HOST} URL. W25-R7: the ledger records the source URL per file.`);
   }
 }
 const unlisted = images.filter((f) => !byFile.has(f));

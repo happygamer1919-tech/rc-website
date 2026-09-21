@@ -144,3 +144,60 @@ presented as enforced is worse than one presented plainly.
 
 **A slot with no compliant image stays a placeholder** (W25-R4). Never a near match, never
 a different variant, never a different brand. A placeholder is an acceptable outcome.
+
+---
+
+## AMENDED (W25-R7, 2026-09-21): a third approved origin, `direct_supplier`
+
+> New approved origin direct_supplier: dasterum.md. Owner states the client buys directly
+> from Dasterum and accepts use of their product data, public prices and product images.
+> Conditions: watermark left exactly as published, never cropped out, never inpainted, no
+> upscaling, floor 450 holds, ledger records the source URL per file. This amends W24-R for
+> dasterum.md only. fatade3d.md and imperlux.md image files stay forbidden.
+
+**This is the first time an image file may come from one of the three hosts this ruling was
+written to keep out.** It is narrow in every direction and the narrowness is enforced, not
+described.
+
+### The licence string, which is fixed text
+
+    direct supplier, dasterum.md, owner buys directly and accepts use of their
+    product data and images, watermark as published, owner accepted 2026-09-21
+
+**Written on one line, character for character.** It names the host it belongs to, so it
+cannot be used to launder any other origin, and a row that drifts one word from it loses
+the permission and fails.
+
+### How each condition is held
+
+| Condition | Held by |
+|---|---|
+| Only `dasterum.md` | `scripts/fetch-packshot.js`: the host is refused unless the run passes `--dasterum`, so a Dasterum URL cannot arrive by accident in a run meant for a manufacturer. `fatade3d.md` and `imperlux.md` are refused with or without it |
+| The watermark stays as published | nothing crops or inpaints: `process-packshot.js` only re-encodes and scales, and no crop was passed on any of the 71 |
+| No upscaling | `process-packshot.js` writes `min(OUTPUT, longest side)`. All 71 are 488x488 and all 71 are written at 488 |
+| The 450 floor holds | unchanged, and 488 clears it by 38 |
+| The ledger records the source URL per file | `scripts/check-asset-provenance.js`: a row carrying this licence and naming **no** `dasterum.md` URL is a failure, which is the condition asserted from the other side |
+
+### Two places the host stays banned by default
+
+`scripts/check-asset-provenance.js` keeps `dasterum.md` in `BANNED` and skips it **only**
+for a row whose licence is the sentence above. `scripts/check-photo-slots-w24.js` keeps it
+in `FORBIDDEN_HOSTS` and lifts it **only** for a row whose licence names
+`direct supplier, dasterum.md`, with a self-test arm that plants a Dasterum source under an
+ordinary licence and must fire.
+
+**Lifting by exception rather than by removal is the point.** A row that stops carrying the
+permission stops being allowed, without anyone having to remember to put the host back.
+
+### A defect this amendment found in interpretation 3
+
+Interpretation 3 above says "Hostname matching includes subdomains" and names
+`www.dasterum.md`. **In `check-photo-slots-w24.js` it did not.** Its pattern required a
+non-`[a-z0-9.-]` character before the host, and the character before `dasterum.md` in
+`www.dasterum.md` is a dot, so every subdomain slipped past. It was found by writing the
+self-test arm for this amendment, using the real URL shape.
+
+The leading class is now `[^a-z0-9-]`, which accepts a preceding dot. `notdasterum.md` is
+still not caught, because the character before is a letter, and `dasterum.md.example.com` is
+still not caught, because the trailing class still refuses a following dot. Both of those
+are interpretation 3's own words and both still hold.

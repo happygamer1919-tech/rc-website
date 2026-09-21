@@ -2890,3 +2890,70 @@ two agreeing bad runs still should. `verify-live.js` reads each page once.
 run honest by printing every reading rather than the best one. (b) is right if gate 9 ever
 starts failing for reasons nobody can reproduce.
 
+## Q-W25-16 · The two CT80F records are not identical, so W25-R13 blocks the card · OPEN · opened 2026-09-21 (W25-15)
+
+**Nothing was changed. W25-R13 says so.**
+
+> Duplicate records: if name, unit and price are identical, drop one record and keep the URL
+> of the older id. If anything differs, block with a question quoting both rows.
+
+**Three of the three differ.** Both rows, quoted in full from
+`content/catalog-products.json`:
+
+### `CAT-0002`, id `f3d-1858`, slug `polistiren`
+
+| Field | Value |
+|---|---|
+| name.ro | `Polistiren expandat CT80F` |
+| name.ru | `Экструдированный пенополистирол КТ80Ф` |
+| brand | `Caparol` |
+| variant.ro | `10mm, 20mm, 30mm, 40mm, 50mm, 60mm, 70mm, 80mm, 90mm, 100mm` |
+| variant.ru | `1000 x 500 mm, 1000 x 500 mm` |
+| price | `7,62 lei - 76,20 lei` |
+| source | `https://fatade3d.md/produs/polistiren/`, captured 2026-09-19 |
+| picture | **filled** at W25-08, from `caparol.md` |
+
+### `CAT-0005`, id `f3d-3283`, slug `ct-80-f-polistiren-expandat`
+
+| Field | Value |
+|---|---|
+| name.ro | `CT 80 F - Polistiren expandat` |
+| name.ru | `CT 80 F - Пенополистирол` |
+| brand | `Caparol` |
+| variant.ro | `10 mm, 20 mm, 30 mm, 40 mm, 50 mm, 60 mm, 70 mm, 80 mm, 90 mm, 100 mm` |
+| variant.ru | `1000x500x30 мм` |
+| price | `6,50 lei - 65,00 lei` |
+| source | `https://fatade3d.md/produs/ct-80-f-polistiren-expandat/`, captured 2026-09-19 |
+| picture | **grey**, held by the one-picture-one-card rule |
+
+### What differs, precisely
+
+| | `CAT-0002` | `CAT-0005` | Same? |
+|---|---|---|---|
+| **Name** | Polistiren expandat CT80F | CT 80 F - Polistiren expandat | **no**, the same product written two ways |
+| **Unit** | RU says `1000 x 500 mm` twice | RU says `1000x500x30 мм` | **no**, and the second names a thickness |
+| **Price** | **7,62 to 76,20 lei** | **6,50 to 65,00 lei** | **no**, about 15 percent apart |
+
+**The price is the one that matters.** The site currently shows the same insulation board at
+two prices on the same page, and I cannot tell you which is right: the RO variant lines are
+the same ten thicknesses, so they are not obviously two different pack sizes, but the RU
+line on `CAT-0005` names a single 30mm board, which would explain a different price and
+would mean these are **two products, not one**.
+
+  (a) **They are one product. Keep `CAT-0002`** (the older id, per the ruling) with its price
+      and its picture, and drop `CAT-0005`. The lower price disappears from the site.
+  (b) **They are one product, but the price to publish is `6,50 to 65,00`.** Keep the older
+      id and its URL, move the price across, drop `CAT-0005`. The ruling says keep the older
+      id's URL, and it does not say which price is current; you do.
+  (c) **They are two products**: one sold by the sheet in ten thicknesses, one a 30mm board.
+      Then nothing is dropped, and `CAT-0005` needs its own name so a visitor can tell them
+      apart, and its own picture.
+  (d) Tell me the current price list and I re-derive both rows from it.
+
+**Recommended: (b) if there is one product, (c) if there are two, and I cannot tell which
+from the data.** That is precisely why the ruling says to stop here. **One sentence from you
+closes it.**
+
+**Nothing is blocked behind this.** W25-15 stops, W25-16 continues, and the site is
+unchanged.
+

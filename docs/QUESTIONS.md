@@ -2685,6 +2685,14 @@ by eye would mean comparing a photograph of a plate we have no photograph of.
 way: the default is already shipped and the site is no longer claiming a manufacturer it
 cannot support.
 
+**AMENDED (W25-05, 2026-09-21): option (a) is not available and I was wrong to offer it.**
+W25-R2 rules that **no AI image goes on any named tile product**, and these three are named
+tile products. W25-05's prompt pack therefore holds all 63 remaining ceramic plates,
+including these, and generates nothing for them. The live options are **(b)** and **(c)**,
+and (c) is the one that settles the picture and the manufacturer in the same message. Until
+then they stay grey with no brand line, which is still the shipped default and is still
+correct.
+
 ## Q-W25-11 · Kordeko sells exactly what the 64 `elemente-decorative` records are · OPEN · opened 2026-09-21 (W25-03d)
 
 **Nothing was done about this and nothing is blocked on it.** It is an observation from
@@ -2710,4 +2718,43 @@ product the shop actually sells. That is yours, not mine, and W25-R4 forbids a n
   (c) **Leave them to W25-05** and generate them.
 
 **Recommended: (a).** If the answer is no, (c) stands and nothing is lost.
+
+## Q-W25-12 · 89 of the 126 prompts are for products whose appearance is not in the records · OPEN · opened 2026-09-21 (W25-05)
+
+**Shipped default: the prompts are written and every one of the 89 is marked `appearance:
+not in the records` in the pack.** Nothing is generated and nothing is installed by this
+card, so the default costs nothing and decides nothing.
+
+W25-R3 permits a generated image on a product slot, and W25-05 wrote 126 prompts on that
+permission. For 37 of them the ledger row or the record describes what the thing is: a
+metal slatted fence, a roll of diffusion membrane, a cone of adhesive powder. **For 89 it
+does not.**
+
+| Group | Entries | What the records actually carry |
+|---|---|---|
+| Elemente decorative | 64 | a shop code (`RED 17`), "pentru fațadă", and a price per metre. 45 distinct prices and **no profile, no dimension, no shape** |
+| Sisteme de iluminare | 25 | a bare OEM code (`K1207`, `GMD-881F`) and sometimes a colour temperature. No shape, no material, no finish |
+
+**Why this is a question and not a decision I should take.** A moulding and a lamp are both
+chosen by how they look. A generated picture of `RED 17` is a picture of **a** moulding, not
+of that one, and a buyer could order the wrong profile from it. That is the harm W25-R4
+guards against for photographs. W25-R3 permits it for generated images on product slots, so
+the owner has already ruled that the trade is acceptable in principle; what he has not seen
+is that it applies to 89 of 126 entries rather than a few.
+
+  (a) **Generate all 89 anyway.** Fills the most slots fastest. Each card then shows an
+      illustrative picture of the right kind of product.
+  (b) **Photograph them in the shop.** They are 89 physical items you stock. A phone
+      photograph on a plain surface clears the 450 floor easily, it is the real product, and
+      W25-R1's origin problem does not arise because it is your own photograph. Slower, and
+      it needs a person and an hour.
+  (c) **Split it.** Generate the 25 lamps, where a generic outdoor lantern is close enough
+      to be useful, and photograph the 64 mouldings, where the profile IS the product.
+  (d) **Leave all 89 grey** and generate only the 37 the records describe.
+
+**Recommended: (c).** The 64 mouldings are the case where a wrong picture actively misleads
+a buyer, and they are also the group Q-W25-11 may solve outright if they turn out to be
+Kordeko, who photographs all 59 of theirs. The 25 lamps are the case where an illustrative
+picture is honest enough, because a plain outdoor wall lantern is what the customer is
+buying.
 

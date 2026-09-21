@@ -10557,3 +10557,64 @@ ceramic plates.
 2. **`CAT-0203` and `CAT-0213` are both "Lampă K1247"** on two records with two source
    URLs, handed to W25-05 as two entries and not merged, because merging catalogue records
    is a product decision.
+
+## W25-05 · The AI prompt pack, and the 135 rows it refuses to write prompts for, 2026-09-21
+
+**Card W25-05.** PR only, stops for the owner. Stacked on
+`w25/w25-04-packshots-iluminat`. The full card is `docs/board/W25-05-ai-prompts.md`.
+
+**No image enters the repo and no slot changes state.** The deliverable is
+`~/Documents/rc-audit-w24/AI-PROMPTS-W25.md`, outside the repo, as the plan specifies.
+
+### The numbers
+
+**126 prompts written. 135 of the ledger's 261 rows held**, each with its reason printed in
+the pack: 67 named tile products, 33 that name a manufacturer and are packshot work, 27
+already filled, 8 evidence slots.
+
+### Generated, not typed
+
+`scripts/gen-ai-prompts-w25.js` builds the pack from `docs/PHOTO-SLOTS-W24.json` and
+`content/catalog-products.json`. 126 entries typed by hand from 261 rows would be wrong
+somewhere, and each entry's ratio, minimum pixels and page would go stale the first time a
+card moved a slot. Re-running it after a card that fills slots shrinks it by itself. The
+script is in the repo and its output is not, which is the split the plan asks for.
+
+### The two rules that decided what is in it
+
+**W25-R3** holds the eight `BA-` rows: a render is never a proof image.
+
+**W25-R2 holds 67**, which is the big one: all 63 ceramic plates still placeholder, and the
+four Novatik roof tiles, which are named tiles by the same words. **That rule is why 60
+Phomi colour variants stayed grey at W25-03c** rather than taking a photograph with the
+wrong name printed on it, and generating them here would walk straight around it.
+
+**A correction I owe from yesterday.** Q-W25-10 recommended "leave them hidden and send them
+to W25-05" for the three plates in no catalogue. **That option does not exist**: they are
+named tile products. Q-W25-10 is amended on this card and its live options are (b) and (c).
+
+### What the pack refuses to invent
+
+**The style block's first rule is no text**, for W25-R2's reason: a generated image that
+invents lettering fails the same rule that keeps 60 plates grey.
+
+**Unbranded materials are prompted as the MATERIAL, never as a package.** Three carry a
+trade name in the product name with no manufacturer behind it, and a generated sack wearing
+that name would be a manufacturer's packaging that does not exist. The adhesive is a cone
+of powder with a trowel; the render is a sample board; the polystyrene is bare boards.
+
+### The decision the pack hands back
+
+**89 of the 126 entries are for products whose appearance the records do not describe**: 64
+mouldings carrying a shop code and a price per metre and no profile at all, and 25 lamps
+carrying an OEM code. A generated picture of `RED 17` is a picture of a moulding, not of
+that one. W25-R3 permits it, so the pack writes the entry and marks every one of the 89
+rather than deciding. **Q-W25-12** recommends splitting: generate the lamps, photograph the
+mouldings.
+
+### Recorded for ratification
+
+1. **The generator is in the repo and its output is not.**
+2. **`NVK-01` to `NVK-04` are held as named tile products.** The plan listed them as pack
+   entries; W25-R2 postdates the plan.
+3. **Q-W25-10's option (a) is withdrawn** as contradicting W25-R2. Amended, not rewritten.

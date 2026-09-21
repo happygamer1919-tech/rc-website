@@ -2130,7 +2130,8 @@
         "ru_name": "Плитка Elsa Black Grey",
         "brand": "Phomi",
         "captured": "2026-09-19"
-      }
+      },
+      "brand_hidden": true
     },
     {
       "id": "f3d-1702",
@@ -2454,7 +2455,8 @@
         "ru_name": "Плитка Sandstorm",
         "brand": "Phomi",
         "captured": "2026-09-19"
-      }
+      },
+      "brand_hidden": true
     },
     {
       "id": "f3d-3489",
@@ -3063,7 +3065,8 @@
         "ru_name": "Плитка H06",
         "brand": "Phomi",
         "captured": "2026-09-19"
-      }
+      },
+      "brand_hidden": true
     },
     {
       "id": "f3d-4673",

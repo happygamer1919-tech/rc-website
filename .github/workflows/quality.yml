@@ -107,6 +107,15 @@ jobs:
       - name: Every placeholder has a ledger row, and every row is rendered (W24-01)
         run: node scripts/check-photo-slots-w24.js
 
+      # W25-03d. Gate 23. Which manufacturer each ceramic plate really comes from is
+      # research, and research held in prose is what let the site state a manufacturer
+      # for 70 products that manufacturer does not make. The settlement is data now, in
+      # content/plate-brand-settlement.json, and this holds the product records to it in
+      # both directions. It does not visit any catalogue: it stops the records and the
+      # settlement drifting apart, which is how the wrong claim survived.
+      - name: Every ceramic plate's brand matches the settled catalogue match (W25-03d)
+        run: node scripts/check-plate-brands.js
+
       # RC-148. Every stub count stated in the governing and reference documents
       # equals the count measured from content/projects.json. Static, no browser.
       - name: The stub count in the documents equals the data (RC-148)

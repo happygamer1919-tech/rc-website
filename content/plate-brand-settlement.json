@@ -1,0 +1,824 @@
+{
+  "_note": "W25-03d, 2026-09-21. Which manufacturer each plate in placi-ceramice really comes from, settled against three catalogues in the order W25-R3 sets: Phomi, then Ecofasad, then Kordeko. scripts/check-plate-brands.js holds content/catalog-products.json to this file and fails on any disagreement. A row with brand null is in none of the three and is the ONLY kind of row that may carry brand_hidden.",
+  "_catalogues": [
+    {
+      "name": "Phomi",
+      "site": "https://phomi.com/",
+      "walked": "2026-09-21",
+      "what": "57 product pages from the page sitemap plus 57 category cards; 774 colour-variant images; names read from the product page heading, the category card title and the image file names, and spot-verified against the name Phomi burns into the picture"
+    },
+    {
+      "name": "Ecofasad",
+      "site": "https://ecofasad.md/",
+      "walked": "2026-09-21",
+      "what": "102 flexible stone and flexible marble textures; Ecofasad names none of them, they are numbered rock-#### and marble-####, so no plate name can match one"
+    },
+    {
+      "name": "Kordeko",
+      "site": "https://kordeko.com/",
+      "walked": "2026-09-21",
+      "what": "81 products from the sitemap, of which 22 are flexible facade tiles with names (Butcher, Mont Blanc, Tender Rock, El Arabia, Cerro-Torre, Gray Cold Rock, Chocolate Rock, Volcanic Anthracite, Loft Red Clay, Royal Granite, Milky/Latte/White Stone/Dune Stone Travertine, Golden Maple, Forest Beech, Ripe Cherry, Wenge) and the rest cornices and mouldings"
+    }
+  ],
+  "_tiers": {
+    "A-exact": "our name equals a Phomi name exactly, ignoring case, punctuation and the gray/grey spelling",
+    "B-spelling": "one character apart from exactly one Phomi name, the source carrying the slip (Romam for Roman, Agean for Aegean)",
+    "C-contained": "our name is the whole-word prefix or suffix of exactly one Phomi name (Mountain Light Grey inside Loki Mountain Light Grey)",
+    "D-read": "settled by reading Phomi directly where the automatic tiers were ambiguous; the reason is on the W25-03d board card",
+    "unmatched": "in none of the three catalogues; takes brand_hidden and nothing else does"
+  },
+  "settled": [
+    {
+      "slot": "CAT-0039",
+      "ours": "Kamu Red",
+      "brand": "Phomi",
+      "matched_as": "Kamu Red",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/chiseled-stone/"
+    },
+    {
+      "slot": "CAT-0040",
+      "ours": "Kamu Yellow",
+      "brand": "Phomi",
+      "matched_as": "Kamu Yellow",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/brick-2/stone-brick/"
+    },
+    {
+      "slot": "CAT-0041",
+      "ours": "White Sesame",
+      "brand": "Phomi",
+      "matched_as": "White Sesame",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/oman-linear-stone/"
+    },
+    {
+      "slot": "CAT-0042",
+      "ours": "Mountain Medium Grey",
+      "brand": "Phomi",
+      "matched_as": "Loki Mountain Medium Grey",
+      "level": "variant",
+      "tier": "C-contained",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/devine-mushroom-stone/"
+    },
+    {
+      "slot": "CAT-0043",
+      "ours": "Mount Lion Yellow",
+      "brand": "Phomi",
+      "matched_as": "Mount Lion Yellow",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/35-piece-stone/"
+    },
+    {
+      "slot": "CAT-0044",
+      "ours": "Mountain Light Grey",
+      "brand": "Phomi",
+      "matched_as": "Loki Mountain Light Grey",
+      "level": "variant",
+      "tier": "C-contained",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/35-piece-stone/"
+    },
+    {
+      "slot": "CAT-0045",
+      "ours": "Mountain Light Grey",
+      "brand": "Phomi",
+      "matched_as": "Loki Mountain Light Grey",
+      "level": "variant",
+      "tier": "C-contained",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/35-piece-stone/"
+    },
+    {
+      "slot": "CAT-0046",
+      "ours": "Blue Grey",
+      "brand": "Phomi",
+      "matched_as": "Blue Grey",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/chiseled-stone/"
+    },
+    {
+      "slot": "CAT-0047",
+      "ours": "Dandy Gray",
+      "brand": "Phomi",
+      "matched_as": "Dandy Grey",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/bush-hammered/"
+    },
+    {
+      "slot": "CAT-0048",
+      "ours": "Veil White",
+      "brand": "Phomi",
+      "matched_as": "Veil White",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/arcuate-rock/"
+    },
+    {
+      "slot": "CAT-0049",
+      "ours": "Castol Grey",
+      "brand": "Phomi",
+      "matched_as": "Castol Grey",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/nature-stone/marble/"
+    },
+    {
+      "slot": "CAT-0050",
+      "ours": "Tunguska Yellow",
+      "brand": "Phomi",
+      "matched_as": "Tunguska Yellow",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/35-piece-stone/"
+    },
+    {
+      "slot": "CAT-0051",
+      "ours": "Elsa Black Grey",
+      "brand": null,
+      "matched_as": null,
+      "level": null,
+      "tier": "unmatched",
+      "catalogue_url": null
+    },
+    {
+      "slot": "CAT-0052",
+      "ours": "Snowy White",
+      "brand": "Phomi",
+      "matched_as": "Snowy White",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/brick-2/g-facing-brick/"
+    },
+    {
+      "slot": "CAT-0053",
+      "ours": "Stellar Red",
+      "brand": "Phomi",
+      "matched_as": "Stellar Red",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/nature-stone/stone-alpes/"
+    },
+    {
+      "slot": "CAT-0054",
+      "ours": "Plain White",
+      "brand": "Phomi",
+      "matched_as": "Plain White",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/35-piece-stone/"
+    },
+    {
+      "slot": "CAT-0055",
+      "ours": "Y001-01-02",
+      "brand": "Phomi",
+      "matched_as": "Y001 01 021",
+      "level": "variant",
+      "tier": "B-spelling",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/nature-stone/skyline/"
+    },
+    {
+      "slot": "CAT-0056",
+      "ours": "Medium Grey",
+      "brand": "Phomi",
+      "matched_as": "Medium Grey",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/35-piece-stone/"
+    },
+    {
+      "slot": "CAT-0057",
+      "ours": "Egyptian Yellow",
+      "brand": "Phomi",
+      "matched_as": "Egyptian Yellow",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/nature-stone/rammed-earth-wall/"
+    },
+    {
+      "slot": "CAT-0058",
+      "ours": "Autumn",
+      "brand": "Phomi",
+      "matched_as": "Autumn Yellow",
+      "level": "variant",
+      "tier": "D-read",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/wood/polished-wood/"
+    },
+    {
+      "slot": "CAT-0059",
+      "ours": "Ash Grey",
+      "brand": "Phomi",
+      "matched_as": "Ash Grey",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/35-piece-stone/"
+    },
+    {
+      "slot": "CAT-0060",
+      "ours": "Sandstorm",
+      "brand": null,
+      "matched_as": null,
+      "level": null,
+      "tier": "unmatched",
+      "catalogue_url": null
+    },
+    {
+      "slot": "CAT-0061",
+      "ours": "Ink-Dyed",
+      "brand": "Phomi",
+      "matched_as": "Ink Dyed",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/concrete-pouring-slab/"
+    },
+    {
+      "slot": "CAT-0062",
+      "ours": "Perth Grey",
+      "brand": "Phomi",
+      "matched_as": "Perth Grey",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/wood/polished-wood/"
+    },
+    {
+      "slot": "CAT-0063",
+      "ours": "Steinburg Yellow",
+      "brand": "Phomi",
+      "matched_as": "Steinburg Yellow",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/wood/polished-wood/"
+    },
+    {
+      "slot": "CAT-0064",
+      "ours": "HY001",
+      "brand": "Phomi",
+      "matched_as": "HY001",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/rattan-mat-b/"
+    },
+    {
+      "slot": "CAT-0065",
+      "ours": "Silk-mist Brown",
+      "brand": "Phomi",
+      "matched_as": "Silk mist Brown",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/wood/spliced-wood/"
+    },
+    {
+      "slot": "CAT-0066",
+      "ours": "Plain Brown",
+      "brand": "Phomi",
+      "matched_as": "Plain Brown",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/wood/original-wood/"
+    },
+    {
+      "slot": "CAT-0067",
+      "ours": "Orange",
+      "brand": "Phomi",
+      "matched_as": "Orange",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/wood/poly-wood/"
+    },
+    {
+      "slot": "CAT-0068",
+      "ours": "Light Brown",
+      "brand": "Phomi",
+      "matched_as": "Light Brown",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/wood/original-wood/"
+    },
+    {
+      "slot": "CAT-0069",
+      "ours": "Portoro",
+      "brand": "Phomi",
+      "matched_as": "Portoro",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/brick-2/stone-brick/"
+    },
+    {
+      "slot": "CAT-0070",
+      "ours": "Blue Grey",
+      "brand": "Phomi",
+      "matched_as": "Blue Grey",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/chiseled-stone/"
+    },
+    {
+      "slot": "CAT-0071",
+      "ours": "Veil Dark Grey",
+      "brand": "Phomi",
+      "matched_as": "Veil Dark Grey",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/nature-stone/mount-celestial/"
+    },
+    {
+      "slot": "CAT-0072",
+      "ours": "Sunis White",
+      "brand": "Phomi",
+      "matched_as": "Sunis White",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/u-stone/"
+    },
+    {
+      "slot": "CAT-0073",
+      "ours": "Andes Yellow",
+      "brand": "Phomi",
+      "matched_as": "Andes Yellow",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/35-piece-stone/"
+    },
+    {
+      "slot": "CAT-0074",
+      "ours": "Greek Yellow",
+      "brand": "Phomi",
+      "matched_as": "Greek Yellow",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/travertine/oceanic-travertine/"
+    },
+    {
+      "slot": "CAT-0075",
+      "ours": "Andes White",
+      "brand": "Phomi",
+      "matched_as": "Andes White",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/chiseled-stone/"
+    },
+    {
+      "slot": "CAT-0076",
+      "ours": "Sairo Off-White",
+      "brand": "Phomi",
+      "matched_as": "Sairo Off White",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/travertine/ghana-travertine/"
+    },
+    {
+      "slot": "CAT-0077",
+      "ours": "H06",
+      "brand": null,
+      "matched_as": null,
+      "level": null,
+      "tier": "unmatched",
+      "catalogue_url": null
+    },
+    {
+      "slot": "CAT-0078",
+      "ours": "Medium Grey",
+      "brand": "Phomi",
+      "matched_as": "Medium Grey",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/35-piece-stone/"
+    },
+    {
+      "slot": "CAT-0079",
+      "ours": "Fawn Grey",
+      "brand": "Phomi",
+      "matched_as": "Fawn Gray",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/nature-stone/rusty-stone/"
+    },
+    {
+      "slot": "CAT-0080",
+      "ours": "Fog",
+      "brand": "Phomi",
+      "matched_as": "Fog",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/butterfly-stone/"
+    },
+    {
+      "slot": "CAT-0081",
+      "ours": "Dark Brown",
+      "brand": "Phomi",
+      "matched_as": "Dark Brown",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/nature-stone/four-hole-polish-concrete-stone/"
+    },
+    {
+      "slot": "CAT-0082",
+      "ours": "Dark Grey",
+      "brand": "Phomi",
+      "matched_as": "Dark Grey",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/nature-stone/four-hole-polish-concrete-stone/"
+    },
+    {
+      "slot": "CAT-0083",
+      "ours": "Ink-Dyed",
+      "brand": "Phomi",
+      "matched_as": "Ink Dyed",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/concrete-pouring-slab/"
+    },
+    {
+      "slot": "CAT-0084",
+      "ours": "Sunis White",
+      "brand": "Phomi",
+      "matched_as": "Sunis White",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/u-stone/"
+    },
+    {
+      "slot": "CAT-0085",
+      "ours": "Andes Yellow",
+      "brand": "Phomi",
+      "matched_as": "Andes Yellow",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/35-piece-stone/"
+    },
+    {
+      "slot": "CAT-0086",
+      "ours": "Loki Mountain Light Grey",
+      "brand": "Phomi",
+      "matched_as": "Loki Mountain Light Grey",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/35-piece-stone/"
+    },
+    {
+      "slot": "CAT-0087",
+      "ours": "Veil Dark Grey",
+      "brand": "Phomi",
+      "matched_as": "Veil Dark Grey",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/nature-stone/mount-celestial/"
+    },
+    {
+      "slot": "CAT-0088",
+      "ours": "Castol Yellow",
+      "brand": "Phomi",
+      "matched_as": "Castol Yellow",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/nature-stone/rough-surface/"
+    },
+    {
+      "slot": "CAT-0089",
+      "ours": "Romam Red",
+      "brand": "Phomi",
+      "matched_as": "Roman Red",
+      "level": "variant",
+      "tier": "B-spelling",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/bush-hammered/"
+    },
+    {
+      "slot": "CAT-0090",
+      "ours": "Castle Rock Grey",
+      "brand": "Phomi",
+      "matched_as": "Castle Rock Grey",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/concrete-pouring-slab/"
+    },
+    {
+      "slot": "CAT-0091",
+      "ours": "Sairo Off-White",
+      "brand": "Phomi",
+      "matched_as": "Sairo Off White",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/travertine/ghana-travertine/"
+    },
+    {
+      "slot": "CAT-0092",
+      "ours": "Agean White",
+      "brand": "Phomi",
+      "matched_as": "Aegean White",
+      "level": "variant",
+      "tier": "B-spelling",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/travertine/rome-travertine/"
+    },
+    {
+      "slot": "CAT-0093",
+      "ours": "Plain Cloud Grey",
+      "brand": "Phomi",
+      "matched_as": "Plain Cloud Grey",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/travertine/oceanic-travertine/"
+    },
+    {
+      "slot": "CAT-0094",
+      "ours": "Maca Blue",
+      "brand": "Phomi",
+      "matched_as": "Maca Blue",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/brick-2/stone-brick/"
+    },
+    {
+      "slot": "CAT-0095",
+      "ours": "Romam Red",
+      "brand": "Phomi",
+      "matched_as": "Roman Red",
+      "level": "variant",
+      "tier": "B-spelling",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/bush-hammered/"
+    },
+    {
+      "slot": "CAT-0096",
+      "ours": "Veil Grey",
+      "brand": "Phomi",
+      "matched_as": "Veil Grey",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/flat-linear-stone/"
+    },
+    {
+      "slot": "CAT-0097",
+      "ours": "Moonlight",
+      "brand": "Phomi",
+      "matched_as": "Moonlight",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/travertine/oceanic-travertine/"
+    },
+    {
+      "slot": "CAT-0098",
+      "ours": "Romam Grey",
+      "brand": "Phomi",
+      "matched_as": "Roman Grey",
+      "level": "variant",
+      "tier": "B-spelling",
+      "catalogue_url": "https://phomi.com/ecovering-flexible-stone/art-stone-2/bush-hammered/"
+    },
+    {
+      "slot": "CAT-0099",
+      "ours": "Portoro",
+      "brand": "Phomi",
+      "matched_as": "Portoro",
+      "level": "variant",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/brick-2/stone-brick/"
+    },
+    {
+      "slot": "CAT-0100",
+      "ours": "35 Piece Stone",
+      "brand": "Phomi",
+      "matched_as": "35 Piece Stone",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/35-piece-stone/"
+    },
+    {
+      "slot": "CAT-0101",
+      "ours": "Rough Surface",
+      "brand": "Phomi",
+      "matched_as": "Rough Surface",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/rough-surface/"
+    },
+    {
+      "slot": "CAT-0102",
+      "ours": "Stone Alpes",
+      "brand": "Phomi",
+      "matched_as": "Stone Alpes",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/stone-alpes/"
+    },
+    {
+      "slot": "CAT-0103",
+      "ours": "Oceanic Travertine",
+      "brand": "Phomi",
+      "matched_as": "Oceanic Travertine",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/oceanic-travertine/"
+    },
+    {
+      "slot": "CAT-0104",
+      "ours": "Skyline",
+      "brand": "Phomi",
+      "matched_as": "Skyline",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/skyline/"
+    },
+    {
+      "slot": "CAT-0105",
+      "ours": "Rome Travertine",
+      "brand": "Phomi",
+      "matched_as": "Rome Travertine",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/rome-travertine/"
+    },
+    {
+      "slot": "CAT-0106",
+      "ours": "Ghana Travertine",
+      "brand": "Phomi",
+      "matched_as": "Ghana Travertine",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/ghana-travertine/"
+    },
+    {
+      "slot": "CAT-0107",
+      "ours": "Concrete Pouring Slab",
+      "brand": "Phomi",
+      "matched_as": "Concrete Pouring Slab",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/concrete-pouring-slab/"
+    },
+    {
+      "slot": "CAT-0108",
+      "ours": "Mount Celestial",
+      "brand": "Phomi",
+      "matched_as": "Mount Celestial",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/mount-celestial/"
+    },
+    {
+      "slot": "CAT-0109",
+      "ours": "Marble",
+      "brand": "Phomi",
+      "matched_as": "Marble",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/marble/"
+    },
+    {
+      "slot": "CAT-0110",
+      "ours": "Polished Concrete Wall",
+      "brand": "Phomi",
+      "matched_as": "Polish Concrete Wall",
+      "level": "variant",
+      "tier": "D-read",
+      "catalogue_url": "https://phomi.com/brick-2/stone-brick/"
+    },
+    {
+      "slot": "CAT-0111",
+      "ours": "Rusty Slab",
+      "brand": "Phomi",
+      "matched_as": "Rusty Slab",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/rusty-stone/"
+    },
+    {
+      "slot": "CAT-0112",
+      "ours": "Polish Concrete Wall",
+      "brand": "Phomi",
+      "matched_as": "Polish Concrete Wall",
+      "level": "variant",
+      "tier": "D-read",
+      "catalogue_url": "https://phomi.com/brick-2/stone-brick/"
+    },
+    {
+      "slot": "CAT-0113",
+      "ours": "Devine Mushroom Stone",
+      "brand": "Phomi",
+      "matched_as": "Devine Mushroom Stone",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/devine-mushroom-stone/"
+    },
+    {
+      "slot": "CAT-0114",
+      "ours": "Sawtooth Wood",
+      "brand": "Phomi",
+      "matched_as": "Sawtooth Wood",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/sawtooth-wood/"
+    },
+    {
+      "slot": "CAT-0115",
+      "ours": "Original Wood",
+      "brand": "Phomi",
+      "matched_as": "Original Wood",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/original-wood/"
+    },
+    {
+      "slot": "CAT-0116",
+      "ours": "Spliced Wood",
+      "brand": "Phomi",
+      "matched_as": "Spliced Wood",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/spliced-wood/"
+    },
+    {
+      "slot": "CAT-0117",
+      "ours": "Rope Wave B",
+      "brand": "Phomi",
+      "matched_as": "Rope Wave B",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/rope-wave-b/"
+    },
+    {
+      "slot": "CAT-0118",
+      "ours": "Polished Wood 4.0",
+      "brand": "Phomi",
+      "matched_as": "Polished Wood",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/polished-wood/"
+    },
+    {
+      "slot": "CAT-0119",
+      "ours": "Stackle Square 4.0",
+      "brand": "Phomi",
+      "matched_as": "Stackle Square",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/stackle-square/"
+    },
+    {
+      "slot": "CAT-0120",
+      "ours": "Poly Wood",
+      "brand": "Phomi",
+      "matched_as": "Poly Wood",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/poly-wood/"
+    },
+    {
+      "slot": "CAT-0121",
+      "ours": "Rammed Earth Wall",
+      "brand": "Phomi",
+      "matched_as": "Rammed Earth Wall",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/rammed-earth-wall/"
+    },
+    {
+      "slot": "CAT-0122",
+      "ours": "Polished Stone",
+      "brand": "Phomi",
+      "matched_as": "Polished Stone",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/polished-stone/"
+    },
+    {
+      "slot": "CAT-0123",
+      "ours": "Oman Linear Stone",
+      "brand": "Phomi",
+      "matched_as": "Oman Linear Stone",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/oman-linear-stone/"
+    },
+    {
+      "slot": "CAT-0124",
+      "ours": "Chiseled Stone",
+      "brand": "Phomi",
+      "matched_as": "Chiseled Stone",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/chiseled-stone/"
+    },
+    {
+      "slot": "CAT-0125",
+      "ours": "Bush Hammered",
+      "brand": "Phomi",
+      "matched_as": "Bush Hammered",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/bush-hammered/"
+    },
+    {
+      "slot": "CAT-0126",
+      "ours": "Stone Ridged",
+      "brand": "Phomi",
+      "matched_as": "Stone Ridged",
+      "level": "family",
+      "tier": "A-exact",
+      "catalogue_url": "https://phomi.com/stone-ridged/"
+    }
+  ]
+}

@@ -10431,3 +10431,76 @@ only form that cannot go stale a second time.
    `phomi.com`, both in the row.
 3. **The pack lettering on `CAT-0033` and `CAT-0010` is not a burned-in name label.** It is
    printed on the product. The swatch rule is about a name laid over a photograph.
+
+## W25-03d · Three catalogues walked, and the brand of all 88 plates settled, 2026-09-21
+
+**Card W25-03d.** PR only, stops for the owner. Stacked on `w25/w25-03c-intake-450`. The
+full card is `docs/board/W25-03d-brand-settlement.md`.
+
+### The settled counts
+
+**Phomi 85** (25 families, 60 colour variants) · **Ecofasad 0** · **Kordeko 0** ·
+**`brand_hidden` 3**. 88 of 88 accounted for.
+
+The count of plates falsely attributed to Phomi went 70, then 37, then 3. Every one of
+those was a research result held in prose, which is why this card ends with the settlement
+as data and a gate holding the records to it.
+
+### How the three catalogues were walked
+
+**Phomi.** 57 product pages from the page sitemap, not from the range menus: four products
+sit on top-level pages under no range, and walking the ranges is what produced 18 families
+instead of 25. 57 category cards too, because **the card and the page disagree on at least
+one name**: "Rusty Slab" on the card, "Rusty Stone" on the page, one product.
+
+**The names were verified against Phomi's own lettering.** Phomi burns the product name
+into each colour swatch. Ten matches sampled across the run, ten read off the picture and
+confirmed, including `Y001-01-02` exactly as printed. That is what settles the code-like
+names as real product names rather than artefacts of reading file names.
+
+**Ecofasad, `ecofasad.md`, Moldovan, not a Russian domain.** 102 flexible stone and marble
+textures, and **Ecofasad names none of them**: `rock-1808`, `marble-1801`. No plate name can
+match one in either direction, so this is reported as a property of Ecofasad rather than as
+a search that failed.
+
+**Kordeko, `kordeko.com`, Moldovan, not a Russian domain.** 81 products, of which 22 are
+named flexible facade tiles and 59 are cornices and mouldings. None of the three residual
+names appears on either Kordeko domain.
+
+**No Russian domain was found, so none was fetched.**
+
+### The three unmatched
+
+`CAT-0051` Elsa Black Grey, `CAT-0060` Sandstorm, `CAT-0077` H06. Phomi publishes
+"Sandstone", which is a different word, and H01, H02, H05, HB01 and HB06, and no H06. They
+take `brand_hidden` and nothing else in `placi-ceramice` does. Q-W25-10 asks who makes them,
+because the Q-W25-05 answer was given against a residual of 37 and does not cover these.
+
+### Gate 23, and what it does not do
+
+`scripts/check-plate-brands.js` holds `content/catalog-products.json` to
+`content/plate-brand-settlement.json` in both directions: every plate has a row and every
+row is a plate; a row naming a manufacturer requires `brand` to equal it and forbids
+`brand_hidden`; a row naming none requires `brand_hidden`; a settled row must name what it
+matched, at a declared tier, with a URL. **It does not visit a catalogue**, and its header
+says so: re-doing research is a card. Nine self-test arms between two controls, and both
+real defects watched fire on the shipping files with the controls read clean either side.
+
+### `scripts/run-gates.js`
+
+Q-W25-09's option (b), shipped rather than asked about because **the habit failed again one
+card later**: adding gate 23 to the hand-written runner silently did not apply and the run
+reported 21 commands when `quality` carried 22. It reads `quality.yml` and runs exactly the
+steps it finds, printing what it skipped and why, and failing rather than guessing on a
+shape it cannot read. Three arms watched, control clean either side.
+
+### Recorded for ratification
+
+1. **`scripts/run-gates.js` is new and no ruling asked for it.** Q-W25-09.
+2. **Ecofasad cannot be matched by name**, which is reported as zero matched rather than
+   zero attempted.
+3. **`CAT-0110` and `CAT-0112` are one Phomi product under two spellings.** Both settled as
+   Phomi; neither merged, because merging catalogue records is a product decision.
+4. **Q-W25-11 opened, not acted on**: Kordeko's 59 cornices and mouldings are the same
+   product family as the 64 `elemente-decorative` records, and pairing them by eye is a
+   judgement about what the shop sells.

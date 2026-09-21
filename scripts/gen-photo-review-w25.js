@@ -69,15 +69,42 @@ const SECTIONS = ['Catalog', 'Acoperisuri', 'Garduri'];
 const imageUrl = (source) => (source.match(/\bhttps?:\/\/\S+\.(?:jpe?g|png|webp|gif|avif|heic|tiff?)\b/i) || [null])[0];
 const pageUrl = (source) => (source.match(/\bhttps?:\/\/\S+/) || [null])[0];
 
+/* Dimensions from the file's OWN BYTES, with no external binary.
+
+   The first version shelled out to `sips`, which is macOS only. It passed on a
+   workstation and failed in CI on the first run, because on Linux every call
+   threw and every row read "unreadable", so the generated text differed from the
+   committed one. That is gate 22's lesson in a new place: a gate that depends on
+   the environment of whoever runs it does not run everywhere.
+
+   JPEG: walk the segments to a start-of-frame marker, which carries height then
+   width as big-endian 16-bit. PNG: the IHDR chunk, at a fixed offset. Those are
+   the only two formats `public/img/` holds, and an unknown one says so rather
+   than guessing. */
 function dims(file) {
   const f = path.join(ROOT, file);
   if (!fs.existsSync(f)) return 'file missing';
-  try {
-    const out = require('child_process').execFileSync('sips', ['-g', 'pixelWidth', '-g', 'pixelHeight', f], { stdio: ['ignore', 'pipe', 'pipe'] }).toString();
-    const w = (out.match(/pixelWidth:\s*(\d+)/) || [])[1];
-    const h = (out.match(/pixelHeight:\s*(\d+)/) || [])[1];
-    return w && h ? `${w}x${h}` : 'unreadable';
-  } catch { return 'unreadable'; }
+  const b = fs.readFileSync(f);
+  if (b.length > 24 && b.readUInt32BE(0) === 0x89504e47 && b.toString('latin1', 12, 16) === 'IHDR') {
+    return `${b.readUInt32BE(16)}x${b.readUInt32BE(20)}`;
+  }
+  if (b.length > 4 && b[0] === 0xff && b[1] === 0xd8) {
+    let i = 2;
+    while (i + 9 < b.length) {
+      if (b[i] !== 0xff) { i++; continue; }
+      const m = b[i + 1];
+      if (m === 0xd8 || m === 0x01 || (m >= 0xd0 && m <= 0xd7)) { i += 2; continue; }
+      const len = b.readUInt16BE(i + 2);
+      /* SOF0..SOF15, excluding the four that are not frame headers. */
+      if (m >= 0xc0 && m <= 0xcf && m !== 0xc4 && m !== 0xc8 && m !== 0xcc) {
+        return `${b.readUInt16BE(i + 7)}x${b.readUInt16BE(i + 5)}`;
+      }
+      if (len < 2) break;
+      i += 2 + len;
+    }
+    return 'unreadable';
+  }
+  return 'not a jpeg or png';
 }
 
 function originClass(licence) {

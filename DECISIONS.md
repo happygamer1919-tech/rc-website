@@ -10947,3 +10947,19 @@ the rest because **160 slots now hold a real photograph**.
 2. **160 rows, not 133.**
 3. **The prompt pack's generator dies rather than warns** on a W25-R9 entry and on a missing
    priority slot.
+
+### W25-12 addendum · gate 24 depended on macOS, and CI said so, 2026-09-21
+
+Gate 24's first version read image dimensions by shelling out to **`sips`, which is macOS
+only**. It passed on the workstation and **failed in CI on its first run**: on Linux every
+call threw, every row read "unreadable", and the generated text stopped matching the
+committed file.
+
+**Gate 22's lesson in a new place.** `check-css-collisions.js` was rewritten once because it
+depended on the clone depth of whoever ran it; this depended on the operating system. A gate
+that does not run everywhere does not run.
+
+It now reads the dimensions from the file's own bytes: the PNG IHDR chunk, or a walk of the
+JPEG segments to a start-of-frame marker. Zero dependency. **Cross-checked against `sips` on
+six files spanning every size the repo holds** (488x488, 600x415, 459x398, 800x600, 361x600,
+450x282): six of six match.

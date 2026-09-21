@@ -74,6 +74,22 @@ waiting for a generated one.
 **23 of 23 exit 0**, from `node scripts/run-gates.js`. Gate 24 is new and reads
 `160 installed, 162 empty, file matches the data`.
 
+## CI caught a defect the workstation could not
+
+Gate 24's first version read each file's dimensions by shelling out to **`sips`, which is
+macOS only**. It passed here and **failed in CI on its first run**: on Linux every call
+threw, every row read "unreadable", and the generated text no longer matched the committed
+file.
+
+**That is gate 22's lesson arriving in a new place.** `check-css-collisions.js` was rewritten
+once already because it depended on the clone depth of whoever ran it; this depended on the
+operating system of whoever ran it. A gate that does not run everywhere does not run.
+
+It now reads the dimensions **from the file's own bytes**: the PNG IHDR chunk, or a walk of
+the JPEG segments to a start-of-frame marker. Zero dependency, nothing to install.
+**Cross-checked against `sips` on six files spanning every size this repo holds**, 488x488,
+600x415, 459x398, 800x600, 361x600 and 450x282: six of six match.
+
 ## Section 12.0 on `2df8033`, owed by #98 to #102
 
 Run unprompted after the owner's merge, with the full forty-character `EXPECT_SHA` and the

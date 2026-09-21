@@ -126,7 +126,20 @@ const EVIDENCE_PREFIXES = ['BA-', 'PROJ-', 'PORT-'];
    pair at once and say nothing about any picture. */
 const IMAGE_URL = /\bhttps?:\/\/\S+\.(?:jpe?g|png|webp|gif|avif|heic|tiff?)\b/i;
 
-function check(pages, rows, provenance) {
+/* W25-04. AN ORIGIN A PRODUCT CANNOT HAVE. W25-R1's approved origin for a
+   catalogue product is "the manufacturer's official site", and 36 catalogue
+   products name no manufacturer at all: 25 outdoor lamps whose names are bare
+   OEM codes (`K1207`, `GMD-881F`), plus eleven others. For those there is no
+   manufacturer site to be the origin, so a row claiming "manufacturer packshot"
+   on one of their slots is claiming something that cannot be true, and the only
+   place such a file could have come from is a reseller, which R2 forbids.
+   W25-04 is a card whose entire result is "0 of 25 fetchable"; this is the part
+   of that result a machine keeps holding after the card is closed. It is not a
+   rule about pictures, so it lives here with the ledger and not in the fetcher:
+   the fetcher sees one URL and knows nothing about which product it is for. */
+const MANUFACTURER_ORIGIN = 'manufacturer packshot';
+
+function check(pages, rows, provenance, brandBySlot) {
   const problems = [];
   const byId = new Map(rows.map((r) => [r.id, r]));
   const prov = provenance || new Map();
@@ -181,6 +194,14 @@ function check(pages, rows, provenance) {
       }
       if (/ai generated/i.test(prow.licence) && EVIDENCE_PREFIXES.some((p) => ph.id.startsWith(p))) {
         problems.push({ id: 'render-as-proof', text: `${ph.where} is an evidence slot filled with a generated image. W25-R3: a render is never a proof image.` });
+      }
+
+      /* W25-04. The origin has to be one this product could have. */
+      if (brandBySlot && prow.licence.toLowerCase().includes(MANUFACTURER_ORIGIN)) {
+        const brand = brandBySlot.get(ph.id);
+        if (brand !== undefined && !brand) {
+          problems.push({ id: 'no-manufacturer', text: `${ph.where} is filled from a "${MANUFACTURER_ORIGIN}" and its catalogue record names no manufacturer, so there is no manufacturer site the file could have come from. W25-R1 and W25-R2: a reseller is never an origin.` });
+        }
       }
 
       /* One picture, one card. Recorded per slot id rather than per rendered
@@ -310,6 +331,17 @@ const SELF = [
     ],
   },
   {
+    /* W25-04. A lamp whose catalogue record names no manufacturer, filled from a
+       "manufacturer packshot". There is no such manufacturer, so there was no
+       such site. */
+    arm: 'a manufacturer packshot on a product that has no manufacturer',
+    want: 'no-manufacturer',
+    pages: [{ rel: 'self-test/nm.html', html: FILLED_HTML('SELFTEST-14', '1 / 1') }],
+    rows: [FILLED_ROW('SELFTEST-14', 'public/img/selftest-14.jpg')],
+    prov: [{ file: 'public/img/selftest-14.jpg', source: 'https://caparol.md/p/ \u00b7 https://caparol.md/x.jpg', licence: GOOD_LICENCE, licenceUrl: 'https://caparol.md/p/', date: '2026-09-20' }],
+    brands: [['SELFTEST-14', null]],
+  },
+  {
     arm: 'the ledger says filled and the page renders a placeholder box',
     want: 'state',
     pages: [{ rel: 'self-test/h.html', html: '<div class="ph ph--light" data-photo-slot="SELFTEST-08" style="--ph-ratio: 1 / 1;"><span class="ph__id">SELFTEST-08</span></div>' }],
@@ -333,15 +365,19 @@ const CONTROL = {
     FILLED_ROW('SELFTEST-09', 'public/img/selftest-09.jpg'),
   ],
   prov: [{ file: 'public/img/selftest-09.jpg', source: 'https://caparol.md/p/ \u00b7 https://caparol.md/x.jpg', licence: GOOD_LICENCE, licenceUrl: 'https://caparol.md/p/', date: '2026-09-20' }],
+  /* The filled control names a manufacturer, so the W25-04 arm's plant is the
+     absence of one and nothing else. */
+  brands: [['SELFTEST-09', 'Caparol']],
 };
 const provMap = (rows) => new Map((rows || []).map((r) => [r.file, r]));
+const brandMap = (pairs) => new Map(pairs || []);
 
-const controlBefore = check(CONTROL.pages, CONTROL.rows, provMap(CONTROL.prov));
+const controlBefore = check(CONTROL.pages, CONTROL.rows, provMap(CONTROL.prov), brandMap(CONTROL.brands));
 if (controlBefore.length) fail(`the self-test control is not clean, so its arms prove nothing: ${controlBefore.map((p) => p.text).join(' | ')}`);
 console.log('self-test control: clean');
 
 for (const t of SELF) {
-  const got = check(t.pages, t.rows, provMap(t.prov));
+  const got = check(t.pages, t.rows, provMap(t.prov), brandMap(t.brands));
   const hit = got.filter((p) => p.id === t.want);
   if (hit.length !== 1) {
     fail(`the self-test arm "${t.arm}" did not fire on its own message "${t.want}". It reported: ${got.length ? got.map((p) => p.id).join(', ') : 'nothing'}. An assertion nobody has watched fail is not a gate.`);
@@ -349,7 +385,7 @@ for (const t of SELF) {
   console.log(`self-test arm fired on its own message: ${t.arm} -> ${t.want}`);
 }
 
-const controlAfter = check(CONTROL.pages, CONTROL.rows, provMap(CONTROL.prov));
+const controlAfter = check(CONTROL.pages, CONTROL.rows, provMap(CONTROL.prov), brandMap(CONTROL.brands));
 if (controlAfter.length) fail(`the self-test control is dirty after the arms, so the arms left residue: ${controlAfter.map((p) => p.text).join(' | ')}`);
 console.log('self-test control, again: clean\n');
 
@@ -381,7 +417,21 @@ const filledCount = ledger.slots.filter((r) => r.state === 'filled').length;
 console.log(`provenance rows read: ${provenance.size}`);
 console.log(`ledger slots filled: ${filledCount} of ${ledger.slots.length}`);
 
-const problems = check(pages, ledger.slots, provenance);
+/* W25-04. The brand map, so a filled slot's claimed origin can be checked against
+   whether that product HAS a manufacturer. Only catalogue slots appear in it; a
+   slot with no entry is not judged, which is every non-catalogue slot. */
+const PRODUCTS = path.join(ROOT, 'content/catalog-products.json');
+if (!fs.existsSync(PRODUCTS)) fail('content/catalog-products.json is missing, so no filled catalogue slot could be checked against its product record.');
+let productJson;
+try { productJson = JSON.parse(fs.readFileSync(PRODUCTS, 'utf8')); } catch (e) { fail(`content/catalog-products.json does not parse: ${e.message}`); }
+const productRecords = Array.isArray(productJson) ? productJson : (productJson.products || []);
+if (!productRecords.length) fail('content/catalog-products.json parsed to zero records, so every catalogue slot would pass by finding nothing.');
+const REAL_BRAND = (b) => b !== null && b !== undefined && String(b).trim() !== '';
+const brands = new Map(productRecords.filter((r) => r.slot).map((r) => [r.slot, REAL_BRAND(r.brand) && !r.brand_hidden ? String(r.brand) : null]));
+const withoutBrand = [...brands.values()].filter((b) => !b).length;
+console.log(`catalogue records read: ${brands.size}, of which ${withoutBrand} name no usable manufacturer`);
+
+const problems = check(pages, ledger.slots, provenance, brands);
 
 if (problems.length) {
   console.error(`\n${problems.length} problem${problems.length === 1 ? '' : 's'}:`);

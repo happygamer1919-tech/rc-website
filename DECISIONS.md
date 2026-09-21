@@ -10504,3 +10504,56 @@ shape it cannot read. Three arms watched, control clean either side.
 4. **Q-W25-11 opened, not acted on**: Kordeko's 59 cornices and mouldings are the same
    product family as the 64 `elemente-decorative` records, and pairing them by eye is a
    judgement about what the shop sells.
+
+## W25-04 · Sisteme de iluminare: nought of twenty-five, attempted and measured, 2026-09-21
+
+**Card W25-04.** PR only, stops for the owner. Stacked on `w25/w25-03d-brand-settlement`.
+The full card is `docs/board/W25-04-packshots-iluminat.md`.
+
+### The result
+
+**0 filled of 25.** Re-derived today from `content/catalog-products.json`: 25 products in
+`sisteme-iluminare`, **0 naming a manufacturer**, none having gained one since the plan.
+
+### It was attempted, which is the whole point of the card
+
+W25-02 reported eleven manufacturers as unattempted after its agents stalled, and that was
+nearly read as absence. So this went looking before reporting a zero.
+
+The 25 are named by bare codes (`GMD-881F`, `K1207`, `K5014`). **Three source pages were
+read for text**, which W24-R2 permits: they carry no manufacturer field at all, no "Marca",
+no "Producător", nothing in the product meta. **`K1207` and `GMD-881` were searched as
+lighting model codes** and return unrelated manufacturers' general catalogues and no
+product under either code. They are OEM codes sold under many names, which is precisely the
+case where a confident guess puts a different lamp on the card. W25-R1's only approved
+origin is the manufacturer's official site, and there is none.
+
+### The rule the card's number cannot keep
+
+A result that is a count stops being true the day someone edits the data, so it is a rule
+now, in gate 19: **a filled slot whose catalogue record names no manufacturer may not claim
+a "manufacturer packshot" origin.** No manufacturer means no manufacturer site, and the
+only remaining origin is a reseller, which W25-R2 forbids by name.
+
+Deliberately not "may never be filled": **W25-R3 permits an owner-generated image on a
+product slot**, which is exactly what W25-05 produces for these 25. The rule refuses a false
+claim about origin, not a generated picture. Gate 19 now reads
+`content/catalog-products.json` and judges only slots that appear in it; it runs 11 arms and
+prints `catalogue records read: 223, of which 103 name no usable manufacturer`.
+
+Watched fire twice, control clean either side: the synthetic arm against a filled control
+whose brand is Caparol, and `CAT-0033`'s manufacturer removed on the shipping files, which
+exits 1 naming the slot and the page.
+
+### The count W25-05 inherits
+
+**103 catalogue products have no usable manufacturer**: 36 with no `brand` and 67 carrying
+`brand_hidden`. Up from the plan's 100, because W25-03d added `brand_hidden` to three
+ceramic plates.
+
+### Recorded for ratification
+
+1. **Gate 19 gained a rule no ruling asked for.**
+2. **`CAT-0203` and `CAT-0213` are both "Lampă K1247"** on two records with two source
+   URLs, handed to W25-05 as two entries and not merged, because merging catalogue records
+   is a product decision.

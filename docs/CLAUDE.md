@@ -591,12 +591,28 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     (section 14). `build.js` holds the same forward rule at build time and refuses to
     render a placeholder whose slot id has no row. It fails on zero HTML pages read, on a
     ledger that is missing or does not parse, and on a `slots` key that is not an array.
-    **Its three-arm self-test is what makes it a gate while the ledger is still filling**:
+    **AMENDED (W25-01, W25-03c, W25-04): the filled half.** A filled slot is a `<picture>`
+    with alt text, its ledger row names a provenance row, that row's host is not one R-W
+    forbids and its licence names an approved origin, and a generated image never lands on
+    an evidence slot. **W25-03c: two filled slots must not stand on the same picture**,
+    read both as a shared file path and as a shared source image URL, which is W25-R3's "a
+    family image never fills a colour-variant card" in the only form a machine can hold.
+    **W25-04: a filled slot whose catalogue record names no manufacturer may not claim a
+    "manufacturer packshot" origin**, because there is no such manufacturer and so no such
+    site, and the only place the file could have come from is a reseller, which W25-R2
+    forbids. It is deliberately not "may never be filled": W25-R3 permits an owner-generated
+    image on a product slot, and the rule refuses a false claim about origin, not a
+    generated picture. The gate therefore reads `content/catalog-products.json` as well,
+    and judges only slots that appear in it.
+    **Its ~~three~~ ELEVEN-arm self-test is what makes it a gate while the ledger is still filling**:
     W24-01 ships the component, the ledger and the gate together, so both real counts are
     zero on that card and both assertions would hold vacuously. Before any real result it
     runs a planted unledgered placeholder, a planted unrendered row and a planted ratio
     disagreement against synthetic pages, each between two controls watched clean in the
-    same run, and fails if any arm does not fire on its own message. Same arrangement as
+    same run, and fails if any arm does not fire on its own message. **The filled half adds
+    eight more arms** (W25-01's five, W25-03c's two and W25-04's one), against a second,
+    filled control, so an arm firing cannot be the filled path being broken rather than the
+    plant being caught. Same arrangement as
     gate 17's parser self-test, and the same reason: an assertion nobody has watched fail
     is not a gate (section 13).
 

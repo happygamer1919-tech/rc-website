@@ -13,7 +13,7 @@
   "capture": {
     "wave": "W24",
     "opened": "2026-09-19",
-    "filled": 74
+    "filled": 89
   },
   "slots": [
     {
@@ -270,7 +270,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Polistiren Dalmatina\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0001.jpg",
+      "alt": {
+        "ro": "Polistiren Dalmatina, ambalajul produsului",
+        "ru": "Полистирол Далмация, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0002",
@@ -278,7 +283,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Polistiren expandat CT80F\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0002.jpg",
+      "alt": {
+        "ro": "Polistiren expandat CT80F, ambalajul produsului",
+        "ru": "Экструдированный пенополистирол КТ80Ф, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0003",
@@ -371,7 +381,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Klebespachtel 100R - Adeziv de armare polistiren și vată\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0013.jpg",
+      "alt": {
+        "ro": "Klebespachtel 100R - Adeziv de armare polistiren și vată, ambalajul produsului",
+        "ru": "Клебешпаттель 100Р - Армирующий клей для полистирола и шерсти, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0014",
@@ -379,7 +394,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Kleber 90R Adeziv lipire polistiren\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0014.jpg",
+      "alt": {
+        "ro": "Kleber 90R Adeziv lipire polistiren, ambalajul produsului",
+        "ru": "Клебер 90Р Клей для склеивания полистирола, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0015",
@@ -387,7 +407,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Mortar universal Caparol ArmaReno 700\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0015.jpg",
+      "alt": {
+        "ro": "Mortar universal Caparol ArmaReno 700, ambalajul produsului",
+        "ru": "Универсальный раствор Капарол АрмаРено 700, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0016",
@@ -435,7 +460,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"CERESIT CT 82 - Mortar adeziv și masă de șpaclu pentru polistiren\" (Ceresit), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0021.jpg",
+      "alt": {
+        "ro": "CERESIT CT 82 - Mortar adeziv și masă de șpaclu pentru polistiren, ambalajul produsului",
+        "ru": "CERESIT CT 82 - Клеевой раствор и шпатлевка для полистирола, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0022",
@@ -491,7 +521,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"ProjektPutz R și K Tencuială decorativă acrilică Caparol\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0028.jpg",
+      "alt": {
+        "ro": "ProjektPutz R și K Tencuială decorativă acrilică Caparol, ambalajul produsului",
+        "ru": "ProjektPutz R и K - акриловая декоративная штукатурка Капарол, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0029",
@@ -499,7 +534,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Carbon Fassadenputz K si R - Tencuială decorativă carbonică\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0029.jpg",
+      "alt": {
+        "ro": "Carbon Fassadenputz K si R - Tencuială decorativă carbonică, ambalajul produsului",
+        "ru": "Carbon Fassadenputz K и R - углеродная декоративная штукатурка, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0030",
@@ -507,7 +547,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Silicon-Fassadenputz K si R - Tencuială decorativă\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0030.jpg",
+      "alt": {
+        "ro": "Silicon-Fassadenputz K si R - Tencuială decorativă, ambalajul produsului",
+        "ru": "Silicon-Fassadenputz K si R - Силиконовая декоративная штукатурка, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0031",
@@ -515,7 +560,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Tencuială decorativă silacrilică Caparol Silacril Fassadenputz\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0031.jpg",
+      "alt": {
+        "ro": "Tencuială decorativă silacrilică Caparol Silacril Fassadenputz, ambalajul produsului",
+        "ru": "Силакриловая декоративная штукатурка Caparol Silacril Fassadenputz, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0032",
@@ -552,7 +602,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Tencuială decorativă pentru soclu Caparol Buntsteinputz\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0035.jpg",
+      "alt": {
+        "ro": "Tencuială decorativă pentru soclu Caparol Buntsteinputz, ambalajul produsului",
+        "ru": "Декоративная базовая штукатурка Caparol Buntsteinputz, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0036",
@@ -560,7 +615,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Projekt Grund pentru tencuieli decorative\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0036.jpg",
+      "alt": {
+        "ro": "Projekt Grund pentru tencuieli decorative, ambalajul produsului",
+        "ru": "Projekt Grund для декоративной штукатурки, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0037",
@@ -2160,7 +2220,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Amphibolin - Vopsea acrilică universală\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0191.jpg",
+      "alt": {
+        "ro": "Amphibolin - Vopsea acrilică universală, ambalajul produsului",
+        "ru": "Амфиболин - Универсальная акриловая краска, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0192",
@@ -2176,7 +2241,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Vopsea de fațadă universală - Muresko-plus\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0193.jpg",
+      "alt": {
+        "ro": "Vopsea de fațadă universală - Muresko-plus, ambalajul produsului",
+        "ru": "Универсальная фасадная краска - Muresko-plus, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0194",
@@ -2192,7 +2262,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Caparol Tiefgrund - Amorsă acrilică, pentru interior și exterior\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0195.jpg",
+      "alt": {
+        "ro": "Caparol Tiefgrund - Amorsă acrilică, pentru interior și exterior, ambalajul produsului",
+        "ru": "Caparol Tiefgrund - Акриловая грунтовка для внутренних и наружных работ, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0196",

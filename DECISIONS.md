@@ -10678,3 +10678,57 @@ Phomi only as colours, our records name none, and picking one would be W25-R4's 
    and that directory had no W25 file.
 2. **The next free id was W25-R5.**
 3. **Eleven slots were left grey rather than sharing a picture.** Q-W25-13.
+
+## W25-08 · Thirty-three attempted, fifteen filled, and a reason for each of the eighteen, 2026-09-21
+
+**Card W25-08.** PR only, stops for the owner. Stacked on `w25/w25-07-phomi-swatches`.
+Q-W25-08 approved as **W25-R10**. The full card is
+`docs/board/W25-08-manufacturer-packshots.md`.
+
+### The result
+
+**74 of 261 before, 89 of 261 after.** **33 branded catalogue products attempted, 15
+filled.** Every one was looked for: W25-02 reported eleven manufacturers as unattempted and
+that was nearly read as absence, which is the failure this card exists to not repeat.
+
+Caparol 14 of 15 · Ceresit 1 of 1 · Baumit 0 of 5 (400x400 everywhere, short by 50px) ·
+DURAZIV 0 of 2 (343x335) · SWEETONDALE 0 of 2 (held, Q-W25-14) · ISOMAT 0 of 1 (270x270) ·
+STANCOLAC 0 of 1 (no packshot published, only interior room scenes) · ROKO 0 of 1 (423x400)
+· Penoplex 0 of 1 (`.ru` only) · KREISEL, IZOVAT, FAWORI, NOVOTERM 0 of 1 each (not
+findable, Q-W25-14).
+
+### The one that would have been a wrong product
+
+`CAT-0036` is "Projekt Grund". The obvious Caparol page is **PutzGrund**, and its packshot
+had already been fetched. **Caparol publishes a separate ProjektGrund**, and that is what
+our record names. Replaced before anything was installed. Two products, one syllable apart,
+and W25-R4 forbids exactly that.
+
+### Why Caparol rows do not cite W23-04
+
+R-W says they should. **They carry W25-R1's fixed string instead**, because W23-04 is the
+**media database** permission and these files came from ordinary public product pages. Its
+two conditions are ones this build does not meet: it is granted to a **registered user**,
+and W23-04's own ratification note says no account is claimed; and it permits **no
+modification of the files**, while `process-packshot.js` re-encodes and resizes every image.
+**Citing a permission whose conditions are not met would be worse than citing a string that
+says plainly no licence was verified.**
+
+### Method
+
+Discovery used search, which W25-R6 now allows. Every download still went through
+`scripts/fetch-packshot.js`. Ceresit's product page builds its image list in JavaScript and
+serves none of it in the HTML, so it was rendered headless to find the asset URL, and that
+URL was then fetched through the guard like every other.
+
+All fifteen were looked at. No watermark, no retailer logo, no face, no other seller's
+branding. `CAT-0002` sits on a pale blue ground rather than white, which is how Caparol
+publishes that file, and it is noted rather than corrected.
+
+### Recorded for ratification
+
+1. **Caparol rows carry the W25-R1 string, not the W23-04 permission.**
+2. **`CAT-0005` left grey** as the second record of one Caparol product, which is
+   Q-W25-13's situation arriving in a second category.
+3. **Ceresit's file comes from `dm.henkel-dam.com`**, Henkel's own asset domain, published
+   by `ceresit.md`.

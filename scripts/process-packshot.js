@@ -15,24 +15,30 @@
    an image reach the site without anyone reading its provenance.
 
    WHAT IT REFUSES, and why each refusal is here rather than in a review:
-     · a source whose longest side is under the 450px floor (W25-R3);
+     · a source whose longest side is under the 450px floor (answer set 2, FINAL);
      · a source that is not an image by its BYTES, whatever its name says;
-     · a --label source with no --crop, and a --crop that leaves either side
-       under the floor, which is the owner's swatch rule made executable (W25-R3);
+     · a --crop that leaves either side under the floor (W25-R5);
      · an output that still carries Exif or GPS after the strip, which is gate
        17's rule and is asserted here rather than trusted.
 
-   THE SWATCH RULE (W25-R3), and the half of it a machine can hold. The owner's
-   rule is "images with a burned-in name label are not used as is; crop the label
-   only if both sides remain 450 or more after crop, else placeholder". Whether a
-   picture carries a burned-in label is a property of the PICTURE, like a
-   watermark or a face, and R-W's amendment already says those are checked by a
-   person looking at the file. What a machine can hold is the arithmetic, and it
-   is held here rather than in a review: `--label` declares what the person saw,
-   and a declared label with no crop is refused; a crop that leaves either side
-   under 450 is refused with both measurements printed. The third clause, that a
-   family image never fills a colour-variant card, is not about one file and is
-   held by gate 19 over the whole ledger.
+   THE SWATCH RULE, AS AMENDED BY W25-R5. Answer set 2 refused an image with a
+   burned-in product name unless a crop removed it leaving both sides at 450 or
+   more. On Phomi's 650x450 swatches no such crop exists, measured at W25-03c:
+   the smallest crop that clears the label leaves 650x320 or 350x450. That held
+   60 ceramic plates grey, and the owner has now ruled that those swatches are
+   **installed as published and flagged for review instead**.
+
+   So `--label` no longer refuses. It RECORDS: the person who looked at the file
+   saw a burned-in product name, the flag is printed on the run and it is what
+   `docs/PHOTO-REVIEW-W25.md` lists for the owner's own pass. `--crop` and its
+   post-crop floor stay, because the arithmetic is still right whenever a crop IS
+   the answer, and a crop that leaves either side under 450 is still refused with
+   both measurements printed.
+
+   The other clause of the rule is untouched: **a family image never fills a
+   colour-variant card**. That is not about one file, so it cannot live here; gate
+   19 holds it over the whole ledger as "two filled slots must not stand on the
+   same picture".
 
    METADATA. The strip is the re-encode: sips rebuilds the JPEG from decoded
    pixels and the source's tags do not survive that. (`sips -d all` is not
@@ -60,7 +66,7 @@ const path = require('path');
 const { execFileSync } = require('child_process');
 
 const ROOT = path.join(__dirname, '..');
-/* W25-R3, the owner's answer to Q-W25-07, and FINAL: the floor does not move
+/* Answer set 2, the owner's answer to Q-W25-07, and FINAL: the floor does not move
    again. It was 800 at W25-02 and 500 at W25-R2, and both passed over the whole
    measured population, which runs 343 to 492: DURAZIV publishes at 343x335, ROKO
    at 492x400, Phomi at 459x398, each one the manufacturer's own packshot of the
@@ -88,9 +94,10 @@ if (args.length < 2) die('usage: node scripts/process-packshot.js <source-file> 
 const [SRC, SLOT] = args;
 const DIR = flag('dir', 'catalog');
 
-/* The swatch rule's executable half (W25-R3). CROP is the pixels REMOVED from
+/* The swatch rule's executable half (W25-R5). CROP is the pixels REMOVED from
    each edge, in CSS order, and LABEL is the person's declaration that they saw a
    burned-in name label on this source. */
+/* W25-R5: a record, not a refusal. */
 const LABEL = process.argv.includes('--label');
 const CROP = (() => {
   const raw = flag('crop', null);
@@ -101,8 +108,8 @@ const CROP = (() => {
   }
   return { top: n[0], right: n[1], bottom: n[2], left: n[3] };
 })();
-if (LABEL && !CROP) {
-  die('--label says this source carries a burned-in name label, and W25-R3 forbids using such an image AS IS. Pass --crop top,right,bottom,left to remove the label, or leave the slot a placeholder (W25-R4).');
+if (LABEL) {
+  console.log('label: this source carries a burned-in product name (W25-R5). It is installed as published and flagged for the owner\'s review list.');
 }
 if (!/^[A-Z0-9-]+$/.test(SLOT)) die(`"${SLOT}" is not a slot id. Uppercase, digits and hyphens only.`);
 if (!fs.existsSync(SRC)) die(`${SRC} does not exist.`);
@@ -148,7 +155,7 @@ if (CROP) {
   ch = h - CROP.top - CROP.bottom;
   if (cw <= 0 || ch <= 0) die(`--crop ${CROP.top},${CROP.right},${CROP.bottom},${CROP.left} removes everything from a ${w}x${h} source.`);
   if (cw < SOURCE_FLOOR || ch < SOURCE_FLOOR) {
-    die(`--crop leaves ${cw}x${ch} and W25-R3 needs BOTH sides at ${SOURCE_FLOOR} or more after the crop. ${cw < SOURCE_FLOOR ? `Width is short by ${SOURCE_FLOOR - cw}px. ` : ''}${ch < SOURCE_FLOOR ? `Height is short by ${SOURCE_FLOOR - ch}px. ` : ''}Leave the slot a placeholder (W25-R4).`);
+    die(`--crop leaves ${cw}x${ch} and the swatch rule needs BOTH sides at ${SOURCE_FLOOR} or more after the crop. ${cw < SOURCE_FLOOR ? `Width is short by ${SOURCE_FLOOR - cw}px. ` : ''}${ch < SOURCE_FLOOR ? `Height is short by ${SOURCE_FLOOR - ch}px. ` : ''}Leave the slot a placeholder (W25-R4).`);
   }
   console.log(`crop: ${CROP.top},${CROP.right},${CROP.bottom},${CROP.left} removed; ${w}x${h} becomes ${cw}x${ch}, both at or above the ${SOURCE_FLOOR}px floor`);
 }

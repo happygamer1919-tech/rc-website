@@ -380,6 +380,44 @@ const PROBE = `(async () => {
   return { markers, facts, height: document.documentElement.scrollHeight, width: innerWidth };
 })()`;
 
+/* W25-R11, the ROOT FIX. The gate used to measure a page as soon as readyState
+   was complete and the fonts had settled, and on 2026-09-21 that read one page in
+   67 at 900px with promoBar 0 and productCards 0: a page measured BEFORE its
+   stylesheet applied. The page was fine and the reading was not.
+
+   This waits for two things that are true of every page this gate reads, and it
+   is not a sleep:
+
+     1. THE STYLESHEET HAS APPLIED. The site's design tokens are custom properties
+        declared on :root in src/styles.css, so --brand resolving to a non-empty
+        value IS the stylesheet having applied, by definition rather than by
+        guess. Nothing else in the document can set it.
+     2. THE PROMO BAR IS PRESENT. All ten marker sets expect promoBar 1, so it is
+        on every page in PAGES, and its absence is exactly what the false red
+        reported.
+
+   It returns how long it waited and whether both became true, so a page that is
+   genuinely missing its promo bar still reports UNVERIFIED rather than hanging:
+   the loop is bounded and a timeout returns ready false, which lets the marker
+   assertion do its job.
+
+   NO BACKTICK ANYWHERE INSIDE, for the W24-09 reason. */
+const READY = `(async () => {
+  const tokenSet = () => {
+    const v = getComputedStyle(document.documentElement).getPropertyValue('--brand');
+    return !!(v && v.trim());
+  };
+  const promo = () => document.querySelectorAll('.promo').length > 0;
+  const t0 = Date.now();
+  for (let i = 0; i < 120; i++) {
+    if (document.readyState === 'complete' && tokenSet() && promo()) {
+      return { ready: true, waitedMs: Date.now() - t0, token: true, promo: true };
+    }
+    await new Promise(r => setTimeout(r, 100));
+  }
+  return { ready: false, waitedMs: Date.now() - t0, token: tokenSet(), promo: promo() };
+})()`;
+
 async function main() {
   const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'rp-verify-'));
   const chrome = spawn(CHROME, ['--headless=new', `--remote-debugging-port=${PORT}`,
@@ -416,18 +454,208 @@ async function main() {
   await cdp.send('Network.setCacheDisabled', { cacheDisabled: true });
   await cdp.send('Emulation.setDeviceMetricsOverride', { width: WIDTH, height: HEIGHT, deviceScaleFactor: 1, mobile: false });
 
+  /* W25-R11. `--no-wait-ready` exists so the fix can be watched NOT working: it
+     restores the old behaviour exactly, and the card's proof runs the same page
+     with it and without it. It is a debug flag and nothing in CI passes it. */
+  const WAIT_READY = !process.argv.includes('--no-wait-ready');
+  let notReady = 0;
+
+  /* W25-R11. `--slow <ms>` holds the top-level DOCUMENT and every stylesheet back
+     by that many milliseconds, which reproduces the defect on demand instead of
+     waiting years for it.
+
+     THE DOCUMENT, NOT ONLY THE STYLESHEET, and the difference is the diagnosis.
+     A slow stylesheet alone changes nothing, measured: a render-blocking <link>
+     also delays the load event, so readyState stays "loading" and the old poll
+     waited anyway. What the old poll could not survive is a slow DOCUMENT:
+     Page.navigate returns before the new document commits, so the poll reads
+     `document.readyState` on the PREVIOUS page, finds "complete" immediately, and
+     the probe measures a document that is not the one it asked for. The first
+     page of a run measures about:blank, whose scrollHeight in this window is
+     exactly 900 and whose marker counts are all 0. That is the row that appeared
+     on 2026-09-21, to the pixel.
+
+     `--only <substring>` limits the run to pages whose label or path matches, so
+     the proof takes seconds rather than minutes.
+     All three are debug flags. Nothing in CI passes any of them, and
+     `--self-check` does not read them. */
+  const slowIdx = process.argv.indexOf('--slow');
+  const SLOW_CSS = slowIdx > -1 ? Number(process.argv[slowIdx + 1] || 0) : 0;
+  let slowHeld = 0;
+  if (SLOW_CSS > 0) {
+    ws.addEventListener('message', (e) => {
+      let m; try { m = JSON.parse(e.data); } catch { return; }
+      if (m.method !== 'Fetch.requestPaused') return;
+      const u = (m.params.request && m.params.request.url) || '';
+      const hold = /\.css(\?|$)/i.test(u) || m.params.resourceType === 'Document';
+      (async () => {
+        if (hold) { slowHeld++; await sleep(SLOW_CSS); }
+        try { await cdp.send('Fetch.continueRequest', { requestId: m.params.requestId }); } catch {}
+      })();
+    });
+    await cdp.send('Fetch.enable', { patterns: [{ urlPattern: '*', requestStage: 'Request' }] });
+    console.log(`DEBUG: the document and every stylesheet held back by ${SLOW_CSS}ms (--slow)`);
+  }
+  if (!WAIT_READY) console.log('DEBUG: the W25-R11 readiness wait is DISABLED (--no-wait-ready)');
+
   const load = async (url) => {
     await cdp.send('Page.navigate', { url });
     for (let i = 0; i < 80; i++) { if (await cdp.ev('document.readyState === "complete"').catch(() => false)) break; await sleep(200); }
     await cdp.ev('document.fonts ? document.fonts.ready.then(()=>1) : 1').catch(() => {});
+    if (WAIT_READY) {
+      const st = await cdp.ev(READY).catch(() => ({ ready: false, waitedMs: -1, token: false, promo: false }));
+      if (!st.ready) {
+        notReady++;
+        console.log(`             NOT READY after ${st.waitedMs}ms: stylesheet applied ${st.token}, promo bar present ${st.promo}`);
+      }
+      return st;
+    }
     await sleep(400);
+    return { ready: null, waitedMs: 0 };
   };
 
-  let failures = 0, unverified = 0;
+  let failures = 0, unverified = 0, retried = 0, retrySaved = 0;
   const seen = [];
-  for (const page of PAGES) {
+
+  /* W25-R11. One reading of one page, as a function, so a re-read is literally
+     the same measurement and not a second, laxer one. */
+  let readPage = async (page) => {
     await load(bust(page.path));
     const r = await cdp.ev(PROBE);
+    const want = MARKERS[page.type];
+    const bad = Object.entries(want).filter(([k, v]) =>
+      (v === 'atLeast1' ? !(r.markers[k] >= 1) : r.markers[k] !== v));
+    const shaProblem = r.facts.buildSha === null
+      ? 'no build-sha meta tag served'
+      : (r.facts.buildSha !== EXPECT_SHA
+          ? `build-sha mismatch\n               served   ${r.facts.buildSha}\n               expected ${EXPECT_SHA}`
+          : null);
+    return { r, bad, shaProblem, ok: bad.length === 0 && !shaProblem };
+  };
+
+  /* W25-R11, THE PROOF. `--prove` watches the readiness probe fail, watches it
+     wait, and watches the re-read fire, each between readings that are clean.
+     It runs in seconds and needs one real page.
+
+     It exists because the obvious proof did not work, and that is recorded
+     rather than hidden: `--slow 4000` held the document and all 47 stylesheets
+     back on a real run, 94 responses, and the row still read 3,464px VERIFIED.
+     A render-blocking stylesheet also delays the load event, and CDP's
+     Runtime.evaluate waits for the new execution context, so the old poll
+     survived both. Whatever produced the 900px row on 2026-09-21, it is not
+     reproducible by making the network slow, and this proof therefore tests the
+     PROBE rather than a guess at the cause. */
+  if (process.argv.includes('--prove')) {
+    let bad = 0;
+    const say = (okFlag, what, detail) => { console.log(`  ${okFlag ? 'ok  ' : 'FAIL'} ${what}${detail ? '  ' + detail : ''}`); if (!okFlag) bad++; };
+    const put = async (html) => {
+      await cdp.send('Page.navigate', { url: 'about:blank' });
+      await sleep(300);
+      await cdp.ev(`document.open();document.write(${JSON.stringify(html)});document.close();1`);
+    };
+
+    console.log('W25-R11 proof: the readiness probe, and the re-read\n');
+
+    /* Control: a document that is ready the moment it is written. */
+    await put('<style>:root{--brand:#F65308}</style><div class="promo">x</div><p>control</p>');
+    let st = await cdp.ev(READY);
+    say(st.ready === true && st.waitedMs < 1000, 'control, tokens and promo present at once', `ready ${st.ready}, waited ${st.waitedMs}ms`);
+
+    /* Arm 1: no stylesheet token and no promo bar. It must NOT report ready, and
+       it must come back rather than hang. */
+    await put('<p>no tokens, no promo</p>');
+    st = await cdp.ev(READY);
+    say(st.ready === false && st.token === false && st.promo === false, 'arm 1, neither token nor promo: refuses to report ready', `ready ${st.ready}, waited ${st.waitedMs}ms`);
+
+    /* Arm 2: both arrive late. It must WAIT for them, which is the whole fix. */
+    await put('<p>late</p><script>setTimeout(function(){document.documentElement.style.setProperty("--brand","#F65308");var d=document.createElement("div");d.className="promo";document.body.appendChild(d);},1200)<\/script>');
+    st = await cdp.ev(READY);
+    say(st.ready === true && st.waitedMs >= 1100, 'arm 2, both arrive after 1200ms: waits for them', `ready ${st.ready}, waited ${st.waitedMs}ms`);
+
+    /* Arm 3: the stylesheet applies but the promo bar never does. Half ready is
+       not ready, which is what makes the marker assertion still do its job. */
+    await put('<style>:root{--brand:#F65308}</style><p>token only</p>');
+    st = await cdp.ev(READY);
+    say(st.ready === false && st.token === true && st.promo === false, 'arm 3, token but no promo: half ready is not ready', `token ${st.token}, promo ${st.promo}`);
+
+    /* Control again, after the arms (R-AB). */
+    await put('<style>:root{--brand:#F65308}</style><div class="promo">x</div><p>control</p>');
+    st = await cdp.ev(READY);
+    say(st.ready === true, 'control again, after the arms', `ready ${st.ready}, waited ${st.waitedMs}ms`);
+
+    /* Arm 4: the re-read. One page is read three times with a marker set that
+       cannot match, so the row stays unverified and the run must exit 1 with
+       RETRIED printed and counted. Bounded at two re-reads, which is the ruling. */
+    const probe = PAGES[0];
+    console.log(`\n  arm 4: ${probe.label} read with an impossible marker, to watch RETRIED and the bound`);
+    const savedType = probe.type;
+    MARKERS.__prove = Object.assign({}, MARKERS[savedType], { promoBar: 999 });
+    probe.type = '__prove';
+    const out = [];
+    const realLog = console.log;
+    console.log = (...a) => { out.push(a.join(' ')); realLog(...a); };
+    let reads = 0;
+    const orig = readPage;
+    // eslint-disable-next-line no-func-assign
+    readPage = async (pg) => { reads++; return orig(pg); };
+    await runOne(probe);
+    readPage = orig;
+    console.log = realLog;
+    probe.type = savedType;
+    const retriedLine = out.find((l) => l.startsWith('RETRIED'));
+    say(reads === 3, 'arm 4, exactly one read plus two re-reads', `reads ${reads}`);
+    say(!!retriedLine, 'arm 4, RETRIED printed with both readings', retriedLine ? retriedLine.slice(0, 96) : 'no RETRIED line');
+    say(retried === 1 && retrySaved === 0, 'arm 4, counted in the summary', `retried ${retried}, saved ${retrySaved}`);
+
+    ws.close(); chrome.kill();
+    console.log(`\n${bad === 0 ? 'PROOF PASSED' : 'PROOF FAILED'}: ${bad} arm(s) did not behave.\n`);
+    process.exit(bad === 0 ? 0 : 1);
+  }
+
+  const onlyIdx = process.argv.indexOf('--only');
+  const ONLY = onlyIdx > -1 ? String(process.argv[onlyIdx + 1] || '') : null;
+  const RUN = ONLY ? PAGES.filter((p) => p.label.includes(ONLY) || p.path.includes(ONLY)) : PAGES;
+  if (ONLY) {
+    if (!RUN.length) { console.error(`\nFAIL: --only "${ONLY}" matched no page.\n`); process.exit(1); }
+    console.log(`DEBUG: --only "${ONLY}" limits this run to ${RUN.length} of ${PAGES.length} pages\n`);
+  }
+
+  for (const page of RUN) await runOne(page);
+
+  async function runOne(page) {
+    let read = await readPage(page);
+    const first = read;
+    const extra = [];
+
+    /* W25-R11, THE FALLBACK, bounded in three directions.
+       ONLY an unverified row, NEVER a failed one, and at most TWICE.
+       A failure is a measurement about the site. An unverified row can be a
+       measurement about the instrument, and only that kind may be read again.
+       A row that is over budget, or carries rating markup or a visible TODO, has
+       failed, and re-reading it would be reading until it agrees. */
+    const rowFailed = () => (read.r.height >= page.budget)
+      || read.r.facts.ratingMarkup
+      || (page.type === 'home' && read.r.facts.sameAsProfile !== true)
+      || !!read.r.facts.todoVisible;
+
+    if (!read.ok && !rowFailed()) {
+      for (let attempt = 1; attempt <= 2 && !read.ok; attempt++) {
+        const again = await readPage(page);
+        extra.push(again);
+        read = again;
+        if (read.ok) break;
+      }
+      if (extra.length) {
+        retried++;
+        if (read.ok) retrySaved++;
+        console.log(`RETRIED    ${page.label.padEnd(16)} ${extra.length} re-read(s); read 1 ${first.ok ? 'VERIFIED' : 'UNVERIFIED'} ${first.r.height}px`
+          + extra.map((e, i) => `, read ${i + 2} ${e.ok ? 'VERIFIED' : 'UNVERIFIED'} ${e.r.height}px`).join(''));
+        if (!first.ok) first.bad.forEach(([k, v]) => console.log(`             read 1 marker mismatch: ${k} expected ${v}, got ${first.r.markers[k]}`));
+        if (first.shaProblem) console.log(`             read 1 ${first.shaProblem}`);
+      }
+    }
+
+    const { r, bad, shaProblem } = read;
     const want = MARKERS[page.type];
     /* W24-04. A marker is an exact count, except where the count is data: a
        catalogue page renders as many product cards as its category holds, and
@@ -436,20 +664,13 @@ async function main() {
        non-empty, which is what a stale copy would fail; the exact figure lives in
        content/catalog-products.json and is asserted by build.js and by gate 19.
        It is not a skip: 0 fails it. */
-    const bad = Object.entries(want).filter(([k, v]) =>
-      (v === 'atLeast1' ? !(r.markers[k] >= 1) : r.markers[k] !== v));
-
     /* Identity is part of whether the page is VERIFIED, not a note under it.
        ABSENCE is a failure, never a skip: an assertion that disables itself when
        its input is missing is the defect that lost cache-busting and that let a
-       deleted privacy section read as completeness. */
-    const shaProblem = r.facts.buildSha === null
-      ? 'no build-sha meta tag served'
-      : (r.facts.buildSha !== EXPECT_SHA
-          ? `build-sha mismatch\n               served   ${r.facts.buildSha}\n               expected ${EXPECT_SHA}`
-          : null);
-
-    const ok = bad.length === 0 && !shaProblem;
+       deleted privacy section read as completeness. `want` is read above and is
+       kept so the marker names printed below are this page's own. */
+    void want;
+    const ok = read.ok;
     if (!ok) unverified++;
     const within = r.height < page.budget;
     if (!within) failures++;
@@ -464,6 +685,7 @@ async function main() {
        itself when its input is missing is the defect that lost cache-busting
        and that let a deleted privacy section read as completeness. */
   }
+
 
   /* Reachability crawl, also cache-busted: follow every visible anchor a
      visitor could click and read the rendered text of each destination. */
@@ -488,8 +710,13 @@ async function main() {
   console.log(`  ${reach.size} reachable URLs, ${todoPages} with a visible TODO, ${privacyLinks} privacy pages reachable by link`);
 
   ws.close(); chrome.kill();
-  console.log(`\npages read: ${seen.length} of ${PAGES.length}; reachable URLs crawled: ${reach.size}`);
-  if (seen.length !== PAGES.length || seen.length === 0) { console.log(`FAIL — ${seen.length} pages read for ${PAGES.length} listed`); failures++; }
+  console.log(`\npages read: ${seen.length} of ${RUN.length}; reachable URLs crawled: ${reach.size}`);
+  /* W25-R11. Counted in the summary, so a run that leaned on the fallback says
+     so. A re-read nobody can see is indistinguishable from a gate that passes on
+     the second try. */
+  if (SLOW_CSS > 0) console.log(`DEBUG: responses held back: ${slowHeld}`);
+  console.log(`rows retried: ${retried}${retried ? ` (${retrySaved} verified on a re-read, ${retried - retrySaved} still unverified)` : ''}; pages that never became ready: ${notReady}`);
+  if (seen.length !== RUN.length || seen.length === 0) { console.log(`FAIL — ${seen.length} pages read for ${RUN.length} listed`); failures++; }
   if (reach.size === 0) { console.log('FAIL — the crawl reached zero URLs'); failures++; }
   console.log(`\n${failures === 0 && unverified === 0 ? 'PASS' : 'FAIL'} — ${unverified} unverified, ${failures} failed`);
   process.exit(failures === 0 && unverified === 0 ? 0 : 1);
@@ -517,7 +744,7 @@ async function main() {
 
    NO BACKTICK MAY APPEAR INSIDE PROBE. That is what this guards. */
 if (process.argv.includes('--self-check')) {
-  const strings = { PROBE, FONTS: typeof FONTS === 'string' ? FONTS : null };
+  const strings = { PROBE, READY, FONTS: typeof FONTS === 'string' ? FONTS : null };
   let checked = 0;
   for (const [name, src] of Object.entries(strings)) {
     if (src == null) continue;

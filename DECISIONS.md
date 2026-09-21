@@ -10963,3 +10963,59 @@ It now reads the dimensions from the file's own bytes: the PNG IHDR chunk, or a 
 JPEG segments to a start-of-frame marker. Zero dependency. **Cross-checked against `sips` on
 six files spanning every size the repo holds** (488x488, 600x415, 459x398, 800x600, 361x600,
 450x282): six of six match.
+
+## W25-R11 to W25-R13 · The owner's wave 25 answers, fourth set, recorded verbatim, 2026-09-21
+
+Recorded at the owner's instruction, from the W25-13 dispatch, before any card was worked.
+`origin/main` is `e702134490e9665f9ec8091c343114501f9b0dc8`, with #98 to #103 merged, and
+section 12.0's check on that sha returned `node scripts/verify-live.js` **exit 0, PASS, 0
+unverified, 0 failed, 67 of 67 pages, 41 reachable URLs crawled**.
+
+The three rulings are in `docs/rulings/W25-R.md` as **W25-R11**, **W25-R12** and
+**W25-R13**, verbatim, with their reading. In one line each: gate 9 waits for the stylesheet
+and the promo bar before measuring and re-reads only as a bounded, logged fallback; the 450
+floor has no exception for Baumit, ROKO, ISOMAT or DURAZIV; and a duplicate record is
+dropped only when name, unit and price are identical, otherwise the card stops with a
+question quoting both rows.
+
+## W25-13 · Gate 9 waits before it measures, and the obvious proof did not work, 2026-09-21
+
+**Card W25-13.** PR only, stops for the owner. The full card is
+`docs/board/W25-13-verify-live-ready.md`.
+
+### The root fix, which is not a sleep
+
+A page is measured only once **`--brand` resolves non-empty** and **`.promo` is present**.
+The first IS the stylesheet having applied, because the site's design tokens are custom
+properties declared on `:root` in `src/styles.css` and nothing else sets them. The second is
+on every page this gate reads, all ten marker sets expecting `promoBar: 1`, and its absence
+is exactly what the false red reported. The wait is bounded and a never-ready page reports
+`NOT READY` with which half is missing, so the marker assertion still does its job.
+
+### The fallback
+
+At most two re-reads, only for an UNVERIFIED row, never for a FAILED one. Every reading is
+printed as `RETRIED` and the summary counts them. R-AB holds: the exit code is the result.
+
+### The proof, and the part of it that failed
+
+`--prove` runs eight assertions between two clean controls and all eight pass, including
+arm 2 waiting **1,216ms** for a document whose token and promo bar arrive at 1,200ms, and
+arm 4 reading a page exactly three times and reporting `retried 1, saved 0`.
+
+**The card asked for a forced slow-stylesheet run. It was built, it ran, and it proved
+nothing.** `--slow 4000` held **94 responses** back on a real run with the readiness wait
+disabled, and the row still read **3,464px VERIFIED**. Two measured reasons: a
+render-blocking `<link>` also delays the load event, so the old poll waited anyway, and
+CDP's `Runtime.evaluate` waits for the new execution context, so the probe could not run
+against the previous document either. **The 900px row is therefore not reproducible by
+making the network slow**, this card does not claim to have reproduced it, and the proof
+tests the probe rather than a guess at the cause.
+
+### Recorded for ratification
+
+1. **Four flags are new and permanent**: `--only`, `--slow`, `--no-wait-ready`, `--prove`.
+   Nothing in CI passes any of them.
+2. **`--slow` did not reproduce the defect and is kept**, with the finding beside it.
+3. **A not-ready page costs up to 12 seconds** before it reports. Bounded, and no live page
+   is unready, so a clean run pays nothing.

@@ -11066,3 +11066,22 @@ and a refusal, plus one script.**
    extraction to be possible.
 2. **Baumit's datasheet PDFs 404 on two of their own domains**, recorded so a later card
    does not conclude they never existed.
+
+## W25-15 · The CT80F duplicate, blocked by the ruling that governs it, 2026-09-21
+
+**Card W25-15. BLOCKED on the owner, Q-W25-16.** The block is the ruling working rather than
+the card failing. The full card is `docs/board/W25-15-ct80f-duplicate.md`.
+
+W25-R13 drops a record only when name, unit and price are identical. **All three differ**:
+`Polistiren expandat CT80F` against `CT 80 F - Polistiren expandat`; RU unit
+`1000 x 500 mm` twice against `1000x500x30 мм`; and **7,62 to 76,20 lei against 6,50 to
+65,00 lei**, about 15 percent apart.
+
+**The data supports two readings and picking one would decide what the shop sells.** The RO
+variant lines are the same ten thicknesses, which reads as one product listed twice; the RU
+line on `CAT-0005` names a single 30mm board, which reads as a second product and would
+explain the price gap rather than contradict it. Q-W25-16 quotes both rows in full, every
+field, with four ways out.
+
+**Nothing changed in the tree.** No record dropped, no price moved, no slug changed, no image
+touched. The next card was worked immediately.

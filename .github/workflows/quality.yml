@@ -124,6 +124,13 @@ jobs:
       - name: The photo review list matches the ledger (W25-12)
         run: node scripts/gen-photo-review-w25.js --check
 
+      # W25-16. Gate 25. docs/OWNER-INTAKE-W25.md is the list the owner drops files
+      # against, and the intake matches on the filename being the slot id EXACTLY,
+      # so a slot id that drifts in that document is a file nothing will find. It
+      # is generated from the ledger, the fence records and the built pages.
+      - name: The owner intake list matches the data (W25-16)
+        run: node scripts/gen-owner-intake-w25.js --check
+
       # RC-148. Every stub count stated in the governing and reference documents
       # equals the count measured from content/projects.json. Static, no browser.
       - name: The stub count in the documents equals the data (RC-148)

@@ -11085,3 +11085,38 @@ field, with four ways out.
 
 **Nothing changed in the tree.** No record dropped, no price moved, no slug changed, no image
 touched. The next card was worked immediately.
+
+## W25-16 · Two folders, two lists, and nothing taken in, 2026-09-21
+
+**Card W25-16.** PR only, stops for the owner. The full card is
+`docs/board/W25-16-owner-intake-prep.md`. **Nothing was taken in**: the dispatch says prepare
+and stop.
+
+### The folders
+
+`/Users/ivan/RC-pics-real/` created, and **`/Users/ivan/RC-pics-ai/` created too**. The
+second was not in the dispatch and was absent: the prompt pack has named it as its intake
+folder since W25-05 and the dispatch says the owner will drop AI images there, so it existing
+is the difference between that instruction working and not. Each carries a `README.txt` with
+the naming rule, the floor and what is waiting for it, so the rule is beside the files.
+
+### The two lists, and why they are generated
+
+`docs/OWNER-INTAKE-W25.md`, held by **gate 25**. **The intake matches on the filename being
+the slot id exactly**, so a slot id typed by hand into that document is a file nothing will
+ever find. The model names come from `content/garduri-modele.json` and the tile labels from
+the **built** pages, so a label is the words a visitor reads.
+
+**(a)** `GARD-01` to `GARD-08`, the eight fence models, portrait, 4/5, minimum 1000x1250,
+into `RC-pics-real`. **(b)** `ACOP-01` to `ACOP-04` and `GARDB-01` to `GARDB-04`, the
+priority batch, into `RC-pics-ai`. **The four hub ratios are not all the same**: 5/6, 7/2 and
+7/4 twice, and each prompt names its own. A 1750x500 panorama generated square is unusable.
+
+Gate 25 fails when a listed slot has no ledger row, when a slot is already filled and
+therefore does not belong on a waiting list, when a hub slot renders on no built page or with
+no label beside it, and when either list is not eight.
+
+### Recorded for ratification
+
+1. **`/Users/ivan/RC-pics-ai/` was created too**, though the dispatch names only the other.
+2. **Both folders carry a `README.txt`.** Nothing reads them.

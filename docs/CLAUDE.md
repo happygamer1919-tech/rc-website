@@ -716,6 +716,34 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     defects were watched fire on the shipping files: `brand_hidden` removed from
     `CAT-0060`, and `CAT-0105`'s brand changed to Kordeko.
 
+24. `node scripts/gen-photo-review-w25.js --check` clean. **Since W25-12 (wave 25)**, run by
+    `quality` with the other static checks. `docs/PHOTO-REVIEW-W25.md` is the list the owner
+    reads when reviewing images by hand, and **two rulings make a flag in it part of the
+    permission to use a picture at all**: W25-R5 permits a photograph with a burned-in
+    product name on condition each one is flagged there, and W25-R7 permits a Dasterum image
+    on condition its watermark stays as published. A list that could drift from the ledger
+    would make both permissions unverifiable. It is generated from
+    `docs/PHOTO-SLOTS-W24.json`, `docs/assets/PROVENANCE.md`,
+    `content/catalog-products.json` and `content/plate-brand-settlement.json`, and no flag is
+    typed: "labelled swatch" is the settlement's `level` being `variant`, "watermark" is the
+    licence being the direct-supplier origin, "low confidence" is the tier not being
+    `A-exact`. It fails on a missing file, on a filled slot whose provenance row is absent,
+    and on any difference between the committed file and the data. **Its dimensions come
+    from each file's own bytes**, the PNG IHDR chunk or a walk of the JPEG segments to a
+    start-of-frame marker: the first version shelled out to `sips` and failed in CI on its
+    first run, which is gate 22's lesson arriving where the dependency was the operating
+    system rather than the clone depth.
+
+25. `node scripts/gen-owner-intake-w25.js --check` clean. **Since W25-16 (wave 25)**, run by
+    `quality` with the other static checks. `docs/OWNER-INTAKE-W25.md` is the list the owner
+    drops photographs against, and **the intake matches on the filename being the slot id
+    exactly**, so a slot id that drifts in that document is a file nothing will ever find. It
+    is generated from the ledger, `content/garduri-modele.json` and the **built** pages, so a
+    tile's label is the words a visitor reads rather than a description of them. It fails
+    when a listed slot has no ledger row, when a slot is already filled and therefore does
+    not belong on a waiting list, when a hub slot renders on no built page or with no label
+    beside it, and when either list is not the eight it must be.
+
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number — Q-W14-03 was found "at gate 9" — and those bodies are immutable under
 R-S, so renumbering would falsify them. A gate added later takes the next number
@@ -749,13 +777,17 @@ expensive does.
 checks. It reads the source stylesheet, not the build, so it needs neither.
 **AMENDED (W25-03d):** gate 23 runs before gate 15, with the other static checks. It reads
 two data files and nothing else, so it needs no build and no browser.
+**AMENDED (W25-12):** gate 24 runs before gate 15, with the other static checks.
+**AMENDED (W25-16):** gate 25 runs beside gate 24. It reads the built pages, so it runs after
+gate 1.
 
-**The count, so it stops drifting (W25-03c).** This list numbers **23** gates. Five of them
+**The count, so it stops drifting (W25-03c).** This list numbers **25** gates. Five of them
 are not scripts and `quality` cannot run them: gate 4 (heights measured settled), gate 6 (no
 new colour), gate 7 (reduced motion), gate 8 (the three documents updated) and **gate 9,
 which section 12.0 runs against the deployed sha after the merge**. Eighteen numbered gates
 are scripts, and `quality` runs four more that were never numbered, named two paragraphs
-above. **`quality` therefore runs 22 commands.** Four wave 25 cards reported "19 of 19",
+above. **AMENDED (W25-16): twenty numbered gates are scripts and `quality` runs 24
+commands.** Four wave 25 cards reported "19 of 19",
 which was the count before gates 21 and 22 landed and was never updated; the branches were
 checked, the reports were not true.
 

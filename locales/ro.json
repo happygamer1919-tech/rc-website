@@ -1169,7 +1169,8 @@
     "h2": "Modele",
     "lede": "Patru modele, fiecare în două materiale.",
     "thickness": "Grosime",
-    "colours": "Culori"
+    "colours": "Culori",
+    "priceFrom": "De la"
   },
   "copHero": {
     "h1a": "Copertine metalice.",

@@ -221,8 +221,13 @@ const PAGES = [
      dark hero and a cross-sell row; modele de garduri is new. All under W24-R4. */
   { path: '/servicii/garduri/',            type: 'product-hub', label: 'garduri RO',  budget: 5728 },
   { path: '/ru/servicii/garduri/',         type: 'product-hub', label: 'garduri RU',  budget: 5750 },
-  { path: '/servicii/modele-garduri/',     type: 'product', label: 'gard modele RO', budget: 3780 },
-  { path: '/ru/servicii/modele-garduri/',  type: 'product', label: 'gard modele RU', budget: 3802 },
+  /* W25-11. Both rows DROP. The "Preț la cerere" line became a "De la ... lei/m2"
+     price, and the new line is shorter because it does not carry the catalogue
+     card's shared 44px flex min-height: measured 3686 RO and 3707 RU against 3720
+     and 3742 before, so the budget falls with it. R-Y: a budget is measured plus
+     60, not a ceiling to hide under. */
+  { path: '/servicii/modele-garduri/',     type: 'product', label: 'gard modele RO', budget: 3746 },
+  { path: '/ru/servicii/modele-garduri/',  type: 'product', label: 'gard modele RU', budget: 3767 },
   // ~~W16-02, RC-129. The seven catalog category pages.~~
   // AMENDED (W24-04): thirty pages, and every budget re-measured. The catalogue
   // index at /catalog/ is new (it answered 404), every subcategory has a page of

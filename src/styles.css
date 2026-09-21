@@ -366,6 +366,11 @@ p { margin: 0; }
 }
 .prod__price { font-size: 20px; font-weight: 700; line-height: 1.2; color: var(--ink); }
 .prod__ask { font-size: 16px; font-weight: 700; line-height: 1.2; color: var(--ink-muted); }
+
+/* W25-11. The fence model card's own price line. It is NOT `.prod__price`:
+   that class belongs to the catalogue card and gate RC-129 confines it to a
+   catalogue category page. Same look, own prefix, per rule 3.1. */
+.nvk__price { font-size: 20px; font-weight: 700; line-height: 1.2; color: var(--ink); }
 .prod__cta {
   flex: none; width: 44px; height: 44px; border-radius: 12px;
   display: inline-flex; align-items: center; justify-content: center;

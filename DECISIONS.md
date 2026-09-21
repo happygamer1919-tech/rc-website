@@ -10852,3 +10852,48 @@ still hold**: `notdasterum.md` is not caught, `dasterum.md.example.com` is not c
 1. **The subdomain fix changes behaviour for `fatade3d.md` and `imperlux.md` too.** They
    were always meant to be caught with a subdomain and now are.
 2. **`--dasterum` is a new required flag**, so the permission cannot be used by accident.
+
+## W25-11 · Eight fence models get a price, and the page gets shorter, 2026-09-21
+
+**Card W25-11.** PR only, stops for the owner. Stacked on `w25/w25-10-dasterum-images`.
+**Text only; no Imperlux image file was fetched.** The full card is
+`docs/board/W25-11-garduri-prices.md`.
+
+### Published
+
+All eight models on `/servicii/modele-garduri/`, both locales, the `de la` figure
+`imperlux.md` publishes, read 2026-09-21: IL12 500 and 680, IL30 668 and 822, IL40 749 and
+926, IL100 906 and 1128 lei/m². RU reads "От", the catalogue's own wording.
+
+### Not published
+
+That page carries **struck prices**, **`- 15 %` badges** and a **limited-offer banner**.
+W25-R8 forbids copying all three and R-X's gate refuses them on this site;
+`check-scarcity.js` is green, which is the same line held from the other side. Nothing from
+an invoice is here: these are the supplier's public list prices.
+
+### The class, and the gate that caught the first attempt
+
+The price line was first written as `.prod__price`, on the reasoning that reusing a class
+beats inventing one. **Gate RC-129 took that red at once**: it confines `.prod__price` to a
+catalogue category page and counted 8 elements on each locale's fence page. The class is now
+`.nvk__price`, this component's own prefix, grepped free across the stylesheet, `build.js`,
+`main.js` and every script first.
+
+**Recorded because it cuts against the instinct**: rule 3.1 says a new prefix is a risk, and
+here reusing an existing one was the risk, because a class can carry a rule as well as a
+look.
+
+### The page got shorter and the budgets fell
+
+3,720 to **3,686** RO and 3,742 to **3,707** RU, 34px, because `.nvk__price` does not carry
+the 44px flex min-height that `.prod__price` and `.prod__ask` share on a catalogue card
+where a price sits beside a button. **Budgets lowered to 3,746 and 3,767**, recorded in
+`docs/rulings/R-Y.md`. R-Y's own rule is that removing an element's cost drops the budget by
+that cost. **This is the first budget this build has lowered.**
+
+### Recorded for ratification
+
+1. **The price replaces "Preț la cerere"** rather than sitting beside it, with a fallback.
+2. **`.nvk__price` is a new class**; the first attempt was refused by RC-129.
+3. **Two budgets were lowered.**

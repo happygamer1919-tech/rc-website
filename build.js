@@ -2419,6 +2419,29 @@ function gardModelePage(l) {
   if (!REAL(askLabel)) die(`catalogProducts.ask must be real in ${l.code}.`);
   const need = (v, where) => { if (!REAL(v)) die(`${GARD_MODELE_FILE}: ${where} is not real for ${l.code}.`); return v; };
 
+  /* W25-11. The owner's instruction: publish the "de la" price per model, as
+     shown on the imperlux.md garduri page, under W25-R8. That page also carries
+     struck prices, percent badges and a limited-offer banner; none of those is
+     copied, and R-X's gate refuses all three on this site anyway.
+
+     The price REPLACES "Preț la cerere" on a model that has one: showing both a
+     figure and "price on request" would contradict itself. A model with no
+     `price_from` still falls back to the ask label, so the page cannot go silent
+     if a price is ever removed from the data. It does NOT reuse `.prod__price`:
+     that class belongs to the catalogue card and gate RC-129 confines it to a
+     catalogue category page, so borrowing it here took that gate red. The class
+     is `.nvk__price`, which is this component's own prefix and was grepped free
+     across the stylesheet, build.js, main.js and every script before it was
+     written, which is what rule 3.1 asks for. */
+  const priceFrom = l.strings['gardModele.priceFrom'];
+  if (!REAL(priceFrom)) die(`gardModele.priceFrom must be real in ${l.code}.`);
+  const priceLine = (m, i) => {
+    const p = m.price_from;
+    if (!p) return `<p class="nvk__ask"><span class="prod__ask" data-product="${esc(`${m.designation} ${m.material}`)}">${esc(askLabel)}</span></p>`;
+    if (!REAL(p.amount) || !REAL(p.unit)) die(`${GARD_MODELE_FILE}: models[${i}].price_from needs a real amount and unit.`);
+    return `<p class="nvk__ask"><span class="nvk__price">${esc(priceFrom)} ${esc(p.amount)} ${esc(p.unit)}</span></p>`;
+  };
+
   const cards = GARD_MODELE.models.map((m, i) => {
     const name = `${need(m.designation, `models[${i}].designation`)} ${need(m.material, `models[${i}].material`)}`;
     return `      <article class="nvk" data-reveal data-stagger="${Math.min(i, 6)}">
@@ -2430,7 +2453,7 @@ function gardModelePage(l) {
             <div><dt>${s('thickness')}</dt><dd>${esc(need(m.thickness, `models[${i}].thickness`))}</dd></div>
             <div><dt>${s('colours')}</dt><dd>${esc(need(m.colours, `models[${i}].colours`))}</dd></div>
           </dl>
-          <p class="nvk__ask"><span class="prod__ask" data-product="${esc(name)}">${esc(askLabel)}</span></p>
+          ${priceLine(m, i)}
         </div>
       </article>`;
   }).join('\n');

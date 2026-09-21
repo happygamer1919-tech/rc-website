@@ -1,14 +1,132 @@
 {
   "_note": "W24-08. The fence models page, mirroring imperlux.md/garduri/garduri under rulings W24-R6 and W24-R7. Everything here is a PRODUCT fact taken from the source: a designation, a material name, a style label, a sheet thickness, a colour count. NOT here, and listed in docs/W24-CLAIMS-HELD.md instead: every price and struck price, every discount badge, the anticorrosion warranty in years, the hidden-fixing claim and the local-production claim. GARD_FORBIDDEN is untouched (W24-R7). Shape: models[] of { id, designation, material, style {ro,ru}, thickness, colours }.",
-  "source": { "host": "imperlux.md", "page": "/garduri/garduri", "captured": "2026-09-19", "ruling": "W24-R6, W24-R7" },
+  "source": {
+    "host": "imperlux.md",
+    "page": "/garduri/garduri",
+    "captured": "2026-09-19",
+    "ruling": "W24-R6, W24-R7"
+  },
   "models": [
-    { "id": "il12-plus",    "designation": "IL12",  "material": "Metal Plus",   "style": { "ro": "Modern minimalist", "ru": "Современный минималистичный" }, "thickness": "0,50 mm", "colours": "3" },
-    { "id": "il12-plusdv",  "designation": "IL12",  "material": "Metal PlusDV", "style": { "ro": "Modern minimalist", "ru": "Современный минималистичный" }, "thickness": "0,55 mm", "colours": "2" },
-    { "id": "il30-plus",    "designation": "IL30",  "material": "Metal Plus",   "style": { "ro": "Clasic versatil",   "ru": "Классический универсальный" },   "thickness": "0,50 mm", "colours": "3" },
-    { "id": "il30-plusdv",  "designation": "IL30",  "material": "Metal PlusDV", "style": { "ro": "Clasic versatil",   "ru": "Классический универсальный" },   "thickness": "0,55 mm", "colours": "2" },
-    { "id": "il100-plus",   "designation": "IL100", "material": "Metal Plus",   "style": { "ro": "Exclusivist",       "ru": "Эксклюзивный" },                 "thickness": "0,50 mm", "colours": "3" },
-    { "id": "il100-plusdv", "designation": "IL100", "material": "Metal PlusDV", "style": { "ro": "Exclusivist",       "ru": "Эксклюзивный" },                 "thickness": "0,55 mm", "colours": "2" },
-    { "id": "il40-plus",    "designation": "IL40",  "material": "Metal Plus",   "style": { "ro": "Popular",           "ru": "Популярный" },                   "thickness": "0,50 mm", "colours": "3" },
-    { "id": "il40-plusdv",  "designation": "IL40",  "material": "Metal PlusDV", "style": { "ro": "Popular",           "ru": "Популярный" },                   "thickness": "0,55 mm", "colours": "2" }
-  ]
+    {
+      "id": "il12-plus",
+      "designation": "IL12",
+      "material": "Metal Plus",
+      "style": {
+        "ro": "Modern minimalist",
+        "ru": "Современный минималистичный"
+      },
+      "thickness": "0,50 mm",
+      "colours": "3",
+      "price_from": {
+        "amount": "500",
+        "unit": "lei/m²"
+      }
+    },
+    {
+      "id": "il12-plusdv",
+      "designation": "IL12",
+      "material": "Metal PlusDV",
+      "style": {
+        "ro": "Modern minimalist",
+        "ru": "Современный минималистичный"
+      },
+      "thickness": "0,55 mm",
+      "colours": "2",
+      "price_from": {
+        "amount": "680",
+        "unit": "lei/m²"
+      }
+    },
+    {
+      "id": "il30-plus",
+      "designation": "IL30",
+      "material": "Metal Plus",
+      "style": {
+        "ro": "Clasic versatil",
+        "ru": "Классический универсальный"
+      },
+      "thickness": "0,50 mm",
+      "colours": "3",
+      "price_from": {
+        "amount": "668",
+        "unit": "lei/m²"
+      }
+    },
+    {
+      "id": "il30-plusdv",
+      "designation": "IL30",
+      "material": "Metal PlusDV",
+      "style": {
+        "ro": "Clasic versatil",
+        "ru": "Классический универсальный"
+      },
+      "thickness": "0,55 mm",
+      "colours": "2",
+      "price_from": {
+        "amount": "822",
+        "unit": "lei/m²"
+      }
+    },
+    {
+      "id": "il100-plus",
+      "designation": "IL100",
+      "material": "Metal Plus",
+      "style": {
+        "ro": "Exclusivist",
+        "ru": "Эксклюзивный"
+      },
+      "thickness": "0,50 mm",
+      "colours": "3",
+      "price_from": {
+        "amount": "906",
+        "unit": "lei/m²"
+      }
+    },
+    {
+      "id": "il100-plusdv",
+      "designation": "IL100",
+      "material": "Metal PlusDV",
+      "style": {
+        "ro": "Exclusivist",
+        "ru": "Эксклюзивный"
+      },
+      "thickness": "0,55 mm",
+      "colours": "2",
+      "price_from": {
+        "amount": "1128",
+        "unit": "lei/m²"
+      }
+    },
+    {
+      "id": "il40-plus",
+      "designation": "IL40",
+      "material": "Metal Plus",
+      "style": {
+        "ro": "Popular",
+        "ru": "Популярный"
+      },
+      "thickness": "0,50 mm",
+      "colours": "3",
+      "price_from": {
+        "amount": "749",
+        "unit": "lei/m²"
+      }
+    },
+    {
+      "id": "il40-plusdv",
+      "designation": "IL40",
+      "material": "Metal PlusDV",
+      "style": {
+        "ro": "Popular",
+        "ru": "Популярный"
+      },
+      "thickness": "0,55 mm",
+      "colours": "2",
+      "price_from": {
+        "amount": "926",
+        "unit": "lei/m²"
+      }
+    }
+  ],
+  "_price_note": "W25-11, 2026-09-21. price_from is the public 'de la' figure shown on the imperlux.md garduri page on that date, per W25-R8: the current public price only. That page also carries struck prices, percent badges and a limited-offer banner; none of those is copied here, and R-X forbids all three on this site. No Imperlux image file was fetched: W25-R7 lifted the image ban for dasterum.md only."
 }

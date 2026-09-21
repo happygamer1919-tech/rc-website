@@ -764,3 +764,21 @@ roofing hub did not grow at all**, because the hub's section already had bottom 
 link fits inside. The "before" column is a control: the same build with the two link
 insertions removed, measured the same way in the same run. A budget was raised only where a
 measurement said to raise it.
+
+---
+
+## AMENDED (W25-11, wave 25): the fence models page gets prices, and its budget falls
+
+| Page | Before | After | Budget |
+|---|---|---|---|
+| `/servicii/modele-garduri/` | 3,720 | **3,686** | 3,780 to **3,746** |
+| `/ru/servicii/modele-garduri/` | 3,742 | **3,707** | 3,802 to **3,767** |
+
+The "Preț la cerere" line on each of the eight model cards became a "De la ... lei/m²"
+price. **The page got 34px shorter**, because the new line is `.nvk__price` and does not
+carry the 44px flex min-height that `.prod__price` and `.prod__ask` share on a catalogue
+card, where a price sits beside a 44px button.
+
+**The budget falls with the measurement.** R-Y's own rule is that removing an element's
+cost drops the budget by that cost; a budget left high is a ceiling to hide under, not a
+measurement.

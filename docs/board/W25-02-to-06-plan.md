@@ -9,30 +9,36 @@ before any of them is worked.
 R1 permits a download from **the manufacturer's own site**. A product with no manufacturer
 has nowhere to fetch from, so it is not W25-02 to W25-04 work at all.
 
+**CORRECTED (W25-02, 2026-09-21).** The first version of this table read 131 fetchable
+and 28 without a manufacturer. It was wrong: it counted DISTINCT BRANDS in the
+termoizolație and tencuieli categories rather than products carrying one, and missed eight
+brandless products inside them. Re-derived per product:
+
 | Category | Products | With a manufacturer | No manufacturer | Brand hidden |
 |---|---|---|---|---|
-| Sisteme de termoizolație | 25 | **25** | 0 | 0 |
-| Tencuieli decorative | 13 | **13** | 0 | 0 |
+| Sisteme de termoizolație | 25 | **18** | **7** | 0 |
+| Tencuieli decorative | 13 | **12** | **1** | 0 |
 | Vopsele | 5 | **5** | 0 | 0 |
 | Alte materiale | 3 | 0 | **3** | 0 |
 | Plăci ceramice | 88 | **88** | 0 | 0 |
 | Sisteme de iluminare | 25 | 0 | **25** | 0 |
 | Elemente decorative | 64 | 0 | 0 | **64** |
-| **Total** | **223** | **131** | **28** | **64** |
+| **Total** | **223** | **123** | **36** | **64** |
 
-**Why 28 products have no manufacturer.** Their source brand is `Fatade3D`, which W17-02
+**Why 36 products have no manufacturer.** Their source brand is `Fatade3D`, which W17-02
 refuses as a manufacturer name on a catalogue page, so W24-03 stored `brand: null`. They
 are not missing data; they are products the source never attributed to anyone but itself.
 
 ## The two shape changes
 
-**W25-04 has no fetchable product.** All 25 lighting products are in that 28. The card as
+**W25-04 has no fetchable product.** All 25 lighting products are in that 36. The card as
 dispatched, "packshots: sisteme de iluminare (25), same rules", has **zero** products to
 fetch. It is not skipped: it is worked as a confirmation and a hand-off, because a card
 that silently does nothing is worse than a card that reports why.
 
-**W25-02 is 43 fetchable, not 46.** The three `Alte materiale` products are in the same
-28 and go to W25-05.
+**W25-02 is 35 fetchable, not 46 and not the 43 first written here.** Eleven of its 46
+products carry no manufacturer: three `Alte materiale`, seven in termoizolație and one in
+tencuieli. All eleven go to W25-05.
 
 **Nothing here is a judgement about the products.** W25-R4 is the rule: no manufacturer
 means no compliant image means the slot stays a placeholder and the prompt pack covers it.
@@ -41,7 +47,7 @@ means no compliant image means the slot stays a placeholder and the prompt pack 
 
 ## W25-02 · Packshots: termoizolație, tencuieli, vopsele, alte materiale
 
-Branch `w25/w25-02-packshots-termo`. **43 fetchable of 46.**
+Branch `w25/w25-02-packshots-termo`. **35 fetchable of 46**, across 14 manufacturers.
 
 Manufacturers to visit, from the records: **Caparol** (cites the W23-04 permission, not
 the R1 string), Penoplex, SWEETONDALE, IZOVAT, ROCKWOOL, FAWORI, NOVOTERM, KREISEL,
@@ -84,13 +90,13 @@ report:
 |---|---|
 | Elemente decorative, brand hidden | 64 |
 | Sisteme de iluminare, no manufacturer | 25 |
-| Alte materiale, no manufacturer | 3 |
+| Termoizolație, tencuieli and alte materiale, no manufacturer | 11 |
 | Hub bento tiles | 8 |
 | Fence model cards (`GARD-01..08`) | 8 |
 | Novatik cards (`NVK-01..04`) | 4 |
 | Copertine hero (`COP-HERO`) | 1 |
 | Cross-sell cards (`COPX-01..02`) | 2 |
-| **Known today** | **115** |
+| **Known today** | **123** |
 | Plus every product W25-02 and W25-03 leave placeholder | to be added |
 
 **The țiglă metalică profile cards are in the dispatch's list and are not in the ledger.**

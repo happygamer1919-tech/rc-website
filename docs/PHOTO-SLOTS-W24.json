@@ -342,7 +342,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Vată minerală Rockton Super\" (ROCKWOOL), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0010.jpg",
+      "alt": {
+        "ro": "Vată minerală Rockwool Rockton Super, plăcile și ambalajul lor",
+        "ru": "Минеральная вата Rockwool Rockton Super, плиты и упаковка"
+      }
     },
     {
       "id": "CAT-0011",

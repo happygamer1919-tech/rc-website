@@ -4,6 +4,9 @@
 
        node scripts/process-packshot.js <source-file> <SLOT-ID> [--dir catalog]
 
+       node scripts/process-packshot.js <source-file> <SLOT-ID> [--dir catalog]
+                                        [--crop top,right,bottom,left] [--label]
+
    It writes `public/img/<dir>/<SLOT-ID>.jpg`, sized so the longest side is at most
    600px and never larger than the source,
    with every scrap of metadata gone, and prints the line to paste into
@@ -12,10 +15,24 @@
    an image reach the site without anyone reading its provenance.
 
    WHAT IT REFUSES, and why each refusal is here rather than in a review:
-     · a source whose longest side is under the 500px floor (W25-R2);
+     · a source whose longest side is under the 450px floor (W25-R3);
      · a source that is not an image by its BYTES, whatever its name says;
+     · a --label source with no --crop, and a --crop that leaves either side
+       under the floor, which is the owner's swatch rule made executable (W25-R3);
      · an output that still carries Exif or GPS after the strip, which is gate
        17's rule and is asserted here rather than trusted.
+
+   THE SWATCH RULE (W25-R3), and the half of it a machine can hold. The owner's
+   rule is "images with a burned-in name label are not used as is; crop the label
+   only if both sides remain 450 or more after crop, else placeholder". Whether a
+   picture carries a burned-in label is a property of the PICTURE, like a
+   watermark or a face, and R-W's amendment already says those are checked by a
+   person looking at the file. What a machine can hold is the arithmetic, and it
+   is held here rather than in a review: `--label` declares what the person saw,
+   and a declared label with no crop is refused; a crop that leaves either side
+   under 450 is refused with both measurements printed. The third clause, that a
+   family image never fills a colour-variant card, is not about one file and is
+   held by gate 19 over the whole ledger.
 
    METADATA. The strip is the re-encode: sips rebuilds the JPEG from decoded
    pixels and the source's tags do not survive that. (`sips -d all` is not
@@ -43,18 +60,20 @@ const path = require('path');
 const { execFileSync } = require('child_process');
 
 const ROOT = path.join(__dirname, '..');
-/* W25-R2, the owner's answer to Q-W25-02. The floor was 800 and it was rejecting
-   correct images from three manufacturers in four: DURAZIV publishes at 343x335,
-   ROKO at 492x400, Phomi at 459x398, each one the manufacturer's own packshot of
-   the right product on a plain ground. A catalogue card's image box is about
-   264px wide at 1440, so 528px at 2x, and 800 was an OUTPUT target that had
-   become an INPUT floor.
+/* W25-R3, the owner's answer to Q-W25-07, and FINAL: the floor does not move
+   again. It was 800 at W25-02 and 500 at W25-R2, and both passed over the whole
+   measured population, which runs 343 to 492: DURAZIV publishes at 343x335, ROKO
+   at 492x400, Phomi at 459x398, each one the manufacturer's own packshot of the
+   right product on a plain ground. A catalogue card's image box is about 264px
+   wide at 1440, so 528px at 2x, and 800 was an OUTPUT target that had become an
+   INPUT floor. 450 clears Phomi's 25 families and ROKO's 2 and leaves DURAZIV's
+   343 a placeholder, which is the publisher's doing and not this build's.
 
    SOURCE_FLOOR is what a source must have. OUTPUT is the longest side written.
    NOTHING IS EVER UPSCALED: a source between the floor and the output is written
    at its own size, because enlarging a packshot invents detail that was never
    photographed and a soft product photo reads as a cheap one. */
-const SOURCE_FLOOR = 500;
+const SOURCE_FLOOR = 450;
 const OUTPUT = 600;
 const MAX_BYTES = 220 * 1024;
 
@@ -65,9 +84,26 @@ const flag = (name, dflt) => {
   const i = process.argv.indexOf(`--${name}`);
   return i > -1 && process.argv[i + 1] ? process.argv[i + 1] : dflt;
 };
-if (args.length < 2) die('usage: node scripts/process-packshot.js <source-file> <SLOT-ID> [--dir catalog]');
+if (args.length < 2) die('usage: node scripts/process-packshot.js <source-file> <SLOT-ID> [--dir catalog] [--crop t,r,b,l] [--label]');
 const [SRC, SLOT] = args;
 const DIR = flag('dir', 'catalog');
+
+/* The swatch rule's executable half (W25-R3). CROP is the pixels REMOVED from
+   each edge, in CSS order, and LABEL is the person's declaration that they saw a
+   burned-in name label on this source. */
+const LABEL = process.argv.includes('--label');
+const CROP = (() => {
+  const raw = flag('crop', null);
+  if (!raw) return null;
+  const n = raw.split(',').map((x) => Number(x.trim()));
+  if (n.length !== 4 || n.some((x) => !Number.isInteger(x) || x < 0)) {
+    die(`--crop takes four whole non-negative pixel counts, top,right,bottom,left. Got "${raw}".`);
+  }
+  return { top: n[0], right: n[1], bottom: n[2], left: n[3] };
+})();
+if (LABEL && !CROP) {
+  die('--label says this source carries a burned-in name label, and W25-R3 forbids using such an image AS IS. Pass --crop top,right,bottom,left to remove the label, or leave the slot a placeholder (W25-R4).');
+}
 if (!/^[A-Z0-9-]+$/.test(SLOT)) die(`"${SLOT}" is not a slot id. Uppercase, digits and hyphens only.`);
 if (!fs.existsSync(SRC)) die(`${SRC} does not exist.`);
 
@@ -99,9 +135,27 @@ console.log(`source: ${SRC}  ${magic}  ${w}x${h}`);
 if (Math.max(w, h) < SOURCE_FLOOR) {
   die(`the source is ${w}x${h} and its longest side is under the ${SOURCE_FLOOR}px floor. Find a larger file or leave the slot a placeholder (W25-R4).`);
 }
+
+/* THE CROP, and the floor it has to clear afterwards. The owner's rule is "crop
+   the label only if BOTH SIDES remain 450 or more after crop, else placeholder",
+   so this is a second floor test on the cropped size and not a repeat of the
+   first: a 650x450 swatch with a 60px label band along the bottom crops to
+   650x390 and is refused here, with both numbers printed, which is the whole
+   point of putting the arithmetic in the tool. */
+let cw = w, ch = h;
+if (CROP) {
+  cw = w - CROP.left - CROP.right;
+  ch = h - CROP.top - CROP.bottom;
+  if (cw <= 0 || ch <= 0) die(`--crop ${CROP.top},${CROP.right},${CROP.bottom},${CROP.left} removes everything from a ${w}x${h} source.`);
+  if (cw < SOURCE_FLOOR || ch < SOURCE_FLOOR) {
+    die(`--crop leaves ${cw}x${ch} and W25-R3 needs BOTH sides at ${SOURCE_FLOOR} or more after the crop. ${cw < SOURCE_FLOOR ? `Width is short by ${SOURCE_FLOOR - cw}px. ` : ''}${ch < SOURCE_FLOOR ? `Height is short by ${SOURCE_FLOOR - ch}px. ` : ''}Leave the slot a placeholder (W25-R4).`);
+  }
+  console.log(`crop: ${CROP.top},${CROP.right},${CROP.bottom},${CROP.left} removed; ${w}x${h} becomes ${cw}x${ch}, both at or above the ${SOURCE_FLOOR}px floor`);
+}
+
 /* Never upscale. A 520px source is written at 520, not stretched to 600. */
-const target = Math.min(OUTPUT, Math.max(w, h));
-if (target < OUTPUT) console.log(`source is ${Math.max(w, h)}px on its longest side, under the ${OUTPUT}px output; writing at ${target}px rather than upscaling`);
+const target = Math.min(OUTPUT, Math.max(cw, ch));
+if (target < OUTPUT) console.log(`source is ${Math.max(cw, ch)}px on its longest side, under the ${OUTPUT}px output; writing at ${target}px rather than upscaling`);
 
 const outDir = path.join(ROOT, 'public', 'img', DIR);
 fs.mkdirSync(outDir, { recursive: true });
@@ -115,6 +169,7 @@ const tmp = path.join(require('os').tmpdir(), `packshot-${process.pid}.jpg`);
    is the re-encode plus the optional exiftool pass, and the assertion below is
    what actually decides. */
 sips(['-s', 'format', 'jpeg', '-s', 'formatOptions', '88', SRC, '--out', tmp]);
+if (CROP) sips(['-c', String(ch), String(cw), '--cropOffset', String(CROP.top), String(CROP.left), tmp]);
 sips(['-Z', String(target), tmp]);
 
 /* Second pass where exiftool is installed. Not required: the assertion below is

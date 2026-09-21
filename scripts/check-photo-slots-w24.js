@@ -108,11 +108,31 @@ const APPROVED_ORIGINS = [
    repo identifies a slot family. */
 const EVIDENCE_PREFIXES = ['BA-', 'PROJ-', 'PORT-'];
 
+/* W25-R3's third clause: A FAMILY IMAGE NEVER FILLS A COLOUR-VARIANT CARD.
+   Phomi publishes one photograph per family (`Rome Travertine`) and a separate
+   swatch per colour (`Kamu Red`), and the shop sells the colours as separate
+   products. Putting the family's photograph on its 33 colour cards would show
+   one picture as 33 different products, which is the near match W25-R4 forbids
+   arriving by a different route. That rule is not about one file, so
+   process-packshot.js cannot hold it: it is a property of the LEDGER, read here.
+   What is checkable, exactly: two filled slots must not stand on the same
+   picture. Both halves are read, because a reuse can be written either way --
+   the same file path in two rows, or two files whose provenance rows name the
+   same source image URL, which is what a copy of one download looks like.
+   The source cell is `<page URL> · <image URL> · <manufacturer>`; the image URL
+   is whichever part of it ends in an image extension, and a source cell with no
+   image URL in it (the legacy rows, which name no URL at all) is not compared,
+   because comparing "origin not recorded" to itself would fail every legacy
+   pair at once and say nothing about any picture. */
+const IMAGE_URL = /\bhttps?:\/\/\S+\.(?:jpe?g|png|webp|gif|avif|heic|tiff?)\b/i;
+
 function check(pages, rows, provenance) {
   const problems = [];
   const byId = new Map(rows.map((r) => [r.id, r]));
   const prov = provenance || new Map();
   const rendered = new Set();
+  const byFile = new Map();      // provenance path -> first filled slot id that named it
+  const bySourceImg = new Map(); // source image URL -> first filled slot id that stands on it
 
   for (const page of pages) {
     for (const ph of placeholdersIn(page.html, page.rel)) {
@@ -161,6 +181,22 @@ function check(pages, rows, provenance) {
       }
       if (/ai generated/i.test(prow.licence) && EVIDENCE_PREFIXES.some((p) => ph.id.startsWith(p))) {
         problems.push({ id: 'render-as-proof', text: `${ph.where} is an evidence slot filled with a generated image. W25-R3: a render is never a proof image.` });
+      }
+
+      /* One picture, one card. Recorded per slot id rather than per rendered
+         placeholder, because a slot legitimately renders on more than one page. */
+      const firstFile = byFile.get(row.provenance);
+      if (firstFile && firstFile !== ph.id) {
+        problems.push({ id: 'shared-image', text: `${ph.where} and slot ${firstFile} are both filled with ${row.provenance}. W25-R3: one picture never stands as two products, and a family image never fills a colour-variant card.` });
+      } else byFile.set(row.provenance, ph.id);
+
+      const m = prow.source.match(IMAGE_URL);
+      if (m) {
+        const key = m[0].toLowerCase();
+        const firstSrc = bySourceImg.get(key);
+        if (firstSrc && firstSrc !== ph.id) {
+          problems.push({ id: 'shared-image', text: `${ph.where} and slot ${firstSrc} name different files that were downloaded from the same picture, ${m[0]}. W25-R3: one picture never stands as two products.` });
+        } else bySourceImg.set(key, ph.id);
       }
     }
   }
@@ -244,6 +280,34 @@ const SELF = [
     pages: [{ rel: 'self-test/g.html', html: FILLED_HTML('BA-99-before', '16 / 9') }],
     rows: [{ ...FILLED_ROW('BA-99-before', 'public/img/selftest-07.jpg'), ratio: '16 / 9' }],
     prov: [{ file: 'public/img/selftest-07.jpg', source: 'AI generated for Rapid Construct', licence: 'AI generated for Rapid Construct, tool named by owner, 2026-09-20', licenceUrl: 'n/a', date: '2026-09-20' }],
+  },
+  /* W25-R3, both halves of "a family image never fills a colour-variant card",
+     each planted on its own so neither can pass on the other's account. */
+  {
+    arm: 'two filled slots standing on the same image file',
+    want: 'shared-image',
+    pages: [
+      { rel: 'self-test/sh-a.html', html: FILLED_HTML('SELFTEST-10', '1 / 1') },
+      { rel: 'self-test/sh-b.html', html: FILLED_HTML('SELFTEST-11', '1 / 1') },
+    ],
+    rows: [FILLED_ROW('SELFTEST-10', 'public/img/selftest-fam.jpg'), FILLED_ROW('SELFTEST-11', 'public/img/selftest-fam.jpg')],
+    /* No image URL in the source cell on purpose, so this arm plants the shared
+       FILE and nothing else: with a URL there the other half would fire too and
+       the arm would no longer be reading one plant. */
+    prov: [{ file: 'public/img/selftest-fam.jpg', source: 'client logo asset, delivered with the repo scaffold', licence: 'legacy, licence unverified', licenceUrl: 'legacy, licence unverified', date: '2026-09-20' }],
+  },
+  {
+    arm: 'two filled slots whose two files came from one download',
+    want: 'shared-image',
+    pages: [
+      { rel: 'self-test/sr-a.html', html: FILLED_HTML('SELFTEST-12', '1 / 1') },
+      { rel: 'self-test/sr-b.html', html: FILLED_HTML('SELFTEST-13', '1 / 1') },
+    ],
+    rows: [FILLED_ROW('SELFTEST-12', 'public/img/selftest-12.jpg'), FILLED_ROW('SELFTEST-13', 'public/img/selftest-13.jpg')],
+    prov: [
+      { file: 'public/img/selftest-12.jpg', source: 'https://caparol.md/a/ \u00b7 https://caparol.md/fam.jpg', licence: GOOD_LICENCE, licenceUrl: 'https://caparol.md/a/', date: '2026-09-20' },
+      { file: 'public/img/selftest-13.jpg', source: 'https://caparol.md/b/ \u00b7 https://caparol.md/fam.jpg', licence: GOOD_LICENCE, licenceUrl: 'https://caparol.md/b/', date: '2026-09-20' },
+    ],
   },
   {
     arm: 'the ledger says filled and the page renders a placeholder box',

@@ -2719,7 +2719,7 @@ product the shop actually sells. That is yours, not mine, and W25-R4 forbids a n
 
 **Recommended: (a).** If the answer is no, (c) stands and nothing is lost.
 
-## Q-W25-12 · 89 of the 126 prompts are for products whose appearance is not in the records · OPEN · opened 2026-09-21 (W25-05)
+## Q-W25-12 · 89 of the 126 prompts are for products whose appearance is not in the records · **ANSWERED 2026-09-21 (W25-R9): option (d), no AI image where the appearance is not in the records** · opened 2026-09-21 (W25-05)
 
 **Shipped default: the prompts are written and every one of the 89 is marked `appearance:
 not in the records` in the pack.** Nothing is generated and nothing is installed by this

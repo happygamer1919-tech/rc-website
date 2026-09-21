@@ -116,6 +116,14 @@ jobs:
       - name: Every ceramic plate's brand matches the settled catalogue match (W25-03d)
         run: node scripts/check-plate-brands.js
 
+      # W25-12. Gate 24. docs/PHOTO-REVIEW-W25.md is the list the owner reads when
+      # reviewing images by hand, and W25-R5 and W25-R7 both make a flag in it part
+      # of the permission to use a picture at all. It is generated from the ledger,
+      # the provenance rows and the product records rather than typed, and this
+      # fails if the committed file and the data have drifted apart.
+      - name: The photo review list matches the ledger (W25-12)
+        run: node scripts/gen-photo-review-w25.js --check
+
       # RC-148. Every stub count stated in the governing and reference documents
       # equals the count measured from content/projects.json. Static, no browser.
       - name: The stub count in the documents equals the data (RC-148)

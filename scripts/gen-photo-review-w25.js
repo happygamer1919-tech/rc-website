@@ -1,0 +1,215 @@
+#!/usr/bin/env node
+/* Writes docs/PHOTO-REVIEW-W25.md, the list the owner reads when reviewing by
+   hand. Card W25-12.
+
+       node scripts/gen-photo-review-w25.js [--check]
+
+   GENERATED, NOT TYPED, for the same reason every other list in this repo is:
+   133 rows copied by hand from three cards would be wrong somewhere, and a
+   review list that disagrees with the ledger is worse than none. It is built
+   from docs/PHOTO-SLOTS-W24.json, docs/assets/PROVENANCE.md and
+   content/catalog-products.json, and `--check` fails if the committed file and
+   the data have drifted apart.
+
+   WHAT THE FLAGS MEAN, and where each one comes from rather than from memory:
+     · labelled swatch  the provenance row's image is a Phomi colour swatch with
+       the product name burned into it (W25-R5). Read from the source host and
+       the slot being a ceramic plate, not from a list.
+     · watermark        the file came from dasterum.md under W25-R7, which
+       requires the watermark to stay exactly as published.
+     · low confidence   the plate's brand settlement matched at a tier that is
+       not an exact string match: B-spelling, C-contained or D-read. Read from
+       content/plate-brand-settlement.json.
+   A row with no flag is an ordinary manufacturer packshot.
+
+   Zero dependency. */
+
+const fs = require('fs');
+const path = require('path');
+const ROOT = path.join(__dirname, '..');
+const OUT = path.join(ROOT, 'docs/PHOTO-REVIEW-W25.md');
+const die = (m) => { console.error(`\nPHOTO REVIEW FAILED: ${m}\n`); process.exit(1); };
+const read = (p) => { const f = path.join(ROOT, p); if (!fs.existsSync(f)) die(`${p} is missing.`); return fs.readFileSync(f, 'utf8'); };
+
+const ledger = JSON.parse(read('docs/PHOTO-SLOTS-W24.json'));
+const products = (() => { const j = JSON.parse(read('content/catalog-products.json')); return Array.isArray(j) ? j : (j.products || []); })();
+const settlement = JSON.parse(read('content/plate-brand-settlement.json')).settled;
+if (!Array.isArray(ledger.slots) || !ledger.slots.length) die('the ledger has no slots.');
+
+/* PROVENANCE.md as a map, the same read gate 19 does. */
+const prov = new Map();
+for (const line of read('docs/assets/PROVENANCE.md').split('\n')) {
+  if (!line.startsWith('|')) continue;
+  const c = line.split('|').slice(1, -1).map((x) => x.trim());
+  if (c.length < 5) continue;
+  const file = c[0].replace(/^`|`$/g, '');
+  if (!file.startsWith('public/')) continue;
+  prov.set(file, { file, source: c[1], licence: c[2], licenceUrl: c[3], date: c[4] });
+}
+if (!prov.size) die('docs/assets/PROVENANCE.md parsed to zero rows.');
+
+const bySlot = new Map(products.filter((p) => p.slot).map((p) => [p.slot, p]));
+const tierBySlot = new Map(settlement.map((r) => [r.slot, r.tier]));
+
+/* THE SECTIONS. A slot belongs to exactly one, and the order is the owner's
+   priority: Catalog, Acoperisuri, Garduri. Anything else is out of scope for
+   this list and is counted at the foot rather than dropped. */
+const ACOP_FIRST = 224, ACOP_LAST = 294;
+const catNum = (id) => { const m = id.match(/^CAT-(\d+)$/); return m ? Number(m[1]) : null; };
+function section(id) {
+  const n = catNum(id);
+  if (n !== null) return (n >= ACOP_FIRST && n <= ACOP_LAST) ? 'Acoperisuri' : 'Catalog';
+  if (id.startsWith('CATEG-')) return 'Catalog';
+  if (id.startsWith('ACOP-') || id.startsWith('NVK-')) return 'Acoperisuri';
+  if (id.startsWith('GARD-') || id.startsWith('GARDB-')) return 'Garduri';
+  return null;
+}
+const SECTIONS = ['Catalog', 'Acoperisuri', 'Garduri'];
+
+const imageUrl = (source) => (source.match(/\bhttps?:\/\/\S+\.(?:jpe?g|png|webp|gif|avif|heic|tiff?)\b/i) || [null])[0];
+const pageUrl = (source) => (source.match(/\bhttps?:\/\/\S+/) || [null])[0];
+
+function dims(file) {
+  const f = path.join(ROOT, file);
+  if (!fs.existsSync(f)) return 'file missing';
+  try {
+    const out = require('child_process').execFileSync('sips', ['-g', 'pixelWidth', '-g', 'pixelHeight', f], { stdio: ['ignore', 'pipe', 'pipe'] }).toString();
+    const w = (out.match(/pixelWidth:\s*(\d+)/) || [])[1];
+    const h = (out.match(/pixelHeight:\s*(\d+)/) || [])[1];
+    return w && h ? `${w}x${h}` : 'unreadable';
+  } catch { return 'unreadable'; }
+}
+
+function originClass(licence) {
+  const l = licence.toLowerCase();
+  if (l.includes('direct supplier, dasterum.md')) return 'direct_supplier';
+  if (l.includes('manufacturer packshot')) return 'manufacturer official site';
+  if (l.includes('ai generated')) return 'owner AI generated';
+  if (l.includes('supplier permission')) return 'supplier permission';
+  if (l.includes('client-supplied')) return 'client supplied';
+  if (l.includes('legacy')) return 'legacy';
+  return licence;
+}
+
+const filled = [], empty = [];
+for (const row of ledger.slots) {
+  const sec = section(row.id);
+  if (!sec) continue;
+  if (row.state !== 'filled') { empty.push({ row, sec }); continue; }
+  const p = prov.get(row.provenance);
+  if (!p) die(`${row.id} is filled and names "${row.provenance}", which has no provenance row.`);
+  const rec = bySlot.get(row.id);
+  const origin = originClass(p.licence);
+  const flags = [];
+  if (origin === 'direct_supplier') flags.push('watermark');
+  if (origin === 'manufacturer official site' && /phomi\.com/i.test(p.source) && (rec && (rec.categories || []).includes('placi-ceramice'))) {
+    const tier = tierBySlot.get(row.id);
+    if (tier && tier !== 'A-exact') flags.push('low confidence match');
+    /* A Phomi COLOUR swatch carries the burned-in name; a family card image does
+       not. The two are told apart by the image path, which is how Phomi files
+       them: a swatch lives under /uploads/2025/08 or later with a colour name,
+       a family card under /uploads/2025/07 with the range's Chinese name. The
+       settlement's own level is the honest discriminator and it is used here. */
+    const s = settlement.find((x) => x.slot === row.id);
+    if (s && s.level === 'variant') flags.push('labelled swatch');
+  }
+  filled.push({ row, sec, p, rec, origin, flags, dims: dims(row.provenance) });
+}
+
+const esc = (s) => String(s == null ? '' : s).replace(/\|/g, '\\|');
+const name = (row, rec) => rec ? rec.name.ro : row.id;
+
+const L = [];
+L.push('# Photo review, wave 25');
+L.push('');
+L.push('Generated by `node scripts/gen-photo-review-w25.js` from `docs/PHOTO-SLOTS-W24.json`,');
+L.push('`docs/assets/PROVENANCE.md`, `content/catalog-products.json` and');
+L.push('`content/plate-brand-settlement.json`. Not typed, so it cannot disagree with the ledger.');
+L.push('`--check` fails if the committed file and the data have drifted apart, and `quality` runs it.');
+L.push('');
+L.push('**This is the list the owner reads.** W25-R5 permits a photograph with a burned-in');
+L.push('product name on condition that each one is flagged here; W25-R7 permits a Dasterum');
+L.push('image on condition that its watermark stays as published. Both flags are below, per row.');
+L.push('');
+L.push(`**${filled.length} images to review, across Catalog, Acoperisuri and Garduri.**`);
+L.push('');
+L.push('The dispatch asked for a row per image installed by IT. This lists **every filled slot**');
+L.push('in those three sections, which is that set plus the 27 installed by the dispatch before');
+L.push('it (W25-02, W25-03c). Those 27 have never been through a review list either, and leaving');
+L.push('them out would mean the owner reviews a list that is not all of it. The flag columns tell');
+L.push('them apart: nothing from the earlier dispatch is a labelled swatch or carries a watermark.');
+L.push('');
+const fl = (k) => filled.filter((f) => f.flags.includes(k)).length;
+L.push('| Flag | Rows | What to look for |');
+L.push('|---|---|---|');
+L.push(`| labelled swatch | ${fl('labelled swatch')} | the product name is printed into the photograph, in English, and the card prints it again underneath in Romanian |`);
+L.push(`| watermark | ${fl('watermark')} | a DASTERUM mark in the top right. It is there on purpose and must not be cropped |`);
+L.push(`| low confidence match | ${fl('low confidence match')} | the plate matched Phomi at a tier that is not an exact string match. Check the name in the picture against the name on the card |`);
+L.push(`| no flag | ${filled.filter((f) => !f.flags.length).length} | an ordinary manufacturer packshot |`);
+L.push('');
+L.push('## Table one: every image on the site in these three sections');
+L.push('');
+for (const sec of SECTIONS) {
+  const rows = filled.filter((f) => f.sec === sec);
+  if (!rows.length) continue;
+  L.push(`### ${sec} (${rows.length})`);
+  L.push('');
+  L.push('| Slot | Product | Page | Source | Origin | Size | Flags |');
+  L.push('|---|---|---|---|---|---|---|');
+  for (const f of rows) {
+    L.push(`| \`${f.row.id}\` | ${esc(name(f.row, f.rec))} | ${esc(f.row.page)} | ${esc(imageUrl(f.p.source) || pageUrl(f.p.source) || f.p.source)} | ${f.origin} | ${f.dims} | ${f.flags.join(', ') || 'none'} |`);
+  }
+  L.push('');
+}
+
+L.push('## Table two: every slot still empty, with its reason');
+L.push('');
+for (const sec of SECTIONS) {
+  const rows = empty.filter((e) => e.sec === sec);
+  if (!rows.length) { L.push(`### ${sec}: none`); L.push(''); continue; }
+  L.push(`### ${sec} (${rows.length})`);
+  L.push('');
+  L.push('| Slot | Product | Page | Reason |');
+  L.push('|---|---|---|---|');
+  for (const e of rows) {
+    L.push(`| \`${e.row.id}\` | ${esc(name(e.row, bySlot.get(e.row.id)))} | ${esc(e.row.page)} | ${esc(reasonFor(e.row, bySlot.get(e.row.id)))} |`);
+  }
+  L.push('');
+}
+L.push('---');
+L.push('');
+L.push(`Slots outside these three sections are not in this list: ${ledger.slots.filter((r) => !section(r.id)).length} rows, counted here rather than dropped.`);
+L.push('');
+
+/* --- the reasons, each traceable to a card or a ruling ---------------------- */
+function reasonFor(row, rec) {
+  if (row.id.startsWith('GARD-')) return 'real photo from owner project set';
+  if (row.id.startsWith('GARDB-') || row.id.startsWith('ACOP-')) return 'hub tile, PRIORITY BATCH at the top of AI-PROMPTS-W25.md (W25-12)';
+  if (row.id.startsWith('NVK-')) return 'named tile product: W25-R2 forbids a generated image, and no Novatik packshot was sourced';
+  if (row.id.startsWith('CATEG-')) return 'catalogue category tile, in AI-PROMPTS-W25.md';
+  if (!rec) return 'no catalogue record';
+  const cats = rec.categories || [];
+  if (cats.includes('placi-ceramice')) {
+    const s = settlement.find((x) => x.slot === row.id);
+    if (s && !s.brand) return 'in none of the three catalogues, brand_hidden (W25-03d); W25-R2 forbids a generated image on a named tile product';
+    if (s && s.matched_as) return `the same Phomi picture already fills another record of this product; held by the one-picture-one-card rule (Q-W25-13)`;
+    return 'no single Phomi image is this product (W25-07)';
+  }
+  if (!rec.brand || rec.brand_hidden) {
+    if (cats.includes('sisteme-iluminare')) return 'no manufacturer, and W25-R9 forbids a generated image where the appearance is not in the records';
+    if (cats.includes('elemente-decorative')) return 'no manufacturer, and W25-R9 forbids a generated image where the appearance is not in the records';
+    return 'no manufacturer named, so there is no manufacturer site to be the origin (W25-R1)';
+  }
+  return `manufacturer publishes nothing that clears the 450 floor, or nothing at all (W25-08)`;
+}
+
+const text = L.join('\n');
+if (process.argv.includes('--check')) {
+  if (!fs.existsSync(OUT)) die('docs/PHOTO-REVIEW-W25.md is missing. Run: node scripts/gen-photo-review-w25.js');
+  const on = fs.readFileSync(OUT, 'utf8');
+  if (on !== text) die('docs/PHOTO-REVIEW-W25.md does not match the ledger.\n  Run: node scripts/gen-photo-review-w25.js\n  A review list that disagrees with the ledger is worse than none.');
+  console.log(`photo review check: ${filled.length} installed, ${empty.length} empty, file matches the data.`);
+  process.exit(0);
+}
+fs.writeFileSync(OUT, text);
+console.log(`wrote docs/PHOTO-REVIEW-W25.md: ${filled.length} installed, ${empty.length} still empty, across ${SECTIONS.join(', ')}.`);

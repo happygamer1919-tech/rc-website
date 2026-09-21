@@ -100,9 +100,15 @@ const APPROVED_ORIGINS = [
   'supplier permission',
   'client-supplied original',
   'legacy, licence unverified',
-  /* W25-R7, the direct supplier. Narrow on purpose: it names the host it belongs
-     to, so it cannot be used to launder any other origin. */
+  /* W25-R7 and W25-R14, the direct suppliers. Narrow on purpose: each one names
+     the host it belongs to, so neither can be used to launder any other origin. */
   'direct supplier, dasterum.md',
+  'direct supplier, fatade3d.md',
+  /* W25-R15, the owner override. It is NOT a direct supplier and it is written
+     differently so a reader of the ledger never has to guess which permission a
+     row is standing on: this one rests on an owner decision over a competitor
+     host, and it is held to twelve slot ids below rather than to the host. */
+  'owner_override_imperlux',
 ];
 
 /* W25-R7. `dasterum.md` stays in FORBIDDEN_HOSTS and is lifted for ONE licence.
@@ -112,6 +118,22 @@ const APPROVED_ORIGINS = [
    it means a row that drifts off the sentence loses the permission. */
 const DIRECT_SUPPLIER_HOST = 'dasterum.md';
 const DIRECT_SUPPLIER_ORIGIN = 'direct supplier, dasterum.md';
+/* AMENDED (W25-R14): the same shape for the second direct supplier, and only for
+   the second. The map is host to the exact licence prefix that lifts it, so a row
+   naming one host with the other host's licence is refused by both entries. */
+const DIRECT_SUPPLIER_ORIGINS = {
+  'dasterum.md': 'direct supplier, dasterum.md',
+  'fatade3d.md': 'direct supplier, fatade3d.md',
+};
+/* AMENDED (W25-R15): the override, held to twelve ids. A row naming imperlux.md
+   on any other slot fails even with the override licence, which is the executable
+   form of "nothing else from imperlux.md, ever". */
+const OVERRIDE_HOST = 'imperlux.md';
+const OVERRIDE_ORIGIN = 'owner_override_imperlux';
+const OVERRIDE_SLOTS = [
+  'GARD-01', 'GARD-02', 'GARD-03', 'GARD-04', 'GARD-05', 'GARD-06', 'GARD-07', 'GARD-08',
+  'GARDB-01', 'GARDB-02', 'GARDB-03', 'GARDB-04',
+];
 
 /* The slot kinds R-W forbids a generated image on: a before/after pair and a
    project or portfolio tile are EVIDENCE, and "a render is never a proof image"
@@ -202,12 +224,23 @@ function check(pages, rows, provenance, brandBySlot) {
          before is a letter, and `dasterum.md.example.com` is still not caught,
          because the trailing class still refuses a following dot. */
       const hay = `${prow.source} ${prow.licenceUrl}`.toLowerCase();
-      const directOk = prow.licence.toLowerCase().includes(DIRECT_SUPPLIER_ORIGIN);
+      const lic = prow.licence.toLowerCase();
       for (const host of FORBIDDEN_HOSTS) {
-        if (host === DIRECT_SUPPLIER_HOST && directOk) continue;
+        /* W25-R7 and W25-R14: lifted for a row whose licence names THIS host. */
+        const supplierOrigin = DIRECT_SUPPLIER_ORIGINS[host];
+        if (supplierOrigin && lic.includes(supplierOrigin)) continue;
+        /* W25-R15: lifted for a row whose licence names the override AND whose
+           slot is one of the twelve. The slot half is the ruling's own limit. */
+        if (host === OVERRIDE_HOST && lic.includes(OVERRIDE_ORIGIN) && OVERRIDE_SLOTS.includes(ph.id)) continue;
         if (new RegExp(`(^|[^a-z0-9-])${host.replace(/\./g, '\\.')}([^a-z0-9.-]|$)`, 'i').test(hay)) {
-          problems.push({ id: 'forbidden-host', text: `${ph.where} names a provenance row whose source is ${host}. R-W and W25-R2: that host is never an origin.`
-            + (host === DIRECT_SUPPLIER_HOST ? ` W25-R7 lifts it only for a row whose licence names "${DIRECT_SUPPLIER_ORIGIN}"; this row's licence is "${prow.licence}".` : '') });
+          let why = ` R-W and W25-R2: that host is never an origin.`;
+          if (supplierOrigin) why += ` ${host === 'dasterum.md' ? 'W25-R7' : 'W25-R14'} lifts it only for a row whose licence names "${supplierOrigin}"; this row's licence is "${prow.licence}".`;
+          if (host === OVERRIDE_HOST) {
+            why += lic.includes(OVERRIDE_ORIGIN)
+              ? ` W25-R15 overrides it for ${OVERRIDE_SLOTS.join(', ')} and for nothing else; this slot is ${ph.id}.`
+              : ` W25-R15 overrides it only for a row whose licence names "${OVERRIDE_ORIGIN}" on one of the twelve Garduri slots; this row's licence is "${prow.licence}".`;
+          }
+          problems.push({ id: 'forbidden-host', text: `${ph.where} names a provenance row whose source is ${host}.` + why });
         }
       }
       if (!APPROVED_ORIGINS.some((o) => prow.licence.toLowerCase().includes(o.toLowerCase()))) {

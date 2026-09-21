@@ -296,7 +296,8 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Polistiren expandat EPS-50 | EPS-70 | EPS-80 | EPS-200\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "placeholder",
+      "empty_reason": "the one image in its Fatade 3D product gallery is 250x250, under the 450 floor W25-R12 made final (W25-17)"
     },
     {
       "id": "CAT-0004",
@@ -304,7 +305,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Polistiren expandat STOP FIRE\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0004.jpg",
+      "alt": {
+        "ro": "Polistiren expandat STOP FIRE, ambalajul produsului",
+        "ru": "Пенополистирол STOP FIRE, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0005",
@@ -452,7 +458,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Meșterul Dibaci Universal - Adeziv pentru plăci ceramice\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0020.jpg",
+      "alt": {
+        "ro": "Meșterul Dibaci Universal - Adeziv pentru plăci ceramice, ambalajul produsului",
+        "ru": "Мештерул Дибачи Универсал - Клей для керамической плитки, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0021",
@@ -473,7 +484,8 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Mesterul dibaci POLISTIREN\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "placeholder",
+      "empty_reason": "the one image in its Fatade 3D product gallery is 174x270, under the 450 floor W25-R12 made final (W25-17)"
     },
     {
       "id": "CAT-0023",
@@ -481,7 +493,8 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Mesterul dibaci VATĂ MINERALĂ\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "placeholder",
+      "empty_reason": "the one image in its Fatade 3D product gallery is 183x276, under the 450 floor W25-R12 made final (W25-17)"
     },
     {
       "id": "CAT-0024",
@@ -489,7 +502,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Diblu din plastic LTX\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0024.jpg",
+      "alt": {
+        "ro": "Diblu din plastic LTX, produsul",
+        "ru": "Пластиковый дюбель ЛТХ, продукт"
+      }
     },
     {
       "id": "CAT-0025",
@@ -497,7 +515,8 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Diblu din oțel LGX\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "placeholder",
+      "empty_reason": "the one image in its Fatade 3D product gallery is 400x266, under the 450 floor W25-R12 made final (W25-17)"
     },
     {
       "id": "CAT-0026",
@@ -594,7 +613,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Tencuială decorativă siliconică STICKY\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0034.jpg",
+      "alt": {
+        "ro": "Tencuială decorativă siliconică STICKY, ambalajul produsului",
+        "ru": "Силиконовая декоративная штукатурка STICKY, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0035",
@@ -795,7 +819,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Placă Elsa Black Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0051.jpg",
+      "alt": {
+        "ro": "Placă Elsa Black Grey, textura placii",
+        "ru": "Плитка Elsa Black Grey, текстура плитки"
+      }
     },
     {
       "id": "CAT-0052",
@@ -907,7 +936,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Placă Sandstorm\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0060.jpg",
+      "alt": {
+        "ro": "Placă Sandstorm, textura placii",
+        "ru": "Плитка Sandstorm, текстура плитки"
+      }
     },
     {
       "id": "CAT-0061",
@@ -1118,7 +1152,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Placă H06\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0077.jpg",
+      "alt": {
+        "ro": "Placă H06, textura placii",
+        "ru": "Плитка H06, текстура плитки"
+      }
     },
     {
       "id": "CAT-0078",
@@ -1708,7 +1747,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 01\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0127.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 01, profilul elementului",
+        "ru": "Декоративный элемент RED 01, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0128",
@@ -1716,7 +1761,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 02\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0128.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 02, profilul elementului",
+        "ru": "Декоративный элемент RED 02, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0129",
@@ -1724,7 +1775,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 03\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0129.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 03, profilul elementului",
+        "ru": "Декоративный элемент RED 03, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0130",
@@ -1732,7 +1789,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 04\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0130.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 04, profilul elementului",
+        "ru": "Декоративный элемент RED 04, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0131",
@@ -1740,7 +1803,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 05\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0131.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 05, profilul elementului",
+        "ru": "Декоративный элемент RED 05, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0132",
@@ -1748,7 +1817,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 06\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0132.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 06, profilul elementului",
+        "ru": "Декоративный элемент RED 06, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0133",
@@ -1756,7 +1831,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 07\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0133.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 07, profilul elementului",
+        "ru": "Декоративный элемент RED 07, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0134",
@@ -1764,7 +1845,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 08\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0134.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 08, profilul elementului",
+        "ru": "Декоративный элемент RED 08, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0135",
@@ -1772,7 +1859,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 09\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0135.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 09, profilul elementului",
+        "ru": "Декоративный элемент RED 09, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0136",
@@ -1780,7 +1873,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 10\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0136.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 10, profilul elementului",
+        "ru": "Декоративный элемент RED 10, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0137",
@@ -1788,7 +1887,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 12\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0137.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 12, profilul elementului",
+        "ru": "Декоративный элемент RED 12, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0138",
@@ -1796,7 +1901,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 14\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0138.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 14, profilul elementului",
+        "ru": "Декоративный элемент RED 14, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0139",
@@ -1804,7 +1915,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 15\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0139.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 15, profilul elementului",
+        "ru": "Декоративный элемент RED 15, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0140",
@@ -1812,7 +1929,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 17\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0140.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 17, profilul elementului",
+        "ru": "Декоративный элемент RED 17, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0141",
@@ -1820,7 +1943,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 18\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0141.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 18, profilul elementului",
+        "ru": "Декоративный элемент RED 18, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0142",
@@ -1828,7 +1957,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 19\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0142.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 19, profilul elementului",
+        "ru": "Декоративный элемент RED 19, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0143",
@@ -1836,7 +1971,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 20\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0143.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 20, profilul elementului",
+        "ru": "Декоративный элемент RED 20, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0144",
@@ -1844,7 +1985,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 21\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0144.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 21, profilul elementului",
+        "ru": "Декоративный элемент RED 21, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0145",
@@ -1852,7 +1999,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 22\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0145.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 22, profilul elementului",
+        "ru": "Декоративный элемент RED 22, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0146",
@@ -1860,7 +2013,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 23\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0146.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 23, profilul elementului",
+        "ru": "Декоративный элемент RED 23, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0147",
@@ -1868,7 +2027,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 24\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0147.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 24, profilul elementului",
+        "ru": "Декоративный элемент RED 24, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0148",
@@ -1876,7 +2041,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 25\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0148.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 25, profilul elementului",
+        "ru": "Декоративный элемент RED 25, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0149",
@@ -1884,7 +2055,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 26\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0149.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 26, profilul elementului",
+        "ru": "Декоративный элемент RED 26, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0150",
@@ -1892,7 +2069,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 27\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0150.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 27, profilul elementului",
+        "ru": "Декоративный элемент RED 27, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0151",
@@ -1900,7 +2083,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 28\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0151.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 28, profilul elementului",
+        "ru": "Декоративный элемент RED 28, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0152",
@@ -1908,7 +2097,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 29\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0152.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 29, profilul elementului",
+        "ru": "Декоративный элемент RED 29, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0153",
@@ -1916,7 +2111,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 30\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0153.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 30, profilul elementului",
+        "ru": "Декоративный элемент RED 30, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0154",
@@ -1924,7 +2125,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 31\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0154.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 31, profilul elementului",
+        "ru": "Декоративный элемент RED 31, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0155",
@@ -1932,7 +2139,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 32\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0155.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 32, profilul elementului",
+        "ru": "Декоративный элемент RED 32, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0156",
@@ -1940,7 +2153,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 33\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0156.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 33, profilul elementului",
+        "ru": "Декоративный элемент RED 33, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0157",
@@ -1948,7 +2167,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 34\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0157.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 34, profilul elementului",
+        "ru": "Декоративный элемент RED 34, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0158",
@@ -1956,7 +2181,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 35\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0158.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 35, profilul elementului",
+        "ru": "Декоративный элемент RED 35, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0159",
@@ -1964,7 +2195,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 37\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0159.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 37, profilul elementului",
+        "ru": "Декоративный элемент RED 37, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0160",
@@ -1972,7 +2209,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 38\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0160.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 38, profilul elementului",
+        "ru": "Декоративный элемент RED 38, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0161",
@@ -1980,7 +2223,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 39\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0161.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 39, profilul elementului",
+        "ru": "Декоративный элемент RED 39, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0162",
@@ -1988,7 +2237,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 41\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0162.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 41, profilul elementului",
+        "ru": "Декоративный элемент RED 41, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0163",
@@ -1996,7 +2251,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 42\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0163.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 42, profilul elementului",
+        "ru": "Декоративный элемент RED 42, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0164",
@@ -2004,7 +2265,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 43\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0164.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 43, profilul elementului",
+        "ru": "Декоративный элемент RED 43, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0165",
@@ -2012,7 +2279,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 44\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0165.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 44, profilul elementului",
+        "ru": "Декоративный элемент RED 44, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0166",
@@ -2020,7 +2293,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 45\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0166.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 45, profilul elementului",
+        "ru": "Декоративный элемент RED 45, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0167",
@@ -2028,7 +2307,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 46\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0167.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 46, profilul elementului",
+        "ru": "Декоративный элемент RED 46, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0168",
@@ -2036,7 +2321,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 47\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0168.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 47, profilul elementului",
+        "ru": "Декоративный элемент RED 47, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0169",
@@ -2044,7 +2335,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 49\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0169.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 49, profilul elementului",
+        "ru": "Декоративный элемент RED 49, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0170",
@@ -2052,7 +2349,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 50\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0170.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 50, profilul elementului",
+        "ru": "Декоративный элемент RED 50, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0171",
@@ -2060,7 +2363,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 53\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0171.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 53, profilul elementului",
+        "ru": "Декоративный элемент RED 53, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0172",
@@ -2068,7 +2377,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 55\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0172.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 55, profilul elementului",
+        "ru": "Декоративный элемент RED 55, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0173",
@@ -2076,7 +2391,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 56\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0173.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 56, profilul elementului",
+        "ru": "Декоративный элемент RED 56, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0174",
@@ -2084,7 +2405,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 57\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0174.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 57, profilul elementului",
+        "ru": "Декоративный элемент RED 57, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0175",
@@ -2092,7 +2419,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 58\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0175.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 58, profilul elementului",
+        "ru": "Декоративный элемент RED 58, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0176",
@@ -2100,7 +2433,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 61\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0176.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 61, profilul elementului",
+        "ru": "Декоративный элемент REd 61, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0177",
@@ -2108,7 +2447,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 62\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0177.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 62, profilul elementului",
+        "ru": "Декоративный элемент RED 62, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0178",
@@ -2116,7 +2461,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 63\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0178.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 63, profilul elementului",
+        "ru": "Декоративный элемент RED 63, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0179",
@@ -2124,7 +2475,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 64\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0179.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 64, profilul elementului",
+        "ru": "Декоративный элемент RED 64, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0180",
@@ -2132,7 +2489,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 65\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0180.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 65, profilul elementului",
+        "ru": "Декоративный элемент RED 65, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0181",
@@ -2140,7 +2503,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 66\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0181.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 66, profilul elementului",
+        "ru": "Декоративный элемент RED 66, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0182",
@@ -2148,7 +2517,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 67\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0182.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 67, profilul elementului",
+        "ru": "Декоративный элемент RED 67, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0183",
@@ -2156,7 +2531,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 68\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0183.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 68, profilul elementului",
+        "ru": "Декоративный элемент RED 68, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0184",
@@ -2164,7 +2545,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 69\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0184.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 69, profilul elementului",
+        "ru": "Декоративный элемент RED 69, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0185",
@@ -2172,7 +2559,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 70\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0185.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 70, profilul elementului",
+        "ru": "Декоративный элемент RED 70, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0186",
@@ -2180,7 +2573,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 73\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0186.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 73, profilul elementului",
+        "ru": "Декоративный элемент RED 73, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0187",
@@ -2188,7 +2587,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 74\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0187.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 74, profilul elementului",
+        "ru": "Декоративный элемент RED 74, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0188",
@@ -2196,7 +2601,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 76\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0188.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 76, profilul elementului",
+        "ru": "Декоративный элемент RED 76, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0189",
@@ -2204,7 +2615,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 77\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0189.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 77, profilul elementului",
+        "ru": "Декоративный элемент RED 77, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0190",
@@ -2212,7 +2629,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Element decorativ RED 78\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0190.jpg",
+      "alt": {
+        "ro": "Element decorativ RED 78, profilul elementului",
+        "ru": "Декоративный элемент RED 78, профиль элемента"
+      },
+      "label": true
     },
     {
       "id": "CAT-0191",
@@ -2275,7 +2698,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă GMD-881F\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0196.jpg",
+      "alt": {
+        "ro": "Lampă GMD-881F, corpul de iluminat",
+        "ru": "Лампа GMD-881F, светильник"
+      }
     },
     {
       "id": "CAT-0197",
@@ -2283,7 +2711,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă GMD-881Y\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0197.jpg",
+      "alt": {
+        "ro": "Lampă GMD-881Y, corpul de iluminat",
+        "ru": "Лампа GMD-881Y, светильник"
+      }
     },
     {
       "id": "CAT-0198",
@@ -2291,7 +2724,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă GMD-F841F-2\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0198.jpg",
+      "alt": {
+        "ro": "Lampă GMD-F841F-2, corpul de iluminat",
+        "ru": "Лампа GMD-F841F-2, светильник"
+      }
     },
     {
       "id": "CAT-0199",
@@ -2299,7 +2737,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă K1207\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0199.jpg",
+      "alt": {
+        "ro": "Lampă K1207, corpul de iluminat",
+        "ru": "Лампа K1207, светильник"
+      }
     },
     {
       "id": "CAT-0200",
@@ -2307,7 +2750,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă K1212S\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0200.jpg",
+      "alt": {
+        "ro": "Lampă K1212S, corpul de iluminat",
+        "ru": "Лампа K1212S, светильник"
+      }
     },
     {
       "id": "CAT-0201",
@@ -2315,7 +2763,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă K1213M\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0201.jpg",
+      "alt": {
+        "ro": "Lampă K1213M, corpul de iluminat",
+        "ru": "Лампа K1213M, светильник"
+      }
     },
     {
       "id": "CAT-0202",
@@ -2323,7 +2776,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă K1241\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0202.jpg",
+      "alt": {
+        "ro": "Lampă K1241, corpul de iluminat",
+        "ru": "Лампа K1241, светильник"
+      }
     },
     {
       "id": "CAT-0203",
@@ -2331,7 +2789,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă K1247\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0203.jpg",
+      "alt": {
+        "ro": "Lampă K1247, corpul de iluminat",
+        "ru": "Лампа K1247, светильник"
+      }
     },
     {
       "id": "CAT-0204",
@@ -2339,7 +2802,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă K2148\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0204.jpg",
+      "alt": {
+        "ro": "Lampă K2148, corpul de iluminat",
+        "ru": "Лампа K2148, светильник"
+      }
     },
     {
       "id": "CAT-0205",
@@ -2347,7 +2815,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă K2276\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0205.jpg",
+      "alt": {
+        "ro": "Lampă K2276, corpul de iluminat",
+        "ru": "Лампа K2276, светильник"
+      }
     },
     {
       "id": "CAT-0206",
@@ -2355,7 +2828,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă K5014\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0206.jpg",
+      "alt": {
+        "ro": "Lampă K5014, corpul de iluminat",
+        "ru": "Лампа K5014, светильник"
+      }
     },
     {
       "id": "CAT-0207",
@@ -2363,7 +2841,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă K5016\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0207.jpg",
+      "alt": {
+        "ro": "Lampă K5016, corpul de iluminat",
+        "ru": "Лампа K5016, светильник"
+      }
     },
     {
       "id": "CAT-0208",
@@ -2371,7 +2854,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă K41041\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0208.jpg",
+      "alt": {
+        "ro": "Lampă K41041, corpul de iluminat",
+        "ru": "Лампа K41041, светильник"
+      }
     },
     {
       "id": "CAT-0209",
@@ -2379,7 +2867,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă K41047\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0209.jpg",
+      "alt": {
+        "ro": "Lampă K41047, corpul de iluminat",
+        "ru": "Лампа K41047, светильник"
+      }
     },
     {
       "id": "CAT-0210",
@@ -2387,7 +2880,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă K41059\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0210.jpg",
+      "alt": {
+        "ro": "Lampă K41059, corpul de iluminat",
+        "ru": "Лампа K41059, светильник"
+      }
     },
     {
       "id": "CAT-0211",
@@ -2395,7 +2893,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă K41061\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0211.jpg",
+      "alt": {
+        "ro": "Lampă K41061, corpul de iluminat",
+        "ru": "Лампа K41061, светильник"
+      }
     },
     {
       "id": "CAT-0212",
@@ -2403,7 +2906,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă K45015\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0212.jpg",
+      "alt": {
+        "ro": "Lampă K45015, corpul de iluminat",
+        "ru": "Лампа K45015, светильник"
+      }
     },
     {
       "id": "CAT-0213",
@@ -2411,7 +2919,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă K1247\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0213.jpg",
+      "alt": {
+        "ro": "Lampă K1247, corpul de iluminat",
+        "ru": "Lampă K1247, светильник"
+      }
     },
     {
       "id": "CAT-0214",
@@ -2419,7 +2932,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă K2146\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0214.jpg",
+      "alt": {
+        "ro": "Lampă K2146, corpul de iluminat",
+        "ru": "Lampă K2146, светильник"
+      }
     },
     {
       "id": "CAT-0215",
@@ -2427,7 +2945,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă K2880\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0215.jpg",
+      "alt": {
+        "ro": "Lampă K2880, corpul de iluminat",
+        "ru": "Lampă K2880, светильник"
+      }
     },
     {
       "id": "CAT-0216",
@@ -2435,7 +2958,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă K2088L\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0216.jpg",
+      "alt": {
+        "ro": "Lampă K2088L, corpul de iluminat",
+        "ru": "Lampă K2088L, светильник"
+      }
     },
     {
       "id": "CAT-0217",
@@ -2443,7 +2971,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă K2222\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0217.jpg",
+      "alt": {
+        "ro": "Lampă K2222, corpul de iluminat",
+        "ru": "Lampă K2222, светильник"
+      }
     },
     {
       "id": "CAT-0218",
@@ -2451,7 +2984,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă K2841\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0218.jpg",
+      "alt": {
+        "ro": "Lampă K2841, corpul de iluminat",
+        "ru": "Lampă K2841, светильник"
+      }
     },
     {
       "id": "CAT-0219",
@@ -2459,7 +2997,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă K2842\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0219.jpg",
+      "alt": {
+        "ro": "Lampă K2842, corpul de iluminat",
+        "ru": "Lampă K2842, светильник"
+      }
     },
     {
       "id": "CAT-0220",
@@ -2467,7 +3010,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Lampă K1823\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0220.jpg",
+      "alt": {
+        "ro": "Lampă K1823, corpul de iluminat",
+        "ru": "Lampă K1823, светильник"
+      }
     },
     {
       "id": "CAT-0221",
@@ -2475,7 +3023,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Membrana de DIFUZIE pentru acoperișuri\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0221.jpg",
+      "alt": {
+        "ro": "Membrana de DIFUZIE pentru acoperișuri, produsul",
+        "ru": "ДИФФУЗИОННАЯ мембрана для крыш, продукт"
+      },
+      "watermark": true
     },
     {
       "id": "CAT-0222",
@@ -2483,7 +3037,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Plasă de armare\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0222.jpg",
+      "alt": {
+        "ro": "Plasă de armare, produsul",
+        "ru": "Армирующая сетка, продукт"
+      },
+      "watermark": true
     },
     {
       "id": "CAT-0223",
@@ -2491,7 +3051,13 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Colțar PVC\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0223.jpg",
+      "alt": {
+        "ro": "Colțar PVC, produsul",
+        "ru": "ПВХ уголок, продукт"
+      },
+      "watermark": true
     },
     {
       "id": "CAT-0224",

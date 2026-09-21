@@ -717,3 +717,50 @@ nine cards, a catalogue page's length is no longer its data.** It is the prose b
 quote form and the footer, which are the same on every one of them and total about
 4,000px. That is where the next reduction has to come from, and it is not a catalogue
 change.
+
+---
+
+## AMENDED (W25-09, wave 25): the eighth catalogue category and its seven subcategories
+
+**Under W24-R4**: every page created in this card takes a budget of **measured plus 60**.
+Measured on the branch at 1280px, with every `[data-reveal]` given `is-revealed` and 1.8s
+to settle, which is the method `docs/CLAUDE.md` section 2 records.
+
+| Page | Measured | Budget |
+|---|---|---|
+| `/catalog/materiale-acoperis/` | 11,857 | **11,917** |
+| `/ru/catalog/materiale-acoperis/` | 11,884 | **11,944** |
+| `/catalog/materiale-acoperis/tigla-metalica/` | 2,997 | **3,057** |
+| `/ru/catalog/materiale-acoperis/tigla-metalica/` | 2,997 | **3,057** |
+| `/catalog/materiale-acoperis/profnastil/` | 3,494 | **3,554** |
+| `/ru/catalog/materiale-acoperis/profnastil/` | 3,494 | **3,554** |
+| `/catalog/materiale-acoperis/hidroizolatie/` | 5,270 | **5,330** |
+| `/ru/catalog/materiale-acoperis/hidroizolatie/` | 5,270 | **5,330** |
+| `/catalog/materiale-acoperis/sistem-de-scurgere/` | 4,303 | **4,363** |
+| `/ru/catalog/materiale-acoperis/sistem-de-scurgere/` | 4,303 | **4,363** |
+| `/catalog/materiale-acoperis/elemente-suplimentare/` | 4,963 | **5,023** |
+| `/ru/catalog/materiale-acoperis/elemente-suplimentare/` | 4,963 | **5,023** |
+| `/catalog/materiale-acoperis/elemente-de-siguranta/` | 2,972 | **3,032** |
+| `/ru/catalog/materiale-acoperis/elemente-de-siguranta/` | 2,972 | **3,032** |
+| `/catalog/materiale-acoperis/elemente-de-fixare/` | 3,457 | **3,517** |
+| `/ru/catalog/materiale-acoperis/elemente-de-fixare/` | 3,457 | **3,517** |
+
+**The parent page is the tallest thing in the catalogue**, at 11,857px, because a category
+page rolls up every subcategory's products and this one has 71. That is the third standing
+exception in `docs/CLAUDE.md` section 2, already recorded at W24-R4: a catalogue grid's
+length is data, and no cap can be met by it.
+
+### Two existing pages, one of which did not move
+
+| Page | Before | After | Budget |
+|---|---|---|---|
+| `/servicii/tigla-metalica/` | 3,940 | 3,979 | 4,000 to **4,039** |
+| `/ru/servicii/tigla-metalica/` | 3,973 | 4,012 | 4,033 to **4,072** |
+| `/servicii/acoperisuri/` | 7,499 | 7,499 | **7,658, unchanged** |
+| `/ru/servicii/acoperisuri/` | 7,637 | 7,637 | **7,796, unchanged** |
+
+Both pages gained the same link to the new category. **The tile page grew by 39px and the
+roofing hub did not grow at all**, because the hub's section already had bottom padding the
+link fits inside. The "before" column is a control: the same build with the two link
+insertions removed, measured the same way in the same run. A budget was raised only where a
+measurement said to raise it.

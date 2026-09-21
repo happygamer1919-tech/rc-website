@@ -411,6 +411,11 @@
         "lede": "Materiale auxiliare care completează lucrările: membrane, plase de armare, amorse, profile și elemente de fixare.",
         "p1": "Pe lângă materialele principale, orice lucrare de construcție are nevoie de produse auxiliare care nu se mai văd la final, dar de care depinde cât rezistă lucrarea. Membranele de difuzie se montează sub învelitoarea acoperișului: opresc apa și lasă vaporii să iasă. Plasa din fibră de sticlă armează straturile de șpaclu, amorsele pregătesc suportul, iar profilele de colț și de soclu protejează muchiile și marginile sistemelor de fațadă.",
         "p2": "Aceste produse se aleg după sistemul din care fac parte, nu separat. Membrana se alege după tipul acoperișului și permeabilitatea la vapori, plasa de armare după rezistența la alcalii, iar diblurile după materialul peretelui, pentru că betonul, cărămida plină și blocurile cu goluri cer tipuri diferite de fixare. Compatibilitatea cu celelalte straturi contează mai mult decât calitățile unui singur produs."
+      },
+      "7": {
+        "lede": "Materialele care alcătuiesc un acoperiș, de la tablă și membrană până la jgheaburi, elemente de siguranță și șuruburi.",
+        "p1": "Un acoperiș nu este un singur material, ci un set care lucrează împreună. Învelitoarea, țiglă metalică sau tablă cutată, preia ploaia și zăpada. Sub ea, folia anticondens sau membrana difuzivă ține apa afară și lasă vaporii să iasă, astfel încât izolația să rămână uscată. Sistemul de scurgere duce apa departe de pereți și de fundație, iar elementele suplimentare închid coama, doliile, streașina și trecerile prin acoperiș.",
+        "p2": "Elementele de siguranță, parazăpezile și punțile de trecere, opresc alunecarea zăpezii și permit accesul pe acoperiș fără a deteriora învelitoarea. Șuruburile autofiletante cu garnitură de etanșare fixează tabla fără să lase apa să pătrundă prin gaură. Grosimea metalului, tipul acoperirii și culoarea RAL se aleg împreună, pentru că ele decid cât rezistă acoperișul și cum arată de la stradă."
       }
     }
   },

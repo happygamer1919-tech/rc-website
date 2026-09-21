@@ -144,6 +144,88 @@
         "ro": "/catalog/alte-materiale/",
         "ru": "/ru/catalog/alte-materiale/"
       }
+    },
+    {
+      "label": {
+        "ro": "Acoperișuri",
+        "ru": "Кровля"
+      },
+      "href": {
+        "ro": "/catalog/materiale-acoperis/",
+        "ru": "/ru/catalog/materiale-acoperis/"
+      },
+      "children": [
+        {
+          "label": {
+            "ro": "Țiglă metalică",
+            "ru": "Металлочерепица"
+          },
+          "href": {
+            "ro": "/catalog/materiale-acoperis/tigla-metalica/",
+            "ru": "/ru/catalog/materiale-acoperis/tigla-metalica/"
+          }
+        },
+        {
+          "label": {
+            "ro": "Profnastil, tablă cutată",
+            "ru": "Профнастил, гофрированный лист"
+          },
+          "href": {
+            "ro": "/catalog/materiale-acoperis/profnastil/",
+            "ru": "/ru/catalog/materiale-acoperis/profnastil/"
+          }
+        },
+        {
+          "label": {
+            "ro": "Hidroizolație și barieră de vapori",
+            "ru": "Гидроизоляция и пароизоляция"
+          },
+          "href": {
+            "ro": "/catalog/materiale-acoperis/hidroizolatie/",
+            "ru": "/ru/catalog/materiale-acoperis/hidroizolatie/"
+          }
+        },
+        {
+          "label": {
+            "ro": "Sistem de scurgere",
+            "ru": "Водосточная система"
+          },
+          "href": {
+            "ro": "/catalog/materiale-acoperis/sistem-de-scurgere/",
+            "ru": "/ru/catalog/materiale-acoperis/sistem-de-scurgere/"
+          }
+        },
+        {
+          "label": {
+            "ro": "Elemente suplimentare",
+            "ru": "Дополнительные элементы"
+          },
+          "href": {
+            "ro": "/catalog/materiale-acoperis/elemente-suplimentare/",
+            "ru": "/ru/catalog/materiale-acoperis/elemente-suplimentare/"
+          }
+        },
+        {
+          "label": {
+            "ro": "Elemente de siguranță",
+            "ru": "Элементы безопасности"
+          },
+          "href": {
+            "ro": "/catalog/materiale-acoperis/elemente-de-siguranta/",
+            "ru": "/ru/catalog/materiale-acoperis/elemente-de-siguranta/"
+          }
+        },
+        {
+          "label": {
+            "ro": "Elemente de fixare",
+            "ru": "Крепёжные элементы"
+          },
+          "href": {
+            "ro": "/catalog/materiale-acoperis/elemente-de-fixare/",
+            "ru": "/ru/catalog/materiale-acoperis/elemente-de-fixare/"
+          }
+        }
+      ]
     }
   ]
 }

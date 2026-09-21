@@ -292,6 +292,169 @@
       "f3d-2569",
       "f3d-2576",
       "f3d-2583"
+    ],
+    "materiale-acoperis": [
+      "dast-232323",
+      "dast-tigla-metalica-valencia",
+      "dast-igla-metalica-modulara",
+      "dast-igla-metalica-kascad",
+      "dast-tabla-cutata-t-12",
+      "dast-tabla-cutata-vp-20-ondulata",
+      "dast-profnastil-pk-20-glyancevyj",
+      "dast-tabla-cutata-h-35",
+      "dast-tabla-cutata-c-15",
+      "dast-tabla-cutata-s-44",
+      "dast-tabla-cutata-h-60",
+      "dast-dripstop-acoperire-anticondens-pentru-tabla-prof",
+      "dast-dachmaster-100-15m50m",
+      "dast-eurovent-grila-ventilare-ral-8004.-5008-cm",
+      "dast-eurovent-grila-ventilare-ral-8019.-5008-cm",
+      "dast-membrana-pentru-acoperis-eurovent-home-pro",
+      "dast-dachmaster-120-15m50m",
+      "dast-decora-80-15m50m",
+      "dast-decora-100-15m50m",
+      "dast-decora-120-15m50m",
+      "dast-decora-135-15m50m",
+      "dast-decora-150-15m50m",
+      "dast-decora-180-15m50m",
+      "dast-dachmaster-alu-80-paraizolare",
+      "dast-pieptene-streasina-eurovent-comb-x-ral-9005",
+      "dast-banda-etansant-eurovent-compri",
+      "dast-eurovent-butyl-banda-adeziva-dubla",
+      "dast-banda-topband-din-polipropilena-cu-autoadeziv-un",
+      "dast-band-autoadeziv-eurovent-pur",
+      "dast-banda-autoadeziva-eurovent-duo",
+      "dast-banda-flexbit-pentru-lipirea-si-etansarea-acoper",
+      "dast-banda-coama-roll-ecco-pentru-ventilare",
+      "dast-banda-autocolanta-flex-3d",
+      "dast-homut-zheloba-125mm",
+      "dast-voronka-zheloba-125mm",
+      "dast-capac-jgheab-125-mm",
+      "dast-ugol-naruzhnyj-125mm",
+      "dast-ugol-vnutrennij-125-mm",
+      "dast-jgheab-scurgere-125x2000-mm",
+      "dast-koleno-verhnee-90-mm",
+      "dast-truba-vodostochnaya-90h1000-mm",
+      "dast-burlan-90x3000-mm",
+      "dast-homut-truby-90mm",
+      "dast-koleno-slivnoe-90-mm",
+      "dast-zhelob-vodostochnyj-vishnyovyj-ral-8017-125h4000",
+      "dast-kronshtejn-zheloba-korotkij-125-mm",
+      "dast-kronshtejn-zheloba-125-mm",
+      "dast-trubchatyj-snegoupor",
+      "dast-coama-dreapta",
+      "dast-coama-semirotunda",
+      "dast-bordura-de-fronton-l2000-mm",
+      "dast-retinator-de-zapada-l2000mm",
+      "dast-dolie-de-sus-l2000mm",
+      "dast-dolie-de-jos-l2000mm",
+      "dast-planka-primykaniya-so-shtroboj-l2000mm",
+      "dast-planka-primykaniya-bez-shtroby-l2000mm",
+      "dast-kapelinik-krovelinyj",
+      "dast-lobovaya-l-planka-15050mm",
+      "dast-parapet-100mm-l2000mm",
+      "dast-otliv-200mm",
+      "dast-otliv-150mm",
+      "dast-coltar-interior-5050-l2000mm",
+      "dast-coltar-interior-100100-l2000mm",
+      "dast-coltar-exterior-5050-l2000mm",
+      "dast-coltar-exterior-100100-l2000mm",
+      "dast-spray-vopsea",
+      "dast-samorezy-krovelinye-po-shvelleru-5532",
+      "dast-samorezy-krovelinye-po-derevu_n",
+      "dast-kreplenie-dlya-evro-zabora-s-samorezom",
+      "dast-samorezy-krovelinye-po-derevu",
+      "dast-samorez-3595mm-v-assortimente"
+    ],
+    "materiale-acoperis/tigla-metalica": [
+      "dast-232323",
+      "dast-tigla-metalica-valencia",
+      "dast-igla-metalica-modulara",
+      "dast-igla-metalica-kascad"
+    ],
+    "materiale-acoperis/profnastil": [
+      "dast-tabla-cutata-t-12",
+      "dast-tabla-cutata-vp-20-ondulata",
+      "dast-profnastil-pk-20-glyancevyj",
+      "dast-tabla-cutata-h-35",
+      "dast-tabla-cutata-c-15",
+      "dast-tabla-cutata-s-44",
+      "dast-tabla-cutata-h-60",
+      "dast-dripstop-acoperire-anticondens-pentru-tabla-prof"
+    ],
+    "materiale-acoperis/hidroizolatie": [
+      "dast-dripstop-acoperire-anticondens-pentru-tabla-prof",
+      "dast-dachmaster-100-15m50m",
+      "dast-eurovent-grila-ventilare-ral-8004.-5008-cm",
+      "dast-eurovent-grila-ventilare-ral-8019.-5008-cm",
+      "dast-membrana-pentru-acoperis-eurovent-home-pro",
+      "dast-dachmaster-120-15m50m",
+      "dast-decora-80-15m50m",
+      "dast-decora-100-15m50m",
+      "dast-decora-120-15m50m",
+      "dast-decora-135-15m50m",
+      "dast-decora-150-15m50m",
+      "dast-decora-180-15m50m",
+      "dast-dachmaster-alu-80-paraizolare",
+      "dast-pieptene-streasina-eurovent-comb-x-ral-9005",
+      "dast-banda-etansant-eurovent-compri",
+      "dast-eurovent-butyl-banda-adeziva-dubla",
+      "dast-banda-topband-din-polipropilena-cu-autoadeziv-un",
+      "dast-band-autoadeziv-eurovent-pur",
+      "dast-banda-autoadeziva-eurovent-duo",
+      "dast-banda-flexbit-pentru-lipirea-si-etansarea-acoper",
+      "dast-banda-coama-roll-ecco-pentru-ventilare",
+      "dast-banda-autocolanta-flex-3d"
+    ],
+    "materiale-acoperis/sistem-de-scurgere": [
+      "dast-homut-zheloba-125mm",
+      "dast-voronka-zheloba-125mm",
+      "dast-capac-jgheab-125-mm",
+      "dast-ugol-naruzhnyj-125mm",
+      "dast-ugol-vnutrennij-125-mm",
+      "dast-jgheab-scurgere-125x2000-mm",
+      "dast-koleno-verhnee-90-mm",
+      "dast-truba-vodostochnaya-90h1000-mm",
+      "dast-burlan-90x3000-mm",
+      "dast-homut-truby-90mm",
+      "dast-koleno-slivnoe-90-mm",
+      "dast-zhelob-vodostochnyj-vishnyovyj-ral-8017-125h4000",
+      "dast-kronshtejn-zheloba-korotkij-125-mm",
+      "dast-kronshtejn-zheloba-125-mm"
+    ],
+    "materiale-acoperis/elemente-suplimentare": [
+      "dast-trubchatyj-snegoupor",
+      "dast-coama-dreapta",
+      "dast-coama-semirotunda",
+      "dast-bordura-de-fronton-l2000-mm",
+      "dast-retinator-de-zapada-l2000mm",
+      "dast-dolie-de-sus-l2000mm",
+      "dast-dolie-de-jos-l2000mm",
+      "dast-planka-primykaniya-so-shtroboj-l2000mm",
+      "dast-planka-primykaniya-bez-shtroby-l2000mm",
+      "dast-kapelinik-krovelinyj",
+      "dast-lobovaya-l-planka-15050mm",
+      "dast-parapet-100mm-l2000mm",
+      "dast-otliv-200mm",
+      "dast-otliv-150mm",
+      "dast-coltar-interior-5050-l2000mm",
+      "dast-coltar-interior-100100-l2000mm",
+      "dast-coltar-exterior-5050-l2000mm",
+      "dast-coltar-exterior-100100-l2000mm",
+      "dast-spray-vopsea"
+    ],
+    "materiale-acoperis/elemente-de-siguranta": [
+      "dast-dripstop-acoperire-anticondens-pentru-tabla-prof",
+      "dast-trubchatyj-snegoupor",
+      "dast-spray-vopsea"
+    ],
+    "materiale-acoperis/elemente-de-fixare": [
+      "dast-spray-vopsea",
+      "dast-samorezy-krovelinye-po-shvelleru-5532",
+      "dast-samorezy-krovelinye-po-derevu_n",
+      "dast-kreplenie-dlya-evro-zabora-s-samorezom",
+      "dast-samorezy-krovelinye-po-derevu",
+      "dast-samorez-3595mm-v-assortimente"
     ]
   },
   "products": [
@@ -311,7 +474,7 @@
       "price": {
         "min": "20,00",
         "max": "165,00",
-        "source_display": "20,00 lei – 165,00 lei",
+        "source_display": "20,00 lei, 165,00 lei",
         "render": {
           "ro": "20,00 lei - 165,00 lei",
           "ru": "20,00 lei - 165,00 lei"
@@ -347,7 +510,7 @@
       "price": {
         "min": "7,62",
         "max": "76,20",
-        "source_display": "7,62 lei – 76,20 lei",
+        "source_display": "7,62 lei, 76,20 lei",
         "render": {
           "ro": "7,62 lei - 76,20 lei",
           "ru": "7,62 lei - 76,20 lei"
@@ -383,7 +546,7 @@
       "price": {
         "min": "6,60",
         "max": "91,00",
-        "source_display": "6,60 lei – 91,00 lei",
+        "source_display": "6,60 lei, 91,00 lei",
         "render": {
           "ro": "6,60 lei - 91,00 lei",
           "ru": "6,60 lei - 91,00 lei"
@@ -419,7 +582,7 @@
       "price": {
         "min": "0,00",
         "max": "110,00",
-        "source_display": "0,00 lei – 110,00 lei",
+        "source_display": "0,00 lei, 110,00 lei",
         "render": {
           "ro": "110,00 lei",
           "ru": "1,00 lei - 110,00 lei"
@@ -455,7 +618,7 @@
       "price": {
         "min": "6,50",
         "max": "65,00",
-        "source_display": "6,50 lei – 65,00 lei",
+        "source_display": "6,50 lei, 65,00 lei",
         "render": {
           "ro": "6,50 lei - 65,00 lei",
           "ru": "6,50 lei - 65,00 lei"
@@ -469,8 +632,8 @@
         "id": 3283,
         "url": "https://fatade3d.md/produs/ct-80-f-polistiren-expandat/",
         "ru_url": "https://fatade3d.md/ru/produkt/ct-80-f-penopolistirol/",
-        "name": "CT 80 F – Polistiren expandat",
-        "ru_name": "CT 80 F — Пенополистирол",
+        "name": "CT 80 F, Polistiren expandat",
+        "ru_name": "CT 80 F, Пенополистирол",
         "brand": "Caparol",
         "captured": "2026-09-19"
       }
@@ -491,7 +654,7 @@
       "price": {
         "min": "31,60",
         "max": "138,50",
-        "source_display": "31,60 lei – 138,50 lei",
+        "source_display": "31,60 lei, 138,50 lei",
         "render": {
           "ro": "31,60 lei - 138,50 lei",
           "ru": "31,60 lei - 138,50 lei"
@@ -527,7 +690,7 @@
       "price": {
         "min": "40,00",
         "max": "133,00",
-        "source_display": "40,00 lei – 133,00 lei",
+        "source_display": "40,00 lei, 133,00 lei",
         "render": {
           "ro": "40,00 lei - 133,00 lei",
           "ru": "40,00 lei - 133,00 lei"
@@ -563,7 +726,7 @@
       "price": {
         "min": "106,00",
         "max": "213,00",
-        "source_display": "106,00 lei – 213,00 lei",
+        "source_display": "106,00 lei, 213,00 lei",
         "render": {
           "ro": "106,00 lei - 213,00 lei",
           "ru": "106,00 lei - 213,00 lei"
@@ -599,7 +762,7 @@
       "price": {
         "min": "46,60",
         "max": "77,00",
-        "source_display": "46,60 lei – 77,00 lei",
+        "source_display": "46,60 lei, 77,00 lei",
         "render": {
           "ro": "46,60 lei - 77,00 lei",
           "ru": "46,60 lei - 77,00 lei"
@@ -636,7 +799,7 @@
       "price": {
         "min": "62,00",
         "max": "123,00",
-        "source_display": "62,00 lei – 123,00 lei",
+        "source_display": "62,00 lei, 123,00 lei",
         "render": {
           "ro": "62,00 lei - 123,00 lei",
           "ru": "62,00 lei - 123,00 lei"
@@ -708,7 +871,7 @@
       "price": {
         "min": "94,00",
         "max": "185,00",
-        "source_display": "94,00 lei – 185,00 lei / bucata",
+        "source_display": "94,00 lei, 185,00 lei / bucata",
         "render": {
           "ro": "94,00 lei - 185,00 lei / bucata",
           "ru": "94,00 lei - 185,00 lei / м2"
@@ -758,8 +921,8 @@
         "id": 2021,
         "url": "https://fatade3d.md/produs/masa-de-spaclu-armare-klebespachtel-100r-caparol/",
         "ru_url": "https://fatade3d.md/ru/produkt/masa-de-spaclu-armare-klebespachtel-100r-caparol/",
-        "name": "Klebespachtel 100R – Adeziv de armare polistiren și vată",
-        "ru_name": "Клебешпаттель 100Р — Армирующий клей для полистирола и шерсти",
+        "name": "Klebespachtel 100R, Adeziv de armare polistiren și vată",
+        "ru_name": "Клебешпаттель 100Р, Армирующий клей для полистирола и шерсти",
         "brand": "Caparol",
         "captured": "2026-09-19"
       }
@@ -902,8 +1065,8 @@
         "id": 2377,
         "url": "https://fatade3d.md/produs/adeziv-baumit-bianco-alb/",
         "ru_url": "https://fatade3d.md/ru/produkt/adeziv-baumit-bianco-alb/",
-        "name": "Adeziv Baumit – Bianco Alb",
-        "ru_name": "Клей Баумит – Бьянко Белый",
+        "name": "Adeziv Baumit, Bianco Alb",
+        "ru_name": "Клей Баумит, Бьянко Белый",
         "brand": "Baumit",
         "captured": "2026-09-19"
       }
@@ -974,7 +1137,7 @@
         "id": 2393,
         "url": "https://fatade3d.md/produs/baumit-pro-contact-adeziv-si-masa-de-spaclu/",
         "ru_url": "https://fatade3d.md/ru/produkt/baumit-pro-contact-adeziv-si-masa-de-spaclu/",
-        "name": "Baumit Pro Contact – Adeziv și Masă de Șpaclu",
+        "name": "Baumit Pro Contact, Adeziv și Masă de Șpaclu",
         "ru_name": "Баумит ПроКонтакт клей-шпаклевная смесь",
         "brand": "Baumit",
         "captured": "2026-09-19"
@@ -1010,8 +1173,8 @@
         "id": 2400,
         "url": "https://fatade3d.md/produs/mesterul-dibaci-universal-adeziv-pentru-placi-ceramice/",
         "ru_url": "https://fatade3d.md/ru/produkt/mesterul-dibaci-universal-adeziv-pentru-placi-ceramice/",
-        "name": "Meșterul Dibaci Universal – Adeziv pentru plăci ceramice",
-        "ru_name": "Мештерул Дибачи Универсал — Клей для керамической плитки",
+        "name": "Meșterul Dibaci Universal, Adeziv pentru plăci ceramice",
+        "ru_name": "Мештерул Дибачи Универсал, Клей для керамической плитки",
         "brand": null,
         "captured": "2026-09-19"
       }
@@ -1046,8 +1209,8 @@
         "id": 2406,
         "url": "https://fatade3d.md/produs/ceresit-ct-82-mortar-adeziv-si-masa-de-spaclu-pentru-polistiren/",
         "ru_url": "https://fatade3d.md/ru/produkt/ceresit-ct-82-mortar-adeziv-si-masa-de-spaclu-pentru-polistiren/",
-        "name": "CERESIT CT 82 – Mortar adeziv și masă de șpaclu pentru polistiren",
-        "ru_name": "CERESIT CT 82 – Клеевой раствор и шпатлевка для полистирола",
+        "name": "CERESIT CT 82, Mortar adeziv și masă de șpaclu pentru polistiren",
+        "ru_name": "CERESIT CT 82, Клеевой раствор и шпатлевка для полистирола",
         "brand": "Ceresit",
         "captured": "2026-09-19"
       }
@@ -1140,7 +1303,7 @@
       "price": {
         "min": "1,00",
         "max": "1,20",
-        "source_display": "1,00 lei – 1,20 lei",
+        "source_display": "1,00 lei, 1,20 lei",
         "render": {
           "ro": "1,00 lei - 1,20 lei",
           "ru": "1,00 lei - 1,20 lei"
@@ -1176,7 +1339,7 @@
       "price": {
         "min": "0,80",
         "max": "1,86",
-        "source_display": "0,80 lei – 1,86 lei",
+        "source_display": "0,80 lei, 1,86 lei",
         "render": {
           "ro": "0,80 lei - 1,86 lei",
           "ru": "0,80 lei - 1,86 lei"
@@ -1226,8 +1389,8 @@
         "id": 2040,
         "url": "https://fatade3d.md/produs/baumit-silikontop-tencuiala-decorativa-siliconica/",
         "ru_url": "https://fatade3d.md/ru/produkt/baumit-silikontop-tencuiala-decorativa-siliconica/",
-        "name": "Baumit SilikonTop – Tencuială decorativă siliconică",
-        "ru_name": "Баумит СиликонТоп — Силиконовая декоративная штукатурка",
+        "name": "Baumit SilikonTop, Tencuială decorativă siliconică",
+        "ru_name": "Баумит СиликонТоп, Силиконовая декоративная штукатурка",
         "brand": "Baumit",
         "captured": "2026-09-19"
       }
@@ -1263,7 +1426,7 @@
         "url": "https://fatade3d.md/produs/baumit-duotop-tencuiala-decorativa-acrilica/",
         "ru_url": "https://fatade3d.md/ru/produkt/baumit-duotop-tencuiala-decorativa-acrilica/",
         "name": "Baumit DuoTop Tencuială decorativă acrilică",
-        "ru_name": "Баумит ДуоТоп — Акриловая декоративная штукатурка",
+        "ru_name": "Баумит ДуоТоп, Акриловая декоративная штукатурка",
         "brand": "Baumit",
         "captured": "2026-09-19"
       }
@@ -1284,7 +1447,7 @@
       "price": {
         "min": "1.149,00",
         "max": "1.250,00",
-        "source_display": "1.149,00 lei – 1.250,00 lei",
+        "source_display": "1.149,00 lei, 1.250,00 lei",
         "render": {
           "ro": "1.149,00 lei - 1.250,00 lei",
           "ru": "1.149,00 lei - 1.250,00 lei"
@@ -1299,7 +1462,7 @@
         "url": "https://fatade3d.md/produs/projektputz-r-si-k-tencuiala-decorativa-acrilica-caparol/",
         "ru_url": "https://fatade3d.md/ru/produkt/projektputz-r-si-k-tencuiala-decorativa-acrilica-caparol/",
         "name": "ProjektPutz R și K Tencuială decorativă acrilică Caparol",
-        "ru_name": "ProjektPutz R и K — акриловая декоративная штукатурка Капарол",
+        "ru_name": "ProjektPutz R и K, акриловая декоративная штукатурка Капарол",
         "brand": "Caparol",
         "captured": "2026-09-19"
       }
@@ -1320,7 +1483,7 @@
       "price": {
         "min": "1.679,00",
         "max": "1.749,00",
-        "source_display": "1.679,00 lei – 1.749,00 lei",
+        "source_display": "1.679,00 lei, 1.749,00 lei",
         "render": {
           "ro": "1.679,00 lei - 1.749,00 lei",
           "ru": "1.679,00 lei - 1.749,00 lei"
@@ -1334,8 +1497,8 @@
         "id": 2416,
         "url": "https://fatade3d.md/produs/carbon-fassadenputz-k-si-r-tencuiala-decorativa-carbonica/",
         "ru_url": "https://fatade3d.md/ru/produkt/carbon-fassadenputz-k-si-r-tencuiala-decorativa-carbonica/",
-        "name": "Carbon Fassadenputz K si R – Tencuială decorativă carbonică",
-        "ru_name": "Carbon Fassadenputz K и R – углеродная декоративная штукатурка",
+        "name": "Carbon Fassadenputz K si R, Tencuială decorativă carbonică",
+        "ru_name": "Carbon Fassadenputz K и R, углеродная декоративная штукатурка",
         "brand": "Caparol",
         "captured": "2026-09-19"
       }
@@ -1356,7 +1519,7 @@
       "price": {
         "min": "1.679,00",
         "max": "1.749,00",
-        "source_display": "1.679,00 lei – 1.749,00 lei",
+        "source_display": "1.679,00 lei, 1.749,00 lei",
         "render": {
           "ro": "1.679,00 lei - 1.749,00 lei",
           "ru": "1.679,00 lei - 1.749,00 lei"
@@ -1370,8 +1533,8 @@
         "id": 2427,
         "url": "https://fatade3d.md/produs/silicon-fassadenputz-k-si-r-tencuiala-decorativa/",
         "ru_url": "https://fatade3d.md/ru/produkt/silicon-fassadenputz-k-si-r-tencuiala-decorativa/",
-        "name": "Silicon-Fassadenputz K si R – Tencuială decorativă",
-        "ru_name": "Silicon-Fassadenputz K si R — Силиконовая декоративная штукатурка",
+        "name": "Silicon-Fassadenputz K si R, Tencuială decorativă",
+        "ru_name": "Silicon-Fassadenputz K si R, Силиконовая декоративная штукатурка",
         "brand": "Caparol",
         "captured": "2026-09-19"
       }
@@ -1428,7 +1591,7 @@
       "price": {
         "min": "1.150,00",
         "max": "1.250,00",
-        "source_display": "1.150,00 lei – 1.250,00 lei",
+        "source_display": "1.150,00 lei, 1.250,00 lei",
         "render": {
           "ro": "1.150,00 lei - 1.250,00 lei",
           "ru": "1.150,00 lei - 1.250,00 lei"
@@ -1442,8 +1605,8 @@
         "id": 2449,
         "url": "https://fatade3d.md/produs/duraziv-standard-tds-cu-silicon-tencuiala-decorativa-siliconica/",
         "ru_url": "https://fatade3d.md/ru/produkt/duraziv-standard-tds-cu-silicon-tencuiala-decorativa-siliconica/",
-        "name": "Duraziv Standard TDS cu silicon – Tencuială decorativă siliconică",
-        "ru_name": "Duraziv Standard TDS — Силиконовая декоративная штукатурка",
+        "name": "Duraziv Standard TDS cu silicon, Tencuială decorativă siliconică",
+        "ru_name": "Duraziv Standard TDS, Силиконовая декоративная штукатурка",
         "brand": "DURAZIV",
         "captured": "2026-09-19"
       }
@@ -1478,8 +1641,8 @@
         "id": 2462,
         "url": "https://fatade3d.md/produs/tencuiala-decorativa-roko-omitka-silikon/",
         "ru_url": "https://fatade3d.md/ru/produkt/tencuiala-decorativa-roko-omitka-silikon/",
-        "name": "Tencuială decorativă Roko – Omítka Silikon",
-        "ru_name": "Декоративная штукатурка Роко — Omítka Silikon",
+        "name": "Tencuială decorativă Roko, Omítka Silikon",
+        "ru_name": "Декоративная штукатурка Роко, Omítka Silikon",
         "brand": "ROKO AquaMix",
         "captured": "2026-09-19"
       }
@@ -1572,7 +1735,7 @@
       "price": {
         "min": "449,00",
         "max": "1.349,00",
-        "source_display": "449,00 lei – 1.349,00 lei",
+        "source_display": "449,00 lei, 1.349,00 lei",
         "render": {
           "ro": "449,00 lei - 1.349,00 lei",
           "ru": "449,00 lei - 1.349,00 lei"
@@ -7216,7 +7379,7 @@
       "price": {
         "min": "1.199,00",
         "max": "4.199,00",
-        "source_display": "1.199,00 lei – 4.199,00 lei",
+        "source_display": "1.199,00 lei, 4.199,00 lei",
         "render": {
           "ro": "1.199,00 lei - 4.199,00 lei",
           "ru": "1.199,00 lei - 4.199,00 lei"
@@ -7231,8 +7394,8 @@
         "id": 2076,
         "url": "https://fatade3d.md/produs/amphibolin/",
         "ru_url": "https://fatade3d.md/ru/produkt/amphibolin/",
-        "name": "Amphibolin – Vopsea acrilică universală",
-        "ru_name": "Амфиболин — Универсальная акриловая краска",
+        "name": "Amphibolin, Vopsea acrilică universală",
+        "ru_name": "Амфиболин, Универсальная акриловая краска",
         "brand": "Caparol",
         "captured": "2026-09-19"
       }
@@ -7253,7 +7416,7 @@
       "price": {
         "min": "970,00",
         "max": "3.078,00",
-        "source_display": "970,00 lei – 3.078,00 lei",
+        "source_display": "970,00 lei, 3.078,00 lei",
         "render": {
           "ro": "970,00 lei - 3.078,00 lei",
           "ru": "970,00 lei - 3.078,00 lei"
@@ -7268,8 +7431,8 @@
         "id": 2085,
         "url": "https://fatade3d.md/produs/isomat-flexcoat-vopsea-hidroizolanta/",
         "ru_url": "https://fatade3d.md/ru/produkt/isomat-flexcoat-vopsea-hidroizolanta/",
-        "name": "Isomat Flexcoat – Vopsea hidroizolantă",
-        "ru_name": "ИЗОМАТ ФЛЕКСКОАТ — Гидроизоляционная краска",
+        "name": "Isomat Flexcoat, Vopsea hidroizolantă",
+        "ru_name": "ИЗОМАТ ФЛЕКСКОАТ, Гидроизоляционная краска",
         "brand": "ISOMAT",
         "captured": "2026-09-19"
       }
@@ -7290,7 +7453,7 @@
       "price": {
         "min": "599,00",
         "max": "2.399,00",
-        "source_display": "599,00 lei – 2.399,00 lei",
+        "source_display": "599,00 lei, 2.399,00 lei",
         "render": {
           "ro": "599,00 lei - 2.399,00 lei",
           "ru": "599,00 lei - 2.399,00 lei"
@@ -7304,8 +7467,8 @@
         "id": 2509,
         "url": "https://fatade3d.md/produs/vopsea-de-fatada-universala-muresko-plus/",
         "ru_url": "https://fatade3d.md/ru/produkt/vopsea-de-fatada-universala-muresko-plus/",
-        "name": "Vopsea de fațadă universală – Muresko-plus",
-        "ru_name": "Универсальная фасадная краска — Muresko-plus",
+        "name": "Vopsea de fațadă universală, Muresko-plus",
+        "ru_name": "Универсальная фасадная краска, Muresko-plus",
         "brand": "Caparol",
         "captured": "2026-09-19"
       }
@@ -7341,8 +7504,8 @@
         "id": 2532,
         "url": "https://fatade3d.md/produs/ultrapal-vopsea-universala/",
         "ru_url": "https://fatade3d.md/ru/produkt/ultrapal-vopsea-universala/",
-        "name": "Ultrapal – Vopsea universală",
-        "ru_name": "Ultrapal — Универсальная краска",
+        "name": "Ultrapal, Vopsea universală",
+        "ru_name": "Ultrapal, Универсальная краска",
         "brand": "STANCOLAC",
         "captured": "2026-09-19"
       }
@@ -7363,7 +7526,7 @@
       "price": {
         "min": "190,00",
         "max": "590,00",
-        "source_display": "190,00 lei – 590,00 lei",
+        "source_display": "190,00 lei, 590,00 lei",
         "render": {
           "ro": "190,00 lei - 590,00 lei",
           "ru": "190,00 lei - 590,00 lei / bucata"
@@ -7377,8 +7540,8 @@
         "id": 2521,
         "url": "https://fatade3d.md/produs/caparol-tiefgrund-amorsa-acrilica-pentru-interior-si-exterior/",
         "ru_url": "https://fatade3d.md/ru/produkt/caparol-tiefgrund-amorsa-acrilica-pentru-interior-si-exterior/",
-        "name": "Caparol Tiefgrund – Amorsă acrilică, pentru interior și exterior",
-        "ru_name": "Caparol Tiefgrund — Акриловая грунтовка для внутренних и наружных работ",
+        "name": "Caparol Tiefgrund, Amorsă acrilică, pentru interior și exterior",
+        "ru_name": "Caparol Tiefgrund, Акриловая грунтовка для внутренних и наружных работ",
         "brand": "Caparol",
         "captured": "2026-09-19"
       }
@@ -8299,7 +8462,7 @@
       "price": {
         "min": "17,40",
         "max": "23,00",
-        "source_display": "17,40 lei – 23,00 lei / m2",
+        "source_display": "17,40 lei, 23,00 lei / m2",
         "render": {
           "ro": "17,40 lei - 23,00 lei / m2",
           "ru": "17,40 lei - 23,00 lei"
@@ -8385,10 +8548,3173 @@
         "id": 2583,
         "url": "https://fatade3d.md/produs/coltar-pvc-fatade-3d/",
         "ru_url": "https://fatade3d.md/ru/produkt/coltar-pvc-fatade-3d/",
-        "name": "Colțar PVC – FAȚADE 3D",
-        "ru_name": "ПВХ уголок — FAȚADE 3D",
+        "name": "Colțar PVC, FAȚADE 3D",
+        "ru_name": "ПВХ уголок, FAȚADE 3D",
         "brand": "Fatade3D",
         "captured": "2026-09-19"
+      }
+    },
+    {
+      "id": "dast-232323",
+      "slot": "CAT-0224",
+      "slug": "232323",
+      "name": {
+        "ro": "Țiglă metalică Monterrey",
+        "ru": "Țiglă metalică Monterrey"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 1 an · Acoperire: Matt · Tip de calitate: Econom Standart Premium · 5 culori",
+        "ru": "Garanție: 1 an · Acoperire: Matt · Tip de calitate: Econom Standart Premium · 5 culori"
+      },
+      "price": {
+        "min": "110",
+        "max": null,
+        "source_display": "de la 110 lei",
+        "render": {
+          "ro": "De la 110 lei",
+          "ru": "От 110 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/tigla-metalica"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/232323/",
+        "name": "Țiglă metalică Monterrey",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/t22r_skj.jpg",
+        "colours": [
+          "7016M (Antracit gri Matt)",
+          "7024M (Grafit gri Matt)",
+          "8017M (Ciocolata maro Matt)",
+          "8019M (Maro gri Matt)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "1 an",
+          "Acoperire": "Matt",
+          "Tip de calitate": "* Econom Standart Premium",
+          "Culoare": "3005М (Vin rosu Matt)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-tigla-metalica-valencia",
+      "slot": "CAT-0225",
+      "slug": "tigla-metalica-valencia",
+      "name": {
+        "ro": "Țiglă metalică Valencia",
+        "ru": "Țiglă metalică Valencia"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 1 an · Acoperire: Matt · Tip de calitate: Econom Standart Premium · 5 culori",
+        "ru": "Garanție: 1 an · Acoperire: Matt · Tip de calitate: Econom Standart Premium · 5 culori"
+      },
+      "price": {
+        "min": "110",
+        "max": null,
+        "source_display": "de la 110 lei",
+        "render": {
+          "ro": "De la 110 lei",
+          "ru": "От 110 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/tigla-metalica"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/tigla-metalica-valencia/",
+        "name": "Țiglă metalică Valencia",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/9v0zvyjr.jpg",
+        "colours": [
+          "7016M (Antracit gri Matt)",
+          "7024M (Grafit gri Matt)",
+          "8017M (Ciocolata maro Matt)",
+          "8019M (Maro gri Matt)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "1 an",
+          "Acoperire": "Matt",
+          "Tip de calitate": "* Econom Standart Premium",
+          "Culoare": "3005М (Vin rosu Matt)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-igla-metalica-modulara",
+      "slot": "CAT-0226",
+      "slug": "igla-metalica-modulara",
+      "name": {
+        "ro": "Țiglă metalică modulară",
+        "ru": "Țiglă metalică modulară"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 10 ani · Acoperire: Matt · Tip de calitate: Premium · 2 culori",
+        "ru": "Garanție: 10 ani · Acoperire: Matt · Tip de calitate: Premium · 2 culori"
+      },
+      "price": {
+        "min": "169",
+        "max": null,
+        "source_display": "de la 169 lei",
+        "render": {
+          "ro": "De la 169 lei",
+          "ru": "От 169 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/tigla-metalica"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/igla-metalica-modulara/",
+        "name": "Țiglă metalică modulară",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/b2e1rtk4.jpg",
+        "colours": [
+          "7016M (Antracit gri Matt)",
+          "8019M (Maro gri Matt)"
+        ],
+        "specs": {
+          "Garanție": "10 ani",
+          "Acoperire": "Matt",
+          "Tip de calitate": "* Premium",
+          "Culoare": "7016M (Antracit gri Matt)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-igla-metalica-kascad",
+      "slot": "CAT-0227",
+      "slug": "igla-metalica-kascad",
+      "name": {
+        "ro": "Țiglă metalică Kascad",
+        "ru": "Țiglă metalică Kascad"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 1 an · Acoperire: Matt · Tip de calitate: Econom Standart Premium · 5 culori",
+        "ru": "Garanție: 1 an · Acoperire: Matt · Tip de calitate: Econom Standart Premium · 5 culori"
+      },
+      "price": {
+        "min": "110",
+        "max": null,
+        "source_display": "de la 110 lei",
+        "render": {
+          "ro": "De la 110 lei",
+          "ru": "От 110 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/tigla-metalica"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/igla-metalica-kascad/",
+        "name": "Țiglă metalică Kascad",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/03_bb4cl.jpg",
+        "colours": [
+          "7016M (Antracit gri Matt)",
+          "7024M (Grafit gri Matt)",
+          "8017M (Ciocolata maro Matt)",
+          "8019M (Maro gri Matt)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "1 an",
+          "Acoperire": "Matt",
+          "Tip de calitate": "* Econom Standart Premium",
+          "Culoare": "3005М (Vin rosu Matt)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-tabla-cutata-t-12",
+      "slot": "CAT-0228",
+      "slug": "tabla-cutata-t-12",
+      "name": {
+        "ro": "Tabla cutată T-12",
+        "ru": "Tabla cutată T-12"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Tip de calitate: Premium · 7 culori",
+        "ru": "Tip de calitate: Premium · 7 culori"
+      },
+      "price": {
+        "min": "177",
+        "max": null,
+        "source_display": "de la 177 lei",
+        "render": {
+          "ro": "De la 177 lei",
+          "ru": "От 177 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/profnastil"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/tabla-cutata-t-12/",
+        "name": "Tabla cutată T-12",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/vmt7scs4.jpg",
+        "colours": [
+          "6005M (Mușchi verde Matt)",
+          "7016 (Gri antracit)",
+          "7016M (Antracit gri Matt)",
+          "8017 (Maro ciocolată)",
+          "8017M (Ciocolata maro Matt)",
+          "8019M (Maro gri Matt)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Tip de calitate": "* Premium",
+          "Culoare": "3005М (Vin rosu Matt)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-tabla-cutata-vp-20-ondulata",
+      "slot": "CAT-0229",
+      "slug": "tabla-cutata-vp-20-ondulata",
+      "name": {
+        "ro": "Tabla cutată VP-20 (ondulată)",
+        "ru": "Tabla cutată VP-20 (ondulată)"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 1 an · Acoperire: Matt · Tip de calitate: Econom Standart Premium · 5 culori",
+        "ru": "Garanție: 1 an · Acoperire: Matt · Tip de calitate: Econom Standart Premium · 5 culori"
+      },
+      "price": {
+        "min": "110",
+        "max": null,
+        "source_display": "de la 110 lei",
+        "render": {
+          "ro": "De la 110 lei",
+          "ru": "От 110 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/profnastil"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/tabla-cutata-vp-20-ondulata/",
+        "name": "Tabla cutată VP-20 (ondulată)",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/i06ff1a3.jpg",
+        "colours": [
+          "7016M (Antracit gri Matt)",
+          "7024M (Grafit gri Matt)",
+          "8017M (Ciocolata maro Matt)",
+          "8019M (Maro gri Matt)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "1 an",
+          "Acoperire": "Matt",
+          "Tip de calitate": "* Econom Standart Premium",
+          "Culoare": "7016M (Antracit gri Matt)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-profnastil-pk-20-glyancevyj",
+      "slot": "CAT-0230",
+      "slug": "profnastil-pk-20-glyancevyj",
+      "name": {
+        "ro": "Tabla cutată PK-20",
+        "ru": "Tabla cutată PK-20"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 1 an · Acoperire: Luciu · Tip de calitate: Econom Standart Premium · 9 culori",
+        "ru": "Garanție: 1 an · Acoperire: Luciu · Tip de calitate: Econom Standart Premium · 9 culori"
+      },
+      "price": {
+        "min": "145",
+        "max": null,
+        "source_display": "de la 145 lei",
+        "render": {
+          "ro": "De la 145 lei",
+          "ru": "От 145 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/profnastil"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/profnastil-pk-20-glyancevyj/",
+        "name": "Tabla cutată PK-20",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/arvgf48k.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "6005 (Mușchi verde)",
+          "7016M (Antracit gri Matt)",
+          "7024M (Grafit gri Matt)",
+          "8017 (Maro ciocolată)",
+          "8017M (Ciocolata maro Matt)",
+          "8019M (Maro gri Matt)",
+          "9003 (Semnal alb)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "1 an",
+          "Acoperire": "Luciu",
+          "Tip de calitate": "* Econom Standart Premium",
+          "Culoare": "3005 (Vin rosu)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-tabla-cutata-h-35",
+      "slot": "CAT-0231",
+      "slug": "tabla-cutata-h-35",
+      "name": {
+        "ro": "Tabla cutată H-35",
+        "ru": "Tabla cutată H-35"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 10 ani · Acoperire: Matt · Tip de calitate: Econom Standart Premium · 11 culori",
+        "ru": "Garanție: 10 ani · Acoperire: Matt · Tip de calitate: Econom Standart Premium · 11 culori"
+      },
+      "price": {
+        "min": "131",
+        "max": null,
+        "source_display": "de la 131 lei",
+        "render": {
+          "ro": "De la 131 lei",
+          "ru": "От 131 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/profnastil"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/tabla-cutata-h-35/",
+        "name": "Tabla cutată H-35",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/xx_zxr3v.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "6005 (Mușchi verde)",
+          "7016 (Gri antracit)",
+          "7016M (Antracit gri Matt)",
+          "7024 (Gri grafit)",
+          "8017 (Maro ciocolată)",
+          "8017M (Ciocolata maro Matt)",
+          "8019M (Maro gri Matt)",
+          "9003 (Semnal alb)",
+          "9005M (Jet negru Matt)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "10 ani",
+          "Acoperire": "Matt",
+          "Tip de calitate": "* Econom Standart Premium",
+          "Culoare": "7016M (Antracit gri Matt)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-tabla-cutata-c-15",
+      "slot": "CAT-0232",
+      "slug": "tabla-cutata-c-15",
+      "name": {
+        "ro": "Tabla cutată C-15",
+        "ru": "Tabla cutată C-15"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 1 an · Acoperire: Luciu · Tip de calitate: Econom Standart Premium · 9 culori",
+        "ru": "Garanție: 1 an · Acoperire: Luciu · Tip de calitate: Econom Standart Premium · 9 culori"
+      },
+      "price": {
+        "min": "145",
+        "max": null,
+        "source_display": "de la 145 lei",
+        "render": {
+          "ro": "De la 145 lei",
+          "ru": "От 145 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/profnastil"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/tabla-cutata-c-15/",
+        "name": "Tabla cutată C-15",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/pp54h_u8.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "6005 (Mușchi verde)",
+          "7016M (Antracit gri Matt)",
+          "7024M (Grafit gri Matt)",
+          "8017 (Maro ciocolată)",
+          "8017M (Ciocolata maro Matt)",
+          "8019M (Maro gri Matt)",
+          "9003 (Semnal alb)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "1 an",
+          "Acoperire": "Luciu",
+          "Tip de calitate": "* Econom Standart Premium",
+          "Culoare": "3005 (Vin rosu)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-tabla-cutata-s-44",
+      "slot": "CAT-0233",
+      "slug": "tabla-cutata-s-44",
+      "name": {
+        "ro": "Tabla cutată С-44",
+        "ru": "Tabla cutată С-44"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 1 an · Acoperire: Luciu · Tip de calitate: Econom Standart Premium · 5 culori",
+        "ru": "Garanție: 1 an · Acoperire: Luciu · Tip de calitate: Econom Standart Premium · 5 culori"
+      },
+      "price": {
+        "min": "174",
+        "max": null,
+        "source_display": "de la 174 lei",
+        "render": {
+          "ro": "De la 174 lei",
+          "ru": "От 174 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/profnastil"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/tabla-cutata-s-44/",
+        "name": "Tabla cutată С-44",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/cp5nn3l5.jpg",
+        "colours": [
+          "7016M (Antracit gri Matt)",
+          "7024M (Grafit gri Matt)",
+          "8017M (Ciocolata maro Matt)",
+          "8019M (Maro gri Matt)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "1 an",
+          "Acoperire": "Luciu",
+          "Tip de calitate": "* Econom Standart Premium",
+          "Culoare": "9006 (Aluminiu alb)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-tabla-cutata-h-60",
+      "slot": "CAT-0234",
+      "slug": "tabla-cutata-h-60",
+      "name": {
+        "ro": "Tabla cutată H-60",
+        "ru": "Tabla cutată H-60"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 10 ani · Acoperire: Luciu · Tip de calitate: Econom Standart Premium · 11 culori",
+        "ru": "Garanție: 10 ani · Acoperire: Luciu · Tip de calitate: Econom Standart Premium · 11 culori"
+      },
+      "price": {
+        "min": "178",
+        "max": null,
+        "source_display": "de la 178 lei",
+        "render": {
+          "ro": "De la 178 lei",
+          "ru": "От 178 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/profnastil"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/tabla-cutata-h-60/",
+        "name": "Tabla cutată H-60",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/fj285j_n.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "5005 (Semnal albastru)",
+          "6005 (Mușchi verde)",
+          "7016M (Antracit gri Matt)",
+          "7024 (Gri grafit)",
+          "8017 (Maro ciocolată)",
+          "8017M (Ciocolata maro Matt)",
+          "8019M (Maro gri Matt)",
+          "9003 (Semnal alb)",
+          "9005M (Jet negru Matt)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "10 ani",
+          "Acoperire": "Luciu",
+          "Tip de calitate": "* Econom Standart Premium",
+          "Culoare": "Zinc"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-dripstop-acoperire-anticondens-pentru-tabla-prof",
+      "slot": "CAT-0235",
+      "slug": "dripstop-acoperire-anticondens-pentru-tabla-profilata",
+      "name": {
+        "ro": "DRIPSTOP, acoperire anticondens pentru tablă profilată",
+        "ru": "DRIPSTOP, acoperire anticondens pentru tablă profilată"
+      },
+      "brand": null,
+      "variant": {
+        "ro": null,
+        "ru": null
+      },
+      "price": {
+        "min": "50",
+        "max": null,
+        "source_display": "de la 50 lei",
+        "render": {
+          "ro": "De la 50 lei",
+          "ru": "От 50 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/profnastil",
+        "materiale-acoperis/hidroizolatie",
+        "materiale-acoperis/elemente-de-siguranta"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/dripstop-acoperire-anticondens-pentru-tabla-profilata/",
+        "name": "DRIPSTOP, acoperire anticondens pentru tablă profilată",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/1vgpdz14.png",
+        "colours": [],
+        "specs": {},
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-dachmaster-100-15m50m",
+      "slot": "CAT-0236",
+      "slug": "dachmaster-100-15m50m",
+      "name": {
+        "ro": "Membrana superdifuză DACHMASTER 100 1,5m*50m",
+        "ru": "Membrana superdifuză DACHMASTER 100 1,5m*50m"
+      },
+      "brand": null,
+      "variant": {
+        "ro": null,
+        "ru": null
+      },
+      "price": {
+        "min": "1200",
+        "max": null,
+        "source_display": "de la 1200 lei",
+        "render": {
+          "ro": "De la 1200 lei",
+          "ru": "От 1200 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/hidroizolatie"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/dachmaster-100-15m50m/",
+        "name": "Membrana superdifuză DACHMASTER 100 1,5m*50m",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/7y33sft0.jpg",
+        "colours": [],
+        "specs": {},
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-eurovent-grila-ventilare-ral-8004.-5008-cm",
+      "slot": "CAT-0237",
+      "slug": "eurovent-grila-ventilare-ral-8004.-5008-cm",
+      "name": {
+        "ro": "Eurovent grila Ventilare, RAL 8004. 500*8 cm",
+        "ru": "Eurovent grila Ventilare, RAL 8004. 500*8 cm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "1 culori",
+        "ru": "1 culori"
+      },
+      "price": {
+        "min": "87",
+        "max": null,
+        "source_display": "de la 87 lei",
+        "render": {
+          "ro": "De la 87 lei",
+          "ru": "От 87 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/hidroizolatie"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/eurovent-grila-ventilare-ral-8004.-5008-cm/",
+        "name": "Eurovent grila Ventilare, RAL 8004. 500*8 cm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/hxggxf5r.jpg",
+        "colours": [
+          "8004 (Cupru maro)"
+        ],
+        "specs": {
+          "Culoare": "8004 (Cupru maro)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-eurovent-grila-ventilare-ral-8019.-5008-cm",
+      "slot": "CAT-0238",
+      "slug": "eurovent-grila-ventilare-ral-8019.-5008-cm",
+      "name": {
+        "ro": "Eurovent grila Ventilare, RAL 8019. 500*8 cm",
+        "ru": "Eurovent grila Ventilare, RAL 8019. 500*8 cm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "1 culori",
+        "ru": "1 culori"
+      },
+      "price": {
+        "min": "87",
+        "max": null,
+        "source_display": "de la 87 lei",
+        "render": {
+          "ro": "De la 87 lei",
+          "ru": "От 87 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/hidroizolatie"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/eurovent-grila-ventilare-ral-8019.-5008-cm/",
+        "name": "Eurovent grila Ventilare, RAL 8019. 500*8 cm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/miy_2x5y.jpg",
+        "colours": [
+          "8019 (Gri maro)"
+        ],
+        "specs": {
+          "Culoare": "8019 (Gri maro)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-membrana-pentru-acoperis-eurovent-home-pro",
+      "slot": "CAT-0239",
+      "slug": "membrana-pentru-acoperis-eurovent-home-pro",
+      "name": {
+        "ro": "Membrana pentru acoperiș Eurovent HOME PRO 1,5m*50m",
+        "ru": "Membrana pentru acoperiș Eurovent HOME PRO 1,5m*50m"
+      },
+      "brand": null,
+      "variant": {
+        "ro": null,
+        "ru": null
+      },
+      "price": {
+        "min": "2400",
+        "max": null,
+        "source_display": "de la 2400 lei",
+        "render": {
+          "ro": "De la 2400 lei",
+          "ru": "От 2400 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/hidroizolatie"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/membrana-pentru-acoperis-eurovent-home-pro/",
+        "name": "Membrana pentru acoperiș Eurovent HOME PRO 1,5m*50m",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/otuz_6tr.jpg",
+        "colours": [],
+        "specs": {},
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-dachmaster-120-15m50m",
+      "slot": "CAT-0240",
+      "slug": "dachmaster-120-15m50m",
+      "name": {
+        "ro": "Membrana superdifuză DACHMASTER 120 1,5m*50m",
+        "ru": "Membrana superdifuză DACHMASTER 120 1,5m*50m"
+      },
+      "brand": null,
+      "variant": {
+        "ro": null,
+        "ru": null
+      },
+      "price": {
+        "min": "1425",
+        "max": null,
+        "source_display": "de la 1425 lei",
+        "render": {
+          "ro": "De la 1425 lei",
+          "ru": "От 1425 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/hidroizolatie"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/dachmaster-120-15m50m/",
+        "name": "Membrana superdifuză DACHMASTER 120 1,5m*50m",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/ffouvrvk.jpg",
+        "colours": [],
+        "specs": {},
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-decora-80-15m50m",
+      "slot": "CAT-0241",
+      "slug": "decora-80-15m50m",
+      "name": {
+        "ro": "Membrana superdifuză Decora 80 1,5m*50m",
+        "ru": "Membrana superdifuză Decora 80 1,5m*50m"
+      },
+      "brand": null,
+      "variant": {
+        "ro": null,
+        "ru": null
+      },
+      "price": {
+        "min": "900",
+        "max": null,
+        "source_display": "de la 900 lei",
+        "render": {
+          "ro": "De la 900 lei",
+          "ru": "От 900 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/hidroizolatie"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/decora-80-15m50m/",
+        "name": "Membrana superdifuză Decora 80 1,5m*50m",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/apa20zak.jpg",
+        "colours": [],
+        "specs": {},
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-decora-100-15m50m",
+      "slot": "CAT-0242",
+      "slug": "decora-100-15m50m",
+      "name": {
+        "ro": "Membrana superdifuză Decora 100 1,5m*50m",
+        "ru": "Membrana superdifuză Decora 100 1,5m*50m"
+      },
+      "brand": null,
+      "variant": {
+        "ro": null,
+        "ru": null
+      },
+      "price": {
+        "min": "1125",
+        "max": null,
+        "source_display": "de la 1125 lei",
+        "render": {
+          "ro": "De la 1125 lei",
+          "ru": "От 1125 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/hidroizolatie"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/decora-100-15m50m/",
+        "name": "Membrana superdifuză Decora 100 1,5m*50m",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/ayfmdpzc.jpg",
+        "colours": [],
+        "specs": {},
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-decora-120-15m50m",
+      "slot": "CAT-0243",
+      "slug": "decora-120-15m50m",
+      "name": {
+        "ro": "Membrana superdifuză Decora 120 1,5m*50m",
+        "ru": "Membrana superdifuză Decora 120 1,5m*50m"
+      },
+      "brand": null,
+      "variant": {
+        "ro": null,
+        "ru": null
+      },
+      "price": {
+        "min": "1350",
+        "max": null,
+        "source_display": "de la 1350 lei",
+        "render": {
+          "ro": "De la 1350 lei",
+          "ru": "От 1350 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/hidroizolatie"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/decora-120-15m50m/",
+        "name": "Membrana superdifuză Decora 120 1,5m*50m",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/xu_b52_8.jpg",
+        "colours": [],
+        "specs": {},
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-decora-135-15m50m",
+      "slot": "CAT-0244",
+      "slug": "decora-135-15m50m",
+      "name": {
+        "ro": "Membrana superdifuză Decora 135 1,5m*50m",
+        "ru": "Membrana superdifuză Decora 135 1,5m*50m"
+      },
+      "brand": null,
+      "variant": {
+        "ro": null,
+        "ru": null
+      },
+      "price": {
+        "min": "1650",
+        "max": null,
+        "source_display": "de la 1650 lei",
+        "render": {
+          "ro": "De la 1650 lei",
+          "ru": "От 1650 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/hidroizolatie"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/decora-135-15m50m/",
+        "name": "Membrana superdifuză Decora 135 1,5m*50m",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/y9_o6l_4.jpg",
+        "colours": [],
+        "specs": {},
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-decora-150-15m50m",
+      "slot": "CAT-0245",
+      "slug": "decora-150-15m50m",
+      "name": {
+        "ro": "Membrana superdifuză Decora 150 1,5m*50m",
+        "ru": "Membrana superdifuză Decora 150 1,5m*50m"
+      },
+      "brand": null,
+      "variant": {
+        "ro": null,
+        "ru": null
+      },
+      "price": {
+        "min": "1725",
+        "max": null,
+        "source_display": "de la 1725 lei",
+        "render": {
+          "ro": "De la 1725 lei",
+          "ru": "От 1725 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/hidroizolatie"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/decora-150-15m50m/",
+        "name": "Membrana superdifuză Decora 150 1,5m*50m",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/jv1xp8fy.jpg",
+        "colours": [],
+        "specs": {},
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-decora-180-15m50m",
+      "slot": "CAT-0246",
+      "slug": "decora-180-15m50m",
+      "name": {
+        "ro": "Membrana superdifuză Decora 180 1,5m*50m",
+        "ru": "Membrana superdifuză Decora 180 1,5m*50m"
+      },
+      "brand": null,
+      "variant": {
+        "ro": null,
+        "ru": null
+      },
+      "price": {
+        "min": "2175",
+        "max": null,
+        "source_display": "de la 2175 lei",
+        "render": {
+          "ro": "De la 2175 lei",
+          "ru": "От 2175 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/hidroizolatie"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/decora-180-15m50m/",
+        "name": "Membrana superdifuză Decora 180 1,5m*50m",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/08s16zk7.jpg",
+        "colours": [],
+        "specs": {},
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-dachmaster-alu-80-paraizolare",
+      "slot": "CAT-0247",
+      "slug": "dachmaster-alu-80-paraizolare",
+      "name": {
+        "ro": "Dachmaster Alu 80 PARAIZOLARE 1,5m*50m",
+        "ru": "Dachmaster Alu 80 PARAIZOLARE 1,5m*50m"
+      },
+      "brand": null,
+      "variant": {
+        "ro": null,
+        "ru": null
+      },
+      "price": {
+        "min": "1125",
+        "max": null,
+        "source_display": "de la 1125 lei",
+        "render": {
+          "ro": "De la 1125 lei",
+          "ru": "От 1125 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/hidroizolatie"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/dachmaster-alu-80-paraizolare/",
+        "name": "Dachmaster Alu 80 PARAIZOLARE 1,5m*50m",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/lfglexdr.jpg",
+        "colours": [],
+        "specs": {},
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-pieptene-streasina-eurovent-comb-x-ral-9005",
+      "slot": "CAT-0248",
+      "slug": "pieptene-streasina-eurovent-comb-x-ral-9005",
+      "name": {
+        "ro": "Pieptene streasina Eurovent Comb X, RAL 9005",
+        "ru": "Pieptene streasina Eurovent Comb X, RAL 9005"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "1 culori",
+        "ru": "1 culori"
+      },
+      "price": {
+        "min": "12",
+        "max": null,
+        "source_display": "de la 12 lei",
+        "render": {
+          "ro": "De la 12 lei",
+          "ru": "От 12 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/hidroizolatie"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/pieptene-streasina-eurovent-comb-x-ral-9005/",
+        "name": "Pieptene streasina Eurovent Comb X, RAL 9005",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/h9dmg8nj.jpg",
+        "colours": [
+          "9005 (Jet negru)"
+        ],
+        "specs": {
+          "Culoare": "9005 (Jet negru)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-banda-etansant-eurovent-compri",
+      "slot": "CAT-0249",
+      "slug": "banda-etansant-eurovent-compri",
+      "name": {
+        "ro": "Bandă-etanșant Eurovent COMPRI",
+        "ru": "Bandă-etanșant Eurovent COMPRI"
+      },
+      "brand": null,
+      "variant": {
+        "ro": null,
+        "ru": null
+      },
+      "price": {
+        "min": "141",
+        "max": null,
+        "source_display": "de la 141 lei",
+        "render": {
+          "ro": "De la 141 lei",
+          "ru": "От 141 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/hidroizolatie"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/banda-etansant-eurovent-compri/",
+        "name": "Bandă-etanșant Eurovent COMPRI",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/vlb1bgva.jpg",
+        "colours": [],
+        "specs": {},
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-eurovent-butyl-banda-adeziva-dubla",
+      "slot": "CAT-0250",
+      "slug": "eurovent-butyl-banda-adeziva-dubla",
+      "name": {
+        "ro": "Eurovent BUTYL banda adeziva dublă",
+        "ru": "Eurovent BUTYL banda adeziva dublă"
+      },
+      "brand": null,
+      "variant": {
+        "ro": null,
+        "ru": null
+      },
+      "price": {
+        "min": "174",
+        "max": null,
+        "source_display": "de la 174 lei",
+        "render": {
+          "ro": "De la 174 lei",
+          "ru": "От 174 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/hidroizolatie"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/eurovent-butyl-banda-adeziva-dubla/",
+        "name": "Eurovent BUTYL banda adeziva dublă",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/pckgbr9l.jpg",
+        "colours": [],
+        "specs": {},
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-banda-topband-din-polipropilena-cu-autoadeziv-un",
+      "slot": "CAT-0251",
+      "slug": "banda-topband-din-polipropilena-cu-autoadeziv-unilateral",
+      "name": {
+        "ro": "Bandă TOPBAND din polipropilenă cu autoadeziv unilateral",
+        "ru": "Bandă TOPBAND din polipropilenă cu autoadeziv unilateral"
+      },
+      "brand": null,
+      "variant": {
+        "ro": null,
+        "ru": null
+      },
+      "price": {
+        "min": "239",
+        "max": null,
+        "source_display": "de la 239 lei",
+        "render": {
+          "ro": "De la 239 lei",
+          "ru": "От 239 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/hidroizolatie"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/banda-topband-din-polipropilena-cu-autoadeziv-unilateral/",
+        "name": "Bandă TOPBAND din polipropilenă cu autoadeziv unilateral",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/_i_msrja.jpg",
+        "colours": [],
+        "specs": {},
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-band-autoadeziv-eurovent-pur",
+      "slot": "CAT-0252",
+      "slug": "band-autoadeziv-eurovent-pur",
+      "name": {
+        "ro": "BANDĂ AUTOADEZIVĂ EUROVENT PUR",
+        "ru": "BANDĂ AUTOADEZIVĂ EUROVENT PUR"
+      },
+      "brand": null,
+      "variant": {
+        "ro": null,
+        "ru": null
+      },
+      "price": {
+        "min": "180",
+        "max": null,
+        "source_display": "de la 180 lei",
+        "render": {
+          "ro": "De la 180 lei",
+          "ru": "От 180 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/hidroizolatie"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/band-autoadeziv-eurovent-pur/",
+        "name": "BANDĂ AUTOADEZIVĂ EUROVENT PUR",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/k0vasx5_.jpg",
+        "colours": [],
+        "specs": {},
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-banda-autoadeziva-eurovent-duo",
+      "slot": "CAT-0253",
+      "slug": "banda-autoadeziva-eurovent-duo",
+      "name": {
+        "ro": "Banda autoadezivă Eurovent DUO",
+        "ru": "Banda autoadezivă Eurovent DUO"
+      },
+      "brand": null,
+      "variant": {
+        "ro": null,
+        "ru": null
+      },
+      "price": {
+        "min": "141",
+        "max": null,
+        "source_display": "de la 141 lei",
+        "render": {
+          "ro": "De la 141 lei",
+          "ru": "От 141 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/hidroizolatie"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/banda-autoadeziva-eurovent-duo/",
+        "name": "Banda autoadezivă Eurovent DUO",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/zxa8ucm3.jpg",
+        "colours": [],
+        "specs": {},
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-banda-flexbit-pentru-lipirea-si-etansarea-acoper",
+      "slot": "CAT-0254",
+      "slug": "banda-flexbit-pentru-lipirea-si-etansarea-acoperisurilor",
+      "name": {
+        "ro": "Banda FLEXBIT pentru lipirea și etanșarea acoperișurilor",
+        "ru": "Banda FLEXBIT pentru lipirea și etanșarea acoperișurilor"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "3 culori",
+        "ru": "3 culori"
+      },
+      "price": {
+        "min": "418",
+        "max": null,
+        "source_display": "de la 418 lei",
+        "render": {
+          "ro": "De la 418 lei",
+          "ru": "От 418 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/hidroizolatie"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/banda-flexbit-pentru-lipirea-si-etansarea-acoperisurilor/",
+        "name": "Banda FLEXBIT pentru lipirea și etanșarea acoperișurilor",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/pnlstgl5.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "8004 (Cupru maro)",
+          "8019 (Gri maro)"
+        ],
+        "specs": {
+          "Culoare": "8004 (Cupru maro)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-banda-coama-roll-ecco-pentru-ventilare",
+      "slot": "CAT-0255",
+      "slug": "banda-coama-roll-ecco-pentru-ventilare",
+      "name": {
+        "ro": "Banda coamă ROLL ECCO pentru ventilare",
+        "ru": "Banda coamă ROLL ECCO pentru ventilare"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "2 culori",
+        "ru": "2 culori"
+      },
+      "price": {
+        "min": "232",
+        "max": null,
+        "source_display": "de la 232 lei",
+        "render": {
+          "ro": "De la 232 lei",
+          "ru": "От 232 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/hidroizolatie"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/banda-coama-roll-ecco-pentru-ventilare/",
+        "name": "Banda coamă ROLL ECCO pentru ventilare",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/bbj5vhj0.jpg",
+        "colours": [
+          "8004 (Cupru maro)",
+          "8019 (Gri maro)"
+        ],
+        "specs": {
+          "Culoare": "8019 (Gri maro) 8019 (Gri maro) 8004 (Cupru maro) -->"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-banda-autocolanta-flex-3d",
+      "slot": "CAT-0256",
+      "slug": "banda-autocolanta-flex-3d",
+      "name": {
+        "ro": "Banda autocolantă Flex 3D",
+        "ru": "Banda autocolantă Flex 3D"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "4 culori",
+        "ru": "4 culori"
+      },
+      "price": {
+        "min": "696",
+        "max": null,
+        "source_display": "de la 696 lei",
+        "render": {
+          "ro": "De la 696 lei",
+          "ru": "От 696 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/hidroizolatie"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/banda-autocolanta-flex-3d/",
+        "name": "Banda autocolantă Flex 3D",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/5secrrtf.jpg",
+        "colours": [
+          "3011 (Roșu maro)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9005 (Jet negru)"
+        ],
+        "specs": {
+          "Culoare": "8017 (Maro ciocolată)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-homut-zheloba-125mm",
+      "slot": "CAT-0257",
+      "slug": "homut-zheloba-125mm",
+      "name": {
+        "ro": "Brațara jgheab 125mm",
+        "ru": "Brațara jgheab 125mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "5 culori",
+        "ru": "5 culori"
+      },
+      "price": {
+        "min": "58",
+        "max": null,
+        "source_display": "de la 58 lei",
+        "render": {
+          "ro": "De la 58 lei",
+          "ru": "От 58 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/sistem-de-scurgere"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/homut-zheloba-125mm/",
+        "name": "Brațara jgheab 125mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/j9uex3eh.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "7011 (Cenușiu de fier)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9010 (Alb pur)"
+        ],
+        "specs": {
+          "Culoare": "3005 (Vin rosu)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-voronka-zheloba-125mm",
+      "slot": "CAT-0258",
+      "slug": "voronka-zheloba-125mm",
+      "name": {
+        "ro": "Racord jgheab 125mm",
+        "ru": "Racord jgheab 125mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "5 culori",
+        "ru": "5 culori"
+      },
+      "price": {
+        "min": "69",
+        "max": null,
+        "source_display": "de la 69 lei",
+        "render": {
+          "ro": "De la 69 lei",
+          "ru": "От 69 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/sistem-de-scurgere"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/voronka-zheloba-125mm/",
+        "name": "Racord jgheab 125mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/o_hdl920.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "7011 (Cenușiu de fier)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9010 (Alb pur)"
+        ],
+        "specs": {
+          "Culoare": "3005 (Vin rosu)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-capac-jgheab-125-mm",
+      "slot": "CAT-0259",
+      "slug": "capac-jgheab-125-mm",
+      "name": {
+        "ro": "Capac Jgheab 125 mm",
+        "ru": "Capac Jgheab 125 mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "5 culori",
+        "ru": "5 culori"
+      },
+      "price": {
+        "min": "36",
+        "max": null,
+        "source_display": "de la 36 lei",
+        "render": {
+          "ro": "De la 36 lei",
+          "ru": "От 36 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/sistem-de-scurgere"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/capac-jgheab-125-mm/",
+        "name": "Capac Jgheab 125 mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/8gv35pis.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "7011 (Cenușiu de fier)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9010 (Alb pur)"
+        ],
+        "specs": {
+          "Culoare": "Aluzinc"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-ugol-naruzhnyj-125mm",
+      "slot": "CAT-0260",
+      "slug": "ugol-naruzhnyj-125mm",
+      "name": {
+        "ro": "Colțar exterior 125mm",
+        "ru": "Colțar exterior 125mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "5 culori",
+        "ru": "5 culori"
+      },
+      "price": {
+        "min": "185",
+        "max": null,
+        "source_display": "de la 185 lei",
+        "render": {
+          "ro": "De la 185 lei",
+          "ru": "От 185 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/sistem-de-scurgere"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/ugol-naruzhnyj-125mm/",
+        "name": "Colțar exterior 125mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/812hc4yu.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "7011 (Cenușiu de fier)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9010 (Alb pur)"
+        ],
+        "specs": {
+          "Culoare": "3005 (Vin rosu)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-ugol-vnutrennij-125-mm",
+      "slot": "CAT-0261",
+      "slug": "ugol-vnutrennij-125-mm",
+      "name": {
+        "ro": "Colțar interior 125mm",
+        "ru": "Colțar interior 125mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "5 culori",
+        "ru": "5 culori"
+      },
+      "price": {
+        "min": "185",
+        "max": null,
+        "source_display": "de la 185 lei",
+        "render": {
+          "ro": "De la 185 lei",
+          "ru": "От 185 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/sistem-de-scurgere"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/ugol-vnutrennij-125-mm/",
+        "name": "Colțar interior 125mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/n7vc8oro.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "7011 (Cenușiu de fier)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9010 (Alb pur)"
+        ],
+        "specs": {
+          "Culoare": "3005 (Vin rosu)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-jgheab-scurgere-125x2000-mm",
+      "slot": "CAT-0262",
+      "slug": "jgheab-scurgere-125x2000-mm",
+      "name": {
+        "ro": "Jgheab scurgere 125x2000 mm",
+        "ru": "Jgheab scurgere 125x2000 mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "5 culori",
+        "ru": "5 culori"
+      },
+      "price": {
+        "min": "172",
+        "max": null,
+        "source_display": "de la 172 lei",
+        "render": {
+          "ro": "De la 172 lei",
+          "ru": "От 172 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/sistem-de-scurgere"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/jgheab-scurgere-125x2000-mm/",
+        "name": "Jgheab scurgere 125x2000 mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/u1jdz3bd.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "7011 (Cenușiu de fier)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9010 (Alb pur)"
+        ],
+        "specs": {
+          "Culoare": "Aluzinc"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-koleno-verhnee-90-mm",
+      "slot": "CAT-0263",
+      "slug": "koleno-verhnee-90-mm",
+      "name": {
+        "ro": "Cot burlan 90 mm",
+        "ru": "Cot burlan 90 mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "5 culori",
+        "ru": "5 culori"
+      },
+      "price": {
+        "min": "73",
+        "max": null,
+        "source_display": "de la 73 lei",
+        "render": {
+          "ro": "De la 73 lei",
+          "ru": "От 73 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/sistem-de-scurgere"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/koleno-verhnee-90-mm/",
+        "name": "Cot burlan 90 mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/7huedoe5.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "7011 (Cenușiu de fier)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9010 (Alb pur)"
+        ],
+        "specs": {
+          "Culoare": "3005 (Vin rosu)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-truba-vodostochnaya-90h1000-mm",
+      "slot": "CAT-0264",
+      "slug": "truba-vodostochnaya-90h1000-mm",
+      "name": {
+        "ro": "Burlan scurgere 90x1000 mm",
+        "ru": "Burlan scurgere 90x1000 mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "5 culori",
+        "ru": "5 culori"
+      },
+      "price": {
+        "min": "107",
+        "max": null,
+        "source_display": "de la 107 lei",
+        "render": {
+          "ro": "De la 107 lei",
+          "ru": "От 107 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/sistem-de-scurgere"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/truba-vodostochnaya-90h1000-mm/",
+        "name": "Burlan scurgere 90x1000 mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/kls9jtf4.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "7011 (Cenușiu de fier)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9010 (Alb pur)"
+        ],
+        "specs": {
+          "Culoare": "9010 (Alb pur)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-burlan-90x3000-mm",
+      "slot": "CAT-0265",
+      "slug": "burlan-90x3000-mm",
+      "name": {
+        "ro": "Burlan 90x3000 mm",
+        "ru": "Burlan 90x3000 mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "5 culori",
+        "ru": "5 culori"
+      },
+      "price": {
+        "min": "323",
+        "max": null,
+        "source_display": "de la 323 lei",
+        "render": {
+          "ro": "De la 323 lei",
+          "ru": "От 323 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/sistem-de-scurgere"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/burlan-90x3000-mm/",
+        "name": "Burlan 90x3000 mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/95dy0cp6.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "7011 (Cenușiu de fier)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9010 (Alb pur)"
+        ],
+        "specs": {
+          "Culoare": "Aluzinc"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-homut-truby-90mm",
+      "slot": "CAT-0266",
+      "slug": "homut-truby-90mm",
+      "name": {
+        "ro": "Brațara burlan 90mm",
+        "ru": "Brațara burlan 90mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "5 culori",
+        "ru": "5 culori"
+      },
+      "price": {
+        "min": "33",
+        "max": null,
+        "source_display": "de la 33 lei",
+        "render": {
+          "ro": "De la 33 lei",
+          "ru": "От 33 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/sistem-de-scurgere"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/homut-truby-90mm/",
+        "name": "Brațara burlan 90mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/t6v2z0cs.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "7011 (Cenușiu de fier)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9010 (Alb pur)"
+        ],
+        "specs": {
+          "Culoare": "3005 (Vin rosu)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-koleno-slivnoe-90-mm",
+      "slot": "CAT-0267",
+      "slug": "koleno-slivnoe-90-mm",
+      "name": {
+        "ro": "Cot evacuare 90mm",
+        "ru": "Cot evacuare 90mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "5 culori",
+        "ru": "5 culori"
+      },
+      "price": {
+        "min": "88",
+        "max": null,
+        "source_display": "de la 88 lei",
+        "render": {
+          "ro": "De la 88 lei",
+          "ru": "От 88 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/sistem-de-scurgere"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/koleno-slivnoe-90-mm/",
+        "name": "Cot evacuare 90mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/e12gzmtn.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "7011 (Cenușiu de fier)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9010 (Alb pur)"
+        ],
+        "specs": {
+          "Culoare": "3005 (Vin rosu)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-zhelob-vodostochnyj-vishnyovyj-ral-8017-125h4000",
+      "slot": "CAT-0268",
+      "slug": "zhelob-vodostochnyj-vishnyovyj-ral-8017-125h4000-mm_n",
+      "name": {
+        "ro": "Jgheab scurgere 125x4000 mm",
+        "ru": "Jgheab scurgere 125x4000 mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "5 culori",
+        "ru": "5 culori"
+      },
+      "price": {
+        "min": "344",
+        "max": null,
+        "source_display": "de la 344 lei",
+        "render": {
+          "ro": "De la 344 lei",
+          "ru": "От 344 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/sistem-de-scurgere"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/zhelob-vodostochnyj-vishnyovyj-ral-8017-125h4000-mm/n/",
+        "name": "Jgheab scurgere 125x4000 mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/k0f2f8s1.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "7011 (Cenușiu de fier)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9010 (Alb pur)"
+        ],
+        "specs": {
+          "Culoare": "Aluzinc"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-kronshtejn-zheloba-korotkij-125-mm",
+      "slot": "CAT-0269",
+      "slug": "kronshtejn-zheloba-korotkij-125-mm",
+      "name": {
+        "ro": "Cîrlig jgheab scurt 125mm",
+        "ru": "Cîrlig jgheab scurt 125mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "5 culori",
+        "ru": "5 culori"
+      },
+      "price": {
+        "min": "52",
+        "max": null,
+        "source_display": "de la 52 lei",
+        "render": {
+          "ro": "De la 52 lei",
+          "ru": "От 52 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/sistem-de-scurgere"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/kronshtejn-zheloba-korotkij-125-mm/",
+        "name": "Cîrlig jgheab scurt 125mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/amlk2bjc.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "7011 (Cenușiu de fier)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9010 (Alb pur)"
+        ],
+        "specs": {
+          "Culoare": "3005 (Vin rosu)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-kronshtejn-zheloba-125-mm",
+      "slot": "CAT-0270",
+      "slug": "kronshtejn-zheloba-125-mm",
+      "name": {
+        "ro": "Cîrlig jgheab lung 125 mm",
+        "ru": "Cîrlig jgheab lung 125 mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "5 culori",
+        "ru": "5 culori"
+      },
+      "price": {
+        "min": "48",
+        "max": null,
+        "source_display": "de la 48 lei",
+        "render": {
+          "ro": "De la 48 lei",
+          "ru": "От 48 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/sistem-de-scurgere"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/kronshtejn-zheloba-125-mm/",
+        "name": "Cîrlig jgheab lung 125 mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/i41hbimz.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "7011 (Cenușiu de fier)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9010 (Alb pur)"
+        ],
+        "specs": {
+          "Culoare": "3005 (Vin rosu)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-trubchatyj-snegoupor",
+      "slot": "CAT-0271",
+      "slug": "trubchatyj-snegoupor",
+      "name": {
+        "ro": "Opritor de zapadă cilindric",
+        "ru": "Opritor de zapadă cilindric"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "2 culori",
+        "ru": "2 culori"
+      },
+      "price": {
+        "min": "260",
+        "max": null,
+        "source_display": "de la 260 lei",
+        "render": {
+          "ro": "De la 260 lei",
+          "ru": "От 260 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-suplimentare",
+        "materiale-acoperis/elemente-de-siguranta"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/trubchatyj-snegoupor/",
+        "name": "Opritor de zapadă cilindric",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/52bot4ij.jpg",
+        "colours": [
+          "7016 (Gri antracit)",
+          "8017 (Maro ciocolată)"
+        ],
+        "specs": {
+          "Culoare": "8017 (Maro ciocolată)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-coama-dreapta",
+      "slot": "CAT-0272",
+      "slug": "coama-dreapta",
+      "name": {
+        "ro": "Coamă dreaptă",
+        "ru": "Coamă dreaptă"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 10 ani · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori",
+        "ru": "Garanție: 10 ani · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori"
+      },
+      "price": {
+        "min": "180",
+        "max": null,
+        "source_display": "de la 180 lei",
+        "render": {
+          "ro": "De la 180 lei",
+          "ru": "От 180 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-suplimentare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/coama-dreapta/",
+        "name": "Coamă dreaptă",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/gezrico6.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "5005 (Semnal albastru)",
+          "6005 (Mușchi verde)",
+          "7016 (Gri antracit)",
+          "7024 (Gri grafit)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9003 (Semnal alb)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "10 ani Lungimea 2000 mm",
+          "Acoperire": "Luciu",
+          "Tip de calitate": "* Standart Premium",
+          "Culoare": "3005 (Vin rosu)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-coama-semirotunda",
+      "slot": "CAT-0273",
+      "slug": "coama-semirotunda",
+      "name": {
+        "ro": "Coamă semirotundă",
+        "ru": "Coamă semirotundă"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 10 ani · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori",
+        "ru": "Garanție: 10 ani · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori"
+      },
+      "price": {
+        "min": "210",
+        "max": null,
+        "source_display": "de la 210 lei",
+        "render": {
+          "ro": "De la 210 lei",
+          "ru": "От 210 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-suplimentare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/coama-semirotunda/",
+        "name": "Coamă semirotundă",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/4b3vs4dg.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "5005 (Semnal albastru)",
+          "6005 (Mușchi verde)",
+          "7016 (Gri antracit)",
+          "7024 (Gri grafit)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9003 (Semnal alb)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "10 ani",
+          "Acoperire": "Luciu",
+          "Tip de calitate": "* Standart Premium",
+          "Culoare": "3005 (Vin rosu)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-bordura-de-fronton-l2000-mm",
+      "slot": "CAT-0274",
+      "slug": "bordura-de-fronton-l2000-mm",
+      "name": {
+        "ro": "Bordura de fronton",
+        "ru": "Bordura de fronton"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 10 ani · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori",
+        "ru": "Garanție: 10 ani · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori"
+      },
+      "price": {
+        "min": "180",
+        "max": null,
+        "source_display": "de la 180 lei",
+        "render": {
+          "ro": "De la 180 lei",
+          "ru": "От 180 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-suplimentare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/bordura-de-fronton-l2000-mm/",
+        "name": "Bordura de fronton",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/eyztuaia.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "5005 (Semnal albastru)",
+          "6005 (Mușchi verde)",
+          "7016 (Gri antracit)",
+          "7024 (Gri grafit)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9003 (Semnal alb)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "10 ani Lungimea 2000 mm",
+          "Acoperire": "Luciu Lungimea 2 metri. Preț pentru 1 buc.",
+          "Tip de calitate": "* Standart Premium",
+          "Culoare": "5005 (Semnal albastru)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-retinator-de-zapada-l2000mm",
+      "slot": "CAT-0275",
+      "slug": "retinator-de-zapada-l2000mm",
+      "name": {
+        "ro": "Reținător de zăpadă",
+        "ru": "Reținător de zăpadă"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 10 ani · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori",
+        "ru": "Garanție: 10 ani · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori"
+      },
+      "price": {
+        "min": "180",
+        "max": null,
+        "source_display": "de la 180 lei",
+        "render": {
+          "ro": "De la 180 lei",
+          "ru": "От 180 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-suplimentare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/retinator-de-zapada-l2000mm/",
+        "name": "Reținător de zăpadă",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/ar_v24rz.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "5005 (Semnal albastru)",
+          "6005 (Mușchi verde)",
+          "7016 (Gri antracit)",
+          "7024 (Gri grafit)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9003 (Semnal alb)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "10 ani",
+          "Acoperire": "Luciu Lungimea 2 metri. Preț pentru 1 buc.",
+          "Tip de calitate": "* Standart Premium",
+          "Culoare": "3005 (Vin rosu)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-dolie-de-sus-l2000mm",
+      "slot": "CAT-0276",
+      "slug": "dolie-de-sus-l2000mm",
+      "name": {
+        "ro": "Dolie de sus",
+        "ru": "Dolie de sus"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 10 ani · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori",
+        "ru": "Garanție: 10 ani · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori"
+      },
+      "price": {
+        "min": "180",
+        "max": null,
+        "source_display": "de la 180 lei",
+        "render": {
+          "ro": "De la 180 lei",
+          "ru": "От 180 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-suplimentare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/dolie-de-sus-l2000mm/",
+        "name": "Dolie de sus",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/9gn4mdad.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "5005 (Semnal albastru)",
+          "6005 (Mușchi verde)",
+          "7016 (Gri antracit)",
+          "7024 (Gri grafit)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9003 (Semnal alb)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "10 ani Lungimea 2000 mm",
+          "Acoperire": "Luciu Lungimea 2 metri. Preț pentru 1 buc.",
+          "Tip de calitate": "* Standart Premium",
+          "Culoare": "3005 (Vin rosu)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-dolie-de-jos-l2000mm",
+      "slot": "CAT-0277",
+      "slug": "dolie-de-jos-l2000mm",
+      "name": {
+        "ro": "Dolie interioară",
+        "ru": "Dolie interioară"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 20 ani · Acoperire: Matt · Tip de calitate: Standart Premium · 6 culori",
+        "ru": "Garanție: 20 ani · Acoperire: Matt · Tip de calitate: Standart Premium · 6 culori"
+      },
+      "price": {
+        "min": "450",
+        "max": null,
+        "source_display": "de la 450 lei",
+        "render": {
+          "ro": "De la 450 lei",
+          "ru": "От 450 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-suplimentare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/dolie-de-jos-l2000mm/",
+        "name": "Dolie interioară",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/ret4zj3d.jpg",
+        "colours": [
+          "6005M (Mușchi verde Matt)",
+          "7016M (Antracit gri Matt)",
+          "7024M (Grafit gri Matt)",
+          "8017M (Ciocolata maro Matt)",
+          "8019M (Maro gri Matt)",
+          "9005M (Jet negru Matt)"
+        ],
+        "specs": {
+          "Garanție": "20 ani",
+          "Acoperire": "Matt Lungimea 2 metri. 300*300mm. Preț pentru 1 buc.",
+          "Tip de calitate": "* Standart Premium",
+          "Culoare": "7024M (Grafit gri Matt)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-planka-primykaniya-so-shtroboj-l2000mm",
+      "slot": "CAT-0278",
+      "slug": "planka-primykaniya-so-shtroboj-l2000mm",
+      "name": {
+        "ro": "Placă de racordare cu margine",
+        "ru": "Placă de racordare cu margine"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 1 an · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori",
+        "ru": "Garanție: 1 an · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori"
+      },
+      "price": {
+        "min": "180",
+        "max": null,
+        "source_display": "de la 180 lei",
+        "render": {
+          "ro": "De la 180 lei",
+          "ru": "От 180 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-suplimentare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/planka-primykaniya-so-shtroboj-l2000mm/",
+        "name": "Placă de racordare cu margine",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/hp248lx6.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "5005 (Semnal albastru)",
+          "6005 (Mușchi verde)",
+          "7016 (Gri antracit)",
+          "7024 (Gri grafit)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9003 (Semnal alb)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "1 an Lungimea 2000 mm",
+          "Acoperire": "Luciu",
+          "Tip de calitate": "* Standart Premium",
+          "Culoare": "Zinc"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-planka-primykaniya-bez-shtroby-l2000mm",
+      "slot": "CAT-0279",
+      "slug": "planka-primykaniya-bez-shtroby-l2000mm",
+      "name": {
+        "ro": "Placă de racordare fără margine",
+        "ru": "Placă de racordare fără margine"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 1 an · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori",
+        "ru": "Garanție: 1 an · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori"
+      },
+      "price": {
+        "min": "180",
+        "max": null,
+        "source_display": "de la 180 lei",
+        "render": {
+          "ro": "De la 180 lei",
+          "ru": "От 180 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-suplimentare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/planka-primykaniya-bez-shtroby-l2000mm/",
+        "name": "Placă de racordare fără margine",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/lzf5sjkl.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "5005 (Semnal albastru)",
+          "6005 (Mușchi verde)",
+          "7016 (Gri antracit)",
+          "7024 (Gri grafit)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9003 (Semnal alb)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "1 an",
+          "Acoperire": "Luciu",
+          "Tip de calitate": "* Standart Premium",
+          "Culoare": "Zinc"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-kapelinik-krovelinyj",
+      "slot": "CAT-0280",
+      "slug": "kapelinik-krovelinyj",
+      "name": {
+        "ro": "Lacrimar",
+        "ru": "Lacrimar"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 1 an · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori",
+        "ru": "Garanție: 1 an · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori"
+      },
+      "price": {
+        "min": "130",
+        "max": null,
+        "source_display": "de la 130 lei",
+        "render": {
+          "ro": "De la 130 lei",
+          "ru": "От 130 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-suplimentare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/kapelinik-krovelinyj/",
+        "name": "Lacrimar",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/ipcm7r9i.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "5005 (Semnal albastru)",
+          "6005 (Mușchi verde)",
+          "7016 (Gri antracit)",
+          "7024 (Gri grafit)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9003 (Semnal alb)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "1 an Lungimea 2000 mm",
+          "Acoperire": "Luciu",
+          "Tip de calitate": "* Standart Premium",
+          "Culoare": "Zinc"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-lobovaya-l-planka-15050mm",
+      "slot": "CAT-0281",
+      "slug": "lobovaya-l-planka-15050mm",
+      "name": {
+        "ro": "Regleta frontală L 150*50mm",
+        "ru": "Regleta frontală L 150*50mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 1 an · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori",
+        "ru": "Garanție: 1 an · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori"
+      },
+      "price": {
+        "min": "160",
+        "max": null,
+        "source_display": "de la 160 lei",
+        "render": {
+          "ro": "De la 160 lei",
+          "ru": "От 160 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-suplimentare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/lobovaya-l-planka-15050mm/",
+        "name": "Regleta frontală L 150*50mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/omfe0pk4.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "5005 (Semnal albastru)",
+          "6005 (Mușchi verde)",
+          "7016 (Gri antracit)",
+          "7024 (Gri grafit)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9003 (Semnal alb)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "1 an Lungimea 2000 mm",
+          "Acoperire": "Luciu",
+          "Tip de calitate": "* Standart Premium",
+          "Culoare": "Zinc"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-parapet-100mm-l2000mm",
+      "slot": "CAT-0282",
+      "slug": "parapet-100mm-l2000mm",
+      "name": {
+        "ro": "Parapet 100mm",
+        "ru": "Parapet 100mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 10 ani · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori",
+        "ru": "Garanție: 10 ani · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori"
+      },
+      "price": {
+        "min": "200",
+        "max": null,
+        "source_display": "de la 200 lei",
+        "render": {
+          "ro": "De la 200 lei",
+          "ru": "От 200 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-suplimentare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/parapet-100mm-l2000mm/",
+        "name": "Parapet 100mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/kt1vrg1e.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "5005 (Semnal albastru)",
+          "6005 (Mușchi verde)",
+          "7016 (Gri antracit)",
+          "7024 (Gri grafit)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9003 (Semnal alb)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "10 ani Lungimea 2000 mm",
+          "Acoperire": "Luciu",
+          "Tip de calitate": "* Standart Premium",
+          "Culoare": "3005 (Vin rosu)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-otliv-200mm",
+      "slot": "CAT-0283",
+      "slug": "otliv-200mm",
+      "name": {
+        "ro": "Lacrimar de fereastră 200mm",
+        "ru": "Lacrimar de fereastră 200mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 1 an · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori",
+        "ru": "Garanție: 1 an · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori"
+      },
+      "price": {
+        "min": "180",
+        "max": null,
+        "source_display": "de la 180 lei",
+        "render": {
+          "ro": "De la 180 lei",
+          "ru": "От 180 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-suplimentare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/otliv-200mm/",
+        "name": "Lacrimar de fereastră 200mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/9p2sm903.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "5005 (Semnal albastru)",
+          "6005 (Mușchi verde)",
+          "7016 (Gri antracit)",
+          "7024 (Gri grafit)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9003 (Semnal alb)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "1 an Lungimea 2000 mm",
+          "Acoperire": "Luciu",
+          "Tip de calitate": "* Standart Premium",
+          "Culoare": "Zinc"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-otliv-150mm",
+      "slot": "CAT-0284",
+      "slug": "otliv-150mm",
+      "name": {
+        "ro": "Lacrimar de fereastră 150mm",
+        "ru": "Lacrimar de fereastră 150mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 1 an · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori",
+        "ru": "Garanție: 1 an · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori"
+      },
+      "price": {
+        "min": "144",
+        "max": null,
+        "source_display": "de la 144 lei",
+        "render": {
+          "ro": "De la 144 lei",
+          "ru": "От 144 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-suplimentare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/otliv-150mm/",
+        "name": "Lacrimar de fereastră 150mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/uvxdzpvn.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "5005 (Semnal albastru)",
+          "6005 (Mușchi verde)",
+          "7016 (Gri antracit)",
+          "7024 (Gri grafit)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9003 (Semnal alb)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "1 an Lungimea 2000 mm",
+          "Acoperire": "Luciu",
+          "Tip de calitate": "* Standart Premium",
+          "Culoare": "Zinc"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-coltar-interior-5050-l2000mm",
+      "slot": "CAT-0285",
+      "slug": "coltar-interior-5050-l2000mm",
+      "name": {
+        "ro": "Colțar interior 50*50mm",
+        "ru": "Colțar interior 50*50mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 10 ani · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori",
+        "ru": "Garanție: 10 ani · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori"
+      },
+      "price": {
+        "min": "86",
+        "max": null,
+        "source_display": "de la 86 lei",
+        "render": {
+          "ro": "De la 86 lei",
+          "ru": "От 86 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-suplimentare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/coltar-interior-5050-l2000mm/",
+        "name": "Colțar interior 50*50mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/6773ybnh.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "5005 (Semnal albastru)",
+          "6005 (Mușchi verde)",
+          "7016 (Gri antracit)",
+          "7024 (Gri grafit)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9003 (Semnal alb)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "10 ani Lungimea 2000 mm",
+          "Acoperire": "Luciu Lungimea 2 metri. 50*50mm. Preț pentru 1 buc.",
+          "Tip de calitate": "* Standart Premium",
+          "Culoare": "3005 (Vin rosu)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-coltar-interior-100100-l2000mm",
+      "slot": "CAT-0286",
+      "slug": "coltar-interior-100100-l2000mm",
+      "name": {
+        "ro": "Colțar interior 100*100mm",
+        "ru": "Colțar interior 100*100mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 10 ani · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori",
+        "ru": "Garanție: 10 ani · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori"
+      },
+      "price": {
+        "min": "170",
+        "max": null,
+        "source_display": "de la 170 lei",
+        "render": {
+          "ro": "De la 170 lei",
+          "ru": "От 170 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-suplimentare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/coltar-interior-100100-l2000mm/",
+        "name": "Colțar interior 100*100mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/7891m2fm.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "5005 (Semnal albastru)",
+          "6005 (Mușchi verde)",
+          "7016 (Gri antracit)",
+          "7024 (Gri grafit)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9003 (Semnal alb)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "10 ani Lungimea 2000 mm",
+          "Acoperire": "Luciu Lungimea 2 metri. 100*100mm. Preț pentru 1 buc.",
+          "Tip de calitate": "* Standart Premium",
+          "Culoare": "3005 (Vin rosu)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-coltar-exterior-5050-l2000mm",
+      "slot": "CAT-0287",
+      "slug": "coltar-exterior-5050-l2000mm",
+      "name": {
+        "ro": "Colțar exterior 50*50mm",
+        "ru": "Colțar exterior 50*50mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 1 an · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori",
+        "ru": "Garanție: 1 an · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori"
+      },
+      "price": {
+        "min": "86",
+        "max": null,
+        "source_display": "de la 86 lei",
+        "render": {
+          "ro": "De la 86 lei",
+          "ru": "От 86 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-suplimentare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/coltar-exterior-5050-l2000mm/",
+        "name": "Colțar exterior 50*50mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/cnzb5vhj.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "5005 (Semnal albastru)",
+          "6005 (Mușchi verde)",
+          "7016 (Gri antracit)",
+          "7024 (Gri grafit)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9003 (Semnal alb)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "1 an Lungimea 2000 mm",
+          "Acoperire": "Luciu Lungimea 2 metri. 50*50mm. Preț pentru 1 buc.",
+          "Tip de calitate": "* Standart Premium",
+          "Culoare": "Zinc"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-coltar-exterior-100100-l2000mm",
+      "slot": "CAT-0288",
+      "slug": "coltar-exterior-100100-l2000mm",
+      "name": {
+        "ro": "Colțar exterior 100*100mm",
+        "ru": "Colțar exterior 100*100mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "Garanție: 1 an · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori",
+        "ru": "Garanție: 1 an · Acoperire: Luciu · Tip de calitate: Standart Premium · 9 culori"
+      },
+      "price": {
+        "min": "170",
+        "max": null,
+        "source_display": "de la 170 lei",
+        "render": {
+          "ro": "De la 170 lei",
+          "ru": "От 170 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-suplimentare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/coltar-exterior-100100-l2000mm/",
+        "name": "Colțar exterior 100*100mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/1s_yjdc2.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "5005 (Semnal albastru)",
+          "6005 (Mușchi verde)",
+          "7016 (Gri antracit)",
+          "7024 (Gri grafit)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9003 (Semnal alb)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Garanție": "1 an Lungimea 2000 mm",
+          "Acoperire": "Luciu Lungimea 2 metri. 100*100mm. Preț pentru 1 buc.",
+          "Tip de calitate": "* Standart Premium",
+          "Culoare": "Zinc"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-spray-vopsea",
+      "slot": "CAT-0289",
+      "slug": "spray-vopsea",
+      "name": {
+        "ro": "Spray vopsea",
+        "ru": "Spray vopsea"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "11 culori",
+        "ru": "11 culori"
+      },
+      "price": {
+        "min": "75",
+        "max": null,
+        "source_display": "de la 75 lei",
+        "render": {
+          "ro": "De la 75 lei",
+          "ru": "От 75 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-suplimentare",
+        "materiale-acoperis/elemente-de-siguranta",
+        "materiale-acoperis/elemente-de-fixare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/spray-vopsea/",
+        "name": "Spray vopsea",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/vuzco634.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "5005 (Semnal albastru)",
+          "5010 (Albastru de gențiană)",
+          "6005 (Mușchi verde)",
+          "8017 (Maro ciocolată)",
+          "8017M (Ciocolata maro Matt)",
+          "8019 (Gri maro)",
+          "8019M (Maro gri Matt)",
+          "9003 (Semnal alb)",
+          "9005M (Jet negru Matt)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Culoare": "3005 (Vin rosu)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-samorezy-krovelinye-po-shvelleru-5532",
+      "slot": "CAT-0290",
+      "slug": "samorezy-krovelinye-po-shvelleru-5532",
+      "name": {
+        "ro": "Șurub pentru profil 5,5*32mm, zincat",
+        "ru": "Șurub pentru profil 5,5*32mm, zincat"
+      },
+      "brand": null,
+      "variant": {
+        "ro": null,
+        "ru": null
+      },
+      "price": {
+        "min": "2",
+        "max": null,
+        "source_display": "de la 2 lei",
+        "render": {
+          "ro": "De la 2 lei",
+          "ru": "От 2 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-de-fixare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/samorezy-krovelinye-po-shvelleru-5532/",
+        "name": "Șurub pentru profil 5,5*32mm, zincat",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/7yug3g1m.jpg",
+        "colours": [],
+        "specs": {
+          "Culoare": "Zinc Zinc -->"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-samorezy-krovelinye-po-derevu_n",
+      "slot": "CAT-0291",
+      "slug": "samorezy-krovelinye-po-derevu_n",
+      "name": {
+        "ro": "Șurub de acoperiș pentru metal 4,8*19mm.",
+        "ru": "Șurub de acoperiș pentru metal 4,8*19mm."
+      },
+      "brand": null,
+      "variant": {
+        "ro": "14 culori",
+        "ru": "14 culori"
+      },
+      "price": {
+        "min": "1",
+        "max": null,
+        "source_display": "de la 1 lei",
+        "render": {
+          "ro": "De la 1 lei",
+          "ru": "От 1 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-de-fixare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/samorezy-krovelinye-po-derevu/n/",
+        "name": "Șurub de acoperiș pentru metal 4,8*19mm.",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/uybp1b1n.jpg",
+        "colours": [
+          "1015 (Fildeș ușor)",
+          "3005 (Vin rosu)",
+          "3009 (Roșu oxid)",
+          "3011 (Roșu maro)",
+          "5005 (Semnal albastru)",
+          "6005 (Mușchi verde)",
+          "6020 (Verde crom)",
+          "7016 (Gri antracit)",
+          "7024 (Gri grafit)",
+          "8004 (Cupru maro)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9003 (Semnal alb)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Culoare": "3005 (Vin rosu)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-kreplenie-dlya-evro-zabora-s-samorezom",
+      "slot": "CAT-0292",
+      "slug": "kreplenie-dlya-evro-zabora-s-samorezom",
+      "name": {
+        "ro": "Fixator pentru Euro-gard cu surub autoforant",
+        "ru": "Fixator pentru Euro-gard cu surub autoforant"
+      },
+      "brand": null,
+      "variant": {
+        "ro": null,
+        "ru": null
+      },
+      "price": {
+        "min": "6",
+        "max": null,
+        "source_display": "de la 6 lei",
+        "render": {
+          "ro": "De la 6 lei",
+          "ru": "От 6 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-de-fixare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/kreplenie-dlya-evro-zabora-s-samorezom/",
+        "name": "Fixator pentru Euro-gard cu surub autoforant",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/ux5nzaa1.jpg",
+        "colours": [],
+        "specs": {
+          "Culoare": "Zinc"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-samorezy-krovelinye-po-derevu",
+      "slot": "CAT-0293",
+      "slug": "samorezy-krovelinye-po-derevu",
+      "name": {
+        "ro": "Șuruburi de acoperiș pentru lemn 4.8*35 în asortiment",
+        "ru": "Șuruburi de acoperiș pentru lemn 4.8*35 în asortiment"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "14 culori",
+        "ru": "14 culori"
+      },
+      "price": {
+        "min": "1",
+        "max": null,
+        "source_display": "de la 1 lei",
+        "render": {
+          "ro": "De la 1 lei",
+          "ru": "От 1 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-de-fixare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/samorezy-krovelinye-po-derevu/",
+        "name": "Șuruburi de acoperiș pentru lemn 4.8*35 în asortiment",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/6v2ilhon.jpg",
+        "colours": [
+          "1015 (Fildeș ușor)",
+          "3005 (Vin rosu)",
+          "3009 (Roșu oxid)",
+          "3011 (Roșu maro)",
+          "5005 (Semnal albastru)",
+          "6005 (Mușchi verde)",
+          "6020 (Verde crom)",
+          "7016 (Gri antracit)",
+          "7024 (Gri grafit)",
+          "8004 (Cupru maro)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9003 (Semnal alb)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Culoare": "3005 (Vin rosu)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
+      }
+    },
+    {
+      "id": "dast-samorez-3595mm-v-assortimente",
+      "slot": "CAT-0294",
+      "slug": "samorez-3595mm-v-assortimente",
+      "name": {
+        "ro": "Metize 3,5*9,5mm",
+        "ru": "Metize 3,5*9,5mm"
+      },
+      "brand": null,
+      "variant": {
+        "ro": "10 culori",
+        "ru": "10 culori"
+      },
+      "price": {
+        "min": "1",
+        "max": null,
+        "source_display": "de la 1 lei",
+        "render": {
+          "ro": "De la 1 lei",
+          "ru": "От 1 lei"
+        }
+      },
+      "categories": [
+        "materiale-acoperis/elemente-de-fixare"
+      ],
+      "source": {
+        "host": "dasterum.md",
+        "url": "https://www.dasterum.md/ro/samorez-3595mm-v-assortimente/",
+        "name": "Metize 3,5*9,5mm",
+        "captured": "2026-09-21",
+        "image": "https://www.dasterum.md/content/catalog/products/__f2m6o0.jpg",
+        "colours": [
+          "3005 (Vin rosu)",
+          "5005 (Semnal albastru)",
+          "6005 (Mușchi verde)",
+          "7016 (Gri antracit)",
+          "8004 (Cupru maro)",
+          "8017 (Maro ciocolată)",
+          "8019 (Gri maro)",
+          "9003 (Semnal alb)",
+          "9005 (Jet negru)",
+          "9006 (Aluminiu alb)"
+        ],
+        "specs": {
+          "Culoare": "3005 (Vin rosu)"
+        },
+        "note": "Dasterum publishes no Russian product page; the RU name is the product name kept verbatim per the W25-09 dispatch."
       }
     }
   ]

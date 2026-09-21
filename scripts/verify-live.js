@@ -167,14 +167,17 @@ const MARKERS = {
     productCards: 'atLeast1',
     foldedCards: 0,
   },
-  // W24-04. The catalogue index: seven tiles, no prose, no product card.
+  // W24-04. The catalogue index: no prose, no product card.
+  // AMENDED (W25-09): ~~seven tiles~~ **EIGHT**. Acoperișuri is the eighth
+  // category, 71 Dasterum products in seven subcategories. The count is asserted
+  // rather than relaxed, so a build made before this card cannot match it.
   index: {
     promoBar: 1,
     profileAnchors: 0,
     areaServed: 0,
     catProse: 0,
     productCards: 0,
-    catTiles: 7,
+    catTiles: 8,
   },
 };
 
@@ -204,8 +207,14 @@ const PAGES = [
   { path: '/servicii/roca-vulcanica/',     type: 'novatik', label: 'novatik RO',  budget: 4348 },
   { path: '/ru/servicii/roca-vulcanica/',  type: 'novatik', label: 'novatik RU',  budget: 4446 },
   { path: '/ru/servicii/finisaje/',        type: 'service', label: 'svc RU finis',   budget: 6000 },
-  { path: '/servicii/tigla-metalica/',     type: 'tigla',   label: 'tigla RO',       budget: 4000 },
-  { path: '/ru/servicii/tigla-metalica/',  type: 'tigla',   label: 'tigla RU',       budget: 4033 },
+  /* W25-09. Both rows take +39: this page gained one link-arrow to the new
+     catalogue category, measured on the branch at 3979 RO and 4012 RU against
+     3940 and 3973 with the link removed as a control. Budget is measured plus 60
+     under W24-R4. The acoperisuri hub gained the same link and did NOT move: its
+     section's bottom padding absorbed it, measured 7499 RO and 7637 RU with and
+     without, so those two budgets are untouched. */
+  { path: '/servicii/tigla-metalica/',     type: 'tigla',   label: 'tigla RO',       budget: 4039 },
+  { path: '/ru/servicii/tigla-metalica/',  type: 'tigla',   label: 'tigla RU',       budget: 4072 },
   { path: '/servicii/copertine/',          type: 'product', label: 'copertine RO',   budget: 6615 },
   { path: '/ru/servicii/copertine/',       type: 'product', label: 'copertine RU',   budget: 6691 },
   /* W24-08. The garduri page gained the fence bento; the copertine page gained a
@@ -253,6 +262,26 @@ const PAGES = [
   { path: '/ru/catalog/sisteme-iluminare/',                 type: 'category',      label: 'cat RU ilumin',    budget: 6262 },
   { path: '/catalog/alte-materiale/',                       type: 'category',      label: 'cat RO alte',      budget: 3707 },
   { path: '/ru/catalog/alte-materiale/',                    type: 'category',      label: 'cat RU alte',      budget: 3707 },
+  /* W25-09. The eighth catalogue category and its seven subcategories, 71
+     Dasterum products under W25-R7. Every budget below is measured on the branch
+     at 1280px with every reveal applied and settled, plus 60, under W24-R4.
+     docs/rulings/R-Y.md carries the measurement each one came from. */
+  { path: '/catalog/materiale-acoperis/',                         type: 'category',    label: 'cat RO acop',   budget: 11917 },
+  { path: '/ru/catalog/materiale-acoperis/',                      type: 'category',    label: 'cat RU acop',   budget: 11944 },
+  { path: '/catalog/materiale-acoperis/tigla-metalica/',          type: 'subcategory', label: 'sub RO tigla',  budget: 3057 },
+  { path: '/ru/catalog/materiale-acoperis/tigla-metalica/',       type: 'subcategory', label: 'sub RU tigla',  budget: 3057 },
+  { path: '/catalog/materiale-acoperis/profnastil/',              type: 'subcategory', label: 'sub RO profn',  budget: 3554 },
+  { path: '/ru/catalog/materiale-acoperis/profnastil/',           type: 'subcategory', label: 'sub RU profn',  budget: 3554 },
+  { path: '/catalog/materiale-acoperis/hidroizolatie/',           type: 'subcategory', label: 'sub RO hidro',  budget: 5330 },
+  { path: '/ru/catalog/materiale-acoperis/hidroizolatie/',        type: 'subcategory', label: 'sub RU hidro',  budget: 5330 },
+  { path: '/catalog/materiale-acoperis/sistem-de-scurgere/',      type: 'subcategory', label: 'sub RO scurg',  budget: 4363 },
+  { path: '/ru/catalog/materiale-acoperis/sistem-de-scurgere/',   type: 'subcategory', label: 'sub RU scurg',  budget: 4363 },
+  { path: '/catalog/materiale-acoperis/elemente-suplimentare/',   type: 'subcategory', label: 'sub RO supl',   budget: 5023 },
+  { path: '/ru/catalog/materiale-acoperis/elemente-suplimentare/', type: 'subcategory', label: 'sub RU supl',  budget: 5023 },
+  { path: '/catalog/materiale-acoperis/elemente-de-siguranta/',   type: 'subcategory', label: 'sub RO sigur',  budget: 3032 },
+  { path: '/ru/catalog/materiale-acoperis/elemente-de-siguranta/', type: 'subcategory', label: 'sub RU sigur', budget: 3032 },
+  { path: '/catalog/materiale-acoperis/elemente-de-fixare/',      type: 'subcategory', label: 'sub RO fixar',  budget: 3517 },
+  { path: '/ru/catalog/materiale-acoperis/elemente-de-fixare/',   type: 'subcategory', label: 'sub RU fixar',  budget: 3517 },
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

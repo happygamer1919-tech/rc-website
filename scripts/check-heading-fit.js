@@ -180,6 +180,17 @@ async function main() {
   if (process.env.CI) args.push('--no-sandbox');
   const chrome = spawn(chromeBin, [...args, 'about:blank'], { stdio: 'ignore' });
   const stop = () => { try { chrome.kill(); } catch {} server.close(); };
+  /* W25-03b. The profile directory is removed however this process ends, the
+     fail() path included. Every browser gate here created one and none removed
+     it: 727 had accumulated to 28.9GB before anyone looked, and each one is a
+     whole Chrome profile. `exit` fires on a normal return AND on process.exit,
+     which is what fail() calls, so the one path that leaked most is covered.
+     Chrome is killed first, because a live Chrome writes the directory back. */
+  process.on('exit', () => {
+    try { chrome.kill(); } catch {}
+    try { fs.rmSync(profile, { recursive: true, force: true }); } catch {}
+  });
+
 
   let up = null;
   for (let i = 0; i < 80 && !up; i++) { try { up = await rq(`http://127.0.0.1:${CDP_PORT}/json/version`); } catch { await sleep(250); } }

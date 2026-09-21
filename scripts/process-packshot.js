@@ -4,15 +4,15 @@
 
        node scripts/process-packshot.js <source-file> <SLOT-ID> [--dir catalog]
 
-   It writes `public/img/<dir>/<SLOT-ID>.jpg`, sized so the longest side is 800px,
+   It writes `public/img/<dir>/<SLOT-ID>.jpg`, sized so the longest side is at most
+   600px and never larger than the source,
    with every scrap of metadata gone, and prints the line to paste into
    `docs/assets/PROVENANCE.md`. It does not touch the ledger: filling a slot is a
    deliberate edit, and a tool that flips `state` to "filled" on its own would let
    an image reach the site without anyone reading its provenance.
 
    WHAT IT REFUSES, and why each refusal is here rather than in a review:
-     · a source whose longest side is under 800px, because upscaling a packshot
-       invents detail that was never photographed;
+     · a source whose longest side is under the 500px floor (W25-R2);
      · a source that is not an image by its BYTES, whatever its name says;
      · an output that still carries Exif or GPS after the strip, which is gate
        17's rule and is asserted here rather than trusted.
@@ -43,7 +43,19 @@ const path = require('path');
 const { execFileSync } = require('child_process');
 
 const ROOT = path.join(__dirname, '..');
-const LONGEST = 800;
+/* W25-R2, the owner's answer to Q-W25-02. The floor was 800 and it was rejecting
+   correct images from three manufacturers in four: DURAZIV publishes at 343x335,
+   ROKO at 492x400, Phomi at 459x398, each one the manufacturer's own packshot of
+   the right product on a plain ground. A catalogue card's image box is about
+   264px wide at 1440, so 528px at 2x, and 800 was an OUTPUT target that had
+   become an INPUT floor.
+
+   SOURCE_FLOOR is what a source must have. OUTPUT is the longest side written.
+   NOTHING IS EVER UPSCALED: a source between the floor and the output is written
+   at its own size, because enlarging a packshot invents detail that was never
+   photographed and a soft product photo reads as a cheap one. */
+const SOURCE_FLOOR = 500;
+const OUTPUT = 600;
 const MAX_BYTES = 220 * 1024;
 
 const die = (msg) => { console.error(`\nPACKSHOT FAILED: ${msg}\n`); process.exit(1); };
@@ -84,9 +96,12 @@ try {
 if (!(w > 0 && h > 0)) die(`sips read no dimensions from ${SRC}.`);
 console.log(`source: ${SRC}  ${magic}  ${w}x${h}`);
 
-if (Math.max(w, h) < LONGEST) {
-  die(`the source is ${w}x${h} and its longest side is under ${LONGEST}px. Upscaling a packshot invents detail that was never photographed; find a larger file or leave the slot a placeholder (W25-R4).`);
+if (Math.max(w, h) < SOURCE_FLOOR) {
+  die(`the source is ${w}x${h} and its longest side is under the ${SOURCE_FLOOR}px floor. Find a larger file or leave the slot a placeholder (W25-R4).`);
 }
+/* Never upscale. A 520px source is written at 520, not stretched to 600. */
+const target = Math.min(OUTPUT, Math.max(w, h));
+if (target < OUTPUT) console.log(`source is ${Math.max(w, h)}px on its longest side, under the ${OUTPUT}px output; writing at ${target}px rather than upscaling`);
 
 const outDir = path.join(ROOT, 'public', 'img', DIR);
 fs.mkdirSync(outDir, { recursive: true });
@@ -100,7 +115,7 @@ const tmp = path.join(require('os').tmpdir(), `packshot-${process.pid}.jpg`);
    is the re-encode plus the optional exiftool pass, and the assertion below is
    what actually decides. */
 sips(['-s', 'format', 'jpeg', '-s', 'formatOptions', '88', SRC, '--out', tmp]);
-sips(['-Z', String(LONGEST), tmp]);
+sips(['-Z', String(target), tmp]);
 
 /* Second pass where exiftool is installed. Not required: the assertion below is
    what decides, and it runs either way. */

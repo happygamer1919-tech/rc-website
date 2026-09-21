@@ -2477,3 +2477,93 @@ sentence from you.
 
 **The 17 real Phomi products are a separate matter and are blocked only on Q-W25-02**: the
 images exist, on Phomi's own domain, and measure about 459 x 398px.
+
+## Q-W25-06 · I was wrong in W25-03: 51 of the 88 plates ARE Phomi products, not 17 · OPEN · opened 2026-09-21 (W25-03b)
+
+**Nothing was changed on the strength of this. `brand_hidden` was NOT applied to any
+plate, because W25-R2 ruled on a count I got wrong and the corrected count may still move.**
+
+### What I reported, and what is true
+
+W25-03 told you that 17 of the 88 ceramic plates exist in Phomi's catalogue and **70 do
+not**, and you ruled on that: `brand_hidden` on the 70, they stay placeholders, and
+Q-W25-05 opened for their real manufacturer.
+
+**I matched against Phomi's category LISTING pages, which show product families and not
+the colour variants inside them.** Harvested properly from the product pages themselves,
+Phomi publishes **129 distinct variant names**, and the match is:
+
+| | W25-03 said | Actually |
+|---|---|---|
+| In Phomi's catalogue | 17 | **51** (33 colour variants, 18 families) |
+| Not in Phomi's catalogue | **70** | **37** |
+
+The matches are exact, not approximate. `Kamu Red` is a Phomi colour called **Kamu Red**.
+So are `Tunguska Yellow`, `Castol Grey`, `Veil White`, `Dandy Grey`, `Blue Grey`,
+`Ash Grey`, `Stellar Red`, `Plain White`. **Those are the very names I told you did not
+exist.** The source's `elysee-pure-white` slug is still inconsistent with its own
+displayed name, but that was the wrong thing to conclude a manufacturer from.
+
+### Why this still fills nothing
+
+Both halves of the corrected 51 are refused, for two different reasons, both measured:
+
+| Phomi image | Size | Verdict |
+|---|---|---|
+| Family images (18 plates) | 459 x 398 | **under the 500px floor**, by 41px |
+| Colour variants (33 plates) | 650 x 450 | passes the floor, **but every one carries its English name burned into the picture** |
+
+The variant swatches read `Kamu Red`, `Tunguska Yellow` and so on in black type across the
+bottom left. The catalogue card already prints the product name underneath, in Romanian.
+Using them would print the name twice, in two languages, one of them baked into the
+photograph and unfixable. W25-R2's own rule for generated images is "no text"; these are
+photographs with text in them.
+
+### What I need from you
+
+  (a) **Re-rule the `brand_hidden` set as the 37**, and I apply it. It is the ruling you
+      already made, on corrected facts.
+  (b) **Hold all of it** until the 37 is confirmed too. **It may still shrink**: I
+      harvested 22 of Phomi's product pages, and it has brick, weaving and leather ranges
+      I did not walk. Some of the 37 (`Y001-01-02`, `HY001`, `H06`) look like product
+      codes rather than names and may well be Phomi's.
+  (c) **Accept the text-bearing swatches** for the 33 and I fill them today.
+  (d) **Lower the floor to 450** and the 18 clean family images fill. Nothing else in the
+      whole catalogue is unlocked by it; see Q-W25-07.
+
+**Recommended: (b) then (a).** Let me finish walking Phomi's catalogue so the 37 is a
+number you can rule on once, rather than a third count. I do not recommend (c): a
+photograph with another language's text burned into it is not a product photograph of
+this shop's product.
+
+---
+
+## Q-W25-07 · The 500px floor unlocks nothing; the real population sits at 343 to 492 · OPEN · opened 2026-09-21 (W25-03b)
+
+**Shipped default: the floor is 500 and the output 600, exactly as W25-R2 rules, with the
+499 negative test passing. It is correctly implemented and it changes no outcome.**
+
+W25-R2 lowered the floor from 800 to 500 to unblock the packshots W25-02 and W25-03
+refused on pixels. **Re-measured directly, every one of them is still refused:**
+
+| Manufacturer | Products | Longest side | Short of 500 by |
+|---|---|---|---|
+| DURAZIV | 2 | 343 | 157px |
+| Phomi, family images | 18 | 459 | 41px |
+| ROKO AquaMix | 2 | 492 | **8px** |
+
+ROKO misses by eight pixels. DURAZIV by a third of the floor.
+
+**The floor moved from 800 to 500 and the measured population is 343 to 492**, so it
+passed over the whole group. That is not an argument for any particular number; it is the
+reason the number should be chosen from the measurements rather than from the output size.
+
+  (a) **Keep 500** (shipped). Correct, tested, and it unlocks nothing measured so far.
+  (b) **340.** Everything measured clears it. A 343px source shown in a 264px box is
+      sharp at 1x and soft on a high-resolution screen.
+  (c) **450.** Clears Phomi's 18 families and ROKO's 2, leaves DURAZIV's 2 as placeholders.
+  (d) Keep 500 and accept that these stay grey until the manufacturers publish larger.
+
+**Recommended: (c).** It is the largest floor that unlocks anything, it clears 20 products
+rather than 2, and 450 into a 264px box is still above 1x. **Never upscaling is what makes
+any of these safe**: the pipeline writes a 459px source at 459, not stretched to 600.

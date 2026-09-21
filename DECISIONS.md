@@ -10248,3 +10248,51 @@ proof image" is the existing rule and it stands.
 
 **R4** is the one that decides how the wave reads. **A placeholder is an acceptable
 outcome and a wrong photograph is not.** Every slot left empty is reported with its reason.
+
+## W25-R2 · The owner's wave 25 answers, recorded verbatim, 2026-09-21
+
+Recorded at the owner's instruction, from the W25-03b dispatch, before the card was
+worked. `origin/main` is `4d665c9`, with #92 merged, and section 12.0's check on that sha
+returned `node scripts/verify-live.js` **exit 0, PASS, 0 unverified, 0 failed, 51 of 51**.
+
+### The answers, as given
+
+> **Q-W25-02 CLOSED:** image floor 500px longest side, output 600px, never upscale,
+> negative-test the new floor at 499.
+>
+> **Q-W25-04 CLOSED:** `brand_hidden` true on the 70 plates not in Phomi's catalogue, they
+> stay placeholders, no Phomi image on a non-Phomi product, no AI image on any named tile
+> product; open Q-W25-05 "real manufacturer of the 70 plates", blocked on client.
+>
+> **Q-W25-01 CLOSED:** JPEG only, no new dependency.
+>
+> **Q-W25-03 CLOSED:** no source on a Russian domain, that product stays placeholder;
+> manufacturer brand-portal subdomains are an approved host.
+>
+> **METHOD:** sourcing is done directly, never by parallel agents. Research and download
+> stay separate steps, the download guard stays.
+
+### What each one changes
+
+**The floor.** `SOURCE_FLOOR` is 500 and `OUTPUT` is 600 in
+`scripts/process-packshot.js`, and **nothing is ever upscaled**: a 520px source is written
+at 520, not stretched to 600, because enlarging a packshot invents detail that was never
+photographed. Negative-tested exactly as the ruling asks: **499px is refused**, 500px
+passes and is written at 500, 520px is written at 520, 900px is capped at 600.
+
+**The seventy plates.** They take `brand_hidden`, so the site stops telling visitors that
+Phomi makes products Phomi does not make. They stay placeholders. **No Phomi image goes on
+a non-Phomi product** and **no generated image goes on any named tile product**, which
+narrows W25-R3 further: a tile is sold by its exact appearance, and a render of "Kamu Red"
+would be an invented appearance for a product under a name whose own source is unreliable.
+
+**JPEG only.** Q-W25-01 is closed at option (a). No dependency is added, the WebP source
+element stays in `build.js` and simply never fires.
+
+**The Russian domain.** `CAT-0006`, Polistiren Penoplex, stays a placeholder: its only
+official source is `penoplex.ru`. **Brand-portal subdomains are approved**, which retroactively
+confirms `CAT-0010`, taken from `brandportal.rockwool.com`.
+
+**The method.** Sourcing is direct. The fourteen-agent run that stalled eleven times is not
+repeated, and the split between researching a URL and fetching it stays: on W25-02's three
+researched candidates, **two were unusable and only the guard caught them**.

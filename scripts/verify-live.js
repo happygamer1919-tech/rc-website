@@ -353,6 +353,15 @@ async function main() {
     '--no-default-browser-check', '--hide-scrollbars', '--force-device-scale-factor=1',
     '--disk-cache-size=1', 'about:blank'], { stdio: 'ignore' });
 
+  /* W25-03b. The profile directory is removed however this process ends. This
+     script created one per run and removed none: 125 rp-verify directories had
+     accumulated, and a verify-live profile is a full Chrome profile. `exit`
+     covers the thrown paths and the explicit exits alike. */
+  process.on('exit', () => {
+    try { chrome.kill(); } catch {}
+    try { fs.rmSync(profile, { recursive: true, force: true }); } catch {}
+  });
+
   let up = null;
   for (let i = 0; i < 80 && !up; i++) { try { up = await rq(`http://127.0.0.1:${PORT}/json/version`); } catch { await sleep(250); } }
   if (!up) { chrome.kill(); throw new Error('chrome did not start'); }

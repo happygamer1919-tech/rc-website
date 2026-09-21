@@ -2802,3 +2802,53 @@ products.
 is the difference between "one picture, several products" and "one picture, one product in
 several sizes". (b) is worth doing eventually and is not urgent.
 
+## Q-W25-14 · Four manufacturers cannot be found, and one is Russian-owned with a .com site · OPEN · opened 2026-09-21 (W25-08)
+
+**Shipped default: all six products stay placeholders.** Nothing wrong is published and
+nothing is blocked; this is about six catalogue cards.
+
+### The four that cannot be found
+
+| Product | Brand | What was tried |
+|---|---|---|
+| `CAT-0011` Vată minerală FAWORI | FAWORI | `fawori.com.tr` and `www.fawori.com.tr` do not answer |
+| `CAT-0012` Vată minerală Novoterm | NOVOTERM | `novoterm.md` and `novoterm.ro` do not answer |
+| `CAT-0016` Adeziv Kreisel 215 | KREISEL | `kreisel.md` does not answer; `kreisel.pl` answers but has no page for Kreisel 215 |
+| `CAT-0009` Vată minerală OBIO 165 | IZOVAT | `izovat.ua` answers; its product pages return 404 |
+
+**These are attempted and not found, which is not the same as absent.** Each brand may have
+a site under a name I do not know, and you may know it in one line.
+
+  (a) **Tell me the site for any of them** and they become ordinary packshot work.
+  (b) **Ask the client**, who buys from them and will have a contact.
+  (c) **Photograph them in the shop**, which is also Q-W25-12's answer for the lamps.
+  (d) Leave them grey.
+
+**Recommended: (b) then (c).** Four products, one message.
+
+### The one that is a decision, not a search
+
+`CAT-0007` Polistiren Tehnoplex XPS Carbon and `CAT-0008` Vată minerală Thermowool Fas
+Efect carry the brand **SWEETONDALE**, which is a trade name of **TechnoNICOL**, a Russian
+group. Its international site is `technonicol.com`, a `.com`, and it lists an XPS CARBON
+range.
+
+**Two separate reasons I did not install from it, and you should rule on both:**
+
+1. **W25-R6 forbids "Russian domains".** `technonicol.com` is not a Russian domain by its
+   name, and it is the site of a Russian company. The rule's words and the rule's intent
+   point different ways here, and it is your call, not mine. The same question decided
+   `CAT-0006` Penoplex, which stays grey because `penoplex.ru` is unambiguous.
+2. **The product identity is not established.** Our records say "Tehnoplex XPS Carbon" and
+   "Thermowool Fas Efect". TechnoNICOL's catalogue has a TECHNOPLEX family and a CARBON
+   family and I could not establish that either of ours is a specific one of them. Under
+   W25-R4 that is a near match and it stays a placeholder whatever the domain rule says.
+
+  (a) **Both stay grey.** Recommended while (2) is unresolved, whatever you decide on (1).
+  (b) **Rule that a `.com` site of a Russian company is allowed**, and I go back and settle
+      the product identity first. If it settles, two cards fill.
+  (c) **Rule that it is not allowed** and they join Penoplex permanently.
+
+**Recommended: (a) now, and (c) if you want it closed.** Nothing fills today either way,
+because the identity question stands on its own.
+

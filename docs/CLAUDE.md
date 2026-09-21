@@ -803,6 +803,24 @@ state where loading it threw (W24-09a), a `.faq` class collision that had silent
 W24-07a's rename. **None of them could have been found before a deploy**, and two were
 found only because the run happened at all.
 
+**AMENDED (W25-R11, 2026-09-21): the run waits before it measures, and re-reads only as a
+fallback.** A page is measured only once its **stylesheet has applied and its promo bar is
+present**. Neither is a sleep: the site's design tokens are custom properties declared on
+`:root` in `src/styles.css`, so `--brand` resolving non-empty **is** the stylesheet having
+applied, and all ten marker sets expect `promoBar: 1`, so the promo bar is on every page this
+gate reads. A page that never becomes ready is reported, not waited on forever.
+
+**The re-read is the fallback and is bounded in three directions**: at most two, only for a
+row that came back UNVERIFIED, and **never for a row that FAILED**. A failure is a
+measurement about the site; an unverified row can be a measurement about the instrument.
+Every re-read prints `RETRIED` with **all** the readings and the summary counts them, because
+a re-read nobody can see is indistinguishable from a gate that passes on the second try.
+**R-AB holds: the exit code is the result.**
+
+`--prove` watches all of it: the probe refusing a document with no tokens and no promo bar,
+waiting 1,216ms for one where both arrive late, refusing one that is half ready, and the
+re-read firing exactly twice and being counted, each between two clean controls.
+
 **And the run is where a wrong diagnosis gets caught.** W24-09 read one of those failures
 as a budget set too early and recommended moving the budget; the real cause was a
 collision on twenty pages, and moving the budget would have written the defect into a

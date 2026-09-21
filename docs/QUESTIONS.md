@@ -2411,3 +2411,69 @@ That is ROCKWOOL's own brand asset portal on their own registrable domain, which
 allows, and it is where their product pages serve images from. Recorded here because the
 provenance row names a host that is not the one a reader would expect from the source page
 URL, and that should be a decision you saw rather than one you discover.
+
+## Q-W25-04 · Seventy of the 88 ceramic plates carry a manufacturer whose catalogue does not have them · OPEN · opened 2026-09-21 (W25-03)
+
+**No default shipped. Nothing was filled and nothing was changed: this is a question about
+the data, and answering it wrongly would put the wrong photograph on 70 cards.**
+
+All 88 products in `placi-ceramice` carry `brand: "Phomi"`, copied from the source by
+W24-03, which was correct: it is what the source states. **Phomi's own catalogue does not
+contain most of those names.**
+
+Measured against `phomi.com`, the manufacturer's own site, category by category:
+
+| | Count |
+|---|---|
+| Our products attributed to Phomi | **88** |
+| Names that exist in Phomi's catalogue, exactly | **17** |
+| Names that match with a suffix difference (`Polished Wood 4.0` vs `Polished Wood`) | 1 |
+| **Names that do not exist in Phomi's catalogue at all** | **70** |
+
+The 17 are unmistakably Phomi: `Rome Travertine`, `Ghana Travertine`, `Oceanic Travertine`,
+`Rough Surface`, `Skyline`, `Mount Celestial`, `Stone Alpes`, `Marble`, `Rusty Slab`,
+`Rammed Earth Wall`, `Polished Stone`, `35 Piece Stone`, `Bush Hammered`,
+`Devine Mushroom Stone`, `Original Wood`, `Spliced Wood`, `Poly Wood`.
+
+The 70 are names like `Kamu Red`, `Tunguska Yellow`, `Castol Grey`, `Veil White`,
+`Elsa Black Grey`, `Y001-01-02`, `HY001`. Phomi organises its range by surface
+(Travertine, Nature Stone, Art Stone, Wood, Brick, Weaving, Leather) and publishes no such
+colour names anywhere on its site.
+
+**The source's own data disagrees with itself, which is the strongest evidence here.**
+Read the URLs W24-03 captured beside the names it captured:
+
+| Source URL slug | Name the source displayed |
+|---|---|
+| `placa-ceramica-elysee-pure-red` | Placă **Kamu Red** |
+| `placa-ceramica-elysee-pure-white` | Placă **Kamu Yellow** |
+| `placa-ceramica-baroque-white` | Placă **White Sesame** |
+
+A product whose own address says `pure-white` is displayed as **Yellow**. Whatever those
+70 records are, the source's naming is not reliable, and **W24-03 was right to copy it
+verbatim rather than tidy it.**
+
+**What this means for pictures.** Under W25-R4 a slot with no compliant image stays a
+placeholder, and "compliant" starts with being the right product. **I cannot fetch a
+picture of `Kamu Red` from Phomi, because Phomi does not make anything called Kamu Red.**
+Any image chosen would be a different product wearing this one's name.
+
+  (a) **Leave all 70 as placeholders** and let W25-05 generate them from their own names
+      and colours. Costs nothing, claims nothing, and the AI prompt pack already exists to
+      do exactly this.
+  (b) **Tell me the real manufacturer**, if you know who actually makes them. Then they
+      become ordinary W25-02 work.
+  (c) **Strike the Phomi attribution on those 70** and render them with no brand line, the
+      way the 64 RedConstruct records already work via `brand_hidden`. One flag each.
+      **This is the only option that also fixes what the SITE currently says**, which is
+      that Phomi makes 70 products Phomi does not make.
+  (d) Hold the 70 records and shorten the catalogue. Not recommended: they are products
+      you sell.
+
+**Recommended: (c) plus (a).** The brand line is a factual claim about a manufacturer and
+it is currently wrong on 70 cards; `brand_hidden` already exists and costs one flag. Then
+W25-05 covers the pictures. **(b) beats both if you know the answer** and it is one
+sentence from you.
+
+**The 17 real Phomi products are a separate matter and are blocked only on Q-W25-02**: the
+images exist, on Phomi's own domain, and measure about 459 x 398px.

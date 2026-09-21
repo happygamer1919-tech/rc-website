@@ -13,7 +13,7 @@
   "capture": {
     "wave": "W24",
     "opened": "2026-09-19",
-    "filled": 0
+    "filled": 27
   },
   "slots": [
     {
@@ -531,7 +531,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Tencuială decorativă Roko - Omítka Silikon\" (ROKO AquaMix), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0033.jpg",
+      "alt": {
+        "ro": "Tencuială decorativă siliconică ROKO AquaMix Omítka Silikon, găleata produsului",
+        "ru": "Силиконовая декоративная штукатурка ROKO AquaMix Omítka Silikon, ведро продукта"
+      }
     },
     {
       "id": "CAT-0034",
@@ -1067,7 +1072,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"35 Piece Stone\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0100.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi 35 Piece Stone, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi 35 Piece Stone, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0101",
@@ -1075,7 +1085,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Rough Surface\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0101.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Rough Surface, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Rough Surface, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0102",
@@ -1083,7 +1098,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Stone Alpes\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0102.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Stone Alpes, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Stone Alpes, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0103",
@@ -1091,7 +1111,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Oceanic Travertine\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0103.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Oceanic Travertine, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Oceanic Travertine, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0104",
@@ -1099,7 +1124,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Skyline\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0104.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Skyline, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Skyline, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0105",
@@ -1107,7 +1137,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Rome Travertine\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0105.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Rome Travertine, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Rome Travertine, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0106",
@@ -1115,7 +1150,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Ghana Travertine\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0106.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Ghana Travertine, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Ghana Travertine, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0107",
@@ -1123,7 +1163,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Concrete Pouring Slab\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0107.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Concrete Pouring Slab, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Concrete Pouring Slab, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0108",
@@ -1131,7 +1176,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Mount Celestial\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0108.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Mount Celestial, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Mount Celestial, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0109",
@@ -1139,7 +1189,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Marble\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0109.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Marble, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Marble, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0110",
@@ -1155,7 +1210,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Rusty Slab\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0111.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Rusty Slab, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Rusty Slab, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0112",
@@ -1171,7 +1231,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Devine Mushroom Stone\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0113.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Devine Mushroom Stone, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Devine Mushroom Stone, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0114",
@@ -1179,7 +1244,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Sawtooth Wood\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0114.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Sawtooth Wood, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Sawtooth Wood, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0115",
@@ -1187,7 +1257,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Original Wood\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0115.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Original Wood, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Original Wood, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0116",
@@ -1195,7 +1270,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Spliced Wood\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0116.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Spliced Wood, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Spliced Wood, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0117",
@@ -1203,7 +1283,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Rope Wave B\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0117.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Rope Wave B, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Rope Wave B, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0118",
@@ -1211,7 +1296,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Polished Wood 4.0\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0118.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Polished Wood 4.0, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Polished Wood 4.0, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0119",
@@ -1219,7 +1309,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Stackle Square 4.0\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0119.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Stackle Square 4.0, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Stackle Square 4.0, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0120",
@@ -1227,7 +1322,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Poly Wood\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0120.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Poly Wood, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Poly Wood, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0121",
@@ -1235,7 +1335,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Rammed Earth Wall\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0121.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Rammed Earth Wall, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Rammed Earth Wall, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0122",
@@ -1243,7 +1348,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Polished Stone\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0122.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Polished Stone, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Polished Stone, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0123",
@@ -1251,7 +1361,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Oman Linear Stone\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0123.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Oman Linear Stone, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Oman Linear Stone, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0124",
@@ -1259,7 +1374,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Chiseled Stone\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0124.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Chiseled Stone, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Chiseled Stone, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0125",
@@ -1267,7 +1387,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Bush Hammered\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0125.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Bush Hammered, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Bush Hammered, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0126",
@@ -1275,7 +1400,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Stone Ridged\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0126.jpg",
+      "alt": {
+        "ro": "Placă ceramică flexibilă Phomi Stone Ridged, textura suprafeței",
+        "ru": "Гибкая керамическая плитка Phomi Stone Ridged, текстура поверхности"
+      }
     },
     {
       "id": "CAT-0127",

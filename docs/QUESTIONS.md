@@ -2304,7 +2304,7 @@ that figure was taken before the slider settled at its final height.
 slider being measured before it settled, and a budget that was never a measurement of the
 shipped page is not a budget worth defending.
 
-## Q-W25-01 · WebP cannot be encoded on this machine, and every route to it is a new dependency · OPEN · opened 2026-09-20 (W25-01)
+## Q-W25-01 · WebP cannot be encoded on this machine, and every route to it is a new dependency · ANSWERED 2026-09-21 (W25-R2): JPEG only, no new dependency · opened 2026-09-20 (W25-01)
 
 **Shipped default: JPEG only, with the markup already written to carry WebP the day one
 exists. No dependency was added, because adding one needs your word.**
@@ -2350,7 +2350,7 @@ out when one does not. No template, no call site and no gate changes.
 and it is reversible by deleting a line. If you would rather not install anything, (a) is
 perfectly serviceable and the site is correct either way.
 
-## Q-W25-02 · The 800px source floor is what is emptying the catalogue, not the absence of manufacturer pages · OPEN · opened 2026-09-21 (W25-02)
+## Q-W25-02 · The 800px source floor is what is emptying the catalogue, not the absence of manufacturer pages · ANSWERED 2026-09-21 (W25-R2): floor 500, then 450 and final at W25-R3 · opened 2026-09-21 (W25-02)
 
 **Shipped default: the floor stands at 800px and every product under it stays a
 placeholder. W25-02 filled 1 slot of 35. This is the one number that changes that.**
@@ -2397,7 +2397,7 @@ not about accepting a wrong one.
 
 ---
 
-## Q-W25-03 · Two things about the research that you should decide, not me · OPEN · opened 2026-09-21 (W25-02)
+## Q-W25-03 · Two things about the research that you should decide, not me · ANSWERED 2026-09-21 (W25-R2): no Russian-domain source, brand-portal subdomains approved · opened 2026-09-21 (W25-02)
 
 **1. Penoplex is a Russian domain.** The only official source for `CAT-0006`
 (`Polistiren Penoplex`) is `penoplex.ru`. **R2 does not forbid it** and it is genuinely
@@ -2412,7 +2412,7 @@ allows, and it is where their product pages serve images from. Recorded here bec
 provenance row names a host that is not the one a reader would expect from the source page
 URL, and that should be a decision you saw rather than one you discover.
 
-## Q-W25-04 · Seventy of the 88 ceramic plates carry a manufacturer whose catalogue does not have them · OPEN · opened 2026-09-21 (W25-03)
+## Q-W25-04 · Seventy of the 88 ceramic plates carry a manufacturer whose catalogue does not have them · ANSWERED 2026-09-21 (W25-R2), then **VOID** 2026-09-21 (W25-R3): the count it ruled on was wrong and was never applied · opened 2026-09-21 (W25-03)
 
 **No default shipped. Nothing was filled and nothing was changed: this is a question about
 the data, and answering it wrongly would put the wrong photograph on 70 cards.**
@@ -2478,7 +2478,26 @@ sentence from you.
 **The 17 real Phomi products are a separate matter and are blocked only on Q-W25-02**: the
 images exist, on Phomi's own domain, and measure about 459 x 398px.
 
-## Q-W25-06 · I was wrong in W25-03: 51 of the 88 plates ARE Phomi products, not 17 · OPEN · opened 2026-09-21 (W25-03b)
+## Q-W25-05 · The real manufacturer of the ceramic plates Phomi does not make · ANSWERED 2026-09-21 (W25-R3): Ecofasad and Kordeko · opened 2026-09-21 (W25-03), written down 2026-09-21 (W25-03c)
+
+**This heading is late and that is the entry.** W25-R2 ordered "open Q-W25-05 'real
+manufacturer of the 70 plates', blocked on client". W25-03b did not write it, so a question
+the owner had asked for existed only inside another question's body for a day. It is
+written here at its own number, with its answer, rather than back-dated into silence.
+
+**The question.** Some of the 88 products in `placi-ceramice` carry `brand: "Phomi"` copied
+from the source, and are not in Phomi's catalogue. Who makes them?
+
+**The answer, from the owner, 2026-09-21:** the non-Phomi flexible ceramic plates come from
+**Ecofasad** and **Kordeko**. Both are treated as manufacturer official sites under W25-R1,
+and a Russian domain is reported rather than fetched, unchanged from Q-W25-03.
+
+**What it does not settle.** How many plates are theirs. That is measured against their own
+catalogues by W25-03d, after the full Phomi walk, and the settled counts per brand are
+reported there. The residual after all three catalogues is what takes `brand_hidden`, and
+nothing else does.
+
+## Q-W25-06 · I was wrong in W25-03: 51 of the 88 plates ARE Phomi products, not 17 · ANSWERED 2026-09-21 (W25-R3): the stop is ratified, option (b); walk all three catalogues, then rule once · opened 2026-09-21 (W25-03b)
 
 **Nothing was changed on the strength of this. `brand_hidden` was NOT applied to any
 plate, because W25-R2 ruled on a count I got wrong and the corrected count may still move.**
@@ -2538,7 +2557,7 @@ this shop's product.
 
 ---
 
-## Q-W25-07 · The 500px floor unlocks nothing; the real population sits at 343 to 492 · OPEN · opened 2026-09-21 (W25-03b)
+## Q-W25-07 · The 500px floor unlocks nothing; the real population sits at 343 to 492 · ANSWERED 2026-09-21 (W25-R3): option (c), 450, FINAL · opened 2026-09-21 (W25-03b)
 
 **Shipped default: the floor is 500 and the output 600, exactly as W25-R2 rules, with the
 499 negative test passing. It is correctly implemented and it changes no outcome.**
@@ -2567,3 +2586,57 @@ reason the number should be chosen from the measurements rather than from the ou
 **Recommended: (c).** It is the largest floor that unlocks anything, it clears 20 products
 rather than 2, and 450 into a 264px box is still above 1x. **Never upscaling is what makes
 any of these safe**: the pipeline writes a 459px source at 459, not stretched to 600.
+
+## Q-W25-08 · Ten manufacturers were never attempted, and they are 29 catalogue products · OPEN · opened 2026-09-21 (W25-03c)
+
+**Nothing is blocked on this and nothing was done about it.** It is scope, not a decision
+about the data, and it is raised because it is the largest remaining block of empty slots
+in the catalogue and it is not in any card's work order.
+
+W25-02 ran fourteen research agents, one per manufacturer, and **eleven stalled**. Three
+finished. The stall has never been retried, and the METHOD ruling at W25-R2 says sourcing
+is direct rather than by agents, so retrying it means a person-paced card.
+
+| Manufacturer | Products | State |
+|---|---|---|
+| Caparol | 15 | unattempted; `www.caparol.md` answers 200, and W23-04 already records a permission for Caparol |
+| Baumit | 5 | unattempted; `baumit.md` answers 200 |
+| FAWORI, NOVOTERM, KREISEL, Ceresit, ISOMAT, STANCOLAC | 1 each | unattempted |
+| SWEETONDALE | 2 | attempted, host failed TLS certificate verification |
+| IZOVAT | 1 | unattempted |
+
+That is **29 products**, counted from `content/catalog-products.json` with the filled, the
+measured-and-refused and the Russian-domain ones taken out. Caparol alone is 15 and
+carries its own permission already. At the rate this card measured, most of them will clear a 450px floor.
+
+  (a) **A card, W25-03e, after the wave's current order.** Recommended. It is ordinary
+      W25-02 work at the settled floor, direct and unagented, and it is the biggest single
+      block of catalogue slots left.
+  (b) **Fold it into W25-05** and generate them instead. Not recommended: these
+      manufacturers publish real pack shots, and W25-R2 already prefers a photograph.
+  (c) **Leave them.** They stay grey.
+
+**Recommended: (a).** No default is shipped; nothing here changed the tree.
+
+## Q-W25-09 · The gate runner lives in a scratch directory, which is why the count went stale · OPEN · opened 2026-09-21 (W25-03c)
+
+**Shipped default: the runner is written out in full on the W25-03c board card, and a card
+reports the number it measured.** That is a habit, not a mechanism, and habits are what
+produced four cards reporting "19 of 19" while `quality` ran 21 commands.
+
+The full note is on the card. The short of it: the list of gate commands a terminal runs
+locally has never been committed. It is retyped from `quality.yml` each session, it went
+stale when gates 21 and 22 landed, and a board card then asserted coverage it did not have.
+
+  (a) **Commit `scripts/run-gates.sh`**, generated from nothing and maintained by hand
+      beside `quality.yml`. Cheap, and it can drift from `quality.yml` in the same way.
+  (b) **Commit `scripts/run-gates.js` that READS `quality.yml`** and runs exactly the
+      steps it finds, in order, each its own process, printing the count. It cannot drift,
+      because there is one list and CI owns it. It parses a small, fixed shape of YAML with
+      no dependency, which this repo has done before for other formats.
+  (c) **Leave it.** The card writes out its runner and the owner reads the count.
+
+**Recommended: (b).** The defect was a second copy of a list going stale, and (b) deletes
+the second copy. It also makes "N of N" a number the repo computes rather than one a
+terminal remembers.
+

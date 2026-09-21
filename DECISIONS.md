@@ -10296,3 +10296,138 @@ confirms `CAT-0010`, taken from `brandportal.rockwool.com`.
 **The method.** Sourcing is direct. The fourteen-agent run that stalled eleven times is not
 repeated, and the split between researching a URL and fetching it stays: on W25-02's three
 researched candidates, **two were unusable and only the guard caught them**.
+
+## W25-R3 · The owner's wave 25 answers, third set, recorded verbatim, 2026-09-21
+
+Recorded at the owner's instruction, from the W25-03c dispatch, before the card was
+worked. `origin/main` is `8a966f649095e29ad30d9c30055771c9027d2c8f`, with #93 merged, and
+section 12.0's check on that sha returned `node scripts/verify-live.js` **exit 0, PASS, 0
+unverified, 0 failed, 51 of 51 pages, 39 reachable URLs crawled**.
+
+### The answers, as given
+
+> **Q-W25-05 CLOSED.** Mihai answered: the non-Phomi flexible ceramic plates come from
+> Ecofasad and Kordeko.
+>
+> **Q-W25-06:** your stop is ratified. The "70 plates" ruling is void. Finish walking the
+> full Phomi catalogue (all ranges incl. brick, weaving, leather, and product codes like
+> Y001-01-02, HY001, H06). Then match the residual against the official sites of Ecofasad
+> and Kordeko (approved origin: manufacturer official site). If an official site is on a
+> Russian domain, do not fetch, report it. Set real brand per matched plate. Apply
+> `brand_hidden` only to plates unmatched after all three catalogues. Report the final
+> settled counts per brand.
+>
+> **Q-W25-07:** intake floor is 450, final, will not move again. Never upscale, output at
+> native size up to 600. Below 450 stays placeholder.
+>
+> **Swatch rule:** images with a burned-in name label are not used as is. Crop the label
+> only if both sides remain 450 or more after crop, else placeholder. A family image never
+> fills a colour-variant card.
+
+### What each one changes
+
+**The 70-plate ruling is void.** W25-R2's `Q-W25-04 CLOSED` line ordered `brand_hidden` on
+70 plates. That order rested on a count this terminal got wrong, it was never applied, and
+it is now withdrawn by the owner. **Nothing in the repo carried it**, which is why
+withdrawing it changes no file: W25-03b stopped before applying it, and that stop is the
+thing ratified here. The record stays in place under R-S; this block is what supersedes it.
+
+**Brand is settled by three catalogues, in order.** Phomi first, walked in full rather than
+by its category listing pages, then Ecofasad, then Kordeko, each on its own official site.
+`brand_hidden` is the residual after all three and nothing else. A plate matched in a
+catalogue takes that manufacturer as its real `brand`, replacing the `Phomi` the source
+stated. That is a correction to what the site claims, not a cosmetic change.
+
+**A Russian domain is reported, never fetched.** Unchanged from Q-W25-03: the rule already
+cost `CAT-0006` its packshot. It now applies to a whole manufacturer if either Ecofasad or
+Kordeko publishes only on `.ru`, and the report names it rather than working around it.
+
+**The floor is 450 and will not move again.** `SOURCE_FLOOR` goes 500 to 450 in
+`scripts/process-packshot.js`; `OUTPUT` stays 600; nothing is ever upscaled. The owner's
+"final" is recorded here so no later card re-opens it on new measurements: a source under
+450 is a placeholder, and the reason is the product's publisher, not this build.
+
+**A burned-in name label disqualifies the image as it stands.** This is new and it is a
+rule about the picture, not about its pixels. The catalogue card already prints the product
+name underneath, in Romanian; a photograph with an English name baked into it would print
+the name twice and the baked one is unfixable. The escape is a crop, and the crop is
+allowed **only where both sides still measure 450 or more afterwards**, which makes it a
+measurement rather than a judgement. Otherwise the slot stays a placeholder under W25-R4.
+
+**A family image never fills a colour-variant card.** Phomi publishes one image per family
+(`Rome Travertine`) and separate swatches per colour (`Kamu Red`). Filling 33 variant cards
+with their family's picture would put one photograph on cards the shop sells as different
+products, which is the near-match W25-R4 forbids, arriving by a different route.
+
+## W25-03c · The floor moves to 450, twenty-six slots fill, and the gate count was wrong, 2026-09-21
+
+**Card W25-03c.** PR only, stops for the owner. Stacked on `main` at `8a966f6`, whose
+section 12.0 run returned `node scripts/verify-live.js` exit 0, PASS, 0 unverified, 0
+failed, 51 of 51 pages. The full card is `docs/board/W25-03c-intake-450.md`.
+
+### What filled
+
+**Slots filled: 1 of 261 before, 27 of 261 after.** 25 Phomi flexible ceramic plates at
+459x398 (one 458x398) and `CAT-0033` ROKO AquaMix Omítka Silikon at 492x400, all from the
+manufacturer's own site, all looked at by a person, none upscaled, none carrying metadata.
+
+**The family count moved from 18 to 25 because the catalogue walk was finished.** Four of
+the seven new ones live on top-level Phomi pages under no range, which is why walking the
+ranges missed them. And `CAT-0111` "Rusty Slab" survives only because Phomi's category card
+is titled "Rusty Slab" while its product page is headed "Rusty Stone": the manufacturer
+names one product two ways, and reading only the product pages would have made it a
+near-match install.
+
+### What refused, each on a measurement
+
+| What | Count | Measured | Short by |
+|---|---|---|---|
+| Phomi colour variants, burned-in English name | 60 | 650x450 | no crop removes the label leaving both sides at 450 |
+| ROKO Omítka Rokomozaiková `CAT-0038` | 1 | 423x400 | 27px |
+| DURAZIV `CAT-0032`, `CAT-0037` | 2 | 343x335 | 107px |
+| Plates in no catalogue yet | 3 | not applicable | `CAT-0051`, `CAT-0060`, `CAT-0077`, to W25-03d |
+
+**The swatch crops were measured, not assumed.** On `Kamu Yellow`: a bottom crop needs
+130px to clear the label and leaves 650x320; a left crop needs 300px and leaves 350x450.
+90px and 260px leave the label partly visible. Both directions refuse.
+
+### What now holds the rules
+
+`scripts/process-packshot.js`: `SOURCE_FLOOR` 450 (final), `--crop t,r,b,l` asserting both
+post-crop sides at 450 or more, and `--label` refusing an image used as is. Eight arms
+watched, and the crop proved directional by differing bytes for a left versus a right
+removal.
+
+`scripts/check-photo-slots-w24.js` (gate 19): **two filled slots must not stand on the same
+picture**, read both as a shared file path and as a shared source image URL, which is
+"a family image never fills a colour-variant card" in a form a machine can hold. Two new
+self-test arms between the two controls, 10 arms in all.
+
+### The gate count, which the owner asked about
+
+`docs/CLAUDE.md` section 11 numbers **22** gates. `quality` runs **21 commands**: 17
+numbered gates that are scripts, plus `check-asset-provenance.js`, `check-scarcity.js`,
+`check-catalog-pages.js` and `check-origin.js`, which have no numbers. Five numbered gates
+are not scripts at all: 4, 6, 7, 8 and **9**, which section 12.0 runs after the merge.
+
+W25-01, W25-02, W25-03 and W25-03b each reported **19 of 19**. The two commands missing
+were **gate 21, `verify-live.js --self-check`** and **gate 22,
+`check-css-collisions.js`**. The last enumerated list in this file is W23-07's, and it is
+17 commands; plus gate 19 (W24-01) and gate 20 (W24-09) that is exactly 19, and the runner
+never grew when gates 21 and 22 landed at W24-09a and W24-09b. **`quality` ran them on
+every pull request**, so the branch was checked; the report was not true.
+
+**W24-10's "19 of 19 exit 0, gates 20, 21 and 22 included" was false for 21 and 22**, and
+it is the worst shape of wrong entry, because it names the gates it does not cover.
+Q-W25-09 asks for the runner to be committed and generated from `quality.yml`, which is the
+only form that cannot go stale a second time.
+
+### Recorded for ratification
+
+1. **`CAT-0118` and `CAT-0119` matched with their "4.0" suffix dropped**, Phomi's own pages
+   being "Polished Wood" and "Stackle Square".
+2. **A Phomi provenance row names the product's canonical page as its source page**, while
+   the image is the card image Phomi publishes for it on the range page. Both on
+   `phomi.com`, both in the row.
+3. **The pack lettering on `CAT-0033` and `CAT-0010` is not a burned-in name label.** It is
+   printed on the product. The swatch rule is about a name laid over a photograph.

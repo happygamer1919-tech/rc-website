@@ -805,6 +805,21 @@ const catalogHref = (entry, l, where) => {
   return /^https?:\/\//.test(h) ? h : BASE + h;
 };
 
+/* W25-09. One link-arrow to a catalogue category page, built from
+   content/catalog.json's own label and href. Used by the service and product
+   pages that the dispatch asks to reach the new roofing category. It dies rather
+   than guessing if the slug is not in the file, because a silently missing link
+   is exactly the orphan this exists to prevent. */
+function catalogLinkArrow(l, slug) {
+  const i = CATALOG.categories.findIndex((c) => (c.href && c.href.ro) === `/catalog/${slug}/`);
+  if (i < 0) die(`catalogLinkArrow: no category in ${CATALOG_FILE} opens /catalog/${slug}/.`);
+  const where = `${CATALOG_FILE}: categories[${i}]`;
+  const label = esc(catalogField(CATALOG.categories[i], 'label', l, where));
+  const href = catalogHref(CATALOG.categories[i], l, where);
+  return `
+    <a class="link-arrow" href="${href}" data-reveal style="margin-top: 16px;">${label}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>`;
+}
+
 function catalogMenu(l) {
   if (CATALOG.categories.length === 0) return '';
   const chevron = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg>';
@@ -1302,6 +1317,13 @@ function roofOffers(l) {
   const tigla = PRODUCT_PAGES.find((p) => p.parent === 'acoperisuri');
   const toTigla = tigla ? `
     <a class="link-arrow" href="${BASE}${SERVICES_ROOT[l.code]}${tigla.slug}/" data-reveal style="margin-top: 32px;">${esc(l.strings[`pages.${tigla.key}.title`])}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>` : '';
+  /* W25-09. And a second link, to the roofing materials in the catalogue. The
+     dispatch asks for the seven new pages to be reachable from this hub, and
+     until now nothing here opened the catalogue at all. Label and href both come
+     from content/catalog.json, so no string is invented and the link cannot
+     disagree with the menu. `.link-arrow` is reused deliberately: rule 3.1 says a
+     new prefix is a risk and this needs no new block. */
+  const toCatalog = catalogLinkArrow(l, 'materiale-acoperis');
   return `<section class="section section--light section--divided" id="acoperisuri" aria-labelledby="acoperisuri-h">
   <div class="container">
     <p class="eyebrow" data-reveal>${esc(s('eyebrow'))}</p>
@@ -1309,7 +1331,7 @@ function roofOffers(l) {
     <p class="lede" data-reveal>${esc(s('lede'))}</p>
     <div class="offers">
 ${cards}
-    </div>${toTigla}
+    </div>${toTigla}${toCatalog}
   </div>
 </section>
 `;
@@ -1666,13 +1688,18 @@ function tiglaGrid(l) {
         <h3 class="tile__name">${esc(m.name[l.code])}</h3>${media}${variants}
       </article>`;
   }).join('\n');
+  /* W25-09. This page shows the tile MODELS. The catalogue now also carries the
+     roofing materials, including the tiles Dasterum supplies, and the dispatch
+     asks for that page to be reachable from here. Same `.link-arrow`, same
+     source of truth: content/catalog.json. */
+  const toCatalog = catalogLinkArrow(l, 'materiale-acoperis');
   return `<section class="section section--light section--divided" id="tigla-metalica" aria-labelledby="tigla-h">
   <div class="container">
     <p class="eyebrow" data-reveal>${esc(t('eyebrow'))}</p>
     <h2 id="tigla-h" data-reveal>${esc(t('h2'))}</h2>
     <div class="tiles">
 ${cards}
-    </div>
+    </div>${toCatalog}
   </div>
 </section>
 `;
@@ -1977,6 +2004,15 @@ const PARENT_CATEGORIES = [
   { slug: 'vopsele',              i: 4, service: 'finisaje' },
   { slug: 'sisteme-iluminare',    i: 5, service: 'instalatii' },
   { slug: 'alte-materiale',       i: 6, service: 'case-la-cheie' },
+  /* W25-09. The eighth category, and the first whose records come from a direct
+     supplier rather than the reference site: Dasterum's seven roofing groups,
+     71 products, under W25-R7. Its service is `acoperisuri`, which is the page
+     that already says what Rapid Construct does with them.
+     ITS SLUG IS NOT `acoperisuri`: that is taken by the service page, and a
+     category slug that collided with a service or product slug would write one
+     page over another silently, which build.js refuses. The LABEL is
+     "Acoperișuri"; only the URL segment differs. */
+  { slug: 'materiale-acoperis',   i: 7, service: 'acoperisuri' },
 ];
 
 /* W24-04, finding F-03. Every subcategory gets a real page of its own, under its

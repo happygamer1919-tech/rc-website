@@ -10732,3 +10732,81 @@ publishes that file, and it is noted rather than corrected.
    Q-W25-13's situation arriving in a second category.
 3. **Ceresit's file comes from `dm.henkel-dam.com`**, Henkel's own asset domain, published
    by `ceresit.md`.
+
+## W25-09 · Dasterum's seven roofing categories, walked and copied, 2026-09-21
+
+**Card W25-09.** PR only, stops for the owner. Stacked on
+`w25/w25-08-manufacturer-packshots`. Text data only; **no Dasterum image enters the repo on
+this card**, which is W25-10 under W25-R7. The full card is
+`docs/board/W25-09-dasterum-data.md`.
+
+### Walked against copied
+
+**76 listings, 76 copied, 71 distinct products.** Țiglă metalică 4, Profnastil 8,
+Hidroizolație 22, Sistem de scurgere 14, Elemente suplimentare 19, Elemente de siguranţă 3,
+Elemente de fixare 6. **Nothing skipped, no category empty or 404.** The five-listing gap is
+three products Dasterum files under two categories each. Every category was read in full:
+the listing paginates at 24 and every one is under that, checked by asking for 200 and
+getting the same count back.
+
+### Eight new pages, and why the URL is not `/catalog/acoperisuri/`
+
+`acoperisuri` is the existing service page's slug, and `build.js` refuses a category slug
+that collides with a service or product slug because one page would write over the other
+silently. **The parent is `/catalog/materiale-acoperis/` and the label a visitor sees is
+"Acoperișuri".** Every existing URL is untouched. Seven subcategories under it, both
+locales, sixteen pages.
+
+Linked from `/servicii/acoperisuri/` and `/servicii/tigla-metalica/`, both reusing
+`.link-arrow` because **rule 3.1 makes a new prefix a risk and this needs no new block**.
+Label and href come from `content/catalog.json` through one helper that dies rather than
+guessing.
+
+### Prices, under W25-R8
+
+Dasterum's markup carries a current price, an `old-price` and a `-28%` sticker. **Only the
+current one is read.** Six listings carry a discount badge and an old price and neither was
+copied.
+
+### The Russian text
+
+**Dasterum publishes no Russian product page**: 11 `/ru/` URLs in its sitemap, none a
+product, and all 71 `/ru/<slug>/` answer 404. So the dispatch's fallback applies exactly:
+**names kept verbatim in both locales, no copy invented**. The category's own three
+paragraphs are new authored copy in both locales, which is what W17-02 permits and
+`build.js` requires.
+
+### No brand line
+
+The 71 records carry **no brand**. Dasterum is the supplier, not the manufacturer, and
+W17-02's gate in `build.js` refuses the string outright. It lives in each record's `source`.
+
+### The dash
+
+Dasterum writes some names with an em dash, which this dispatch forbids anywhere while also
+requiring names to be kept. **Every word is kept and only the punctuation changed**, to a
+comma: 62 characters across 61 names and one ledger row.
+
+### Budgets and the ledger
+
+Measured plus 60 under W24-R4, recorded in `docs/rulings/R-Y.md`. The parent page is
+**11,857px**, the tallest in the catalogue, which is W24-R4's third standing exception.
+`/servicii/tigla-metalica/` **re-measured against a control**, the same build with the links
+removed: +39px, budget 4,000 to 4,039 RO and 4,033 to 4,072 RU. `/servicii/acoperisuri/`
+**did not move at all** and its budget is untouched.
+
+**72 placeholder ledger rows land on this card** (`CATEG-08`, `CAT-0224` to `CAT-0294`)
+rather than on W25-10, because `build.js` refuses to render a placeholder whose slot has no
+row. They ship `placeholder` and W25-10 fills them.
+
+`verify-live.js`: `catTiles` 7 to **8**, asserted rather than relaxed, and sixteen new
+`PAGES` rows with their budgets. The self-check reads 67 pages.
+
+### Recorded for ratification
+
+1. **The URL segment is `materiale-acoperis`**; the label is unchanged.
+2. **RU product names are the RO strings verbatim**, per the dispatch.
+3. **The 72 ledger rows land here**, because `build.js` will not render a placeholder
+   without one.
+4. **The records carry no brand.**
+5. **Em dashes in copied product names became commas**, every word kept.

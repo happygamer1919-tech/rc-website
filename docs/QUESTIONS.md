@@ -2719,7 +2719,7 @@ product the shop actually sells. That is yours, not mine, and W25-R4 forbids a n
 
 **Recommended: (a).** If the answer is no, (c) stands and nothing is lost.
 
-## Q-W25-12 · 89 of the 126 prompts are for products whose appearance is not in the records · OPEN · opened 2026-09-21 (W25-05)
+## Q-W25-12 · 89 of the 126 prompts are for products whose appearance is not in the records · **ANSWERED 2026-09-21 (W25-R9): option (d), no AI image where the appearance is not in the records** · opened 2026-09-21 (W25-05)
 
 **Shipped default: the prompts are written and every one of the 89 is marked `appearance:
 not in the records` in the pack.** Nothing is generated and nothing is installed by this
@@ -2851,4 +2851,42 @@ range.
 
 **Recommended: (a) now, and (c) if you want it closed.** Nothing fills today either way,
 because the identity question stands on its own.
+
+## Q-W25-15 · One row in 67 came back unrendered, and gate 9 has no median · OPEN · opened 2026-09-21 (W25-12)
+
+**Shipped default: nothing. The site is fine and this is about the instrument.**
+
+Section 12.0's run on `2df8033`, after #98 to #102 merged, was executed three times:
+
+| Run | Result | `sub RU eps` |
+|---|---|---|
+| 1 | **FAIL, 1 unverified, 0 failed** | **UNVERIFIED, 900px, promoBar 0, productCards 0** |
+| 2 | PASS, 0 unverified, 0 failed | VERIFIED, 3,464px |
+| 3 | PASS, 0 unverified, 0 failed | VERIFIED, 3,464px |
+
+**The page is not broken.** `/ru/catalog/termoizolatie/polistiren-expandat/` answers 200 with
+37,555 bytes of the right template on the edge, its RO twin passed in all three runs, and
+the two clean runs agree to the pixel. A 900px page with no promo bar and no product card is
+what a page measures **before its stylesheet has applied**: the read happened early, once.
+
+**Why it matters anyway.** Gate 9 is the gate the owner asked for by name, and it is the one
+that finds what the other twenty-three cannot. **A single run can produce a false red on one
+row in 67**, and a false red costs as much trust as a false green. W24-09 already learned
+that with 51 spurious `build-sha mismatch` rows from a short sha.
+
+**Gate 5 has already solved this exact shape.** W21-02 made Lighthouse audit each page three
+times and judge the MEDIAN of each category, because one noisy run could fail the build and
+two agreeing bad runs still should. `verify-live.js` reads each page once.
+
+  (a) **Re-read only a page that comes back unverified**, up to twice, and report all
+      readings. Cheap: it costs nothing on a clean run, which is almost every run, and it
+      cannot hide a real failure because a real failure reproduces. **Recommended.**
+  (b) **Read every page three times and judge the median**, exactly as gate 5 does.
+      Strictly better evidence and roughly three times the wall clock on 67 pages.
+  (c) **Leave it** and re-run by hand when a single row comes back odd, which is what
+      happened here.
+
+**Recommended: (a).** It is the smallest change that removes the false red, and it keeps the
+run honest by printing every reading rather than the best one. (b) is right if gate 9 ever
+starts failing for reasons nobody can reproduce.
 

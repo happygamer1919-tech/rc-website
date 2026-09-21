@@ -10897,3 +10897,69 @@ that cost. **This is the first budget this build has lowered.**
 1. **The price replaces "Preț la cerere"** rather than sitting beside it, with a fallback.
 2. **`.nvk__price` is a new class**; the first attempt was refused by RC-129.
 3. **Two budgets were lowered.**
+
+## W25-12 · The review list the owner reads, and a priority batch of eight, 2026-09-21
+
+**Card W25-12.** PR only, stops for the owner. Rebuilt on `main` at `2df8033` after #98 to
+#102 merged. The full card is `docs/board/W25-12-photo-review.md`.
+
+### The review list is a gate, not a document
+
+`docs/PHOTO-REVIEW-W25.md`: **160 rows in table one, 162 in table two**, across Catalog,
+Acoperisuri and Garduri.
+
+**W25-R5 permits a photograph with a burned-in product name on condition that each one is
+flagged in this list, and W25-R7 permits a Dasterum image on condition that its watermark
+stays as published.** A list that had drifted from the ledger would make both permissions
+unverifiable, so it is generated from four data files and held by **gate 24**,
+`gen-photo-review-w25.js --check`.
+
+**No flag is typed.** "labelled swatch" is read from the settlement's `level` being
+`variant`, "watermark" from the licence being the `direct_supplier` origin, "low confidence"
+from the tier not being `A-exact`. 47, 71 and 7 rows respectively, 42 plain.
+
+**160 rows and not the dispatch's 133**: the other 27 were installed by the previous
+dispatch and have never been through a review list either. The flag columns tell them apart.
+
+### Table two gives every empty slot a reason
+
+142 in Catalog, 8 in Acoperisuri, 12 in Garduri, each traceable to a card or a ruling. **The
+eight `GARD-` model cards read "real photo from owner project set"**, exactly as the
+dispatch specifies, and they are removed from the prompt pack on that ground so nothing
+generates a fence a real photograph is coming for.
+
+### The prompt pack
+
+**W25-R9 applied**: Q-W25-12 closed at option (d), **89 entries removed**, the 25 lamps and
+the 64 mouldings, including the 25 this terminal had recommended generating. The generator
+**dies** if such an entry ever survives, so the ruling cannot quietly lapse.
+
+**PRIORITY BATCH first**: `ACOP-01` to `ACOP-04` and `GARDB-01` to `GARDB-04`, in their own
+labelled block at the top, with the generator dying if the batch names a slot the pack does
+not carry.
+
+The pack shrank from 126 entries to **30**: 89 to W25-R9, 8 to the owner-photo reason, and
+the rest because **160 slots now hold a real photograph**.
+
+### Recorded for ratification
+
+1. **The review list is a gate**, because two rulings make a flag in it part of a permission.
+2. **160 rows, not 133.**
+3. **The prompt pack's generator dies rather than warns** on a W25-R9 entry and on a missing
+   priority slot.
+
+### W25-12 addendum · gate 24 depended on macOS, and CI said so, 2026-09-21
+
+Gate 24's first version read image dimensions by shelling out to **`sips`, which is macOS
+only**. It passed on the workstation and **failed in CI on its first run**: on Linux every
+call threw, every row read "unreadable", and the generated text stopped matching the
+committed file.
+
+**Gate 22's lesson in a new place.** `check-css-collisions.js` was rewritten once because it
+depended on the clone depth of whoever ran it; this depended on the operating system. A gate
+that does not run everywhere does not run.
+
+It now reads the dimensions from the file's own bytes: the PNG IHDR chunk, or a walk of the
+JPEG segments to a start-of-frame marker. Zero dependency. **Cross-checked against `sips` on
+six files spanning every size the repo holds** (488x488, 600x415, 459x398, 800x600, 361x600,
+450x282): six of six match.

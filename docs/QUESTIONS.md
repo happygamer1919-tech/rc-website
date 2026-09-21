@@ -2349,3 +2349,65 @@ out when one does not. No template, no call site and no gate changes.
 **Recommended: (b).** It is one binary on one machine, it changes no property of the repo,
 and it is reversible by deleting a line. If you would rather not install anything, (a) is
 perfectly serviceable and the site is correct either way.
+
+## Q-W25-02 · The 800px source floor is what is emptying the catalogue, not the absence of manufacturer pages · OPEN · opened 2026-09-21 (W25-02)
+
+**Shipped default: the floor stands at 800px and every product under it stays a
+placeholder. W25-02 filled 1 slot of 35. This is the one number that changes that.**
+
+The dispatch asks for packshots at "longest side 800px". `scripts/process-packshot.js`
+therefore refuses a source under 800px, because upscaling a 343px image to 800 invents
+detail that was never photographed. That refusal is doing almost all of the rejecting.
+
+**Measured, on the manufacturers' own official pages:**
+
+| Manufacturer | Product | Their own packshot | Verdict |
+|---|---|---|---|
+| ROCKWOOL | Rockton Super | **800 x 600** | **filled** |
+| DURAZIV | Standard cu Silicon TDS | 343 x 335 | refused, too small |
+| DURAZIV | Clima Protect cu Kauciuc | 343 x 335 | refused, too small |
+| ROKO AquaMix | Omítka Silikon | 492 x 400 | refused, too small |
+| ROKO AquaMix | Omítka Rokomozaiková | under floor | refused, too small |
+
+**In every one of those cases the image was correct in every other way**: the
+manufacturer's own site, the right product, the right pack size, the product alone on a
+plain background, no watermark, no retailer logo, no face. They were refused on pixels
+alone. DURAZIV publishes no larger original: the same 343px file is reused across its
+category and campaign pages and its media API is closed.
+
+**What 800px is actually for.** At 1440px the catalogue grid is four columns in a
+1,152px container, so a card's image box is about 264px wide. At 2x device pixel ratio
+that is 528px. **800 is generous, and 528 would be indistinguishable on the devices this
+site is read on.** The 800 in the dispatch is an output target that became an input floor.
+
+  (a) **Keep 800** (shipped). The safest pixels, and most of the catalogue stays grey.
+  (b) **Lower the source floor to 500px and keep the 800px output**, letting a 500px
+      source upscale by 1.6x. Slightly soft at 2x on a large screen; invisible at 1x.
+  (c) **Lower the floor to 500px AND the output to 600px.** Nothing is upscaled at all,
+      files get smaller, and the box still has more pixels than it paints at 2x.
+  (d) **Case by case**, with each undersized image looked at before it is accepted.
+
+**Recommended: (c).** It is the only option that fills the slots without inventing a
+single pixel, and the arithmetic above says the site cannot show the difference. It is a
+two-constant change in one script.
+
+**This does not touch any other rule.** R2's forbidden hosts, the never-origins, and
+W25-R4's "never a near match" are untouched: this is about the size of a correct image,
+not about accepting a wrong one.
+
+---
+
+## Q-W25-03 · Two things about the research that you should decide, not me · OPEN · opened 2026-09-21 (W25-02)
+
+**1. Penoplex is a Russian domain.** The only official source for `CAT-0006`
+(`Polistiren Penoplex`) is `penoplex.ru`. **R2 does not forbid it** and it is genuinely
+the manufacturer. But this is a Moldovan company's public site in Romanian and Russian,
+and whether to host an image fetched from a `.ru` domain is a business decision about
+your market, not a technical one. **Nothing was fetched from it** (the URL returned HTML
+rather than an image anyway). Say the word either way.
+
+**2. ROCKWOOL's packshot came from `brandportal.rockwool.com`, not `www.rockwool.com`.**
+That is ROCKWOOL's own brand asset portal on their own registrable domain, which R1
+allows, and it is where their product pages serve images from. Recorded here because the
+provenance row names a host that is not the one a reader would expect from the source page
+URL, and that should be a decision you saw rather than one you discover.

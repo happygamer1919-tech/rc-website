@@ -10618,3 +10618,63 @@ mouldings.
 2. **`NVK-01` to `NVK-04` are held as named tile products.** The plan listed them as pack
    entries; W25-R2 postdates the plan.
 3. **Q-W25-10's option (a) is withdrawn** as contradicting W25-R2. Amended, not rewritten.
+
+## W25-07 · Forty-seven labelled swatches installed, and eleven cards the rule will not let me fill, 2026-09-21
+
+**Card W25-07.** PR only, stops for the owner. Stacked on `main` at `804768b`, with #94 to
+#97 all merged and confirmed ancestors. Section 12.0 on that sha: `verify-live.js` **exit 0,
+PASS, 0 unverified, 0 failed, 51 of 51**. The full card is
+`docs/board/W25-07-phomi-swatches.md`.
+
+### The rulings
+
+The six rulings of this dispatch are recorded verbatim in the new
+**`docs/rulings/W25-R.md`**, the register of the `W25-R` ids, as **W25-R5 to W25-R10**.
+**The next free id was R5, not R4**: `W25-R4` is the fourth ruling of 2026-09-20 and is
+cited by number in five places. The register also resolves a collision already in this
+file, where the blocks headed `W25-R2` and `W25-R3` are ANSWER SETS and not the rulings of
+those numbers. Nothing is renumbered; R-S makes those bodies immutable.
+
+### What filled
+
+**27 of 261 before, 74 of 261 after.** Ceramic plates **25 of 88 to 72 of 88**. 47 Phomi
+colour swatches, 650x450 at source, written at 600x415 because the longest side exceeds the
+output and nothing is upscaled.
+
+**Looking at them verified the brand settlement a second time.** Phomi prints the product
+name into each swatch, so the contact sheet was 47 independent readings of a match settled
+from file names, and **47 of 47 agree**, including Loki Mountain Light/Medium Grey against
+our "Mountain Light/Medium Grey", Roman Red against "Romam Red", Aegean White against
+"Agean White", Fawn Gray against "Fawn Grey", Autumn Yellow against "Autumn", and
+`Y001-01-02` printed exactly.
+
+### W25-R5 in the tool
+
+`--label` no longer refuses: it records what the person saw and prints the flag, which is
+what `docs/PHOTO-REVIEW-W25.md` will list. `--crop` and its post-crop floor are unchanged
+and were re-watched, control either side: 449 refused, `--label` alone now exit 0, a crop to
+650x390 still refused naming the 60px shortfall, a crop to 450x450 still accepted.
+
+### The eleven the ratified rule holds, and why it is refusing a correct install
+
+Ten Phomi swatches are each the correct picture for more than one of our records, because
+**the records are the same tile face in different sheet sizes**: Portoro is "de la 680 lei"
+on one and "3.806 lei / bucata" at 2400x1200 on the other; Loki Mountain Light Grey is three
+records at 1200x600, 1200x600 and 2700x1200. **Phomi publishes one swatch per colour, not
+one per size.**
+
+Gate 19's one-picture-one-card rule compares FILES, so it cannot tell this from the case it
+was written for, which is a family image standing in for 33 different colours. **The picture
+went on the first record of each group and the other eleven stay grey**, which publishes
+nothing wrong. **Q-W25-13** recommends letting the gate compare the product rather than the
+file, and puts merging the records as the owner's alternative.
+
+`CAT-0110` and `CAT-0112` are held for a different reason: "Polish Concrete Wall" exists on
+Phomi only as colours, our records name none, and picking one would be W25-R4's near match.
+
+### Recorded for ratification
+
+1. **`docs/rulings/W25-R.md` is a new file.** The dispatch asked for "the repo rulings file"
+   and that directory had no W25 file.
+2. **The next free id was W25-R5.**
+3. **Eleven slots were left grey rather than sharing a picture.** Q-W25-13.

@@ -2758,3 +2758,47 @@ Kordeko, who photographs all 59 of theirs. The 25 lamps are the case where an il
 picture is honest enough, because a plain outdoor wall lantern is what the customer is
 buying.
 
+## Q-W25-13 · One Phomi picture is the correct picture for eleven more cards, and the rule you ratified this morning forbids it · OPEN · opened 2026-09-21 (W25-07)
+
+**Shipped default: the picture went on the first record of each group and the other eleven
+cards stay grey.** Nothing wrong is published. Eleven cards are simply as they were.
+
+Gate 19 holds "two filled slots must not stand on the same picture", which you ratified
+today. It is the machine form of "a family image never fills a colour-variant card", and it
+has now decided something on real data for the first time.
+
+**What it caught, and why it is not what the rule was written for.** Ten Phomi swatches are
+each the correct picture for more than one of our records, because **the records are the
+same tile face in different sheet sizes**:
+
+| Phomi picture | Our records | Sizes and prices |
+|---|---|---|
+| Loki Mountain Light Grey | `CAT-0044`, `CAT-0045`, `CAT-0086` | 1200x600 at 669 lei, 1200x600 at 529 lei, 2700x1200 at 3.486 lei |
+| Portoro | `CAT-0069`, `CAT-0099` | de la 680 lei, and 2400x1200 at 3.806 lei |
+| Medium Grey | `CAT-0056`, `CAT-0078` | 1200x600 at 683 lei, and de la 602 lei |
+| Blue Grey | `CAT-0046`, `CAT-0070` | 1200x600 at 632 lei, and de la 998 lei |
+| Ink Dyed, Sunis White, Andes Yellow, Veil Dark Grey, Sairo Off White, Roman Red | two records each | |
+
+**Phomi publishes one swatch per colour, not one per size.** A 1200x600 sheet of Portoro and
+a 2400x1200 sheet of Portoro are the same surface photographed once. So the same picture
+genuinely is the right picture for both, and the rule is refusing a correct install.
+
+The rule was written to stop a FAMILY image standing in for 33 different colours. It cannot
+currently tell that case apart from this one, because it compares files rather than
+products.
+
+  (a) **Let gate 19 compare the product, not the file.** Two filled slots may share a
+      picture when their catalogue records carry the same product name and differ only in
+      the size variant; otherwise the refusal stands exactly as now. Eleven cards fill
+      today. **Recommended.** It keeps the rule doing the job it was written for and stops
+      it doing a job it was not.
+  (b) **Merge the eleven records into their siblings** as size variants of one product.
+      Cleaner catalogue, and the price line becomes "de la" across sizes. It is a product
+      decision about what you sell and how, so it is yours, and it is a bigger change than
+      it looks: eleven records, eleven slots and eleven prices.
+  (c) **Leave them grey.** The rule stays absolute and eleven cards stay as they are.
+
+**Recommended: (a).** It is one condition on an existing assertion, it is testable, and it
+is the difference between "one picture, several products" and "one picture, one product in
+several sizes". (b) is worth doing eventually and is not urgent.
+

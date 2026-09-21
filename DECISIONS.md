@@ -11019,3 +11019,50 @@ tests the probe rather than a guess at the cause.
 2. **`--slow` did not reproduce the defect and is kept**, with the finding beside it.
 3. **A not-ready page costs up to 12 seconds** before it reports. Bounded, and no live page
    is unready, so a clean run pays nothing.
+
+## W25-14 · Nine under-floor products, attempted a second way, nought filled, 2026-09-21
+
+**Card W25-14.** PR only, stops for the owner. Stacked on
+`w25/w25-13-verify-live-ready`. The full card is
+`docs/board/W25-14-underfloor-second-pass.md`.
+
+**W25-R12 is the frame**: the floor is 450 and there is no exception for these four
+manufacturers. So the card went looking for a bigger file rather than a smaller floor.
+
+### 9 attempted, 0 filled, each with a second independent source
+
+**Baumit, 5.** The same file id answers **400x400** on `baumit.md`, `baumit.ro` and
+`baumit.com`. `?w=1200` is ignored and returns 400x400 unchanged; `/big/`, `_big` and
+`/orig/` all 404. **Their technical-documents page lists 161 datasheet PDFs and the five
+that matter 404 on both `baumit.md` and `baumit.ro`**: the links are on the page, the files
+are not on the server. `int.baumit.com` did not answer in 45 seconds or in ten minutes.
+
+**DURAZIV, 2.** The official datasheets on `duraziv.ro` embed exactly one JPEG each,
+**345x359** and **343x335**, which agrees with the product page to the pixel on one of them.
+
+**ISOMAT, 1.** `e-ISOMAT-FLEXCOAT.pdf` embeds two JPEGs, **393x104** and **126x89**: a logo
+and a mark, no packshot.
+
+**ROKO, 1.** The datasheet PDF embeds a **1654x310** banner carrying the ROKO logo. The two
+leaflet pages are **1867x1320 brochure spreads** with Czech body copy, a swatch grid, the
+logo and a "Prodejce / Distributor" box, which W25-R2 refuses.
+
+### The tool
+
+`scripts/extract-pdf-images.js`. The dispatch rules that an image extracted from an official
+PDF counts as manufacturer origin, and that is only true if the extraction takes the
+manufacturer's own bytes and does nothing to them: it lifts a DCTDecode stream **verbatim**,
+no re-encode, no resize, no crop. JPEG streams only, and a PDF with none says so rather than
+producing something that is not in the file.
+
+### Nothing changed in the tree
+
+No image, no ledger row, no provenance row, no product record. **This card is a measurement
+and a refusal, plus one script.**
+
+### Recorded for ratification
+
+1. **`scripts/extract-pdf-images.js` is new.** No ruling asked for a script, only for the
+   extraction to be possible.
+2. **Baumit's datasheet PDFs 404 on two of their own domains**, recorded so a later card
+   does not conclude they never existed.

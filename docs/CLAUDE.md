@@ -677,6 +677,29 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     proves the fixture honest and CI trusts the proof. A missing fixture is a failure,
     never a skip.
 
+23. `node scripts/check-plate-brands.js` clean. **Since W25-03d (wave 25)**, run by
+    `quality` with the other static checks. **Which manufacturer a product really comes
+    from is research, and research held in prose is not state.** The site stated for two
+    days that Phomi makes 70 products Phomi does not make; the count was then corrected to
+    37, and the full catalogue walk settles it at 3. Each of those numbers lived in a board
+    card, and nothing in the repo could disagree with a wrong one while
+    `content/catalog-products.json` went on printing a brand line. The settlement is now
+    data, `content/plate-brand-settlement.json`: one row per plate in `placi-ceramice`,
+    naming the manufacturer, the exact catalogue name it matched, the tier it matched at
+    and the catalogue page. This holds the records to it in both directions. Every plate
+    has a row and every row is a plate; a row naming a manufacturer requires `brand` to
+    equal it and forbids `brand_hidden`; **a row naming none requires `brand_hidden`, which
+    is W25-R3's "apply `brand_hidden` only to plates unmatched after all three
+    catalogues"**; and a settled row must name what it matched, at a declared tier, with a
+    URL. It fails on a missing or unparseable file, on zero plates, on an empty settlement,
+    on no declared tiers and on fewer than three catalogues named, because W25-R3 settles
+    brand against three. **It does not visit a catalogue**, and says so: re-doing the
+    research is a card, not a gate. What it stops is the records and the settlement
+    drifting apart silently, which is exactly how the wrong claim survived. Its **nine-arm
+    self-test** plants each message in turn between two controls (R-AB), and both real
+    defects were watched fire on the shipping files: `brand_hidden` removed from
+    `CAT-0060`, and `CAT-0105`'s brand changed to Kordeko.
+
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number — Q-W14-03 was found "at gate 9" — and those bodies are immutable under
 R-S, so renumbering would falsify them. A gate added later takes the next number
@@ -708,6 +731,26 @@ it guards the script gate 9 runs after the deploy, so it should fail before anyt
 expensive does.
 **AMENDED (W24-09b):** gate 22 runs after gate 1 and before gate 2, with the other static
 checks. It reads the source stylesheet, not the build, so it needs neither.
+**AMENDED (W25-03d):** gate 23 runs before gate 15, with the other static checks. It reads
+two data files and nothing else, so it needs no build and no browser.
+
+**The count, so it stops drifting (W25-03c).** This list numbers **23** gates. Five of them
+are not scripts and `quality` cannot run them: gate 4 (heights measured settled), gate 6 (no
+new colour), gate 7 (reduced motion), gate 8 (the three documents updated) and **gate 9,
+which section 12.0 runs against the deployed sha after the merge**. Eighteen numbered gates
+are scripts, and `quality` runs four more that were never numbered, named two paragraphs
+above. **`quality` therefore runs 22 commands.** Four wave 25 cards reported "19 of 19",
+which was the count before gates 21 and 22 landed and was never updated; the branches were
+checked, the reports were not true.
+
+**The local runner is `node scripts/run-gates.js` (W25-03d), and it READS this workflow.**
+There is no second list to go stale: it parses `quality.yml`'s `steps:`, skips the runner
+actions and the pinned Lighthouse install by name and prints what it skipped and why, and
+runs every remaining command as its own process with its own exit code. It fails rather
+than guesses on a shape it cannot read, because a silent partial read would report "0 of 0
+green" and reproduce the defect it exists to stop. `--list` prints the list and runs
+nothing; `--keep-going` reports every failure instead of stopping at the first.
+**A card reports the number this prints.**
 
 ---
 

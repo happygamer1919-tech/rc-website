@@ -2618,11 +2618,23 @@ carries its own permission already. At the rate this card measured, most of them
 
 **Recommended: (a).** No default is shipped; nothing here changed the tree.
 
-## Q-W25-09 · The gate runner lives in a scratch directory, which is why the count went stale · OPEN · opened 2026-09-21 (W25-03c)
+## Q-W25-09 · The gate runner lives in a scratch directory, which is why the count went stale · **DEFAULT SHIPPED at W25-03d, option (b)** · OPEN for ratification · opened 2026-09-21 (W25-03c)
 
-**Shipped default: the runner is written out in full on the W25-03c board card, and a card
-reports the number it measured.** That is a habit, not a mechanism, and habits are what
-produced four cards reporting "19 of 19" while `quality` ran 21 commands.
+**Shipped: `scripts/run-gates.js`, which READS `.github/workflows/quality.yml` and runs
+exactly the steps it finds.** Option (b) below. It was written after the habit failed a
+second time inside one session: W25-03c's card wrote the runner out in full, and the very
+next card's attempt to add gate 23 to it silently did not apply, and the run reported 21
+when `quality` carried 22. A list that is copied is a list that goes stale, so the copy is
+gone.
+
+Three arms watched: a planted failing step takes the runner to exit 1 and names it; a
+`quality.yml` whose `steps:` key it cannot find exits 1 rather than reporting "0 of 0";
+and the real workflow is clean immediately before and after both (R-AB).
+
+**It is still open, for your ratification only**: it is a new script that no ruling asked
+for, and it decides by itself that `actions/checkout`, `setup-node` and the pinned
+Lighthouse install are not gates. It prints each of those skips with its reason on every
+run rather than dropping them quietly.
 
 The full note is on the card. The short of it: the list of gate commands a terminal runs
 locally has never been committed. It is retyped from `quality.yml` each session, it went
@@ -2639,4 +2651,63 @@ stale when gates 21 and 22 landed, and a board card then asserted coverage it di
 **Recommended: (b).** The defect was a second copy of a list going stale, and (b) deletes
 the second copy. It also makes "N of N" a number the repo computes rather than one a
 terminal remembers.
+
+## Q-W25-10 · Three ceramic plates are in none of the three catalogues · OPEN · opened 2026-09-21 (W25-03d)
+
+**Shipped default: they carry `brand_hidden`, so the site names no manufacturer for them.**
+That is W25-R3's rule applied, and it is the safe state: the site has stopped making a
+claim it cannot support. They stay placeholders under W25-R4.
+
+You answered Q-W25-05 with "Ecofasad and Kordeko". That answer was given when the residual
+looked like 37 plates. The finished walk puts the residual at **3**, and none of the three
+is in either catalogue:
+
+| Slot | Name | Phomi | Ecofasad | Kordeko |
+|---|---|---|---|---|
+| `CAT-0051` | Elsa Black Grey | no, "Elsa" appears nowhere on the site | no, Ecofasad names nothing | no |
+| `CAT-0060` | Sandstorm | no, Phomi has "Sandstone", a different word | no | no |
+| `CAT-0077` | H06 | no, Phomi has H01, H02, H05, HB01, HB06 and no H06 | no | no |
+
+**Ecofasad is a special case and it is not a miss.** Ecofasad publishes 102 flexible stone
+and marble textures and gives none of them a name: they are `rock-1808`, `marble-1801`,
+numbers with a material prefix. No plate name can match one, in either direction. Matching
+by eye would mean comparing a photograph of a plate we have no photograph of.
+
+  (a) **Leave them hidden and send them to W25-05** to be generated from their own names
+      and colours. Recommended. Three cards, no claim made, and the AI prompt pack already
+      exists for exactly this.
+  (b) **Tell me who makes them**, if the client knows. Then they are ordinary packshot work.
+  (c) **Ask the client to identify them by picture.** They are three products; a photograph
+      of each from the shop would settle both the manufacturer and the packshot at once.
+  (d) Drop the three records. Not recommended: they are products you sell.
+
+**Recommended: (a), with (c) worth one message to the client.** Nothing is blocked either
+way: the default is already shipped and the site is no longer claiming a manufacturer it
+cannot support.
+
+## Q-W25-11 · Kordeko sells exactly what the 64 `elemente-decorative` records are · OPEN · opened 2026-09-21 (W25-03d)
+
+**Nothing was done about this and nothing is blocked on it.** It is an observation from
+walking Kordeko for a different reason, and it is worth one line of your time because it is
+64 empty slots.
+
+`elemente-decorative` holds 64 records named "Element decorativ RED 01" through "RED 64",
+branded `RedConstruct` with `brand_hidden` already set. W25-05 currently owns them on the
+grounds that they have no manufacturer to fetch from.
+
+**Kordeko's catalogue is 59 cornices, mouldings, window cornices and post caps**, the CL,
+CR, M, Z and Kub series, each with its own photograph on `kordeko.com`. That is the same
+product family, from a Moldovan manufacturer, at the size the 450 floor accepts.
+
+**Why I did not act on it.** The records are named "RED 01", which matches nothing by name,
+and matching a moulding profile by eye across 59 candidates is a judgement about which
+product the shop actually sells. That is yours, not mine, and W25-R4 forbids a near match.
+
+  (a) **Ask the client whether the RED elements are Kordeko**, and if so for the mapping.
+      Recommended: one question, potentially 64 slots.
+  (b) **A card that puts the 59 Kordeko photographs in front of you** beside the 64 records,
+      for you to pair by eye. More of your time, no client needed.
+  (c) **Leave them to W25-05** and generate them.
+
+**Recommended: (a).** If the answer is no, (c) stands and nothing is lost.
 

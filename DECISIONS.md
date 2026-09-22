@@ -11873,3 +11873,62 @@ its own with its own measurement pass.
 ### Gates
 
 **25 of 25 gate commands exit 0.**
+
+## W26-01 · The owner's own roof photographs, and the marker that failed the merge, 2026-09-22
+
+**Card W26-01.** PR only, stops for the owner. The full card is
+`docs/board/W26-01-roof-section.md`.
+
+### Section 12.0 on `a8d819e` FAILED, and the cause was this terminal's
+
+**exit 1: 4 unverified, 0 failed, 51 of 51, 4 rows retried, 1 page that never became ready.**
+Nothing was wrong with the site: all four rows failed on `bentoLinks expected 3, got 4`, and
+every height was inside budget. **W25-24 gave every hub tile a destination under W25-R24 and
+left the marker at 3.**
+
+**It is the defect section 12 already records, in the same component.** W24-07a renamed the
+hub's classes and left the probe on the old ones; the rule written from it is *a marker that is
+not renamed with the thing it names is not a marker*. W25-24 changed what the thing is and did
+not come here. Twice, so the two files are now **coupled**: gate 26 reads `bentoTiles` and
+`bentoLinks` out of `verify-live.js` and compares them with what it counts on the built pages,
+and a marker left behind fails in `quality` before a merge. Watched on the real file with the
+stale `3` planted back, control clean either side. Four marker arms, one green.
+
+**One page never became ready** on read 1, 900px with every count 0 and 16,470px clean on reads
+2 and 3. That is the flake W25-R11 exists for and the re-read did its job.
+
+### Eight rulings, and what the dispatch overturned
+
+`docs/rulings/W26-R.md` is new and holds **W26-R1 to W26-R8**. **W25-24's finding was wrong and
+the method was the error**: it grepped the HTML response for labels that render client-side,
+and screenshotted the first 4,000px of a page several times that long. Neither could find a
+section that renders in JS below the fold. W26-R2 is the standing rule from it.
+
+**Q-W25-19 is answered: leave the warranty off**, closed at option (a).
+
+### The four photographs
+
+Folder found with the space in its name, nothing guessed. Four files at **900x675**, mapped to
+the four cards **by name, asserted**: each filename is its card's title and the install refuses
+if a title has changed.
+
+**"No edits" decided the install.** `.offer__media` is `81 / 100` portrait and these are 4:3
+landscape; the four they replace were Unsplash pictures centre-cropped to 0.81:1, as their own
+provenance rows record. **These go in uncropped**: native 900x675 as the `@2x`, 600x450 as the
+`1x`, and the box crops with the `object-fit: cover` it has always had. Nothing upscaled,
+nothing cut, and the result was looked at: the roof and roofers survive the crop in all four.
+
+**The metadata assertion fired on the first attempt**: `sips -Z` writes a fresh Exif block, so
+stripping before resizing left metadata in the 1x files. Resize, strip, assert. All eight
+clean.
+
+**`owner_supplied` is recorded as R-W's client-supplied origin** rather than as a ninth origin
+string, which is the stricter reading: gate 17 requires no metadata at all on that origin.
+
+**The caption check is an assertion** over all eight title and desc strings against "realizate
+de noi" and its Russian equivalents: zero claims. The four alt strings are rewritten in both
+locales to describe the new photographs.
+
+### Gates
+
+**25 of 25 gate commands exit 0.** Budgets unchanged: the box ratio did not move.

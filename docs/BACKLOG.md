@@ -821,3 +821,14 @@ pixel**, so no budget moved. **All three photograph placements blocked on Q-W25-
 names Unsplash and Pexels and both refuse automated access. Nothing was substituted: the site's
 own project covers are 400x300 and read `legacy, licence unverified`. **Spacing rhythm
 deferred**: it is the one polish item that is layout. 25 of 25 gate commands exit 0.
+
+## W26-01 · Roof section
+**Status: PR OPEN** (2026-09-22). **Section 12.0 on `a8d819e` FAILED, exit 1, 4 unverified**,
+and the cause was this terminal's: W25-24 made every hub tile a link and left `bentoLinks: 3`.
+Corrected, and **gate 26 now couples the two files** so a stale marker fails in `quality`
+instead of after a merge; watched on the real file. W26-R1 to W26-R8 recorded in a new
+`docs/rulings/W26-R.md`. The four owner roof photographs installed **uncropped** (no edits;
+the box is portrait and they are 4:3), mapped to cards by name with the mapping asserted,
+metadata assertion fired once on `sips -Z` and was fixed. Origin recorded as R-W's
+client-supplied, which is stricter. Caption check: 0 ownership claims. Q-W25-19 closed at
+"leave it off". 25 of 25 gate commands exit 0.

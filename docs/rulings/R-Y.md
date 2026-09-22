@@ -855,3 +855,27 @@ Section 12.0 on `c05ce0e589da98b1a97c660537882388feff7a0e` read
 budgets set at W25-19 stand unchanged and no correction is owed. The requirement is
 discharged, and it is recorded here rather than only in a card because that is where the
 figure lives.
+
+---
+
+## AMENDED (W25-25, wave 25): the fence model cards state which colours, not how many
+
+| Page | Before | After | Budget |
+|---|---|---|---|
+| `/servicii/modele-garduri/` | 3,686 | **3,820** | 3,746 to **3,880** |
+| `/ru/servicii/modele-garduri/` | 3,707 | **3,842** | 3,767 to **3,902** |
+
+**The reason.** Each of the eight cards read `Culori 3`. It now reads
+`Culori 3: Antracit (RAL 7016), Maro Wenge (RAL 8019), Negru profund (RAL 9005)`, which on a
+four-column card is one definition line becoming three or four wrapped ones. RO grows 134px
+and RU 135px, and the grid is one row of four, so the tallest card sets both rows.
+
+**The budget rises with the measurement**, which is this ruling's standing rule in the
+direction it is less often used: it fell at W25-11 when a line got shorter and it rises here
+because a line got longer. What it may never do is stay where it was while the page moves.
+
+**The RAL codes are part of the cost and are kept on purpose.** They are the source's own,
+they are language-neutral, and `imperlux.md` publishes no Russian page, so the code is the
+only part of a colour name here that is not authored in this repo.
+
+Measured at 1440 with every `[data-reveal]` applied and settled for 1,600ms, plus 60 (W24-R4).

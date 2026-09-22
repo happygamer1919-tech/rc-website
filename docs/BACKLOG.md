@@ -736,3 +736,12 @@ and **one GREEN**, which is a new kind of arm here. 13 were held and 12 could be
 `CAT-0110` and `CAT-0112` have no picture on either record, and their reason is corrected to
 the measured one. Question 30 added to CLAIMS-MIHAI.md quoting both CT 80 F rows. 24 of 24
 gate commands exit 0.
+
+## W25-21 · Owner intake
+**Status: PR OPEN** (2026-09-22). `scripts/intake-owner-pics.js` ships; **nothing was taken
+in**, because both folders hold only their README, which the dispatch says is a list and not
+an error. The filename is the slot id exactly, the folder decides the origin, and a real
+photograph is allowed on an evidence slot where a generated image is not. **19 self-test
+arms, 3 of them green.** The apply path was proved end to end on a throwaway copy, including
+`build.js` refusing the `TODO:` alt text. The four `ACOP-` prompts are reproduced verbatim in
+the card. 54 slots still waiting. 24 of 24 gate commands exit 0.

@@ -87,7 +87,15 @@ L.push('`content/garduri-modele.json` and the built pages. Not typed: a slot id 
 L.push('a file the intake will not find, because it matches on the filename being the slot id');
 L.push('exactly. `--check` fails if this file and the data have drifted apart.');
 L.push('');
-L.push('**Nothing has been taken in.** W25-16 prepared the folders and stopped.');
+/* AMENDED (W25-21): W25-16 prepared the folders and had nothing to take them in
+   with. There is a script now, so this says what to run rather than that nothing
+   happened, which stopped being the useful sentence the moment one existed. */
+L.push('**To take a drop in:** `node scripts/intake-owner-pics.js` reports what is waiting and');
+L.push('writes nothing. Add `--apply` plus `--who "<name>"` for a photograph or `--tool "<name>"`');
+L.push('for a generated image, and it installs, fills the ledger row and appends the provenance');
+L.push('row. It refuses a stem that is no slot id, a slot already filled, a file that is not an');
+L.push('image by its bytes, anything under the 450 floor, and a generated image where W25-R3 or');
+L.push('W25-R2 forbids one. **A missing file is listed, never an error.**');
 L.push('');
 L.push('## The rule, once');
 L.push('');

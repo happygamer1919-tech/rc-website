@@ -11391,3 +11391,61 @@ Russian lines, two prices. One yes/no, and the answer does not move the picture.
 **24 of 24 gate commands exit 0.** Gate 19 runs **18 self-test arms**, seventeen red and one
 green, and reads `283 of 337`. The number is the one the run prints, not a remembered one. `public/` is unchanged: no image was added, so R-W walks the
 same tree.
+
+## W25-21 · The intake the folders were waiting for, and nothing to take in yet, 2026-09-22
+
+**Card W25-21.** PR only, stops for the owner. The full card is
+`docs/board/W25-21-intake.md`, which reproduces the four `ACOP-` prompts verbatim.
+
+**`scripts/intake-owner-pics.js` ships and nothing was taken in**, because both folders hold
+only their `README.txt`. That is the finding, not a failure: the dispatch says a missing file
+is listed, never an error. What W25-16 left was two folders, two READMEs and a generated
+list, **and no way to take a drop in**.
+
+### The rule is the filename, exactly
+
+`ACOP-02.png` fills `ACOP-02` and nothing else. **A stem that is not a slot id is reported,
+never guessed at**: a guess here puts a photograph of one thing on a card for another.
+
+**The folder decides the origin and the origin decides what is allowed.** `RC-pics-real`
+takes R-W's client-supplied origin, needs `--who`, and is allowed on every slot **including
+the evidence slots, because a photograph IS evidence**. `RC-pics-ai` takes W25-R3's origin,
+needs `--tool`, and is refused on `BA-`, `PROJ-`, `PORT-` and on a named tile product.
+
+It writes nothing without `--apply`, and installs through `process-packshot.js`, the one
+thing here that writes into `public/img/` and the one thing that strips metadata and then
+asserts the strip. A file lands in a folder named after what it is: `garduri`,
+`acoperisuri`, `copertine`, `before-after`, `catalog` as the fallback.
+
+### Nineteen arms, three green
+
+Every branch is watched before the script runs at all. Six red: a stem that is no slot, a
+slot already filled, a file that is not an image by its bytes, 449 on the longest side, a
+generated image on an evidence slot, a generated image on a named tile. Three green: a
+generated image on an ordinary product slot, **a real photograph on an evidence slot**, and
+450 on the longest side. Ten more watch the folder mapping, fallback included.
+
+**The second green arm is the one that matters.** A real photograph on a `BA-` slot is
+exactly what an evidence slot is for, and a script that read the prefix without reading the
+folder would have refused it.
+
+### It was proved, not asserted
+
+The apply path ran end to end on a throwaway copy, the three paths pointed at scratch by
+environment, which is the only reason those overrides exist. A planted 900x520 PNG went in
+as `ACOP-03.png`, installed as `public/img/acoperisuri/ACOP-03.jpg` at 600x346 with no
+metadata, flipped its ledger row and appended its provenance row. **`node build.js` then
+failed**: `slot "ACOP-03" is filled and has no alt text for ro`. That is the design. The
+script does not write alt text, `build.js` refuses a `TODO:` string, and the failing build is
+the reminder.
+
+`--who "Popescu, Ion"` was watched refuse, because R-W's source cell is
+`client direct transfer, <name>, DD.MM.YYYY` exactly and a comma moves the date into the
+wrong cell; `--who "Ion Popescu"` was watched pass in the same run. Everything the proof
+wrote was removed.
+
+### Gates
+
+**24 of 24 gate commands exit 0.** Nothing about the built site changed: gate 19 reads the
+same `283 of 337`. **54 slots are still waiting**, and the run lists every one with its
+ratio, its minimum and its page.

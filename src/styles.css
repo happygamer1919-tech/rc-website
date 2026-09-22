@@ -24,11 +24,17 @@
   --bg-light: #FFFFFF;
   --bg-grey: #F2F2F2;
   --bg-dark: #141414;
+  /* W26-14, ruling W26-R16: "section backgrounds alternate white and a warm
+     off-white neutral". The eleventh value, added to docs/CLAUDE.md section 3 in
+     the same commit. Exactly one, never beside a second off-white: the rejected
+     first build had three near-identical light grounds and read as a dirty
+     screen (master plan, section 1). One token, so reverting it is one line. */
+  --bg-warm: #F7F5F2;
 
   /* Motion. Every value here is disabled, not reduced, under
      prefers-reduced-motion at the bottom of this file. */
   --reveal-dur: 320ms;
-  --hover-dur: 200ms;
+  --hover-dur: 250ms;   /* W26-R16: 250ms ease-out */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 
   --line: #E2E2E2;
@@ -40,13 +46,25 @@
   --gap: 24px;
 
   --radius-control: 6px;
-  --radius-card: 10px;
-  /* W25-29. The large card radius, which was the literal 20px in three blocks
-     and 32px in a fourth. One token, so the four card families cannot drift
-     apart again. It is not --radius-card: that one is 10px and is used by the
-     project card, the spec table, the form card and the menu panels. */
-  --radius-card-lg: 20px;
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08);
+  /* W26-14, ruling W26-R16: "card radius 20px, hero and section containers
+     24px, buttons pill; image corners match cards". One corner for every card
+     family, so --radius-card-lg (W25-29) is now the same value and stays only as
+     a name its four users still read. An image inset inside a card takes a
+     smaller, concentric corner. The header menus keep their own small radius:
+     they are panels, not cards. */
+  --radius-card: 20px;
+  --radius-card-lg: var(--radius-card);
+  --radius-hero: 24px;
+  --radius-inset: 12px;
+  --radius-panel: 10px;
+  --radius-pill: 999px;
+  /* W26-R16: "1px hairline borders rgba(0,0,0,0.06); shadow 0 1px 2px
+     rgba(0,0,0,0.04) plus 0 12px 32px rgba(0,0,0,0.06), hover translateY(-4px)
+     with deeper shadow". Form fields and chips keep --line: a field's edge is
+     how a visitor finds it. */
+  --hairline: rgba(0, 0, 0, 0.06);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 32px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 2px 4px rgba(0, 0, 0, 0.06), 0 20px 44px rgba(0, 0, 0, 0.1);
   --control-h: 48px;
 }
 
@@ -99,15 +117,15 @@ h1, h2, h3 {
   overflow-wrap: break-word;
 }
 h1, h2 { -webkit-hyphens: auto; hyphens: auto; hyphenate-limit-chars: 14 6 4; }
-h1 { font-size: 56px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; }
+h1 { font-size: 56px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; }
 h2 { font-size: 40px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; }
-h3 { font-size: 22px; font-weight: 700; }
+h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
 p { margin: 0; }
 
 .skip-link {
   position: absolute; left: -9999px; top: 0; z-index: 200;
   background: var(--bg-light); color: var(--ink);
-  padding: 12px 16px; border: 1px solid var(--line); border-radius: var(--radius-control);
+  padding: 12px 16px; border: 1px solid var(--line); border-radius: var(--radius-pill);
 }
 .skip-link:focus { left: 16px; top: 16px; }
 
@@ -124,7 +142,14 @@ p { margin: 0; }
 .section--grey  { background: var(--bg-light); }
 /* White-on-white boundaries need a rule so sections still read as blocks.
    Still a hard edge: 1px line, no gradient, no fade. */
-.section--divided { border-top: 1px solid var(--line); }
+.section--divided { border-top: 1px solid var(--hairline); }
+/* W26-14, ruling W26-R16. Light sections alternate white and --bg-warm, counted
+   among the page's sections only, so the hidden gallery lightbox between two of
+   them does not break the count. The #141414 bands keep their colour and are
+   counted, so the light section after a band may take either tone; two light
+   sections that touch always differ. A browser without the "of" selector shows
+   every light section white, which is the site as it was. */
+main > .section--light:nth-child(even of .section) { background: var(--bg-warm); }
 .section--dark  { background: var(--bg-dark); color: var(--bg-light); padding: var(--band-pad) 0; }
 
 .eyebrow {
@@ -145,7 +170,7 @@ p { margin: 0; }
 .btn {
   height: var(--control-h); padding: 0 28px;
   display: inline-flex; align-items: center; justify-content: center;
-  border-radius: var(--radius-control); border: 1px solid transparent;
+  border-radius: var(--radius-pill); border: 1px solid transparent;
   font-family: inherit; font-size: 19px; font-weight: 700; line-height: 1;
   white-space: nowrap; cursor: pointer;
 }
@@ -175,8 +200,8 @@ p { margin: 0; }
 .media img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .media--4x3 { aspect-ratio: 4 / 3; }
 .media--3x2 { aspect-ratio: 3 / 2; }
-.media--card { border-bottom: 1px solid var(--line); }
-.media--framed { border: 1px solid var(--line); border-radius: var(--radius-card); }
+.media--card { border-bottom: 1px solid var(--hairline); }
+.media--framed { border: 1px solid var(--hairline); border-radius: var(--radius-card); }
 
 /* --- W24-01, the wave 24 photo placeholder ---------------------------------
    Every image wave 24 renders is a placeholder; a separate photo session fills
@@ -194,7 +219,7 @@ p { margin: 0; }
   position: relative;
   display: flex; align-items: center; justify-content: center;
   aspect-ratio: var(--ph-ratio, 4 / 3);
-  border: 1px solid var(--line);
+  border: 1px solid var(--hairline);
   overflow: hidden;
 }
 .ph--light { background: var(--bg-light); color: var(--ink-muted); }
@@ -241,7 +266,7 @@ p { margin: 0; }
 
 .card {
   background: var(--bg-light);
-  border: 1px solid var(--line);
+  border: 1px solid var(--hairline);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
   overflow: hidden;
@@ -267,17 +292,17 @@ p { margin: 0; }
   border-collapse: collapse;
   color: var(--ink);
   background: var(--bg-light);
-  border: 1px solid var(--line);
+  border: 1px solid var(--hairline);
   border-radius: var(--radius-card);
   overflow: hidden;
 }
 .spec th, .spec td { padding: 13px 20px; text-align: left; vertical-align: top; }
-.spec tr + tr th, .spec tr + tr td { border-top: 1px solid var(--line); }
+.spec tr + tr th, .spec tr + tr td { border-top: 1px solid var(--hairline); }
 .spec th { font-weight: 700; width: 34%; white-space: nowrap; }
 .spec td { color: var(--ink-muted); }
 
 .faq { margin-top: 28px; display: flex; flex-direction: column; gap: 18px; }
-.faq__item { border-top: 1px solid var(--line); padding-top: 18px; }
+.faq__item { border-top: 1px solid var(--hairline); padding-top: 18px; }
 .faq__item:first-child { border-top: 0; padding-top: 0; }
 .faq__q { margin: 0 0 8px; }
 .faq__a { margin: 0; color: var(--ink-muted); max-width: 760px; }
@@ -303,7 +328,7 @@ p { margin: 0; }
   .spec th { padding: 12px 14px 0; }
   .spec td { padding: 4px 14px 12px; }
   .spec tr + tr th, .spec tr + tr td { border-top: 0; }
-  .spec tr + tr { border-top: 1px solid var(--line); }
+  .spec tr + tr { border-top: 1px solid var(--hairline); }
 }
 
 /* --- ~~W21-04 (RC-149), catalog product record cards~~ ------------------------ */
@@ -339,12 +364,12 @@ p { margin: 0; }
 .prod {
   display: flex; flex-direction: column;
   background: var(--bg-light);
-  border: 1px solid var(--line); border-radius: var(--radius-card-lg);
+  border: 1px solid var(--hairline); border-radius: var(--radius-card-lg);
   overflow: hidden;
   box-shadow: var(--shadow-card);
 }
 .prod__media { padding: 12px 12px 0; }
-.prod__ph { border-radius: 12px; }
+.prod__ph { border-radius: var(--radius-inset); }
 .prod__body { display: flex; flex-direction: column; flex: 1; padding: 16px 20px 20px; }
 .prod__brand {
   margin: 0 0 6px; font-size: 13px; font-weight: 700; line-height: 1.2;
@@ -385,7 +410,7 @@ p { margin: 0; }
    catalogue category page. Same look, own prefix, per rule 3.1. */
 .nvk__price { font-size: 20px; font-weight: 700; line-height: 1.2; color: var(--ink); }
 .prod__cta {
-  flex: none; width: 44px; height: 44px; border-radius: 12px;
+  flex: none; width: 44px; height: 44px; border-radius: var(--radius-pill);
   display: inline-flex; align-items: center; justify-content: center;
   background: var(--brand); color: var(--bg-light);
   transition: background var(--hover-dur) var(--ease-out);
@@ -400,7 +425,7 @@ p { margin: 0; }
 }
 .cat-tile {
   display: flex; flex-direction: column;
-  background: var(--bg-light); border: 1px solid var(--line);
+  background: var(--bg-light); border: 1px solid var(--hairline);
   border-radius: var(--radius-card-lg); overflow: hidden;
   transition: border-color var(--hover-dur) var(--ease-out);
   box-shadow: var(--shadow-card);
@@ -497,14 +522,14 @@ p { margin: 0; }
 .roof-cmp__scroll:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
 .roof-cmp__t { border-collapse: collapse; width: 100%; font-size: 15px; }
 .roof-cmp__t th, .roof-cmp__t td {
-  border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top;
+  border: 1px solid var(--hairline); padding: 10px 12px; text-align: left; vertical-align: top;
 }
 .roof-cmp__t thead th { background: var(--bg-light); font-weight: 700; white-space: nowrap; }
 .roof-cmp__t tbody th { font-weight: 700; }
 .roof-cmp__t tbody td { color: var(--ink-muted); }
 .roof-filter__btn {
   height: 40px; padding: 0 18px;
-  border-radius: var(--radius-control); border: 1px solid var(--line);
+  border-radius: var(--radius-pill); border: 1px solid var(--line);
   background: transparent; color: var(--ink);
   font-family: inherit; font-size: 17px; font-weight: 400; line-height: 1;
   white-space: nowrap; cursor: pointer;
@@ -559,7 +584,7 @@ p { margin: 0; }
 }
 .hub__tile,
 .pb__tile {
-  position: relative; overflow: hidden; border-radius: 24px;
+  position: relative; overflow: hidden; border-radius: var(--radius-hero);
   display: block; color: var(--bg-light);
   background: var(--bg-dark);
 }
@@ -613,12 +638,12 @@ p { margin: 0; }
 }
 .nvk {
   display: flex; flex-direction: column;
-  background: var(--bg-light); border: 1px solid var(--line); border-radius: var(--radius-card-lg);
+  background: var(--bg-light); border: 1px solid var(--hairline); border-radius: var(--radius-card-lg);
   overflow: hidden;
   box-shadow: var(--shadow-card);
 }
 .nvk__media { padding: 12px 12px 0; }
-.nvk__ph { border-radius: 12px; }
+.nvk__ph { border-radius: var(--radius-inset); }
 .nvk__body { display: flex; flex-direction: column; flex: 1; padding: 16px 20px 20px; }
 .nvk__name { margin: 0; font-size: 19px; font-weight: 700; line-height: 1.3; }
 .nvk__desc { margin: 8px 0 0; font-size: 15px; line-height: 1.45; color: var(--ink-muted); }
@@ -643,8 +668,8 @@ p { margin: 0; }
    Renamed to `.nvk-faq`, which matches the rest of that page's namespace and
    which nothing else uses. See docs/CLAUDE.md section 3.1 and gate 22. */
 .nvk-faq { margin: 40px 0 0; }
-.nvk-faq > div { padding: 20px 0; border-top: 1px solid var(--line); }
-.nvk-faq > div:last-child { border-bottom: 1px solid var(--line); }
+.nvk-faq > div { padding: 20px 0; border-top: 1px solid var(--hairline); }
+.nvk-faq > div:last-child { border-bottom: 1px solid var(--hairline); }
 .nvk-faq dt { font-size: 19px; font-weight: 700; line-height: 1.35; }
 .nvk-faq dd { margin: 8px 0 0; color: var(--ink-muted); line-height: 1.6; }
 
@@ -729,7 +754,7 @@ p { margin: 0; }
 }
 .xsell {
   display: block; overflow: hidden; border-radius: var(--radius-card-lg);
-  background: var(--bg-light); border: 1px solid var(--line);
+  background: var(--bg-light); border: 1px solid var(--hairline);
   transition: border-color var(--hover-dur) var(--ease-out);
   box-shadow: var(--shadow-card);
 }
@@ -769,7 +794,7 @@ p { margin: 0; }
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   height: 96px;
   background: var(--bg-light);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--hairline);
   display: flex; align-items: center;
 }
 .header__inner {
@@ -856,12 +881,12 @@ p { margin: 0; }
 .mobile-panel[data-open='true'] { display: block; }
 .mobile-panel {
   position: fixed; top: 96px; left: 0; right: 0; bottom: 0; z-index: 99;
-  background: var(--bg-light); border-top: 1px solid var(--line);
+  background: var(--bg-light); border-top: 1px solid var(--hairline);
   padding: 16px var(--gutter); overflow-y: auto;
 }
 .mobile-panel a.mobile-nav-link {
   display: block; font-size: 16px; line-height: 1;
-  padding: 14px 0; border-bottom: 1px solid var(--line); white-space: nowrap;
+  padding: 14px 0; border-bottom: 1px solid var(--hairline); white-space: nowrap;
 }
 .mobile-panel .btn { width: 100%; margin-top: 16px; }
 .mobile-panel__foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 16px; }
@@ -908,16 +933,16 @@ p { margin: 0; }
   position: absolute; top: calc(100% + 28px); left: 0; z-index: 101;
   width: 300px;
   background: var(--bg-light); color: var(--ink);
-  border: 1px solid var(--line); border-radius: var(--radius-card);
+  border: 1px solid var(--hairline); border-radius: var(--radius-panel);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 .catalog__heading {
-  margin: 0; padding: 14px 16px; border-bottom: 1px solid var(--line);
+  margin: 0; padding: 14px 16px; border-bottom: 1px solid var(--hairline);
   font-size: 13px; font-weight: 700; line-height: 1; text-transform: uppercase; letter-spacing: 0.08em;
   color: var(--ink-muted);
 }
 .catalog__list { list-style: none; margin: 0; padding: 0; }
-.catalog__row { display: flex; align-items: stretch; border-bottom: 1px solid var(--line); }
+.catalog__row { display: flex; align-items: stretch; border-bottom: 1px solid var(--hairline); }
 .catalog__row:last-child { border-bottom: 0; }
 .catalog__link {
   flex: 1 1 auto; display: block; padding: 12px 16px;
@@ -927,7 +952,7 @@ p { margin: 0; }
 .catalog__row--title .catalog__link { font-weight: 700; }
 .catalog__expand {
   flex: none; width: 44px; display: flex; align-items: center; justify-content: center;
-  background: transparent; border: 0; border-left: 1px solid var(--line); color: var(--ink); cursor: pointer;
+  background: transparent; border: 0; border-left: 1px solid var(--hairline); color: var(--ink); cursor: pointer;
 }
 .catalog__row.is-active,
 .catalog__row.is-active > .catalog__link,
@@ -937,7 +962,7 @@ p { margin: 0; }
   position: absolute; top: -1px; left: calc(100% + 4px);
   width: 300px;
   background: var(--bg-light); color: var(--ink);
-  border: 1px solid var(--line); border-radius: var(--radius-card);
+  border: 1px solid var(--hairline); border-radius: var(--radius-panel);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 .catalog__sub[hidden] { display: none; }
@@ -963,7 +988,7 @@ p { margin: 0; }
   }
   .catalog__back {
     display: flex; align-items: center; gap: 8px; width: 100%;
-    padding: 14px 16px; background: transparent; border: 0; border-bottom: 1px solid var(--line);
+    padding: 14px 16px; background: transparent; border: 0; border-bottom: 1px solid var(--hairline);
     font-family: inherit; font-size: 15px; font-weight: 700; color: var(--ink); cursor: pointer; text-align: left;
   }
 }
@@ -998,12 +1023,12 @@ p { margin: 0; }
   position: absolute; top: calc(100% + 28px); left: 50%; margin-left: -140px; z-index: 101;
   width: 280px;
   background: var(--bg-light); color: var(--ink);
-  border: 1px solid var(--line); border-radius: var(--radius-card);
+  border: 1px solid var(--hairline); border-radius: var(--radius-panel);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 .svcmenu__panel[hidden] { display: none; }
 .svcmenu__list { list-style: none; margin: 0; padding: 0; }
-.svcmenu__row { display: flex; align-items: stretch; border-bottom: 1px solid var(--line); }
+.svcmenu__row { display: flex; align-items: stretch; border-bottom: 1px solid var(--hairline); }
 .svcmenu__row:last-child { border-bottom: 0; }
 .svcmenu__link {
   flex: 1 1 auto; display: block; padding: 12px 16px;
@@ -1063,17 +1088,17 @@ p { margin: 0; }
 
 .stats {
   padding: 32px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
   margin-bottom: 40px;
 }
 .stat__n { font-family: var(--font-heading), var(--font-fallback); font-size: 44px; font-weight: 800; line-height: 1.15; color: var(--brand); }
 .stat__label { color: var(--ink-muted); }
 
 .price-box {
-  border: 1px solid var(--line);
+  border: 1px solid var(--hairline);
   border-top: 4px solid var(--brand);
-  border-radius: var(--radius-control);
+  border-radius: var(--radius-card);
   padding: 24px 28px;
   margin: 0 auto 40px;
   max-width: 560px;
@@ -1107,7 +1132,7 @@ p { margin: 0; }
 .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 40px; }
 .filter {
   height: 40px; padding: 0 20px;
-  border-radius: var(--radius-control); border: 1px solid var(--line);
+  border-radius: var(--radius-pill); border: 1px solid var(--line);
   background: transparent; color: var(--ink);
   font-family: inherit; font-size: 17px; font-weight: 400; line-height: 1;
   white-space: nowrap; cursor: pointer;
@@ -1205,11 +1230,11 @@ p { margin: 0; }
 .trust-item svg { display: block; }
 .trust-item__line { color: var(--ink-muted); }
 
-.divider { height: 1px; background: var(--line); border: 0; margin: 64px 0; }
+.divider { height: 1px; background: var(--hairline); border: 0; margin: 64px 0; }
 
 .review {
   background: var(--bg-light);
-  border: 1px solid var(--line);
+  border: 1px solid var(--hairline);
   border-radius: var(--radius-card);
   padding: 24px;
   display: flex; flex-direction: column; gap: 16px;
@@ -1222,7 +1247,7 @@ p { margin: 0; }
 /* --- form ----------------------------------------------------------------- */
 
 .form-layout { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--gap); align-items: start; }
-.form-card { background: var(--bg-light); border: 1px solid var(--line); border-radius: var(--radius-card); box-shadow: var(--shadow-card); padding: 32px; }
+.form-card { background: var(--bg-light); border: 1px solid var(--hairline); border-radius: var(--radius-card); box-shadow: var(--shadow-card); padding: 32px; }
 .form-card--stack { display: flex; flex-direction: column; gap: 20px; }
 .form-aside { display: flex; flex-direction: column; gap: var(--gap); }
 
@@ -1302,7 +1327,7 @@ p { margin: 0; }
 .prose { max-width: 760px; }
 .prose h1 { margin-bottom: 8px; }
 .prose h2 {
-  font-size: 22px; font-weight: 800; text-transform: none; letter-spacing: 0;
+  font-size: 22px; font-weight: 800; text-transform: none; letter-spacing: -0.01em;
   margin: 48px 0 12px;
 }
 .prose p { margin-bottom: 16px; }
@@ -1345,18 +1370,37 @@ p { margin: 0; }
      pressing a catalogue card got no feedback while a project card lifted.
      Nothing new is invented: the travel, the duration, the shadow and the border
      colour are the ones .card has used since wave 6. */
+  /* W26-14. THE LIFT IS `translate`, NOT `transform`, and before this card no
+     revealed card ever lifted. The scroll reveal sets `transform: none` on
+     `.js-motion [data-reveal].is-revealed`, which is (0,3,0) against the lift's
+     (0,2,0), and 124 of the 125 cards on the four main pages carry data-reveal:
+     measured on the built pages, hovered, `transform` read `none` in both builds.
+     `translate` is a transform the reveal never sets, so the two cannot collide,
+     whatever their specificity. The reveal's transition list carries it too,
+     below, because on a revealed card that list is the one in force. */
   .card, .trust-item, .review,
   .prod, .cat-tile, .nvk, .xsell, .teaser, .offer {
-    transition: transform var(--hover-dur) ease-out,
+    transition: translate var(--hover-dur) ease-out,
                 box-shadow var(--hover-dur) ease-out,
                 border-color var(--hover-dur) ease-out,
                 background-color var(--hover-dur) ease-out;
   }
   .card:hover, .review:hover,
   .prod:hover, .cat-tile:hover, .nvk:hover, .xsell:hover, .teaser:hover, .offer:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    translate: 0 -4px;
+    box-shadow: var(--shadow-card-hover);
     border-color: var(--brand);
+  }
+  /* W26-14, ruling W26-R16: "image scale 1.03". The photograph grows inside its
+     own frame, which clips it (.media, .ph and .offer__media are all
+     overflow: hidden), so nothing around it moves. 3% of the widest card image
+     is under the 20px travel limit of section 1. The bento tiles take the image
+     growth and no lift: they are hero-scale containers, not cards. */
+  :is(.card, .prod, .cat-tile, .nvk, .xsell, .offer, .hub__tile, .pb__tile) img {
+    transition: transform var(--hover-dur) ease-out;
+  }
+  :is(.card, .prod, .cat-tile, .nvk, .xsell, .offer, .hub__tile, .pb__tile):hover img {
+    transform: scale(1.03);
   }
   .trust-item {
     border: 1px solid transparent;
@@ -1365,8 +1409,8 @@ p { margin: 0; }
     margin: -16px;
   }
   .trust-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    translate: 0 -4px;
+    box-shadow: var(--shadow-card-hover);
     border-color: var(--brand);
     background: var(--bg-light);
   }
@@ -1376,12 +1420,12 @@ p { margin: 0; }
     border-radius: var(--radius-card);
     padding: 16px;
     margin: -16px;
-    transition: transform var(--hover-dur) ease-out,
+    transition: translate var(--hover-dur) ease-out,
                 background-color var(--hover-dur) ease-out,
                 border-color var(--hover-dur) ease-out;
   }
   .section--dark .step:hover {
-    transform: translateY(-4px);
+    translate: 0 -4px;
     background: rgba(255, 255, 255, 0.06);
     border-color: var(--brand);
   }
@@ -1397,16 +1441,23 @@ p { margin: 0; }
 .js-motion [data-reveal].is-revealed {
   opacity: 1;
   transform: none;
-  transition: opacity var(--reveal-dur) ease-out, transform var(--reveal-dur) ease-out;
+  /* W26-14. The first two are the reveal. The other four are a revealed card's
+     hover, which this list replaces on every revealed element: without them a
+     revealed card's lift and shadow would snap rather than ease. */
+  transition: opacity var(--reveal-dur) ease-out, transform var(--reveal-dur) ease-out,
+              translate var(--hover-dur) ease-out, box-shadow var(--hover-dur) ease-out,
+              border-color var(--hover-dur) ease-out, background-color var(--hover-dur) ease-out;
 }
-/* Stagger, capped at 6 so a nine-card grid completes in 360ms. */
+/* Stagger, capped at 6 so a nine-card grid completes in 360ms. W26-14: the delay
+   is the reveal's only; the hover's four take none, or a card would answer the
+   pointer up to 360ms late. */
 .js-motion [data-reveal].is-revealed { transition-delay: 0ms; }
-.js-motion [data-reveal][data-stagger="1"].is-revealed { transition-delay: 60ms; }
-.js-motion [data-reveal][data-stagger="2"].is-revealed { transition-delay: 120ms; }
-.js-motion [data-reveal][data-stagger="3"].is-revealed { transition-delay: 180ms; }
-.js-motion [data-reveal][data-stagger="4"].is-revealed { transition-delay: 240ms; }
-.js-motion [data-reveal][data-stagger="5"].is-revealed { transition-delay: 300ms; }
-.js-motion [data-reveal][data-stagger="6"].is-revealed { transition-delay: 360ms; }
+.js-motion [data-reveal][data-stagger="1"].is-revealed { transition-delay: 60ms, 60ms, 0ms, 0ms, 0ms, 0ms; }
+.js-motion [data-reveal][data-stagger="2"].is-revealed { transition-delay: 120ms, 120ms, 0ms, 0ms, 0ms, 0ms; }
+.js-motion [data-reveal][data-stagger="3"].is-revealed { transition-delay: 180ms, 180ms, 0ms, 0ms, 0ms, 0ms; }
+.js-motion [data-reveal][data-stagger="4"].is-revealed { transition-delay: 240ms, 240ms, 0ms, 0ms, 0ms, 0ms; }
+.js-motion [data-reveal][data-stagger="5"].is-revealed { transition-delay: 300ms, 300ms, 0ms, 0ms, 0ms, 0ms; }
+.js-motion [data-reveal][data-stagger="6"].is-revealed { transition-delay: 360ms, 360ms, 0ms, 0ms, 0ms, 0ms; }
 
 /* --- 3. sticky header refinement ------------------------------------------ */
 /* Past 40px the BAND keeps its 96px height (so nothing below ever moves) and
@@ -1525,7 +1576,7 @@ p { margin: 0; }
   margin: -11px 0;
   display: inline-flex; align-items: center; justify-content: center;
   color: var(--bg-light);
-  border-radius: var(--radius-control);
+  border-radius: var(--radius-pill);
   transition: color var(--hover-dur) ease-out, background-color var(--hover-dur) ease-out;
 }
 .footer__social a:hover { color: var(--brand); background: rgba(255, 255, 255, 0.06); }
@@ -1544,13 +1595,13 @@ p { margin: 0; }
 .hero-claim {
   background: var(--bg-dark);
   color: var(--bg-light);
-  border-radius: var(--radius-card);
+  border-radius: var(--radius-hero);
   padding: 32px;
   display: flex; flex-direction: column;
 }
 .hero-claim h2 {
   font-size: 28px; color: var(--bg-light);
-  text-transform: none; letter-spacing: 0; margin-bottom: 16px;
+  text-transform: none; letter-spacing: -0.01em; margin-bottom: 16px;
 }
 .hero-claim__line { color: var(--bg-light); margin-bottom: 8px; }
 
@@ -1565,7 +1616,7 @@ p { margin: 0; }
 .hero-claim__social a {
   width: 44px; height: 44px;
   display: inline-flex; align-items: center; justify-content: center;
-  color: var(--bg-light); border-radius: var(--radius-control);
+  color: var(--bg-light); border-radius: var(--radius-pill);
   transition: color var(--hover-dur) ease-out, background-color var(--hover-dur) ease-out;
 }
 .hero-claim__social a:hover { color: var(--brand); background: rgba(255, 255, 255, 0.06); }
@@ -1586,7 +1637,7 @@ p { margin: 0; }
   content: '·'; position: absolute; left: 0; top: 0;
 }
 .hero-claim__highlights li + li { margin-top: 4px; }
-.hero-panel-media { border-radius: var(--radius-card); border: 1px solid var(--line); overflow: hidden; }
+.hero-panel-media { border-radius: var(--radius-hero); border: 1px solid var(--hairline); overflow: hidden; }
 /* W14-07 fix. The panel keeps a 4:3 ratio and stretches to the claim card's
    height, so when the card grows (W14-07 added the social row) the ratio pushed
    the panel wider than its column: 573px in a 514px column on RU at 1100px, 35px
@@ -1617,7 +1668,8 @@ p { margin: 0; }
   position: relative; overflow: hidden;
   display: flex; flex-direction: column;
   background: var(--bg-light);
-  border: 1px solid var(--line); border-top: 4px solid var(--brand);
+  border: 1px solid var(--hairline); border-top: 4px solid var(--brand);
+  border-radius: var(--radius-card);
   padding: 28px;
   box-shadow: var(--shadow-card);
 }
@@ -1628,11 +1680,11 @@ p { margin: 0; }
 }
 .offer__title {
   position: relative; max-width: 80%;
-  font-size: 22px; text-transform: uppercase; letter-spacing: 0;
+  font-size: 22px; text-transform: uppercase; letter-spacing: -0.01em;
 }
 .offer__body { flex: 1 1 auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; margin-top: 20px; }
 .offer--media .offer__body { grid-template-columns: minmax(0, 300fr) minmax(0, 262fr); }
-.offer__media { aspect-ratio: 81 / 100; border: 1px solid var(--line); overflow: hidden; background: var(--bg-grey); }
+.offer__media { aspect-ratio: 81 / 100; border: 1px solid var(--hairline); border-radius: var(--radius-inset); overflow: hidden; background: var(--bg-grey); }
 .offer__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .offer__text { display: flex; flex-direction: column; min-width: 0; }
 .offer__desc { margin: 0; }
@@ -1678,7 +1730,7 @@ p { margin: 0; }
 .ba__compare {
   position: relative; overflow: hidden;
   aspect-ratio: 1180 / 664;
-  border-radius: var(--radius-card); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  border-radius: var(--radius-card); box-shadow: var(--shadow-card);
   background: var(--bg-grey);
   cursor: ew-resize; touch-action: pan-y; user-select: none; -webkit-user-select: none;
 }
@@ -1745,7 +1797,8 @@ p { margin: 0; }
   gap: var(--gap); margin-top: 40px; align-items: start;
 }
 .tile {
-  background: var(--bg-light); border: 1px solid var(--line); border-top: 4px solid var(--brand);
+  background: var(--bg-light); border: 1px solid var(--hairline); border-top: 4px solid var(--brand);
+  border-radius: var(--radius-card); box-shadow: var(--shadow-card);
   padding: 20px;
 }
 /* W18-01 (RC-138). The profile diagram above each model's name, drawn to the
@@ -1755,10 +1808,10 @@ p { margin: 0; }
 .tile-diagram { margin-bottom: 16px; color: var(--ink); }
 .tile-diagram__svg { display: block; width: 100%; max-width: 280px; height: auto; }
 .tile-diagram .d-accent { stroke: var(--brand); }
-.tile__name { font-size: 20px; text-transform: uppercase; letter-spacing: 0; }
-.tile__media { margin-top: 16px; aspect-ratio: 1 / 1; border: 1px solid var(--line); overflow: hidden; background: var(--bg-grey); }
+.tile__name { font-size: 20px; text-transform: uppercase; letter-spacing: -0.01em; }
+.tile__media { margin-top: 16px; aspect-ratio: 1 / 1; border: 1px solid var(--hairline); border-radius: var(--radius-inset); overflow: hidden; background: var(--bg-grey); }
 .tile__media img { width: 100%; height: 100%; object-fit: contain; display: block; }
-.tile__variant { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+.tile__variant { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--hairline); }
 .tile__grade {
   margin: 0; font-size: 13px; font-weight: 700; line-height: 1; text-transform: uppercase; letter-spacing: 0.08em;
   color: var(--brand-dark);
@@ -1812,7 +1865,7 @@ p { margin: 0; }
 .model .cop-diagram { color: var(--bg-light); }
 
 .bento { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); margin-top: 40px; }
-.bento__tile { background: var(--bg-light); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 24px; }
+.bento__tile { background: var(--bg-light); border: 1px solid var(--hairline); border-radius: var(--radius-card); box-shadow: var(--shadow-card); padding: 24px; }
 .bento__tile--wide { grid-column: span 2; }
 .bento__title { font-size: 20px; }
 .bento__text { margin: 8px 0 0; }
@@ -1834,7 +1887,7 @@ p { margin: 0; }
 .model__desc { margin: 6px 0 0; color: var(--bg-light); }
 
 .csteps { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
-.csteps__step { background: var(--bg-light); border: 1px solid var(--line); border-radius: var(--radius-card); padding: 24px; }
+.csteps__step { background: var(--bg-light); border: 1px solid var(--hairline); border-radius: var(--radius-card); box-shadow: var(--shadow-card); padding: 24px; }
 .csteps__n {
   width: 40px; height: 40px; border-radius: 999px;
   display: inline-flex; align-items: center; justify-content: center;
@@ -1857,12 +1910,13 @@ p { margin: 0; }
 .teasers { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--gap); }
 .teaser {
   display: flex; flex-direction: column; gap: 8px;
-  background: var(--bg-light); border: 1px solid var(--line); border-top: 4px solid var(--brand);
+  background: var(--bg-light); border: 1px solid var(--hairline); border-top: 4px solid var(--brand);
+  border-radius: var(--radius-card);
   padding: 20px 24px; color: var(--ink);
   box-shadow: var(--shadow-card);
 }
 .teaser:hover .teaser__title { color: var(--brand-dark); }
-.teaser__title { font-size: 20px; text-transform: uppercase; letter-spacing: 0; }
+.teaser__title { font-size: 20px; text-transform: uppercase; letter-spacing: -0.01em; }
 .teaser__line { margin: 0; color: var(--ink-muted); }
 .teaser__more { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; font-weight: 700; color: var(--brand-dark); }
 
@@ -1872,7 +1926,7 @@ p { margin: 0; }
 .media--illustration {
   aspect-ratio: 4 / 3;
   background: var(--bg-grey);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--hairline);
   display: flex; align-items: center; justify-content: center;
   padding: 24px;
 }
@@ -1904,7 +1958,7 @@ p { margin: 0; }
   width: 44px; height: 44px;
   display: inline-flex; align-items: center; justify-content: center;
   background: transparent; border: 0; color: var(--ink-muted); cursor: pointer;
-  border-radius: var(--radius-control);
+  border-radius: var(--radius-pill);
 }
 .modal__close:hover { background: var(--bg-grey); color: var(--ink); }
 .modal h2 { font-size: 26px; margin-bottom: 12px; padding-right: 40px; }
@@ -1942,7 +1996,7 @@ p { margin: 0; }
   align-items: start;
 }
 .rating {
-  border: 1px solid var(--line);
+  border: 1px solid var(--hairline);
   border-radius: var(--radius-card);
   padding: 32px;
   text-align: center;
@@ -2000,7 +2054,7 @@ p { margin: 0; }
   align-items: center;
 }
 .svc-hero__art {
-  border-radius: var(--radius-card);
+  border-radius: var(--radius-hero);
   overflow: hidden;
   background: var(--bg-dark);
 }
@@ -2073,13 +2127,13 @@ p { margin: 0; }
 @media (max-width: 768px) {
   :root {
     --gutter: 16px;
-    --section-pad: 56px;
+    --section-pad: 64px;   /* W26-R16: 64px on a phone */
     --gap: 16px;
   }
 
   body { font-size: 16px; }
   h1 { font-size: 32px; letter-spacing: -0.01em; }
-  h2 { font-size: 26px; letter-spacing: 0; }
+  h2 { font-size: 26px; letter-spacing: -0.01em; }
   h3 { font-size: 19px; }
 
 
@@ -2140,7 +2194,7 @@ p { margin: 0; }
   }
   .catalog__back {
     display: flex; align-items: center; gap: 8px; width: 100%;
-    padding: 14px 16px; background: transparent; border: 0; border-bottom: 1px solid var(--line);
+    padding: 14px 16px; background: transparent; border: 0; border-bottom: 1px solid var(--hairline);
     font-family: inherit; font-size: 15px; font-weight: 700; color: var(--ink); cursor: pointer; text-align: left;
   }
 
@@ -2235,7 +2289,7 @@ p { margin: 0; }
 }
 .gal-grid__item {
   display: block; aspect-ratio: 4 / 3; overflow: hidden;
-  border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--bg-grey);
+  border: 1px solid var(--hairline); border-radius: var(--radius-card); background: var(--bg-grey);
 }
 .gal-grid__item img { display: block; width: 100%; height: 100%; object-fit: cover; }
 @media (max-width: 768px) { .gal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -2309,7 +2363,9 @@ p { margin: 0; }
      that reduced motion does not remove is the whole rule broken. */
   .card:hover, .review:hover, .trust-item:hover,
   .prod:hover, .cat-tile:hover, .nvk:hover, .xsell:hover, .teaser:hover, .offer:hover,
-  .section--dark .step:hover { transform: none !important; }
+  .section--dark .step:hover { transform: none !important; translate: none !important; }
+  /* W26-14: the image growth goes with the lift. */
+  :is(.card, .prod, .cat-tile, .nvk, .xsell, .offer, .hub__tile, .pb__tile):hover img { transform: none !important; }
   /* Marquee: stopped dead, static row. Nothing to pause, so hover and focus
      have nothing to do and cannot error; they only ever set a play state. */
   .marquee__track { animation: none !important; transform: none !important; }

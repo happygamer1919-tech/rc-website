@@ -802,3 +802,12 @@ recorded reading was corrected first**: it had kept W25-R2's retailer refusal, w
 (W24-R6). **CAT-0026 first landed as the Dedeman logo**: a guessed CDN URL shape, caught by
 looking. 13 attempted-not-filled, each with its reason. **Q-W25-20**: Unsplash 307 and Pexels
 403/401 refuse automated access, so the 3 copertine slots wait. 25 of 25 gate commands exit 0.
+
+## W25-28 · Catalogue category tiles
+**Status: PR OPEN** (2026-09-22). All 8 `CATEG-` tiles filled under W25-R22, each a declared
+reuse of an installed product image of its own category. **No image file added.** No crop file:
+the tile's own `object-fit: cover` is the crop, and a cut file would fall under the floor on 3
+of the 8 (every Dasterum roofing image is 488x488). **Gate 19's shared-picture rule was
+order-dependent and is now a group rule**: the tile had become the "owner" of a product's
+photograph because `dist/catalog/` is walked first. Two new arms, one GREEN. Slots **299 to 307
+of 337**. 25 of 25 gate commands exit 0.

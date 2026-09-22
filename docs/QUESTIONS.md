@@ -3057,3 +3057,43 @@ W25-R3 permits a generated image on a hub slot by name.
 **Shipped default: nothing.** All eight stay grey until you answer, and no image was taken
 from either page. **Nothing else in W25-24 is blocked**: the tile links, the tile audit and
 the new gate all shipped.
+
+## Q-W25-19 · The fence warranty line is a held claim, and it now collides with the five years
+
+**Raised W25-25, 2026-09-22. The rest of the card shipped; only the warranty line is held.**
+
+The dispatch asks the fence model cards to carry a **warranty line**. Every one of the eight
+imperlux model pages states one: `Garanție: 20 ani anticoroziune` on Metal Plus and
+`30 ani` on Metal PlusDV. **It is not rendered, and three standing things say not to:**
+
+1. **W24-R6, verbatim:** *"Any sentence asserting a company fact (own workshop, team, years,
+   **warranty**, discount figure, counts, coverage, certificates) is NOT rendered. Write it to
+   docs/W24-CLAIMS-HELD.md ... Owner ticks them later."* It is written there, at **rows 33, 40
+   and 44**, and row 44 is exactly "the spec strip, all eight".
+2. **Question 21 of `CLAIMS-MIHAI.md`** asks it and is unanswered: *"Dați garanție pentru
+   garduri? Da / Nu. Dacă da, câți ani: ______"*.
+3. **W25-22 shipped two days' work ago** and the site's own written warranty is now **5 ani**,
+   in four places on the homepage.
+
+**The collision is the third point and it is worth seeing plainly.** A visitor reading the
+homepage is told `5 ani garanție scrisă`. A visitor reading a fence card would be told
+`20 ani anticoroziune`. Those are not the same warranty: one is Rapid Construct's contract on
+the work, the other is a coating warranty on the steel. **Nothing on either page says so**, and
+a reader who notices both will conclude one of them is wrong.
+
+  (a) **Leave it off.** The cards carry name, material, thickness, colour count, colour names
+      and price, which is everything else the source states. **This is what ships.**
+  (b) **Render it as a MATERIAL warranty, labelled as such**, e.g. `Anticoroziune: 20 ani
+      (garanția stratului)`, and add one line to the homepage or the fence page saying the
+      5-year written warranty is on the work and the coating warranty is the maker's. Needs
+      you to confirm you pass the maker's warranty on.
+  (c) **Render it plainly**, `Garanție: 20 ani`, and accept that it sits beside a 5-year
+      claim elsewhere. Not recommended.
+  (d) **Answer question 21** with your own fence warranty and render that instead of the
+      source's. Then it is Rapid Construct's number and no ruling is being bent.
+
+**Recommended: (d), and (a) until then.** The number on the card should be yours, not theirs.
+One sentence closes it.
+
+**Nothing is blocked behind this.** W25-25 shipped the colour names and the walk; the cards are
+live without a warranty line, exactly as they were before.

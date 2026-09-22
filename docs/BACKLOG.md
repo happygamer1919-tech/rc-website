@@ -770,3 +770,14 @@ Garduri "tip jaluzele" tile opens the models page; `.hub__tile--inert` and its r
 deleted. **Gate 26** `check-hub-tile-links.js`, 7 arms, 2 of them green. **The 8 tile images
 are blocked: Q-W25-18**, because W25-R19's premise is gone, both imperlux 4-tile sections have
 been rebuilt and neither exists. 25 of 25 gate commands exit 0.
+
+## W25-25 · Fence catalogue completeness
+**Status: PR OPEN, warranty line BLOCKED** (2026-09-22). Every imperlux fence page walked via
+its own internal links: **8 model pages** found (not in its sitemap), plus 10 price, 12 city,
+22 project, 4 service and 8 other pages. **Walked 8, on site before 8, after 8**; IL102, IL101,
+IL41 and IL02 are project titles, not models. The one missing field, **colour names**, is
+added: palette keyed by RAL once, count derived from the list, RAL code printed because
+imperlux has no RU page. The source's alt text independently confirms W25-18's colour pairing.
+**Warranty line held, Q-W25-19**: W24-R6 rows 33/40/44, CLAIMS question 21 unanswered, and it
+collides with the 5 years W25-22 shipped. Budgets 3,746 to **3,880** and 3,767 to **3,902**.
+25 of 25 gate commands exit 0.

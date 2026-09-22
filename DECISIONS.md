@@ -11617,3 +11617,58 @@ the one the first version got wrong.
 
 **25 of 25 gate commands exit 0**, up from 24. `docs/CLAUDE.md` numbers 26 gates and says to
 report the number `run-gates.js` prints. **No height moved**: an href is not geometry.
+
+## W25-25 · Eight model pages walked, one field missing, one field held, 2026-09-22
+
+**Card W25-25.** PR only, stops for the owner. The full card is
+`docs/board/W25-25-fence-completeness.md`.
+
+**Every fence page on `imperlux.md` was walked, not sampled**, by harvesting the fence
+sub-app's own internal links from four entry pages. That is how the model pages were found:
+they are not in the sitemap, which lists five URLs for the whole site. **8 model pages**, plus
+10 price pages, 12 city pages, 22 project pages, 4 service pages and 8 others.
+
+**Models walked 8, on site before 8, on site after 8.** No model is missing, which the source
+states itself: *"4 modele: IL12, IL30, IL100, IL40 · fiecare în Metal Plus și Metal PlusDV"*.
+**`IL102`, `IL101`, `IL41` and `IL02` are not models**: they appear only in finished-project
+titles, and a walk that counted designations rather than model pages would have invented four
+cards.
+
+### What was missing was one field
+
+Name, price, thickness, colour count and picture were already there. **The colour NAMES were
+not**, and they are now: `Culori 3: Antracit (RAL 7016), Maro Wenge (RAL 8019), Negru profund
+(RAL 9005)`.
+
+**The names are the source's own**, from two places that agree: the "Culori disponibile" line
+and the `alt` text on each swatch. **That alt text also confirms W25-18 by accident**: it
+labels `9005` "Metal Plus" and `7016`/`8019` "Metal PlusDV", which is the pairing W25-18
+deduced by counting occurrences. Two independent readings, same answer.
+
+**The palette lives once**, keyed by RAL, and a model names its codes, so the count is derived
+rather than stated beside the list: `build.js` refuses a model whose `colours` disagrees with
+its `colour_rals` length. **The RAL code ships beside the name** because `imperlux.md`
+publishes no Russian page (404), so the Russian name is authored here and the code is not.
+
+Two fields the source states are deliberately not taken: its description sentence, which is
+marketing copy rather than a product fact, and its struck price, percent badge and
+"Economisești" figure, which R-X forbids here.
+
+### The warranty line is held, three-deep
+
+`Garanție: 20 ani anticoroziune` / `30 ani` is **not rendered**, and Q-W25-19 carries why:
+W24-R6 holds every warranty sentence until the owner ticks it and it is written in
+`W24-CLAIMS-HELD.md` rows 33, 40 and 44; question 21 of `CLAIMS-MIHAI.md` asks the owner's own
+fence warranty and is unanswered; and **W25-22 has just made the site's written warranty 5
+years**. A visitor told 5 on the homepage and 20 on a fence card concludes one is wrong. They
+are different warranties, on the work and on the coating, and nothing on either page says so.
+
+### The budget rises
+
+`/servicii/modele-garduri/` **3,686 to 3,820**, budget 3,746 to **3,880**; RU **3,707 to
+3,842**, budget 3,767 to **3,902**. One definition line became three or four wrapped ones on a
+four-column card. **R-Y's rule runs in this direction too**: it fell at W25-11 and rises here.
+
+### Gates
+
+**25 of 25 gate commands exit 0.**

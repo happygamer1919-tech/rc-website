@@ -284,8 +284,11 @@ const PAGES = [
      card's shared 44px flex min-height: measured 3686 RO and 3707 RU against 3720
      and 3742 before, so the budget falls with it. R-Y: a budget is measured plus
      60, not a ceiling to hide under. */
-  { path: '/servicii/modele-garduri/',     type: 'product', label: 'gard modele RO', budget: 3746 },
-  { path: '/ru/servicii/modele-garduri/',  type: 'product', label: 'gard modele RU', budget: 3767 },
+  /* W25-25. Each of the eight cards gained its colour NAMES beside the count, so
+     one fact line became three or four wrapped lines on a 4-column card.
+     Measured plus 60, under W24-R4, and recorded in docs/rulings/R-Y.md. */
+  { path: '/servicii/modele-garduri/',     type: 'product', label: 'gard modele RO', budget: 3880 },
+  { path: '/ru/servicii/modele-garduri/',  type: 'product', label: 'gard modele RU', budget: 3902 },
   // ~~W16-02, RC-129. The seven catalog category pages.~~
   // AMENDED (W24-04): thirty pages, and every budget re-measured. The catalogue
   // index at /catalog/ is new (it answered 404), every subcategory has a page of

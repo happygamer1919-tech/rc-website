@@ -6,6 +6,20 @@
     "captured": "2026-09-19",
     "ruling": "W24-R6, W24-R7"
   },
+  "palette": {
+    "7016": {
+      "ro": "Antracit",
+      "ru": "Антрацит"
+    },
+    "8019": {
+      "ro": "Maro Wenge",
+      "ru": "Венге"
+    },
+    "9005": {
+      "ro": "Negru profund",
+      "ru": "Глубокий чёрный"
+    }
+  },
   "models": [
     {
       "id": "il12-plus",
@@ -20,7 +34,12 @@
       "price_from": {
         "amount": "500",
         "unit": "lei/m²"
-      }
+      },
+      "colour_rals": [
+        "7016",
+        "8019",
+        "9005"
+      ]
     },
     {
       "id": "il12-plusdv",
@@ -35,7 +54,11 @@
       "price_from": {
         "amount": "680",
         "unit": "lei/m²"
-      }
+      },
+      "colour_rals": [
+        "7016",
+        "8019"
+      ]
     },
     {
       "id": "il30-plus",
@@ -50,7 +73,12 @@
       "price_from": {
         "amount": "668",
         "unit": "lei/m²"
-      }
+      },
+      "colour_rals": [
+        "7016",
+        "8019",
+        "9005"
+      ]
     },
     {
       "id": "il30-plusdv",
@@ -65,7 +93,11 @@
       "price_from": {
         "amount": "822",
         "unit": "lei/m²"
-      }
+      },
+      "colour_rals": [
+        "7016",
+        "8019"
+      ]
     },
     {
       "id": "il100-plus",
@@ -80,7 +112,12 @@
       "price_from": {
         "amount": "906",
         "unit": "lei/m²"
-      }
+      },
+      "colour_rals": [
+        "7016",
+        "8019",
+        "9005"
+      ]
     },
     {
       "id": "il100-plusdv",
@@ -95,7 +132,11 @@
       "price_from": {
         "amount": "1128",
         "unit": "lei/m²"
-      }
+      },
+      "colour_rals": [
+        "7016",
+        "8019"
+      ]
     },
     {
       "id": "il40-plus",
@@ -110,7 +151,12 @@
       "price_from": {
         "amount": "749",
         "unit": "lei/m²"
-      }
+      },
+      "colour_rals": [
+        "7016",
+        "8019",
+        "9005"
+      ]
     },
     {
       "id": "il40-plusdv",
@@ -125,8 +171,13 @@
       "price_from": {
         "amount": "926",
         "unit": "lei/m²"
-      }
+      },
+      "colour_rals": [
+        "7016",
+        "8019"
+      ]
     }
   ],
-  "_price_note": "W25-11, 2026-09-21. price_from is the public 'de la' figure shown on the imperlux.md garduri page on that date, per W25-R8: the current public price only. That page also carries struck prices, percent badges and a limited-offer banner; none of those is copied here, and R-X forbids all three on this site. No Imperlux image file was fetched: W25-R7 lifted the image ban for dasterum.md only."
+  "_price_note": "W25-11, 2026-09-21. price_from is the public 'de la' figure shown on the imperlux.md garduri page on that date, per W25-R8: the current public price only. That page also carries struck prices, percent badges and a limited-offer banner; none of those is copied here, and R-X forbids all three on this site. No Imperlux image file was fetched: W25-R7 lifted the image ban for dasterum.md only.",
+  "_colour_note": "W25-25, 2026-09-22. colour_rals per model, and palette once. Walked from the eight model pages at imperlux.md/garduri/garduri/<model>: each states \"Culori disponibile\" and each swatch carries the colour name in its own alt text, which is where these names come from. Metal Plus offers three, Metal PlusDV two, which the source also states in one line on the catalogue page. build.js refuses a model whose colours count disagrees with its colour_rals length, so the number is no longer a second place to be wrong. The WARRANTY LINE the source shows beside these (20 ani / 30 ani anticoroziune) is NOT here: W24-R6 holds every warranty sentence until the owner ticks it, docs/W24-CLAIMS-HELD.md rows 33, 40 and 44, and question 21 of CLAIMS-MIHAI.md asks it. Q-W25-19 records the conflict with the 5-year written warranty W25-22 shipped."
 }

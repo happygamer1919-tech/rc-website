@@ -2703,6 +2703,32 @@ function gardModelePage(l) {
     return `<p class="nvk__ask"><span class="nvk__price">${esc(priceFrom)} ${esc(p.amount)} ${esc(p.unit)}</span></p>`;
   };
 
+  /* W25-25. The colour NAMES, which the source publishes on every one of its eight
+     model pages under "Culori disponibile" and again in the alt text of each
+     swatch. The count alone told a visitor there were three and not which three.
+
+     THE PALETTE LIVES ONCE, in the data file, keyed by RAL code, and a model names
+     the codes it offers. So a colour renamed is renamed everywhere, and the count
+     stops being a second place to be wrong: it is asserted against the list below
+     rather than trusted.
+
+     THE RAL CODE IS PRINTED BESIDE THE NAME because imperlux.md publishes no RU
+     page, so the Russian name is authored here while the code is the source's.
+     A colour name translated is not a claim; the code is what a buyer matches. */
+  const palette = GARD_MODELE.palette || {};
+  const colourText = (m, i) => {
+    const rals = m.colour_rals;
+    if (!Array.isArray(rals) || !rals.length) die(`${GARD_MODELE_FILE}: models[${i}] has no colour_rals.`);
+    if (String(m.colours) !== String(rals.length)) {
+      die(`${GARD_MODELE_FILE}: models[${i}] says ${m.colours} colours and lists ${rals.length} (${rals.join(', ')}). The count is derived from the list, never stated beside it.`);
+    }
+    return rals.map((r) => {
+      const entry = palette[r];
+      if (!entry || !REAL(entry[l.code])) die(`${GARD_MODELE_FILE}: palette has no ${l.code} name for RAL ${r}, named by models[${i}].`);
+      return `${entry[l.code]} (RAL ${r})`;
+    }).join(', ');
+  };
+
   const cards = GARD_MODELE.models.map((m, i) => {
     const name = `${need(m.designation, `models[${i}].designation`)} ${need(m.material, `models[${i}].material`)}`;
     return `      <article class="nvk" data-reveal data-stagger="${Math.min(i, 6)}">
@@ -2712,7 +2738,7 @@ function gardModelePage(l) {
           <p class="nvk__desc">${esc(need(m.style && m.style[l.code], `models[${i}].style`))}</p>
           <dl class="nvk__facts">
             <div><dt>${s('thickness')}</dt><dd>${esc(need(m.thickness, `models[${i}].thickness`))}</dd></div>
-            <div><dt>${s('colours')}</dt><dd>${esc(need(m.colours, `models[${i}].colours`))}</dd></div>
+            <div><dt>${s('colours')}</dt><dd>${esc(need(m.colours, `models[${i}].colours`))}: ${esc(colourText(m, i))}</dd></div>
           </dl>
           ${priceLine(m, i)}
         </div>

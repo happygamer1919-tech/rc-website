@@ -1,5 +1,5 @@
 {
-  "_note": "W24-08. The fence models page, mirroring imperlux.md/garduri/garduri under rulings W24-R6 and W24-R7. Everything here is a PRODUCT fact taken from the source: a designation, a material name, a style label, a sheet thickness, a colour count. NOT here, and listed in docs/W24-CLAIMS-HELD.md instead: every price and struck price, every discount badge, the anticorrosion warranty in years, the hidden-fixing claim and the local-production claim. GARD_FORBIDDEN is untouched (W24-R7). Shape: models[] of { id, designation, material, style {ro,ru}, thickness, colours }.",
+  "_note": "W24-08. The fence models page, mirroring imperlux.md/garduri/garduri under rulings W24-R6 and W24-R7. Everything here is a PRODUCT fact taken from the source: a designation, a material name, a style label, a sheet thickness, a colour count. NOT here, and listed in docs/W24-CLAIMS-HELD.md instead: every price and struck price, every discount badge, the anticorrosion warranty in years, the hidden-fixing claim and the local-production claim. GARD_FORBIDDEN is untouched (W24-R7). Shape: models[] of { id, designation, material, style {ro,ru}, thickness, colours }. AMENDED (W26-09, owner instruction 2026-09-22): the DESIGNATION is no longer the source's. The four fence models carry Rapid Construct designations, RC12, RC30, RC40 and RC100, replacing the source's IL12, IL30, IL40 and IL100, and the ids follow. This is the same de-badging content/copertine.json took at W14-23, where IL301 to IL311 became C-01 to C-12 and build.js has refused a competitor model code in that file ever since; the fence file was the last place one rendered. Every OTHER field here is still the source's, including the material names Metal Plus and Metal PlusDV, which the owner did not ask to change. build.js now refuses an IL code in this file too.",
   "source": {
     "host": "imperlux.md",
     "page": "/garduri/garduri",
@@ -22,8 +22,8 @@
   },
   "models": [
     {
-      "id": "il12-plus",
-      "designation": "IL12",
+      "id": "rc12-plus",
+      "designation": "RC12",
       "material": "Metal Plus",
       "style": {
         "ro": "Modern minimalist",
@@ -42,8 +42,8 @@
       ]
     },
     {
-      "id": "il12-plusdv",
-      "designation": "IL12",
+      "id": "rc12-plusdv",
+      "designation": "RC12",
       "material": "Metal PlusDV",
       "style": {
         "ro": "Modern minimalist",
@@ -61,8 +61,8 @@
       ]
     },
     {
-      "id": "il30-plus",
-      "designation": "IL30",
+      "id": "rc30-plus",
+      "designation": "RC30",
       "material": "Metal Plus",
       "style": {
         "ro": "Clasic versatil",
@@ -81,8 +81,8 @@
       ]
     },
     {
-      "id": "il30-plusdv",
-      "designation": "IL30",
+      "id": "rc30-plusdv",
+      "designation": "RC30",
       "material": "Metal PlusDV",
       "style": {
         "ro": "Clasic versatil",
@@ -100,8 +100,8 @@
       ]
     },
     {
-      "id": "il100-plus",
-      "designation": "IL100",
+      "id": "rc100-plus",
+      "designation": "RC100",
       "material": "Metal Plus",
       "style": {
         "ro": "Exclusivist",
@@ -120,8 +120,8 @@
       ]
     },
     {
-      "id": "il100-plusdv",
-      "designation": "IL100",
+      "id": "rc100-plusdv",
+      "designation": "RC100",
       "material": "Metal PlusDV",
       "style": {
         "ro": "Exclusivist",
@@ -139,8 +139,8 @@
       ]
     },
     {
-      "id": "il40-plus",
-      "designation": "IL40",
+      "id": "rc40-plus",
+      "designation": "RC40",
       "material": "Metal Plus",
       "style": {
         "ro": "Popular",
@@ -159,8 +159,8 @@
       ]
     },
     {
-      "id": "il40-plusdv",
-      "designation": "IL40",
+      "id": "rc40-plusdv",
+      "designation": "RC40",
       "material": "Metal PlusDV",
       "style": {
         "ro": "Popular",

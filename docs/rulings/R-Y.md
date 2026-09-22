@@ -902,3 +902,37 @@ in a four-column grid of 71 costs a nineteenth of a row while a picture on a til
 its own height on a page of four.
 
 Measured at 1440 with every `[data-reveal]` applied and settled for 1,600ms, plus 60 (W24-R4).
+
+---
+
+## AMENDED (W26-03, wave 26): a budget that stayed still while its page moved
+
+| Page | Budget held | Measured today | Budget now |
+|---|---|---|---|
+| `/servicii/garduri/` | 5,728 | **5,547** | **5,607** |
+| `/ru/servicii/garduri/` | 5,750 | **5,569** | **5,629** |
+
+**This is not W26-03's change.** W26-03 repoints one tile on this page and fills no slot on
+it, and the page measures the same before and after, to the pixel. The drift was found while
+taking that before reading.
+
+**W24-08 measured 5,668 and 5,690 on 2026-09-20** and set the budgets at measured plus 60. The
+page reads **121px shorter** today in both locales, and no block between then and now records
+it. Some card in wave 25 shortened `/servicii/garduri/` and left the budget where it was.
+
+**R-Y's own words are the reason this is repaired rather than noted**: *"What it may never do
+is stay still while the page moves."* A budget 181px above the page is not a budget; it is
+181px of unexamined room for the next change to hide in, which is the failure the ruling
+exists to stop, running in the direction nobody watches. W25-11 lowered a budget for the same
+reason and that is the precedent.
+
+**The number is measured three ways and they agree**: locally on this branch, locally on the
+branch this one is stacked on, and on the deployed site by `verify-live.js` against
+`18b98cec9bb2b729785c9f2e8bf548df130f53f6`, which read `garduri RO 5547px / 5728 inside` and
+`garduri RU 5569px / 5750 inside`. A single local reading would not have been enough to move a
+budget on.
+
+**What it does NOT do is find the card that shrank it.** That is a bisection over wave 25 and
+it is not this card's work; what matters for the gate is that the budget now follows the page.
+
+Measured at 1440 with every `[data-reveal]` applied and settled for 1,600ms, plus 60 (W24-R4).

@@ -865,3 +865,19 @@ controls, **one GREEN** (the `_note` naming the old codes is permitted). **RP vs
 instruction said RP and both examples said RC; shipped RC, logged **Q-W26-01**. Material names,
 card order and the Imperlux pictures are unchanged and flagged with a recommendation. Heights
 unchanged to the pixel. 25 of 25 gate commands exit 0.
+
+## W26-03 · Hub tiles, tile links, gate 26
+**Status: PR OPEN** (2026-09-22). **Section 12.0 on `18b98ce`: exit 0, PASS, 0 unverified, 0
+failed, 0 retried.** W26-R3 measured: imperlux.md's roofing hub carries **six tile images and
+two answer to our four tiles**. `ACOP-01` and `ACOP-02` **filled**, cropped to drop burned-in
+Romanian text and a **model count that is Imperlux's range** (ink bands measured, crops start
+below the last inked row); `ACOP-03` has **no counterpart**; `ACOP-04` **refused**, its only
+candidate carries the IMPERLUX logo and a free-offer CTA. No screenshot-crop needed, all six
+fetch at 200. GARDB-01 to 04 were already filled at W25-18. The provenance override went to
+16 by **getting narrower**: one exact licence per ruling, so the two cannot be crossed; 3 arms,
+2 controls. **W26-R4 applied: 0 same-page anchors on 16 tiles**, refused in `build.js` and in
+gate 26, which now rejects by kind and is **scoped to `data-hub-grid`** so W26-R5's product
+bento can exist; 9 arms, 1 GREEN. Both repointed tiles are logged as **Q-W26-02** (two roofing
+tiles now go to in-construcție, three fence tiles share one page). **`/servicii/garduri/`'s
+budget lowered 121px** to 5,607/5,629: it had stayed still since W24-08 while the page moved.
+317 of 337 filled. Heights identical before and after. 25 of 25 gate commands exit 0.

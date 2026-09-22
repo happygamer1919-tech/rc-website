@@ -248,23 +248,33 @@
       "page": "/servicii/acoperisuri/",
       "ratio": "5 / 6",
       "min_px": "1000x1200",
-      "shows": "Tigla metalica: un acoperis terminat cu tigla metalica, vedere de ansamblu, format PORTRET (tila inalta a bento-ului).",
-      "state": "placeholder"
+      "shows": "Tigla metalica: un acoperis terminat cu tigla metalica, vedere de ansamblu, format PORTRET (tila inalta a bento-ului). AMENDED W26-03 (ruling W26-R3): filled with the tile image imperlux.md shows for tigla metalica, CROPPED to the packshot. The source tile is 1440x1080 and carries a burned-in Romanian headline and a model count above the product, measured at y 270..494; the crop starts at y 500 so no text survives. It is not the subject this line asked for, which was a finished roof.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACOP-01.jpg",
+      "alt": {
+        "ro": "Prim-plan cu profilul unei tigle metalice inchise la culoare",
+        "ru": "Крупный план профиля тёмной металлочерепицы"
+      }
     },
     {
       "id": "ACOP-02",
       "page": "/servicii/acoperisuri/",
       "ratio": "7 / 2",
       "min_px": "1750x500",
-      "shows": "Roca vulcanica Novatik: un acoperis cu tigla Novatik, cadru LAT si jos (tila panoramica), cu cer deasupra.",
-      "state": "placeholder"
+      "shows": "Roca vulcanica Novatik: un acoperis cu tigla Novatik, cadru LAT si jos (tila panoramica), cu cer deasupra. AMENDED W26-03 (ruling W26-R3): filled with the tile image imperlux.md shows for roca vulcanica, CROPPED to the packshot. The burned-in Romanian headline and model count sit at y 240..556 in the 1440x1080 source; the crop starts at y 608. It is not the subject this line asked for, which was a roof under sky.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACOP-02.jpg",
+      "alt": {
+        "ro": "Prim-plan cu o tigla acoperita cu roca vulcanica, profil ondulat",
+        "ru": "Крупный план черепицы с вулканическим камнем, волнистый профиль"
+      }
     },
     {
       "id": "ACOP-03",
       "page": "/servicii/acoperisuri/",
       "ratio": "7 / 4",
       "min_px": "900x520",
-      "shows": "Calcularea pretului: santier de acoperis cu masuratori in curs, ruleta sau plan pe masa. Orizontal.",
+      "shows": "Calcularea pretului: santier de acoperis cu masuratori in curs, ruleta sau plan pe masa. Orizontal. AMENDED W26-03 (ruling W26-R3): STILL EMPTY, and the reason is measured. The imperlux.md roofing hub carries six tile images: five product categories and one promo. NONE of them is a price calculator, so this tile has no counterpart to take. Nothing was substituted.",
       "state": "placeholder"
     },
     {
@@ -272,7 +282,7 @@
       "page": "/servicii/acoperisuri/",
       "ratio": "7 / 4",
       "min_px": "900x520",
-      "shows": "Reduceri: material de acoperis stivuit in depozit sau pe santier. Orizontal. Fara pret, fara eticheta, fara procent in cadru.",
+      "shows": "Reduceri: material de acoperis stivuit in depozit sau pe santier. Orizontal. Fara pret, fara eticheta, fara procent in cadru. AMENDED W26-03 (ruling W26-R3): STILL EMPTY, and the reason is measured. The only imperlux.md tile left is the one its \"oferte\" tile shows, /acoperisuri/images/promo/scurgere-gratuit-cta.jpg, and it is an advert: it carries the IMPERLUX LOGO, the headline \"Vrei sistem de scurgere GRATUIT?\" and a \"Click si afla detalii\" button. A competitor logo and a free-offer claim are two separate refusals. Cropping to its photograph leaves a rainwater-system render, which matches neither this line nor the tile label \"Reduceri\".",
       "state": "placeholder"
     },
     {

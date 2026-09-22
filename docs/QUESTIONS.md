@@ -3175,3 +3175,89 @@ product photograph. Nothing is claimed about who made either, and `RC-pics-real/
 are the source's product names and they render exactly as before, now beside our designation.
 **Recommended: rename those too**, so the line reads as one product family rather than half of
 ours and half of theirs. Say the word and it is the same shape of edit.
+
+## Q-W26-02 · Two hub tiles now open a page that says "coming soon", and three fence tiles open one page · OPEN · opened 2026-09-22 (W26-03)
+
+**Raised W26-03, 2026-09-22. Shipped defaults in place. Nothing is blocked.**
+
+W26-R4 is applied: **no hub tile is a same-page anchor any more**, gate 26 refuses one by
+kind, and `build.js` refuses one before rendering. Two tiles had to be repointed and neither
+had an obvious page to open.
+
+### The roofing hub: "Reduceri" opens `/in-constructie/`
+
+**There is no discounts page on this site.** The four offers under the tile are authored prose
+rendered on `/servicii/acoperisuri/` and nowhere else, and the site's real discount is the
+promo bar's "Reducere 10% la orice serviciu", which is on **every** page and is not a
+destination. The three candidates and why each was refused:
+
+| Candidate | Refused because |
+|---|---|
+| `/servicii/acoperisuri/` | it is the page the tile sits on. A tile that reloads the page you are on is the defect W26-R4 exists to stop, wearing a page URL |
+| A new `/oferte/` page | inventing a page is a product decision, and duplicating the offers prose onto it is what the catalogue gate's no-duplicate rule refuses |
+| `/contacte/` | there is no such page, and "Reduceri" would not mean what it says if there were |
+
+**Shipped: `/in-constructie/`**, this site's own answer for a destination that does not exist
+yet. It is a page URL, it does not lie, and it is one line to change. **The cost, stated:
+two of the roofing hub's four tiles now go there**, since "Calculează prețul acoperișului"
+already did.
+
+**Recommended, and it is one sentence in the next dispatch:** W26-R5 keeps "Reduceri" in the
+hub and gives the roofing page a **second, product** bento whose tiles open sections of that
+page on purpose. **"Reduceri" belongs in that second bento, not in the hub**, and the hub's
+fourth tile should be something that is a page. If instead you want a real discounts page,
+name what goes on it and it is a card.
+
+### The fence hub: three of four tiles open `/servicii/modele-garduri/`
+
+"Prețuri și oferte" was `#oferta`, the quote form on its own page. **The page that publishes
+the fence prices is `/servicii/modele-garduri/`**: W25-11 put a "de la" figure on all eight
+model cards. So the link means what its label says, which is the test section 9 sets.
+
+**But tiles 1 and 3 already open it.** "Garduri tip jaluzele" opens it because W26-R4 says so
+in terms, and "Modele de garduri" opens it because that is its name. **W25-24 already put this
+to you** and it is now three tiles of four.
+
+**Recommended: repoint "Modele de garduri" (tile 3).** It is the tile whose name is the least
+specific, and the two tiles either side of it are each the better answer for their own words.
+A fourth destination would need a page that does not exist yet.
+
+## Q-W26-03 · Two of the four roofing hub tiles have no picture on imperlux.md to take · OPEN · opened 2026-09-22 (W26-03)
+
+**Raised W26-03, 2026-09-22. Both slots stay empty. Nothing is blocked.**
+
+W26-R3 says `ACOP-01` to `ACOP-04` "are the tile images imperlux.md shows today". **Read from
+the rendered DOM, that hub carries six tile images and only two of them answer to our four
+tiles.**
+
+| Our tile | imperlux.md file | Shipped |
+|---|---|---|
+| Țiglă metalică | `images/categories/tigla-metalica.png`, 1440x1080 | **filled**, cropped |
+| Rocă vulcanică Novatik | `images/categories/roca-vulcanica.png`, 1440x1080 | **filled**, cropped |
+| Calculează prețul acoperișului | none | **empty** |
+| Reduceri | `images/promo/scurgere-gratuit-cta.jpg`, 1080x1080 | **empty, refused** |
+
+The other three files are `ceramica`, `shingle` and `sisteme-pluviale`, which are the second
+bento W26-R5 asks for in W26-04, not these tiles.
+
+**The calculator has no counterpart.** Imperlux's bento is five product categories and one
+promo. None of them is a price calculator. Nothing was substituted.
+
+**The "Reduceri" candidate is an advert and is refused on two grounds.** It carries the
+**IMPERLUX logo**, and W25-R15's override is a permission to take a competitor's *product
+pictures*, never its branding. And its headline is **"Vrei sistem de scurgere GRATUIT?"** with
+a "Click și află detalii" button, which is a free-offer claim this site has no source for
+(section 5) and the kind of promotional claim R-X refuses. Cropping to its photograph leaves a
+rainwater-system render, which matches neither the tile's "Reduceri" label nor the ledger's
+subject line.
+
+**Every one of the five category tiles carries burned-in Romanian text**: a headline and a
+**model count** ("7 MODELE DISPONIBILE", "4 MODELE DISPONIBILE"). Two separate problems, and
+they are why the two filled slots are cropped rather than taken whole: Romanian words would
+render on the Russian page, and the count is **Imperlux's range, not ours**. The crops are
+measured, and the text bands are recorded in the ledger rows.
+
+**Recommended: one photograph each.** `RC-pics-real/ACOP-03.jpg` and `ACOP-04.jpg` and both
+tiles fill themselves, per the folder's own README. A photograph of a measurement in progress
+covers the calculator; anything roofing covers "Reduceri", which may want relabelling anyway
+(Q-W26-02).

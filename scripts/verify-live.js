@@ -293,8 +293,10 @@ const PAGES = [
   { path: '/ru/servicii/copertine/',       type: 'product', label: 'copertine RU',   budget: 6691 },
   /* W24-08. The garduri page gained the fence bento; the copertine page gained a
      dark hero and a cross-sell row; modele de garduri is new. All under W24-R4. */
-  { path: '/servicii/garduri/',            type: 'product-hub', label: 'garduri RO',  budget: 5728 },
-  { path: '/ru/servicii/garduri/',         type: 'product-hub', label: 'garduri RU',  budget: 5750 },
+  /* W26-03: 5728 held since W24-08 while the page fell to 5,547. See R-Y's
+     2026-09-22 block: a budget may never stay still while its page moves. */
+  { path: '/servicii/garduri/',            type: 'product-hub', label: 'garduri RO',  budget: 5607 },
+  { path: '/ru/servicii/garduri/',         type: 'product-hub', label: 'garduri RU',  budget: 5629 },
   /* W25-11. Both rows DROP. The "Preț la cerere" line became a "De la ... lei/m2"
      price, and the new line is shorter because it does not carry the catalogue
      card's shared 44px flex min-height: measured 3686 RO and 3707 RU against 3720

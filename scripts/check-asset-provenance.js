@@ -59,12 +59,30 @@ const DIRECT_SUPPLIER_LICENCES = {
    permission is attached to the twelve slot ids the ruling names; this gate walks
    files rather than slots, so it holds the FILE NAME half of that, and gate 19
    holds the slot half over the built tree. */
+/* AMENDED (W26-R3, W26-03): a SECOND override, for the four roofing hub tiles, and
+   deliberately not a widening of the first. Each ruling has its own exact licence
+   sentence and its own file list, so a W26-R3 licence on a fence file and a W25-R15
+   licence on a roofing file are both refused. The new sentence records the CROP,
+   which W26-R3 permits and W25-R15 never mentioned: every one of these tiles carries
+   a burned-in Romanian headline and a model count above the product, and the crop is
+   what keeps them off the page. */
 const OVERRIDE_HOST = 'imperlux.md';
-const OVERRIDE_LICENCE = 'owner_override_imperlux, competitor origin taken by owner decision W25-R15, no upscale, source URL per file, owner accepted 2026-09-21';
-const OVERRIDE_FILES = [
-  'GARD-01', 'GARD-02', 'GARD-03', 'GARD-04', 'GARD-05', 'GARD-06', 'GARD-07', 'GARD-08',
-  'GARDB-01', 'GARDB-02', 'GARDB-03', 'GARDB-04',
+const OVERRIDES = [
+  {
+    ruling: 'W25-R15',
+    licence: 'owner_override_imperlux, competitor origin taken by owner decision W25-R15, no upscale, source URL per file, owner accepted 2026-09-21',
+    files: [
+      'GARD-01', 'GARD-02', 'GARD-03', 'GARD-04', 'GARD-05', 'GARD-06', 'GARD-07', 'GARD-08',
+      'GARDB-01', 'GARDB-02', 'GARDB-03', 'GARDB-04',
+    ],
+  },
+  {
+    ruling: 'W26-R3',
+    licence: 'owner_override_imperlux, competitor origin taken by owner decision W26-R3, cropped to remove burned-in text, no upscale, source URL per file, owner accepted 2026-09-22',
+    files: ['ACOP-01', 'ACOP-02', 'ACOP-03', 'ACOP-04'],
+  },
 ];
+const OVERRIDE_FILES = OVERRIDES.flatMap((o) => o.files);
 /* R-W amendment, 2026-09-15 (W14-02b). Legacy status is a fingerprint: the path
    AND sha256 must match docs/assets/LEGACY-IMAGES.txt, the images in f5e4eb6's
    first parent. The list is committed because CI has no git history. */
@@ -199,9 +217,12 @@ for (const { line, c } of rows) {
   /* W25-R7 and W25-R14: one host, one exact sentence, and the sentence names the
      host, so the fatade3d licence cannot lift dasterum.md or the other way round. */
   const supplierHost = Object.keys(DIRECT_SUPPLIER_LICENCES).find((h) => licence === DIRECT_SUPPLIER_LICENCES[h]) || null;
-  /* W25-R15: the override, and the file must be one of the twelve the ruling names. */
-  const override = licence === OVERRIDE_LICENCE;
-  const overrideFileOk = OVERRIDE_FILES.some((id) => path.basename(file).startsWith(id + '.'));
+  /* The licence names its ruling and the ruling names its files, so the pair has to
+     agree: a row carrying one ruling's sentence on the other ruling's file is not an
+     override at all. */
+  const overrideEntry = OVERRIDES.find((o) => licence === o.licence) || null;
+  const override = overrideEntry !== null;
+  const overrideFileOk = override && overrideEntry.files.some((id) => path.basename(file).startsWith(id + '.'));
   for (const host of hostsIn(source)) {
     const b = bannedHost(host);
     if (!b) continue;
@@ -210,9 +231,13 @@ for (const { line, c } of rows) {
     let why = `${where} ${file} source host ${host} is banned by R-W (${b})`;
     if (DIRECT_SUPPLIER_LICENCES[b]) why += `. ${b === DIRECT_SUPPLIER_HOST ? 'W25-R7' : 'W25-R14'} allows it only on a row whose licence is exactly the direct-supplier sentence for ${b}; this row's is "${licence}"`;
     if (b === OVERRIDE_HOST) {
+      /* AMENDED (W26-03): the message names THE RULING THE LICENCE CLAIMS and the
+         files that ruling covers, not the union of both lists. The first version
+         printed all sixteen and so read "this file is in the list" back at someone
+         whose real mistake was using W25-R15's sentence on a W26-R3 file. */
       why += override
-        ? `. W25-R15 overrides it for ${OVERRIDE_FILES.join(', ')} and for nothing else; this file is ${path.basename(file)}`
-        : `. W25-R15 overrides it only on a row whose licence is exactly the owner-override sentence, on one of the twelve Garduri files; this row's is "${licence}"`;
+        ? `. ${overrideEntry.ruling} overrides it for ${overrideEntry.files.join(', ')} and for nothing else; this file is ${path.basename(file)}. The other override is ${OVERRIDES.filter((o) => o !== overrideEntry).map((o) => `${o.ruling} for ${o.files.join(', ')}`).join('; ')}`
+        : `. It is overridden only on a row whose licence is exactly one ruling's own sentence: ${OVERRIDES.map((o) => `${o.ruling} for ${o.files.join(', ')}`).join('; ')}. This row's licence is "${licence}"`;
     }
     problems.push(why);
   }

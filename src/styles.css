@@ -1765,7 +1765,12 @@ p { margin: 0; }
    the section carries an aria-label. White cards with the line border and a
    brand top edge, the same family as the offer cards above. */
 .section--teaser { padding: 48px 0; }
-.teasers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+/* W25-23. TWO equal columns, not three. The Acoperisuri card left this strip
+   because the homepage services grid one section above already carries it.
+   `auto-fit` rather than a hard 2: the strip is built from
+   TOP_LEVEL_PRODUCT_PAGES, so if a third top-level product page is ever added it
+   lays out without a second edit here, and the columns stay equal either way. */
+.teasers { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--gap); }
 .teaser {
   display: flex; flex-direction: column; gap: 8px;
   background: var(--bg-light); border: 1px solid var(--line); border-top: 4px solid var(--brand);

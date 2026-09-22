@@ -821,3 +821,37 @@ destination.
 **W25-R18 requires this to be re-measured on the deployed sha after the merge.** The
 figures above are the local build measured with the deployed recipe; if the live page
 differs, this block is corrected there and the correction says so.
+
+---
+
+## AMENDED (W25-23, wave 25): the Acoperisuri card leaves the homepage product strip
+
+| Page | Before | After | Budget |
+|---|---|---|---|
+| `/` | 9,135 | **9,081** | 9,195 to **9,141** |
+| `/ru/` | 9,376 | **9,294** | 9,436 to **9,354** |
+
+**The reason, and it is not the card's own height.** The strip is one grid row, so removing
+one of three cards does not remove a row. What changed is the COLUMN WIDTH: two cards across
+the same container are wider than three, each line of the teaser text holds more words, and
+the tallest card in the row loses a line. RO drops 54px and RU 82px, and RU drops more
+because Russian sets longer.
+
+**The budget falls with the measurement**, which is this ruling's standing rule: removing an
+element's cost drops the budget by that cost, and a budget left high is a ceiling to hide
+under.
+
+Measured at 1440 with every `[data-reveal]` applied and settled for 1,600ms, plus the 60px
+headroom term (W24-R4). The before column is the same build with the card still in it,
+measured in the same way in the same session.
+
+## CONFIRMED (W25-23) on the deployed sha: the W25-19 acoperisuri budget
+
+W25-R18 requires the acoperisuri figure to be re-measured on the deployed sha after the merge.
+Section 12.0 on `c05ce0e589da98b1a97c660537882388feff7a0e` read
+**`svc RO acoper 16904px / 16964 inside`** and **`svc RU acoper 17064px / 17124 inside`**.
+
+**The live page measures exactly what the local build did**, 16,904 and 17,064, so the
+budgets set at W25-19 stand unchanged and no correction is owed. The requirement is
+discharged, and it is recorded here rather than only in a card because that is where the
+figure lives.

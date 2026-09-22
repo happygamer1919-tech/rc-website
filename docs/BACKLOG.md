@@ -727,3 +727,12 @@ redirect pages that still answer 200 and land on the matching filter, and leave 
 The fold was taught about the filter. RC-129 gains a `redirect` page kind; verify-live swaps
 16 measured rows for a 16-URL fetch assertion. Budget 7,658 to **16,964** under W25-R18.
 Q-W25-17 logged. 24 of 24 gate commands exit 0.
+
+## W25-20 · CT80F and the declared reuse
+**Status: PR OPEN** (2026-09-22). W25-R16 and W25-R17 applied: **12 slots filled from
+pictures already on the site**, ledger 271 to 283 of 337. `reuse_of` and `reuse_reason` are
+ledger fields and gate 19 checks them against the ledger; six new self-test arms, five red
+and **one GREEN**, which is a new kind of arm here. 13 were held and 12 could be filled:
+`CAT-0110` and `CAT-0112` have no picture on either record, and their reason is corrected to
+the measured one. Question 30 added to CLAIMS-MIHAI.md quoting both CT 80 F rows. 24 of 24
+gate commands exit 0.

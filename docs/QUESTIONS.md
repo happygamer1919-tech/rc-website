@@ -3298,3 +3298,27 @@ what it is today and is not broken.
 dasterum record covers, `ACIM-01` to `ACIM-09`, have no picture: Creaton Rapido, the two IKO
 shingles, and six rainwater parts. Their pictures are on `imperlux.md` too and are outside
 every override. Same question, same answer either way.
+
+## Q-W26-05 · Two roofing tiles had no destination your ruling names, so I chose the nearest true ones · OPEN · opened 2026-09-22 (W26-11)
+
+**Raised W26-11, 2026-09-22. Shipped defaults in place. Nothing is blocked.**
+
+W26-R12 says "no roofing tile links to /in-constructie/" and keeps same-page anchors banned. Two
+hub tiles sit on `/servicii/acoperisuri/` itself and are not products with a section of their own,
+so neither your words nor a section of that page gives them a destination.
+
+| Tile | Shipped | Why |
+|---|---|---|
+| Calculează prețul acoperișului | `/servicii/tigla-metalica/#tigla-metalica` | the site has **no price calculator**, and building one would mean inventing prices. "Modele și prețuri" on the metal tile page shows the four models with their price per m², which is the nearest true thing |
+| Reduceri | `/#oferta` | the **only discount the site states** is the promo bar's 10% on any service, and it is claimed by asking for an offer. The homepage form, because this page's own form is the same-page anchor the ruling bans |
+
+**Three alternatives, if these are not what you meant:**
+
+1. **A real calculator page.** It needs your formula: what a roof costs per m² by material, and
+   what else is added. Say what it is and it is a card.
+2. **A real discounts page**, with what goes on it.
+3. **Replace the two tiles** with two more products (the second bento already has four), so every
+   roofing tile is a product with a section, which is how imperlux.md's own hub works.
+
+**One tile your ruling did not name still opens "in construcție"**: the fence hub's "Calculează
+prețul gardului". W26-R12's ban names roofing tiles, so it is unchanged. Same three choices apply.

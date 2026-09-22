@@ -63,7 +63,9 @@ function section(id) {
   /* W25-19. `ACTM-` is the four metal tile model cards the consolidated roofing
      section added. They are Acoperisuri slots and they belong in this list: a
      slot the owner's own review list cannot see is a slot nobody reviews. */
-  if (id.startsWith('ACOP-') || id.startsWith('NVK-') || id.startsWith('ACTM-')) return 'Acoperisuri';
+  /* AMENDED (W26-11): `ACIM-` too, the nine imperlux-only cards W26-04 added. They
+     were invisible to this list, filled or empty, until W26-R10 filled them. */
+  if (id.startsWith('ACOP-') || id.startsWith('NVK-') || id.startsWith('ACTM-') || id.startsWith('ACIM-')) return 'Acoperisuri';
   if (id.startsWith('GARD-') || id.startsWith('GARDB-')) return 'Garduri';
   /* W26-07. The three copertine secondary images are the first library pictures
      on the site, and a picture the owner's review list cannot see is a picture

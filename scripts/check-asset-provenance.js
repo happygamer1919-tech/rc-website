@@ -81,6 +81,20 @@ const OVERRIDES = [
     licence: 'owner_override_imperlux, competitor origin taken by owner decision W26-R3, cropped to remove burned-in text, no upscale, source URL per file, owner accepted 2026-09-22',
     files: ['ACOP-01', 'ACOP-02', 'ACOP-03', 'ACOP-04'],
   },
+  /* AMENDED (W26-R10, W26-11): a THIRD override, the whole roofing page, with its
+     own sentence and its own list again. "Cropped where burned-in text or branding
+     sat" is the condition the three category tiles and the two IKO shingles were
+     installed under: the headline, the model count and imperlux's orange mark are
+     all outside the crop. ACOP-05 is listed and has no file of its own: it is a
+     declared reuse of ACIM-01's picture. */
+  {
+    ruling: 'W26-R10',
+    licence: 'owner_override_imperlux, competitor origin taken by owner decision W26-R10, cropped where burned-in text or branding sat, no upscale, source URL per file, owner accepted 2026-09-22',
+    files: [
+      'ACOP-05', 'ACOP-06', 'ACOP-07',
+      'ACIM-01', 'ACIM-02', 'ACIM-03', 'ACIM-04', 'ACIM-05', 'ACIM-06', 'ACIM-07', 'ACIM-08', 'ACIM-09',
+    ],
+  },
 ];
 const OVERRIDE_FILES = OVERRIDES.flatMap((o) => o.files);
 /* R-W amendment, 2026-09-15 (W14-02b). Legacy status is a fingerprint: the path

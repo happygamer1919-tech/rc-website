@@ -948,3 +948,12 @@ refused elsewhere (watched three ways); `low_res` derived from the file's bytes,
 11 from the product's own Fatade 3D page, 2 from the maker, 2 `google_pick`. **Seven were on
 their own supplier page all along** at 600 to 1200px, missed by W25-17. Refused by eye: a FLAGMA
 watermark, a pasted-logo composite, a colour chart. **332 of 347 filled.** Heights identical.
+
+## W26-11 · Roofing hub completion
+**Status: PR OPEN** (2026-09-22). **6 of 6 tiles and 9 of 9 cards filled; 0 placeholders on the
+roofing page; ledger 347 of 347.** W26-R10 imperlux crops clear of headlines, model counts and the
+orange mark; Creaton Rapido taken from imperlux's clean category image, not its branded hero;
+`ACOP-05` a declared reuse. W26-R11 owner photos for the calculator, discounts and accessories
+tiles. Override 16 to 28 in all three lists (fetch tool caught up), watched on planted rows.
+Links: `#preturi`, and two cross-page fragments logged as **Q-W26-05**. Counts 4 / 1 / 2 / 18 / 53.
+`sips` zero-offset crop fault caught by eye; `ffmpeg` crops, W26-07's re-checked identical.

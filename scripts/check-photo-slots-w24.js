@@ -177,6 +177,11 @@ const OVERRIDE_SLOTS = [
   'GARD-01', 'GARD-02', 'GARD-03', 'GARD-04', 'GARD-05', 'GARD-06', 'GARD-07', 'GARD-08',
   'GARDB-01', 'GARDB-02', 'GARDB-03', 'GARDB-04',
   'ACOP-01', 'ACOP-02', 'ACOP-03', 'ACOP-04',
+  /* AMENDED (W26-R10, W26-11): TWENTY-EIGHT. The owner widened the override to
+     "the entire /servicii/acoperisuri/ hub including the second bento tiles":
+     the second bento's three pictured tiles and the nine imperlux-only cards. */
+  'ACOP-05', 'ACOP-06', 'ACOP-07',
+  'ACIM-01', 'ACIM-02', 'ACIM-03', 'ACIM-04', 'ACIM-05', 'ACIM-06', 'ACIM-07', 'ACIM-08', 'ACIM-09',
 ];
 
 /* The slot kinds R-W forbids a generated image on: a before/after pair and a
@@ -289,8 +294,8 @@ function check(pages, rows, provenance, brandBySlot) {
           if (supplierOrigin) why += ` ${host === 'dasterum.md' ? 'W25-R7' : 'W25-R14'} lifts it only for a row whose licence names "${supplierOrigin}"; this row's licence is "${prow.licence}".`;
           if (host === OVERRIDE_HOST) {
             why += lic.includes(OVERRIDE_ORIGIN)
-              ? ` W25-R15 overrides it for ${OVERRIDE_SLOTS.join(', ')} and for nothing else; this slot is ${ph.id}.`
-              : ` W25-R15 overrides it only for a row whose licence names "${OVERRIDE_ORIGIN}" on one of the twelve Garduri slots; this row's licence is "${prow.licence}".`;
+              ? ` W25-R15, W26-R3 and W26-R10 override it for ${OVERRIDE_SLOTS.join(', ')} and for nothing else; this slot is ${ph.id}.`
+              : ` W25-R15, W26-R3 and W26-R10 override it only for a row whose licence names "${OVERRIDE_ORIGIN}" on one of the ${OVERRIDE_SLOTS.length} slots they name; this row's licence is "${prow.licence}".`;
           }
           problems.push({ id: 'forbidden-host', text: `${ph.where} names a provenance row whose source is ${host}.` + why });
         }

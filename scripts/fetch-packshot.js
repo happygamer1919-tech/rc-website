@@ -88,9 +88,14 @@ const DIRECT_SUPPLIERS = {
    decided. */
 const OVERRIDE_HOST = 'imperlux.md';
 const OVERRIDE_FLAG = '--imperlux-override';
+/* AMENDED (W26-11): the same list gate 19 holds. It had stayed at W25-R15's twelve
+   through W26-R3, so this tool refused slots the gate permitted. W26-R10 adds the
+   rest of the roofing page. */
 const OVERRIDE_SLOTS = [
   'GARD-01', 'GARD-02', 'GARD-03', 'GARD-04', 'GARD-05', 'GARD-06', 'GARD-07', 'GARD-08',
   'GARDB-01', 'GARDB-02', 'GARDB-03', 'GARDB-04',
+  'ACOP-01', 'ACOP-02', 'ACOP-03', 'ACOP-04', 'ACOP-05', 'ACOP-06', 'ACOP-07',
+  'ACIM-01', 'ACIM-02', 'ACIM-03', 'ACIM-04', 'ACIM-05', 'ACIM-06', 'ACIM-07', 'ACIM-08', 'ACIM-09',
 ];
 
 /* "Never a retailer, a marketplace, another reseller, a search result thumbnail."

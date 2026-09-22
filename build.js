@@ -835,7 +835,7 @@ function bentoSection(l, cfg) {
      W24-07 and is now the thing the ruling forbids. It is inverted rather than
      deleted: a tile with no destination is a photograph that is not a link, and
      scripts/check-hub-tile-links.js holds the other half over the built pages. */
-  const inert = cfg.tiles.filter((x) => !x.page && !x.inConstructie && !x.anchor).length;
+  const inert = cfg.tiles.filter((x) => !x.page && !x.inConstructie && !x.anchor && !x.home).length;
   if (inert !== 0) die(`bento ${cfg.id}: ${inert} tile(s) with no destination. W25-R24: every hub tile has an href.`);
   for (const x of cfg.tiles) {
     if (x.page && !PRODUCT_PAGES.some((p) => p.slug === x.page) && !SERVICE_SLUGS.includes(x.page)) {
@@ -863,8 +863,16 @@ function bentoSection(l, cfg) {
     /* W26-03: the anchor branch is gone with W26-R4. A tile opens a product or
        service page, or the "in construcție" page, and the assertion above refuses
        anything else before rendering is reached. */
-    x = { ...x, href: x.page ? `${BASE}${SERVICES_ROOT[l.code]}${x.page}/`
-      : (x.inConstructie ? BASE + IN_CONSTRUCTIE[l.code] : (x.anchor ? `#${x.anchor}` : null)) };
+    /* W26-11, ruling W26-R12: "A fragment on a different page is allowed; same-page
+       anchors stay banned." So a page tile may name a `fragment` on the page it
+       opens, and a tile may open the homepage (`home`), with or without one. Gate
+       26 resolves every fragment against the built page it names. */
+    if (x.fragment && !/^[a-z0-9-]+$/.test(x.fragment)) die(`bento ${cfg.id}: tile "${x.label}" names the fragment "${x.fragment}", which is not an id.`);
+    if (x.fragment && !x.page && !x.home) die(`bento ${cfg.id}: tile "${x.label}" names a fragment and no page to find it on.`);
+    const frag = x.fragment ? `#${x.fragment}` : '';
+    x = { ...x, href: x.page ? `${BASE}${SERVICES_ROOT[l.code]}${x.page}/${frag}`
+      : (x.home ? `${BASE}${l.home}${frag}`
+        : (x.inConstructie ? BASE + IN_CONSTRUCTIE[l.code] : (x.anchor ? `#${x.anchor}` : null))) };
     const ph = placeholder(x.slot, { variant: 'dark', className: `${P}__ph`, locale: l.code, eager: i < 2 });
     const body = `${ph}<span class="${P}__grad" aria-hidden="true"></span><span class="${P}__label">${label}</span>`;
     const cls = `${P}__tile ${P}__tile--${i + 1}`;
@@ -1542,7 +1550,12 @@ const BENTOS = {
     tiles: [
       { label: 'bento.roofTigla', slot: 'ACOP-01', page: 'tigla-metalica' },
       { label: 'bento.roofNovatik', slot: 'ACOP-02', page: 'roca-vulcanica' },
-      { label: 'bento.roofCalc', slot: 'ACOP-03', inConstructie: true },
+      /* AMENDED (W26-11, ruling W26-R12): "no roofing tile links to /in-constructie/".
+         This site has no price calculator, and inventing one would be inventing
+         prices. The nearest true destination is the metal tile page's "Modele și
+         prețuri", where the four models carry their prices per m². A cross-page
+         fragment, which the ruling allows. Logged as Q-W26-05. */
+      { label: 'bento.roofCalc', slot: 'ACOP-03', page: 'tigla-metalica', fragment: 'tigla-metalica' },
       /* AMENDED (W25-24, under W25-R24): every hub tile has a destination now.
          This one had none and rendered inert. "Reduceri" opens the four roofing
          offers, which are a section of this same page (`#acoperisuri`), so the
@@ -1556,7 +1569,12 @@ const BENTOS = {
          neither is taken: it opens the "in construcție" page, which is this site's
          own honest answer for a destination that does not exist yet and is already
          where two other tiles go. Logged as Q-W26-02 with the recommendation. */
-      { label: 'bento.roofOffers', slot: 'ACOP-04', inConstructie: true },
+      /* AMENDED (W26-11, ruling W26-R12): no longer "in construcție". The only
+         discount this site states is the promo bar's 10% on any service, and it
+         is claimed by asking for an offer, so the tile opens the homepage offer
+         form. Not this page's own form, which would be the same-page anchor the
+         ruling keeps banned. Logged as Q-W26-05. */
+      { label: 'bento.roofOffers', slot: 'ACOP-04', home: true, fragment: 'oferta' },
     ],
   },
   /* W24-08. The same component, the same four slots, different data. The source
@@ -1588,7 +1606,10 @@ const BENTOS = {
          NOTE, reported rather than fixed: tiles 1 and 3 already open that page, so
          three of this hub's four tiles now share one destination. Repointing one of
          them is the product decision W25-24 already put to the owner. */
-      { label: 'bento.fencePreturi', slot: 'GARDB-04', page: 'modele-garduri' },
+      /* AMENDED (W26-11, ruling W26-R12, verbatim): "Preturi si oferte opens
+         /servicii/modele-garduri/#preturi". `#preturi` is the Compară modelele
+         table there, whose last column is the price. */
+      { label: 'bento.fencePreturi', slot: 'GARDB-04', page: 'modele-garduri', fragment: 'preturi' },
     ],
   },
 };
@@ -3085,7 +3106,7 @@ function gardModelePage(l) {
     };
     const body = GARD_MODELE.models.map((m, i) =>
       `          <tr><th scope="row">${esc(`${m.designation} ${m.material}`)}</th>${cols.map((c) => `<td>${esc(cell(m, i, c.key))}</td>`).join('')}</tr>`).join('\n');
-    return `    <div class="roof-cmp" style="margin-top: 48px;">
+    return `    <div class="roof-cmp" id="preturi" style="margin-top: 48px;">
       <h3 class="roof-cmp__h">${s('tableH')}</h3>
       <div class="roof-cmp__scroll" tabindex="0" role="region" aria-label="${s('tableH')}">
       <table class="roof-cmp__t">

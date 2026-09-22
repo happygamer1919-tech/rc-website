@@ -11449,3 +11449,62 @@ wrote was removed.
 **24 of 24 gate commands exit 0.** Nothing about the built site changed: gate 19 reads the
 same `283 of 337`. **54 slots are still waiting**, and the run lists every one with its
 ratio, its minimum and its page.
+
+## W25-22 · The written warranty is five years, not thirty, 2026-09-22
+
+**Card W25-22.** PR only, stops for the owner. The full card is
+`docs/board/W25-22-warranty-five-years.md`.
+
+> **Owner instruction, 2026-09-22:** "change the text everywhere on the website where it is
+> about 30 years waranty, should be changed to 5 years waranty everywhere"
+
+**Eight strings, four per locale.** `meta.description`, `hero.claim.line1`, `stats.2.n` and
+`trust.items.0.title`, which render on the two homepages and nowhere else. `everywhere` was
+checked rather than assumed: after the change, a grep over the whole built tree for
+`30 ani`, `30 de ani`, `30 лет` and `30 years` returns nothing.
+
+### The Romanian grammar changes with the number
+
+**Romanian counts from 20 take "de": `30 de ani`, but `5 ani`.** Three of the four Romanian
+strings carry the number inline, so substituting "30" with "5" would have left
+"5 de ani de garanție" on the homepage hero. Each string was rewritten. `build.js` already
+encoded the rule at the metal tile grid, which is where it was read from.
+
+### The figure has one home
+
+`warranty.years` is a locale key now, and `build.js` asserts both directions over the four
+strings: each one **states** the figure, and **none states a different one**. Four strings in
+two languages in four grammatical shapes is exactly the arrangement in which one survives a
+change, and the survivor would be the hero. Both failure shapes were watched fire on the
+shipping file with the control clean either side.
+
+It is deliberately not "no 30 anywhere": `stats.0.n` is 500. The pattern reads a number
+immediately followed by a years word, which is the only shape a warranty claim takes here.
+
+### The documents are held by the gate that exists for it
+
+`build.js` does not read the master plan, and **the master plan specified the stat row and
+the trust grid with thirty in them**. `warranty-30` is registered in
+`scripts/check-stale-docs.js` and both lines carry a struck value with an `AMENDED (W25-22)`
+beside them. It does not touch the audits or `docs/W24-CLAIMS-HELD.md`, which record a
+COMPETITOR's thirty-year anticorrosion warranty and are correct as records of someone else's
+claim.
+
+### The same trap, twice in one session
+
+**The staleness gate caught this card's own comment.** The comment in `build.js` explaining
+the assertion quoted the old string as its example, and that gate scans source comments. It
+is the second time this session that a comment explaining a rule tripped the gate enforcing
+it; `src/moved.html` did it at W25-19 against the catalogue gate. The comment now describes
+the shape rather than quoting it.
+
+### Heights did not move, measured with a control
+
+`/` 9,135 and `/ru/` 9,376, **identical with 30 and with 5**, measured at 1440 with every
+reveal settled, the same build, changing nothing but the figure. Every one of the four
+strings fits on its existing line at both, so no budget moves and R-Y is untouched. Had the
+copy lost a line, the budget would have had to come down with it.
+
+### Gates
+
+**24 of 24 gate commands exit 0.**

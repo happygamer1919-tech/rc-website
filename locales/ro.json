@@ -3,12 +3,15 @@
     "lang": "ro",
     "dir": "ltr",
     "title": "Construcții și renovări, Chișinău · Rapid Construct",
-    "description": "Acoperișuri, fațade, renovări, finisaje în Chișinău, Bălți, Ungheni, Cahul și alte localități. Garanție scrisă până la 30 de ani.",
+    "description": "Acoperișuri, fațade, renovări, finisaje în Chișinău, Bălți, Ungheni, Cahul și alte localități. Garanție scrisă până la 5 ani.",
     "ogTitle": "Construcții și renovări la cheie în Chișinău",
     "ogLocale": "ro_MD",
     "skipToContent": "Sari la conținut",
     "logoAlt": "Rapid Construct",
     "ogImageAlt": "Casă la cheie finalizată de Rapid Construct"
+  },
+  "warranty": {
+    "years": "5"
   },
   "header": {
     "navHome": "Acasă",
@@ -38,7 +41,7 @@
     "ctaSecondary": "Sună acum",
     "claim": {
       "h2": "Construim pentru azi. Garantăm pentru mâine.",
-      "line1": "30 de ani de garanție, direct în contract.",
+      "line1": "5 ani de garanție, direct în contract.",
       "line2": "Materiale verificate, producători de încredere și soluții alese pentru casa ta."
     },
     "panelAlt": "Armătură de stâlp în lucru, echipă pe schelă într-o clădire în construcție",
@@ -56,7 +59,7 @@
       "label": "ani de experiență"
     },
     "2": {
-      "n": "30",
+      "n": "5",
       "label": "ani garanție scrisă"
     },
     "3": {
@@ -556,7 +559,7 @@
     "h2": "De ce Rapid Construct",
     "items": {
       "0": {
-        "title": "Garanție 30 de ani în contract",
+        "title": "Garanție 5 ani în contract",
         "line": "Garanția e scrisă în contract, nu doar promisă."
       },
       "1": {

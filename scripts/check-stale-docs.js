@@ -134,6 +134,24 @@ const SUPERSEDED = [
     clear: /#1A1A1A|AMENDED|stale on two token values/,
   },
   {
+    /* W25-22. The owner corrected the written warranty from thirty years to
+       five, on 2026-09-22. The site's copy is held by build.js, which reads the
+       figure from `warranty.years` and refuses a string that states a different
+       one. This holds the DOCUMENTS, which build.js does not read: the master
+       plan specified the stat row and the trust grid with thirty in them, and a
+       plan that still says thirty is a plan someone builds from.
+       It matches the Romanian and the Russian shapes, and `30 years` for any
+       English note. It does NOT match the audits or docs/W24-CLAIMS-HELD.md,
+       which record a COMPETITOR's thirty-year anticorrosion warranty and are
+       correct: those files are not in SCAN, and they are not added, because
+       they are records of someone else's claim and not instructions. */
+    id: 'warranty-30',
+    find: /30 (?:de )?ani garanție|garanție 30 (?:de )?ani|30 (?:de )?ani de garanție|garanție scrisă până la 30|30 лет гарантии|гарантия 30 лет|до 30 лет|30 лет письменной|30 year warranty|30 years of warranty/gi,
+    ruling: 'the owner, 2026-09-22, recorded at W25-22 (DECISIONS.md)',
+    what: 'the written warranty stated as 30 years. The owner corrected it to 5; build.js holds the site copy to warranty.years and this holds the documents',
+    clear: /AMENDED|W25-22|5 ani|5 лет|warranty\.years/,
+  },
+  {
     id: 'photo-min',
     find: /1600px|minimum 1600|1600 long edge|global 1600/gi,
     ruling: 'W7-02, the step-slot ruling, and W8-03',

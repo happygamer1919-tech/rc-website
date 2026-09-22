@@ -118,6 +118,10 @@ function originClass(licence) {
   if (l.includes('direct supplier, dasterum.md')) return 'direct_supplier dasterum.md';
   if (l.includes('direct supplier, fatade3d.md')) return 'direct_supplier fatade3d.md';
   if (l.includes('owner_override_imperlux')) return 'owner_override_imperlux';
+  /* W25-R20. Checked BEFORE the manufacturer origin, because a search pick may
+     well land on a manufacturer's own page and the thing the owner needs to see
+     is that a search chose it. */
+  if (l.includes('google_pick')) return 'google_pick';
   if (l.includes('manufacturer packshot')) return 'manufacturer official site';
   if (l.includes('ai generated')) return 'owner AI generated';
   if (l.includes('supplier permission')) return 'supplier permission';
@@ -150,6 +154,10 @@ for (const row of ledger.slots) {
      other half of the permission: a reused picture must not be invisible to the
      person reviewing the images by hand. */
   if (row.reuse_of) flags.push(`reuse of ${row.reuse_of}`);
+  /* W25-R20's other half: "log the source URL, flag google_pick in the review
+     file. Owner reviews and corrects afterwards." Derived from the origin, so it
+     cannot be forgotten on a row. */
+  if (origin === 'google_pick') flags.push('google_pick');
   if (origin === 'manufacturer official site' && /phomi\.com/i.test(p.source) && (rec && (rec.categories || []).includes('placi-ceramice'))) {
     const tier = tierBySlot.get(row.id);
     if (tier && tier !== 'A-exact') flags.push('low confidence match');
@@ -193,6 +201,7 @@ L.push('|---|---|---|');
 L.push(`| labelled swatch | ${fl('labelled swatch')} | the product name or code is printed into the photograph, and the card prints it again underneath |`);
 L.push(`| watermark | ${fl('watermark')} | a supplier mark on the picture or on the product. It is there on purpose and must not be cropped |`);
 L.push(`| reuse | ${filled.filter((f) => f.flags.some((x) => x.startsWith('reuse of'))).length} | one picture filling a second record of the same product (W25-R17). Check the two cards are the same product |`);
+L.push(`| google_pick | ${fl('google_pick')} | found by search because the product's own source publishes nothing at the 450 floor (W25-R20). Check it is the right product, and correct it if not |`);
 L.push(`| low confidence match | ${fl('low confidence match')} | the plate matched Phomi at a tier that is not an exact string match. Check the name in the picture against the name on the card |`);
 L.push(`| no flag | ${filled.filter((f) => !f.flags.length).length} | an ordinary manufacturer packshot |`);
 L.push('');

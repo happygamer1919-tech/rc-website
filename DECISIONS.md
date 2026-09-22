@@ -11725,3 +11725,63 @@ in a grid of 71 costs a nineteenth of a row, a picture on a tile card costs its 
 ### Slots and gates
 
 **283 to 287 of 337**, with no image added to `public/`. **25 of 25 gate commands exit 0.**
+
+## W25-27 · The fallback origin, applied, and the file that was a shop's logo, 2026-09-22
+
+**Card W25-27.** PR only, stops for the owner. The full card is
+`docs/board/W25-27-sourcing.md`.
+
+**W25-R20 applied to every empty product slot it reaches: 25 attempted, 12 filled**, ledger
+**287 to 299 of 337**. Nine by search (`google_pick`), three from the manufacturer's own site.
+
+### W25-R20's recorded reading was wrong and is corrected in the register
+
+The register's prose said W25-R2's refusals were untouched, so a retailer's listing was still
+refused. **That narrowed the ruling to nothing**: the owner's words are "from any site except
+Russian domains", and a search for a building product here returns retailers almost
+exclusively, so the fallback would never once have applied. The register's own header says the
+prose is this terminal's reading and open for ratification while the quote is not, so it is
+struck and corrected there rather than worked around.
+
+**What survives is about the PICTURE, not the host**: a watermark, a retailer's logo, a
+person's face. This card is why that distinction matters.
+
+### `--google-pick`
+
+`fetch-packshot.js` lifts the SHOPS refusal for a run that says so and **adds the
+Russian-domain refusal**, which applies with or without the flag. Four arms watched, including
+`shop.penoplex.su` refused with the flag set.
+
+### An image can publish a held claim
+
+Two Novatik files clear the floor and **carry `20 ANI GARANȚIE ESTETICĂ` and `30 ANI GARANȚIE
+TEHNICĂ` burned into the picture**. W24-R6 holds every warranty sentence until the owner ticks
+it and Q-W25-19 is open on exactly that. Nothing in this repo reads text inside a photograph;
+they were refused by eye.
+
+### A guessed CDN URL shape served a shop's logo
+
+`CAT-0026` was installed from `cdn.dedeman.ro/.../5000354.jpg`, the same URL shape as every
+other product on that CDN. **It is the Dedeman logo on white.** The product photo is at
+`5000354_1.jpg`; the bare SKU is a fallback the CDN serves where there is no primary image.
+
+Caught on the contact sheet, which is the step `fetch-packshot.js` prints a reminder about on
+every run. **A guessed URL shape reached the repo and a person's eye is what stopped it.**
+
+### Thirteen attempted and not filled, each with its reason
+
+`CAT-0006` Penoplex (only source is `penoplex.ru`, the one exception W25-R20 keeps);
+`CAT-0009` OBIO 165 (both shops carry other densities, and **W25-R4 forbids a near match**);
+`NVK-02` Slate (its own maker publishes a banner and an installation diagram, neither a picture
+of the tile on a roof); and ten more with no stockist found. The card lists every one.
+
+### Q-W25-20
+
+`COP-HERO`, `COPX-01` and `COPX-02` are unfilled and the reason is not the products.
+**W25-R23 names Unsplash and Pexels and both refuse automated access**: 307, 403, and 401 from
+the API without a key. A free key is a new vendor credential and needs the owner's word.
+
+### Gates
+
+**25 of 25 gate commands exit 0.** No height moved, so no budget changed. Nine rows carry a
+`google_pick` flag in the review list, derived from the origin.

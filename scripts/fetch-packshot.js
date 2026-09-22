@@ -107,6 +107,26 @@ const SHOPS = [
   'shop.', '/shop/', 'magazin', 'market.',
 ];
 
+/* W25-R20. The fallback origin: when the site a product's data came from
+   publishes nothing at the 450 floor, the picture may come from ANY site except a
+   Russian domain, found by search, with the source URL logged and the row flagged
+   `google_pick` for the owner's own pass.
+
+   `--google-pick` is what a run says to use it, and it does exactly two things:
+   it lifts the SHOPS refusal, because a search for a building product in this
+   region returns retailers almost exclusively and a rule that still refused them
+   would have left the fallback unusable; and it adds the Russian-domain refusal,
+   which is answer set 1's Q-W25-03 closure and is the only exception the owner
+   names.
+
+   IT LIFTS NOTHING ELSE. The three competitor hosts keep their own treatment, an
+   image is still an image by its bytes, and the half no host rule ever covered is
+   untouched: a watermark, a retailer's logo and a person's face are properties of
+   the PICTURE, no check here sees them, and a person looks at every file before it
+   is committed. */
+const GOOGLE_PICK = process.argv.includes('--google-pick');
+const RU_TLD = /(^|\.)(ru|su|рф)$/i;
+
 const host = (u) => { try { return new URL(u).hostname.toLowerCase(); } catch { return null; } };
 const registrable = (h) => h.split('.').slice(-2).join('.');
 
@@ -143,10 +163,15 @@ function guard(u, what) {
       die(`${what} is on ${f}, which R-W and W25-R2 forbid as an origin. ${u}`);
     }
   }
+  /* W25-R20's one exception, and it applies whether or not the flag is set. */
+  if (RU_TLD.test(h)) {
+    die(`${what} is on a Russian domain (${h}). Answer set 1 closed Q-W25-03 on that and W25-R20 restates it as the fallback's only exception. ${u}`);
+  }
   const low = u.toLowerCase();
   for (const s of SHOPS) {
     if (h.includes(s.replace(/[/]/g, '')) || low.includes(s)) {
-      die(`${what} looks like a retailer or marketplace (matched "${s}"). W25-R2: never an origin. ${u}`);
+      if (GOOGLE_PICK) continue;
+      die(`${what} looks like a retailer or marketplace (matched "${s}"). W25-R2: never an origin. W25-R20 permits one as the fallback when the run says so: pass --google-pick, and the row is flagged for the owner's review. ${u}`);
     }
   }
   return h;

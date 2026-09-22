@@ -792,3 +792,13 @@ filled **from Dasterum by W25-R20's first step, with no fetch**, under W25-R17 d
 matched by model name because CAT-0226 is the modular tile and CAT-0227 is Kascad. The legacy
 `public/img/tigla-<id>.jpg` path is deleted. Slots **283 to 287 of 337**. 25 of 25 gate
 commands exit 0.
+
+## W25-27 · The sourcing rule applied
+**Status: PR OPEN, copertine BLOCKED** (2026-09-22). W25-R20 applied: **25 attempted, 12
+filled**, ledger 287 to **299 of 337**. 9 `google_pick`, 3 manufacturer. **The ruling's
+recorded reading was corrected first**: it had kept W25-R2's retailer refusal, which narrowed
+"any site" to nothing. `--google-pick` lifts the shop refusal and adds the Russian-domain one,
+4 arms watched. **Two Novatik files refused for warranty text burned into the picture**
+(W24-R6). **CAT-0026 first landed as the Dedeman logo**: a guessed CDN URL shape, caught by
+looking. 13 attempted-not-filled, each with its reason. **Q-W25-20**: Unsplash 307 and Pexels
+403/401 refuse automated access, so the 3 copertine slots wait. 25 of 25 gate commands exit 0.

@@ -983,3 +983,21 @@ and therefore the state a budget is measured in. Pressing a filter on the roofin
 two of the three, so the page only ever gets shorter from here.
 
 Measured at 1440 with every `[data-reveal]` applied and settled for 1,600ms, plus 60 (W24-R4).
+
+## AMENDED (W26-06, wave 26): Plăci flexibile gets text that describes it
+
+| Page | Before | After | Budget |
+|---|---|---|---|
+| `/catalog/placi-ceramice/` | 12,669 | **12,723** | 12,729 to **12,783** |
+| `/ru/catalog/placi-ceramice/` | 13,552 | **13,661** | 13,612 to **13,721** |
+| `/catalog/`, `/ru/catalog/` | 3,623 / 3,648 | **3,623 / 3,648** | unchanged, 3,683 / 3,708 |
+
+**The category was renamed (W26-R7) and its lede and two paragraphs were rewritten**, because
+they described fired, glazed floor tile, porcelain stoneware and wall faience, which is not what
+the 88 records are. The new text describes flexible stone and clay sheets. **+54px RO, +109px
+RU**: the Russian text is the longer of the two by about a line per paragraph.
+
+**The index did not move**: seven tiles fill the same three rows of three that eight did, and the
+row that lost a tile is the last.
+
+Measured at 1440 with every `[data-reveal]` applied and settled for 1,600ms, plus 60 (W24-R4).

@@ -3058,7 +3058,7 @@ W25-R3 permits a generated image on a hub slot by name.
 from either page. **Nothing else in W25-24 is blocked**: the tile links, the tile audit and
 the new gate all shipped.
 
-## Q-W25-19 · The fence warranty line is a held claim, and it now collides with the five years
+## Q-W25-19 · The fence warranty line is a held claim, and it now collides with the five years · **ANSWERED 2026-09-22 (W26-R9): no warranty line on the fence cards, the hold stays**
 
 **Raised W25-25, 2026-09-22. The rest of the card shipped; only the warranty line is held.**
 
@@ -3098,7 +3098,7 @@ One sentence closes it.
 **Nothing is blocked behind this.** W25-25 shipped the colour names and the walk; the cards are
 live without a warranty line, exactly as they were before.
 
-## Q-W25-20 · Both libraries W25-R23 names refuse automated access
+## Q-W25-20 · Both libraries W25-R23 names refuse automated access · **ANSWERED 2026-09-22 (W26-R8): no key; library page URLs directly, else the Google sourcing rule**
 
 **Raised W25-27, 2026-09-22. Blocks the three copertine slots and part of W25-29.**
 
@@ -3136,7 +3136,7 @@ and the standing rule is that no new dependency or vendor is added without askin
 **What is blocked:** `COP-HERO`, `COPX-01`, `COPX-02`, and the photo bands W25-29 asks for.
 **Nothing else in W25-27 is blocked**: the product sourcing under W25-R20 needs no library.
 
-## Q-W26-01 · "RP" or "RC"? Your instruction and your two examples disagree · OPEN · opened 2026-09-22 (W26-09)
+## Q-W26-01 · "RP" or "RC"? Your instruction and your two examples disagree · **ANSWERED 2026-09-22: RC, ratified with W26-09** · opened 2026-09-22 (W26-09)
 
 **Raised W26-09, 2026-09-22. Shipped default: RC. Nothing is blocked.**
 
@@ -3176,7 +3176,7 @@ are the source's product names and they render exactly as before, now beside our
 **Recommended: rename those too**, so the line reads as one product family rather than half of
 ours and half of theirs. Say the word and it is the same shape of edit.
 
-## Q-W26-02 · Two hub tiles now open a page that says "coming soon", and three fence tiles open one page · OPEN · opened 2026-09-22 (W26-03)
+## Q-W26-02 · Two hub tiles now open a page that says "coming soon", and three fence tiles open one page · **ANSWERED 2026-09-22 (W26-R12): no tile to /in-constructie/, fence tiles named; two roofing tiles see Q-W26-05** · opened 2026-09-22 (W26-03)
 
 **Raised W26-03, 2026-09-22. Shipped defaults in place. Nothing is blocked.**
 
@@ -3222,7 +3222,7 @@ to you** and it is now three tiles of four.
 specific, and the two tiles either side of it are each the better answer for their own words.
 A fourth destination would need a page that does not exist yet.
 
-## Q-W26-03 · Two of the four roofing hub tiles have no picture on imperlux.md to take · OPEN · opened 2026-09-22 (W26-03)
+## Q-W26-03 · Two of the four roofing hub tiles have no picture on imperlux.md to take · **ANSWERED 2026-09-22 (W26-R11): the owner's own photographs from RC-webpics_v2/ACOPERIȘURI** · opened 2026-09-22 (W26-03)
 
 **Raised W26-03, 2026-09-22. Both slots stay empty. Nothing is blocked.**
 
@@ -3262,7 +3262,7 @@ tiles fill themselves, per the folder's own README. A photograph of a measuremen
 covers the calculator; anything roofing covers "Reduceri", which may want relabelling anyway
 (Q-W26-02).
 
-## Q-W26-04 · The second bento's four tiles have no pictures, and three of them are sitting ready · OPEN · opened 2026-09-22 (W26-04)
+## Q-W26-04 · The second bento's four tiles have no pictures, and three of them are sitting ready · **ANSWERED 2026-09-22 (W26-R10): the override covers the whole roofing page** · opened 2026-09-22 (W26-04)
 
 **Raised W26-04, 2026-09-22. All four slots ship empty. Nothing is blocked.**
 

@@ -12400,3 +12400,61 @@ WCAG's pure-decoration exception in machine-readable form: the offer cards' ghos
 1.13:1 by design (W14-08). 316 counted per run and printed with the faintest ratio.
 
 **Gate count 27 to 28, `quality` 26 to 27 commands.**
+
+## W26-R9 to W26-R16 · The owner's wave 26 answers, second set, and the ratifications, recorded verbatim, 2026-09-22
+
+Recorded before any card acted on them. The rulings, each quoted exactly and read, are in
+`docs/rulings/W26-R.md` under "The second set"; this block is the record that they arrived and
+what the dispatch ratified.
+
+> RATIFIED: W26-01 to W26-05, W26-08, W26-09 (RC designations, Q-W26-01 closed), redirect map
+> coupling, gate 27, comparison tables as rows with two sections declined.
+
+**Status fields moved in place, bodies untouched (R-S):** Q-W25-19 answered by W26-R9, Q-W25-20
+by W26-R8 (its heading had never been marked), Q-W26-01 closed at RC, Q-W26-02 by W26-R12,
+Q-W26-03 by W26-R11, Q-W26-04 by W26-R10. The backlog status of W26-01 to W26-05, W26-08 and
+W26-09 reads merged and ratified, and **thirteen W25 entries that still read "PR OPEN" after
+their merges now carry their PR numbers**, read from GitHub rather than remembered.
+
+**Section 12.0 on `2397634` (#127): exit 0, PASS, 51 of 51, 16 of 16 redirects, 0 retried.**
+
+## W26-06 · Plăci flexibile, and Acoperișuri leaves the catalogue, 2026-09-22
+
+Branch `w26/w26-06-catalog-label`, stacked on W26-05a (#128).
+
+**The label**: `content/catalog.json` `categories[2]` reads **"Plăci flexibile" / "Гибкая
+плитка"**, URL unchanged. One edit reaches the menu, the index tile and its alt, the breadcrumb,
+the H1, the title, the form's subject field and the generated supplier list. **The RU wording is
+not the owner's**, who gave none: it is the site's existing vocabulary, since 72 alt texts on that
+page already read "Гибкая керамическая плитка" beside RO "Placă ceramică flexibilă", and the
+label drops "керамическая" for the reason W26-R7 gives.
+
+**The text under it was wrong the moment the label changed**, so it is rewritten. The lede and
+both paragraphs described fired, glazed floor tile, porcelain stoneware and faience. They now
+describe what the 88 records are: thin flexible sheets of modified clay or stone powder on a
+polymer binder, light, bendable round corners, glued to a flat substrate, chosen by format,
+surface, exterior rating and substrate. **This is W17-02's authored category description, in its
+scope** (what the material is, what it is for, how it is chosen), no claim about Rapid Construct,
+no manufacturer: the catalogue gate reads 42 prose blocks with zero capability or superlative
+terms. **Recorded for ratification** because it was not asked for in terms.
+
+**Acoperișuri leaves the catalogue, as data**: its row carries `"listed": false`. It keeps every
+page and every data use (the 16 redirect pages W26-R5 keeps, the roofing groups, the supplier
+list) and is **off the /catalog/ index and off the header Catalog panel**. **The panel is a
+reading, recorded for ratification**: the ruling says "index", and the panel is the other place a
+visitor browses the catalogue from; leaving it there would list eight categories in the menu and
+seven on the page, with seven sub-rows that each cost a page load to be forwarded. Re-listing is
+the one flag. `build.js` refuses a non-boolean `listed` and a catalogue with every category
+unlisted. Tile slot ids follow the data position, so `CATEG-01` to `CATEG-07` keep their rows.
+
+**`CATEG-08` is deleted from the ledger** because nothing renders it (W26-04's precedent). It was
+a declared reuse of `CAT-0224`, which stays installed on its own slot: **no file removed**.
+Ledger **348 to 347 rows, 315 to 314 filled**; the review list 307 to 306.
+
+**Heights**: `/catalog/` identical in both locales (seven tiles fill the same three rows as
+eight), homepages identical. The Plăci flexibile page **+54 RO, +109 RU**, which breached the RU
+budget by 49px; both re-budgeted at measured plus 60 in R-Y, 12,783 / 13,721. `verify-live.js`
+`catTiles` 8 to 7.
+
+**A side effect, measured**: the index's meta description had been falling back to the bare word
+"Catalog" because eight labels did not fit 155 characters. Seven do, so it now lists them.

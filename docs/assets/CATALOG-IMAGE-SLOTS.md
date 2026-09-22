@@ -25,7 +25,7 @@ image markup on a product card at all, rather than an empty box.
 
 ## The slots
 
-Product records today: **294** (Sisteme de termoizolație 25, Tencuieli decorative 13, Plăci ceramice 88, Elemente decorative 64, Vopsele 5, Sisteme de iluminare 25, Alte materiale de construcții 3, Acoperișuri 71).
+Product records today: **294** (Sisteme de termoizolație 25, Tencuieli decorative 13, Plăci flexibile 88, Elemente decorative 64, Vopsele 5, Sisteme de iluminare 25, Alte materiale de construcții 3, Acoperișuri 71).
 
 | # | Slot | Category | Product | Brand | File name | Aspect | Size |
 |---|---|---|---|---|---|---|---|
@@ -67,94 +67,94 @@ Product records today: **294** (Sisteme de termoizolație 25, Tencuieli decorati
 | 36 | `CAT-0036` | Tencuieli decorative | Projekt Grund pentru tencuieli decorative | Caparol | `catalog-tencuieli-decorative-f3d-2595.jpg` + `catalog-tencuieli-decorative-f3d-2595@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
 | 37 | `CAT-0037` | Tencuieli decorative | Tencuială de cuarţ colorat DURAZIV Clima Protect® cu Kauciuc® | DURAZIV | `catalog-tencuieli-decorative-f3d-2606.jpg` + `catalog-tencuieli-decorative-f3d-2606@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
 | 38 | `CAT-0038` | Tencuieli decorative | Tencuială decorativă mozaicată Omitka Rokomozaikova | ROKO AquaMix | `catalog-tencuieli-decorative-f3d-2619.jpg` + `catalog-tencuieli-decorative-f3d-2619@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 39 | `CAT-0039` | Plăci ceramice | Placă Kamu Red | Phomi | `catalog-placi-ceramice-f3d-1424.jpg` + `catalog-placi-ceramice-f3d-1424@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 40 | `CAT-0040` | Plăci ceramice | Placă Kamu Yellow | Phomi | `catalog-placi-ceramice-f3d-1653.jpg` + `catalog-placi-ceramice-f3d-1653@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 41 | `CAT-0041` | Plăci ceramice | Placă White Sesame | Phomi | `catalog-placi-ceramice-f3d-1662.jpg` + `catalog-placi-ceramice-f3d-1662@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 42 | `CAT-0042` | Plăci ceramice | Placă Mountain Medium Grey | Phomi | `catalog-placi-ceramice-f3d-1665.jpg` + `catalog-placi-ceramice-f3d-1665@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 43 | `CAT-0043` | Plăci ceramice | Placă Mount Lion Yellow | Phomi | `catalog-placi-ceramice-f3d-1668.jpg` + `catalog-placi-ceramice-f3d-1668@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 44 | `CAT-0044` | Plăci ceramice | Placă Mountain Light Grey | Phomi | `catalog-placi-ceramice-f3d-1671.jpg` + `catalog-placi-ceramice-f3d-1671@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 45 | `CAT-0045` | Plăci ceramice | Placă Mountain Light Grey | Phomi | `catalog-placi-ceramice-f3d-1674.jpg` + `catalog-placi-ceramice-f3d-1674@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 46 | `CAT-0046` | Plăci ceramice | Placă Blue Grey | Phomi | `catalog-placi-ceramice-f3d-1677.jpg` + `catalog-placi-ceramice-f3d-1677@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 47 | `CAT-0047` | Plăci ceramice | Placă Dandy Gray | Phomi | `catalog-placi-ceramice-f3d-1686.jpg` + `catalog-placi-ceramice-f3d-1686@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 48 | `CAT-0048` | Plăci ceramice | Placă Veil White | Phomi | `catalog-placi-ceramice-f3d-1689.jpg` + `catalog-placi-ceramice-f3d-1689@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 49 | `CAT-0049` | Plăci ceramice | Placă Castol Grey | Phomi | `catalog-placi-ceramice-f3d-1692.jpg` + `catalog-placi-ceramice-f3d-1692@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 50 | `CAT-0050` | Plăci ceramice | Placă Tunguska Yellow | Phomi | `catalog-placi-ceramice-f3d-1696.jpg` + `catalog-placi-ceramice-f3d-1696@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 51 | `CAT-0051` | Plăci ceramice | Placă Elsa Black Grey | Phomi | `catalog-placi-ceramice-f3d-1699.jpg` + `catalog-placi-ceramice-f3d-1699@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 52 | `CAT-0052` | Plăci ceramice | Placă Snowy White | Phomi | `catalog-placi-ceramice-f3d-1702.jpg` + `catalog-placi-ceramice-f3d-1702@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 53 | `CAT-0053` | Plăci ceramice | Placă Stellar Red | Phomi | `catalog-placi-ceramice-f3d-1705.jpg` + `catalog-placi-ceramice-f3d-1705@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 54 | `CAT-0054` | Plăci ceramice | Placă Plain White | Phomi | `catalog-placi-ceramice-f3d-1708.jpg` + `catalog-placi-ceramice-f3d-1708@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 55 | `CAT-0055` | Plăci ceramice | Placă Y001-01-02 | Phomi | `catalog-placi-ceramice-f3d-1711.jpg` + `catalog-placi-ceramice-f3d-1711@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 56 | `CAT-0056` | Plăci ceramice | Placă Medium Grey | Phomi | `catalog-placi-ceramice-f3d-3464.jpg` + `catalog-placi-ceramice-f3d-3464@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 57 | `CAT-0057` | Plăci ceramice | Placă Egyptian Yellow | Phomi | `catalog-placi-ceramice-f3d-3469.jpg` + `catalog-placi-ceramice-f3d-3469@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 58 | `CAT-0058` | Plăci ceramice | Placă Autumn | Phomi | `catalog-placi-ceramice-f3d-3474.jpg` + `catalog-placi-ceramice-f3d-3474@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 59 | `CAT-0059` | Plăci ceramice | Placă Ash Grey | Phomi | `catalog-placi-ceramice-f3d-3479.jpg` + `catalog-placi-ceramice-f3d-3479@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 60 | `CAT-0060` | Plăci ceramice | Placă Sandstorm | Phomi | `catalog-placi-ceramice-f3d-3484.jpg` + `catalog-placi-ceramice-f3d-3484@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 61 | `CAT-0061` | Plăci ceramice | Placă Ink-Dyed | Phomi | `catalog-placi-ceramice-f3d-3489.jpg` + `catalog-placi-ceramice-f3d-3489@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 62 | `CAT-0062` | Plăci ceramice | Placă Perth Grey | Phomi | `catalog-placi-ceramice-f3d-3494.jpg` + `catalog-placi-ceramice-f3d-3494@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 63 | `CAT-0063` | Plăci ceramice | Placă Steinburg Yellow | Phomi | `catalog-placi-ceramice-f3d-3501.jpg` + `catalog-placi-ceramice-f3d-3501@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 64 | `CAT-0064` | Plăci ceramice | Placă HY001 | Phomi | `catalog-placi-ceramice-f3d-3505.jpg` + `catalog-placi-ceramice-f3d-3505@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 65 | `CAT-0065` | Plăci ceramice | Placă Silk-mist Brown | Phomi | `catalog-placi-ceramice-f3d-3509.jpg` + `catalog-placi-ceramice-f3d-3509@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 66 | `CAT-0066` | Plăci ceramice | Placă Plain Brown | Phomi | `catalog-placi-ceramice-f3d-3513.jpg` + `catalog-placi-ceramice-f3d-3513@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 67 | `CAT-0067` | Plăci ceramice | Placă Orange | Phomi | `catalog-placi-ceramice-f3d-3521.jpg` + `catalog-placi-ceramice-f3d-3521@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 68 | `CAT-0068` | Plăci ceramice | Placă Light Brown | Phomi | `catalog-placi-ceramice-f3d-3529.jpg` + `catalog-placi-ceramice-f3d-3529@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 69 | `CAT-0069` | Plăci ceramice | Placă Portoro | Phomi | `catalog-placi-ceramice-f3d-3537.jpg` + `catalog-placi-ceramice-f3d-3537@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 70 | `CAT-0070` | Plăci ceramice | Placă Blue Grey | Phomi | `catalog-placi-ceramice-f3d-3545.jpg` + `catalog-placi-ceramice-f3d-3545@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 71 | `CAT-0071` | Plăci ceramice | Placă Veil Dark Grey | Phomi | `catalog-placi-ceramice-f3d-3925.jpg` + `catalog-placi-ceramice-f3d-3925@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 72 | `CAT-0072` | Plăci ceramice | Placă Sunis White | Phomi | `catalog-placi-ceramice-f3d-4195.jpg` + `catalog-placi-ceramice-f3d-4195@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 73 | `CAT-0073` | Plăci ceramice | Placă Andes Yellow | Phomi | `catalog-placi-ceramice-f3d-4225.jpg` + `catalog-placi-ceramice-f3d-4225@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 74 | `CAT-0074` | Plăci ceramice | Placă Greek Yellow | Phomi | `catalog-placi-ceramice-f3d-4228.jpg` + `catalog-placi-ceramice-f3d-4228@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 75 | `CAT-0075` | Plăci ceramice | Placă Andes White | Phomi | `catalog-placi-ceramice-f3d-4240.jpg` + `catalog-placi-ceramice-f3d-4240@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 76 | `CAT-0076` | Plăci ceramice | Placă Sairo Off-White | Phomi | `catalog-placi-ceramice-f3d-4248.jpg` + `catalog-placi-ceramice-f3d-4248@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 77 | `CAT-0077` | Plăci ceramice | Placă H06 | Phomi | `catalog-placi-ceramice-f3d-4260.jpg` + `catalog-placi-ceramice-f3d-4260@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 78 | `CAT-0078` | Plăci ceramice | Placă Medium Grey | Phomi | `catalog-placi-ceramice-f3d-4673.jpg` + `catalog-placi-ceramice-f3d-4673@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 79 | `CAT-0079` | Plăci ceramice | Placă Fawn Grey | Phomi | `catalog-placi-ceramice-f3d-4853.jpg` + `catalog-placi-ceramice-f3d-4853@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 80 | `CAT-0080` | Plăci ceramice | Placă Fog | Phomi | `catalog-placi-ceramice-f3d-4864.jpg` + `catalog-placi-ceramice-f3d-4864@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 81 | `CAT-0081` | Plăci ceramice | Placă Dark Brown | Phomi | `catalog-placi-ceramice-f3d-4875.jpg` + `catalog-placi-ceramice-f3d-4875@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 82 | `CAT-0082` | Plăci ceramice | Placă Dark Grey | Phomi | `catalog-placi-ceramice-f3d-4886.jpg` + `catalog-placi-ceramice-f3d-4886@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 83 | `CAT-0083` | Plăci ceramice | Placă Ink-Dyed | Phomi | `catalog-placi-ceramice-f3d-4897.jpg` + `catalog-placi-ceramice-f3d-4897@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 84 | `CAT-0084` | Plăci ceramice | Placă Sunis White | Phomi | `catalog-placi-ceramice-f3d-4907.jpg` + `catalog-placi-ceramice-f3d-4907@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 85 | `CAT-0085` | Plăci ceramice | Placă Andes Yellow | Phomi | `catalog-placi-ceramice-f3d-4915.jpg` + `catalog-placi-ceramice-f3d-4915@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 86 | `CAT-0086` | Plăci ceramice | Placă Loki Mountain Light Grey | Phomi | `catalog-placi-ceramice-f3d-4925.jpg` + `catalog-placi-ceramice-f3d-4925@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 87 | `CAT-0087` | Plăci ceramice | Placă Veil Dark Grey | Phomi | `catalog-placi-ceramice-f3d-4930.jpg` + `catalog-placi-ceramice-f3d-4930@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 88 | `CAT-0088` | Plăci ceramice | Placă Castol Yellow | Phomi | `catalog-placi-ceramice-f3d-4940.jpg` + `catalog-placi-ceramice-f3d-4940@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 89 | `CAT-0089` | Plăci ceramice | Placă Romam Red | Phomi | `catalog-placi-ceramice-f3d-4949.jpg` + `catalog-placi-ceramice-f3d-4949@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 90 | `CAT-0090` | Plăci ceramice | Placă Castle Rock Grey | Phomi | `catalog-placi-ceramice-f3d-4957.jpg` + `catalog-placi-ceramice-f3d-4957@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 91 | `CAT-0091` | Plăci ceramice | Placă Sairo Off-White | Phomi | `catalog-placi-ceramice-f3d-4960.jpg` + `catalog-placi-ceramice-f3d-4960@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 92 | `CAT-0092` | Plăci ceramice | Placă Agean White | Phomi | `catalog-placi-ceramice-f3d-4966.jpg` + `catalog-placi-ceramice-f3d-4966@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 93 | `CAT-0093` | Plăci ceramice | Placă Plain Cloud Grey | Phomi | `catalog-placi-ceramice-f3d-4970.jpg` + `catalog-placi-ceramice-f3d-4970@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 94 | `CAT-0094` | Plăci ceramice | Placă Maca Blue | Phomi | `catalog-placi-ceramice-f3d-4974.jpg` + `catalog-placi-ceramice-f3d-4974@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 95 | `CAT-0095` | Plăci ceramice | Placă Romam Red | Phomi | `catalog-placi-ceramice-f3d-4982.jpg` + `catalog-placi-ceramice-f3d-4982@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 96 | `CAT-0096` | Plăci ceramice | Placă Veil Grey | Phomi | `catalog-placi-ceramice-f3d-4986.jpg` + `catalog-placi-ceramice-f3d-4986@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 97 | `CAT-0097` | Plăci ceramice | Placă Moonlight | Phomi | `catalog-placi-ceramice-f3d-4991.jpg` + `catalog-placi-ceramice-f3d-4991@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 98 | `CAT-0098` | Plăci ceramice | Placă Romam Grey | Phomi | `catalog-placi-ceramice-f3d-5038.jpg` + `catalog-placi-ceramice-f3d-5038@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 99 | `CAT-0099` | Plăci ceramice | Placă Portoro | Phomi | `catalog-placi-ceramice-f3d-5039.jpg` + `catalog-placi-ceramice-f3d-5039@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 100 | `CAT-0100` | Plăci ceramice | 35 Piece Stone | Phomi | `catalog-placi-ceramice-f3d-6117.jpg` + `catalog-placi-ceramice-f3d-6117@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 101 | `CAT-0101` | Plăci ceramice | Rough Surface | Phomi | `catalog-placi-ceramice-f3d-6120.jpg` + `catalog-placi-ceramice-f3d-6120@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 102 | `CAT-0102` | Plăci ceramice | Stone Alpes | Phomi | `catalog-placi-ceramice-f3d-6134.jpg` + `catalog-placi-ceramice-f3d-6134@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 103 | `CAT-0103` | Plăci ceramice | Oceanic Travertine | Phomi | `catalog-placi-ceramice-f3d-6140.jpg` + `catalog-placi-ceramice-f3d-6140@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 104 | `CAT-0104` | Plăci ceramice | Skyline | Phomi | `catalog-placi-ceramice-f3d-6145.jpg` + `catalog-placi-ceramice-f3d-6145@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 105 | `CAT-0105` | Plăci ceramice | Rome Travertine | Phomi | `catalog-placi-ceramice-f3d-6149.jpg` + `catalog-placi-ceramice-f3d-6149@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 106 | `CAT-0106` | Plăci ceramice | Ghana Travertine | Phomi | `catalog-placi-ceramice-f3d-6155.jpg` + `catalog-placi-ceramice-f3d-6155@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 107 | `CAT-0107` | Plăci ceramice | Concrete Pouring Slab | Phomi | `catalog-placi-ceramice-f3d-6157.jpg` + `catalog-placi-ceramice-f3d-6157@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 108 | `CAT-0108` | Plăci ceramice | Mount Celestial | Phomi | `catalog-placi-ceramice-f3d-6163.jpg` + `catalog-placi-ceramice-f3d-6163@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 109 | `CAT-0109` | Plăci ceramice | Marble | Phomi | `catalog-placi-ceramice-f3d-6170.jpg` + `catalog-placi-ceramice-f3d-6170@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 110 | `CAT-0110` | Plăci ceramice | Polished Concrete Wall | Phomi | `catalog-placi-ceramice-f3d-6175.jpg` + `catalog-placi-ceramice-f3d-6175@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 111 | `CAT-0111` | Plăci ceramice | Rusty Slab | Phomi | `catalog-placi-ceramice-f3d-6188.jpg` + `catalog-placi-ceramice-f3d-6188@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 112 | `CAT-0112` | Plăci ceramice | Polish Concrete Wall | Phomi | `catalog-placi-ceramice-f3d-6192.jpg` + `catalog-placi-ceramice-f3d-6192@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 113 | `CAT-0113` | Plăci ceramice | Devine Mushroom Stone | Phomi | `catalog-placi-ceramice-f3d-6196.jpg` + `catalog-placi-ceramice-f3d-6196@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 114 | `CAT-0114` | Plăci ceramice | Sawtooth Wood | Phomi | `catalog-placi-ceramice-f3d-6199.jpg` + `catalog-placi-ceramice-f3d-6199@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 115 | `CAT-0115` | Plăci ceramice | Original Wood | Phomi | `catalog-placi-ceramice-f3d-6204.jpg` + `catalog-placi-ceramice-f3d-6204@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 116 | `CAT-0116` | Plăci ceramice | Spliced Wood | Phomi | `catalog-placi-ceramice-f3d-6207.jpg` + `catalog-placi-ceramice-f3d-6207@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 117 | `CAT-0117` | Plăci ceramice | Rope Wave B | Phomi | `catalog-placi-ceramice-f3d-6209.jpg` + `catalog-placi-ceramice-f3d-6209@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 118 | `CAT-0118` | Plăci ceramice | Polished Wood 4.0 | Phomi | `catalog-placi-ceramice-f3d-6211.jpg` + `catalog-placi-ceramice-f3d-6211@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 119 | `CAT-0119` | Plăci ceramice | Stackle Square 4.0 | Phomi | `catalog-placi-ceramice-f3d-6214.jpg` + `catalog-placi-ceramice-f3d-6214@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 120 | `CAT-0120` | Plăci ceramice | Poly Wood | Phomi | `catalog-placi-ceramice-f3d-6216.jpg` + `catalog-placi-ceramice-f3d-6216@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 121 | `CAT-0121` | Plăci ceramice | Rammed Earth Wall | Phomi | `catalog-placi-ceramice-f3d-6218.jpg` + `catalog-placi-ceramice-f3d-6218@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 122 | `CAT-0122` | Plăci ceramice | Polished Stone | Phomi | `catalog-placi-ceramice-f3d-6221.jpg` + `catalog-placi-ceramice-f3d-6221@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 123 | `CAT-0123` | Plăci ceramice | Oman Linear Stone | Phomi | `catalog-placi-ceramice-f3d-6223.jpg` + `catalog-placi-ceramice-f3d-6223@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 124 | `CAT-0124` | Plăci ceramice | Chiseled Stone | Phomi | `catalog-placi-ceramice-f3d-6225.jpg` + `catalog-placi-ceramice-f3d-6225@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 125 | `CAT-0125` | Plăci ceramice | Bush Hammered | Phomi | `catalog-placi-ceramice-f3d-6228.jpg` + `catalog-placi-ceramice-f3d-6228@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
-| 126 | `CAT-0126` | Plăci ceramice | Stone Ridged | Phomi | `catalog-placi-ceramice-f3d-6231.jpg` + `catalog-placi-ceramice-f3d-6231@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 39 | `CAT-0039` | Plăci flexibile | Placă Kamu Red | Phomi | `catalog-placi-ceramice-f3d-1424.jpg` + `catalog-placi-ceramice-f3d-1424@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 40 | `CAT-0040` | Plăci flexibile | Placă Kamu Yellow | Phomi | `catalog-placi-ceramice-f3d-1653.jpg` + `catalog-placi-ceramice-f3d-1653@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 41 | `CAT-0041` | Plăci flexibile | Placă White Sesame | Phomi | `catalog-placi-ceramice-f3d-1662.jpg` + `catalog-placi-ceramice-f3d-1662@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 42 | `CAT-0042` | Plăci flexibile | Placă Mountain Medium Grey | Phomi | `catalog-placi-ceramice-f3d-1665.jpg` + `catalog-placi-ceramice-f3d-1665@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 43 | `CAT-0043` | Plăci flexibile | Placă Mount Lion Yellow | Phomi | `catalog-placi-ceramice-f3d-1668.jpg` + `catalog-placi-ceramice-f3d-1668@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 44 | `CAT-0044` | Plăci flexibile | Placă Mountain Light Grey | Phomi | `catalog-placi-ceramice-f3d-1671.jpg` + `catalog-placi-ceramice-f3d-1671@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 45 | `CAT-0045` | Plăci flexibile | Placă Mountain Light Grey | Phomi | `catalog-placi-ceramice-f3d-1674.jpg` + `catalog-placi-ceramice-f3d-1674@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 46 | `CAT-0046` | Plăci flexibile | Placă Blue Grey | Phomi | `catalog-placi-ceramice-f3d-1677.jpg` + `catalog-placi-ceramice-f3d-1677@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 47 | `CAT-0047` | Plăci flexibile | Placă Dandy Gray | Phomi | `catalog-placi-ceramice-f3d-1686.jpg` + `catalog-placi-ceramice-f3d-1686@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 48 | `CAT-0048` | Plăci flexibile | Placă Veil White | Phomi | `catalog-placi-ceramice-f3d-1689.jpg` + `catalog-placi-ceramice-f3d-1689@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 49 | `CAT-0049` | Plăci flexibile | Placă Castol Grey | Phomi | `catalog-placi-ceramice-f3d-1692.jpg` + `catalog-placi-ceramice-f3d-1692@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 50 | `CAT-0050` | Plăci flexibile | Placă Tunguska Yellow | Phomi | `catalog-placi-ceramice-f3d-1696.jpg` + `catalog-placi-ceramice-f3d-1696@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 51 | `CAT-0051` | Plăci flexibile | Placă Elsa Black Grey | Phomi | `catalog-placi-ceramice-f3d-1699.jpg` + `catalog-placi-ceramice-f3d-1699@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 52 | `CAT-0052` | Plăci flexibile | Placă Snowy White | Phomi | `catalog-placi-ceramice-f3d-1702.jpg` + `catalog-placi-ceramice-f3d-1702@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 53 | `CAT-0053` | Plăci flexibile | Placă Stellar Red | Phomi | `catalog-placi-ceramice-f3d-1705.jpg` + `catalog-placi-ceramice-f3d-1705@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 54 | `CAT-0054` | Plăci flexibile | Placă Plain White | Phomi | `catalog-placi-ceramice-f3d-1708.jpg` + `catalog-placi-ceramice-f3d-1708@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 55 | `CAT-0055` | Plăci flexibile | Placă Y001-01-02 | Phomi | `catalog-placi-ceramice-f3d-1711.jpg` + `catalog-placi-ceramice-f3d-1711@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 56 | `CAT-0056` | Plăci flexibile | Placă Medium Grey | Phomi | `catalog-placi-ceramice-f3d-3464.jpg` + `catalog-placi-ceramice-f3d-3464@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 57 | `CAT-0057` | Plăci flexibile | Placă Egyptian Yellow | Phomi | `catalog-placi-ceramice-f3d-3469.jpg` + `catalog-placi-ceramice-f3d-3469@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 58 | `CAT-0058` | Plăci flexibile | Placă Autumn | Phomi | `catalog-placi-ceramice-f3d-3474.jpg` + `catalog-placi-ceramice-f3d-3474@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 59 | `CAT-0059` | Plăci flexibile | Placă Ash Grey | Phomi | `catalog-placi-ceramice-f3d-3479.jpg` + `catalog-placi-ceramice-f3d-3479@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 60 | `CAT-0060` | Plăci flexibile | Placă Sandstorm | Phomi | `catalog-placi-ceramice-f3d-3484.jpg` + `catalog-placi-ceramice-f3d-3484@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 61 | `CAT-0061` | Plăci flexibile | Placă Ink-Dyed | Phomi | `catalog-placi-ceramice-f3d-3489.jpg` + `catalog-placi-ceramice-f3d-3489@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 62 | `CAT-0062` | Plăci flexibile | Placă Perth Grey | Phomi | `catalog-placi-ceramice-f3d-3494.jpg` + `catalog-placi-ceramice-f3d-3494@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 63 | `CAT-0063` | Plăci flexibile | Placă Steinburg Yellow | Phomi | `catalog-placi-ceramice-f3d-3501.jpg` + `catalog-placi-ceramice-f3d-3501@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 64 | `CAT-0064` | Plăci flexibile | Placă HY001 | Phomi | `catalog-placi-ceramice-f3d-3505.jpg` + `catalog-placi-ceramice-f3d-3505@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 65 | `CAT-0065` | Plăci flexibile | Placă Silk-mist Brown | Phomi | `catalog-placi-ceramice-f3d-3509.jpg` + `catalog-placi-ceramice-f3d-3509@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 66 | `CAT-0066` | Plăci flexibile | Placă Plain Brown | Phomi | `catalog-placi-ceramice-f3d-3513.jpg` + `catalog-placi-ceramice-f3d-3513@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 67 | `CAT-0067` | Plăci flexibile | Placă Orange | Phomi | `catalog-placi-ceramice-f3d-3521.jpg` + `catalog-placi-ceramice-f3d-3521@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 68 | `CAT-0068` | Plăci flexibile | Placă Light Brown | Phomi | `catalog-placi-ceramice-f3d-3529.jpg` + `catalog-placi-ceramice-f3d-3529@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 69 | `CAT-0069` | Plăci flexibile | Placă Portoro | Phomi | `catalog-placi-ceramice-f3d-3537.jpg` + `catalog-placi-ceramice-f3d-3537@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 70 | `CAT-0070` | Plăci flexibile | Placă Blue Grey | Phomi | `catalog-placi-ceramice-f3d-3545.jpg` + `catalog-placi-ceramice-f3d-3545@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 71 | `CAT-0071` | Plăci flexibile | Placă Veil Dark Grey | Phomi | `catalog-placi-ceramice-f3d-3925.jpg` + `catalog-placi-ceramice-f3d-3925@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 72 | `CAT-0072` | Plăci flexibile | Placă Sunis White | Phomi | `catalog-placi-ceramice-f3d-4195.jpg` + `catalog-placi-ceramice-f3d-4195@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 73 | `CAT-0073` | Plăci flexibile | Placă Andes Yellow | Phomi | `catalog-placi-ceramice-f3d-4225.jpg` + `catalog-placi-ceramice-f3d-4225@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 74 | `CAT-0074` | Plăci flexibile | Placă Greek Yellow | Phomi | `catalog-placi-ceramice-f3d-4228.jpg` + `catalog-placi-ceramice-f3d-4228@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 75 | `CAT-0075` | Plăci flexibile | Placă Andes White | Phomi | `catalog-placi-ceramice-f3d-4240.jpg` + `catalog-placi-ceramice-f3d-4240@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 76 | `CAT-0076` | Plăci flexibile | Placă Sairo Off-White | Phomi | `catalog-placi-ceramice-f3d-4248.jpg` + `catalog-placi-ceramice-f3d-4248@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 77 | `CAT-0077` | Plăci flexibile | Placă H06 | Phomi | `catalog-placi-ceramice-f3d-4260.jpg` + `catalog-placi-ceramice-f3d-4260@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 78 | `CAT-0078` | Plăci flexibile | Placă Medium Grey | Phomi | `catalog-placi-ceramice-f3d-4673.jpg` + `catalog-placi-ceramice-f3d-4673@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 79 | `CAT-0079` | Plăci flexibile | Placă Fawn Grey | Phomi | `catalog-placi-ceramice-f3d-4853.jpg` + `catalog-placi-ceramice-f3d-4853@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 80 | `CAT-0080` | Plăci flexibile | Placă Fog | Phomi | `catalog-placi-ceramice-f3d-4864.jpg` + `catalog-placi-ceramice-f3d-4864@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 81 | `CAT-0081` | Plăci flexibile | Placă Dark Brown | Phomi | `catalog-placi-ceramice-f3d-4875.jpg` + `catalog-placi-ceramice-f3d-4875@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 82 | `CAT-0082` | Plăci flexibile | Placă Dark Grey | Phomi | `catalog-placi-ceramice-f3d-4886.jpg` + `catalog-placi-ceramice-f3d-4886@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 83 | `CAT-0083` | Plăci flexibile | Placă Ink-Dyed | Phomi | `catalog-placi-ceramice-f3d-4897.jpg` + `catalog-placi-ceramice-f3d-4897@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 84 | `CAT-0084` | Plăci flexibile | Placă Sunis White | Phomi | `catalog-placi-ceramice-f3d-4907.jpg` + `catalog-placi-ceramice-f3d-4907@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 85 | `CAT-0085` | Plăci flexibile | Placă Andes Yellow | Phomi | `catalog-placi-ceramice-f3d-4915.jpg` + `catalog-placi-ceramice-f3d-4915@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 86 | `CAT-0086` | Plăci flexibile | Placă Loki Mountain Light Grey | Phomi | `catalog-placi-ceramice-f3d-4925.jpg` + `catalog-placi-ceramice-f3d-4925@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 87 | `CAT-0087` | Plăci flexibile | Placă Veil Dark Grey | Phomi | `catalog-placi-ceramice-f3d-4930.jpg` + `catalog-placi-ceramice-f3d-4930@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 88 | `CAT-0088` | Plăci flexibile | Placă Castol Yellow | Phomi | `catalog-placi-ceramice-f3d-4940.jpg` + `catalog-placi-ceramice-f3d-4940@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 89 | `CAT-0089` | Plăci flexibile | Placă Romam Red | Phomi | `catalog-placi-ceramice-f3d-4949.jpg` + `catalog-placi-ceramice-f3d-4949@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 90 | `CAT-0090` | Plăci flexibile | Placă Castle Rock Grey | Phomi | `catalog-placi-ceramice-f3d-4957.jpg` + `catalog-placi-ceramice-f3d-4957@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 91 | `CAT-0091` | Plăci flexibile | Placă Sairo Off-White | Phomi | `catalog-placi-ceramice-f3d-4960.jpg` + `catalog-placi-ceramice-f3d-4960@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 92 | `CAT-0092` | Plăci flexibile | Placă Agean White | Phomi | `catalog-placi-ceramice-f3d-4966.jpg` + `catalog-placi-ceramice-f3d-4966@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 93 | `CAT-0093` | Plăci flexibile | Placă Plain Cloud Grey | Phomi | `catalog-placi-ceramice-f3d-4970.jpg` + `catalog-placi-ceramice-f3d-4970@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 94 | `CAT-0094` | Plăci flexibile | Placă Maca Blue | Phomi | `catalog-placi-ceramice-f3d-4974.jpg` + `catalog-placi-ceramice-f3d-4974@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 95 | `CAT-0095` | Plăci flexibile | Placă Romam Red | Phomi | `catalog-placi-ceramice-f3d-4982.jpg` + `catalog-placi-ceramice-f3d-4982@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 96 | `CAT-0096` | Plăci flexibile | Placă Veil Grey | Phomi | `catalog-placi-ceramice-f3d-4986.jpg` + `catalog-placi-ceramice-f3d-4986@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 97 | `CAT-0097` | Plăci flexibile | Placă Moonlight | Phomi | `catalog-placi-ceramice-f3d-4991.jpg` + `catalog-placi-ceramice-f3d-4991@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 98 | `CAT-0098` | Plăci flexibile | Placă Romam Grey | Phomi | `catalog-placi-ceramice-f3d-5038.jpg` + `catalog-placi-ceramice-f3d-5038@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 99 | `CAT-0099` | Plăci flexibile | Placă Portoro | Phomi | `catalog-placi-ceramice-f3d-5039.jpg` + `catalog-placi-ceramice-f3d-5039@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 100 | `CAT-0100` | Plăci flexibile | 35 Piece Stone | Phomi | `catalog-placi-ceramice-f3d-6117.jpg` + `catalog-placi-ceramice-f3d-6117@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 101 | `CAT-0101` | Plăci flexibile | Rough Surface | Phomi | `catalog-placi-ceramice-f3d-6120.jpg` + `catalog-placi-ceramice-f3d-6120@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 102 | `CAT-0102` | Plăci flexibile | Stone Alpes | Phomi | `catalog-placi-ceramice-f3d-6134.jpg` + `catalog-placi-ceramice-f3d-6134@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 103 | `CAT-0103` | Plăci flexibile | Oceanic Travertine | Phomi | `catalog-placi-ceramice-f3d-6140.jpg` + `catalog-placi-ceramice-f3d-6140@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 104 | `CAT-0104` | Plăci flexibile | Skyline | Phomi | `catalog-placi-ceramice-f3d-6145.jpg` + `catalog-placi-ceramice-f3d-6145@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 105 | `CAT-0105` | Plăci flexibile | Rome Travertine | Phomi | `catalog-placi-ceramice-f3d-6149.jpg` + `catalog-placi-ceramice-f3d-6149@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 106 | `CAT-0106` | Plăci flexibile | Ghana Travertine | Phomi | `catalog-placi-ceramice-f3d-6155.jpg` + `catalog-placi-ceramice-f3d-6155@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 107 | `CAT-0107` | Plăci flexibile | Concrete Pouring Slab | Phomi | `catalog-placi-ceramice-f3d-6157.jpg` + `catalog-placi-ceramice-f3d-6157@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 108 | `CAT-0108` | Plăci flexibile | Mount Celestial | Phomi | `catalog-placi-ceramice-f3d-6163.jpg` + `catalog-placi-ceramice-f3d-6163@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 109 | `CAT-0109` | Plăci flexibile | Marble | Phomi | `catalog-placi-ceramice-f3d-6170.jpg` + `catalog-placi-ceramice-f3d-6170@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 110 | `CAT-0110` | Plăci flexibile | Polished Concrete Wall | Phomi | `catalog-placi-ceramice-f3d-6175.jpg` + `catalog-placi-ceramice-f3d-6175@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 111 | `CAT-0111` | Plăci flexibile | Rusty Slab | Phomi | `catalog-placi-ceramice-f3d-6188.jpg` + `catalog-placi-ceramice-f3d-6188@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 112 | `CAT-0112` | Plăci flexibile | Polish Concrete Wall | Phomi | `catalog-placi-ceramice-f3d-6192.jpg` + `catalog-placi-ceramice-f3d-6192@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 113 | `CAT-0113` | Plăci flexibile | Devine Mushroom Stone | Phomi | `catalog-placi-ceramice-f3d-6196.jpg` + `catalog-placi-ceramice-f3d-6196@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 114 | `CAT-0114` | Plăci flexibile | Sawtooth Wood | Phomi | `catalog-placi-ceramice-f3d-6199.jpg` + `catalog-placi-ceramice-f3d-6199@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 115 | `CAT-0115` | Plăci flexibile | Original Wood | Phomi | `catalog-placi-ceramice-f3d-6204.jpg` + `catalog-placi-ceramice-f3d-6204@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 116 | `CAT-0116` | Plăci flexibile | Spliced Wood | Phomi | `catalog-placi-ceramice-f3d-6207.jpg` + `catalog-placi-ceramice-f3d-6207@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 117 | `CAT-0117` | Plăci flexibile | Rope Wave B | Phomi | `catalog-placi-ceramice-f3d-6209.jpg` + `catalog-placi-ceramice-f3d-6209@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 118 | `CAT-0118` | Plăci flexibile | Polished Wood 4.0 | Phomi | `catalog-placi-ceramice-f3d-6211.jpg` + `catalog-placi-ceramice-f3d-6211@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 119 | `CAT-0119` | Plăci flexibile | Stackle Square 4.0 | Phomi | `catalog-placi-ceramice-f3d-6214.jpg` + `catalog-placi-ceramice-f3d-6214@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 120 | `CAT-0120` | Plăci flexibile | Poly Wood | Phomi | `catalog-placi-ceramice-f3d-6216.jpg` + `catalog-placi-ceramice-f3d-6216@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 121 | `CAT-0121` | Plăci flexibile | Rammed Earth Wall | Phomi | `catalog-placi-ceramice-f3d-6218.jpg` + `catalog-placi-ceramice-f3d-6218@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 122 | `CAT-0122` | Plăci flexibile | Polished Stone | Phomi | `catalog-placi-ceramice-f3d-6221.jpg` + `catalog-placi-ceramice-f3d-6221@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 123 | `CAT-0123` | Plăci flexibile | Oman Linear Stone | Phomi | `catalog-placi-ceramice-f3d-6223.jpg` + `catalog-placi-ceramice-f3d-6223@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 124 | `CAT-0124` | Plăci flexibile | Chiseled Stone | Phomi | `catalog-placi-ceramice-f3d-6225.jpg` + `catalog-placi-ceramice-f3d-6225@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 125 | `CAT-0125` | Plăci flexibile | Bush Hammered | Phomi | `catalog-placi-ceramice-f3d-6228.jpg` + `catalog-placi-ceramice-f3d-6228@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
+| 126 | `CAT-0126` | Plăci flexibile | Stone Ridged | Phomi | `catalog-placi-ceramice-f3d-6231.jpg` + `catalog-placi-ceramice-f3d-6231@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
 | 127 | `CAT-0127` | Elemente decorative | Element decorativ RED 01 | RedConstruct | `catalog-elemente-decorative-f3d-3004.jpg` + `catalog-elemente-decorative-f3d-3004@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
 | 128 | `CAT-0128` | Elemente decorative | Element decorativ RED 02 | RedConstruct | `catalog-elemente-decorative-f3d-3014.jpg` + `catalog-elemente-decorative-f3d-3014@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
 | 129 | `CAT-0129` | Elemente decorative | Element decorativ RED 03 | RedConstruct | `catalog-elemente-decorative-f3d-3019.jpg` + `catalog-elemente-decorative-f3d-3019@2x.jpg` | 1:1 | 600 x 600 (1200 x 1200 at 2x) |
@@ -326,4 +326,4 @@ Product records today: **294** (Sisteme de termoizolație 25, Tencuieli decorati
 
 ---
 
-Generated 2026-09-21 from 8 categories and 294 product records, of 294 in the data.
+Generated 2026-09-22 from 8 categories and 294 product records, of 294 in the data.

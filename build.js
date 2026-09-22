@@ -908,6 +908,19 @@ ${tiles}
 const CATALOG_FILE = 'content/catalog.json';
 const CATALOG = JSON.parse(fs.readFileSync(CATALOG_FILE, 'utf8'));
 if (!Array.isArray(CATALOG.categories)) die(`${CATALOG_FILE} has no "categories" array. An empty menu is [], never a missing key.`);
+/* W26-06, rulings W26-R5 and W26-R7's dispatch: a category can be LISTED or not.
+   An unlisted category still builds its pages (the roofing redirect pages stand
+   under W26-R5), still feeds every data consumer, and is simply absent from the
+   two places a visitor browses the catalogue from: the /catalog/ index tiles and
+   the header Catalog panel. It is a flag in the data rather than a slug in this
+   file because whether a category is on offer is a decision, and a decision held
+   in code is one nobody can read. Absent means listed; anything but a boolean is
+   refused, so a typo cannot hide a category. */
+CATALOG.categories.forEach((c, i) => {
+  if ('listed' in c && typeof c.listed !== 'boolean') die(`${CATALOG_FILE}: categories[${i}].listed is ${JSON.stringify(c.listed)}; it must be true or false.`);
+});
+const catalogListed = (c) => c.listed !== false;
+if (!CATALOG.categories.some(catalogListed)) die(`${CATALOG_FILE}: every category is unlisted, so the catalogue index and menu would be empty.`);
 
 function catalogField(entry, field, l, where) {
   const v = entry[field] && entry[field][l.code];
@@ -947,6 +960,9 @@ function catalogMenu(l) {
   const chevron = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg>';
   const back = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 6 9 12 15 18"></polyline></svg>';
   const rows = CATALOG.categories.map((c, i) => {
+    /* W26-06. An unlisted category has no row. `i` stays the data index, so a
+       sub-list keeps its id when a category above it is unlisted. */
+    if (!catalogListed(c)) return null;
     const where = `categories[${i}]`;
     const label = esc(catalogField(c, 'label', l, where));
     const href = catalogHref(c, l, where);
@@ -970,7 +986,7 @@ ${sub}
               </ul>
             </div>
           </li>`;
-  }).join('\n');
+  }).filter(Boolean).join('\n');
   return `<div class="catalog">
       <button class="catalog__toggle" type="button" id="catalog-toggle" aria-expanded="false" aria-controls="catalog-panel"><svg class="catalog__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect></svg><span class="catalog__label">${esc(l.strings['header.catalog'])}</span></button>
       <div class="catalog__panel" id="catalog-panel" hidden>
@@ -1312,11 +1328,15 @@ ${cards.join('\n')}
    The tile carries the category's own label and nothing else. The eyebrow above
    the grid already says what the page lists, from header.catalogHeading. */
 function catalogIndexTiles(l) {
-  return PARENT_CATEGORIES.map((c, i) => {
+  /* W26-06. Only listed categories get a tile. The slot id is the category's DATA
+     position, not its position on this page, so CATEG-01 to CATEG-07 keep their
+     photographs and ledger rows whatever is unlisted after them. */
+  return PARENT_CATEGORIES.filter((c) => catalogListed(CATALOG.categories[c.i])).map((c, i) => {
     const label = categoryLabel(l, c);
     /* W25-19. The roofing tile opens the consolidated section rather than a page
-       that now only forwards to it. The other seven are unchanged: this is the
-       one category whose products live somewhere else. */
+       that now only forwards to it. AMENDED (W26-06): roofing is unlisted, so this
+       branch renders nothing today; it stays so that listing it again is the one
+       data flag and not a second edit here. */
     const href = c.slug === ROOF_CATEGORY
       ? `${BASE}${ROOF_SECTION_PATH(l)}#${roofAnchor(ROOF_ALL)}`
       : `${BASE}${CATALOG_ROOT[l.code]}${c.slug}/`;
@@ -1325,7 +1345,7 @@ function catalogIndexTiles(l) {
        so a screen-reader user hears "CATEG-01" before every category, seven times
        a page. */
     return `      <a class="cat-tile" href="${href}" aria-label="${esc(label)}" data-reveal data-stagger="${Math.min(i, 6)}">
-        ${placeholder(`CATEG-${String(i + 1).padStart(2, '0')}`, { variant: 'dark', className: 'cat-tile__ph', locale: l.code, eager: i < 4 })}
+        ${placeholder(`CATEG-${String(c.i + 1).padStart(2, '0')}`, { variant: 'dark', className: 'cat-tile__ph', locale: l.code, eager: i < 4 })}
         <span class="cat-tile__body"><span class="cat-tile__label">${esc(label)}</span></span>
       </a>`;
   }).join('\n');
@@ -3720,7 +3740,8 @@ for (const l of loaded) {
     /* The description is the seven category labels, which are data and not copy,
        trimmed to the same limit every other page's is. Nothing is invented for
        it and nothing is claimed by it. */
-    const labels = PARENT_CATEGORIES.map((c) => categoryLabel(l, c)).join(', ');
+    /* AMENDED (W26-06): the listed categories only, the same set the tiles show. */
+    const labels = PARENT_CATEGORIES.filter((c) => catalogListed(CATALOG.categories[c.i])).map((c) => categoryLabel(l, c)).join(', ');
     const idxVars = {
       ...vars,
       'cat.title': title,

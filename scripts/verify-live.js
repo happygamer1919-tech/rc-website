@@ -257,13 +257,16 @@ const MARKERS = {
   // AMENDED (W25-09): ~~seven tiles~~ **EIGHT**. Acoperișuri is the eighth
   // category, 71 Dasterum products in seven subcategories. The count is asserted
   // rather than relaxed, so a build made before this card cannot match it.
+  // AMENDED (W26-06, W26-R5): ~~EIGHT~~ **SEVEN** again. Acoperișuri carries
+  // listed: false in content/catalog.json and is off the index; its products live
+  // on /servicii/acoperisuri/ and its catalogue pages are redirects there.
   index: {
     promoBar: 1,
     profileAnchors: 0,
     areaServed: 0,
     catProse: 0,
     productCards: 0,
-    catTiles: 8,
+    catTiles: 7,
   },
 };
 
@@ -357,8 +360,8 @@ const PAGES = [
   { path: '/ru/catalog/termoizolatie/alte-produse/',        type: 'subcategory',   label: 'sub RU altep',     budget: 3016 },
   { path: '/catalog/tencuieli-decorative/',                 type: 'category',      label: 'cat RO tencu',     budget: 5310 },
   { path: '/ru/catalog/tencuieli-decorative/',              type: 'category',      label: 'cat RU tencu',     budget: 5416 },
-  { path: '/catalog/placi-ceramice/',                       type: 'category',      label: 'cat RO placi',     budget: 12729 },
-  { path: '/ru/catalog/placi-ceramice/',                    type: 'category',      label: 'cat RU placi',     budget: 13612 },
+  { path: '/catalog/placi-ceramice/',                       type: 'category',      label: 'cat RO placi',     budget: 12783 },
+  { path: '/ru/catalog/placi-ceramice/',                    type: 'category',      label: 'cat RU placi',     budget: 13721 },
   { path: '/catalog/elemente-decorative/',                  type: 'category',      label: 'cat RO elem',      budget: 10201 },
   { path: '/ru/catalog/elemente-decorative/',               type: 'category',      label: 'cat RU elem',      budget: 10636 },
   { path: '/catalog/vopsele/',                              type: 'category',      label: 'cat RO vopsele',   budget: 4304 },

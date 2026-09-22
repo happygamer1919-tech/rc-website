@@ -115,7 +115,7 @@ for (const must of ['dist/index.html', 'dist/ru/index.html']) {
 if (roPages.length === 0 || ruPages.length === 0) fail(`dist/ holds ${roPages.length} RO and ${ruPages.length} RU pages; both must be non-zero`);
 pages.forEach((p) => sources.push({ where: rel(p), text: fs.readFileSync(p, 'utf8'), locale: rel(p).startsWith('dist/ru/') ? 'ru' : 'ro' }));
 
-const CODE = ['src/main.js', 'src/template.html', 'src/service.html', 'src/product.html', 'src/category.html', 'src/catalog-index.html', 'src/in-constructie.html', 'src/privacy.html', 'src/404.html', 'src/styles.css', 'build.js'];
+const CODE = ['src/main.js', 'src/template.html', 'src/service.html', 'src/product.html', 'src/category.html', 'src/moved.html', 'src/catalog-index.html', 'src/in-constructie.html', 'src/privacy.html', 'src/404.html', 'src/styles.css', 'build.js'];
 
 /* RC-135 (W17-04). Every template in src/ is in the list above, asserted by
    count. src/product.html sat outside it from W14-16 until this card, reported at

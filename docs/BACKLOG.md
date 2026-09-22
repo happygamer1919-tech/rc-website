@@ -719,3 +719,11 @@ W25-R15, held to twelve slot ids rather than to the host. Ledger 259 to 271 of 3
 hub tile `shows` lines corrected to the picture that landed, each saying so. RC-pics-real no
 longer expects a fence; the intake list and the prompt batch shrink by the ledger, not by
 deletion. 24 of 24 gate commands exit 0.
+
+## W25-19 · Acoperisuri consolidation
+**Status: PR OPEN** (2026-09-21). The roofing catalogue moves onto `/servicii/acoperisuri/`:
+a filter bar of 8 and **75 cards**. The 8 `/catalog/materiale-acoperis/*` URLs become
+redirect pages that still answer 200 and land on the matching filter, and leave the sitemap.
+The fold was taught about the filter. RC-129 gains a `redirect` page kind; verify-live swaps
+16 measured rows for a 16-URL fetch assertion. Budget 7,658 to **16,964** under W25-R18.
+Q-W25-17 logged. 24 of 24 gate commands exit 0.

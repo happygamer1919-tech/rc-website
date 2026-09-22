@@ -11245,3 +11245,82 @@ the better outcome in view: the owner's own photograph would replace an override
 
 **24 of 24 gate commands exit 0.** No height moved: a filled slot takes the placeholder's own
 box from the same `--ph-ratio`.
+
+## W25-19 · The roofing catalogue moves onto the page that sells the roof, 2026-09-21
+
+**Card W25-19.** PR only, stops for the owner. The full card is
+`docs/board/W25-19-acoperisuri-consolidation.md`.
+
+`/servicii/acoperisuri/` keeps its four hub tiles and gains the whole roofing catalogue: a
+filter bar of eight buttons and **75 product cards**, the 71 roofing records plus the four
+metal tile models. The eight `/catalog/materiale-acoperis/*` URLs become **redirect pages
+that still answer 200** and land on the matching filter.
+
+### The card is the catalogue's own, and the extraction was proved neutral
+
+`prodCard` was lifted out of `catalogProducts` unchanged, and before anything was built on
+it the whole of `dist/` was diffed against the same build made before the refactor:
+**every byte matched**. So the quote button, the price element, the placeholder and the
+phone fold behave here exactly as on a catalogue page, because they are the same code.
+
+The filter groups, labels and order are `content/catalog.json`'s. A record in two
+subcategories renders **once**, carrying a space-separated `data-roof-groups`: duplicating
+the card would have put one picture on two cards, which gate 19 refuses. The prefix is
+`.roof-*` and rule 3.1 was checked before the first rule was written.
+
+### The fold and the filter had to be taught about each other
+
+`main.js` folded by position in the full list. On a filtered grid that is the wrong list:
+with Profnastil selected, **eight cards are on the page and seven would have folded behind a
+button saying there were more**. The fold now counts the cards the filter is showing and a
+press dispatches `rc:filtered`. On an unfiltered grid the visible list is the full list, so
+the fourteen catalogue pages are untouched. Measured in a browser at 1440 and 390, pressing
+the controls: 75/75/0, 8/8/0, 22/22/0 at desktop; 75 shown with 9 painted and 66 folded at
+390, and 8/8/0 with the button hidden once filtered.
+
+### A redirect page cannot be measured, which is how the first attempt was caught
+
+The sixteen `cat` and `sub` rows left `scripts/verify-live.js`. Their refresh fires before
+anything settles, so a browser measuring `/catalog/materiale-acoperis/profnastil/` reports
+the height of `/servicii/acoperisuri/` **with a filter applied**: a measurement of a
+different page wearing this one's label. That is what the first local run returned, and it
+is why the rows are gone.
+
+**They were replaced, not deleted.** `REDIRECTS` fetches each of the sixteen URLs, cache
+busted, and asserts 200, `noindex, follow`, the build sha, and that the refresh, the
+canonical and the visible link agree on one destination. No browser, milliseconds. Deleting
+sixteen rows silently would have left sixteen live URLs nothing checks.
+
+### The gates learned rather than relaxed
+
+**RC-129** gains a fourth kind of page. The eight roofing routes are `redirect` pages, still
+scanned whole for every prohibition **and** held to what a redirect page must carry, with
+**eight per locale asserted**. It gains a second permitted home for `.prod__price`, named
+rather than matched on a path.
+
+**And it caught this card's own comment.** `src/moved.html` explained its refresh by writing
+the tag out in a comment; the gate reads comments, and its target regex matched the comment
+before the real tag on all sixteen pages. The comment now describes the mechanism and says
+why it does not quote it.
+
+`gen-photo-review` and `gen-ai-prompts` both learned `ACTM-`, the four tile model cards:
+they are in the owner's review list, and held out of the prompt pack under W25-R2 as named
+tile products, by the same words that hold the four Novatik tiles.
+
+### The budget, under W25-R18
+
+`/servicii/acoperisuri/` **7,598 to 16,904**, budget **16,964**; RU **7,736 to 17,064**,
+budget **17,124**. Measured at 1440 settled, plus 60. `docs/rulings/R-Y.md` carries it with
+the reason and with W25-R18's requirement that it be re-measured on the deployed sha.
+
+### Q-W25-17
+
+The Tigla metalică filter holds eight cards under four names, the tile page's four models
+and Dasterum's four. Generic profile names, ordinary for two suppliers, but a visitor sees
+two prices for what reads as the same tile. Logged with a shipped default of "leave it":
+naming the supplier needs Q-W14-08 answered first.
+
+### Gates
+
+**24 of 24 gate commands exit 0.** RC-129 reads `2 index, 14 category, 14 subcategory, 16
+redirect`. Gate 19 reads `271 of 337`.

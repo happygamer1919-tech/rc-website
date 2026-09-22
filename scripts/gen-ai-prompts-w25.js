@@ -88,7 +88,11 @@ for (const row of ledger.slots) {
   const push = (why) => held.push({ id: row.id, why, name: p ? p.name.ro : null });
   if (row.state === 'filled') { push('filled'); continue; }
   if (row.id.startsWith('BA-')) { push('evidence'); continue; }
-  if (row.id.startsWith('NVK-')) { push('tile'); continue; }
+  /* W25-19. `ACTM-` is a metal tile MODEL card on the consolidated roofing
+     section, which is a named tile product by exactly the words that hold the
+     Novatik four: it is sold by its exact profile, and a generated one would be
+     an invented profile under a real model's name (W25-R2). */
+  if (row.id.startsWith('NVK-') || row.id.startsWith('ACTM-')) { push('tile'); continue; }
   if (row.id.startsWith('GARD-')) { push('ownerphoto'); continue; }
   if (p) {
     if ((p.categories || []).includes('placi-ceramice')) { push('tile'); continue; }
@@ -175,6 +179,7 @@ const groupOf = (id, p) => {
   return 'Unbranded building materials';
 };
 
+const heldBy = (why) => held.filter((h) => h.why === why).length;
 const GROUP_ORDER = ['Catalogue category tiles', 'Acoperisuri hub tiles', 'Garduri hub tiles', 'Copertine hero', 'Cross-sell cards', 'Fence model cards', 'Unbranded building materials', 'Sisteme de iluminare', 'Elemente decorative'];
 
 const byGroup = new Map();
@@ -301,7 +306,7 @@ for (const [why, list] of heldByReason) {
 }
 L.push('## The tiles, said once more because it is the biggest group');
 L.push('');
-L.push('**63 ceramic plates and 4 Novatik roof tiles are held and no prompt exists for them.**');
+L.push(`**${heldBy('tile')} named tile products are held and no prompt exists for any of them.**`);
 L.push('W25-R2: "no AI image on any named tile product", because a tile is sold by its exact');
 L.push('appearance and a render of one is an invented appearance under a real product name.');
 L.push('That rule is why 60 Phomi colour variants stayed grey rather than taking a photograph');

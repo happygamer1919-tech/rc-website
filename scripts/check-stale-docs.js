@@ -214,6 +214,8 @@ const SCAN_SOURCE = [
   'src/catalog-index.html',
   // W24-06. The shared "in construcție" page.
   'src/in-constructie.html',
+  // W25-19. The redirect page the eight roofing catalogue URLs became.
+  'src/moved.html',
   'src/privacy.html',
   'src/404.html',
   'build.js',

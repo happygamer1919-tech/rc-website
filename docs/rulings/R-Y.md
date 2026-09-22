@@ -782,3 +782,42 @@ card, where a price sits beside a 44px button.
 **The budget falls with the measurement.** R-Y's own rule is that removing an element's
 cost drops the budget by that cost; a budget left high is a ceiling to hide under, not a
 measurement.
+
+---
+
+## AMENDED (W25-19, wave 25): the roofing catalogue moves onto the acoperisuri hub
+
+**Ruling W25-R18:** *"Height budget for /servicii/acoperisuri/ is re-measured plus 60 after
+the merge and recorded with the reason."*
+
+| Page | Before | After | Budget |
+|---|---|---|---|
+| `/servicii/acoperisuri/` | 7,598 | **16,904** | 7,658 to **16,964** |
+| `/ru/servicii/acoperisuri/` | 7,736 | **17,064** | 7,796 to **17,124** |
+
+**The reason, stated because the figure is otherwise unexplainable.** The page gained the
+whole roofing catalogue: a filter bar and **75 product cards**, the 71 roofing records plus
+the four metal tile models. At 1440 that is a four-column grid nineteen rows deep. The
+eight `/catalog/materiale-acoperis/*` pages that used to carry those cards, whose budgets
+ran from 3,032 to 11,917, are redirect pages now and carry nothing.
+
+**It is a measurement, not a ceiling.** Measured at 1440 with every `[data-reveal]` applied
+and settled for 1,600ms, which is section 2's own recipe and the one
+`scripts/verify-live.js` runs, plus the 60px headroom term every row in this ruling uses
+(W24-R4).
+
+**The 1,400px section cap does not bite and never did here.** A catalogue product grid has
+been outside it since W24-04: `/catalog/placi-ceramice/` renders 88 cards in one section.
+What the cap governs is a section of prose or chrome, and this is the same grid that was
+already exempt, on a different page.
+
+**Sixteen budgets leave this ruling with the pages they measured.** The `cat RO acop`,
+`cat RU acop` and fourteen `sub` rows are gone from `scripts/verify-live.js`: a redirect
+page's refresh fires before anything settles, so measuring one reports the height of the
+page it forwards to. What replaces them is an assertion that each of the sixteen URLs still
+answers 200 and that its refresh, its canonical and its visible link agree on one
+destination.
+
+**W25-R18 requires this to be re-measured on the deployed sha after the merge.** The
+figures above are the local build measured with the deployed recipe; if the live page
+differs, this block is corrected there and the correction says so.

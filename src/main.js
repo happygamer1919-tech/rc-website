@@ -329,28 +329,51 @@
       if (!wrap || !button) return;
       var shown = step;
 
+      /* W25-19. The fold counts the cards a FILTER is showing, not every card in
+         the grid. On a filtered grid the two disagree: with Profnastil selected,
+         eight cards are on the page and counting positions in the full list would
+         fold seven of them behind a button that says there are more. `visible()`
+         is the whole fix, and on every unfiltered grid it returns the full list,
+         so the catalogue pages behave exactly as they did. */
+      function visible() {
+        var out = [];
+        for (var k = 0; k < cards.length; k++) {
+          if (!cards[k].classList.contains('roof--off')) out.push(cards[k]);
+        }
+        return out;
+      }
+
       function apply() {
         /* Above the breakpoint every card is unfolded and the button is put back
            behind `hidden`, so the accessibility tree matches what is painted:
            CSS alone would leave a control that is invisible but still focusable. */
         var folding = mq.matches;
-        for (var i = 0; i < cards.length; i++) {
-          var fold = folding && i >= shown;
-          cards[i].classList.toggle('prod--folded', fold);
+        var list = visible();
+        /* A card the filter has hidden must not keep a fold class: rotating past
+           the breakpoint would then paint it and the count would be wrong. */
+        for (var j = 0; j < cards.length; j++) cards[j].classList.remove('prod--folded');
+        for (var i = 0; i < list.length; i++) {
+          if (folding && i >= shown) list[i].classList.add('prod--folded');
         }
-        wrap.hidden = !folding || shown >= cards.length;
+        wrap.hidden = !folding || shown >= list.length;
       }
+
+      /* The filter below dispatches this after every press. The revealed count
+         resets, because "show 9 more" of a list the visitor has just changed is
+         a count about the old list. */
+      grid.addEventListener('rc:filtered', function () { shown = step; apply(); });
 
       button.addEventListener('click', function () {
         var first = shown;
-        shown = Math.min(shown + step, cards.length);
+        var list = visible();
+        shown = Math.min(shown + step, list.length);
         apply();
         /* Focus the first card revealed by THIS press. Without it a keyboard or
            screen reader visitor presses the button, the button vanishes on the
            last press, and focus falls back to the body at the top of the page. */
-        if (cards[first]) {
-          cards[first].setAttribute('tabindex', '-1');
-          cards[first].focus();
+        if (list[first]) {
+          list[first].setAttribute('tabindex', '-1');
+          list[first].focus();
         }
       });
 
@@ -636,5 +659,76 @@
         .catch(function () { leadStatus.textContent = leadForm.getAttribute('data-fail'); })
         .then(function () { button.disabled = false; leadStatus.style.color = '#B23C08'; });
     });
+  })();
+
+  /* --- W25-19, the roofing filter ------------------------------------------ */
+  /* A plain client-side script, as the dispatch specifies. There is no library
+     and no dependency, which is the site's standing rule.
+
+     IT ONLY EVER ADDS AND REMOVES A CLASS. `.roof--off` is declared once in
+     styles.css and the grid is the only thing that acts on it, so a bug here
+     cannot change a layout, only which cards are painted. With no JS the bar is
+     still readable, every button shows its own count, and every card shows,
+     which is the honest state: "Toate" is what the page is without the script.
+
+     THE HASH SELECTS A FILTER. `mat-<slug>` is the id of the button itself, so
+     /servicii/acoperisuri/#mat-profnastil lands on the control and opens it. That
+     is what the eight redirect pages at /catalog/materiale-acoperis/* aim at, and
+     it is why the id is on the button rather than on a wrapper: the browser does
+     the scrolling and this does the selecting, and neither has to know about the
+     other.
+
+     THE FOLD IS TOLD. Pressing a filter dispatches `rc:filtered` on the grid, and
+     the phone-reveal block above resets its count and recounts from the cards
+     that are actually showing. Nothing here touches `.prod--folded`. */
+  (function () {
+    var bar = document.querySelector('[data-roof-bar]');
+    var grid = document.querySelector('[data-roof-grid]');
+    if (!bar || !grid) return;
+    var buttons = bar.querySelectorAll('[data-roof-filter]');
+    var cards = grid.querySelectorAll('[data-product-card]');
+    var status = document.querySelector('[data-roof-status]');
+    var template = status ? status.getAttribute('data-roof-showing') : null;
+    if (!buttons.length || !cards.length) return;
+
+    function groupsOf(card) {
+      return (card.getAttribute('data-roof-groups') || '').split(' ').filter(Boolean);
+    }
+
+    function select(name, focus) {
+      var shown = 0;
+      for (var i = 0; i < cards.length; i++) {
+        var on = name === 'toate' || groupsOf(cards[i]).indexOf(name) > -1;
+        cards[i].classList.toggle('roof--off', !on);
+        if (on) shown++;
+      }
+      for (var j = 0; j < buttons.length; j++) {
+        buttons[j].setAttribute('aria-pressed', buttons[j].getAttribute('data-roof-filter') === name ? 'true' : 'false');
+      }
+      if (status && template) status.textContent = template.replace('{n}', String(shown));
+      /* Dispatched even when nothing moved, because the fold's count depends on
+         the visible list and not on whether this call changed it. */
+      grid.dispatchEvent(new CustomEvent('rc:filtered'));
+      if (focus) {
+        var btn = bar.querySelector('[data-roof-filter="' + name + '"]');
+        if (btn) btn.focus();
+      }
+    }
+
+    bar.addEventListener('click', function (e) {
+      var btn = e.target.closest && e.target.closest('[data-roof-filter]');
+      if (!btn || !bar.contains(btn)) return;
+      select(btn.getAttribute('data-roof-filter'), false);
+    });
+
+    function fromHash() {
+      var h = (location.hash || '').replace(/^#/, '');
+      if (h.indexOf('mat-') !== 0) return;
+      var name = h.slice(4);
+      if (!bar.querySelector('[data-roof-filter="' + name + '"]')) return;
+      select(name, false);
+    }
+    window.addEventListener('hashchange', fromHash);
+    fromHash();
   })();
 })();

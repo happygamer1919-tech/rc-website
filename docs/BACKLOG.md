@@ -736,3 +736,22 @@ and **one GREEN**, which is a new kind of arm here. 13 were held and 12 could be
 `CAT-0110` and `CAT-0112` have no picture on either record, and their reason is corrected to
 the measured one. Question 30 added to CLAIMS-MIHAI.md quoting both CT 80 F rows. 24 of 24
 gate commands exit 0.
+
+## W25-21 · Owner intake
+**Status: PR OPEN** (2026-09-22). `scripts/intake-owner-pics.js` ships; **nothing was taken
+in**, because both folders hold only their README, which the dispatch says is a list and not
+an error. The filename is the slot id exactly, the folder decides the origin, and a real
+photograph is allowed on an evidence slot where a generated image is not. **19 self-test
+arms, 3 of them green.** The apply path was proved end to end on a throwaway copy, including
+`build.js` refusing the `TODO:` alt text. The four `ACOP-` prompts are reproduced verbatim in
+the card. 54 slots still waiting. 24 of 24 gate commands exit 0.
+
+## W25-22 · Written warranty, 30 years to 5
+**Status: PR OPEN** (2026-09-22). Owner instruction. **8 strings, 4 per locale**, on the two
+homepages; a grep of the built tree confirms nothing else said thirty. Romanian grammar
+changes with the number (`30 de ani` but `5 ani`), so the strings were rewritten, not
+substituted. The figure has one home, `warranty.years`, and `build.js` asserts both
+directions over the four strings, with both failure shapes watched fire. `warranty-30`
+registered in the staleness gate and the master plan amended beside the struck value.
+**Heights identical at 30 and at 5**, measured with a control, so no budget moves. 24 of 24
+gate commands exit 0.

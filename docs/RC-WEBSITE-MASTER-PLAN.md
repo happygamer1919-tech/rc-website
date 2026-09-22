@@ -134,7 +134,10 @@ No photo. Left-aligned or centred, single column.
 - Eyebrow: work area line (all of Moldova).
 - h1: existing headline, reworded to uppercase.
 - One-sentence subhead from existing copy.
-- Stat row, four items: 500+ proiecte, 15+ ani, 30 ani garanție scrisă, 4.9/5 din 250+ recenzii. Numerals in `--brand`, static, no count-up.
+- Stat row, four items: 500+ proiecte, 15+ ani, ~~30 ani garanție scrisă~~ **AMENDED
+  (W25-22, 2026-09-22): 5 ani garanție scrisă**, 4.9/5 din 250+ recenzii. Numerals in
+  `--brand`, static, no count-up. The figure lives once, in `warranty.years` in each locale
+  file, and `build.js` refuses any of the four strings that states a different one.
 - Price box, bordered, `--brand` left border 4px: the published per-m² figures and the standing offer (minus 10% early booking, ~~0% installments on roofing~~ **AMENDED: removed under ruling R-X, W14-14, `docs/rulings/R-X.md`**, ~~160 lei/m² frozen for 2026~~ **AMENDED: removed by W14-05 (RC-105), a STOP card merged by the owner; see DECISIONS.md W14-05**).
 - Two CTAs: "Solicită ofertă gratuită" (filled), "Sună acum" (outline).
 
@@ -164,7 +167,8 @@ Short band, white text, four figures repeated from the hero at larger scale, plu
 ### 5.7 Why us + testimonials — `--bg-light`
 
 Two blocks in one section, separated by a divider.
-- Six trust points in a 3x2 grid: garanție 30 ani în contract, materiale cu certificare UE, predare la termen, echipă cu 10+ ani experiență, prețuri transparente, suport după predare. Icon or numeral, title, one line. No photos.
+- Six trust points in a 3x2 grid: ~~garanție 30 ani în contract~~ **AMENDED (W25-22):
+  garanție 5 ani în contract**, materiale cu certificare UE, predare la termen, echipă cu 10+ ani experiență, prețuri transparente, suport după predare. Icon or numeral, title, one line. No photos.
 - Three testimonials as bordered cards: quote, name, city and work type. Static, no carousel.
 
 ### 5.8 Quote form — `--bg-grey`

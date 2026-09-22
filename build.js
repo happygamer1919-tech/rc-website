@@ -193,6 +193,66 @@ if (onlyA.length || onlyB.length) {
 const empty = loaded.flatMap((l) => Object.entries(l.strings).filter(([, v]) => !v.trim()).map(([k]) => `${l.code}:${k}`));
 if (empty.length) die(`empty strings: ${empty.join(', ')}`);
 
+/* --- W25-22, the written warranty --------------------------------------- */
+
+/* THE FIGURE HAS ONE HOME, `warranty.years`, and every string that states it is
+   held to it. It was thirty, in four strings per locale, in four different
+   grammatical shapes, and the owner corrected it to five. Four shapes in two
+   languages is exactly the arrangement in which one of them survives a change,
+   and the survivor is the one on the homepage hero.
+
+   WHAT IS ASSERTED, both ways, because either alone is half a check:
+     · every one of the four strings STATES the figure. A string that lost it is
+       a claim that stopped being about the warranty at all;
+     · none of them states a DIFFERENT figure beside a years word. That is what
+       catches the survivor: the old figure left standing in one of the four
+       while the other three moved. The old figure is deliberately NOT written
+       out here. scripts/check-stale-docs.js scans source comments as well as
+       documents, and it caught this comment quoting it, which is the second time
+       in one session that a comment explaining a rule tripped the gate enforcing
+       it (src/moved.html was the first, at W25-19).
+
+   It is not "no 30 anywhere": `stats.0.n` is 500 and a description may carry any
+   number. The pattern reads a number that is immediately followed by a years
+   word, in either locale, which is the only shape a warranty claim takes here.
+
+   Romanian counts from 20 take "de": 30 de ani, 5 ani. The strings carry their
+   own grammar and this reads both forms, so correcting the figure without
+   correcting the grammar leaves the string stating the figure and is not caught
+   here; it is caught by a person reading four lines, which is what four lines are
+   for. */
+/* Local, because the module's own REAL is declared below this point and an
+   empty string here must be a named failure rather than a crash. */
+const REAL_STR = (v) => typeof v === 'string' && v.trim() !== '' && !v.trim().startsWith('TODO:');
+const WARRANTY_KEYS = ['meta.description', 'hero.claim.line1', 'stats.2.n', 'trust.items.0.title'];
+const YEARS_WORD = String.raw`(?:de\s+)?(?:ani|лет|года|год|years?)`;
+(() => {
+  const problems = [];
+  for (const l of loaded) {
+    const years = l.strings['warranty.years'];
+    if (!REAL_STR(years)) { problems.push(`${l.code}: warranty.years is not set, so no string can be held to it.`); continue; }
+    if (!/^\d{1,2}$/.test(years)) { problems.push(`${l.code}: warranty.years is "${years}", which is not one or two digits.`); continue; }
+    for (const k of WARRANTY_KEYS) {
+      const v = l.strings[k];
+      if (!REAL_STR(v)) { problems.push(`${l.code}: ${k} is empty, and it is one of the strings that states the warranty.`); continue; }
+      const stated = [...v.matchAll(new RegExp(String.raw`(\d{1,2})\s+` + YEARS_WORD, 'gi'))].map((m) => m[1]);
+      const bare = k.endsWith('.n') ? [v.trim()] : [];
+      const all = stated.length ? stated : bare;
+      if (!all.length) {
+        problems.push(`${l.code}: ${k} states no number of years, and it is one of the strings that states the warranty: "${v}"`);
+      }
+      const wrong = all.filter((n) => n !== years);
+      if (wrong.length) {
+        problems.push(`${l.code}: ${k} states ${wrong.join(', ')} year(s) and warranty.years is ${years}: "${v}"`);
+      }
+    }
+  }
+  if (problems.length) {
+    die(`the written warranty figure and the strings that state it disagree:\n  ${problems.join('\n  ')}\n\n  The figure lives once, in warranty.years, in each locale file.`);
+  }
+  console.log(`warranty: ${loaded.map((l) => l.code + ' ' + l.strings['warranty.years']).join(', ')} year(s), stated by ${WARRANTY_KEYS.length} string(s) per locale and held to the figure`);
+})();
+
 // --- has the privacy page still got TODO placeholders in it? -----------------
 const privacyTodos = loaded.flatMap((l) =>
   Object.entries(l.strings).filter(([k, v]) => k.startsWith('privacy.') && /TODO:/.test(v))

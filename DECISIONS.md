@@ -11391,3 +11391,120 @@ Russian lines, two prices. One yes/no, and the answer does not move the picture.
 **24 of 24 gate commands exit 0.** Gate 19 runs **18 self-test arms**, seventeen red and one
 green, and reads `283 of 337`. The number is the one the run prints, not a remembered one. `public/` is unchanged: no image was added, so R-W walks the
 same tree.
+
+## W25-21 · The intake the folders were waiting for, and nothing to take in yet, 2026-09-22
+
+**Card W25-21.** PR only, stops for the owner. The full card is
+`docs/board/W25-21-intake.md`, which reproduces the four `ACOP-` prompts verbatim.
+
+**`scripts/intake-owner-pics.js` ships and nothing was taken in**, because both folders hold
+only their `README.txt`. That is the finding, not a failure: the dispatch says a missing file
+is listed, never an error. What W25-16 left was two folders, two READMEs and a generated
+list, **and no way to take a drop in**.
+
+### The rule is the filename, exactly
+
+`ACOP-02.png` fills `ACOP-02` and nothing else. **A stem that is not a slot id is reported,
+never guessed at**: a guess here puts a photograph of one thing on a card for another.
+
+**The folder decides the origin and the origin decides what is allowed.** `RC-pics-real`
+takes R-W's client-supplied origin, needs `--who`, and is allowed on every slot **including
+the evidence slots, because a photograph IS evidence**. `RC-pics-ai` takes W25-R3's origin,
+needs `--tool`, and is refused on `BA-`, `PROJ-`, `PORT-` and on a named tile product.
+
+It writes nothing without `--apply`, and installs through `process-packshot.js`, the one
+thing here that writes into `public/img/` and the one thing that strips metadata and then
+asserts the strip. A file lands in a folder named after what it is: `garduri`,
+`acoperisuri`, `copertine`, `before-after`, `catalog` as the fallback.
+
+### Nineteen arms, three green
+
+Every branch is watched before the script runs at all. Six red: a stem that is no slot, a
+slot already filled, a file that is not an image by its bytes, 449 on the longest side, a
+generated image on an evidence slot, a generated image on a named tile. Three green: a
+generated image on an ordinary product slot, **a real photograph on an evidence slot**, and
+450 on the longest side. Ten more watch the folder mapping, fallback included.
+
+**The second green arm is the one that matters.** A real photograph on a `BA-` slot is
+exactly what an evidence slot is for, and a script that read the prefix without reading the
+folder would have refused it.
+
+### It was proved, not asserted
+
+The apply path ran end to end on a throwaway copy, the three paths pointed at scratch by
+environment, which is the only reason those overrides exist. A planted 900x520 PNG went in
+as `ACOP-03.png`, installed as `public/img/acoperisuri/ACOP-03.jpg` at 600x346 with no
+metadata, flipped its ledger row and appended its provenance row. **`node build.js` then
+failed**: `slot "ACOP-03" is filled and has no alt text for ro`. That is the design. The
+script does not write alt text, `build.js` refuses a `TODO:` string, and the failing build is
+the reminder.
+
+`--who "Popescu, Ion"` was watched refuse, because R-W's source cell is
+`client direct transfer, <name>, DD.MM.YYYY` exactly and a comma moves the date into the
+wrong cell; `--who "Ion Popescu"` was watched pass in the same run. Everything the proof
+wrote was removed.
+
+### Gates
+
+**24 of 24 gate commands exit 0.** Nothing about the built site changed: gate 19 reads the
+same `283 of 337`. **54 slots are still waiting**, and the run lists every one with its
+ratio, its minimum and its page.
+
+## W25-22 · The written warranty is five years, not thirty, 2026-09-22
+
+**Card W25-22.** PR only, stops for the owner. The full card is
+`docs/board/W25-22-warranty-five-years.md`.
+
+> **Owner instruction, 2026-09-22:** "change the text everywhere on the website where it is
+> about 30 years waranty, should be changed to 5 years waranty everywhere"
+
+**Eight strings, four per locale.** `meta.description`, `hero.claim.line1`, `stats.2.n` and
+`trust.items.0.title`, which render on the two homepages and nowhere else. `everywhere` was
+checked rather than assumed: after the change, a grep over the whole built tree for
+`30 ani`, `30 de ani`, `30 лет` and `30 years` returns nothing.
+
+### The Romanian grammar changes with the number
+
+**Romanian counts from 20 take "de": `30 de ani`, but `5 ani`.** Three of the four Romanian
+strings carry the number inline, so substituting "30" with "5" would have left
+"5 de ani de garanție" on the homepage hero. Each string was rewritten. `build.js` already
+encoded the rule at the metal tile grid, which is where it was read from.
+
+### The figure has one home
+
+`warranty.years` is a locale key now, and `build.js` asserts both directions over the four
+strings: each one **states** the figure, and **none states a different one**. Four strings in
+two languages in four grammatical shapes is exactly the arrangement in which one survives a
+change, and the survivor would be the hero. Both failure shapes were watched fire on the
+shipping file with the control clean either side.
+
+It is deliberately not "no 30 anywhere": `stats.0.n` is 500. The pattern reads a number
+immediately followed by a years word, which is the only shape a warranty claim takes here.
+
+### The documents are held by the gate that exists for it
+
+`build.js` does not read the master plan, and **the master plan specified the stat row and
+the trust grid with thirty in them**. `warranty-30` is registered in
+`scripts/check-stale-docs.js` and both lines carry a struck value with an `AMENDED (W25-22)`
+beside them. It does not touch the audits or `docs/W24-CLAIMS-HELD.md`, which record a
+COMPETITOR's thirty-year anticorrosion warranty and are correct as records of someone else's
+claim.
+
+### The same trap, twice in one session
+
+**The staleness gate caught this card's own comment.** The comment in `build.js` explaining
+the assertion quoted the old string as its example, and that gate scans source comments. It
+is the second time this session that a comment explaining a rule tripped the gate enforcing
+it; `src/moved.html` did it at W25-19 against the catalogue gate. The comment now describes
+the shape rather than quoting it.
+
+### Heights did not move, measured with a control
+
+`/` 9,135 and `/ru/` 9,376, **identical with 30 and with 5**, measured at 1440 with every
+reveal settled, the same build, changing nothing but the figure. Every one of the four
+strings fits on its existing line at both, so no budget moves and R-Y is untouched. Had the
+copy lost a line, the budget would have had to come down with it.
+
+### Gates
+
+**24 of 24 gate commands exit 0.**

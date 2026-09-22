@@ -202,7 +202,12 @@
       "ratio": "4 / 3",
       "min_px": "1200x900",
       "shows": "Tigla \"Novatik Classic\" montata pe un acoperis, fotografiata de aproape ca sa se vada granulatia de roca vulcanica. Lumina de zi, fara soare direct puternic. Orizontal.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/NVK-01.jpg",
+      "alt": {
+        "ro": "Novatik Classic, tigla metalica montata pe acoperis",
+        "ru": "Novatik Classic, металлочерепица на кровле"
+      }
     },
     {
       "id": "NVK-02",
@@ -218,7 +223,12 @@
       "ratio": "4 / 3",
       "min_px": "1200x900",
       "shows": "Tigla \"Novatik Roman\" montata pe un acoperis, fotografiata de aproape ca sa se vada granulatia de roca vulcanica. Lumina de zi, fara soare direct puternic. Orizontal.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/NVK-03.jpg",
+      "alt": {
+        "ro": "Novatik Roman, tigla metalica montata pe acoperis",
+        "ru": "Novatik Roman, металлочерепица на кровле"
+      }
     },
     {
       "id": "NVK-04",
@@ -226,7 +236,12 @@
       "ratio": "4 / 3",
       "min_px": "1200x900",
       "shows": "Tigla \"Novatik Wood\" montata pe un acoperis, fotografiata de aproape ca sa se vada granulatia de roca vulcanica. Lumina de zi, fara soare direct puternic. Orizontal.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/NVK-04.jpg",
+      "alt": {
+        "ro": "Novatik Wood, tigla metalica montata pe acoperis",
+        "ru": "Novatik Wood, металлочерепица на кровле"
+      }
     },
     {
       "id": "ACOP-01",
@@ -409,7 +424,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Vată minerală Thermowool Fas Efect\" (SWEETONDALE), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0008.jpg",
+      "alt": {
+        "ro": "Vată minerală Thermowool Fas Efect, ambalajul produsului",
+        "ru": "Минеральная вата «Технофас Эффект», упаковка продукта"
+      }
     },
     {
       "id": "CAT-0009",
@@ -493,7 +513,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Adeziv Kreisel 215\" (KREISEL), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0016.jpg",
+      "alt": {
+        "ro": "Adeziv Kreisel 215, ambalajul produsului",
+        "ru": "Клей Крайзель 215, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0017",
@@ -501,7 +526,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Adeziv Baumit - Bianco Alb\" (Baumit), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0017.jpg",
+      "alt": {
+        "ro": "Adeziv Baumit - Bianco Alb, ambalajul produsului",
+        "ru": "Клей Баумит - Бьянко Белый, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0018",
@@ -509,7 +539,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Adeziv DuoContact Baumit\" (Baumit), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0018.jpg",
+      "alt": {
+        "ro": "Adeziv DuoContact Baumit, ambalajul produsului",
+        "ru": "Клей Баумит ДуоКонтакт, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0019",
@@ -517,7 +552,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Baumit Pro Contact - Adeziv și Masă de Șpaclu\" (Baumit), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0019.jpg",
+      "alt": {
+        "ro": "Baumit Pro Contact - Adeziv și Masă de Șpaclu, ambalajul produsului",
+        "ru": "Баумит ПроКонтакт клей-шпаклевная смесь, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0020",
@@ -560,8 +600,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Mesterul dibaci VATĂ MINERALĂ\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder",
-      "empty_reason": "the one image in its Fatade 3D product gallery is 183x276, under the 450 floor W25-R12 made final (W25-17)"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0023.jpg",
+      "alt": {
+        "ro": "Mesterul dibaci VATĂ MINERALĂ, ambalajul produsului",
+        "ru": "Mesterul dibaci VATĂ MINERALĂ, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0024",
@@ -591,7 +635,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Baumit SilikonTop - Tencuială decorativă siliconică\" (Baumit), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0026.jpg",
+      "alt": {
+        "ro": "Baumit SilikonTop - Tencuială decorativă siliconică, ambalajul produsului",
+        "ru": "Баумит СиликонТоп - Силиконовая декоративная штукатурка, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0027",
@@ -659,7 +708,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Duraziv Standard TDS cu silicon - Tencuială decorativă siliconică\" (DURAZIV), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0032.jpg",
+      "alt": {
+        "ro": "Duraziv Standard TDS cu silicon - Tencuială decorativă siliconică, ambalajul produsului",
+        "ru": "Duraziv Standard TDS - Силиконовая декоративная штукатурка, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0033",
@@ -2802,7 +2856,12 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Isomat Flexcoat - Vopsea hidroizolantă\" (ISOMAT), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0192.jpg",
+      "alt": {
+        "ro": "Isomat Flexcoat - Vopsea hidroizolantă, ambalajul produsului",
+        "ru": "ИЗОМАТ ФЛЕКСКОАТ - Гидроизоляционная краска, упаковка продукта"
+      }
     },
     {
       "id": "CAT-0193",

@@ -104,6 +104,10 @@ const APPROVED_ORIGINS = [
      the host it belongs to, so neither can be used to launder any other origin. */
   'direct supplier, dasterum.md',
   'direct supplier, fatade3d.md',
+  /* W25-R20, the search fallback. It names itself so a reader of the ledger can
+     see at once that the picture was not taken from the product's own source, and
+     gate 24 turns it into a `google_pick` flag for the owner's own pass. */
+  'google_pick',
   /* W25-R15, the owner override. It is NOT a direct supplier and it is written
      differently so a reader of the ledger never has to guess which permission a
      row is standing on: this one rests on an owner decision over a competitor

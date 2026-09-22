@@ -3097,3 +3097,41 @@ One sentence closes it.
 
 **Nothing is blocked behind this.** W25-25 shipped the colour names and the walk; the cards are
 live without a warranty line, exactly as they were before.
+
+## Q-W25-20 · Both libraries W25-R23 names refuse automated access
+
+**Raised W25-27, 2026-09-22. Blocks the three copertine slots and part of W25-29.**
+
+W25-R23 permits secondary images from **licence-free libraries only (Unsplash, Pexels)**,
+found via Google, with the source URL and the licence page logged. **Neither can be read from
+here.** Measured on 2026-09-22 with a normal browser user agent:
+
+| URL | Answer |
+|---|---|
+| `https://unsplash.com/s/photos/carport` | **307**, 22 bytes |
+| `https://unsplash.com/napi/search/photos?query=carport` | **307**, 22 bytes |
+| `https://www.pexels.com/search/carport/` | **403**, a block page |
+| `https://api.pexels.com/v1/search?query=carport` | **401**, needs an API key |
+
+Rendering the Pexels search page in headless Chrome returns the same 403. Both sites refuse
+automated requests by design, which is their right and is not a defect.
+
+**A Pexels API key is free and would work.** It is also a **new third-party vendor credential**,
+and the standing rule is that no new dependency or vendor is added without asking first.
+
+  (a) **Get a Pexels API key** and put it in the environment the way `WEB3FORMS_KEY` already is.
+      One free key, no package, no cost. The images then come from the library the ruling names,
+      with the licence page logged. **Recommended.**
+  (b) **You pick the pictures.** Open Unsplash or Pexels yourself, download what you want and
+      drop the files in `RC-pics-real/` named by slot id; `scripts/intake-owner-pics.js` takes
+      them in. No key, no vendor, and you choose the photograph.
+  (c) **Widen the ruling** to any licence-free library that can be read, for example Wikimedia
+      Commons or openverse.org, which serve automated requests and carry an explicit licence
+      per file. That changes which libraries, not the conditions.
+  (d) **Leave the secondary images out.** The three copertine slots and the W25-29 photo bands
+      stay as they are.
+
+**Recommended: (a), with (b) as the faster path if you would rather choose them.**
+
+**What is blocked:** `COP-HERO`, `COPX-01`, `COPX-02`, and the photo bands W25-29 asks for.
+**Nothing else in W25-27 is blocked**: the product sourcing under W25-R20 needs no library.

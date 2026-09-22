@@ -832,3 +832,12 @@ the box is portrait and they are 4:3), mapped to cards by name with the mapping 
 metadata assertion fired once on `sips -Z` and was fixed. Origin recorded as R-W's
 client-supplied, which is stricter. Caption check: 0 ownership claims. Q-W25-19 closed at
 "leave it off". 25 of 25 gate commands exit 0.
+
+## W26-02 · Rendered audit of imperlux.md
+**Status: PR OPEN** (2026-09-22). 20 pages read from the **rendered DOM** with network idle
+polled to stability and full-document screenshots. **Counts match the owner's screenshots five
+of five**: 7, 4, 1, 2, 17, total 31 roofing products. **Q-W25-18 closed by measurement.**
+W25-24's finding was wrong and the method was the error: it grepped the HTML response for
+client-side labels and screenshotted the first 4,000px of a 12,535px page. `scripts/audit-rendered.js`
+committed because W26-R2 is standing. Four of five sections publish a Compară modelele table.
+25 of 25 gate commands exit 0.

@@ -881,3 +881,20 @@ bento can exist; 9 arms, 1 GREEN. Both repointed tiles are logged as **Q-W26-02*
 tiles now go to in-construcție, three fence tiles share one page). **`/servicii/garduri/`'s
 budget lowered 121px** to 5,607/5,629: it had stayed still since W24-08 while the page moved.
 317 of 337 filled. Heights identical before and after. 25 of 25 gate commands exit 0.
+
+## W26-04 · Roofing restructure
+**Status: PR OPEN** (2026-09-22). **Five sections replace seven catalogue subcategories**, a
+**second four-tile bento** sits above them, and **twenty imperlux.md models** join the section:
+**71 - 13 + 20 = 78 cards**. The merge reading is recorded: a dasterum part that is an imperlux
+model at a size is a **grade**, so it is a variant line and the card takes the cheapest grade's
+price and picture. Every match is data with a **tier and a reason**; **"Cot 60°" is not "Cot
+burlan 90 mm"**, an angle is not a diameter. Two ledger rows removed because nothing renders
+them; their files and provenance stay. **Not taken**: every image, the description sentence,
+the struck price and the percent badge, and **the warranty, which W26-R6 holds** and which now
+leaves the page reading inconsistently against the dasterum cards. The product bento carries
+its **own class prefix** sharing one rule body, because `.hub__tile` carries three gates' rules
+as well as a look. **A backtick inside a template literal made BOTH bentos vanish on a build
+that exited 0**, twice more in the same card: **gate 27** now catches the severed comment it
+leaves behind, 8 arms, 5 GREEN, all three real defects planted back and watched fire. Gate 20
+measures **every** bento, not the first (32 to 48 tiles). Budgets **18,075 / 18,281**, +1,545px.
+348 rows, 315 filled, 33 empty. **26 of 26 gate commands exit 0.**

@@ -66,7 +66,12 @@ for (const h of HUBS) {
     /* The label is the first heading or label text after the slot on the page. */
     const at = html.indexOf(`data-photo-slot="${id}"`);
     const after = html.slice(at, at + 2600);
-    const m = after.match(/class="hub__label"[^>]*>([\s\S]*?)</) || after.match(/<h3[^>]*>([\s\S]*?)<\/h3>/);
+    /* AMENDED (W26-04): `.pb__label` too. W26-R5 adds a SECOND bento on the roofing
+       page whose four tiles are ACOP-05 to ACOP-08, and it carries its own prefix
+       on purpose (see build.js). Reading only the hub's label class made this
+       generator die on the first of them, which is the right failure: a slot with
+       no label beside it is a slot the owner cannot be told what to photograph. */
+    const m = after.match(/class="(?:hub|pb)__label"[^>]*>([\s\S]*?)</) || after.match(/<h3[^>]*>([\s\S]*?)<\/h3>/);
     const label = m ? m[1].replace(/<[^>]+>/g, '').trim() : null;
     if (!label) die(`${id} renders on ${h.file} and no label could be read beside it.`);
     hub.push({ id, label, page: row.page, ratio: row.ratio, min_px: row.min_px });

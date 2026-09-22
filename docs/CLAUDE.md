@@ -780,6 +780,33 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     GREEN**: a cross-page fragment that resolves, and a same-page anchor that resolves. The
     second green arm is the one the first version got wrong.
 
+27. `node scripts/check-template-literals.js` clean. **Since W26-04 (wave 26)**, run by
+    `quality` as its FIRST step, before the build. **A backtick written inside a template
+    literal does not fail.** It ends the literal, the rest of the sentence becomes code, the
+    next backtick opens a new one, and the file still parses: `node --check` exits 0 on it.
+    What changes is the VALUE. **It has happened three times in this repo and every gate was
+    green each time.** W24-09a: a comment inside `verify-live.js`'s probe discussed class names
+    in backticks, loading the file threw, nineteen gates were green and `quality` passed in
+    6m10s; gate 21 was written then and guards that one file. W26-04, `build.js`: an HTML
+    comment inside the bento's returned literal did the same, the function returned **NaN**,
+    **both bentos vanished from the roofing page**, and the build exited 0. W26-04,
+    `check-layout-geometry.js`: the same sentence in the browser probe, an hour later.
+    **It checks two things, and deliberately not "no backtick in a comment"**, which is
+    unobservable after parsing and would fire on every comment in the repo that quotes a class
+    name: a comment OPENED inside a template literal must CLOSE inside it, in both the HTML and
+    the JS form, because a literal cut in half through a comment is what all three incidents
+    leave behind; and a string literal immediately followed by a template literal, which is a
+    tagged template whose tag is a string and is W24-09a's precise shape.
+    **Its eight-arm self-test is five green**, because a rule this shape is far likelier to
+    refuse something legitimate than to miss something broken: a balanced comment inside a
+    literal, `String.raw`, a backtick in a block comment outside any literal, a literal holding
+    an apostrophe and a quote and a slash, and a nested literal inside an interpolation all
+    have to be accepted. **And all three real defects were planted back into the shipping files
+    and watched fire**, between two clean controls (R-AB). The first version of the scanner
+    recursed on a nested literal and skipped the rest of the file, so it reported the shipping
+    tree clean and said nothing about `build.js`'s real defect; that is why the real-file arms
+    exist and not only the synthetic ones. It fails on zero files and on zero literals read.
+
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number — Q-W14-03 was found "at gate 9" — and those bodies are immutable under
 R-S, so renumbering would falsify them. A gate added later takes the next number
@@ -816,9 +843,12 @@ two data files and nothing else, so it needs no build and no browser.
 **AMENDED (W25-12):** gate 24 runs before gate 15, with the other static checks.
 **AMENDED (W25-16):** gate 25 runs beside gate 24. It reads the built pages, so it runs after
 gate 1.
+**AMENDED (W26-04):** gate 27 runs FIRST, before gate 1. It reads source text only, needs
+neither a build nor a browser, and it guards the file the build is written in.
 
 **The count, so it stops drifting (W25-03c).** ~~This list numbers **25** gates.~~
-**AMENDED (W25-24): 26**, and `quality` runs **25** commands. The number to report is the one
+~~**AMENDED (W25-24): 26**, and `quality` runs **25** commands.~~
+**AMENDED (W26-04): 27**, and `quality` runs **26** commands. The number to report is the one
 `node scripts/run-gates.js` prints, never this sentence. Five of them
 are not scripts and `quality` cannot run them: gate 4 (heights measured settled), gate 6 (no
 new colour), gate 7 (reduced motion), gate 8 (the three documents updated) and **gate 9,

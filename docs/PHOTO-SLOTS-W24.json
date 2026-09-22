@@ -286,6 +286,110 @@
       "state": "placeholder"
     },
     {
+      "id": "ACOP-05",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "5 / 6",
+      "min_px": "1000x1200",
+      "shows": "Tigla ceramica: tila din al doilea bento al paginii de acoperisuri, format PORTRET (tila inalta a bento-ului). W26-04: NU este acoperita de suprascrierea W26-R3, care este tinuta la ACOP-01..04.",
+      "state": "placeholder"
+    },
+    {
+      "id": "ACOP-06",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "7 / 2",
+      "min_px": "1750x500",
+      "shows": "Sindrila bituminoasa: tila din al doilea bento al paginii de acoperisuri, cadru LAT si jos (tila panoramica). W26-04: NU este acoperita de suprascrierea W26-R3, care este tinuta la ACOP-01..04.",
+      "state": "placeholder"
+    },
+    {
+      "id": "ACOP-07",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "7 / 4",
+      "min_px": "900x520",
+      "shows": "Sisteme pluviale: tila din al doilea bento al paginii de acoperisuri, orizontal. W26-04: NU este acoperita de suprascrierea W26-R3, care este tinuta la ACOP-01..04.",
+      "state": "placeholder"
+    },
+    {
+      "id": "ACOP-08",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "7 / 4",
+      "min_px": "900x520",
+      "shows": "Accesorii de acoperis: tila din al doilea bento al paginii de acoperisuri, orizontal. W26-04: NU este acoperita de suprascrierea W26-R3, care este tinuta la ACOP-01..04.",
+      "state": "placeholder"
+    },
+    {
+      "id": "ACIM-01",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Creaton Rapido\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el.",
+      "state": "placeholder"
+    },
+    {
+      "id": "ACIM-02",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"IKO Cambridge\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el.",
+      "state": "placeholder"
+    },
+    {
+      "id": "ACIM-03",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"IKO Superglass Hex\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el.",
+      "state": "placeholder"
+    },
+    {
+      "id": "ACIM-04",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Cârlig pazie universal\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el.",
+      "state": "placeholder"
+    },
+    {
+      "id": "ACIM-05",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Cot 60°\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el.",
+      "state": "placeholder"
+    },
+    {
+      "id": "ACIM-06",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Prelungitor\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el.",
+      "state": "placeholder"
+    },
+    {
+      "id": "ACIM-07",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Pâlnie colectoare\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el.",
+      "state": "placeholder"
+    },
+    {
+      "id": "ACIM-08",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Ramificație burlan\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el.",
+      "state": "placeholder"
+    },
+    {
+      "id": "ACIM-09",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Element captare\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el.",
+      "state": "placeholder"
+    },
+    {
       "id": "BA-01-before",
       "page": "/servicii/case-la-cheie/",
       "ratio": "1180 / 664",
@@ -3848,19 +3952,6 @@
       }
     },
     {
-      "id": "CAT-0265",
-      "page": "/catalog/materiale-acoperis/sistem-de-scurgere/",
-      "ratio": "1 / 1",
-      "min_px": "1200x1200",
-      "shows": "Produsul \"Burlan 90x3000 mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "filled",
-      "provenance": "public/img/catalog/CAT-0265.jpg",
-      "alt": {
-        "ro": "Burlan 90x3000 mm, fotografia produsului",
-        "ru": "Burlan 90x3000 mm, фотография продукта"
-      }
-    },
-    {
       "id": "CAT-0266",
       "page": "/catalog/materiale-acoperis/sistem-de-scurgere/",
       "ratio": "1 / 1",
@@ -3884,19 +3975,6 @@
       "alt": {
         "ro": "Cot evacuare 90mm, fotografia produsului",
         "ru": "Cot evacuare 90mm, фотография продукта"
-      }
-    },
-    {
-      "id": "CAT-0268",
-      "page": "/catalog/materiale-acoperis/sistem-de-scurgere/",
-      "ratio": "1 / 1",
-      "min_px": "1200x1200",
-      "shows": "Produsul \"Jgheab scurgere 125x4000 mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "filled",
-      "provenance": "public/img/catalog/CAT-0268.jpg",
-      "alt": {
-        "ro": "Jgheab scurgere 125x4000 mm, fotografia produsului",
-        "ru": "Jgheab scurgere 125x4000 mm, фотография продукта"
       }
     },
     {

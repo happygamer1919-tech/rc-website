@@ -3261,3 +3261,40 @@ measured, and the text bands are recorded in the ledger rows.
 tiles fill themselves, per the folder's own README. A photograph of a measurement in progress
 covers the calculator; anything roofing covers "Reduceri", which may want relabelling anyway
 (Q-W26-02).
+
+## Q-W26-04 · The second bento's four tiles have no pictures, and three of them are sitting ready · OPEN · opened 2026-09-22 (W26-04)
+
+**Raised W26-04, 2026-09-22. All four slots ship empty. Nothing is blocked.**
+
+W26-R5 adds a second four-tile bento to `/servicii/acoperisuri/`. Its slots are **ACOP-05 to
+ACOP-08** and all four render as dark placeholders.
+
+**Three of the four pictures exist and were fetched during W26-03.** `imperlux.md` publishes a
+tile image for ceramic tile, for shingle and for rainwater systems, all 1440x1080, all
+answering 200. **They were not used**, because W26-R3 says in terms:
+
+> The override is still held to slot ids, and these eight are the ids W25-R15 and W25-R19
+> already name, so the machinery that holds twelve and then sixteen does not widen.
+
+`ACOP-05` to `ACOP-08` are not among those ids. Taking the files anyway would be widening a
+permission the ruling says does not widen, and the gate that holds it is one this terminal
+wrote. **A rule you cannot break for your own convenience is the only kind worth having**, so
+the answer is your word, not a judgement call here.
+
+| Tile | Slot | `imperlux.md` file | Ready? |
+|---|---|---|---|
+| Țiglă ceramică | ACOP-05 | `images/categories/ceramica.png`, 1440x1080 | **yes** |
+| Șindrilă bituminoasă | ACOP-06 | `images/categories/shingle.png`, 1440x1080 | **yes** |
+| Sisteme pluviale | ACOP-07 | `images/categories/sisteme-pluviale.png`, 1440x1080 | **yes** |
+| Accesorii de acoperiș | ACOP-08 | **none exists** | no |
+
+**If you say "extend W26-R3 to ACOP-05 to ACOP-07"**, it is one card: the same crop treatment
+W26-03 used, since all three carry the same burned-in Romanian headline and model count, and
+the same one-licence-per-ruling row. **ACOP-08 has no counterpart** and needs a photograph
+from you, or nothing: an accessories tile can stay a dark box with a label on it, which is
+what it is today and is not broken.
+
+**And nine product cards are empty for the same reason.** The imperlux.md models that no
+dasterum record covers, `ACIM-01` to `ACIM-09`, have no picture: Creaton Rapido, the two IKO
+shingles, and six rainwater parts. Their pictures are on `imperlux.md` too and are outside
+every override. Same question, same answer either way.

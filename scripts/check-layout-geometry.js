@@ -109,7 +109,7 @@ if (!ALL.length) fail(`no built pages under ${DIST}. Run node build.js first.`);
 const urlOf = (f) => '/' + path.relative(DIST, f).replace(/index\.html$/, '').split(path.sep).join('/');
 const readsAs = (f, re) => re.test(fs.readFileSync(f, 'utf8'));
 
-const HUB_PAGES = ALL.filter((f) => readsAs(f, /class="hub__grid"/)).map(urlOf).sort();
+const HUB_PAGES = ALL.filter((f) => readsAs(f, /class="(?:hub|pb)__grid"/)).map(urlOf).sort();
 const GRID_PAGES = ALL.filter((f) => readsAs(f, /data-prod-grid/)).map(urlOf).sort();
 
 const ru = (u) => u.startsWith('/ru/');
@@ -224,10 +224,15 @@ const PROBE = `(async () => {
   const box = (el) => { const r = el.getBoundingClientRect(); return { x: Math.round(r.left), y: Math.round(r.top), w: Math.round(r.width), h: Math.round(r.height) }; };
   const painted = (el) => { const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0 && getComputedStyle(el).visibility !== 'hidden'; };
 
-  const out = { hub: null, grid: null };
+  const out = { hub: null, hubs: [], grid: null };
 
-  const hub = document.querySelector('.hub__grid');
-  if (hub) {
+  /* W26-04: EVERY bento on the page, not the first one. W26-R5 puts a second
+     4-tile bento on the roofing page, .pb__grid, which shares every rule body
+     with .hub__grid through a selector list and therefore every geometry this
+     gate asserts. querySelector would have measured the hub and walked past it,
+     which is the shape of defect this gate exists to catch.
+     NO BACKTICK AND NO DOLLAR-BRACE ANYWHERE IN THIS PROBE, comments included. */
+  for (const hub of document.querySelectorAll('.hub__grid, .pb__grid')) {
     const tiles = [...hub.children].filter(painted);
     /* W25-01. A hub tile's label is white, and what keeps it legible over a
        photograph is the W24-R5 gradient. Once a tile is FILLED the label sits on
@@ -238,11 +243,17 @@ const PROBE = `(async () => {
        exists and covers the label's box. The pixel ratio itself is re-measured by
        hand per filled tile, because a bright packshot could drop it and no cheap
        assertion sees that. */
-    out.hub = {
+    const P = hub.classList.contains('pb__grid') ? 'pb' : 'hub';
+    out.hubs.push({
+      kind: P,
       grid: box(hub), tiles: tiles.map(box), total: hub.children.length,
       labels: tiles.map((t) => {
-        const label = t.querySelector('.hub__label');
-        const grad = t.querySelector('.hub__grad');
+        /* CONCATENATION, NOT INTERPOLATION. This whole probe is inside a template
+           literal in this file, so a nested dollar-brace would be substituted by
+           THIS file's scope before the browser ever saw it, and writing one even
+           inside a COMMENT is a substitution too (W24-09a's family). */
+        const label = t.querySelector('.' + P + '__label');
+        const grad = t.querySelector('.' + P + '__grad');
         const ph = t.querySelector('[data-photo-slot]');
         if (!label) return null;
         const lb = label.getBoundingClientRect(), gb = grad ? grad.getBoundingClientRect() : null;
@@ -253,8 +264,9 @@ const PROBE = `(async () => {
           covers: !!(gb && gb.top <= lb.top + 1 && gb.bottom >= lb.bottom - 1 && gb.left <= lb.left + 1 && gb.right >= lb.right - 1),
         };
       }).filter(Boolean),
-    };
+    });
   }
+  out.hub = out.hubs[0] || null;
 
   const grid = document.querySelector('[data-prod-grid]');
   if (grid) {
@@ -528,8 +540,9 @@ async function main() {
     for (const url of HUB_PAGES) {
       const r = await read(url, w, mobile);
       measured++;
-      if (r.hub) tilesRead += r.hub.tiles.length;
-      problems.push(...judgeHub(r.hub, `${url} at ${w}px`, w));
+      for (const b of (r.hubs || [])) tilesRead += b.tiles.length;
+      if (!(r.hubs || []).length) problems.push(...judgeHub(null, `${url} at ${w}px`, w));
+      for (const b of r.hubs) problems.push(...judgeHub(b, `${url} (${b.kind}) at ${w}px`, w));
     }
     for (const url of GRID_PAGES) {
       const r = await read(url, w, mobile);

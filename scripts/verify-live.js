@@ -142,13 +142,27 @@ const MARKERS = {
        `roofFilters: 8` is Toate plus the seven groups, and `roofOff: 0` is the
        page as it loads with no filter chosen: a build that shipped a filter
        already applied would hide cards from a visitor who asked for none. */
-    /* AMENDED (W25-26, ruling W25-R21): ~~75~~ **71**. The four metal tile model
+    /* AMENDED (W25-26, ruling W25-R21): ~~75~~ ~~**71**~~. The four metal tile model
        cards left this section for /servicii/tigla-metalica/, so the count is the
-       71 roofing records and nothing else. */
-    productCards: 71,
-    roofFilters: 8,
+       71 roofing records and nothing else.
+       AMENDED AGAIN (W26-04, ruling W26-R5): **78**. The restructure adds the
+       twenty imperlux.md models the ruling puts first, folds thirteen dasterum
+       records into eleven of them as grades, and leaves one dasterum record whose
+       model name imperlux does not carry. 71 - 13 + 20 = 78, and the arithmetic is
+       written out because a count nobody can reproduce is a number, not a marker. */
+    productCards: 78,
+    /* AMENDED (W26-04): ~~8~~ **6**. Toate plus FIVE sections, not the seven
+       catalogue subcategories the bar was built from. The seven catalogue pages
+       still answer and still redirect here; what changed is what a visitor filters
+       by. */
+    roofFilters: 6,
     roofOff: 0,
     foldedCards: 0,
+    /* W26-04. The SECOND bento, four product tiles, all four of them anchors into
+       the section below. It carries its own prefix (build.js says why), so
+       `bentoTiles` above still counts the hub and only the hub, and a build that
+       gave the product bento the hub's class would move BOTH numbers at once. */
+    pbTiles: 4,
   },
   /* W24-07. The rocă vulcanică page: four model cards, and no price anywhere.
      `bentoTiles: 0` is asserted because this page is a bento DESTINATION, not a
@@ -158,6 +172,8 @@ const MARKERS = {
     profileAnchors: 0,
     areaServed: 20,
     bentoTiles: 0,
+    /* W26-04: this page is not a product-bento page, and the zero holds that. */
+    pbTiles: 0,
   },
   /* W24-06. The shared "in construcție" page: header, footer, one line, a link
      back. No form, no coverage list, no offers. */
@@ -175,6 +191,8 @@ const MARKERS = {
     areaServed: 20,
     bentoTiles: 4,
     bentoLinks: 4,  // W26-01: see the note on the service-roof set above.
+    /* W26-04: this page is not a product-bento page, and the zero holds that. */
+    pbTiles: 0,
   },
   // W14-13. The three product pages carry the service page's site-wide parts.
   product: {
@@ -274,8 +292,8 @@ const PAGES = [
      merge and corrected there if the live page differs. */
   /* AMENDED (W25-26): four cards left this section for the tile page, so the
      figures fall with the measurement. */
-  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 16530 },
-  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 16668 },
+  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 18075 },
+  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 18281 },
   /* W24-07. The rocă vulcanică mirror page. */
   { path: '/servicii/roca-vulcanica/',     type: 'novatik', label: 'novatik RO',  budget: 4348 },
   { path: '/ru/servicii/roca-vulcanica/',  type: 'novatik', label: 'novatik RU',  budget: 4446 },
@@ -456,6 +474,7 @@ const PROBE = `(async () => {
     foldedCards: q('.prod--folded'),
     tileDiagrams: q('[data-tile-diagram]'),
     /* W25-19. The roofing filter bar, and how many cards it is hiding. */
+    pbTiles: q('.pb__tile'),
     roofFilters: q('[data-roof-filter]'),
     roofOff: q('.roof--off'),
     /* W25-23. The homepage product strip. */

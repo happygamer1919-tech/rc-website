@@ -83,6 +83,12 @@ const MARKERS = {
        back on the homepage fires this rather than passing quietly, the same way
        a category page's areaServed: 0 holds its own decision. */
     roofOffers: 0,
+    /* W25-23. TWO cards in the product strip, Copertine and Garduri. The count is
+       asserted for the same reason `roofOffers: 0` is: a build that put the
+       Acoperisuri card back fires this rather than passing quietly, and so does
+       one that lost a second card. It is the strip's own class, not a link count,
+       because what moved is a card and not a link. */
+    teaserTiles: 2,
     ratingPanel: 1,        // the R-N review panel is present
     portfolioTiles: 7,     // six project cards plus the W12-05 closing tile
     profileAnchors: 0,     // R-O: no visible anchor to the Google profile
@@ -228,8 +234,11 @@ const PAGES = [
   // product pages as amended by the wave 14 tail; the tile page as amended by
   // W18-01, RC-138, with its profile diagrams, and confirmed under R-P on the live
   // domain by W19-01, RC-141).
-  { path: '/',                             type: 'home',    label: 'homepage RO',    budget: 9195 },
-  { path: '/ru/',                          type: 'home',    label: 'homepage RU',    budget: 9436 },
+  /* W25-23. The Acoperisuri card left the product strip, so these fall with the
+     measurement: R-Y's own rule is that removing an element's cost drops the
+     budget by that cost, and a budget left high is a ceiling to hide under. */
+  { path: '/',                             type: 'home',    label: 'homepage RO',    budget: 9141 },
+  { path: '/ru/',                          type: 'home',    label: 'homepage RU',    budget: 9354 },
   /* W24-05. The before/after slider moved onto this page, so these two rows leave
      the shared 6,000px service budget that RELEASE-NOTES's wave 7 acceptance
      holds and take their own, measured plus 60, under W24-R4. The other four
@@ -428,6 +437,8 @@ const PROBE = `(async () => {
     /* W25-19. The roofing filter bar, and how many cards it is hiding. */
     roofFilters: q('[data-roof-filter]'),
     roofOff: q('.roof--off'),
+    /* W25-23. The homepage product strip. */
+    teaserTiles: q('.teasers > .teaser'),
   };
   const facts = {
     sameAsProfile: biz ? biz.sameAs.includes('https://maps.google.com/?cid=1981309119616115698') : null,

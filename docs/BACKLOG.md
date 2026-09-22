@@ -755,3 +755,11 @@ directions over the four strings, with both failure shapes watched fire. `warran
 registered in the staleness gate and the master plan amended beside the struck value.
 **Heights identical at 30 and at 5**, measured with a control, so no budget moves. 24 of 24
 gate commands exit 0.
+
+## W25-23 · Homepage product strip
+**Status: PR OPEN** (2026-09-22). W25-R19 to W25-R24 recorded first. The Acoperișuri card
+leaves the homepage product strip; Copertine and Garduri remain as two equal columns. The
+strip's length is asserted against `TOP_LEVEL_PRODUCT_PAGES`, never a literal. Budgets 9,195
+to **9,141** and 9,436 to **9,354**, measured plus 60: the saving is column width, not a row.
+`teaserTiles: 2` added to the live markers. W25-R18 discharged on `c05ce0e`. 24 of 24 gate
+commands exit 0.

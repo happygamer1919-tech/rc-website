@@ -11508,3 +11508,52 @@ copy lost a line, the budget would have had to come down with it.
 ### Gates
 
 **24 of 24 gate commands exit 0.**
+
+## W25-23 · The homepage said Acoperișuri twice, 2026-09-22
+
+**Card W25-23.** PR only, stops for the owner. The full card is
+`docs/board/W25-23-homepage-teaser.md`.
+
+**Six rulings recorded first.** `docs/rulings/W25-R.md` gains **W25-R19 to W25-R24**, quoted
+exactly as the owner gave them, before any of them was acted on. The next free id was
+`W25-R19`; this card acts on none of them.
+
+**The Acoperișuri card leaves the homepage product strip**, and Copertine and Garduri remain
+as two equal columns in both locales. It was a service card among two product-page cards,
+there because the roofing page had nothing else pointing at it from the homepage. It has since
+three routes: the homepage services grid one section above, the header's Servicii panel, and
+W25-19, which made that page the home of the whole roofing catalogue so the `/catalog/` tile
+and the catalogue menu both open it.
+
+### The count is derived
+
+The strip is exactly `TOP_LEVEL_PRODUCT_PAGES` and the assertion is against that list's
+length. The old line read `!== 3`; writing `!== 2` would have been the same defect this repo
+has met twice, **a count remembered instead of derived**. The CSS is `auto-fit` for the same
+reason.
+
+### The budget falls, and not because a card's height went
+
+| Page | Before | After | Budget |
+|---|---|---|---|
+| `/` | 9,135 | **9,081** | 9,195 to **9,141** |
+| `/ru/` | 9,376 | **9,294** | 9,436 to **9,354** |
+
+**The strip is one grid row, so removing one of three cards removes no row.** Two cards across
+the same container are wider than three, each line of teaser text holds more words, and the
+tallest card loses a line. RU drops more than RO because Russian sets longer. `docs/rulings/R-Y.md`
+carries it.
+
+**`teaserTiles: 2` joins the homepage marker set**, for the reason `roofOffers: 0` is
+asserted: a build that puts the card back fires rather than passing quietly.
+
+### W25-R18 discharged
+
+Section 12.0 on `c05ce0e` read `svc RO acoper 16904px / 16964 inside` and
+`svc RU acoper 17064px / 17124 inside`. **The live page measures exactly what the local build
+did**, so the W25-19 budgets stand and no correction is owed.
+
+### Gates
+
+**24 of 24 gate commands exit 0.** Section 12.0 on `c05ce0e`, owed by #108 to #113: exit 0,
+PASS, 0 unverified, 0 failed, 51 of 51, 0 retried, and 16 of 16 redirect URLs answered 200.

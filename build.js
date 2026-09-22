@@ -2891,21 +2891,33 @@ function productTeaser(l) {
      NO COPY IS INVENTED (docs/CLAUDE.md section 5). The title and the line are
      the service's own shipped strings, services.items.N.title and .desc, which
      the homepage services grid already prints. */
-  const roofIndex = SERVICE_SLUGS.indexOf(ROOF_OFFERS_SLUG);
+  /* AMENDED (W25-23): the Acoperisuri card is GONE from this strip, and the two
+     that remain are the two TOP-LEVEL PRODUCT PAGES, which is what the strip was
+     for before a service card was put in front of them.
+
+     It was there because the roofing service page had nothing else pointing at it
+     from the homepage. It has since: the homepage services grid carries
+     Acoperisuri like every other service, the header's Servicii panel lists it,
+     and W25-19 made that page the home of the whole roofing catalogue, which the
+     /catalog/ roofing tile and the catalogue menu now both open. Three routes,
+     none of them this card. A fourth that duplicates the services grid one row
+     above it is a strip that says the same thing twice.
+
+     THE COUNT IS ASSERTED AGAINST THE LIST, not against a number. `expected` is
+     TOP_LEVEL_PRODUCT_PAGES.length, so a third top-level product page reaches
+     this strip without an edit here, and a page dropped from that list cannot
+     leave a silent gap. Writing `!== 2` would have been the same defect this
+     repo has already met twice: a count remembered instead of derived. */
   const need = (v, where) => { if (!REAL(v)) die(`productTeaser: ${where} is not real for ${l.code}.`); return v; };
-  const tiles = [
-    {
-      href: `${BASE}${SERVICES_ROOT[l.code]}${ROOF_OFFERS_SLUG}/`,
-      title: esc(need(l.strings[`services.items.${roofIndex}.title`], `services.items.${roofIndex}.title`)),
-      line: esc(need(l.strings[`services.items.${roofIndex}.desc`], `services.items.${roofIndex}.desc`)),
-    },
-    ...TOP_LEVEL_PRODUCT_PAGES.map((p) => ({
-      href: `${BASE}${SERVICES_ROOT[l.code]}${p.slug}/`,
-      title: t(`${p.key}.title`),
-      line: t(`${p.key}.teaser`),
-    })),
-  ];
-  if (tiles.length !== 3) die(`productTeaser: ${tiles.length} tiles, expected 3.`);
+  void need;
+  const tiles = TOP_LEVEL_PRODUCT_PAGES.map((p) => ({
+    href: `${BASE}${SERVICES_ROOT[l.code]}${p.slug}/`,
+    title: t(`${p.key}.title`),
+    line: t(`${p.key}.teaser`),
+  }));
+  if (tiles.length !== TOP_LEVEL_PRODUCT_PAGES.length || !tiles.length) {
+    die(`productTeaser: ${tiles.length} tiles for ${TOP_LEVEL_PRODUCT_PAGES.length} top-level product page(s).`);
+  }
   const items = tiles.map((x, i) => `      <a class="teaser" href="${x.href}" data-reveal data-stagger="${i}">
         <h3 class="teaser__title">${x.title}</h3>
         <p class="teaser__line">${x.line}</p>

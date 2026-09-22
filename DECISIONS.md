@@ -11972,3 +11972,68 @@ W26-R6 builds those from the card specs.
 ### Gates
 
 **25 of 25 gate commands exit 0.** Nothing about the built site changed.
+
+## W26-08 · The last eight evidence slots, and the rendering gate 19 could not see, 2026-09-22
+
+Inserted at the owner's request mid-dispatch, outside the W26-01 to W26-07 list. Branch
+`w26/w26-08-before-after`, stacked on `w26/w26-02-imperlux-audit`.
+
+### The folder was chosen by contents, not by name
+
+The owner named "Ivan/Before/After" and **three folders matched**:
+`/Users/ivan/Before:After` (8 files, `Before01` to `Before04` and `After01` to `After04`,
+written 10:25 to 10:28 today), `/Users/ivan/RC-pics_2nd batch/Before_after` (an older batch of
+a different shape), and `/Users/ivan/RC-webpics_v2/CONSTRUCȚIE CASE LA CHEIE/Before : After`
+(**empty**). The first is the one, on eight paired files named as the owner said and written
+minutes before the instruction. The colon in the path is how macOS stores a `/` in a name.
+
+### No GPS, and none to strip
+
+All eight were read byte by byte first: **no Exif block, no GPS string, no GPS IFD pointer**.
+They were already clean, and they are still stripped with the strip asserted on the written
+bytes, because "it was clean when I looked" is not a check that runs again.
+
+### Three of four slots asked for a picture the owner did not send
+
+Four genuine pairs, same angle before and after. **Three turnkey builds and one exterior
+renovation**, and there is **no interior photograph in the set**, no facade-only pair and no
+roof-only pair. The slots were written for `Casă la cheie`, `Fațadă`, `Acoperiș` and
+`Renovare interioară`.
+
+W25-18's precedent applies: **where the picture that lands is not the picture the line asked
+for, the line is corrected to the picture and the change is recorded.** Four titles and eight
+alt texts rewritten in both locales; the ledger's `shows` lines carry `AMENDED W26-08` with
+the reason. The titles describe the photographs and claim nothing about where or when, and
+**the owner knows the real projects and may rename them.**
+
+### One pair gets retina, three do not
+
+`BA-01` is 2752x1536 and takes a 1180 `1x` with a 2360 `@2x`. The other three are 1024x572,
+below the retina width, so they are written at their own 1024 and get **no `@2x` rather than an
+upscale**. The renderer emits `srcset` only where the `@2x` exists.
+
+### Gate 19 could not see the slider's rendering, and read it as missing
+
+**The slider renders a filled slot as a bare `<img>`**, because its drag mechanic clips the
+image itself and a wrapper would break it. **Gate 19 scanned `<div>` and `<picture>` only**, so
+all eight rows read as "rendered by no built page". Three changes, each narrowing rather than
+loosening: `img` joins the scanned elements and now carries `data-photo-slot`; its ratio is
+read from `width` and `height`, which is the same assertion in that element's shape; and the
+light/dark variant is not demanded of an img, because a variant is a property of the
+placeholder box and an img has no box. Every other element is held to all of it exactly as
+before. **Two arms watch the new shape, one GREEN.**
+
+**And one approved origin was missing.** R-W's client-supplied amendment states the licence as
+`owned by Rapid Construct, supplied for site use` and leaves "client-supplied original" to the
+licence-URL cell, so gate 19's list never matched it. It had never come up: no ledger slot
+carried that origin until these photographs did.
+
+### The ledger
+
+**315 of 337 filled**, up from 307. **22 empty, and none of them is an evidence slot any
+more.** Budgets unchanged: `/servicii/case-la-cheie/` 6,376 against 6,436 and RU 6,483 against
+6,543, because a filled slot takes the placeholder's own box.
+
+### Gates
+
+**25 of 25 gate commands exit 0.**

@@ -4,70 +4,71 @@
     {
       "id": "BA-01",
       "title": {
-        "ro": "Casă la cheie",
-        "ru": "Дом под ключ"
+        "ro": "Casă la cheie, de la teren liber",
+        "ru": "Дом под ключ, с пустого участка"
       },
       "before": "BA-01-before",
       "after": "BA-01-after",
       "alt_before": {
-        "ro": "Casă la cheie, înainte de lucrări",
-        "ru": "Дом под ключ, до работ"
+        "ro": "Teren cu fundația turnată și pământ săpat, casa încă neînceput",
+        "ru": "Участок с залитым фундаментом и вырытым грунтом, дом ещё не начат"
       },
       "alt_after": {
-        "ro": "Casă la cheie, după lucrări",
-        "ru": "Дом под ключ, после работ"
+        "ro": "Casă albă terminată pe același teren, cu alee turnată în față",
+        "ru": "Готовый белый дом на том же участке, с залитой дорожкой перед ним"
       }
     },
     {
       "id": "BA-02",
       "title": {
-        "ro": "Fațadă",
-        "ru": "Фасад"
+        "ro": "Casă la cheie, de la roșu",
+        "ru": "Дом под ключ, с коробки"
       },
       "before": "BA-02-before",
       "after": "BA-02-after",
       "alt_before": {
-        "ro": "Fațadă, înainte de lucrări",
-        "ru": "Фасад, до работ"
+        "ro": "Casă la roșu din cărămidă, cu șarpanta montată și fără învelitoare",
+        "ru": "Кирпичная коробка дома со смонтированной стропильной системой без покрытия"
       },
       "alt_after": {
-        "ro": "Fațadă, după lucrări",
-        "ru": "Фасад, после работ"
+        "ro": "Aceeași casă terminată, cu acoperiș maro și fațadă finisată",
+        "ru": "Тот же дом готовым, с коричневой кровлей и отделанным фасадом"
       }
     },
     {
       "id": "BA-03",
       "title": {
-        "ro": "Acoperiș",
-        "ru": "Кровля"
+        "ro": "Casă la cheie, două niveluri",
+        "ru": "Дом под ключ, два этажа"
       },
       "before": "BA-03-before",
       "after": "BA-03-after",
       "alt_before": {
-        "ro": "Acoperiș, înainte de lucrări",
-        "ru": "Кровля, до работ"
+        "ro": "Casă pe două niveluri la stadiul de structură, cu materiale în curte",
+        "ru": "Двухэтажный дом на стадии коробки, со стройматериалами во дворе"
       },
       "alt_after": {
-        "ro": "Acoperiș, după lucrări",
-        "ru": "Кровля, после работ"
+        "ro": "Aceeași casă terminată, cu acoperiș roșu, fațadă în două culori și gazon",
+        "ru": "Тот же дом готовым, с красной кровлей, двухцветным фасадом и газоном"
       }
     },
     {
       "id": "BA-04",
       "title": {
-        "ro": "Renovare interioară",
-        "ru": "Внутренний ремонт"
+        "ro": "Renovare: acoperiș și fațadă",
+        "ru": "Ремонт: кровля и фасад"
       },
       "before": "BA-04-before",
       "after": "BA-04-after",
       "alt_before": {
-        "ro": "Renovare interioară, înainte de lucrări",
-        "ru": "Внутренний ремонт, до работ"
+        "ro": "Casă veche cu acoperiș de ardezie și tencuială degradată",
+        "ru": "Старый дом с шиферной кровлей и разрушенной штукатуркой"
       },
       "alt_after": {
-        "ro": "Renovare interioară, după lucrări",
-        "ru": "Внутренний ремонт, после работ"
+        "ro": "Aceeași casă după lucrări, cu acoperiș nou închis la culoare și fațadă refăcută",
+        "ru": "Тот же дом после работ, с новой тёмной кровлей и восстановленным фасадом"
       }
     }
-  ]
+  ],
+  "_amended_w26_08": "W26-08, 2026-09-22. The four titles and the eight alt texts were rewritten to describe the photographs the owner supplied. They were written for a photo session that asked for Casa la cheie, Fatada, Acoperis and Renovare interioara; what arrived is three turnkey builds and one exterior renovation, and no interior. W25-18 set the precedent: where the picture that lands is not the picture the line asked for, the line is corrected to the picture and the change is recorded. The owner knows the real projects and may rename them."
 }

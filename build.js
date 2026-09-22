@@ -1530,7 +1530,13 @@ function beforeAfter(l) {
   const img = (id, alt, cls, variant) => {
     if (fs.existsSync(`public/img/${id}.jpg`)) {
       const retina = fs.existsSync(`public/img/${id}@2x.jpg`) ? ` srcset="${BASE}/img/${id}.jpg 1x, ${BASE}/img/${id}@2x.jpg 2x"` : '';
-      return `<img class="${cls}" src="${BASE}/img/${id}.jpg"${retina} alt="${esc(alt)}" width="1180" height="664" loading="lazy" decoding="async" draggable="false">`;
+      /* W26-08. `data-photo-slot` on the img, because this IS the rendering of
+         that slot and gate 19 walks the built tree for exactly that attribute.
+         Without it a filled before/after slot reads as a row nothing renders,
+         which is the shape the gate exists to refuse. The slider clips the image
+         itself, so it cannot be wrapped in the <picture> the placeholder
+         component emits; the gate learned this third shape instead. */
+      return `<img class="${cls}" data-photo-slot="${esc(id)}" src="${BASE}/img/${id}.jpg"${retina} alt="${esc(alt)}" width="1180" height="664" loading="lazy" decoding="async" draggable="false">`;
     }
     return placeholder(id, { variant, className: `${cls} ba__ph`, locale: l.code, eager: true });
   };

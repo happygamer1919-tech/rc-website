@@ -841,3 +841,15 @@ W25-24's finding was wrong and the method was the error: it grepped the HTML res
 client-side labels and screenshotted the first 4,000px of a 12,535px page. `scripts/audit-rendered.js`
 committed because W26-R2 is standing. Four of five sections publish a Compară modelele table.
 25 of 25 gate commands exit 0.
+
+## W26-08 · Before/after slots filled with the owner's photographs
+**Status: PR OPEN** (2026-09-22). Inserted at the owner's request mid-dispatch. **All eight
+evidence slots filled** from `/Users/ivan/Before:After`, chosen from three candidate folders by
+contents. Ledger **307 to 315 of 337**, 22 empty and **none of them an evidence slot**. No Exif
+or GPS in the originals; stripped and asserted anyway. **Three of the four subjects are not what
+the slots asked for** (three turnkey builds and one exterior renovation, no interior pair), so
+four titles and eight alt texts were corrected to the photographs under W25-18's precedent, with
+the owner invited to rename them. BA-02 to BA-04 get **no @2x rather than an upscale**. **Gate 19
+learned the slider's bare `<img>` rendering**, which it had been reading as "rendered by no
+page", plus R-W's `owned by Rapid Construct, supplied for site use` origin; 2 new arms, 1 GREEN.
+Budgets unchanged. 25 of 25 gate commands exit 0.

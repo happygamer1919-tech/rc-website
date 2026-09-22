@@ -138,7 +138,7 @@ const CLEAN = [
   'Alte materiale de construcții',
   'Другие строительные материалы',
   'Reducere 10% la orice serviciu doar până în 2027',
-  'Luni–Sâmbătă 08:00–17:00',
+  'Luni-Sâmbătă 08:00-17:00',
   'Adezivi și mase de șpaclu',
   'Клеи и шпаклёвочные смеси',
   'Fațade',

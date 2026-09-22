@@ -140,7 +140,7 @@ console.log(`accepted as a stub count: the measured ${STUBS} (or an ALLOWED entr
 console.log(`claim patterns: ${CLAIMS.map((c) => c.id).join('; ')}`);
 console.log(`known stale counts, refused within ${NEAR} characters of a stub unless struck: ${KNOWN_STALE.map((k) => `${k.value} (${k.was})`).join('; ')}`);
 console.log(`skipped as not quantities: ${SKIP.map((x) => x.what).join('; ')}`);
-for (const [f, why] of NOT_SCANNED) console.log(`  not scanned: ${f} — ${why}`);
+for (const [f, why] of NOT_SCANNED) console.log(`  not scanned: ${f}: ${why}`);
 
 const files = [...SCAN, HEADINGS_ONLY];
 const missing = files.filter((f) => !fs.existsSync(path.join(ROOT, f)));
@@ -230,7 +230,7 @@ function countLinesBefore(rawParagraph, sentence) {
 console.log(`\nclaim patterns matched: ${CLAIMS.map((c) => `${c.id} ${perPattern[c.id]}`).join('; ')}`);
 console.log(`documents read: ${files.length} (${SCAN.length} whole, 1 headings only); sentences mentioning a stub: ${sentences}`);
 console.log(`stub counts read and equal to the measured ${STUBS}: ${claims}; struck historical values passed over: ${struckSeen}`);
-for (const a of ALLOWED) console.log(`  allowed: ${a.file}, ${a.numbers.join(', ')} where "${a.contains}" — ${a.reason}`);
+for (const a of ALLOWED) console.log(`  allowed: ${a.file}, ${a.numbers.join(', ')} where "${a.contains}": ${a.reason}`);
 
 /* Everything that went wrong is reported together, most specific first: a stale
    figure is the finding, and "nothing was verified" is a finding too. Reporting
@@ -245,7 +245,7 @@ if (problems.length) {
 const unusedAllowed = ALLOWED.filter((a) => !used.has(a_key(a)));
 if (unusedAllowed.length) {
   report.push(`${unusedAllowed.length} ALLOWED entry that matches nothing, which is an unreviewed licence inside a gate:`);
-  for (const a of unusedAllowed) report.push(`  ${a.file}: "${a.contains}" (${a.numbers.join(', ')}) — ${a.reason}`);
+  for (const a of unusedAllowed) report.push(`  ${a.file}: "${a.contains}" (${a.numbers.join(', ')}): ${a.reason}`);
 }
 if (!sentences) report.push('no sentence about stubs was found in any scanned document, so this gate checked nothing.');
 else if (!claims) report.push(`no document states the current stub count (${STUBS}), so nothing was verified. Every document that states a count must be corrected when the data moves.`);

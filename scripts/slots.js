@@ -4,7 +4,7 @@
 /* W6-03: the nine svc-* slots and hero-panel are photo slots again. The SVGs
    are not deleted, they become per-slot fallbacks: a service card renders its
    jpg the moment one exists and its SVG until then, one slot at a time. That is
-   why these carry `placeholder: false` — the SVG already guarantees the <img>
+   why these carry `placeholder: false`: the SVG already guarantees the <img>
    resolves, so a generated JPG placeholder would only hide the fallback. */
 const SLOTS = [
   // minLongEdge 900 is a PROVISIONAL owner ruling, W10-01: it exists only to let

@@ -123,7 +123,7 @@ The table's "no value" cell shipped as **an em dash**, `U+2014`, in both locales
 rule is "no em dashes or en dashes anywhere" and **it went onto the built site** before a
 proper check caught it. It is a hyphen now.
 
-**The check I had been running every card was hollow.** `grep -c $'—'` in this shell does
+**The check I had been running every card was hollow.** `grep -c $'\u2014'` in this shell does
 not expand that escape, so it matched nothing and reported clean on every card of this
 dispatch. Re-run properly, in Python, against the whole tracked tree:
 

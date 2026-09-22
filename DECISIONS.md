@@ -12668,3 +12668,98 @@ verified locally** against this build.
 **For the owner, Q-W26-06**: seven earthworks photographs look like stock photography, and one
 Finisaje photograph carries a messaging app's "15" counter. Installed as directed; confirm they are
 yours.
+
+## W26-13 · No em dash or en dash anywhere, and gate 30, 2026-09-22
+
+Branch `w26/w26-13-dash-gate`, stacked on W26-12 (#133).
+
+**W26-R15 applied, verbatim: "U+2014 and U+2013 are banned in every authored file (content,
+templates, scripts, board, rulings, commit messages) ... Exemptions only: third-party titles quoted
+verbatim in the audit file, and frozen records under R-S."** A byte scan of the tree found **547 in
+43 files. 237 were rewritten, in 40 files. 310 remain, all under the ruling's two exemptions**: 250
+on 226 lines of the four R-S records, and 60 inside imperlux titles quoted in the audit file.
+
+| Where | Removed |
+|---|---|
+| `docs/RC-PHOTO-MANIFEST.md` | 59 |
+| `docs/CLAUDE.md` | 24 |
+| `design/` (four files) | 29 |
+| `build.js` | 13 |
+| `RELEASE-NOTES.md`, the handoff only | 11 |
+| `docs/RC-WEBSITE-MASTER-PLAN.md`, `docs/SHOOT-SHEET.md` | 19 |
+| `scripts/` (eight files) | 25 |
+| `scripts/fixtures/styles-at-3392bb4.css` | 3 |
+| `src/` (eight templates, the stylesheet, `main.js`) | 31 |
+| `locales/ru.json` | 5 |
+| six board cards, one audit, `docs/CATALOG-PRODUCT-FORM.md` | 13 |
+| `docs/rulings/R-Y.md` | 2 |
+| `docs/BACKLOG.md`, one status cell | 1 |
+| `.github/workflows/pages.yml` | 1 |
+
+**What a visitor can see changed in five places, all Russian and all rewritten rather than
+repunctuated**, because the Russian dash is grammar, standing in for an omitted "is": the privacy
+page's line on Google Fonts, the turnkey path sentence, two 3D design answers and the earthworks
+sentence each now carry the verb or a colon. **Every page's language switch label** changes from a
+dash to a colon ("RO: Comută pe română"), which a screen reader announces and nobody sees.
+
+**The form email subjects change**: `[RO] <form heading> - <home>` where there was a dash, the
+same separator the catalogue and product subjects already used. **If an inbox rule matches the old
+subject, it needs the new one.** Gate 13 asserts a subject is present, not its text, and passed.
+
+**The R-S records keep what they had and gain nothing.** `DECISIONS.md` 148, `docs/QUESTIONS.md` 78,
+`RELEASE-NOTES.md` 20 (all in dated sections before the handoff) and `docs/BACKLOG.md` 4, held by
+fingerprint in `scripts/fixtures/dash-baseline.json` rather than by line number, so appending an
+entry moves nothing. **BACKLOG's one dash in a status cell was fixed**, because R-S leaves a status
+field outside the freeze. **The audit file is exempt by field, not whole**: the gate parses it and
+accepts a dash only in the fields the capture copied from imperlux (`title`, `h1`, `heading`,
+`text`); all 60 are there.
+
+**Two corrections to my own recorded reading of W26-R15** (`docs/rulings/W26-R.md`, amended there):
+
+1. **Gate 22's fixture is not exempt.** I had recorded it as "exempt as a quoted historical file";
+   the ruling's exemptions are two and it is neither. Its three dashes are in comments and are now
+   hyphens, and **gate 22 verifies it against git after exactly that substitution**, so it still
+   proves byte for byte that the fixture is the commit's file. Watched: one space added to the
+   fixture fails gate 22 by name, restored, clean.
+2. **R-Y's two dashes are replaced, not struck.** I had recorded "struck and replaced under R-R",
+   but a struck dash is still a dash in the bytes and the ruling names rulings in its scope. They
+   became a pair of parentheses around the same aside, with an amendment block appended to R-Y
+   saying so. No word or figure moved.
+
+**Two board cards needed more than a colon.** W25-09's card quotes a Dasterum product name that
+contains the dash, now written `DRIPSTOP U+2014 acoperire anticondens` beside the sentence that
+already says so; and W26-05's card showed the hollow grep as `$'<dash>'` where the command it
+describes was `$'\u2014'`, which is what its next line says the shell does not expand.
+
+**Commit messages: the 15 dashes in 9 commits already on `main` stay**, since rewriting published
+history needs a force push, which is a hard stop; W26-R15's record already says so. Every commit a
+pull request adds is checked from now on.
+
+**Gate 30, `scripts/check-dashes.js`, reads bytes in four places**: every text file in the tree that
+git does not ignore, tracked or new; every built file in `dist/`, where `&mdash;`, a numeric entity
+or a JS or CSS escape counts as the dash; and in a pull request its own commit messages (fetched by
+the head sha and counted against GitHub's number), title and body. U+2014, U+2013 and the lookalikes
+U+2012 and U+2015. A binary is recognised by its bytes: 704 JPEGs and 13 PNGs skipped by kind, and
+several photographs hold the dash's three bytes by chance. The real run reads 212 text files and
+757 built files.
+
+**Twenty self-test arms, four GREEN, between two clean controls.** Fifteen synthetic; five planted
+in memory into `src/template.html`, `locales/ru.json` and `DECISIONS.md`. **Watched fail on the real
+tree**: a dash put back in the Russian privacy line and a new `DECISIONS.md` entry with an en dash
+gave exit 1 with three problems, the source line, the built page and the record line, each on its
+own message; files restored byte-identical, control exit 0 before and after. A planted commit
+message and a planted pull request title each fired too. **And the dead-exemption rule fired on its
+own** the moment the fixture was cleaned, before its exemption was removed.
+
+**The first version had three faults, and its own plants found all three.** The real-file arms
+anchored on the corrected text, so a real regression failed as "planted nothing"; the GREEN arm read
+the whole real file, so a real dash elsewhere refused it; and the commit message named no character,
+because a `test()` on the global pattern moved `lastIndex` past the dash before `matchAll` read it.
+The arms now judge only what a plant adds, and two arms assert the character is named: put back,
+the `test()` fails the self-test by name. **A fourth came from how I wrote this card**: an escape for a
+dash typed into a file or a heredoc arrived as the dash itself, twice: once in the gate's own
+source, found by a byte count before the gate first ran, and once in this entry, found by gate 30.
+
+**Heights**: every page identical at 1440 and 390 except `/ru/servicii/terasamente/` **+27** at 1440
+(5,502, inside the shared 6,000 service budget) and `/ru/konfidentsialnost/` **+25** at 390, which
+has no budget.

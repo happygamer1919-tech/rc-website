@@ -83,7 +83,7 @@ class Component extends DCLogic {
         { label: 'Adresă', value: 'Nicolae Zelinski 24, Chișinău' },
         { label: 'Telefon', value: '+373 76 837 180' },
         { label: 'Email', value: 'rapidconstructmd@gmail.com' },
-        { label: 'Program', value: 'Luni–Sâmbătă 08:00–17:00' },
+        { label: 'Program', value: 'Luni-Sâmbătă 08:00-17:00' },
       ],
 
       tokens: [
@@ -112,7 +112,7 @@ class Component extends DCLogic {
         KV('Gutter', '24px desktop · 16px mobil'),
         KV('Padding secțiune', '96px sus/jos · 56px mobil'),
         KV('Excepție padding', 'banda închisă 56px pe desktop'),
-        KV('Grilă', '3 col ≥1025px · 2 col 769–1024px · 1 col ≤768px'),
+        KV('Grilă', '3 col ≥1025px · 2 col 769-1024px · 1 col ≤768px'),
         KV('Gap grilă', '24px (16px pe mobil)'),
         KV('Breakpointuri', '1024px · 768px'),
         KV('Lățime desktop de referință', '1440px'),

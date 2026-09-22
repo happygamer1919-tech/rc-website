@@ -32,7 +32,7 @@ complete until both languages are written**; the build refuses a half-translated
 | 6 | `pack` RU | Russian | the same | |
 | 7 | `spec` RO | Romanian | **one** key specification, the one a buyer chooses on | one fact, not a list |
 | 8 | `spec` RU | Russian | the same | |
-| 9 | category | — | which of the seven catalogue categories it belongs in | the slug list is in section 5 |
+| 9 | category | - | which of the seven catalogue categories it belongs in | the slug list is in section 5 |
 
 ### Never in a record
 

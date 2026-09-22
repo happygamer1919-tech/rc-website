@@ -81,7 +81,7 @@ real: three source rows were cited but only half asked (the Voestalpine steel sp
 *mounts* as against who *manufactures*, and the concealed fixing system), one question was
 double-barrelled so a client could truthfully answer both yes and no, the preamble said
 "three new pages" when copertine already existed and gained only a hero, and one question
-had narrowed "cea mai mare din industrie" to "de pe piața din Moldova" — a territory the
+had narrowed "cea mai mare din industrie" to "de pe piața din Moldova", a territory the
 client could honestly agree to while the site published something wider.
 
 ## 3 · `PHOTO-SESSION-W24.md`, outside the repo
@@ -120,8 +120,8 @@ which is the shipped default, so no change follows. Q-W24-04 closed at nine.
 **New doctrine, `docs/CLAUDE.md` section 12.0**: a card is complete only when
 `verify-live.js` passes against the deployed sha after its merge; the terminal runs it
 unprompted and names the process and its exit code. It carries the two traps this wave
-already paid for — poll the edge until it serves the merge sha, and pass the full
-forty-character sha — and the harder half: **when it fails, find the cause by measurement
+already paid for (poll the edge until it serves the merge sha, and pass the full
+forty-character sha) and the harder half: **when it fails, find the cause by measurement
 before proposing a fix.**
 
 ## Gates

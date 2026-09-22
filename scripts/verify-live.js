@@ -4,7 +4,7 @@
    A live measurement is valid ONLY when taken with a cache-buster AND with
    content markers asserted in the same pass. Height alone is never evidence: a
    stale edge copy returns a perfectly plausible number, and during wave 12 one
-   did — a post-deploy reading returned the exact pre-deploy heights and was
+   did: a post-deploy reading returned the exact pre-deploy heights and was
    nearly reported as passing.
  
    So every request here carries a unique query string, and every page asserts
@@ -602,8 +602,8 @@ async function main() {
   if (!up) { chrome.kill(); throw new Error('chrome did not start'); }
 
   /* W18-03 (RC-140). An empty PAGES list used to verify nothing and print
-     "PASS — 0 unverified, 0 failed", exit 0. */
-  if (PAGES.length === 0) { chrome.kill(); console.error('\nFAIL — zero pages to verify, so nothing was measured.\n'); process.exit(1); }
+     "PASS: 0 unverified, 0 failed", exit 0. */
+  if (PAGES.length === 0) { chrome.kill(); console.error('\nFAIL: zero pages to verify, so nothing was measured.\n'); process.exit(1); }
   console.log(`R-P live verification of ${ORIGIN}`);
   console.log(`pages to read: ${PAGES.length}`);
   console.log(`cache-buster for this run: ?${BUST}=1`);
@@ -841,7 +841,7 @@ async function main() {
     console.log(`${ok ? 'VERIFIED  ' : 'UNVERIFIED'} ${page.label.padEnd(16)} ${String(r.height).padStart(5)}px / ${page.budget}  ${within ? 'inside' : 'OVER'}`);
     if (shaProblem) console.log(`             ${shaProblem}`);
     bad.forEach(([k, v]) => console.log(`             marker mismatch: ${k} expected ${v}, got ${r.markers[k]}`));
-    if (r.facts.ratingMarkup) { console.log('             RATING MARKUP PRESENT — R-K violated'); failures++; }
+    if (r.facts.ratingMarkup) { console.log('             RATING MARKUP PRESENT: R-K violated'); failures++; }
     if (page.type === 'home' && r.facts.sameAsProfile !== true) { console.log('             sameAs profile URL MISSING'); failures++; }
     if (r.facts.todoVisible) { console.log(`             ${r.facts.todoVisible} visible TODO`); failures++; }
     /* Identity. ABSENCE is a failure, never a skip: an assertion that disables
@@ -906,9 +906,9 @@ async function main() {
      the second try. */
   if (SLOW_CSS > 0) console.log(`DEBUG: responses held back: ${slowHeld}`);
   console.log(`rows retried: ${retried}${retried ? ` (${retrySaved} verified on a re-read, ${retried - retrySaved} still unverified)` : ''}; pages that never became ready: ${notReady}`);
-  if (seen.length !== RUN.length || seen.length === 0) { console.log(`FAIL — ${seen.length} pages read for ${RUN.length} listed`); failures++; }
-  if (reach.size === 0) { console.log('FAIL — the crawl reached zero URLs'); failures++; }
-  console.log(`\n${failures === 0 && unverified === 0 ? 'PASS' : 'FAIL'} — ${unverified} unverified, ${failures} failed`);
+  if (seen.length !== RUN.length || seen.length === 0) { console.log(`FAIL: ${seen.length} pages read for ${RUN.length} listed`); failures++; }
+  if (reach.size === 0) { console.log('FAIL: the crawl reached zero URLs'); failures++; }
+  console.log(`\n${failures === 0 && unverified === 0 ? 'PASS' : 'FAIL'}: ${unverified} unverified, ${failures} failed`);
   process.exit(failures === 0 && unverified === 0 ? 0 : 1);
 }
 /* --- W24-09a, the self-check ------------------------------------------------
@@ -920,7 +920,7 @@ async function main() {
    inside PROBE, which is a template literal, put backticks around the class names
    it discussed. Two of them closed and reopened the template, which turned the
    surrounding expression into a TAGGED TEMPLATE whose tag was a string. The file
-   still PARSED — `node --check` exits 0 on it, and so would any parse gate — and
+   still PARSED (`node --check` exits 0 on it, and so would any parse gate) and
    it threw `TypeError: "(async () => {` the moment it was loaded.
 
    Nineteen gates were green and `quality` passed, because this script measures the

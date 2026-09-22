@@ -199,8 +199,17 @@ console.log(`self-test control (${path.relative(ROOT, SHIP)}): clean`);
    So the file is committed. It is a historical snapshot, so it cannot drift by
    definition; and WHERE THE COMMIT IS REACHABLE, which is any full clone, the
    fixture is checked byte-for-byte against git before it is used. A workstation
-   proves the fixture is honest; CI trusts the proof. */
+   proves the fixture is honest; CI trusts the proof.
+
+   AMENDED (W26-13, ruling W26-R15): the commit's file carries three dashes, all in
+   comments, and the ruling bans them in every authored file with no exemption for a
+   snapshot. So the fixture holds them as hyphens, and that is its ONLY difference from
+   the commit: the check applies exactly that substitution to git's copy and then
+   compares every byte. No rule, selector or value is touched, so both collisions are
+   still the commit's own. */
 const ARM_SHA = '3392bb4';
+const DASHES = new RegExp(`[${String.fromCodePoint(0x2013, 0x2014)}]`, 'g');
+const undash = (css) => css.replace(DASHES, '-');
 const ARM_WANT = ['faq', 'bento__tile'];
 const ARM_FILE = path.join(__dirname, 'fixtures', `styles-at-${ARM_SHA}.css`);
 if (!fs.existsSync(ARM_FILE)) {
@@ -211,10 +220,10 @@ try {
   // stderr piped, not inherited: in a shallow clone git prints "invalid object
   // name" and that is an expected condition here, not something to show the reader.
   const fromGit = execFileSync('git', ['show', `${ARM_SHA}:src/styles.css`], { cwd: ROOT, encoding: 'utf8', maxBuffer: 8 << 20, stdio: ['ignore', 'pipe', 'pipe'] });
-  if (fromGit !== armCss) {
-    fail(`the self-test fixture does not match src/styles.css at ${ARM_SHA}. The fixture is supposed to BE that file; regenerate it with:\n  git show ${ARM_SHA}:src/styles.css > ${path.relative(ROOT, ARM_FILE)}`);
+  if (undash(fromGit) !== armCss) {
+    fail(`the self-test fixture does not match src/styles.css at ${ARM_SHA} with its dashes made hyphens. The fixture is supposed to BE that file, with that one change (W26-R15); regenerate it from git show ${ARM_SHA}:src/styles.css and replace U+2013 and U+2014 with a hyphen.`);
   }
-  console.log(`self-test fixture verified byte-for-byte against ${ARM_SHA}`);
+  console.log(`self-test fixture verified byte-for-byte against ${ARM_SHA}, its ${(fromGit.match(DASHES) || []).length} comment dashes as hyphens`);
 } catch (e) {
   if (/does not match/.test(e.message)) throw e;
   // A shallow clone cannot reach the commit. The fixture is still used; it is the

@@ -48,7 +48,7 @@ page for anyone not looking at it.
 ## 3 · Gate 19 now holds the filled half, with eight arms
 
 The scanner matched only `<div>`. A filled slot is a `<picture>`, so **every filled slot
-would have been reported as rendered by no page** — the reverse assertion firing on a slot
+would have been reported as rendered by no page**: the reverse assertion firing on a slot
 that was working. Fixed, and the element name is now read and compared to `state`.
 
 New assertions on a filled slot: it has an `<img>`, it has alt text, its ledger row names

@@ -1,4 +1,4 @@
-# RAPID CONSTRUCT — SHOOT SHEET
+# RAPID CONSTRUCT: SHOOT SHEET
 
 **15 photos. That is the whole list.** Everything else on the site can wait.
 
@@ -20,7 +20,7 @@ Put all 15 files in one folder. Nothing else in that folder.
 
 ---
 
-## GROUP 1 — On a finished house
+## GROUP 1: On a finished house
 
 Best done at one completed project. Four photos.
 
@@ -31,7 +31,7 @@ Best done at one completed project. Four photos.
 | ☐ | The finished house with the yard cleared, nothing left on site | Landscape | Slightly less wide (4:3) | `step-05-predare.jpg` |
 | ☐ | A finished façade: render or stone, whole wall, even light | Landscape | Wide (3:2) | `proj-fatade-01-cover.jpg` |
 
-## GROUP 2 — On a roof job
+## GROUP 2: On a roof job
 
 Two photos. Get high if you safely can, even a first-floor window helps.
 
@@ -40,7 +40,7 @@ Two photos. Get high if you safely can, even a first-floor window helps.
 | ☐ | A finished roof, seen from above or from higher ground | Landscape | Wide (3:2) | `proj-acoperisuri-01-cover.jpg` |
 | ☐ | A roof being fitted, or just finished, seen from the ground | Landscape | Slightly less wide (4:3) | `step-03-acoperis.jpg` |
 
-## GROUP 3 — On an active building site
+## GROUP 3: On an active building site
 
 Three photos. One site with work at different stages is ideal.
 
@@ -50,7 +50,7 @@ Three photos. One site with work at different stages is ideal.
 | ☐ | Walls up, you can see the shape of the building | Landscape | Slightly less wide (4:3) | `step-02-structura.jpg` |
 | ☐ | Insulation boards or render going on the outside wall | Landscape | Slightly less wide (4:3) | `step-04-fatada.jpg` |
 
-## GROUP 4 — On a renovation
+## GROUP 4: On a renovation
 
 Two photos. Inside is fine.
 
@@ -59,7 +59,7 @@ Two photos. Inside is fine.
 | ☐ | A finished renovated room, stand in the doorway, take the whole room | Landscape | Wide (3:2) | `proj-reparatii-01-cover.jpg` |
 | ☐ | Finished interior work: smooth walls, paint, floor laid | Landscape | Wide (3:2) | `proj-finisaje-01-cover.jpg` |
 
-## GROUP 5 — On an industrial or commercial job
+## GROUP 5: On an industrial or commercial job
 
 One photo.
 
@@ -67,7 +67,7 @@ One photo.
 |---|---|---|---|---|
 | ☐ | A hall, warehouse or shop unit, whole building from outside | Landscape | Wide (3:2) | `proj-industrial-01-cover.jpg` |
 
-## GROUP 6 — On a groundworks job
+## GROUP 6: On a groundworks job
 
 One photo.
 
@@ -75,7 +75,7 @@ One photo.
 |---|---|---|---|---|
 | ☐ | Machinery working the ground, digger in shot | Landscape | Wide (3:2) | `proj-terasamente-01-cover.jpg` |
 
-## GROUP 7 — Installations
+## GROUP 7: Installations
 
 One photo. Can be at any site with first-fix work showing.
 
@@ -83,7 +83,7 @@ One photo. Can be at any site with first-fix work showing.
 |---|---|---|---|---|
 | ☐ | Pipework or cabling, neatly run, before it is covered up | Landscape | Wide (3:2) | `proj-instalatii-01-cover.jpg` |
 
-## GROUP 8 — At the desk
+## GROUP 8: At the desk
 
 One photo. No travel needed.
 

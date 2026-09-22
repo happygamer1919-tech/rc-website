@@ -107,7 +107,7 @@ function render(src, dest, w, h, anchor) {
 // ---------------------------------------------------------------------------
 if (!fs.existsSync(RAW)) {
   fs.mkdirSync(RAW, { recursive: true });
-  console.log(`created ${path.relative(ROOT, RAW)}/ — drop photos there, named by slot ID.`);
+  console.log(`created ${path.relative(ROOT, RAW)}/, drop photos there, named by slot ID.`);
 }
 
 const inputs = new Map();

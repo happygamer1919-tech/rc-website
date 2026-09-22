@@ -176,6 +176,19 @@ jobs:
       - name: Every gallery shows exactly its ledger's photographs (W26-R14)
         run: node scripts/check-galleries.js
 
+      # W26-13. Gate 30, the owner's rule: "No em dashes or en dashes anywhere." Every
+      # text file in the tree and every built file, read by its bytes; this pull
+      # request's own commit messages, title and body. The four R-S records keep only
+      # the dash lines in scripts/fixtures/dash-baseline.json. The env values reach the
+      # script as data, never as shell text. Static, after the build.
+      - name: No em dash or en dash in any file, the built site or this pull request (W26-13)
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PR_COMMITS: ${{ github.event.pull_request.commits }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: node scripts/check-dashes.js
+
       # geometry in a real browser at 1440 and 390, both locales. Same Chrome and
       # Inter requirement as the header gate. Before RC-145's step, which rebuilds.
       - name: Every bento and catalogue grid is the geometry it is specified as (W24-09)

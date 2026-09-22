@@ -1,4 +1,4 @@
-# CLAUDE.md — Rapid Construct website
+# CLAUDE.md: Rapid Construct website
 
 Standing rules for the `rc-website` repo. **Rules only, never state.** Anything
 that changes as the build progresses (what has shipped, what is measured today,
@@ -102,8 +102,8 @@ stylesheet.**
 | 6 | `#F2F2F2` | `--bg-grey` | Image placeholder fill only, never a section |
 | 7 | `#141414` | `--bg-dark` | Section background B, white text on it |
 | 8 | `#E2E2E2` | `--line` | Card borders, dividers |
-| 9 | `#25D366` | — | WhatsApp's own colour, floating button only |
-| 10 | `#1EBE5A` | — | WhatsApp's own hover, floating button only |
+| 9 | `#25D366` | - | WhatsApp's own colour, floating button only |
+| 10 | `#1EBE5A` | - | WhatsApp's own hover, floating button only |
 
 Values 9 and 10 are WhatsApp's brand colours, not the site's, and are confined
 to the floating contact button.
@@ -212,7 +212,7 @@ local runs. The floors here are never lowered to accommodate a runner: a breach
 of the median is reported with its three readings and their spread.
 
 One expected exception: a service page scores SEO ~69 while it is `noindex`.
-That is the indexability gate working, not a regression — the page carries
+That is the indexability gate working, not a regression: the page carries
 `noindex, nofollow` until one of its projects has a real cover photograph, and
 clears itself when one lands.
 *Source: DECISIONS.md W3-02, RELEASE-NOTES "Lighthouse baseline".*
@@ -309,7 +309,7 @@ mirrored, a `.prod__ask` with no `data-product`, and the Russian phrase on a Rom
 page. Each fired on its own message between two clean controls.
 *Source: DECISIONS.md, W24-R ruling R7, and W24-07.*
 
-When there is no source for a value, **mark it or omit it — never fill it**:
+When there is no source for a value, **mark it or omit it, never fill it**:
 
 - `TODO: <what is missing>` in a locale file or in `content/projects.json`.
 - `""` in `content/projects.json`.
@@ -345,8 +345,8 @@ as projects were written. 16 in each locale, counted on 2026-09-17 by
 moves whenever a stub gains its title and summary, and the build is what decides
 it.**
 
-Every other field — `location`, `year`, `work_type`, `area_sqm`, `duration`,
-`main_materials`, `challenge` — is optional and drops out of the render **on its
+Every other field (`location`, `year`, `work_type`, `area_sqm`, `duration`,
+`main_materials`, `challenge`) is optional and drops out of the render **on its
 own**. A project with a real location and no year prints the location alone.
 
 **`location` is permanently empty and that is the finished state, not a gap.**
@@ -658,8 +658,8 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     declarations are re-injected onto the hub page and the gate must fail on them,
     the 128px collapse is planted so the width band and the 280px floor are watched
     fail too, and two catalogue arms plant a lost desktop column and the phone fold
-    escaping into desktop. Each arm is asserted **by message id**, and the control —
-    both families — is read clean immediately before the arms and immediately after
+    escaping into desktop. Each arm is asserted **by message id**, and the control
+    (both families) is read clean immediately before the arms and immediately after
     (R-AB, whose second case is four arms read against a control that was already
     red). It fails on zero hub pages, zero grid pages, either family in one locale
     only, fewer combinations than the matrix holds, and when Inter does not load.
@@ -671,7 +671,7 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     written inside `PROBE`, which is a template literal, put backticks around the class
     names it discussed, two of them closed and reopened the template, and the surrounding
     expression became a **tagged template whose tag was a string**. The file still parsed
-    — `node --check` exits 0 on it, so a parse gate would not have caught it either — and
+    (`node --check` exits 0 on it, so a parse gate would not have caught it either) and
     it threw `TypeError` on load. Nineteen gates were green and `quality` passed in 6m10s.
     It reached `main` and was found by the post-merge run that gate 9 owes.
     **The check is LOADING, not parsing**: reaching the assertion at all is most of it.
@@ -711,6 +711,9 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     reachable, it is verified byte-for-byte against git before use**, so a workstation
     proves the fixture honest and CI trusts the proof. A missing fixture is a failure,
     never a skip.
+    **AMENDED (W26-13, ruling W26-R15): the fixture's three comment dashes are hyphens**, the
+    one difference from the commit's file, and the check applies exactly that substitution to
+    git's copy before comparing every byte. Watched: one added space fails it by name.
 
 23. `node scripts/check-plate-brands.js` clean. **Since W25-03d (wave 25)**, run by
     `quality` with the other static checks. **Which manufacturer a product really comes
@@ -867,8 +870,43 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     the real roofing page** with one slide removed: 14 against 15, named. Static: it reads
     `dist/` and the ledger. It fails on zero galleries and on zero pages carrying one.
 
+30. `node scripts/check-dashes.js` clean. **Since W26-13 (wave 26)**, run by `quality` after gate
+    29. **The owner's rule, verbatim: "No em dashes or en dashes anywhere."** Before this gate the
+    check was a shell grep for an escaped dash, which this shell does not expand: it matched
+    nothing and **reported clean on every card of a dispatch** while 547 dashes sat in 43 files.
+    So it reads **bytes**, in four places: every text file in the working tree that git does not
+    ignore, tracked or new; **every file of the built site**, where an HTML entity or a JS or CSS
+    escape that paints a dash counts as the dash; and, in a pull request, **its own commit
+    messages, title and body**, fetched by the head sha and counted against the number GitHub
+    gives. U+2014 and U+2013, and the lookalikes U+2012 and U+2015, because a rewrite into a
+    lookalike would pass a gate that read two code points. The hyphen and the minus sign are not
+    dashes. A binary is recognised by its bytes and skipped by kind: several photographs here hold
+    the dash's three bytes by chance.
+    **The four R-S records keep what they had and gain nothing.** `DECISIONS.md`,
+    `docs/QUESTIONS.md`, `docs/BACKLOG.md` and `RELEASE-NOTES.md` hold entry bodies that section
+    17 makes immutable, "including to correct an error", and W26-R15 exempts "frozen records under
+    R-S" by name. Their dash lines are held one by one in
+    `scripts/fixtures/dash-baseline.json` by the SHA-256 of each line: a new line with a dash
+    fails, an edited frozen line fails, and a baselined line that is gone fails as dead, so the
+    baseline only shrinks. Its total is capped in the script, so it cannot be regenerated larger
+    without the gate changing in the same pull request. **The ruling's other exemption,
+    "third-party titles quoted verbatim in the audit file", is held by field**: the gate parses
+    `docs/audit/imperlux/audit.json` and accepts a dash only in the fields its capture copied
+    (`title`, `h1`, `heading`, `text`). Nothing else is exempt, gate 22's fixture included. An
+    exemption with no dash left is dead and fails.
+    **Its self-test is twenty arms, four GREEN**, between two clean controls (R-AB): fifteen
+    synthetic, and five planted in memory into the shipping files. The real-file arms are
+    judged on what the plant ADDS, so a real dash already in the file is reported by the real
+    run and never read as a broken arm; the first version got that wrong twice. Two arms assert
+    the character is NAMED, because the first version named nothing on a commit message: a
+    `test()` on the global pattern moved `lastIndex` past the dash. **Watched fail on the real
+    tree** with a dash planted in `locales/ru.json` and a new `DECISIONS.md` entry carrying one:
+    three problems, the source line, the built page and the record line, each on its own
+    message. It fails on zero text files, zero built files, a missing record or baseline, and in
+    a pull request on fewer commits read than GitHub counts.
+
 **This list is appended to, never renumbered.** Recorded entries cite gates by
-number — Q-W14-03 was found "at gate 9" — and those bodies are immutable under
+number (Q-W14-03 was found "at gate 9") and those bodies are immutable under
 R-S, so renumbering would falsify them. A gate added later takes the next number
 even where that puts it out of running order.
 
@@ -909,12 +947,15 @@ neither a build nor a browser, and it guards the file the build is written in.
 gates, because gate 13 rebuilds `dist/` armed.
 **AMENDED (W26-12):** gate 29 runs beside gate 26. It reads the built pages and the ledger, so it
 runs after gate 1 and needs no browser.
+**AMENDED (W26-13):** gate 30 runs after gate 29. It reads the built site as well as the tree, so
+it runs after gate 1, and needs no browser.
 
 **The count, so it stops drifting (W25-03c).** ~~This list numbers **25** gates.~~
 ~~**AMENDED (W25-24): 26**, and `quality` runs **25** commands.~~
 ~~**AMENDED (W26-04): 27**, and `quality` runs **26** commands.~~
 ~~**AMENDED (W26-05a): 28**, and `quality` runs **27** commands.~~
-**AMENDED (W26-12): 29**, and `quality` runs **28** commands. The number to report is the one
+~~**AMENDED (W26-12): 29**, and `quality` runs **28** commands.~~
+**AMENDED (W26-13): 30**, and `quality` runs **29** commands. The number to report is the one
 `node scripts/run-gates.js` prints, never this sentence. Five of them
 are not scripts and `quality` cannot run them: gate 4 (heights measured settled), gate 6 (no
 new colour), gate 7 (reduced motion), gate 8 (the three documents updated) and **gate 9,
@@ -1097,7 +1138,7 @@ place.
 
     | `--brand` | ~~`#F26419`~~ **`#F65308`** | … **AMENDED: DECISIONS.md, "…". ** |
 
-**Strike the value, do not remove it — where the value has documentary purpose.**
+**Strike the value, do not remove it, where the value has documentary purpose.**
 A design spec with its numbers taken out is not a spec, and a reader who needs to
 know what the plan used to say has nowhere else to look. **Where it has no
 documentary purpose, removal is correct and is the R-Q-clean answer.** A
@@ -1128,11 +1169,11 @@ is the whole argument, and it was paid for three times:
 | R-I's stated budgets | did not match R-I's own derivation, by −1 and +35, and the +35 was a round number the same ruling forbade |
 | Section 2 of this file | carried budgets that R-I and then R-J had superseded, 151px too tight on RO |
 
-What this file may still state: **rules and thresholds it owns** — "under 400ms",
+What this file may still state: **rules and thresholds it owns**: "under 400ms",
 "under 20px", the ten colour values, the Lighthouse floors, the 1,400px section
 cap. Those are chosen here, so here is their one place.
 
-What it may not state: **anything measured or derived elsewhere** — height
+What it may not state: **anything measured or derived elsewhere**: height
 budgets, contrast ratios, animation durations, marker counts. Those live in the
 ruling, the stylesheet token, or the script, and this file names the holder.
 
@@ -1216,10 +1257,10 @@ superseded figure written into a string or a variable name is invisible to it.
 source-comment scan was added in W12-31: four values planted in comments of four
 different kinds all fired, and six planted in code fired nothing, which is the
 arm that proves the scan is reading comments rather than files. Four superseded
-values were reintroduced into a scratch copy — R-I's budgets restated as live in this
+values were reintroduced into a scratch copy: R-I's budgets restated as live in this
 file, the struck line 121 heuristic restored to the master plan, `#F26419` (dead;
 `#F65308` is live) added
-to the photo manifest, the never-true baseline added to the backlog — and all
+to the photo manifest, the never-true baseline added to the backlog. All
 four were reported with the superseding authority named, exit 1. The
 dead-exception and missing-file arms were each watched failing too. The first
 version of the gate did **not** catch the first of those four, and the window was
@@ -1243,7 +1284,7 @@ four waves with nothing marking it. The line between them is body and status.
 
 | May be updated in place | May never be edited |
 |---|---|
-| A question's status in its heading: `OPEN` → `ANSWERED <date>, <what>` | Anything inside the question's body — the context, the options, the figures as they stood |
+| A question's status in its heading: `OPEN` → `ANSWERED <date>, <what>` | Anything inside the question's body: the context, the options, the figures as they stood |
 | A superseded-by marker added to a dated section | The dated section's own text |
 | A backlog ticket's status field | What the backlog entry said when it was written |
 
@@ -1258,7 +1299,7 @@ is the one section written to be replaced. Everything above it is dated and
 stays as written.
 
 **Ratified at W12-32:** the four question headings W12-30 moved from `OPEN` to
-answered — Q-W12-06, Q-W12-09, Q-W12-10 and Q-W12-11 — are status metadata and
+answered (Q-W12-06, Q-W12-09, Q-W12-10 and Q-W12-11) are status metadata and
 stand. No entry body was touched in doing it.
 
 An error inside a recorded body is corrected by the next entry, not by the pen.
@@ -1274,15 +1315,15 @@ strictly more than the corrected version would have shown.
 **The distinction is what the document is for.** A question entry and a dated
 wave record state what was believed at a moment; they are read backward, as
 evidence, and editing them destroys the only thing they carry. A ruling is
-standing authority and is **read forward** — a card consults R-J to find out what
+standing authority and is **read forward**: a card consults R-J to find out what
 the budget is *now*. An amendment that lives anywhere but inside the ruling means
 a card can read the whole ruling, act on it, and be wrong.
 
 That is R-R's argument exactly, one level up: an amendment sits at the point of
 the thing it amends, and a ruling is a value.
 
-The two blocks that already exist — R-J's, added by W12-10, and R-Q's, added by
-W12-29 — stand, and are the pattern. **R-J's in-place corrections of figures in
+The two blocks that already exist (R-J's, added by W12-10, and R-Q's, added by
+W12-29) stand, and are the pattern. **R-J's in-place corrections of figures in
 `DECISIONS.md` are regularised by R-T** and need no correcting entry.
 
 What is still forbidden inside a ruling: editing a sentence that is already

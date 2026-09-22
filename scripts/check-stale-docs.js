@@ -8,7 +8,7 @@
    the same shape: a value copied into a governing document has no mechanism that
    notices when the ruling behind it changes. This is the mechanism.
 
-   Run it the way check-links.js is run — it exits non-zero, so it is a gate
+   Run it the way check-links.js is run: it exits non-zero, so it is a gate
    rather than a habit:
 
        node scripts/check-stale-docs.js
@@ -213,7 +213,7 @@ const SCAN = [
 
 /* Source files, added by W12-31 closing Q-W12-12. Only their COMMENTS are
    scanned. That distinction is the whole reason the extension is safe: the
-   values here collide with live code that is entirely correct — `MIN_LONG_EDGE
+   values here collide with live code that is entirely correct: `MIN_LONG_EDGE
    = 1600` in slots.js is the implementation of the rule, and `setTimeout(r,
    1600)` in verify-live.js is a delay in milliseconds. A gate that flags its own
    correct implementation trains people to ignore it. Neither is a comment, so
@@ -436,7 +436,7 @@ const perValue = new Map(SUPERSEDED.map((v) => [v.id, 0]));
 const missingFiles = [];
 const filesRead = { documents: 0, source: 0 };
 
-console.log('\nstaleness gate — R-Q and R-R, seeded W12-29');
+console.log('\nstaleness gate: R-Q and R-R, seeded W12-29');
 console.log(`root:   ${ROOT}`);
 console.log(`window: ${WINDOW} lines either side\n`);
 
@@ -511,7 +511,7 @@ if (templateCountBad) {
 
 /* A file that vanished is not a pass. */
 if (missingFiles.length) {
-  console.error('SCANNED FILE MISSING — the scan list names a file that is not there:');
+  console.error('SCANNED FILE MISSING: the scan list names a file that is not there:');
   missingFiles.forEach((f) => console.error(`  · ${f}`));
   console.error('');
 }
@@ -535,18 +535,18 @@ if (hits.length) {
     console.error(`    line:       ${h.text.length > 140 ? h.text.slice(0, 137) + '…' : h.text}`);
     console.error('');
   }
-  console.error('Fix: amend in place per R-R — keep the value, strike it, and name the');
+  console.error('Fix: amend in place per R-R: keep the value, strike it, and name the');
   console.error('superseding ruling beside it. Do NOT restate the live measurement: R-Q');
   console.error('forbids a governing document holding a number, which is what created');
   console.error('every one of these.\n');
 }
 
 if (deadExceptions.length) {
-  console.error('KNOWN EXCEPTIONS THAT MATCH NOTHING — remove them:\n');
+  console.error('KNOWN EXCEPTIONS THAT MATCH NOTHING: remove them:\n');
   deadExceptions.forEach((k) => console.error(`  · ${k.file}  ${k.id}  "${k.contains}"`));
   console.error('');
 }
 
 const failed = hits.length + deadExceptions.length + missingFiles.length + (templateCountBad ? 1 : 0) + (zeroRead ? 1 : 0);
-if (failed) { console.error(`FAIL — ${hits.length} unmarked, ${deadExceptions.length} dead exceptions, ${missingFiles.length} missing files, template count ${templateCountBad ? 'MISMATCH' : 'ok'}, files read ${zeroRead ? 'ZERO' : 'ok'}\n`); process.exit(1); }
+if (failed) { console.error(`FAIL: ${hits.length} unmarked, ${deadExceptions.length} dead exceptions, ${missingFiles.length} missing files, template count ${templateCountBad ? 'MISMATCH' : 'ok'}, files read ${zeroRead ? 'ZERO' : 'ok'}\n`); process.exit(1); }
 console.log('every known-superseded value is amended, excepted or absent.\n');

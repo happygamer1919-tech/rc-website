@@ -1,6 +1,6 @@
 # RC WEBSITE MASTER PLAN
 
-> **SCOPE HEADER — READ FIRST**
+> **SCOPE HEADER: READ FIRST**
 > This document applies **only** to the Rapid Construct MD website project (GitHub repo: `rc-website`).
 > If the current task is not the Rapid Construct website, ignore this file entirely and do not load it into context.
 > This file is the single source of truth for the build. Where this document and a chat instruction conflict, ask before deviating.
@@ -99,7 +99,7 @@ Single family: **Inter**, already in use, keeps the build fast and matches Imper
 | h3 / card title | 22px | 19px | 700 | Sentence |
 | Eyebrow | 13px | 12px | 700 | UPPERCASE, letter-spacing 0.08em, `--brand-dark` |
 | Body | 17px | 16px | 400 | Sentence |
-| Stat numeral | 44px | 32px | 800 | — |
+| Stat numeral | 44px | 32px | 800 | - |
 
 Line height 1.15 on headings, 1.6 on body. No Playfair Display, no serif anywhere.
 
@@ -128,7 +128,7 @@ These sit inside a `#141414` pill, 64px tall, compressing to 56px on scroll (52p
 Mobile: logo, phone icon, hamburger.
 **Fix carried over:** opaque background so nothing overlaps on scroll; `white-space: nowrap` on nav items so none wraps to two lines.
 
-### 5.2 Hero — `--bg-light`
+### 5.2 Hero: `--bg-light`
 
 No photo. Left-aligned or centred, single column.
 - Eyebrow: work area line (all of Moldova).
@@ -141,43 +141,43 @@ No photo. Left-aligned or centred, single column.
 - Price box, bordered, `--brand` left border 4px: the published per-m² figures and the standing offer (minus 10% early booking, ~~0% installments on roofing~~ **AMENDED: removed under ruling R-X, W14-14, `docs/rulings/R-X.md`**, ~~160 lei/m² frozen for 2026~~ **AMENDED: removed by W14-05 (RC-105), a STOP card merged by the owner; see DECISIONS.md W14-05**).
 - Two CTAs: "Solicită ofertă gratuită" (filled), "Sună acum" (outline).
 
-### 5.3 Services — `--bg-grey`
+### 5.3 Services: `--bg-grey`
 
 Eyebrow, h2, one-line intro. 3x3 card grid, nine services, copy already written:
 case la cheie, acoperișuri, fațade, reparații la cheie, finisaje, proiectare și vizualizare 3D, rețele inginerești, construcții industriale, terasamente.
 Each card: photo (4:3), title, two-line description, text link. Photo slot is a placeholder at build time.
 
-### 5.4 Process — `--bg-light`
+### 5.4 Process: `--bg-light`
 
 **This is the replacement for the deleted 3D scroll section.** Static, one screen, no motion.
 Eyebrow, h2, five numbered steps in a row (2 rows on tablet, stacked on mobile). Each step: large numeral 01 to 05 in `--brand`, title, one line, one photo.
 Steps: Fundație, Structură și ziduri, Acoperiș, Fațadă, Finisaje și predare.
 The stage copy and images from the old scroll section are salvaged into here.
 
-### 5.5 Portfolio — `--bg-grey`
+### 5.5 Portfolio: `--bg-grey`
 
 Eyebrow, h2, filter tabs (Toate, Case la cheie, Acoperișuri, Fațade, Reparații, Finisaje). Filters are client-side, instant, no animation.
 Six project cards: cover photo (3:2), category chip, title, one-line description, location. Optional lightbox with up to three extra photos per project.
 "Vezi tot portofoliul" button below the grid.
 
-### 5.6 Stats band — `--bg-dark`
+### 5.6 Stats band: `--bg-dark`
 
 Short band, white text, four figures repeated from the hero at larger scale, plus the coverage line naming the localities served (Chișinău, Codru, Coșnița, Costești, Căinari, Sociteni). No photo. This is one of only two dark sections.
 
-### 5.7 Why us + testimonials — `--bg-light`
+### 5.7 Why us + testimonials: `--bg-light`
 
 Two blocks in one section, separated by a divider.
 - Six trust points in a 3x2 grid: ~~garanție 30 ani în contract~~ **AMENDED (W25-22):
   garanție 5 ani în contract**, materiale cu certificare UE, predare la termen, echipă cu 10+ ani experiență, prețuri transparente, suport după predare. Icon or numeral, title, one line. No photos.
 - Three testimonials as bordered cards: quote, name, city and work type. Static, no carousel.
 
-### 5.8 Quote form — `--bg-grey`
+### 5.8 Quote form: `--bg-grey`
 
 Eyebrow, h2, one line promising a reply within two working hours.
 Fields, all carried over: Nume, Telefon, Tip lucrări (select, ten options), Localitate, Mesaj (optional), consent checkbox, honeypot. Submit button filled `--brand`.
 Two-column layout desktop, single column mobile.
 
-### 5.9 Contact footer — `--bg-dark`
+### 5.9 Contact footer: `--bg-dark`
 
 White text. Left: logo, one-line description, the standing offer line. Middle: nav repeat and service links. Right: address Nicolae Zelinski 24 Chișinău, phone +373 76 837 180, email rapidconstructmd@gmail.com, hours Luni to Sâmbătă 08:00 to 17:00.
 Two CTAs repeated. Floating WhatsApp and call buttons, bottom right, present on every scroll position.

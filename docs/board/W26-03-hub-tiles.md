@@ -21,7 +21,7 @@ four tiles.**
 |---|---|---|---|
 | Țiglă metalică | `images/categories/tigla-metalica.png` | 200, **1440x1080** | **filled**, cropped |
 | Rocă vulcanică Novatik | `images/categories/roca-vulcanica.png` | 200, **1440x1080** | **filled**, cropped |
-| Calculează prețul acoperișului | **none exists** | — | **empty** |
+| Calculează prețul acoperișului | **none exists** | - | **empty** |
 | Reduceri | `images/promo/scurgere-gratuit-cta.jpg` | 200, 1080x1080 | **empty, refused** |
 
 **No screenshot-crop was needed.** W26-R3 permits one where a file will not come out at the

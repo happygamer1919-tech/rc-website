@@ -708,20 +708,20 @@ Header bar 96px and pill 64px both unchanged. Zero height impact, measured
 before deploying. Largest rendered width 179.2px against a 1542px source.
 
 ## W25-17 · Fatade 3D product images
-**Status: PR OPEN** (2026-09-21). 103 slots attempted, **99 filled**, 4 refused by the 450
+**Status: MERGED #108** (opened 2026-09-21). 103 slots attempted, **99 filled**, 4 refused by the 450
 floor and reported with their measured sizes. Catalog 160 to 259 of 333. W25-R14 to W25-R18
 recorded first. `fetch-packshot.js` gains `--fatade3d`; the imperlux override ships unused,
 held to twelve slot ids. 24 of 24 gate commands exit 0.
 
 ## W25-18 · Garduri images under the owner override
-**Status: PR OPEN** (2026-09-21). All 12 Garduri slots filled from `imperlux.md` under
+**Status: MERGED #109** (opened 2026-09-21). All 12 Garduri slots filled from `imperlux.md` under
 W25-R15, held to twelve slot ids rather than to the host. Ledger 259 to 271 of 333. Three
 hub tile `shows` lines corrected to the picture that landed, each saying so. RC-pics-real no
 longer expects a fence; the intake list and the prompt batch shrink by the ledger, not by
 deletion. 24 of 24 gate commands exit 0.
 
 ## W25-19 · Acoperisuri consolidation
-**Status: PR OPEN** (2026-09-21). The roofing catalogue moves onto `/servicii/acoperisuri/`:
+**Status: MERGED #110** (opened 2026-09-21). The roofing catalogue moves onto `/servicii/acoperisuri/`:
 a filter bar of 8 and **75 cards**. The 8 `/catalog/materiale-acoperis/*` URLs become
 redirect pages that still answer 200 and land on the matching filter, and leave the sitemap.
 The fold was taught about the filter. RC-129 gains a `redirect` page kind; verify-live swaps
@@ -729,7 +729,7 @@ The fold was taught about the filter. RC-129 gains a `redirect` page kind; verif
 Q-W25-17 logged. 24 of 24 gate commands exit 0.
 
 ## W25-20 · CT80F and the declared reuse
-**Status: PR OPEN** (2026-09-22). W25-R16 and W25-R17 applied: **12 slots filled from
+**Status: MERGED #111** (opened 2026-09-22). W25-R16 and W25-R17 applied: **12 slots filled from
 pictures already on the site**, ledger 271 to 283 of 337. `reuse_of` and `reuse_reason` are
 ledger fields and gate 19 checks them against the ledger; six new self-test arms, five red
 and **one GREEN**, which is a new kind of arm here. 13 were held and 12 could be filled:
@@ -738,7 +738,7 @@ the measured one. Question 30 added to CLAIMS-MIHAI.md quoting both CT 80 F rows
 gate commands exit 0.
 
 ## W25-21 · Owner intake
-**Status: PR OPEN** (2026-09-22). `scripts/intake-owner-pics.js` ships; **nothing was taken
+**Status: MERGED #113** (opened 2026-09-22). `scripts/intake-owner-pics.js` ships; **nothing was taken
 in**, because both folders hold only their README, which the dispatch says is a list and not
 an error. The filename is the slot id exactly, the folder decides the origin, and a real
 photograph is allowed on an evidence slot where a generated image is not. **19 self-test
@@ -747,7 +747,7 @@ arms, 3 of them green.** The apply path was proved end to end on a throwaway cop
 the card. 54 slots still waiting. 24 of 24 gate commands exit 0.
 
 ## W25-22 · Written warranty, 30 years to 5
-**Status: PR OPEN** (2026-09-22). Owner instruction. **8 strings, 4 per locale**, on the two
+**Status: MERGED #112** (opened 2026-09-22). Owner instruction. **8 strings, 4 per locale**, on the two
 homepages; a grep of the built tree confirms nothing else said thirty. Romanian grammar
 changes with the number (`30 de ani` but `5 ani`), so the strings were rewritten, not
 substituted. The figure has one home, `warranty.years`, and `build.js` asserts both
@@ -757,7 +757,7 @@ registered in the staleness gate and the master plan amended beside the struck v
 gate commands exit 0.
 
 ## W25-23 · Homepage product strip
-**Status: PR OPEN** (2026-09-22). W25-R19 to W25-R24 recorded first. The Acoperișuri card
+**Status: MERGED #114** (opened 2026-09-22). W25-R19 to W25-R24 recorded first. The Acoperișuri card
 leaves the homepage product strip; Copertine and Garduri remain as two equal columns. The
 strip's length is asserted against `TOP_LEVEL_PRODUCT_PAGES`, never a literal. Budgets 9,195
 to **9,141** and 9,436 to **9,354**, measured plus 60: the saving is column width, not a row.
@@ -765,14 +765,14 @@ to **9,141** and 9,436 to **9,354**, measured plus 60: the saving is column widt
 commands exit 0.
 
 ## W25-24 · Hub tiles and gate 26
-**Status: PR OPEN, image half BLOCKED** (2026-09-22). All 16 hub tiles have a destination; the
+**Status: MERGED #115, image half filled at W26-03 and W26-11** (opened 2026-09-22). All 16 hub tiles have a destination; the
 Garduri "tip jaluzele" tile opens the models page; `.hub__tile--inert` and its render branch
 deleted. **Gate 26** `check-hub-tile-links.js`, 7 arms, 2 of them green. **The 8 tile images
 are blocked: Q-W25-18**, because W25-R19's premise is gone, both imperlux 4-tile sections have
 been rebuilt and neither exists. 25 of 25 gate commands exit 0.
 
 ## W25-25 · Fence catalogue completeness
-**Status: PR OPEN, warranty line BLOCKED** (2026-09-22). Every imperlux fence page walked via
+**Status: MERGED #116, warranty line off by W26-R9** (opened 2026-09-22). Every imperlux fence page walked via
 its own internal links: **8 model pages** found (not in its sitemap), plus 10 price, 12 city,
 22 project, 4 service and 8 other pages. **Walked 8, on site before 8, after 8**; IL102, IL101,
 IL41 and IL02 are project titles, not models. The one missing field, **colour names**, is
@@ -783,7 +783,7 @@ collides with the 5 years W25-22 shipped. Budgets 3,746 to **3,880** and 3,767 t
 25 of 25 gate commands exit 0.
 
 ## W25-26 · Tigla merge
-**Status: PR OPEN** (2026-09-22). W25-R21 applied: one card per model name, the roofing section
+**Status: MERGED #117** (opened 2026-09-22). W25-R21 applied: one card per model name, the roofing section
 **75 to 71**. **The ruling's premise was wrong and the card says so**: both sets are Dasterum,
 the wave 14 audit section that created the tile data is titled `dasterum.md`, and imperlux
 publishes Monterrey, Valencia and Kascad zero times. The two prices are the same supplier's
@@ -794,7 +794,7 @@ matched by model name because CAT-0226 is the modular tile and CAT-0227 is Kasca
 commands exit 0.
 
 ## W25-27 · The sourcing rule applied
-**Status: PR OPEN, copertine BLOCKED** (2026-09-22). W25-R20 applied: **25 attempted, 12
+**Status: MERGED #118, copertine at W26-07** (opened 2026-09-22). W25-R20 applied: **25 attempted, 12
 filled**, ledger 287 to **299 of 337**. 9 `google_pick`, 3 manufacturer. **The ruling's
 recorded reading was corrected first**: it had kept W25-R2's retailer refusal, which narrowed
 "any site" to nothing. `--google-pick` lifts the shop refusal and adds the Russian-domain one,
@@ -804,7 +804,7 @@ looking. 13 attempted-not-filled, each with its reason. **Q-W25-20**: Unsplash 3
 403/401 refuse automated access, so the 3 copertine slots wait. 25 of 25 gate commands exit 0.
 
 ## W25-28 · Catalogue category tiles
-**Status: PR OPEN** (2026-09-22). All 8 `CATEG-` tiles filled under W25-R22, each a declared
+**Status: MERGED #119** (opened 2026-09-22). All 8 `CATEG-` tiles filled under W25-R22, each a declared
 reuse of an installed product image of its own category. **No image file added.** No crop file:
 the tile's own `object-fit: cover` is the crop, and a cut file would fall under the floor on 3
 of the 8 (every Dasterum roofing image is 488x488). **Gate 19's shared-picture rule was
@@ -813,7 +813,7 @@ photograph because `dist/catalog/` is walked first. Two new arms, one GREEN. Slo
 of 337**. 25 of 25 gate commands exit 0.
 
 ## W25-29 · Secondary images and polish
-**Status: PR OPEN, photographs BLOCKED** (2026-09-22). **Polish shipped**: `--radius-card-lg`
+**Status: MERGED #120, photographs unblocked by W26-R8, not yet scheduled** (opened 2026-09-22). **Polish shipped**: `--radius-card-lg`
 replaces 20px written three times and a stray 32px on `.xsell`; a resting `--shadow-card` on
 seven card families; the wave 6 hover lift extended to six of them, with the reduced-motion
 list extended in the same commit. **Six pages measured before and after, identical to the
@@ -823,7 +823,7 @@ own project covers are 400x300 and read `legacy, licence unverified`. **Spacing 
 deferred**: it is the one polish item that is layout. 25 of 25 gate commands exit 0.
 
 ## W26-01 · Roof section
-**Status: PR OPEN** (2026-09-22). **Section 12.0 on `a8d819e` FAILED, exit 1, 4 unverified**,
+**Status: MERGED #121, ratified 2026-09-22** (opened 2026-09-22). **Section 12.0 on `a8d819e` FAILED, exit 1, 4 unverified**,
 and the cause was this terminal's: W25-24 made every hub tile a link and left `bentoLinks: 3`.
 Corrected, and **gate 26 now couples the two files** so a stale marker fails in `quality`
 instead of after a merge; watched on the real file. W26-R1 to W26-R8 recorded in a new
@@ -834,7 +834,7 @@ client-supplied, which is stricter. Caption check: 0 ownership claims. Q-W25-19 
 "leave it off". 25 of 25 gate commands exit 0.
 
 ## W26-02 · Rendered audit of imperlux.md
-**Status: PR OPEN** (2026-09-22). 20 pages read from the **rendered DOM** with network idle
+**Status: MERGED #122, ratified 2026-09-22** (opened 2026-09-22). 20 pages read from the **rendered DOM** with network idle
 polled to stability and full-document screenshots. **Counts match the owner's screenshots five
 of five**: 7, 4, 1, 2, 17, total 31 roofing products. **Q-W25-18 closed by measurement.**
 W25-24's finding was wrong and the method was the error: it grepped the HTML response for
@@ -843,7 +843,7 @@ committed because W26-R2 is standing. Four of five sections publish a Compară m
 25 of 25 gate commands exit 0.
 
 ## W26-08 · Before/after slots filled with the owner's photographs
-**Status: PR OPEN** (2026-09-22). Inserted at the owner's request mid-dispatch. **All eight
+**Status: MERGED #123, ratified 2026-09-22** (opened 2026-09-22). Inserted at the owner's request mid-dispatch. **All eight
 evidence slots filled** from `/Users/ivan/Before:After`, chosen from three candidate folders by
 contents. Ledger **307 to 315 of 337**, 22 empty and **none of them an evidence slot**. No Exif
 or GPS in the originals; stripped and asserted anyway. **Three of the four subjects are not what
@@ -855,7 +855,7 @@ page", plus R-W's `owned by Rapid Construct, supplied for site use` origin; 2 ne
 Budgets unchanged. 25 of 25 gate commands exit 0.
 
 ## W26-09 · Fence designations IL to RC
-**Status: PR OPEN** (2026-09-22). Inserted at the owner's request mid-dispatch. The four fence
+**Status: MERGED #124, ratified 2026-09-22** (opened 2026-09-22). Inserted at the owner's request mid-dispatch. The four fence
 models render **RC12, RC30, RC40 and RC100** in place of imperlux.md's IL codes, and **zero
 competitor model codes remain in `dist/`**. **Not new policy**: `content/copertine.json` was
 de-badged at W14-23 and `build.js` has refused an IL code in that file ever since; the fence
@@ -867,7 +867,7 @@ card order and the Imperlux pictures are unchanged and flagged with a recommenda
 unchanged to the pixel. 25 of 25 gate commands exit 0.
 
 ## W26-03 · Hub tiles, tile links, gate 26
-**Status: PR OPEN** (2026-09-22). **Section 12.0 on `18b98ce`: exit 0, PASS, 0 unverified, 0
+**Status: MERGED #125, ratified 2026-09-22** (opened 2026-09-22). **Section 12.0 on `18b98ce`: exit 0, PASS, 0 unverified, 0
 failed, 0 retried.** W26-R3 measured: imperlux.md's roofing hub carries **six tile images and
 two answer to our four tiles**. `ACOP-01` and `ACOP-02` **filled**, cropped to drop burned-in
 Romanian text and a **model count that is Imperlux's range** (ink bands measured, crops start
@@ -883,7 +883,7 @@ budget lowered 121px** to 5,607/5,629: it had stayed still since W24-08 while th
 317 of 337 filled. Heights identical before and after. 25 of 25 gate commands exit 0.
 
 ## W26-04 · Roofing restructure
-**Status: PR OPEN** (2026-09-22). **Five sections replace seven catalogue subcategories**, a
+**Status: MERGED #126, ratified 2026-09-22** (opened 2026-09-22). **Five sections replace seven catalogue subcategories**, a
 **second four-tile bento** sits above them, and **twenty imperlux.md models** join the section:
 **71 - 13 + 20 = 78 cards**. The merge reading is recorded: a dasterum part that is an imperlux
 model at a size is a **grade**, so it is a variant line and the card takes the cheapest grade's
@@ -900,7 +900,7 @@ measures **every** bento, not the first (32 to 48 tiles). Budgets **18,075 / 18,
 348 rows, 315 filled, 33 empty. **26 of 26 gate commands exit 0.**
 
 ## W26-05 · Compară modelele tables
-**Status: PR OPEN** (2026-09-22). **Section 12.0 on `cfebef8` FAILED, exit 1, 12 of 16 redirect
+**Status: MERGED #127, ratified 2026-09-22** (opened 2026-09-22). **Section 12.0 on `cfebef8` FAILED, exit 1, 12 of 16 redirect
 rows**, and the defect was W26-04's: the regrouped sections were not carried into
 `verify-live.js`'s redirect expectations. The site was correct. **Third time in three waves**
 that a marker was left behind, so the map is now **coupled to the build** and watched firing.
@@ -922,3 +922,12 @@ W24-08. Both fixed in two rules, no new colour, heights identical to the pixel. 
 reads every page's text contrast: exit 1 on `main` with 40 problems (36 `th`, 4 crumbs), exit 0
 here; 12 arms, 3 GREEN; it waits out colour transitions and treats `aria-hidden` text as
 decoration. **27 of 27 gate commands exit 0.**
+
+## W26-06 · Plăci flexibile, and Acoperișuri off the catalogue
+**Status: PR OPEN** (2026-09-22). W26-R9 to W26-R16 recorded first, with the dispatch's
+ratifications; six question headings and twenty backlog statuses moved in place. Label **"Plăci
+flexibile" / "Гибкая плитка"**, URL unchanged; **the category text rewritten** because it described
+fired floor tile (W17-02 scope, 0 prohibited terms, for ratification). Acoperișuri carries
+**`listed: false`**: off the index and the header panel, every page and data use kept. `CATEG-08`
+removed from the ledger (a reuse, no file): **347 rows, 314 filled**. Index heights identical;
+Plăci flexibile +54 / +109, re-budgeted 12,783 / 13,721.

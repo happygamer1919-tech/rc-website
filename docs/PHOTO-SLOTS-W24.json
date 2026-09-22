@@ -4350,12 +4350,12 @@
       "page": "/catalog/",
       "ratio": "4 / 3",
       "min_px": "1200x900",
-      "shows": "Categoria \"Plăci ceramice\": un material sau un grup de materiale din aceasta categorie, fotografiat pe santier sau in depozit, orizontal, cu loc liber jos-stanga pentru eticheta.",
+      "shows": "Categoria \"Plăci flexibile\": un material sau un grup de materiale din aceasta categorie, fotografiat pe santier sau in depozit, orizontal, cu loc liber jos-stanga pentru eticheta.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0060.jpg",
       "alt": {
-        "ro": "Placi ceramice: Placă Sandstorm",
-        "ru": "Керамическая плитка: Плитка Sandstorm"
+        "ro": "Plăci flexibile: Placă Sandstorm",
+        "ru": "Гибкая плитка: Плитка Sandstorm"
       },
       "reuse_of": "CAT-0060",
       "reuse_reason": "W25-R22: the category tile stands on an installed product image of this category (placi-ceramice), cropped to the tile ratio by the tile itself, which paints object-fit: cover in a 4/3 box."
@@ -4421,21 +4421,6 @@
       "reuse_of": "CAT-0221",
       "reuse_reason": "W25-R22: the category tile stands on an installed product image of this category (alte-materiale), cropped to the tile ratio by the tile itself, which paints object-fit: cover in a 4/3 box.",
       "watermark": true
-    },
-    {
-      "id": "CATEG-08",
-      "page": "/catalog/",
-      "ratio": "4 / 3",
-      "min_px": "1200x900",
-      "shows": "Categoria \"Acoperișuri\": un material sau un grup de materiale de acoperiș din aceasta categorie, fotografiate simplu pe fundal deschis. Fara mana, fara decor.",
-      "state": "filled",
-      "provenance": "public/img/catalog/CAT-0224.jpg",
-      "alt": {
-        "ro": "Acoperisuri: Țiglă metalică Monterrey",
-        "ru": "Кровля: Țiglă metalică Monterrey"
-      },
-      "reuse_of": "CAT-0224",
-      "reuse_reason": "W25-R22: the category tile stands on an installed product image of this category (materiale-acoperis), cropped to the tile ratio by the tile itself, which paints object-fit: cover in a 4/3 box."
     },
     {
       "id": "ACTM-01",

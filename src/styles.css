@@ -257,9 +257,15 @@ p { margin: 0; }
    the reason the page body scrolls sideways. */
 .table-wrap { overflow-x: auto; margin-top: 28px; -webkit-overflow-scrolling: touch; }
 
+/* W26-05a. A table that paints its own white ground sets its own ink. Without
+   it every th inherited the SECTION's colour, which is white on a dark band, so
+   rocă vulcanică's Compară modelele table rendered its model names and row
+   labels white on white from W24-07 until this card. The td were never affected
+   only because they carry --ink-muted of their own. */
 .spec {
   width: 100%; min-width: 480px;
   border-collapse: collapse;
+  color: var(--ink);
   background: var(--bg-light);
   border: 1px solid var(--line);
   border-radius: var(--radius-card);
@@ -682,8 +688,14 @@ p { margin: 0; }
   background: linear-gradient(to right, rgba(20, 20, 20, 0.96) 0%, rgba(20, 20, 20, 0.92) 42%, rgba(20, 20, 20, 0.55) 68%, rgba(20, 20, 20, 0.15) 100%);
 }
 .cop-hero__inner { position: relative; padding-top: 80px; padding-bottom: 80px; }
-.cop-hero__crumb { color: var(--bg-light); }
+/* W26-05a. Two classes deep, because the crumb is ALSO a .breadcrumb and that
+   block sits later in this file: at one class each, .breadcrumb's --ink-muted won
+   on the separator and .breadcrumb [aria-current] painted the current page --ink
+   on --bg-dark, 1.06:1, for two days. Gate 28 is what reads it now. */
+.cop-hero .cop-hero__crumb,
+.cop-hero .cop-hero__crumb [aria-current='page'] { color: var(--bg-light); }
 .cop-hero__crumb a { color: var(--bg-light); }
+.cop-hero .cop-hero__crumb a:hover { color: var(--brand); }
 .cop-hero__h1 { margin: 24px 0 0; max-width: 576px; color: var(--bg-light); }
 .cop-hero__line { display: block; }
 .cop-hero__lede { margin: 24px 0 0; max-width: 576px; font-size: 19px; line-height: 1.6; color: var(--bg-light); }

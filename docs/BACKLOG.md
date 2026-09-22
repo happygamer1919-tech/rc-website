@@ -745,3 +745,13 @@ photograph is allowed on an evidence slot where a generated image is not. **19 s
 arms, 3 of them green.** The apply path was proved end to end on a throwaway copy, including
 `build.js` refusing the `TODO:` alt text. The four `ACOP-` prompts are reproduced verbatim in
 the card. 54 slots still waiting. 24 of 24 gate commands exit 0.
+
+## W25-22 · Written warranty, 30 years to 5
+**Status: PR OPEN** (2026-09-22). Owner instruction. **8 strings, 4 per locale**, on the two
+homepages; a grep of the built tree confirms nothing else said thirty. Romanian grammar
+changes with the number (`30 de ani` but `5 ani`), so the strings were rewritten, not
+substituted. The figure has one home, `warranty.years`, and `build.js` asserts both
+directions over the four strings, with both failure shapes watched fire. `warranty-30`
+registered in the staleness gate and the master plan amended beside the struck value.
+**Heights identical at 30 and at 5**, measured with a control, so no budget moves. 24 of 24
+gate commands exit 0.

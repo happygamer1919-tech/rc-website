@@ -172,6 +172,10 @@ const IMAGE_URL = /\bhttps?:\/\/\S+\.(?:jpe?g|png|webp|gif|avif|heic|tiff?)\b/i;
    the fetcher sees one URL and knows nothing about which product it is for. */
 const MANUFACTURER_ORIGIN = 'manufacturer packshot';
 
+/* Local, because check() is also called by the self-test above the point where
+   the module's own REAL_BRAND is initialised. */
+const REAL_FIELD = (v) => v !== null && v !== undefined && String(v).trim() !== '';
+
 function check(pages, rows, provenance, brandBySlot) {
   const problems = [];
   const byId = new Map(rows.map((r) => [r.id, r]));
@@ -259,10 +263,41 @@ function check(pages, rows, provenance, brandBySlot) {
       }
 
       /* One picture, one card. Recorded per slot id rather than per rendered
-         placeholder, because a slot legitimately renders on more than one page. */
+         placeholder, because a slot legitimately renders on more than one page.
+
+         AMENDED (W25-R17): one picture MAY fill several records of the same
+         product, and a picture still never fills a different product. A machine
+         cannot see that two catalogue records are the same product; a person can.
+         So the permission is DECLARED, on the later slot, in `reuse_of`, naming
+         the slot whose picture it is and saying why in `reuse_reason`. Everything
+         undeclared fails exactly as it did before.
+
+         The declaration is checked, not trusted: the named slot must exist, be
+         filled, and hold the very file this row names. A `reuse_of` pointing at a
+         slot with a different picture is a claim about a picture that is not
+         there, and it fails. Gate 24 turns the same field into a `reuse` flag in
+         the owner's review list, which is W25-R17's other half. */
+      const declared = REAL_FIELD(row.reuse_of) ? String(row.reuse_of) : null;
+      if (declared) {
+        const target = byId.get(declared);
+        if (!REAL_FIELD(row.reuse_reason)) {
+          problems.push({ id: 'reuse-undeclared', text: `${ph.where} declares reuse_of "${declared}" and no reuse_reason. W25-R17 permits one picture on several records OF THE SAME PRODUCT, and the reason is what states they are.` });
+        }
+        if (!target) {
+          problems.push({ id: 'reuse-unknown', text: `${ph.where} declares reuse_of "${declared}", which is not a slot in the ledger.` });
+        } else if (target.state !== 'filled') {
+          problems.push({ id: 'reuse-unfilled', text: `${ph.where} declares reuse_of "${declared}", which is not filled. A reused picture is one that is already on a card.` });
+        } else if (target.provenance !== row.provenance) {
+          problems.push({ id: 'reuse-mismatch', text: `${ph.where} declares reuse_of "${declared}" and names ${row.provenance}, but ${declared} holds ${target.provenance}. A declaration that points at a different picture is not a reuse.` });
+        }
+      }
+
       const firstFile = byFile.get(row.provenance);
       if (firstFile && firstFile !== ph.id) {
-        problems.push({ id: 'shared-image', text: `${ph.where} and slot ${firstFile} are both filled with ${row.provenance}. W25-R3: one picture never stands as two products, and a family image never fills a colour-variant card.` });
+        if (declared !== firstFile) {
+          problems.push({ id: 'shared-image', text: `${ph.where} and slot ${firstFile} are both filled with ${row.provenance}. W25-R3: one picture never stands as two products, and a family image never fills a colour-variant card.`
+            + (declared ? ` This slot declares reuse_of "${declared}", which is not ${firstFile}.` : ` W25-R17 permits it only where this slot declares reuse_of "${firstFile}" with a reason.`) });
+        }
       } else byFile.set(row.provenance, ph.id);
 
       const m = prow.source.match(IMAGE_URL);
@@ -270,7 +305,10 @@ function check(pages, rows, provenance, brandBySlot) {
         const key = m[0].toLowerCase();
         const firstSrc = bySourceImg.get(key);
         if (firstSrc && firstSrc !== ph.id) {
-          problems.push({ id: 'shared-image', text: `${ph.where} and slot ${firstSrc} name different files that were downloaded from the same picture, ${m[0]}. W25-R3: one picture never stands as two products.` });
+          if (declared !== firstSrc) {
+            problems.push({ id: 'shared-image', text: `${ph.where} and slot ${firstSrc} name different files that were downloaded from the same picture, ${m[0]}. W25-R3: one picture never stands as two products.`
+              + (declared ? ` This slot declares reuse_of "${declared}", which is not ${firstSrc}.` : '') });
+          }
         } else bySourceImg.set(key, ph.id);
       }
     }
@@ -394,6 +432,86 @@ const SELF = [
       { file: 'public/img/selftest-13.jpg', source: 'https://caparol.md/b/ \u00b7 https://caparol.md/fam.jpg', licence: GOOD_LICENCE, licenceUrl: 'https://caparol.md/b/', date: '2026-09-20' },
     ],
   },
+  /* W25-R17, the declared reuse. FIVE arms, because the permission has five ways
+     to be a claim about a picture that is not there, and one GREEN arm, because a
+     permission nobody has watched succeed is as untested as an assertion nobody
+     has watched fail. The green arm is the same shape as the first red one and
+     differs only by the declaration. */
+  {
+    arm: 'W25-R17 GREEN: a declared reuse of the same picture passes',
+    want: null,
+    pages: [
+      { rel: 'self-test/ru-a.html', html: FILLED_HTML('SELFTEST-20', '1 / 1') },
+      { rel: 'self-test/ru-b.html', html: FILLED_HTML('SELFTEST-21', '1 / 1') },
+    ],
+    rows: [
+      FILLED_ROW('SELFTEST-20', 'public/img/selftest-reuse.jpg'),
+      { ...FILLED_ROW('SELFTEST-21', 'public/img/selftest-reuse.jpg'), reuse_of: 'SELFTEST-20', reuse_reason: 'the same product under two catalogue records' },
+    ],
+    prov: [{ file: 'public/img/selftest-reuse.jpg', source: 'client logo asset, delivered with the repo scaffold', licence: 'legacy, licence unverified', licenceUrl: 'legacy, licence unverified', date: '2026-09-20' }],
+  },
+  {
+    arm: 'W25-R17: a reuse declared against a slot that is not the one holding the picture',
+    want: 'shared-image',
+    pages: [
+      { rel: 'self-test/rw-a.html', html: FILLED_HTML('SELFTEST-22', '1 / 1') },
+      { rel: 'self-test/rw-b.html', html: FILLED_HTML('SELFTEST-23', '1 / 1') },
+    ],
+    rows: [
+      FILLED_ROW('SELFTEST-22', 'public/img/selftest-reuse.jpg'),
+      { ...FILLED_ROW('SELFTEST-23', 'public/img/selftest-reuse.jpg'), reuse_of: 'SELFTEST-99', reuse_reason: 'a reason' },
+    ],
+    prov: [{ file: 'public/img/selftest-reuse.jpg', source: 'client logo asset, delivered with the repo scaffold', licence: 'legacy, licence unverified', licenceUrl: 'legacy, licence unverified', date: '2026-09-20' }],
+  },
+  {
+    arm: 'W25-R17: a reuse declared with no reason',
+    want: 'reuse-undeclared',
+    pages: [
+      { rel: 'self-test/rn-a.html', html: FILLED_HTML('SELFTEST-24', '1 / 1') },
+      { rel: 'self-test/rn-b.html', html: FILLED_HTML('SELFTEST-25', '1 / 1') },
+    ],
+    rows: [
+      FILLED_ROW('SELFTEST-24', 'public/img/selftest-reuse.jpg'),
+      { ...FILLED_ROW('SELFTEST-25', 'public/img/selftest-reuse.jpg'), reuse_of: 'SELFTEST-24' },
+    ],
+    prov: [{ file: 'public/img/selftest-reuse.jpg', source: 'client logo asset, delivered with the repo scaffold', licence: 'legacy, licence unverified', licenceUrl: 'legacy, licence unverified', date: '2026-09-20' }],
+  },
+  {
+    arm: 'W25-R17: a reuse declared against a slot the ledger does not have',
+    want: 'reuse-unknown',
+    pages: [{ rel: 'self-test/rx.html', html: FILLED_HTML('SELFTEST-26', '1 / 1') }],
+    rows: [{ ...FILLED_ROW('SELFTEST-26', 'public/img/selftest-reuse.jpg'), reuse_of: 'SELFTEST-NOPE', reuse_reason: 'a reason' }],
+    prov: [{ file: 'public/img/selftest-reuse.jpg', source: 'client logo asset, delivered with the repo scaffold', licence: 'legacy, licence unverified', licenceUrl: 'legacy, licence unverified', date: '2026-09-20' }],
+  },
+  {
+    arm: 'W25-R17: a reuse declared against a slot that is still a placeholder',
+    want: 'reuse-unfilled',
+    pages: [
+      { rel: 'self-test/rp-a.html', html: '<div class="ph ph--light" data-photo-slot="SELFTEST-27" style="--ph-ratio: 1 / 1;"><span class="ph__id">SELFTEST-27</span></div>' },
+      { rel: 'self-test/rp-b.html', html: FILLED_HTML('SELFTEST-28', '1 / 1') },
+    ],
+    rows: [
+      { id: 'SELFTEST-27', page: '/somewhere/', ratio: '1 / 1', min_px: '1000x1000', shows: 'nothing' },
+      { ...FILLED_ROW('SELFTEST-28', 'public/img/selftest-reuse.jpg'), reuse_of: 'SELFTEST-27', reuse_reason: 'a reason' },
+    ],
+    prov: [{ file: 'public/img/selftest-reuse.jpg', source: 'client logo asset, delivered with the repo scaffold', licence: 'legacy, licence unverified', licenceUrl: 'legacy, licence unverified', date: '2026-09-20' }],
+  },
+  {
+    arm: 'W25-R17: a reuse declared against a slot that holds a different picture',
+    want: 'reuse-mismatch',
+    pages: [
+      { rel: 'self-test/rm-a.html', html: FILLED_HTML('SELFTEST-29', '1 / 1') },
+      { rel: 'self-test/rm-b.html', html: FILLED_HTML('SELFTEST-30', '1 / 1') },
+    ],
+    rows: [
+      FILLED_ROW('SELFTEST-29', 'public/img/selftest-other.jpg'),
+      { ...FILLED_ROW('SELFTEST-30', 'public/img/selftest-reuse.jpg'), reuse_of: 'SELFTEST-29', reuse_reason: 'a reason' },
+    ],
+    prov: [
+      { file: 'public/img/selftest-other.jpg', source: 'client logo asset, delivered with the repo scaffold', licence: 'legacy, licence unverified', licenceUrl: 'legacy, licence unverified', date: '2026-09-20' },
+      { file: 'public/img/selftest-reuse.jpg', source: 'client logo asset, delivered with the repo scaffold', licence: 'legacy, licence unverified', licenceUrl: 'legacy, licence unverified', date: '2026-09-20' },
+    ],
+  },
   {
     /* W25-04. A lamp whose catalogue record names no manufacturer, filled from a
        "manufacturer packshot". There is no such manufacturer, so there was no
@@ -442,6 +560,19 @@ console.log('self-test control: clean');
 
 for (const t of SELF) {
   const got = check(t.pages, t.rows, provMap(t.prov), brandMap(t.brands));
+  /* W25-R17. `want: null` is a GREEN arm: a shape that MUST be accepted. It is
+     not decoration. The reuse permission is the first thing this gate lets
+     through rather than refuses, and a permission nobody has watched succeed is
+     as untested as an assertion nobody has watched fail. A green arm also catches
+     the opposite defect to every red one: a rule written so tightly that the
+     thing the owner permitted is refused. */
+  if (t.want === null) {
+    if (got.length) {
+      fail(`the self-test GREEN arm "${t.arm}" must be accepted and was refused: ${got.map((p) => p.id + ': ' + p.text).join(' | ')}. A permission the gate refuses is a ruling that did not land.`);
+    }
+    console.log(`self-test GREEN arm accepted, as it must be: ${t.arm}`);
+    continue;
+  }
   const hit = got.filter((p) => p.id === t.want);
   if (hit.length !== 1) {
     fail(`the self-test arm "${t.arm}" did not fire on its own message "${t.want}". It reported: ${got.length ? got.map((p) => p.id).join(', ') : 'nothing'}. An assertion nobody has watched fail is not a gate.`);

@@ -11324,3 +11324,70 @@ naming the supplier needs Q-W14-08 answered first.
 
 **24 of 24 gate commands exit 0.** RC-129 reads `2 index, 14 category, 14 subcategory, 16
 redirect`. Gate 19 reads `271 of 337`.
+
+## W25-20 · One picture, several records of the same product, 2026-09-22
+
+**Card W25-20.** PR only, stops for the owner. The full card is
+`docs/board/W25-20-ct80f-and-reuse.md`.
+
+**Twelve slots filled with a picture already on the site**, under W25-R16 and W25-R17.
+Ledger 271 to **283 of 337**, Catalog 259 to **271 of 294**. Nothing was downloaded: every
+one stands on a file another card already fetched, reviewed and installed.
+
+### The rule is declared, because a machine cannot see it
+
+W25-R3's "one picture never stands as two products" was right and too wide: the catalogue
+lists one Phomi product under two records, so the one swatch of it could fill only one, and
+**thirteen plates stayed grey for a reason about the catalogue's shape rather than about the
+product**. W25-R17 lifts that reach and leaves the second half untouched: a picture never
+fills a different product.
+
+So the permission is DECLARED on the later slot, `reuse_of` plus `reuse_reason`, and
+everything undeclared fails exactly as before. **The declaration is checked, not trusted**:
+gate 19 refuses a `reuse_of` naming a slot the ledger does not have, one that is still a
+placeholder, one holding a different picture, and a declaration with no reason.
+
+### A GREEN self-test arm, which is new here
+
+Gate 19's self-test gains six arms: five red, each watched fire on its own message, and one
+with `want: null` that asserts a shape the gate **must accept**.
+
+> A permission nobody has watched succeed is as untested as an assertion nobody has watched
+> fail. A green arm catches the opposite defect to every red one: a rule written so tightly
+> that the thing the owner permitted is refused.
+
+The green arm and the first red arm are the same two slots on the same file and differ only
+by the declaration.
+
+### What the twelve are
+
+`CAT-0005` under **W25-R16**: the owner closed Q-W25-16 at "two products, same picture on
+both". W25-15 blocked on it and the block was right, since name, unit and price all differ.
+
+Eleven ceramic plates under **W25-R17**, each taking the picture already on another record of
+the same product. **`matched_as` in `content/plate-brand-settlement.json` is what says they
+are the same product**: the catalogue name each record matched, settled at W25-03d against
+three catalogues, and data rather than a judgement made here. `CAT-0086` is the case the
+ruling was written for: its card reads "Placă Loki Mountain Light Grey" and `CAT-0044`'s
+reads "Placă Mountain Light Grey", and the settlement says they matched the same product.
+
+### Thirteen were held, twelve could be filled
+
+`CAT-0110` and `CAT-0112` both settle to "Polish Concrete Wall" and **neither was ever
+filled**, so the reason they carried, "the same picture already fills another record", was
+never true of this pair. There is no picture on either and nothing to reuse. Their
+`empty_reason` now says that, measured. A reason that is wrong is worse than no reason: it
+stops anyone looking again.
+
+### The review list and the owner's question
+
+Twelve rows carry a `reuse of <slot>` flag, which is W25-R17's other half in the shape
+W25-R5 and W25-R7 already have. `~/Documents/rc-audit-w24/CLAIMS-MIHAI.md` gains **question
+30** on a new page 4, quoting both CT 80 F rows in a table: two names, ten thicknesses, two
+Russian lines, two prices. One yes/no, and the answer does not move the picture.
+
+### Gates
+
+**24 of 24 gate commands exit 0.** Gate 19 runs **18 self-test arms**, seventeen red and one
+green, and reads `283 of 337`. The number is the one the run prints, not a remembered one. `public/` is unchanged: no image was added, so R-W walks the
+same tree.

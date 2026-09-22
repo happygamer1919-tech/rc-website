@@ -604,7 +604,7 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     image on a product slot, and the rule refuses a false claim about origin, not a
     generated picture. The gate therefore reads `content/catalog-products.json` as well,
     and judges only slots that appear in it.
-    **Its ~~three~~ ELEVEN-arm self-test is what makes it a gate while the ledger is still filling**:
+    **Its ~~three~~ ~~ELEVEN~~ EIGHTEEN-arm self-test is what makes it a gate while the ledger is still filling**:
     W24-01 ships the component, the ledger and the gate together, so both real counts are
     zero on that card and both assertions would hold vacuously. Before any real result it
     runs a planted unledgered placeholder, a planted unrendered row and a planted ratio
@@ -615,6 +615,19 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     plant being caught. Same arrangement as
     gate 17's parser self-test, and the same reason: an assertion nobody has watched fail
     is not a gate (section 13).
+    **AMENDED (W25-20): six more arms, and one of them is GREEN.** W25-R17 permits one
+    picture on several records of the same product, declared on the later slot as
+    `reuse_of` with a `reuse_reason`. Five red arms watch the declaration be refused: a
+    slot the ledger does not have, a slot still a placeholder, a slot holding a different
+    picture, a declaration with no reason, and a shared picture whose declaration points
+    elsewhere. The sixth is a new kind here: `want: null`, a shape the gate **must
+    accept**. *A permission nobody has watched succeed is as untested as an assertion
+    nobody has watched fail*, and a green arm catches the opposite defect to every red
+    one, a rule written so tightly that the thing the owner permitted is refused. The
+    green arm and the first red arm are the same two slots on the same file and differ
+    only by the declaration.
+    **The arm count above is the number the run prints**, not a remembered one: it was
+    three, then eleven, and the eleven was already stale when this line was read. Run it.
 
 20. `node scripts/check-layout-geometry.js` clean. **Since W24-09 (wave 24)**, run by
     `quality`. **The nineteen gates above do not read a layout.** W24-07 shipped a

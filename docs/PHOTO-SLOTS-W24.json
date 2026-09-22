@@ -378,7 +378,14 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"CT 80 F - Polistiren expandat\" (Caparol), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0002.jpg",
+      "alt": {
+        "ro": "CT 80 F - Polistiren expandat, ambalajul produsului",
+        "ru": "CT 80 F - Пенополистирол, упаковка продукта"
+      },
+      "reuse_of": "CAT-0002",
+      "reuse_reason": "W25-R16: the owner ruled these are two products listed twice by the source, and that the same photograph belongs on both."
     },
     {
       "id": "CAT-0006",
@@ -806,7 +813,14 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Placă Mountain Light Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0044.jpg",
+      "alt": {
+        "ro": "Placă Mountain Light Grey, textura placii",
+        "ru": "Плитка Mountain Light Grey, текстура плитки"
+      },
+      "reuse_of": "CAT-0044",
+      "reuse_reason": "W25-R17: the same Phomi product under two catalogue records; both settle to \"Loki Mountain Light Grey\"."
     },
     {
       "id": "CAT-0046",
@@ -1126,7 +1140,14 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Placă Blue Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0046.jpg",
+      "alt": {
+        "ro": "Placă Blue Grey, textura placii",
+        "ru": "Плитка Blue Grey, текстура плитки"
+      },
+      "reuse_of": "CAT-0046",
+      "reuse_reason": "W25-R17: the same Phomi product under two catalogue records; both settle to \"Blue Grey\"."
     },
     {
       "id": "CAT-0071",
@@ -1225,7 +1246,14 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Placă Medium Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0056.jpg",
+      "alt": {
+        "ro": "Placă Medium Grey, textura placii",
+        "ru": "Плитка Medium Grey, текстура плитки"
+      },
+      "reuse_of": "CAT-0056",
+      "reuse_reason": "W25-R17: the same Phomi product under two catalogue records; both settle to \"Medium Grey\"."
     },
     {
       "id": "CAT-0079",
@@ -1285,7 +1313,14 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"PLacă Ink-Dyed\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0061.jpg",
+      "alt": {
+        "ro": "Placă Ink-Dyed, textura placii",
+        "ru": "Плитка Ink-Dyed, текстура плитки"
+      },
+      "reuse_of": "CAT-0061",
+      "reuse_reason": "W25-R17: the same Phomi product under two catalogue records; both settle to \"Ink Dyed\"."
     },
     {
       "id": "CAT-0084",
@@ -1293,7 +1328,14 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Placă Sunis White\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0072.jpg",
+      "alt": {
+        "ro": "Placă Sunis White, textura placii",
+        "ru": "Плитка Sunis White, текстура плитки"
+      },
+      "reuse_of": "CAT-0072",
+      "reuse_reason": "W25-R17: the same Phomi product under two catalogue records; both settle to \"Sunis White\"."
     },
     {
       "id": "CAT-0085",
@@ -1301,7 +1343,14 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Placă Andes Yellow\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0073.jpg",
+      "alt": {
+        "ro": "Placă Andes Yellow, textura placii",
+        "ru": "Плитка Andes Yellow, текстура плитки"
+      },
+      "reuse_of": "CAT-0073",
+      "reuse_reason": "W25-R17: the same Phomi product under two catalogue records; both settle to \"Andes Yellow\"."
     },
     {
       "id": "CAT-0086",
@@ -1309,7 +1358,14 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Placă Loki Mountain Light Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0044.jpg",
+      "alt": {
+        "ro": "Placă Loki Mountain Light Grey, textura placii",
+        "ru": "Плитка Loki Mountain Light Grey, текстура плитки"
+      },
+      "reuse_of": "CAT-0044",
+      "reuse_reason": "W25-R17: the same Phomi product under two catalogue records; both settle to \"Loki Mountain Light Grey\"."
     },
     {
       "id": "CAT-0087",
@@ -1317,7 +1373,14 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Placă Veil Dark Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0071.jpg",
+      "alt": {
+        "ro": "Placă Veil Dark Grey, textura placii",
+        "ru": "Плитка Veil Dark Grey, текстура плитки"
+      },
+      "reuse_of": "CAT-0071",
+      "reuse_reason": "W25-R17: the same Phomi product under two catalogue records; both settle to \"Veil Dark Grey\"."
     },
     {
       "id": "CAT-0088",
@@ -1364,7 +1427,14 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Placă Sairo Off-White\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0076.jpg",
+      "alt": {
+        "ro": "Placă Sairo Off-White, textura placii",
+        "ru": "Плита Sairo Off-White, текстура плитки"
+      },
+      "reuse_of": "CAT-0076",
+      "reuse_reason": "W25-R17: the same Phomi product under two catalogue records; both settle to \"Sairo Off White\"."
     },
     {
       "id": "CAT-0092",
@@ -1411,7 +1481,14 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Placă Romam Red\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0089.jpg",
+      "alt": {
+        "ro": "Placă Romam Red, textura placii",
+        "ru": "Плитка Romam Red, текстура плитки"
+      },
+      "reuse_of": "CAT-0089",
+      "reuse_reason": "W25-R17: the same Phomi product under two catalogue records; both settle to \"Roman Red\"."
     },
     {
       "id": "CAT-0096",
@@ -1458,7 +1535,14 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Placă Portoro\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0069.jpg",
+      "alt": {
+        "ro": "Placă Portoro, textura placii",
+        "ru": "Плитка Portoro, текстура плитки"
+      },
+      "reuse_of": "CAT-0069",
+      "reuse_reason": "W25-R17: the same Phomi product under two catalogue records; both settle to \"Portoro\"."
     },
     {
       "id": "CAT-0100",
@@ -1596,7 +1680,8 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Polished Concrete Wall\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "placeholder",
+      "empty_reason": "no record of this product holds a Phomi picture, so there is none to reuse (W25-R17, W25-20)"
     },
     {
       "id": "CAT-0111",
@@ -1617,7 +1702,8 @@
       "ratio": "1 / 1",
       "min_px": "1200x1200",
       "shows": "Produsul \"Polish Concrete Wall\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "state": "placeholder",
+      "empty_reason": "no record of this product holds a Phomi picture, so there is none to reuse (W25-R17, W25-20)"
     },
     {
       "id": "CAT-0113",

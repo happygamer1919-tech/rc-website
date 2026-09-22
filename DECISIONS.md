@@ -12351,3 +12351,52 @@ printed; and the fence table's Material column, which printed half of every row 
 `/servicii/acoperisuri/` **19,458** against 19,518 and RU **19,644** against 19,704, **+1,443px**
 for three tables. `/servicii/modele-garduri/` **4,309** against 4,369 and RU **4,331** against
 4,391, **+489px** for one table of eight whose colour cells wrap. **26 of 26 gate commands exit 0.**
+
+## W26-05a · Text contrast: the Compară table's white labels, the copertine crumb, and gate 28, 2026-09-22
+
+Branch `w26/w26-05a-table-contrast`, based on `main` at `2397634`. Inserted at the owner's
+request from two screenshots of the live site.
+
+### Section 12.0 on 2397634: PASS
+
+`EXPECT_SHA=2397634eae25ebde5643d7b6dcda06c249b12d16 node scripts/verify-live.js
+https://rapidconstruct.md`: **exit 0, PASS, 0 unverified, 0 failed, 51 of 51, 16 of 16 redirect
+URLs, 0 retried.** W26-05 is complete.
+
+### The defect, and the sweep that bounded it
+
+**Rocă vulcanică's Compară modelele table rendered every `th` white on white**, RO and RU, both
+widths: `.spec` paints `--bg-light` and set no `color`, so its `th` inherited `.section--dark`'s
+`--bg-light`. The `td` carry `--ink-muted` and were never affected. **W24-07, 2026-09-20.**
+
+**Every visible text element on every built page was then measured**, 15,423 on 67 pages at
+1440 and 390, and **exactly one more defect came back**: the copertine hero's breadcrumb, where
+`.breadcrumb` (later in the file, same specificity) beat `.cop-hero__crumb` and
+`.breadcrumb [aria-current]` painted the page name `--ink` on `--bg-dark`, 1.06:1. **W24-08, the
+same day.** The other 23 tables on 16 pages sit on white sections and inherit the right colour
+by coincidence.
+
+### The fix
+
+`.spec` sets `color: var(--ink)`: a component that paints its own ground sets its own ink. The
+crumb is written `.cop-hero .cop-hero__crumb`, two classes deep, with its `[aria-current]` and
+its link hover (`--brand`) beside it. **No new colour, heights identical to the pixel on the four
+pages** (4,234 / 4,332 and 6,555 / 6,631, equal to the live figures).
+
+### Gate 28
+
+`scripts/check-text-contrast.js`. **Why no gate saw either**: gate 5's Lighthouse reads contrast
+on the two homepages, gate 18 reads the dropdowns, nothing read any other page. Every built page,
+both locales, 1440 and 390, every element directly holding visible text, WCAG 1.4.3's 4.5:1 or
+3:1 for large text, backdrop composited up the tree, cumulative opacity applied to the text.
+**Watched fail on `main`'s build: exit 1, 40 problems, the 36 `th` and 4 crumbs and nothing
+else.** Exit 0 on this branch. Twelve self-test arms, three GREEN, between two clean controls.
+
+**Two readings recorded for ratification.** **At rest includes waiting out every finite
+animation**: the site transitions `color`, reduced motion does not stop that, and the first
+version read a planted defect mid-transition and passed its own arm on some runs; after the wait,
+five runs, every arm every time. **`aria-hidden` text is decoration and is not judged**, which is
+WCAG's pure-decoration exception in machine-readable form: the offer cards' ghost numerals are at
+1.13:1 by design (W14-08). 316 counted per run and printed with the faintest ratio.
+
+**Gate count 27 to 28, `quality` 26 to 27 commands.**

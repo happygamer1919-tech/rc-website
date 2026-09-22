@@ -807,6 +807,43 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     tree clean and said nothing about `build.js`'s real defect; that is why the real-file arms
     exist and not only the synthetic ones. It fails on zero files and on zero literals read.
 
+28. `node scripts/check-text-contrast.js` clean. **Since W26-05a (wave 26)**, run by `quality`
+    after gate 18 and before gate 13. **The owner found this one on the live site, by eye.**
+    Rocă vulcanică's Compară modelele table printed its model names and row labels **white on
+    white**: the table paints its own white ground on a dark band, its `th` set no colour, and
+    they inherited the band's. The same sweep found the copertine hero's breadcrumb painting the
+    current page `--ink` on `--bg-dark`, 1.06:1, because `.breadcrumb` sits later in the
+    stylesheet than `.cop-hero__crumb` at equal specificity. **Both shipped on 2026-09-20 and
+    were live for two days behind green gates**, because gate 5's Lighthouse reads contrast on
+    the two homepages only and gate 18 reads the dropdowns only. No other page had ever had its
+    text contrast read.
+    **Every built page, found in `dist/`, both locales, at 1440 and at 390 with mobile
+    emulation**: every element that directly holds visible text paints at WCAG 1.4.3's 4.5:1,
+    or 3:1 for large text, against its backdrop composited up the tree, with the element's
+    cumulative opacity applied to the text. Those two figures are WCAG's, quoted as the
+    external standard they are. **At rest**: reveals applied, reduced motion emulated, the
+    pointer never moved, and **every finite animation waited out**, because the site
+    transitions `color` and reduced motion does not stop a colour transition; the first
+    version read a planted defect mid-transition and passed its own arm on some runs.
+    Meta-refresh redirect pages are skipped and counted.
+    **Decoration is not judged, and it is named by `aria-hidden="true"`**, which is WCAG's
+    pure-decoration exception in the one form a machine can read: the roofing offer cards'
+    ghost numerals sit at 1.13:1 on purpose (W14-08). The count and the faintest ratio print
+    every run. **What it cannot read, it says**: a backdrop is read from ancestors, so text
+    laid over a photograph is measured against the colour beneath it, and every such row is
+    counted; text shown only on interaction is gate 18's or no gate's.
+    **Its twelve-arm self-test runs first and three arms are GREEN**: both real defects are
+    planted back onto the real pages and must fire, at desktop and at phone width; a translucent
+    layer and an opacity each must be composited; an unreadable colour and a page with no text
+    must fail as presence; and large text at a colour normal text may not use, white-on-white
+    text that is visually hidden, and the ghost numeral must all be ACCEPTED, with the numeral
+    stripped of `aria-hidden` as the red arm beside it. Two clean controls are read before and
+    after (R-AB). **Watched fail on `main` as deployed at `2397634`: exit 1, 40 problems, the 36
+    `th` and the 4 crumbs, and nothing else.** It fails on zero pages, either locale missing, a
+    page with no text, an unreadable colour, an animation that never settles, and fewer
+    combinations than the matrix holds. It does not need Inter: a colour and a computed size do
+    not depend on the face.
+
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number — Q-W14-03 was found "at gate 9" — and those bodies are immutable under
 R-S, so renumbering would falsify them. A gate added later takes the next number
@@ -845,10 +882,13 @@ two data files and nothing else, so it needs no build and no browser.
 gate 1.
 **AMENDED (W26-04):** gate 27 runs FIRST, before gate 1. It reads source text only, needs
 neither a build nor a browser, and it guards the file the build is written in.
+**AMENDED (W26-05a):** gate 28 runs after gate 18 and before gate 13, with the other browser
+gates, because gate 13 rebuilds `dist/` armed.
 
 **The count, so it stops drifting (W25-03c).** ~~This list numbers **25** gates.~~
 ~~**AMENDED (W25-24): 26**, and `quality` runs **25** commands.~~
-**AMENDED (W26-04): 27**, and `quality` runs **26** commands. The number to report is the one
+~~**AMENDED (W26-04): 27**, and `quality` runs **26** commands.~~
+**AMENDED (W26-05a): 28**, and `quality` runs **27** commands. The number to report is the one
 `node scripts/run-gates.js` prints, never this sentence. Five of them
 are not scripts and `quality` cannot run them: gate 4 (heights measured settled), gate 6 (no
 new colour), gate 7 (reduced motion), gate 8 (the three documents updated) and **gate 9,

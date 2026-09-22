@@ -911,3 +911,14 @@ deviation, because seventeen columns cannot go on a phone and gate 14 holds this
 sideways scroll at 360. **No warranty column**: answered for fences, still held for roofs. The
 build refuses a table under two products and a column under half real. Budgets **19,518 /
 19,704** and **4,369 / 4,391**. 26 of 26 gate commands exit 0.
+
+## W26-05a · Text contrast and gate 28
+**Status: PR OPEN** (2026-09-22). Inserted at the owner's request from two screenshots.
+**Section 12.0 on `2397634`: exit 0, PASS, 51 of 51, 16 of 16 redirects, 0 retried.** Rocă
+vulcanică's Compară table rendered every `th` **white on white** (inherited from the dark band),
+RO and RU, since W24-07. **A sweep of every visible text element on every page** (15,423 on 67
+pages, 1440 and 390) found **exactly one more**: the copertine crumb's page name at 1.06:1, since
+W24-08. Both fixed in two rules, no new colour, heights identical to the pixel. **Gate 28**
+reads every page's text contrast: exit 1 on `main` with 40 problems (36 `th`, 4 crumbs), exit 0
+here; 12 arms, 3 GREEN; it waits out colour transitions and treats `aria-hidden` text as
+decoration. **27 of 27 gate commands exit 0.**

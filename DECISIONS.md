@@ -12556,3 +12556,50 @@ for the owner. **CAT-0038's maker describes a 4 kg pack**, where the record copi
 supplier says 20 kg: a data question, not a picture one, left as recorded.
 
 **Heights identical to the pixel** on the seven pages measured. Ledger **332 of 347 filled**.
+
+## W26-11 · The roofing page is complete: every tile pictured, every tile a real destination, 2026-09-22
+
+Branch `w26/w26-11-roofing-hub`, stacked on W26-10 (#131).
+
+**Tiles filled: 6 of 6. Product cards filled: 9 of 9. The roofing page renders no placeholder.**
+Ledger **347 of 347 filled**, 0 empty: every photo slot on the site holds a picture.
+
+**W26-R10, the widened override, and what it did not take.** `ACOP-06` (Șindrilă) and `ACOP-07`
+(Sisteme pluviale) are imperlux's category images **cropped clear of the burned-in headline and
+the model count** (7:2 band below the text; the downpipe band below it). `ACIM-04` to `ACIM-09`
+are imperlux's rainwater packshots, clean, as published. `ACIM-02` and `ACIM-03` (IKO) are a
+490px corner of the shingle texture, **clear of imperlux's orange mark** in the centre and the
+name band below. **`ACIM-01` (Creaton Rapido) was NOT taken from its product hero**, which has
+imperlux's orange brand shapes behind the tile that no crop removes; Creaton itself no longer
+lists Rapido (its German and Swiss sites show Ratio and Rustico only). imperlux's own "Țiglă
+ceramică" category image shows the same tile with no brand shapes, so the card takes a crop of
+that. **`ACOP-05` declares reuse of `ACIM-01`**, W25-R22's shape: the section holds exactly that
+one product.
+
+**The override grows by name in all three places that hold it**: sixteen ids become twenty-eight,
+under a third licence sentence of its own (W26-R10), and **`fetch-packshot.js` finally matches
+gate 19**, having stayed at W25-R15's twelve through W26-R3. Watched on planted rows between two
+clean controls, the file restored byte-identical: a W26-R10 licence on `CAT-0004` fails both the
+provenance check and gate 19; a W26-R3 licence on `ACIM-01` fails the provenance check.
+
+**W26-R11, the owner's own photographs.** `ACOP-03` a house mid-build with its roof battens on,
+the measuring stage; `ACOP-04` a drone view of a finished dark metal tile roof; `ACOP-08` a
+gutter and downpipe under a timber soffit. All fifteen files are named "WhatsApp Image", so
+**chosen by what each shows**, each cropped to 7:4 at its own width. R-W's client-supplied
+origin, stripped, gate 17 holds it.
+
+**The tool that cropped was wrong once, and caught.** `sips --cropOffset 0 0` does not crop at
+the corner; it falls back to a centred crop. The first IKO crops **kept imperlux's logo**, seen
+on the contact sheet. Every crop in this card is `ffmpeg`'s exact `crop=w:h:x:y`, and **W26-07's
+three pushed crops were re-made with it and compared: identical**.
+
+**W26-R12, the links.** Fence: "Prețuri și oferte" opens `/servicii/modele-garduri/#preturi`,
+the Compară table with its price column, which gains that id. Roofing: "Calculează prețul" opens
+`/servicii/tigla-metalica/#tigla-metalica` and "Reduceri" opens `/#oferta`, **cross-page
+fragments the ruling allows**, and **Q-W26-05** asks whether those are what was meant. The
+bento takes a `fragment` and a `home` destination; `build.js` refuses a fragment with no page.
+Gate 26: 0 same-page anchors of 16.
+
+**Section product counts, every card pictured**: Țiglă metalică 4, Țiglă ceramică 1, Șindrilă
+bituminoasă 2, Sisteme pluviale 18, Accesorii de acoperiș 53, both locales. **The review list now
+sees `ACIM-`**, which it never had. **Heights identical to the pixel** on five pages.

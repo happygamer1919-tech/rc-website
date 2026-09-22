@@ -762,6 +762,10 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     when a listed slot has no ledger row, when a slot is already filled and therefore does
     not belong on a waiting list, when a hub slot renders on no built page or with no label
     beside it, and when either list is not the eight it must be.
+    **AMENDED (W26-11): both lists are now EMPTY, because every ledger row is filled**, and an
+    empty list is accepted only when that is demonstrable: the walk saw all twelve hub tiles and
+    all eight fence cards, and the whole ledger reads filled. Anything less is still the broken
+    walk this gate refuses. Watched: one row set back to a placeholder fails it, naming the row.
 
 26. `node scripts/check-hub-tile-links.js` clean. **Since W25-24 (wave 25)**, ruling W25-R24,
     run by `quality` with the other static checks. **Every hub tile on

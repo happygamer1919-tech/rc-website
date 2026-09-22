@@ -55,10 +55,12 @@ const HUBS = [
   { prefix: 'GARDB-', file: 'dist/servicii/garduri/index.html' },
 ];
 const hub = [];
+let hubSeen = 0;
 for (const h of HUBS) {
   const html = read(h.file);
   const ids = [...new Set([...html.matchAll(new RegExp(`data-photo-slot="(${h.prefix}\\d+)"`, 'g'))].map((m) => m[1]))].sort();
   if (!ids.length) die(`no ${h.prefix} slot renders on ${h.file}.`);
+  hubSeen += ids.length;
   for (const id of ids) {
     const row = rows.get(id);
     if (!row) die(`${id} renders on ${h.file} and has no ledger row.`);
@@ -82,7 +84,17 @@ for (const h of HUBS) {
    asserted is that the generator SAW both hub families: a prefix that renders on
    no page is a failure above, and a list that is empty because the walk broke
    would be indistinguishable from one that is empty because the work is done. */
-if (!hub.length && !fence.length) die('both lists are empty. Either everything is filled, which is a state to state deliberately, or the walk is broken.');
+/* AMENDED (W26-11): everything IS filled now, and this is where that is stated
+   deliberately rather than inferred from silence. Both lists empty is accepted
+   only when the walk demonstrably saw what it walks (all eight fence cards and
+   every hub tile both pages render) AND the whole ledger reads filled. Anything
+   less is still the broken walk this line always refused. */
+const ALL_FILLED = !hub.length && !fence.length;
+if (ALL_FILLED) {
+  const empty = ledger.slots.filter((r) => r.state !== 'filled').map((r) => r.id);
+  if (empty.length) die(`both lists are empty and ${empty.length} ledger row(s) are not filled (${empty.slice(0, 8).join(', ')}), so the walk missed them.`);
+  if (hubSeen !== 12) die(`both lists are empty and the walk saw ${hubSeen} hub tiles, not the 12 the two hubs render (8 roofing, 4 fence).`);
+}
 
 const L = [];
 L.push('# Owner intake, wave 25');
@@ -135,14 +147,24 @@ if (!fence.length) {
 L.push('');
 L.push(`## (b) Hub tiles, ${hub.length}, the PRIORITY BATCH`);
 L.push('');
-L.push(`Drop these in \`${AI}\`. They are the first block in`);
-L.push('`~/Documents/rc-audit-w24/AI-PROMPTS-W25.md`, each with its own prompt.');
-L.push('');
-L.push('| File to save | Tile | Page | Ratio | Minimum |');
-L.push('|---|---|---|---|---|');
-for (const t of hub) L.push(`| \`${t.id}.png\` | ${t.label} | ${t.page} | ${t.ratio} | ${t.min_px} |`);
-L.push('');
-L.push(`These ${hub.length} ratios are not all the same, and the prompt for each names its own.`);
+if (!hub.length) {
+  L.push(`**Nothing is waiting here.** All ${hubSeen} hub tiles on the two hubs are filled.`);
+  if (ALL_FILLED) {
+    L.push('');
+    L.push(`**And nothing is waiting anywhere: all ${ledger.slots.length} ledger rows are filled** (W26-11). A`);
+    L.push('real photograph from the owner\'s own work is still the better picture for any tile that');
+    L.push('holds a supplier or library image, and the intake still takes one, but no slot is empty.');
+  }
+} else {
+  L.push(`Drop these in \`${AI}\`. They are the first block in`);
+  L.push('`~/Documents/rc-audit-w24/AI-PROMPTS-W25.md`, each with its own prompt.');
+  L.push('');
+  L.push('| File to save | Tile | Page | Ratio | Minimum |');
+  L.push('|---|---|---|---|---|');
+  for (const t of hub) L.push(`| \`${t.id}.png\` | ${t.label} | ${t.page} | ${t.ratio} | ${t.min_px} |`);
+  L.push('');
+  L.push(`These ${hub.length} ratios are not all the same, and the prompt for each names its own.`);
+}
 L.push('');
 
 const text = L.join('\n');

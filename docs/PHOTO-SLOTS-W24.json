@@ -294,120 +294,197 @@
       "page": "/servicii/acoperisuri/",
       "ratio": "7 / 4",
       "min_px": "900x520",
-      "shows": "Calcularea pretului: santier de acoperis cu masuratori in curs, ruleta sau plan pe masa. Orizontal. AMENDED W26-03 (ruling W26-R3): STILL EMPTY, and the reason is measured. The imperlux.md roofing hub carries six tile images: five product categories and one promo. NONE of them is a price calculator, so this tile has no counterpart to take. Nothing was substituted.",
-      "state": "placeholder"
+      "shows": "Calcularea pretului: santier de acoperis cu masuratori in curs, ruleta sau plan pe masa. Orizontal. AMENDED W26-03 (ruling W26-R3): STILL EMPTY, and the reason is measured. The imperlux.md roofing hub carries six tile images: five product categories and one promo. NONE of them is a price calculator, so this tile has no counterpart to take. Nothing was substituted. AMENDED W26-11 (W26-R11): filled with the owner's own photograph from RC-webpics_v2/ACOPERIȘURI, a house mid-build with its roof battens on and no covering yet, the stage at which a roof is measured. The folder's files are all named \"WhatsApp Image\", so it was chosen by what it shows; cropped to 7:4 at its own width, no upscale.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACOP-03.jpg",
+      "alt": {
+        "ro": "Casă în construcție cu șipcile acoperișului montate, înainte de învelitoare",
+        "ru": "Дом в стадии строительства с обрешёткой кровли, до укладки покрытия"
+      }
     },
     {
       "id": "ACOP-04",
       "page": "/servicii/acoperisuri/",
       "ratio": "7 / 4",
       "min_px": "900x520",
-      "shows": "Reduceri: material de acoperis stivuit in depozit sau pe santier. Orizontal. Fara pret, fara eticheta, fara procent in cadru. AMENDED W26-03 (ruling W26-R3): STILL EMPTY, and the reason is measured. The only imperlux.md tile left is the one its \"oferte\" tile shows, /acoperisuri/images/promo/scurgere-gratuit-cta.jpg, and it is an advert: it carries the IMPERLUX LOGO, the headline \"Vrei sistem de scurgere GRATUIT?\" and a \"Click si afla detalii\" button. A competitor logo and a free-offer claim are two separate refusals. Cropping to its photograph leaves a rainwater-system render, which matches neither this line nor the tile label \"Reduceri\".",
-      "state": "placeholder"
+      "shows": "Reduceri: material de acoperis stivuit in depozit sau pe santier. Orizontal. Fara pret, fara eticheta, fara procent in cadru. AMENDED W26-03 (ruling W26-R3): STILL EMPTY, and the reason is measured. The only imperlux.md tile left is the one its \"oferte\" tile shows, /acoperisuri/images/promo/scurgere-gratuit-cta.jpg, and it is an advert: it carries the IMPERLUX LOGO, the headline \"Vrei sistem de scurgere GRATUIT?\" and a \"Click si afla detalii\" button. A competitor logo and a free-offer claim are two separate refusals. Cropping to its photograph leaves a rainwater-system render, which matches neither this line nor the tile label \"Reduceri\". AMENDED W26-11 (W26-R11): filled with the owner's own photograph from RC-webpics_v2/ACOPERIȘURI, a drone view of a finished dark metal tile roof. The folder's files are all named \"WhatsApp Image\", so it was chosen by what it shows; cropped to 7:4 at its own width, no upscale.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACOP-04.jpg",
+      "alt": {
+        "ro": "Vedere de sus a unei case cu acoperiș nou din țiglă metalică gri închis",
+        "ru": "Вид сверху на дом с новой кровлей из тёмно-серой металлочерепицы"
+      }
     },
     {
       "id": "ACOP-05",
       "page": "/servicii/acoperisuri/",
       "ratio": "5 / 6",
       "min_px": "1000x1200",
-      "shows": "Tigla ceramica: tila din al doilea bento al paginii de acoperisuri, format PORTRET (tila inalta a bento-ului). W26-04: NU este acoperita de suprascrierea W26-R3, care este tinuta la ACOP-01..04.",
-      "state": "placeholder"
+      "shows": "Tigla ceramica: tila din al doilea bento al paginii de acoperisuri, format PORTRET (tila inalta a bento-ului). W26-04: NU este acoperita de suprascrierea W26-R3, care este tinuta la ACOP-01..04. AMENDED W26-11 (W26-R10): a declared reuse of ACIM-01, the one product this section holds, in W25-R22's shape for a category tile.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-01.jpg",
+      "alt": {
+        "ro": "Țiglă ceramică Creaton Rapido neagră",
+        "ru": "Чёрная керамическая черепица Creaton Rapido"
+      },
+      "reuse_of": "ACIM-01",
+      "reuse_reason": "W26-R10 and W25-R22: the section tile stands on the one product of its section, Creaton Rapido, cropped to the tile ratio by the tile itself"
     },
     {
       "id": "ACOP-06",
       "page": "/servicii/acoperisuri/",
       "ratio": "7 / 2",
       "min_px": "1750x500",
-      "shows": "Sindrila bituminoasa: tila din al doilea bento al paginii de acoperisuri, cadru LAT si jos (tila panoramica). W26-04: NU este acoperita de suprascrierea W26-R3, care este tinuta la ACOP-01..04.",
-      "state": "placeholder"
+      "shows": "Sindrila bituminoasa: tila din al doilea bento al paginii de acoperisuri, cadru LAT si jos (tila panoramica). W26-04: NU este acoperita de suprascrierea W26-R3, care este tinuta la ACOP-01..04. AMENDED W26-11 (W26-R10): filled from imperlux.md under the widened override, a full-width 7:2 band of the shingle texture below the burned-in headline and model count.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACOP-06.jpg",
+      "alt": {
+        "ro": "Șindrilă bituminoasă neagră, prim-plan",
+        "ru": "Чёрная битумная черепица, крупный план"
+      }
     },
     {
       "id": "ACOP-07",
       "page": "/servicii/acoperisuri/",
       "ratio": "7 / 4",
       "min_px": "900x520",
-      "shows": "Sisteme pluviale: tila din al doilea bento al paginii de acoperisuri, orizontal. W26-04: NU este acoperita de suprascrierea W26-R3, care este tinuta la ACOP-01..04.",
-      "state": "placeholder"
+      "shows": "Sisteme pluviale: tila din al doilea bento al paginii de acoperisuri, orizontal. W26-04: NU este acoperita de suprascrierea W26-R3, care este tinuta la ACOP-01..04. AMENDED W26-11 (W26-R10): filled from imperlux.md under the widened override, the band below the burned-in headline and model count, the downpipe and its outlet.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACOP-07.jpg",
+      "alt": {
+        "ro": "Burlan maro cu racordul lui, sub streașină",
+        "ru": "Коричневая водосточная труба с воронкой под свесом"
+      }
     },
     {
       "id": "ACOP-08",
       "page": "/servicii/acoperisuri/",
       "ratio": "7 / 4",
       "min_px": "900x520",
-      "shows": "Accesorii de acoperis: tila din al doilea bento al paginii de acoperisuri, orizontal. W26-04: NU este acoperita de suprascrierea W26-R3, care este tinuta la ACOP-01..04.",
-      "state": "placeholder"
+      "shows": "Accesorii de acoperis: tila din al doilea bento al paginii de acoperisuri, orizontal. W26-04: NU este acoperita de suprascrierea W26-R3, care este tinuta la ACOP-01..04. AMENDED W26-11 (W26-R11): filled with the owner's own photograph from RC-webpics_v2/ACOPERIȘURI, a gutter, its bend and a downpipe under a timber soffit, which is what the accessories tile names. The folder's files are all named \"WhatsApp Image\", so it was chosen by what it shows; cropped to 7:4 at its own width, no upscale.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACOP-08.jpg",
+      "alt": {
+        "ro": "Jgheab și burlan gri închis sub o streașină din lemn, pe o casă din piatră",
+        "ru": "Тёмно-серые желоб и водосточная труба под деревянным свесом каменного дома"
+      }
     },
     {
       "id": "ACIM-01",
       "page": "/servicii/acoperisuri/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Creaton Rapido\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el.",
-      "state": "placeholder"
+      "shows": "Produsul \"Creaton Rapido\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el. AMENDED W26-11 (W26-R10): filled from imperlux.md under the widened override, cropped to the tile from the category image, which shows the same Creaton Rapido tile without the orange brand shapes the product hero carries.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-01.jpg",
+      "alt": {
+        "ro": "Creaton Rapido, țiglă ceramică neagră",
+        "ru": "Creaton Rapido, чёрная керамическая черепица"
+      }
     },
     {
       "id": "ACIM-02",
       "page": "/servicii/acoperisuri/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"IKO Cambridge\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el.",
-      "state": "placeholder"
+      "shows": "Produsul \"IKO Cambridge\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el. AMENDED W26-11 (W26-R10): filled from imperlux.md under the widened override, a 490x490 corner of the shingle texture, clear of the imperlux mark and the name band.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-02.jpg",
+      "alt": {
+        "ro": "IKO Cambridge, textura șindrilei bituminoase",
+        "ru": "IKO Cambridge, фактура битумной черепицы"
+      }
     },
     {
       "id": "ACIM-03",
       "page": "/servicii/acoperisuri/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"IKO Superglass Hex\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el.",
-      "state": "placeholder"
+      "shows": "Produsul \"IKO Superglass Hex\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el. AMENDED W26-11 (W26-R10): filled from imperlux.md under the widened override, a 490x490 corner of the shingle texture, clear of the imperlux mark and the name band.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-03.jpg",
+      "alt": {
+        "ro": "IKO Superglass Hex, textura șindrilei hexagonale",
+        "ru": "IKO Superglass Hex, фактура шестиугольной черепицы"
+      }
     },
     {
       "id": "ACIM-04",
       "page": "/servicii/acoperisuri/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Cârlig pazie universal\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el.",
-      "state": "placeholder"
+      "shows": "Produsul \"Cârlig pazie universal\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el. AMENDED W26-11 (W26-R10): filled from imperlux.md under the widened override, the product packshot as published, no text on it.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-04.jpg",
+      "alt": {
+        "ro": "Cârlig pazie universal, produsul",
+        "ru": "Универсальный кронштейн желоба, товар"
+      }
     },
     {
       "id": "ACIM-05",
       "page": "/servicii/acoperisuri/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Cot 60°\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el.",
-      "state": "placeholder"
+      "shows": "Produsul \"Cot 60°\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el. AMENDED W26-11 (W26-R10): filled from imperlux.md under the widened override, the product packshot as published, no text on it.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-05.jpg",
+      "alt": {
+        "ro": "Cot 60°, produsul",
+        "ru": "Колено 60°, товар"
+      }
     },
     {
       "id": "ACIM-06",
       "page": "/servicii/acoperisuri/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Prelungitor\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el.",
-      "state": "placeholder"
+      "shows": "Produsul \"Prelungitor\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el. AMENDED W26-11 (W26-R10): filled from imperlux.md under the widened override, the product packshot as published, no text on it.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-06.jpg",
+      "alt": {
+        "ro": "Prelungitor, produsul",
+        "ru": "Удлинитель водосточной трубы, товар"
+      }
     },
     {
       "id": "ACIM-07",
       "page": "/servicii/acoperisuri/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Pâlnie colectoare\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el.",
-      "state": "placeholder"
+      "shows": "Produsul \"Pâlnie colectoare\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el. AMENDED W26-11 (W26-R10): filled from imperlux.md under the widened override, the product packshot as published, no text on it.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-07.jpg",
+      "alt": {
+        "ro": "Pâlnie colectoare, produsul",
+        "ru": "Водосборная воронка, товар"
+      }
     },
     {
       "id": "ACIM-08",
       "page": "/servicii/acoperisuri/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Ramificație burlan\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el.",
-      "state": "placeholder"
+      "shows": "Produsul \"Ramificație burlan\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el. AMENDED W26-11 (W26-R10): filled from imperlux.md under the widened override, the product packshot as published, no text on it.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-08.jpg",
+      "alt": {
+        "ro": "Ramificație burlan, produsul",
+        "ru": "Тройник водосточной трубы, товар"
+      }
     },
     {
       "id": "ACIM-09",
       "page": "/servicii/acoperisuri/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element captare\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el.",
-      "state": "placeholder"
+      "shows": "Produsul \"Element captare\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el. AMENDED W26-11 (W26-R10): filled from imperlux.md under the widened override, the product packshot as published, no text on it.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-09.jpg",
+      "alt": {
+        "ro": "Element captare, produsul",
+        "ru": "Водоприёмный элемент, товар"
+      }
     },
     {
       "id": "BA-01-before",

@@ -539,7 +539,11 @@ p { margin: 0; }
 /* The inert tile is a div, never a disabled link: a disabled <a> with an href is
    still a link to a keyboard and to a screen reader. It takes no hover and no
    pointer, which is the dispatch's own wording. */
-.hub__tile--inert { cursor: default; }
+/* W25-24. `.hub__tile--inert` is GONE, and so is the class: ruling W25-R24 gives
+   every hub tile a destination, so no tile renders as a non-link and this rule
+   would style nothing. It set `cursor: default`, which is the only thing that
+   ever told a visitor the tile was not a link. Left behind it would be a rule
+   waiting for a state that cannot happen, and build.js now refuses that state. */
 
 /* --- W24-07, the Novatik model cards ---------------------------------------- */
 .nvk-grid {

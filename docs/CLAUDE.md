@@ -757,6 +757,29 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     not belong on a waiting list, when a hub slot renders on no built page or with no label
     beside it, and when either list is not the eight it must be.
 
+26. `node scripts/check-hub-tile-links.js` clean. **Since W25-24 (wave 25)**, ruling W25-R24,
+    run by `quality` with the other static checks. **Every hub tile on
+    `/servicii/acoperisuri/` and `/servicii/garduri/`, both locales, has an href that
+    resolves**: a path this build emits a page for, or an id that exists on the page named.
+    Sixteen tiles. It reads the built tree, so it needs neither a browser nor a network: the
+    site is static and a path answers 200 exactly when `dist` holds the file, and asking the
+    live site would test the last deploy rather than this build.
+    **It is a gate of its own rather than a clause of gate 20**, which measures painted boxes
+    and takes no view on hrefs; an href assertion inside it would be a second thing in a box
+    labelled one thing.
+    **It says out loud that it would not have caught the defect that created it.** The Garduri
+    hub's first tile pointed at `#garduri`, which resolved, on both locales, live and local:
+    what was wrong was that a tile the size of a photograph moved a visitor a little way down
+    the page they were already on, and no resolution check can see that. Its first version
+    refused a same-page anchor by kind and thereby refused two tiles the owner had just been
+    given, which is a rule written tighter than the ruling it enforces. So a same-page anchor
+    that resolves is PERMITTED and every one is printed, named and counted on every run.
+    **Its seven-arm self-test** plants a tile with no href, a dead path, a dead fragment on
+    another page, a dead fragment on its own page, an href that is not a site path and a hub
+    with the wrong tile count, between two clean controls (R-AB), and **two of the seven are
+    GREEN**: a cross-page fragment that resolves, and a same-page anchor that resolves. The
+    second green arm is the one the first version got wrong.
+
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number — Q-W14-03 was found "at gate 9" — and those bodies are immutable under
 R-S, so renumbering would falsify them. A gate added later takes the next number
@@ -794,7 +817,9 @@ two data files and nothing else, so it needs no build and no browser.
 **AMENDED (W25-16):** gate 25 runs beside gate 24. It reads the built pages, so it runs after
 gate 1.
 
-**The count, so it stops drifting (W25-03c).** This list numbers **25** gates. Five of them
+**The count, so it stops drifting (W25-03c).** ~~This list numbers **25** gates.~~
+**AMENDED (W25-24): 26**, and `quality` runs **25** commands. The number to report is the one
+`node scripts/run-gates.js` prints, never this sentence. Five of them
 are not scripts and `quality` cannot run them: gate 4 (heights measured settled), gate 6 (no
 new colour), gate 7 (reduced motion), gate 8 (the three documents updated) and **gate 9,
 which section 12.0 runs against the deployed sha after the merge**. Eighteen numbered gates

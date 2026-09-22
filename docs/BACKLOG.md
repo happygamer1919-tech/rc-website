@@ -763,3 +763,10 @@ strip's length is asserted against `TOP_LEVEL_PRODUCT_PAGES`, never a literal. B
 to **9,141** and 9,436 to **9,354**, measured plus 60: the saving is column width, not a row.
 `teaserTiles: 2` added to the live markers. W25-R18 discharged on `c05ce0e`. 24 of 24 gate
 commands exit 0.
+
+## W25-24 · Hub tiles and gate 26
+**Status: PR OPEN, image half BLOCKED** (2026-09-22). All 16 hub tiles have a destination; the
+Garduri "tip jaluzele" tile opens the models page; `.hub__tile--inert` and its render branch
+deleted. **Gate 26** `check-hub-tile-links.js`, 7 arms, 2 of them green. **The 8 tile images
+are blocked: Q-W25-18**, because W25-R19's premise is gone, both imperlux 4-tile sections have
+been rebuilt and neither exists. 25 of 25 gate commands exit 0.

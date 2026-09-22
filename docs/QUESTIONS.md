@@ -2998,3 +2998,62 @@ a visitor sees on one filter is **two prices for what reads as the same tile**, 
 makes two prices legible, and this repo cannot print one for the tile page's models yet.
 
 **Shipped default: (a).**
+
+## Q-W25-18 · W25-R19's premise is gone: imperlux.md has no 4-tile sections any more
+
+**Raised W25-24, 2026-09-22. BLOCKS the image half of that card. Everything else in it
+shipped.**
+
+W25-R19 says the eight hub tiles are to be filled with *"the exact images imperlux.md shows on
+its Acoperisuri and Garduri 4-tile sections"*. **Both of those sections have been rebuilt since
+the wave 14 audit and neither exists today.** Measured on 2026-09-22 by fetching and rendering
+both pages:
+
+| Our tile label | Times it appears on the matching imperlux page |
+|---|---|
+| Țiglă metalică | 1, inside a meta description |
+| Rocă vulcanică | 0 |
+| Calculează prețul acoperișului | 0 |
+| Reduceri | 1, inside a promo line |
+| Garduri tip jaluzele | 1, as the page's `h1` |
+| Calculează prețul gardului | 1, as a calculator heading |
+| Modele de garduri | 0 |
+| Prețuri și oferte | 0 |
+
+**What is there instead.** `/acoperisuri/` now has a **five**-tile product section, "Produsele
+noastre": Țiglă metalică, Țiglă cu rocă vulcanică, Țiglă ceramică, Șindrilă bituminoasă,
+Sisteme pluviale. `/garduri/` has a hero, a three-card "Lucrări realizate" strip and an
+"OFERTE LIMITATE" block of four model cards.
+
+**Two of our eight have an obvious counterpart and six do not.** `ACOP-01` matches
+`images/categories/tigla-metalica.png` and `ACOP-02` matches
+`images/categories/roca-vulcanica.png`. There is no tile image for a price calculator, for
+discounts, for fence models or for fence prices, on either page.
+
+**And the fence block is a section this site may not copy from.** "OFERTE LIMITATE" carries a
+live countdown, `-17%` and `-10%` badges, struck prices and "Stoc limitat: doar 3 modele la
+preț promoțional". R-X forbids every one of those here and `scripts/check-scarcity.js` gates
+it; W25-R8 forbids copying the struck figure. The images inside those cards are the same
+1296x1600 louvre renders W25-18 already installed on the eight `GARD-` model cards, so taking
+them again would also be one picture on two slots.
+
+  (a) **Take the two that match and leave six grey.** `ACOP-01` and `ACOP-02` from the
+      category tiles, under `owner_override_imperlux`, and the other six wait. Honest, and
+      keeps the ruling's "exact image" condition intact for the two it can be met for.
+  (b) **Widen the ruling to "an image imperlux.md publishes for that subject"** and let this
+      terminal choose eight, each named in the review file. Fills all eight; the choice is
+      this terminal's, which is the thing W25-R19 was worded to prevent.
+  (c) **Send the six to the prompt pack**, which is where they were before W25-R19, and take
+      the two that match. Then `ACOP-03`, `ACOP-04`, `GARDB-01` to `GARDB-04` are generated
+      images and the four `ACOP-` prompts are already written.
+  (d) **Apply W25-R20 to them**: these are not product pictures, but the same order would
+      work, a search for the subject at 450 or more, flagged `google_pick`.
+
+**Recommended: (a) now, then (c) for the six.** The two that match are unambiguous and cost
+nothing to be wrong about. For the other six, a generated tile was the plan before this
+dispatch, the prompts exist, and a tile is decoration where an invented picture is allowed:
+W25-R3 permits a generated image on a hub slot by name.
+
+**Shipped default: nothing.** All eight stay grey until you answer, and no image was taken
+from either page. **Nothing else in W25-24 is blocked**: the tile links, the tile audit and
+the new gate all shipped.

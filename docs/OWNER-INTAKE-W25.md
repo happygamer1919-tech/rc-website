@@ -16,28 +16,15 @@ exactly. `--check` fails if this file and the data have drifted apart.
   They take different provenance rows, and a generated image is forbidden on some slots
   while a real one never is.
 
-## (a) Fence model cards, 8, real photographs
+## (a) Fence model cards, 0, real photographs
 
-Drop these in `/Users/ivan/RC-pics-real/`. Their reason in the review list is already "real photo from
-owner project set", and they are deliberately left out of the AI prompt pack so nothing
-generates a fence a real photograph is coming for.
+**Nothing is waiting here, and `/Users/ivan/RC-pics-real/` is not expected to receive a fence.**
+All eight model cards were filled at W25-18 from `imperlux.md` under the owner override
+W25-R15. A real photograph of one of these fences from the owner's own project set is
+still the better picture and would replace the override file, but nothing is blocked on
+it and no card is waiting for it.
 
-| File to save | Model | Page |
-|---|---|---|
-| `GARD-01.jpg` | IL12 Metal Plus | /servicii/modele-garduri/ |
-| `GARD-02.jpg` | IL12 Metal PlusDV | /servicii/modele-garduri/ |
-| `GARD-03.jpg` | IL30 Metal Plus | /servicii/modele-garduri/ |
-| `GARD-04.jpg` | IL30 Metal PlusDV | /servicii/modele-garduri/ |
-| `GARD-05.jpg` | IL100 Metal Plus | /servicii/modele-garduri/ |
-| `GARD-06.jpg` | IL100 Metal PlusDV | /servicii/modele-garduri/ |
-| `GARD-07.jpg` | IL40 Metal Plus | /servicii/modele-garduri/ |
-| `GARD-08.jpg` | IL40 Metal PlusDV | /servicii/modele-garduri/ |
-
-All eight are PORTRAIT, ratio `4 / 5`, minimum 1000x1250.
-Photograph the fence square-on and dead level, so the slat profile and the gap between
-slats read. That is what the card exists to show.
-
-## (b) Hub tiles, 8, the PRIORITY BATCH
+## (b) Hub tiles, 4, the PRIORITY BATCH
 
 Drop these in `/Users/ivan/RC-pics-ai/`. They are the first block in
 `~/Documents/rc-audit-w24/AI-PROMPTS-W25.md`, each with its own prompt.
@@ -48,9 +35,5 @@ Drop these in `/Users/ivan/RC-pics-ai/`. They are the first block in
 | `ACOP-02.png` | Rocă vulcanică Novatik | /servicii/acoperisuri/ | 7 / 2 | 1750x500 |
 | `ACOP-03.png` | Calculează prețul acoperișului | /servicii/acoperisuri/ | 7 / 4 | 900x520 |
 | `ACOP-04.png` | Reduceri | /servicii/acoperisuri/ | 7 / 4 | 900x520 |
-| `GARDB-01.png` | Garduri tip jaluzele | /servicii/garduri/ | 5 / 6 | 1000x1200 |
-| `GARDB-02.png` | Calculează prețul gardului | /servicii/garduri/ | 7 / 2 | 1750x500 |
-| `GARDB-03.png` | Modele de garduri | /servicii/garduri/ | 7 / 4 | 900x520 |
-| `GARDB-04.png` | Prețuri și oferte | /servicii/garduri/ | 7 / 4 | 900x520 |
 
-These four ratios are not all the same, and the prompt for each names its own.
+These 4 ratios are not all the same, and the prompt for each names its own.

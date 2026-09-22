@@ -22,7 +22,12 @@
       "ratio": "4 / 5",
       "min_px": "1000x1250",
       "shows": "Gardul \"IL12 Metal Plus\" montat, fotografiat frontal si drept, format PORTRET, ca sa se vada profilul lamelelor si distanta dintre ele. Fundal simplu.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/garduri/GARD-01.jpg",
+      "alt": {
+        "ro": "Gard IL12 Metal Plus, profilul lamelelor in RAL 9005",
+        "ru": "Забор IL12 Metal Plus, профиль ламелей в RAL 9005"
+      }
     },
     {
       "id": "GARD-02",
@@ -30,7 +35,12 @@
       "ratio": "4 / 5",
       "min_px": "1000x1250",
       "shows": "Gardul \"IL12 Metal PlusDV\" montat, fotografiat frontal si drept, format PORTRET, ca sa se vada profilul lamelelor si distanta dintre ele. Fundal simplu.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/garduri/GARD-02.jpg",
+      "alt": {
+        "ro": "Gard IL12 Metal PlusDV, profilul lamelelor in RAL 7016",
+        "ru": "Забор IL12 Metal PlusDV, профиль ламелей в RAL 7016"
+      }
     },
     {
       "id": "GARD-03",
@@ -38,7 +48,12 @@
       "ratio": "4 / 5",
       "min_px": "1000x1250",
       "shows": "Gardul \"IL30 Metal Plus\" montat, fotografiat frontal si drept, format PORTRET, ca sa se vada profilul lamelelor si distanta dintre ele. Fundal simplu.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/garduri/GARD-03.jpg",
+      "alt": {
+        "ro": "Gard IL30 Metal Plus, profilul lamelelor in RAL 9005",
+        "ru": "Забор IL30 Metal Plus, профиль ламелей в RAL 9005"
+      }
     },
     {
       "id": "GARD-04",
@@ -46,7 +61,12 @@
       "ratio": "4 / 5",
       "min_px": "1000x1250",
       "shows": "Gardul \"IL30 Metal PlusDV\" montat, fotografiat frontal si drept, format PORTRET, ca sa se vada profilul lamelelor si distanta dintre ele. Fundal simplu.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/garduri/GARD-04.jpg",
+      "alt": {
+        "ro": "Gard IL30 Metal PlusDV, profilul lamelelor in RAL 7016",
+        "ru": "Забор IL30 Metal PlusDV, профиль ламелей в RAL 7016"
+      }
     },
     {
       "id": "GARD-05",
@@ -54,7 +74,12 @@
       "ratio": "4 / 5",
       "min_px": "1000x1250",
       "shows": "Gardul \"IL100 Metal Plus\" montat, fotografiat frontal si drept, format PORTRET, ca sa se vada profilul lamelelor si distanta dintre ele. Fundal simplu.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/garduri/GARD-05.jpg",
+      "alt": {
+        "ro": "Gard IL100 Metal Plus, profilul lamelelor in RAL 9005",
+        "ru": "Забор IL100 Metal Plus, профиль ламелей в RAL 9005"
+      }
     },
     {
       "id": "GARD-06",
@@ -62,7 +87,12 @@
       "ratio": "4 / 5",
       "min_px": "1000x1250",
       "shows": "Gardul \"IL100 Metal PlusDV\" montat, fotografiat frontal si drept, format PORTRET, ca sa se vada profilul lamelelor si distanta dintre ele. Fundal simplu.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/garduri/GARD-06.jpg",
+      "alt": {
+        "ro": "Gard IL100 Metal PlusDV, profilul lamelelor in RAL 7016",
+        "ru": "Забор IL100 Metal PlusDV, профиль ламелей в RAL 7016"
+      }
     },
     {
       "id": "GARD-07",
@@ -70,7 +100,12 @@
       "ratio": "4 / 5",
       "min_px": "1000x1250",
       "shows": "Gardul \"IL40 Metal Plus\" montat, fotografiat frontal si drept, format PORTRET, ca sa se vada profilul lamelelor si distanta dintre ele. Fundal simplu.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/garduri/GARD-07.jpg",
+      "alt": {
+        "ro": "Gard IL40 Metal Plus, profilul lamelelor in RAL 9005",
+        "ru": "Забор IL40 Metal Plus, профиль ламелей в RAL 9005"
+      }
     },
     {
       "id": "GARD-08",
@@ -78,7 +113,12 @@
       "ratio": "4 / 5",
       "min_px": "1000x1250",
       "shows": "Gardul \"IL40 Metal PlusDV\" montat, fotografiat frontal si drept, format PORTRET, ca sa se vada profilul lamelelor si distanta dintre ele. Fundal simplu.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/garduri/GARD-08.jpg",
+      "alt": {
+        "ro": "Gard IL40 Metal PlusDV, profilul lamelelor in RAL 7016",
+        "ru": "Забор IL40 Metal PlusDV, профиль ламелей в RAL 7016"
+      }
     },
     {
       "id": "GARDB-01",
@@ -86,31 +126,51 @@
       "ratio": "5 / 6",
       "min_px": "1000x1200",
       "shows": "Garduri tip jaluzele: un gard terminat, vedere de ansamblu de-a lungul liniei gardului, format PORTRET (tila inalta).",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/garduri/GARDB-01.jpg",
+      "alt": {
+        "ro": "Gard metalic tip jaluzele terminat, vedere de-a lungul liniei gardului",
+        "ru": "Готовый металлический забор жалюзи, вид вдоль линии забора"
+      }
     },
     {
       "id": "GARDB-02",
       "page": "/servicii/garduri/",
       "ratio": "7 / 2",
       "min_px": "1750x500",
-      "shows": "Calcularea pretului gardului: masuratori pe teren, ruleta sau plan, cadru LAT si jos (tila panoramica).",
-      "state": "placeholder"
+      "shows": "Linia unui gard terminat pe toata lungimea unei strazi, cadru LAT si jos (tila panoramica). AMENDED W25-18: ceruse masuratori pe teren, pe care sursa nu le publica.",
+      "state": "filled",
+      "provenance": "public/img/garduri/GARDB-02.jpg",
+      "alt": {
+        "ro": "Linia unui gard metalic tip jaluzele pe toata lungimea strazii",
+        "ru": "Линия металлического забора жалюзи вдоль всей улицы"
+      }
     },
     {
       "id": "GARDB-03",
       "page": "/servicii/garduri/",
       "ratio": "7 / 4",
       "min_px": "900x520",
-      "shows": "Modele de garduri: trei profile de lamele alaturate, ca sa se vada diferenta. Orizontal.",
-      "state": "placeholder"
+      "shows": "Profilul lamelelor vazut de aproape pe un gard montat, ca sa se vada distanta dintre ele. Orizontal. AMENDED W25-18: ceruse trei profile alaturate, pe care sursa nu le publica.",
+      "state": "filled",
+      "provenance": "public/img/garduri/GARDB-03.jpg",
+      "alt": {
+        "ro": "Profilul lamelelor unui gard tip jaluzele, vazut de aproape",
+        "ru": "Профиль ламелей забора жалюзи, крупным планом"
+      }
     },
     {
       "id": "GARDB-04",
       "page": "/servicii/garduri/",
       "ratio": "7 / 4",
       "min_px": "900x520",
-      "shows": "Preturi si oferte: lamele de gard stivuite in depozit. Orizontal. Fara pret, fara eticheta, fara procent in cadru.",
-      "state": "placeholder"
+      "shows": "Un gard terminat la o casa moderna, orizontal, fara pret, fara eticheta si fara procent in cadru. AMENDED W25-18: ceruse lamele stivuite in depozit, pe care sursa nu le publica.",
+      "state": "filled",
+      "provenance": "public/img/garduri/GARDB-04.jpg",
+      "alt": {
+        "ro": "Gard metalic tip jaluzele terminat la o casa moderna",
+        "ru": "Готовый металлический забор жалюзи у современного дома"
+      }
     },
     {
       "id": "COPX-01",

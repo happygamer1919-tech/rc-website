@@ -712,3 +712,10 @@ before deploying. Largest rendered width 179.2px against a 1542px source.
 floor and reported with their measured sizes. Catalog 160 to 259 of 333. W25-R14 to W25-R18
 recorded first. `fetch-packshot.js` gains `--fatade3d`; the imperlux override ships unused,
 held to twelve slot ids. 24 of 24 gate commands exit 0.
+
+## W25-18 · Garduri images under the owner override
+**Status: PR OPEN** (2026-09-21). All 12 Garduri slots filled from `imperlux.md` under
+W25-R15, held to twelve slot ids rather than to the host. Ledger 259 to 271 of 333. Three
+hub tile `shows` lines corrected to the picture that landed, each saying so. RC-pics-real no
+longer expects a fence; the intake list and the prompt batch shrink by the ledger, not by
+deletion. 24 of 24 gate commands exit 0.

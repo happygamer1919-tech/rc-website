@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Rapid Construct — landing page
+   Rapid Construct - landing page
    Tokens follow docs/RC-WEBSITE-MASTER-PLAN.md section 4, with two overrides
    approved by the owner: --brand and --ink are sampled from the logo file and
    match the approved mockup, so they win over the (pre-logo) plan values.
@@ -1752,7 +1752,7 @@ p { margin: 0; }
 }
 
 /* ==========================================================================
-   Tablet — 1024px and below: 3-col grids become 2-col, 5-col process becomes 3
+   Tablet - 1024px and below: 3-col grids become 2-col, 5-col process becomes 3
    ========================================================================== */
 
 @media (max-width: 1024px) {
@@ -1769,7 +1769,7 @@ p { margin: 0; }
 }
 
 /* ==========================================================================
-   Mobile — 768px and below: single column throughout
+   Mobile - 768px and below: single column throughout
    ========================================================================== */
 
 @media (max-width: 768px) {

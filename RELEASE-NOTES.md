@@ -552,7 +552,7 @@ standing fact. Kept as the record of what was open on 2026-09-06.
 
 ---
 
-# Handoff — wave 12 closed, 2026-09-07
+# Handoff: wave 12 closed, 2026-09-07
 
 Written at W12-30. **This section supersedes every earlier "what is open" list in
 this file.** Read it first; everything above it is a dated wave record.
@@ -562,7 +562,7 @@ this file.** Read it first; everything above it is a dated wave record.
 | | |
 |---|---|
 | Live | `https://rapidconstructmd.com`, GitHub Pages from `main` |
-| Tag | **`wave-12-closed`** — the commit this state was verified at. `wave-12-verified` and `wave-12-final` are the earlier ones, kept, not moved |
+| Tag | **`wave-12-closed`**, the commit this state was verified at. `wave-12-verified` and `wave-12-final` are the earlier ones, kept, not moved |
 | Verified by | `node scripts/verify-live.js`, exit 0, under ruling R-P |
 | Pages | 25, both locales, plus `/review/` unlisted |
 
@@ -596,7 +596,7 @@ build that makes another one.
 
 Three things a card picking this up needs to know, none of which are figures:
 
-1. **The budgets are derived, not chosen** — a corrected baseline plus each
+1. **The budgets are derived, not chosen**: a corrected baseline plus each
    above-the-fold element's measured cost plus a stated headroom term. Adding an
    element without measuring it spends headroom nobody allocated, which is what
    happened twice in wave 12.
@@ -615,7 +615,7 @@ Recorded as a run, not as a constraint. Taken on the live domain, cache-busted,
 |---|---|---|
 | Homepage RO | 8,818px | VERIFIED, inside its R-J budget |
 | Homepage RU | 9,032px | VERIFIED, inside its R-J budget |
-| Six service pages | 5,522 – 5,729px | VERIFIED, inside 6,000 |
+| Six service pages | 5,522-5,729px | VERIFIED, inside 6,000 |
 | Reachable URLs crawled | 27 | 0 with a visible TODO |
 
 **Four consecutive runs across W12-30, W12-31, W12-32 and W12-35 returned these
@@ -628,7 +628,7 @@ assumed.
 **RU is above 9,000px and that is correct.** The master plan's line 121 said
 otherwise until W12-28 struck it. If you find any document telling you 9,000px
 means the page has been over-built, it is superseded by R-J, the staleness gate
-should have caught it, and the right move is to report that — not to trim the
+should have caught it, and the right move is to report that, not to trim the
 page.
 
 ## Gates, in order
@@ -672,7 +672,7 @@ Four are labels and two carry the extract's data:
 
 **3. Set `PRIVACY_PUBLISHABLE_WITHOUT_OPERATOR = false` in `build.js`.** With the
 fields real the flag is already irrelevant, so this is not what publishes the
-page — it is what restores the property W12-21b bought: with the flag false,
+page. It is what restores the property W12-21b bought: with the flag false,
 deleting the operator fields suppresses the links again instead of silently
 releasing them.
 
@@ -699,7 +699,7 @@ that shipped. **All are owner-input questions except the last two.**
 | **Q-04** · ~~44~~ **16** stub projects have no real content | client | Titles and summaries. Stubs are safe: a project renders only when both are real in that locale, so none of the ~~44~~ **16** reaches a visitor and none ever has. **AMENDED (W21-03, RC-148): 16 on 2026-09-17, measured from `content/projects.json`; `scripts/check-stub-count.js` holds it** |
 | **Q-W9-04** · Nine photographs fail the "real Rapid Construct work" rule | client | A ruling on the nine, file by file. It also owns the open half of Q-09: whether the hero photograph belongs in a hero slot under master plan section 7. A default shipped; the ruling replaces it |
 | **Q-W12-07-LEGAL** · The privacy pages have no operator section | client | The registry extract. The reversal is the four steps below and it has been rehearsed end to end |
-| **Q-W9-06** · Two live form submissions, one per locale | Ivan | One remains. The key is set and the site is published, so it is a minute. Expect the subjects `[RO] Solicită ofertă gratuită — /` and `[RU] Запросите бесплатную оферту — /ru/` |
+| **Q-W9-06** · Two live form submissions, one per locale | Ivan | One remains. The key is set and the site is published, so it is a minute. Expect the subjects `[RO] Solicită ofertă gratuită - /` and `[RU] Запросите бесплатную оферту - /ru/` |
 | **Q-W9-07** · The RO `meta.description`, and two answers to "where do you work" | Ivan | The title half is done. Still open: whether to shorten the description, which is inside its limit but names four localities where `band.coverageLine` names twenty. Two different answers on the same page |
 
 **Closed in wave 12 and no longer live:** Q-W12-06 (reviews link armed, W12-12),
@@ -720,12 +720,12 @@ official locality names appears anywhere in the file.
 
 ## What a card picking this up should read, in order
 
-1. `docs/CLAUDE.md` — the rules. Section 11 is the gate list, section 16 is the
+1. `docs/CLAUDE.md`: the rules. Section 11 is the gate list, section 16 is the
    staleness gate, sections 12 and 13 are what a measurement and a gate may
    conclude, and **section 18 is what this environment does that looks like a
    defect** (the Russian 404 under `curl`, the cancelled deploy runs).
 2. This handoff.
-3. `DECISIONS.md` from ruling R-J onward — twelve rulings landed in wave 12 and
+3. `DECISIONS.md` from ruling R-J onward: twelve rulings landed in wave 12 and
    they are what the master plan now loses to. Two govern how you write:
    **R-S**, bodies are immutable and status markers are not; and **R-T**, a
    ruling may carry appended amendment blocks because a ruling is read forward,
@@ -735,6 +735,6 @@ official locality names appears anywhere in the file.
 **The master plan wins by default only where no later ruling addresses the
 point**, per R-R. Where it is superseded it now says so at the point of the
 value. If you find a value it does not say so about, that is a defect in the
-amendment and not in the card that obeyed it — report it, add it to the
+amendment and not in the card that obeyed it. Report it, add it to the
 staleness gate, and carry on.
 

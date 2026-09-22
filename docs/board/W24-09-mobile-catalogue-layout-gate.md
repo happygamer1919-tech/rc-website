@@ -81,7 +81,7 @@ dropped back at the top of the page when the button disappears.
 true.** Below 512px the grid is one column; the card's image is a `1 / 1` placeholder,
 which is what `docs/PHOTO-SLOTS-W24.json` specifies for all 223 catalogue slots, so it is
 square by decision and stays square when the photographs land. Twelve cards measure
-**6,181px**, and the rest of the page — header, hero, prose, offer button, form, footer —
+**6,181px**, and the rest of the page (header, hero, prose, offer button, form, footer)
 is **4,008px**. 6,181 + 4,008 = **10,189**.
 
 Nine and eight were built and measured rather than derived: **8,696px** and **8,198px**.
@@ -102,7 +102,7 @@ between 30 and 38 percent of the grid width, the wide tile is wider than each bo
 and no tile is under 280px; at 390 the hub is one column.
 
 Catalogue grids (28 pages): **four column tracks at 1440 and one at 390**, read from the
-grid's own used tracks and not from how many cards happen to fill them — the first draft
+grid's own used tracks and not from how many cards happen to fill them. The first draft
 counted painted lefts and failed six correct pages whose categories hold two or three
 products. Cross-checked against the cards actually painted. And the reveal: the page's own
 `data-prod-step` at 390 with its button shown, every card and no button at 1440.
@@ -123,7 +123,7 @@ Arm 2 exists because arm 1 does not reproduce the measured number: three equal c
 1440 put the tall tile at about 33 percent, **inside** the band this gate allows. The
 first draft demanded `hub-tall-pct` from arm 1 and the gate failed its own self-test,
 correctly. The collapse is therefore planted directly, and the arm reports *"the tall tile
-is 128px of a 1152px grid, 11.1%, outside 30-38%"* — the defect's own number.
+is 128px of a 1152px grid, 11.1%, outside 30-38%"*, the defect's own number.
 
 ## 3 · The five typos (Q-W24-03 part 1, owner's (b))
 
@@ -171,7 +171,7 @@ every sha printed was resolved back to its own PR before it was written.
 ## 6 · `/review/`
 
 Already `noindex, nofollow` and already out of `dist/sitemap.xml`; confirmed, not assumed.
-`Disallow: /review/` added — **to every group, not only `User-agent: *`**. A robots.txt
+`Disallow: /review/` added, **to every group, not only `User-agent: *`**. A robots.txt
 group is matched, never merged: a crawler that finds a group naming its own token obeys
 that group and ignores the wildcard entirely, so a single Disallow under `*` would have
 left all six named answer engines with a bare `Allow: /`. The page is not deleted.

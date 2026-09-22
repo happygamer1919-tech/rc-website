@@ -18,7 +18,7 @@ const path = require('path');
 
 const ROOT = 'dist';
 if (!fs.existsSync(ROOT)) {
-  console.error(`\nno ${ROOT}/ — run: node build.js\n`);
+  console.error(`\nno ${ROOT}/, run: node build.js\n`);
   process.exit(1);
 }
 

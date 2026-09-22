@@ -1,6 +1,6 @@
 # Builds the site with the GitHub Pages base path and publishes dist/.
 # Pages must be set to "GitHub Actions" as its source, not "deploy from a
-# branch" — docs/ holds the specs, it is not a site directory.
+# branch": docs/ holds the specs, it is not a site directory.
 name: Deploy to GitHub Pages
 
 on:

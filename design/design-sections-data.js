@@ -33,7 +33,7 @@ const CONTACTS = [
   { label: 'Adresă', value: 'Nicolae Zelinski 24, Chișinău' },
   { label: 'Telefon', value: '+373 76 837 180' },
   { label: 'Email', value: 'rapidconstructmd@gmail.com' },
-  { label: 'Program', value: 'Luni–Sâmbătă 08:00–17:00' },
+  { label: 'Program', value: 'Luni-Sâmbătă 08:00-17:00' },
 ];
 
 const FILTERS = ['Toate', 'Case la cheie', 'Acoperișuri', 'Fațade', 'Reparații', 'Finisaje'];

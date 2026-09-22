@@ -360,7 +360,7 @@ const RELATED = require('./content/related-services.json');
 
 // The direct answer. Replaces the service one-liner as the hero lede: the
 // one-liner ends on a claim ("ca să nu curgă niciodată") and C-03 wants the
-// page to open on what the service IS. The one-liner is not lost — it still
+// page to open on what the service IS. The one-liner is not lost: it still
 // carries the meta description, og:description, the homepage card and the
 // Service schema.
 // W14-03. An answer may hold several lines (T-08, T-09); each renders as its own
@@ -613,8 +613,8 @@ const localities = (l) => {
    în" / "Наши объекты". That is a deliberate correction, not a rewrite.
 
    "Am construit în X" asserts a completed project in X. The client confirmed
-   where the company WORKS, not which project was built where — Q-W9-05 is
-   explicitly not closed by this list — so carrying the old verb into twenty
+   where the company WORKS, not which project was built where (Q-W9-05 is
+   explicitly not closed by this list), so carrying the old verb into twenty
    localities would have invented thirty-eight project locations in one edit.
    "Inclusiv" claims coverage, which is what was actually confirmed. */
 const coverageLine = (l) => `${l.strings['band.coverageLead']} ${localities(l).join(', ')}.`;
@@ -3506,7 +3506,7 @@ function productHeadVars(l, p) {
 
    The 100+ figure is not invented. `stats.0` has claimed "500+ proiecte
    finalizate" since wave 1, and six shown plus a hundred more is entailed by
-   it — a strictly weaker claim than the one already on the page. */
+   it, a strictly weaker claim than the one already on the page. */
 function portfolioEndTile(l) {
   const n = l.strings['portfolio.more.n'];
   const line = l.strings['portfolio.more.line'];
@@ -3664,8 +3664,8 @@ for (const l of loaded) {
     // at all. A disarmed build carries the attribute, an armed build does not,
     // so "the notice is gone" is true of the HTML and not only of the screen.
     demoAttr: FORM_ARMED ? '' : ` data-demo="${esc(l.strings['form.demoNotice'])}"`,
-    subjectMain: `[${l.code.toUpperCase()}] ${l.strings['form.h2']} — ${l.home}`,
-    subjectPopup: `[${l.code.toUpperCase()}] ${l.strings['popup.h2']} — ${l.home}`,
+    subjectMain: `[${l.code.toUpperCase()}] ${l.strings['form.h2']} - ${l.home}`,
+    subjectPopup: `[${l.code.toUpperCase()}] ${l.strings['popup.h2']} - ${l.home}`,
     privacyHref: BASE + PRIVACY_PATH[l.code],
     /* W12-17. While the privacy page still carries TODO markers, nothing links
        to it. A visitor who followed the footer link read "TODO: denumirea
@@ -3800,7 +3800,7 @@ for (const l of loaded) {
       'svc.table': svcTable(l, slug),
       'svc.faqSection': svcFaqSection(l, slug, lastmodOf(...SVC_SOURCES, ...coversFor(slug))),
       'svc.faqSchema': svcFaqSchema(l, slug),
-      'svc.subject': `[${l.code.toUpperCase()}] ${l.strings['services.items.' + i + '.title']} — ${SERVICES_ROOT[l.code]}${slug}/`,
+      'svc.subject': `[${l.code.toUpperCase()}] ${l.strings['services.items.' + i + '.title']} - ${SERVICES_ROOT[l.code]}${slug}/`,
       'svc.canonical': SITE + BASE + SERVICES_ROOT[l.code] + slug + '/',
       'svc.urlRo': SITE + BASE + SERVICES_ROOT.ro + slug + '/',
       'svc.urlRu': SITE + BASE + SERVICES_ROOT.ru + slug + '/',
@@ -4161,7 +4161,7 @@ fs.writeFileSync('dist/sitemap.xml',
     '    <changefreq>monthly</changefreq>\n  </url>\n')).join('') +
   '</urlset>\n');
 
-/* W9-06. /llms.txt — what the site is, what it offers and where, in the flat
+/* W9-06. /llms.txt: what the site is, what it offers and where, in the flat
    markdown an answer engine can lift without parsing a page.
 
    Facts only, and every one of them is already on the site: the service names
@@ -4216,7 +4216,7 @@ fs.writeFileSync('dist/sitemap.xml',
   fs.writeFileSync('dist/llms.txt', lines.join('\n'));
 }
 
-/* W11-02. /review/ — an unlisted page for the owner to rule on the five
+/* W11-02. /review/: an unlisted page for the owner to rule on the five
    photographs that were held back.
 
    Four of them carry another party's mark inside the frame, and one is simply
@@ -4239,7 +4239,7 @@ fs.writeFileSync('dist/sitemap.xml',
     { file: 'held-2-reparatii-1200x1600.jpg', orig: 'Reparatii / WhatsApp Image 2026-09-01 at 10.33.59 AM (3).jpeg',
       w: 1200, h: 1600, service: 'Renovări la cheie', reason: 'Vestele echipei poartă inscripția MITCHELL ROMÁN.' },
     { file: 'held-3-reparatii-736x981.jpg', orig: 'Reparatii / WhatsApp Image 2026-09-01 at 10.33.59 AM.jpeg',
-      w: 736, h: 981, service: 'Renovări la cheie', reason: 'Sigla de studio G6 aplicată pe compoziția înainte–după.' },
+      w: 736, h: 981, service: 'Renovări la cheie', reason: 'Sigla de studio G6 aplicată pe compoziția înainte-după.' },
     { file: 'held-4-terasamente-1200x1500.jpg', orig: 'Lucrări de terasament și excavare / WhatsApp Image 2026-09-01 at 10.36.24 AM (1).jpeg',
       w: 1200, h: 1500, service: 'Lucrări de terasament și excavare', reason: 'Banner de recrutare AllFinishConcrete.com în imagine.' },
     { file: 'held-5-finisaje-350x350.jpg', orig: 'Finisaje / WhatsApp Image 2026-09-01 at 10.34.32 AM (3).jpeg',
@@ -4333,7 +4333,7 @@ fs.writeFileSync('dist/.htaccess',
 
    A Pages site deployed from Actions serves whatever the uploaded artifact
    contains. If that artifact carries no CNAME, a deploy can drop the custom
-   domain and the site falls back to the github.io host — Settings is where the
+   domain and the site falls back to the github.io host; Settings is where the
    domain is configured, but the artifact is what makes it durable. The CNAME in
    the repository root is not enough either: only `dist/` is uploaded, and the
    repository root is not part of it.
@@ -4370,12 +4370,12 @@ console.log(`google reviews link: ${GOOGLE_REVIEWS_URL || 'HIDDEN (set GOOGLE_RE
   const indexable = SERVICE_SLUGS.filter((sg) =>
     loaded.some((l) => renderableProjects(l, sg).some((p) => coverIsRealPhoto(p.cover))));
   console.log(`service pages indexable: ${indexable.length}/9` +
-    (indexable.length ? ` (${indexable.join(', ')})` : ' — all noindex until a real cover photo lands'));
+    (indexable.length ? ` (${indexable.join(', ')})` : ', all noindex until a real cover photo lands'));
 }
 {
   const fallback = FALLBACK_SLOTS.filter(onFallback);
   console.log(`slots on SVG fallback: ${fallback.length}/${FALLBACK_SLOTS.length}` +
-    (fallback.length ? `\n  · ` + fallback.join('\n  · ') : ' — every slot has a real photo'));
+    (fallback.length ? `\n  · ` + fallback.join('\n  · ') : ', every slot has a real photo'));
 }
 if (privacyIncomplete) {
   const reasons = [...privacyTodos, ...privacyMissingOperator];

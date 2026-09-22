@@ -1,4 +1,4 @@
-# RC WEBSITE — PHOTO MANIFEST V2
+# RC WEBSITE: PHOTO MANIFEST V2
 
 > Companion to `RC-WEBSITE-MASTER-PLAN.md`. Applies only to the Rapid Construct
 > MD website (repo `rc-website`).
@@ -17,12 +17,12 @@ on the critical path: the 6 covers of the projects that carry real content, plus
 the 5 process stages. Everything else is a reserved slot on a project with no
 content, and a slot with no content behind it renders nowhere.
 
-Every file: minimum 1600px long edge **(AMENDED — not universal, see below)**, landscape, JPG, under 400KB after
+Every file: minimum 1600px long edge **(AMENDED: not universal, see below)**, landscape, JPG, under 400KB after
 processing, no watermark, real Rapid Construct work only **(AMENDED: proof slots only; product and
 explanation slots may take licensed stock or visualisations with an R-W row, DECISIONS.md W14-18)**.
 Naming: the Slot ID exactly, lowercase, `.jpg`.
 
-**AMENDED — the 1600px minimum is not universal.** Three rulings lower it for
+**AMENDED: the 1600px minimum is not universal.** Three rulings lower it for
 specific slot groups, each recorded in DECISIONS.md and repeated at the group
 below: **1200px** for the nine service cards (W7-02), **900px** for the five
 "Cum lucrăm" step slots (PROVISIONAL), and **720px** for the hero panel (W8-03,
@@ -35,7 +35,7 @@ and `process-photos.js` warns against that value rather than the default.
 
 ---
 
-## Part A — Content model
+## Part A: Content model
 
 Photos are no longer a flat list. They hang off projects, defined in
 `content/projects.json` (to be created when the portfolio is rebuilt):
@@ -89,7 +89,7 @@ not because a separate cover was shot for it.
 
 ---
 
-## Part B — Project slots
+## Part B: Project slots
 
 **Six projects per service, nine services, 54 in all.** The card asked for 5 to
 7; six is the midpoint and divides evenly. Ten of the 54 carry real content
@@ -110,58 +110,58 @@ content and photographs. See `docs/QUESTIONS.md` Q-03.
 |---|---|---|---|---|
 | `case-la-cheie-01` | case-la-cheie | `proj-case-la-cheie-01-cover` | `-01` `-02` `-03` `-04` |  |
 | `case-la-cheie-02` | case-la-cheie | `proj-case-la-cheie-02-cover` | `-01` `-02` `-03` |  |
-| `case-la-cheie-03` | case-la-cheie | `proj-case-la-cheie-03-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `case-la-cheie-04` | case-la-cheie | `proj-case-la-cheie-04-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `case-la-cheie-05` | case-la-cheie | `proj-case-la-cheie-05-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `case-la-cheie-06` | case-la-cheie | `proj-case-la-cheie-06-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `case-la-cheie-03` | case-la-cheie | `proj-case-la-cheie-03-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `case-la-cheie-04` | case-la-cheie | `proj-case-la-cheie-04-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `case-la-cheie-05` | case-la-cheie | `proj-case-la-cheie-05-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `case-la-cheie-06` | case-la-cheie | `proj-case-la-cheie-06-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
 | `acoperisuri-01` | acoperisuri | `proj-acoperisuri-01-cover` | `-01` `-02` `-03` `-04` |  |
-| `acoperisuri-02` | acoperisuri | `proj-acoperisuri-02-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `acoperisuri-03` | acoperisuri | `proj-acoperisuri-03-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `acoperisuri-04` | acoperisuri | `proj-acoperisuri-04-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `acoperisuri-05` | acoperisuri | `proj-acoperisuri-05-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `acoperisuri-06` | acoperisuri | `proj-acoperisuri-06-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `acoperisuri-02` | acoperisuri | `proj-acoperisuri-02-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `acoperisuri-03` | acoperisuri | `proj-acoperisuri-03-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `acoperisuri-04` | acoperisuri | `proj-acoperisuri-04-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `acoperisuri-05` | acoperisuri | `proj-acoperisuri-05-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `acoperisuri-06` | acoperisuri | `proj-acoperisuri-06-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
 | `fatade-01` | fatade | `proj-fatade-01-cover` | `-01` `-02` `-03` `-04` |  |
-| `fatade-02` | fatade | `proj-fatade-02-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `fatade-03` | fatade | `proj-fatade-03-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `fatade-04` | fatade | `proj-fatade-04-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `fatade-05` | fatade | `proj-fatade-05-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `fatade-06` | fatade | `proj-fatade-06-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `fatade-02` | fatade | `proj-fatade-02-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `fatade-03` | fatade | `proj-fatade-03-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `fatade-04` | fatade | `proj-fatade-04-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `fatade-05` | fatade | `proj-fatade-05-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `fatade-06` | fatade | `proj-fatade-06-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
 | `reparatii-01` | reparatii | `proj-reparatii-01-cover` | `-01` `-02` `-03` `-04` |  |
-| `reparatii-02` | reparatii | `proj-reparatii-02-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `reparatii-03` | reparatii | `proj-reparatii-03-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `reparatii-04` | reparatii | `proj-reparatii-04-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `reparatii-05` | reparatii | `proj-reparatii-05-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `reparatii-06` | reparatii | `proj-reparatii-06-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `reparatii-02` | reparatii | `proj-reparatii-02-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `reparatii-03` | reparatii | `proj-reparatii-03-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `reparatii-04` | reparatii | `proj-reparatii-04-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `reparatii-05` | reparatii | `proj-reparatii-05-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `reparatii-06` | reparatii | `proj-reparatii-06-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
 | `finisaje-01` | finisaje | `proj-finisaje-01-cover` | `-01` `-02` `-03` `-04` |  |
-| `finisaje-02` | finisaje | `proj-finisaje-02-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `finisaje-03` | finisaje | `proj-finisaje-03-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `finisaje-04` | finisaje | `proj-finisaje-04-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `finisaje-05` | finisaje | `proj-finisaje-05-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `finisaje-06` | finisaje | `proj-finisaje-06-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `finisaje-02` | finisaje | `proj-finisaje-02-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `finisaje-03` | finisaje | `proj-finisaje-03-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `finisaje-04` | finisaje | `proj-finisaje-04-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `finisaje-05` | finisaje | `proj-finisaje-05-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `finisaje-06` | finisaje | `proj-finisaje-06-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
 | `proiectare-3d-01` | proiectare-3d | `proj-proiectare-3d-01-cover` | `-01` `-02` `-03` | Stub. Cover slot reserved, no content and no gallery yet. |
-| `proiectare-3d-02` | proiectare-3d | `proj-proiectare-3d-02-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `proiectare-3d-03` | proiectare-3d | `proj-proiectare-3d-03-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `proiectare-3d-04` | proiectare-3d | `proj-proiectare-3d-04-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `proiectare-3d-05` | proiectare-3d | `proj-proiectare-3d-05-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `proiectare-3d-06` | proiectare-3d | `proj-proiectare-3d-06-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `proiectare-3d-02` | proiectare-3d | `proj-proiectare-3d-02-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `proiectare-3d-03` | proiectare-3d | `proj-proiectare-3d-03-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `proiectare-3d-04` | proiectare-3d | `proj-proiectare-3d-04-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `proiectare-3d-05` | proiectare-3d | `proj-proiectare-3d-05-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `proiectare-3d-06` | proiectare-3d | `proj-proiectare-3d-06-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
 | `instalatii-01` | instalatii | `proj-instalatii-01-cover` | `-01` `-02` `-03` | Stub. Cover slot reserved, no content and no gallery yet. |
-| `instalatii-02` | instalatii | `proj-instalatii-02-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `instalatii-03` | instalatii | `proj-instalatii-03-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `instalatii-04` | instalatii | `proj-instalatii-04-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `instalatii-05` | instalatii | `proj-instalatii-05-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `instalatii-06` | instalatii | `proj-instalatii-06-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `instalatii-02` | instalatii | `proj-instalatii-02-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `instalatii-03` | instalatii | `proj-instalatii-03-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `instalatii-04` | instalatii | `proj-instalatii-04-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `instalatii-05` | instalatii | `proj-instalatii-05-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `instalatii-06` | instalatii | `proj-instalatii-06-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
 | `industrial-01` | industrial | `proj-industrial-01-cover` | `-01` `-02` `-03` | Stub. Cover slot reserved, no content and no gallery yet. |
-| `industrial-02` | industrial | `proj-industrial-02-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `industrial-03` | industrial | `proj-industrial-03-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `industrial-04` | industrial | `proj-industrial-04-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `industrial-05` | industrial | `proj-industrial-05-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `industrial-06` | industrial | `proj-industrial-06-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `industrial-02` | industrial | `proj-industrial-02-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `industrial-03` | industrial | `proj-industrial-03-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `industrial-04` | industrial | `proj-industrial-04-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `industrial-05` | industrial | `proj-industrial-05-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `industrial-06` | industrial | `proj-industrial-06-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
 | `terasamente-01` | terasamente | `proj-terasamente-01-cover` | `-01` `-02` `-03` | Stub. Cover slot reserved, no content and no gallery yet. |
-| `terasamente-02` | terasamente | `proj-terasamente-02-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `terasamente-03` | terasamente | `proj-terasamente-03-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `terasamente-04` | terasamente | `proj-terasamente-04-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `terasamente-05` | terasamente | `proj-terasamente-05-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
-| `terasamente-06` | terasamente | `proj-terasamente-06-cover` | — | Stub. Cover slot reserved, no content and no gallery yet. |
+| `terasamente-02` | terasamente | `proj-terasamente-02-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `terasamente-03` | terasamente | `proj-terasamente-03-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `terasamente-04` | terasamente | `proj-terasamente-04-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `terasamente-05` | terasamente | `proj-terasamente-05-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
+| `terasamente-06` | terasamente | `proj-terasamente-06-cover` | - | Stub. Cover slot reserved, no content and no gallery yet. |
 
 ### Shooting notes, one line per slot
 
@@ -211,9 +211,9 @@ content and photographs. See `docs/QUESTIONS.md` Q-03.
 
 ---
 
-## Part C — Retained non-project slots
+## Part C: Retained non-project slots
 
-### Process stages — 5 mandatory, 4:3 landscape, 900x675
+### Process stages: 5 mandatory, 4:3 landscape, 900x675
 
 Strongest version is one house at five moments.
 
@@ -230,13 +230,13 @@ W10-01. A step card renders at 209x157 CSS px, so even the smallest source
 supplies 176% of what a retina screen shows: the 1600 floor is the wrong bar for
 a card this size. See DECISIONS.md.
 
-### Social share — 1 mandatory, 1200x630
+### Social share: 1 mandatory, 1200x630
 
 | Slot ID | Ratio | Dimensions | Shooting note |
 |---|---|---|---|
 | `og-image` | 1200x630 | 1200x630 | Best single finished-house shot. Currently a branded logo card on #141414; a real photo overwrites it |
 
-### Supplier logos — 11, not photographs
+### Supplier logos: 11, not photographs
 
 One full-colour file per brand at `public/img/suppliers/<slug>.svg` (preferred)
 or `.png`. Transparent background. **There is no second greyscale asset:** the
@@ -272,7 +272,7 @@ and `weber` -> `heidelberg-materials`. Heidelberg Materials landed a logo from
 its own site. CAT could not: Caterpillar's terms forbid it, the same blocker
 that removed Bosch. **W9-03 then replaced CAT with Liebherr**, which carries a logo, so the marquee has **no text fallbacks left**: eleven brands, eleven logos. See `docs/QUESTIONS.md` Q-10.
 
-### Hero panel — 1, 4:3 landscape, 1400x1050 (2x is the 2800px source)
+### Hero panel: 1, 4:3 landscape, 1400x1050 (2x is the 2800px source)
 
 W6-03 turned this back into a photo slot. `public/img/hero-panel.svg` stays in
 the repo and is what renders until `public/img/hero-panel.jpg` exists.
@@ -285,12 +285,12 @@ Supply at **2800px on the long edge**: that is the 2x the pipeline writes.
 A real photo here is the likely LCP element, so the build drops `loading="lazy"`
 and sets `fetchpriority="high"` the moment the jpg exists.
 
-### Service cards — 9, 4:3 landscape, 800x600 — FILLED 2026-08-31
+### Service cards: 9, 4:3 landscape, 800x600 (FILLED 2026-08-31)
 
 **All nine are filled.** W7-02 processed the approved artwork through the
 pipeline. Every card renders a photograph; the nine SVGs at
-`public/img/services/svc-*.svg` are **retained but unused** — referenced zero
-times in `dist/` — and remain the fallback if a jpg is ever removed.
+`public/img/services/svc-*.svg` are **retained but unused** (referenced zero
+times in `dist/`) and remain the fallback if a jpg is ever removed.
 
 Minimum long edge for this group is **1200px**, not the manifest default of
 1600. The supplied artwork is 1448x1086, which is exactly 4:3 and crops without
@@ -371,7 +371,7 @@ so they are in the same position as the ~~44~~ **16** stubs: invisible until wri
 
 ---
 
-## Part D — Rules for the selection session
+## Part D: Rules for the selection session
 
 1. Judge every photo at full width on a laptop, not on a phone.
 2. Reject anything blurred, backlit into a white sky, shot in rain, or carrying

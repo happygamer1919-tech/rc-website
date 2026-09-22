@@ -32,7 +32,7 @@ reported with its reason; a near match is never installed.
 |---|---|---|---|
 | W25-01 | The image pipeline: a filled slot, its provenance, and the gate that holds them | `w25/w25-01-image-pipeline` | PR open, awaiting owner: one component renders a placeholder box or a real `<picture>`, decided by the ledger and by nothing at the call site; ledger gains `state`, `provenance` and `alt`, all 261 slots ship `placeholder`; gate 19 extended to the filled half with **8 arms**, including the dispatch's two by name (a fatade3d URL, a missing row) plus an unapproved licence, a render on an evidence slot and a state disagreement, against **two** controls; `scripts/process-packshot.js` refuses a non-image, an undersized source and surviving metadata, all three watched firing; gate 20 gains the W24-R5 gradient assertion on filled tiles; **proof run filled two real slots end to end**, found a doubled `/img/img/` path and fixed it, measured the hub label at **6.77:1** over a photograph, then reverted; **WebP is not shipped and Q-W25-01 says why** |
 | W25-02 | Packshots: termoizolație, tencuieli, vopsele, alte materiale | `w25/w25-02-packshots-termo` | PR open, awaiting owner: **1 filled of 35 fetchable**, 46 in scope with 11 carrying no manufacturer; `CAT-0010` ROCKWOOL Rockton Super 800x600 from the manufacturer's own brand portal, looked at by a person, **the first real photograph on the site**, rendering with no layout shift; **the 800px source floor is what is emptying the catalogue** (DURAZIV 343x335, ROKO 492x400, all otherwise correct) and Q-W25-02 recommends lowering it; **11 of 14 research agents stalled** so Caparol (15), Baumit (5) and six others are unattempted, not absent, both national sites confirmed live by hand; 2 of 3 agent-claimed image URLs were unusable and only the fetch guard caught them; Q-W25-03 raises a .ru origin and a brand-portal host for your call |
-| W25-03b | Packshot rerun under the 500px floor, and a correction to W25-03 | `w25/w25-03b-packshots-rerun` | PR open, awaiting owner: **0 filled**; **28.87GB and 727 temp dirs reclaimed** after verifying every one matched this repo's own mkdtemp pattern and was owned by this user, zero foreign, and **all six browser gates now clean up on exit** (the leak was `fail()` calling process.exit so `stop()` never ran), proved on a passing and a deliberately failing run; floor implemented at 500/600 with **499 refused** as ruled and nothing ever upscaled; **W25-03's central finding was WRONG** — 51 of the 88 plates are Phomi products, not 17, because I matched category listings instead of the colour variants inside them, so no `brand_hidden` was applied and Q-W25-06 asks you to re-rule; and the corrected 51 still fill nothing, the 18 family images being 459px and the 33 variants carrying their English names burned into the picture; **the 500 floor unlocks nothing**, the measured population being 343 to 492 with ROKO short by 8px (Q-W25-07 recommends 450) |
+| W25-03b | Packshot rerun under the 500px floor, and a correction to W25-03 | `w25/w25-03b-packshots-rerun` | PR open, awaiting owner: **0 filled**; **28.87GB and 727 temp dirs reclaimed** after verifying every one matched this repo's own mkdtemp pattern and was owned by this user, zero foreign, and **all six browser gates now clean up on exit** (the leak was `fail()` calling process.exit so `stop()` never ran), proved on a passing and a deliberately failing run; floor implemented at 500/600 with **499 refused** as ruled and nothing ever upscaled; **W25-03's central finding was WRONG**: 51 of the 88 plates are Phomi products, not 17, because I matched category listings instead of the colour variants inside them, so no `brand_hidden` was applied and Q-W25-06 asks you to re-rule; and the corrected 51 still fill nothing, the 18 family images being 459px and the 33 variants carrying their English names burned into the picture; **the 500 floor unlocks nothing**, the measured population being 343 to 492 with ROKO short by 8px (Q-W25-07 recommends 450) |
 | W25-03 | Packshots: plăci ceramice | `w25/w25-03-packshots-placi` | PR open, awaiting owner: **0 filled of 88**, two independent blocks both measured; **the 800px floor now confirmed on the manufacturer carrying 88 products** (`phomi.com`'s own tile faces are 459x398, clean and correct in every other way), making Q-W25-02 the single decision gating the largest card in the wave; and **70 of the 88 are not Phomi products at all**, matched name by name against the manufacturer's own catalogue, with the source's own URLs disagreeing with its own names (`elysee-pure-white` displayed as "Kamu Yellow"), so the site currently states a manufacturer for 70 products that manufacturer does not make; Q-W25-04 recommends hiding those brand lines; worked directly without agents after W25-02's 11-of-14 stall |
 | W25-03c | The floor moves to 450, and twenty-six slots fill | `w25/w25-03c-intake-450` | PR open, awaiting owner: **slots filled 1 of 261 before, 27 of 261 after**; 25 Phomi families at 459x398 and `CAT-0033` ROKO AquaMix at 492x400, every one from the manufacturer's own site and looked at by a person; **the full Phomi walk moved the family count from 18 to 25** and caught `CAT-0111` "Rusty Slab", which Phomi's product page calls "Rusty Stone" and only its category card names our way; **60 colour variants stay placeholders on a measurement**, the smallest crop that removes the burned-in English name leaving 650x320 or 350x450, both short; `CAT-0038` short by 27px at 423x400 and DURAZIV short by 107px at 343x335, re-measured; floor 450 with **8 arms** watched including `--label` with no `--crop`, and the crop proved directional; gate 19 gains the one-picture-one-card rule with **2 new arms**, 10 in all; **21 of 21 gates exit 0** and the note names why four cards said 19; Q-W25-05 written down at last, Q-W25-08 and Q-W25-09 opened |
 | W25-03d | Three catalogues walked, and the brand of all 88 plates settled | `w25/w25-03d-brand-settlement` | PR open, awaiting owner: **settled counts Phomi 85, Ecofasad 0, Kordeko 0, `brand_hidden` 3**; the false-attribution count went 70 then 37 then **3**, and it is data now in `content/plate-brand-settlement.json` with the matched name, tier and catalogue page per plate; 10 of 10 sampled matches verified against the name **Phomi burns into its own swatch**, including `Y001-01-02` exactly, which is what settles the code-like names; **Ecofasad names none of its 102 textures** (`rock-1808`, `marble-1801`) so no plate name can match one, reported not attempted; Kordeko's 22 named flexible tiles hold none of the three residuals; **no Russian domain found, so none fetched**; new **gate 23** `check-plate-brands.js` holds the records to the settlement both ways with **9 arms** and both real defects watched fire on the shipping files; **`scripts/run-gates.js` shipped** reading `quality.yml` itself after the hand-written runner went stale a second time inside one session, 3 arms watched; **22 of 22 gates exit 0**; Q-W25-10 and Q-W25-11 opened |
@@ -913,7 +913,7 @@ build refuses a table under two products and a column under half real. Budgets *
 19,704** and **4,369 / 4,391**. 26 of 26 gate commands exit 0.
 
 ## W26-05a · Text contrast and gate 28
-**Status: PR OPEN** (2026-09-22). Inserted at the owner's request from two screenshots.
+**Status: MERGED #128, section 12.0 exit 0 on `38c8acf`** (opened 2026-09-22). Inserted at the owner's request from two screenshots.
 **Section 12.0 on `2397634`: exit 0, PASS, 51 of 51, 16 of 16 redirects, 0 retried.** Rocă
 vulcanică's Compară table rendered every `th` **white on white** (inherited from the dark band),
 RO and RU, since W24-07. **A sweep of every visible text element on every page** (15,423 on 67
@@ -924,7 +924,7 @@ here; 12 arms, 3 GREEN; it waits out colour transitions and treats `aria-hidden`
 decoration. **27 of 27 gate commands exit 0.**
 
 ## W26-06 · Plăci flexibile, and Acoperișuri off the catalogue
-**Status: PR OPEN** (2026-09-22). W26-R9 to W26-R16 recorded first, with the dispatch's
+**Status: MERGED #129, section 12.0 exit 0 on `c8125af`** (opened 2026-09-22). W26-R9 to W26-R16 recorded first, with the dispatch's
 ratifications; six question headings and twenty backlog statuses moved in place. Label **"Plăci
 flexibile" / "Гибкая плитка"**, URL unchanged; **the category text rewritten** because it described
 fired floor tile (W17-02 scope, 0 prohibited terms, for ratification). Acoperișuri carries
@@ -933,7 +933,7 @@ removed from the ledger (a reuse, no file): **347 rows, 314 filled**. Index heig
 Plăci flexibile +54 / +109, re-budgeted 12,783 / 13,721.
 
 ## W26-07 · Copertine: three library images
-**Status: PR OPEN** (2026-09-22). W26-R8 applied directly: **headless Chrome gets both libraries'
+**Status: MERGED #130, section 12.0 exit 0 on `9954fac`, the merge after it** (opened 2026-09-22). W26-R8 applied directly: **headless Chrome gets both libraries'
 search and photo pages at 200**, where Q-W25-20's `curl` got 307/403/401, so no Google fallback
 was needed. `COP-HERO` Unsplash carport at dusk, `COPX-01` Pexels metal tile with its screw,
 `COPX-02` Pexels slatted metal fence with louvre gate (a profiled-sheet fence was replaced because
@@ -942,7 +942,7 @@ the card says "lamele metalice"). Licence read on each photo page; cropped, down
 gains a Copertine section. Heights identical. **317 of 347 filled.**
 
 ## W26-10 · The last empty products at floor 300
-**Status: PR OPEN** (2026-09-22). W26-R13 applied: **15 attempted, 15 filled**, every catalogue
+**Status: MERGED #131, section 12.0 exit 0 on `9954fac`** (opened 2026-09-22). W26-R13 applied: **15 attempted, 15 filled**, every catalogue
 product slot now has a picture (the 9 roofing `ACIM-` cards are W26-11's). `--floor-300` in `process-packshot.js` held to the 15 ids and
 refused elsewhere (watched three ways); `low_res` derived from the file's bytes, **4 rows**.
 11 from the product's own Fatade 3D page, 2 from the maker, 2 `google_pick`. **Seven were on
@@ -950,7 +950,7 @@ their own supplier page all along** at 600 to 1200px, missed by W25-17. Refused 
 watermark, a pasted-logo composite, a colour chart. **332 of 347 filled.** Heights identical.
 
 ## W26-11 · Roofing hub completion
-**Status: PR OPEN** (2026-09-22). **6 of 6 tiles and 9 of 9 cards filled; 0 placeholders on the
+**Status: MERGED #132, section 12.0 exit 0 on `7610bc0`, 51 of 51** (opened 2026-09-22). **6 of 6 tiles and 9 of 9 cards filled; 0 placeholders on the
 roofing page; ledger 347 of 347.** W26-R10 imperlux crops clear of headlines, model counts and the
 orange mark; Creaton Rapido taken from imperlux's clean category image, not its branded hero;
 `ACOP-05` a declared reuse. W26-R11 owner photos for the calculator, discounts and accessories
@@ -959,10 +959,20 @@ Links: `#preturi`, and two cross-page fragments logged as **Q-W26-05**. Counts 4
 `sips` zero-offset crop fault caught by eye; `ffmpeg` crops, W26-07's re-checked identical.
 
 ## W26-12 · Galleries and gate 29
-**Status: PR OPEN** (2026-09-22). W26-R14 on all 11 folders: **95 found, 89 installed** (Garduri's
+**Status: PR OPEN #133** (opened 2026-09-22). W26-R14 on all 11 folders: **95 found, 89 installed** (Garduri's
 6 byte-identical duplicates once), **9 galleries, 2 empty folders, 0 unmatched**, matched by the
 site's own titles after NFC. "Deschide galeria" card after the described projects; Copertine gets a
 section; **new page `/servicii/galerie-garduri/`** for "Garduri tip jaluzele". Lightbox: scroll-snap
 track (native swipe, no touch handler), keys, Escape, focus trap and return, reduced motion. Two
 defects found by driving it and fixed. **Gate 29** 7 arms, 1 GREEN, watched on a real page.
 Service pages identical; Copertine +629; gallery page 3,967. **Q-W26-06**: 8 photographs to confirm.
+
+## W26-13 · The dash gate, gate 30
+**Status: PR OPEN** (opened 2026-09-22). W26-R15 applied. **547 dashes in 43 files found by a byte
+scan; 237 rewritten in 40 files.** Left, as the ruling exempts: 250 in the four R-S records, held
+line by line in a SHA-256 baseline that can only shrink, and 60 in imperlux titles quoted in the
+audit file, exempt by field. Gate 22's old stylesheet was not exempt: its three comment dashes are
+hyphens and gate 22 now verifies it against git with that substitution. **Gate 30** reads bytes in
+the tree, the built site (entities and escapes too) and the pull request's commits, title and body;
+20 arms, 4 GREEN; watched fail on the real tree, three problems on three messages. Five Russian
+sentences rewritten, not repunctuated. RU terasamente +27 (inside 6,000), RU privacy +25 at 390.

@@ -152,7 +152,7 @@ Each of these would be absent if its data were empty. It is not.
 | Tile grid | `/servicii/tigla-metalica/`, RU | `content/tigla-metalica.json` | 4 models, 15 legend entries |
 | Carport chooser and models | `/servicii/copertine/`, RU | `content/copertine.json` | 5 families, 12 models |
 | Promo bar | every page | `promo.text`, `promo.endDate` | present, `endDate` in 2027 |
-| Photo slots with an SVG fallback (`scripts/slots.js`) | the pages those slots sit on | a real photograph per slot in `public/img/` | the build reports "slots on SVG fallback: 0/10 — every slot has a real photo" |
+| Photo slots with an SVG fallback (`scripts/slots.js`) | the pages those slots sit on | a real photograph per slot in `public/img/` | the build reports "slots on SVG fallback: 0/10, every slot has a real photo" |
 
 **Live form state, for the demo:** the quote form on `/`, `/ru/` and
 `/servicii/fatade/`, and the callback form on `/` and `/ru/`, carry

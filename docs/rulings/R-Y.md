@@ -617,8 +617,8 @@ prose block and its form, not its grid.
 **The dispatch's target of under 9,000px at 390 is NOT met, and cannot be met at twelve
 cards.** The arithmetic is in the open: below 512px the grid is one column, the card's
 media is a ledgered `1 / 1` placeholder, and twelve cards measure 6,181px on a 390px
-viewport. The rest of the page — header, hero, prose block, offer button, quote form and
-footer — is 4,008px, and none of it is this card's. 6,181 + 4,008 = 10,189. Reaching 9,000
+viewport. The rest of the page (header, hero, prose block, offer button, quote form and
+footer) is 4,008px, and none of it is this card's. 6,181 + 4,008 = 10,189. Reaching 9,000
 needs the first-screen count at **nine** or **eight**, which is one number in `build.js`
 (`PROD_STEP`). Both were built and measured rather than derived: nine reads **8,696px** and
 eight reads **8,198px**. Twelve is what the dispatch specifies, so twelve shipped.
@@ -1017,3 +1017,11 @@ identical to the pixel**: the gallery card is one more card in a grid that alrea
 its last row (5, 4, 4 and 2 described projects before it).
 
 Measured at 1440 with every `[data-reveal]` applied and settled for 1,600ms, plus 60 (W24-R4).
+
+## AMENDED (W26-13, wave 26): punctuation only
+
+**Two em dashes in the W24-10 block above were replaced by a pair of parentheses** around the
+same aside ("header, hero, prose block, offer button, quote form and footer"), under W26-R15,
+which bans the dash in every authored file and names rulings among them. No word, figure or budget
+changed. The sentence was repunctuated rather than struck because a struck dash is still a dash in
+the file; this block records the change where it was made (R-T).

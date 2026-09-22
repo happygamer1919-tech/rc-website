@@ -114,7 +114,7 @@ split W24-01 designed.
 
 ## One thing the copy rule and the house style disagreed about
 
-Dasterum writes some product names with an em dash: `DRIPSTOP — acoperire anticondens
+Dasterum writes some product names with an em dash: `DRIPSTOP U+2014 acoperire anticondens
 pentru tablă profilată`. **This dispatch forbids an em dash or an en dash anywhere**, and it
 also says to keep product names and invent no copy.
 

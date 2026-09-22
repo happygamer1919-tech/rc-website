@@ -1,4 +1,4 @@
-/* Rapid Construct — filters, hamburger, anchor scroll, form validation.
+/* Rapid Construct: filters, hamburger, anchor scroll, form validation.
    No animation, no dependencies. Portfolio filters switch instantly. */
 (function () {
   'use strict';

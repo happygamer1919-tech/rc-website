@@ -11932,3 +11932,43 @@ locales to describe the new photographs.
 ### Gates
 
 **25 of 25 gate commands exit 0.** Budgets unchanged: the box ratio did not move.
+
+## W26-02 · The audit that shows W25-24 was wrong, and the harness that could not have been, 2026-09-22
+
+**Card W26-02.** PR only, stops for the owner. The full card is
+`docs/board/W26-02-imperlux-audit.md`; the audit is `docs/IMPERLUX-AUDIT-W26.md` with evidence
+in `docs/audit/imperlux/`. **Nothing is built on it in this card.**
+
+### Five of five, against the owner's screenshots
+
+`tigla-metalica` 7, `tigla-roca-vulcanica` 4, `tigla-ceramica` 1, `shingle` 2,
+`sisteme-pluviale` 17. **31 roofing products**, each with its URL, card text and image file.
+**Q-W25-18 is closed by measurement.**
+
+### W25-24 was wrong and the method was the error
+
+The acoperisuri hub carries a five-tile bento headed "Produsele noastre" **at 1,876px on a
+12,535px page**. W25-24 grepped the **HTML response** for labels that render client-side, and
+screenshotted **the first 4,000px** of that page. Neither could find it. W26-R2 forbids both,
+and its "a finding of does not exist requires a rendered screenshot" is the clause that catches
+it.
+
+### The harness is committed, because the rule is standing
+
+`scripts/audit-rendered.js` with `scripts/lib/cdp-ws.js`. **Network idle is polled to
+stability**, three consecutive agreeing readings of `scrollHeight` and the image count, then the
+whole document is scrolled so lazy images load. A virtual-time budget that expires before the
+last request returns is how a late section is missed. **The screenshot is the whole document.**
+
+20 pages read: the homepage, `/acoperisuri/` and its five product sections, `/copertine/`, both
+calculators, `/garduri/`, the fence catalogue and all eight fence model pages.
+
+### The tables exist
+
+Four of the five roofing sections publish a **Compară modelele** table, copied column for
+column. `tigla-ceramica` has one product and none, and no fence model page publishes one, so
+W26-R6 builds those from the card specs.
+
+### Gates
+
+**25 of 25 gate commands exit 0.** Nothing about the built site changed.

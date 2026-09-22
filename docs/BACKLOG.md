@@ -940,3 +940,11 @@ was needed. `COP-HERO` Unsplash carport at dusk, `COPX-01` Pexels metal tile wit
 the card says "lamele metalice"). Licence read on each photo page; cropped, downscaled, stripped.
 **Gate 19 approves `licence-free library` held to these three slots**, 2 arms, 1 GREEN. Review list
 gains a Copertine section. Heights identical. **317 of 347 filled.**
+
+## W26-10 · The last empty products at floor 300
+**Status: PR OPEN** (2026-09-22). W26-R13 applied: **15 attempted, 15 filled**, every catalogue
+product slot now has a picture (the 9 roofing `ACIM-` cards are W26-11's). `--floor-300` in `process-packshot.js` held to the 15 ids and
+refused elsewhere (watched three ways); `low_res` derived from the file's bytes, **4 rows**.
+11 from the product's own Fatade 3D page, 2 from the maker, 2 `google_pick`. **Seven were on
+their own supplier page all along** at 600 to 1200px, missed by W25-17. Refused by eye: a FLAGMA
+watermark, a pasted-logo composite, a colour chart. **332 of 347 filled.** Heights identical.

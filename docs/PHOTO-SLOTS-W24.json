@@ -229,8 +229,13 @@
       "page": "/servicii/roca-vulcanica/",
       "ratio": "4 / 3",
       "min_px": "1200x900",
-      "shows": "Tigla \"Novatik Slate\" montata pe un acoperis, fotografiata de aproape ca sa se vada granulatia de roca vulcanica. Lumina de zi, fara soare direct puternic. Orizontal.",
-      "state": "placeholder"
+      "shows": "Tigla \"Novatik Slate\" montata pe un acoperis, fotografiata de aproape ca sa se vada granulatia de roca vulcanica. Lumina de zi, fara soare direct puternic. Orizontal. AMENDED W26-10 (W26-R13): filled from the manufacturer's own site, novatik.ro, 1366x768.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/NVK-02.jpg",
+      "alt": {
+        "ro": "Novatik Slate, țiglă metalică acoperită cu rocă, montată pe acoperiș",
+        "ru": "Novatik Slate, металлочерепица с каменной посыпкой на кровле"
+      }
     },
     {
       "id": "NVK-03",
@@ -539,9 +544,13 @@
       "page": "/catalog/termoizolatie/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Polistiren expandat EPS-50 | EPS-70 | EPS-80 | EPS-200\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder",
-      "empty_reason": "the one image in its Fatade 3D product gallery is 250x250, under the 450 floor W25-R12 made final (W25-17)"
+      "shows": "Produsul \"Polistiren expandat EPS-50 | EPS-70 | EPS-80 | EPS-200\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled by search, orizont-pietroasele.ro, 1200x1200; the product's own page offers nothing at the 300 floor.",
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0003.jpg",
+      "alt": {
+        "ro": "Polistiren expandat EPS-50 | EPS-70 | EPS-80 | EPS-200, produsul",
+        "ru": "Пенополистирол ЕПС-50 | ЕПС-70 | ЕПС-80 | ЕПС-200, продукт"
+      }
     },
     {
       "id": "CAT-0004",
@@ -576,16 +585,26 @@
       "page": "/catalog/termoizolatie/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Polistiren Penoplex\" (Penoplex), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "shows": "Produsul \"Polistiren Penoplex\" (Penoplex), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the product's own Fatade 3D page, 400x400.",
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0006.jpg",
+      "alt": {
+        "ro": "Polistiren Penoplex, produsul",
+        "ru": "Полистирол Пеноплекс, продукт"
+      }
     },
     {
       "id": "CAT-0007",
       "page": "/catalog/termoizolatie/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Polistiren Tehnoplex XPS Carbon\" (SWEETONDALE), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "shows": "Produsul \"Polistiren Tehnoplex XPS Carbon\" (SWEETONDALE), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the product's own Fatade 3D page, 600x417.",
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0007.jpg",
+      "alt": {
+        "ro": "Polistiren Tehnoplex XPS Carbon, produsul",
+        "ru": "Полистирол Техноплекс XPS Карбон, продукт"
+      }
     },
     {
       "id": "CAT-0008",
@@ -605,8 +624,13 @@
       "page": "/catalog/termoizolatie/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Vată minerală OBIO 165\" (IZOVAT), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "shows": "Produsul \"Vată minerală OBIO 165\" (IZOVAT), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the product's own Fatade 3D page, 720x443.",
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0009.jpg",
+      "alt": {
+        "ro": "Vată minerală OBIO 165, produsul",
+        "ru": "Минеральная вата ОБИО 165, продукт"
+      }
     },
     {
       "id": "CAT-0010",
@@ -626,16 +650,26 @@
       "page": "/catalog/termoizolatie/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Vată minerală FAWORI\" (FAWORI), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "shows": "Produsul \"Vată minerală FAWORI\" (FAWORI), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the manufacturer's own site, res.cloudinary.com, 800x600.",
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0011.jpg",
+      "alt": {
+        "ro": "Vată minerală FAWORI, produsul",
+        "ru": "Минеральная вата ФАВОРИ, продукт"
+      }
     },
     {
       "id": "CAT-0012",
       "page": "/catalog/termoizolatie/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Vată minerală Novoterm\" (NOVOTERM), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "shows": "Produsul \"Vată minerală Novoterm\" (NOVOTERM), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the product's own Fatade 3D page, 970x970.",
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0012.jpg",
+      "alt": {
+        "ro": "Vată minerală Novoterm, produsul",
+        "ru": "Минеральная вата Новотерм, продукт"
+      }
     },
     {
       "id": "CAT-0013",
@@ -759,9 +793,13 @@
       "page": "/catalog/termoizolatie/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Mesterul dibaci POLISTIREN\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder",
-      "empty_reason": "the one image in its Fatade 3D product gallery is 174x270, under the 450 floor W25-R12 made final (W25-17)"
+      "shows": "Produsul \"Mesterul dibaci POLISTIREN\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled by search, cdn.syncron.md, 1600x2416; the product's own page offers nothing at the 300 floor.",
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0022.jpg",
+      "alt": {
+        "ro": "Mesterul dibaci POLISTIREN, produsul",
+        "ru": "Mesterul dibaci POLISTIREN, продукт"
+      }
     },
     {
       "id": "CAT-0023",
@@ -794,9 +832,13 @@
       "page": "/catalog/termoizolatie/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Diblu din oțel LGX\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder",
-      "empty_reason": "the one image in its Fatade 3D product gallery is 400x266, under the 450 floor W25-R12 made final (W25-17)"
+      "shows": "Produsul \"Diblu din oțel LGX\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the product's own Fatade 3D page, 400x266.",
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0025.jpg",
+      "alt": {
+        "ro": "Diblu din oțel LGX, produsul",
+        "ru": "Дюбель из стали ЛГХ, продукт"
+      }
     },
     {
       "id": "CAT-0026",
@@ -816,8 +858,13 @@
       "page": "/catalog/tencuieli-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Baumit DuoTop Tencuială decorativă acrilică\" (Baumit), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "shows": "Produsul \"Baumit DuoTop Tencuială decorativă acrilică\" (Baumit), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the product's own Fatade 3D page, 400x400.",
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0027.jpg",
+      "alt": {
+        "ro": "Baumit DuoTop Tencuială decorativă acrilică, produsul",
+        "ru": "Баумит ДуоТоп - Акриловая декоративная штукатурка, продукт"
+      }
     },
     {
       "id": "CAT-0028",
@@ -941,16 +988,26 @@
       "page": "/catalog/tencuieli-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Tencuială de cuarţ colorat DURAZIV Clima Protect® cu Kauciuc®\" (DURAZIV), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "shows": "Produsul \"Tencuială de cuarţ colorat DURAZIV Clima Protect® cu Kauciuc®\" (DURAZIV), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the product's own Fatade 3D page, 1200x1200.",
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0037.jpg",
+      "alt": {
+        "ro": "Tencuială de cuarţ colorat DURAZIV Clima Protect® cu Kauciuc®, produsul",
+        "ru": "Цветная кварцевая штукатурка DURAZIV Clima Protect® с Kauciuc®, продукт"
+      }
     },
     {
       "id": "CAT-0038",
       "page": "/catalog/tencuieli-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Tencuială decorativă mozaicată Omitka Rokomozaikova\" (ROKO AquaMix), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "shows": "Produsul \"Tencuială decorativă mozaicată Omitka Rokomozaikova\" (ROKO AquaMix), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the product's own Fatade 3D page, 423x400.",
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0038.jpg",
+      "alt": {
+        "ro": "Tencuială decorativă mozaicată Omitka Rokomozaikova, produsul",
+        "ru": "Декоративная мозаичная штукатурка Omitka Rokomozaikova, продукт"
+      }
     },
     {
       "id": "CAT-0039",
@@ -1902,9 +1959,13 @@
       "page": "/catalog/placi-ceramice/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Polished Concrete Wall\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder",
-      "empty_reason": "no record of this product holds a Phomi picture, so there is none to reuse (W25-R17, W25-20)"
+      "shows": "Produsul \"Polished Concrete Wall\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the product's own Fatade 3D page, 1070x535.",
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0110.jpg",
+      "alt": {
+        "ro": "Polished Concrete Wall, produsul",
+        "ru": "Polished Concrete Wall, продукт"
+      }
     },
     {
       "id": "CAT-0111",
@@ -1924,9 +1985,13 @@
       "page": "/catalog/placi-ceramice/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Polish Concrete Wall\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder",
-      "empty_reason": "no record of this product holds a Phomi picture, so there is none to reuse (W25-R17, W25-20)"
+      "shows": "Produsul \"Polish Concrete Wall\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the product's own Fatade 3D page, 1070x535.",
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0112.jpg",
+      "alt": {
+        "ro": "Polish Concrete Wall, produsul",
+        "ru": "Polish Concrete Wall, продукт"
+      }
     },
     {
       "id": "CAT-0113",
@@ -3050,8 +3115,13 @@
       "page": "/catalog/vopsele/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Ultrapal - Vopsea universală\" (STANCOLAC), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "placeholder"
+      "shows": "Produsul \"Ultrapal - Vopsea universală\" (STANCOLAC), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the product's own Fatade 3D page, 1000x1000.",
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0194.jpg",
+      "alt": {
+        "ro": "Ultrapal - Vopsea universală, produsul",
+        "ru": "Ultrapal - Универсальная краска, продукт"
+      }
     },
     {
       "id": "CAT-0195",

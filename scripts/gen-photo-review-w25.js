@@ -176,7 +176,14 @@ for (const row of ledger.slots) {
     const s = settlement.find((x) => x.slot === row.id);
     if (s && s.level === 'variant') flags.push('labelled swatch');
   }
-  filled.push({ row, sec, p, rec, origin, flags, dims: dims(row.provenance) });
+  /* W26-R13: "flag low_res in the review file". Derived from the installed file's
+     own bytes, not declared, so it cannot be forgotten on a row: nothing is ever
+     upscaled, so a file whose longest side is under 450 came from a source under
+     the site's normal floor, which only W26-R13's fifteen slots may do. */
+  const d = dims(row.provenance);
+  const long = Math.max(...(d.match(/^(\d+)x(\d+)$/) || [0, 0, 0]).slice(1).map(Number));
+  if (long > 0 && long < 450) flags.push('low_res');
+  filled.push({ row, sec, p, rec, origin, flags, dims: d });
 }
 
 const esc = (s) => String(s == null ? '' : s).replace(/\|/g, '\\|');
@@ -210,6 +217,7 @@ L.push(`| watermark | ${fl('watermark')} | a supplier mark on the picture or on 
 L.push(`| reuse | ${filled.filter((f) => f.flags.some((x) => x.startsWith('reuse of'))).length} | one picture filling a second record of the same product (W25-R17). Check the two cards are the same product |`);
 L.push(`| google_pick | ${fl('google_pick')} | found by search because the product's own source publishes nothing at the 450 floor (W25-R20). Check it is the right product, and correct it if not |`);
 L.push(`| library | ${fl('library')} | a licence-free stock photograph from Unsplash or Pexels (W25-R23, W26-R8), decoration only. Check it suits the page |`);
+L.push(`| low_res | ${fl('low_res')} | the longest side is under the site's 450 floor, installed under W26-R13's floor of 300 for the last empty products. Replace it when a larger picture exists |`);
 L.push(`| low confidence match | ${fl('low confidence match')} | the plate matched Phomi at a tier that is not an exact string match. Check the name in the picture against the name on the card |`);
 L.push(`| no flag | ${filled.filter((f) => !f.flags.length).length} | an ordinary manufacturer packshot |`);
 L.push('');

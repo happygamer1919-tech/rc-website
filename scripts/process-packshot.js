@@ -79,8 +79,19 @@ const ROOT = path.join(__dirname, '..');
    NOTHING IS EVER UPSCALED: a source between the floor and the output is written
    at its own size, because enlarging a packshot invents detail that was never
    photographed and a soft product photo reads as a cheap one. */
-const SOURCE_FLOOR = 450;
+const SOURCE_FLOOR_DEFAULT = 450;
 const OUTPUT = 600;
+/* W26-R13, the owner's exception, verbatim in docs/rulings/W26-R.md: "Last empty
+   product slots (14 no-stockist, NVK-02, and any others still empty in Catalog):
+   floor 300 for these only". It is held to the slot ids, as every exception in
+   this repo is, so `--floor-300` on any other slot is refused rather than obeyed.
+   W25-R12's 450 stays the rule; this is a list, not a new floor. */
+const LOW_FLOOR = 300;
+const LOW_FLOOR_SLOTS = [
+  'CAT-0003', 'CAT-0006', 'CAT-0007', 'CAT-0009', 'CAT-0011', 'CAT-0012', 'CAT-0022',
+  'CAT-0025', 'CAT-0027', 'CAT-0037', 'CAT-0038', 'CAT-0110', 'CAT-0112', 'CAT-0194',
+  'NVK-02',
+];
 const MAX_BYTES = 220 * 1024;
 
 const die = (msg) => { console.error(`\nPACKSHOT FAILED: ${msg}\n`); process.exit(1); };
@@ -90,7 +101,7 @@ const flag = (name, dflt) => {
   const i = process.argv.indexOf(`--${name}`);
   return i > -1 && process.argv[i + 1] ? process.argv[i + 1] : dflt;
 };
-if (args.length < 2) die('usage: node scripts/process-packshot.js <source-file> <SLOT-ID> [--dir catalog] [--crop t,r,b,l] [--label]');
+if (args.length < 2) die('usage: node scripts/process-packshot.js <source-file> <SLOT-ID> [--dir catalog] [--crop t,r,b,l] [--label] [--floor-300]');
 const [SRC, SLOT] = args;
 const DIR = flag('dir', 'catalog');
 
@@ -112,6 +123,10 @@ if (LABEL) {
   console.log('label: this source carries a burned-in product name (W25-R5). It is installed as published and flagged for the owner\'s review list.');
 }
 if (!/^[A-Z0-9-]+$/.test(SLOT)) die(`"${SLOT}" is not a slot id. Uppercase, digits and hyphens only.`);
+const FLOOR_300 = process.argv.includes('--floor-300');
+if (FLOOR_300 && !LOW_FLOOR_SLOTS.includes(SLOT)) die(`--floor-300 is W26-R13's exception for ${LOW_FLOOR_SLOTS.length} named slots and ${SLOT} is not one of them. The floor for every other slot is ${SOURCE_FLOOR_DEFAULT} (W25-R12).`);
+const SOURCE_FLOOR = FLOOR_300 ? LOW_FLOOR : SOURCE_FLOOR_DEFAULT;
+if (FLOOR_300) console.log(`floor: ${LOW_FLOOR}px on the longest side, W26-R13's exception for ${SLOT}; a file under ${SOURCE_FLOOR_DEFAULT} is flagged low_res in the review list`);
 if (!fs.existsSync(SRC)) die(`${SRC} does not exist.`);
 
 const sips = (a) => execFileSync('sips', a, { stdio: ['ignore', 'pipe', 'pipe'] }).toString();

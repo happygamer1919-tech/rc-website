@@ -12498,3 +12498,61 @@ the owner prefers real work there.
 
 **Heights identical to the pixel** (6,555 / 6,631): every box was reserved by its ratio before.
 Ledger **317 of 347 filled, 30 empty**.
+
+## W26-10 · The last fifteen empty products, at floor 300, and seven that were never missing, 2026-09-22
+
+Branch `w26/w26-10-last-slots`, stacked on W26-07 (#130).
+
+**W26-R13 applied: 15 attempted, 15 filled.** Every catalogue product slot now has a picture;
+what stays empty is the six roofing tiles and the nine imperlux-only roofing product cards,
+which W26-11 fills.
+
+**The floor exception is coded, not remembered.** `scripts/process-packshot.js` takes
+`--floor-300`, honoured for the fifteen slot ids W26-R13 covers and **refused for any other**, so
+W25-R12's 450 stays the rule. Watched three ways on one 400x300 file: refused on `CAT-0001` with
+the flag, refused on `CAT-0003` without it, written at 400x300 on `CAT-0003` with it. **`low_res`
+is derived**, not declared: the review list reads each installed file's own bytes and flags any
+whose long side is under 450, which nothing but these slots may be, since nothing is upscaled.
+
+**How each was found.** Eight researchers in parallel, one or two products each, writing only to
+a scratch folder, following W25-R20's order (the record's own page, then the maker, then any
+non-Russian site), each told to refuse a watermark, a shop logo, a face, burned-in claims and a
+near match, and to look at every file. **Every file was then looked at again here before install.**
+
+| Slot | Product | Origin | Installed | Flag |
+|---|---|---|---|---|
+| CAT-0003 | Polistiren expandat EPS-50 to 200 | google_pick, orizont-pietroasele.ro | 600x600 | google_pick |
+| CAT-0006 | Polistiren Penoplex | Fatade 3D page | 400x400 | low_res |
+| CAT-0007 | Tehnoplex XPS Carbon | Fatade 3D page | 600x417 | |
+| CAT-0009 | Vată minerală OBIO 165 | Fatade 3D page | 600x369 | |
+| CAT-0011 | Vată minerală FAWORI | maker, fawori.com | 600x450 | |
+| CAT-0012 | Vată minerală Novoterm | Fatade 3D page | 600x600 | |
+| CAT-0022 | Mesterul dibaci POLISTIREN | google_pick, the maker's own building.md | 397x600 | google_pick |
+| CAT-0025 | Diblu din oțel LGX | Fatade 3D page | 400x266 | low_res |
+| CAT-0027 | Baumit DuoTop | Fatade 3D page | 400x400 | low_res |
+| CAT-0037 | DURAZIV Clima Protect | Fatade 3D page | 600x600 | |
+| CAT-0038 | ROKO Omitka Rokomozaikova | Fatade 3D page | 423x400 | low_res |
+| CAT-0110 | Phomi Polished Concrete Wall | Fatade 3D page | 600x300 | |
+| CAT-0112 | Phomi Polish Concrete Wall | Fatade 3D page | 600x300 | |
+| CAT-0194 | Stancolac Ultrapal | Fatade 3D page | 600x600 | |
+| NVK-02 | Novatik Slate | maker, novatik.ro gallery | 600x337 | |
+
+**Seven were never missing.** CAT-0007, 0012, 0037, 0110, 0112 and 0194 (600 to 1200px) and
+CAT-0009 (720) were on **the product's own Fatade 3D page**, in upload folders dated 2025 and
+January 2026, so they were there when W25-17 read those pages. That pass missed them, and W25-27
+then searched other shops and recorded "no stockist found". **The reasons recorded then were
+wrong, and the ledger's stale `empty_reason` fields are removed with the fills.**
+
+**Refused on the way, by looking**: CAT-0009's second supplier image carries a FLAGMA marketplace
+watermark; CAT-0011's supplier image is a composite with a logo pasted on an unbranded render;
+CAT-0038's second image is a colour chart, not the product.
+
+**CAT-0022 is recorded as `google_pick` although it came from the maker's own site**, because a
+search found it and its catalogue record names no manufacturer, so claiming a manufacturer origin
+would fail gate 19's W25-04 rule; the source cell names General Building. **CAT-0027's bucket
+label carries a small model's face printed by Baumit**; it is the maker's own packaging and the
+only picture of the product anywhere, Baumit's sites included, so it is installed and named here
+for the owner. **CAT-0038's maker describes a 4 kg pack**, where the record copied from the
+supplier says 20 kg: a data question, not a picture one, left as recorded.
+
+**Heights identical to the pixel** on the seven pages measured. Ledger **332 of 347 filled**.

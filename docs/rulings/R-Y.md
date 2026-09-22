@@ -879,3 +879,26 @@ they are language-neutral, and `imperlux.md` publishes no Russian page, so the c
 only part of a colour name here that is not authored in this repo.
 
 Measured at 1440 with every `[data-reveal]` applied and settled for 1,600ms, plus 60 (W24-R4).
+
+---
+
+## AMENDED (W25-26, wave 25): the tile models leave the roofing section for their own page
+
+| Page | Before | After | Budget |
+|---|---|---|---|
+| `/servicii/acoperisuri/` | 16,904 | **16,470** | 16,964 to **16,530** |
+| `/ru/servicii/acoperisuri/` | 17,064 | **16,608** | 17,124 to **16,668** |
+| `/servicii/tigla-metalica/` | 3,979 | **4,223** | 4,039 to **4,283** |
+| `/ru/servicii/tigla-metalica/` | 4,010 | **4,256** | 4,072 to **4,316** |
+
+**Two budgets fall and two rise, for one change.** Ruling W25-R21 leaves one card per model
+name in the Tigla metalică group, so the four cards built from `content/tigla-metalica.json`
+left the roofing section: 75 cards became 71, and a four-column grid loses a row. The four
+`ACTM-` slots those cards carried moved to `/servicii/tigla-metalica/`, where the same four
+models are published, and each model card gained a square picture it did not have.
+
+**The roofing page loses more than the tile page gains**, 434px against 244px, because a card
+in a four-column grid of 71 costs a nineteenth of a row while a picture on a tile card costs
+its own height on a page of four.
+
+Measured at 1440 with every `[data-reveal]` applied and settled for 1,600ms, plus 60 (W24-R4).

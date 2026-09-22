@@ -132,7 +132,10 @@ const MARKERS = {
        `roofFilters: 8` is Toate plus the seven groups, and `roofOff: 0` is the
        page as it loads with no filter chosen: a build that shipped a filter
        already applied would hide cards from a visitor who asked for none. */
-    productCards: 75,
+    /* AMENDED (W25-26, ruling W25-R21): ~~75~~ **71**. The four metal tile model
+       cards left this section for /servicii/tigla-metalica/, so the count is the
+       71 roofing records and nothing else. */
+    productCards: 71,
     roofFilters: 8,
     roofOff: 0,
     foldedCards: 0,
@@ -259,8 +262,10 @@ const PAGES = [
      docs/rulings/R-Y.md carries the measurement and the reason beside it, and
      W25-R18 requires the figure to be re-measured on the deployed sha after the
      merge and corrected there if the live page differs. */
-  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 16964 },
-  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 17124 },
+  /* AMENDED (W25-26): four cards left this section for the tile page, so the
+     figures fall with the measurement. */
+  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 16530 },
+  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 16668 },
   /* W24-07. The rocă vulcanică mirror page. */
   { path: '/servicii/roca-vulcanica/',     type: 'novatik', label: 'novatik RO',  budget: 4348 },
   { path: '/ru/servicii/roca-vulcanica/',  type: 'novatik', label: 'novatik RU',  budget: 4446 },
@@ -271,8 +276,9 @@ const PAGES = [
      under W24-R4. The acoperisuri hub gained the same link and did NOT move: its
      section's bottom padding absorbed it, measured 7499 RO and 7637 RU with and
      without, so those two budgets are untouched. */
-  { path: '/servicii/tigla-metalica/',     type: 'tigla',   label: 'tigla RO',       budget: 4039 },
-  { path: '/ru/servicii/tigla-metalica/',  type: 'tigla',   label: 'tigla RU',       budget: 4072 },
+  /* AMENDED (W25-26): the four model cards gained a picture each, so these rise. */
+  { path: '/servicii/tigla-metalica/',     type: 'tigla',   label: 'tigla RO',       budget: 4283 },
+  { path: '/ru/servicii/tigla-metalica/',  type: 'tigla',   label: 'tigla RU',       budget: 4316 },
   { path: '/servicii/copertine/',          type: 'product', label: 'copertine RO',   budget: 6615 },
   { path: '/ru/servicii/copertine/',       type: 'product', label: 'copertine RU',   budget: 6691 },
   /* W24-08. The garduri page gained the fence bento; the copertine page gained a

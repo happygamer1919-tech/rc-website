@@ -11672,3 +11672,56 @@ four-column card. **R-Y's rule runs in this direction too**: it fell at W25-11 a
 ### Gates
 
 **25 of 25 gate commands exit 0.**
+
+## W25-26 · There were never two suppliers, 2026-09-22
+
+**Card W25-26.** PR only, stops for the owner. The full card is
+`docs/board/W25-26-tigla-merge.md`.
+
+**W25-R21's premise is wrong, and the correction is the card.** The ruling speaks of a
+"Dasterum price and record kept, Imperlux duplicate dropped" with "Imperlux-only models". There
+is **no Imperlux data in this anywhere**. `content/tigla-metalica.json` cites the wave 14
+audit's section 2.1, and **that section is titled "dasterum.md: Țiglă metalică"** with
+**Dasterum** named as the manufacturer on every row. Measured on the live source 2026-09-22:
+`imperlux.md` publishes **Monterrey 0 times, Valencia 0, Kascad 0**, and sells Barcelona,
+Madrid and Bavaria instead.
+
+**The eight cards were the same four Dasterum products captured twice**, at W14-10 as model
+data and at W25-09 as catalogue records. **The two prices are the same supplier's too**: `De la
+110 lei` is the Econom grade's listing price and `184 lei/m²` the Standart grade's list price,
+both in the audit. Nothing on either card said which grade it was.
+
+**The ruling still lands unchanged**: one card per model name. The four cards built from
+`tigla-metalica.json` leave `/servicii/acoperisuri/`, the four catalogue records stay, and the
+section goes **75 cards to 71** with its `productCards` marker.
+
+### The four ACTM slots moved and were filled without a fetch
+
+They would have been ledger rows nothing renders, which gate 19 refuses. They now render on
+`/servicii/tigla-metalica/`, beside the models they are pictures of.
+
+**Filled from `dasterum.md`, not `imperlux.md`.** The dispatch says imperlux and that cannot be
+done; **W25-R20's first step lands on the right host without a judgement call**: a product
+picture comes first from the site its data and price came from. And **no fetch was needed**:
+the same pictures are on `CAT-0224` to `CAT-0227`, so each slot takes one under W25-R17's
+declared reuse.
+
+**Matched by model name, never by id order.** `CAT-0226` is the modular tile and `CAT-0227` is
+Kascad; a positional pairing would have put Kascad's picture on the modular card. The pairing is
+asserted against the record's own name at write time.
+
+### A pre-W24-01 image path is deleted
+
+The tile card rendered an image if `public/img/tigla-<id>.jpg` happened to exist: no ledger
+row, no provenance, no gate. Four files could have appeared there and nothing would have known
+where they came from. It calls the placeholder component now.
+
+### Budgets: two fall, two rise
+
+Acoperisuri **16,904 to 16,470** and **17,064 to 16,608**; tigla **3,979 to 4,223** and **4,010
+to 4,256**. The roofing page loses more than the tile page gains, 434px against 244px: a card
+in a grid of 71 costs a nineteenth of a row, a picture on a tile card costs its own height.
+
+### Slots and gates
+
+**283 to 287 of 337**, with no image added to `public/`. **25 of 25 gate commands exit 0.**

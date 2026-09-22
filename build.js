@@ -1746,13 +1746,16 @@ function tiglaGrid(l) {
     const where = `models[${i}]`;
     if (!m.name || !REAL(m.name[l.code])) die(`${TIGLA_FILE}: ${where}.name is not real for ${l.code}.`);
     if (!Array.isArray(m.variants) || m.variants.length === 0) die(`${TIGLA_FILE}: ${where} has no variants.`);
-    const img = `public/img/tigla-${m.id}.jpg`;
-    let media = '';
-    if (fs.existsSync(img)) {
-      const alt = l.strings[`tigla.alt.${m.id}`];
-      if (!REAL(alt)) die(`${img} exists but tigla.alt.${m.id} is not real in ${l.code}.`);
-      media = `\n        <div class="tile__media"><img src="${BASE}/img/tigla-${m.id}.jpg" alt="${esc(alt)}" width="480" height="480" loading="lazy" decoding="async"></div>`;
-    }
+    /* W25-26. The four `ACTM-` slots live HERE now, on the page that publishes
+       these four models, and not on a catalogue card in the roofing section.
+
+       This replaces a pre-W24-01 mechanism: the card rendered an image only if
+       `public/img/tigla-<id>.jpg` happened to exist, with no ledger row, no
+       provenance and no gate. Four files could have appeared there and nothing in
+       this repo would have known where they came from. The placeholder component
+       is the one call site for every image the site renders, and these four join
+       it. */
+    const media = `\n        <div class="tile__media">${placeholder(`ACTM-0${i + 1}`, { variant: 'light', className: 'tile__ph', locale: l.code, eager: i < 2 })}</div>`;
     const variants = m.variants.map((v, j) => {
       const w = `${where}.variants[${j}]`;
       if (!TIGLA_GRADES.includes(v.grade)) die(`${TIGLA_FILE}: ${w}.grade "${v.grade}" is not standart or premium.`);
@@ -2449,41 +2452,11 @@ ROOF_MOVED_ROUTES.add(ROOF_CATEGORY);
 for (const g of roofGroups) ROOF_MOVED_ROUTES.add(g.slug);
 if (ROOF_MOVED_ROUTES.size !== 8) die(`W25-19 expects 8 roofing routes to become redirect pages, derived ${ROOF_MOVED_ROUTES.size}.`);
 
-/* W25-19. The four metal tile models, as catalogue cards.
-
-   THE DISPATCH SAYS "Imperlux models plus Dasterum tigla", so the Tigla metalica
-   filter holds both: the four models `/servicii/tigla-metalica/` already
-   publishes, and the four tiles Dasterum supplies. They are the same four profile
-   names from two suppliers at two prices, which is a real thing about this market
-   and not a duplicate row; Q-W25-17 records it for the owner.
-
-   THE PRICE IS NOT COMPOSED OUT OF THIN AIR. It is `gardModele.priceFrom` plus
-   the LOWEST `list_price_lei` in the model plus `tigla.perM2`, all three of them
-   strings this repo already ships and prints. "de la" is W25-R8's own shape: the
-   current public price and nothing struck through.
-
-   THE SLOT IDS ARE NEW, `ACTM-01` to `ACTM-04`, because these four cards had no
-   placeholder before: the tile page shows profile diagrams, not photographs. They
-   are ordinary ledger rows and gate 19 holds them like any other. */
-function roofTiglaRecords(l) {
-  const from = l.strings['gardModele.priceFrom'];
-  const perM2 = l.strings['tigla.perM2'];
-  const gradeOf = (g) => l.strings[`tigla.${g}`];
-  if (!REAL(from) || !REAL(perM2)) die(`gardModele.priceFrom and tigla.perM2 must be real in ${l.code}.`);
-  return TIGLA.models.map((m, i) => {
-    const prices = m.variants.map((v) => Number(v.list_price_lei)).filter((n) => n > 0);
-    if (!prices.length) die(`content/tigla-metalica.json: model "${m.id}" has no list price, so its card cannot state one.`);
-    const grades = [...new Set(m.variants.map((v) => gradeOf(v.grade)))].filter(REAL);
-    const render = `${from} ${Math.min(...prices)} ${perM2}`;
-    return {
-      slot: `ACTM-0${i + 1}`,
-      name: { [l.code]: m.name[l.code] },
-      brand: null,
-      variant: { [l.code]: grades.join(' / ') },
-      price: { render: { [l.code]: render } },
-    };
-  });
-}
+/* W25-19 built four catalogue cards from `content/tigla-metalica.json` for the
+   Tigla metalica filter. **W25-26 removed them**, under ruling W25-R21, and the
+   function that made them is gone with them rather than left unreferenced. The
+   four `ACTM-` slots it created survive: they render on
+   `/servicii/tigla-metalica/`, beside the models they are pictures of. */
 
 function roofSection(l) {
   const records = CATALOG_PRODUCTS[ROOF_CATEGORY] || [];
@@ -2506,14 +2479,22 @@ function roofSection(l) {
   const orphan = records.filter((r) => !groupsFor(r).length);
   if (orphan.length) die(`${orphan.length} roofing record(s) belong to no subcategory, so no filter would ever show them: ${orphan.map((r) => r.slot).join(', ')}.`);
 
-  const tigla = roofTiglaRecords(l);
-  const cards = [
-    ...tigla.map((r, i) => prodCard(l, r, i, ` data-roof-groups="tigla-metalica"`)),
-    ...records.map((r, i) => prodCard(l, r, i + tigla.length, ` data-roof-groups="${esc(groupsFor(r).join(' '))}"`)),
-  ];
+  /* AMENDED (W25-26, ruling W25-R21): ONE CARD PER MODEL NAME. W25-19 put eight
+     cards in this group under four names, four from `content/tigla-metalica.json`
+     and four catalogue records. The four extra cards are gone.
+
+     Q-W25-17 asked the owner to choose between "two suppliers, two prices" and
+     merging. The premise was wrong and the walk that closed it is in the W25-26
+     card: BOTH SETS ARE DASTERUM. The wave 14 audit's section 2.1 is titled
+     "dasterum.md: Țiglă metalică" and names Dasterum as the manufacturer on every
+     row, so `tigla-metalica.json` was never an Imperlux listing; `imperlux.md`
+     publishes Monterrey, Valencia and Kascad zero times and sells Barcelona,
+     Madrid and Bavaria instead. There were never two suppliers and there are no
+     Imperlux-only models to keep. */
+  const cards = records.map((r, i) => prodCard(l, r, i, ` data-roof-groups="${esc(groupsFor(r).join(' '))}"`));
 
   const counts = new Map(roofGroups.map((g) => [g.child,
-    records.filter((r) => groupsFor(r).includes(g.child)).length + (g.child === 'tigla-metalica' ? tigla.length : 0)]));
+    records.filter((r) => groupsFor(r).includes(g.child)).length]));
   const total = cards.length;
 
   const btn = (id, text, n, active) =>

@@ -12192,3 +12192,104 @@ watches. Which wave 25 card shrank it is a bisection and is not chased here.
 
 **317 of 337 filled**, 20 empty. All four pages measure **identical before and after**, to the
 pixel, because a filled slot takes the placeholder's own box. **25 of 25 gate commands exit 0.**
+
+## W26-04 · The roofing restructure, and a backtick that made two sections vanish, 2026-09-22
+
+Branch `w26/w26-04-roofing-restructure`, based on `main` at `18b98ce`.
+
+### Five sections, a second bento, and 78 cards
+
+W26-R5 replaces the seven catalogue subcategories the filter bar was built from with **five
+sections**: Țiglă metalică (4), **Țiglă ceramică (1)**, **Șindrilă bituminoasă (2)**,
+**Sisteme pluviale (18)** and **Accesorii de acoperiș (53)**, the last folding profnastil,
+hidroizolație, elemente suplimentare, siguranță and fixare into one. **71 - 13 + 20 = 78**, and
+the arithmetic is written out because a count nobody can reproduce is a number rather than a
+marker.
+
+### The merge reading, and why the literal one was rejected
+
+Read literally, "Jgheab scurgere 125x2000 mm" is a model name imperlux.md does not carry, so it
+would be a card beside imperlux's "Jgheab": 31 rainwater cards, seventeen with no price, no
+specs and no picture, and the same part twice under two names. **Read as one rule, a dasterum
+part that is an imperlux model at a size is a GRADE**, so it is a variant line, the card takes
+the cheapest grade's price and picture, and "one card per model name" holds. That is the only
+reading under which "de la price = lowest grade, grades listed as variants" means anything.
+
+**Every match is data with a tier and a reason**, in `content/roofing-sections.json`: 2 at
+`same-part-different-length`, 9 at `same-part-one-size`, 9 `imperlux-only`. That is W25-03d's
+shape and its lesson: research held in prose is research nobody can check.
+
+**One near match refused on purpose.** imperlux's "Cot 60°" and dasterum's "Cot burlan 90 mm"
+look like a pair: **the 90 is a diameter in millimetres and the 60 is an angle in degrees.**
+W25-R4 refuses a near match, so they are two cards and the reason is in the row.
+
+**Two ledger rows leave the ledger**, `CAT-0268` and `CAT-0265`, now variant lines on Jgheab
+and Burlan. Nothing renders them, and gate 19 states the rule itself: a row nothing renders
+sends a photographer out for a photograph nothing will show. Their files and provenance rows
+stay.
+
+### Not taken from imperlux.md
+
+Every image (W24-R2, and the override is held to sixteen ids). The description sentence, which
+is marketing rather than a product fact, refused on W25-25's precedent. The struck price and
+the percent badge. **And the warranty, which W26-R6 holds.** That last one leaves the page
+inconsistent and it is reported rather than fixed: the dasterum cards have rendered "Garanție:
+1 an" since W25-19, copied verbatim, so the page now reads as though one supplier gives no
+warranty. Unpicking it is W26-R6's business.
+
+### The second bento does not wear the hub's class
+
+`.hub__tile` carries more than a look: verify-live counts it as a marker, gate 20 measures its
+geometry and gate 26 holds its href to a page URL. **A product tile wearing it would be
+counted, measured and REFUSED as a hub**, by a gate that must not see it. So the product bento
+is `.pb__*`, grepped free first, and **every hub declaration carries it in the selector list
+rather than being copied**, so one rule body serves both and the look cannot drift.
+`bentoSection` builds both kinds and each refuses what the other requires.
+
+### A backtick made both bentos vanish on a build that exited 0
+
+An HTML comment inside the bento's returned template literal wrote the new class in backticks.
+**A backtick inside a template literal ends it.** The expression became a member access and a
+multiplication, **`bentoSection` returned NaN**, both bentos rendered as nothing, and
+`node build.js` exited 0. **It is W24-09a exactly**, which reached `main` in wave 24 with
+nineteen gates green. An hour later the same sentence broke `check-layout-geometry.js`'s probe,
+and the run after that a nested dollar-brace in the same comment was substituted by that file's
+own scope before the browser saw it.
+
+**Three times in one card is a gate.** `scripts/check-template-literals.js`, gate 27, runs
+first in `quality`. **It checks the symptom, not the cause**: after parsing, a backtick that
+ended a literal early is invisible as a backtick, but what it leaves behind is a **severed
+comment**, and that is visible. A comment opened inside a literal must close inside it, in both
+forms; plus a string literal immediately followed by a template literal, which is W24-09a's
+shape. It is narrow on purpose, because "no backtick in a comment" fires on this repo's own
+prose almost everywhere and a noisy gate gets worked around (gate 22's lesson).
+
+**Eight arms, five GREEN**, since a rule this shape is likelier to refuse something legitimate
+than to miss something broken. **And all three real defects were planted back into the shipping
+files and watched fire between two clean controls** — which is what caught the scanner's own
+first version, which recursed on a nested literal, skipped the rest of every file, and reported
+the whole tree clean while `build.js` carried the real defect.
+
+### Everything that had to move with it
+
+The eight redirect pages still answer and each aims at the section its subcategory joined;
+`from_catalog` is that map and the build asserts it covers every child **exactly once**. A
+roofing record must land in **exactly one** section, asserted rather than assumed. **Gate 20
+measures every bento on a page**, not the first: bento tiles read went 32 to 48. The owner
+intake list learned the second bento's label class, having died on the first tile. `prodCard`
+takes a record with **no price object at all**. The live markers moved with the page:
+`productCards` 71 to 78, `roofFilters` 8 to 6, and a new `pbTiles`, 4 on the roofing pages and
+asserted 0 on the bento destinations.
+
+### Thirteen empty slots, one question
+
+ACOP-05 to ACOP-08 and ACIM-01 to ACIM-09. **Three of the four tile pictures were fetched
+during W26-03 and are sitting ready**, and they are not used because W26-R3 says the override
+"does not widen" and those ids are not among the sixteen it names. Q-W26-04 asks for the word.
+
+### Heights, ledger, gates
+
+`/servicii/acoperisuri/` **18,015** against a new 18,075, RU **18,221** against 18,281:
+**+1,545px**, which separates into the second bento (the hub's own 504px plus heading and
+margins) and seven more cards, two rows of four. **348 ledger rows, 315 filled, 33 empty.**
+**26 of 26 gate commands exit 0**, and 26 is the number `run-gates.js` prints now.

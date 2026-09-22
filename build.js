@@ -162,6 +162,8 @@ const SVC_RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu',
   'svc.roofOffers',
   // W24-07. The bento hub, the first section after the header on its page.
   'svc.bento',
+  // W26-04. The second, product bento, on the acoperisuri page only.
+  'svc.productBento',
   // W25-19. The consolidated roofing catalogue, on the acoperisuri page only.
   'svc.roofProducts',
   // W12-06. The bar is site-wide, so the service template needs it raw too.
@@ -807,9 +809,27 @@ const placeholder = slotImage;
    aria-disabled, and takes no hover and no pointer cursor. A disabled <a> with an
    href is still a link to a keyboard and to a screen reader, which is why it is
    not one. */
+/* W26-04, ruling W26-R5. THE SAME COMPONENT, TWICE ON ONE PAGE, UNDER TWO RULES.
+
+   A HUB bento's tiles open pages (W26-R4). A PRODUCT bento's tiles open sections
+   of the page they are on, which is their whole purpose: the filter bar stays and
+   the tile presses it. So `kind` is a property of the bento, not of a tile, and
+   each kind refuses what the other requires.
+
+   THE CLASS PREFIX IS DIFFERENT AND THAT IS DELIBERATE. `.hub__tile` carries more
+   than a look: `verify-live.js` counts it as a marker, gate 20 measures its
+   geometry and gate 26 holds its href to a page. A second component wearing that
+   class would be counted, measured and RULED as a hub, which is how a tile that
+   must be an anchor would be refused by the gate that must not see it. So the
+   product bento is `.pb__*`, grepped free across the stylesheet, build.js, main.js
+   and every script before its first rule was written (rule 3.1), and the
+   stylesheet gives the two prefixes ONE rule body through a selector list rather
+   than two declarations that could drift. */
 function bentoSection(l, cfg) {
   const need = (v, where) => { if (!REAL(v)) die(`bento ${cfg.id}: ${where} is not real for ${l.code}.`); return v; };
   if (!Array.isArray(cfg.tiles) || cfg.tiles.length !== 4) die(`bento ${cfg.id}: ${(cfg.tiles || []).length} tiles, expected exactly 4.`);
+  const hub = cfg.kind !== 'product';
+  const P = hub ? 'hub' : 'pb';
   /* AMENDED (W25-24, ruling W25-R24): every hub tile has a destination. The old
      assertion required EXACTLY ONE inert tile, which was the dispatch's design at
      W24-07 and is now the thing the ruling forbids. It is inverted rather than
@@ -827,11 +847,14 @@ function bentoSection(l, cfg) {
        owner has now closed. This is the build-time half; gate 26 holds the built
        tree. It is refused HERE rather than silently rewritten, because a tile whose
        destination does not exist is a product decision, not a substitution.
-       IT IS SCOPED TO THE HUB. W26-R5's second bento is product tiles whose whole
-       purpose is to move a visitor to a filtered section of the same page, and that
-       is a different component with a different rule. */
-    if (x.anchor) {
+       IT IS SCOPED TO THE HUB, and the product bento is held to the MIRROR of it
+       (W26-04): its tiles open a section of this page and nothing else, because a
+       product tile that left the page would leave the filter bar behind. */
+    if (hub && x.anchor) {
       die(`bento ${cfg.id}: tile "${x.label}" points at "#${x.anchor}". W26-R4: a hub tile opens a page, never a same-page anchor.`);
+    }
+    if (!hub && !x.anchor) {
+      die(`bento ${cfg.id}: tile "${x.label}" is a product tile and names no anchor. W26-R5: a product tile opens a section on the same page.`);
     }
   }
 
@@ -841,10 +864,10 @@ function bentoSection(l, cfg) {
        service page, or the "in construcție" page, and the assertion above refuses
        anything else before rendering is reached. */
     x = { ...x, href: x.page ? `${BASE}${SERVICES_ROOT[l.code]}${x.page}/`
-      : (x.inConstructie ? BASE + IN_CONSTRUCTIE[l.code] : null) };
-    const ph = placeholder(x.slot, { variant: 'dark', className: 'hub__ph', locale: l.code, eager: i < 2 });
-    const body = `${ph}<span class="hub__grad" aria-hidden="true"></span><span class="hub__label">${label}</span>`;
-    const cls = `hub__tile hub__tile--${i + 1}`;
+      : (x.inConstructie ? BASE + IN_CONSTRUCTIE[l.code] : (x.anchor ? `#${x.anchor}` : null)) };
+    const ph = placeholder(x.slot, { variant: 'dark', className: `${P}__ph`, locale: l.code, eager: i < 2 });
+    const body = `${ph}<span class="${P}__grad" aria-hidden="true"></span><span class="${P}__label">${label}</span>`;
+    const cls = `${P}__tile ${P}__tile--${i + 1}`;
     /* W25-24. There is no non-link branch any more. The assertion above refuses a
        tile with no destination, so `href` is always set, and a branch that can
        never be taken is markup the stylesheet would have to keep a rule for.
@@ -853,12 +876,16 @@ function bentoSection(l, cfg) {
     return `      <a class="${cls}" href="${x.href}" data-reveal data-stagger="${i}">${body}</a>`;
   }).join('\n');
 
-  return `<section class="section section--light section--divided hub" id="${cfg.id}" aria-labelledby="${cfg.id}-h">
+  /* NO BACKTICK INSIDE THE LITERAL BELOW, and this warning lives HERE rather than
+     in the markup because a comment in the markup ships to every visitor.
+     W26-04 wrote one into that HTML comment and this function returned NaN: the
+     backtick closed the template literal, the expression became a tagged template
+     whose tag was a string, and both bentos rendered as nothing on a build that
+     exited 0. It is W24-09a's defect exactly, in a second file. */
+  return `<section class="section section--light section--divided ${P}" id="${cfg.id}" aria-labelledby="${cfg.id}-h">
   <div class="container">
-    <h2 id="${cfg.id}-h" class="hub__h" data-reveal>${esc(need(l.strings[cfg.head], cfg.head))}<span class="hub__h-muted">${esc(need(l.strings[cfg.headMuted], cfg.headMuted))}</span></h2>
-    <!-- data-hub-grid marks the HUB tiles, the ones W26-R4 holds to a page URL.
-         W26-R5's product bento is a different component and takes anchors. -->
-    <div class="hub__grid" data-hub-grid="1">
+    <h2 id="${cfg.id}-h" class="${P}__h" data-reveal>${esc(need(l.strings[cfg.head], cfg.head))}<span class="${P}__h-muted">${esc(need(l.strings[cfg.headMuted], cfg.headMuted))}</span></h2>
+    <div class="${P}__grid"${hub ? ' data-hub-grid="1"' : ''}>
 ${tiles}
     </div>
   </div>
@@ -1160,7 +1187,11 @@ function prodCard(l, r, i, extra = '') {
        different price. The two locales can disagree, because the source
        disagrees with itself on some records; each is copied as that locale shows
        it, and docs/CATALOG-SOURCE-W24.md lists every disagreement. */
-    const price = r.price.render && r.price.render[l.code];
+    /* AMENDED (W26-04): `price` may be absent altogether, not merely unrendered.
+       Every catalogue record carries a price object whose `render` can be null;
+       an imperlux.md roofing model that folds no dasterum record carries NO price
+       object, because the source publishes none. Both land on the ask element. */
+    const price = (r.price && r.price.render && r.price.render[l.code]) || null;
     /* The lead line names the product and RAPID CONSTRUCT'S OWN slot id, never the
        source's record id. Ten names are used by two products each, so something
        must disambiguate them or two products send an identical lead; `f3d-3004`
@@ -2468,18 +2499,52 @@ const ROOF_SECTION_PATH = (l) => `${SERVICES_ROOT[l.code]}acoperisuri/`;
 
 /* The groups, and the ids the redirect pages and the menu aim at. `mat-<slug>` is
    on the filter BUTTON, so a hash lands on the control it names and main.js has
-   the button in hand without a second lookup. */
+   the button in hand without a second lookup.
+
+   AMENDED (W26-04, ruling W26-R5). THE FILTER GROUPS ARE NO LONGER THE CATALOGUE'S
+   SUBCATEGORIES. W25-19 derived seven filters from the seven roofing children of
+   content/catalog.json, which was right while the section was a mirror of one
+   supplier's catalogue. The restructure regroups them into FIVE sections that are
+   what a roof is bought in, and two of those sections have no catalogue
+   subcategory at all because dasterum.md sells neither ceramic tile nor shingle.
+
+   THE OLD ROUTES DO NOT MOVE. W26-R5 keeps all eight /catalog/materiale-acoperis/
+   pages as redirects, so the seven children still exist and each one now aims at
+   the group it was folded into. `from_catalog` is that mapping, it is data rather
+   than a branch in this file, and it is asserted to cover every child exactly
+   once: a child in no group would send its redirect page to an anchor that is not
+   on the page, and a child in two would make the count on the filter button a
+   number no set of cards adds up to. */
+const ROOF_SECTIONS_FILE = 'content/roofing-sections.json';
+const ROOF_SECTIONS = JSON.parse(fs.readFileSync(ROOF_SECTIONS_FILE, 'utf8'));
 const roofGroups = (() => {
   const cat = CATALOG.categories[PARENT_CATEGORIES.findIndex((c) => c.slug === ROOF_CATEGORY)];
   const kids = (cat && cat.children) || [];
-  if (kids.length !== 7) die(`the roofing category has ${kids.length} subcategories in ${CATALOG_FILE}; W25-19's filter bar is built from them and expects 7.`);
-  return kids.map((k, ki) => {
+  if (kids.length !== 7) die(`the roofing category has ${kids.length} subcategories in ${CATALOG_FILE}; the redirect pages are built from them and expect 7.`);
+  const children = kids.map((k, ki) => {
     const href = k.href && k.href.ro;
     const m = /^\/catalog\/materiale-acoperis\/([^/]+)\/$/.exec(href || '');
     if (!m) die(`${CATALOG_FILE}: roofing child ${ki} href "${href}" is not /catalog/materiale-acoperis/<child>/.`);
-    return { child: m[1], slug: `${ROOF_CATEGORY}/${m[1]}`, label: k.label };
+    return m[1];
   });
+  const groups = ROOF_SECTIONS.groups;
+  if (!Array.isArray(groups) || groups.length !== 5) die(`${ROOF_SECTIONS_FILE}: W26-R5 names five roofing sections, found ${(groups || []).length}.`);
+  const seen = new Map();
+  for (const g of groups) {
+    if (!REAL(g.id) || !g.label || !REAL(g.label.ro) || !REAL(g.label.ru)) die(`${ROOF_SECTIONS_FILE}: group "${g.id}" needs an id and a label in both locales.`);
+    for (const c of g.from_catalog || []) {
+      if (!children.includes(c)) die(`${ROOF_SECTIONS_FILE}: group "${g.id}" takes catalogue child "${c}", which ${CATALOG_FILE} does not have.`);
+      if (seen.has(c)) die(`${ROOF_SECTIONS_FILE}: catalogue child "${c}" is in both "${seen.get(c)}" and "${g.id}". A child lands in exactly one section.`);
+      seen.set(c, g.id);
+    }
+  }
+  const unplaced = children.filter((c) => !seen.has(c));
+  if (unplaced.length) die(`${ROOF_SECTIONS_FILE}: catalogue child(ren) in no section: ${unplaced.join(', ')}. Their redirect pages would aim at an anchor that does not exist.`);
+  return groups.map((g) => ({ child: g.id, slug: `${ROOF_CATEGORY}/${g.id}`, label: g.label, from: g.from_catalog || [] }));
 })();
+/* Which section a catalogue child was folded into, for the redirect pages. */
+const ROOF_GROUP_OF_CHILD = new Map();
+for (const g of roofGroups) for (const c of g.from) ROOF_GROUP_OF_CHILD.set(c, g.child);
 const ROOF_ALL = 'toate';
 /* The eight routes that stop being catalogue pages and become redirect pages.
    Derived, never listed: the parent plus its own children, so adding a roofing
@@ -2488,8 +2553,34 @@ const ROOF_MOVED_ROUTES = new Set();
 const MOVED_RAW_KEYS = new Set(['promoBar']);
 const roofAnchor = (child) => `mat-${child}`;
 ROOF_MOVED_ROUTES.add(ROOF_CATEGORY);
-for (const g of roofGroups) ROOF_MOVED_ROUTES.add(g.slug);
+/* AMENDED (W26-04): the routes are the CATALOGUE's seven children, which is what
+   they always were; before the regrouping the two lists happened to be the same
+   list and the code took the wrong one of the two. W26-R5 keeps every one of
+   these pages answering, so they are derived from catalog.json and never from the
+   new sections, two of which have no catalogue page and never had one. */
+for (const c of ROOF_GROUP_OF_CHILD.keys()) ROOF_MOVED_ROUTES.add(`${ROOF_CATEGORY}/${c}`);
 if (ROOF_MOVED_ROUTES.size !== 8) die(`W25-19 expects 8 roofing routes to become redirect pages, derived ${ROOF_MOVED_ROUTES.size}.`);
+/* W26-04, ruling W26-R5: the SECOND bento on /servicii/acoperisuri/, under the hub.
+   Four product sections, each tile pressing its own filter button on the same page.
+   The four slots are ACOP-05 to ACOP-08 and all four are EMPTY: imperlux.md
+   publishes a tile image for three of them, and W26-R3 holds its override to
+   ACOP-01 to ACOP-04 in terms, so taking them would be widening a permission the
+   ruling says does not widen. Q-W26-04 asks for the four ids. */
+const PRODUCT_BENTOS = {
+  acoperisuri: {
+    id: 'sectiuni-acoperis',
+    kind: 'product',
+    head: 'pbento.roofH',
+    headMuted: 'pbento.roofHMuted',
+    tiles: [
+      { label: 'pbento.ceramica', slot: 'ACOP-05', anchor: roofAnchor('tigla-ceramica') },
+      { label: 'pbento.sindrila', slot: 'ACOP-06', anchor: roofAnchor('sindrila-bituminoasa') },
+      { label: 'pbento.pluviale', slot: 'ACOP-07', anchor: roofAnchor('sisteme-pluviale') },
+      { label: 'pbento.accesorii', slot: 'ACOP-08', anchor: roofAnchor('accesorii-de-acoperis') },
+    ],
+  },
+};
+
 
 /* W25-19 built four catalogue cards from `content/tigla-metalica.json` for the
    Tigla metalica filter. **W25-26 removed them**, under ruling W25-R21, and the
@@ -2512,11 +2603,22 @@ function roofSection(l) {
      lost its placeholder would leave the live region printing a literal {n}. */
   if (!s('showing').includes('{n}')) die(`roofProducts.showing for ${l.code} has no {n} placeholder, so the filter's live count cannot be written.`);
 
-  /* Which groups each record is in, read from the records' own category list so a
-     card cannot claim a group the data does not put it in. */
-  const groupsFor = (r) => roofGroups.filter((g) => (r.categories || []).includes(g.slug)).map((g) => g.child);
+  /* Which section each record is in, read from the record's own catalogue
+     subcategory and then through W26-R5's mapping, so a card cannot claim a
+     section the data does not put it in. */
+  const groupsFor = (r) => [...new Set((r.categories || [])
+    .filter((c) => c.startsWith(`${ROOF_CATEGORY}/`))
+    .map((c) => ROOF_GROUP_OF_CHILD.get(c.split('/')[1]))
+    .filter(Boolean))];
   const orphan = records.filter((r) => !groupsFor(r).length);
-  if (orphan.length) die(`${orphan.length} roofing record(s) belong to no subcategory, so no filter would ever show them: ${orphan.map((r) => r.slot).join(', ')}.`);
+  if (orphan.length) die(`${orphan.length} roofing record(s) belong to no section, so no filter would ever show them: ${orphan.map((r) => r.slot).join(', ')}.`);
+  /* EXACTLY ONE SECTION, and it is asserted rather than assumed. Five records sit
+     in two catalogue subcategories, and today both of each pair fold into the same
+     section. The moment one did not, the card would be ordered under one section
+     and counted under two, so the filter button would promise a number no press
+     could produce. That is a silent defect, so it is a build failure instead. */
+  const split = records.filter((r) => groupsFor(r).length > 1);
+  if (split.length) die(`${split.length} roofing record(s) land in two sections, so their filter counts could not both be true: ${split.map((r) => `${r.slot} (${groupsFor(r).join(', ')})`).join('; ')}.`);
 
   /* AMENDED (W25-26, ruling W25-R21): ONE CARD PER MODEL NAME. W25-19 put eight
      cards in this group under four names, four from `content/tigla-metalica.json`
@@ -2530,10 +2632,53 @@ function roofSection(l) {
      publishes Monterrey, Valencia and Kascad zero times and sells Barcelona,
      Madrid and Bavaria instead. There were never two suppliers and there are no
      Imperlux-only models to keep. */
-  const cards = records.map((r, i) => prodCard(l, r, i, ` data-roof-groups="${esc(groupsFor(r).join(' '))}"`));
+  /* W26-04, ruling W26-R5: IMPERLUX PRODUCTS FIRST, then the dasterum.md records
+     its model names do not already cover, section by section.
+
+     A FOLDED RECORD IS NOT A CARD. Eleven of the seventeen rainwater models exist
+     on both sites, differing only by the size in the name, so the imperlux name is
+     the card, the dasterum sizes are its variants, and the card carries the
+     CHEAPEST grade's price and that grade's picture. Rendering both would put the
+     same part on the page twice under two names, which is what "one card per model
+     name" forbids. The decision per model, with its tier and its reason, is data in
+     content/roofing-sections.json rather than a rule in this file, because it is
+     research and research held in code is research nobody can check. */
+  const folded = new Set(ROOF_SECTIONS.products.flatMap((p) => p.folds || []));
+  const impBySection = new Map(roofGroups.map((g) => [g.child, []]));
+  ROOF_SECTIONS.products.forEach((p, i) => {
+    if (!impBySection.has(p.group)) die(`${ROOF_SECTIONS_FILE}: products[${i}] "${p.slug}" is in section "${p.group}", which is not one of the five.`);
+    if (!REAL(p.slot) && !(p.folds || []).length) die(`${ROOF_SECTIONS_FILE}: products[${i}] "${p.slug}" folds no record and has no slot of its own, so it has no picture to render.`);
+    if (REAL(p.slot) && (p.folds || []).length) die(`${ROOF_SECTIONS_FILE}: products[${i}] "${p.slug}" both folds a record and claims a slot; the folded record's slot IS its picture.`);
+    impBySection.get(p.group).push({
+      slot: p.slot || p.folds[0],
+      name: p.name,
+      variant: p.variant,
+      price: p.price,
+      _imperlux: true,
+    });
+  });
+  for (const f of folded) {
+    if (!records.some((r) => r.slot === f)) die(`${ROOF_SECTIONS_FILE}: a product folds ${f}, which is not a roofing record.`);
+  }
+
+  /* Section by section, imperlux first. The grid is one list and the filter hides
+     the rest of it, so the ORDER inside a section is the order a visitor reads. */
+  const ordered = [];
+  for (const g of roofGroups) {
+    ordered.push(...impBySection.get(g.child));
+    ordered.push(...records.filter((r) => !folded.has(r.slot) && groupsFor(r)[0] === g.child)
+      .map((r) => ({ ...r, _groups: groupsFor(r) })));
+  }
+  const groupOf = (r) => (r._imperlux ? null : r._groups);
+  const sectionOf = (r, i) => {
+    if (!r._imperlux) return r._groups;
+    for (const g of roofGroups) if (impBySection.get(g.child).includes(r)) return [g.child];
+    return [];
+  };
+  const cards = ordered.map((r, i) => prodCard(l, r, i, ` data-roof-groups="${esc(sectionOf(r, i).join(' '))}"`));
 
   const counts = new Map(roofGroups.map((g) => [g.child,
-    records.filter((r) => groupsFor(r).includes(g.child)).length]));
+    ordered.filter((r) => sectionOf(r).includes(g.child)).length]));
   const total = cards.length;
 
   const btn = (id, text, n, active) =>
@@ -3359,6 +3504,10 @@ for (const l of loaded) {
        the dispatch is explicit about, so it renders above the hero block rather
        than below it. W24-08 adds the garduri one from the same table. */
     svcVars['svc.bento'] = BENTOS[slug] ? bentoSection(l, BENTOS[slug]) : '';
+    /* W26-04, W26-R5. The product bento sits directly above the section its tiles
+       filter, because a tile that presses a control the visitor cannot see when
+       they land is a tile that appears to do nothing. */
+    svcVars['svc.productBento'] = PRODUCT_BENTOS[slug] ? bentoSection(l, PRODUCT_BENTOS[slug]) : '';
     /* W25-19. The same one-page rule the roofing offers already follow. */
     svcVars['svc.roofProducts'] = slug === ROOF_OFFERS_SLUG ? roofSection(l) : '';
     svcVars['svc.gallerySection'] = renderGallerySection(l, slug, vars);
@@ -3458,7 +3607,13 @@ for (const l of loaded) {
        consolidated section. The rest of this loop is untouched: a page that is
        not roofing is built exactly as it was. */
     if (ROOF_MOVED_ROUTES.has(c.slug)) {
-      const target = BASE + ROOF_SECTION_PATH(l) + '#' + roofAnchor(c.parent == null ? ROOF_ALL : c.slug.split('/')[1]);
+      /* W26-04: a child's redirect aims at the SECTION it was folded into, not at
+         its own slug, which is no longer a filter. The parent still aims at the
+         "toate" button. */
+      const child = c.parent == null ? null : c.slug.split('/')[1];
+      const anchorFor = child === null ? ROOF_ALL : ROOF_GROUP_OF_CHILD.get(child);
+      if (anchorFor === undefined) die(`${c.slug} is a moved roofing route with no section to redirect to.`);
+      const target = BASE + ROOF_SECTION_PATH(l) + '#' + roofAnchor(anchorFor);
       const movedVars = {
         ...vars,
         'moved.target': target,

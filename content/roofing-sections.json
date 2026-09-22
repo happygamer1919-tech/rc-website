@@ -1,0 +1,619 @@
+{
+  "_note": "W26-04, ruling W26-R5. The roofing service page's product sections. FIVE groups replace the seven catalogue subcategories the filter bar was built from; `from_catalog` says where each old subcategory lands, and the eight redirect pages under /catalog/materiale-acoperis/ keep answering and now aim at the group their subcategory went into. `products` are the imperlux.md models W26-R5 puts first. Each one either FOLDS dasterum.md records in as grades, in which case the card carries the cheaper grade's price and its picture and the folded records are the variants, or it folds none and renders Pret la cerere against a slot of its own that is still empty. NOT TAKEN from imperlux.md: every image (W24-R2), the description sentence under each name, which is marketing rather than a product fact (W25-25's precedent), the struck price, the percent badge (W26-R5, R-X) and THE WARRANTY, which W26-R6 holds until the owner confirms the roof warranty rows. A dasterum.md record whose model name is absent from imperlux.md stays a card of its own and is listed in `dasterum_only`.",
+  "source": {
+    "host": "imperlux.md",
+    "audit": "docs/IMPERLUX-AUDIT-W26.md",
+    "captured": "2026-09-22",
+    "ruling": "W26-R5"
+  },
+  "groups": [
+    {
+      "id": "tigla-metalica",
+      "label": {
+        "ro": "Țiglă metalică",
+        "ru": "Металлочерепица"
+      },
+      "from_catalog": [
+        "tigla-metalica"
+      ]
+    },
+    {
+      "id": "tigla-ceramica",
+      "label": {
+        "ro": "Țiglă ceramică",
+        "ru": "Керамическая черепица"
+      },
+      "from_catalog": []
+    },
+    {
+      "id": "sindrila-bituminoasa",
+      "label": {
+        "ro": "Șindrilă bituminoasă",
+        "ru": "Битумная черепица"
+      },
+      "from_catalog": []
+    },
+    {
+      "id": "sisteme-pluviale",
+      "label": {
+        "ro": "Sisteme pluviale",
+        "ru": "Водосточные системы"
+      },
+      "from_catalog": [
+        "sistem-de-scurgere"
+      ]
+    },
+    {
+      "id": "accesorii-de-acoperis",
+      "label": {
+        "ro": "Accesorii de acoperiș",
+        "ru": "Кровельные аксессуары"
+      },
+      "from_catalog": [
+        "profnastil",
+        "hidroizolatie",
+        "elemente-suplimentare",
+        "elemente-de-siguranta",
+        "elemente-de-fixare"
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "imp-creaton-rapido",
+      "slot": "ACIM-01",
+      "slug": "creaton-rapido",
+      "name": {
+        "ro": "Creaton Rapido",
+        "ru": "Creaton Rapido"
+      },
+      "group": "tigla-ceramica",
+      "price": {
+        "render": {
+          "ro": "De la 46 lei/buc",
+          "ru": "От 46 lei/buc"
+        }
+      },
+      "variant": {
+        "ro": "44 kg/m² · 4 culori",
+        "ru": "44 кг/м² · 4 цвета"
+      },
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "imperlux.md publishes one ceramic model and dasterum.md's roofing catalogue has no ceramic tile at all, so nothing folds in.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/tigla-ceramica/creaton-rapido/",
+        "captured": "2026-09-22"
+      }
+    },
+    {
+      "id": "imp-iko-cambridge",
+      "slot": "ACIM-02",
+      "slug": "iko-cambridge",
+      "name": {
+        "ro": "IKO Cambridge",
+        "ru": "IKO Cambridge"
+      },
+      "group": "sindrila-bituminoasa",
+      "price": {
+        "render": {
+          "ro": "De la 357 lei/m²",
+          "ru": "От 357 lei/m²"
+        }
+      },
+      "variant": {
+        "ro": "10,75 kg/m² · 2,17 mm · 4 culori",
+        "ru": "10,75 кг/м² · 2,17 мм · 4 цвета"
+      },
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "dasterum.md's roofing catalogue carries no bituminous shingle.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/shingle/iko-cambridge/",
+        "captured": "2026-09-22"
+      }
+    },
+    {
+      "id": "imp-iko-hex",
+      "slot": "ACIM-03",
+      "slug": "iko-hex",
+      "name": {
+        "ro": "IKO Superglass Hex",
+        "ru": "IKO Superglass Hex"
+      },
+      "group": "sindrila-bituminoasa",
+      "price": {
+        "render": {
+          "ro": "De la 260 lei/m²",
+          "ru": "От 260 lei/m²"
+        }
+      },
+      "variant": {
+        "ro": "6,5 kg/m² · 3 m²/pachet · 3 culori",
+        "ru": "6,5 кг/м² · 3 м²/упаковка · 3 цвета"
+      },
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "dasterum.md's roofing catalogue carries no bituminous shingle.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/shingle/iko-hex/",
+        "captured": "2026-09-22"
+      }
+    },
+    {
+      "id": "imp-jgheab",
+      "slot": null,
+      "slug": "jgheab",
+      "name": {
+        "ro": "Jgheab",
+        "ru": "Jgheab"
+      },
+      "group": "sisteme-pluviale",
+      "price": {
+        "render": {
+          "ro": "De la 172 lei",
+          "ru": "От 172 lei"
+        }
+      },
+      "variant": {
+        "ro": "125x2000 mm · 125x4000 mm",
+        "ru": "125x2000 мм · 125x4000 мм"
+      },
+      "folds": [
+        "CAT-0262",
+        "CAT-0268"
+      ],
+      "match_tier": "same-part-different-length",
+      "match_note": "dasterum.md sells the same gutter in two lengths, 125x2000 and 125x4000. They are grades of one model, so they are one card whose de la is the cheaper.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/jgheab/",
+        "captured": "2026-09-22"
+      }
+    },
+    {
+      "id": "imp-burlan",
+      "slot": null,
+      "slug": "burlan",
+      "name": {
+        "ro": "Burlan",
+        "ru": "Burlan"
+      },
+      "group": "sisteme-pluviale",
+      "price": {
+        "render": {
+          "ro": "De la 107 lei",
+          "ru": "От 107 lei"
+        }
+      },
+      "variant": {
+        "ro": "90x1000 mm · 90x3000 mm",
+        "ru": "90x1000 мм · 90x3000 мм"
+      },
+      "folds": [
+        "CAT-0264",
+        "CAT-0265"
+      ],
+      "match_tier": "same-part-different-length",
+      "match_note": "dasterum.md sells the downpipe in 90x1000 and 90x3000.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/burlan/",
+        "captured": "2026-09-22"
+      }
+    },
+    {
+      "id": "imp-coltar-interior",
+      "slot": null,
+      "slug": "coltar-interior",
+      "name": {
+        "ro": "Colțar interior",
+        "ru": "Colțar interior"
+      },
+      "group": "sisteme-pluviale",
+      "price": {
+        "render": {
+          "ro": "De la 185 lei",
+          "ru": "От 185 lei"
+        }
+      },
+      "variant": {
+        "ro": "125 mm",
+        "ru": "125 мм"
+      },
+      "folds": [
+        "CAT-0261"
+      ],
+      "match_tier": "same-part-one-size",
+      "match_note": "dasterum.md publishes it at one size, 125mm.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/coltar-interior/",
+        "captured": "2026-09-22"
+      }
+    },
+    {
+      "id": "imp-coltar-exterior",
+      "slot": null,
+      "slug": "coltar-exterior",
+      "name": {
+        "ro": "Colțar exterior",
+        "ru": "Colțar exterior"
+      },
+      "group": "sisteme-pluviale",
+      "price": {
+        "render": {
+          "ro": "De la 185 lei",
+          "ru": "От 185 lei"
+        }
+      },
+      "variant": {
+        "ro": "125 mm",
+        "ru": "125 мм"
+      },
+      "folds": [
+        "CAT-0260"
+      ],
+      "match_tier": "same-part-one-size",
+      "match_note": "dasterum.md publishes it at one size, 125mm.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/coltar-exterior/",
+        "captured": "2026-09-22"
+      }
+    },
+    {
+      "id": "imp-bratara-jgheab",
+      "slot": null,
+      "slug": "bratara-jgheab",
+      "name": {
+        "ro": "Brățară jgheab",
+        "ru": "Brățară jgheab"
+      },
+      "group": "sisteme-pluviale",
+      "price": {
+        "render": {
+          "ro": "De la 58 lei",
+          "ru": "От 58 lei"
+        }
+      },
+      "variant": {
+        "ro": "125 mm",
+        "ru": "125 мм"
+      },
+      "folds": [
+        "CAT-0257"
+      ],
+      "match_tier": "same-part-one-size",
+      "match_note": "dasterum.md publishes it at one size, 125mm.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/bratara-jgheab/",
+        "captured": "2026-09-22"
+      }
+    },
+    {
+      "id": "imp-capac-jgheab",
+      "slot": null,
+      "slug": "capac-jgheab",
+      "name": {
+        "ro": "Capac jgheab",
+        "ru": "Capac jgheab"
+      },
+      "group": "sisteme-pluviale",
+      "price": {
+        "render": {
+          "ro": "De la 36 lei",
+          "ru": "От 36 lei"
+        }
+      },
+      "variant": {
+        "ro": "125 mm",
+        "ru": "125 мм"
+      },
+      "folds": [
+        "CAT-0259"
+      ],
+      "match_tier": "same-part-one-size",
+      "match_note": "dasterum.md publishes it at one size, 125mm.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/capac-jgheab/",
+        "captured": "2026-09-22"
+      }
+    },
+    {
+      "id": "imp-carlig-jgheab",
+      "slot": null,
+      "slug": "carlig-jgheab",
+      "name": {
+        "ro": "Cârlig jgheab",
+        "ru": "Cârlig jgheab"
+      },
+      "group": "sisteme-pluviale",
+      "price": {
+        "render": {
+          "ro": "De la 52 lei",
+          "ru": "От 52 lei"
+        }
+      },
+      "variant": {
+        "ro": "scurt · 125 mm",
+        "ru": "короткий · 125 мм"
+      },
+      "folds": [
+        "CAT-0269"
+      ],
+      "match_tier": "same-part-one-size",
+      "match_note": "dasterum.md's \"Cîrlig jgheab scurt 125mm\" is the short hook; imperlux.md lists the short and the long as two models and so does this.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/carlig-jgheab/",
+        "captured": "2026-09-22"
+      }
+    },
+    {
+      "id": "imp-carlig-jgheab-lung",
+      "slot": null,
+      "slug": "carlig-jgheab-lung",
+      "name": {
+        "ro": "Cârlig jgheab lung",
+        "ru": "Cârlig jgheab lung"
+      },
+      "group": "sisteme-pluviale",
+      "price": {
+        "render": {
+          "ro": "De la 48 lei",
+          "ru": "От 48 lei"
+        }
+      },
+      "variant": {
+        "ro": "lung · 125 mm",
+        "ru": "длинный · 125 мм"
+      },
+      "folds": [
+        "CAT-0270"
+      ],
+      "match_tier": "same-part-one-size",
+      "match_note": "dasterum.md's \"Cîrlig jgheab lung 125 mm\".",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/carlig-jgheab-lung/",
+        "captured": "2026-09-22"
+      }
+    },
+    {
+      "id": "imp-carlig-pazie-universal",
+      "slot": "ACIM-04",
+      "slug": "carlig-pazie-universal",
+      "name": {
+        "ro": "Cârlig pazie universal",
+        "ru": "Cârlig pazie universal"
+      },
+      "group": "sisteme-pluviale",
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "no dasterum.md record names a fascia hook.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/carlig-pazie-universal/",
+        "captured": "2026-09-22"
+      }
+    },
+    {
+      "id": "imp-racord-jgheab-burlan",
+      "slot": null,
+      "slug": "racord-jgheab-burlan",
+      "name": {
+        "ro": "Racord jgheab-burlan",
+        "ru": "Racord jgheab-burlan"
+      },
+      "group": "sisteme-pluviale",
+      "price": {
+        "render": {
+          "ro": "De la 69 lei",
+          "ru": "От 69 lei"
+        }
+      },
+      "variant": {
+        "ro": "125 mm",
+        "ru": "125 мм"
+      },
+      "folds": [
+        "CAT-0258"
+      ],
+      "match_tier": "same-part-one-size",
+      "match_note": "dasterum.md's \"Racord jgheab 125mm\" is the gutter-to-downpipe connector.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/racord-jgheab-burlan/",
+        "captured": "2026-09-22"
+      }
+    },
+    {
+      "id": "imp-cot-60",
+      "slot": "ACIM-05",
+      "slug": "cot-60",
+      "name": {
+        "ro": "Cot 60°",
+        "ru": "Cot 60°"
+      },
+      "group": "sisteme-pluviale",
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "NOT matched to dasterum.md's \"Cot burlan 90 mm\". That 90 is a DIAMETER in millimetres and this 60 is an ANGLE in degrees; they are two different facts that happen to look alike. W25-R4 refuses a near match, and this is one.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/cot-60/",
+        "captured": "2026-09-22"
+      }
+    },
+    {
+      "id": "imp-prelungitor",
+      "slot": "ACIM-06",
+      "slug": "prelungitor",
+      "name": {
+        "ro": "Prelungitor",
+        "ru": "Prelungitor"
+      },
+      "group": "sisteme-pluviale",
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "no dasterum.md record names a downpipe extension.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/prelungitor/",
+        "captured": "2026-09-22"
+      }
+    },
+    {
+      "id": "imp-bratara-burlan",
+      "slot": null,
+      "slug": "bratara-burlan",
+      "name": {
+        "ro": "Brățară burlan",
+        "ru": "Brățară burlan"
+      },
+      "group": "sisteme-pluviale",
+      "price": {
+        "render": {
+          "ro": "De la 33 lei",
+          "ru": "От 33 lei"
+        }
+      },
+      "variant": {
+        "ro": "90 mm",
+        "ru": "90 мм"
+      },
+      "folds": [
+        "CAT-0266"
+      ],
+      "match_tier": "same-part-one-size",
+      "match_note": "dasterum.md publishes it at one size, 90mm.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/bratara-burlan/",
+        "captured": "2026-09-22"
+      }
+    },
+    {
+      "id": "imp-palnie-colectoare",
+      "slot": "ACIM-07",
+      "slug": "palnie-colectoare",
+      "name": {
+        "ro": "Pâlnie colectoare",
+        "ru": "Pâlnie colectoare"
+      },
+      "group": "sisteme-pluviale",
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "no dasterum.md record names a collector funnel.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/palnie-colectoare/",
+        "captured": "2026-09-22"
+      }
+    },
+    {
+      "id": "imp-ramificatie-burlan",
+      "slot": "ACIM-08",
+      "slug": "ramificatie-burlan",
+      "name": {
+        "ro": "Ramificație burlan",
+        "ru": "Ramificație burlan"
+      },
+      "group": "sisteme-pluviale",
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "no dasterum.md record names a downpipe branch.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/ramificatie-burlan/",
+        "captured": "2026-09-22"
+      }
+    },
+    {
+      "id": "imp-element-captare",
+      "slot": "ACIM-09",
+      "slug": "element-captare",
+      "name": {
+        "ro": "Element captare",
+        "ru": "Element captare"
+      },
+      "group": "sisteme-pluviale",
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "no dasterum.md record names a water-capture element.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/element-captare/",
+        "captured": "2026-09-22"
+      }
+    },
+    {
+      "id": "imp-cot-evacuare",
+      "slot": null,
+      "slug": "cot-evacuare",
+      "name": {
+        "ro": "Cot evacuare",
+        "ru": "Cot evacuare"
+      },
+      "group": "sisteme-pluviale",
+      "price": {
+        "render": {
+          "ro": "De la 88 lei",
+          "ru": "От 88 lei"
+        }
+      },
+      "variant": {
+        "ro": "90 mm",
+        "ru": "90 мм"
+      },
+      "folds": [
+        "CAT-0267"
+      ],
+      "match_tier": "same-part-one-size",
+      "match_note": "dasterum.md publishes it at one size, 90mm.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/cot-evacuare/",
+        "captured": "2026-09-22"
+      }
+    }
+  ],
+  "dasterum_only": [
+    {
+      "slot": "CAT-0263",
+      "name": "Cot burlan 90 mm",
+      "group": "sisteme-pluviale",
+      "why": "its model name is absent from imperlux.md's seventeen. The nearest-looking name is \"Cot 60°\" and that is an angle, not a 90mm diameter."
+    }
+  ],
+  "orphaned_rows": [
+    {
+      "slot": "CAT-0268",
+      "folded_into": "jgheab",
+      "why": "the 125x4000 gutter is a grade of Jgheab, so it is a variant line rather than a card. Its ledger row is removed because nothing renders it any more, which is the rule gate 19 states in its own words; the image file and its provenance row stay."
+    },
+    {
+      "slot": "CAT-0265",
+      "folded_into": "burlan",
+      "why": "the 90x3000 downpipe is a grade of Burlan. Same handling."
+    }
+  ]
+}

@@ -936,3 +936,26 @@ budget on.
 it is not this card's work; what matters for the gate is that the budget now follows the page.
 
 Measured at 1440 with every `[data-reveal]` applied and settled for 1,600ms, plus 60 (W24-R4).
+
+---
+
+## AMENDED (W26-04, wave 26): the roofing restructure
+
+| Page | Before | After | Budget |
+|---|---|---|---|
+| `/servicii/acoperisuri/` | 16,470 | **18,015** | 16,530 to **18,075** |
+| `/ru/servicii/acoperisuri/` | 16,608 | **18,221** | 16,668 to **18,281** |
+
+**+1,545px in RO and +1,613px in RU, and the two parts of it are separable.** Ruling W26-R5
+adds a **second four-tile bento** above the product section, which is the same component as
+the hub and therefore the same 504px plus its heading and margins, and it adds **seven cards**
+to a four-column grid, which is two more rows.
+
+**Seven cards, not twenty.** The ruling puts twenty imperlux.md models first and folds thirteen
+dasterum records into eleven of them as grades: 71 - 13 + 20 = 78. A merge that had added all
+twenty as new cards would have cost five rows instead of two.
+
+**RU is 68px taller than RO for the same reason it always is**: the Russian labels on the new
+filter buttons and the new bento wrap one line sooner.
+
+Measured at 1440 with every `[data-reveal]` applied and settled for 1,600ms, plus 60 (W24-R4).

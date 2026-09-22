@@ -42,6 +42,15 @@ jobs:
       - name: verify-live loads and its probes compile (W24-09a)
         run: node scripts/verify-live.js --self-check
 
+      # W26-04. Gate 27. A backtick written inside a template literal ends it; the
+      # file still parses, `node --check` exits 0, and the value quietly becomes a
+      # tagged template or NaN. It has happened three times: W24-09a in
+      # verify-live.js, and twice in W26-04, in build.js (both bentos vanished from
+      # the roofing page on a build that exited 0) and in the gate 20 probe. Runs
+      # BEFORE the build, because it needs no build and it guards the build.
+      - name: No template literal is cut through a comment (W26-04)
+        run: node scripts/check-template-literals.js
+
       - name: Build both locales
         run: node build.js
 

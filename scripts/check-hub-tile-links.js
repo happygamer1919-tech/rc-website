@@ -167,6 +167,72 @@ const controlAfter = check(CONTROL);
 if (controlAfter.length) fail(`the self-test control is dirty after the arms: ${controlAfter.map((p) => p.text).join(' | ')}`);
 console.log('self-test control, again: clean');
 
+/* --- W26-01: the live markers must agree with what this gate measures ------ */
+
+/* WHY THIS IS HERE. `scripts/verify-live.js` asserts `bentoTiles` and
+   `bentoLinks` on the deployed hub pages. W25-24 gave every tile a destination
+   and left `bentoLinks: 3`, so section 12.0 failed on the merge with four rows
+   UNVERIFIED and nothing wrong with the site. **The same component did it at
+   W24-07a**, which is where docs/CLAUDE.md section 12 records the rule: a marker
+   that is not renamed with the thing it names is not a marker.
+
+   Twice is a pattern, so the two files are coupled rather than trusted: the
+   marker is read out of verify-live.js and compared with what this gate counts
+   on the built pages. A marker left behind now fails in `quality`, before the
+   merge, instead of in section 12.0 after it.
+
+   It reads the file as TEXT and requires to find exactly one value per marker
+   per locale-independent set. Finding a different number of them is a failure,
+   not a skip: a refactor that moves those constants must come here too, and
+   saying so loudly is the entire point of the check. */
+function markerValues(src, name) {
+  return [...src.matchAll(new RegExp(String.raw`^\s*` + name + String.raw`:\s*(\d+)\s*,`, 'gm'))].map((m) => Number(m[1]));
+}
+
+/* A bento marker is either a HUB's count or an explicit ZERO. The zeros are
+   deliberate and are asserted elsewhere for their own reason: the Novatik and
+   copertine pages are bento DESTINATIONS, not hubs, and `bentoTiles: 0` is what
+   catches a build that put a hub on one of them. So a value is legal when it is
+   0 or when it equals what this gate just measured, and at least TWO must equal
+   the measurement, which is the two hub sets. Anything else is a marker that was
+   left behind. */
+function checkMarkers(verifySrc, measured) {
+  const problems = [];
+  for (const [name, actual] of Object.entries(measured)) {
+    const vals = markerValues(verifySrc, name);
+    if (!vals.length) {
+      problems.push({ id: 'marker-shape', text: `scripts/verify-live.js declares no numeric ${name}. If that constant moved, this check has to move with it.` });
+      continue;
+    }
+    const hubs = vals.filter((v) => v === actual).length;
+    const stale = vals.filter((v) => v !== actual && v !== 0);
+    for (const v of stale) {
+      problems.push({ id: 'marker-stale', text: `scripts/verify-live.js expects ${name}: ${v} and the built hub pages carry ${actual}. A marker that is not changed with the thing it names is not a marker (docs/CLAUDE.md section 12, W24-07a, and again at W25-24).` });
+    }
+    if (hubs < 2) {
+      problems.push({ id: 'marker-shape', text: `scripts/verify-live.js has ${hubs} ${name} marker(s) equal to the measured ${actual}; the two hub marker sets must both carry it.` });
+    }
+  }
+  return problems;
+}
+
+/* Watched, both ways, before it means anything. */
+(() => {
+  const M = { bentoTiles: 4, bentoLinks: 4 };
+  const line = (n, v) => `    ${n}: ${v},\n`;
+  /* Two hub sets plus the two deliberate zeros, which is the shipping shape. */
+  const good = line('bentoTiles', 4) + line('bentoLinks', 4) + line('bentoTiles', 0)
+    + line('bentoTiles', 4) + line('bentoLinks', 4) + line('bentoTiles', 0);
+  const stale = good.replace(line('bentoLinks', 4), line('bentoLinks', 3));
+  const oneHub = line('bentoTiles', 4) + line('bentoLinks', 4) + line('bentoTiles', 0);
+  const none = line('bentoTiles', 0);
+  if (checkMarkers(good, M).length) fail('marker self-test: the shipping shape, two hub sets and two zeros, must pass.');
+  if (!checkMarkers(stale, M).some((p) => p.id === 'marker-stale')) fail('marker self-test: a stale marker must fire.');
+  if (!checkMarkers(oneHub, M).some((p) => p.id === 'marker-shape')) fail('marker self-test: only one hub set carrying the count must fire.');
+  if (!checkMarkers(none, M).some((p) => p.id === 'marker-shape')) fail('marker self-test: no bentoLinks at all must fire.');
+  console.log('marker self-test: 4 arms, 1 of them green (the shipping shape, zeros included)');
+})();
+
 /* --- the real run --------------------------------------------------------- */
 
 const dist = path.join(ROOT, TREE);
@@ -193,6 +259,14 @@ if (!ro || !ru) fail(`read ${ro} RO and ${ru} RU hub page(s); a gate that saw on
 
 samePage.length = 0;
 const problemsReal = check(pages);
+
+/* The live markers, held to what was just measured. Every hub page carries the
+   same four tiles, so one reading stands for all four pages, and a page that
+   disagreed would already have failed the tile-count check above. */
+const linkedTiles = [...pages[0].html.matchAll(TILE)].filter((t) => /<a\b/i.test(t[0])).length;
+const verifyPath = path.join(ROOT, 'scripts/verify-live.js');
+if (!fs.existsSync(verifyPath)) fail('scripts/verify-live.js is missing, so its markers cannot be held to anything.');
+problemsReal.push(...checkMarkers(fs.readFileSync(verifyPath, 'utf8'), { bentoTiles: TILES_PER_HUB, bentoLinks: linkedTiles }));
 console.log(`pages read: ${emitted.size} in ${TREE}/   hub pages: ${pages.length} (${ro} RO, ${ru} RU)   tiles asserted: ${pages.length * TILES_PER_HUB}`);
 for (const pg of pages) {
   const hrefs = [...pg.html.matchAll(TILE)].map((t) => (HREF.exec(t[2]) || [null, 'NONE'])[1]);
@@ -207,4 +281,5 @@ if (problemsReal.length) {
   problemsReal.forEach((p) => console.error('  ' + p.text));
   process.exit(1);
 }
+console.log(`live markers: verify-live.js expects bentoTiles ${TILES_PER_HUB} and bentoLinks ${linkedTiles}, which is what the built pages carry.`);
 console.log('every hub tile has an href, and every href resolves to a page this build emits or an id that exists.');

@@ -120,9 +120,19 @@ const MARKERS = {
     profileAnchors: 0,
     areaServed: 20,
     roofOffers: 4,
-    // W24-07. The bento hub: four tiles, exactly three of them links.
+    /* ~~W24-07. The bento hub: four tiles, exactly three of them links.~~
+       CORRECTED (W26-01). W25-24 gave every hub tile a destination under ruling
+       W25-R24 and LEFT THIS MARKER AT 3. Section 12.0 on a8d819e failed for it:
+       four rows UNVERIFIED, every one on `bentoLinks expected 3, got 4`, every
+       height inside budget. Nothing was wrong with the site.
+
+       It is the defect docs/CLAUDE.md section 12 already records from W24-07a,
+       in the same component: *a marker that is not renamed with the thing it
+       names is not a marker*. W25-24 changed what the thing IS and did not come
+       here. The count is four because a hub of four tiles now has four links,
+       which is the whole point of W25-R24. */
     bentoTiles: 4,
-    bentoLinks: 3,
+    bentoLinks: 4,
     /* W25-19. The consolidated roofing catalogue. 75 cards: 71 roofing records
        plus the four metal tile models. The EXACT count is asserted here and not
        `atLeast1`, unlike a catalogue page, because this section is not "whatever
@@ -164,7 +174,7 @@ const MARKERS = {
     profileAnchors: 0,
     areaServed: 20,
     bentoTiles: 4,
-    bentoLinks: 3,
+    bentoLinks: 4,  // W26-01: see the note on the service-roof set above.
   },
   // W14-13. The three product pages carry the service page's site-wide parts.
   product: {

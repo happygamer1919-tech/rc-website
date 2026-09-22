@@ -781,3 +781,14 @@ imperlux has no RU page. The source's alt text independently confirms W25-18's c
 **Warranty line held, Q-W25-19**: W24-R6 rows 33/40/44, CLAIMS question 21 unanswered, and it
 collides with the 5 years W25-22 shipped. Budgets 3,746 to **3,880** and 3,767 to **3,902**.
 25 of 25 gate commands exit 0.
+
+## W25-26 · Tigla merge
+**Status: PR OPEN** (2026-09-22). W25-R21 applied: one card per model name, the roofing section
+**75 to 71**. **The ruling's premise was wrong and the card says so**: both sets are Dasterum,
+the wave 14 audit section that created the tile data is titled `dasterum.md`, and imperlux
+publishes Monterrey, Valencia and Kascad zero times. The two prices are the same supplier's
+Econom and Standart grades. The 4 ACTM slots moved to `/servicii/tigla-metalica/` and were
+filled **from Dasterum by W25-R20's first step, with no fetch**, under W25-R17 declared reuse,
+matched by model name because CAT-0226 is the modular tile and CAT-0227 is Kascad. The legacy
+`public/img/tigla-<id>.jpg` path is deleted. Slots **283 to 287 of 337**. 25 of 25 gate
+commands exit 0.

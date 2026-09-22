@@ -155,12 +155,17 @@ const DIRECT_SUPPLIER_ORIGINS = {
 };
 /* AMENDED (W25-R15): the override, held to twelve ids. A row naming imperlux.md
    on any other slot fails even with the override licence, which is the executable
-   form of "nothing else from imperlux.md, ever". */
+   form of "nothing else from imperlux.md, ever".
+   AMENDED (W26-R3, W26-03): SIXTEEN. The ruling names the four roofing hub tiles
+   as well, and says in terms that "the machinery that holds twelve and then
+   sixteen does not widen". All four are listed although only two are filled: this
+   is a PERMISSION, not a state, and listing a slot fills nothing. */
 const OVERRIDE_HOST = 'imperlux.md';
 const OVERRIDE_ORIGIN = 'owner_override_imperlux';
 const OVERRIDE_SLOTS = [
   'GARD-01', 'GARD-02', 'GARD-03', 'GARD-04', 'GARD-05', 'GARD-06', 'GARD-07', 'GARD-08',
   'GARDB-01', 'GARDB-02', 'GARDB-03', 'GARDB-04',
+  'ACOP-01', 'ACOP-02', 'ACOP-03', 'ACOP-04',
 ];
 
 /* The slot kinds R-W forbids a generated image on: a before/after pair and a

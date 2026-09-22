@@ -821,12 +821,27 @@ function bentoSection(l, cfg) {
     if (x.page && !PRODUCT_PAGES.some((p) => p.slug === x.page) && !SERVICE_SLUGS.includes(x.page)) {
       die(`bento ${cfg.id}: tile "${x.label}" opens /${x.page}/, which this build emits no page for.`);
     }
+    /* W26-R4, card W26-03: A HUB TILE OPENS A PAGE. The owner's words: "a hub tile
+       href must be a page URL, never a same-page anchor". W25-24 gave two tiles an
+       anchor when they stopped being inert, under a reading of W25-R24 that the
+       owner has now closed. This is the build-time half; gate 26 holds the built
+       tree. It is refused HERE rather than silently rewritten, because a tile whose
+       destination does not exist is a product decision, not a substitution.
+       IT IS SCOPED TO THE HUB. W26-R5's second bento is product tiles whose whole
+       purpose is to move a visitor to a filtered section of the same page, and that
+       is a different component with a different rule. */
+    if (x.anchor) {
+      die(`bento ${cfg.id}: tile "${x.label}" points at "#${x.anchor}". W26-R4: a hub tile opens a page, never a same-page anchor.`);
+    }
   }
 
   const tiles = cfg.tiles.map((x, i) => {
     const label = esc(need(l.strings[x.label], x.label));
+    /* W26-03: the anchor branch is gone with W26-R4. A tile opens a product or
+       service page, or the "in construcție" page, and the assertion above refuses
+       anything else before rendering is reached. */
     x = { ...x, href: x.page ? `${BASE}${SERVICES_ROOT[l.code]}${x.page}/`
-      : (x.inConstructie ? BASE + IN_CONSTRUCTIE[l.code] : (x.anchor ? `#${x.anchor}` : null)) };
+      : (x.inConstructie ? BASE + IN_CONSTRUCTIE[l.code] : null) };
     const ph = placeholder(x.slot, { variant: 'dark', className: 'hub__ph', locale: l.code, eager: i < 2 });
     const body = `${ph}<span class="hub__grad" aria-hidden="true"></span><span class="hub__label">${label}</span>`;
     const cls = `hub__tile hub__tile--${i + 1}`;
@@ -841,7 +856,9 @@ function bentoSection(l, cfg) {
   return `<section class="section section--light section--divided hub" id="${cfg.id}" aria-labelledby="${cfg.id}-h">
   <div class="container">
     <h2 id="${cfg.id}-h" class="hub__h" data-reveal>${esc(need(l.strings[cfg.head], cfg.head))}<span class="hub__h-muted">${esc(need(l.strings[cfg.headMuted], cfg.headMuted))}</span></h2>
-    <div class="hub__grid">
+    <!-- data-hub-grid marks the HUB tiles, the ones W26-R4 holds to a page URL.
+         W26-R5's product bento is a different component and takes anchors. -->
+    <div class="hub__grid" data-hub-grid="1">
 ${tiles}
     </div>
   </div>
@@ -1478,8 +1495,17 @@ const BENTOS = {
       /* AMENDED (W25-24, under W25-R24): every hub tile has a destination now.
          This one had none and rendered inert. "Reduceri" opens the four roofing
          offers, which are a section of this same page (`#acoperisuri`), so the
-         tile finally does what it says. */
-      { label: 'bento.roofOffers', slot: 'ACOP-04', anchor: 'acoperisuri' },
+         tile finally does what it says.
+         AMENDED AGAIN (W26-03, under W26-R4): that anchor is exactly what the
+         ruling now forbids, and THIS SITE HAS NO DISCOUNTS PAGE for it to open
+         instead. The four offers are authored prose rendered on this page and
+         nowhere else, and the site's actual discount is the promo bar's "-10% la
+         orice serviciu", which is on every page and is not a destination either.
+         Inventing a page or relabelling the tile are both product decisions, so
+         neither is taken: it opens the "in construcție" page, which is this site's
+         own honest answer for a destination that does not exist yet and is already
+         where two other tiles go. Logged as Q-W26-02 with the recommendation. */
+      { label: 'bento.roofOffers', slot: 'ACOP-04', inConstructie: true },
     ],
   },
   /* W24-08. The same component, the same four slots, different data. The source
@@ -1503,8 +1529,15 @@ const BENTOS = {
       { label: 'bento.fenceCalc', slot: 'GARDB-02', inConstructie: true },
       { label: 'bento.fenceModele', slot: 'GARDB-03', page: 'modele-garduri' },
       /* AMENDED (W25-24, under W25-R24): was inert. "Prețuri și oferte" opens the
-         quote form on this page, which is where a price is asked for. */
-      { label: 'bento.fencePreturi', slot: 'GARDB-04', anchor: 'oferta' },
+         quote form on this page, which is where a price is asked for.
+         AMENDED AGAIN (W26-03, under W26-R4): that anchor is forbidden now, and
+         unlike the roofing twin this one has a true page to open. W25-11 published
+         a "de la" price on all eight fence model cards, so /servicii/modele-garduri/
+         IS where the prices are, and the link means what its label says (section 9).
+         NOTE, reported rather than fixed: tiles 1 and 3 already open that page, so
+         three of this hub's four tiles now share one destination. Repointing one of
+         them is the product decision W25-24 already put to the owner. */
+      { label: 'bento.fencePreturi', slot: 'GARDB-04', page: 'modele-garduri' },
     ],
   },
 };

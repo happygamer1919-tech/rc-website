@@ -29,16 +29,14 @@ W25-R15. A real photograph of one of these fences from the owner's own project s
 still the better picture and would replace the override file, but nothing is blocked on
 it and no card is waiting for it.
 
-## (b) Hub tiles, 4, the PRIORITY BATCH
+## (b) Hub tiles, 2, the PRIORITY BATCH
 
 Drop these in `/Users/ivan/RC-pics-ai/`. They are the first block in
 `~/Documents/rc-audit-w24/AI-PROMPTS-W25.md`, each with its own prompt.
 
 | File to save | Tile | Page | Ratio | Minimum |
 |---|---|---|---|---|
-| `ACOP-01.png` | Țiglă metalică | /servicii/acoperisuri/ | 5 / 6 | 1000x1200 |
-| `ACOP-02.png` | Rocă vulcanică Novatik | /servicii/acoperisuri/ | 7 / 2 | 1750x500 |
 | `ACOP-03.png` | Calculează prețul acoperișului | /servicii/acoperisuri/ | 7 / 4 | 900x520 |
 | `ACOP-04.png` | Reduceri | /servicii/acoperisuri/ | 7 / 4 | 900x520 |
 
-These 4 ratios are not all the same, and the prompt for each names its own.
+These 2 ratios are not all the same, and the prompt for each names its own.

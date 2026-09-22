@@ -12097,3 +12097,98 @@ is, and that the picture is unchanged.
 
 `/servicii/modele-garduri/` **3,820** against 3,880 and RU **3,842** against 3,902, **unchanged
 to the pixel** and measured anyway. **25 of 25 gate commands exit 0.**
+
+## W26-03 · Two hub tiles filled, two refused, and no hub tile is an anchor, 2026-09-22
+
+Branch `w26/w26-03-hub-tiles`, based on `main` at `18b98ce`.
+
+### Section 12.0 on the merged sha
+
+`EXPECT_SHA=18b98cec9bb2b729785c9f2e8bf548df130f53f6 node scripts/verify-live.js
+https://rapidconstruct.md` → **exit 0, PASS, 0 unverified, 0 failed, 0 retried**, 51 pages, 39
+reachable URLs crawled, 16 of 16 redirects at 200. The marker that failed on `a8d819e` is
+green on the deploy, which is where W26-01's fix had to be proved.
+
+### Six tile images exist and two of them answer to our four tiles
+
+W26-R3 names `ACOP-01` to `ACOP-04`. Read from the rendered DOM under W26-R2, imperlux.md's
+roofing hub carries **five category tiles and one promo**. `tigla-metalica.png` and
+`roca-vulcanica.png` map to our first two tiles. **The calculator has no counterpart at all**,
+and the only file left for "Reduceri" is an advert. **No screenshot-crop was needed**: all six
+fetch at 200 and the smallest is 1080 on its short side, so W26-R3's fallback is recorded as
+unused rather than quietly skipped. **GARDB-01 to GARDB-04 were filled at W25-18**, so four of
+the ruling's eight slots were already done.
+
+### The crop removes text, not framing
+
+**Every category tile carries burned-in Romanian text**: a headline and a **model count**,
+measured by an ink profile at y 270..494 and y 240..556 of the two 1440x1080 files. Two
+defects, neither cosmetic: Romanian words render on the **Russian** page, against section 8,
+and "7 MODELE DISPONIBILE" is **Imperlux's range stated as ours**, which section 5 refuses.
+W26-R3's own wording contemplates a crop, so the permission is used for what it is for, and
+each crop starts below the last inked row of text. **ACOP-01 483x580, ACOP-02 969x277**, both
+over the 450 floor, nothing upscaled, both labels checked legible on the built page because
+the tile's `rgba(0,0,0,0.85)` bottom gradient takes a white ground to near black.
+
+### The "Reduceri" picture is refused twice over
+
+It carries the **IMPERLUX logo**, and W25-R15's override is permission to take a competitor's
+product *pictures*, never its brand. And its headline is a **free-offer claim** with a CTA
+button, which has no source (section 5) and is the kind of promotional claim R-X refuses
+anyway. Cropping to its photograph leaves a rainwater-system render matching neither the tile
+label nor the ledger line. **The refusal is written into the ledger row**, so it is not
+re-litigated. Q-W26-03 carries the one-line fix.
+
+### The override went to sixteen by getting narrower
+
+`check-photo-slots-w24.js` lists all four ACOP ids although two are filled: **a list of
+permissions fills nothing.** `check-asset-provenance.js` did not grow its list at all: it now
+holds **one exact licence sentence per ruling, each with its own files**, so W25-R15's
+sentence on a roofing file and W26-R3's on a fence file are **both** refused. The new sentence
+records the crop. **Three arms between two clean controls, each exit 1**, and the failure
+message was sharpened by watching it: the first version printed all sixteen files at someone
+whose actual mistake was the wrong ruling's sentence.
+
+### W26-R4: zero same-page anchors on sixteen tiles
+
+"Reduceri" was `#acoperisuri` and now opens `/in-constructie/`; "Prețuri și oferte" was
+`#oferta` and now opens `/servicii/modele-garduri/`, which is where W25-11 published the fence
+prices, so the link means its label. **Neither had an obvious page**, and the costs are stated
+rather than hidden: two roofing tiles now go to the in-construcție page and **three of four
+fence tiles share one destination**. Inventing a page and relabelling a tile are product
+decisions; neither was taken. **Q-W26-02**, with the recommendation that W26-R5's second bento
+is where "Reduceri" belongs.
+
+**Refused in two places.** `build.js` refuses a hub tile declaring an anchor before rendering;
+gate 26 refuses one on the built tree. A build-time assertion catches the author, a gate
+catches the tree.
+
+### Gate 26: narrower by kind, scoped by marker
+
+**A same-page anchor is refused by kind**, which is what the gate's first version did before
+W25-24 loosened it. That loosening was an **authority** error, not a reasoning one: W25-R24
+said "an href that answers 200", an anchor does, and the gate took the wider reading
+**silently**. Written into the file: where a ruling's purpose is not stated, a gate says so
+rather than choosing.
+
+**Scoped to the hub, because W26-R5 needs it to be.** The roofing restructure adds a second,
+product bento whose tiles open sections of the same page on purpose. `build.js` marks the hub
+grid `data-hub-grid="1"` and the gate judges only tiles inside a marked grid; **a hub page
+with no marked grid is a failure**, not a pass over nothing. **Nine arms, one GREEN, two
+controls**: the anchor is planted twice, resolving and not, because resolution stopped being
+the question; the missing marker is its own arm; and the arm that used to be green is now red.
+
+### A budget that stayed still while its page moved
+
+Found taking this card's before reading and **not caused by it**: `/servicii/garduri/` reads
+**5,547** against a 5,728 budget that W24-08 set from **5,668** on 2026-09-20. **121px shorter
+in both locales**, unrecorded. Measured three ways that agree, including on the deployed site
+by the section 12.0 run above. **Lowered to measured plus 60, 5,607 and 5,629**, in R-Y and in
+`verify-live.js`. R-Y's own sentence is the authority: what a budget may never do is stay
+still while the page moves, and 181px of slack is unexamined room in the direction nobody
+watches. Which wave 25 card shrank it is a bisection and is not chased here.
+
+### Ledger, heights, gates
+
+**317 of 337 filled**, 20 empty. All four pages measure **identical before and after**, to the
+pixel, because a filled slot takes the placeholder's own box. **25 of 25 gate commands exit 0.**

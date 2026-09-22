@@ -12293,3 +12293,61 @@ during W26-03 and are sitting ready**, and they are not used because W26-R3 says
 **+1,545px**, which separates into the second bento (the hub's own 504px plus heading and
 margins) and seven more cards, two rows of four. **348 ledger rows, 315 filled, 33 empty.**
 **26 of 26 gate commands exit 0**, and 26 is the number `run-gates.js` prints now.
+
+## W26-05 · Compară modelele, and a live check that failed on a correct site, 2026-09-22
+
+Branch `w26/w26-05-compara-tables`, based on `main` at `cfebef8`.
+
+### Section 12.0 on cfebef8 FAILED, and the defect was this terminal's
+
+**Exit 1, 12 of 16 redirect rows failed**, every one the same shape: W26-04 regrouped the
+roofing filter into five sections and **left `verify-live.js` expecting each catalogue redirect
+to land on its own subcategory**. The site was right; the check was wrong. Heights inside
+budget, markers matched, all sixteen URLs answered 200.
+
+**Third time in three waves** that a marker was not moved with the thing it names, after
+W24-07a's rename and W25-24's `bentoLinks`. **Coupled rather than remembered**: `build.js` reads
+`verify-live.js`'s `REDIRECT_SECTION` map and refuses to build when it disagrees with the
+grouping it emits. Watched fire on the real file between two clean controls.
+
+### The tables
+
+Three on the roofing page (Țiglă metalică 4 rows, Șindrilă bituminoasă 2, Sisteme pluviale 18)
+and one on `/servicii/modele-garduri/` (8). **Two sections have none and the reason is data**:
+Țiglă ceramică has one model, and Accesorii de acoperiș is 53 unlike things rather than
+variants of a model.
+
+**Imperlux's rainwater table is entirely empty** (seventeen columns of "La cerere", "-", "-",
+"-", "0"), and its metal-tile table is about seven models this page does not carry, so both are
+built from the card specs instead of copied. The shingle table is copied, columns and rows,
+minus the warranty.
+
+**PRODUCTS ARE ROWS, and that is the one deviation from "copy it (columns and rows)".** The
+source puts a product per column, seventeen of them on the rainwater page; seven already do not
+fit 360px and gate 14 holds this site to no sideways scroll there. The cells are the ruling's
+and only the axis moves. Each table sits in a focusable, labelled scroll region for the narrow
+case.
+
+### No warranty column, for two different reasons
+
+The fence table has none **because the owner answered Q-W25-19, "leave it off"**. The roofing
+tables have none **because W26-R6 still holds them**. `Garanție` is real on every dasterum
+metal-tile record, so leaving it out is a decision taken on every build rather than an absence.
+
+### Two build refusals, and one derivation
+
+A declared table with **fewer than two products** fails. A **column under half real** fails
+naming the column and the count, which is what kept Accesorii out: `Tip de calitate` is real on
+24 of 53. And the imperlux cards' spec line and their table row are **the same cells** from one
+`specs` object, W25-25's shape: a value stated beside the thing it describes is a second place
+to be wrong.
+
+Two things were dropped after reading the rendered tables: dasterum's leading asterisk on
+`* Econom Standart Premium`, which footnotes nothing and which the card's own line has never
+printed; and the fence table's Material column, which printed half of every row header again.
+
+### Heights and gates
+
+`/servicii/acoperisuri/` **19,458** against 19,518 and RU **19,644** against 19,704, **+1,443px**
+for three tables. `/servicii/modele-garduri/` **4,309** against 4,369 and RU **4,331** against
+4,391, **+489px** for one table of eight whose colour cells wrap. **26 of 26 gate commands exit 0.**

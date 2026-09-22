@@ -898,3 +898,16 @@ that exited 0**, twice more in the same card: **gate 27** now catches the severe
 leaves behind, 8 arms, 5 GREEN, all three real defects planted back and watched fire. Gate 20
 measures **every** bento, not the first (32 to 48 tiles). Budgets **18,075 / 18,281**, +1,545px.
 348 rows, 315 filled, 33 empty. **26 of 26 gate commands exit 0.**
+
+## W26-05 · Compară modelele tables
+**Status: PR OPEN** (2026-09-22). **Section 12.0 on `cfebef8` FAILED, exit 1, 12 of 16 redirect
+rows**, and the defect was W26-04's: the regrouped sections were not carried into
+`verify-live.js`'s redirect expectations. The site was correct. **Third time in three waves**
+that a marker was left behind, so the map is now **coupled to the build** and watched firing.
+**Four tables ship**: Țiglă metalică (4), Șindrilă bituminoasă (2, copied from imperlux),
+Sisteme pluviale (18), and the fence models page (8). **Two sections have none and the reason
+is data**: one model, and 53 unlike things. **Products are rows, not columns**, the one
+deviation, because seventeen columns cannot go on a phone and gate 14 holds this site to no
+sideways scroll at 360. **No warranty column**: answered for fences, still held for roofs. The
+build refuses a table under two products and a column under half real. Budgets **19,518 /
+19,704** and **4,369 / 4,391**. 26 of 26 gate commands exit 0.

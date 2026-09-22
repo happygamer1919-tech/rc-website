@@ -74,10 +74,7 @@
           "ru": "От 46 lei/buc"
         }
       },
-      "variant": {
-        "ro": "44 kg/m² · 4 culori",
-        "ru": "44 кг/м² · 4 цвета"
-      },
+      "variant": null,
       "folds": [],
       "match_tier": "imperlux-only",
       "match_note": "imperlux.md publishes one ceramic model and dasterum.md's roofing catalogue has no ceramic tile at all, so nothing folds in.",
@@ -85,6 +82,16 @@
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/tigla-ceramica/creaton-rapido/",
         "captured": "2026-09-22"
+      },
+      "specs": {
+        "Greutate": {
+          "ro": "44 kg/m²",
+          "ru": "44 кг/м²"
+        },
+        "Culori": {
+          "ro": "4",
+          "ru": "4"
+        }
       }
     },
     {
@@ -102,10 +109,7 @@
           "ru": "От 357 lei/m²"
         }
       },
-      "variant": {
-        "ro": "10,75 kg/m² · 2,17 mm · 4 culori",
-        "ru": "10,75 кг/м² · 2,17 мм · 4 цвета"
-      },
+      "variant": null,
       "folds": [],
       "match_tier": "imperlux-only",
       "match_note": "dasterum.md's roofing catalogue carries no bituminous shingle.",
@@ -113,6 +117,20 @@
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/shingle/iko-cambridge/",
         "captured": "2026-09-22"
+      },
+      "specs": {
+        "Grosime": {
+          "ro": "2,17 mm",
+          "ru": "2,17 мм"
+        },
+        "Greutate": {
+          "ro": "10,75 kg/m²",
+          "ru": "10,75 кг/м²"
+        },
+        "Culori": {
+          "ro": "4",
+          "ru": "4"
+        }
       }
     },
     {
@@ -130,10 +148,7 @@
           "ru": "От 260 lei/m²"
         }
       },
-      "variant": {
-        "ro": "6,5 kg/m² · 3 m²/pachet · 3 culori",
-        "ru": "6,5 кг/м² · 3 м²/упаковка · 3 цвета"
-      },
+      "variant": null,
       "folds": [],
       "match_tier": "imperlux-only",
       "match_note": "dasterum.md's roofing catalogue carries no bituminous shingle.",
@@ -141,6 +156,20 @@
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/shingle/iko-hex/",
         "captured": "2026-09-22"
+      },
+      "specs": {
+        "Grosime": {
+          "ro": "3 m²/pachet",
+          "ru": "3 м²/упаковка"
+        },
+        "Greutate": {
+          "ro": "6,5 kg/m²",
+          "ru": "6,5 кг/м²"
+        },
+        "Culori": {
+          "ro": "3",
+          "ru": "3"
+        }
       }
     },
     {
@@ -158,10 +187,7 @@
           "ru": "От 172 lei"
         }
       },
-      "variant": {
-        "ro": "125x2000 mm · 125x4000 mm",
-        "ru": "125x2000 мм · 125x4000 мм"
-      },
+      "variant": null,
       "folds": [
         "CAT-0262",
         "CAT-0268"
@@ -172,6 +198,12 @@
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/jgheab/",
         "captured": "2026-09-22"
+      },
+      "specs": {
+        "Dimensiuni": {
+          "ro": "125x2000 mm · 125x4000 mm",
+          "ru": "125x2000 мм · 125x4000 мм"
+        }
       }
     },
     {
@@ -189,10 +221,7 @@
           "ru": "От 107 lei"
         }
       },
-      "variant": {
-        "ro": "90x1000 mm · 90x3000 mm",
-        "ru": "90x1000 мм · 90x3000 мм"
-      },
+      "variant": null,
       "folds": [
         "CAT-0264",
         "CAT-0265"
@@ -203,6 +232,12 @@
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/burlan/",
         "captured": "2026-09-22"
+      },
+      "specs": {
+        "Dimensiuni": {
+          "ro": "90x1000 mm · 90x3000 mm",
+          "ru": "90x1000 мм · 90x3000 мм"
+        }
       }
     },
     {
@@ -220,10 +255,7 @@
           "ru": "От 185 lei"
         }
       },
-      "variant": {
-        "ro": "125 mm",
-        "ru": "125 мм"
-      },
+      "variant": null,
       "folds": [
         "CAT-0261"
       ],
@@ -233,6 +265,12 @@
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/coltar-interior/",
         "captured": "2026-09-22"
+      },
+      "specs": {
+        "Dimensiuni": {
+          "ro": "125 mm",
+          "ru": "125 мм"
+        }
       }
     },
     {
@@ -250,10 +288,7 @@
           "ru": "От 185 lei"
         }
       },
-      "variant": {
-        "ro": "125 mm",
-        "ru": "125 мм"
-      },
+      "variant": null,
       "folds": [
         "CAT-0260"
       ],
@@ -263,6 +298,12 @@
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/coltar-exterior/",
         "captured": "2026-09-22"
+      },
+      "specs": {
+        "Dimensiuni": {
+          "ro": "125 mm",
+          "ru": "125 мм"
+        }
       }
     },
     {
@@ -280,10 +321,7 @@
           "ru": "От 58 lei"
         }
       },
-      "variant": {
-        "ro": "125 mm",
-        "ru": "125 мм"
-      },
+      "variant": null,
       "folds": [
         "CAT-0257"
       ],
@@ -293,6 +331,12 @@
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/bratara-jgheab/",
         "captured": "2026-09-22"
+      },
+      "specs": {
+        "Dimensiuni": {
+          "ro": "125 mm",
+          "ru": "125 мм"
+        }
       }
     },
     {
@@ -310,10 +354,7 @@
           "ru": "От 36 lei"
         }
       },
-      "variant": {
-        "ro": "125 mm",
-        "ru": "125 мм"
-      },
+      "variant": null,
       "folds": [
         "CAT-0259"
       ],
@@ -323,6 +364,12 @@
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/capac-jgheab/",
         "captured": "2026-09-22"
+      },
+      "specs": {
+        "Dimensiuni": {
+          "ro": "125 mm",
+          "ru": "125 мм"
+        }
       }
     },
     {
@@ -340,10 +387,7 @@
           "ru": "От 52 lei"
         }
       },
-      "variant": {
-        "ro": "scurt · 125 mm",
-        "ru": "короткий · 125 мм"
-      },
+      "variant": null,
       "folds": [
         "CAT-0269"
       ],
@@ -353,6 +397,12 @@
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/carlig-jgheab/",
         "captured": "2026-09-22"
+      },
+      "specs": {
+        "Dimensiuni": {
+          "ro": "scurt · 125 mm",
+          "ru": "короткий · 125 мм"
+        }
       }
     },
     {
@@ -370,10 +420,7 @@
           "ru": "От 48 lei"
         }
       },
-      "variant": {
-        "ro": "lung · 125 mm",
-        "ru": "длинный · 125 мм"
-      },
+      "variant": null,
       "folds": [
         "CAT-0270"
       ],
@@ -383,6 +430,12 @@
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/carlig-jgheab-lung/",
         "captured": "2026-09-22"
+      },
+      "specs": {
+        "Dimensiuni": {
+          "ro": "lung · 125 mm",
+          "ru": "длинный · 125 мм"
+        }
       }
     },
     {
@@ -403,7 +456,8 @@
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/carlig-pazie-universal/",
         "captured": "2026-09-22"
-      }
+      },
+      "specs": {}
     },
     {
       "id": "imp-racord-jgheab-burlan",
@@ -420,10 +474,7 @@
           "ru": "От 69 lei"
         }
       },
-      "variant": {
-        "ro": "125 mm",
-        "ru": "125 мм"
-      },
+      "variant": null,
       "folds": [
         "CAT-0258"
       ],
@@ -433,6 +484,12 @@
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/racord-jgheab-burlan/",
         "captured": "2026-09-22"
+      },
+      "specs": {
+        "Dimensiuni": {
+          "ro": "125 mm",
+          "ru": "125 мм"
+        }
       }
     },
     {
@@ -453,7 +510,8 @@
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/cot-60/",
         "captured": "2026-09-22"
-      }
+      },
+      "specs": {}
     },
     {
       "id": "imp-prelungitor",
@@ -473,7 +531,8 @@
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/prelungitor/",
         "captured": "2026-09-22"
-      }
+      },
+      "specs": {}
     },
     {
       "id": "imp-bratara-burlan",
@@ -490,10 +549,7 @@
           "ru": "От 33 lei"
         }
       },
-      "variant": {
-        "ro": "90 mm",
-        "ru": "90 мм"
-      },
+      "variant": null,
       "folds": [
         "CAT-0266"
       ],
@@ -503,6 +559,12 @@
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/bratara-burlan/",
         "captured": "2026-09-22"
+      },
+      "specs": {
+        "Dimensiuni": {
+          "ro": "90 mm",
+          "ru": "90 мм"
+        }
       }
     },
     {
@@ -523,7 +585,8 @@
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/palnie-colectoare/",
         "captured": "2026-09-22"
-      }
+      },
+      "specs": {}
     },
     {
       "id": "imp-ramificatie-burlan",
@@ -543,7 +606,8 @@
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/ramificatie-burlan/",
         "captured": "2026-09-22"
-      }
+      },
+      "specs": {}
     },
     {
       "id": "imp-element-captare",
@@ -563,7 +627,8 @@
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/element-captare/",
         "captured": "2026-09-22"
-      }
+      },
+      "specs": {}
     },
     {
       "id": "imp-cot-evacuare",
@@ -580,10 +645,7 @@
           "ru": "От 88 lei"
         }
       },
-      "variant": {
-        "ro": "90 mm",
-        "ru": "90 мм"
-      },
+      "variant": null,
       "folds": [
         "CAT-0267"
       ],
@@ -593,6 +655,12 @@
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/cot-evacuare/",
         "captured": "2026-09-22"
+      },
+      "specs": {
+        "Dimensiuni": {
+          "ro": "90 mm",
+          "ru": "90 мм"
+        }
       }
     }
   ],
@@ -614,6 +682,112 @@
       "slot": "CAT-0265",
       "folded_into": "burlan",
       "why": "the 90x3000 downpipe is a grade of Burlan. Same handling."
+    }
+  ],
+  "spec_order": [
+    "Dimensiuni",
+    "Greutate",
+    "Grosime",
+    "Culori"
+  ],
+  "tables": [
+    {
+      "group": "tigla-metalica",
+      "source": "built from the card specs; imperlux.md publishes a table for ITS OWN seven metal models and this page carries dasterum.md's four, so its table is about products that are not here.",
+      "columns": [
+        {
+          "key": "price",
+          "label": {
+            "ro": "Preț",
+            "ru": "Цена"
+          }
+        },
+        {
+          "key": "spec:Acoperire",
+          "label": {
+            "ro": "Acoperire",
+            "ru": "Покрытие"
+          }
+        },
+        {
+          "key": "spec:Tip de calitate",
+          "label": {
+            "ro": "Tip de calitate",
+            "ru": "Класс качества"
+          }
+        },
+        {
+          "key": "colours",
+          "label": {
+            "ro": "Culori",
+            "ru": "Цвета"
+          }
+        }
+      ]
+    },
+    {
+      "group": "sindrila-bituminoasa",
+      "source": "copied from imperlux.md/acoperisuri/produse/shingle/, columns and rows, MINUS the Garantie row, which W26-R6 holds.",
+      "columns": [
+        {
+          "key": "price",
+          "label": {
+            "ro": "Preț",
+            "ru": "Цена"
+          }
+        },
+        {
+          "key": "spec:Grosime",
+          "label": {
+            "ro": "Grosime",
+            "ru": "Толщина"
+          }
+        },
+        {
+          "key": "spec:Greutate",
+          "label": {
+            "ro": "Greutate",
+            "ru": "Вес"
+          }
+        },
+        {
+          "key": "spec:Culori",
+          "label": {
+            "ro": "Culori",
+            "ru": "Цвета"
+          }
+        }
+      ]
+    },
+    {
+      "group": "sisteme-pluviale",
+      "source": "built from the card specs. imperlux.md DOES publish a table here and every cell of it is empty: seventeen columns of \"La cerere\", \"-\", \"-\", \"-\" and \"0\". Copying it would publish a table that says nothing.",
+      "columns": [
+        {
+          "key": "price",
+          "label": {
+            "ro": "Preț",
+            "ru": "Цена"
+          }
+        },
+        {
+          "key": "spec:Dimensiuni",
+          "label": {
+            "ro": "Dimensiuni",
+            "ru": "Размеры"
+          }
+        }
+      ]
+    }
+  ],
+  "tables_declined": [
+    {
+      "group": "tigla-ceramica",
+      "why": "one model. A comparison table of one product compares nothing, and its card already states every spec the table would hold."
+    },
+    {
+      "group": "accesorii-de-acoperis",
+      "why": "fifty-three products that are not variants of one model: membranes, tapes, screws, ridge pieces and flashings. imperlux.md has no such section and publishes no such table. A table would be a second copy of the card grid with most cells empty: measured on the records, \"Tip de calitate\" is real on 24 of 53 and \"Acoperire\" on 23 of 53."
     }
   ]
 }

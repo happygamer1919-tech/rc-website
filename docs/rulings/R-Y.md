@@ -959,3 +959,27 @@ twenty as new cards would have cost five rows instead of two.
 filter buttons and the new bento wrap one line sooner.
 
 Measured at 1440 with every `[data-reveal]` applied and settled for 1,600ms, plus 60 (W24-R4).
+
+---
+
+## AMENDED (W26-05, wave 26): the Compară modelele tables
+
+| Page | Before | After | Budget |
+|---|---|---|---|
+| `/servicii/acoperisuri/` | 18,015 | **19,458** | 18,075 to **19,518** |
+| `/ru/servicii/acoperisuri/` | 18,221 | **19,644** | 18,281 to **19,704** |
+| `/servicii/modele-garduri/` | 3,820 | **4,309** | 3,880 to **4,369** |
+| `/ru/servicii/modele-garduri/` | 3,842 | **4,331** | 3,902 to **4,391** |
+
+**+1,443px on the roofing page for three tables of 4, 2 and 18 rows**, and the eighteen-row
+one is most of it: a table row is about 45px and the rainwater section has eighteen.
+
+**+489px on the fence page for one table of 8 rows.** More than 8 x 45 because the colour
+cells wrap: a Metal Plus row names three colours with their RAL codes and takes two lines at
+1440.
+
+**Both pages carry every table at once as they load**, which is the state a visitor lands on
+and therefore the state a budget is measured in. Pressing a filter on the roofing page hides
+two of the three, so the page only ever gets shorter from here.
+
+Measured at 1440 with every `[data-reveal]` applied and settled for 1,600ms, plus 60 (W24-R4).

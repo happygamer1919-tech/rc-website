@@ -4193,7 +4193,14 @@
       "ratio": "4 / 3",
       "min_px": "1200x900",
       "shows": "Categoria \"Sisteme de termoizolație\": un material sau un grup de materiale din aceasta categorie, fotografiat pe santier sau in depozit, orizontal, cu loc liber jos-stanga pentru eticheta.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0004.jpg",
+      "alt": {
+        "ro": "Sisteme de termoizolatie: Polistiren expandat STOP FIRE",
+        "ru": "Системы теплоизоляции: Пенополистирол STOP FIRE"
+      },
+      "reuse_of": "CAT-0004",
+      "reuse_reason": "W25-R22: the category tile stands on an installed product image of this category (termoizolatie), cropped to the tile ratio by the tile itself, which paints object-fit: cover in a 4/3 box."
     },
     {
       "id": "CATEG-02",
@@ -4201,7 +4208,14 @@
       "ratio": "4 / 3",
       "min_px": "1200x900",
       "shows": "Categoria \"Tencuieli decorative\": un material sau un grup de materiale din aceasta categorie, fotografiat pe santier sau in depozit, orizontal, cu loc liber jos-stanga pentru eticheta.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0032.jpg",
+      "alt": {
+        "ro": "Tencuieli decorative: Duraziv Standard TDS cu silicon - Tencuială decorativă siliconică",
+        "ru": "Декоративные штукатурки: Duraziv Standard TDS - Силиконовая декоративная штукатурка"
+      },
+      "reuse_of": "CAT-0032",
+      "reuse_reason": "W25-R22: the category tile stands on an installed product image of this category (tencuieli-decorative), cropped to the tile ratio by the tile itself, which paints object-fit: cover in a 4/3 box."
     },
     {
       "id": "CATEG-03",
@@ -4209,7 +4223,14 @@
       "ratio": "4 / 3",
       "min_px": "1200x900",
       "shows": "Categoria \"Plăci ceramice\": un material sau un grup de materiale din aceasta categorie, fotografiat pe santier sau in depozit, orizontal, cu loc liber jos-stanga pentru eticheta.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0060.jpg",
+      "alt": {
+        "ro": "Placi ceramice: Placă Sandstorm",
+        "ru": "Керамическая плитка: Плитка Sandstorm"
+      },
+      "reuse_of": "CAT-0060",
+      "reuse_reason": "W25-R22: the category tile stands on an installed product image of this category (placi-ceramice), cropped to the tile ratio by the tile itself, which paints object-fit: cover in a 4/3 box."
     },
     {
       "id": "CATEG-04",
@@ -4217,7 +4238,15 @@
       "ratio": "4 / 3",
       "min_px": "1200x900",
       "shows": "Categoria \"Elemente decorative\": un material sau un grup de materiale din aceasta categorie, fotografiat pe santier sau in depozit, orizontal, cu loc liber jos-stanga pentru eticheta.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0127.jpg",
+      "alt": {
+        "ro": "Elemente decorative: Element decorativ RED 01",
+        "ru": "Декоративные элементы: Декоративный элемент RED 01"
+      },
+      "reuse_of": "CAT-0127",
+      "reuse_reason": "W25-R22: the category tile stands on an installed product image of this category (elemente-decorative), cropped to the tile ratio by the tile itself, which paints object-fit: cover in a 4/3 box.",
+      "label": true
     },
     {
       "id": "CATEG-05",
@@ -4225,7 +4254,14 @@
       "ratio": "4 / 3",
       "min_px": "1200x900",
       "shows": "Categoria \"Vopsele\": un material sau un grup de materiale din aceasta categorie, fotografiat pe santier sau in depozit, orizontal, cu loc liber jos-stanga pentru eticheta.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0191.jpg",
+      "alt": {
+        "ro": "Vopsele: Amphibolin - Vopsea acrilică universală",
+        "ru": "Краски: Амфиболин - Универсальная акриловая краска"
+      },
+      "reuse_of": "CAT-0191",
+      "reuse_reason": "W25-R22: the category tile stands on an installed product image of this category (vopsele), cropped to the tile ratio by the tile itself, which paints object-fit: cover in a 4/3 box."
     },
     {
       "id": "CATEG-06",
@@ -4233,7 +4269,14 @@
       "ratio": "4 / 3",
       "min_px": "1200x900",
       "shows": "Categoria \"Sisteme de iluminare\": un material sau un grup de materiale din aceasta categorie, fotografiat pe santier sau in depozit, orizontal, cu loc liber jos-stanga pentru eticheta.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0206.jpg",
+      "alt": {
+        "ro": "Sisteme de iluminare: Lampă K5014",
+        "ru": "Системы освещения: Лампа K5014"
+      },
+      "reuse_of": "CAT-0206",
+      "reuse_reason": "W25-R22: the category tile stands on an installed product image of this category (sisteme-iluminare), cropped to the tile ratio by the tile itself, which paints object-fit: cover in a 4/3 box."
     },
     {
       "id": "CATEG-07",
@@ -4241,7 +4284,15 @@
       "ratio": "4 / 3",
       "min_px": "1200x900",
       "shows": "Categoria \"Alte materiale de construcții\": un material sau un grup de materiale din aceasta categorie, fotografiat pe santier sau in depozit, orizontal, cu loc liber jos-stanga pentru eticheta.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0221.jpg",
+      "alt": {
+        "ro": "Alte materiale de constructii: Membrana de DIFUZIE pentru acoperișuri",
+        "ru": "Другие стройматериалы: ДИФФУЗИОННАЯ мембрана для крыш"
+      },
+      "reuse_of": "CAT-0221",
+      "reuse_reason": "W25-R22: the category tile stands on an installed product image of this category (alte-materiale), cropped to the tile ratio by the tile itself, which paints object-fit: cover in a 4/3 box.",
+      "watermark": true
     },
     {
       "id": "CATEG-08",
@@ -4249,7 +4300,14 @@
       "ratio": "4 / 3",
       "min_px": "1200x900",
       "shows": "Categoria \"Acoperișuri\": un material sau un grup de materiale de acoperiș din aceasta categorie, fotografiate simplu pe fundal deschis. Fara mana, fara decor.",
-      "state": "placeholder"
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0224.jpg",
+      "alt": {
+        "ro": "Acoperisuri: Țiglă metalică Monterrey",
+        "ru": "Кровля: Țiglă metalică Monterrey"
+      },
+      "reuse_of": "CAT-0224",
+      "reuse_reason": "W25-R22: the category tile stands on an installed product image of this category (materiale-acoperis), cropped to the tile ratio by the tile itself, which paints object-fit: cover in a 4/3 box."
     },
     {
       "id": "ACTM-01",

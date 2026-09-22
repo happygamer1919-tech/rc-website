@@ -185,8 +185,8 @@ function check(pages, rows, provenance, brandBySlot) {
   const byId = new Map(rows.map((r) => [r.id, r]));
   const prov = provenance || new Map();
   const rendered = new Set();
-  const byFile = new Map();      // provenance path -> first filled slot id that named it
-  const bySourceImg = new Map(); // source image URL -> first filled slot id that stands on it
+  const byFile = new Map();      // provenance path -> the SET of filled slot ids on it
+  const bySourceImg = new Map(); // source image URL -> the SET of filled slot ids on it
 
   for (const page of pages) {
     for (const ph of placeholdersIn(page.html, page.rel)) {
@@ -296,24 +296,47 @@ function check(pages, rows, provenance, brandBySlot) {
         }
       }
 
-      const firstFile = byFile.get(row.provenance);
-      if (firstFile && firstFile !== ph.id) {
-        if (declared !== firstFile) {
-          problems.push({ id: 'shared-image', text: `${ph.where} and slot ${firstFile} are both filled with ${row.provenance}. W25-R3: one picture never stands as two products, and a family image never fills a colour-variant card.`
-            + (declared ? ` This slot declares reuse_of "${declared}", which is not ${firstFile}.` : ` W25-R17 permits it only where this slot declares reuse_of "${firstFile}" with a reason.`) });
-        }
-      } else byFile.set(row.provenance, ph.id);
+      /* CORRECTED (W25-28). This was "the first slot the walk met owns the
+         picture, and every later one must declare reuse of THAT slot", which
+         made the answer depend on the order dist/ is walked in. `/catalog/`
+         is walked before `/servicii/`, so a category tile became the owner of a
+         product's photograph and the product was told to declare reuse of the
+         tile. The rule was never about order.
 
+         It is a GROUP rule and is now written as one, below: collect every slot
+         that stands on one picture, and require exactly one origin in the group
+         with every other member declaring reuse of a member. A chain of three is
+         fine; two origins are not. */
+      byFile.set(row.provenance, (byFile.get(row.provenance) || new Set()).add(ph.id));
       const m = prow.source.match(IMAGE_URL);
       if (m) {
         const key = m[0].toLowerCase();
-        const firstSrc = bySourceImg.get(key);
-        if (firstSrc && firstSrc !== ph.id) {
-          if (declared !== firstSrc) {
-            problems.push({ id: 'shared-image', text: `${ph.where} and slot ${firstSrc} name different files that were downloaded from the same picture, ${m[0]}. W25-R3: one picture never stands as two products.`
-              + (declared ? ` This slot declares reuse_of "${declared}", which is not ${firstSrc}.` : '') });
-          }
-        } else bySourceImg.set(key, ph.id);
+        bySourceImg.set(key, (bySourceImg.get(key) || new Set()).add(ph.id));
+      }
+    }
+  }
+
+  /* W25-28. One picture, one group, one origin. Order-independent by
+     construction: the group is every slot standing on the same file or on the
+     same downloaded picture, and what is asserted is its SHAPE. */
+  const groups = new Map();
+  for (const [key, ids] of [...byFile, ...bySourceImg]) {
+    if (ids.size < 2) continue;
+    groups.set(key, ids);
+  }
+  for (const [key, ids] of groups) {
+    const members = [...ids];
+    const byIdLocal = new Map(rows.map((r) => [r.id, r]));
+    const origins = members.filter((id) => !REAL_FIELD((byIdLocal.get(id) || {}).reuse_of));
+    if (origins.length !== 1) {
+      problems.push({ id: 'shared-image', text: `${members.length} slots stand on the same picture (${key}): ${members.join(', ')}, and ${origins.length} of them declare no reuse_of. W25-R3 and W25-R17: exactly one is the origin and every other declares reuse of a slot in the group.` });
+      continue;
+    }
+    for (const id of members) {
+      const r = byIdLocal.get(id) || {};
+      if (!REAL_FIELD(r.reuse_of)) continue;
+      if (!members.includes(String(r.reuse_of))) {
+        problems.push({ id: 'shared-image', text: `slot ${id} stands on ${key} and declares reuse_of "${r.reuse_of}", which is not one of the slots on that picture (${members.join(', ')}).` });
       }
     }
   }
@@ -435,6 +458,36 @@ const SELF = [
       { file: 'public/img/selftest-12.jpg', source: 'https://caparol.md/a/ \u00b7 https://caparol.md/fam.jpg', licence: GOOD_LICENCE, licenceUrl: 'https://caparol.md/a/', date: '2026-09-20' },
       { file: 'public/img/selftest-13.jpg', source: 'https://caparol.md/b/ \u00b7 https://caparol.md/fam.jpg', licence: GOOD_LICENCE, licenceUrl: 'https://caparol.md/b/', date: '2026-09-20' },
     ],
+  },
+  /* W25-28, the group rule. Two arms, because "one picture, one group, one
+     origin" has two ways to be wrong and neither depends on walk order. */
+  {
+    arm: 'W25-28: two slots on one picture and NEITHER declares reuse',
+    want: 'shared-image',
+    pages: [
+      { rel: 'self-test/g2-a.html', html: FILLED_HTML('SELFTEST-31', '1 / 1') },
+      { rel: 'self-test/g2-b.html', html: FILLED_HTML('SELFTEST-32', '1 / 1') },
+    ],
+    rows: [FILLED_ROW('SELFTEST-31', 'public/img/selftest-grp.jpg'), FILLED_ROW('SELFTEST-32', 'public/img/selftest-grp.jpg')],
+    prov: [{ file: 'public/img/selftest-grp.jpg', source: 'client logo asset, delivered with the repo scaffold', licence: 'legacy, licence unverified', licenceUrl: 'legacy, licence unverified', date: '2026-09-20' }],
+  },
+  {
+    /* The one that matters: a chain of THREE on one picture, declared in either
+       direction, must pass whatever order the walk met them in. This is the shape
+       the order-dependent version refused. */
+    arm: 'W25-28 GREEN: three slots on one picture, one origin, two declaring reuse',
+    want: null,
+    pages: [
+      { rel: 'self-test/g3-a.html', html: FILLED_HTML('SELFTEST-33', '1 / 1') },
+      { rel: 'self-test/g3-b.html', html: FILLED_HTML('SELFTEST-34', '1 / 1') },
+      { rel: 'self-test/g3-c.html', html: FILLED_HTML('SELFTEST-35', '1 / 1') },
+    ],
+    rows: [
+      { ...FILLED_ROW('SELFTEST-33', 'public/img/selftest-grp.jpg'), reuse_of: 'SELFTEST-34', reuse_reason: 'the same product' },
+      FILLED_ROW('SELFTEST-34', 'public/img/selftest-grp.jpg'),
+      { ...FILLED_ROW('SELFTEST-35', 'public/img/selftest-grp.jpg'), reuse_of: 'SELFTEST-34', reuse_reason: 'the same product' },
+    ],
+    prov: [{ file: 'public/img/selftest-grp.jpg', source: 'client logo asset, delivered with the repo scaffold', licence: 'legacy, licence unverified', licenceUrl: 'legacy, licence unverified', date: '2026-09-20' }],
   },
   /* W25-R17, the declared reuse. FIVE arms, because the permission has five ways
      to be a claim about a picture that is not there, and one GREEN arm, because a

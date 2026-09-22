@@ -11785,3 +11785,44 @@ the API without a key. A free key is a new vendor credential and needs the owner
 
 **25 of 25 gate commands exit 0.** No height moved, so no budget changed. Nine rows carry a
 `google_pick` flag in the review list, derived from the origin.
+
+## W25-28 · The category tiles, and a gate rule that depended on walk order, 2026-09-22
+
+**Card W25-28.** PR only, stops for the owner. The full card is
+`docs/board/W25-28-category-tiles.md`.
+
+**All eight `CATEG-` tiles filled** under W25-R22, each from an installed product image of its
+own category. Ledger **299 to 307 of 337**, and **no image file was added**: every tile is a
+declared reuse of a picture the site already carries and a person has already reviewed.
+
+### No crop file, and the measurement that decided it
+
+W25-R22 says "cropped to the tile ratio" and **the tile already crops**:
+`.cat-tile__ph.ph--filled img` paints `object-fit: cover` in the ledger row's 4/3 box. Cutting
+a second file was measured first and fails on three of the eight: `CATEG-03` would be 379x284,
+`CATEG-05` 500x375 and `CATEG-08` 488x366, all under the 450 floor. **Every Dasterum roofing
+image is 488x488**, so no roofing product could have produced a cropped tile at the floor at
+all. Cropping five and rendering three would be two mechanisms for one thing.
+
+**Membership is asserted**: the write refuses a tile whose source record is not in that
+category. **Flags travel with the picture**: `CATEG-04` inherits `label` from the RED-01 render,
+`CATEG-08` inherits `watermark` from Dasterum.
+
+### The gate rule that depended on walk order
+
+Filling these turned gate 19 red on **40 problems**, and the tiles were not the defect.
+
+W25-20's check was "the first slot the walk meets owns the picture". `dist/catalog/` is walked
+before `dist/servicii/`, so **`CATEG-08` became the owner of a photograph and `CAT-0224`, the
+product it is a picture of, was told to declare reuse of the tile.** Backwards, and backwards
+because of directory order.
+
+**It is a group rule now**: every slot standing on one picture forms a group, exactly one member
+is the origin, and every other declares reuse of a member. A chain of three passes, two origins
+fail, and walk order cannot change the answer. **Two arms watch it**, one of them GREEN and
+exactly the shape the old version refused.
+
+### Gates
+
+**25 of 25 gate commands exit 0.** No height moved. Thirty slots remain empty in the ledger,
+nineteen in the three reviewed sections, including the eight before/after evidence slots.

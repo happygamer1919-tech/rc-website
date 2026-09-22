@@ -177,24 +177,39 @@
       "page": "/servicii/copertine/",
       "ratio": "16 / 10",
       "min_px": "1600x1000",
-      "shows": "Materiale de acoperis: tigla metalica si accesorii, cadru 16:10, in depozit sau pe santier.",
-      "state": "placeholder"
+      "shows": "Materiale de acoperis: tigla metalica si accesorii, cadru 16:10, in depozit sau pe santier. AMENDED W26-07 (W26-R8, W25-R23): filled from Pexels, photo 48784, a dark grey metal roof tile with its fixing screw, installed rather than in a warehouse. Cropped from 4125x2732 to 16:10 and downscaled, no upscale.",
+      "state": "filled",
+      "provenance": "public/img/copertine/COPX-01.jpg",
+      "alt": {
+        "ro": "Prim-plan cu o țiglă metalică gri închis și șurubul ei de fixare",
+        "ru": "Крупный план тёмно-серой металлочерепицы с крепёжным саморезом"
+      }
     },
     {
       "id": "COPX-02",
       "page": "/servicii/copertine/",
       "ratio": "16 / 10",
       "min_px": "1600x1000",
-      "shows": "Garduri metalice: un gard metalic terminat, cadru 16:10.",
-      "state": "placeholder"
+      "shows": "Garduri metalice: un gard metalic terminat, cadru 16:10. AMENDED W26-07 (W26-R8, W25-R23): filled from Pexels, photo 7031594, a dark horizontal-slat metal fence with a matching louvre sliding gate in front of a house, which is what the card beside it names (\"lamele metalice\"). Cropped from 7360x4912 to 16:10 and downscaled, no upscale.",
+      "state": "filled",
+      "provenance": "public/img/copertine/COPX-02.jpg",
+      "alt": {
+        "ro": "Gard din lamele metalice orizontale, gri închis, cu poartă culisantă asortată, în fața unei case",
+        "ru": "Забор из тёмно-серых горизонтальных металлических ламелей с такими же откатными воротами перед домом"
+      }
     },
     {
       "id": "COP-HERO",
       "page": "/servicii/copertine/",
       "ratio": "16 / 7",
       "min_px": "2400x1050",
-      "shows": "Copertina metalica peste o masina parcata, fotografiata din lateral-dreapta, cu loc liber in STANGA cadrului pentru text alb. Lumina de seara sau zi innorata. Format foarte lat.",
-      "state": "placeholder"
+      "shows": "Copertina metalica peste o masina parcata, fotografiata din lateral-dreapta, cu loc liber in STANGA cadrului pentru text alb. Lumina de seara sau zi innorata. Format foarte lat. AMENDED W26-07 (W26-R8, W25-R23): filled from Unsplash, photo page i3Qk5adcIaY, a flat-roofed metal carport on posts with two vehicles under it at dusk. Taken head-on rather than from the right, and the carport sits in the right of the frame, so the left keeps the free space the hero text needs. Cropped from 4000x4000 to 16:7 and downscaled, no upscale.",
+      "state": "filled",
+      "provenance": "public/img/copertine/COP-HERO.jpg",
+      "alt": {
+        "ro": "Copertină metalică cu acoperiș plat pe stâlpi, cu două vehicule parcate dedesubt, la amurg",
+        "ru": "Металлический навес с плоской крышей на опорах, под ним два автомобиля, в сумерках"
+      }
     },
     {
       "id": "NVK-01",

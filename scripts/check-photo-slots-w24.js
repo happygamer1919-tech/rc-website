@@ -137,7 +137,18 @@ const APPROVED_ORIGINS = [
      row is standing on: this one rests on an owner decision over a competitor
      host, and it is held to twelve slot ids below rather than to the host. */
   'owner_override_imperlux',
+  /* W25-R23 and W26-R8, the licence-free libraries. Unsplash and Pexels only,
+     found by searching the library and fetched from the photo page. It names the
+     permission, and LIBRARY_SLOTS below holds it to the slots W25-R23 means. */
+  'licence-free library',
 ];
+
+/* W25-R23: "Secondary images: licence-free libraries only". A library picture is
+   decoration, so it never fills a product, project or evidence slot; the
+   permission is held to the slot ids the rulings name, exactly as the imperlux
+   override is. A library licence on any other slot fails. W26-07 fills these. */
+const LIBRARY_ORIGIN = 'licence-free library';
+const LIBRARY_SLOTS = ['COP-HERO', 'COPX-01', 'COPX-02'];
 
 /* W25-R7. `dasterum.md` stays in FORBIDDEN_HOSTS and is lifted for ONE licence.
    A filled slot may name a dasterum.md source only when its provenance row's
@@ -286,6 +297,9 @@ function check(pages, rows, provenance, brandBySlot) {
       }
       if (!APPROVED_ORIGINS.some((o) => prow.licence.toLowerCase().includes(o.toLowerCase()))) {
         problems.push({ id: 'unapproved-origin', text: `${ph.where} names a provenance row whose licence is "${prow.licence}", which is not one of R-W's approved origins.` });
+      }
+      if (lic.includes(LIBRARY_ORIGIN) && !LIBRARY_SLOTS.includes(ph.id)) {
+        problems.push({ id: 'library-not-secondary', text: `${ph.where} is filled from a licence-free library and is not one of the secondary slots W25-R23 permits it on (${LIBRARY_SLOTS.join(', ')}). A library picture is decoration, never a product, project or evidence picture.` });
       }
       if (/ai generated/i.test(prow.licence) && EVIDENCE_PREFIXES.some((p) => ph.id.startsWith(p))) {
         problems.push({ id: 'render-as-proof', text: `${ph.where} is an evidence slot filled with a generated image. W25-R3: a render is never a proof image.` });
@@ -456,6 +470,21 @@ const SELF = [
     pages: [{ rel: 'self-test/f.html', html: FILLED_HTML('SELFTEST-06', '1 / 1') }],
     rows: [FILLED_ROW('SELFTEST-06', 'public/img/selftest-06.jpg')],
     prov: [{ file: 'public/img/selftest-06.jpg', source: 'https://example.com/p/ \u00b7 https://example.com/x.jpg', licence: 'found on a search results page', licenceUrl: 'https://example.com/p/', date: '2026-09-20' }],
+  },
+  /* W26-07. The library origin: refused off the secondary slots, and GREEN on one. */
+  {
+    arm: 'W26-07: a licence-free library picture on a product slot',
+    want: 'library-not-secondary',
+    pages: [{ rel: 'self-test/lib-red.html', html: FILLED_HTML('SELFTEST-40', '1 / 1') }],
+    rows: [FILLED_ROW('SELFTEST-40', 'public/img/selftest-40.jpg')],
+    prov: [{ file: 'public/img/selftest-40.jpg', source: 'https://www.pexels.com/photo/x-1/ \u00b7 https://images.pexels.com/photos/1/x.jpeg \u00b7 Pexels', licence: 'licence-free library, Pexels License, W25-R23 and W26-R8', licenceUrl: 'https://www.pexels.com/license/', date: '2026-09-22' }],
+  },
+  {
+    arm: 'W26-07 GREEN: a licence-free library picture on a copertine secondary slot',
+    want: null,
+    pages: [{ rel: 'self-test/lib-green.html', html: FILLED_HTML('COPX-01', '1 / 1') }],
+    rows: [FILLED_ROW('COPX-01', 'public/img/selftest-41.jpg')],
+    prov: [{ file: 'public/img/selftest-41.jpg', source: 'https://www.pexels.com/photo/x-2/ \u00b7 https://images.pexels.com/photos/2/x.jpeg \u00b7 Pexels', licence: 'licence-free library, Pexels License, W25-R23 and W26-R8', licenceUrl: 'https://www.pexels.com/license/', date: '2026-09-22' }],
   },
   {
     arm: 'a generated image on an evidence slot',

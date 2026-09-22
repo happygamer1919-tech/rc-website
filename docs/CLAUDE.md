@@ -628,6 +628,12 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     only by the declaration.
     **The arm count above is the number the run prints**, not a remembered one: it was
     three, then eleven, and the eleven was already stale when this line was read. Run it.
+    **AMENDED (W26-07): the licence-free library origin, and two arms, one GREEN.** W25-R23
+    and W26-R8 permit Unsplash and Pexels pictures as SECONDARY images, never a product,
+    project or evidence picture. The origin is approved by name, `licence-free library`, and
+    held to the slot ids the rulings mean (`COP-HERO`, `COPX-01`, `COPX-02`), exactly as the
+    imperlux override is held to its list: a library licence on any other slot fails. The red
+    arm plants one on a product slot; the green arm is the same row on a copertine slot.
 
 20. `node scripts/check-layout-geometry.js` clean. **Since W24-09 (wave 24)**, run by
     `quality`. **The nineteen gates above do not read a layout.** W24-07 shipped a

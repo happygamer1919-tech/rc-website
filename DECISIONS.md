@@ -12458,3 +12458,43 @@ budget by 49px; both re-budgeted at measured plus 60 in R-Y, 12,783 / 13,721. `v
 
 **A side effect, measured**: the index's meta description had been falling back to the bare word
 "Catalog" because eight labels did not fit 155 characters. Seven do, so it now lists them.
+
+## W26-07 · The three copertine images, from the libraries the owner named, 2026-09-22
+
+Branch `w26/w26-07-copertine-slots`, stacked on W26-06 (#129).
+
+**W26-R8 applied: "download from Pexels or Unsplash page URLs directly".** Q-W25-20 had measured
+the libraries' search pages and APIs with `curl` (307, 403, 401). **A real browser gets
+through**: headless Chrome loads both libraries' search pages and photo pages at 200, and both
+image CDNs answer `curl` at 200. So nothing went through the Google fallback. Every candidate
+was found by searching the library itself, reviewed on contact sheets, and **its licence read
+on its own photo page** before download.
+
+| Slot | Picture | Library | Original | Installed |
+|---|---|---|---|---|
+| `COP-HERO` | a flat-roofed metal carport on posts, two vehicles under it, dusk | Unsplash `i3Qk5adcIaY` | 4000x4000 | 2400x1050, 398KB |
+| `COPX-01` | a dark grey metal roof tile with its fixing screw | Pexels `48784` | 4125x2732 | 1600x1000, 210KB |
+| `COPX-02` | a dark horizontal-slat metal fence with a matching louvre gate | Pexels `7031594` | 7360x4912 | 1600x1000, 373KB |
+
+**Chosen by what the page says beside them.** The hero's line asks for a metal carport over a
+parked car with free space on the left for the headline; this one puts the carport in the right
+of the frame. **The first fence pick was replaced**: a brown profiled-sheet fence, a good
+photograph, but the card under it says "Garduri din lamele metalice", and a slatted fence is
+what that means. Cropped to each slot's ratio and downscaled from far larger originals, **no
+upscale**, metadata stripped, and each near the 400KB the photo pipeline targets.
+
+**The origin is new, so gate 19 learned it.** `licence-free library` is approved by name and
+**held to the three secondary slots**, because W25-R23 says library pictures are decoration and
+never a product, project or evidence picture. Two arms, one GREEN. The provenance rows carry the
+photo page, the CDN file, the credit and the library's licence URL.
+
+**The review list gains a Copertine section**, because a copertine row used to be invisible to
+it, and a `library` flag on all three.
+
+**Two things for the owner, neither blocking.** The hero's right-hand vehicle shows part of its
+number plate. And `RC-webpics_v2/Copertine` holds two of the owner's own carport photographs,
+1600x1200: W26-12 puts them in the page's gallery, and either could replace the stock hero if
+the owner prefers real work there.
+
+**Heights identical to the pixel** (6,555 / 6,631): every box was reserved by its ratio before.
+Ledger **317 of 347 filled, 30 empty**.

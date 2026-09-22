@@ -65,9 +65,13 @@ function section(id) {
      slot the owner's own review list cannot see is a slot nobody reviews. */
   if (id.startsWith('ACOP-') || id.startsWith('NVK-') || id.startsWith('ACTM-')) return 'Acoperisuri';
   if (id.startsWith('GARD-') || id.startsWith('GARDB-')) return 'Garduri';
+  /* W26-07. The three copertine secondary images are the first library pictures
+     on the site, and a picture the owner's review list cannot see is a picture
+     nobody reviews: every row of this section carries the library flag. */
+  if (id === 'COP-HERO' || id.startsWith('COPX-')) return 'Copertine';
   return null;
 }
-const SECTIONS = ['Catalog', 'Acoperisuri', 'Garduri'];
+const SECTIONS = ['Catalog', 'Acoperisuri', 'Garduri', 'Copertine'];
 
 const imageUrl = (source) => (source.match(/\bhttps?:\/\/\S+\.(?:jpe?g|png|webp|gif|avif|heic|tiff?)\b/i) || [null])[0];
 const pageUrl = (source) => (source.match(/\bhttps?:\/\/\S+/) || [null])[0];
@@ -122,6 +126,8 @@ function originClass(licence) {
      well land on a manufacturer's own page and the thing the owner needs to see
      is that a search chose it. */
   if (l.includes('google_pick')) return 'google_pick';
+  /* W25-R23 and W26-R8, named by library so the reviewer sees which one. */
+  if (l.includes('licence-free library')) return l.includes('unsplash') ? 'licence-free library, Unsplash' : 'licence-free library, Pexels';
   if (l.includes('manufacturer packshot')) return 'manufacturer official site';
   if (l.includes('ai generated')) return 'owner AI generated';
   if (l.includes('supplier permission')) return 'supplier permission';
@@ -158,6 +164,7 @@ for (const row of ledger.slots) {
      file. Owner reviews and corrects afterwards." Derived from the origin, so it
      cannot be forgotten on a row. */
   if (origin === 'google_pick') flags.push('google_pick');
+  if (origin.startsWith('licence-free library')) flags.push('library');
   if (origin === 'manufacturer official site' && /phomi\.com/i.test(p.source) && (rec && (rec.categories || []).includes('placi-ceramice'))) {
     const tier = tierBySlot.get(row.id);
     if (tier && tier !== 'A-exact') flags.push('low confidence match');
@@ -187,10 +194,10 @@ L.push('**This is the list the owner reads.** W25-R5 permits a photograph with a
 L.push('product name on condition that each one is flagged here; W25-R7 permits a Dasterum');
 L.push('image on condition that its watermark stays as published. Both flags are below, per row.');
 L.push('');
-L.push(`**${filled.length} images to review, across Catalog, Acoperisuri and Garduri.**`);
+L.push(`**${filled.length} images to review, across ${SECTIONS.slice(0, -1).join(', ')} and ${SECTIONS[SECTIONS.length - 1]}.**`);
 L.push('');
 L.push('The dispatch asked for a row per image installed by IT. This lists **every filled slot**');
-L.push('in those three sections, which is that set plus the 27 installed by the dispatch before');
+L.push(`in those ${SECTIONS.length} sections, which is that set plus the 27 installed by the dispatch before`);
 L.push('it (W25-02, W25-03c). Those 27 have never been through a review list either, and leaving');
 L.push('them out would mean the owner reviews a list that is not all of it. The flag columns tell');
 L.push('them apart: nothing from the earlier dispatch is a labelled swatch or carries a watermark.');
@@ -202,10 +209,11 @@ L.push(`| labelled swatch | ${fl('labelled swatch')} | the product name or code 
 L.push(`| watermark | ${fl('watermark')} | a supplier mark on the picture or on the product. It is there on purpose and must not be cropped |`);
 L.push(`| reuse | ${filled.filter((f) => f.flags.some((x) => x.startsWith('reuse of'))).length} | one picture filling a second record of the same product (W25-R17). Check the two cards are the same product |`);
 L.push(`| google_pick | ${fl('google_pick')} | found by search because the product's own source publishes nothing at the 450 floor (W25-R20). Check it is the right product, and correct it if not |`);
+L.push(`| library | ${fl('library')} | a licence-free stock photograph from Unsplash or Pexels (W25-R23, W26-R8), decoration only. Check it suits the page |`);
 L.push(`| low confidence match | ${fl('low confidence match')} | the plate matched Phomi at a tier that is not an exact string match. Check the name in the picture against the name on the card |`);
 L.push(`| no flag | ${filled.filter((f) => !f.flags.length).length} | an ordinary manufacturer packshot |`);
 L.push('');
-L.push('## Table one: every image on the site in these three sections');
+L.push(`## Table one: every image on the site in these ${SECTIONS.length} sections`);
 L.push('');
 for (const sec of SECTIONS) {
   const rows = filled.filter((f) => f.sec === sec);
@@ -236,7 +244,7 @@ for (const sec of SECTIONS) {
 }
 L.push('---');
 L.push('');
-L.push(`Slots outside these three sections are not in this list: ${ledger.slots.filter((r) => !section(r.id)).length} rows, counted here rather than dropped.`);
+L.push(`Slots outside these ${SECTIONS.length} sections are not in this list: ${ledger.slots.filter((r) => !section(r.id)).length} rows, counted here rather than dropped.`);
 L.push('');
 
 /* --- the reasons, each traceable to a card or a ruling ---------------------- */

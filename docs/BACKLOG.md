@@ -931,3 +931,12 @@ fired floor tile (W17-02 scope, 0 prohibited terms, for ratification). Acoperiș
 **`listed: false`**: off the index and the header panel, every page and data use kept. `CATEG-08`
 removed from the ledger (a reuse, no file): **347 rows, 314 filled**. Index heights identical;
 Plăci flexibile +54 / +109, re-budgeted 12,783 / 13,721.
+
+## W26-07 · Copertine: three library images
+**Status: PR OPEN** (2026-09-22). W26-R8 applied directly: **headless Chrome gets both libraries'
+search and photo pages at 200**, where Q-W25-20's `curl` got 307/403/401, so no Google fallback
+was needed. `COP-HERO` Unsplash carport at dusk, `COPX-01` Pexels metal tile with its screw,
+`COPX-02` Pexels slatted metal fence with louvre gate (a profiled-sheet fence was replaced because
+the card says "lamele metalice"). Licence read on each photo page; cropped, downscaled, stripped.
+**Gate 19 approves `licence-free library` held to these three slots**, 2 arms, 1 GREEN. Review list
+gains a Copertine section. Heights identical. **317 of 347 filled.**

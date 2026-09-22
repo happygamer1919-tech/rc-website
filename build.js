@@ -2517,6 +2517,8 @@ const ROOF_SECTION_PATH = (l) => `${SERVICES_ROOT[l.code]}acoperisuri/`;
    number no set of cards adds up to. */
 const ROOF_SECTIONS_FILE = 'content/roofing-sections.json';
 const ROOF_SECTIONS = JSON.parse(fs.readFileSync(ROOF_SECTIONS_FILE, 'utf8'));
+const SPEC_ORDER = ROOF_SECTIONS.spec_order || [];
+if (!SPEC_ORDER.length) die(`${ROOF_SECTIONS_FILE} has no spec_order, so a card's spec line would have no order to be written in.`);
 const roofGroups = (() => {
   const cat = CATALOG.categories[PARENT_CATEGORIES.findIndex((c) => c.slug === ROOF_CATEGORY)];
   const kids = (cat && cat.children) || [];
@@ -2545,6 +2547,30 @@ const roofGroups = (() => {
 /* Which section a catalogue child was folded into, for the redirect pages. */
 const ROOF_GROUP_OF_CHILD = new Map();
 for (const g of roofGroups) for (const c of g.from) ROOF_GROUP_OF_CHILD.set(c, g.child);
+/* W26-05. THE LIVE CHECK'S MAP IS HELD TO THIS ONE, at build time, beside the
+   thing it protects. `scripts/verify-live.js` asserts where each of the eight
+   catalogue redirects lands; W26-04 regrouped the sections and did not move it,
+   and section 12.0 on cfebef8 came back with 12 of 16 redirect rows FAILED and
+   nothing wrong with the site. That is the third time in three waves that a marker
+   was left behind by the thing it names, so this is coupled rather than
+   remembered: a grouping changed without the map changing fails HERE, at the
+   author's desk, instead of after a merge. */
+(() => {
+  const vlPath = 'scripts/verify-live.js';
+  if (!fs.existsSync(vlPath)) die(`${vlPath} is missing, so its redirect map cannot be held to this one.`);
+  const src = fs.readFileSync(vlPath, 'utf8');
+  const block = src.match(/const REDIRECT_SECTION = \{([\s\S]*?)\};/);
+  if (!block) die(`${vlPath} declares no REDIRECT_SECTION. If that constant moved, this assertion has to move with it.`);
+  const map = new Map();
+  for (const m of block[1].matchAll(/'?([a-z-]+)'?\s*:\s*'([a-z-]+)'/g)) map.set(m[1], m[2]);
+  for (const [child, section] of ROOF_GROUP_OF_CHILD) {
+    if (map.get(child) !== section) {
+      die(`${vlPath} sends /catalog/materiale-acoperis/${child}/ to "#mat-${map.get(child) || 'nothing'}" and this build sends it to "#mat-${section}". A live check that expects the old anchor fails on a site that is correct.`);
+    }
+  }
+  const extra = [...map.keys()].filter((k) => k !== '' && !ROOF_GROUP_OF_CHILD.has(k));
+  if (extra.length) die(`${vlPath} maps roofing route(s) this build does not emit: ${extra.join(', ')}.`);
+})();
 const ROOF_ALL = 'toate';
 /* The eight routes that stop being catalogue pages and become redirect pages.
    Derived, never listed: the parent plus its own children, so adding a roofing
@@ -2649,11 +2675,20 @@ function roofSection(l) {
     if (!impBySection.has(p.group)) die(`${ROOF_SECTIONS_FILE}: products[${i}] "${p.slug}" is in section "${p.group}", which is not one of the five.`);
     if (!REAL(p.slot) && !(p.folds || []).length) die(`${ROOF_SECTIONS_FILE}: products[${i}] "${p.slug}" folds no record and has no slot of its own, so it has no picture to render.`);
     if (REAL(p.slot) && (p.folds || []).length) die(`${ROOF_SECTIONS_FILE}: products[${i}] "${p.slug}" both folds a record and claims a slot; the folded record's slot IS its picture.`);
+    /* W26-05. THE VARIANT LINE IS DERIVED FROM THE SPECS, not written beside them.
+       W25-25 settled the same shape on the fence colours: a count stated next to
+       the list it counts is a second place to be wrong. Here the line under the
+       name and the row in the Compara table are the same cells, in the order
+       `spec_order` gives, so a spec corrected in one place is corrected in both. */
+    const specLine = (SPEC_ORDER
+      .filter((k) => p.specs && p.specs[k] && REAL(p.specs[k][l.code]))
+      .map((k) => p.specs[k][l.code])).join(' · ');
     impBySection.get(p.group).push({
       slot: p.slot || p.folds[0],
       name: p.name,
-      variant: p.variant,
+      variant: specLine ? { [l.code]: specLine } : null,
       price: p.price,
+      specs: p.specs || {},
       _imperlux: true,
     });
   });
@@ -2676,6 +2711,81 @@ function roofSection(l) {
     return [];
   };
   const cards = ordered.map((r, i) => prodCard(l, r, i, ` data-roof-groups="${esc(sectionOf(r, i).join(' '))}"`));
+
+  /* W26-05, ruling W26-R6: COMPARA MODELELE, one table per section that has one.
+
+     WHICH SECTIONS HAVE ONE IS DATA, not a rule here, because it is a judgement
+     about the products and a judgement in code is a judgement nobody can read.
+     `tables_declined` carries the two that do not and why, in the same file.
+
+     PRODUCTS ARE ROWS, NOT COLUMNS, and that is the one deliberate deviation from
+     "copy it (columns and rows)". imperlux.md lays its tables out with a product
+     per COLUMN, which is seventeen columns on the rainwater page. Seven columns
+     already do not fit 360px, and this site is held to no sideways scroll at 360
+     by gate 14. The CELLS are the ruling's; the axis is the only thing that moves,
+     and a transposed table holds exactly the same comparison.
+
+     THE WARRANTY ROW IS NOT HERE. W26-R6 holds the roof warranty until the owner
+     confirms it, and `Garantie` is real on every dasterum metal-tile record, so
+     leaving it out is a decision taken each build rather than an absence. */
+  const tableFor = (g) => {
+    const spec = (ROOF_SECTIONS.tables || []).find((t) => t.group === g.child);
+    if (!spec) return '';
+    const rows = ordered.filter((r) => sectionOf(r).includes(g.child));
+    if (rows.length < 2) die(`${ROOF_SECTIONS_FILE}: a Compara table is declared for "${g.child}" and it has ${rows.length} product(s). A comparison of fewer than two compares nothing.`);
+    const cell = (r, key) => {
+      if (key === 'price') return (r.price && r.price.render && r.price.render[l.code]) || null;
+      if (key === 'colours') {
+        const n = (r.source && r.source.colours || []).length;
+        return n ? String(n) : null;
+      }
+      if (key.startsWith('spec:')) {
+        const k = key.slice(5);
+        if (r._imperlux) return (r.specs && r.specs[k] && r.specs[k][l.code]) || null;
+        /* dasterum.md writes "* Econom Standart Premium" with a leading asterisk
+           that footnotes nothing on its own page and would footnote nothing here.
+           Dropping it is section 5's permitted shortening, and the card's own
+           variant line has printed it without the asterisk since W25-19, so the
+           table would otherwise disagree with the card above it. */
+        const raw = (r.source && r.source.specs && r.source.specs[k]) || null;
+        return raw == null ? null : String(raw).replace(/^\s*\*\s*/, '');
+      }
+      die(`${ROOF_SECTIONS_FILE}: table "${g.child}" names an unknown column key "${key}".`);
+      return null;
+    };
+    /* A COLUMN MOSTLY EMPTY IS A COLUMN THAT MISLEADS. Half is the floor, it is
+       asserted at build time rather than eyeballed, and the message names the
+       column and the count so the fix is either the data or the declaration. */
+    for (const c of spec.columns) {
+      const real = rows.filter((r) => REAL(cell(r, c.key))).length;
+      if (real * 2 < rows.length) die(`${ROOF_SECTIONS_FILE}: table "${g.child}" declares the column "${c.key}" and only ${real} of ${rows.length} products have it. A column under half real is a column that misleads.`);
+    }
+    const head = [s('tableProduct'), ...spec.columns.map((c) => {
+      const lab = c.label && c.label[l.code];
+      if (!REAL(lab)) die(`${ROOF_SECTIONS_FILE}: table "${g.child}" column "${c.key}" has no ${l.code} label.`);
+      return lab;
+    })];
+    const body = rows.map((r) => {
+      const tds = spec.columns.map((c) => {
+        const v = cell(r, c.key);
+        return `<td>${REAL(v) ? esc(v) : esc(s('tableNone'))}</td>`;
+      }).join('');
+      return `          <tr><th scope="row">${esc(r.name[l.code])}</th>${tds}</tr>`;
+    }).join('\n');
+    return `      <div class="roof-cmp" data-roof-table data-roof-groups="${esc(g.child)}">
+        <h3 class="roof-cmp__h">${esc(s('tableH'))} ${esc(g.label[l.code])}</h3>
+        <div class="roof-cmp__scroll" tabindex="0" role="region" aria-label="${esc(s('tableH'))} ${esc(g.label[l.code])}">
+        <table class="roof-cmp__t">
+          <thead><tr>${head.map((h) => `<th scope="col">${esc(h)}</th>`).join('')}</tr></thead>
+          <tbody>
+${body}
+          </tbody>
+        </table>
+        </div>
+      </div>`;
+  };
+  const tables = roofGroups.map(tableFor).filter(Boolean).join('\n');
+  if (!tables) die(`${ROOF_SECTIONS_FILE} declares no Compara table, so W26-R6 would render nothing.`);
 
   const counts = new Map(roofGroups.map((g) => [g.child,
     ordered.filter((r) => sectionOf(r).includes(g.child)).length]));
@@ -2708,6 +2818,7 @@ function roofSection(l) {
 ${bar.join('\n')}
     </div>
     <p class="roof-filter__status muted" data-roof-status data-roof-showing="${esc(s('showing'))}" aria-live="polite">${esc(s('showing').replace('{n}', String(total)))}</p>
+${tables}
     <div class="prod-grid" id="produse-grid" data-prod-grid data-roof-grid data-prod-step="${PROD_STEP}">
 ${cards.join('\n')}
     </div>${more}
@@ -2927,6 +3038,46 @@ function gardModelePage(l) {
       </article>`;
   }).join('\n');
 
+  /* W26-05, ruling W26-R6: the fence page's Compara table. imperlux.md publishes
+     NONE on any of its eight model pages, which W25-25 measured, so this one is
+     built from the card specs.
+
+     THE WARRANTY COLUMN IS NOT HERE, and this time because the owner said so:
+     Q-W25-19 is answered "leave it off". The source states 20 and 30 years of
+     anticorrosion cover; it stays in docs/W24-CLAIMS-HELD.md and off the page.
+
+     THE CELLS ARE THE CARD'S OWN, read from the same records in the same order,
+     so a table that disagreed with the card above it cannot be built. */
+  const gardTable = (() => {
+    /* NO MATERIAL COLUMN. The row header is the designation AND the material,
+       "RC12 Metal Plus", so a Material column would print half the row header
+       again in every row. Written out because the column was there first and was
+       removed after reading the rendered table. */
+    const cols = [
+      { key: 'thickness', label: s('tableThickness') },
+      { key: 'colours',   label: s('tableColours') },
+      { key: 'price',     label: s('tablePrice') },
+    ];
+    const cell = (m, i, key) => {
+      if (key === 'thickness') return m.thickness;
+      if (key === 'colours') return `${m.colours}: ${colourText(m, i)}`;
+      return m.price_from ? `${priceFrom} ${m.price_from.amount} ${m.price_from.unit}` : askLabel;
+    };
+    const body = GARD_MODELE.models.map((m, i) =>
+      `          <tr><th scope="row">${esc(`${m.designation} ${m.material}`)}</th>${cols.map((c) => `<td>${esc(cell(m, i, c.key))}</td>`).join('')}</tr>`).join('\n');
+    return `    <div class="roof-cmp" style="margin-top: 48px;">
+      <h3 class="roof-cmp__h">${s('tableH')}</h3>
+      <div class="roof-cmp__scroll" tabindex="0" role="region" aria-label="${s('tableH')}">
+      <table class="roof-cmp__t">
+        <thead><tr><th scope="col">${s('tableModel')}</th>${cols.map((c) => `<th scope="col">${c.label}</th>`).join('')}</tr></thead>
+        <tbody>
+${body}
+        </tbody>
+      </table>
+      </div>
+    </div>`;
+  })();
+
   return `<section class="section section--light section--divided" id="modele" aria-labelledby="modele-h">
   <div class="container">
     <h2 id="modele-h" data-reveal>${s('h2')}</h2>
@@ -2934,6 +3085,7 @@ function gardModelePage(l) {
     <div class="nvk-grid nvk-grid--4" style="margin-top: 40px;">
 ${cards}
     </div>
+${gardTable}
   </div>
 </section>
 `;

@@ -473,6 +473,29 @@ p { margin: 0; }
    it is NOT inside a media query: a filter applies at every width, and the fold
    is the only thing that is a phone behaviour. */
 .roof-filter { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 0; }
+
+/* --- W26-05, the Compara modelele tables (W26-R6) --------------------------- */
+/* PRODUCTS ARE ROWS. The source lays its tables out with a product per column,
+   which is seventeen columns on its rainwater page; seven already do not fit
+   360px and this site is held to no sideways scroll there. Transposed, the table
+   holds the same cells and grows DOWN, which a phone can do.
+   The scroll box is the last resort for a narrow phone and a long value: it is
+   focusable and labelled, because a region that scrolls and cannot be reached by
+   keyboard is a region some visitors cannot read. Prefix grepped free (3.1). */
+.roof-cmp { margin: 40px 0 0; }
+/* The filter's own hiding class, which is scoped to the grid for a card and has
+   to be given the table its own rule: the tables sit outside the grid. */
+.roof-cmp.roof--off { display: none; }
+.roof-cmp__h { margin: 0 0 12px; font-size: 20px; }
+.roof-cmp__scroll { overflow-x: auto; }
+.roof-cmp__scroll:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+.roof-cmp__t { border-collapse: collapse; width: 100%; font-size: 15px; }
+.roof-cmp__t th, .roof-cmp__t td {
+  border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top;
+}
+.roof-cmp__t thead th { background: var(--bg-light); font-weight: 700; white-space: nowrap; }
+.roof-cmp__t tbody th { font-weight: 700; }
+.roof-cmp__t tbody td { color: var(--ink-muted); }
 .roof-filter__btn {
   height: 40px; padding: 0 18px;
   border-radius: var(--radius-control); border: 1px solid var(--line);

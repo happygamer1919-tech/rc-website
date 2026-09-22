@@ -163,6 +163,11 @@ const MARKERS = {
        `bentoTiles` above still counts the hub and only the hub, and a build that
        gave the product bento the hub's class would move BOTH numbers at once. */
     pbTiles: 4,
+    /* W26-05. Three Compara tables, one per section that has one. The two that do
+       not are recorded in content/roofing-sections.json with the reason, so a
+       build that quietly grew a fourth is a build that took a decision nobody
+       wrote down. */
+    cmpTables: 3,
   },
   /* W24-07. The rocă vulcanică page: four model cards, and no price anywhere.
      `bentoTiles: 0` is asserted because this page is a bento DESTINATION, not a
@@ -174,6 +179,7 @@ const MARKERS = {
     bentoTiles: 0,
     /* W26-04: this page is not a product-bento page, and the zero holds that. */
     pbTiles: 0,
+    cmpTables: 0,
   },
   /* W24-06. The shared "in construcție" page: header, footer, one line, a link
      back. No form, no coverage list, no offers. */
@@ -193,6 +199,7 @@ const MARKERS = {
     bentoLinks: 4,  // W26-01: see the note on the service-roof set above.
     /* W26-04: this page is not a product-bento page, and the zero holds that. */
     pbTiles: 0,
+    cmpTables: 0,
   },
   // W14-13. The three product pages carry the service page's site-wide parts.
   product: {
@@ -292,8 +299,8 @@ const PAGES = [
      merge and corrected there if the live page differs. */
   /* AMENDED (W25-26): four cards left this section for the tile page, so the
      figures fall with the measurement. */
-  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 18075 },
-  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 18281 },
+  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 19518 },
+  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 19704 },
   /* W24-07. The rocă vulcanică mirror page. */
   { path: '/servicii/roca-vulcanica/',     type: 'novatik', label: 'novatik RO',  budget: 4348 },
   { path: '/ru/servicii/roca-vulcanica/',  type: 'novatik', label: 'novatik RU',  budget: 4446 },
@@ -323,8 +330,8 @@ const PAGES = [
   /* W25-25. Each of the eight cards gained its colour NAMES beside the count, so
      one fact line became three or four wrapped lines on a 4-column card.
      Measured plus 60, under W24-R4, and recorded in docs/rulings/R-Y.md. */
-  { path: '/servicii/modele-garduri/',     type: 'product', label: 'gard modele RO', budget: 3880 },
-  { path: '/ru/servicii/modele-garduri/',  type: 'product', label: 'gard modele RU', budget: 3902 },
+  { path: '/servicii/modele-garduri/',     type: 'product', label: 'gard modele RO', budget: 4369 },
+  { path: '/ru/servicii/modele-garduri/',  type: 'product', label: 'gard modele RU', budget: 4391 },
   // ~~W16-02, RC-129. The seven catalog category pages.~~
   // AMENDED (W24-04): thirty pages, and every budget re-measured. The catalogue
   // index at /catalog/ is new (it answered 404), every subcategory has a page of
@@ -383,15 +390,37 @@ const PAGES = [
 /* W25-19. The sixteen URLs that must keep answering. Built from the same two
    facts the build is: the eight roofing routes and the two locale roots. Listing
    them by hand would be a second copy of the catalogue's shape. */
+/* CORRECTED (W26-05). W26-04 regrouped the filter into five sections and left
+   THIS FILE expecting each redirect to aim at its own subcategory. Section 12.0 on
+   cfebef8 failed for it: 12 of 16 redirect rows FAILED, every one of them reading
+   "refreshes to #mat-accesorii-de-acoperis, expected #mat-profnastil", and nothing
+   was wrong with the site. It is the third time in three waves that a marker was
+   not moved with the thing it names: W24-07a's rename, W25-24's bentoLinks, and
+   this. The route list stays what it always was, the eight catalogue URLs that
+   must keep answering; what moves with the page is the ANCHOR each one lands on,
+   and it is written once, here, as the map the build uses. */
 const REDIRECT_ROUTES = ['', 'tigla-metalica/', 'profnastil/', 'hidroizolatie/',
   'sistem-de-scurgere/', 'elemente-suplimentare/', 'elemente-de-siguranta/', 'elemente-de-fixare/'];
+const REDIRECT_SECTION = {
+  '': 'toate',
+  'tigla-metalica': 'tigla-metalica',
+  'sistem-de-scurgere': 'sisteme-pluviale',
+  profnastil: 'accesorii-de-acoperis',
+  hidroizolatie: 'accesorii-de-acoperis',
+  'elemente-suplimentare': 'accesorii-de-acoperis',
+  'elemente-de-siguranta': 'accesorii-de-acoperis',
+  'elemente-de-fixare': 'accesorii-de-acoperis',
+};
 const REDIRECTS = [];
 for (const [loc, root, dest] of [['RO', '/catalog/', '/servicii/acoperisuri/'], ['RU', '/ru/catalog/', '/ru/servicii/acoperisuri/']]) {
   for (const r of REDIRECT_ROUTES) {
+    const child = r.replace(/\/$/, '');
+    const section = REDIRECT_SECTION[child];
+    if (section === undefined) throw new Error(`verify-live: the roofing route "${r}" has no section to land on. W26-R5 folded the subcategories into five sections and this map has to move with them.`);
     REDIRECTS.push({
       path: `${root}materiale-acoperis/${r}`,
-      target: `${dest}#mat-${r === '' ? 'toate' : r.replace(/\/$/, '')}`,
-      label: `redir ${loc} ${(r === '' ? 'parent' : r.replace(/\/$/, '')).slice(0, 10)}`,
+      target: `${dest}#mat-${section}`,
+      label: `redir ${loc} ${(r === '' ? 'parent' : child).slice(0, 10)}`,
     });
   }
 }
@@ -475,6 +504,7 @@ const PROBE = `(async () => {
     tileDiagrams: q('[data-tile-diagram]'),
     /* W25-19. The roofing filter bar, and how many cards it is hiding. */
     pbTiles: q('.pb__tile'),
+    cmpTables: q('[data-roof-table]'),
     roofFilters: q('[data-roof-filter]'),
     roofOff: q('.roof--off'),
     /* W25-23. The homepage product strip. */

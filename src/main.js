@@ -695,12 +695,20 @@
       return (card.getAttribute('data-roof-groups') || '').split(' ').filter(Boolean);
     }
 
+    /* W26-05. The Compara tables filter with the cards, on the same attribute and
+       the same class. They sit OUTSIDE the grid, so they are looked up separately;
+       what they are not is a special case in the rule. */
+    var tables = document.querySelectorAll('[data-roof-table]');
+
     function select(name, focus) {
       var shown = 0;
       for (var i = 0; i < cards.length; i++) {
         var on = name === 'toate' || groupsOf(cards[i]).indexOf(name) > -1;
         cards[i].classList.toggle('roof--off', !on);
         if (on) shown++;
+      }
+      for (var t = 0; t < tables.length; t++) {
+        tables[t].classList.toggle('roof--off', !(name === 'toate' || groupsOf(tables[t]).indexOf(name) > -1));
       }
       for (var j = 0; j < buttons.length; j++) {
         buttons[j].setAttribute('aria-pressed', buttons[j].getAttribute('data-roof-filter') === name ? 'true' : 'false');

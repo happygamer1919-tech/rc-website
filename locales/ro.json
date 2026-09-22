@@ -384,7 +384,10 @@
     "lede": "Toate materialele de acoperiș pe care le montăm, într-un singur loc. Alege grupul care te interesează și cere prețul pentru produsul potrivit.",
     "filterAria": "Filtrează produsele după grup",
     "all": "Toate",
-    "showing": "{n} produse afișate"
+    "showing": "{n} produse afișate",
+    "tableH": "Compară modelele:",
+    "tableProduct": "Produs",
+    "tableNone": "-"
   },
   "moved": {
     "h1": "Pagina s-a mutat",
@@ -1195,7 +1198,12 @@
     "lede": "Patru modele, fiecare în două materiale.",
     "thickness": "Grosime",
     "colours": "Culori",
-    "priceFrom": "De la"
+    "priceFrom": "De la",
+    "tableH": "Compară modelele",
+    "tableModel": "Model",
+    "tableThickness": "Grosime",
+    "tableColours": "Culori",
+    "tablePrice": "Preț"
   },
   "copHero": {
     "h1a": "Copertine metalice.",

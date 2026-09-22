@@ -11557,3 +11557,63 @@ did**, so the W25-19 budgets stand and no correction is owed.
 
 **24 of 24 gate commands exit 0.** Section 12.0 on `c05ce0e`, owed by #108 to #113: exit 0,
 PASS, 0 unverified, 0 failed, 51 of 51, 0 retried, and 16 of 16 redirect URLs answered 200.
+
+## W25-24 · Every hub tile opens something, and a gate that says what it cannot see, 2026-09-22
+
+**Card W25-24.** PR only, stops for the owner. The full card is
+`docs/board/W25-24-hub-tiles.md`.
+
+**Shipped:** every one of the sixteen hub tiles has a destination, the Garduri "tip jaluzele"
+tile opens the models page, `.hub__tile--inert` is gone, and **gate 26** holds all of it.
+**Blocked and asked: the eight tile images.** Q-W25-18.
+
+### W25-R19's premise is gone, measured
+
+The ruling names *"the exact images imperlux.md shows on its Acoperisuri and Garduri 4-tile
+sections"*. **Both sections have been rebuilt and neither exists today**, measured on
+2026-09-22 by fetching and rendering both pages: of our eight tile labels, four appear zero
+times on the matching page and the other four appear once each, in a meta description, a
+promo line, an `h1` and a calculator heading. `/acoperisuri/` carries a **five**-tile product
+section now; `/garduri/` carries a hero, a works strip and an "OFERTE LIMITATE" block.
+
+Two of the eight have an obvious counterpart and six have none. **The fence block is also one
+this site may not copy from**: a live countdown, percent badges, struck prices and a
+stock-limited claim, every one of which R-X forbids here, and its images are the same louvre
+renders W25-18 already installed. Filling eight slots with pictures this terminal chose is
+what W25-R19's wording exists to prevent, so the card asks.
+
+### The "dead" tile was not a broken link
+
+`#garduri` **resolves**, in both locales, locally and live: it is the "Cum alegi gardul"
+section 3.5KB down the same page, and `check-links.js` was right to pass it. What was wrong is
+not something a link checker can see: a tile the size of a photograph moved a visitor a little
+way down the page they were on. It opens `/servicii/modele-garduri/` now.
+
+**Reported rather than fixed:** tile 3 already opens that page, so the hub has two tiles with
+one destination. Repointing tile 3 is the owner's call.
+
+### Two inert tiles, and a class that stopped meaning anything
+
+`ACOP-04` opens `#acoperisuri`, the four roofing offers; `GARDB-04` opens `#oferta`, the quote
+form. `bentoSection`'s assertion is **inverted, not deleted**: it required exactly one inert
+tile and requires zero. **`.hub__tile--inert` is deleted and so is the branch that emitted
+it**: the class set `cursor: default`, and a rule waiting for a state the build now refuses
+styles nothing.
+
+### Gate 26, and what it admits it cannot see
+
+Sixteen tiles, four pages, both locales: a path href must be a page this build emits, a
+fragment must name an id that exists where it lands. No browser, no network.
+
+**Its first version refused a same-page anchor by kind and thereby refused two tiles this card
+had just been told to create.** That is a rule written tighter than the ruling it enforces, so
+same-page anchors are permitted and every one is printed, named and counted.
+
+**Which means gate 26 would not have caught the defect that created it, and it says so in its
+own header.** Seven arms, **two GREEN**, between two clean controls; the second green arm is
+the one the first version got wrong.
+
+### Gates
+
+**25 of 25 gate commands exit 0**, up from 24. `docs/CLAUDE.md` numbers 26 gates and says to
+report the number `run-gates.js` prints. **No height moved**: an href is not geometry.

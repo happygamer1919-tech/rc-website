@@ -151,6 +151,15 @@ jobs:
       # W24-07 shipped a bento whose class names collided with the garduri page's,
       # the tall tile rendered 128px wide against an intended 380, and every gate
       # was green, because none of them reads a painted box. This measures computed
+      # W25-24 (ruling W25-R24). Every hub tile on both hubs, both locales, has an
+      # href that resolves: a path this build emits, or an id that exists. It reads
+      # the built tree and nothing else, so it runs beside the other static checks
+      # and needs neither a browser nor a network. It is its own gate rather than a
+      # clause of gate 20 because gate 20 measures painted boxes and knows nothing
+      # about hrefs.
+      - name: Every hub tile has an href that resolves (W25-R24)
+        run: node scripts/check-hub-tile-links.js
+
       # geometry in a real browser at 1440 and 390, both locales. Same Chrome and
       # Inter requirement as the header gate. Before RC-145's step, which rebuilds.
       - name: Every bento and catalogue grid is the geometry it is specified as (W24-09)

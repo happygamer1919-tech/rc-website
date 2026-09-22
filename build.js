@@ -810,8 +810,13 @@ const placeholder = slotImage;
 function bentoSection(l, cfg) {
   const need = (v, where) => { if (!REAL(v)) die(`bento ${cfg.id}: ${where} is not real for ${l.code}.`); return v; };
   if (!Array.isArray(cfg.tiles) || cfg.tiles.length !== 4) die(`bento ${cfg.id}: ${(cfg.tiles || []).length} tiles, expected exactly 4.`);
+  /* AMENDED (W25-24, ruling W25-R24): every hub tile has a destination. The old
+     assertion required EXACTLY ONE inert tile, which was the dispatch's design at
+     W24-07 and is now the thing the ruling forbids. It is inverted rather than
+     deleted: a tile with no destination is a photograph that is not a link, and
+     scripts/check-hub-tile-links.js holds the other half over the built pages. */
   const inert = cfg.tiles.filter((x) => !x.page && !x.inConstructie && !x.anchor).length;
-  if (inert !== 1) die(`bento ${cfg.id}: ${inert} tile(s) with no destination, expected exactly 1.`);
+  if (inert !== 0) die(`bento ${cfg.id}: ${inert} tile(s) with no destination. W25-R24: every hub tile has an href.`);
   for (const x of cfg.tiles) {
     if (x.page && !PRODUCT_PAGES.some((p) => p.slug === x.page) && !SERVICE_SLUGS.includes(x.page)) {
       die(`bento ${cfg.id}: tile "${x.label}" opens /${x.page}/, which this build emits no page for.`);
@@ -825,9 +830,12 @@ function bentoSection(l, cfg) {
     const ph = placeholder(x.slot, { variant: 'dark', className: 'hub__ph', locale: l.code, eager: i < 2 });
     const body = `${ph}<span class="hub__grad" aria-hidden="true"></span><span class="hub__label">${label}</span>`;
     const cls = `hub__tile hub__tile--${i + 1}`;
-    return x.href
-      ? `      <a class="${cls}" href="${x.href}" data-reveal data-stagger="${i}">${body}</a>`
-      : `      <div class="${cls} hub__tile--inert" aria-disabled="true" data-reveal data-stagger="${i}">${body}</div>`;
+    /* W25-24. There is no non-link branch any more. The assertion above refuses a
+       tile with no destination, so `href` is always set, and a branch that can
+       never be taken is markup the stylesheet would have to keep a rule for.
+       `.hub__tile--inert` is deleted with it. */
+    if (!x.href) die(`bento ${cfg.id}: tile "${x.label}" reached rendering with no href.`);
+    return `      <a class="${cls}" href="${x.href}" data-reveal data-stagger="${i}">${body}</a>`;
   }).join('\n');
 
   return `<section class="section section--light section--divided hub" id="${cfg.id}" aria-labelledby="${cfg.id}-h">
@@ -1467,7 +1475,11 @@ const BENTOS = {
       { label: 'bento.roofTigla', slot: 'ACOP-01', page: 'tigla-metalica' },
       { label: 'bento.roofNovatik', slot: 'ACOP-02', page: 'roca-vulcanica' },
       { label: 'bento.roofCalc', slot: 'ACOP-03', inConstructie: true },
-      { label: 'bento.roofOffers', slot: 'ACOP-04' },
+      /* AMENDED (W25-24, under W25-R24): every hub tile has a destination now.
+         This one had none and rendered inert. "Reduceri" opens the four roofing
+         offers, which are a section of this same page (`#acoperisuri`), so the
+         tile finally does what it says. */
+      { label: 'bento.roofOffers', slot: 'ACOP-04', anchor: 'acoperisuri' },
     ],
   },
   /* W24-08. The same component, the same four slots, different data. The source
@@ -1479,10 +1491,20 @@ const BENTOS = {
     head: 'bento.fenceH',
     headMuted: 'bento.fenceHMuted',
     tiles: [
-      { label: 'bento.fenceJaluzele', slot: 'GARDB-01', anchor: 'garduri' },
+      /* AMENDED (W25-24), at the owner's instruction. This tile was an in-page
+         anchor to `#garduri`, the "Cum alegi gardul" section 3.5KB further down
+         the SAME page a visitor is already on. It is not a broken link and never
+         was; it is a tile the size of a photograph that moves you a little way
+         down. It opens the models now.
+         NOTE, reported rather than fixed here: tile 3 already opens that page, so
+         the hub now has two tiles with one destination. Repointing tile 3 is a
+         product decision and is the owner's. */
+      { label: 'bento.fenceJaluzele', slot: 'GARDB-01', page: 'modele-garduri' },
       { label: 'bento.fenceCalc', slot: 'GARDB-02', inConstructie: true },
       { label: 'bento.fenceModele', slot: 'GARDB-03', page: 'modele-garduri' },
-      { label: 'bento.fencePreturi', slot: 'GARDB-04' },
+      /* AMENDED (W25-24, under W25-R24): was inert. "Prețuri și oferte" opens the
+         quote form on this page, which is where a price is asked for. */
+      { label: 'bento.fencePreturi', slot: 'GARDB-04', anchor: 'oferta' },
     ],
   },
 };

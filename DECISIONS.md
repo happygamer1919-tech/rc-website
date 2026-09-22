@@ -11180,3 +11180,68 @@ refused with the flag set. W25-18 uses the second; this card only ships it.
 
 **24 of 24 gate commands exit 0.** Section 12.0 on `f21f21b`, owed by #104 to #107, ran before
 this card started: exit 0, PASS, 0 unverified, 0 failed, 67 of 67, 0 retried.
+
+## W25-18 · Twelve Garduri slots, from a competitor, by the owner's decision, 2026-09-21
+
+**Card W25-18.** PR only, stops for the owner. The full card is
+`docs/board/W25-18-garduri-images.md`.
+
+**All twelve Garduri slots filled from `imperlux.md` under W25-R15.** Garduri 0 to 12 of 12,
+ledger 259 to **271 of 333**.
+
+> **STRATEGY RISK, recorded at the owner's instruction.** The origin is a direct competitor.
+> The site is served from GitHub Pages, so a complaint reaches a host that can take the whole
+> site down rather than one image. The owner has read this and decided.
+
+### The override is not an approved origin, and is not coded like one
+
+The licence is `owner_override_imperlux`, deliberately distinct from `direct_supplier`: the
+two permissions rest on different facts. It is held to **twelve slot ids** in
+`fetch-packshot.js`, `check-asset-provenance.js` and gate 19, so **a thirteenth id is refused
+with the flag set**. That is the only executable form of "nothing else from imperlux.md,
+ever".
+
+### Eight cards, eight files, and the thing the source does not vary
+
+Imperlux publishes four louvre profiles in three RAL colours at 1296x1600, and **no image per
+material**: `Metal Plus` and `Metal PlusDV` differ by 0,05mm of sheet and by warranty years,
+and the source shows the same pictures for both. A photograph cannot show 0,05mm. So each
+card takes a different file, in a colour that model is actually sold in: the page states
+*"3 culori RAL pe Metal Plus, 2 pe Metal PlusDV"*, and RAL 9005 appears half as often as 7016
+and 8019 in its own markup, which is what identifies 9005 as the Metal Plus colour.
+
+**No reuse was needed.** Eight distinct sha256, eight distinct source URLs. W25-R17 is not
+drawn on by this card.
+
+### Three hub tiles show something other than what was specified, and say so
+
+`imperlux.md` publishes no picture of measuring on site, none of three profiles side by side
+and none of slats stacked in a warehouse. `GARDB-01` got exactly what was asked for; the
+other three `shows` lines are **corrected to the picture that landed**, each carrying
+`AMENDED W25-18: ceruse ..., pe care sursa nu le publica.` Leaving three lines describing
+photographs that are not there is the defect this repo keeps meeting: prose that stopped
+describing the thing.
+
+**`GARDB-03` was taken twice.** The first file was the source's own fences card, visually the
+same studio render as the model cards, so the hub tile would have read as a ninth model card.
+Gate 19 would not have caught it: it compares file paths and source URLs, and those differed.
+A person looking at a contact sheet did.
+
+### The lists and the batch shrank by the ledger, not by deletion
+
+`gen-owner-intake-w25.js` asserted `fence.length !== 8` and `hub.length !== 8`. A hard 8 would
+have turned the owner's own decision into a red gate. A filled slot now drops off the list
+instead of failing it, and what is still asserted is that the walk saw both hub families and
+that the two lists are not empty at once.
+
+**`PRIORITY_ALL` in the prompt pack still names all eight hub tiles** and the ledger decides
+which are still asked for, so a slot that is still empty and falls out of the pack is still a
+failure. The pack is 19 entries; the batch is `ACOP-01` to `ACOP-04`.
+
+`RC-pics-real/README.txt` now says nothing is waiting, names the eight that were, and keeps
+the better outcome in view: the owner's own photograph would replace an override file.
+
+### Gates
+
+**24 of 24 gate commands exit 0.** No height moved: a filled slot takes the placeholder's own
+box from the same `--ph-ratio`.

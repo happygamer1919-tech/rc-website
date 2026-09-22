@@ -68,7 +68,18 @@ const HELD_REASONS = {
    hub pages are the largest visible gap left in the last two. These eight go
    first, in their own batch at the top of the pack, so the owner generating five
    minutes' worth generates the five minutes that matter. */
-const PRIORITY = ['ACOP-01', 'ACOP-02', 'ACOP-03', 'ACOP-04', 'GARDB-01', 'GARDB-02', 'GARDB-03', 'GARDB-04'];
+const PRIORITY_ALL = ['ACOP-01', 'ACOP-02', 'ACOP-03', 'ACOP-04', 'GARDB-01', 'GARDB-02', 'GARDB-03', 'GARDB-04'];
+/* AMENDED (W25-18): a batch slot leaves the batch by being FILLED, and by nothing
+   else. `GARDB-01` to `GARDB-04` were filled from imperlux.md under W25-R15, so
+   they are no longer asked for. Deleting them from the constant instead would
+   have removed the assertion along with them, and the assertion is the point: a
+   slot that is still empty and has quietly fallen out of the pack must still be a
+   failure. The ledger decides; this list stays whole. */
+const PRIORITY = PRIORITY_ALL.filter((id) => {
+  const row = ledger.slots.find((r) => r.id === id);
+  if (!row) die(`the priority batch names ${id}, which has no ledger row.`);
+  return row.state !== 'filled';
+});
 
 const entries = [];
 const held = [];
@@ -179,6 +190,7 @@ if (unknown) die(`${unknown} entr(y/ies) whose appearance is not in the records 
 const priority = entries.filter((e) => PRIORITY.includes(e.row.id));
 const rest = entries.filter((e) => !PRIORITY.includes(e.row.id));
 const missingPriority = PRIORITY.filter((id) => !entries.some((e) => e.row.id === id));
+const priorityFilled = PRIORITY_ALL.filter((id) => !PRIORITY.includes(id));
 
 /* One entry, written once so the priority batch and the groups cannot drift. */
 const L = [];
@@ -248,10 +260,17 @@ if (missingPriority.length) die(`the priority batch names ${missingPriority.leng
 if (priority.length) {
   L.push(`## PRIORITY BATCH (${priority.length})`);
   L.push('');
-  L.push('**Generate these eight first.** They are the hub tiles on the two pages the owner named');
-  L.push('as the priority after the catalogue: four on `/servicii/acoperisuri/` and four on');
-  L.push('`/servicii/garduri/`. They are the largest visible gap left on either page, and a visitor');
-  L.push('meets them before anything else on it.');
+  L.push(`**Generate these ${priority.length} first.** They are the hub tiles still empty on the pages the`);
+  L.push('owner named as the priority after the catalogue. They are the largest visible gap left on');
+  L.push('the page they sit on, and a visitor meets them before anything else on it.');
+  if (priorityFilled.length) {
+    L.push('');
+    L.push(`**${priorityFilled.length} left this batch by being filled**, not by being dropped: `
+      + priorityFilled.map((id) => '`' + id + '`').join(', ')
+      + '. W25-18 filled them from `imperlux.md` under the owner override W25-R15. The batch is'
+      + ' still the whole list in the generator, and a slot that is still empty and falls out of'
+      + ' the pack is still a failure.');
+  }
   L.push('');
   for (const e of priority) entry(e);
 }

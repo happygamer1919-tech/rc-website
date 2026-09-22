@@ -28,15 +28,22 @@ const rows = new Map(ledger.slots.map((r) => [r.id, r]));
 
 /* (a) the fence model cards. The id is positional in build.js: GARD-01 is
    models[0], which is the one thing about these slots that is not in the ledger,
-   so it is read from the same place build.js reads it. */
-const fence = models.map((m, i) => {
+   so it is read from the same place build.js reads it.
+
+   AMENDED (W25-18, under W25-R15). The owner override filled all eight from
+   imperlux.md, so the fence list is EMPTY and `RC-pics-real` is no longer waiting
+   on them. The list is still built the same way and still refuses a gap: what
+   changed is that a filled slot now drops OFF the list instead of failing it,
+   and the count is asserted against the ledger rather than against the number 8.
+   A hard 8 would have turned the owner's own decision into a red gate. */
+const fenceAll = models.map((m, i) => {
   const id = `GARD-${String(i + 1).padStart(2, '0')}`;
   const row = rows.get(id);
   if (!row) die(`${id} has no ledger row, so build.js could not be rendering it.`);
-  if (row.state === 'filled') die(`${id} is already filled; this list is for slots still waiting.`);
-  return { id, name: `${m.designation} ${m.material}`, page: row.page, ratio: row.ratio, min_px: row.min_px };
+  return { id, name: `${m.designation} ${m.material}`, page: row.page, ratio: row.ratio, min_px: row.min_px, filled: row.state === 'filled' };
 });
-if (fence.length !== 8) die(`expected 8 fence model cards, found ${fence.length}.`);
+if (fenceAll.length !== 8) die(`expected 8 fence model slots in the data, found ${fenceAll.length}.`);
+const fence = fenceAll.filter((f) => !f.filled);
 
 /* (b) the hub tiles. The LABEL is lifted from the built page, so it is the words
    a visitor reads. A tile whose slot renders on no built page is a failure, not a
@@ -65,7 +72,12 @@ for (const h of HUBS) {
     hub.push({ id, label, page: row.page, ratio: row.ratio, min_px: row.min_px });
   }
 }
-if (hub.length !== 8) die(`expected 8 hub tiles still waiting, found ${hub.length}.`);
+/* AMENDED (W25-18): the same change, for the same reason. GARDB-01 to GARDB-04
+   are filled under W25-R15, so four hub tiles wait and not eight. What is still
+   asserted is that the generator SAW both hub families: a prefix that renders on
+   no page is a failure above, and a list that is empty because the walk broke
+   would be indistinguishable from one that is empty because the work is done. */
+if (!hub.length && !fence.length) die('both lists are empty. Either everything is filled, which is a state to state deliberately, or the walk is broken.');
 
 const L = [];
 L.push('# Owner intake, wave 25');
@@ -88,17 +100,25 @@ L.push('  while a real one never is.');
 L.push('');
 L.push(`## (a) Fence model cards, ${fence.length}, real photographs`);
 L.push('');
-L.push(`Drop these in \`${REAL}\`. Their reason in the review list is already "real photo from`);
-L.push('owner project set", and they are deliberately left out of the AI prompt pack so nothing');
-L.push('generates a fence a real photograph is coming for.');
-L.push('');
-L.push('| File to save | Model | Page |');
-L.push('|---|---|---|');
-for (const f of fence) L.push(`| \`${f.id}.jpg\` | ${f.name} | ${f.page} |`);
-L.push('');
-L.push('All eight are PORTRAIT, ratio `' + fence[0].ratio + '`, minimum ' + fence[0].min_px + '.');
-L.push('Photograph the fence square-on and dead level, so the slat profile and the gap between');
-L.push('slats read. That is what the card exists to show.');
+if (!fence.length) {
+  L.push(`**Nothing is waiting here, and \`${REAL}\` is not expected to receive a fence.**`);
+  L.push('All eight model cards were filled at W25-18 from `imperlux.md` under the owner override');
+  L.push('W25-R15. A real photograph of one of these fences from the owner\'s own project set is');
+  L.push('still the better picture and would replace the override file, but nothing is blocked on');
+  L.push('it and no card is waiting for it.');
+} else {
+  L.push(`Drop these in \`${REAL}\`. Their reason in the review list is already "real photo from`);
+  L.push('owner project set", and they are deliberately left out of the AI prompt pack so nothing');
+  L.push('generates a fence a real photograph is coming for.');
+  L.push('');
+  L.push('| File to save | Model | Page |');
+  L.push('|---|---|---|');
+  for (const f of fence) L.push(`| \`${f.id}.jpg\` | ${f.name} | ${f.page} |`);
+  L.push('');
+  L.push(`All ${fence.length} are PORTRAIT, ratio \`${fence[0].ratio}\`, minimum ${fence[0].min_px}.`);
+  L.push('Photograph the fence square-on and dead level, so the slat profile and the gap between');
+  L.push('slats read. That is what the card exists to show.');
+}
 L.push('');
 L.push(`## (b) Hub tiles, ${hub.length}, the PRIORITY BATCH`);
 L.push('');
@@ -109,7 +129,7 @@ L.push('| File to save | Tile | Page | Ratio | Minimum |');
 L.push('|---|---|---|---|---|');
 for (const t of hub) L.push(`| \`${t.id}.png\` | ${t.label} | ${t.page} | ${t.ratio} | ${t.min_px} |`);
 L.push('');
-L.push('These four ratios are not all the same, and the prompt for each names its own.');
+L.push(`These ${hub.length} ratios are not all the same, and the prompt for each names its own.`);
 L.push('');
 
 const text = L.join('\n');

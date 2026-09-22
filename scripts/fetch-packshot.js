@@ -17,6 +17,13 @@
      · dasterum.md WITHOUT --dasterum: W25-R7 allows the direct supplier, and
        the run has to say so, or a Dasterum URL could arrive by accident in a run
        meant for a manufacturer;
+     · fatade3d.md WITHOUT --fatade3d: W25-R14 extends direct_supplier to that
+       host on the same four conditions, and the same explicit flag, for PRODUCT
+       IMAGES ONLY;
+     · imperlux.md WITHOUT --imperlux-override AND a slot id inside the twelve
+       W25-R15 names: that ruling is an owner override over a competitor host, not
+       an approved origin, and it is held to its twelve slots rather than to the
+       host, so a thirteenth id is refused even with the flag;
      · a host that looks like a shop or a marketplace, by a list of the patterns
        that actually turn up (amazon, ebay, emag, olx, 999.md, aliexpress, ...),
        because "never a retailer" is a rule and an unenforced rule is a comment;
@@ -59,8 +66,32 @@ const die = (msg) => { console.error(`REFUSED: ${msg}`); process.exit(1); };
    fourth is enforced by gate 19 over the whole ledger.
 
    `fatade3d.md` and `imperlux.md` are untouched and stay forbidden. */
-const FORBIDDEN = ['fatade3d.md', 'imperlux.md'];
-const DIRECT_SUPPLIER = 'dasterum.md';
+/* AMENDED (W25-R14): fatade3d.md joins dasterum.md as a direct supplier, on the
+   same four conditions, for PRODUCT IMAGES ONLY. AMENDED (W25-R15): imperlux.md
+   is not lifted. It stays forbidden and is overridden for exactly twelve slot
+   ids, which is a different thing and is written differently below. */
+const FORBIDDEN = ['imperlux.md'];
+const DIRECT_SUPPLIERS = {
+  'dasterum.md': '--dasterum',
+  'fatade3d.md': '--fatade3d',
+};
+
+/* W25-R15. An OWNER OVERRIDE, not an approved origin, and the difference is the
+   whole reason this is a separate mechanism: the permission is attached to the
+   twelve slots the owner named, never to the host. A thirteenth id is refused
+   with the flag set, which is what "nothing else from imperlux.md, ever" means in
+   a form a machine can hold.
+
+   STRATEGY RISK, recorded where the code is: the origin is a direct competitor
+   and the site is served from GitHub Pages, so a complaint reaches a host that
+   can remove the whole site rather than one file. The owner has read that and
+   decided. */
+const OVERRIDE_HOST = 'imperlux.md';
+const OVERRIDE_FLAG = '--imperlux-override';
+const OVERRIDE_SLOTS = [
+  'GARD-01', 'GARD-02', 'GARD-03', 'GARD-04', 'GARD-05', 'GARD-06', 'GARD-07', 'GARD-08',
+  'GARDB-01', 'GARDB-02', 'GARDB-03', 'GARDB-04',
+];
 
 /* "Never a retailer, a marketplace, another reseller, a search result thumbnail."
    These are the hosts that actually come back when you search for a building
@@ -79,21 +110,36 @@ const SHOPS = [
 const host = (u) => { try { return new URL(u).hostname.toLowerCase(); } catch { return null; } };
 const registrable = (h) => h.split('.').slice(-2).join('.');
 
-/* W25-R7. The direct supplier is allowed, and it is allowed EXPLICITLY: the
-   caller has to say `--dasterum`, so a Dasterum URL cannot arrive by accident in
-   a run that was meant for a manufacturer. Without the flag the host is refused,
-   and the refusal names the flag that would allow it. */
-const DIRECT = process.argv.includes('--dasterum');
+/* W25-R7 and W25-R14. A direct supplier is allowed, and it is allowed EXPLICITLY:
+   the caller has to name the host's own flag, so a supplier URL cannot arrive by
+   accident in a run that was meant for a manufacturer. Without the flag the host
+   is refused, and the refusal names the flag that would allow it. */
+const matches = (h, d) => h === d || h.endsWith('.' + d) || registrable(h) === d;
 
 function guard(u, what) {
   const h = host(u);
   if (!h) die(`${what} is not a URL: ${u}`);
-  if (h === DIRECT_SUPPLIER || h.endsWith('.' + DIRECT_SUPPLIER) || registrable(h) === DIRECT_SUPPLIER) {
-    if (!DIRECT) die(`${what} is on ${DIRECT_SUPPLIER}. W25-R7 allows it as the direct supplier, but only when the run says so: pass --dasterum. ${u}`);
+  for (const [supplier, flagName] of Object.entries(DIRECT_SUPPLIERS)) {
+    if (!matches(h, supplier)) continue;
+    if (!process.argv.includes(flagName)) {
+      die(`${what} is on ${supplier}. ${supplier === 'dasterum.md' ? 'W25-R7' : 'W25-R14'} allows it as a direct supplier, but only when the run says so: pass ${flagName}. ${u}`);
+    }
+    return h;
+  }
+  /* W25-R15. The override is checked against the SLOT, not only against the flag.
+     An id outside the twelve is refused with the flag set, which is the only form
+     "nothing else from imperlux.md, ever" can take in code. */
+  if (matches(h, OVERRIDE_HOST)) {
+    if (!process.argv.includes(OVERRIDE_FLAG)) {
+      die(`${what} is on ${OVERRIDE_HOST}, which R-W and W25-R2 forbid. W25-R15 overrides that for the twelve Garduri slots only, and the run has to say so: pass ${OVERRIDE_FLAG}. ${u}`);
+    }
+    if (!OVERRIDE_SLOTS.includes(SLOT)) {
+      die(`${what} is on ${OVERRIDE_HOST} and the slot is "${SLOT}", which is not one of the twelve W25-R15 names (${OVERRIDE_SLOTS.join(', ')}). The override is held to those slots, never to the host: nothing else from ${OVERRIDE_HOST}, ever. ${u}`);
+    }
     return h;
   }
   for (const f of FORBIDDEN) {
-    if (h === f || h.endsWith('.' + f) || registrable(h) === f) {
+    if (matches(h, f)) {
       die(`${what} is on ${f}, which R-W and W25-R2 forbid as an origin. ${u}`);
     }
   }

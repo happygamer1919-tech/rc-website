@@ -45,6 +45,26 @@ const BANNED = ['fatade3d.md', 'imperlux.md', 'dasterum.md'];
    drifts one word from the sentence loses the permission and fails. */
 const DIRECT_SUPPLIER_HOST = 'dasterum.md';
 const DIRECT_SUPPLIER_LICENCE = 'direct supplier, dasterum.md, owner buys directly and accepts use of their product data and images, watermark as published, owner accepted 2026-09-21';
+/* R-W amendment, 2026-09-21 (W25-R14). The same permission, the same shape, one
+   more host: the owner states the client buys catalogue goods directly from
+   Fatade 3D, on the same four conditions, for PRODUCT IMAGES ONLY. Held exactly
+   the same way, so a row that drifts one word loses the permission and fails. */
+const DIRECT_SUPPLIER_LICENCES = {
+  'dasterum.md': DIRECT_SUPPLIER_LICENCE,
+  'fatade3d.md': 'direct supplier, fatade3d.md, owner buys catalogue goods directly and accepts use of their product data and product images, watermark as published, owner accepted 2026-09-21',
+};
+/* R-W amendment, 2026-09-21 (W25-R15). NOT a direct supplier and deliberately not
+   written like one. imperlux.md is a competitor, the owner has decided to take
+   twelve pictures from it anyway, and the row says so in those words. The
+   permission is attached to the twelve slot ids the ruling names; this gate walks
+   files rather than slots, so it holds the FILE NAME half of that, and gate 19
+   holds the slot half over the built tree. */
+const OVERRIDE_HOST = 'imperlux.md';
+const OVERRIDE_LICENCE = 'owner_override_imperlux, competitor origin taken by owner decision W25-R15, no upscale, source URL per file, owner accepted 2026-09-21';
+const OVERRIDE_FILES = [
+  'GARD-01', 'GARD-02', 'GARD-03', 'GARD-04', 'GARD-05', 'GARD-06', 'GARD-07', 'GARD-08',
+  'GARDB-01', 'GARDB-02', 'GARDB-03', 'GARDB-04',
+];
 /* R-W amendment, 2026-09-15 (W14-02b). Legacy status is a fingerprint: the path
    AND sha256 must match docs/assets/LEGACY-IMAGES.txt, the images in f5e4eb6's
    first parent. The list is committed because CI has no git history. */
@@ -176,17 +196,31 @@ for (const { line, c } of rows) {
       problems.push(`${where} ${file} is not a legacy image, so its licence URL must be an https URL or "supplier permission: ..."; got "${licenceUrl}"`);
     }
   }
-  const direct = licence === DIRECT_SUPPLIER_LICENCE;
+  /* W25-R7 and W25-R14: one host, one exact sentence, and the sentence names the
+     host, so the fatade3d licence cannot lift dasterum.md or the other way round. */
+  const supplierHost = Object.keys(DIRECT_SUPPLIER_LICENCES).find((h) => licence === DIRECT_SUPPLIER_LICENCES[h]) || null;
+  /* W25-R15: the override, and the file must be one of the twelve the ruling names. */
+  const override = licence === OVERRIDE_LICENCE;
+  const overrideFileOk = OVERRIDE_FILES.some((id) => path.basename(file).startsWith(id + '.'));
   for (const host of hostsIn(source)) {
     const b = bannedHost(host);
     if (!b) continue;
-    /* W25-R7, and only this host with only this licence. */
-    if (direct && b === DIRECT_SUPPLIER_HOST) continue;
-    problems.push(`${where} ${file} source host ${host} is banned by R-W (${b})`
-      + (b === DIRECT_SUPPLIER_HOST ? `. W25-R7 allows it only on a row whose licence is exactly the direct-supplier sentence; this row's is "${licence}"` : ''));
+    if (supplierHost && b === supplierHost) continue;
+    if (override && b === OVERRIDE_HOST && overrideFileOk) continue;
+    let why = `${where} ${file} source host ${host} is banned by R-W (${b})`;
+    if (DIRECT_SUPPLIER_LICENCES[b]) why += `. ${b === DIRECT_SUPPLIER_HOST ? 'W25-R7' : 'W25-R14'} allows it only on a row whose licence is exactly the direct-supplier sentence for ${b}; this row's is "${licence}"`;
+    if (b === OVERRIDE_HOST) {
+      why += override
+        ? `. W25-R15 overrides it for ${OVERRIDE_FILES.join(', ')} and for nothing else; this file is ${path.basename(file)}`
+        : `. W25-R15 overrides it only on a row whose licence is exactly the owner-override sentence, on one of the twelve Garduri files; this row's is "${licence}"`;
+    }
+    problems.push(why);
   }
-  if (direct && !hostsIn(source).some((h) => bannedHost(h) === DIRECT_SUPPLIER_HOST)) {
-    problems.push(`${where} ${file} carries the direct-supplier licence and its source names no ${DIRECT_SUPPLIER_HOST} URL. W25-R7: the ledger records the source URL per file.`);
+  if (supplierHost && !hostsIn(source).some((h) => bannedHost(h) === supplierHost)) {
+    problems.push(`${where} ${file} carries the ${supplierHost} direct-supplier licence and its source names no ${supplierHost} URL. W25-R7 and W25-R14: the ledger records the source URL per file.`);
+  }
+  if (override && !hostsIn(source).some((h) => bannedHost(h) === OVERRIDE_HOST)) {
+    problems.push(`${where} ${file} carries the owner-override licence and its source names no ${OVERRIDE_HOST} URL. W25-R15: the ledger records the source URL per file.`);
   }
 }
 const unlisted = images.filter((f) => !byFile.has(f));

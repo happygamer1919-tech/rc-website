@@ -109,7 +109,12 @@ function dims(file) {
 
 function originClass(licence) {
   const l = licence.toLowerCase();
-  if (l.includes('direct supplier, dasterum.md')) return 'direct_supplier';
+  /* W25-R14 and W25-R15. Each origin names its own host, because "which
+     permission is this row standing on" is the first thing the reviewer needs and
+     a shared label would hide it. */
+  if (l.includes('direct supplier, dasterum.md')) return 'direct_supplier dasterum.md';
+  if (l.includes('direct supplier, fatade3d.md')) return 'direct_supplier fatade3d.md';
+  if (l.includes('owner_override_imperlux')) return 'owner_override_imperlux';
   if (l.includes('manufacturer packshot')) return 'manufacturer official site';
   if (l.includes('ai generated')) return 'owner AI generated';
   if (l.includes('supplier permission')) return 'supplier permission';
@@ -128,7 +133,20 @@ for (const row of ledger.slots) {
   const rec = bySlot.get(row.id);
   const origin = originClass(p.licence);
   const flags = [];
-  if (origin === 'direct_supplier') flags.push('watermark');
+  /* Dasterum watermarks every file it publishes, so the flag is derived from the
+     origin. Fatade 3D does not: three of its files carry the supplier's mark and
+     the rest do not, so that one is DECLARED on the ledger row by the person who
+     looked at it, exactly as W25-R5's label flag is. A derived flag that fired on
+     all 99 would tell the reviewer nothing. */
+  if (origin === 'direct_supplier dasterum.md' || row.watermark === true) flags.push('watermark');
+  /* W25-R5, declared. The 64 Fatade 3D moulding renders carry their own product
+     code burned in, which is the same condition the Phomi swatches are installed
+     under, and no data file can see it. */
+  if (row.label === true) flags.push('labelled swatch');
+  /* W25-R17. Reuse is declared on the later slot and flagged here, which is the
+     other half of the permission: a reused picture must not be invisible to the
+     person reviewing the images by hand. */
+  if (row.reuse_of) flags.push(`reuse of ${row.reuse_of}`);
   if (origin === 'manufacturer official site' && /phomi\.com/i.test(p.source) && (rec && (rec.categories || []).includes('placi-ceramice'))) {
     const tier = tierBySlot.get(row.id);
     if (tier && tier !== 'A-exact') flags.push('low confidence match');
@@ -169,8 +187,9 @@ L.push('');
 const fl = (k) => filled.filter((f) => f.flags.includes(k)).length;
 L.push('| Flag | Rows | What to look for |');
 L.push('|---|---|---|');
-L.push(`| labelled swatch | ${fl('labelled swatch')} | the product name is printed into the photograph, in English, and the card prints it again underneath in Romanian |`);
-L.push(`| watermark | ${fl('watermark')} | a DASTERUM mark in the top right. It is there on purpose and must not be cropped |`);
+L.push(`| labelled swatch | ${fl('labelled swatch')} | the product name or code is printed into the photograph, and the card prints it again underneath |`);
+L.push(`| watermark | ${fl('watermark')} | a supplier mark on the picture or on the product. It is there on purpose and must not be cropped |`);
+L.push(`| reuse | ${filled.filter((f) => f.flags.some((x) => x.startsWith('reuse of'))).length} | one picture filling a second record of the same product (W25-R17). Check the two cards are the same product |`);
 L.push(`| low confidence match | ${fl('low confidence match')} | the plate matched Phomi at a tier that is not an exact string match. Check the name in the picture against the name on the card |`);
 L.push(`| no flag | ${filled.filter((f) => !f.flags.length).length} | an ordinary manufacturer packshot |`);
 L.push('');
@@ -210,6 +229,11 @@ L.push('');
 
 /* --- the reasons, each traceable to a card or a ruling ---------------------- */
 function reasonFor(row, rec) {
+  /* A reason MEASURED on this card beats a reason derived from the record's
+     shape. W25-17 attempted every one of these and four came back under the
+     floor, which the derived branches below cannot know and would describe
+     wrongly as "no manufacturer site". The field carries the measurement. */
+  if (row.empty_reason) return row.empty_reason;
   if (row.id.startsWith('GARD-')) return 'real photo from owner project set';
   if (row.id.startsWith('GARDB-') || row.id.startsWith('ACOP-')) return 'hub tile, PRIORITY BATCH at the top of AI-PROMPTS-W25.md (W25-12)';
   if (row.id.startsWith('NVK-')) return 'named tile product: W25-R2 forbids a generated image, and no Novatik packshot was sourced';

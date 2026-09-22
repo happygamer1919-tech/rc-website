@@ -706,3 +706,9 @@ of transparent margin at the top and 24px at the bottom, so a 32px box was only
 26.4px of ink sitting low - which is why it read smaller than its CSS said.
 Header bar 96px and pill 64px both unchanged. Zero height impact, measured
 before deploying. Largest rendered width 179.2px against a 1542px source.
+
+## W25-17 · Fatade 3D product images
+**Status: PR OPEN** (2026-09-21). 103 slots attempted, **99 filled**, 4 refused by the 450
+floor and reported with their measured sizes. Catalog 160 to 259 of 333. W25-R14 to W25-R18
+recorded first. `fetch-packshot.js` gains `--fatade3d`; the imperlux override ships unused,
+held to twelve slot ids. 24 of 24 gate commands exit 0.

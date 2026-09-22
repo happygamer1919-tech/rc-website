@@ -11120,3 +11120,63 @@ no label beside it, and when either list is not eight.
 
 1. **`/Users/ivan/RC-pics-ai/` was created too**, though the dispatch names only the other.
 2. **Both folders carry a `README.txt`.** Nothing reads them.
+
+## W25-17 · The supplier the catalogue was copied from now supplies its pictures, 2026-09-21
+
+**Card W25-17.** PR only, stops for the owner. The full card is
+`docs/board/W25-17-fatade3d-images.md`.
+
+**Five rulings recorded first.** `docs/rulings/W25-R.md` gains **W25-R14 to W25-R18**, quoted
+exactly as the owner gave them, before any of them was acted on. The next free id was
+`W25-R14`.
+
+### What landed
+
+**99 product photographs from `fatade3d.md` under W25-R14**, and **Catalog goes from 160 to
+259 of 333 slots filled**. 103 attempted: the 64 facade mouldings and 25 outdoor lamps that
+W25-R9 had left waiting on the client, the 3 `brand_hidden` plates, and the 11 products that
+name no manufacturer. 4 refused by the floor.
+
+**Nothing was searched for.** Every catalogue record already carried `source.url`, the
+product's own page on that host, captured at W24-03. The image is the page's first
+`og:image`, which is the WooCommerce gallery's main image, and **that was tested rather than
+assumed**: on the four products that came back under the floor the gallery block was parsed
+and holds exactly one product image, the one `og:image` names.
+
+**There is deliberately no fallback to a second candidate.** Reading every uploads URL on
+these pages returns 6 to 8, and the extras are the related-products carousel: `CAT-0022`'s
+page carries `CAT-0023`'s main image and the other way round. Reaching for the next candidate
+when the first is too small installs a picture of a different product, which W25-R4 forbids.
+
+### The four that stayed placeholders
+
+`CAT-0003` at 250x250, `CAT-0022` at 174x270, `CAT-0023` at 183x276, `CAT-0025` at 400x266.
+W25-R12's floor does not bend. **The reason is now a measurement carried on the ledger row**
+(`empty_reason`) instead of a sentence derived from the record's shape, which would have gone
+on saying "no manufacturer site": true yesterday, not the reason today.
+
+### All 99 were looked at
+
+Four contact sheets, each slot id and product name printed under its picture. **The 64
+mouldings verify themselves**: each carries its own code burned into the render, `RED-01` to
+`RED-78`, and each matched its record. `CAT-0132`'s page slug reads `red-01` and its picture
+reads `RED-06`, which is what the record says the product is.
+
+Two flags came out of looking and both are **declared on the ledger row**, not derived:
+`label: true` on the 64 mouldings (W25-R5's condition, which no data file can see), and
+`watermark: true` on `CAT-0221`, `CAT-0222` and `CAT-0223`. Deriving the watermark flag from
+the origin the way the Dasterum rows do would have flagged all 99: Dasterum marks every file
+it publishes, Fatade 3D marks three.
+
+### The guard learned two things, and they are not the same thing
+
+`fetch-packshot.js`, `check-asset-provenance.js` and gate 19 all gain, in the shape they
+already held `dasterum.md`: **`fatade3d.md` as a direct supplier** behind `--fatade3d`, lifted
+only for that host's own licence sentence; and **`imperlux.md` as an owner override**, which
+is coded against **twelve slot ids** rather than against the host, so a thirteenth id is
+refused with the flag set. W25-18 uses the second; this card only ships it.
+
+### Gates
+
+**24 of 24 gate commands exit 0.** Section 12.0 on `f21f21b`, owed by #104 to #107, ran before
+this card started: exit 0, PASS, 0 unverified, 0 failed, 67 of 67, 0 retried.

@@ -1001,3 +1001,19 @@ RU**: the Russian text is the longer of the two by about a line per paragraph.
 row that lost a tile is the last.
 
 Measured at 1440 with every `[data-reveal]` applied and settled for 1,600ms, plus 60 (W24-R4).
+
+## AMENDED (W26-12, wave 26): the galleries
+
+| Page | Before | After | Budget |
+|---|---|---|---|
+| `/servicii/copertine/` | 6,555 | **7,184** | 6,615 to **7,244** |
+| `/ru/servicii/copertine/` | 6,631 | **7,260** | 6,691 to **7,320** |
+| `/servicii/galerie-garduri/` | new | **3,967** | **4,027** |
+| `/ru/servicii/galerie-garduri/` | new | **3,967** | **4,027** |
+
+**Copertine +629 in both locales**: it has no project section, so its gallery card sits in a
+section of its own, which is a section's padding, a heading and one card. **Every service page is
+identical to the pixel**: the gallery card is one more card in a grid that already had room in
+its last row (5, 4, 4 and 2 described projects before it).
+
+Measured at 1440 with every `[data-reveal]` applied and settled for 1,600ms, plus 60 (W24-R4).

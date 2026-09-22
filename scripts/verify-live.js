@@ -209,6 +209,16 @@ const MARKERS = {
     // W24-08. A plain product page carries no hub. The zero holds that.
     bentoTiles: 0,
   },
+  /* W26-12, ruling W26-R14. The fence gallery page: a product page whose block is the
+     owner's thirteen fence photographs. `galSlides` counts the lightbox's slides, so a
+     build made before this card, which has no such page and no lightbox, cannot match. */
+  gallery: {
+    promoBar: 1,
+    profileAnchors: 0,
+    areaServed: 20,
+    bentoTiles: 0,
+    galSlides: 13,
+  },
   // W18-01 (RC-138). The tile page is a product page that now carries one
   // profile diagram per model. A tile page built before W18-01 carries 0, so a
   // stale copy returning plausible heights cannot match this.
@@ -317,8 +327,10 @@ const PAGES = [
   /* AMENDED (W25-26): the four model cards gained a picture each, so these rise. */
   { path: '/servicii/tigla-metalica/',     type: 'tigla',   label: 'tigla RO',       budget: 4283 },
   { path: '/ru/servicii/tigla-metalica/',  type: 'tigla',   label: 'tigla RU',       budget: 4316 },
-  { path: '/servicii/copertine/',          type: 'product', label: 'copertine RO',   budget: 6615 },
-  { path: '/ru/servicii/copertine/',       type: 'product', label: 'copertine RU',   budget: 6691 },
+  /* AMENDED (W26-12): the gallery section, one card and its lightbox, +629 in both
+     locales, measured 7184 / 7260. Budget measured plus 60 (W24-R4), R-Y. */
+  { path: '/servicii/copertine/',          type: 'product', label: 'copertine RO',   budget: 7244 },
+  { path: '/ru/servicii/copertine/',       type: 'product', label: 'copertine RU',   budget: 7320 },
   /* W24-08. The garduri page gained the fence bento; the copertine page gained a
      dark hero and a cross-sell row; modele de garduri is new. All under W24-R4. */
   /* W26-03: 5728 held since W24-08 while the page fell to 5,547. See R-Y's
@@ -335,6 +347,9 @@ const PAGES = [
      Measured plus 60, under W24-R4, and recorded in docs/rulings/R-Y.md. */
   { path: '/servicii/modele-garduri/',     type: 'product', label: 'gard modele RO', budget: 4369 },
   { path: '/ru/servicii/modele-garduri/',  type: 'product', label: 'gard modele RU', budget: 4391 },
+  /* W26-12. The fence gallery page, measured 3967 in both locales; plus 60 (W24-R4). */
+  { path: '/servicii/galerie-garduri/',    type: 'gallery', label: 'gal garduri RO', budget: 4027 },
+  { path: '/ru/servicii/galerie-garduri/', type: 'gallery', label: 'gal garduri RU', budget: 4027 },
   // ~~W16-02, RC-129. The seven catalog category pages.~~
   // AMENDED (W24-04): thirty pages, and every budget re-measured. The catalogue
   // index at /catalog/ is new (it answered 404), every subcategory has a page of
@@ -495,6 +510,7 @@ const PROBE = `(async () => {
        the file stops parsing. W24-09 shipped exactly that and broke this script
        on main; W24-09a is the correction. See the guard at the bottom. */
     bentoTiles: q('.hub__tile'),
+    galSlides: q('.lbx__slide'),
     bentoLinks: q('a.hub__tile'),
     catTiles: q('.cat-tile'),
     /* W24-09. This run measures at 1440, where the phone reveal folds nothing.

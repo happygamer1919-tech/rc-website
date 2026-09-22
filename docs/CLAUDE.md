@@ -854,6 +854,19 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     combinations than the matrix holds. It does not need Inter: a colour and a computed size do
     not depend on the face.
 
+29. `node scripts/check-galleries.js` clean. **Since W26-12 (wave 26)**, ruling W26-R14, run by
+    `quality` beside gate 26. **The ruling names its own test**: "gallery count on page equals
+    file count in the ledger". The ledger is `content/galleries.json`, written by
+    `scripts/intake-galleries.js` from the owner's folders and never typed. Every gallery renders
+    on its page in both locales as exactly one lightbox whose photographs are the ledger's, the
+    same count, the same files **in the same order** (a set would pass one photograph shown twice
+    and another dropped), with a `data-gal-count` that agrees and at least one opener; a card
+    shows the ledger's chosen preview; the fence gallery page's grid holds one thumbnail per
+    photograph; no page carries a lightbox the ledger lacks and no empty folder gets one.
+    **Seven self-test arms, one GREEN**, between two clean controls (R-AB), and **watched fail on
+    the real roofing page** with one slide removed: 14 against 15, named. Static: it reads
+    `dist/` and the ledger. It fails on zero galleries and on zero pages carrying one.
+
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number — Q-W14-03 was found "at gate 9" — and those bodies are immutable under
 R-S, so renumbering would falsify them. A gate added later takes the next number
@@ -894,11 +907,14 @@ gate 1.
 neither a build nor a browser, and it guards the file the build is written in.
 **AMENDED (W26-05a):** gate 28 runs after gate 18 and before gate 13, with the other browser
 gates, because gate 13 rebuilds `dist/` armed.
+**AMENDED (W26-12):** gate 29 runs beside gate 26. It reads the built pages and the ledger, so it
+runs after gate 1 and needs no browser.
 
 **The count, so it stops drifting (W25-03c).** ~~This list numbers **25** gates.~~
 ~~**AMENDED (W25-24): 26**, and `quality` runs **25** commands.~~
 ~~**AMENDED (W26-04): 27**, and `quality` runs **26** commands.~~
-**AMENDED (W26-05a): 28**, and `quality` runs **27** commands. The number to report is the one
+~~**AMENDED (W26-05a): 28**, and `quality` runs **27** commands.~~
+**AMENDED (W26-12): 29**, and `quality` runs **28** commands. The number to report is the one
 `node scripts/run-gates.js` prints, never this sentence. Five of them
 are not scripts and `quality` cannot run them: gate 4 (heights measured settled), gate 6 (no
 new colour), gate 7 (reduced motion), gate 8 (the three documents updated) and **gate 9,

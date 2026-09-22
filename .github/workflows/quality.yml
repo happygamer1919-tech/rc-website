@@ -169,6 +169,13 @@ jobs:
       - name: Every hub tile has an href that resolves (W25-R24)
         run: node scripts/check-hub-tile-links.js
 
+      # W26-12. Gate 29, ruling W26-R14: "gallery count on page equals file count in
+      # the ledger". Every gallery in content/galleries.json renders on its page, RO
+      # and RU, as one lightbox holding exactly the ledger's photographs, in order,
+      # with an opener; no page carries a lightbox the ledger does not have. Static.
+      - name: Every gallery shows exactly its ledger's photographs (W26-R14)
+        run: node scripts/check-galleries.js
+
       # geometry in a real browser at 1440 and 390, both locales. Same Chrome and
       # Inter requirement as the header gate. Before RC-145's step, which rebuilds.
       - name: Every bento and catalogue grid is the geometry it is specified as (W24-09)

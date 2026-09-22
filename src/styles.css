@@ -41,6 +41,11 @@
 
   --radius-control: 6px;
   --radius-card: 10px;
+  /* W25-29. The large card radius, which was the literal 20px in three blocks
+     and 32px in a fourth. One token, so the four card families cannot drift
+     apart again. It is not --radius-card: that one is 10px and is used by the
+     project card, the spec table, the form card and the menu panels. */
+  --radius-card-lg: 20px;
   --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08);
   --control-h: 48px;
 }
@@ -327,8 +332,9 @@ p { margin: 0; }
 .prod {
   display: flex; flex-direction: column;
   background: var(--bg-light);
-  border: 1px solid var(--line); border-radius: 20px;
+  border: 1px solid var(--line); border-radius: var(--radius-card-lg);
   overflow: hidden;
+  box-shadow: var(--shadow-card);
 }
 .prod__media { padding: 12px 12px 0; }
 .prod__ph { border-radius: 12px; }
@@ -388,8 +394,9 @@ p { margin: 0; }
 .cat-tile {
   display: flex; flex-direction: column;
   background: var(--bg-light); border: 1px solid var(--line);
-  border-radius: 20px; overflow: hidden;
+  border-radius: var(--radius-card-lg); overflow: hidden;
   transition: border-color var(--hover-dur) var(--ease-out);
+  box-shadow: var(--shadow-card);
 }
 .cat-tile:hover { border-color: var(--brand); color: var(--ink); }
 .cat-tile__ph { border-radius: 0; border-width: 0 0 1px; }
@@ -553,8 +560,9 @@ p { margin: 0; }
 }
 .nvk {
   display: flex; flex-direction: column;
-  background: var(--bg-light); border: 1px solid var(--line); border-radius: 20px;
+  background: var(--bg-light); border: 1px solid var(--line); border-radius: var(--radius-card-lg);
   overflow: hidden;
+  box-shadow: var(--shadow-card);
 }
 .nvk__media { padding: 12px 12px 0; }
 .nvk__ph { border-radius: 12px; }
@@ -658,9 +666,10 @@ p { margin: 0; }
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .xsell {
-  display: block; overflow: hidden; border-radius: 32px;
+  display: block; overflow: hidden; border-radius: var(--radius-card-lg);
   background: var(--bg-light); border: 1px solid var(--line);
   transition: border-color var(--hover-dur) var(--ease-out);
+  box-shadow: var(--shadow-card);
 }
 .xsell:hover { border-color: var(--brand); color: var(--ink); }
 .xsell__ph { border-radius: 0; border-width: 0 0 1px; }
@@ -1142,6 +1151,7 @@ p { margin: 0; }
   border-radius: var(--radius-card);
   padding: 24px;
   display: flex; flex-direction: column; gap: 16px;
+  box-shadow: var(--shadow-card);
 }
 .review__quote { flex: 1; }
 .review__name { font-weight: 700; }
@@ -1268,13 +1278,20 @@ p { margin: 0; }
 /* --- 1. card hover -------------------------------------------------------- */
 /* @media (hover: hover) so touch devices never get a stuck hover state. */
 @media (hover: hover) {
-  .card, .trust-item, .review {
+  /* W25-29. The same list, extended to the card families that had no hover at
+     all. Four of them carried a resting border and nothing else, so a visitor
+     pressing a catalogue card got no feedback while a project card lifted.
+     Nothing new is invented: the travel, the duration, the shadow and the border
+     colour are the ones .card has used since wave 6. */
+  .card, .trust-item, .review,
+  .prod, .cat-tile, .nvk, .xsell, .teaser, .offer {
     transition: transform var(--hover-dur) ease-out,
                 box-shadow var(--hover-dur) ease-out,
                 border-color var(--hover-dur) ease-out,
                 background-color var(--hover-dur) ease-out;
   }
-  .card:hover, .review:hover {
+  .card:hover, .review:hover,
+  .prod:hover, .cat-tile:hover, .nvk:hover, .xsell:hover, .teaser:hover, .offer:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     border-color: var(--brand);
@@ -1540,6 +1557,7 @@ p { margin: 0; }
   background: var(--bg-light);
   border: 1px solid var(--line); border-top: 4px solid var(--brand);
   padding: 28px;
+  box-shadow: var(--shadow-card);
 }
 .offer__n {
   position: absolute; top: 4px; right: 20px; margin: 0;
@@ -1779,6 +1797,7 @@ p { margin: 0; }
   display: flex; flex-direction: column; gap: 8px;
   background: var(--bg-light); border: 1px solid var(--line); border-top: 4px solid var(--brand);
   padding: 20px 24px; color: var(--ink);
+  box-shadow: var(--shadow-card);
 }
 .teaser:hover .teaser__title { color: var(--brand-dark); }
 .teaser__title { font-size: 20px; text-transform: uppercase; letter-spacing: 0; }
@@ -2162,7 +2181,10 @@ p { margin: 0; }
     transition: none !important;
   }
   /* Hover: no travel. Colour feedback stays, it is not motion. */
+  /* W25-29: the six families added to the hover list are added here too. A lift
+     that reduced motion does not remove is the whole rule broken. */
   .card:hover, .review:hover, .trust-item:hover,
+  .prod:hover, .cat-tile:hover, .nvk:hover, .xsell:hover, .teaser:hover, .offer:hover,
   .section--dark .step:hover { transform: none !important; }
   /* Marquee: stopped dead, static row. Nothing to pause, so hover and focus
      have nothing to do and cannot error; they only ever set a play state. */

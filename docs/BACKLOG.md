@@ -811,3 +811,13 @@ of the 8 (every Dasterum roofing image is 488x488). **Gate 19's shared-picture r
 order-dependent and is now a group rule**: the tile had become the "owner" of a product's
 photograph because `dist/catalog/` is walked first. Two new arms, one GREEN. Slots **299 to 307
 of 337**. 25 of 25 gate commands exit 0.
+
+## W25-29 · Secondary images and polish
+**Status: PR OPEN, photographs BLOCKED** (2026-09-22). **Polish shipped**: `--radius-card-lg`
+replaces 20px written three times and a stray 32px on `.xsell`; a resting `--shadow-card` on
+seven card families; the wave 6 hover lift extended to six of them, with the reduced-motion
+list extended in the same commit. **Six pages measured before and after, identical to the
+pixel**, so no budget moved. **All three photograph placements blocked on Q-W25-20**: W25-R23
+names Unsplash and Pexels and both refuse automated access. Nothing was substituted: the site's
+own project covers are 400x300 and read `legacy, licence unverified`. **Spacing rhythm
+deferred**: it is the one polish item that is layout. 25 of 25 gate commands exit 0.

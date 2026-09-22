@@ -11826,3 +11826,50 @@ exactly the shape the old version refused.
 
 **25 of 25 gate commands exit 0.** No height moved. Thirty slots remain empty in the ledger,
 nineteen in the three reviewed sections, including the eight before/after evidence slots.
+
+## W25-29 · The polish, and the photographs that are blocked on a 403, 2026-09-22
+
+**Card W25-29.** PR only, stops for the owner. The full card is
+`docs/board/W25-29-secondary-polish.md`.
+
+**Shipped: the polish.** One radius token, a resting shadow on every card family, and the hover
+lift extended to the six families that had none.
+
+**Blocked: all three photograph placements.** The homepage band, the three service-page side
+photos and the contact strip each need a picture from a licence-free library, and **W25-R23
+names Unsplash and Pexels, both of which refuse automated access** (307, 403, and 401 from the
+API without a key). Recorded as Q-W25-20 at W25-27.
+
+**Nothing was substituted.** The site's own project covers are **400x300**, under the floor,
+and read `legacy, licence unverified`, one of them `origin not recorded`. A decorative band is
+the easiest place to be careless about a picture's origin, which is why the ruling names two
+libraries and asks for the licence page.
+
+### The polish moves no budget, and that is measured
+
+A border radius, a box shadow and a hover transform are not layout. Six pages measured before
+and after: `/` 9,081, `/ru/` 9,294, `/catalog/` 3,623, `/servicii/acoperisuri/` 16,470,
+`/servicii/copertine/` 6,555, `/servicii/modele-garduri/` 3,820. **Identical to the pixel on
+all six.**
+
+**One token where there were four numbers.** The card radius was 10px on `.card`, 20px written
+out three times, and **32px on `.xsell`**, an outlier nobody had noticed.
+`--radius-card-lg: 20px` holds it now; `--radius-card` stays 10px because it belongs to the
+project card, the spec table, the form card and the menu panels.
+
+**The lift is the one `.card` has had since wave 6**, extended rather than invented: same
+travel, same duration, same shadow, same brand border, so **no new colour value** and gate 6 is
+untouched. A visitor pressing a catalogue card got no feedback while a project card lifted.
+
+**The reduced-motion list was extended in the same commit.** A lift added without touching that
+block is a lift reduced motion does not remove.
+
+### Spacing rhythm is deferred
+
+It is the one polish item that **is** layout: a section's padding moves every budget on the
+site, and this dispatch has already re-measured six pages across four cards. It is a card of
+its own with its own measurement pass.
+
+### Gates
+
+**25 of 25 gate commands exit 0.**

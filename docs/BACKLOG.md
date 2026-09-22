@@ -957,3 +957,12 @@ orange mark; Creaton Rapido taken from imperlux's clean category image, not its 
 tiles. Override 16 to 28 in all three lists (fetch tool caught up), watched on planted rows.
 Links: `#preturi`, and two cross-page fragments logged as **Q-W26-05**. Counts 4 / 1 / 2 / 18 / 53.
 `sips` zero-offset crop fault caught by eye; `ffmpeg` crops, W26-07's re-checked identical.
+
+## W26-12 · Galleries and gate 29
+**Status: PR OPEN** (2026-09-22). W26-R14 on all 11 folders: **95 found, 89 installed** (Garduri's
+6 byte-identical duplicates once), **9 galleries, 2 empty folders, 0 unmatched**, matched by the
+site's own titles after NFC. "Deschide galeria" card after the described projects; Copertine gets a
+section; **new page `/servicii/galerie-garduri/`** for "Garduri tip jaluzele". Lightbox: scroll-snap
+track (native swipe, no touch handler), keys, Escape, focus trap and return, reduced motion. Two
+defects found by driving it and fixed. **Gate 29** 7 arms, 1 GREEN, watched on a real page.
+Service pages identical; Copertine +629; gallery page 3,967. **Q-W26-06**: 8 photographs to confirm.

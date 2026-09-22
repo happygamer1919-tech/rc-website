@@ -3322,3 +3322,21 @@ so neither your words nor a section of that page gives them a destination.
 
 **One tile your ruling did not name still opens "in construcție"**: the fence hub's "Calculează
 prețul gardului". W26-R12's ban names roofing tiles, so it is unchanged. Same three choices apply.
+
+## Q-W26-06 · Some photographs in two gallery folders may not be your own work · OPEN · opened 2026-09-22 (W26-12)
+
+**Raised W26-12, 2026-09-22. Shipped default: every photograph installed, as W26-R14 directs.
+Nothing is blocked.**
+
+Every gallery photograph is recorded as **"owned by Rapid Construct, supplied for site use"**,
+which is R-W's origin for your own files. Looking at all 95, a few may not be:
+
+| Folder | Photographs | What made me look twice |
+|---|---|---|
+| Lucrări de terasament și excavare | 02, 04, 05, 10, 13, 14, 16 (numbering as installed) | 10 is black-and-white; 05 is black-and-white with only the yellow formwork left in colour; 02, 04, 13, 14 and 16 have catalogue framing and lighting: the look of stock photography rather than site photos |
+| Finisaje | 04 | a small round "15" counter in the corner, the mark a messaging app leaves on an album screenshot |
+
+**If any of these came from a stock site or another company**, the provenance line is wrong
+for it and it should come out of the gallery: say which, and it is one line in the ledger and
+one run of the intake. **If they are yours, nothing changes.** The gate would not catch this: no
+machine can tell a stock photograph from a site photograph.

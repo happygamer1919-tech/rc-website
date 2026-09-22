@@ -12603,3 +12603,68 @@ Gate 26: 0 same-page anchors of 16.
 **Section product counts, every card pictured**: Țiglă metalică 4, Țiglă ceramică 1, Șindrilă
 bituminoasă 2, Sisteme pluviale 18, Accesorii de acoperiș 53, both locales. **The review list now
 sees `ACIM-`**, which it never had. **Heights identical to the pixel** on five pages.
+
+## W26-12 · The owner's photographs, a gallery on every page that has a folder, and gate 29, 2026-09-22
+
+Branch `w26/w26-12-galleries`, stacked on W26-11 (#132).
+
+**W26-R14 applied to all eleven folders: 95 files found, 89 installed, 9 galleries, 2 empty
+folders, 0 unmatched.**
+
+| Folder | Found | Installed | Page |
+|---|---|---|---|
+| ACOPERIȘURI | 15 | 15 | `/servicii/acoperisuri/` |
+| CONSTRUCȚIE CASE LA CHEIE | 2 | 2 | `/servicii/case-la-cheie/` |
+| Construcții industriale | 0 | 0 | none: the folder is empty |
+| Copertine | 2 | 2 | `/servicii/copertine/` |
+| Fațade | 4 | 4 | `/servicii/fatade/` |
+| Finisaje | 5 | 5 | `/servicii/finisaje/` |
+| Garduri | 19 | 13 | `/servicii/galerie-garduri/`, new, opened by "Garduri tip jaluzele" |
+| Instalații | 5 | 5 | `/servicii/instalatii/` |
+| Lucrări de terasament și excavare | 16 | 16 | `/servicii/terasamente/` |
+| Proiectare și vizualizare 3D | 0 | 0 | none: the folder is empty |
+| Renovări la cheie | 27 | 27 | `/servicii/reparatii/` |
+
+**Matched by name, from the site's own titles.** `scripts/intake-galleries.js` reads each page's
+Romanian title from `locales/ro.json` and matches the folder after Unicode NFC (macOS stores these
+names decomposed) and without case; a renamed service moves its gallery with it. **Every folder
+matched**, so no folder is a question on that ground.
+
+**Garduri's six skipped files are byte-identical duplicates**, installed once and recorded beside
+the file they duplicate. **Twelve of its files are the fence photographs Q-W23-01 held for want of
+a host**; this card is that host, option (b) there.
+
+**Intake, per the ruling**: read as JPEG by the bytes (the folders mix `.jpeg`, `.jpe` and a
+misspelt name), at most 1600px wide and never enlarged, re-encoded and stripped with the bytes read
+back, no captions. A 600px thumbnail beside each for cards and the page grid. **Gate 17 now reads
+201 client-supplied images, all clean.** 178 provenance rows in R-W's client-supplied words.
+
+**The card**: "Deschide galeria" / "Открыть галерею", one more card after the described projects
+(pages with four get it fifth), showing a preview chosen by eye and recorded in the ledger's one
+hand-set field. **Copertine**, with no project section, gets a section holding the card alone. **The
+fence gallery page** shows all thirteen as a grid. **It is not a quote-form option** (a gallery is
+not a kind of work) and **it is in the mobile menu** (F-02: no product page unreachable on a phone).
+
+**The lightbox, and the motion rule.** A horizontal scroll-snap track, so **a swipe is the
+browser's own scrolling and no touch handler exists** to capture or delay it; the one scroll
+listener is passive. Arrow keys, Home and End, a close button, Escape, focus kept inside and
+**returned to the element that opened it**; smooth scrolling only without reduced motion. The images
+load lazily inside a container hidden until opened, so a page pays nothing for its gallery on
+load. Opaque `--bg-dark`: no new colour, no translucent overlay on a section.
+
+**Two defects caught by driving it in a browser**: the scroll listener read the slide index
+mid-animation, so End showed 10 of 15 and the next key would have started from there (now read once
+scrolling settles, End reads 15 of 15); and focus went back to the page body after a pointer open
+(now to the opener). Both watched fixed at 1440 and 390.
+
+**Gate 29**, `check-galleries.js`, is the ruling's own test and more: count, files, **order**, the
+count attribute, an opener, the preview, the grid, and no stray lightbox. 7 arms, 1 GREEN; watched
+fail on the real roofing page with one slide removed.
+
+**Heights**: every service page identical to the pixel; Copertine +629 (7,244 / 7,320); the gallery
+page 3,967 (4,027). verify-live gains a `gallery` type with `galSlides: 13`, **53 of 53 page rows
+verified locally** against this build.
+
+**For the owner, Q-W26-06**: seven earthworks photographs look like stock photography, and one
+Finisaje photograph carries a messaging app's "15" counter. Installed as directed; confirm they are
+yours.

@@ -739,4 +739,102 @@
     window.addEventListener('hashchange', fromHash);
     fromHash();
   })();
+
+  /* W26-12, ruling W26-R14: the gallery lightbox. One per gallery, opened by any
+     element carrying data-gal-open="<its id>", at data-gal-index.
+
+     THE TRACK IS A SCROLLER. A swipe is the browser's own scroll of a scroll-snap
+     track, so no touch handler exists and nothing here can capture or delay a
+     gesture (docs/CLAUDE.md section 1). The one scroll listener is passive and only
+     reads which slide is showing. Buttons and arrow keys scroll the same track,
+     smoothly unless reduced motion is on, when they jump.
+
+     A DIALOG: focus goes to the close button on open, Tab stays inside, Escape and
+     the close button shut it, and focus returns to what opened it. The page is not
+     scroll-locked, matching the lead modal: the lightbox covers it, opaque. */
+  (function () {
+    var boxes = document.querySelectorAll('[data-gal-box]');
+    if (!boxes.length) return;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    Array.prototype.forEach.call(boxes, function (box) {
+      var id = box.id;
+      var track = box.querySelector('.lbx__track');
+      var slides = box.querySelectorAll('.lbx__slide');
+      var count = box.querySelector('.lbx__count');
+      var closeBtn = box.querySelector('.lbx__close');
+      var prevBtn = box.querySelector('.lbx__nav--prev');
+      var nextBtn = box.querySelector('.lbx__nav--next');
+      var open = false, index = 0, lastFocus = null;
+
+      function update() {
+        count.textContent = (index + 1) + ' / ' + slides.length;
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === slides.length - 1;
+      }
+      function go(i, instant) {
+        index = Math.max(0, Math.min(slides.length - 1, i));
+        track.scrollTo({ left: slides[index].offsetLeft, behavior: (instant || reduced.matches) ? 'auto' : 'smooth' });
+        update();
+      }
+      function focusables() {
+        return Array.prototype.filter.call(box.querySelectorAll('button, [tabindex]:not([tabindex="-1"])'), function (el) {
+          return !el.disabled;
+        });
+      }
+      /* Focus returns to the element that OPENED it, not to whatever held focus: a
+         pointer click on a card does not always focus the card, and returning focus
+         to the page body strands a keyboard user at the top of the document. */
+      function openAt(i, opener) {
+        lastFocus = opener || document.activeElement;
+        box.hidden = false;
+        open = true;
+        go(i, true);
+        closeBtn.focus();
+      }
+      function close() {
+        if (!open) return;
+        box.hidden = true;
+        open = false;
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      document.addEventListener('click', function (e) {
+        var t = e.target.closest && e.target.closest('[data-gal-open]');
+        if (!t || t.getAttribute('data-gal-open') !== id) return;
+        e.preventDefault();
+        openAt(Number(t.getAttribute('data-gal-index')) || 0, t);
+      });
+      closeBtn.addEventListener('click', close);
+      prevBtn.addEventListener('click', function () { go(index - 1); });
+      nextBtn.addEventListener('click', function () { go(index + 1); });
+      /* The index is read once scrolling has SETTLED, not on every frame: during a
+         smooth scroll the track passes every slide in between, and an index taken
+         mid-flight sent the next key press from the wrong slide. */
+      var settle = null;
+      track.addEventListener('scroll', function () {
+        if (settle) clearTimeout(settle);
+        settle = setTimeout(function () {
+          var w = track.clientWidth;
+          if (!w) return;
+          var i = Math.round(track.scrollLeft / w);
+          if (i !== index && i >= 0 && i < slides.length) { index = i; update(); }
+        }, 120);
+      }, { passive: true });
+      box.addEventListener('keydown', function (e) {
+        if (!open) return;
+        if (e.key === 'Escape') { close(); return; }
+        if (e.key === 'ArrowRight') { e.preventDefault(); go(index + 1); return; }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); go(index - 1); return; }
+        if (e.key === 'Home') { e.preventDefault(); go(0); return; }
+        if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); return; }
+        if (e.key !== 'Tab') return;
+        var f = focusables();
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      });
+    });
+  })();
 })();

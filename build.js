@@ -1078,10 +1078,10 @@ function workTypeOptions(l) {
   };
   const labels = [
     ...SERVICE_SLUGS.map((_, i) => need(l.strings[`services.items.${i}.title`], `services.items.${i}.title`)),
-    ...PRODUCT_PAGES.map((p) => need(l.strings[`pages.${p.key}.title`], `pages.${p.key}.title`)),
+    ...PRODUCT_PAGES.filter((p) => !p.formless).map((p) => need(l.strings[`pages.${p.key}.title`], `pages.${p.key}.title`)),
     need(l.strings['form.optionOther'], 'form.optionOther'),
   ];
-  const expected = SERVICE_SLUGS.length + PRODUCT_PAGES.length + 1;
+  const expected = SERVICE_SLUGS.length + PRODUCT_PAGES.filter((p) => !p.formless).length + 1;
   if (labels.length !== expected) die(`workTypeOptions: ${labels.length} options, expected ${expected}.`);
   return labels.map((t) => `            <option>${esc(t)}</option>`).join('\n');
 }
@@ -1594,7 +1594,9 @@ const BENTOS = {
          NOTE, reported rather than fixed here: tile 3 already opens that page, so
          the hub now has two tiles with one destination. Repointing tile 3 is a
          product decision and is the owner's. */
-      { label: 'bento.fenceJaluzele', slot: 'GARDB-01', page: 'modele-garduri' },
+      /* AMENDED (W26-12, ruling W26-R12): "Garduri tip jaluzele opens the fence gallery
+         page". */
+      { label: 'bento.fenceJaluzele', slot: 'GARDB-01', page: 'galerie-garduri' },
       { label: 'bento.fenceCalc', slot: 'GARDB-02', inConstructie: true },
       { label: 'bento.fenceModele', slot: 'GARDB-03', page: 'modele-garduri' },
       /* AMENDED (W25-24, under W25-R24): was inert. "Prețuri și oferte" opens the
@@ -2103,6 +2105,7 @@ ${steps}
     </ol>
   </div>
 </section>
+${gallerySectionAlone(l, 'copertine', galNeed(l.strings['pages.copertine.title'], 'pages.copertine.title'))}
 `;
 }
 
@@ -3233,12 +3236,132 @@ ${cards}
 `;
 }
 
+/* W26-12, ruling W26-R14: THE GALLERIES. One per owner folder whose name is a page's
+   title, read from content/galleries.json, which scripts/intake-galleries.js writes from
+   the folders and nothing types. Gate 29 holds every page to it.
+
+   WHAT A PAGE GETS. A service page with described projects gets ONE MORE CARD after them,
+   "Deschide galeria", showing the photograph the ledger names as `preview`; a page with no
+   project section gets a section holding that card alone; the fence gallery gets a page of
+   its own (W26-R12), which shows every photograph as a grid. Every one of them opens the
+   same component: a full-screen lightbox holding all the folder's photographs.
+
+   THE LIGHTBOX IS A HORIZONTAL SCROLLER, and that is what makes it respect the motion rule
+   (docs/CLAUDE.md section 1) rather than fight it. Swipe is the browser's own touch
+   scrolling of a scroll-snap track, so there is no touch handler at all and nothing can
+   capture or delay a gesture. The buttons and the arrow keys scroll the same track, smoothly
+   only when reduced motion is off. The images carry real `src` and `loading="lazy"` inside a
+   container that is `hidden` until opened, so none of them costs a byte on page load.
+
+   NO CAPTIONS, per the ruling. Each image still has alt text, which is not a caption: the
+   page's title and the photograph's place in the set, so a screen reader hears where it is.
+   The images are the owner's own, stripped by the intake; the palette is --bg-dark and
+   --bg-light, no new colour. Prefixes `.gal-` and `.lbx-` grepped free (3.1). */
+const GALLERY_FILE = 'content/galleries.json';
+const galNeed = (v, where) => { if (!REAL(v)) die(`gallery: ${where} is not real.`); return v; };
+const GALLERIES = JSON.parse(fs.readFileSync(GALLERY_FILE, 'utf8'));
+if (!Array.isArray(GALLERIES.galleries)) die(`${GALLERY_FILE} has no "galleries" array.`);
+GALLERIES.galleries.forEach((g, i) => {
+  const where = `${GALLERY_FILE}: galleries[${i}] (${g.folder})`;
+  if (!Array.isArray(g.photos) || !g.photos.length) die(`${where} has no photographs. An empty folder is listed under empty_folders, never as a gallery.`);
+  if (!Number.isInteger(g.preview) || g.preview < 1 || g.preview > g.photos.length) die(`${where}: preview ${g.preview} is not one of its ${g.photos.length} photographs.`);
+  for (const p of g.photos) {
+    for (const f of [p.full, p.thumb]) if (!fs.existsSync(f)) die(`${where}: ${f} does not exist. Run scripts/intake-galleries.js --apply.`);
+  }
+});
+const galleryFor = (slug) => GALLERIES.galleries.find((g) => g.render_on === slug) || null;
+
+function galleryAlt(l, title, i, n) {
+  const t = l.strings['gallery.alt'];
+  if (!REAL(t) || !t.includes('{title}') || !t.includes('{i}') || !t.includes('{n}')) die(`gallery.alt for ${l.code} needs {title}, {i} and {n}.`);
+  return t.replace('{title}', title).replace('{i}', String(i)).replace('{n}', String(n));
+}
+
+/* The lightbox, once per gallery per page. */
+function galleryLightbox(l, g, title) {
+  const s = (k) => esc(galNeed(l.strings[`gallery.${k}`], `gallery.${k}`));
+  const n = g.photos.length;
+  const slides = g.photos.map((p, i) => {
+    const [w, h] = String(p.size).split('x').map(Number);
+    return `        <li class="lbx__slide"><img src="${BASE}/${esc(p.full.replace(/^public\//, ''))}" alt="${esc(galleryAlt(l, title, i + 1, n))}" width="${w}" height="${h}" loading="lazy" decoding="async"></li>`;
+  }).join('\n');
+  const chevron = (pts) => `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="${pts}"></polyline></svg>`;
+  return `<div class="lbx" id="lbx-${esc(g.render_on)}" data-gal-box data-gal-count="${n}" role="dialog" aria-modal="true" aria-label="${s('dialogAria')}: ${esc(title)}" hidden>
+  <div class="lbx__bar">
+    <p class="lbx__count" aria-live="polite">1 / ${n}</p>
+    <button class="lbx__close" type="button" aria-label="${s('close')}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg></button>
+  </div>
+  <ul class="lbx__track" tabindex="0" aria-label="${s('trackAria')}">
+${slides}
+  </ul>
+  <button class="lbx__nav lbx__nav--prev" type="button" aria-label="${s('prev')}">${chevron('15 6 9 12 15 18')}</button>
+  <button class="lbx__nav lbx__nav--next" type="button" aria-label="${s('next')}">${chevron('9 6 15 12 9 18')}</button>
+</div>`;
+}
+
+/* The card. It is a link to the lightbox's own id, so without JavaScript it is a
+   fragment that resolves (check-links holds that) and with it main.js opens the
+   lightbox at `data-gal-index`. Its accessible name says which gallery it opens,
+   because "Deschide galeria" alone, twice on no page but repeated site-wide,
+   would not tell a screen reader whose. */
+function galleryCard(l, g, title, stagger) {
+  const p = g.photos[g.preview - 1];
+  const [w, h] = String(p.thumb_size).split('x').map(Number);
+  const aria = galNeed(l.strings['gallery.cardAria'], 'gallery.cardAria');
+  if (!aria.includes('{title}')) die(`gallery.cardAria for ${l.code} needs {title}.`);
+  return `      <a class="card gal-card" href="#lbx-${esc(g.render_on)}" data-gal-open="lbx-${esc(g.render_on)}" data-gal-index="${g.preview - 1}" aria-haspopup="dialog" aria-label="${esc(aria.replace('{title}', title))}" data-reveal data-stagger="${Math.min(stagger, 6)}">
+        <div class="media media--4x3 media--card gal-card__media"><img src="${BASE}/${esc(p.thumb.replace(/^public\//, ''))}" alt="" width="${w}" height="${h}" loading="lazy" decoding="async"></div>
+        <div class="card__body"><h3>${esc(galNeed(l.strings['gallery.open'], 'gallery.open'))}</h3></div>
+      </a>`;
+}
+
+/* A page with no project section gets its gallery card in a section of its own. */
+function gallerySectionAlone(l, slug, title) {
+  const g = galleryFor(slug);
+  if (!g) return '';
+  return `<section class="section section--light section--divided" id="galerie" aria-labelledby="galerie-h">
+  <div class="container">
+    <h2 id="galerie-h" data-reveal>${esc(galNeed(l.strings['gallery.sectionH'], 'gallery.sectionH'))}</h2>
+    <div class="grid grid--3" style="margin-top: 40px;">
+${galleryCard(l, g, title, 0)}
+    </div>
+  </div>
+</section>
+${galleryLightbox(l, g, title)}`;
+}
+
+/* W26-12, ruling W26-R12: the fence gallery's own page. Every photograph is on it as a
+   thumbnail in the page's reading order, and each opens the lightbox at itself. */
+function galleryPage(l, slug) {
+  const g = galleryFor(slug);
+  if (!g) die(`the gallery page /servicii/${slug}/ has no gallery in ${GALLERY_FILE}.`);
+  const title = galNeed(l.strings['pages.galerieGarduri.title'], 'pages.galerieGarduri.title');
+  const items = g.photos.map((p, i) => {
+    const [w, h] = String(p.thumb_size).split('x').map(Number);
+    return `      <li><a class="gal-grid__item" href="#lbx-${esc(g.render_on)}" data-gal-open="lbx-${esc(g.render_on)}" data-gal-index="${i}" aria-haspopup="dialog"><img src="${BASE}/${esc(p.thumb.replace(/^public\//, ''))}" alt="${esc(galleryAlt(l, title, i + 1, g.photos.length))}" width="${w}" height="${h}" loading="${i < 6 ? 'eager' : 'lazy'}" decoding="async"></a></li>`;
+  }).join('\n');
+  return `<section class="section section--light section--divided" id="galerie" aria-labelledby="galerie-h">
+  <div class="container">
+    <h2 id="galerie-h" class="sr-only">${esc(galNeed(l.strings['gallery.gridAria'], 'gallery.gridAria'))}</h2>
+    <ul class="gal-grid" data-gal-grid>
+${items}
+    </ul>
+  </div>
+</section>
+${galleryLightbox(l, g, title)}`;
+}
+
 const PRODUCT_PAGES = [
   { slug: 'tigla-metalica', key: 'tigla', parent: 'acoperisuri', block: (l) => tiglaGrid(l), sources: ['content/tigla-metalica.json'] },
   { slug: 'roca-vulcanica', key: 'novatik', parent: 'acoperisuri', block: (l) => novatikPage(l), sources: ['content/novatik.json'] },
   { slug: 'copertine', key: 'copertine', block: (l) => copertine(l), sources: ['content/copertine.json'] },
   { slug: 'garduri', key: 'garduri', block: (l) => gardPage(l), faqSchema: (l) => gardFaqSchema(l), sources: [] },
   { slug: 'modele-garduri', key: 'gardModele', parent: 'garduri', block: (l) => gardModelePage(l), sources: ['content/garduri-modele.json'] },
+  /* W26-12, ruling W26-R12: the fence gallery, a page of its own that the Garduri hub's
+     "Garduri tip jaluzele" tile opens. `formless`: a gallery is not a kind of work, so it
+     is not an option in the quote form's "Tip lucrări"; it IS in the mobile menu, which
+     lists every product page so none is unreachable on a phone (F-02). */
+  { slug: 'galerie-garduri', key: 'galerieGarduri', parent: 'garduri', block: (l) => galleryPage(l, 'galerie-garduri'), sources: ['content/galleries.json'], formless: true },
 ];
 const TOP_LEVEL_PRODUCT_PAGES = PRODUCT_PAGES.filter((p) => !p.parent);
 /* The title of a page another page is a child of, from whichever list holds it. */
@@ -3473,7 +3596,11 @@ assertCoversExist();
 
 function renderGallerySection(l, slug, vars) {
   const mine = renderableProjects(l, slug);
-  if (!mine.length) return '';          // section, heading and all, simply absent
+  /* W26-12: a folder of the owner's photographs adds one card after the described
+     projects, and the section renders for it even with no project to describe. */
+  const gal = galleryFor(slug);
+  if (!mine.length && !gal) return '';  // section, heading and all, simply absent
+  const svcTitle = gal ? galNeed(l.strings[`services.items.${SERVICE_SLUGS.indexOf(slug)}.title`], `services.items (${slug}).title`) : null;
   const cards = mine.map((p, i) => {
     // Short facts as chips, in reading order. Each is omitted on its own.
     const chip = (v) => `<span class="review__tag">${esc(v)}</span>`;
@@ -3503,10 +3630,10 @@ function renderGallerySection(l, slug, vars) {
     <p class="eyebrow" data-reveal>${esc(l.strings['servicePage.galleryH'])}</p>
     <h2 data-reveal>${esc(l.strings['portfolio.h2'])}</h2>
     <div class="grid grid--3" style="margin-top: 40px;">
-${cards}
+${cards}${gal ? '\n' + galleryCard(l, gal, svcTitle, mine.length) : ''}
     </div>
   </div>
-</section>`;
+</section>${gal ? '\n' + galleryLightbox(l, gal, svcTitle) : ''}`;
 }
 
 for (const l of loaded) {

@@ -365,6 +365,11 @@
       "title": "Modele de garduri",
       "lede": "Patru modele de gard tip jaluzele, fiecare în două materiale.",
       "teaser": "Patru modele de gard tip jaluzele."
+    },
+    "galerieGarduri": {
+      "title": "Galerie de garduri",
+      "lede": "Fotografii de garduri din lamele metalice.",
+      "teaser": "Fotografii de garduri din lamele metalice."
     }
   },
   "catalogProducts": {
@@ -1214,5 +1219,17 @@
     "ctaSecondary": "Vezi cele 12 modele",
     "crossH2": "Alte materiale pentru casa ta",
     "crossLink": "Vezi"
+  },
+  "gallery": {
+    "open": "Deschide galeria",
+    "cardAria": "Deschide galeria: {title}",
+    "alt": "{title}, fotografia {i} din {n}",
+    "dialogAria": "Galerie foto",
+    "trackAria": "Fotografiile galeriei. Derulează sau folosește săgețile.",
+    "close": "Închide galeria",
+    "prev": "Fotografia anterioară",
+    "next": "Fotografia următoare",
+    "sectionH": "Galerie foto",
+    "gridAria": "Fotografiile galeriei"
   }
 }

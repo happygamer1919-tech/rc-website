@@ -280,64 +280,104 @@
       "page": "/servicii/case-la-cheie/",
       "ratio": "1180 / 664",
       "min_px": "2360x1328",
-      "shows": "\"Casă la cheie\" INAINTE de lucrari. Acelasi unghi, aceeasi distanta si aceeasi inaltime a aparatului ca la fotografia DUPA, pe cat posibil aceeasi lumina. Fara persoane in cadru, fara utilaje, fara data sau marcaj pe imagine.",
-      "state": "placeholder"
+      "shows": "Teren liber INAINTE de lucrari. AMENDED W26-08: corectat la fotografia pe care a trimis-o proprietarul.",
+      "state": "filled",
+      "provenance": "public/img/BA-01-before.jpg",
+      "alt": {
+        "ro": "Teren cu fundația turnată și pământ săpat, casa încă neînceput",
+        "ru": "Участок с залитым фундаментом и вырытым грунтом, дом ещё не начат"
+      }
     },
     {
       "id": "BA-01-after",
       "page": "/servicii/case-la-cheie/",
       "ratio": "1180 / 664",
       "min_px": "2360x1328",
-      "shows": "\"Casă la cheie\" DUPA lucrari. EXACT acelasi unghi si cadru ca fotografia INAINTE: perechea se compara prin glisare, deci un unghi diferit face comparatia falsa. Fotografie reala a lucrarii terminate, niciodata o vizualizare 3D.",
-      "state": "placeholder"
+      "shows": "Casă la cheie, de la teren liber DUPA lucrari, exact acelasi unghi si cadru ca fotografia INAINTE. AMENDED W26-08: corectat la fotografia pe care a trimis-o proprietarul.",
+      "state": "filled",
+      "provenance": "public/img/BA-01-after.jpg",
+      "alt": {
+        "ro": "Casă albă terminată pe același teren, cu alee turnată în față",
+        "ru": "Готовый белый дом на том же участке, с залитой дорожкой перед ним"
+      }
     },
     {
       "id": "BA-02-before",
       "page": "/servicii/case-la-cheie/",
       "ratio": "1180 / 664",
       "min_px": "2360x1328",
-      "shows": "\"Fațadă\" INAINTE de lucrari. Acelasi unghi, aceeasi distanta si aceeasi inaltime a aparatului ca la fotografia DUPA, pe cat posibil aceeasi lumina. Fara persoane in cadru, fara utilaje, fara data sau marcaj pe imagine.",
-      "state": "placeholder"
+      "shows": "Casa la rosu INAINTE de lucrari. AMENDED W26-08: corectat la fotografia pe care a trimis-o proprietarul.",
+      "state": "filled",
+      "provenance": "public/img/BA-02-before.jpg",
+      "alt": {
+        "ro": "Casă la roșu din cărămidă, cu șarpanta montată și fără învelitoare",
+        "ru": "Кирпичная коробка дома со смонтированной стропильной системой без покрытия"
+      }
     },
     {
       "id": "BA-02-after",
       "page": "/servicii/case-la-cheie/",
       "ratio": "1180 / 664",
       "min_px": "2360x1328",
-      "shows": "\"Fațadă\" DUPA lucrari. EXACT acelasi unghi si cadru ca fotografia INAINTE: perechea se compara prin glisare, deci un unghi diferit face comparatia falsa. Fotografie reala a lucrarii terminate, niciodata o vizualizare 3D.",
-      "state": "placeholder"
+      "shows": "Casă la cheie, de la roșu DUPA lucrari, exact acelasi unghi si cadru ca fotografia INAINTE. AMENDED W26-08: corectat la fotografia pe care a trimis-o proprietarul.",
+      "state": "filled",
+      "provenance": "public/img/BA-02-after.jpg",
+      "alt": {
+        "ro": "Aceeași casă terminată, cu acoperiș maro și fațadă finisată",
+        "ru": "Тот же дом готовым, с коричневой кровлей и отделанным фасадом"
+      }
     },
     {
       "id": "BA-03-before",
       "page": "/servicii/case-la-cheie/",
       "ratio": "1180 / 664",
       "min_px": "2360x1328",
-      "shows": "\"Acoperiș\" INAINTE de lucrari. Acelasi unghi, aceeasi distanta si aceeasi inaltime a aparatului ca la fotografia DUPA, pe cat posibil aceeasi lumina. Fara persoane in cadru, fara utilaje, fara data sau marcaj pe imagine.",
-      "state": "placeholder"
+      "shows": "Structura pe doua niveluri INAINTE de lucrari. AMENDED W26-08: corectat la fotografia pe care a trimis-o proprietarul.",
+      "state": "filled",
+      "provenance": "public/img/BA-03-before.jpg",
+      "alt": {
+        "ro": "Casă pe două niveluri la stadiul de structură, cu materiale în curte",
+        "ru": "Двухэтажный дом на стадии коробки, со стройматериалами во дворе"
+      }
     },
     {
       "id": "BA-03-after",
       "page": "/servicii/case-la-cheie/",
       "ratio": "1180 / 664",
       "min_px": "2360x1328",
-      "shows": "\"Acoperiș\" DUPA lucrari. EXACT acelasi unghi si cadru ca fotografia INAINTE: perechea se compara prin glisare, deci un unghi diferit face comparatia falsa. Fotografie reala a lucrarii terminate, niciodata o vizualizare 3D.",
-      "state": "placeholder"
+      "shows": "Casă la cheie, două niveluri DUPA lucrari, exact acelasi unghi si cadru ca fotografia INAINTE. AMENDED W26-08: corectat la fotografia pe care a trimis-o proprietarul.",
+      "state": "filled",
+      "provenance": "public/img/BA-03-after.jpg",
+      "alt": {
+        "ro": "Aceeași casă terminată, cu acoperiș roșu, fațadă în două culori și gazon",
+        "ru": "Тот же дом готовым, с красной кровлей, двухцветным фасадом и газоном"
+      }
     },
     {
       "id": "BA-04-before",
       "page": "/servicii/case-la-cheie/",
       "ratio": "1180 / 664",
       "min_px": "2360x1328",
-      "shows": "\"Renovare interioară\" INAINTE de lucrari. Acelasi unghi, aceeasi distanta si aceeasi inaltime a aparatului ca la fotografia DUPA, pe cat posibil aceeasi lumina. Fara persoane in cadru, fara utilaje, fara data sau marcaj pe imagine.",
-      "state": "placeholder"
+      "shows": "Casa veche INAINTE de lucrari. AMENDED W26-08: corectat la fotografia pe care a trimis-o proprietarul.",
+      "state": "filled",
+      "provenance": "public/img/BA-04-before.jpg",
+      "alt": {
+        "ro": "Casă veche cu acoperiș de ardezie și tencuială degradată",
+        "ru": "Старый дом с шиферной кровлей и разрушенной штукатуркой"
+      }
     },
     {
       "id": "BA-04-after",
       "page": "/servicii/case-la-cheie/",
       "ratio": "1180 / 664",
       "min_px": "2360x1328",
-      "shows": "\"Renovare interioară\" DUPA lucrari. EXACT acelasi unghi si cadru ca fotografia INAINTE: perechea se compara prin glisare, deci un unghi diferit face comparatia falsa. Fotografie reala a lucrarii terminate, niciodata o vizualizare 3D.",
-      "state": "placeholder"
+      "shows": "Renovare: acoperiș și fațadă DUPA lucrari, exact acelasi unghi si cadru ca fotografia INAINTE. AMENDED W26-08: corectat la fotografia pe care a trimis-o proprietarul.",
+      "state": "filled",
+      "provenance": "public/img/BA-04-after.jpg",
+      "alt": {
+        "ro": "Aceeași casă după lucrări, cu acoperiș nou închis la culoare și fațadă refăcută",
+        "ru": "Тот же дом после работ, с новой тёмной кровлей и восстановленным фасадом"
+      }
     },
     {
       "id": "CAT-0001",

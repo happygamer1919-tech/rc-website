@@ -61,22 +61,39 @@ const attr = (tag, name) => { const m = tag.match(new RegExp(`\\s${name}="([^"]*
    for a slot it calls a placeholder, is a disagreement worth failing on. */
 function placeholdersIn(html, rel) {
   const found = [];
-  for (const m of html.matchAll(/<(div|picture)\b[^>]*\bdata-photo-slot="[^"]*"[^>]*>/g)) {
+  /* W26-08. `img` joins `div` and `picture`. The before/after slider renders a
+     filled slot as a bare <img>, not as the <picture> the placeholder component
+     emits, because its drag mechanic clips the image itself and a wrapping
+     element would break it. That img IS the rendered slot, so a scanner that
+     could not see it read the row as rendered by nothing. Recognising it makes
+     this gate more complete rather than looser: the img still has to carry the
+     slot id, still has to have alt text, and still has to match the row's ratio,
+     which it states as its own width and height. */
+  for (const m of html.matchAll(/<(div|picture|img)\b[^>]*\bdata-photo-slot="[^"]*"[^>]*>/g)) {
     const open = m[0];
     const el = m[1];
     const id = attr(open, 'data-photo-slot');
     const cls = (attr(open, 'class') || '').split(/\s+/);
     const style = attr(open, 'style') || '';
-    const ratio = (style.match(/--ph-ratio:\s*([^;"]+)/) || [])[1];
+    /* A div and a picture state the ratio as --ph-ratio; an img states it as its
+       own width and height, which is the same assertion in the shape that element
+       has. */
+    let ratio = (style.match(/--ph-ratio:\s*([^;"]+)/) || [])[1];
+    if (!ratio && el === 'img') {
+      const w = attr(open, 'width'), h = attr(open, 'height');
+      if (w && h) ratio = `${w} / ${h}`;
+    }
     found.push({
       id,
       ratio: ratio ? ratio.trim() : null,
       variant: cls.includes('ph--dark') ? 'dark' : (cls.includes('ph--light') ? 'light' : null),
-      isComponent: cls.includes('ph'),
+      /* An img carrying the slot id is a rendering of that slot by the one place
+         that may emit one, which is what `ph` asserts for the other two shapes. */
+      isComponent: cls.includes('ph') || el === 'img',
       el,
-      filled: el === 'picture',
-      hasImg: el === 'picture' && /<img\b/.test(html.slice(m.index, m.index + 900)),
-      alt: (html.slice(m.index, m.index + 900).match(/<img\b[^>]*\salt="([^"]*)"/) || [])[1],
+      filled: el === 'picture' || el === 'img',
+      hasImg: el === 'img' || (el === 'picture' && /<img\b/.test(html.slice(m.index, m.index + 900))),
+      alt: el === 'img' ? attr(open, 'alt') : (html.slice(m.index, m.index + 900).match(/<img\b[^>]*\salt="([^"]*)"/) || [])[1],
       where: `${rel}: data-photo-slot="${id}"`,
     });
   }
@@ -99,6 +116,13 @@ const APPROVED_ORIGINS = [
   'AI generated for Rapid Construct',
   'supplier permission',
   'client-supplied original',
+  /* W26-08. R-W's client-supplied amendment (wave 23) states the LICENCE as this
+     sentence and leaves "client-supplied original" to the licence-URL cell, so a
+     row on that origin never matched the line above. It had never come up: no
+     LEDGER slot carried the origin until the owner's own before/after
+     photographs did, and check-asset-provenance.js holds the same rows by their
+     exact source and licence text either way. */
+  'owned by Rapid Construct, supplied for site use',
   'legacy, licence unverified',
   /* W25-R7 and W25-R14, the direct suppliers. Narrow on purpose: each one names
      the host it belongs to, so neither can be used to launder any other origin. */
@@ -191,7 +215,11 @@ function check(pages, rows, provenance, brandBySlot) {
   for (const page of pages) {
     for (const ph of placeholdersIn(page.html, page.rel)) {
       if (!ph.isComponent) { problems.push({ id: 'not-component', text: `${ph.where} is not the shared .ph component. Every placeholder is one component.` }); continue; }
-      if (!ph.variant) { problems.push({ id: 'no-variant', text: `${ph.where} carries neither ph--light nor ph--dark.` }); continue; }
+      /* W26-08: the variant is a property of the placeholder BOX, light or dark,
+         and a filled <picture> keeps it. The slider's <img> has no box and so no
+         variant, and demanding one of it would be demanding the shape it exists
+         not to have. Every other element is held to it exactly as before. */
+      if (ph.el !== 'img' && !ph.variant) { problems.push({ id: 'no-variant', text: `${ph.where} carries neither ph--light nor ph--dark.` }); continue; }
       const row = byId.get(ph.id);
       if (!row) { problems.push({ id: 'unledgered', text: `${ph.where} has no row in docs/PHOTO-SLOTS-W24.json. A placeholder and its ledger row land in the same commit.` }); continue; }
       rendered.add(ph.id);
@@ -458,6 +486,22 @@ const SELF = [
       { file: 'public/img/selftest-12.jpg', source: 'https://caparol.md/a/ \u00b7 https://caparol.md/fam.jpg', licence: GOOD_LICENCE, licenceUrl: 'https://caparol.md/a/', date: '2026-09-20' },
       { file: 'public/img/selftest-13.jpg', source: 'https://caparol.md/b/ \u00b7 https://caparol.md/fam.jpg', licence: GOOD_LICENCE, licenceUrl: 'https://caparol.md/b/', date: '2026-09-20' },
     ],
+  },
+  /* W26-08. The slider's shape, watched both ways: it must be SEEN as a filled
+     rendering, and its ratio must still be held to the row's. */
+  {
+    arm: 'W26-08 GREEN: a before/after slider img is a filled rendering',
+    want: null,
+    pages: [{ rel: 'self-test/ba-ok.html', html: '<img class="ba__after" data-photo-slot="BA-99-after" src="/img/x.jpg" alt="Ceva" width="1180" height="664">' }],
+    rows: [{ id: 'BA-99-after', page: '/somewhere/', ratio: '1180 / 664', min_px: '2360x1328', shows: 'nothing', state: 'filled', provenance: 'public/img/selftest-ba.jpg', alt: { ro: 'Ceva', ru: 'Ceva' } }],
+    prov: [{ file: 'public/img/selftest-ba.jpg', source: 'client direct transfer, Mihai, 22.09.2026', licence: 'owned by Rapid Construct, supplied for site use', licenceUrl: 'not required, client-supplied original', date: '2026-09-22' }],
+  },
+  {
+    arm: 'W26-08: a slider img whose width and height disagree with its row',
+    want: 'ratio',
+    pages: [{ rel: 'self-test/ba-bad.html', html: '<img class="ba__after" data-photo-slot="BA-98-after" src="/img/x.jpg" alt="Ceva" width="800" height="600">' }],
+    rows: [{ id: 'BA-98-after', page: '/somewhere/', ratio: '1180 / 664', min_px: '2360x1328', shows: 'nothing', state: 'filled', provenance: 'public/img/selftest-ba.jpg', alt: { ro: 'Ceva', ru: 'Ceva' } }],
+    prov: [{ file: 'public/img/selftest-ba.jpg', source: 'client direct transfer, Mihai, 22.09.2026', licence: 'owned by Rapid Construct, supplied for site use', licenceUrl: 'not required, client-supplied original', date: '2026-09-22' }],
   },
   /* W25-28, the group rule. Two arms, because "one picture, one group, one
      origin" has two ways to be wrong and neither depends on walk order. */

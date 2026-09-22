@@ -3135,3 +3135,43 @@ and the standing rule is that no new dependency or vendor is added without askin
 
 **What is blocked:** `COP-HERO`, `COPX-01`, `COPX-02`, and the photo bands W25-29 asks for.
 **Nothing else in W25-27 is blocked**: the product sourcing under W25-R20 needs no library.
+
+## Q-W26-01 · "RP" or "RC"? Your instruction and your two examples disagree · OPEN · opened 2026-09-22 (W26-09)
+
+**Raised W26-09, 2026-09-22. Shipped default: RC. Nothing is blocked.**
+
+Your instruction, verbatim:
+
+> on the Garduri, everywhere on the modele, change the initial IL to **RP**, example: IL12
+> Metal Plus should be **RC**12 Metal Plus and IL12 Metal PlusDV should be **RC**12 Metal
+> PlusDV
+
+**The sentence says RP and both examples say RC.** Two tokens to one, and RC is the pair you
+spelled out on real model names rather than named in the abstract.
+
+**Shipped: RC.** The four models render `RC12`, `RC30`, `RC40` and `RC100`. Three reasons:
+
+1. **The examples are the more specific instruction.** They name the exact strings you want on
+   the page, twice, and they agree with each other.
+2. **RC is Rapid Construct.** RP is not an abbreviation of anything on this site.
+3. **build.js already says so.** The guard `content/copertine.json` has carried since W14-23
+   fails with *"Models use Rapid Construct designations"*, and that file's models are `C-01` to
+   `C-12`, de-badged from the source's `IL301` to `IL311` in exactly this way. The fence file
+   was the last place a competitor's model code rendered.
+
+**If you meant RP**, say so and it is one data edit plus a regenerated ledger: four values in
+`content/garduri-modele.json`, eight ids, and the alt text on eight ledger rows. The guard and
+the card do not change.
+
+### Two things to know, neither of them blocking
+
+**The picture under each name is still Imperlux's.** GARD-01 to GARD-08 are filled with
+renders taken from `imperlux.md` under your override W25-R15, and the card above each one now
+reads `RC12 Metal Plus`. A visitor sees a Rapid Construct designation over a competitor's
+product photograph. Nothing is claimed about who made either, and `RC-pics-real/` still takes
+`GARD-01.jpg` to `GARD-08.jpg` from your own installations, which would end it.
+
+**The material names are unchanged, because you did not ask.** `Metal Plus` and `Metal PlusDV`
+are the source's product names and they render exactly as before, now beside our designation.
+**Recommended: rename those too**, so the line reads as one product family rather than half of
+ours and half of theirs. Say the word and it is the same shape of edit.

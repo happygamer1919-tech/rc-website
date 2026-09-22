@@ -2643,8 +2643,16 @@ ${faq}
 
 /* W24-08, the fence models page. Mirrors imperlux.md/garduri/garduri under
    W24-R6 and W24-R7. Eight cards, four designations in two materials, exactly as
-   the source lays them out and in the source's own order, which is IL12, IL30,
-   IL100, IL40: not numeric, and copied rather than tidied.
+   the source lays them out and in the source's own order, which is ~~IL12, IL30,
+   IL100, IL40~~ RC12, RC30, RC100, RC40: not numeric, and copied rather than
+   tidied.
+
+   AMENDED (W26-09, owner instruction 2026-09-22): THE DESIGNATION IS OURS NOW.
+   The source's IL12, IL30, IL40 and IL100 render as RC12, RC30, RC40 and RC100,
+   which is the same de-badging content/copertine.json took at W14-23, where
+   IL301 to IL311 became C-01 to C-12. The ORDER above is still the source's and
+   is still not tidied. Every other field is still the source's, including the
+   material names Metal Plus and Metal PlusDV.
 
    Rendered: the designation, the material, the style label, the sheet thickness,
    the colour count. Held and listed in docs/W24-CLAIMS-HELD.md: every price, every
@@ -2655,6 +2663,15 @@ const GARD_MODELE_FILE = 'content/garduri-modele.json';
 const GARD_MODELE = JSON.parse(fs.readFileSync(GARD_MODELE_FILE, 'utf8'));
 if (!Array.isArray(GARD_MODELE.models) || GARD_MODELE.models.length === 0) {
   die(`${GARD_MODELE_FILE} has no "models", so its grid would be a heading over a gap.`);
+}
+/* W26-09. The same refusal content/copertine.json has carried since W14-23, now that
+   this file's designations are ours too. It reads the MODELS and the PALETTE only,
+   never the _note or the source block, because those name the source on purpose and
+   a guard that fired on its own documentation would be turned off. Two digits or
+   three: the fence codes were IL12, IL30, IL40 and IL100, so the copertine guard's
+   three-digit shape would have let two of them straight back in. */
+if (/\bIL\s?\d{2,3}\b/i.test(JSON.stringify({ models: GARD_MODELE.models, palette: GARD_MODELE.palette }))) {
+  die(`${GARD_MODELE_FILE} still carries a competitor model code (IL followed by two or three digits). Models use Rapid Construct designations.`);
 }
 
 function gardModelePage(l) {

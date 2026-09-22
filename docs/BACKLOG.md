@@ -853,3 +853,15 @@ the owner invited to rename them. BA-02 to BA-04 get **no @2x rather than an ups
 learned the slider's bare `<img>` rendering**, which it had been reading as "rendered by no
 page", plus R-W's `owned by Rapid Construct, supplied for site use` origin; 2 new arms, 1 GREEN.
 Budgets unchanged. 25 of 25 gate commands exit 0.
+
+## W26-09 · Fence designations IL to RC
+**Status: PR OPEN** (2026-09-22). Inserted at the owner's request mid-dispatch. The four fence
+models render **RC12, RC30, RC40 and RC100** in place of imperlux.md's IL codes, and **zero
+competitor model codes remain in `dist/`**. **Not new policy**: `content/copertine.json` was
+de-badged at W14-23 and `build.js` has refused an IL code in that file ever since; the fence
+file was the last place one rendered. The guard now covers it **at two digits or three**, since
+the copertine guard's `\d{3}` would have let IL12, IL30 and IL40 back in. Seven arms, two
+controls, **one GREEN** (the `_note` naming the old codes is permitted). **RP vs RC**: the
+instruction said RP and both examples said RC; shipped RC, logged **Q-W26-01**. Material names,
+card order and the Imperlux pictures are unchanged and flagged with a recommendation. Heights
+unchanged to the pixel. 25 of 25 gate commands exit 0.

@@ -12037,3 +12037,63 @@ more.** Budgets unchanged: `/servicii/case-la-cheie/` 6,376 against 6,436 and RU
 ### Gates
 
 **25 of 25 gate commands exit 0.**
+
+## W26-09 · The last competitor model code, and the guard that was never extended, 2026-09-22
+
+Inserted at the owner's request mid-dispatch, outside the W26-01 to W26-07 list. Branch
+`w26/w26-09-fence-designations`, stacked on `w26/w26-08-before-after`.
+
+### What ships
+
+The four fence models render **`RC12`, `RC30`, `RC40` and `RC100`** in place of `imperlux.md`'s
+`IL12`, `IL30`, `IL40` and `IL100`. **Zero competitor model codes remain anywhere in `dist/`**,
+measured rather than assumed.
+
+### It is not new policy, it is the policy finally applied here
+
+**`content/copertine.json` was de-badged at W14-23**, `IL301` to `IL311` becoming `C-01` to
+`C-12`, and `build.js` has refused an IL code in that file ever since with the message
+*"Models use Rapid Construct designations"*. **The fence file was the last place one rendered**,
+and nothing in the repo stopped it. So the guard ships here too, and the guard is the substance
+of the card.
+
+**At two digits or three.** The copertine guard reads `\d{3}`, which against this file would
+have caught `IL100` and let `IL12`, `IL30` and `IL40` straight back in. **A guard copied
+without reading the data it is copied onto reports clean**, which is worse than no guard. It
+tests the serialised models and palette, so a code hiding in a style label or a colour name is
+caught, and it reads **neither the `_note` nor the `source` block**, which name the source on
+purpose: a guard that fires on its own documentation gets switched off.
+
+**Seven arms, two controls, one GREEN**: a two-digit designation, a three-digit designation, a
+code in a style label and a code in a palette name each exit 1 on the guard's own message; the
+`_note` naming `IL12` and `IL301` exits 0 and is permitted. The green arm is what proves the
+rule is not written tighter than the instruction.
+
+### RP or RC
+
+The instruction said **RP** and both worked examples said **RC12**. **Shipped RC**, logged as
+**Q-W26-01** with the default named: two tokens to one, RC is Rapid Construct, RP abbreviates
+nothing here, and `build.js`'s existing message already says "Rapid Construct designations".
+
+### What did not change
+
+**The material names are still the source's**, `Metal Plus` and `Metal PlusDV`, because the
+owner asked about the initials. **The order is still the source's** and still not tidied. **The
+pictures are still Imperlux's**, GARD-01 to GARD-08 under override W25-R15, so a Rapid
+Construct designation now sits over a competitor's render. Both are flagged in Q-W26-01 with a
+recommendation, and neither blocks.
+
+**Every record quoting an IL code is untouched under R-S**: this file, `docs/BACKLOG.md`,
+`docs/W24-CLAIMS-HELD.md` rows 36 to 39, the wave 14 audit and the W25 board cards all state
+what the source published when they were written, which is still what it publishes.
+
+### Recorded rather than silent
+
+The data file's `_note`, `build.js`'s W24-08 comment (struck in place, R-R style) and **all
+eight ledger rows** each carry an `AMENDED (W26-09)` block naming the code it was, the code it
+is, and that the picture is unchanged.
+
+### Heights and gates
+
+`/servicii/modele-garduri/` **3,820** against 3,880 and RU **3,842** against 3,902, **unchanged
+to the pixel** and measured anyway. **25 of 25 gate commands exit 0.**

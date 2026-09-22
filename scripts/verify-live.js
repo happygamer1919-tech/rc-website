@@ -42,6 +42,35 @@ const EXPECT_SHA = (process.env.EXPECT_SHA
   || require('child_process').execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' })).trim();
 const bust = (p) => `${ORIGIN}${p}${p.includes('?') ? '&' : '?'}${BUST}=1`;
 
+/* W25-19. The base path the site is served under, read off the origin rather
+   than guessed: an origin with a path (a preview build under /preview/x/) serves
+   every absolute href with that prefix, and the redirect targets are absolute. */
+/* Defensive, and for a reason that bit immediately: `--self-check` arrives as
+   argv[2], so ORIGIN is that flag on a self-check run and is never a URL. The
+   self-check must load this module without a network and without an origin. */
+const BASE_PATH = (() => {
+  try { return new URL(`${ORIGIN}/`).pathname.replace(/\/$/, ''); } catch { return ''; }
+})();
+
+/* W25-19. A plain cache-busted GET, no browser. Used only by the redirect check:
+   those pages move a browser on before anything can be measured, so what is
+   asserted about them is their bytes. Follows nothing: a redirect page must be
+   the thing that answers, not something that forwards at the HTTP layer. */
+function fetchText(url, depth = 0) {
+  return new Promise((resolve, reject) => {
+    if (depth > 3) return reject(new Error('too many HTTP redirects'));
+    require('https').get(url, { headers: { 'cache-control': 'no-cache', pragma: 'no-cache' } }, (res) => {
+      if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+        res.resume();
+        return resolve(fetchText(new URL(res.headers.location, url).toString(), depth + 1));
+      }
+      const c = [];
+      res.on('data', (x) => c.push(x));
+      res.on('end', () => resolve({ status: res.statusCode, body: Buffer.concat(c).toString('utf8') }));
+    }).on('error', reject);
+  });
+}
+
 /* --- the marker sets, per page type -------------------------------------- */
 /* R-P requires at least one marker per verification. These are the properties
    that would differ if a stale build were served, so a match is evidence the
@@ -88,6 +117,19 @@ const MARKERS = {
     // W24-07. The bento hub: four tiles, exactly three of them links.
     bentoTiles: 4,
     bentoLinks: 3,
+    /* W25-19. The consolidated roofing catalogue. 75 cards: 71 roofing records
+       plus the four metal tile models. The EXACT count is asserted here and not
+       `atLeast1`, unlike a catalogue page, because this section is not "whatever
+       the category holds": it is the whole roofing catalogue in one place, and a
+       build that lost a group would still render a grid. A stale copy made before
+       this card renders 0 and cannot pass for it.
+       `roofFilters: 8` is Toate plus the seven groups, and `roofOff: 0` is the
+       page as it loads with no filter chosen: a build that shipped a filter
+       already applied would hide cards from a visitor who asked for none. */
+    productCards: 75,
+    roofFilters: 8,
+    roofOff: 0,
+    foldedCards: 0,
   },
   /* W24-07. The rocă vulcanică page: four model cards, and no price anywhere.
      `bentoTiles: 0` is asserted because this page is a bento DESTINATION, not a
@@ -201,8 +243,15 @@ const PAGES = [
   { path: '/ru/servicii/fatade/',          type: 'service', label: 'svc RU fatade',  budget: 6000 },
   /* W24-06. The four roofing offers moved onto this page, so it leaves the shared
      6,000px service budget and takes its own, measured plus 60, under W24-R4. */
-  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 7658 },
-  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 7796 },
+  /* W25-19, ruling W25-R18. The roofing catalogue moved onto this page, so the
+     old figures stopped being budgets and became stale numbers. These are the
+     page as it ships, measured at 1440 with every reveal applied and settled,
+     PLUS 60, which is the same derivation W24-R4 gave every other row here.
+     docs/rulings/R-Y.md carries the measurement and the reason beside it, and
+     W25-R18 requires the figure to be re-measured on the deployed sha after the
+     merge and corrected there if the live page differs. */
+  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 16964 },
+  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 17124 },
   /* W24-07. The rocă vulcanică mirror page. */
   { path: '/servicii/roca-vulcanica/',     type: 'novatik', label: 'novatik RO',  budget: 4348 },
   { path: '/ru/servicii/roca-vulcanica/',  type: 'novatik', label: 'novatik RU',  budget: 4446 },
@@ -271,23 +320,34 @@ const PAGES = [
      Dasterum products under W25-R7. Every budget below is measured on the branch
      at 1280px with every reveal applied and settled, plus 60, under W24-R4.
      docs/rulings/R-Y.md carries the measurement each one came from. */
-  { path: '/catalog/materiale-acoperis/',                         type: 'category',    label: 'cat RO acop',   budget: 11917 },
-  { path: '/ru/catalog/materiale-acoperis/',                      type: 'category',    label: 'cat RU acop',   budget: 11944 },
-  { path: '/catalog/materiale-acoperis/tigla-metalica/',          type: 'subcategory', label: 'sub RO tigla',  budget: 3057 },
-  { path: '/ru/catalog/materiale-acoperis/tigla-metalica/',       type: 'subcategory', label: 'sub RU tigla',  budget: 3057 },
-  { path: '/catalog/materiale-acoperis/profnastil/',              type: 'subcategory', label: 'sub RO profn',  budget: 3554 },
-  { path: '/ru/catalog/materiale-acoperis/profnastil/',           type: 'subcategory', label: 'sub RU profn',  budget: 3554 },
-  { path: '/catalog/materiale-acoperis/hidroizolatie/',           type: 'subcategory', label: 'sub RO hidro',  budget: 5330 },
-  { path: '/ru/catalog/materiale-acoperis/hidroizolatie/',        type: 'subcategory', label: 'sub RU hidro',  budget: 5330 },
-  { path: '/catalog/materiale-acoperis/sistem-de-scurgere/',      type: 'subcategory', label: 'sub RO scurg',  budget: 4363 },
-  { path: '/ru/catalog/materiale-acoperis/sistem-de-scurgere/',   type: 'subcategory', label: 'sub RU scurg',  budget: 4363 },
-  { path: '/catalog/materiale-acoperis/elemente-suplimentare/',   type: 'subcategory', label: 'sub RO supl',   budget: 5023 },
-  { path: '/ru/catalog/materiale-acoperis/elemente-suplimentare/', type: 'subcategory', label: 'sub RU supl',  budget: 5023 },
-  { path: '/catalog/materiale-acoperis/elemente-de-siguranta/',   type: 'subcategory', label: 'sub RO sigur',  budget: 3032 },
-  { path: '/ru/catalog/materiale-acoperis/elemente-de-siguranta/', type: 'subcategory', label: 'sub RU sigur', budget: 3032 },
-  { path: '/catalog/materiale-acoperis/elemente-de-fixare/',      type: 'subcategory', label: 'sub RO fixar',  budget: 3517 },
-  { path: '/ru/catalog/materiale-acoperis/elemente-de-fixare/',   type: 'subcategory', label: 'sub RU fixar',  budget: 3517 },
+  /* W25-19. The eight roofing catalogue routes, times two locales, LEFT THIS
+     LIST. They are redirect pages now and they are not pages to measure: their
+     refresh fires before anything settles, so a browser measuring one reports the
+     height of /servicii/acoperisuri/ with a filter applied, which is a
+     measurement of a different page wearing this one's label. Deleting the rows
+     and saying nothing would have left sixteen live URLs nothing checks, so what
+     replaces them is `REDIRECTS` below: a plain cache-busted fetch of each one,
+     asserting the 200 the dispatch asks for and that all three of the page's
+     mechanisms name the same destination. It needs no browser and costs
+     milliseconds. */
 ];
+
+/* W25-19. The sixteen URLs that must keep answering. Built from the same two
+   facts the build is: the eight roofing routes and the two locale roots. Listing
+   them by hand would be a second copy of the catalogue's shape. */
+const REDIRECT_ROUTES = ['', 'tigla-metalica/', 'profnastil/', 'hidroizolatie/',
+  'sistem-de-scurgere/', 'elemente-suplimentare/', 'elemente-de-siguranta/', 'elemente-de-fixare/'];
+const REDIRECTS = [];
+for (const [loc, root, dest] of [['RO', '/catalog/', '/servicii/acoperisuri/'], ['RU', '/ru/catalog/', '/ru/servicii/acoperisuri/']]) {
+  for (const r of REDIRECT_ROUTES) {
+    REDIRECTS.push({
+      path: `${root}materiale-acoperis/${r}`,
+      target: `${dest}#mat-${r === '' ? 'toate' : r.replace(/\/$/, '')}`,
+      label: `redir ${loc} ${(r === '' ? 'parent' : r.replace(/\/$/, '')).slice(0, 10)}`,
+    });
+  }
+}
+
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 function rq(url, method = 'GET') {
@@ -365,6 +425,9 @@ const PROBE = `(async () => {
        thirty rows rather than passing quietly. */
     foldedCards: q('.prod--folded'),
     tileDiagrams: q('[data-tile-diagram]'),
+    /* W25-19. The roofing filter bar, and how many cards it is hiding. */
+    roofFilters: q('[data-roof-filter]'),
+    roofOff: q('.roof--off'),
   };
   const facts = {
     sameAsProfile: biz ? biz.sameAs.includes('https://maps.google.com/?cid=1981309119616115698') : null,
@@ -686,6 +749,33 @@ async function main() {
        and that let a deleted privacy section read as completeness. */
   }
 
+
+  /* --- W25-19, the sixteen redirect URLs ---------------------------------- */
+  /* The dispatch's own words are "every URL still answers 200", so that is what
+     is asserted, plus the three mechanisms agreeing on one destination. No
+     browser: a refresh fires before a measurement settles, which is exactly why
+     these left PAGES. Cache-busted like everything else here, and the build sha
+     is read off each one, because a redirect page served from a stale edge copy
+     would point at a section that build did not have. */
+  console.log('\nredirect pages (W25-19): 200, noindex, refresh, canonical and link agreeing...');
+  let redirOk = 0;
+  for (const rd of REDIRECTS) {
+    let res;
+    try { res = await fetchText(bust(rd.path)); } catch (e) { console.log(`  FAIL ${rd.label}: ${e.message}`); failures++; continue; }
+    const problems = [];
+    if (res.status !== 200) problems.push(`answered HTTP ${res.status}, not 200`);
+    const refresh = /<meta http-equiv="refresh" content="0; url=([^"]+)">/.exec(res.body);
+    if (!refresh) problems.push('carries no meta refresh');
+    else if (refresh[1] !== BASE_PATH + rd.target) problems.push(`refreshes to ${refresh[1]}, expected ${BASE_PATH + rd.target}`);
+    if (!/<meta name="robots" content="noindex, follow">/.test(res.body)) problems.push('is not noindex, follow');
+    if (refresh && !res.body.includes(`href="${refresh[1]}"`)) problems.push(`has no visible link to ${refresh[1]}`);
+    const sha = /<meta name="build-sha" content="([^"]*)">/.exec(res.body);
+    if (!sha) problems.push('carries no build-sha');
+    else if (sha[1] !== EXPECT_SHA) problems.push(`build-sha ${sha[1].slice(0, 12)} is not the expected ${EXPECT_SHA.slice(0, 12)}`);
+    if (problems.length) { console.log(`  FAIL ${rd.label.padEnd(20)} ${rd.path}`); problems.forEach((x) => console.log(`         ${x}`)); failures++; }
+    else { redirOk++; console.log(`  OK   ${rd.label.padEnd(20)} 200 -> ${rd.target}`); }
+  }
+  console.log(`  ${redirOk} of ${REDIRECTS.length} redirect URLs answer 200 and agree on their destination`);
 
   /* Reachability crawl, also cache-busted: follow every visible anchor a
      visitor could click and read the rendered text of each destination. */

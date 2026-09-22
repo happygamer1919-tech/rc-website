@@ -2957,3 +2957,44 @@ closes it.**
 **Nothing is blocked behind this.** W25-15 stops, W25-16 continues, and the site is
 unchanged.
 
+
+## Q-W25-17 · Four metal tile models and four Dasterum tiles carry the same four names
+
+**Raised W25-19, 2026-09-21. Nothing is blocked: the dispatch names both sets and both are
+on the page. This records what a visitor now sees, so the decision is made against it.**
+
+The dispatch specifies the Tigla metalica filter as **"Imperlux models plus Dasterum
+tigla"**, and both are there. They are the same four profile names from two suppliers:
+
+| Card | Source of the record | Price it prints |
+|---|---|---|
+| Monterrey (`ACTM-01`) | `content/tigla-metalica.json`, the tile page's own models | De la 184 lei/m² |
+| Țiglă metalică Monterrey (`CAT-0224`) | Dasterum, under W25-R7 | De la 110 lei |
+| Valencia (`ACTM-02`) | the tile page's models | De la 184 lei/m² |
+| Țiglă metalică Valencia (`CAT-0225`) | Dasterum | De la 110 lei |
+| Kascad (`ACTM-03`) | the tile page's models | De la 189 lei/m² |
+| Țiglă metalică Kascad (`CAT-0227`) | Dasterum | De la 110 lei |
+| Țiglă metalică modulară (`ACTM-04`) | the tile page's models | De la 188 lei/m² |
+| Țiglă metalică modulară (`CAT-0226`) | Dasterum | De la 169 lei |
+
+**Monterrey, Valencia, Kascad and modulară are generic profile names** that every metal tile
+maker in the region uses, so two suppliers publishing the same four names is ordinary. What
+a visitor sees on one filter is **two prices for what reads as the same tile**, 184 against
+110, and nothing on the card says why.
+
+  (a) **Leave it.** Eight cards, two suppliers, and the difference is grade: the tile page's
+      models are Standart and Premium at 0,45 and 0,50mm with a 10 or 20 year warranty, and
+      the Dasterum rows state no grade at all. A visitor who presses either card gets a
+      quote and a person answers it. **This is what ships.**
+  (b) **Name the supplier on the card.** Puts a brand line on eight cards. The tile page's
+      models have no published supplier in this repo (Q-W14-08 has been open since wave 14),
+      so this needs that answer first.
+  (c) **Drop one set from the filter.** Either the four model cards, leaving the filter as
+      the Dasterum four, or the four Dasterum rows. One supplier's range disappears.
+  (d) **Merge them into four cards** with both prices. Needs a card shape that does not
+      exist and a rule about which price leads.
+
+**Recommended: (a) until Q-W14-08 is answered, then (b).** A supplier name is the thing that
+makes two prices legible, and this repo cannot print one for the tile page's models yet.
+
+**Shipped default: (a).**

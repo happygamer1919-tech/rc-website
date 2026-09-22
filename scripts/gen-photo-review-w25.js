@@ -60,7 +60,10 @@ function section(id) {
   const n = catNum(id);
   if (n !== null) return (n >= ACOP_FIRST && n <= ACOP_LAST) ? 'Acoperisuri' : 'Catalog';
   if (id.startsWith('CATEG-')) return 'Catalog';
-  if (id.startsWith('ACOP-') || id.startsWith('NVK-')) return 'Acoperisuri';
+  /* W25-19. `ACTM-` is the four metal tile model cards the consolidated roofing
+     section added. They are Acoperisuri slots and they belong in this list: a
+     slot the owner's own review list cannot see is a slot nobody reviews. */
+  if (id.startsWith('ACOP-') || id.startsWith('NVK-') || id.startsWith('ACTM-')) return 'Acoperisuri';
   if (id.startsWith('GARD-') || id.startsWith('GARDB-')) return 'Garduri';
   return null;
 }

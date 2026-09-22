@@ -363,7 +363,7 @@ them apart: nothing from the earlier dispatch is a labelled swatch or carries a 
 | `CATEG-07` | CATEG-07 | /catalog/ | catalogue category tile, in AI-PROMPTS-W25.md |
 | `CATEG-08` | CATEG-08 | /catalog/ | catalogue category tile, in AI-PROMPTS-W25.md |
 
-### Acoperisuri (8)
+### Acoperisuri (12)
 
 | Slot | Product | Page | Reason |
 |---|---|---|---|
@@ -375,6 +375,10 @@ them apart: nothing from the earlier dispatch is a labelled swatch or carries a 
 | `ACOP-02` | ACOP-02 | /servicii/acoperisuri/ | hub tile, PRIORITY BATCH at the top of AI-PROMPTS-W25.md (W25-12) |
 | `ACOP-03` | ACOP-03 | /servicii/acoperisuri/ | hub tile, PRIORITY BATCH at the top of AI-PROMPTS-W25.md (W25-12) |
 | `ACOP-04` | ACOP-04 | /servicii/acoperisuri/ | hub tile, PRIORITY BATCH at the top of AI-PROMPTS-W25.md (W25-12) |
+| `ACTM-01` | ACTM-01 | /servicii/acoperisuri/ | a named tile product: W25-R2 forbids a generated image on one, and no packshot of this model was sourced (W25-19) |
+| `ACTM-02` | ACTM-02 | /servicii/acoperisuri/ | a named tile product: W25-R2 forbids a generated image on one, and no packshot of this model was sourced (W25-19) |
+| `ACTM-03` | ACTM-03 | /servicii/acoperisuri/ | a named tile product: W25-R2 forbids a generated image on one, and no packshot of this model was sourced (W25-19) |
+| `ACTM-04` | ACTM-04 | /servicii/acoperisuri/ | a named tile product: W25-R2 forbids a generated image on one, and no packshot of this model was sourced (W25-19) |
 
 ### Garduri: none
 

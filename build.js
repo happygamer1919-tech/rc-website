@@ -162,6 +162,8 @@ const SVC_RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu',
   'svc.roofOffers',
   // W24-07. The bento hub, the first section after the header on its page.
   'svc.bento',
+  // W25-19. The consolidated roofing catalogue, on the acoperisuri page only.
+  'svc.roofProducts',
   // W12-06. The bar is site-wide, so the service template needs it raw too.
   'promoBar',
   // W12-09. Generated JSON-LD fragment, must not be escaped.
@@ -815,7 +817,15 @@ function catalogLinkArrow(l, slug) {
   if (i < 0) die(`catalogLinkArrow: no category in ${CATALOG_FILE} opens /catalog/${slug}/.`);
   const where = `${CATALOG_FILE}: categories[${i}]`;
   const label = esc(catalogField(CATALOG.categories[i], 'label', l, where));
-  const href = catalogHref(CATALOG.categories[i], l, where);
+  /* W25-19. The roofing category's page only forwards to the section now, so a
+     link to it would cost the visitor a page load to arrive where this link was
+     already sending them. The LABEL is unchanged and still comes from
+     content/catalog.json: only the destination moves. Both call sites are roofing
+     ones, the tile page and the offers block, and both are what the dispatch
+     means by "add a link to the section". */
+  const href = slug === ROOF_CATEGORY
+    ? `${BASE}${ROOF_SECTION_PATH(l)}#${roofAnchor(ROOF_ALL)}`
+    : catalogHref(CATALOG.categories[i], l, where);
   return `
     <a class="link-arrow" href="${href}" data-reveal style="margin-top: 16px;">${label}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>`;
 }
@@ -1040,17 +1050,23 @@ function notFoundLocale(l) {
    moment this number moved. A number that appears twice is a number that drifts. */
 const PROD_STEP = 9;
 
-function catalogProducts(l, slug) {
-  const records = CATALOG_PRODUCTS[slug] || [];
-  if (!records.length) return '';
-  const label = (k) => {
-    const v = l.strings[`catalogProducts.${k}`];
-    if (!REAL(v)) die(`catalogProducts.${k} must be real in ${l.code}.`);
-    return v;
-  };
-  const arrow = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+/* W25-19. The card, lifted out of catalogProducts unchanged, because the
+   consolidated roofing section on /servicii/acoperisuri/ renders the SAME card
+   and a second copy of this markup would be a second thing to keep in step. The
+   only addition is `extra`, an attribute string the caller puts on the
+   <article>: the roofing section uses it to carry which filter groups a record
+   belongs to, and nothing else uses it. */
+function prodLabel(l, k) {
+  const v = l.strings[`catalogProducts.${k}`];
+  if (!REAL(v)) die(`catalogProducts.${k} must be real in ${l.code}.`);
+  return v;
+}
+const PROD_ARROW = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
 
-  const cards = records.map((r, i) => {
+function prodCard(l, r, i, extra = '') {
+  const label = (k) => prodLabel(l, k);
+  const arrow = PROD_ARROW;
+  {
     const name = r.name[l.code];
     const variant = r.variant && r.variant[l.code];
     /* The price is the source's own string for this locale, unit included. It is
@@ -1097,8 +1113,15 @@ function catalogProducts(l, slug) {
     parts.push(`            <a class="prod__cta" href="#oferta" data-product="${esc(lead)}" aria-label="${esc(label('ctaAria'))}: ${esc(lead)}">${arrow}</a>`);
     parts.push('          </div>');
     parts.push('        </div>');
-    return `      <article class="prod" data-product-card data-reveal data-stagger="${Math.min(i, 6)}">\n${parts.join('\n')}\n      </article>`;
-  });
+    return `      <article class="prod" data-product-card${extra} data-reveal data-stagger="${Math.min(i, 6)}">\n${parts.join('\n')}\n      </article>`;
+  }
+}
+
+function catalogProducts(l, slug) {
+  const records = CATALOG_PRODUCTS[slug] || [];
+  if (!records.length) return '';
+  const label = (k) => prodLabel(l, k);
+  const cards = records.map((r, i) => prodCard(l, r, i));
 
   /* The dispatch specifies the page as breadcrumb, heading and grid, with no
      visible section heading. A card's name is an h3, so without an h2 between
@@ -1175,11 +1198,17 @@ ${cards.join('\n')}
 function catalogIndexTiles(l) {
   return PARENT_CATEGORIES.map((c, i) => {
     const label = categoryLabel(l, c);
+    /* W25-19. The roofing tile opens the consolidated section rather than a page
+       that now only forwards to it. The other seven are unchanged: this is the
+       one category whose products live somewhere else. */
+    const href = c.slug === ROOF_CATEGORY
+      ? `${BASE}${ROOF_SECTION_PATH(l)}#${roofAnchor(ROOF_ALL)}`
+      : `${BASE}${CATALOG_ROOT[l.code]}${c.slug}/`;
     /* The tile's name is the category, stated. Without it the accessible name is
        assembled from the contents and opens with the placeholder's own slot id,
        so a screen-reader user hears "CATEG-01" before every category, seven times
        a page. */
-    return `      <a class="cat-tile" href="${BASE}${CATALOG_ROOT[l.code]}${c.slug}/" aria-label="${esc(label)}" data-reveal data-stagger="${Math.min(i, 6)}">
+    return `      <a class="cat-tile" href="${href}" aria-label="${esc(label)}" data-reveal data-stagger="${Math.min(i, 6)}">
         ${placeholder(`CATEG-${String(i + 1).padStart(2, '0')}`, { variant: 'dark', className: 'cat-tile__ph', locale: l.code, eager: i < 4 })}
         <span class="cat-tile__body"><span class="cat-tile__label">${esc(label)}</span></span>
       </a>`;
@@ -2289,6 +2318,156 @@ const CATALOG_PRODUCTS = Object.fromEntries(
   if (emptyPage.length) die(`${emptyPage.length} catalogue page(s) would render an empty grid: ${emptyPage.join(', ')}. A category with no product is not a page.`);
 })();
 
+/* --- W25-19, the consolidated roofing section ------------------------------ */
+
+/* The roofing catalogue moves onto `/servicii/acoperisuri/`, the page that already
+   says what Rapid Construct does with these materials, and the eight catalogue
+   URLs become redirect pages that still answer 200 and land on the matching
+   filter. A visitor who wanted a gutter was three clicks and two page loads from
+   one; now they are on the page that sells the roof.
+
+   THE FILTER IS THE SUBCATEGORY LIST, read from content/catalog.json, so the
+   groups, their labels and their order are the menu's own and nothing is typed
+   here. A record can belong to more than one group, and three do, so a card
+   carries a SPACE-SEPARATED list of groups and appears once in the DOM under
+   every filter that matches it. Duplicating the card per group would have put the
+   same picture on two cards, which gate 19 forbids for good reason.
+
+   THE CARD IS `prodCard`, the catalogue's own, so the quote button, the price
+   element and the placeholder behave exactly as they do on a catalogue page, and
+   the phone fold is the same `data-prod-step` main.js already reads.
+
+   THE PREFIX IS `.roof-*` and rule 3.1 was checked before the first rule was
+   written: `grep '\.roof' src/styles.css` returned nothing. */
+const ROOF_CATEGORY = 'materiale-acoperis';
+const ROOF_SECTION_PATH = (l) => `${SERVICES_ROOT[l.code]}acoperisuri/`;
+
+/* The groups, and the ids the redirect pages and the menu aim at. `mat-<slug>` is
+   on the filter BUTTON, so a hash lands on the control it names and main.js has
+   the button in hand without a second lookup. */
+const roofGroups = (() => {
+  const cat = CATALOG.categories[PARENT_CATEGORIES.findIndex((c) => c.slug === ROOF_CATEGORY)];
+  const kids = (cat && cat.children) || [];
+  if (kids.length !== 7) die(`the roofing category has ${kids.length} subcategories in ${CATALOG_FILE}; W25-19's filter bar is built from them and expects 7.`);
+  return kids.map((k, ki) => {
+    const href = k.href && k.href.ro;
+    const m = /^\/catalog\/materiale-acoperis\/([^/]+)\/$/.exec(href || '');
+    if (!m) die(`${CATALOG_FILE}: roofing child ${ki} href "${href}" is not /catalog/materiale-acoperis/<child>/.`);
+    return { child: m[1], slug: `${ROOF_CATEGORY}/${m[1]}`, label: k.label };
+  });
+})();
+const ROOF_ALL = 'toate';
+/* The eight routes that stop being catalogue pages and become redirect pages.
+   Derived, never listed: the parent plus its own children, so adding a roofing
+   subcategory to content/catalog.json adds its redirect page too. */
+const ROOF_MOVED_ROUTES = new Set();
+const MOVED_RAW_KEYS = new Set(['promoBar']);
+const roofAnchor = (child) => `mat-${child}`;
+ROOF_MOVED_ROUTES.add(ROOF_CATEGORY);
+for (const g of roofGroups) ROOF_MOVED_ROUTES.add(g.slug);
+if (ROOF_MOVED_ROUTES.size !== 8) die(`W25-19 expects 8 roofing routes to become redirect pages, derived ${ROOF_MOVED_ROUTES.size}.`);
+
+/* W25-19. The four metal tile models, as catalogue cards.
+
+   THE DISPATCH SAYS "Imperlux models plus Dasterum tigla", so the Tigla metalica
+   filter holds both: the four models `/servicii/tigla-metalica/` already
+   publishes, and the four tiles Dasterum supplies. They are the same four profile
+   names from two suppliers at two prices, which is a real thing about this market
+   and not a duplicate row; Q-W25-17 records it for the owner.
+
+   THE PRICE IS NOT COMPOSED OUT OF THIN AIR. It is `gardModele.priceFrom` plus
+   the LOWEST `list_price_lei` in the model plus `tigla.perM2`, all three of them
+   strings this repo already ships and prints. "de la" is W25-R8's own shape: the
+   current public price and nothing struck through.
+
+   THE SLOT IDS ARE NEW, `ACTM-01` to `ACTM-04`, because these four cards had no
+   placeholder before: the tile page shows profile diagrams, not photographs. They
+   are ordinary ledger rows and gate 19 holds them like any other. */
+function roofTiglaRecords(l) {
+  const from = l.strings['gardModele.priceFrom'];
+  const perM2 = l.strings['tigla.perM2'];
+  const gradeOf = (g) => l.strings[`tigla.${g}`];
+  if (!REAL(from) || !REAL(perM2)) die(`gardModele.priceFrom and tigla.perM2 must be real in ${l.code}.`);
+  return TIGLA.models.map((m, i) => {
+    const prices = m.variants.map((v) => Number(v.list_price_lei)).filter((n) => n > 0);
+    if (!prices.length) die(`content/tigla-metalica.json: model "${m.id}" has no list price, so its card cannot state one.`);
+    const grades = [...new Set(m.variants.map((v) => gradeOf(v.grade)))].filter(REAL);
+    const render = `${from} ${Math.min(...prices)} ${perM2}`;
+    return {
+      slot: `ACTM-0${i + 1}`,
+      name: { [l.code]: m.name[l.code] },
+      brand: null,
+      variant: { [l.code]: grades.join(' / ') },
+      price: { render: { [l.code]: render } },
+    };
+  });
+}
+
+function roofSection(l) {
+  const records = CATALOG_PRODUCTS[ROOF_CATEGORY] || [];
+  if (!records.length) die('the roofing category has no records, so W25-19 would render an empty section.');
+  const label = (k) => prodLabel(l, k);
+  const s = (k) => {
+    const v = l.strings[`roofProducts.${k}`];
+    if (!REAL(v)) die(`roofProducts.${k} must be real in ${l.code}.`);
+    return v;
+  };
+  /* The count the status line prints is substituted from ONE string, here and in
+     main.js, so the server-rendered "75 produse afisate" and the number the
+     filter writes after a press cannot say it two different ways. A string that
+     lost its placeholder would leave the live region printing a literal {n}. */
+  if (!s('showing').includes('{n}')) die(`roofProducts.showing for ${l.code} has no {n} placeholder, so the filter's live count cannot be written.`);
+
+  /* Which groups each record is in, read from the records' own category list so a
+     card cannot claim a group the data does not put it in. */
+  const groupsFor = (r) => roofGroups.filter((g) => (r.categories || []).includes(g.slug)).map((g) => g.child);
+  const orphan = records.filter((r) => !groupsFor(r).length);
+  if (orphan.length) die(`${orphan.length} roofing record(s) belong to no subcategory, so no filter would ever show them: ${orphan.map((r) => r.slot).join(', ')}.`);
+
+  const tigla = roofTiglaRecords(l);
+  const cards = [
+    ...tigla.map((r, i) => prodCard(l, r, i, ` data-roof-groups="tigla-metalica"`)),
+    ...records.map((r, i) => prodCard(l, r, i + tigla.length, ` data-roof-groups="${esc(groupsFor(r).join(' '))}"`)),
+  ];
+
+  const counts = new Map(roofGroups.map((g) => [g.child,
+    records.filter((r) => groupsFor(r).includes(g.child)).length + (g.child === 'tigla-metalica' ? tigla.length : 0)]));
+  const total = cards.length;
+
+  const btn = (id, text, n, active) =>
+    `        <button class="roof-filter__btn" type="button" id="${esc(roofAnchor(id))}" data-roof-filter="${esc(id)}"`
+    + ` aria-pressed="${active ? 'true' : 'false'}">${esc(text)} <span class="roof-filter__n">${n}</span></button>`;
+  const bar = [btn(ROOF_ALL, s('all'), total, true), ...roofGroups.map((g) => btn(g.child, g.label[l.code], counts.get(g.child), false))];
+
+  const ariaRaw = label('moreAria');
+  if (!ariaRaw.includes('{n}')) die(`catalogProducts.moreAria for ${l.code} has no {n} placeholder.`);
+  const more = total > PROD_STEP
+    ? `
+    <div class="prod-more" data-prod-more hidden>
+      <button class="btn btn--outline prod-more__btn" type="button" data-prod-more-btn aria-controls="produse-grid" aria-label="${esc(ariaRaw.replace('{n}', String(PROD_STEP)))}">${esc(label('more'))}</button>
+    </div>`
+    : '';
+
+  /* `aria-live="polite"` on the count, because pressing a filter changes what is
+     on the page and nothing else announces it. The count is also the no-JS
+     fallback's honest state: with no script every card is shown, and the bar
+     reads the total. */
+  return `<section class="section section--light section--divided" id="produse" aria-labelledby="produse-h">
+  <div class="container">
+    <p class="eyebrow" data-reveal>${esc(s('eyebrow'))}</p>
+    <h2 id="produse-h" data-reveal>${esc(s('h2'))}</h2>
+    <p class="lede" data-reveal>${esc(s('lede'))}</p>
+    <div class="roof-filter" role="group" aria-label="${esc(s('filterAria'))}" data-roof-bar>
+${bar.join('\n')}
+    </div>
+    <p class="roof-filter__status muted" data-roof-status data-roof-showing="${esc(s('showing'))}" aria-live="polite">${esc(s('showing').replace('{n}', String(total)))}</p>
+    <div class="prod-grid" id="produse-grid" data-prod-grid data-roof-grid data-prod-step="${PROD_STEP}">
+${cards.join('\n')}
+    </div>${more}
+  </div>
+</section>`;
+}
+
 /* W24-06. `parent` names the service page a product page sits under. Only the
    tile page has one: the dispatch makes tigla metalica a child of acoperisuri,
    because a metal tile is a roof and the page reads as one of several roofing
@@ -2631,6 +2810,8 @@ const CAT_RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu',
   'cat.tiles',
 ]);
 const categoryTemplate = fs.readFileSync('src/category.html', 'utf8');
+/* W25-19. The redirect page the eight roofing catalogue URLs become. */
+const movedTemplate = fs.readFileSync('src/moved.html', 'utf8');
 const catalogIndexTemplate = fs.readFileSync('src/catalog-index.html', 'utf8');
 const inConstructieTemplate = fs.readFileSync('src/in-constructie.html', 'utf8');
 /* W24-06. The shared "not yet" page the calculate-a-price tiles land on. */
@@ -3021,6 +3202,8 @@ for (const l of loaded) {
        the dispatch is explicit about, so it renders above the hero block rather
        than below it. W24-08 adds the garduri one from the same table. */
     svcVars['svc.bento'] = BENTOS[slug] ? bentoSection(l, BENTOS[slug]) : '';
+    /* W25-19. The same one-page rule the roofing offers already follow. */
+    svcVars['svc.roofProducts'] = slug === ROOF_OFFERS_SLUG ? roofSection(l) : '';
     svcVars['svc.gallerySection'] = renderGallerySection(l, slug, vars);
     svcVars['svc.footerLinks'] = SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
       `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join('');
@@ -3113,6 +3296,31 @@ for (const l of loaded) {
   for (const c of CATEGORIES) {
     const out = 'dist' + CATALOG_ROOT[l.code] + c.slug + '/index.html';
     const head = categoryHeadVars(l, c);
+    /* W25-19. The roofing category and its seven children are REDIRECT PAGES now.
+       They keep their URLs and answer 200, and land on the matching filter in the
+       consolidated section. The rest of this loop is untouched: a page that is
+       not roofing is built exactly as it was. */
+    if (ROOF_MOVED_ROUTES.has(c.slug)) {
+      const target = BASE + ROOF_SECTION_PATH(l) + '#' + roofAnchor(c.parent == null ? ROOF_ALL : c.slug.split('/')[1]);
+      const movedVars = {
+        ...vars,
+        'moved.target': target,
+        'moved.canonical': SITE + BASE + ROOF_SECTION_PATH(l),
+        'moved.eyebrow': head.title,
+        'moved.metaTitle': head.metaTitle,
+        'moved.metaDesc': head.metaDesc,
+      };
+      const missingMoved = new Set();
+      const movedHtml = movedTemplate.replace(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/g, (_, key) => {
+        if (key in movedVars) return MOVED_RAW_KEYS.has(key) ? movedVars[key] : esc(movedVars[key]);
+        missingMoved.add(key); return `{{${key}}}`;
+      });
+      if (missingMoved.size) die(`src/moved.html references unknown keys for ${l.code}/${c.slug}: ${[...missingMoved].join(', ')}`);
+      if (movedHtml.includes('{{')) die(`unsubstituted placeholder survived in ${out}`);
+      fs.mkdirSync(path.dirname(out), { recursive: true });
+      fs.writeFileSync(out, movedHtml);
+      continue;
+    }
     const parent = c.parent == null ? null : PARENT_CATEGORIES.find((x) => x.slug === c.parent);
     if (c.parent != null && !parent) die(`${c.slug} names the parent ${c.parent}, which is not a category page.`);
     const crumb = (href, text) => `      <a href="${href}">${esc(text)}</a>\n      <span aria-hidden="true">/</span>`;
@@ -3290,7 +3498,12 @@ const categoryPairs = [
     ru: SITE + BASE + CATALOG_ROOT.ru,
     lastmod: lastmodOf(...CAT_SOURCES, 'src/catalog-index.html'),
   },
-  ...CATEGORIES.map((c) => ({
+  /* W25-19. The eight roofing routes are redirect pages now, `noindex, follow`,
+     and a sitemap that advertises a noindex page asks a crawler to index what the
+     page tells it not to. They keep their URLs and still answer 200; they just
+     stop being advertised. The page they land on, /servicii/acoperisuri/, is
+     already in the sitemap as a service page. */
+  ...CATEGORIES.filter((c) => !ROOF_MOVED_ROUTES.has(c.slug)).map((c) => ({
     ro: SITE + BASE + CATALOG_ROOT.ro + c.slug + '/',
     ru: SITE + BASE + CATALOG_ROOT.ru + c.slug + '/',
     lastmod: lastmodOf(...CAT_SOURCES),

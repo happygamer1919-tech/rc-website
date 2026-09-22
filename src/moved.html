@@ -1,0 +1,55 @@
+<!-- W25-19. A redirect page, and the reason it is a PAGE rather than a rule.
+
+     The roofing catalogue moved onto /servicii/acoperisuri/. These eight URLs are
+     in the catalog mega-menu, in the sitemap this site has published for weeks,
+     and in whatever a visitor has bookmarked. GitHub Pages serves static files
+     and cannot answer a 301, so the choice is a dead URL or a page that answers
+     200 and moves the visitor on. This is the second.
+
+     THREE MECHANISMS, in the order they fire, because each one covers what the
+     one before it cannot:
+       1. the http-equiv refresh in the head, which moves a visitor with no
+          JavaScript at all. It is not written out here: the catalogue gate reads
+          these pages whole, comments included, and an example of the tag in a
+          comment is a second tag as far as a regex is concerned. It found this
+          comment before it found the real one;
+       2. a `<link rel="canonical">` at the destination and `robots: noindex,
+          follow`, which is what tells a crawler the page is not the thing;
+       3. a real, visible link, because a refresh that a browser extension blocks
+          must still leave the visitor somewhere they can act.
+
+     It carries the promo bar and nothing else of the site's chrome: the bar is
+     what scripts/verify-live.js reads to know a page is ready, and a page it can
+     never call ready is a row it can never measure. -->
+<!doctype html>
+<html lang="{{meta.lang}}" dir="{{meta.dir}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{moved.metaTitle}}</title>
+<meta name="description" content="{{moved.metaDesc}}">
+<meta name="robots" content="noindex, follow">
+<meta name="build-sha" content="{{buildSha}}">
+<meta http-equiv="refresh" content="0; url={{moved.target}}">
+<link rel="canonical" href="{{moved.canonical}}">
+<meta name="theme-color" content="#F65308">
+<link rel="icon" href="{{base}}/favicon-512.png" sizes="512x512" type="image/png">
+<link rel="stylesheet" href="{{base}}/styles.css">
+</head>
+<body>
+{{promoBar}}
+<main id="continut">
+<section class="section section--light">
+  <div class="container">
+    <p class="eyebrow">{{moved.eyebrow}}</p>
+    <h1>{{moved.h1}}</h1>
+    <p class="lede">{{moved.lede}}</p>
+    <div class="cta-row" style="justify-content: flex-start; margin-top: 32px;">
+      <a class="btn btn--primary" href="{{moved.target}}">{{moved.cta}}</a>
+    </div>
+    <p class="muted" style="margin-top: 16px;">{{moved.note}}</p>
+  </div>
+</section>
+</main>
+</body>
+</html>

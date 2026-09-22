@@ -4105,6 +4105,42 @@
       "min_px": "1200x900",
       "shows": "Categoria \"Acoperișuri\": un material sau un grup de materiale de acoperiș din aceasta categorie, fotografiate simplu pe fundal deschis. Fara mana, fara decor.",
       "state": "placeholder"
+    },
+    {
+      "id": "ACTM-01",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Tigla metalica \"Monterrey\", o foaie singura, pe fundal deschis si uniform, incadrata patrat, ca sa se vada profilul valurilor. Fara mana, fara decor, fara alt produs in cadru.",
+      "state": "placeholder",
+      "empty_reason": "a named tile product: W25-R2 forbids a generated image on one, and no packshot of this model was sourced (W25-19)"
+    },
+    {
+      "id": "ACTM-02",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Tigla metalica \"Valencia\", o foaie singura, pe fundal deschis si uniform, incadrata patrat, ca sa se vada profilul valurilor. Fara mana, fara decor, fara alt produs in cadru.",
+      "state": "placeholder",
+      "empty_reason": "a named tile product: W25-R2 forbids a generated image on one, and no packshot of this model was sourced (W25-19)"
+    },
+    {
+      "id": "ACTM-03",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Tigla metalica \"Kascad\", o foaie singura, pe fundal deschis si uniform, incadrata patrat, ca sa se vada profilul valurilor. Fara mana, fara decor, fara alt produs in cadru.",
+      "state": "placeholder",
+      "empty_reason": "a named tile product: W25-R2 forbids a generated image on one, and no packshot of this model was sourced (W25-19)"
+    },
+    {
+      "id": "ACTM-04",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Tigla metalica \"Țiglă metalică modulară\", o foaie singura, pe fundal deschis si uniform, incadrata patrat, ca sa se vada profilul valurilor. Fara mana, fara decor, fara alt produs in cadru.",
+      "state": "placeholder",
+      "empty_reason": "a named tile product: W25-R2 forbids a generated image on one, and no packshot of this model was sourced (W25-19)"
     }
   ]
 }

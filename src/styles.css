@@ -450,6 +450,37 @@ p { margin: 0; }
   .prod-more:not([hidden]) { display: block; }
 }
 
+/* --- W25-19, the roofing filter bar ----------------------------------------- */
+/* RULE 3.1 WAS CHECKED FIRST: `grep '\.roof' src/styles.css` returned nothing, so
+   the prefix was free. `.filter` and `.filters` were the obvious reuse and are
+   the portfolio chips', which is exactly the reuse rule 3.1 forbids: a class can
+   carry a RULE as well as a look, and the portfolio's chips are hidden and shown
+   by a different script.
+
+   The look is the portfolio chip's, written out here rather than shared, because
+   these two controls are free to diverge and sharing a class would mean they
+   could not. No new colour value: every token below is already in :root.
+
+   `.roof--off` is what the filter hides a card with, and unlike `.prod--folded`
+   it is NOT inside a media query: a filter applies at every width, and the fold
+   is the only thing that is a phone behaviour. */
+.roof-filter { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 0; }
+.roof-filter__btn {
+  height: 40px; padding: 0 18px;
+  border-radius: var(--radius-control); border: 1px solid var(--line);
+  background: transparent; color: var(--ink);
+  font-family: inherit; font-size: 17px; font-weight: 400; line-height: 1;
+  white-space: nowrap; cursor: pointer;
+}
+.roof-filter__btn:hover { border-color: var(--brand); color: var(--brand-dark); }
+.roof-filter__btn[aria-pressed='true'] {
+  background: var(--bg-light); border-color: var(--brand); color: var(--brand-dark); font-weight: 700;
+}
+.roof-filter__n { color: var(--ink-muted); font-weight: 400; }
+.roof-filter__btn[aria-pressed='true'] .roof-filter__n { color: var(--brand-dark); }
+.roof-filter__status { margin: 16px 0 0; font-size: 15px; }
+.prod-grid[data-roof-grid] .prod.roof--off { display: none; }
+
 /* --- W24-07, the bento hub (W24-R5, W24-R8) --------------------------------- */
 /* CORRECTED, same card. These were written as .bento__* and the garduri page has
    carried a .bento and .bento__tile since W16 for its chooser tiles. Both

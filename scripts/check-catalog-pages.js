@@ -237,6 +237,9 @@ if (!TERM_RES['capability-ro'].some((e) => e.re.test('garantie scrisa'))) fail('
 selfTested += 2;
 
 /* --- inputs --------------------------------------------------------------- */
+const MOVED_ROUTE = /^materiale-acoperis(\/[a-z-]+)?$/;
+/* W25-19. The two pages the roofing catalogue moved ONTO. Listed, not matched. */
+const CONSOLIDATED = new Set(['servicii/acoperisuri/index.html', 'ru/servicii/acoperisuri/index.html']);
 const ROOTS = [
   { dir: path.join(ROOT, 'dist', 'catalog'), locale: 'ro' },
   { dir: path.join(ROOT, 'dist', 'ru', 'catalog'), locale: 'ru' },
@@ -276,17 +279,33 @@ for (const r of ROOTS) {
       /* A file that is not a directory index carries no structure requirement of
          its own, because nothing says what it should be; it is scanned whole for
          every prohibition, which is the part that matters. */
-      kind: !isIndex ? 'other' : depth === 0 ? 'index' : depth === 1 ? 'category' : 'subcategory',
+      /* W25-19. The eight roofing routes stopped being catalogue pages and became
+         REDIRECT pages: they keep their URLs, answer 200, and forward to the
+         matching filter in the consolidated section on /servicii/acoperisuri/.
+         They are a kind of their own rather than an exemption, so they are still
+         scanned whole for every prohibition below AND are held to what a redirect
+         page must carry. Exempting them would have been the easy move and would
+         have left eight pages nothing checks. */
+      kind: !isIndex ? 'other'
+        : MOVED_ROUTE.test(path.relative(r.dir, path.dirname(f)).split(path.sep).join('/')) ? 'redirect'
+        : depth === 0 ? 'index' : depth === 1 ? 'category' : 'subcategory',
     });
   }
   const cats = present.filter((f) => path.relative(r.dir, path.dirname(f)).split(path.sep).length === 1 && path.relative(r.dir, path.dirname(f)) !== '');
   if (cats.length < 7) fail(`${path.relative(ROOT, r.dir)} holds ${cats.length} categories, expected at least 7`);
   if (!present.some((f) => path.dirname(f) === r.dir)) fail(`${path.relative(ROOT, r.dir)} has no index.html, so the catalogue root answers nothing`);
 }
-const byKind = { index: 0, category: 0, subcategory: 0, other: 0 };
+const byKind = { index: 0, category: 0, subcategory: 0, redirect: 0, other: 0 };
 for (const pg of pages) byKind[pg.kind]++;
-if (byKind.category === 0 || byKind.subcategory === 0 || byKind.index === 0) {
-  fail(`the walk found ${byKind.index} index, ${byKind.category} category and ${byKind.subcategory} subcategory page(s); each kind must be present or its own assertion proves nothing.`);
+if (byKind.category === 0 || byKind.subcategory === 0 || byKind.index === 0 || byKind.redirect === 0) {
+  fail(`the walk found ${byKind.index} index, ${byKind.category} category, ${byKind.subcategory} subcategory and ${byKind.redirect} redirect page(s); each kind must be present or its own assertion proves nothing.`);
+}
+/* W25-19. Eight routes in each locale, and the number is asserted: a redirect
+   that silently reverted to a catalogue page, or a ninth that appeared, is the
+   defect this catches. */
+for (const loc of ['ro', 'ru']) {
+  const n = pages.filter((p) => p.locale === loc && p.kind === 'redirect').length;
+  if (n !== 8) fail(`${loc} has ${n} roofing redirect page(s), expected 8: the category and its seven subcategories.`);
 }
 
 /* --- W17-02: the prose on each page --------------------------------------- */
@@ -308,11 +327,34 @@ let proseBlocks = 0;
 const STRUCTURE = {
   subcategory: { re: /<div class="prod-grid"[^>]*>[\s\S]*?<article class="prod"/, what: 'a product grid' },
   index: { re: /<div class="cat-tiles"[^>]*>[\s\S]*?<a class="cat-tile"/, what: 'the category tiles' },
+  /* W25-19. A redirect page carries all three mechanisms or it is not one: the
+     meta refresh that moves a visitor with no JavaScript, the noindex that stops
+     a crawler treating it as the thing, and a real anchor to the destination for
+     the case where the refresh is blocked. All three aim at the SAME section, and
+     `REDIRECT_TARGET` below asserts that they agree. */
+  redirect: {
+    re: /<meta http-equiv="refresh" content="0; url=\/(?:ru\/)?servicii\/acoperisuri\/#mat-[a-z-]+">/,
+    what: 'a meta refresh to the consolidated roofing section',
+  },
 };
+const REDIRECT_TARGET = /<meta http-equiv="refresh" content="0; url=([^"]+)">/;
 for (const pg of pages) {
   const article = pg.kind === 'index' ? 'an' : 'a';
   const need = STRUCTURE[pg.kind];
   if (need && !need.re.test(pg.text)) proseProblems.push(`${pg.where}: ${article} ${pg.kind} page carries ${need.what}, and this one does not`);
+  if (pg.kind === 'redirect') {
+    const m = REDIRECT_TARGET.exec(pg.text);
+    const target = m ? m[1] : null;
+    if (!/<meta name="robots" content="noindex, follow">/.test(pg.text)) {
+      proseProblems.push(`${pg.where}: a redirect page is noindex, follow, and this one is not. A sitemap-shaped URL that still indexes competes with the page it forwards to.`);
+    }
+    if (target && !pg.text.includes(`href="${target}"`)) {
+      proseProblems.push(`${pg.where}: its meta refresh goes to ${target} and no visible link on the page does. A refresh a browser blocks must still leave a way out.`);
+    }
+    if (target && !new RegExp(`<link rel="canonical" href="[^"]*${target.split('#')[0].replace(/[/]/g, '\\/')}"`).test(pg.text)) {
+      proseProblems.push(`${pg.where}: its canonical does not name the page its refresh goes to (${target.split('#')[0]}).`);
+    }
+  }
   if (pg.kind !== 'category') {
     /* A page that is not a category page must carry NO authored prose block: the
        parent's three paragraphs repeated on seven subcategories is exactly what
@@ -557,8 +599,26 @@ for (const f of allPages) {
      prod__price element on another page is a catalogue card's price that has
      escaped its card. */
   if (!isCategory) {
-    const n = (text.match(PRICE_CLASS) || []).length;
-    if (n) elsewhere.push(`${path.relative(ROOT, f)}: ${n} prod__price element(s) on a page that is not a catalog page`);
+    /* W25-19. The roofing catalogue now renders on /servicii/acoperisuri/, so
+       there is a second page in each locale where a catalogue card, and therefore
+       its price, legitimately lives. What travels to it is THE SHAPE, not a page
+       exemption: every price there must be a `.prod__price` carrying its own
+       product, exactly as on a catalogue page, and the counts must agree. Every
+       other page still has no permitted place at all, which the next line holds.
+       Named rather than pattern-matched on the path, so a third page cannot
+       acquire the permission by being called something. */
+    const rel = path.relative(DIST, f).split(path.sep).join('/');
+    if (CONSOLIDATED.has(rel)) {
+      const occ = (text.match(PRICE_CLASS) || []).length;
+      const shaped = [...text.matchAll(PRODUCT_PRICE_SHAPE)].length;
+      priceEls += shaped;
+      if (occ !== shaped) {
+        elsewhere.push(`${path.relative(ROOT, f)}: ${occ} occurrence(s) of the prod__price class and ${shaped} in the permitted shape`);
+      }
+    } else {
+      const n = (text.match(PRICE_CLASS) || []).length;
+      if (n) elsewhere.push(`${path.relative(ROOT, f)}: ${n} prod__price element(s) on a page that is not a catalog page`);
+    }
   }
 }
 
@@ -573,7 +633,7 @@ for (const [list, terms] of Object.entries(TERMS)) console.log(`${list} terms, p
    it read "42 blocks found of 90 required" on a green run, which is a gate
    reporting a shortfall it does not have. */
 console.log(`prose: ${proseBlocks} blocks found of ${byKind.category * PROSE_FIELDS.length} required (a lede and two paragraphs per CATEGORY page, each in its page's locale)`);
-console.log(`pages by kind: ${byKind.index} index, ${byKind.category} category, ${byKind.subcategory} subcategory`);
+console.log(`pages by kind: ${byKind.index} index, ${byKind.category} category, ${byKind.subcategory} subcategory, ${byKind.redirect} redirect (W25-19, 8 per locale, each noindex with a refresh, a canonical and a visible link that agree)`);
 console.log(`W24-R3: a price is permitted only as a product card's .prod__price element carrying its own data-product`);
 console.log(`  price elements read: ${priceEls}; prod__price class occurrences on catalogue pages: ${priceClassSeen}; pages scanned for the class elsewhere: ${elsewhereRead}`);
 console.log(`  only the price patterns read the relaxed text: cart, stock, product record and manufacturer name still fire inside a price element`);

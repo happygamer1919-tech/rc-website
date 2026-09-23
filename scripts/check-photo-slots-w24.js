@@ -182,6 +182,12 @@ const OVERRIDE_SLOTS = [
      the second bento's three pictured tiles and the nine imperlux-only cards. */
   'ACOP-05', 'ACOP-06', 'ACOP-07',
   'ACIM-01', 'ACIM-02', 'ACIM-03', 'ACIM-04', 'ACIM-05', 'ACIM-06', 'ACIM-07', 'ACIM-08', 'ACIM-09',
+  /* AMENDED (W27-R-04, W27-C-03): FORTY. "imperlux.md is the source of record for
+     EVERYTHING under Acoperisuri and Garduri ... Same images, same numbers." The seven
+     metal tile models (ACIM-10 to 16), the four Novatik models (NVK-01 to 04) and the
+     Tabla cutata tile (ACOP-09). Still a permission, not a state. */
+  'ACIM-10', 'ACIM-11', 'ACIM-12', 'ACIM-13', 'ACIM-14', 'ACIM-15', 'ACIM-16', 'NVK-01', 'NVK-02', 'NVK-03', 'NVK-04',
+  'ACOP-09',
 ];
 
 /* The slot kinds R-W forbids a generated image on: a before/after pair and a

@@ -1,5 +1,5 @@
 {
-  "_note": "W26-04, ruling W26-R5. The roofing service page's product sections. FIVE groups replace the seven catalogue subcategories the filter bar was built from; `from_catalog` says where each old subcategory lands, and the eight redirect pages under /catalog/materiale-acoperis/ keep answering and now aim at the group their subcategory went into. `products` are the imperlux.md models W26-R5 puts first. Each one either FOLDS dasterum.md records in as grades, in which case the card carries the cheaper grade's price and its picture and the folded records are the variants, or it folds none and renders Pret la cerere against a slot of its own that is still empty. NOT TAKEN from imperlux.md: every image (W24-R2), the description sentence under each name, which is marketing rather than a product fact (W25-25's precedent), the struck price, the percent badge (W26-R5, R-X) and THE WARRANTY, which W26-R6 holds until the owner confirms the roof warranty rows. A dasterum.md record whose model name is absent from imperlux.md stays a card of its own and is listed in `dasterum_only`.",
+  "_note": "W26-04, ruling W26-R5. The roofing service page's product sections. FIVE groups replace the seven catalogue subcategories the filter bar was built from; `from_catalog` says where each old subcategory lands, and the eight redirect pages under /catalog/materiale-acoperis/ keep answering and now aim at the group their subcategory went into. `products` are the imperlux.md models W26-R5 puts first. Each one either FOLDS dasterum.md records in as grades, in which case the card carries the cheaper grade's price and its picture and the folded records are the variants, or it folds none and renders Pret la cerere against a slot of its own that is still empty. NOT TAKEN from imperlux.md: every image (W24-R2), the description sentence under each name, which is marketing rather than a product fact (W25-25's precedent), the struck price, the percent badge (W26-R5, R-X) and THE WARRANTY, which W26-R6 holds until the owner confirms the roof warranty rows. A dasterum.md record whose model name is absent from imperlux.md stays a card of its own and is listed in `dasterum_only`. AMENDED W27-C-03 (W27-R-04, W27-R-05): the imperlux tagline, the named colour chips and the warranty FIGURE on the card are taken from this card on; the percent badge and the struck price still are not, and the warranty ROW in a table still is not (W26-R6).",
   "source": {
     "host": "imperlux.md",
     "audit": "docs/IMPERLUX-AUDIT-W26.md",
@@ -69,6 +69,377 @@
     }
   ],
   "products": [
+    {
+      "id": "imp-barcelona",
+      "slot": "ACIM-10",
+      "slug": "barcelona",
+      "name": {
+        "ro": "Barcelona",
+        "ru": "Barcelona"
+      },
+      "group": "tigla-metalica",
+      "tagline": {
+        "ro": "Design modern pentru acoperișuri contemporane",
+        "ru": "Современный дизайн для современных крыш"
+      },
+      "price": {
+        "render": {
+          "ro": "De la 179.55 lei/buc",
+          "ru": "От 179.55 lei/buc"
+        }
+      },
+      "colours": [
+        "Antracit",
+        "Maro",
+        "Negru"
+      ],
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-03 (W27-R-04, W27-R-05): the seven imperlux.md metal tile models, in imperlux order, no dasterum record carries this name. The card takes the preview image, the tagline, the current price as \"de la\", the named colour chips, the warranty figure, the weight and the colour count, each as the rendered page prints it; the struck price and the percent badge are not taken (R-X). Where the card prints \"+1\" the fourth colour is not named anywhere on the site, so the chips are the three it names and the count is the count it prints.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/tigla-metalica/barcelona/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/barcelona/hero.png"
+      },
+      "specs": {
+        "Garanție": {
+          "ro": "15 ani",
+          "ru": "15 лет"
+        },
+        "Grosime": {
+          "ro": "0,50 mm",
+          "ru": "0,50 мм"
+        },
+        "Greutate": {
+          "ro": "4,5 kg/m²",
+          "ru": "4,5 кг/м²"
+        },
+        "Culori": {
+          "ro": "3",
+          "ru": "3"
+        }
+      }
+    },
+    {
+      "id": "imp-madrid",
+      "slot": "ACIM-11",
+      "slug": "madrid",
+      "name": {
+        "ro": "Madrid",
+        "ru": "Madrid"
+      },
+      "group": "tigla-metalica",
+      "tagline": {
+        "ro": "Striații proeminente, alegere perfectă",
+        "ru": "Выразительные рёбра, безупречный выбор"
+      },
+      "price": {
+        "render": {
+          "ro": "De la 179 lei/buc",
+          "ru": "От 179 lei/buc"
+        }
+      },
+      "colours": [
+        "Antracit",
+        "Maro",
+        "Negru"
+      ],
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-03 (W27-R-04, W27-R-05): the seven imperlux.md metal tile models, in imperlux order, no dasterum record carries this name. The card takes the preview image, the tagline, the current price as \"de la\", the named colour chips, the warranty figure, the weight and the colour count, each as the rendered page prints it; the struck price and the percent badge are not taken (R-X). Where the card prints \"+1\" the fourth colour is not named anywhere on the site, so the chips are the three it names and the count is the count it prints.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/tigla-metalica/madrid/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/madrid/hero.png"
+      },
+      "specs": {
+        "Garanție": {
+          "ro": "20 ani",
+          "ru": "20 лет"
+        },
+        "Grosime": {
+          "ro": "0,50 mm",
+          "ru": "0,50 мм"
+        },
+        "Greutate": {
+          "ro": "4,5 kg/m²",
+          "ru": "4,5 кг/м²"
+        },
+        "Culori": {
+          "ro": "3",
+          "ru": "3"
+        }
+      }
+    },
+    {
+      "id": "imp-bavaria",
+      "slot": "ACIM-12",
+      "slug": "bavaria",
+      "name": {
+        "ro": "Bavaria",
+        "ru": "Bavaria"
+      },
+      "group": "tigla-metalica",
+      "tagline": {
+        "ro": "Premium personalizat, tradiție cu precizie",
+        "ru": "Премиум с индивидуальным подбором, традиция и точность"
+      },
+      "price": {
+        "render": {
+          "ro": "De la 240 lei/buc",
+          "ru": "От 240 lei/buc"
+        }
+      },
+      "colours": [
+        "Antracit",
+        "Ciocolată",
+        "Maro"
+      ],
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-03 (W27-R-04, W27-R-05): the seven imperlux.md metal tile models, in imperlux order, no dasterum record carries this name. The card takes the preview image, the tagline, the current price as \"de la\", the named colour chips, the warranty figure, the weight and the colour count, each as the rendered page prints it; the struck price and the percent badge are not taken (R-X). Where the card prints \"+1\" the fourth colour is not named anywhere on the site, so the chips are the three it names and the count is the count it prints.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/tigla-metalica/bavaria/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/bavaria/hero.png"
+      },
+      "specs": {
+        "Garanție": {
+          "ro": "30 ani",
+          "ru": "30 лет"
+        },
+        "Grosime": {
+          "ro": "0,50 mm",
+          "ru": "0,50 мм"
+        },
+        "Greutate": {
+          "ro": "4,5 kg/m²",
+          "ru": "4,5 кг/м²"
+        },
+        "Culori": {
+          "ro": "4",
+          "ru": "4"
+        }
+      }
+    },
+    {
+      "id": "imp-heta",
+      "slot": "ACIM-13",
+      "slug": "heta",
+      "name": {
+        "ro": "Heta",
+        "ru": "Heta"
+      },
+      "group": "tigla-metalica",
+      "tagline": {
+        "ro": "Design unic pentru clădiri masive",
+        "ru": "Уникальный дизайн для массивных зданий"
+      },
+      "price": {
+        "render": {
+          "ro": "De la 248 lei/buc",
+          "ru": "От 248 lei/buc"
+        }
+      },
+      "colours": [
+        "Antracit",
+        "Ciocolată",
+        "Maro"
+      ],
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-03 (W27-R-04, W27-R-05): the seven imperlux.md metal tile models, in imperlux order, no dasterum record carries this name. The card takes the preview image, the tagline, the current price as \"de la\", the named colour chips, the warranty figure, the weight and the colour count, each as the rendered page prints it; the struck price and the percent badge are not taken (R-X). Where the card prints \"+1\" the fourth colour is not named anywhere on the site, so the chips are the three it names and the count is the count it prints.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/tigla-metalica/heta/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/heta/hero.png"
+      },
+      "specs": {
+        "Garanție": {
+          "ro": "30 ani",
+          "ru": "30 лет"
+        },
+        "Grosime": {
+          "ro": "0,50 mm",
+          "ru": "0,50 мм"
+        },
+        "Greutate": {
+          "ro": "4,5 kg/m²",
+          "ru": "4,5 кг/м²"
+        },
+        "Culori": {
+          "ro": "4",
+          "ru": "4"
+        }
+      }
+    },
+    {
+      "id": "imp-zet",
+      "slot": "ACIM-14",
+      "slug": "zet",
+      "name": {
+        "ro": "Zet",
+        "ru": "Zet"
+      },
+      "group": "tigla-metalica",
+      "tagline": {
+        "ro": "Precizie în fiecare element",
+        "ru": "Точность в каждом элементе"
+      },
+      "price": {
+        "render": {
+          "ro": "De la 336 lei/buc",
+          "ru": "От 336 lei/buc"
+        }
+      },
+      "colours": [
+        "Antracit",
+        "Ciocolată",
+        "Maro"
+      ],
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-03 (W27-R-04, W27-R-05): the seven imperlux.md metal tile models, in imperlux order, no dasterum record carries this name. The card takes the preview image, the tagline, the current price as \"de la\", the named colour chips, the warranty figure, the weight and the colour count, each as the rendered page prints it; the struck price and the percent badge are not taken (R-X). Where the card prints \"+1\" the fourth colour is not named anywhere on the site, so the chips are the three it names and the count is the count it prints.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/tigla-metalica/zet/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/zet/hero.png"
+      },
+      "specs": {
+        "Garanție": {
+          "ro": "40 ani",
+          "ru": "40 лет"
+        },
+        "Grosime": {
+          "ro": "0,50 mm",
+          "ru": "0,50 мм"
+        },
+        "Greutate": {
+          "ro": "4,5 kg/m²",
+          "ru": "4,5 кг/м²"
+        },
+        "Culori": {
+          "ro": "4",
+          "ru": "4"
+        }
+      }
+    },
+    {
+      "id": "imp-finn",
+      "slot": "ACIM-15",
+      "slug": "finn",
+      "name": {
+        "ro": "Finn",
+        "ru": "Finn"
+      },
+      "group": "tigla-metalica",
+      "tagline": {
+        "ro": "Soluții tehnice moderne, profil original",
+        "ru": "Современные технические решения, оригинальный профиль"
+      },
+      "price": {
+        "render": {
+          "ro": "De la 236 lei/buc",
+          "ru": "От 236 lei/buc"
+        }
+      },
+      "colours": [
+        "Antracit",
+        "Ciocolată",
+        "Maro"
+      ],
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-03 (W27-R-04, W27-R-05): the seven imperlux.md metal tile models, in imperlux order, no dasterum record carries this name. The card takes the preview image, the tagline, the current price as \"de la\", the named colour chips, the warranty figure, the weight and the colour count, each as the rendered page prints it; the struck price and the percent badge are not taken (R-X). Where the card prints \"+1\" the fourth colour is not named anywhere on the site, so the chips are the three it names and the count is the count it prints.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/tigla-metalica/finn/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/finn/hero.png"
+      },
+      "specs": {
+        "Garanție": {
+          "ro": "30 ani",
+          "ru": "30 лет"
+        },
+        "Grosime": {
+          "ro": "0,50 mm",
+          "ru": "0,50 мм"
+        },
+        "Greutate": {
+          "ro": "4,5 kg/m²",
+          "ru": "4,5 кг/м²"
+        },
+        "Culori": {
+          "ro": "4",
+          "ru": "4"
+        }
+      }
+    },
+    {
+      "id": "imp-izi",
+      "slot": "ACIM-16",
+      "slug": "izi",
+      "name": {
+        "ro": "Izi",
+        "ru": "Izi"
+      },
+      "group": "tigla-metalica",
+      "tagline": {
+        "ro": "Modulară, proiectată cu atenție la detalii",
+        "ru": "Модульная, продуманная до деталей"
+      },
+      "price": {
+        "render": {
+          "ro": "De la 403 lei/buc",
+          "ru": "От 403 lei/buc"
+        }
+      },
+      "colours": [
+        "Antracit",
+        "Ciocolată",
+        "Maro"
+      ],
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-03 (W27-R-04, W27-R-05): the seven imperlux.md metal tile models, in imperlux order, no dasterum record carries this name. The card takes the preview image, the tagline, the current price as \"de la\", the named colour chips, the warranty figure, the weight and the colour count, each as the rendered page prints it; the struck price and the percent badge are not taken (R-X). Where the card prints \"+1\" the fourth colour is not named anywhere on the site, so the chips are the three it names and the count is the count it prints.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/tigla-metalica/izi/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/izi/hero.png"
+      },
+      "specs": {
+        "Garanție": {
+          "ro": "40 ani",
+          "ru": "40 лет"
+        },
+        "Grosime": {
+          "ro": "0,50 mm",
+          "ru": "0,50 мм"
+        },
+        "Greutate": {
+          "ro": "4,5 kg/m²",
+          "ru": "4,5 кг/м²"
+        },
+        "Culori": {
+          "ro": "4",
+          "ru": "4"
+        }
+      }
+    },
     {
       "id": "imp-creaton-rapido",
       "slot": "ACIM-01",
@@ -703,7 +1074,7 @@
   "tables": [
     {
       "group": "tigla-metalica",
-      "source": "built from the card specs; imperlux.md publishes a table for ITS OWN seven metal models and this page carries dasterum.md's four, so its table is about products that are not here.",
+      "source": "W27-C-03: imperlux.md publishes a table for this section (Preț, Garanție, Grosime, Greutate, Culori); the columns are copied except Garanție, which W26-R6 holds. The dasterum rows print \"-\" for the two specs they lack.",
       "columns": [
         {
           "key": "price",
@@ -713,17 +1084,17 @@
           }
         },
         {
-          "key": "spec:Acoperire",
+          "key": "spec:Grosime",
           "label": {
-            "ro": "Acoperire",
-            "ru": "Покрытие"
+            "ro": "Grosime",
+            "ru": "Толщина"
           }
         },
         {
-          "key": "spec:Tip de calitate",
+          "key": "spec:Greutate",
           "label": {
-            "ro": "Tip de calitate",
-            "ru": "Класс качества"
+            "ro": "Greutate",
+            "ru": "Вес"
           }
         },
         {

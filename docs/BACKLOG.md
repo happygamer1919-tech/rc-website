@@ -1018,3 +1018,16 @@ fifth on its own two facts; the profnastil redirect lands on `#mat-tabla-cutata`
 verify-live markers 7 chips, 5 pb tiles, 4 tables. Budgets **20,240 / 20,378** (R-Y). Q-W27-01 asks for
 a real photograph for the strip tile. **Static gates, gate 20 and gate 14 exit 0 locally.**
 
+## W27-C-03 · Țiglă metalică from Imperlux: the seven models
+**Status: PR OPEN** (opened 2026-09-22). W27-R-04 and W27-R-05 applied. **Barcelona, Madrid, Bavaria,
+Heta, Zet, Finn, Izi**, in imperlux order, first in the section, each with the imperlux preview image
+as published (burned-in model name, flagged `label`, W25-R5), the tagline, `De la N lei/buc` with the
+current figure only, the named colour chips, and a facts line "N ani garanție · 4,5 kg/m² · N culori"
+derived from the specs. **No dasterum name matched**, so all four dasterum models stay after them:
+78 + 7 = **85 cards**. The Compară table takes imperlux's columns minus the held warranty row (W26-R6).
+A derived **"7 modele, de la 179 lei/buc"** line under each table heading, RU too. RU chips through the
+repo's own colour dictionary (Antracit only; Maro, Negru, Ciocolată keep RO, as the dispatch says).
+The imperlux override grows by name to 40 slots under a W27-R-04 sentence. Rendered: 0 percent signs
+in price blocks, 0 "Popular". Budgets **21,703 / 21,862**. Q-W27-02 on the brand mark and the fourth
+colour. **Static gates exit 0**; gates 20 and 28 run before the PR.
+

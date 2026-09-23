@@ -392,7 +392,16 @@
     "showing": "{n} produse afișate",
     "tableH": "Compară modelele:",
     "tableProduct": "Produs",
-    "tableNone": "-"
+    "tableNone": "-",
+    "factWarranty": "garanție",
+    "coloursOne": "culoare",
+    "coloursFew": "culori",
+    "coloursMany": "culori",
+    "coloursAria": "Culori disponibile",
+    "groupFrom": "{n} {models}, de la {price}",
+    "modelsOne": "model",
+    "modelsFew": "modele",
+    "modelsMany": "modele"
   },
   "moved": {
     "h1": "Pagina s-a mutat",

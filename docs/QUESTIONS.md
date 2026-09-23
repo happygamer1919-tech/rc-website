@@ -3363,3 +3363,28 @@ two and a half times. Every other tile on the page is a photograph or a clean pa
 
 If neither, the strip stays as it is.
 
+## Q-W27-02 · The seven Imperlux previews carry Imperlux's orange mark, and five models name only three of their four colours · OPEN · opened 2026-09-22 (W27-C-03)
+
+**Raised W27-C-03, 2026-09-22. Shipped default: the previews as published, the three named chips
+and the count the page prints. Nothing is blocked.**
+
+**1. The mark.** Every metal tile preview on imperlux.md is a render of the sheet over three
+translucent orange parallelograms, Imperlux's own mark, with the category and the model name
+printed under it. W27-R-04 says "same images ... watermark untouched", and the dispatch names this
+exact image ("the one with burned-in model name"), so all seven went in untouched and are flagged in
+`docs/PHOTO-REVIEW-W25.md`. W26-R10 had refused Imperlux branding on a tile once before. If you want
+the mark out, the sheet itself sits clear of it on every model and a crop of the sheet alone is one
+run of the intake with `--crop`; the printed name would go with it.
+
+**2. The fourth colour.** Bavaria, Heta, Zet, Finn and Izi print "Antracit, Ciocolată, Maro, +1" on
+the section card and "4 culori" in the facts, and the product page labels only the chip that is
+selected, so the fourth name is printed nowhere on the site. The cards carry the three names and the
+count of four. If you know the fourth (the page's swatch is a dark grey), say it and it is one word
+per model.
+
+**3. Russian colour names.** The dispatch's rule, "via the existing colour dictionary, missing
+entries keep RO", leaves Maro, Negru and Ciocolată in Romanian on the Russian page, because the
+repo's two dictionaries carry "Maro Wenge", "Negru profund" and "Maro ciocolată" but not the bare
+words. Three entries in the fence palette would translate them site-wide; that is a one-line
+answer.
+

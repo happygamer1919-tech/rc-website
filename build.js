@@ -1201,6 +1201,31 @@ function prodLabel(l, k) {
   if (!REAL(v)) die(`catalogProducts.${k} must be real in ${l.code}.`);
   return v;
 }
+/* W27-C-03 (W27-R-04). THE COLOUR DICTIONARY IS THE ONE THE REPO ALREADY HAS: the fence
+   palette in content/garduri-modele.json and the metal tile legend in
+   content/tigla-metalica.json, matched on the exact Romanian name, case-insensitively.
+   A name neither file carries keeps its Romanian form on the Russian page, which is
+   what the dispatch said to do ("missing entries keep RO"); nothing is translated by
+   guesswork here. Built once, read by the imperlux model cards. */
+const COLOUR_RU = (() => {
+  const m = new Map();
+  try {
+    const gard = JSON.parse(fs.readFileSync('content/garduri-modele.json', 'utf8'));
+    for (const v of Object.values(gard.palette || {})) if (v && REAL(v.ro) && REAL(v.ru)) m.set(v.ro.toLowerCase(), v.ru);
+    const tig = JSON.parse(fs.readFileSync('content/tigla-metalica.json', 'utf8'));
+    for (const e of tig.legend || []) if (e.name && REAL(e.name.ro) && REAL(e.name.ru)) m.set(e.name.ro.toLowerCase(), e.name.ru);
+  } catch (e) { die(`colour dictionary: ${e.message}`); }
+  if (!m.size) die('colour dictionary: no entries read from the fence palette or the tile legend.');
+  return m;
+})();
+const colourName = (l, ro) => (l.code === 'ru' && COLOUR_RU.has(String(ro).toLowerCase()) ? COLOUR_RU.get(String(ro).toLowerCase()) : ro);
+/* "3 culori" / "3 цвета": Russian counts a noun three ways, Romanian two. */
+const colourWord = (l, n) => {
+  const k = n === 1 ? 'coloursOne' : (l.code === 'ru' && (n % 10 >= 2 && n % 10 <= 4 && !(n % 100 >= 12 && n % 100 <= 14)) || (l.code === 'ro' && n > 1)) ? 'coloursFew' : 'coloursMany';
+  const v = l.strings[`roofProducts.${k}`];
+  if (!REAL(v)) die(`roofProducts.${k} must be real in ${l.code}.`);
+  return v;
+};
 const PROD_ARROW = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
 
 function prodCard(l, r, i, extra = '') {
@@ -1240,7 +1265,16 @@ function prodCard(l, r, i, extra = '') {
        other answer is a one-flag change either way. */
     if (REAL(r.brand) && !r.brand_hidden) parts.push(`          <p class="prod__brand">${esc(r.brand)}</p>`);
     parts.push(`          <h3 class="prod__name">${esc(name)}</h3>`);
+    /* W27-C-03 (W27-R-04): the imperlux model card's tagline, colour chips and facts line.
+       The chip names go through the colour dictionary for RU and keep their RO name
+       where it has no entry, which is what the dispatch asked for. */
+    if (r.tagline && REAL(r.tagline[l.code])) parts.push(`          <p class="prod__tag">${esc(r.tagline[l.code])}</p>`);
     if (REAL(variant)) parts.push(`          <p class="prod__variant">${esc(variant)}</p>`);
+    if (Array.isArray(r.colours) && r.colours.length) {
+      const chips = r.colours.map((c) => `<li class="prod__chip">${esc(colourName(l, c))}</li>`).join('');
+      parts.push(`          <ul class="prod__chips" aria-label="${esc(l.strings['roofProducts.coloursAria'] || '')}">${chips}</ul>`);
+    }
+    if (REAL(r.facts)) parts.push(`          <p class="prod__facts">${esc(r.facts)}</p>`);
     parts.push('          <div class="prod__foot">');
     parts.push(price == null
       ? `            <span class="prod__ask" data-product="${esc(lead)}">${esc(label('ask'))}</span>`
@@ -2736,10 +2770,34 @@ function roofSection(l) {
     const specLine = (SPEC_ORDER
       .filter((k) => p.specs && p.specs[k] && REAL(p.specs[k][l.code]))
       .map((k) => p.specs[k][l.code])).join(' · ');
+    /* W27-C-03 (W27-R-04). A model card carries the imperlux tagline, the named colour
+       chips and a FACTS line, "15 ani garanție · 4,5 kg/m² · 3 culori", derived from the
+       specs and the chip list rather than typed beside them. The count is the count the
+       page prints (specs.Culori); the chips are the names it prints, which can be fewer
+       ("+1" names nothing), never more. A card with a tagline takes this shape; a card
+       without one keeps the spec line. */
+    const hasTagline = p.tagline && REAL(p.tagline[l.code]);
+    let facts = null;
+    if (hasTagline) {
+      const parts = [];
+      const sp = p.specs || {};
+      if (sp['Garanție'] && REAL(sp['Garanție'][l.code])) parts.push(`${sp['Garanție'][l.code]} ${s('factWarranty')}`);
+      if (sp.Greutate && REAL(sp.Greutate[l.code])) parts.push(sp.Greutate[l.code]);
+      if (sp.Culori && REAL(sp.Culori[l.code])) {
+        const n = Number(sp.Culori[l.code]);
+        if (!Number.isInteger(n) || n < 1) die(`${ROOF_SECTIONS_FILE}: products[${i}] "${p.slug}" has a colour count "${sp.Culori[l.code]}" that is not a count.`);
+        if ((p.colours || []).length > n) die(`${ROOF_SECTIONS_FILE}: products[${i}] "${p.slug}" names ${p.colours.length} colours and counts ${n}.`);
+        parts.push(`${n} ${colourWord(l, n)}`);
+      }
+      facts = parts.join(' · ');
+    }
     impBySection.get(p.group).push({
       slot: p.slot || p.folds[0],
       name: p.name,
-      variant: specLine ? { [l.code]: specLine } : null,
+      tagline: hasTagline ? p.tagline : null,
+      colours: hasTagline ? (p.colours || []) : null,
+      facts,
+      variant: !hasTagline && specLine ? { [l.code]: specLine } : null,
       price: p.price,
       specs: p.specs || {},
       _imperlux: true,
@@ -2789,6 +2847,9 @@ function roofSection(l) {
     const cell = (r, key) => {
       if (key === 'price') return (r.price && r.price.render && r.price.render[l.code]) || null;
       if (key === 'colours') {
+        /* An imperlux model's count is the count its page prints (W27-C-03); a dasterum
+           record's is the length of the colour list it publishes. */
+        if (r._imperlux) return (r.specs && r.specs.Culori && r.specs.Culori[l.code]) || null;
         const n = (r.source && r.source.colours || []).length;
         return n ? String(n) : null;
       }
@@ -2825,8 +2886,35 @@ function roofSection(l) {
       }).join('');
       return `          <tr><th scope="row">${esc(r.name[l.code])}</th>${tds}</tr>`;
     }).join('\n');
+    /* W27-C-03: the section's "de la" line, DERIVED: the lowest current price among the
+       section's imperlux models, in their unit, and how many models there are. It sits
+       inside the table block so the filter shows and hides it with the section. Nothing
+       is typed: a "de la" written beside the cards it summarises is a second place to be
+       wrong (W26-05). Sections whose imperlux models have no price, or mixed units, get
+       no line. */
+    const imp = rows.filter((r) => r._imperlux && r.price && r.price.render && REAL(r.price.render[l.code]));
+    let fromLine = '';
+    if (imp.length) {
+      const parsed = imp.map((r) => {
+        const m = /(\d+(?:[.,]\d+)?)\s*(lei(?:\/\S+)?)/.exec(r.price.render[l.code]);
+        return m ? { n: Number(m[1].replace(',', '.')), unit: m[2], text: r.price.render[l.code] } : null;
+      });
+      const units = new Set(parsed.map((x) => x && x.unit));
+      if (parsed.every(Boolean) && units.size === 1) {
+        const low = parsed.reduce((a, b) => (b.n < a.n ? b : a));
+        const tpl = s('groupFrom');
+        if (!tpl.includes('{n}') || !tpl.includes('{price}')) die(`roofProducts.groupFrom must carry {n} and {price} in ${l.code}.`);
+        /* The figure with its unit, without the source's own "De la" / "От": the template
+           carries the words. Russian counts "model" three ways, so the noun is a key too. */
+        const priceOnly = low.text.slice(low.text.search(/\d/));
+        const nModels = imp.length;
+        const modelsKey = nModels === 1 ? 'modelsOne' : (l.code === 'ru' && (nModels % 10 >= 2 && nModels % 10 <= 4 && !(nModels % 100 >= 12 && nModels % 100 <= 14))) || (l.code === 'ro' && nModels > 1) ? 'modelsFew' : 'modelsMany';
+        if (!tpl.includes('{models}')) die(`roofProducts.groupFrom must carry {models} in ${l.code}.`);
+        fromLine = `\n        <p class="roof-cmp__from">${esc(tpl.replace('{n}', String(nModels)).replace('{models}', s(modelsKey)).replace('{price}', priceOnly))}</p>`;
+      }
+    }
     return `      <div class="roof-cmp" data-roof-table data-roof-groups="${esc(g.child)}">
-        <h3 class="roof-cmp__h">${esc(s('tableH'))} ${esc(g.label[l.code])}</h3>
+        <h3 class="roof-cmp__h">${esc(s('tableH'))} ${esc(g.label[l.code])}</h3>${fromLine}
         <div class="roof-cmp__scroll" tabindex="0" role="region" aria-label="${esc(s('tableH'))} ${esc(g.label[l.code])}">
         <table class="roof-cmp__t">
           <thead><tr>${head.map((h) => `<th scope="col">${esc(h)}</th>`).join('')}</tr></thead>

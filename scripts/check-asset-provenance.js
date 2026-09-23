@@ -95,6 +95,20 @@ const OVERRIDES = [
       'ACIM-01', 'ACIM-02', 'ACIM-03', 'ACIM-04', 'ACIM-05', 'ACIM-06', 'ACIM-07', 'ACIM-08', 'ACIM-09',
     ],
   },
+  /* AMENDED (W27-R-04, W27-C-03): a FOURTH override, imperlux.md as the source of record
+     for everything under Acoperisuri and Garduri, with its own sentence: "Same images,
+     same numbers. Image intake rules from W25 stand: source URL per file, no upscale,
+     watermark untouched, flagged imperlux." So these files are the preview images AS
+     PUBLISHED, uncropped, and the sentence says so. A file already listed above may move
+     here when its picture is replaced by the untouched preview. */
+  {
+    ruling: 'W27-R-04',
+    licence: 'owner_override_imperlux, source of record by owner decision W27-R-04, the preview image as imperlux.md publishes it, watermark untouched, no upscale, source URL per file, owner accepted 2026-09-22',
+    files: [
+      'ACIM-10', 'ACIM-11', 'ACIM-12', 'ACIM-13', 'ACIM-14', 'ACIM-15', 'ACIM-16', 'NVK-01', 'NVK-02', 'NVK-03', 'NVK-04',
+      'ACOP-09',
+    ],
+  },
 ];
 const OVERRIDE_FILES = OVERRIDES.flatMap((o) => o.files);
 /* R-W amendment, 2026-09-15 (W14-02b). Legacy status is a fingerprint: the path

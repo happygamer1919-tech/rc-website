@@ -835,10 +835,17 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 .header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   height: 96px;
-  background: var(--bg-light);
-  border-bottom: 1px solid var(--hairline);
+  /* W28-02 (W27-R-07): no white strip and no line under it. The band is transparent and
+     lets the pointer through, so the page scrolls, and is clickable, behind the pill; the
+     pill floats on a deep soft shadow. The band keeps its 96px because <body> carries a
+     constant spacer for it (section 1 of docs/CLAUDE.md), which is what stops the page
+     moving when the pill compresses. */
+  background: transparent;
+  border-bottom: 0;
+  pointer-events: none;
   display: flex; align-items: center;
 }
+.header__pill, .mobile-panel { pointer-events: auto; }
 .header__inner {
   max-width: var(--container); margin: 0 auto; width: 100%;
   padding: 0 var(--gutter);
@@ -849,7 +856,8 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 .header__pill {
   background: var(--bg-dark);
   border-radius: 999px;
-  height: 64px;
+  height: 72px;  /* W28-02: 64 to 72 */
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22), 0 2px 6px rgba(0, 0, 0, 0.10);
   padding: 0 12px 0 24px;
   display: flex; align-items: center; justify-content: space-between; gap: 20px;
 }
@@ -901,7 +909,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 999px; padding: 6px 10px;
 }
-.lang span, .lang a { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; line-height: 1; }
+.lang span, .lang a { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em /* W28-02: 0.08 to 0.04, gives gate 11 back the slack the 14px floor took */; line-height: 1; }
 .lang a { color: var(--bg-light); }
 .lang a:hover { color: var(--brand); }
 .lang[data-lang='ro'] .lang__ro,
@@ -1510,8 +1518,9 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 .header { transition: box-shadow var(--hover-dur) var(--ease-out); }
 .header__pill { transition: height var(--hover-dur) var(--ease-out), padding var(--hover-dur) var(--ease-out); }
 .header__logo img { transition: height var(--hover-dur) var(--ease-out); }
-.header[data-scrolled="true"] { box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08); }
-.header[data-scrolled="true"] .header__pill { height: 56px; }
+/* W28-02: the band is transparent, so the scrolled shadow that sat on it is gone; the pill
+   carries its own at rest and compresses to 60px. */
+.header[data-scrolled="true"] .header__pill { height: 60px; }
 /* 56 - 16 = 40, the same 8px clearance. */
 .header[data-scrolled="true"] .header__logo img { height: 40px; }
 
@@ -2131,7 +2140,6 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
   .nav { gap: 16px; }
   .nav > a, .nav .svcmenu__toggle { font-size: 15px; }
   .header__actions { gap: 10px; }
-  .lang span, .lang a { letter-spacing: 0.04em; }
 }
 
 /* At 1100px and below the header collapses to the hamburger layout, which used
@@ -2144,8 +2152,8 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
   .header__mobile { display: flex; }
   .icon-btn { display: inline-flex; }
   .header { height: 80px; }
-  .header__pill { padding: 0 8px 0 16px; height: 56px; }
-  .header[data-scrolled="true"] .header__pill { height: 52px; }
+  .header__pill { padding: 0 8px 0 16px; height: 64px; }  /* W28-02: 56 to 64 */
+  .header[data-scrolled="true"] .header__pill { height: 56px; }
   /* Same 8px clearance as the desktop pill: 56 - 16 and 52 - 16. */
   .header__logo img { height: 40px; }
   .header[data-scrolled="true"] .header__logo img { height: 36px; }

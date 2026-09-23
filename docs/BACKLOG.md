@@ -1079,3 +1079,12 @@ eleven**: section 3 amended, the master plan struck in five places, and **`check
 the four retired values** with three dated-record exceptions. **Static gates, gates 11, 18 and 28 exit
 0.** Screenshots `docs/design/W27/w28-01-*`.
 
+## W28-02 · The floating header
+**Status: PR OPEN** (opened 2026-09-22). Approved under W27-R-07, owner may overturn. **The white strip
+and its bottom line are gone**: the band is transparent and lets the pointer through, the pill is 72px
+(64 on a phone, 60 scrolled) and floats on a two-layer shadow, the page scrolls behind it. The body
+spacer keeps the band's height, so nothing below moves (section 1). The language switch's tracking is
+0.04em site-wide, which gives gate 11 back the slack the 14px floor took (least RU slack 8px at 1280+
+after W28-01, 10px now). Master plan header row and section 3's shadow list amended. **Static gates,
+gates 11, 18 and 28 exit 0.** Screenshots `docs/design/W27/w28-02-*`.
+

@@ -13175,3 +13175,28 @@ grew with them, and **gate 11 measured the header slack afterwards** (its result
 exceptions used, 0 unmarked); gate 28 (text contrast, both widths, both locales) exits 0 on the new
 tokens; gates 11 and 18 recorded in the card. Screenshots at 390 and 1440, both locales, five pages,
 in `docs/design/W27/` under `w28-01-`.
+
+## W28-02 · The floating header, 2026-09-22
+
+Branch `w27/w28-02-floating-header`, stacked on W28-01. Approved by strategy under the owner's
+delegation (W27-R-07); the owner may overturn it in the morning, and it is one card to revert.
+
+**What it reverses.** The master plan's "white bar carrying a dark pill, solid, opaque, fixed" was an
+explicit decision; its row is struck in place with this card named (R-R). The band is now
+`transparent` with no border, and `pointer-events: none`, so the page both scrolls and is clickable
+behind it; the pill and the mobile panel take `pointer-events: auto` back. The pill is 72px (64px
+below 1100, 60px scrolled, 56px scrolled on a phone) and carries its own two-layer shadow,
+`0 12px 32px` at 22% and `0 2px 6px` at 10%, named in section 3's non-palette list. The scrolled
+shadow that sat on the band is gone: a shadow on a transparent box would paint around nothing.
+
+**What it keeps.** The band's 96px, because `<body>` carries a constant spacer of that height and
+section 1 of `docs/CLAUDE.md` says why: the pill's compression is purely visual and the document
+never shortens. The nav, the dropdown panels and the mobile panel are untouched.
+
+**Gate 11 and the 14px floor.** W28-01's 14px language switch left RU at exactly the 8px floor from
+1280px (a control run on the pre-W28-01 build read 9px at 1180 and more above). The switch's
+letter-spacing is 0.04em site-wide now, which reads 10px on RU at those widths; W28-05's 17px
+buttons will add more.
+
+**Gates.** Static gates exit 0; gate 11 (216 of 216, least RU slack recorded in the card), gate 18
+(dropdowns at rest) and gate 28 (text contrast) exit 0. Screenshots `docs/design/W27/w28-02-*`.

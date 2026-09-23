@@ -571,7 +571,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 .roof-cmp__t tbody td { color: var(--ink-muted); }
 .roof-filter__btn {
   height: 40px; padding: 0 18px;
-  border-radius: var(--radius-pill); border: 1px solid var(--line);
+  border-radius: var(--radius-pill); border: 1px solid var(--outline) /* W28-06, listed at W28-01: the clear outline on filter buttons */;
   background: transparent; color: var(--ink);
   font-family: inherit; font-size: 17px; font-weight: 400; line-height: 1;
   white-space: nowrap; cursor: pointer;
@@ -1199,7 +1199,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 40px; }
 .filter {
   height: 40px; padding: 0 20px;
-  border-radius: var(--radius-pill); border: 1px solid var(--line);
+  border-radius: var(--radius-pill); border: 1px solid var(--outline);
   background: transparent; color: var(--ink);
   font-family: inherit; font-size: 17px; font-weight: 400; line-height: 1;
   white-space: nowrap; cursor: pointer;
@@ -1316,14 +1316,22 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 .form-layout { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--gap); align-items: start; }
 .form-card { background: var(--bg-light); border: 1px solid var(--hairline); border-radius: var(--radius-card); box-shadow: var(--shadow-card); padding: 32px; }
 .form-card--stack { display: flex; flex-direction: column; gap: 20px; }
-.form-aside { display: flex; flex-direction: column; gap: var(--gap); }
+.form-aside { display: flex; flex-direction: column; gap: 0; }
+/* W28-06: the contact aside is a LIST on hairlines, not two boxed cards: the big orange phone,
+   the hours, the note. The markup is untouched; the cards lose their box. */
+.form-aside .form-card { background: transparent; border: 0; border-top: 1px solid var(--hairline); border-radius: 0; box-shadow: none; padding: 24px 0; }
+.form-aside .form-card:first-child { border-top: 0; padding-top: 0; }
+/* W28-06: one full-width submit leaves no doubt. */
+.form-card [type="submit"] { width: 100%; justify-content: center; }
 
 .field { display: flex; flex-direction: column; gap: 8px; }
-.field label { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand-dark); }
+/* W28-06 (W27-R-07): a label is an instruction, not decoration: 16px, sentence case, ink. */
+.field label { font-size: 16px; font-weight: 700; color: var(--ink); }
 .field input, .field select, .field textarea {
-  height: var(--control-h); padding: 0 16px;
-  border: 1px solid var(--line); border-radius: var(--radius-control);
-  background: var(--bg-light); color: var(--ink);
+  /* W28-06: cream fill, a visible warm edge (--outline, 3:1), 56px tall, 14px corners. */
+  height: 56px; padding: 0 16px;
+  border: 1px solid var(--outline); border-radius: 14px;
+  background: var(--bg-warm); color: var(--ink);
   font-family: inherit; font-size: 17px; line-height: 1.6;
 }
 .field textarea { height: auto; padding: 12px 16px; resize: vertical; }

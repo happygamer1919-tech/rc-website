@@ -13270,3 +13270,23 @@ the card. **Gate 18** (dropdowns, which hold the catalogue toggle) and **gate 28
 
 **Budgets.** Buttons keep their 48px height, so nothing moved by more than a line; all 53 budgets
 re-measured plus 60, generated into R-Y, as every design card does.
+
+## W28-06 · The form: cream fields with a visible edge, a full-width submit, the aside as a list, 2026-09-22
+
+Branch `w27/w28-06-form`, stacked on W28-05.
+
+**The quote form is the most valuable thing on the site, and its field edges were 1.3:1.** Fields now
+fill `--bg-warm` with a 1px `--outline` edge (3.02:1 on white, the one place the outline is for),
+56px tall, 14px corners; labels are 16px, sentence case, `--ink`, an instruction rather than an
+orange caption; the submit button is full width. The contact aside keeps its markup and loses its two
+boxes: the big orange phone, the hours and the note sit on hairlines. **The dispatch lists an address
+in the aside; no address string exists there** (the address is in the footer), so none is invented.
+The filter buttons take the `--outline` edge W28-01's list named and W28-01 did not apply.
+
+**Nothing the form sends changed.** Field names, `action`, hidden inputs and subjects are untouched;
+**gate 13 read 64 forms on 62 pages, every one wired, exit 0**. Per the W21 standing rule a person
+sends one real lead per locale after any change to a form: this card changes the form's look only,
+and the check is carried in the report for the owner.
+
+**Gates 20 and 28** exit 0 (labels, hints and field text on the cream). All 53 budgets re-measured plus
+60 into R-Y: every page with the form is a few lines taller.

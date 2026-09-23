@@ -1229,3 +1229,10 @@ height moves.
 published, uncropped, never upscaled, under a sixth override sentence; the owner's two roofing
 photographs leave those slots. `process-packshot.js` gains `--out` and strips after its
 compression loop. Gate 20 72 of 72; 0 budgets move.
+
+## W27-FIX-12 · A roofing photograph leaves the fence gallery
+**Status: PR OPEN** (opened 2026-09-23). Owner instruction W27-R-18: the gable photograph (the
+eighth of thirteen) leaves `/servicii/galerie-garduri/`; twelve remain, renumbered; the ledger
+amended by hand to the intake's own shape (the source folder is gone from this machine) and the
+intake gains `content/galleries-refused.json`, refusals by source sha256, so a re-run cannot put
+it back. Gate 29 and the provenance gate exit 0; `galSlides: 12` live.

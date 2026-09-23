@@ -1,0 +1,10 @@
+{
+  "_note": "W27-FIX-12, owner instruction W27-R-18. Photographs the owner has refused from a gallery, by the SOURCE file's sha256 so the refusal survives a re-order or re-name of the folder. scripts/intake-galleries.js reads this file and records each match under the gallery's `refused` with the reason, so a re-run never re-installs it. Add a row here, never delete the file from the folder on the owner's behalf.",
+  "refused": {
+    "d8447f804a84f81fde0ae278f25c7e94d127f02998c068b11e423d6811a27f2f": {
+      "why": "owner instruction W27-R-18, 2026-09-23: a roofing photograph (a gable clad in standing-seam sheet), not a fence; removed from the fence gallery",
+      "folder": "Garduri",
+      "source": "WhatsApp Image 2026-09-19 at 6.35.16 AM (3).jpeg"
+    }
+  }
+}

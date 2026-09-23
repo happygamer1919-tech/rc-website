@@ -12842,3 +12842,56 @@ and **gate 14** (heading fit) pass.
 **Screenshots**: `docs/design/W26/`, the homepage, the roofing page, the turnkey service page and
 the catalogue, desktop (scaled to 960 wide) and phone (390), before and after, reduced motion on so
 every section is at rest, and the lead popup marked seen so it covers nothing.
+
+## W27-R-01 to W27-R-08 · The owner's wave 27 rulings, recorded verbatim before any card, and the self-merge preflight, 2026-09-22
+
+Branch `w27/w27-r-00-rulings`, from `main` at `e3ba69d` (#135 merged).
+
+**Recorded before any card acted on them.** The eight rulings, each quoted exactly and read, are in
+`docs/rulings/W27-R.md`; this block is the record that they arrived, what the preflight found, and
+what the run deviates from and why. The dispatch frames the whole wave: final run before a client
+review at 08:00, owner unreachable until morning, skip-not-halt on every card (two attempts, then
+the PR is closed and the report says SKIPPED with the reason), never stop to ask.
+
+**Section 12.0 on `e3ba69d` (#135), owed by W26-14 and run first: exit 0, PASS, 53 of 53 pages, 0
+unverified, 0 failed, 0 retried, 37 reachable URLs crawled.**
+
+**The preflight, every field read and every change made:**
+
+| Step | Result |
+|---|---|
+| `gh auth status` | logged in as the repository owner, scopes `gist`, `read:org`, `repo`, `workflow` |
+| `gh repo edit --enable-auto-merge` | exit 0 |
+| `GET /branches/main/protection` | **404, "Branch not protected"**. There is no `required_pull_request_reviews` and no required status check |
+| `GET /rulesets` | `[]` |
+| `DELETE .../required_pull_request_reviews` | **not run**: there was nothing to delete |
+
+**Two deviations from the merge protocol as written, both forced by that reading:**
+
+1. **`gh pr merge --auto` has nothing to wait for on an unprotected branch**, so it cannot hold a
+   merge until `quality` is green. The protocol's own order supplies the condition instead:
+   `gh pr checks --watch` must exit 0, and only then is the merge called. "On green quality check"
+   is the whole condition of W27-R-01 and it is kept exactly.
+2. **`--merge`, not `--squash`.** `docs/CLAUDE.md` section 10 says every change on `main` arrives
+   through a `--no-ff` merge commit and that `git log --no-merges --first-parent` on `main` should
+   return only the scaffold; every one of #1 to #135 is a merge commit. A squash would put the
+   first non-merge commit on that line. "Ground truth is the repo" resolves it for the repo's rule.
+
+**Two premises in the dispatch were false and are corrected rather than obeyed.**
+`docs/RC-PROJECT-RULES.md` does not exist and has no history on any branch; the rules are
+`docs/CLAUDE.md`. And `docs/design/W27-DESIGN-PROPOSAL.md` and
+`docs/design/W28-IMPERLUX-INFORMED-PROPOSAL.md` are not in the repo either: what exists is
+`design/W27-DESIGN-PROPOSAL.md.pdf` and `design/W28-IMPERLUX-INFORMED-PROPOSAL.md.pdf`, untracked,
+each a rendered "why" page whose handoff panel says the find-and-replace edits live in a separate
+`.md` file that was never delivered. Both PDFs were rasterised and transcribed in full (their body
+text is outlined, so `pdftotext` returns only the code spans); the dispatch's own numbers are the
+spec, as it says to do when the files are absent, and the transcriptions are consulted where the
+dispatch is silent.
+
+**Status fields moved in place, bodies untouched (R-S):** W26-14 in `docs/BACKLOG.md` from
+`PR OPEN` to `MERGED #135`, read from GitHub.
+
+**The strategy risk note the owner asked to carry (W27-R-04):** the site now states a competitor's
+published prices and shows a competitor's product photography under its own name for two product
+sections, and a change on imperlux.md is a change this site does not see until the next crawl.
+Recorded at W25 and W26 and unchanged.

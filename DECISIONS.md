@@ -13383,3 +13383,35 @@ for it) is a taste decision for the owner and is in the review report, not here.
 
 **Gates.** Links, template literals, photo slots, svg a11y and dashes exit 0 locally; CI runs the
 full 29, including gate 5's own three-run Lighthouse median with its 95 floor.
+
+## W27-REV-01 · The full site review, and the final run report, 2026-09-23
+
+Branch `w27/w27-rev-01-review`, from `main` at `a944714` (#152 merged, verified live).
+
+**Two instruments on the tree `main` holds after #152** (the review ran on the FIX-02 branch's tree,
+which `git diff` shows byte-identical to that merge commit's): `node scripts/run-gates.js` over every
+command `quality` runs, **29 of 29 exit 0**; and a rendered crawl of every built page in both locales at
+1440, 768 and 390 in headless Chrome, with links resolved against the built tree, images by file and
+`alt`, console and exception listeners, `scrollWidth` against `clientWidth`, every visible text node's
+computed size, hub tile hrefs by kind, the redirect pages' meta refresh read from the file, and the quote
+form with its subject on every service page. **Nothing it counts as a defect is left**: 0 dead links, 0
+missing image files, 0 console errors, 0 pages scrolling sideways, 0 hub tiles on a same-page anchor,
+16 of 16 redirects, 30 of 30 pages under `/servicii/` with the form and a `[RO|RU] <title> - <path>` subject (78 of 83 non-redirect pages carry it; the five without are the privacy, "in construcție" and review pages, as gate 13 expects). The crawl's first pass had matched the service pages with a pattern that fit none of them and read "0 of 0"; the count above is the corrected read, and the first was a zero comparand, not a pass. The
+two things it flags and the review explains are SVG diagram labels (9 SVG units painting at about 15.75px)
+and 59 empty `alt` attributes in three known groups, one of them a ruling (W26-R14, no captions).
+
+**Lighthouse, desktop, median of three, local server:** 99, 99, 100, 100, 99, 99 on the two homepages,
+the two turnkey pages and the two catalogue indexes, accessibility 100 everywhere; **the roofing page 92
+[98 92 91] RO and 98 [92 98 98] RU**. The bimodality predates the wave (W26-14 measured the same modes),
+the LCP element is the first hub tile's picture, W27-FIX-02 gave it the priority hint Lighthouse asked
+for, and CI's own gate passed on every pull request. It is reported with its readings, not accommodated,
+and the two remaining levers are the owner's (a lighter first tile, or a preload).
+
+**Fix cards.** Two, both already merged and verified: W27-FIX-01 (budgets after the 14px floor, the
+section 12.0 failure on `ff8a922`) and W27-FIX-02 (the LCP hint). Everything else the review found is
+taste and sits in `docs/reports/W27-REVIEW.md` and in the three open questions.
+
+**The report.** `docs/reports/W27-FINAL-RUN.md`, first line `SELF-MERGE`: every card with its PR, merge
+sha and live check, the deviations, the gates, the Lighthouse readings, the screenshots and the list for
+the morning. Seventeen backlog statuses moved from `PR OPEN` to `MERGED #n`, read from GitHub (R-S: the
+status field, never the body).

@@ -381,7 +381,10 @@ async function main() {
     { name: 'the same numeral with aria-hidden removed', url: `${SELFTEST}decoration.html`, js: "document.querySelectorAll('[aria-hidden]').forEach((n) => n.removeAttribute('aria-hidden'))", want: 'CONTRAST', names: '01' },
     { name: 'a text colour outside sRGB notation', url: `${SELFTEST}unreadable.html`, want: 'UNREADABLE' },
     { name: 'a page with no text', url: `${SELFTEST}no-text.html`, want: 'NO TEXT' },
-    { name: 'REAL, at the phone width: the Compară table th', url: '/ru/servicii/roca-vulcanica/', css: '.spec { color: inherit; }', want: 'CONTRAST', names: 'Характеристика', mobile: true },
+    /* AMENDED (W28-08): the header row is dark with white text now, so the planted inherit no
+       longer makes the thead th unreadable; the row label th in the body still inherits the
+       band's white on the table's own ground, and that is the text this arm watches. */
+    { name: 'REAL, at the phone width: the Compară table th', url: '/ru/servicii/roca-vulcanica/', css: '.spec { color: inherit; }', want: 'CONTRAST', names: 'Толщина', mobile: true },
   ];
   const readControls = async (when) => {
     await setWidth(WIDTHS[0]);

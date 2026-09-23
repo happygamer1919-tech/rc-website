@@ -13306,6 +13306,45 @@ the dispatch names `#232323`, so the value is named.
 
 **Gate 28** exits 0: white on `#232323` at 15.7:1, the orange figures at 64px large. **Budgets**
 re-measured plus 60 into R-Y; the homepages grow by the cards' padding.
+
+## W28-08 · Product cards, bento labels, a quiet footer, zebra tables, and W28-T skipped, 2026-09-22
+
+Branch `w27/w28-08-cards-footer-tables`, stacked on W28-07. CSS only, plus one self-test arm of gate 28.
+
+**Product cards, a fixed order of facts.** Packshot, name, one line, the price in orange with its
+arrow, soft-filled chips, a hairline, then the facts: the W28 proposal's pattern 8. The order is
+`order` on the card body's children so no markup moves; the facts line is pinned to the foot with
+`margin-top: auto`, and a card with no chips or facts (every Dasterum card) keeps its price row at
+the foot because there the foot is the last child and takes the slack. The price is `--brand` at
+20px bold, large text at 3.4:1 on white; `.nvk__price` the same. Chips fill `--bg-warm` with no
+outline.
+
+**Bento labels at 32px, and what gate 20 caught.** "Calculează prețul acoperișului" wraps to two
+lines at 32px on a 380px tile, and the W24-R5 gradient under a label was 40% of the tile: the gate
+refused ACOP-03 on its own control ("gradient does not cover its label's box"). The gradient is 55%
+now. The same object caught the same class of defect it was written for, on the first card to move a
+label.
+
+**A quiet footer.** Column heads in `--outline` (5.2:1 on the band) in capitals, links white at 17px,
+and no rules: the CTA row's bottom line and the bar's top line, which W28-01 had made hairlines, are
+gone.
+
+**Tables.** Every cell 16px by 24px; a dark header row (`--bg-dark`, white text) where a table has
+one (the Novatik comparison, the roofing Compară tables); zebra rows on `--bg-warm`. **Gate 28's
+phone arm had to move**: it planted `.spec { color: inherit }` on the RU Novatik page and expected
+the header cell "Характеристика" to fire, and a header cell that is white on dark on purpose no
+longer can; the arm watches the row label "Толщина" instead, which still inherits the band's white on
+the table's own ground. The desktop arm already watched a row label.
+
+**W28-T is SKIPPED**, and the reason is the card's own scope. W27-R-08 makes it optional and last. A
+two-tone heading needs the second half of the string in its own element; locale strings are escaped
+on output, so a tag in a string prints as text, and the only way to split one is in `build.js`, which
+the design cards' "CSS and locale strings only, no JS" rules out. The hub headings already carry a
+muted second word by their own markup and keep it. Recorded, not attempted.
+
+**Gates.** Static gates exit 0; gate 14 (heading fit), gate 20 (with the 55% gradient) and gate 28
+(with the moved arm) exit 0. Budgets re-measured plus 60 into R-Y. Screenshots
+`docs/design/W27/w28-08-*`.
 ## W27-FIX-01 · Budgets after the 14px floor, and the section 12.0 failure that found it, 2026-09-22
 
 Branch `w27/w27-fix-01-budgets`, from `main` at `ff8a922` (#143 merged).

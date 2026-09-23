@@ -1131,3 +1131,15 @@ huge orange figure over a white label; the hero claim card takes the same `#2323
 twelfth value**, added to section 3 with its use, never a section ground. Gate 28 exits 0 (white on
 `#232323` 15.7:1). Budgets re-measured. Screenshots `docs/design/W27/w28-07-*`.
 
+## W28-08 · Product cards, bento labels, a quiet footer, zebra tables
+**Status: PR OPEN** (opened 2026-09-22). CSS only. **Product cards** in the fixed order packshot, name,
+one line, orange price, soft-filled chips, hairline, facts (the facts pinned to the foot; a card with
+no chips keeps its price row at the foot); `.nvk__price` orange too. **Bento labels 32px** (24 on a
+phone), and the tile gradient 55% so a two-line label stays covered (gate 20 caught the 40% at
+ACOP-03). **Footer**: grey uppercase column heads (`--outline`, 5.2:1 on the band), 17px white links,
+no rules. **Tables**: cells 16x24, a dark header row where a table has one, zebra rows on `--bg-warm`;
+gate 28's phone arm on the Compară table now watches the row label, because the header row it
+planted on is dark on purpose. **W28-T is skipped** (optional, W27-R-08): a two-tone split needs a
+generator change, and the card allows CSS and locale strings only. **Static gates, gates 14, 20 and
+28 exit 0.** Budgets re-measured. Screenshots `docs/design/W27/w28-08-*`.
+

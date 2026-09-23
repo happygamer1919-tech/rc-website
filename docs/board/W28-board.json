@@ -1,0 +1,317 @@
+{
+  "board": "rc-website wave 28",
+  "schema_version": 1,
+  "opened": "2026-09-23",
+  "main_at_open": "5751d2c2bd6e98634bf7c67cd9fe58aefda4a7ea",
+  "renders_to": "https://claude.ai/artifact/JrELJq3JM8Ub8pmLkdvatk",
+  "rulings_file": "docs/rulings/W28-R.md",
+  "_note": "W28-00. The wave 28 board, created by the dispatch of 2026-09-23 (no board JSON existed in this repo before this file; the per-card docs/board/<card>.md and the statuses in docs/BACKLOG.md continue as before). Every card carries the dispatch's text as `ask`, this terminal's reading as `reading`, and `acceptance` as commands run from the repo root against the built tree (node build.js first) or against the live site where the command says so; each acceptance line ends in the value that passes. Statuses: todo, in_progress, pr_open, merged, verified (section 12.0 exit 0 on the merge sha), blocked, skipped. Defaults: lane queue, priority normal, owner_terminal yellow (the session colour), depends_on the previous card because every branch is stacked on the previous card's branch. The board is republished as an artifact after every change; `renders_to` is its URL.",
+  "defaults": {
+    "lane": "queue",
+    "status": "todo",
+    "priority": "normal",
+    "owner_terminal": "yellow",
+    "merge": "self-merge on green quality, merge commit, section 12.0 on the merge sha (R-W28-01)"
+  },
+  "rulings": [
+    {
+      "id": "R-W28-01",
+      "title": "Protection on main, self-merge on green stays for wave 28, the W27-R-05 and W27-R-07 reverts stay open, W28-T not run",
+      "date": "2026-09-23",
+      "ruled_by": "owner",
+      "applied_by": [
+        "W28-00",
+        "W28-10"
+      ]
+    },
+    {
+      "id": "R-W28-02",
+      "title": "The experience claim is fifteen years everywhere, including the team line; no 10+ anywhere",
+      "date": "2026-09-23",
+      "ruled_by": "owner",
+      "applied_by": [
+        "W28-11"
+      ]
+    },
+    {
+      "id": "R-W28-03",
+      "title": "The Google reviews link is live now, the share link as given (it resolves to a search knowledge panel, not maps); W28-20 splits, GBP done in W28-11, GSC stays blocked",
+      "date": "2026-09-23",
+      "ruled_by": "owner",
+      "applied_by": [
+        "W28-11",
+        "W28-20"
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "id": "W28-00",
+      "title": "The wave 28 rulings, the board and its artifact, recorded first",
+      "lane": "done",
+      "status": "pr_open",
+      "priority": "high",
+      "owner_terminal": "yellow",
+      "branch": "w28/w28-00-rulings-board",
+      "pr": null,
+      "merge_sha": null,
+      "depends_on": [],
+      "ask": "Rulings first: write docs/rulings/W28-R.md with R-W28-01 (...). Append the cards below to the board JSON in docs/board/ with defaults, depends_on, machine-checkable acceptance.",
+      "reading": "docs/rulings/W28-R.md with R-W28-01, R-W28-02, R-W28-03 and the W28-10 record; this board; the wave's backlog section; Q-W28-01 for the Search Console tag. The dispatch's main sha was stale (5751d2c, not bc3e3a9) and no board JSON or artifact existed: both corrected in the register's preamble.",
+      "acceptance": [
+        "test -f docs/rulings/W28-R.md && grep -c '^## R-W28-0[123]' docs/rulings/W28-R.md  -> 3",
+        "node -e \"const b=require('./docs/board/W28-board.json'); if(b.cards.length!==13) process.exit(1)\"  -> exit 0",
+        "node -e \"const b=require('./docs/board/W28-board.json'); if(!b.renders_to) process.exit(1)\"  -> exit 0"
+      ],
+      "notes": "No page changes. Documents only."
+    },
+    {
+      "id": "W28-10",
+      "title": "Branch protection on main: required check quality, strict, no reviewers",
+      "lane": "done",
+      "status": "verified",
+      "priority": "high",
+      "owner_terminal": "yellow",
+      "branch": null,
+      "pr": null,
+      "merge_sha": null,
+      "depends_on": [],
+      "ask": "gh api PUT repos/happygamer1919-tech/rc-website/branches/main/protection with required_status_checks contexts [quality], strict true, enforce_admins false, no required reviews. Acceptance: gh api GET the same path exit 0 and contexts contains quality. No PR, record in W28-R.md.",
+      "reading": "Executed 2026-09-23 23:13 UTC before any wave 28 pull request opened; recorded under R-W28-01 in docs/rulings/W28-R.md. main carried no protection before the call (404), so nothing was removed.",
+      "acceptance": [
+        "gh api repos/happygamer1919-tech/rc-website/branches/main/protection --jq '.required_status_checks.contexts[]' | grep -cx quality  -> 1 (exit 0)",
+        "gh api repos/happygamer1919-tech/rc-website/branches/main/protection --jq '.required_status_checks.strict'  -> true"
+      ],
+      "evidence": "PUT exit 0; GET exit 0; contexts [\"quality\"], strict true, enforce_admins false, reviews null, restrictions null (2026-09-23 23:13 UTC)"
+    },
+    {
+      "id": "W28-11",
+      "title": "Claims cleanup RO and RU, R-X enforcement, fifteen years, the Google reviews link",
+      "lane": "queue",
+      "status": "todo",
+      "priority": "high",
+      "owner_terminal": "yellow",
+      "branch": "w28/w28-11-claims-cleanup",
+      "pr": null,
+      "merge_sha": null,
+      "depends_on": [
+        "W28-00"
+      ],
+      "ask": "Remove every discount, percent-off, \"pana in 2027\", \"programari anticipate\", countdown or financing string. Remove \"250+\" and \"4.9/5\" review counts, keep the 3 testimonials, add a placeholder-free spot for a Google reviews link (data attribute, no link until owner supplies URL). Unify experience to \"10+ ani\" everywhere. Acceptance: headless Chrome rendered DOM of / and /ru/ and all service and catalog pages, grep -Ei \"reducere|скидк|%|2027|250\\+|4[,.]9\" returns 0 matches outside product spec tables, and grep for \"15+\" returns 0.",
+      "reading": "Amended by R-W28-02 (fifteen years everywhere, no 10+; the 15+ exclusion dropped) and R-W28-03 (the reviews link is live now, under the testimonials, share link as given). The promo bar, the hero offer line, the fourth stat card, the rating panel and the discount clauses inside six FAQ answers per locale go; R-X gains discount patterns in scripts/check-scarcity.js and an amendment block in docs/rulings/R-X.md; scripts/verify-live.js markers follow (promoBar 0, ratingPanel 0). New scripts/dom-text.js renders the built pages in headless Chrome and prints their text without spec tables, for these greps.",
+      "acceptance": [
+        "node build.js && node scripts/dom-text.js --all --no-spec | grep -Eic 'reducere|скидк|%|2027|250\\+|4[,.]9'  -> 0",
+        "node scripts/dom-text.js --all | grep -c '10+'  -> 0",
+        "node scripts/dom-text.js / | grep -c '15+'  -> at least 1; same for /ru/",
+        "grep -c 'href=\"https://share.google/t05qzuoiFA6LWKBF1\"' dist/index.html dist/ru/index.html  -> 1 and 1",
+        "curl -sIL -o /dev/null -w '%{http_code}' https://share.google/t05qzuoiFA6LWKBF1  -> 200",
+        "node scripts/check-scarcity.js  -> exit 0, with its new discount arms self-tested"
+      ]
+    },
+    {
+      "id": "W28-12",
+      "title": "Home CTA after the portfolio, both locales",
+      "lane": "queue",
+      "status": "todo",
+      "priority": "normal",
+      "owner_terminal": "yellow",
+      "branch": "w28/w28-12-home-cta",
+      "pr": null,
+      "merge_sha": null,
+      "depends_on": [
+        "W28-11"
+      ],
+      "ask": "After the portfolio section on / and /ru/, a full-width \"Solicita oferta\" / \"Запросить предложение\" button to the contact form, same style as the header CTA. Acceptance: DOM has exactly 3 CTA anchors to contact on home (header, after portfolio, final), RO and RU.",
+      "reading": "The contact form is #oferta and the header CTA is a.btn--primary[href='#oferta']. Measured before the card: four such anchors exist (the desktop header, the mobile panel's copy of it, the hero claim card's button, the footer's). The count of three is taken on the section-level CTAs the ask names: header, after portfolio, footer; the hero claim button and the mobile panel copy are not section CTAs and are excluded by selector, stated in the card.",
+      "acceptance": [
+        "node build.js && node scripts/dom-text.js --count 'a.btn--primary[href$=\"#oferta\"]:not(.hero-claim__cta):not(.mobile-panel a)' / /ru/  -> 3 and 3",
+        "node scripts/dom-text.js --count '#portofoliu + section a.btn--primary[href$=\"#oferta\"], .cta-band a.btn--primary[href$=\"#oferta\"]' / /ru/  -> 1 and 1"
+      ]
+    },
+    {
+      "id": "W28-13",
+      "title": "Services versus catalog: the roofing catalogue leaves the Acoperisuri service page for the Catalog",
+      "lane": "queue",
+      "status": "todo",
+      "priority": "high",
+      "owner_terminal": "yellow",
+      "branch": "w28/w28-13-services-catalog-split",
+      "pr": null,
+      "merge_sha": null,
+      "depends_on": [
+        "W28-12"
+      ],
+      "ask": "Acoperisuri and Garduri pages (RO and RU) keep hero, service explanation, portfolio gallery, CTA. Remove product grids, filter chips, counts and every price from service pages. Add one link card per catalog group into the matching Catalog section. Product detail URLs unchanged. Catalog keeps all 9 hub tiles including tabla cutata and all 99 roofing cards plus garduri cards unchanged. Acceptance: DOM of /acoperisuri and /garduri (RO and RU) grep \"lei\" returns 0; catalog roofing card count equals 99 and garduri count equals pre-change count recorded in the card; named test catalog-counts passes.",
+      "reading": "Measured before the card: /servicii/acoperisuri/ renders the roofing catalogue (99 .prod cards, 4 hub tiles + 5 product-bento tiles = 9, 7 chips with counts, 113 'lei'); /servicii/garduri/ has 0 'lei' already; the fence models with prices are 8 .nvk cards on /servicii/modele-garduri/, which is a product page, not the Garduri service page, and stays where it is (its URL is the Catalog's Garduri tile). The roofing catalogue moves whole to /catalog/materiale-acoperis/ (the category page W25-19 redirected away), both locales, with its tiles, chips and counts; the service page keeps hero, the two explanation sections, the projects, the FAQ and the CTA, and gains one link card per catalog group (six) into the matching #mat-* section. The seven child redirects and every product page URL are unchanged. Pre-change garduri count: 8.",
+      "acceptance": [
+        "node build.js && node scripts/dom-text.js /servicii/acoperisuri/ /ru/servicii/acoperisuri/ /servicii/garduri/ /ru/servicii/garduri/ | grep -c ' lei'  -> 0",
+        "node scripts/check-catalog-counts.js  -> exit 0 (roofing cards 99 on the catalogue page both locales, 9 tiles, garduri cards 8, printed)",
+        "node scripts/check-links.js && node scripts/check-hub-tile-links.js  -> exit 0"
+      ]
+    },
+    {
+      "id": "W28-14",
+      "title": "Copertine: Imperlux photographs and prices per model, a Catalog group with tile, chip and count",
+      "lane": "queue",
+      "status": "todo",
+      "priority": "normal",
+      "owner_terminal": "yellow",
+      "branch": "w28/w28-14-copertine",
+      "pr": null,
+      "merge_sha": null,
+      "depends_on": [
+        "W28-13"
+      ],
+      "ask": "For every copertine model, replace sketch or diagram images with a real product photo from imperlux.md when the model exists there, prices from imperlux.md shown \"de la N\" per R-05, source URL on the record. Models not on Imperlux keep the current source of record but need a real photo; if none exists, card goes blocked with the question listing the models. Copertine with prices are listed in Catalog under their own group with a hub tile, chip and count, RO and RU. Acceptance: no image under copertine records has a source flagged sketch, every record has price and source_url non-null, catalog count for copertine equals record count.",
+      "reading": "content/copertine.json holds twelve models C-01 to C-12 rendered as line diagrams; imperlux.md/acoperisuri/copertine/ lists twelve models IL301 to IL312. Each model is matched to its Imperlux page by structure and description, the page's photograph and its 'de la' price (MDL per square metre) are recorded with source_url, and a copertine group joins the Catalog with a tile, a chip and a count. A model with no photograph or no price on its page is listed in a question and the card is partial, not blocked whole.",
+      "acceptance": [
+        "node -e \"const c=require('./content/copertine.json'); const bad=c.models.filter(m=>!m.price||!m.source_url||(m.image&&/sketch|diagram/i.test(m.image.source||''))); console.log(bad.map(m=>m.designation)); process.exit(bad.length?1:0)\"  -> exit 0",
+        "node scripts/check-catalog-counts.js  -> exit 0 (copertine count equals content/copertine.json models with a price, printed)",
+        "node scripts/check-asset-provenance.js  -> exit 0"
+      ]
+    },
+    {
+      "id": "W28-15",
+      "title": "Fatade images: plain product photographs from fatade3d.md, no posters, tables or overlays",
+      "lane": "queue",
+      "status": "todo",
+      "priority": "normal",
+      "owner_terminal": "yellow",
+      "branch": "w28/w28-15-fatade-images",
+      "pr": null,
+      "merge_sha": null,
+      "depends_on": [
+        "W28-14"
+      ],
+      "ask": "For fatade3d.md products, any image with text overlay, parameter table, poster or flyer layout is replaced by a plain product photo from the fatade3d.md product page (maker's own mark allowed under R-13). No Google image results as source. Record source_url per image. Models with no plain photo listed as a blocked question. Acceptance: docs/reports/W28-FATADE-IMAGES.md lists every fatade record with old image, new image, source_url; reviewer checklist in the report; named test image-sources passes (every fatade image source_url hosts on fatade3d.md).",
+      "reading": "110 catalogue pictures carry a fatade3d.md ledger row. Every one is looked at; the ones that are posters, flyers, parameter tables or text overlays are replaced by a plain photograph from the same product's page gallery when one exists, through the existing intake, and the rest are listed in Q-W28-02. scripts/check-image-sources.js asserts every fatade3d record's picture has a source_url on fatade3d.md.",
+      "acceptance": [
+        "test -f docs/reports/W28-FATADE-IMAGES.md && grep -c '^| CAT-' docs/reports/W28-FATADE-IMAGES.md  -> equals the number of fatade3d records with a picture (printed by the test)",
+        "node scripts/check-image-sources.js  -> exit 0",
+        "node scripts/check-asset-provenance.js  -> exit 0"
+      ]
+    },
+    {
+      "id": "W28-16",
+      "title": "Constructii industriale: two service lines, RO and RU",
+      "lane": "queue",
+      "status": "todo",
+      "priority": "normal",
+      "owner_terminal": "yellow",
+      "branch": "w28/w28-16-industrial-lines",
+      "pr": null,
+      "merge_sha": null,
+      "depends_on": [
+        "W28-15"
+      ],
+      "ask": "Add two service lines with one sentence each in RC voice, RO \"Depozite din constructie metalica\" and \"Montare panouri sandwich\", RU equivalents, on the service page and in the home services list if the list names sub-services. Acceptance: DOM grep for both RO phrases on /constructii-industriale returns 1 each, RU page likewise.",
+      "reading": "The industrial service page is /servicii/industrial/ (there is no /constructii-industriale/ route; the acceptance is read on the page that exists). The home services list carries one sentence per service and names no sub-services, so only the service page changes. The phrases render with the site's diacritics; the grep normalises them.",
+      "acceptance": [
+        "node build.js && node scripts/dom-text.js /servicii/industrial/ | iconv -f utf-8 -t ascii//TRANSLIT | grep -c 'Depozite din constructie metalica'  -> 1",
+        "node scripts/dom-text.js /servicii/industrial/ | iconv -f utf-8 -t ascii//TRANSLIT | grep -c 'Montare panouri sandwich'  -> 1",
+        "node scripts/dom-text.js /ru/servicii/industrial/ | grep -c 'Склады из металлоконструкций'  -> 1; grep -c 'Монтаж сэндвич-панелей'  -> 1"
+      ]
+    },
+    {
+      "id": "W28-17",
+      "title": "Technical SEO: titles, descriptions, canonical, hreflang, sitemap, robots, Open Graph, 404, and scripts/seo-check.js",
+      "lane": "queue",
+      "status": "todo",
+      "priority": "normal",
+      "owner_terminal": "yellow",
+      "branch": "w28/w28-17-technical-seo",
+      "pr": null,
+      "merge_sha": null,
+      "depends_on": [
+        "W28-16"
+      ],
+      "ask": "Every HTML page gets a unique title under 60 chars and meta description under 155 chars in its locale, canonical, hreflang ro and ru and x-default pairs symmetric, sitemap.xml listing both locales, robots.txt allowing all and pointing to the sitemap, Open Graph and Twitter tags with a real OG image 1200x630 from RC work, custom 404 in both locales. Acceptance: node script scripts/seo-check.js exits 0.",
+      "reading": "Measured before the card: 85 pages, 3 titles at exactly 60 characters, 4 duplicate title pairs (the redirect pages under /catalog/materiale-acoperis/ share their target's title), every description under 155, canonical and 7 hreflang links on every page, sitemap with 66 URLs in both locales, robots allowing all with the sitemap line, og-image.jpg 1200x630, 404 in both locales. The script checks all of it on the built output, serving dist/ locally for the 200 check.",
+      "acceptance": [
+        "node build.js && node scripts/seo-check.js  -> exit 0"
+      ]
+    },
+    {
+      "id": "W28-18",
+      "title": "Structured data on every page, and scripts/schema-check.js",
+      "lane": "queue",
+      "status": "todo",
+      "priority": "normal",
+      "owner_terminal": "yellow",
+      "branch": "w28/w28-18-structured-data",
+      "pr": null,
+      "merge_sha": null,
+      "depends_on": [
+        "W28-17"
+      ],
+      "ask": "JSON-LD on every page. Organization and LocalBusiness on home with NAP from the existing contact page, Service on each service page, Product with AggregateOffer lowPrice in MDL on catalog detail pages (no highPrice, no struck price), BreadcrumbList on all inner pages, FAQPage only where a visible FAQ exists. No AggregateRating, no Review schema. Acceptance: scripts/schema-check.js exits 0.",
+      "reading": "The site has no per-product detail page; 'catalog detail pages' is read as the catalogue pages that render priced product cards (the category and subcategory pages, the roofing catalogue, the tile page, the fence models page), each card a Product with an AggregateOffer whose lowPrice is the card's lowest figure in MDL. W24-R3's 'no schema.org Offer' is amended for that shape by this dispatch, and scripts/check-catalog-pages.js's product-record arm learns the permitted block.",
+      "acceptance": [
+        "node build.js && node scripts/schema-check.js  -> exit 0",
+        "grep -rl 'AggregateRating' dist --include=*.html | wc -l  -> 0"
+      ]
+    },
+    {
+      "id": "W28-19",
+      "title": "GEO: llms.txt, the Despre facts block, one NAP string on every page, FAQ answers as direct statements",
+      "lane": "queue",
+      "status": "todo",
+      "priority": "normal",
+      "owner_terminal": "yellow",
+      "branch": "w28/w28-19-geo",
+      "pr": null,
+      "merge_sha": null,
+      "depends_on": [
+        "W28-18"
+      ],
+      "ask": "/llms.txt in RO with an RU section, company facts, services list, catalog groups with URLs, contact, coverage area. A \"Despre\" facts block in plain declarative sentences on the about or home page, NAP identical byte for byte across every page. FAQ answers rewritten as direct statements where they open with a question repeat. Acceptance: llms.txt exists and contains company name, phone, both locale roots and all 9 catalog group URLs; NAP string grep count equals page count.",
+      "reading": "llms.txt exists since W9-06 and gains the catalogue groups; the NAP is one constant rendered into every page's footer as an <address data-nap> block with the same bytes; the facts block sits in #despre on the home page in both locales using only figures the site already carries; the FAQ answers that open by restating their question are rewritten in both locales in the same commit.",
+      "acceptance": [
+        "node build.js && for s in 'Rapid Construct' '+373 76 837 180' 'https://rapidconstruct.md/' 'https://rapidconstruct.md/ru/'; do grep -c \"$s\" dist/llms.txt; done  -> each at least 1",
+        "node scripts/check-catalog-counts.js --llms  -> exit 0 (all 9 catalog group URLs present in dist/llms.txt)",
+        "test \"$(grep -rl 'data-nap' dist --include=*.html | wc -l | tr -d ' ')\" = \"$(find dist -name '*.html' | wc -l | tr -d ' ')\"  -> exit 0, and the NAP block's bytes are identical on every page (sha256 of the extracted block, one distinct value)"
+      ]
+    },
+    {
+      "id": "W28-20",
+      "title": "Search Console tag: blocked on the owner (the Business Profile half moved to W28-11 by R-W28-03)",
+      "lane": "blocked_on_owner",
+      "status": "blocked",
+      "priority": "normal",
+      "owner_terminal": "yellow",
+      "branch": null,
+      "pr": null,
+      "merge_sha": null,
+      "depends_on": [
+        "W28-11"
+      ],
+      "blocked_on": "owner: GSC_META_CONTENT (Q-W28-01)",
+      "ask": "Blocked on owner. Needs the Google Search Console HTML tag content and Google Business Profile URL. When supplied via env var names GSC_META_CONTENT and GBP_URL in the committed ruling, add the meta tag to both locale heads and the reviews link from W28-11. Acceptance: DOM has the meta tag on / and /ru/, reviews link resolves to the GBP URL.",
+      "reading": "Split by R-W28-03: the reviews link is live from W28-11 with the share link as given. Only the Search Console verification tag remains, and it needs the tag's content value from the owner (Q-W28-01). When it arrives it is one card: a meta name=google-site-verification in both locale heads from a committed ruling.",
+      "acceptance": [
+        "grep -c '<meta name=\"google-site-verification\"' dist/index.html dist/ru/index.html  -> 1 and 1 (after the value is supplied)"
+      ]
+    },
+    {
+      "id": "W28-21",
+      "title": "Wave close: Lighthouse, W28-FINAL-RUN, the CRITIC pass with up to five fix cards, W28-REVIEW, W28-RUN",
+      "lane": "queue",
+      "status": "todo",
+      "priority": "normal",
+      "owner_terminal": "yellow",
+      "branch": "w28/w28-21-wave-close",
+      "pr": null,
+      "merge_sha": null,
+      "depends_on": [
+        "W28-19"
+      ],
+      "ask": "Lighthouse on home, acoperisuri, garduri, catalog, contact, both locales, recorded in docs/reports/W28-FINAL-RUN.md with all gate commands and exit codes; then invoke CRITIC per CLAUDE.md, max 5 fix cards, taste to docs/reports/W28-REVIEW.md; republish board; write docs/reports/W28-RUN.md with every deviation flagged. Owner sends one real lead RO and one RU after merge, noted as an owner action, not a terminal step.",
+      "reading": "The contact page is the footer (#contacte) of the home page; its Lighthouse row is the home page. The critic pass is the W27-REV-01 shape: every gate, a rendered crawl of every page at three widths, Lighthouse, and a taste list; its fix cards (at most five) are worked after it as W28-FIX-01 onward.",
+      "acceptance": [
+        "test -f docs/reports/W28-FINAL-RUN.md && test -f docs/reports/W28-REVIEW.md && test -f docs/reports/W28-RUN.md  -> exit 0",
+        "node scripts/run-gates.js --keep-going  -> exit 0 on the final tree, the count printed"
+      ],
+      "owner_action": "After the last merge, send one real lead in RO and one in RU through the form."
+    }
+  ]
+}

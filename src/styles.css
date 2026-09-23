@@ -2191,6 +2191,10 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 
 @media (max-width: 1024px) {
   :root { --section-pad: 72px; }
+  /* W28-07: four padded stat cards do not fit four tracks below 1024px (the homepage scrolled
+     sideways by 14px at 769, gate 11 caught it in CI); two columns and a smaller figure here. */
+  .band__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .band .stat__n { font-size: 52px; }
   .bento, .models, .csteps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }

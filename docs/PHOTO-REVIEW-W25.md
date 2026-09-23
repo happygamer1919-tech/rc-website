@@ -19,14 +19,14 @@ them apart: nothing from the earlier dispatch is a labelled swatch or carries a 
 
 | Flag | Rows | What to look for |
 |---|---|---|
-| labelled swatch | 134 | the product name or code is printed into the photograph, and the card prints it again underneath |
+| labelled swatch | 136 | the product name or code is printed into the photograph, and the card prints it again underneath |
 | watermark | 78 | a supplier mark on the picture or on the product. It is there on purpose and must not be cropped |
 | reuse | 25 | one picture filling a second record of the same product (W25-R17). Check the two cards are the same product |
 | google_pick | 12 | found by search because the product's own source publishes nothing at the 450 floor (W25-R20). Check it is the right product, and correct it if not |
 | library | 3 | a licence-free stock photograph from Unsplash or Pexels (W25-R23, W26-R8), decoration only. Check it suits the page |
 | low_res | 4 | the longest side is under the site's 450 floor, installed under W26-R13's floor of 300 for the last empty products. Replace it when a larger picture exists |
 | low confidence match | 9 | the plate matched Phomi at a tier that is not an exact string match. Check the name in the picture against the name on the card |
-| no flag | 110 | an ordinary manufacturer packshot |
+| no flag | 108 | an ordinary manufacturer packshot |
 
 ## Table one: every image on the site in these 4 sections
 
@@ -283,8 +283,8 @@ them apart: nothing from the earlier dispatch is a labelled swatch or carries a 
 | `ACOP-08` | ACOP-08 | /servicii/acoperisuri/ | client direct transfer, owner folder RC-webpics_v2 ACOPERIȘURI, 22.09.2026 | owned by Rapid Construct, supplied for site use | 1280x730 | none |
 | `ACOP-09` | ACOP-09 | /servicii/acoperisuri/ | https://www.dasterum.md/content/catalog/products/vmt7scs4.jpg | direct_supplier dasterum.md | 488x488 | watermark, reuse of CAT-0228 |
 | `ACIM-01` | ACIM-01 | /servicii/acoperisuri/ | https://imperlux.md/acoperisuri/images/categories/ceramica.png | owner_override_imperlux | 540x540 | none |
-| `ACIM-02` | ACIM-02 | /servicii/acoperisuri/ | https://imperlux.md/acoperisuri/images/products/iko-cambridge/hero.png | owner_override_imperlux | 490x490 | none |
-| `ACIM-03` | ACIM-03 | /servicii/acoperisuri/ | https://imperlux.md/acoperisuri/images/products/iko-hex/hero.png | owner_override_imperlux | 490x490 | none |
+| `ACIM-02` | ACIM-02 | /servicii/acoperisuri/ | https://imperlux.md/acoperisuri/images/products/iko-cambridge/hero.png | owner_override_imperlux | 600x450 | labelled swatch |
+| `ACIM-03` | ACIM-03 | /servicii/acoperisuri/ | https://imperlux.md/acoperisuri/images/products/iko-hex/hero.png | owner_override_imperlux | 600x450 | labelled swatch |
 | `ACIM-04` | ACIM-04 | /servicii/acoperisuri/ | https://imperlux.md/acoperisuri/images/products/sisteme-pluviale/carlig-pazie-universal.jpg | owner_override_imperlux | 600x600 | none |
 | `ACIM-05` | ACIM-05 | /servicii/acoperisuri/ | https://imperlux.md/acoperisuri/images/products/sisteme-pluviale/cot-60.jpg | owner_override_imperlux | 600x600 | none |
 | `ACIM-06` | ACIM-06 | /servicii/acoperisuri/ | https://imperlux.md/acoperisuri/images/products/sisteme-pluviale/prelungitor.jpg | owner_override_imperlux | 600x600 | none |

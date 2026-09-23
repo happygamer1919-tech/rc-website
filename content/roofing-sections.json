@@ -493,11 +493,12 @@
       "variant": null,
       "folds": [],
       "match_tier": "imperlux-only",
-      "match_note": "dasterum.md's roofing catalogue carries no bituminous shingle.",
+      "match_note": "dasterum.md's roofing catalogue carries no bituminous shingle. AMENDED W27-C-05 (W27-R-04): the preview image as published (untouched, flagged label), the tagline, the colour code chips and the warranty line as printed; prices re-verified on the rendered page 2026-09-22.",
       "source": {
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/shingle/iko-cambridge/",
-        "captured": "2026-09-22"
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/iko-cambridge/hero.png"
       },
       "specs": {
         "Grosime": {
@@ -511,8 +512,21 @@
         "Culori": {
           "ro": "4",
           "ru": "4"
+        },
+        "Garanție": {
+          "ro": "25 ani (total) / 15 ani (Platinum)",
+          "ru": "25 лет (всего) / 15 лет (Platinum)"
         }
-      }
+      },
+      "tagline": {
+        "ro": "Grad de acoperire superior, montaj rapid",
+        "ru": "Повышенное перекрытие, быстрый монтаж"
+      },
+      "colours": [
+        "52",
+        "53",
+        "54"
+      ]
     },
     {
       "id": "imp-iko-hex",
@@ -532,11 +546,12 @@
       "variant": null,
       "folds": [],
       "match_tier": "imperlux-only",
-      "match_note": "dasterum.md's roofing catalogue carries no bituminous shingle.",
+      "match_note": "dasterum.md's roofing catalogue carries no bituminous shingle. AMENDED W27-C-05 (W27-R-04): the preview image as published (untouched, flagged label), the tagline, the colour code chips and the warranty line as printed; prices re-verified on the rendered page 2026-09-22.",
       "source": {
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/shingle/iko-hex/",
-        "captured": "2026-09-22"
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/iko-hex/hero.png"
       },
       "specs": {
         "Grosime": {
@@ -550,8 +565,21 @@
         "Culori": {
           "ro": "3",
           "ru": "3"
+        },
+        "Garanție": {
+          "ro": "15 ani (total) / 5 ani (Platinum)",
+          "ru": "15 лет (всего) / 5 лет (Platinum)"
         }
-      }
+      },
+      "tagline": {
+        "ro": "Hexagonală autoadezivă, durabilă și estetică",
+        "ru": "Шестиугольная самоклеящаяся, прочная и эстетичная"
+      },
+      "colours": [
+        "01",
+        "27",
+        "23"
+      ]
     },
     {
       "id": "imp-jgheab",

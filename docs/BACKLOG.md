@@ -1043,3 +1043,13 @@ its warranty row stays held (W26-R6, claims-held rows 7 and 9 amended). A derive
 0 percent, 0 "Popular" on the page. Budgets **4,429 / 4,499**. **Static gates exit 0**; gate 28 run
 before the PR.
 
+## W27-C-05 · Șindrilă bituminoasă from Imperlux
+**Status: PR OPEN** (opened 2026-09-22). W27-R-04 applied to the two IKO shingles the section already
+had: **IKO Cambridge De la 357 lei/m²** and **IKO Superglass Hex De la 260 lei/m²**, re-verified on the
+rendered page; each card gains the tagline, the colour code chips (52, 53, 54; 01, 27, 23), the
+warranty line exactly as printed ("25 ani (total) / 15 ani (Platinum) garanție") and kg/m². **The
+W26-11 corner crops are replaced by the previews as published**, which carry the category, the model
+name and Imperlux's orange mark (Q-W27-02); flagged `label`, and their two ids move to the W27-R-04
+override entry because the W26-R10 sentence says "cropped". The section's derived line reads "2 modele,
+de la 260 lei/m²". Budgets **21,785 / 21,943**. **Static gates exit 0**; gate 28 run before the PR.
+

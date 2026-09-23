@@ -13060,3 +13060,26 @@ derivation the roofing tables carry.
 **Rendered acceptance.** 4 cards with image, price, chips and facts; 0 percent signs in a price
 element; 0 "Popular"; 0 "Preț la cerere". **Heights** 4,288 to 4,369 and 4,386 to 4,439; budgets
 4,429 / 4,499 (R-Y).
+
+## W27-C-05 · Șindrilă bituminoasă from Imperlux, 2026-09-22
+
+Branch `w27/w27-c-05-sindrila-imperlux`, stacked on W27-C-04.
+
+**W27-R-04 applied to the two records the section already carried**, `imp-iko-cambridge` and
+`imp-iko-hex`. Prices re-verified on the rendered section card, the Compară table and the product
+page: 357 lei/m² and 260 lei/m², unchanged since W26-04. Each record gains the tagline, the colour
+code chips as printed (52, 53, 54 and "+1" on Cambridge; 01, 27, 23 on Hex; the fourth Cambridge
+code is named nowhere, Q-W27-02), and `Garanție` as the page prints it, "25 ani (total) / 15 ani
+(Platinum)" and "15 ani (total) / 5 ani (Platinum)", which the facts line carries verbatim, followed
+by "garanție" as imperlux's own card text does. The Compară table is unchanged: Preț, Grosime,
+Greutate, Culori were already imperlux's columns; the warranty row stays held (W26-R6).
+
+**The pictures change shape.** W26-11 had installed a 490x490 corner of each shingle texture "clear of
+imperlux's orange logo". W27-R-04 says same images, untouched, and the dispatch names the preview
+image; both files are now the 1440x1080 previews at 600x450, with the category, the model name and
+the orange mark in them, flagged `label`. Their ledger rows move from `1 / 1` to `4 / 3`, and their
+ids move from the W26-R10 override entry, whose sentence says "cropped where burned-in text or
+branding sat", to the W27-R-04 entry, whose sentence says "as imperlux.md publishes it": a file is
+held to the sentence that describes it.
+
+**Heights** 21,643 to 21,725 and 21,802 to 21,883; budgets 21,785 / 21,943 (R-Y).

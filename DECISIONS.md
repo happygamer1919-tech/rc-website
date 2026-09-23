@@ -13664,3 +13664,16 @@ colour value (section 3). It renders on every page, in flow under the fixed head
 combinations at 4.5:1 or better after the change. All 53 budgets re-measured: 0 move (the bar's
 box is the same 44px; the hairline was inside it under `border-box`). Screenshots of the homepage
 at 390 and 1440 in the session's scratch, not committed (no design card).
+
+## W27-FIX-10 · The roofing calculator tile opens the "in construcție" page, under W27-R-16, 2026-09-23
+
+Branch `w27/w27-fix-10-roof-calc-tile`, from `main` at `70c4483` (#161 merged, verified live).
+
+**The owner's instruction, recorded verbatim as W27-R-16.** The "Calculează prețul acoperișului"
+tile on the roofing hub opened `/servicii/tigla-metalica/#tigla-metalica`, W26-11's nearest true
+destination under W26-R12; it now opens `/in-constructie/` (RU `/ru/in-constructie/`), exactly as
+the Garduri hub's "Calculează prețul gardului" tile does (`inConstructie: true` in `BENTOS`), and
+W26-R12 is overturned for that one tile. Q-W26-05 is answered for the calculator half in its
+heading; the "Reduceri" tile keeps the homepage offer form. One line of data in `build.js`, its
+comment carrying the owner's words; the hub keeps four tiles and four links, so no live marker
+moves and no height moves.

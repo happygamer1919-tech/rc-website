@@ -978,7 +978,7 @@ the tree, the built site (entities and escapes too) and the pull request's commi
 sentences rewritten, not repunctuated. RU terasamente +27 (inside 6,000), RU privacy +25 at 390.
 
 ## W26-14 · The design pass
-**Status: PR OPEN** (opened 2026-09-22). W26-R16 applied after a rendered study of linear.app,
+**Status: MERGED #135, section 12.0 exit 0 on `e3ba69d`, 53 of 53** (opened 2026-09-22). W26-R16 applied after a rendered study of linear.app,
 stripe.com and apple.com/macbook-air/; `docs/design/PRINCIPLES-W26.md` holds ten principles.
 Tokens: card 20px, hero 24px, pill buttons, 6% hairline (fields keep `--line`), two-layer shadow,
 250ms hover with image 1.03, light sections alternate white and `#F7F5F2` (the eleventh value,
@@ -986,3 +986,15 @@ dirty-screen history flagged), phone sections 64px, headings -0.01em. **Found an
 revealed card ever lifted**, the reveal's `transform: none` outranked it; the lift is `translate`
 now. 634 focus stops, every one ringed. 49 of 53 heights identical, none grew; seven budgets
 re-measured plus 60. Screenshots in `docs/design/W26/`.
+
+## W27-R-00 · The wave 27 rulings, and the self-merge preflight
+**Status: PR OPEN** (opened 2026-09-22). The eight owner rulings W27-R-01 to W27-R-08 recorded
+verbatim in `docs/rulings/W27-R.md` before any card acted on them. **Preflight measured, not
+assumed:** `main` carried **no branch protection** (404) and **no rulesets**, so nothing was deleted
+and there was no required check to preserve; auto-merge enabled on the repository. Two protocol
+deviations recorded: the merge waits on `gh pr checks --watch` because GitHub's auto-merge has no
+required check to wait for, and it is a **merge commit, not a squash**, per `docs/CLAUDE.md`
+section 10. **`docs/RC-PROJECT-RULES.md` does not exist**; the rules are `docs/CLAUDE.md`. The two
+design proposals exist only as PDFs under `design/`, and their "why" pages were transcribed; the
+find-and-replace files they refer to are not in the repo, so the design cards build from the
+dispatch's numbers. Section 12.0 on `e3ba69d` (#135): **exit 0, PASS, 53 of 53, 0 retried.**

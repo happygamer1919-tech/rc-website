@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /* Generates one placeholder JPG per image slot in docs/RC-PHOTO-MANIFEST.md.
    Each is a real file at the manifest's pixel size: #F2F2F2 field, 1px #E2E2E2
-   border, slot ID and ratio centred in #5A5A5A. Because the file always exists,
+   border, slot ID and ratio centred in #5A5A5A (the placeholder files keep these greys;
+   AMENDED W28-01: the site tokens are #E6E1DA and #57534E now). Because the file always exists,
    the page never shows a broken-image icon and the <img> alt text survives.
 
    Dropping in a real photo is a plain overwrite of public/img/<slot-id>.jpg.

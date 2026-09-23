@@ -131,7 +131,39 @@ const SUPERSEDED = [
     find: /#1C1C1C/gi,
     ruling: 'DECISIONS.md, "The master plan is stale on two token values"',
     what: '--ink as #1C1C1C. It predates the logo file and never shipped; the live value is #1A1A1A',
-    clear: /#1A1A1A|AMENDED|stale on two token values/,
+    clear: /#1A1A1A|#1C1917|AMENDED|stale on two token values/,
+  },
+  /* W28-01 (wave 27 design pass): the four cool neutrals retired for warm ones. A value
+     copied from the old table has no way to notice the token moved, which is the reason
+     this gate exists (R-Q). The og image and the generated placeholder SVGs keep their
+     own greys and say so beside the value. */
+  {
+    id: 'ink-cool',
+    find: /#1A1A1A/gi,
+    ruling: 'docs/CLAUDE.md section 3, AMENDED W28-01',
+    what: '--ink as #1A1A1A; the live value is #1C1917 since W28-01',
+    clear: /#1C1917|AMENDED|W28-01/,
+  },
+  {
+    id: 'band-cool',
+    find: /#141414/gi,
+    ruling: 'docs/CLAUDE.md section 3, AMENDED W28-01',
+    what: '--bg-dark as #141414; the live value is #1C1917 since W28-01',
+    clear: /#1C1917|AMENDED|W28-01/,
+  },
+  {
+    id: 'muted-cool',
+    find: /#5A5A5A/gi,
+    ruling: 'docs/CLAUDE.md section 3, AMENDED W28-01',
+    what: '--ink-muted as #5A5A5A; the live value is #57534E since W28-01',
+    clear: /#57534E|AMENDED|W28-01/,
+  },
+  {
+    id: 'line-cool',
+    find: /#E2E2E2/gi,
+    ruling: 'docs/CLAUDE.md section 3, AMENDED W28-01',
+    what: '--line as #E2E2E2; the live value is #E6E1DA since W28-01',
+    clear: /#E6E1DA|AMENDED|W28-01/,
   },
   {
     /* W25-22. The owner corrected the written warranty from thirty years to
@@ -264,6 +296,25 @@ const EXEMPT = [
    superseding authority beside them without falsifying the record they are.
    An exception that matches nothing is a FAILURE, not a skip. */
 const KNOWN = [
+  /* W28-01: three dated records that name the retired charcoal or ink as they were measured. */
+  {
+    file: 'docs/BACKLOG.md',
+    id: 'band-cool',
+    contains: 'og:image regenerated on `#141414`',
+    reason: 'W14 ticket body, a record of what the og image was generated on (R-S); the image itself keeps that colour until regenerated.',
+  },
+  {
+    file: 'RELEASE-NOTES.md',
+    id: 'band-cool',
+    contains: 'Exactly three background values: `#FFFFFF`, `#F2F2F2`, `#141414`.',
+    reason: 'the wave 1 record of the three backgrounds as they stood; a dated section (R-S).',
+  },
+  {
+    file: 'RELEASE-NOTES.md',
+    id: 'ink-cool',
+    contains: '`--ink` is `#1A1A1A`, sampled from',
+    reason: 'the wave 1 record of the token values as sampled from the logo; a dated section (R-S).',
+  },
   {
     file: 'RELEASE-NOTES.md',
     id: 'revert-ro',

@@ -234,7 +234,7 @@ a card this size. See DECISIONS.md.
 
 | Slot ID | Ratio | Dimensions | Shooting note |
 |---|---|---|---|
-| `og-image` | 1200x630 | 1200x630 | Best single finished-house shot. Currently a branded logo card on #141414; a real photo overwrites it |
+| `og-image` | 1200x630 | 1200x630 | Best single finished-house shot. Currently a branded logo card on #141414 (the og image keeps that charcoal until regenerated; AMENDED W28-01, the band is #1C1917); a real photo overwrites it |
 
 ### Supplier logos: 11, not photographs
 

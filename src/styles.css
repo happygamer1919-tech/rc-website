@@ -16,14 +16,17 @@
 
   --brand: #F65308;
   --brand-dark: #B23C08;
-  --ink: #1A1A1A;
-  --ink-muted: #5A5A5A;
+  /* W28-01 (wave 27 design pass): every neutral shifts toward brown. Text and the dark
+     band share one warm charcoal, which frees a palette slot for the clear outline below.
+     docs/CLAUDE.md section 3 carries the amendment. */
+  --ink: #1C1917;
+  --ink-muted: #57534E;
 
-  /* Phase 2 amendment: sections use only #FFFFFF and #141414. --bg-grey
+  /* Phase 2 amendment: sections use only --bg-light and --bg-dark (W28-01). --bg-grey
      survives solely as the image-placeholder fill, never as a section. */
   --bg-light: #FFFFFF;
   --bg-grey: #F2F2F2;
-  --bg-dark: #141414;
+  --bg-dark: #1C1917;
   /* W26-14, ruling W26-R16: "section backgrounds alternate white and a warm
      off-white neutral". The eleventh value, added to docs/CLAUDE.md section 3 in
      the same commit. Exactly one, never beside a second off-white: the rejected
@@ -33,11 +36,14 @@
 
   /* Motion. Every value here is disabled, not reduced, under
      prefers-reduced-motion at the bottom of this file. */
-  --reveal-dur: 320ms;
-  --hover-dur: 250ms;   /* W26-R16: 250ms ease-out */
+  --reveal-dur: 380ms;  /* W28-01: 380ms for reveals and the image zoom */
+  --hover-dur: 320ms;   /* W28-01: 320ms on --ease-out, one curve for everything */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 
-  --line: #E2E2E2;
+  --line: #E6E1DA;
+  /* W28-01: the CLEAR outline, for form fields and filter buttons only: 3.02:1 on white,
+     WCAG 1.4.11's floor for a control's edge. Borders only, never text. */
+  --outline: #9C9388;
 
   --container: 1200px;
   --gutter: 24px;
@@ -62,7 +68,7 @@
      rgba(0,0,0,0.04) plus 0 12px 32px rgba(0,0,0,0.06), hover translateY(-4px)
      with deeper shadow". Form fields and chips keep --line: a field's edge is
      how a visitor finds it. */
-  --hairline: rgba(0, 0, 0, 0.06);
+  --hairline: rgba(0, 0, 0, 0.10);  /* W28-01: 6% to 10%, an outline you can see */
   --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 32px rgba(0, 0, 0, 0.06);
   --shadow-card-hover: 0 2px 4px rgba(0, 0, 0, 0.06), 0 20px 44px rgba(0, 0, 0, 0.1);
   --control-h: 48px;
@@ -72,7 +78,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 112px; /* W28-01: an anchor lands below the fixed header */ }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
@@ -145,7 +151,7 @@ p { margin: 0; }
 .section--divided { border-top: 1px solid var(--hairline); }
 /* W26-14, ruling W26-R16. Light sections alternate white and --bg-warm, counted
    among the page's sections only, so the hidden gallery lightbox between two of
-   them does not break the count. The #141414 bands keep their colour and are
+   them does not break the count. The --bg-dark bands keep their colour and are
    counted, so the light section after a band may take either tone; two light
    sections that touch always differ. A browser without the "of" selector shows
    every light section white, which is the site as it was. */
@@ -153,7 +159,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 .section--dark  { background: var(--bg-dark); color: var(--bg-light); padding: var(--band-pad) 0; }
 
 .eyebrow {
-  font-size: 13px; font-weight: 700; text-transform: uppercase;
+  font-size: 14px; font-weight: 700; text-transform: uppercase;
   letter-spacing: 0.08em; color: var(--brand-dark); margin-bottom: 16px;
 }
 .section--dark .eyebrow { color: var(--brand); }
@@ -179,6 +185,10 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
    darkening the brand fill. Two pixels on a 48px control. */
 .btn--primary { background: var(--brand); color: var(--bg-light); }
 .btn--primary:hover { background: var(--brand-dark); color: var(--bg-light); }
+/* W28-01: the button answers the pointer the way a card does, eased on the one curve,
+   lifted 1px with a soft shadow. Removed under reduced motion with the card lift. */
+.btn { transition: background var(--hover-dur) var(--ease-out), color var(--hover-dur) var(--ease-out), border-color var(--hover-dur) var(--ease-out), translate var(--hover-dur) var(--ease-out), box-shadow var(--hover-dur) var(--ease-out); }
+.btn:hover { translate: 0 -1px; box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12); }
 .btn--outline { background: transparent; border-color: var(--ink); color: var(--ink); }
 .btn--outline:hover { background: var(--ink); color: var(--bg-light); }
 .btn--outline-light { background: transparent; border-color: var(--bg-light); color: var(--bg-light); }
@@ -211,7 +221,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
    No new colour value. The border is --line on the light variant and the
    rgba(255,255,255) hairline that docs/CLAUDE.md section 3 already permits on
    the dark band. The id text is --ink-muted on white (7.0:1) and --bg-light on
-   #141414 (17.4:1), so both clear WCAG's 4.5:1 for normal text.
+   --bg-dark (16.2:1 on #1C1917, W28-01), so both clear WCAG's 4.5:1 for normal text.
 
    The ratio is passed per slot as --ph-ratio and comes from the slot's row in
    docs/PHOTO-SLOTS-W24.json, which is the one place a ratio is written. */
@@ -225,7 +235,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 .ph--light { background: var(--bg-light); color: var(--ink-muted); }
 .ph--dark { background: var(--bg-dark); color: var(--bg-light); border-color: rgba(255, 255, 255, 0.18); }
 .ph__id {
-  font-size: 12px; font-weight: 600; line-height: 1;
+  font-size: 14px; font-weight: 600; line-height: 1;
   letter-spacing: 0.08em; text-transform: uppercase;
   font-variant-numeric: tabular-nums;
   padding: 0 8px; text-align: center;
@@ -244,7 +254,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
    continuing to the edge of the frame, not a new colour value: it is --bg-light.
 
    The dark variant keeps its dark ground, because a hub tile is a photograph on
-   #141414 with a white label over it and a white letterbox would break the label
+   --bg-dark with a white label over it and a white letterbox would break the label
    gradient W24-R5 permits. */
 .ph--filled { display: block; padding: 0; }
 .ph--filled img {
@@ -372,7 +382,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 .prod__ph { border-radius: var(--radius-inset); }
 .prod__body { display: flex; flex-direction: column; flex: 1; padding: 16px 20px 20px; }
 .prod__brand {
-  margin: 0 0 6px; font-size: 13px; font-weight: 700; line-height: 1.2;
+  margin: 0 0 6px; font-size: 14px; font-weight: 700; line-height: 1.2;
   text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted);
 }
 /* The name does NOT absorb the row's slack. It did in the first draft, and the
@@ -567,7 +577,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
    declarations are (0,1,0) and the garduri one is later in the file, so it won.
    Measured on the built page before the rename: the section itself became a
    three-column grid, the tiles rendered white on a 10px radius with 24px of
-   padding instead of #141414 on 24px, and the tall tile came out 128px wide
+   padding instead of --bg-dark on 24px, and the tall tile came out 128px wide
    against an intended 380. The bento was visibly broken and every gate was green,
    because no gate reads a layout. Renamed to .hub__*, which nothing else uses. */
 /* W26-04 (W26-R5): `.pb__*` IS THE SECOND BENTO, and it shares every rule body
@@ -742,7 +752,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 }
 .cop-hero__grad {
   position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(to right, rgba(20, 20, 20, 0.96) 0%, rgba(20, 20, 20, 0.92) 42%, rgba(20, 20, 20, 0.55) 68%, rgba(20, 20, 20, 0.15) 100%);
+  background: linear-gradient(to right, rgba(28, 25, 23, 0.96) 0%, rgba(28, 25, 23, 0.92) 42%, rgba(28, 25, 23, 0.55) 68%, rgba(28, 25, 23, 0.15) 100%);
 }
 .cop-hero__inner { position: relative; padding-top: 80px; padding-bottom: 80px; }
 /* W26-05a. Two classes deep, because the crumb is ALSO a .breadcrumb and that
@@ -807,7 +817,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
   .xsell-row { grid-template-columns: minmax(0, 1fr); }
   .cop-hero__inner { padding-top: 56px; padding-bottom: 56px; }
   .cop-hero__grad {
-    background: linear-gradient(to bottom, rgba(20, 20, 20, 0.94) 0%, rgba(20, 20, 20, 0.88) 45%, rgba(20, 20, 20, 0.6) 100%);
+    background: linear-gradient(to bottom, rgba(28, 25, 23, 0.94) 0%, rgba(28, 25, 23, 0.88) 45%, rgba(28, 25, 23, 0.6) 100%);
   }
 }
 
@@ -821,7 +831,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 
 /* Two layers. The BAND is a full-width solid #FFFFFF strip, fixed, opaque at
    every scroll position, so nothing ever shows through or overlaps. The PILL
-   is a #141414 rounded bar sitting inside it. */
+   is a --bg-dark rounded bar sitting inside it. */
 .header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   height: 96px;
@@ -891,7 +901,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 999px; padding: 6px 10px;
 }
-.lang span, .lang a { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; line-height: 1; }
+.lang span, .lang a { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; line-height: 1; }
 .lang a { color: var(--bg-light); }
 .lang a:hover { color: var(--brand); }
 .lang[data-lang='ro'] .lang__ro,
@@ -970,7 +980,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 }
 .catalog__heading {
   margin: 0; padding: 14px 16px; border-bottom: 1px solid var(--hairline);
-  font-size: 13px; font-weight: 700; line-height: 1; text-transform: uppercase; letter-spacing: 0.08em;
+  font-size: 14px; font-weight: 700; line-height: 1; text-transform: uppercase; letter-spacing: 0.08em;
   color: var(--ink-muted);
 }
 .catalog__list { list-style: none; margin: 0; padding: 0; }
@@ -1087,14 +1097,18 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
    before the webfont resolves and whatever the string turns out to be. */
 .promo {
   height: 44px;
-  background: var(--brand);
+  /* W28-01: a quiet warm ribbon with an orange dot, not a full-width orange stripe. The
+     offer is still first; it no longer looks like a discount store. */
+  background: var(--bg-warm);
   color: var(--ink);
+  border-bottom: 1px solid var(--hairline);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 var(--gutter);
   overflow: hidden;
 }
+.promo__text::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--brand); margin-right: 10px; vertical-align: middle; }
 .promo__text {
   margin: 0;
   font-size: 15px;
@@ -1129,7 +1143,6 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 
 .price-box {
   border: 1px solid var(--hairline);
-  border-top: 4px solid var(--brand);
   border-radius: var(--radius-card);
   padding: 24px 28px;
   margin: 0 auto 40px;
@@ -1152,11 +1165,11 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 .step__title { margin-bottom: 8px; }
 .step__line { color: var(--ink-muted); }
 
-/* Process now sits on #141414. --ink-muted would be 1.5:1 there, so body text
+/* Process now sits on --bg-dark. --ink-muted would be 1.5:1 there, so body text
    goes full white and the placeholder frame switches to a white border. */
 .section--dark .step__title { color: var(--bg-light); }
 .section--dark .step__line { color: var(--bg-light); }
-.section--dark .media--framed { border-color: var(--bg-light); }
+.section--dark .media--framed { border-color: rgba(255, 255, 255, 0.12); }  /* W28-01 */
 .section--dark h2 { color: var(--bg-light); }
 
 /* --- portfolio ------------------------------------------------------------ */
@@ -1178,7 +1191,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
   /* 13px uppercase cannot reach the large-text threshold without wrecking the
      card, so the fill darkens instead: white on --brand-dark is 5.93:1. */
   background: var(--brand-dark); color: var(--bg-light);
-  font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+  font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
   line-height: 1; padding: 7px 10px; border-radius: var(--radius-control);
 }
 .project[hidden] { display: none; }
@@ -1284,7 +1297,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 .form-aside { display: flex; flex-direction: column; gap: var(--gap); }
 
 .field { display: flex; flex-direction: column; gap: 8px; }
-.field label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand-dark); }
+.field label { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand-dark); }
 .field input, .field select, .field textarea {
   height: var(--control-h); padding: 0 16px;
   border: 1px solid var(--line); border-radius: var(--radius-control);
@@ -1292,14 +1305,14 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
   font-family: inherit; font-size: 17px; line-height: 1.6;
 }
 .field textarea { height: auto; padding: 12px 16px; resize: vertical; }
-.field__hint { font-size: 13px; color: var(--ink-muted); }
-.field__error { font-size: 13px; font-weight: 700; color: var(--brand-dark); }
+.field__hint { font-size: 14px; color: var(--ink-muted); }
+.field__error { font-size: 14px; font-weight: 700; color: var(--brand-dark); }
 .field__error[hidden] { display: none; }
 .field input[aria-invalid='true'], .field select[aria-invalid='true'] { border-color: var(--brand); }
 
 .consent { display: flex; align-items: flex-start; gap: 12px; }
 .consent input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--brand); flex: none; }
-.consent label { font-size: 13px; line-height: 1.6; color: var(--ink-muted); }
+.consent label { font-size: 14px; line-height: 1.6; color: var(--ink-muted); }
 .consent a { text-decoration: underline; }
 
 .honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
@@ -1317,7 +1330,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 /* --- footer --------------------------------------------------------------- */
 
 .footer { background: var(--bg-dark); color: var(--bg-light); padding-top: var(--section-pad); }
-.footer__cta { display: flex; gap: 16px; flex-wrap: wrap; padding-bottom: 40px; border-bottom: 1px solid var(--bg-light); margin-bottom: 40px; }
+.footer__cta { display: flex; gap: 16px; flex-wrap: wrap; padding-bottom: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.12); margin-bottom: 40px; }  /* W28-01: a hairline, not tape */
 .footer__cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); padding-bottom: var(--section-pad); }
 .footer__brand { display: flex; flex-direction: column; gap: 16px; }
 /* W13-03. Enlarged by the same 1.5x factor as the header mark, so the two move
@@ -1325,15 +1338,15 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 .footer__brand img { height: 66px; width: auto; display: block; align-self: flex-start; }
 .footer__desc { max-width: 340px; }
 .footer__offer { font-weight: 700; color: var(--brand); max-width: 340px; }
-.footer__heading { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand); margin-bottom: 16px; }
+.footer__heading { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand); margin-bottom: 16px; }
 .footer__links { display: flex; flex-direction: column; gap: 10px; }
 .footer__links a:hover { color: var(--brand); }
 .footer__lists { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); }
 .footer__contact { display: flex; flex-direction: column; gap: 12px; }
-.footer__contact dt { font-size: 13px; color: var(--line); }
+.footer__contact dt { font-size: 14px; color: var(--line); }
 .footer__contact dd { margin: 0; font-weight: 700; }
-.footer__bar { border-top: 1px solid var(--bg-light); }
-.footer__bar-inner { max-width: var(--container); margin: 0 auto; padding: 20px var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: 13px; color: var(--line); }
+.footer__bar { border-top: 1px solid rgba(255, 255, 255, 0.12); }
+.footer__bar-inner { max-width: var(--container); margin: 0 auto; padding: 20px var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: 14px; color: var(--line); }
 .footer__bar-inner a:hover { color: var(--brand); }
 .footer__legal { display: flex; gap: 20px; flex-wrap: wrap; }
 
@@ -1363,14 +1376,14 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
   margin: 48px 0 12px;
 }
 .prose p { margin-bottom: 16px; }
-.prose__updated { color: var(--ink-muted); font-size: 13px; margin-bottom: 24px; }
+.prose__updated { color: var(--ink-muted); font-size: 14px; margin-bottom: 24px; }
 .prose__lead { font-size: 19px; }
 .prose__todo {
   border-left: 4px solid var(--brand);
   background: var(--bg-grey);
   padding: 12px 16px;
   color: var(--ink-muted);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
 }
 .prose ul { margin: 0 0 16px; padding-left: 22px; }
@@ -1378,7 +1391,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 .prose a { text-decoration: underline; }
 .prose__dl { margin: 0 0 16px; display: flex; flex-direction: column; gap: 10px; }
 .prose__dl > div { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 12px; align-items: baseline; }
-.prose__dl dt { color: var(--ink-muted); font-size: 13px; }
+.prose__dl dt { color: var(--ink-muted); font-size: 14px; }
 .prose__dl dd { margin: 0; font-weight: 700; }
 .prose__back { margin-top: 48px; }
 
@@ -1412,10 +1425,10 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
      below, because on a revealed card that list is the one in force. */
   .card, .trust-item, .review,
   .prod, .cat-tile, .nvk, .xsell, .teaser, .offer {
-    transition: translate var(--hover-dur) ease-out,
-                box-shadow var(--hover-dur) ease-out,
-                border-color var(--hover-dur) ease-out,
-                background-color var(--hover-dur) ease-out;
+    transition: translate var(--hover-dur) var(--ease-out),
+                box-shadow var(--hover-dur) var(--ease-out),
+                border-color var(--hover-dur) var(--ease-out),
+                background-color var(--hover-dur) var(--ease-out);
   }
   .card:hover, .review:hover,
   .prod:hover, .cat-tile:hover, .nvk:hover, .xsell:hover, .teaser:hover, .offer:hover {
@@ -1429,7 +1442,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
      is under the 20px travel limit of section 1. The bento tiles take the image
      growth and no lift: they are hero-scale containers, not cards. */
   :is(.card, .prod, .cat-tile, .nvk, .xsell, .offer, .hub__tile, .pb__tile) img {
-    transition: transform var(--hover-dur) ease-out;
+    transition: transform var(--hover-dur) var(--ease-out);
   }
   :is(.card, .prod, .cat-tile, .nvk, .xsell, .offer, .hub__tile, .pb__tile):hover img {
     transform: scale(1.03);
@@ -1446,15 +1459,15 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
     border-color: var(--brand);
     background: var(--bg-light);
   }
-  /* Shadows do not read on #141414, so the dark sections lift with a wash. */
+  /* Shadows do not read on --bg-dark, so the dark sections lift with a wash. */
   .section--dark .step {
     border: 1px solid transparent;
     border-radius: var(--radius-card);
     padding: 16px;
     margin: -16px;
-    transition: translate var(--hover-dur) ease-out,
-                background-color var(--hover-dur) ease-out,
-                border-color var(--hover-dur) ease-out;
+    transition: translate var(--hover-dur) var(--ease-out),
+                background-color var(--hover-dur) var(--ease-out),
+                border-color var(--hover-dur) var(--ease-out);
   }
   .section--dark .step:hover {
     translate: 0 -4px;
@@ -1476,9 +1489,9 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
   /* W26-14. The first two are the reveal. The other four are a revealed card's
      hover, which this list replaces on every revealed element: without them a
      revealed card's lift and shadow would snap rather than ease. */
-  transition: opacity var(--reveal-dur) ease-out, transform var(--reveal-dur) ease-out,
-              translate var(--hover-dur) ease-out, box-shadow var(--hover-dur) ease-out,
-              border-color var(--hover-dur) ease-out, background-color var(--hover-dur) ease-out;
+  transition: opacity var(--reveal-dur) var(--ease-out), transform var(--reveal-dur) var(--ease-out),
+              translate var(--hover-dur) var(--ease-out), box-shadow var(--hover-dur) var(--ease-out),
+              border-color var(--hover-dur) var(--ease-out), background-color var(--hover-dur) var(--ease-out);
 }
 /* Stagger, capped at 6 so a nine-card grid completes in 360ms. W26-14: the delay
    is the reveal's only; the hover's four take none, or a card would answer the
@@ -1494,9 +1507,9 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 /* --- 3. sticky header refinement ------------------------------------------ */
 /* Past 40px the BAND keeps its 96px height (so nothing below ever moves) and
    only the pill compresses, plus a shadow on the band. */
-.header { transition: box-shadow var(--hover-dur) ease-out; }
-.header__pill { transition: height var(--hover-dur) ease-out, padding var(--hover-dur) ease-out; }
-.header__logo img { transition: height var(--hover-dur) ease-out; }
+.header { transition: box-shadow var(--hover-dur) var(--ease-out); }
+.header__pill { transition: height var(--hover-dur) var(--ease-out), padding var(--hover-dur) var(--ease-out); }
+.header__logo img { transition: height var(--hover-dur) var(--ease-out); }
 .header[data-scrolled="true"] { box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08); }
 .header[data-scrolled="true"] .header__pill { height: 56px; }
 /* 56 - 16 = 40, the same 8px clearance. */
@@ -1562,8 +1575,8 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
    removes it. Scoped to the logo, never the tile: applied to the tile it also
    dimmed the text fallback below AA. */
 .supplier__logo {
-  filter: grayscale(100%); opacity: 0.6;
-  transition: filter var(--hover-dur) ease-out, opacity var(--hover-dur) ease-out;
+  filter: grayscale(100%); opacity: 0.8;  /* W28-01: legible at rest */
+  transition: filter var(--hover-dur) var(--ease-out), opacity var(--hover-dur) var(--ease-out);
 }
 /* No CLS without an explicit box: the tile is a fixed 200x80 and the logo is
    clamped inside it, whatever the file's own dimensions turn out to be. */
@@ -1587,7 +1600,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 /* --- 6b. footer social links ------------------------------------------------ */
 /* Monochrome, drawn in currentColor. Brand colours are deliberately not used:
    Instagram, Facebook and TikTok would add at least three values to a palette
-   that is fixed at ten, and the footer's own language is white on #141414.
+   that is fixed at ten, and the footer's own language is white on --bg-dark.
    Hover and focus move to --brand, which is already in the set. */
 /* It lives in the footer bar, not in a column: the bar already runs 62px tall
    with 700px of unused width, so the row costs the page ZERO height. In the
@@ -1609,7 +1622,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
   display: inline-flex; align-items: center; justify-content: center;
   color: var(--bg-light);
   border-radius: var(--radius-pill);
-  transition: color var(--hover-dur) ease-out, background-color var(--hover-dur) ease-out;
+  transition: color var(--hover-dur) var(--ease-out), background-color var(--hover-dur) var(--ease-out);
 }
 .footer__social a:hover { color: var(--brand); background: rgba(255, 255, 255, 0.06); }
 .footer__social a:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
@@ -1649,13 +1662,13 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
   width: 44px; height: 44px;
   display: inline-flex; align-items: center; justify-content: center;
   color: var(--bg-light); border-radius: var(--radius-pill);
-  transition: color var(--hover-dur) ease-out, background-color var(--hover-dur) ease-out;
+  transition: color var(--hover-dur) var(--ease-out), background-color var(--hover-dur) var(--ease-out);
 }
 .hero-claim__social a:hover { color: var(--brand); background: rgba(255, 255, 255, 0.06); }
 .hero-claim__social a:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
 .hero-claim__social svg { display: block; }
 
-.hero-claim__divider { height: 1px; background: rgba(255, 255, 255, 0.25); margin: 24px 0 16px; border: 0; margin-top: auto; }
+.hero-claim__divider { height: 1px; background: rgba(255, 255, 255, 0.12); margin: 24px 0 16px; border: 0; margin-top: auto; }
 
 /* Three separate rows, each with its own middot marker. */
 .hero-claim__highlights { list-style: none; margin: 0; padding: 0; }
@@ -1700,7 +1713,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
   position: relative; overflow: hidden;
   display: flex; flex-direction: column;
   background: var(--bg-light);
-  border: 1px solid var(--hairline); border-top: 4px solid var(--brand);
+  border: 1px solid var(--hairline);
   border-radius: var(--radius-card);
   padding: 28px;
   box-shadow: var(--shadow-card);
@@ -1829,7 +1842,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
   gap: var(--gap); margin-top: 40px; align-items: start;
 }
 .tile {
-  background: var(--bg-light); border: 1px solid var(--hairline); border-top: 4px solid var(--brand);
+  background: var(--bg-light); border: 1px solid var(--hairline);
   border-radius: var(--radius-card); box-shadow: var(--shadow-card);
   padding: 20px;
 }
@@ -1845,7 +1858,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 .tile__media img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .tile__variant { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--hairline); }
 .tile__grade {
-  margin: 0; font-size: 13px; font-weight: 700; line-height: 1; text-transform: uppercase; letter-spacing: 0.08em;
+  margin: 0; font-size: 14px; font-weight: 700; line-height: 1; text-transform: uppercase; letter-spacing: 0.08em;
   color: var(--brand-dark);
 }
 .tile__price { margin: 8px 0 0; color: var(--ink); font-size: 15px; }
@@ -1856,10 +1869,10 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 .tile__specs dd { margin: 0; font-weight: 700; text-align: right; }
 .tile__palette { margin-top: 12px; }
 .tile__palette-h { margin: 0; font-size: 14px; color: var(--ink-muted); }
-.tile__finish { margin: 8px 0 0; font-size: 13px; font-weight: 700; }
+.tile__finish { margin: 8px 0 0; font-size: 14px; font-weight: 700; }
 .tile__colours { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
 .tile__colour {
-  font-size: 12px; line-height: 1.3; padding: 2px 6px;
+  font-size: 14px; line-height: 1.3; padding: 2px 6px;
   border: 1px solid var(--line); border-radius: var(--radius-control); color: var(--ink);
 }
 .tile__code { font-weight: 700; }
@@ -1875,10 +1888,10 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
   background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.4), transparent 60%);
 }
 .tile__swatch--matt { background-image: none; }
-.tile__swatch-note { margin: 8px 0 0; font-size: 12px; line-height: 1.4; color: var(--ink-muted); }
+.tile__swatch-note { margin: 8px 0 0; font-size: 14px; line-height: 1.4; color: var(--ink-muted); }
 
 /* --- W14-11, carports (S-06) ----------------------------------------------- */
-/* Three sections, alternating white, #141414, white, so the dark process
+/* Three sections, alternating white, --bg-dark, white, so the dark process
    section after them keeps the hard-edged rhythm. Structure per audit 4.2,
    in this site's tokens:
    - Chooser bento: five tiles in three columns, the first spanning two.
@@ -1903,7 +1916,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 .bento__text { margin: 8px 0 0; }
 .bento__chips { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
 .model-chip {
-  font-size: 13px; font-weight: 700; line-height: 1; padding: 6px 10px;
+  font-size: 14px; font-weight: 700; line-height: 1; padding: 6px 10px;
   border: 1px solid var(--line); border-radius: 999px; color: var(--ink);
 }
 
@@ -1913,7 +1926,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 .model__cat {
   display: inline-block; margin: 0; padding: 4px 8px;
   background: var(--brand-dark); color: var(--bg-light); border-radius: var(--radius-control);
-  font-size: 12px; font-weight: 700; line-height: 1.3; text-transform: uppercase; letter-spacing: 0.06em;
+  font-size: 14px; font-weight: 700; line-height: 1.3; text-transform: uppercase; letter-spacing: 0.06em;
 }
 .section--dark .model__name { margin-top: 12px; font-size: 22px; color: var(--bg-light); }
 .model__desc { margin: 6px 0 0; color: var(--bg-light); }
@@ -1942,7 +1955,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 .teasers { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--gap); }
 .teaser {
   display: flex; flex-direction: column; gap: 8px;
-  background: var(--bg-light); border: 1px solid var(--hairline); border-top: 4px solid var(--brand);
+  background: var(--bg-light); border: 1px solid var(--hairline);
   border-radius: var(--radius-card);
   padding: 20px 24px; color: var(--ink);
   box-shadow: var(--shadow-card);
@@ -2004,7 +2017,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
   border: 0;
 }
 .modal__submit:hover { background: linear-gradient(135deg, #B23C08 0%, #B23C08 100%); color: var(--bg-light); }
-.modal__fine { font-size: 13px; color: var(--ink-muted); margin-top: 16px; }
+.modal__fine { font-size: 14px; color: var(--ink-muted); margin-top: 16px; }
 .modal__fine a { text-decoration: underline; }
 .modal__status { font-weight: 700; margin-top: 12px; }
 .modal__status[hidden] { display: none; }
@@ -2057,7 +2070,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 .review__name { font-weight: 700; }
 .review__tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .review__tag {
-  font-size: 13px; color: var(--ink-muted);
+  font-size: 14px; color: var(--ink-muted);
   border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px;
 }
 .review__quote { flex: 1; }
@@ -2073,7 +2086,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 .svc-answer .svc-answer__p:first-child { margin-top: 16px; }
 .breadcrumb {
   display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
-  font-size: 13px; color: var(--ink-muted); margin-bottom: 24px;
+  font-size: 14px; color: var(--ink-muted); margin-bottom: 24px;
 }
 .breadcrumb a { text-decoration: underline; }
 .breadcrumb a:hover { color: var(--brand-dark); }
@@ -2112,9 +2125,13 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
    needed. Nothing new is chosen. */
 @media (max-width: 1180px) {
   /* W14-21: one step below the desktop values above. */
+  /* W28-01: the language switch grew to 14px with the floor and cost 2px of slack on RU at
+     1180px (gate 11 read 6px against the 8px floor); the actions gap and the switch's tracking
+     give it back here, and nowhere else. */
   .nav { gap: 16px; }
   .nav > a, .nav .svcmenu__toggle { font-size: 15px; }
-  .header__actions { gap: 12px; }
+  .header__actions { gap: 10px; }
+  .lang span, .lang a { letter-spacing: 0.04em; }
 }
 
 /* At 1100px and below the header collapses to the hamburger layout, which used
@@ -2186,7 +2203,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
   /* W14-09. The arrows drop below the heading, and the corner labels tighten. */
   .ba__head { flex-direction: column; align-items: flex-start; gap: 16px; }
   .ba__arrow { width: 48px; height: 48px; }
-  .ba__label { bottom: 12px; height: 30px; padding: 0 10px; font-size: 12px; }
+  .ba__label { bottom: 12px; height: 30px; padding: 0 10px; font-size: 14px; }
   .ba__label--before { left: 12px; }
   .ba__label--after { right: 12px; }
 
@@ -2241,7 +2258,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
      viewport and never animates, and the bar's height is capped independently
      of it, so nothing here can shift layout. */
   .promo { height: 36px; }
-  .promo__text { font-size: clamp(11px, 3.4vw, 13px); }
+  .promo__text { font-size: 14px; }
 
   /* The grid is one column here, so the tile is full width already and the
      numeral and sentence would be cramped side by side. Stack them. */
@@ -2393,7 +2410,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
   /* Hover: no travel. Colour feedback stays, it is not motion. */
   /* W25-29: the six families added to the hover list are added here too. A lift
      that reduced motion does not remove is the whole rule broken. */
-  .card:hover, .review:hover, .trust-item:hover,
+  .btn:hover, .card:hover, .review:hover, .trust-item:hover,
   .prod:hover, .cat-tile:hover, .nvk:hover, .xsell:hover, .teaser:hover, .offer:hover,
   .section--dark .step:hover { transform: none !important; translate: none !important; }
   /* W26-14: the image growth goes with the lift. */

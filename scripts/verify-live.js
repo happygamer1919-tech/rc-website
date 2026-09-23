@@ -329,8 +329,10 @@ const PAGES = [
   { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 21703 },
   { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 21862 },
   /* W24-07. The rocă vulcanică mirror page. */
-  { path: '/servicii/roca-vulcanica/',     type: 'novatik', label: 'novatik RO',  budget: 4348 },
-  { path: '/ru/servicii/roca-vulcanica/',  type: 'novatik', label: 'novatik RU',  budget: 4446 },
+  /* AMENDED (W27-C-04): chips, a warranty row and a price on each card, a derived "de la"
+     line under the heading; measured 4,369 / 4,439 at 1440, settled, plus 60, in R-Y. */
+  { path: '/servicii/roca-vulcanica/',     type: 'novatik', label: 'novatik RO',  budget: 4429 },
+  { path: '/ru/servicii/roca-vulcanica/',  type: 'novatik', label: 'novatik RU',  budget: 4499 },
   { path: '/ru/servicii/finisaje/',        type: 'service', label: 'svc RU finis',   budget: 5471 },
   /* W25-09. Both rows take +39: this page gained one link-arrow to the new
      catalogue category, measured on the branch at 3979 RO and 4012 RU against

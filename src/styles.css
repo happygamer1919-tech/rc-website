@@ -673,6 +673,16 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 .nvk__facts > div { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; }
 .nvk__facts dt { color: var(--ink-muted); }
 .nvk__facts dd { margin: 0; font-weight: 700; }
+/* W27-C-04 (W27-R-04). The Novatik card's named colour chips and its price line, the
+   same look as the catalogue card's chips (W27-C-03), in this block's own prefix. */
+.nvk__chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; padding: 0; list-style: none; }
+.nvk__chip {
+  display: inline-flex; align-items: center; height: 28px; padding: 0 10px;
+  border: 1px solid var(--line); border-radius: var(--radius-pill);
+  font-size: 14px; font-weight: 700; line-height: 1; color: var(--ink);
+}
+.nvk__pricebox { margin-top: auto; padding-top: 16px; }
+.nvk-from { margin: 16px 0 0; font-size: 17px; font-weight: 700; }
 .nvk__ask { margin: auto 0 0; padding-top: 16px; font-size: 16px; font-weight: 700; color: var(--ink-muted); }
 
 /* --- W24-07, the question list ---------------------------------------------- */

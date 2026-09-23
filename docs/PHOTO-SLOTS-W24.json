@@ -216,52 +216,56 @@
       "page": "/servicii/roca-vulcanica/",
       "ratio": "4 / 3",
       "min_px": "1200x900",
-      "shows": "Tigla \"Novatik Classic\" montata pe un acoperis, fotografiata de aproape ca sa se vada granulatia de roca vulcanica. Lumina de zi, fara soare direct puternic. Orizontal.",
+      "shows": "Tigla \"Novatik Classic\" montata pe un acoperis, fotografiata de aproape ca sa se vada granulatia de roca vulcanica. Lumina de zi, fara soare direct puternic. Orizontal. AMENDED W27-C-04 (W27-R-04): replaced by the preview image imperlux.md publishes for this model, with the model name printed in it, untouched, no crop, no upscale; W25-R5: marked \"label\".",
       "state": "filled",
       "provenance": "public/img/acoperisuri/NVK-01.jpg",
       "alt": {
-        "ro": "Novatik Classic, tigla metalica montata pe acoperis",
-        "ru": "Novatik Classic, металлочерепица на кровле"
-      }
+        "ro": "Novatik Classic, foaia de țiglă cu granule de rocă vulcanică",
+        "ru": "Novatik Classic, лист черепицы с базальтовым гранулятом"
+      },
+      "label": true
     },
     {
       "id": "NVK-02",
       "page": "/servicii/roca-vulcanica/",
       "ratio": "4 / 3",
       "min_px": "1200x900",
-      "shows": "Tigla \"Novatik Slate\" montata pe un acoperis, fotografiata de aproape ca sa se vada granulatia de roca vulcanica. Lumina de zi, fara soare direct puternic. Orizontal. AMENDED W26-10 (W26-R13): filled from the manufacturer's own site, novatik.ro, 1366x768.",
+      "shows": "Tigla \"Novatik Slate\" montata pe un acoperis, fotografiata de aproape ca sa se vada granulatia de roca vulcanica. Lumina de zi, fara soare direct puternic. Orizontal. AMENDED W26-10 (W26-R13): filled from the manufacturer's own site, novatik.ro, 1366x768. AMENDED W27-C-04 (W27-R-04): replaced by the preview image imperlux.md publishes for this model, with the model name printed in it, untouched, no crop, no upscale; W25-R5: marked \"label\".",
       "state": "filled",
       "provenance": "public/img/acoperisuri/NVK-02.jpg",
       "alt": {
-        "ro": "Novatik Slate, țiglă metalică acoperită cu rocă, montată pe acoperiș",
-        "ru": "Novatik Slate, металлочерепица с каменной посыпкой на кровле"
-      }
+        "ro": "Novatik Slate, foaia de țiglă cu granule de rocă vulcanică",
+        "ru": "Novatik Slate, лист черепицы с базальтовым гранулятом"
+      },
+      "label": true
     },
     {
       "id": "NVK-03",
       "page": "/servicii/roca-vulcanica/",
       "ratio": "4 / 3",
       "min_px": "1200x900",
-      "shows": "Tigla \"Novatik Roman\" montata pe un acoperis, fotografiata de aproape ca sa se vada granulatia de roca vulcanica. Lumina de zi, fara soare direct puternic. Orizontal.",
+      "shows": "Tigla \"Novatik Roman\" montata pe un acoperis, fotografiata de aproape ca sa se vada granulatia de roca vulcanica. Lumina de zi, fara soare direct puternic. Orizontal. AMENDED W27-C-04 (W27-R-04): replaced by the preview image imperlux.md publishes for this model, with the model name printed in it, untouched, no crop, no upscale; W25-R5: marked \"label\".",
       "state": "filled",
       "provenance": "public/img/acoperisuri/NVK-03.jpg",
       "alt": {
-        "ro": "Novatik Roman, tigla metalica montata pe acoperis",
-        "ru": "Novatik Roman, металлочерепица на кровле"
-      }
+        "ro": "Novatik Roman, foaia de țiglă cu granule de rocă vulcanică",
+        "ru": "Novatik Roman, лист черепицы с базальтовым гранулятом"
+      },
+      "label": true
     },
     {
       "id": "NVK-04",
       "page": "/servicii/roca-vulcanica/",
       "ratio": "4 / 3",
       "min_px": "1200x900",
-      "shows": "Tigla \"Novatik Wood\" montata pe un acoperis, fotografiata de aproape ca sa se vada granulatia de roca vulcanica. Lumina de zi, fara soare direct puternic. Orizontal.",
+      "shows": "Tigla \"Novatik Wood\" montata pe un acoperis, fotografiata de aproape ca sa se vada granulatia de roca vulcanica. Lumina de zi, fara soare direct puternic. Orizontal. AMENDED W27-C-04 (W27-R-04): replaced by the preview image imperlux.md publishes for this model, with the model name printed in it, untouched, no crop, no upscale; W25-R5: marked \"label\".",
       "state": "filled",
       "provenance": "public/img/acoperisuri/NVK-04.jpg",
       "alt": {
-        "ro": "Novatik Wood, tigla metalica montata pe acoperis",
-        "ru": "Novatik Wood, металлочерепица на кровле"
-      }
+        "ro": "Novatik Wood, foaia de țiglă cu granule de rocă vulcanică",
+        "ru": "Novatik Wood, модуль с базальтовым гранулятом"
+      },
+      "label": true
     },
     {
       "id": "ACOP-01",

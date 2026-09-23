@@ -3016,31 +3016,70 @@ function novatikPage(l) {
   };
   const need = (v, where) => { if (!REAL(v)) die(`${NOVATIK_FILE}: ${where} is not real for ${l.code}.`); return v; };
 
-  /* Model cards. The price slot carries the W22-01 phrase, which is what W24-R7
-     leaves for a price this site does not publish. */
+  /* Model cards. ~~The price slot carries the W22-01 phrase, which is what W24-R7
+     leaves for a price this site does not publish.~~ AMENDED (W27-C-04, rulings
+     W27-R-04 and W27-R-05): imperlux.md is the source of record and publishes a
+     price for every model, so the card carries it as "De la N lei/buc" in the fence
+     page's own price shape (`.nvk__price`, W25-11), never a struck figure or a badge.
+     The named colours are chips, the warranty figure joins the facts list, and the
+     W22-01 phrase is kept as the fallback for a model whose record has no price. */
+  const price = (m, i) => (m.price && m.price.render && REAL(m.price.render[l.code]))
+    ? `<span class="nvk__price" data-product="${esc(m.name)}">${esc(m.price.render[l.code])}</span>`
+    : ask(m.name);
+  const chips = (m) => (Array.isArray(m.colour_names) && m.colour_names.length)
+    ? `\n          <ul class="nvk__chips" aria-label="${esc(l.strings['roofProducts.coloursAria'] || '')}">${m.colour_names.map((c) => `<li class="nvk__chip">${esc(colourName(l, c))}</li>`).join('')}</ul>`
+    : '';
+  const warrantyRow = (m, i) => (m.warranty && REAL(m.warranty[l.code]))
+    ? `\n            <div><dt>${s('warranty')}</dt><dd>${esc(m.warranty[l.code])}</dd></div>`
+    : '';
+  for (const [i, m] of NOVATIK.models.entries()) {
+    if (Array.isArray(m.colour_names) && m.colour_names.length > Number(m.colours)) die(`${NOVATIK_FILE}: models[${i}] names ${m.colour_names.length} colours and counts ${m.colours}.`);
+  }
   const cards = NOVATIK.models.map((m, i) => `      <article class="nvk" data-reveal data-stagger="${Math.min(i, 6)}">
         <div class="nvk__media">${placeholder(`NVK-${String(i + 1).padStart(2, '0')}`, { variant: 'light', className: 'nvk__ph', locale: l.code, eager: i < 2 })}</div>
         <div class="nvk__body">
           <h3 class="nvk__name">${esc(need(m.name, `models[${i}].name`))}</h3>
-          <p class="nvk__desc">${esc(need(m.desc && m.desc[l.code], `models[${i}].desc`))}</p>
-          <dl class="nvk__facts">
+          <p class="nvk__desc">${esc(need(m.desc && m.desc[l.code], `models[${i}].desc`))}</p>${chips(m)}
+          <dl class="nvk__facts">${warrantyRow(m, i)}
             <div><dt>${s('thickness')}</dt><dd>${esc(need(m.thickness, `models[${i}].thickness`))}</dd></div>
             <div><dt>${s('weight')}</dt><dd>${esc(need(m.weight, `models[${i}].weight`))}</dd></div>
             <div><dt>${s('colours')}</dt><dd>${esc(need(m.colours, `models[${i}].colours`))}</dd></div>
           </dl>
-          <p class="nvk__ask">${ask(m.name)}</p>
+          <p class="nvk__pricebox">${price(m, i)}</p>
         </div>
       </article>`).join('\n');
 
+  /* W27-C-04: the section's derived "de la" line, the lowest current price across the
+     models, the same derivation the roofing page's tables carry (W27-C-03). */
+  let fromLine = '';
+  {
+    const parsed = NOVATIK.models.map((m) => {
+      const t = m.price && m.price.render && m.price.render[l.code];
+      const mm = t && /(\d+(?:[.,]\d+)?)\s*(lei(?:\/\S+)?)/.exec(t);
+      return mm ? { n: Number(mm[1].replace(',', '.')), unit: mm[2], text: t } : null;
+    });
+    if (parsed.every(Boolean) && new Set(parsed.map((x) => x.unit)).size === 1) {
+      const low = parsed.reduce((a, b) => (b.n < a.n ? b : a));
+      const tpl = l.strings['roofProducts.groupFrom'];
+      const nM = NOVATIK.models.length;
+      const key = nM === 1 ? 'modelsOne' : (l.code === 'ru' && (nM % 10 >= 2 && nM % 10 <= 4 && !(nM % 100 >= 12 && nM % 100 <= 14))) || (l.code === 'ro' && nM > 1) ? 'modelsFew' : 'modelsMany';
+      if (REAL(tpl) && REAL(l.strings[`roofProducts.${key}`])) {
+        fromLine = `\n    <p class="nvk-from" data-reveal>${esc(tpl.replace('{n}', String(nM)).replace('{models}', l.strings[`roofProducts.${key}`]).replace('{price}', low.text.slice(low.text.search(/\d/))))}</p>`;
+      }
+    }
+  }
+
   const head = NOVATIK.models.map((m) => `<th scope="col">${esc(m.name)}</th>`).join('');
   const rows = NOVATIK.compare.map((r, i) => `          <tr><th scope="row">${esc(need(r.label && r.label[l.code], `compare[${i}].label`))}</th>${NOVATIK.models.map((m) => `<td>${esc(m[r.key])}</td>`).join('')}</tr>`).join('\n');
-  const priceRow = `          <tr><th scope="row">${s('priceRow')}</th>${NOVATIK.models.map((m) => `<td>${ask(m.name)}</td>`).join('')}</tr>`;
+  /* The price row prints the same "De la" figure the card does; the warranty row stays
+     held (W26-R6), so the table has no such row and the figure lives on the card. */
+  const priceRow = `          <tr><th scope="row">${s('priceRow')}</th>${NOVATIK.models.map((m, i) => `<td>${price(m, i)}</td>`).join('')}</tr>`;
 
   const faq = NOVATIK.faq.map((f, i) => `        <div><dt>${esc(need(f.q && f.q[l.code], `faq[${i}].q`))}</dt><dd>${esc(need(f.a && f.a[l.code], `faq[${i}].a`))}</dd></div>`).join('\n');
 
   return `<section class="section section--light section--divided" id="modele" aria-labelledby="modele-h">
   <div class="container">
-    <h2 id="modele-h" data-reveal>${s('modelsH2')}</h2>
+    <h2 id="modele-h" data-reveal>${s('modelsH2')}</h2>${fromLine}
     <div class="nvk-grid">
 ${cards}
     </div>

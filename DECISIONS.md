@@ -13020,3 +13020,43 @@ seven in the section in imperlux order with image, `De la` price, chips and fact
 plus 6 `.prod__ask`; 0 percent signs inside a price element; 0 occurrences of "Popular". Same on RU.
 
 **Heights.** 20,180 to **21,643** and 20,318 to **21,802**; budgets 21,703 / 21,862 (R-Y).
+
+## W27-C-04 · Rocă vulcanică Novatik from Imperlux: prices, chips, pictures, 2026-09-22
+
+Branch `w27/w27-c-04-novatik-imperlux`, stacked on W27-C-03.
+
+**W27-R-04 and W27-R-05 applied to `/servicii/roca-vulcanica/`.** `content/novatik.json` keeps its
+four models and gains, per model, the current price as `De la N lei/buc` (Classic 207.06, Slate
+227.59, Roman 227.59, Wood 227.59, each verified on the rendered section card, the Compară table and
+the product page of 2026-09-22), the named colours, the warranty figure and the preview image's URL.
+**The struck price, the percent badge and the "Popular" ribbon on Classic are not taken** (R-X).
+
+**W24-R7 is superseded for this page by the owner's later order.** W24-R7 said "Imperlux prices
+are not published. Slots render 'Preț la cerere'"; W27-R-04 makes imperlux.md the source of record
+and it publishes a price for every Novatik model. The card's price line is the fence page's own
+shape, `.nvk__price` with `data-product` (W25-11), because `.prod__price` is confined to catalogue
+pages by RC-129; the W22-01 phrase stays in the code as the fallback for a model with no price and
+renders nowhere today (0 `.prod__ask` on the page, both locales).
+
+**The warranty figure renders on the card and stays out of the table.** "Garanție: 60 ani" is a
+fact row on each card under W27-R-04's "warranties"; the comparison table keeps no warranty row
+(W26-R6), and `docs/W24-CLAIMS-HELD.md` rows 7 and 9 carry an appended note saying which half moved.
+
+**Pictures.** The four novatik.ro packshots (one of them a `--floor-300` gallery frame, W26-R13) are
+replaced by imperlux's preview renders, 1440x1080, installed at 600x450 untouched, each with the
+category and the model name printed in it and **no Imperlux mark**, flagged `label` (W25-R5).
+Provenance rows rewritten in place under the W27-R-04 sentence; `NVK-01` to `NVK-04` were added to the
+override lists at W27-C-03.
+
+**Chips and the fourth colour.** Roman prints Moon, Earth, Rossa and "+2"; Wood prints Maro, Gri,
+Negru and "+1"; the unnamed ones are named nowhere on imperlux.md (Q-W27-02's second point covers
+them). The build refuses a model that names more colours than it counts. RU chips keep their names:
+Earth, Moon, Grey and Rossa are the maker's own colour names, and Maro, Gri, Negru have no exact
+entry in the repo's dictionaries.
+
+**A derived "de la" line**, "4 modele, de la 207.06 lei/buc", under the models heading, the same
+derivation the roofing tables carry.
+
+**Rendered acceptance.** 4 cards with image, price, chips and facts; 0 percent signs in a price
+element; 0 "Popular"; 0 "Preț la cerere". **Heights** 4,288 to 4,369 and 4,386 to 4,439; budgets
+4,429 / 4,499 (R-Y).

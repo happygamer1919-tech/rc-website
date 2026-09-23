@@ -1096,3 +1096,11 @@ added to `check-stale-docs.js` with the W26-14 ticket body excepted). Still exac
 beside white, so the palette count holds. **Static gates, gates 20 and 28 exit 0.** Screenshots
 `docs/design/W27/w28-03-*`.
 
+## W28-04 · Headings: 64 and 48, weight 800, tight, sentence case
+**Status: PR OPEN** (opened 2026-09-22). Approved under W27-R-07, owner may overturn. **h1 64px at
+-0.035em, h2 48px at -0.03em, weight 800, no capitals** (52 and 36 on smaller screens, 30 for h2 on
+a phone); the catalogue h1 too. **Eyebrows keep their capitals and gain a 24px orange rule** before
+the text. **No locale string changes**: none was stored in capitals, the capitals were CSS. The
+master plan's type table struck in place. **All 53 budgets re-measured plus 60** (R-Y table,
+generated). **Static gates, gates 14, 20 and 28 exit 0.** Screenshots `docs/design/W27/w28-04-*`.
+

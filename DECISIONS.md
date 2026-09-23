@@ -13224,3 +13224,30 @@ where the text is large (the stat numerals, the price lines at 20px bold). Gate 
 
 **Gates.** Static gates exit 0 with the new staleness entry; gate 20 and gate 28 exit 0. Screenshots
 `docs/design/W27/w28-03-*`.
+
+## W28-04 · Headings at 64 and 48, weight 800, tight, sentence case, 2026-09-22
+
+Branch `w27/w28-04-headings`, stacked on W28-03. Approved by strategy under the owner's delegation
+(W27-R-07); the owner may overturn it, and it is one card to revert.
+
+**The single biggest lever the proposal names**, and the one it flags as the owner's decision, so it
+is recorded as delegated rather than chosen: `h1` 64px at -0.035em and `h2` 48px at -0.03em, both
+800, both in sentence case; 52px below 1024, 36 and 30 on a phone. The catalogue page's `h1`
+loses its own uppercase rule with them. **Eyebrows keep their capitals** and gain a 24px orange rule
+before the text, RC's own signature per the W28 proposal. Component titles set in capitals (offer,
+tile, teaser, footer headings) are outside the card's scope, which names h1 and h2.
+
+**No locale string changed.** The dispatch says to convert any heading string stored in capitals;
+a scan of both locale files finds none (every capital heading on the site was `text-transform`),
+so `ro.json` and `ru.json` are untouched and the RU headings read as authored.
+
+**Gate 14 (heading fit)** at 360 and 1280 on every sitemap page: 132 of 132 combinations, no
+heading wider than its box, no sideways scroll, with hyphenation on h1 and h2 as before. **Gate 20
+and gate 28** exit 0.
+
+**Budgets.** Bigger headings make every page a few lines taller, so all 53 budgets are re-measured
+and set to measured plus 60 (W24-R4), in a generated table in R-Y. The homepage moves from 9,141 to
+9,246 (RO) and 9,354 to 9,460 (RU); the roofing page to 24,321 and 24,542.
+
+**Master plan.** Its type table (h1 56/800/UPPERCASE, h2 40/800/UPPERCASE, eyebrow 13/12) is
+struck in place with this card named (R-R).

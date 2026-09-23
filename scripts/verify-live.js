@@ -155,19 +155,24 @@ const MARKERS = {
        catalogue subcategories the bar was built from. The seven catalogue pages
        still answer and still redirect here; what changed is what a visitor filters
        by. */
-    roofFilters: 6,
+    /* AMENDED (W27-C-02, ruling W27-R-06): ~~6~~ **7**. Tabla cutata is its own
+       section, so Toate plus SIX. */
+    roofFilters: 7,
     roofOff: 0,
     foldedCards: 0,
     /* W26-04. The SECOND bento, four product tiles, all four of them anchors into
        the section below. It carries its own prefix (build.js says why), so
        `bentoTiles` above still counts the hub and only the hub, and a build that
        gave the product bento the hub's class would move BOTH numbers at once. */
-    pbTiles: 4,
+    /* AMENDED (W27-C-02, ruling W27-R-06): ~~4~~ **5**. A ninth tile on the page,
+       Tabla cutata, as a third row of the product bento; the hub above stays four. */
+    pbTiles: 5,
     /* W26-05. Three Compara tables, one per section that has one. The two that do
        not are recorded in content/roofing-sections.json with the reason, so a
        build that quietly grew a fourth is a build that took a decision nobody
        wrote down. */
-    cmpTables: 3,
+    /* AMENDED (W27-C-02): ~~3~~ **4**. Tabla cutata declares a table of its own. */
+    cmpTables: 4,
   },
   /* W24-07. The rocă vulcanică page: four model cards, and no price anywhere.
      `bentoTiles: 0` is asserted because this page is a bento DESTINATION, not a
@@ -315,8 +320,10 @@ const PAGES = [
      merge and corrected there if the live page differs. */
   /* AMENDED (W25-26): four cards left this section for the tile page, so the
      figures fall with the measurement. */
-  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 19496 },
-  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 19682 },
+  /* AMENDED (W27-C-02): a fifth product tile on a third bento row and a fourth Compara
+     table; measured 20,180 / 20,318 at 1440, settled, plus 60 (W24-R4), in R-Y. */
+  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 20240 },
+  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 20378 },
   /* W24-07. The rocă vulcanică mirror page. */
   { path: '/servicii/roca-vulcanica/',     type: 'novatik', label: 'novatik RO',  budget: 4348 },
   { path: '/ru/servicii/roca-vulcanica/',  type: 'novatik', label: 'novatik RU',  budget: 4446 },
@@ -426,7 +433,7 @@ const REDIRECT_SECTION = {
   '': 'toate',
   'tigla-metalica': 'tigla-metalica',
   'sistem-de-scurgere': 'sisteme-pluviale',
-  profnastil: 'accesorii-de-acoperis',
+  profnastil: 'tabla-cutata',
   hidroizolatie: 'accesorii-de-acoperis',
   'elemente-suplimentare': 'accesorii-de-acoperis',
   'elemente-de-siguranta': 'accesorii-de-acoperis',

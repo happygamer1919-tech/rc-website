@@ -370,6 +370,21 @@
       }
     },
     {
+      "id": "ACOP-09",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "5 / 1",
+      "min_px": "1500x300",
+      "shows": "Tabla cutata: a cincea tila a bento-ului de produse, un rand intreg pe toate cele trei coloane, format BANDA. W27-C-02 (W27-R-06): a declared reuse of CAT-0228, foaia T-12, singura tabla cutata cu fotografie de produs; tila o decupeaza singura la formatul benzii, fisierul nu este atins.",
+      "state": "filled",
+      "provenance": "public/img/catalog/CAT-0228.jpg",
+      "alt": {
+        "ro": "Tablă cutată T-12, foaia profilată gri",
+        "ru": "Профнастил T-12, серый профилированный лист"
+      },
+      "reuse_of": "CAT-0228",
+      "reuse_reason": "W27-C-02 and W25-R22: the section tile stands on the first product of its section, Tabla cutata T-12, cropped to the tile ratio by the tile itself"
+    },
+    {
       "id": "ACIM-01",
       "page": "/servicii/acoperisuri/",
       "ratio": "1 / 1",

@@ -3340,3 +3340,26 @@ which is R-W's origin for your own files. Looking at all 95, a few may not be:
 for it and it should come out of the gallery: say which, and it is one line in the ledger and
 one run of the intake. **If they are yours, nothing changes.** The gate would not catch this: no
 machine can tell a stock photograph from a site photograph.
+
+## Q-W27-01 · The Tablă cutată tile is a watermarked packshot cropped to a strip; a photograph would serve it better · OPEN · opened 2026-09-22 (W27-C-02)
+
+**Raised W27-C-02, 2026-09-22. Shipped default: the tile shows the T-12 product picture, cropped to
+the strip by the tile itself. Nothing is blocked.**
+
+The dispatch says "tile image cropped from the T-12 product image". The only T-12 picture the site has
+is Dasterum's 488x488 packshot, which carries Dasterum's watermark across the whole image (permitted
+as published, W25-R7). A strip 1,200px wide and 244px tall shows the middle fifth of that square, so
+the tile reads as a band of ribs with part of the watermark text, and the browser enlarges it about
+two and a half times. Every other tile on the page is a photograph or a clean packshot.
+
+**Two ways to make it a proper tile**, either one a small card:
+
+1. **One photograph of a profiled-sheet roof or fence from your own folders**, landscape, at least
+   1,500px wide. It goes in as `ACOP-09` under the client-supplied origin, like the three tiles W26-R11
+   filled.
+2. **Keep the packshot but on a squarer tile**: the bento's third row could hold the tile at two columns
+   instead of three, which halves the enlargement. That is a layout change to the row, so it is yours
+   to choose.
+
+If neither, the strip stays as it is.
+

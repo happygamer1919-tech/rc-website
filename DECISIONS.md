@@ -12923,3 +12923,47 @@ that would mean removing the flag, which would also remove the record that the o
 answered. The flag is kept as the name of what was raised, and every entry carrying it carries
 `owner_confirmed`; the count that is zero is the number of flagged photographs without an owner answer,
 which is the count the acceptance is about. Gate 29 exits 0; the built pages carry no `review` text.
+
+## W27-C-02 · Tablă cutată is its own group, and the roofing page has nine tiles, 2026-09-22
+
+Branch `w27/w27-c-02-tabla-cutata`, stacked on W27-C-01.
+
+**W27-R-06 applied.** `content/roofing-sections.json` gains a sixth group, `tabla-cutata`
+("Tablă cutată" / "Профнастил"), second in the order, taking the `profnastil` catalogue child from
+Accesorii. **What moved and what did not:** the seven profiled sheets T-12, VP-20, PK-20, H-35, C-15,
+C-44 and H-60 (`CAT-0228` to `CAT-0234`) are the group; **DRIPSTOP (`CAT-0235`) is not a sheet but an
+anti-condensation coating for one**, and it sat in three catalogue children at once, so it keeps
+`hidroizolatie` and `elemente-de-siguranta` and loses `profnastil`, which is the one data edit to
+`content/catalog-products.json`. Without it the build would have put one record in two sections and
+refused. Chip counts: Toate 78 = Țiglă metalică 4 + Tablă cutată 7 + Țiglă ceramică 1 + Șindrilă 2 +
+Sisteme pluviale 18 + Accesorii 46. **A fourth Compară table** is built from the card specs (W26-R6)
+with the metal tile table's four columns; Acoperire is real on six of seven.
+
+**The ninth tile.** The dispatch's "ninth hub tile" is read as the count of tiles on the page: four
+in the hub grid, which W26-R4 holds to page URLs, plus the product bento, which W26-R5 holds to
+same-page anchors and which is where a section of this page is opened from. So Tablă cutată is the
+**fifth product tile**, `#mat-tabla-cutata`, and the hub grid stays four. "Third bento row or 3x3,
+whichever keeps the existing tile pattern": rows one and two are untouched and the fifth tile is a
+**third row across all three columns**, `.pb__tile--5 { grid-column: 1 / -1; grid-row: 3; }`, one
+column on a phone like the rest. **Its picture is a declared reuse of `CAT-0228`**, the T-12 packshot,
+cropped to the strip by the tile (W25-R22's shape, as `ACOP-05` stands on `ACIM-01`): the file is not
+touched, so no new provenance row and no new file. It is the weakest tile on the page and **Q-W27-01
+asks for a photograph**.
+
+**Every reader of "four" was renamed with the thing it names**, which is section 3.1's rule and the
+lesson of W24-07a: `build.js` takes a per-bento `tileCount` (only the product bento says five);
+**gate 20** judges a five-tile product bento by its first four under the rules it had, and the fifth
+on two facts of its own, that it starts below them and spans the grid, and still fails a hub grid of
+five (self-test exits 0, the wave 16 arm still fires); **gate 25** expects thirteen hub tiles;
+`scripts/verify-live.js` expects 7 chips, 5 product tiles, 4 tables, `profnastil` landing on
+`tabla-cutata`, which the build reads back and would refuse if it disagreed, and the two roofing
+budgets re-measured plus 60 (R-Y). Gate 26 is unchanged: it holds the hub grids and never counted the
+product bento. Three generated documents were regenerated (owner intake, photo review, catalogue
+image slots).
+
+**Heights.** `/servicii/acoperisuri/` 19,436 to **20,180**, RU 19,622 to **20,318**, at 1440 settled,
+on an instrument that re-read the W26-14 figures to the pixel first. Budgets 20,240 and 20,378.
+
+**Gates.** Every static gate exits 0; gate 20 (geometry, both widths, both locales) exits 0 with the
+five-tile bento; gate 14 (heading fit) exits 0 with the new table heading, 132 of 132 combinations.
+CI runs the full 29.

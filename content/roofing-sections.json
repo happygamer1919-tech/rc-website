@@ -18,6 +18,17 @@
       ]
     },
     {
+      "id": "tabla-cutata",
+      "label": {
+        "ro": "Tablă cutată",
+        "ru": "Профнастил"
+      },
+      "from_catalog": [
+        "profnastil"
+      ],
+      "note": "W27-C-02, ruling W27-R-06: its own group, not part of Accesorii. Takes the profnastil catalogue child, the seven profiled sheets; DRIPSTOP (CAT-0235), a coating for profiled sheet, keeps its other two children and stays in Accesorii."
+    },
+    {
       "id": "tigla-ceramica",
       "label": {
         "ro": "Țiglă ceramică",
@@ -50,7 +61,6 @@
         "ru": "Кровельные аксессуары"
       },
       "from_catalog": [
-        "profnastil",
         "hidroizolatie",
         "elemente-suplimentare",
         "elemente-de-siguranta",
@@ -778,6 +788,40 @@
           }
         }
       ]
+    },
+    {
+      "group": "tabla-cutata",
+      "source": "W27-C-02: built from the card specs (W26-R6), the same four columns as the metal tile table; Acoperire is real on six of the seven sheets.",
+      "columns": [
+        {
+          "key": "price",
+          "label": {
+            "ro": "Preț",
+            "ru": "Цена"
+          }
+        },
+        {
+          "key": "spec:Acoperire",
+          "label": {
+            "ro": "Acoperire",
+            "ru": "Покрытие"
+          }
+        },
+        {
+          "key": "spec:Tip de calitate",
+          "label": {
+            "ro": "Tip de calitate",
+            "ru": "Класс качества"
+          }
+        },
+        {
+          "key": "colours",
+          "label": {
+            "ro": "Culori",
+            "ru": "Цвета"
+          }
+        }
+      ]
     }
   ],
   "tables_declined": [
@@ -787,7 +831,8 @@
     },
     {
       "group": "accesorii-de-acoperis",
-      "why": "fifty-three products that are not variants of one model: membranes, tapes, screws, ridge pieces and flashings. imperlux.md has no such section and publishes no such table. A table would be a second copy of the card grid with most cells empty: measured on the records, \"Tip de calitate\" is real on 24 of 53 and \"Acoperire\" on 23 of 53."
+      "why": "fifty-three products that are not variants of one model: membranes, tapes, screws, ridge pieces and flashings. imperlux.md has no such section and publishes no such table. A table would be a second copy of the card grid with most cells empty: measured on the records, \"Tip de calitate\" is real on 24 of 53 and \"Acoperire\" on 23 of 53.",
+      "amended": "W27-C-02: the seven profiled sheets left for their own group with a table; forty-six products remain here and the reason stands."
     }
   ]
 }

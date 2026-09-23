@@ -332,8 +332,10 @@ const PAGES = [
      measured 21,725 / 21,883 at 1440, settled, plus 60, in R-Y. */
   /* AMENDED (W27-C-06): twenty accessory cards, five more grid rows; measured 24,172 /
      24,393 at 1440, settled, plus 60, in R-Y. */
-  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 24810 },
-  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 25031 },
+  /* AMENDED (W27-FIX-03, ruling W27-R-10): the eleven rainwater prices return and with them the
+     section's "de la" line, one line; measured 24,782 / 25,003 at 1440, settled, plus 60, in R-Y. */
+  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 24842 },
+  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 25063 },
   /* W24-07. The rocă vulcanică mirror page. */
   /* AMENDED (W27-C-04): chips, a warranty row and a price on each card, a derived "de la"
      line under the heading; measured 4,369 / 4,439 at 1440, settled, plus 60, in R-Y. */

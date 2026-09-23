@@ -182,3 +182,15 @@ the same part under two spellings and are the owner's to fold:
 | Dolie | Dolie de sus, Dolie interioară (CAT-0276, 0277) |
 
 Every record above has a `source.url`: 0 Imperlux records and 0 Dasterum roofing records without one.
+
+## Amendments from the fix pass of 2026-09-23
+
+**W27-FIX-03 (ruling W27-R-10).** The "Prices" paragraph above stands as the sweep left things on
+2026-09-22 and is superseded on one point: where Imperlux publishes no price and the record folds a
+Dasterum grade with one, the card shows that grade's "De la N lei" again. The eleven rainwater parts
+(Jgheab, Burlan, Colțar interior, Colțar exterior, Brățară jgheab, Capac jgheab, Cârlig jgheab,
+Cârlig jgheab lung, Racord jgheab-burlan, Brățară burlan, Cot evacuare) carry their Dasterum figure
+in `price` with a source line; `price_folded_not_shown` is retired. The six parts neither source
+prices (Cârlig pazie universal, Cot 60°, Prelungitor, Pâlnie colectoare, Ramificație burlan, Element
+captare) still ask for a price. The Sisteme pluviale Compară table has its Preț column back, and the
+section's derived line reads "11 modele, de la 33 lei".

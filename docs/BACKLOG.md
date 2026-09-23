@@ -1211,3 +1211,8 @@ renders the seven Imperlux model cards (the roofing page's card, one shared reco
 the four Dasterum tile cards; the build refuses a name in both lists. The "Acoperișuri" arrow link at
 the foot of the section is the catalogue link the owner asked about, unchanged. Tile page 5,463 /
 5,538, budgets 5,523 / 5,598 (R-Y); `productCards: 7` asserted live.
+
+## W27-FIX-09 · The promo bar back on the orange ground
+**Status: PR OPEN** (opened 2026-09-23). Owner instruction W27-R-15: `.promo` is `--brand` with
+`--ink` text again (5.10:1), the W28-01 dot and hairline gone; same 44px cap, string and expiry
+switch, no motion. Gate 28: 138 of 138. 0 budgets move.

@@ -1133,18 +1133,19 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
    before the webfont resolves and whatever the string turns out to be. */
 .promo {
   height: 44px;
-  /* W28-01: a quiet warm ribbon with an orange dot, not a full-width orange stripe. The
-     offer is still first; it no longer looks like a discount store. */
-  background: var(--bg-warm);
+  /* ~~W28-01: a quiet warm ribbon with an orange dot, not a full-width orange stripe.~~
+     AMENDED (W27-FIX-09, owner instruction W27-R-15): the owner overturned the quiet ribbon for
+     this bar, "on a orange highlighted background so it catches the eye the moment you enter
+     the website". Back to the W12-02 pairing documented above, --ink on --brand, 5.10:1; the dot
+     and the hairline go with the cream. Same cap, same string, same expiry switch, no motion. */
+  background: var(--brand);
   color: var(--ink);
-  border-bottom: 1px solid var(--hairline);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 var(--gutter);
   overflow: hidden;
 }
-.promo__text::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--brand); margin-right: 10px; vertical-align: middle; }
 .promo__text {
   margin: 0;
   font-size: 15px;

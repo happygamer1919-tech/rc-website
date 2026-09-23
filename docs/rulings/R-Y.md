@@ -1537,3 +1537,16 @@ other 51 read identical:
 |---|---|---|---|
 | `/servicii/acoperisuri/` | 24,782 | **23,873** | 24,842 to **23,933** |
 | `/ru/servicii/acoperisuri/` | 25,003 | **24,094** | 25,063 to **24,154** |
+
+## AMENDED (W27-FIX-08, wave 27 fix pass): the seven Imperlux tiles on the metal tile page, two budgets move
+
+Added 2026-09-23 by card W27-FIX-08, under owner instruction W27-R-14. Nothing above this line moves.
+
+`/servicii/tigla-metalica/` gains the seven Imperlux model cards above the four Dasterum tile
+cards, two grid rows. All 53 budgets re-measured at 1440, settled (reveals applied, 1,600ms), on the
+card's built tree; two move to measured plus 60 (W24-R4) and the other 51 read identical:
+
+| Page | Before (budget minus 60) | After | Budget |
+|---|---|---|---|
+| `/servicii/tigla-metalica/` | 4,419 | **5,463** | 4,479 to **5,523** |
+| `/ru/servicii/tigla-metalica/` | 4,473 | **5,538** | 4,533 to **5,598** |

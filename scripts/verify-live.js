@@ -239,6 +239,9 @@ const MARKERS = {
     profileAnchors: 0,
     areaServed: 20,
     tileDiagrams: 4,
+    /* W27-FIX-08 (W27-R-14): the seven imperlux metal tile models render on this page too,
+       as product cards above the four Dasterum tile cards. */
+    productCards: 7,
   },
   privacy: {
     profileAnchors: 0,
@@ -356,8 +359,10 @@ const PAGES = [
      section's bottom padding absorbed it, measured 7499 RO and 7637 RU with and
      without, so those two budgets are untouched. */
   /* AMENDED (W25-26): the four model cards gained a picture each, so these rise. */
-  { path: '/servicii/tigla-metalica/',     type: 'tigla',   label: 'tigla RO',       budget: 4479 },
-  { path: '/ru/servicii/tigla-metalica/',  type: 'tigla',   label: 'tigla RU',       budget: 4533 },
+  /* AMENDED (W27-FIX-08, W27-R-14): the seven imperlux model cards above the four tile cards,
+     two more grid rows; measured 5,463 / 5,538 at 1440, settled, plus 60, in R-Y. */
+  { path: '/servicii/tigla-metalica/',     type: 'tigla',   label: 'tigla RO',       budget: 5523 },
+  { path: '/ru/servicii/tigla-metalica/',  type: 'tigla',   label: 'tigla RU',       budget: 5598 },
   /* AMENDED (W26-12): the gallery section, one card and its lightbox, +629 in both
      locales, measured 7184 / 7260. Budget measured plus 60 (W24-R4), R-Y. */
   { path: '/servicii/copertine/',          type: 'product', label: 'copertine RO',   budget: 7403 },

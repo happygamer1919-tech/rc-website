@@ -13619,3 +13619,30 @@ three on the eight main pages, desktop preset, local server on that same tree).
 exit 0` (status metadata only, R-S), read from the chain log; each card's board file is under
 `docs/board/`. No artifact board exists for this repository, so "republish the board" is this
 card. The report closes with the five-line list for the morning and the deviations of the pass.
+
+## W27-FIX-08 · The seven Imperlux tiles on the metal tile page, under W27-R-14, 2026-09-23
+
+Branch `w27/w27-fix-08-tigla-imperlux`, from `main` at `bc3e3a9` (#159 merged, verified live).
+
+**The owner's morning instruction, recorded verbatim as W27-R-14 in `docs/rulings/W27-R.md`.**
+`/servicii/tigla-metalica/` rendered `content/tigla-metalica.json` only, the four Dasterum models,
+while the seven Imperlux models rendered on the roofing page alone. Now the tile page's "Modele și
+prețuri" section opens with the seven Imperlux cards (Barcelona, Madrid, Bavaria, Heta, Zet, Finn,
+Izi) as the same product card the roofing page uses, in a catalogue grid (`#tigla-imperlux`,
+`data-prod-grid`, step 9, so no fold button on seven), followed by the four Dasterum tile cards.
+
+**One function builds the Imperlux card record for both pages**: `imperluxCardRecord(l, p, i)`,
+lifted out of the roofing section unchanged (tagline, chips, the derived facts line, the "+N" chip,
+the price), so a card cannot say one thing on one page and another on the other. The build refuses
+a model name present in both data files (W25-R21, one card per model name); today none is.
+
+**"Where is the Acoperisuri catalog at the end of the page."** The arrow link at the foot of the
+section, labelled "Acoperișuri" (the catalogue's category name from `content/catalog.json`), opens
+the roofing product grid with the "Toate" filter; unchanged, recorded in the ruling's reading.
+
+**Rendered acceptance, both locales**: 7 product cards and 4 tile cards on the page, one product
+grid, the roofing page unchanged at 99. `scripts/verify-live.js` asserts `productCards: 7` on the
+tile page. **Heights**: 4,419 to 5,463 RO and 4,473 to 5,538 RU at 1440 settled; all 53
+re-measured, two move to measured plus 60 (R-Y). The seven `ACIM-1N` ledger rows keep
+`/servicii/acoperisuri/` as their page (the field names the first page a slot renders on; the
+gate holds rows to rendered placeholders by id, on any page).

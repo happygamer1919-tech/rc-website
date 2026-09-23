@@ -238,8 +238,16 @@ selfTested += 2;
 
 /* --- inputs --------------------------------------------------------------- */
 const MOVED_ROUTE = /^materiale-acoperis(\/[a-z-]+)?$/;
-/* W25-19. The two pages the roofing catalogue moved ONTO. Listed, not matched. */
-const CONSOLIDATED = new Set(['servicii/acoperisuri/index.html', 'ru/servicii/acoperisuri/index.html']);
+/* W25-19. The two pages the roofing catalogue moved ONTO. Listed, not matched.
+   AMENDED (W27-FIX-08, owner instruction W27-R-14): the metal tile page in both locales, which
+   now renders the seven imperlux model cards above its four tile cards. Still listed by name,
+   still held to the same shape: every price element on it must carry its own product, and the
+   counts must agree, exactly as on the roofing page. Nothing else changes: a fifth page still has
+   no permitted place at all. */
+const CONSOLIDATED = new Set([
+  'servicii/acoperisuri/index.html', 'ru/servicii/acoperisuri/index.html',
+  'servicii/tigla-metalica/index.html', 'ru/servicii/tigla-metalica/index.html',
+]);
 const ROOTS = [
   { dir: path.join(ROOT, 'dist', 'catalog'), locale: 'ro' },
   { dir: path.join(ROOT, 'dist', 'ru', 'catalog'), locale: 'ru' },

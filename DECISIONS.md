@@ -13646,3 +13646,21 @@ tile page. **Heights**: 4,419 to 5,463 RO and 4,473 to 5,538 RU at 1440 settled;
 re-measured, two move to measured plus 60 (R-Y). The seven `ACIM-1N` ledger rows keep
 `/servicii/acoperisuri/` as their page (the field names the first page a slot renders on; the
 gate holds rows to rendered placeholders by id, on any page).
+
+## W27-FIX-09 · The promo bar back on the orange ground, under W27-R-15, 2026-09-23
+
+Branch `w27/w27-fix-09-promo-orange`, stacked on W27-FIX-08.
+
+**The owner's morning instruction, recorded verbatim as W27-R-15.** W28-01 had turned the promo bar
+into "a quiet warm ribbon with an orange dot" on `--bg-warm`; the owner overturns that for the bar:
+"on a orange highlighted background so it catches the eye the moment you enter the website". The
+bar is `--brand` again with `--ink` text, the W12-02 pairing the stylesheet's own comment still
+documents (5.10:1, WCAG AA for normal text at any size; white on `--brand` is 3.41:1 and would
+fail), the orange dot and the hairline go with the cream, and nothing else moves: the 44px cap
+(36px on phones), the string, the expiry switch, no motion above the fold (section 1), no new
+colour value (section 3). It renders on every page, in flow under the fixed header.
+
+**Measured.** Gate 28 (every visible text element at rest, both locales, 1440 and 390): 138 of 138
+combinations at 4.5:1 or better after the change. All 53 budgets re-measured: 0 move (the bar's
+box is the same 44px; the hairline was inside it under `border-box`). Screenshots of the homepage
+at 390 and 1440 in the session's scratch, not committed (no design card).

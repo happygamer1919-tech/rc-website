@@ -1158,3 +1158,10 @@ Lighthouse 99/99/100/100/99/99 on six main pages and the roofing page bimodal (R
 `docs/reports/W27-FINAL-RUN.md`; the final screenshot set `docs/design/W27/final-*`. Seventeen statuses
 above moved to MERGED with their PR numbers, read from GitHub.
 
+
+## W27-FIX-00 · The fix-pass rulings, recorded first
+**Status: PR OPEN** (opened 2026-09-23). The five owner rulings W27-R-09 to W27-R-13 appended
+verbatim to `docs/rulings/W27-R.md` with a reading under each, before any fix card acted on them;
+the dispatch's self-merge framing recorded with them. Preflight: `main` at `383cf8a` live and
+verified, no open pull request, `main` unprotected. Q-W27-02 and Q-W27-03 answered in their
+headings. Documents only; no page changes.

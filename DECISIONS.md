@@ -13415,3 +13415,42 @@ taste and sits in `docs/reports/W27-REVIEW.md` and in the three open questions.
 sha and live check, the deviations, the gates, the Lighthouse readings, the screenshots and the list for
 the morning. Seventeen backlog statuses moved from `PR OPEN` to `MERGED #n`, read from GitHub (R-S: the
 status field, never the body).
+
+## W27-R-09 to W27-R-13 · The fix-pass rulings, recorded verbatim before any card, 2026-09-23
+
+Branch `w27/w27-fix-00-rulings`, from `main` at `383cf8a` (#153 merged, the final run's review).
+
+**Recorded before any card acted on them.** The five rulings, each quoted exactly and read, are
+appended to `docs/rulings/W27-R.md` under R-S and R-T; this block records that they arrived and
+what the pass runs under. The dispatch: "Wave 27 fix pass, same self-merge protocol as the final run
+(PR, wait for green quality check, merge, verify live on the merge sha, next card). Skip-not-halt.
+Owner unreachable until morning. Rulings first, append-only." So W27-R-01's self-merge covers the
+cards of this pass by the owner's own words, and the five deviations the final run recorded are its
+protocol now, ratified by W27-R-09 (rules file `docs/CLAUDE.md`, no branch protection, merge
+commits, stacked pull requests, the transcribed PDFs). W28-T is closed as skipped under W27-R-08.
+
+**Preflight, measured.** `main` at `383cf8a` is what the edge serves (the final run's section 12.0
+on `a944714` and the review's merge are the last two merges, both verified live by W27-REV-01); no
+pull request is open; `gh auth status` is the repository owner; the Pages custom domain is
+`rapidconstruct.md`; `main` is still unprotected and no rulesets exist, so "green before merge" is
+again held by the protocol's order.
+
+**What the cards do, by ruling.** W27-R-10: W27-FIX-03 puts the eleven rainwater prices back and the
+Sisteme pluviale table and its "de la" line with them. W27-R-11 and the Russian chips: W27-FIX-04
+adds the three missing colour dictionary entries (and the two more the Russian pages need, "Maro
+închis" and "Gri") and renders "+N" for an unnamed colour. W27-R-12: W27-FIX-05 folds the five
+near-twin pairs whose pictures and pages show the same physical item, holds the two branded pairs
+and Folie anticondens in Q-W27-04, and measures the one grid. W27-R-13: W27-FIX-06 replaces the ten
+marked previews (the nine named plus Creaton Rapido) with the manufacturer's own packshot where one
+exists at the floor, and lists the rest as kept-imperlux.
+
+**Two findings recorded here because a ruling's premise turned out narrower than the data**, and
+neither is acted on without the owner: imperlux.md's product pages name the fourth colour of the
+five models in their colour picker (RAL 9005 Negru), so "+1" is a choice rather than a gap
+(W27-R-11's reading); and the seven metal tile models are Imperlux's own make (brand Imperlux,
+ArcelorMittal steel, on every page), so their "manufacturer's own packshot" is Imperlux's mark-free
+gallery render (W27-R-13's reading).
+
+**Q-W27-02 and Q-W27-03 move to answered in their headings** (status metadata, R-S), naming the
+rulings; Q-W27-01 stays open, its shipped default being the owner's own default, and is in the
+morning list. **Nothing on any page changes in this card.**

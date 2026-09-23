@@ -3363,7 +3363,7 @@ two and a half times. Every other tile on the page is a photograph or a clean pa
 
 If neither, the strip stays as it is.
 
-## Q-W27-02 · The seven Imperlux previews carry Imperlux's orange mark, and five models name only three of their four colours · OPEN · opened 2026-09-22 (W27-C-03)
+## Q-W27-02 · The seven Imperlux previews carry Imperlux's orange mark, and five models name only three of their four colours · **ANSWERED 2026-09-23 (W27-R-13, W27-R-11, W27-FIX-04): the manufacturer's own packshot replaces a marked preview; an unnamed colour renders "+N"; three Russian entries added** · opened 2026-09-22 (W27-C-03)
 
 **Raised W27-C-03, 2026-09-22. Shipped default: the previews as published, the three named chips
 and the count the page prints. Nothing is blocked.**
@@ -3388,7 +3388,7 @@ repo's two dictionaries carry "Maro Wenge", "Negru profund" and "Maro ciocolată
 words. Three entries in the fence palette would translate them site-wide; that is a one-line
 answer.
 
-## Q-W27-03 · The mirror sweep removed eleven gutter prices, added twenty accessories beside their Dasterum near-twins, and left one accessory out · OPEN · opened 2026-09-22 (W27-C-06)
+## Q-W27-03 · The mirror sweep removed eleven gutter prices, added twenty accessories beside their Dasterum near-twins, and left one accessory out · **ANSWERED 2026-09-23 (W27-R-10, W27-R-12): the Dasterum price shows where Imperlux has none; five near-twin pairs fold, the two branded pairs and Folie anticondens are held in Q-W27-04; part 4 stays open** · opened 2026-09-22 (W27-C-06)
 
 **Raised W27-C-06, 2026-09-22. Shipped default: W27-R-04 applied literally. Nothing is blocked.**
 

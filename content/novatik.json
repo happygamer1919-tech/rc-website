@@ -1,10 +1,11 @@
 {
-  "_note": "W24-07. The rocă vulcanică page, mirroring the imperlux.md hub section by section under rulings W24-R6 and W24-R7. R6: structure and text are copied and 'Imperlux' becomes 'Rapid Construct', but any sentence asserting a COMPANY fact (own workshop, team, years, warranty, discount figure, counts, coverage, certificates) is NOT rendered; it is written to docs/W24-CLAIMS-HELD.md with its page and position and the layout slot is left with neutral existing copy or empty. R7: no imperlux price is published; a price slot renders the W22-01 phrase. Everything in this file is a PRODUCT fact taken from the source: a model name, a profile description, a thickness, a weight, a colour count. No warranty, no price, no delivery time, no financing, no project count, no certificate, no locality. Those are all in the claims-held document. Shape: models[] of { id, name, desc {ro,ru}, thickness, weight, colours }, compare.rows[] of { label {ro,ru}, key }, faq[] of { q {ro,ru}, a {ro,ru} }.",
+  "_note": "W24-07. The rocă vulcanică page, mirroring the imperlux.md hub section by section under rulings W24-R6 and W24-R7. R6: structure and text are copied and 'Imperlux' becomes 'Rapid Construct', but any sentence asserting a COMPANY fact (own workshop, team, years, warranty, discount figure, counts, coverage, certificates) is NOT rendered; it is written to docs/W24-CLAIMS-HELD.md with its page and position and the layout slot is left with neutral existing copy or empty. R7: no imperlux price is published; a price slot renders the W22-01 phrase. Everything in this file is a PRODUCT fact taken from the source: a model name, a profile description, a thickness, a weight, a colour count. No warranty, no price, no delivery time, no financing, no project count, no certificate, no locality. Those are all in the claims-held document. Shape: models[] of { id, name, desc {ro,ru}, thickness, weight, colours }, compare.rows[] of { label {ro,ru}, key }, faq[] of { q {ro,ru}, a {ro,ru} }. AMENDED W27-C-04 (W27-R-04): price {render}, colour_names[], warranty {ro,ru} and source per model are taken from imperlux.md as the source of record; the warranty ROW in the comparison table stays held (W26-R6), the figure shows on the card.",
   "source": {
     "host": "imperlux.md",
     "page": "/acoperisuri/produse/tigla-roca-vulcanica/",
     "captured": "2026-09-19",
-    "ruling": "W24-R6, W24-R7"
+    "ruling": "W24-R6, W24-R7",
+    "amended": "W27-C-04 (W27-R-04, W27-R-05): re-read 2026-09-22 in headless Chrome; each model gains its current price as \"de la\", its named colours, its warranty figure and its preview image URL. The struck price and the percent badge are not taken (R-X)."
   },
   "models": [
     {
@@ -16,7 +17,27 @@
       },
       "thickness": "2,1 mm",
       "weight": "6 kg/m²",
-      "colours": "3"
+      "colours": "3",
+      "price": {
+        "render": {
+          "ro": "De la 207.06 lei/buc",
+          "ru": "От 207.06 lei/buc"
+        }
+      },
+      "colour_names": [
+        "Earth",
+        "Moon",
+        "Grey"
+      ],
+      "warranty": {
+        "ro": "60 ani",
+        "ru": "60 лет"
+      },
+      "source": {
+        "url": "https://imperlux.md/acoperisuri/produse/tigla-roca-vulcanica/novatik-classic/",
+        "image": "https://imperlux.md/acoperisuri/images/products/novatik-classic/hero.png",
+        "captured": "2026-09-22"
+      }
     },
     {
       "id": "novatik-slate",
@@ -27,7 +48,27 @@
       },
       "thickness": "2,1 mm",
       "weight": "6,2 kg/m²",
-      "colours": "3"
+      "colours": "3",
+      "price": {
+        "render": {
+          "ro": "De la 227.59 lei/buc",
+          "ru": "От 227.59 lei/buc"
+        }
+      },
+      "colour_names": [
+        "Earth",
+        "Moon",
+        "Grey"
+      ],
+      "warranty": {
+        "ro": "60 ani",
+        "ru": "60 лет"
+      },
+      "source": {
+        "url": "https://imperlux.md/acoperisuri/produse/tigla-roca-vulcanica/novatik-slate/",
+        "image": "https://imperlux.md/acoperisuri/images/products/novatik-slate/hero.png",
+        "captured": "2026-09-22"
+      }
     },
     {
       "id": "novatik-roman",
@@ -38,7 +79,27 @@
       },
       "thickness": "2,1 mm",
       "weight": "6,0 kg/m²",
-      "colours": "5"
+      "colours": "5",
+      "price": {
+        "render": {
+          "ro": "De la 227.59 lei/buc",
+          "ru": "От 227.59 lei/buc"
+        }
+      },
+      "colour_names": [
+        "Moon",
+        "Earth",
+        "Rossa"
+      ],
+      "warranty": {
+        "ro": "60 ani",
+        "ru": "60 лет"
+      },
+      "source": {
+        "url": "https://imperlux.md/acoperisuri/produse/tigla-roca-vulcanica/novatik-roman/",
+        "image": "https://imperlux.md/acoperisuri/images/products/novatik-roman/hero.png",
+        "captured": "2026-09-22"
+      }
     },
     {
       "id": "novatik-wood",
@@ -49,7 +110,27 @@
       },
       "thickness": "0,50 mm",
       "weight": "2,28 kg/modul",
-      "colours": "4"
+      "colours": "4",
+      "price": {
+        "render": {
+          "ro": "De la 227.59 lei/buc",
+          "ru": "От 227.59 lei/buc"
+        }
+      },
+      "colour_names": [
+        "Maro",
+        "Gri",
+        "Negru"
+      ],
+      "warranty": {
+        "ro": "60 ani",
+        "ru": "60 лет"
+      },
+      "source": {
+        "url": "https://imperlux.md/acoperisuri/produse/tigla-roca-vulcanica/novatik-wood/",
+        "image": "https://imperlux.md/acoperisuri/images/products/novatik-wood/hero.png",
+        "captured": "2026-09-22"
+      }
     }
   ],
   "compare": [

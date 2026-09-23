@@ -1031,3 +1031,15 @@ The imperlux override grows by name to 40 slots under a W27-R-04 sentence. Rende
 in price blocks, 0 "Popular". Budgets **21,703 / 21,862**. Q-W27-02 on the brand mark and the fourth
 colour. **Static gates exit 0**; gates 20 and 28 run before the PR.
 
+## W27-C-04 · Rocă vulcanică Novatik from Imperlux
+**Status: PR OPEN** (opened 2026-09-22). W27-R-04 and W27-R-05 applied to `/servicii/roca-vulcanica/`.
+**The four "Preț la cerere" cards now price**: Classic **De la 207.06 lei/buc**, Slate, Roman and Wood
+**227.59**, verified on the rendered page, current figure only. Each card: Imperlux's preview picture
+(model name printed in it, flagged `label`; no orange mark on these four), the tagline it already had,
+the named colour chips (Earth, Moon, Grey; Moon, Earth, Rossa; Maro, Gri, Negru), **Garanție 60 ani**
+as a fact row, kg/m² and the colour count. The comparison table's price row prints the same figures;
+its warranty row stays held (W26-R6, claims-held rows 7 and 9 amended). A derived "4 modele, de la
+207.06 lei/buc" line under the heading. The four novatik.ro packshots are replaced; 0 `.prod__ask`,
+0 percent, 0 "Popular" on the page. Budgets **4,429 / 4,499**. **Static gates exit 0**; gate 28 run
+before the PR.
+

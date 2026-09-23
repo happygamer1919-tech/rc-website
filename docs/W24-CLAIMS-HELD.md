@@ -244,3 +244,13 @@ mirrored page renders the exact W22-01 phrase in its own locale, and
 
 **`GARD_FORBIDDEN` is untouched** (W24-R7), and the `Reduceri` and `Prețuri și oferte`
 tiles carry no percentage.
+
+## AMENDED (W27-C-04, wave 27): rows 7 and 9, the Novatik warranty
+
+W27-R-04 makes imperlux.md the source of record for "warranties" among the product facts, so the
+figure held at row 7 (card footer, `60 ani garanție`) now renders on each Novatik card as a fact
+row, "Garanție: 60 ani", taken from the rendered page on 2026-09-22. **Row 9, the `Garanție` row of
+the comparison table, stays held** under W26-R6, which names table rows in terms; the owner has not
+confirmed roof warranty rows. Rows 1, 13, 21 and 28 are prose claims and stay held as written. This
+note is appended, nothing above it is edited.
+

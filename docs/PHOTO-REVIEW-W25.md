@@ -19,14 +19,14 @@ them apart: nothing from the earlier dispatch is a labelled swatch or carries a 
 
 | Flag | Rows | What to look for |
 |---|---|---|
-| labelled swatch | 130 | the product name or code is printed into the photograph, and the card prints it again underneath |
+| labelled swatch | 134 | the product name or code is printed into the photograph, and the card prints it again underneath |
 | watermark | 78 | a supplier mark on the picture or on the product. It is there on purpose and must not be cropped |
 | reuse | 25 | one picture filling a second record of the same product (W25-R17). Check the two cards are the same product |
 | google_pick | 12 | found by search because the product's own source publishes nothing at the 450 floor (W25-R20). Check it is the right product, and correct it if not |
 | library | 3 | a licence-free stock photograph from Unsplash or Pexels (W25-R23, W26-R8), decoration only. Check it suits the page |
 | low_res | 4 | the longest side is under the site's 450 floor, installed under W26-R13's floor of 300 for the last empty products. Replace it when a larger picture exists |
 | low confidence match | 9 | the plate matched Phomi at a tier that is not an exact string match. Check the name in the picture against the name on the card |
-| no flag | 114 | an ordinary manufacturer packshot |
+| no flag | 110 | an ordinary manufacturer packshot |
 
 ## Table one: every image on the site in these 4 sections
 
@@ -269,10 +269,10 @@ them apart: nothing from the earlier dispatch is a labelled swatch or carries a 
 
 | Slot | Product | Page | Source | Origin | Size | Flags |
 |---|---|---|---|---|---|---|
-| `NVK-01` | NVK-01 | /servicii/roca-vulcanica/ | https://novatik.ro/themes/frontend/site/assets/images/Profile/Classic/novatik-classic2.jpg | manufacturer official site | 600x333 | none |
-| `NVK-02` | NVK-02 | /servicii/roca-vulcanica/ | https://novatik.ro/themes/frontend/site/assets/images/galerie/galerie_natura_slate/img15.jpg | manufacturer official site | 600x337 | none |
-| `NVK-03` | NVK-03 | /servicii/roca-vulcanica/ | https://novatik.ro/themes/frontend/site/assets/images/Profile/Roman/novatik-roman.jpg | manufacturer official site | 600x400 | none |
-| `NVK-04` | NVK-04 | /servicii/roca-vulcanica/ | https://novatik.ro/themes/frontend/site/assets/images/Profile/Wood/novatik-wood2.jpg | manufacturer official site | 600x277 | none |
+| `NVK-01` | NVK-01 | /servicii/roca-vulcanica/ | https://imperlux.md/acoperisuri/images/products/novatik-classic/hero.png | owner_override_imperlux | 600x450 | labelled swatch |
+| `NVK-02` | NVK-02 | /servicii/roca-vulcanica/ | https://imperlux.md/acoperisuri/images/products/novatik-slate/hero.png | owner_override_imperlux | 600x450 | labelled swatch |
+| `NVK-03` | NVK-03 | /servicii/roca-vulcanica/ | https://imperlux.md/acoperisuri/images/products/novatik-roman/hero.png | owner_override_imperlux | 600x450 | labelled swatch |
+| `NVK-04` | NVK-04 | /servicii/roca-vulcanica/ | https://imperlux.md/acoperisuri/images/products/novatik-wood/hero.png | owner_override_imperlux | 600x450 | labelled swatch |
 | `ACOP-01` | ACOP-01 | /servicii/acoperisuri/ | https://imperlux.md/acoperisuri/images/categories/tigla-metalica.png | owner_override_imperlux | 483x580 | none |
 | `ACOP-02` | ACOP-02 | /servicii/acoperisuri/ | https://imperlux.md/acoperisuri/images/categories/roca-vulcanica.png | owner_override_imperlux | 969x277 | none |
 | `ACOP-03` | ACOP-03 | /servicii/acoperisuri/ | client direct transfer, owner folder RC-webpics_v2 ACOPERIȘURI, 22.09.2026 | owned by Rapid Construct, supplied for site use | 1280x730 | none |

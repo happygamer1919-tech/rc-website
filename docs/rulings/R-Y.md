@@ -1081,3 +1081,16 @@ Compară heading. Same instrument, same method as the W27-C-02 block above:
 
 Plus 60 (W24-R4). No other page moved.
 
+## AMENDED (W27-C-04, wave 27): the Novatik page takes Imperlux's prices, chips and pictures
+
+W27-R-04 and W27-R-05 on `/servicii/roca-vulcanica/`: each card gains three colour chips, a
+warranty row and a price line in place of "Preț la cerere", and a derived "4 modele, de la 207.06
+lei/buc" line sits under the heading. Same instrument and method as the blocks above:
+
+| Page | Before | After | Budget |
+|---|---|---|---|
+| `/servicii/roca-vulcanica/` | 4,288 | **4,369** | 4,348 to **4,429** |
+| `/ru/servicii/roca-vulcanica/` | 4,386 | **4,439** | 4,446 to **4,499** |
+
+Plus 60 (W24-R4). "Before" is the budget less 60, the way the budget was set.
+

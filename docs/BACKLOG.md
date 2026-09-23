@@ -1107,4 +1107,45 @@ beside white, so the palette count holds. **Static gates, gates 20 and 28 exit 0
 Lighthouse's LCP discovery insight named the one hint it lacked, `fetchpriority=high`; the first tile of
 each hub grid carries it now (build.js, one attribute). Five runs after: **98, 98, 98, 98 and one cold
 92** (LCP 1.13 to 1.15s, one at 1.9s); three runs before: 92, 98, 92. No page changes shape.
+## W28-04 · Headings: 64 and 48, weight 800, tight, sentence case
+**Status: PR OPEN** (opened 2026-09-22). Approved under W27-R-07, owner may overturn. **h1 64px at
+-0.035em, h2 48px at -0.03em, weight 800, no capitals** (52 and 36 on smaller screens, 30 for h2 on
+a phone); the catalogue h1 too. **Eyebrows keep their capitals and gain a 24px orange rule** before
+the text. **No locale string changes**: none was stored in capitals, the capitals were CSS. The
+master plan's type table struck in place. **All 53 budgets re-measured plus 60** (R-Y table,
+generated). **Static gates, gates 14, 20 and 28 exit 0.** Screenshots `docs/design/W27/w28-04-*`.
+
+## W28-05 · Buttons: a dark label on the orange, 17px
+**Status: PR OPEN** (opened 2026-09-22). **`--ink` on `--brand` at 17px, 5.3:1**, which passes WCAG at any
+size, so the 19px large-text allowance that held white-on-orange (section 4) is no longer what holds
+it; the catalogue toggle and the card arrow take the same dark label; hover goes darker with a white
+label. Section 4 amended. Gate 11 gains slack from the smaller label (least RU slack recorded in the
+card). **Static gates, gates 11, 18 and 28 exit 0.** Budgets re-measured. Screenshots
+`docs/design/W27/w28-05-*`.
+
+## W28-06 · The form: cream fields with a visible edge, a full-width submit, the aside as a list
+**Status: PR OPEN** (opened 2026-09-22). **CSS only**: fields fill `--bg-warm` with a `--outline` edge,
+56px tall, 14px corners; labels 16px, sentence case, ink; the submit is full width; the contact aside
+loses its two boxes and reads as a list on hairlines (the big orange phone, the hours, the note; no
+address string exists in the aside, so none is shown). The filter buttons take the `--outline` edge
+W28-01 listed. Field names, action, hidden inputs untouched: **gate 13 (form wiring) 64 forms on 62
+pages exits 0.** Gates 20 and 28 exit 0. Budgets re-measured. Screenshots `docs/design/W27/w28-06-*`.
+
+## W28-07 · The stats band as four dark cards, and the hero claim card
+**Status: PR OPEN** (opened 2026-09-22). **Four `#232323` cards on the `#1C1917` band**, left-aligned,
+huge orange figure over a white label; the hero claim card takes the same `#232323`. **`#232323` is the
+twelfth value**, added to section 3 with its use, never a section ground. Gate 28 exits 0 (white on
+`#232323` 15.7:1). Budgets re-measured. Screenshots `docs/design/W27/w28-07-*`.
+
+## W28-08 · Product cards, bento labels, a quiet footer, zebra tables
+**Status: PR OPEN** (opened 2026-09-22). CSS only. **Product cards** in the fixed order packshot, name,
+one line, orange price, soft-filled chips, hairline, facts (the facts pinned to the foot; a card with
+no chips keeps its price row at the foot); `.nvk__price` orange too. **Bento labels 32px** (24 on a
+phone), and the tile gradient 55% so a two-line label stays covered (gate 20 caught the 40% at
+ACOP-03). **Footer**: grey uppercase column heads (`--outline`, 5.2:1 on the band), 17px white links,
+no rules. **Tables**: cells 16x24, a dark header row where a table has one, zebra rows on `--bg-warm`;
+gate 28's phone arm on the Compară table now watches the row label, because the header row it
+planted on is dark on purpose. **W28-T is skipped** (optional, W27-R-08): a two-tone split needs a
+generator change, and the card allows CSS and locale strings only. **Static gates, gates 14, 20 and
+28 exit 0.** Budgets re-measured. Screenshots `docs/design/W27/w28-08-*`.
 

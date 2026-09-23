@@ -101,7 +101,7 @@ plus 60 at ship**, recorded in `docs/rulings/R-Y.md` with the measurement it cam
 
 ## 3. Colour
 
-~~**Ten values.**~~ **AMENDED (W26-14, ruling W26-R16): eleven values.** **AMENDED (W28-01, wave 27 design pass): still eleven. `--ink` and `--bg-dark` share `#1C1917`, and the slot that frees goes to `#9C9388`, the clear outline.** Adding one is a change
+~~**Ten values.**~~ **AMENDED (W26-14, ruling W26-R16): eleven values.** **AMENDED (W28-07): twelve, `#232323` for the dark cards.** **AMENDED (W28-01, wave 27 design pass): still eleven. `--ink` and `--bg-dark` share `#1C1917`, and the slot that frees goes to `#9C9388`, the clear outline.** Adding one is a change
 to this file, not a change to a stylesheet.
 
 | # | Value | Token | Use |
@@ -117,6 +117,7 @@ to this file, not a change to a stylesheet.
 | 9 | `#25D366` | - | WhatsApp's own colour, floating button only |
 | 10 | `#1EBE5A` | - | WhatsApp's own hover, floating button only |
 | 11 | ~~`#F7F5F2`~~ **`#FAF6F0`** | `--bg-warm` | **W26-14**: the second light section ground, alternating with `#FFFFFF`. **AMENDED (W28-03, ruling W27-R-02): the cream is the DEFAULT light ground and white the alternate, no line between sections; still exactly one off-white** |
+| 12 | `#232323` | (literal) | **W28-07 (wave 27 design pass, under W27-R-07)**: the four stat cards on the dark band and the hero claim card, a card a shade above `--bg-dark`; never a section ground |
 
 Values 9 and 10 are WhatsApp's brand colours, not the site's, and are confined
 to the floating contact button.
@@ -246,7 +247,9 @@ clears itself when one lands.
 Accessibility 100 is held by two decisions that must not be quietly undone:
 button text sized to clear the WCAG large-text threshold, so white on `--brand`
 is judged against 3:1 rather than 4.5:1; and the category chip filled with
-`--brand-dark`. The sizes and the measured ratios are in the DECISIONS.md entry.
+`--brand-dark`. **AMENDED (W28-05): the primary button's label is `--ink` on `--brand`
+at 17px, 5.3:1, which passes the normal-text threshold outright; the size allowance is no
+longer what holds it, and the catalogue toggle and the card arrow take the same dark label.** The sizes and the measured ratios are in the DECISIONS.md entry.
 3:1 and 4.5:1 are WCAG's thresholds, not ours, and are quoted as the external
 standard they are.
 *Source: DECISIONS.md "Contrast, resolved 2026-08-28".*

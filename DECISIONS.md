@@ -13224,6 +13224,127 @@ where the text is large (the stat numerals, the price lines at 20px bold). Gate 
 
 **Gates.** Static gates exit 0 with the new staleness entry; gate 20 and gate 28 exit 0. Screenshots
 `docs/design/W27/w28-03-*`.
+
+## W28-04 · Headings at 64 and 48, weight 800, tight, sentence case, 2026-09-22
+
+Branch `w27/w28-04-headings`, stacked on W28-03. Approved by strategy under the owner's delegation
+(W27-R-07); the owner may overturn it, and it is one card to revert.
+
+**The single biggest lever the proposal names**, and the one it flags as the owner's decision, so it
+is recorded as delegated rather than chosen: `h1` 64px at -0.035em and `h2` 48px at -0.03em, both
+800, both in sentence case; 52px below 1024, 36 and 30 on a phone. The catalogue page's `h1`
+loses its own uppercase rule with them. **Eyebrows keep their capitals** and gain a 24px orange rule
+before the text, RC's own signature per the W28 proposal. Component titles set in capitals (offer,
+tile, teaser, footer headings) are outside the card's scope, which names h1 and h2.
+
+**No locale string changed.** The dispatch says to convert any heading string stored in capitals;
+a scan of both locale files finds none (every capital heading on the site was `text-transform`),
+so `ro.json` and `ru.json` are untouched and the RU headings read as authored.
+
+**Gate 14 (heading fit)** at 360 and 1280 on every sitemap page: 132 of 132 combinations, no
+heading wider than its box, no sideways scroll, with hyphenation on h1 and h2 as before. **Gate 20
+and gate 28** exit 0.
+
+**Budgets.** Bigger headings make every page a few lines taller, so all 53 budgets are re-measured
+and set to measured plus 60 (W24-R4), in a generated table in R-Y. The homepage moves from 9,141 to
+9,246 (RO) and 9,354 to 9,460 (RU); the roofing page to 24,321 and 24,542.
+
+**Master plan.** Its type table (h1 56/800/UPPERCASE, h2 40/800/UPPERCASE, eyebrow 13/12) is
+struck in place with this card named (R-R).
+
+## W28-05 · Buttons: a dark label on the orange, 17px, 2026-09-22
+
+Branch `w27/w28-05-buttons`, stacked on W28-04.
+
+**What held the white label was its size.** Section 4 records it: 19px bold clears WCAG's
+large-text threshold, so white on `--brand` (3.4:1) is judged at 3:1. The W28 proposal's pattern 9
+is the other way round: a dark label on the orange passes at any size, so the label can be a refined
+17px. `--ink` on `--brand` is 5.3:1 and passes the normal-text threshold outright. Every `.btn`, the
+catalogue toggle and the card's round arrow take the dark label at 17px; the primary hover goes to
+`--brand-dark` with a white label (5.6:1), so the pressed state still reads as a change. Section 4 is
+amended beside the sentence it changes; the stylesheet comment that explained the allowance carries
+the amendment too.
+
+**Gate 11.** A 17px label is narrower than a 19px one, so the header pill gains slack: recorded in
+the card. **Gate 18** (dropdowns, which hold the catalogue toggle) and **gate 28** exit 0.
+
+**Budgets.** Buttons keep their 48px height, so nothing moved by more than a line; all 53 budgets
+re-measured plus 60, generated into R-Y, as every design card does.
+
+## W28-06 · The form: cream fields with a visible edge, a full-width submit, the aside as a list, 2026-09-22
+
+Branch `w27/w28-06-form`, stacked on W28-05.
+
+**The quote form is the most valuable thing on the site, and its field edges were 1.3:1.** Fields now
+fill `--bg-warm` with a 1px `--outline` edge (3.02:1 on white, the one place the outline is for),
+56px tall, 14px corners; labels are 16px, sentence case, `--ink`, an instruction rather than an
+orange caption; the submit button is full width. The contact aside keeps its markup and loses its two
+boxes: the big orange phone, the hours and the note sit on hairlines. **The dispatch lists an address
+in the aside; no address string exists there** (the address is in the footer), so none is invented.
+The filter buttons take the `--outline` edge W28-01's list named and W28-01 did not apply.
+
+**Nothing the form sends changed.** Field names, `action`, hidden inputs and subjects are untouched;
+**gate 13 read 64 forms on 62 pages, every one wired, exit 0**. Per the W21 standing rule a person
+sends one real lead per locale after any change to a form: this card changes the form's look only,
+and the check is carried in the report for the owner.
+
+**Gates 20 and 28** exit 0 (labels, hints and field text on the cream). All 53 budgets re-measured plus
+60 into R-Y: every page with the form is a few lines taller.
+
+## W28-07 · The stats band as four dark cards, and the hero claim card, 2026-09-22
+
+Branch `w27/w28-07-stats-cards`, stacked on W28-06.
+
+**Three facts become three comparable objects** is the W28 proposal's pattern 5, and the site's
+four stats on the dark band take it: each is a `#232323` card with 24px of padding, left-aligned,
+its orange figure at 64px over a white label. The hero's claim card takes the same `#232323`, a shade
+above the band, so the two read as the same kind of object. **`#232323` is a new value**, the twelfth,
+and section 3 is amended to say so and what it is for: a card on the dark band, never a section
+ground. The alternative, a translucent white wash over `--bg-dark`, would have composited to a value
+the dispatch does not name, and section 3 already treats a wash on the dark band as not a colour;
+the dispatch names `#232323`, so the value is named.
+
+**Gate 28** exits 0: white on `#232323` at 15.7:1, the orange figures at 64px large. **Budgets**
+re-measured plus 60 into R-Y; the homepages grow by the cards' padding.
+
+## W28-08 · Product cards, bento labels, a quiet footer, zebra tables, and W28-T skipped, 2026-09-22
+
+Branch `w27/w28-08-cards-footer-tables`, stacked on W28-07. CSS only, plus one self-test arm of gate 28.
+
+**Product cards, a fixed order of facts.** Packshot, name, one line, the price in orange with its
+arrow, soft-filled chips, a hairline, then the facts: the W28 proposal's pattern 8. The order is
+`order` on the card body's children so no markup moves; the facts line is pinned to the foot with
+`margin-top: auto`, and a card with no chips or facts (every Dasterum card) keeps its price row at
+the foot because there the foot is the last child and takes the slack. The price is `--brand` at
+20px bold, large text at 3.4:1 on white; `.nvk__price` the same. Chips fill `--bg-warm` with no
+outline.
+
+**Bento labels at 32px, and what gate 20 caught.** "Calculează prețul acoperișului" wraps to two
+lines at 32px on a 380px tile, and the W24-R5 gradient under a label was 40% of the tile: the gate
+refused ACOP-03 on its own control ("gradient does not cover its label's box"). The gradient is 55%
+now. The same object caught the same class of defect it was written for, on the first card to move a
+label.
+
+**A quiet footer.** Column heads in `--outline` (5.2:1 on the band) in capitals, links white at 17px,
+and no rules: the CTA row's bottom line and the bar's top line, which W28-01 had made hairlines, are
+gone.
+
+**Tables.** Every cell 16px by 24px; a dark header row (`--bg-dark`, white text) where a table has
+one (the Novatik comparison, the roofing Compară tables); zebra rows on `--bg-warm`. **Gate 28's
+phone arm had to move**: it planted `.spec { color: inherit }` on the RU Novatik page and expected
+the header cell "Характеристика" to fire, and a header cell that is white on dark on purpose no
+longer can; the arm watches the row label "Толщина" instead, which still inherits the band's white on
+the table's own ground. The desktop arm already watched a row label.
+
+**W28-T is SKIPPED**, and the reason is the card's own scope. W27-R-08 makes it optional and last. A
+two-tone heading needs the second half of the string in its own element; locale strings are escaped
+on output, so a tag in a string prints as text, and the only way to split one is in `build.js`, which
+the design cards' "CSS and locale strings only, no JS" rules out. The hub headings already carry a
+muted second word by their own markup and keep it. Recorded, not attempted.
+
+**Gates.** Static gates exit 0; gate 14 (heading fit), gate 20 (with the 55% gradient) and gate 28
+(with the moved arm) exit 0. Budgets re-measured plus 60 into R-Y. Screenshots
+`docs/design/W27/w28-08-*`.
 ## W27-FIX-01 · Budgets after the 14px floor, and the section 12.0 failure that found it, 2026-09-22
 
 Branch `w27/w27-fix-01-budgets`, from `main` at `ff8a922` (#143 merged).

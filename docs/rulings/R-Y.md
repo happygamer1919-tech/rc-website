@@ -1118,6 +1118,68 @@ rainwater parts and the ceramic tile take Imperlux's pictures and taglines. Same
 Plus 60 (W24-R4). The section cap of 1,400px (`docs/CLAUDE.md` section 2) does not hold the
 catalogue grid, the third standing exception (W24-R4).
 
+## AMENDED (W28-04, wave 27): headings at 64 and 48, every budget re-measured
+
+W28-04 (under W27-R-07) sets h1 to 64px and h2 to 48px in sentence case. Every page grows by a few
+lines of heading, so **all 53 budgeted pages were re-measured at 1440**, settled, with every
+`[data-reveal]` applied, on the instrument the W27-C-02 block describes, and every budget is its
+page's measurement plus 60 (W24-R4). The table is generated from the measurement, not typed:
+
+| Page | Before (budget minus 60) | After | Budget |
+|---|---|---|---|
+| `/` | 9,081 | **9,186** | 9,141 to **9,246** |
+| `/ru/` | 9,294 | **9,400** | 9,354 to **9,460** |
+| `/in-constructie/` | 1,122 | **1,136** | 1,182 to **1,196** |
+| `/ru/in-constructie/` | 1,122 | **1,136** | 1,182 to **1,196** |
+| `/servicii/case-la-cheie/` | 6,351 | **6,447** | 6,411 to **6,507** |
+| `/servicii/fatade/` | 5,284 | **5,343** | 5,344 to **5,403** |
+| `/ru/servicii/case-la-cheie/` | 6,483 | **6,579** | 6,543 to **6,639** |
+| `/ru/servicii/fatade/` | 5,491 | **5,558** | 5,551 to **5,618** |
+| `/servicii/acoperisuri/` | 24,172 | **24,261** | 24,232 to **24,321** |
+| `/ru/servicii/acoperisuri/` | 24,393 | **24,482** | 24,453 to **24,542** |
+| `/servicii/roca-vulcanica/` | 4,369 | **4,431** | 4,429 to **4,491** |
+| `/ru/servicii/roca-vulcanica/` | 4,439 | **4,502** | 4,499 to **4,562** |
+| `/ru/servicii/finisaje/` | 5,411 | **5,478** | 5,471 to **5,538** |
+| `/servicii/tigla-metalica/` | 4,223 | **4,373** | 4,283 to **4,433** |
+| `/ru/servicii/tigla-metalica/` | 4,256 | **4,428** | 4,316 to **4,488** |
+| `/servicii/copertine/` | 7,184 | **7,298** | 7,244 to **7,358** |
+| `/ru/servicii/copertine/` | 7,260 | **7,374** | 7,320 to **7,434** |
+| `/servicii/garduri/` | 5,547 | **5,633** | 5,607 to **5,693** |
+| `/ru/servicii/garduri/` | 5,569 | **5,655** | 5,629 to **5,715** |
+| `/servicii/modele-garduri/` | 4,309 | **4,355** | 4,369 to **4,415** |
+| `/ru/servicii/modele-garduri/` | 4,331 | **4,377** | 4,391 to **4,437** |
+| `/servicii/galerie-garduri/` | 3,967 | **4,004** | 4,027 to **4,064** |
+| `/ru/servicii/galerie-garduri/` | 3,967 | **4,004** | 4,027 to **4,064** |
+| `/catalog/` | 3,623 | **3,660** | 3,683 to **3,720** |
+| `/ru/catalog/` | 3,648 | **3,685** | 3,708 to **3,745** |
+| `/catalog/termoizolatie/` | 6,801 | **6,843** | 6,861 to **6,903** |
+| `/ru/catalog/termoizolatie/` | 6,718 | **6,758** | 6,778 to **6,818** |
+| `/catalog/termoizolatie/polistiren-expandat/` | 3,547 | **3,586** | 3,607 to **3,646** |
+| `/ru/catalog/termoizolatie/polistiren-expandat/` | 3,464 | **3,503** | 3,524 to **3,563** |
+| `/catalog/termoizolatie/polistiren-extrudat/` | 3,024 | **3,062** | 3,084 to **3,122** |
+| `/ru/catalog/termoizolatie/polistiren-extrudat/` | 3,068 | **3,042** | 3,128 to **3,102** |
+| `/catalog/termoizolatie/vata-minerala/` | 3,504 | **3,544** | 3,564 to **3,604** |
+| `/ru/catalog/termoizolatie/vata-minerala/` | 3,506 | **3,546** | 3,566 to **3,606** |
+| `/catalog/termoizolatie/adezivi-si-mase-de-spaclu/` | 4,021 | **4,061** | 4,081 to **4,121** |
+| `/ru/catalog/termoizolatie/adezivi-si-mase-de-spaclu/` | 3,944 | **3,984** | 4,004 to **4,044** |
+| `/catalog/termoizolatie/alte-produse/` | 2,997 | **3,034** | 3,057 to **3,094** |
+| `/ru/catalog/termoizolatie/alte-produse/` | 2,956 | **2,993** | 3,016 to **3,053** |
+| `/catalog/tencuieli-decorative/` | 5,250 | **5,290** | 5,310 to **5,350** |
+| `/ru/catalog/tencuieli-decorative/` | 5,326 | **5,367** | 5,386 to **5,427** |
+| `/catalog/placi-ceramice/` | 12,723 | **12,786** | 12,783 to **12,846** |
+| `/ru/catalog/placi-ceramice/` | 13,661 | **13,724** | 13,721 to **13,784** |
+| `/catalog/elemente-decorative/` | 10,141 | **10,177** | 10,201 to **10,237** |
+| `/ru/catalog/elemente-decorative/` | 10,576 | **10,612** | 10,636 to **10,672** |
+| `/catalog/vopsele/` | 4,244 | **4,283** | 4,304 to **4,343** |
+| `/ru/catalog/vopsele/` | 4,339 | **4,378** | 4,399 to **4,438** |
+| `/catalog/vopsele/vopsele-de-exterior/` | 3,004 | **3,042** | 3,064 to **3,102** |
+| `/ru/catalog/vopsele/vopsele-de-exterior/` | 3,026 | **3,064** | 3,086 to **3,124** |
+| `/catalog/vopsele/vopsele-de-interior/` | 3,026 | **3,064** | 3,086 to **3,124** |
+| `/ru/catalog/vopsele/vopsele-de-interior/` | 3,072 | **3,110** | 3,132 to **3,170** |
+| `/catalog/sisteme-iluminare/` | 6,258 | **6,295** | 6,318 to **6,355** |
+| `/ru/catalog/sisteme-iluminare/` | 6,202 | **6,238** | 6,262 to **6,298** |
+| `/catalog/alte-materiale/` | 3,647 | **3,683** | 3,707 to **3,743** |
+| `/ru/catalog/alte-materiale/` | 3,647 | **3,683** | 3,707 to **3,743** |
 ## AMENDED (W27-FIX-01, wave 27): the 14px floor, and a section 12.0 failure on `ff8a922`
 
 **Section 12.0 on `ff8a922` (#143, W28-01) FAILED: exit 1, 0 unverified, 2 failed.** Every marker
@@ -1183,4 +1245,248 @@ measured plus 60 (W24-R4), generated:
 | `/ru/catalog/sisteme-iluminare/` | 6,202 | **6,223** | 6,262 to **6,283** |
 | `/catalog/alte-materiale/` | 3,647 | **3,668** | 3,707 to **3,728** |
 | `/ru/catalog/alte-materiale/` | 3,647 | **3,668** | 3,707 to **3,728** |
+
+## AMENDED (W28-05, wave 27): 17px button labels, budgets re-measured
+
+W28-05 sets every button label to 17px, dark on the orange. Buttons are a fixed height, so almost
+nothing moves; the 53 budgets are re-measured all the same, plus 60, generated:
+
+| Page | Before (budget minus 60) | After | Budget |
+|---|---|---|---|
+| `/` | 9,186 | **9,186** | 9,246 to **9,246** |
+| `/ru/` | 9,400 | **9,400** | 9,460 to **9,460** |
+| `/in-constructie/` | 1,136 | **1,136** | 1,196 to **1,196** |
+| `/ru/in-constructie/` | 1,136 | **1,136** | 1,196 to **1,196** |
+| `/servicii/case-la-cheie/` | 6,447 | **6,447** | 6,507 to **6,507** |
+| `/servicii/fatade/` | 5,343 | **5,343** | 5,403 to **5,403** |
+| `/ru/servicii/case-la-cheie/` | 6,579 | **6,579** | 6,639 to **6,639** |
+| `/ru/servicii/fatade/` | 5,558 | **5,558** | 5,618 to **5,618** |
+| `/servicii/acoperisuri/` | 24,261 | **24,261** | 24,321 to **24,321** |
+| `/ru/servicii/acoperisuri/` | 24,482 | **24,482** | 24,542 to **24,542** |
+| `/servicii/roca-vulcanica/` | 4,431 | **4,431** | 4,491 to **4,491** |
+| `/ru/servicii/roca-vulcanica/` | 4,502 | **4,502** | 4,562 to **4,562** |
+| `/ru/servicii/finisaje/` | 5,478 | **5,478** | 5,538 to **5,538** |
+| `/servicii/tigla-metalica/` | 4,373 | **4,373** | 4,433 to **4,433** |
+| `/ru/servicii/tigla-metalica/` | 4,428 | **4,428** | 4,488 to **4,488** |
+| `/servicii/copertine/` | 7,298 | **7,298** | 7,358 to **7,358** |
+| `/ru/servicii/copertine/` | 7,374 | **7,374** | 7,434 to **7,434** |
+| `/servicii/garduri/` | 5,633 | **5,633** | 5,693 to **5,693** |
+| `/ru/servicii/garduri/` | 5,655 | **5,655** | 5,715 to **5,715** |
+| `/servicii/modele-garduri/` | 4,355 | **4,355** | 4,415 to **4,415** |
+| `/ru/servicii/modele-garduri/` | 4,377 | **4,377** | 4,437 to **4,437** |
+| `/servicii/galerie-garduri/` | 4,004 | **4,004** | 4,064 to **4,064** |
+| `/ru/servicii/galerie-garduri/` | 4,004 | **4,004** | 4,064 to **4,064** |
+| `/catalog/` | 3,660 | **3,660** | 3,720 to **3,720** |
+| `/ru/catalog/` | 3,685 | **3,685** | 3,745 to **3,745** |
+| `/catalog/termoizolatie/` | 6,843 | **6,843** | 6,903 to **6,903** |
+| `/ru/catalog/termoizolatie/` | 6,758 | **6,758** | 6,818 to **6,818** |
+| `/catalog/termoizolatie/polistiren-expandat/` | 3,586 | **3,586** | 3,646 to **3,646** |
+| `/ru/catalog/termoizolatie/polistiren-expandat/` | 3,503 | **3,503** | 3,563 to **3,563** |
+| `/catalog/termoizolatie/polistiren-extrudat/` | 3,062 | **3,062** | 3,122 to **3,122** |
+| `/ru/catalog/termoizolatie/polistiren-extrudat/` | 3,042 | **3,042** | 3,102 to **3,102** |
+| `/catalog/termoizolatie/vata-minerala/` | 3,544 | **3,544** | 3,604 to **3,604** |
+| `/ru/catalog/termoizolatie/vata-minerala/` | 3,546 | **3,546** | 3,606 to **3,606** |
+| `/catalog/termoizolatie/adezivi-si-mase-de-spaclu/` | 4,061 | **4,061** | 4,121 to **4,121** |
+| `/ru/catalog/termoizolatie/adezivi-si-mase-de-spaclu/` | 3,984 | **3,984** | 4,044 to **4,044** |
+| `/catalog/termoizolatie/alte-produse/` | 3,034 | **3,034** | 3,094 to **3,094** |
+| `/ru/catalog/termoizolatie/alte-produse/` | 2,993 | **2,993** | 3,053 to **3,053** |
+| `/catalog/tencuieli-decorative/` | 5,290 | **5,290** | 5,350 to **5,350** |
+| `/ru/catalog/tencuieli-decorative/` | 5,367 | **5,367** | 5,427 to **5,427** |
+| `/catalog/placi-ceramice/` | 12,786 | **12,786** | 12,846 to **12,846** |
+| `/ru/catalog/placi-ceramice/` | 13,724 | **13,724** | 13,784 to **13,784** |
+| `/catalog/elemente-decorative/` | 10,177 | **10,177** | 10,237 to **10,237** |
+| `/ru/catalog/elemente-decorative/` | 10,612 | **10,612** | 10,672 to **10,672** |
+| `/catalog/vopsele/` | 4,283 | **4,283** | 4,343 to **4,343** |
+| `/ru/catalog/vopsele/` | 4,378 | **4,378** | 4,438 to **4,438** |
+| `/catalog/vopsele/vopsele-de-exterior/` | 3,042 | **3,042** | 3,102 to **3,102** |
+| `/ru/catalog/vopsele/vopsele-de-exterior/` | 3,064 | **3,064** | 3,124 to **3,124** |
+| `/catalog/vopsele/vopsele-de-interior/` | 3,064 | **3,064** | 3,124 to **3,124** |
+| `/ru/catalog/vopsele/vopsele-de-interior/` | 3,110 | **3,110** | 3,170 to **3,170** |
+| `/catalog/sisteme-iluminare/` | 6,295 | **6,295** | 6,355 to **6,355** |
+| `/ru/catalog/sisteme-iluminare/` | 6,238 | **6,238** | 6,298 to **6,298** |
+| `/catalog/alte-materiale/` | 3,683 | **3,683** | 3,743 to **3,743** |
+| `/ru/catalog/alte-materiale/` | 3,683 | **3,683** | 3,743 to **3,743** |
+
+## AMENDED (W28-06, wave 27): the form fields at 56px, budgets re-measured
+
+W28-06 makes every field 56px tall with a 16px label, on every page that carries the quote form,
+and the contact aside a list. All 53 budgets re-measured plus 60, generated:
+
+| Page | Before (budget minus 60) | After | Budget |
+|---|---|---|---|
+| `/` | 9,186 | **9,234** | 9,246 to **9,294** |
+| `/ru/` | 9,400 | **9,448** | 9,460 to **9,508** |
+| `/in-constructie/` | 1,136 | **1,136** | 1,196 to **1,196** |
+| `/ru/in-constructie/` | 1,136 | **1,136** | 1,196 to **1,196** |
+| `/servicii/case-la-cheie/` | 6,447 | **6,484** | 6,507 to **6,544** |
+| `/servicii/fatade/` | 5,343 | **5,379** | 5,403 to **5,439** |
+| `/ru/servicii/case-la-cheie/` | 6,579 | **6,616** | 6,639 to **6,676** |
+| `/ru/servicii/fatade/` | 5,558 | **5,595** | 5,618 to **5,655** |
+| `/servicii/acoperisuri/` | 24,261 | **24,297** | 24,321 to **24,357** |
+| `/ru/servicii/acoperisuri/` | 24,482 | **24,518** | 24,542 to **24,578** |
+| `/servicii/roca-vulcanica/` | 4,431 | **4,441** | 4,491 to **4,501** |
+| `/ru/servicii/roca-vulcanica/` | 4,502 | **4,512** | 4,562 to **4,572** |
+| `/ru/servicii/finisaje/` | 5,478 | **5,515** | 5,538 to **5,575** |
+| `/servicii/tigla-metalica/` | 4,373 | **4,410** | 4,433 to **4,470** |
+| `/ru/servicii/tigla-metalica/` | 4,428 | **4,464** | 4,488 to **4,524** |
+| `/servicii/copertine/` | 7,298 | **7,334** | 7,358 to **7,394** |
+| `/ru/servicii/copertine/` | 7,374 | **7,411** | 7,434 to **7,471** |
+| `/servicii/garduri/` | 5,633 | **5,670** | 5,693 to **5,730** |
+| `/ru/servicii/garduri/` | 5,655 | **5,692** | 5,715 to **5,752** |
+| `/servicii/modele-garduri/` | 4,355 | **4,392** | 4,415 to **4,452** |
+| `/ru/servicii/modele-garduri/` | 4,377 | **4,414** | 4,437 to **4,474** |
+| `/servicii/galerie-garduri/` | 4,004 | **4,041** | 4,064 to **4,101** |
+| `/ru/servicii/galerie-garduri/` | 4,004 | **4,041** | 4,064 to **4,101** |
+| `/catalog/` | 3,660 | **3,697** | 3,720 to **3,757** |
+| `/ru/catalog/` | 3,685 | **3,722** | 3,745 to **3,782** |
+| `/catalog/termoizolatie/` | 6,843 | **6,879** | 6,903 to **6,939** |
+| `/ru/catalog/termoizolatie/` | 6,758 | **6,795** | 6,818 to **6,855** |
+| `/catalog/termoizolatie/polistiren-expandat/` | 3,586 | **3,622** | 3,646 to **3,682** |
+| `/ru/catalog/termoizolatie/polistiren-expandat/` | 3,503 | **3,539** | 3,563 to **3,599** |
+| `/catalog/termoizolatie/polistiren-extrudat/` | 3,062 | **3,099** | 3,122 to **3,159** |
+| `/ru/catalog/termoizolatie/polistiren-extrudat/` | 3,042 | **3,079** | 3,102 to **3,139** |
+| `/catalog/termoizolatie/vata-minerala/` | 3,544 | **3,581** | 3,604 to **3,641** |
+| `/ru/catalog/termoizolatie/vata-minerala/` | 3,546 | **3,582** | 3,606 to **3,642** |
+| `/catalog/termoizolatie/adezivi-si-mase-de-spaclu/` | 4,061 | **4,098** | 4,121 to **4,158** |
+| `/ru/catalog/termoizolatie/adezivi-si-mase-de-spaclu/` | 3,984 | **4,020** | 4,044 to **4,080** |
+| `/catalog/termoizolatie/alte-produse/` | 3,034 | **3,071** | 3,094 to **3,131** |
+| `/ru/catalog/termoizolatie/alte-produse/` | 2,993 | **3,030** | 3,053 to **3,090** |
+| `/catalog/tencuieli-decorative/` | 5,290 | **5,327** | 5,350 to **5,387** |
+| `/ru/catalog/tencuieli-decorative/` | 5,367 | **5,404** | 5,427 to **5,464** |
+| `/catalog/placi-ceramice/` | 12,786 | **12,822** | 12,846 to **12,882** |
+| `/ru/catalog/placi-ceramice/` | 13,724 | **13,761** | 13,784 to **13,821** |
+| `/catalog/elemente-decorative/` | 10,177 | **10,214** | 10,237 to **10,274** |
+| `/ru/catalog/elemente-decorative/` | 10,612 | **10,649** | 10,672 to **10,709** |
+| `/catalog/vopsele/` | 4,283 | **4,319** | 4,343 to **4,379** |
+| `/ru/catalog/vopsele/` | 4,378 | **4,415** | 4,438 to **4,475** |
+| `/catalog/vopsele/vopsele-de-exterior/` | 3,042 | **3,079** | 3,102 to **3,139** |
+| `/ru/catalog/vopsele/vopsele-de-exterior/` | 3,064 | **3,101** | 3,124 to **3,161** |
+| `/catalog/vopsele/vopsele-de-interior/` | 3,064 | **3,101** | 3,124 to **3,161** |
+| `/ru/catalog/vopsele/vopsele-de-interior/` | 3,110 | **3,147** | 3,170 to **3,207** |
+| `/catalog/sisteme-iluminare/` | 6,295 | **6,331** | 6,355 to **6,391** |
+| `/ru/catalog/sisteme-iluminare/` | 6,238 | **6,275** | 6,298 to **6,335** |
+| `/catalog/alte-materiale/` | 3,683 | **3,720** | 3,743 to **3,780** |
+| `/ru/catalog/alte-materiale/` | 3,683 | **3,720** | 3,743 to **3,780** |
+
+## AMENDED (W28-07, wave 27): the stats band as four cards, budgets re-measured
+
+W28-07 gives the band's four stats a card each with 24px of padding, so the two homepages grow by
+a card's padding. All 53 budgets re-measured plus 60, generated:
+
+| Page | Before (budget minus 60) | After | Budget |
+|---|---|---|---|
+| `/` | 9,234 | **9,282** | 9,294 to **9,342** |
+| `/ru/` | 9,448 | **9,523** | 9,508 to **9,583** |
+| `/in-constructie/` | 1,136 | **1,136** | 1,196 to **1,196** |
+| `/ru/in-constructie/` | 1,136 | **1,136** | 1,196 to **1,196** |
+| `/servicii/case-la-cheie/` | 6,484 | **6,484** | 6,544 to **6,544** |
+| `/servicii/fatade/` | 5,379 | **5,379** | 5,439 to **5,439** |
+| `/ru/servicii/case-la-cheie/` | 6,616 | **6,616** | 6,676 to **6,676** |
+| `/ru/servicii/fatade/` | 5,595 | **5,595** | 5,655 to **5,655** |
+| `/servicii/acoperisuri/` | 24,297 | **24,297** | 24,357 to **24,357** |
+| `/ru/servicii/acoperisuri/` | 24,518 | **24,518** | 24,578 to **24,578** |
+| `/servicii/roca-vulcanica/` | 4,441 | **4,468** | 4,501 to **4,528** |
+| `/ru/servicii/roca-vulcanica/` | 4,512 | **4,539** | 4,572 to **4,599** |
+| `/ru/servicii/finisaje/` | 5,515 | **5,515** | 5,575 to **5,575** |
+| `/servicii/tigla-metalica/` | 4,410 | **4,410** | 4,470 to **4,470** |
+| `/ru/servicii/tigla-metalica/` | 4,464 | **4,464** | 4,524 to **4,524** |
+| `/servicii/copertine/` | 7,334 | **7,334** | 7,394 to **7,394** |
+| `/ru/servicii/copertine/` | 7,411 | **7,411** | 7,471 to **7,471** |
+| `/servicii/garduri/` | 5,670 | **5,670** | 5,730 to **5,730** |
+| `/ru/servicii/garduri/` | 5,692 | **5,692** | 5,752 to **5,752** |
+| `/servicii/modele-garduri/` | 4,392 | **4,392** | 4,452 to **4,452** |
+| `/ru/servicii/modele-garduri/` | 4,414 | **4,414** | 4,474 to **4,474** |
+| `/servicii/galerie-garduri/` | 4,041 | **4,041** | 4,101 to **4,101** |
+| `/ru/servicii/galerie-garduri/` | 4,041 | **4,041** | 4,101 to **4,101** |
+| `/catalog/` | 3,697 | **3,697** | 3,757 to **3,757** |
+| `/ru/catalog/` | 3,722 | **3,722** | 3,782 to **3,782** |
+| `/catalog/termoizolatie/` | 6,879 | **6,879** | 6,939 to **6,939** |
+| `/ru/catalog/termoizolatie/` | 6,795 | **6,795** | 6,855 to **6,855** |
+| `/catalog/termoizolatie/polistiren-expandat/` | 3,622 | **3,622** | 3,682 to **3,682** |
+| `/ru/catalog/termoizolatie/polistiren-expandat/` | 3,539 | **3,539** | 3,599 to **3,599** |
+| `/catalog/termoizolatie/polistiren-extrudat/` | 3,099 | **3,099** | 3,159 to **3,159** |
+| `/ru/catalog/termoizolatie/polistiren-extrudat/` | 3,079 | **3,079** | 3,139 to **3,139** |
+| `/catalog/termoizolatie/vata-minerala/` | 3,581 | **3,581** | 3,641 to **3,641** |
+| `/ru/catalog/termoizolatie/vata-minerala/` | 3,582 | **3,582** | 3,642 to **3,642** |
+| `/catalog/termoizolatie/adezivi-si-mase-de-spaclu/` | 4,098 | **4,098** | 4,158 to **4,158** |
+| `/ru/catalog/termoizolatie/adezivi-si-mase-de-spaclu/` | 4,020 | **4,020** | 4,080 to **4,080** |
+| `/catalog/termoizolatie/alte-produse/` | 3,071 | **3,071** | 3,131 to **3,131** |
+| `/ru/catalog/termoizolatie/alte-produse/` | 3,030 | **3,030** | 3,090 to **3,090** |
+| `/catalog/tencuieli-decorative/` | 5,327 | **5,327** | 5,387 to **5,387** |
+| `/ru/catalog/tencuieli-decorative/` | 5,404 | **5,404** | 5,464 to **5,464** |
+| `/catalog/placi-ceramice/` | 12,822 | **12,822** | 12,882 to **12,882** |
+| `/ru/catalog/placi-ceramice/` | 13,761 | **13,761** | 13,821 to **13,821** |
+| `/catalog/elemente-decorative/` | 10,214 | **10,214** | 10,274 to **10,274** |
+| `/ru/catalog/elemente-decorative/` | 10,649 | **10,649** | 10,709 to **10,709** |
+| `/catalog/vopsele/` | 4,319 | **4,319** | 4,379 to **4,379** |
+| `/ru/catalog/vopsele/` | 4,415 | **4,415** | 4,475 to **4,475** |
+| `/catalog/vopsele/vopsele-de-exterior/` | 3,079 | **3,079** | 3,139 to **3,139** |
+| `/ru/catalog/vopsele/vopsele-de-exterior/` | 3,101 | **3,101** | 3,161 to **3,161** |
+| `/catalog/vopsele/vopsele-de-interior/` | 3,101 | **3,101** | 3,161 to **3,161** |
+| `/ru/catalog/vopsele/vopsele-de-interior/` | 3,147 | **3,147** | 3,207 to **3,207** |
+| `/catalog/sisteme-iluminare/` | 6,331 | **6,331** | 6,391 to **6,391** |
+| `/ru/catalog/sisteme-iluminare/` | 6,275 | **6,275** | 6,335 to **6,335** |
+| `/catalog/alte-materiale/` | 3,720 | **3,720** | 3,780 to **3,780** |
+| `/ru/catalog/alte-materiale/` | 3,720 | **3,720** | 3,780 to **3,780** |
+
+## AMENDED (W28-08, wave 27): product cards, bento labels, footer, tables; budgets re-measured
+
+W28-08 pads every table cell to 16x24 and sets the bento labels at 32px, so the roofing page and
+the pages with a specification table grow. All 53 budgets re-measured plus 60, generated:
+
+| Page | Before (budget minus 60) | After | Budget |
+|---|---|---|---|
+| `/` | 9,282 | **9,290** | 9,342 to **9,350** |
+| `/ru/` | 9,523 | **9,531** | 9,583 to **9,591** |
+| `/in-constructie/` | 1,136 | **1,145** | 1,196 to **1,205** |
+| `/ru/in-constructie/` | 1,136 | **1,145** | 1,196 to **1,205** |
+| `/servicii/case-la-cheie/` | 6,484 | **6,523** | 6,544 to **6,583** |
+| `/servicii/fatade/` | 5,379 | **5,412** | 5,439 to **5,472** |
+| `/ru/servicii/case-la-cheie/` | 6,616 | **6,655** | 6,676 to **6,715** |
+| `/ru/servicii/fatade/` | 5,595 | **5,628** | 5,655 to **5,688** |
+| `/servicii/acoperisuri/` | 24,297 | **24,750** | 24,357 to **24,810** |
+| `/ru/servicii/acoperisuri/` | 24,518 | **24,971** | 24,578 to **25,031** |
+| `/servicii/roca-vulcanica/` | 4,468 | **4,507** | 4,528 to **4,567** |
+| `/ru/servicii/roca-vulcanica/` | 4,539 | **4,551** | 4,599 to **4,611** |
+| `/ru/servicii/finisaje/` | 5,515 | **5,548** | 5,575 to **5,608** |
+| `/servicii/tigla-metalica/` | 4,410 | **4,419** | 4,470 to **4,479** |
+| `/ru/servicii/tigla-metalica/` | 4,464 | **4,473** | 4,524 to **4,533** |
+| `/servicii/copertine/` | 7,334 | **7,343** | 7,394 to **7,403** |
+| `/ru/servicii/copertine/` | 7,411 | **7,420** | 7,471 to **7,480** |
+| `/servicii/garduri/` | 5,670 | **5,679** | 5,730 to **5,739** |
+| `/ru/servicii/garduri/` | 5,692 | **5,701** | 5,752 to **5,761** |
+| `/servicii/modele-garduri/` | 4,392 | **4,509** | 4,452 to **4,569** |
+| `/ru/servicii/modele-garduri/` | 4,414 | **4,531** | 4,474 to **4,591** |
+| `/servicii/galerie-garduri/` | 4,041 | **4,050** | 4,101 to **4,110** |
+| `/ru/servicii/galerie-garduri/` | 4,041 | **4,050** | 4,101 to **4,110** |
+| `/catalog/` | 3,697 | **3,706** | 3,757 to **3,766** |
+| `/ru/catalog/` | 3,722 | **3,731** | 3,782 to **3,791** |
+| `/catalog/termoizolatie/` | 6,879 | **6,888** | 6,939 to **6,948** |
+| `/ru/catalog/termoizolatie/` | 6,795 | **6,804** | 6,855 to **6,864** |
+| `/catalog/termoizolatie/polistiren-expandat/` | 3,622 | **3,631** | 3,682 to **3,691** |
+| `/ru/catalog/termoizolatie/polistiren-expandat/` | 3,539 | **3,548** | 3,599 to **3,608** |
+| `/catalog/termoizolatie/polistiren-extrudat/` | 3,099 | **3,108** | 3,159 to **3,168** |
+| `/ru/catalog/termoizolatie/polistiren-extrudat/` | 3,079 | **3,088** | 3,139 to **3,148** |
+| `/catalog/termoizolatie/vata-minerala/` | 3,581 | **3,590** | 3,641 to **3,650** |
+| `/ru/catalog/termoizolatie/vata-minerala/` | 3,582 | **3,591** | 3,642 to **3,651** |
+| `/catalog/termoizolatie/adezivi-si-mase-de-spaclu/` | 4,098 | **4,107** | 4,158 to **4,167** |
+| `/ru/catalog/termoizolatie/adezivi-si-mase-de-spaclu/` | 4,020 | **4,029** | 4,080 to **4,089** |
+| `/catalog/termoizolatie/alte-produse/` | 3,071 | **3,080** | 3,131 to **3,140** |
+| `/ru/catalog/termoizolatie/alte-produse/` | 3,030 | **3,039** | 3,090 to **3,099** |
+| `/catalog/tencuieli-decorative/` | 5,327 | **5,336** | 5,387 to **5,396** |
+| `/ru/catalog/tencuieli-decorative/` | 5,404 | **5,413** | 5,464 to **5,473** |
+| `/catalog/placi-ceramice/` | 12,822 | **12,831** | 12,882 to **12,891** |
+| `/ru/catalog/placi-ceramice/` | 13,761 | **13,770** | 13,821 to **13,830** |
+| `/catalog/elemente-decorative/` | 10,214 | **10,223** | 10,274 to **10,283** |
+| `/ru/catalog/elemente-decorative/` | 10,649 | **10,658** | 10,709 to **10,718** |
+| `/catalog/vopsele/` | 4,319 | **4,328** | 4,379 to **4,388** |
+| `/ru/catalog/vopsele/` | 4,415 | **4,424** | 4,475 to **4,484** |
+| `/catalog/vopsele/vopsele-de-exterior/` | 3,079 | **3,088** | 3,139 to **3,148** |
+| `/ru/catalog/vopsele/vopsele-de-exterior/` | 3,101 | **3,110** | 3,161 to **3,170** |
+| `/catalog/vopsele/vopsele-de-interior/` | 3,101 | **3,110** | 3,161 to **3,170** |
+| `/ru/catalog/vopsele/vopsele-de-interior/` | 3,147 | **3,156** | 3,207 to **3,216** |
+| `/catalog/sisteme-iluminare/` | 6,331 | **6,340** | 6,391 to **6,400** |
+| `/ru/catalog/sisteme-iluminare/` | 6,275 | **6,284** | 6,335 to **6,344** |
+| `/catalog/alte-materiale/` | 3,720 | **3,729** | 3,780 to **3,789** |
+| `/ru/catalog/alte-materiale/` | 3,720 | **3,729** | 3,780 to **3,789** |
 

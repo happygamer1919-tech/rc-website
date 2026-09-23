@@ -125,8 +125,11 @@ h1, h2, h3 {
   overflow-wrap: break-word;
 }
 h1, h2 { -webkit-hyphens: auto; hyphens: auto; hyphenate-limit-chars: 14 6 4; }
-h1 { font-size: 56px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; }
-h2 { font-size: 40px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; }
+/* W28-04 (W27-R-07): big, heavy, tight, SENTENCE CASE. The capitals are gone from h1 and h2;
+   the eyebrow keeps its capitals with an orange rule before it, which is RC's own signature.
+   The strings were never stored in capitals, so no locale string changes. */
+h1 { font-size: 64px; font-weight: 800; letter-spacing: -0.035em; }
+h2 { font-size: 48px; font-weight: 800; letter-spacing: -0.03em; }
 h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
 p { margin: 0; }
 
@@ -164,6 +167,11 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
   font-size: 14px; font-weight: 700; text-transform: uppercase;
   letter-spacing: 0.08em; color: var(--brand-dark); margin-bottom: 16px;
 }
+/* W28-04: a short orange rule before every eyebrow, the section's anchor. */
+.eyebrow::before {
+  content: ''; display: inline-block; width: 24px; height: 2px; background: var(--brand);
+  vertical-align: middle; margin-right: 10px;
+}
 .section--dark .eyebrow { color: var(--brand); }
 .lede { margin-top: 16px; max-width: 720px; }
 .muted { color: var(--ink-muted); }
@@ -179,13 +187,17 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
   height: var(--control-h); padding: 0 28px;
   display: inline-flex; align-items: center; justify-content: center;
   border-radius: var(--radius-pill); border: 1px solid transparent;
-  font-family: inherit; font-size: 19px; font-weight: 700; line-height: 1;
+  font-family: inherit; font-size: 17px /* W28-05: 19 to 17, the dark label needs no large-text allowance */; font-weight: 700; line-height: 1;
   white-space: nowrap; cursor: pointer;
 }
 /* 19px bold clears the 18.66px WCAG large-text threshold, where AA asks 3:1
    rather than 4.5:1. White on --brand is 3.41:1, so the button passes without
-   darkening the brand fill. Two pixels on a 48px control. */
-.btn--primary { background: var(--brand); color: var(--bg-light); }
+   darkening the brand fill. Two pixels on a 48px control. 
+   AMENDED (W28-05): the label is --ink on --brand at 17px, 5.3:1, and needs no allowance. */
+/* W28-05 (W27-R-07): a DARK label on the orange. #1C1917 on #F65308 is 5.3:1, so the label
+   passes WCAG at any size and the 19px large-text allowance is no longer what holds it; the
+   hover goes darker with a white label (5.6:1 on --brand-dark). */
+.btn--primary { background: var(--brand); color: var(--ink); }
 .btn--primary:hover { background: var(--brand-dark); color: var(--bg-light); }
 /* W28-01: the button answers the pointer the way a card does, eased on the one curve,
    lifted 1px with a soft shadow. Removed under reduced motion with the card lift. */
@@ -308,7 +320,10 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
   border-radius: var(--radius-card);
   overflow: hidden;
 }
-.spec th, .spec td { padding: 13px 20px; text-align: left; vertical-align: top; }
+/* W28-08: cells 16x24, a dark header row where a table has one, zebra rows. */
+.spec th, .spec td { padding: 16px 24px; text-align: left; vertical-align: top; }
+.spec thead th { background: var(--bg-dark); color: var(--bg-light); }
+.spec tbody tr:nth-child(even) > th, .spec tbody tr:nth-child(even) > td { background: var(--bg-warm); }
 .spec tr + tr th, .spec tr + tr td { border-top: 1px solid var(--hairline); }
 .spec th { font-weight: 700; width: 34%; white-space: nowrap; }
 .spec td { color: var(--ink-muted); }
@@ -407,11 +422,21 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 }
 .prod__chip {
   display: inline-flex; align-items: center; height: 28px; padding: 0 10px;
-  border: 1px solid var(--line); border-radius: var(--radius-pill);
+  border: 1px solid transparent; background: var(--bg-warm)  /* W28-08: a soft fill, no outline */; border-radius: var(--radius-pill);
   font-size: 14px; font-weight: 700; line-height: 1; color: var(--ink);
 }
+/* W28-08: the fixed order of facts. Packshot, name, one line, orange price with the arrow, soft
+   chips, a hairline, then the facts, pinned to the foot. A card with no chips or facts keeps its
+   price row at the foot: the foot is the last child there and takes the slack. */
+.prod__brand { order: 0; }
+.prod__name { order: 1; }
+.prod__tag { order: 2; }
+.prod__variant { order: 3; }
+.prod__foot { order: 4; }
+.prod__foot:last-child { margin-top: auto; }
+.prod__chips { order: 5; }
 .prod__facts {
-  margin: 12px 0 0; padding-top: 10px; border-top: 1px solid var(--hairline);
+  order: 6; margin: auto 0 0; padding-top: 10px; border-top: 1px solid var(--hairline);
   font-size: 14px; line-height: 1.45; color: var(--ink-muted);
 }
 /* The foot never wraps. It did at 511px and below, and a price long enough to
@@ -421,7 +446,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
    become narrower than its content and is the whole of the fix. */
 .prod__foot {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  margin-top: auto; padding-top: 16px;
+  margin-top: 16px; padding-top: 16px;
 }
 /* Both share the button's height and centre in it, so a price, a wrapped price
    and a price-on-request sit on the same line across a row instead of on three
@@ -430,17 +455,17 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
   display: flex; align-items: center; min-height: 44px;
   flex: 1 1 auto; min-width: 0;
 }
-.prod__price { font-size: 20px; font-weight: 700; line-height: 1.2; color: var(--ink); }
+.prod__price { font-size: 20px; font-weight: 700; line-height: 1.2; color: var(--brand); }  /* W28-08: orange, large text at 20px bold */
 .prod__ask { font-size: 16px; font-weight: 700; line-height: 1.2; color: var(--ink-muted); }
 
 /* W25-11. The fence model card's own price line. It is NOT `.prod__price`:
    that class belongs to the catalogue card and gate RC-129 confines it to a
    catalogue category page. Same look, own prefix, per rule 3.1. */
-.nvk__price { font-size: 20px; font-weight: 700; line-height: 1.2; color: var(--ink); }
+.nvk__price { font-size: 20px; font-weight: 700; line-height: 1.2; color: var(--brand); }  /* W28-08 */
 .prod__cta {
   flex: none; width: 44px; height: 44px; border-radius: var(--radius-pill);
   display: inline-flex; align-items: center; justify-content: center;
-  background: var(--brand); color: var(--bg-light);
+  background: var(--brand); color: var(--ink)  /* W28-05: the arrow is dark on the orange too */;
   transition: background var(--hover-dur) var(--ease-out);
 }
 .prod__cta:hover { background: var(--brand-dark); color: var(--bg-light); }
@@ -467,7 +492,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 /* W24-04. The catalogue heading is uppercase, which is the reference's treatment
    and a permitted edit under docs/CLAUDE.md section 5: a heading may be set
    uppercase, and the string itself is unchanged. */
-.cat-h1 { text-transform: uppercase; }
+.cat-h1 { text-transform: none; }  /* W28-04: sentence case, like every h1 */
 
 /* The dispatch's columns: 4 at 1440, 3 at 1024, 2 at 768, 1 at 390. The stated
    widths are the breakpoints, so each rule takes effect at or below the width
@@ -552,14 +577,15 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 .roof-cmp__scroll:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
 .roof-cmp__t { border-collapse: collapse; width: 100%; font-size: 15px; }
 .roof-cmp__t th, .roof-cmp__t td {
-  border: 1px solid var(--hairline); padding: 10px 12px; text-align: left; vertical-align: top;
+  border: 1px solid var(--hairline); padding: 16px 24px /* W28-08 */; text-align: left; vertical-align: top;
 }
-.roof-cmp__t thead th { background: var(--bg-light); font-weight: 700; white-space: nowrap; }
+.roof-cmp__t thead th { background: var(--bg-dark); color: var(--bg-light); font-weight: 700; white-space: nowrap; }  /* W28-08: a dark header row */
+.roof-cmp__t tbody tr:nth-child(even) > th, .roof-cmp__t tbody tr:nth-child(even) > td { background: var(--bg-warm); }  /* W28-08: zebra */
 .roof-cmp__t tbody th { font-weight: 700; }
 .roof-cmp__t tbody td { color: var(--ink-muted); }
 .roof-filter__btn {
   height: 40px; padding: 0 18px;
-  border-radius: var(--radius-pill); border: 1px solid var(--line);
+  border-radius: var(--radius-pill); border: 1px solid var(--outline) /* W28-06, listed at W28-01: the clear outline on filter buttons */;
   background: transparent; color: var(--ink);
   font-family: inherit; font-size: 17px; font-weight: 400; line-height: 1;
   white-space: nowrap; cursor: pointer;
@@ -642,14 +668,14 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
    never over a section: the section-level overlay ban is untouched. */
 .hub__grad,
 .pb__grad {
-  position: absolute; left: 0; right: 0; bottom: 0; height: 40%;
+  position: absolute; left: 0; right: 0; bottom: 0; height: 55%;  /* W28-08: 40% to 55%, a 32px label wraps to two lines on a tile and gate 20 holds the gradient to its box */
   background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
   pointer-events: none;
 }
 .hub__label,
 .pb__label {
   position: absolute; left: 24px; right: 24px; bottom: 24px;
-  font-size: 24px; font-weight: 700; line-height: 1.2; color: var(--bg-light);
+  font-size: 32px /* W28-08: 24 to 32 */; font-weight: 700; line-height: 1.2; color: var(--bg-light);
 }
 .hub__tile:hover .hub__label,
 .pb__tile:hover .pb__label { color: var(--bg-light); }
@@ -690,7 +716,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 .nvk__chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; padding: 0; list-style: none; }
 .nvk__chip {
   display: inline-flex; align-items: center; height: 28px; padding: 0 10px;
-  border: 1px solid var(--line); border-radius: var(--radius-pill);
+  border: 1px solid transparent; background: var(--bg-warm); border-radius: var(--radius-pill);
   font-size: 14px; font-weight: 700; line-height: 1; color: var(--ink);
 }
 .nvk__pricebox { margin-top: auto; padding-top: 16px; }
@@ -730,7 +756,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 @media (max-width: 511px) {
   .nvk-grid { grid-template-columns: minmax(0, 1fr); }
   .hub__label,
-  .pb__label { left: 20px; right: 20px; bottom: 20px; font-size: 21px; }
+  .pb__label { left: 20px; right: 20px; bottom: 20px; font-size: 24px; }  /* W28-08: 21 to 24 on a phone */
 }
 
 /* --- W24-08, the copertine hero and the cross-sell row ---------------------- */
@@ -975,7 +1001,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   height: 40px; padding: 0 16px; border-radius: 999px;
   border: 1px solid var(--brand); background: var(--brand);
-  color: var(--bg-light); font-family: inherit; font-size: 19px; font-weight: 700; line-height: 1;
+  color: var(--ink); font-family: inherit; font-size: 17px; font-weight: 700; line-height: 1;  /* W28-05: dark label, 17px */
   white-space: nowrap; cursor: pointer;
 }
 .catalog__toggle:hover { background: var(--brand-dark); border-color: var(--brand-dark); color: var(--bg-light); }
@@ -1187,7 +1213,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 40px; }
 .filter {
   height: 40px; padding: 0 20px;
-  border-radius: var(--radius-pill); border: 1px solid var(--line);
+  border-radius: var(--radius-pill); border: 1px solid var(--outline);
   background: transparent; color: var(--ink);
   font-family: inherit; font-size: 17px; font-weight: 400; line-height: 1;
   white-space: nowrap; cursor: pointer;
@@ -1272,7 +1298,10 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 /* --- dark stats band ------------------------------------------------------ */
 
 .band__stats { margin-bottom: 32px; }
-.band .stat { text-align: center; }
+/* W28-07 (W27-R-07): the four stats are four dark cards on the band, left-aligned, each a
+   huge orange figure over a white label, the same object the hero's claim card is. #232323 is
+   the twelfth value, named in docs/CLAUDE.md section 3. */
+.band .stat { text-align: left; background: #232323; border-radius: var(--radius-card); padding: 24px 28px; }
 .band .stat__n { font-size: 64px; }
 .band .stat__label { color: var(--bg-light); }
 .band__coverage { text-align: center; color: var(--line); }
@@ -1304,14 +1333,22 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 .form-layout { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--gap); align-items: start; }
 .form-card { background: var(--bg-light); border: 1px solid var(--hairline); border-radius: var(--radius-card); box-shadow: var(--shadow-card); padding: 32px; }
 .form-card--stack { display: flex; flex-direction: column; gap: 20px; }
-.form-aside { display: flex; flex-direction: column; gap: var(--gap); }
+.form-aside { display: flex; flex-direction: column; gap: 0; }
+/* W28-06: the contact aside is a LIST on hairlines, not two boxed cards: the big orange phone,
+   the hours, the note. The markup is untouched; the cards lose their box. */
+.form-aside .form-card { background: transparent; border: 0; border-top: 1px solid var(--hairline); border-radius: 0; box-shadow: none; padding: 24px 0; }
+.form-aside .form-card:first-child { border-top: 0; padding-top: 0; }
+/* W28-06: one full-width submit leaves no doubt. */
+.form-card [type="submit"] { width: 100%; justify-content: center; }
 
 .field { display: flex; flex-direction: column; gap: 8px; }
-.field label { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand-dark); }
+/* W28-06 (W27-R-07): a label is an instruction, not decoration: 16px, sentence case, ink. */
+.field label { font-size: 16px; font-weight: 700; color: var(--ink); }
 .field input, .field select, .field textarea {
-  height: var(--control-h); padding: 0 16px;
-  border: 1px solid var(--line); border-radius: var(--radius-control);
-  background: var(--bg-light); color: var(--ink);
+  /* W28-06: cream fill, a visible warm edge (--outline, 3:1), 56px tall, 14px corners. */
+  height: 56px; padding: 0 16px;
+  border: 1px solid var(--outline); border-radius: 14px;
+  background: var(--bg-warm); color: var(--ink);
   font-family: inherit; font-size: 17px; line-height: 1.6;
 }
 .field textarea { height: auto; padding: 12px 16px; resize: vertical; }
@@ -1340,7 +1377,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 /* --- footer --------------------------------------------------------------- */
 
 .footer { background: var(--bg-dark); color: var(--bg-light); padding-top: var(--section-pad); }
-.footer__cta { display: flex; gap: 16px; flex-wrap: wrap; padding-bottom: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.12); margin-bottom: 40px; }  /* W28-01: a hairline, not tape */
+.footer__cta { display: flex; gap: 16px; flex-wrap: wrap; padding-bottom: 40px; border-bottom: 0; margin-bottom: 40px; }  /* W28-01: a hairline, not tape; W28-08: no rule at all */
 .footer__cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); padding-bottom: var(--section-pad); }
 .footer__brand { display: flex; flex-direction: column; gap: 16px; }
 /* W13-03. Enlarged by the same 1.5x factor as the header mark, so the two move
@@ -1348,14 +1385,15 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 .footer__brand img { height: 66px; width: auto; display: block; align-self: flex-start; }
 .footer__desc { max-width: 340px; }
 .footer__offer { font-weight: 700; color: var(--brand); max-width: 340px; }
-.footer__heading { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--brand); margin-bottom: 16px; }
-.footer__links { display: flex; flex-direction: column; gap: 10px; }
+/* W28-08: a quiet footer, grey uppercase column heads, large white links, no rules. */
+.footer__heading { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--outline); margin-bottom: 16px; }
+.footer__links { display: flex; flex-direction: column; gap: 12px; font-size: 17px; }
 .footer__links a:hover { color: var(--brand); }
 .footer__lists { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); }
 .footer__contact { display: flex; flex-direction: column; gap: 12px; }
 .footer__contact dt { font-size: 14px; color: var(--line); }
 .footer__contact dd { margin: 0; font-weight: 700; }
-.footer__bar { border-top: 1px solid rgba(255, 255, 255, 0.12); }
+.footer__bar { border-top: 0; }  /* W28-08 */
 .footer__bar-inner { max-width: var(--container); margin: 0 auto; padding: 20px var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: 14px; color: var(--line); }
 .footer__bar-inner a:hover { color: var(--brand); }
 .footer__legal { display: flex; gap: 20px; flex-wrap: wrap; }
@@ -1649,7 +1687,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
   text-align: left;
 }
 .hero-claim {
-  background: var(--bg-dark);
+  background: #232323  /* W28-07: the same treatment as the stat cards */;
   color: var(--bg-light);
   border-radius: var(--radius-hero);
   padding: 32px;
@@ -2168,11 +2206,15 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 
 @media (max-width: 1024px) {
   :root { --section-pad: 72px; }
+  /* W28-07: four padded stat cards do not fit four tracks below 1024px (the homepage scrolled
+     sideways by 14px at 769, gate 11 caught it in CI); two columns and a smaller figure here. */
+  .band__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .band .stat__n { font-size: 52px; }
   .bento, .models, .csteps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grid--5 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  h1 { font-size: 44px; }
+  h1 { font-size: 52px; }  /* W28-04: 44 to 52 */
   .form-layout { grid-template-columns: minmax(0, 1fr); }
   .hero-panels { grid-template-columns: minmax(0, 1fr); }
   .footer__cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
@@ -2191,8 +2233,8 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
   }
 
   body { font-size: 16px; }
-  h1 { font-size: 32px; letter-spacing: -0.01em; }
-  h2 { font-size: 26px; letter-spacing: -0.01em; }
+  h1 { font-size: 36px; letter-spacing: -0.025em; }  /* W28-04: 32 to 36 */
+  h2 { font-size: 30px; letter-spacing: -0.02em; }   /* W28-04: 26 to 30 */
   h3 { font-size: 19px; }
 
 

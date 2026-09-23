@@ -94,10 +94,10 @@ Single family: **Inter**, already in use, keeps the build fast and matches Imper
 
 | Element | Desktop | Mobile | Weight | Case |
 |---|---|---|---|---|
-| h1 | 56px | 32px | 800 | UPPERCASE |
-| h2 | 40px | 26px | 800 | UPPERCASE |
+| h1 | ~~56px~~ 64px | ~~32px~~ 36px | 800 | ~~UPPERCASE~~ sentence case, -0.035em. **AMENDED (W28-04, wave 27 design pass, under W27-R-07)** |
+| h2 | ~~40px~~ 48px | ~~26px~~ 30px | 800 | ~~UPPERCASE~~ sentence case, -0.03em. **AMENDED (W28-04)** |
 | h3 / card title | 22px | 19px | 700 | Sentence |
-| Eyebrow | 13px | 12px | 700 | UPPERCASE, letter-spacing 0.08em, `--brand-dark` |
+| Eyebrow | ~~13px~~ 14px | ~~12px~~ 14px | 700 | UPPERCASE, letter-spacing 0.08em, `--brand-dark`, **with a 24px orange rule before it (AMENDED W28-04; 14px is W28-01's floor)** |
 | Body | 17px | 16px | 400 | Sentence |
 | Stat numeral | 44px | 32px | 800 | - |
 
@@ -132,7 +132,7 @@ Mobile: logo, phone icon, hamburger.
 
 No photo. Left-aligned or centred, single column.
 - Eyebrow: work area line (all of Moldova).
-- h1: existing headline, reworded to uppercase.
+- h1: existing headline, ~~reworded to uppercase~~ (AMENDED W28-04: sentence case; the string was never changed, the capitals were CSS).
 - One-sentence subhead from existing copy.
 - Stat row, four items: 500+ proiecte, 15+ ani, ~~30 ani garanție scrisă~~ **AMENDED
   (W25-22, 2026-09-22): 5 ani garanție scrisă**, 4.9/5 din 250+ recenzii. Numerals in

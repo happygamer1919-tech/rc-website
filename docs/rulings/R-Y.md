@@ -1563,3 +1563,18 @@ measured plus 60 (W24-R4) and the other 51 read identical:
 |---|---|---|---|
 | `/servicii/galerie-garduri/` | 4,050 | **3,750** | 4,110 to **3,810** |
 | `/ru/servicii/galerie-garduri/` | 4,050 | **3,750** | 4,110 to **3,810** |
+
+## AMENDED (W27-FIX-15, wave 27 fix pass): the roofing catalogue page, two new budgets
+
+Added 2026-09-23 by card W27-FIX-15, under owner instruction W27-R-21. Nothing above this line moves.
+
+`/catalog/materiale-acoperis/` is a page again, the roofing service page's two bentos and the quote
+form; it takes a budget of its own in each locale. The catalogue index gained two tiles and did
+not grow (nine tiles fill the same three rows as seven did). All 55 budgeted pages measured at
+1440, settled (reveals applied, 1,600ms), on the card's built tree; the two new rows are measured
+plus 60 (W24-R4) and the other 53 read identical:
+
+| Page | Measured | Budget |
+|---|---|---|
+| `/catalog/materiale-acoperis/` | 4,261 | **4,321** |
+| `/ru/catalog/materiale-acoperis/` | 4,261 | **4,321** |

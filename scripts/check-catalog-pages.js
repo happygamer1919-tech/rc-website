@@ -237,7 +237,10 @@ if (!TERM_RES['capability-ro'].some((e) => e.re.test('garantie scrisa'))) fail('
 selfTested += 2;
 
 /* --- inputs --------------------------------------------------------------- */
-const MOVED_ROUTE = /^materiale-acoperis(\/[a-z-]+)?$/;
+/* AMENDED (W27-FIX-15, W27-R-21): the seven CHILD routes are the redirect pages; the parent is
+   a catalogue page again, of its own kind below. */
+const MOVED_ROUTE = /^materiale-acoperis\/[a-z-]+$/;
+const ROOF_CATALOG_ROUTE = 'materiale-acoperis';
 /* W25-19. The two pages the roofing catalogue moved ONTO. Listed, not matched.
    AMENDED (W27-FIX-08, owner instruction W27-R-14): the metal tile page in both locales, which
    now renders the seven imperlux model cards above its four tile cards. Still listed by name,
@@ -296,6 +299,9 @@ for (const r of ROOTS) {
          have left eight pages nothing checks. */
       kind: !isIndex ? 'other'
         : MOVED_ROUTE.test(path.relative(r.dir, path.dirname(f)).split(path.sep).join('/')) ? 'redirect'
+        /* W27-FIX-15 (W27-R-21): the roofing catalogue page is a kind of its own, the two
+           roofing bentos and nothing else; held to that shape below, scanned whole like the rest. */
+        : path.relative(r.dir, path.dirname(f)).split(path.sep).join('/') === ROOF_CATALOG_ROUTE ? 'roofcatalog'
         : depth === 0 ? 'index' : depth === 1 ? 'category' : 'subcategory',
     });
   }
@@ -303,22 +309,32 @@ for (const r of ROOTS) {
   if (cats.length < 7) fail(`${path.relative(ROOT, r.dir)} holds ${cats.length} categories, expected at least 7`);
   if (!present.some((f) => path.dirname(f) === r.dir)) fail(`${path.relative(ROOT, r.dir)} has no index.html, so the catalogue root answers nothing`);
 }
-const byKind = { index: 0, category: 0, subcategory: 0, redirect: 0, other: 0 };
+const byKind = { index: 0, category: 0, subcategory: 0, redirect: 0, roofcatalog: 0, other: 0 };
 for (const pg of pages) byKind[pg.kind]++;
-if (byKind.category === 0 || byKind.subcategory === 0 || byKind.index === 0 || byKind.redirect === 0) {
-  fail(`the walk found ${byKind.index} index, ${byKind.category} category, ${byKind.subcategory} subcategory and ${byKind.redirect} redirect page(s); each kind must be present or its own assertion proves nothing.`);
+if (byKind.category === 0 || byKind.subcategory === 0 || byKind.index === 0 || byKind.redirect === 0 || byKind.roofcatalog !== 2) {
+  fail(`the walk found ${byKind.index} index, ${byKind.category} category, ${byKind.subcategory} subcategory, ${byKind.redirect} redirect and ${byKind.roofcatalog} roofing catalogue page(s); each kind must be present (the roofing catalogue page once per locale) or its own assertion proves nothing.`);
 }
 /* W25-19. Eight routes in each locale, and the number is asserted: a redirect
    that silently reverted to a catalogue page, or a ninth that appeared, is the
    defect this catches. */
 for (const loc of ['ro', 'ru']) {
   const n = pages.filter((p) => p.locale === loc && p.kind === 'redirect').length;
-  if (n !== 8) fail(`${loc} has ${n} roofing redirect page(s), expected 8: the category and its seven subcategories.`);
+  if (n !== 7) fail(`${loc} has ${n} roofing redirect page(s), expected 7: the seven subcategories (W27-FIX-15: the parent is a page again).`);
 }
 
 /* --- W17-02: the prose on each page --------------------------------------- */
 const PROSE_FIELDS = ['lede', 'p1', 'p2'];
 const PROSE_MIN = { lede: 60, p1: 250, p2: 250 };
+/* W27-FIX-15 self-test, two arms: the roofing catalogue shape is matched with both bentos and
+   refused with the product bento alone, so the assertion has been watched both ways. */
+(() => {
+  const both = '<div class="hub__grid">x</div><div class="pb__grid">y</div>';
+  const one = '<div class="pb__grid">y</div>';
+  const re = /<div class="hub__grid"[^>]*>[\s\S]*?<div class="pb__grid"[^>]*>/;
+  if (!re.test(both)) fail('self-test: the roofing catalogue shape did not match a page with both bentos');
+  if (re.test(one)) fail('self-test: the roofing catalogue shape matched a page with the product bento alone');
+  selfTested += 2;
+})();
 const decode = (s) => s.replace(/<[^>]+>/g, '').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
 const proseHits = [];
 const proseProblems = [];
@@ -334,6 +350,10 @@ let proseBlocks = 0;
    a page that has been emptied, and that fails here rather than passing quietly. */
 const STRUCTURE = {
   subcategory: { re: /<div class="prod-grid"[^>]*>[\s\S]*?<article class="prod"/, what: 'a product grid' },
+  /* W27-FIX-15 (W27-R-21): the roofing catalogue page carries the roofing hub bento AND the
+     product bento, in that order, and no prose block (the stray-prose rule below holds it to
+     that) and no product grid. */
+  roofcatalog: { re: /<div class="hub__grid"[^>]*>[\s\S]*?<div class="pb__grid"[^>]*>/, what: 'the roofing hub bento followed by the product bento' },
   index: { re: /<div class="cat-tiles"[^>]*>[\s\S]*?<a class="cat-tile"/, what: 'the category tiles' },
   /* W25-19. A redirect page carries all three mechanisms or it is not one: the
      meta refresh that moves a visitor with no JavaScript, the noindex that stops
@@ -440,6 +460,14 @@ const ctaProblems = [];
 for (const pg of pages) {
   pg.scan = pg.text;
   const blank = (start, len) => { pg.scan = pg.scan.slice(0, start) + ' '.repeat(len) + pg.scan.slice(start + len); };
+  /* W27-FIX-15 (W27-R-21). The roofing catalogue page carries the service page's two bentos, and
+     one hub tile is labelled "Calculează prețul acoperișului" (RU "Рассчитать цену кровли"), the
+     owner's own wording for a tile that opens the "in construcție" page (W27-R-16): navigation,
+     not a price claim. Its label is blanked before the price patterns run, exactly as the
+     permitted button is, and only on that kind of page; every other word on it is still scanned. */
+  if (pg.kind === 'roofcatalog') {
+    for (const m of pg.text.matchAll(/<span class="(?:hub|pb)__label">([^<]*)<\/span>/g)) blank(m.index + m[0].indexOf(m[1]), m[1].length);
+  }
   for (const m of pg.text.matchAll(PRODUCT_CTA)) {
     ctaSeen++;
     const label = m[1];

@@ -1188,3 +1188,12 @@ their Dasterum twins (CAT-0273, 0274, 0275, 0278, 0279, 0277), show the folded g
 both URLs; six ledger rows orphaned, generated docs regenerated. The membranes, the ridge band and
 Folie anticondens held in Q-W27-04. Measured: 1 grid, 99 cards, 60 of 60 accessories in it, chips
 sum to Toate, 0 duplicate names. Roofing page 23,873 / 24,094, budgets 23,933 / 24,154 (R-Y).
+
+## W27-FIX-06 · The ten marked previews replaced by the makers' own packshots
+**Status: PR OPEN** (opened 2026-09-23). W27-R-13 applied: the seven Imperlux tiles take Imperlux's
+own mark-free 1080x1080 gallery renders (Imperlux is their maker), under a fifth override sentence
+naming the ruling; the two IKO shingles take IKO's own colour swatches from iko.eu; Creaton Rapido
+takes the maker's (swissporTON, the former CREATON works) dark-brown render. Every file fetched
+through the intake, cropped to 4:3, looked at. A 76-picture sweep found no other overlaid mark;
+the factory stamps found (BILKA, mdm VAXO, the Novatik caption, Dasterum's watermark) are recorded.
+0 budgets move.

@@ -1118,3 +1118,69 @@ rainwater parts and the ceramic tile take Imperlux's pictures and taglines. Same
 Plus 60 (W24-R4). The section cap of 1,400px (`docs/CLAUDE.md` section 2) does not hold the
 catalogue grid, the third standing exception (W24-R4).
 
+## AMENDED (W27-FIX-01, wave 27): the 14px floor, and a section 12.0 failure on `ff8a922`
+
+**Section 12.0 on `ff8a922` (#143, W28-01) FAILED: exit 1, 0 unverified, 2 failed.** Every marker
+verified; `/servicii/tigla-metalica/` read **4,347 against 4,283** and its RU twin **4,402 against
+4,316**, OVER by 64 and 86px. **The cause, by measurement**: W28-01's 14px floor raised the metal
+tile grid's small print (the grade, finish, colour and swatch-note lines, 12 and 13px before) and
+the grid grew by two lines of it. W28-01 had measured the four main pages and the header, not this
+one. So every one of the 53 budgets is re-measured on the deployed tree, settled at 1440, and set to
+measured plus 60 (W24-R4), generated:
+
+| Page | Before (budget minus 60) | After | Budget |
+|---|---|---|---|
+| `/` | 9,081 | **9,108** | 9,141 to **9,168** |
+| `/ru/` | 9,294 | **9,322** | 9,354 to **9,382** |
+| `/in-constructie/` | 1,122 | **1,127** | 1,182 to **1,187** |
+| `/ru/in-constructie/` | 1,122 | **1,127** | 1,182 to **1,187** |
+| `/servicii/case-la-cheie/` | 6,351 | **6,378** | 6,411 to **6,438** |
+| `/servicii/fatade/` | 5,284 | **5,308** | 5,344 to **5,368** |
+| `/ru/servicii/case-la-cheie/` | 6,483 | **6,510** | 6,543 to **6,570** |
+| `/ru/servicii/fatade/` | 5,491 | **5,516** | 5,551 to **5,576** |
+| `/servicii/acoperisuri/` | 24,172 | **24,193** | 24,232 to **24,253** |
+| `/ru/servicii/acoperisuri/` | 24,393 | **24,414** | 24,453 to **24,474** |
+| `/servicii/roca-vulcanica/` | 4,369 | **4,390** | 4,429 to **4,450** |
+| `/ru/servicii/roca-vulcanica/` | 4,439 | **4,460** | 4,499 to **4,520** |
+| `/ru/servicii/finisaje/` | 5,411 | **5,437** | 5,471 to **5,497** |
+| `/servicii/tigla-metalica/` | 4,223 | **4,347** | 4,283 to **4,407** |
+| `/ru/servicii/tigla-metalica/` | 4,256 | **4,402** | 4,316 to **4,462** |
+| `/servicii/copertine/` | 7,184 | **7,210** | 7,244 to **7,270** |
+| `/ru/servicii/copertine/` | 7,260 | **7,286** | 7,320 to **7,346** |
+| `/servicii/garduri/` | 5,547 | **5,573** | 5,607 to **5,633** |
+| `/ru/servicii/garduri/` | 5,569 | **5,595** | 5,629 to **5,655** |
+| `/servicii/modele-garduri/` | 4,309 | **4,330** | 4,369 to **4,390** |
+| `/ru/servicii/modele-garduri/` | 4,331 | **4,351** | 4,391 to **4,411** |
+| `/servicii/galerie-garduri/` | 3,967 | **3,988** | 4,027 to **4,048** |
+| `/ru/servicii/galerie-garduri/` | 3,967 | **3,988** | 4,027 to **4,048** |
+| `/catalog/` | 3,623 | **3,644** | 3,683 to **3,704** |
+| `/ru/catalog/` | 3,648 | **3,669** | 3,708 to **3,729** |
+| `/catalog/termoizolatie/` | 6,801 | **6,827** | 6,861 to **6,887** |
+| `/ru/catalog/termoizolatie/` | 6,718 | **6,743** | 6,778 to **6,803** |
+| `/catalog/termoizolatie/polistiren-expandat/` | 3,547 | **3,569** | 3,607 to **3,629** |
+| `/ru/catalog/termoizolatie/polistiren-expandat/` | 3,464 | **3,486** | 3,524 to **3,546** |
+| `/catalog/termoizolatie/polistiren-extrudat/` | 3,024 | **3,046** | 3,084 to **3,106** |
+| `/ru/catalog/termoizolatie/polistiren-extrudat/` | 3,068 | **3,090** | 3,128 to **3,150** |
+| `/catalog/termoizolatie/vata-minerala/` | 3,504 | **3,527** | 3,564 to **3,587** |
+| `/ru/catalog/termoizolatie/vata-minerala/` | 3,506 | **3,529** | 3,566 to **3,589** |
+| `/catalog/termoizolatie/adezivi-si-mase-de-spaclu/` | 4,021 | **4,045** | 4,081 to **4,105** |
+| `/ru/catalog/termoizolatie/adezivi-si-mase-de-spaclu/` | 3,944 | **3,967** | 4,004 to **4,027** |
+| `/catalog/termoizolatie/alte-produse/` | 2,997 | **3,017** | 3,057 to **3,077** |
+| `/ru/catalog/termoizolatie/alte-produse/` | 2,956 | **2,977** | 3,016 to **3,037** |
+| `/catalog/tencuieli-decorative/` | 5,250 | **5,275** | 5,310 to **5,335** |
+| `/ru/catalog/tencuieli-decorative/` | 5,326 | **5,352** | 5,386 to **5,412** |
+| `/catalog/placi-ceramice/` | 12,723 | **12,770** | 12,783 to **12,830** |
+| `/ru/catalog/placi-ceramice/` | 13,661 | **13,708** | 13,721 to **13,768** |
+| `/catalog/elemente-decorative/` | 10,141 | **10,161** | 10,201 to **10,221** |
+| `/ru/catalog/elemente-decorative/` | 10,576 | **10,597** | 10,636 to **10,657** |
+| `/catalog/vopsele/` | 4,244 | **4,267** | 4,304 to **4,327** |
+| `/ru/catalog/vopsele/` | 4,339 | **4,363** | 4,399 to **4,423** |
+| `/catalog/vopsele/vopsele-de-exterior/` | 3,004 | **3,026** | 3,064 to **3,086** |
+| `/ru/catalog/vopsele/vopsele-de-exterior/` | 3,026 | **3,048** | 3,086 to **3,108** |
+| `/catalog/vopsele/vopsele-de-interior/` | 3,026 | **3,048** | 3,086 to **3,108** |
+| `/ru/catalog/vopsele/vopsele-de-interior/` | 3,072 | **3,094** | 3,132 to **3,154** |
+| `/catalog/sisteme-iluminare/` | 6,258 | **6,279** | 6,318 to **6,339** |
+| `/ru/catalog/sisteme-iluminare/` | 6,202 | **6,223** | 6,262 to **6,283** |
+| `/catalog/alte-materiale/` | 3,647 | **3,668** | 3,707 to **3,728** |
+| `/ru/catalog/alte-materiale/` | 3,647 | **3,668** | 3,707 to **3,728** |
+

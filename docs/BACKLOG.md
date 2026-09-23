@@ -1079,3 +1079,9 @@ eleven**: section 3 amended, the master plan struck in five places, and **`check
 the four retired values** with three dated-record exceptions. **Static gates, gates 11, 18 and 28 exit
 0.** Screenshots `docs/design/W27/w28-01-*`.
 
+## W27-FIX-01 · Budgets after the 14px floor
+**Status: PR OPEN** (opened 2026-09-22). **Section 12.0 on `ff8a922` (#143) failed**: `/servicii/tigla-metalica/`
+4,347 against 4,283 and RU 4,402 against 4,316, both OVER; every marker verified. Cause measured: the
+14px floor grew the tile grid's small print by two lines. **All 53 budgets re-measured on the deployed
+tree plus 60**, generated into R-Y; `scripts/verify-live.js` carries them. No page changes.
+

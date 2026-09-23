@@ -13603,3 +13603,19 @@ sentence and date; ten ledger rows amended and their `label` flag dropped (no bu
 more), `docs/PHOTO-REVIEW-W25.md` regenerated; ACIM-01, 02 and 03 leave the imperlux override lists
 in `check-photo-slots-w24.js` and `fetch-packshot.js` (a permission nothing stands on is a dead
 exception). **Heights**: all 53 measured, 0 move (the pictures fill the same 4:3 boxes).
+
+## W27-FIX-07 · The fix-pass report, the backlog statuses and the board, 2026-09-23
+
+Branch `w27/w27-fix-07-report`, from `main` at `f8bb13f` (#158 merged, verified live).
+
+**Every number in `docs/reports/W27-FIX-PASS.md` is read from a log or a JSON file by a generator**,
+never typed: the merge shas and the section 12.0 exit codes from the merge chain's log and each
+verify-live log, the gate count from `node scripts/run-gates.js --keep-going` (29 of 29 exit 0 on
+the tree of `w27/w27-fix-06-packshots`, proven byte-identical to `main` at `f8bb13f` by an empty
+`git diff`), and the Lighthouse scores from the audits' own JSON (five runs on each roofing page,
+three on the eight main pages, desktop preset, local server on that same tree).
+
+**The board is the repo's.** Five backlog statuses move from `PR OPEN` to `MERGED #n, section 12.0
+exit 0` (status metadata only, R-S), read from the chain log; each card's board file is under
+`docs/board/`. No artifact board exists for this repository, so "republish the board" is this
+card. The report closes with the five-line list for the morning and the deviations of the pass.

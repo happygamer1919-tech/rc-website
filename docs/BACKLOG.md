@@ -1150,7 +1150,7 @@ generator change, and the card allows CSS and locale strings only. **Static gate
 28 exit 0.** Budgets re-measured. Screenshots `docs/design/W27/w28-08-*`.
 
 ## W27-REV-01 · The full site review, and the final run report
-**Status: PR OPEN** (opened 2026-09-23). On `main` at `a944714` after #152: **29 of 29 gate commands exit
+**Status: MERGED #153, section 12.0 exit 0** (opened 2026-09-23). On `main` at `a944714` after #152: **29 of 29 gate commands exit
 0**; a rendered crawl of 83 pages at three widths in both locales finds **0 dead links, 0 missing images,
 0 console errors, 0 sideways scroll, 0 hub anchors**, 16 redirects intact, the form on every service page;
 Lighthouse 99/99/100/100/99/99 on six main pages and the roofing page bimodal (RO 92 [98 92 91], RU 98
@@ -1160,21 +1160,21 @@ above moved to MERGED with their PR numbers, read from GitHub.
 
 
 ## W27-FIX-00 · The fix-pass rulings, recorded first
-**Status: PR OPEN** (opened 2026-09-23). The five owner rulings W27-R-09 to W27-R-13 appended
+**Status: MERGED #154, section 12.0 exit 0** (opened 2026-09-23). The five owner rulings W27-R-09 to W27-R-13 appended
 verbatim to `docs/rulings/W27-R.md` with a reading under each, before any fix card acted on them;
 the dispatch's self-merge framing recorded with them. Preflight: `main` at `383cf8a` live and
 verified, no open pull request, `main` unprotected. Q-W27-02 and Q-W27-03 answered in their
 headings. Documents only; no page changes.
 
 ## W27-FIX-03 · The eleven rainwater prices, back
-**Status: PR OPEN** (opened 2026-09-23). W27-R-10 applied: the eleven rainwater parts show their
+**Status: MERGED #155, section 12.0 exit 0** (opened 2026-09-23). W27-R-10 applied: the eleven rainwater parts show their
 Dasterum "De la N lei" again (`price`, with a source line; `price_folded_not_shown` retired); the
 Sisteme pluviale table's Preț column and the section's "11 modele, de la 33 lei" line are back.
 Rendered: 18 cards, 12 priced, 6 asking, the six being the parts no source prices; 0 "Preț la cerere"
 against a Dasterum price. Roofing page +32px both locales; budgets 24,842 / 25,063 (R-Y).
 
 ## W27-FIX-04 · Russian chip names, and the "+N" chip
-**Status: PR OPEN** (opened 2026-09-23). Q-W27-02 part 3 and W27-R-11 applied: a third colour
+**Status: MERGED #156, section 12.0 exit 0** (opened 2026-09-23). Q-W27-02 part 3 and W27-R-11 applied: a third colour
 dictionary source (`colour_names` in `content/roofing-sections.json`: Maro, Negru, Ciocolată, plus
 Maro închis and Gri); the Russian roofing, Novatik and metal tile pages read 0 for each of the four
 Romanian words. A colour counted and not named renders "+N" on the roofing model cards and the
@@ -1182,7 +1182,7 @@ Novatik cards: five tiles "+1", Creaton "+3", IKO Cambridge "+1", Novatik Roman 
 Novatik page +34px both locales; budgets 4,601 / 4,645 (R-Y).
 
 ## W27-FIX-05 · Five near-twin pairs fold, three held, one grid measured
-**Status: PR OPEN** (opened 2026-09-23). W27-R-12 applied with "same physical item" as the test:
+**Status: MERGED #157, section 12.0 exit 0** (opened 2026-09-23). W27-R-12 applied with "same physical item" as the test:
 Coamă semicirculară, Bordură fronton, Opritor zăpadă, Racord perete (two grades) and Dolie fold
 their Dasterum twins (CAT-0273, 0274, 0275, 0278, 0279, 0277), show the folded grade's price, keep
 both URLs; six ledger rows orphaned, generated docs regenerated. The membranes, the ridge band and
@@ -1190,10 +1190,17 @@ Folie anticondens held in Q-W27-04. Measured: 1 grid, 99 cards, 60 of 60 accesso
 sum to Toate, 0 duplicate names. Roofing page 23,873 / 24,094, budgets 23,933 / 24,154 (R-Y).
 
 ## W27-FIX-06 · The ten marked previews replaced by the makers' own packshots
-**Status: PR OPEN** (opened 2026-09-23). W27-R-13 applied: the seven Imperlux tiles take Imperlux's
+**Status: MERGED #158, section 12.0 exit 0** (opened 2026-09-23). W27-R-13 applied: the seven Imperlux tiles take Imperlux's
 own mark-free 1080x1080 gallery renders (Imperlux is their maker), under a fifth override sentence
 naming the ruling; the two IKO shingles take IKO's own colour swatches from iko.eu; Creaton Rapido
 takes the maker's (swissporTON, the former CREATON works) dark-brown render. Every file fetched
 through the intake, cropped to 4:3, looked at. A 76-picture sweep found no other overlaid mark;
 the factory stamps found (BILKA, mdm VAXO, the Novatik caption, Dasterum's watermark) are recorded.
 0 budgets move.
+
+## W27-FIX-07 · The fix-pass report, the backlog statuses and the board
+**Status: PR OPEN** (opened 2026-09-23). `docs/reports/W27-FIX-PASS.md`, generated from the run's own
+logs: five cards merged and verified live (#154 to #158), none skipped, one partial by its ruling's
+test (FIX-05, three folds held in Q-W27-04); 29 of 29 gates on the final tree; Lighthouse on the
+roofing page in both locales; the kept-imperlux list; the deviations; the five-line morning list.
+Five statuses above moved to MERGED with their section 12.0 exit codes.

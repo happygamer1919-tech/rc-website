@@ -37,3 +37,24 @@ gate cannot go green while the string is on the page.
    none of them. If the owner meant every discount claim, that is a wider ruling.
 2. **The promo bar's build-time expiry is not a countdown timer.** It prints no
    remaining time and does not change while a visitor is on the page.
+
+## AMENDED (W28-11, wave 28): every discount claim goes, and the gate holds it
+
+Added 2026-09-23 by card W28-11, under the owner's wave 28 dispatch. Nothing above this line
+moves.
+
+The dispatch's W28-11 text, verbatim: "claims cleanup RO and RU, R-X enforcement: remove every
+discount, percent-off, 'pana in 2027', 'programari anticipate', countdown or financing string."
+That is the wider ruling interpretation 1 above asked for. **Interpretation 1 is overturned**:
+the promo bar's "Reducere 10% la orice serviciu doar până în 2027" / "Скидка 10% на любую услугу
+только до 2027 года", the hero and footer line "−10% la programări anticipate" / "−10% при ранней
+записи", the discount clause inside five FAQ answers per locale, and the roofing hub tile
+labelled "Reduceri" / "Скидки" (now "Solicită ofertă" / "Запросить предложение", which is where
+the tile goes) are removed in both locales in the same commit. The promo bar's mechanism in
+`build.js` stays and renders nothing while the two `promo.*` strings are absent, so a
+non-discount announcement can use it by data; the discount string cannot come back, because
+`scripts/check-scarcity.js` now carries seven discount arms (RO and RU words, the until-year
+form, the early-booking form and the percent-off form), each self-tested against its own
+samples and against clean samples that a discount pattern must not catch (a product figure, a
+spec percentage, a warranty year, the two permitted ask strings). Interpretation 2 stands
+unchanged, and is moot while no bar renders.

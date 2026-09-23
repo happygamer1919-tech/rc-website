@@ -49,12 +49,12 @@
       "id": "W28-00",
       "title": "The wave 28 rulings, the board and its artifact, recorded first",
       "lane": "done",
-      "status": "pr_open",
+      "status": "verified",
       "priority": "high",
       "owner_terminal": "yellow",
       "branch": "w28/w28-00-rulings-board",
-      "pr": null,
-      "merge_sha": null,
+      "pr": 168,
+      "merge_sha": "801a66a0f43f48ae7fdb8083de782a1b5da77efa",
       "depends_on": [],
       "ask": "Rulings first: write docs/rulings/W28-R.md with R-W28-01 (...). Append the cards below to the board JSON in docs/board/ with defaults, depends_on, machine-checkable acceptance.",
       "reading": "docs/rulings/W28-R.md with R-W28-01, R-W28-02, R-W28-03 and the W28-10 record; this board; the wave's backlog section; Q-W28-01 for the Search Console tag. The dispatch's main sha was stale (5751d2c, not bc3e3a9) and no board JSON or artifact existed: both corrected in the register's preamble.",
@@ -63,7 +63,8 @@
         "node -e \"const b=require('./docs/board/W28-board.json'); if(b.cards.length!==13) process.exit(1)\"  -> exit 0",
         "node -e \"const b=require('./docs/board/W28-board.json'); if(!b.renders_to) process.exit(1)\"  -> exit 0"
       ],
-      "notes": "No page changes. Documents only."
+      "notes": "No page changes. Documents only.",
+      "evidence": "quality green 6m58s; merged 2026-09-23 23:31:37Z as 801a66a; section 12.0 EXIT=0 (55 pages, 0 unverified, 0 failed)"
     },
     {
       "id": "W28-10",
@@ -87,8 +88,8 @@
     {
       "id": "W28-11",
       "title": "Claims cleanup RO and RU, R-X enforcement, fifteen years, the Google reviews link",
-      "lane": "queue",
-      "status": "todo",
+      "lane": "in_flight",
+      "status": "pr_open",
       "priority": "high",
       "owner_terminal": "yellow",
       "branch": "w28/w28-11-claims-cleanup",

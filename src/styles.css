@@ -1385,7 +1385,6 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
    together and the footer keeps its existing relationship to the header. */
 .footer__brand img { height: 66px; width: auto; display: block; align-self: flex-start; }
 .footer__desc { max-width: 340px; }
-.footer__offer { font-weight: 700; color: var(--brand); max-width: 340px; }
 /* W28-08: a quiet footer, grey uppercase column heads, large white links, no rules. */
 .footer__heading { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--outline); margin-bottom: 16px; }
 .footer__links { display: flex; flex-direction: column; gap: 12px; font-size: 17px; }
@@ -1718,20 +1717,6 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 .hero-claim__social a:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
 .hero-claim__social svg { display: block; }
 
-.hero-claim__divider { height: 1px; background: rgba(255, 255, 255, 0.12); margin: 24px 0 16px; border: 0; margin-top: auto; }
-
-/* Three separate rows, each with its own middot marker. */
-.hero-claim__highlights { list-style: none; margin: 0; padding: 0; }
-.hero-claim__highlights li {
-  color: var(--brand); font-weight: 700; font-size: 16px; line-height: 1.5;
-  padding-left: 16px; position: relative;
-  /* one line each: never wrap into six rows */
-  text-wrap: pretty;
-}
-.hero-claim__highlights li::before {
-  content: '·'; position: absolute; left: 0; top: 0;
-}
-.hero-claim__highlights li + li { margin-top: 4px; }
 .hero-panel-media { border-radius: var(--radius-hero); border: 1px solid var(--hairline); overflow: hidden; }
 /* W14-07 fix. The panel keeps a 4:3 ratio and stretches to the claim card's
    height, so when the card grows (W14-07 added the social row) the ratio pushed
@@ -2083,38 +2068,9 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 .prose h2 { counter-increment: prose-section; }
 .prose h2::before { content: counter(prose-section) ". "; }
 
-/* --- reviews: aggregate panel + cards ------------------------------------- */
-.reviews-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
-  gap: 40px var(--gap);
-  align-items: start;
-}
-.rating {
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius-card);
-  padding: 32px;
-  text-align: center;
-}
-.rating__score {
-  font-family: var(--font-heading), var(--font-fallback);
-  font-size: 64px; font-weight: 800; line-height: 1.15; color: var(--brand);
-}
-.rating__outof { color: var(--ink-muted); margin-bottom: 12px; }
-.rating__count { font-weight: 700; margin-top: 12px; }
-
-/* Five outline stars with a filled copy clipped to the real percentage.
-   No gradient: the overlay is width-clipped. */
-.stars { position: relative; display: inline-block; line-height: 0; }
-.stars__base, .stars__fill { display: flex; gap: 4px; }
-.stars__fill {
-  position: absolute; inset: 0;
-  overflow: hidden; white-space: nowrap;
-}
-.stars svg { display: block; flex: none; }
-
-.rating__google[hidden] { display: none; }
-.rating__google { margin-top: 16px; }
+/* --- reviews: three cards, then the Google link (W28-11, R-W28-03) ---------- */
+.reviews-layout { display: grid; gap: 24px; align-items: start; }
+.reviews__google { margin: 0; }
 
 .review__head { display: flex; flex-direction: column; gap: 4px; margin-bottom: 4px; }
 .review__name { font-weight: 700; }
@@ -2349,7 +2305,6 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
   .hero-claim { padding: 24px; }
   .hero-claim h2 { font-size: 22px; }
   .hero-claim__cta { width: 100%; align-self: stretch; }
-  .hero-claim__highlights li { font-size: 15px; }
   .modal__panel { padding: 24px; }
   .modal h2 { font-size: 22px; }
   .media--illustration { padding: 16px; }

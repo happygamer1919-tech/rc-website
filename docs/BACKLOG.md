@@ -1270,7 +1270,7 @@ sha, branches stacked each on the previous card's branch. The board of this wave
 and the per-card `docs/board/W28-*.md` continue as before.
 
 ## W28-00 · The wave 28 rulings, the board and its artifact
-**Status: PR OPEN** (opened 2026-09-23). `docs/rulings/W28-R.md` with R-W28-01, R-W28-02,
+**Status: MERGED #168, section 12.0 exit 0** (opened 2026-09-23, merged 23:31 UTC as `801a66a`). `docs/rulings/W28-R.md` with R-W28-01, R-W28-02,
 R-W28-03 and the record of W28-10; `docs/board/W28-board.json` with the thirteen cards, their
 dependencies and machine-checkable acceptance; the board artifact; Q-W28-01 (the Search Console
 tag). No page changes.
@@ -1281,7 +1281,13 @@ exit 0; GET exit 0, contexts `["quality"]`, strict true, admins not enforced, no
 Recorded under R-W28-01.
 
 ## W28-11 · Claims cleanup, R-X enforcement, fifteen years, the Google reviews link
-**Status: todo.** Under R-W28-02 and R-W28-03.
+**Status: PR OPEN** (opened 2026-09-23). Under R-W28-02 and R-W28-03: the promo bar, the hero and
+footer "−10%" line, the fourth stat card, the rating panel and the discount clause in five FAQ
+answers per locale are gone; "15+ ani de experiență" / "15+ лет опыта" everywhere including the
+team line; the reviews link is live under the three testimonials (the share link as given, it
+resolves to a search knowledge panel); the roofing hub's "Reduceri" tile is "Solicită ofertă".
+R-X amended and the gate holds seven discount arms; `scripts/dom-text.js` is the rendered-text
+instrument the acceptance greps read. All 55 budgets move (R-Y).
 
 ## W28-12 · Home CTA after the portfolio
 **Status: todo.**

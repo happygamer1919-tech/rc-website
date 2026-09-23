@@ -3,7 +3,11 @@
 
    Asserts zero countdown timers, zero stock-scarcity strings and zero
    instalment or financing strings across both locales, plus no struck-through
-   price markup. It reads:
+   price markup. AMENDED (W28-11, wave 28): and zero discount claims, which R-X's
+   first recorded interpretation had left standing (the promo bar's "Reducere 10%
+   ... 2027" and "−10% la programări anticipate"); the owner's wave 28 instruction
+   removes every discount, percent-off, until-year and early-booking string, and
+   the amendment block in docs/rulings/R-X.md records it. It reads:
 
      - every string in locales/ro.json and locales/ru.json
      - every built page in dist/, RO and RU, as raw HTML (so meta, og and
@@ -54,20 +58,35 @@ const PATTERNS = [
   { id: 'code-countdown', kind: 'countdown', re: /count-?down|data-(?:deadline|expires|countdown)/i, yes: ['class="countdown"', 'data-deadline="2026"'] },
   // struck prices (R-X, from RC-110)
   { id: 'struck-markup', kind: 'struck price', re: /<(?:s|del|strike)(?:\s[^>]*)?>|line-through/i, yes: ['<del>200 lei</del>', 'text-decoration: line-through'] },
+  // discount claims (R-X as amended by W28-11, wave 28: every discount, percent-off,
+  // "until <year>" and early-booking string goes, both locales)
+  { id: 'ro-reducere', kind: 'discount', scope: 'text', re: word('reducer[ei]|discount(?:uri)?'), yes: ['Reducere 10% la orice serviciu doar până în 2027', 'reduceri de sezon', 'o reducere de zece la sută', 'discount'] },
+  { id: 'ro-anticipate', kind: 'discount', scope: 'text', re: word('program[ăa]r[a-zăâîșț]* anticipate'), yes: ['−10% la programări anticipate', 'la programările anticipate se aplică'] },
+  { id: 'ro-pana-in-an', kind: 'discount', scope: 'text', re: word('(?:doar|numai) p[âa]n[ăa] [îi]n 20\\d\\d'), yes: ['doar până în 2027', 'numai pana in 2027'] },
+  { id: 'ru-skidka', kind: 'discount', scope: 'text', re: word('скидк[а-я]*'), yes: ['Скидка 10% на любую услугу только до 2027 года', 'скидка десять процентов', 'Скидки'] },
+  { id: 'ru-rannei', kind: 'discount', scope: 'text', re: word('при ранней записи'), yes: ['−10% при ранней записи'] },
+  { id: 'ru-do-goda', kind: 'discount', scope: 'text', re: word('только до 20\\d\\d года'), yes: ['только до 2027 года'] },
+  { id: 'percent-off', kind: 'discount', scope: 'text', re: /(?:[−-]\s?\d{1,2}\s?%)|(?:\d{1,2}\s?%\s*(?:la |pe |pentru |reducere|discount|на |скидк))/iu, yes: ['−10% la programări anticipate', '-10%', '10% la orice serviciu', '10% на любую услугу'] },
 ];
 
 /* Phrases that must never match. Each is on the site, or is a near miss that a
    careless pattern would catch. */
 const CLEAN = [
   'O singură echipă răspunde de tot proiectul, de la structură până la ultimul finisaj.',
-  'Reducere 10% la orice serviciu doar până în 2027',
-  '−10% la programări anticipate',
   'Garanție 30 de ani în contract',
   'generate separate decorate',
   'credibil și acreditat',
   'Остались вопросы? Позвоните нам.',
-  'Скидка 10% на любую услугу только до 2027 года',
   'timpul de execuție se stabilește în deviz',
+  // W28-11: what a discount pattern must NOT catch: a product figure, a spec percentage,
+  // a year in a warranty, the two permitted ask strings, and the reduction of noise.
+  'de la 179.55 lei/m²',
+  'Absorbție de apă 3%',
+  'garanție până în 2040 nu se promite',
+  'Preț la cerere',
+  'Цена по запросу',
+  'reducerea zgomotului',
+  'Гарантия до 30 лет по договору',
 ];
 
 let selfTested = 0;
@@ -138,6 +157,11 @@ for (const f of CODE) {
 const hits = [];
 for (const s of sources) {
   for (const p of PATTERNS) {
+    /* W28-11: the discount arms read the locales and the built pages, which is where a
+       claim can reach a visitor, and not the code files: a stylesheet's translateX(-50%)
+       and a build.js comment that names the retired string are not claims. The countdown
+       and struck-price arms keep reading the code, as they always have. */
+    if (p.scope === 'text' && s.locale === 'code') continue;
     const g = new RegExp(p.re.source, p.re.flags.includes('g') ? p.re.flags : p.re.flags + 'g');
     for (const m of s.text.matchAll(g)) {
       const at = Math.max(0, m.index - 40);
@@ -155,4 +179,4 @@ if (hits.length) {
   hits.forEach((h) => console.error('  ' + h));
   process.exit(1);
 }
-console.log('zero countdowns, zero stock-scarcity strings, zero instalment or financing strings, zero struck prices.');
+console.log('zero countdowns, zero stock-scarcity strings, zero instalment or financing strings, zero struck prices, zero discount claims (W28-11).');

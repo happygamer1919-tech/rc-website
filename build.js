@@ -16,9 +16,13 @@ const SITE = (process.env.SITE_URL || 'https://rapidconstruct.md').replace(/\/$/
 // '/rc-website' for GitHub Pages. Every asset and inter-locale link uses it.
 const BASE = (process.env.BASE_PATH || '').replace(/\/+$/, '');
 const FORM_KEY = (process.env.WEB3FORMS_KEY || '').trim();
-// Single flag for the Google review mark and outbound link. The profile URL is
-// not available yet, so both stay hidden until GOOGLE_REVIEWS_URL is set.
-const GOOGLE_REVIEWS_URL = (process.env.GOOGLE_REVIEWS_URL || '').trim();
+// The Google reviews link. W28-11 (wave 28), ruling R-W28-03: the owner supplied the
+// public share link and it is a committed constant, so the anchor is in the built page on
+// every runner; it resolves to the "Rapid Construct" knowledge panel on google.com, not
+// to maps or a business page, so the share link is used as given. The environment
+// variable still overrides it for a rehearsal build. It was empty from W12-20 (R-O)
+// until this card, which is why the anchor was hidden for sixteen waves.
+const GOOGLE_REVIEWS_URL = (process.env.GOOGLE_REVIEWS_URL || 'https://share.google/t05qzuoiFA6LWKBF1').trim();
 
 /* W12-23. The commit this artifact was built from, emitted into every page as a
    meta tag so a live check can assert IDENTITY rather than properties.
@@ -3995,16 +3999,15 @@ for (const l of loaded) {
     // With no URL the anchor is not rendered at all. href="#" was a dead link
     // and an <a> without href fails Lighthouse's crawlable-anchors audit, so
     // the whole element is conditional.
-    /* W12-20, R-O. These two are still COMPUTED and deliberately not rendered.
-       GOOGLE_REVIEWS_URL stays armed in the data layer so the value is present
-       and correct the moment a ruling lets the anchor back; only the markup that
-       consumed them was removed. Nothing else reads the variable: sameAs carries
-       the profile URL as a literal in src/template.html, so the structured-data
-       connection does not depend on this at all. */
+    /* W12-20, R-O, hid the anchor while the R-N review claim was live. W28-11 (wave 28)
+       removed that claim and R-W28-03 brings the anchor back, under the three
+       testimonials, with the ruling's exact texts (reviews.google in each locale),
+       rel noopener and target _blank. data-reviews="google" is what
+       scripts/verify-live.js counts as profileAnchors. sameAs in the JSON-LD stays a
+       literal in src/template.html and does not depend on this. */
     googleLink: GOOGLE_REVIEWS_URL
-      ? `<a class="link-arrow" href="${GOOGLE_REVIEWS_URL}" target="_blank" rel="noopener noreferrer">${esc(l.strings['reviews.google'])}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>`
+      ? `<a class="link-arrow" data-reviews="google" href="${GOOGLE_REVIEWS_URL}" target="_blank" rel="noopener noreferrer">${esc(l.strings['reviews.google'])}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>`
       : '',
-    googleHidden: GOOGLE_REVIEWS_URL ? '' : 'hidden',
   };
   // Homepage portfolio: six cards straight off projects.json, each linking to
   // its project anchor on the relevant service page. Only projects with a real
@@ -4640,7 +4643,7 @@ console.log('copied styles.css, main.js and public/ into dist/');
 console.log(`generated robots.txt, sitemap.xml, site.webmanifest, CNAME (${CUSTOM_DOMAIN})`);
 
 console.log(`base path: ${BASE || '(root)'}    site: ${SITE}`);
-console.log(`google reviews link: ${GOOGLE_REVIEWS_URL || 'HIDDEN (set GOOGLE_REVIEWS_URL to reveal)'}`);
+console.log(`google reviews link: ${GOOGLE_REVIEWS_URL || 'HIDDEN (no URL)'}`);
 {
   const indexable = SERVICE_SLUGS.filter((sg) =>
     loaded.some((l) => renderableProjects(l, sg).some((p) => coverIsRealPhoto(p.cover))));

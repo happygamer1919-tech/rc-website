@@ -89,15 +89,15 @@ const MARKERS = {
        one that lost a second card. It is the strip's own class, not a link count,
        because what moved is a card and not a link. */
     teaserTiles: 2,
-    ratingPanel: 1,        // the R-N review panel is present
+    ratingPanel: 0,        // W28-11: the R-N review panel is gone with its claim
     portfolioTiles: 7,     // six project cards plus the W12-05 closing tile
-    profileAnchors: 0,     // R-O: no visible anchor to the Google profile
-    promoBar: 1,           // W12-02 static strip
-    statTiles: 8,          // four in the hero, four in the dark band
+    profileAnchors: 1,     // W28-11, R-W28-03: the reviews link under the testimonials
+    promoBar: 0,           // W12-02 static strip
+    statTiles: 6,          // W28-11: three in the hero, three in the dark band (the review stat is gone)
     areaServed: 20,        // W12-09 coverage list
   },
   service: {
-    promoBar: 1,
+    promoBar: 0,
     profileAnchors: 0,
     areaServed: 20,
   },
@@ -107,7 +107,7 @@ const MARKERS = {
      is. A build made before this card renders 0, so a stale copy returning
      plausible heights cannot match it. */
   'service-ba': {
-    promoBar: 1,
+    promoBar: 0,
     profileAnchors: 0,
     areaServed: 20,
     baItems: 4,
@@ -116,7 +116,7 @@ const MARKERS = {
      offers that were on the homepage. Four offer cards: a build made before this
      card renders 0 here and 4 on the homepage, so neither can pass for the other. */
   'service-roof': {
-    promoBar: 1,
+    promoBar: 0,
     profileAnchors: 0,
     areaServed: 20,
     roofOffers: 4,
@@ -185,7 +185,7 @@ const MARKERS = {
      `bentoTiles: 0` is asserted because this page is a bento DESTINATION, not a
      hub: a build that put the hub here instead would fire. */
   novatik: {
-    promoBar: 1,
+    promoBar: 0,
     profileAnchors: 0,
     areaServed: 20,
     bentoTiles: 0,
@@ -196,7 +196,7 @@ const MARKERS = {
   /* W24-06. The shared "in construcție" page: header, footer, one line, a link
      back. No form, no coverage list, no offers. */
   inconstructie: {
-    promoBar: 1,
+    promoBar: 0,
     profileAnchors: 0,
     areaServed: 0,
     roofOffers: 0,
@@ -204,7 +204,7 @@ const MARKERS = {
   /* W24-08. A product page that carries a bento hub: the garduri page. Four
      tiles, exactly three of them links, the same assertion the roofing hub has. */
   'product-hub': {
-    promoBar: 1,
+    promoBar: 0,
     profileAnchors: 0,
     areaServed: 20,
     bentoTiles: 4,
@@ -215,7 +215,7 @@ const MARKERS = {
   },
   // W14-13. The three product pages carry the service page's site-wide parts.
   product: {
-    promoBar: 1,
+    promoBar: 0,
     profileAnchors: 0,
     areaServed: 20,
     // W24-08. A plain product page carries no hub. The zero holds that.
@@ -225,7 +225,7 @@ const MARKERS = {
      owner's thirteen fence photographs. `galSlides` counts the lightbox's slides, so a
      build made before this card, which has no such page and no lightbox, cannot match. */
   gallery: {
-    promoBar: 1,
+    promoBar: 0,
     profileAnchors: 0,
     areaServed: 20,
     bentoTiles: 0,
@@ -237,7 +237,7 @@ const MARKERS = {
   // profile diagram per model. A tile page built before W18-01 carries 0, so a
   // stale copy returning plausible heights cannot match this.
   tigla: {
-    promoBar: 1,
+    promoBar: 0,
     profileAnchors: 0,
     areaServed: 20,
     tileDiagrams: 4,
@@ -247,7 +247,7 @@ const MARKERS = {
   },
   privacy: {
     profileAnchors: 0,
-    promoBar: 1,
+    promoBar: 0,
   },
   // W16-02. The category pages carry no JSON-LD at all: a materials category is
   // not a Service and there is no catalog index page for a BreadcrumbList to
@@ -255,7 +255,7 @@ const MARKERS = {
   // holds that decision in place: if a later card adds a schema block, this
   // fires rather than passing quietly.
   category: {
-    promoBar: 1,
+    promoBar: 0,
     profileAnchors: 0,
     areaServed: 0,
     // W17-03 (RC-134). The lede and two paragraphs W17-02 added. A category page
@@ -273,7 +273,7 @@ const MARKERS = {
   // later card repeating the parent's paragraphs here fires this rather than
   // passing quietly.
   subcategory: {
-    promoBar: 1,
+    promoBar: 0,
     profileAnchors: 0,
     areaServed: 0,
     catProse: 0,
@@ -288,7 +288,7 @@ const MARKERS = {
   // listed: false in content/catalog.json and is off the index; its products live
   // on /servicii/acoperisuri/ and its catalogue pages are redirects there.
   index: {
-    promoBar: 1,
+    promoBar: 0,
     profileAnchors: 0,
     areaServed: 0,
     catProse: 0,
@@ -300,7 +300,7 @@ const MARKERS = {
   /* W27-FIX-15 (W27-R-21). The roofing catalogue page: the hub bento (four tiles, four links)
      and the product bento, no prose, no product cards. `bentoTiles` counts the hub only. */
   roofcatalog: {
-    promoBar: 1,
+    promoBar: 0,
     profileAnchors: 0,
     areaServed: 0,
     catProse: 0,
@@ -318,8 +318,8 @@ const PAGES = [
   /* W25-23. The Acoperisuri card left the product strip, so these fall with the
      measurement: R-Y's own rule is that removing an element's cost drops the
      budget by that cost, and a budget left high is a ceiling to hide under. */
-  { path: '/',                             type: 'home',    label: 'homepage RO',    budget: 9350 },
-  { path: '/ru/',                          type: 'home',    label: 'homepage RU',    budget: 9591 },
+  { path: '/',                             type: 'home',    label: 'homepage RO',    budget: 9321 },
+  { path: '/ru/',                          type: 'home',    label: 'homepage RU',    budget: 9480 },
   /* W24-05. The before/after slider moved onto this page, so these two rows leave
      the shared 6,000px service budget that RELEASE-NOTES's wave 7 acceptance
      holds and take their own, measured plus 60, under W24-R4. The other four
@@ -328,12 +328,12 @@ const PAGES = [
      AMENDED (W26-14, W26-R16 "budgets re-measured plus 60"): the three service rows
      still on the shared 6,000 take their own too, so no row here is a ceiling to
      hide under. */
-  { path: '/in-constructie/',              type: 'inconstructie', label: 'in constr RO', budget: 1205 },
-  { path: '/ru/in-constructie/',           type: 'inconstructie', label: 'in constr RU', budget: 1205 },
-  { path: '/servicii/case-la-cheie/',      type: 'service-ba', label: 'svc RO case', budget: 6583 },
-  { path: '/servicii/fatade/',             type: 'service', label: 'svc RO fatade',  budget: 5472 },
-  { path: '/ru/servicii/case-la-cheie/',   type: 'service-ba', label: 'svc RU case', budget: 6715 },
-  { path: '/ru/servicii/fatade/',          type: 'service', label: 'svc RU fatade',  budget: 5688 },
+  { path: '/in-constructie/',              type: 'inconstructie', label: 'in constr RO', budget: 1161 },
+  { path: '/ru/in-constructie/',           type: 'inconstructie', label: 'in constr RU', budget: 1161 },
+  { path: '/servicii/case-la-cheie/',      type: 'service-ba', label: 'svc RO case', budget: 6539 },
+  { path: '/servicii/fatade/',             type: 'service', label: 'svc RO fatade',  budget: 5401 },
+  { path: '/ru/servicii/case-la-cheie/',   type: 'service-ba', label: 'svc RU case', budget: 6644 },
+  { path: '/ru/servicii/fatade/',          type: 'service', label: 'svc RU fatade',  budget: 5617 },
   /* W24-06. The four roofing offers moved onto this page, so it leaves the shared
      6,000px service budget and takes its own, measured plus 60, under W24-R4. */
   /* W25-19, ruling W25-R18. The roofing catalogue moved onto this page, so the
@@ -357,16 +357,16 @@ const PAGES = [
      section's "de la" line, one line; measured 24,782 / 25,003 at 1440, settled, plus 60, in R-Y. */
   /* AMENDED (W27-FIX-05, ruling W27-R-12): six accessory cards fold away, two grid rows fewer;
      measured 23,873 / 24,094 at 1440, settled, plus 60, in R-Y. */
-  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 23933 },
-  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 24154 },
+  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 23862 },
+  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 24110 },
   /* W24-07. The rocă vulcanică mirror page. */
   /* AMENDED (W27-C-04): chips, a warranty row and a price on each card, a derived "de la"
      line under the heading; measured 4,369 / 4,439 at 1440, settled, plus 60, in R-Y. */
   /* AMENDED (W27-FIX-04, ruling W27-R-11): the "+N" chip on Roman and Wood makes the chip row
      wrap once; measured 4,541 / 4,585 at 1440, settled, plus 60, in R-Y. */
-  { path: '/servicii/roca-vulcanica/',     type: 'novatik', label: 'novatik RO',  budget: 4601 },
-  { path: '/ru/servicii/roca-vulcanica/',  type: 'novatik', label: 'novatik RU',  budget: 4645 },
-  { path: '/ru/servicii/finisaje/',        type: 'service', label: 'svc RU finis',   budget: 5608 },
+  { path: '/servicii/roca-vulcanica/',     type: 'novatik', label: 'novatik RO',  budget: 4557 },
+  { path: '/ru/servicii/roca-vulcanica/',  type: 'novatik', label: 'novatik RU',  budget: 4601 },
+  { path: '/ru/servicii/finisaje/',        type: 'service', label: 'svc RU finis',   budget: 5564 },
   /* W25-09. Both rows take +39: this page gained one link-arrow to the new
      catalogue category, measured on the branch at 3979 RO and 4012 RU against
      3940 and 3973 with the link removed as a control. Budget is measured plus 60
@@ -376,18 +376,18 @@ const PAGES = [
   /* AMENDED (W25-26): the four model cards gained a picture each, so these rise. */
   /* AMENDED (W27-FIX-08, W27-R-14): the seven imperlux model cards above the four tile cards,
      two more grid rows; measured 5,463 / 5,538 at 1440, settled, plus 60, in R-Y. */
-  { path: '/servicii/tigla-metalica/',     type: 'tigla',   label: 'tigla RO',       budget: 5523 },
-  { path: '/ru/servicii/tigla-metalica/',  type: 'tigla',   label: 'tigla RU',       budget: 5598 },
+  { path: '/servicii/tigla-metalica/',     type: 'tigla',   label: 'tigla RO',       budget: 5479 },
+  { path: '/ru/servicii/tigla-metalica/',  type: 'tigla',   label: 'tigla RU',       budget: 5554 },
   /* AMENDED (W26-12): the gallery section, one card and its lightbox, +629 in both
      locales, measured 7184 / 7260. Budget measured plus 60 (W24-R4), R-Y. */
-  { path: '/servicii/copertine/',          type: 'product', label: 'copertine RO',   budget: 7403 },
-  { path: '/ru/servicii/copertine/',       type: 'product', label: 'copertine RU',   budget: 7480 },
+  { path: '/servicii/copertine/',          type: 'product', label: 'copertine RO',   budget: 7359 },
+  { path: '/ru/servicii/copertine/',       type: 'product', label: 'copertine RU',   budget: 7436 },
   /* W24-08. The garduri page gained the fence bento; the copertine page gained a
      dark hero and a cross-sell row; modele de garduri is new. All under W24-R4. */
   /* W26-03: 5728 held since W24-08 while the page fell to 5,547. See R-Y's
      2026-09-22 block: a budget may never stay still while its page moves. */
-  { path: '/servicii/garduri/',            type: 'product-hub', label: 'garduri RO',  budget: 5739 },
-  { path: '/ru/servicii/garduri/',         type: 'product-hub', label: 'garduri RU',  budget: 5761 },
+  { path: '/servicii/garduri/',            type: 'product-hub', label: 'garduri RO',  budget: 5695 },
+  { path: '/ru/servicii/garduri/',         type: 'product-hub', label: 'garduri RU',  budget: 5717 },
   /* W25-11. Both rows DROP. The "Preț la cerere" line became a "De la ... lei/m2"
      price, and the new line is shorter because it does not carry the catalogue
      card's shared 44px flex min-height: measured 3686 RO and 3707 RU against 3720
@@ -396,13 +396,13 @@ const PAGES = [
   /* W25-25. Each of the eight cards gained its colour NAMES beside the count, so
      one fact line became three or four wrapped lines on a 4-column card.
      Measured plus 60, under W24-R4, and recorded in docs/rulings/R-Y.md. */
-  { path: '/servicii/modele-garduri/',     type: 'product', label: 'gard modele RO', budget: 4569 },
-  { path: '/ru/servicii/modele-garduri/',  type: 'product', label: 'gard modele RU', budget: 4591 },
+  { path: '/servicii/modele-garduri/',     type: 'product', label: 'gard modele RO', budget: 4525 },
+  { path: '/ru/servicii/modele-garduri/',  type: 'product', label: 'gard modele RU', budget: 4547 },
   /* W26-12. The fence gallery page, measured 3967 in both locales; plus 60 (W24-R4). */
   /* AMENDED (W27-FIX-12, W27-R-18): twelve thumbnails, one grid row fewer; measured 3,750 / 3,750
      at 1440, settled, plus 60, in R-Y. */
-  { path: '/servicii/galerie-garduri/',    type: 'gallery', label: 'gal garduri RO', budget: 3810 },
-  { path: '/ru/servicii/galerie-garduri/', type: 'gallery', label: 'gal garduri RU', budget: 3810 },
+  { path: '/servicii/galerie-garduri/',    type: 'gallery', label: 'gal garduri RO', budget: 3766 },
+  { path: '/ru/servicii/galerie-garduri/', type: 'gallery', label: 'gal garduri RU', budget: 3766 },
   // ~~W16-02, RC-129. The seven catalog category pages.~~
   // AMENDED (W24-04): thirty pages, and every budget re-measured. The catalogue
   // index at /catalog/ is new (it answered 404), every subcategory has a page of
@@ -412,39 +412,39 @@ const PAGES = [
   // docs/rulings/R-Y.md carries the measurement each one came from.
   // The 1,400px section cap does not apply to a catalogue grid (W24-R4), which is
   // why a category page rolling up 88 products is 12,613px and inside budget.
-  { path: '/catalog/',                                      type: 'index',         label: 'idx RO',           budget: 3766 },
-  { path: '/ru/catalog/',                                   type: 'index',         label: 'idx RU',           budget: 3791 },
+  { path: '/catalog/',                                      type: 'index',         label: 'idx RO',           budget: 3722 },
+  { path: '/ru/catalog/',                                   type: 'index',         label: 'idx RU',           budget: 3747 },
   /* W27-FIX-15 (W27-R-21): the roofing catalogue page, both locales; budgets measured plus 60. */
-  { path: '/catalog/materiale-acoperis/',                   type: 'roofcatalog',   label: 'cat RO acoper',    budget: 4321 },
-  { path: '/ru/catalog/materiale-acoperis/',                type: 'roofcatalog',   label: 'cat RU acoper',    budget: 4321 },
-  { path: '/catalog/termoizolatie/',                        type: 'category',      label: 'cat RO termo',     budget: 6948 },
-  { path: '/ru/catalog/termoizolatie/',                     type: 'category',      label: 'cat RU termo',     budget: 6864 },
-  { path: '/catalog/termoizolatie/polistiren-expandat/',    type: 'subcategory',   label: 'sub RO eps',       budget: 3691 },
-  { path: '/ru/catalog/termoizolatie/polistiren-expandat/',  type: 'subcategory',   label: 'sub RU eps',       budget: 3608 },
-  { path: '/catalog/termoizolatie/polistiren-extrudat/',    type: 'subcategory',   label: 'sub RO xps',       budget: 3168 },
-  { path: '/ru/catalog/termoizolatie/polistiren-extrudat/',  type: 'subcategory',   label: 'sub RU xps',       budget: 3148 },
-  { path: '/catalog/termoizolatie/vata-minerala/',          type: 'subcategory',   label: 'sub RO vata',      budget: 3650 },
-  { path: '/ru/catalog/termoizolatie/vata-minerala/',       type: 'subcategory',   label: 'sub RU vata',      budget: 3651 },
-  { path: '/catalog/termoizolatie/adezivi-si-mase-de-spaclu/',  type: 'subcategory',   label: 'sub RO adez',      budget: 4167 },
-  { path: '/ru/catalog/termoizolatie/adezivi-si-mase-de-spaclu/',  type: 'subcategory',   label: 'sub RU adez',      budget: 4089 },
-  { path: '/catalog/termoizolatie/alte-produse/',           type: 'subcategory',   label: 'sub RO altep',     budget: 3140 },
-  { path: '/ru/catalog/termoizolatie/alte-produse/',        type: 'subcategory',   label: 'sub RU altep',     budget: 3099 },
-  { path: '/catalog/tencuieli-decorative/',                 type: 'category',      label: 'cat RO tencu',     budget: 5396 },
-  { path: '/ru/catalog/tencuieli-decorative/',              type: 'category',      label: 'cat RU tencu',     budget: 5473 },
-  { path: '/catalog/placi-ceramice/',                       type: 'category',      label: 'cat RO placi',     budget: 12891 },
-  { path: '/ru/catalog/placi-ceramice/',                    type: 'category',      label: 'cat RU placi',     budget: 13830 },
-  { path: '/catalog/elemente-decorative/',                  type: 'category',      label: 'cat RO elem',      budget: 10283 },
-  { path: '/ru/catalog/elemente-decorative/',               type: 'category',      label: 'cat RU elem',      budget: 10718 },
-  { path: '/catalog/vopsele/',                              type: 'category',      label: 'cat RO vopsele',   budget: 4388 },
-  { path: '/ru/catalog/vopsele/',                           type: 'category',      label: 'cat RU vopsele',   budget: 4484 },
-  { path: '/catalog/vopsele/vopsele-de-exterior/',          type: 'subcategory',   label: 'sub RO vopext',    budget: 3148 },
-  { path: '/ru/catalog/vopsele/vopsele-de-exterior/',       type: 'subcategory',   label: 'sub RU vopext',    budget: 3170 },
-  { path: '/catalog/vopsele/vopsele-de-interior/',          type: 'subcategory',   label: 'sub RO vopint',    budget: 3170 },
-  { path: '/ru/catalog/vopsele/vopsele-de-interior/',       type: 'subcategory',   label: 'sub RU vopint',    budget: 3216 },
-  { path: '/catalog/sisteme-iluminare/',                    type: 'category',      label: 'cat RO ilumin',    budget: 6400 },
-  { path: '/ru/catalog/sisteme-iluminare/',                 type: 'category',      label: 'cat RU ilumin',    budget: 6344 },
-  { path: '/catalog/alte-materiale/',                       type: 'category',      label: 'cat RO alte',      budget: 3789 },
-  { path: '/ru/catalog/alte-materiale/',                    type: 'category',      label: 'cat RU alte',      budget: 3789 },
+  { path: '/catalog/materiale-acoperis/',                   type: 'roofcatalog',   label: 'cat RO acoper',    budget: 4277 },
+  { path: '/ru/catalog/materiale-acoperis/',                type: 'roofcatalog',   label: 'cat RU acoper',    budget: 4277 },
+  { path: '/catalog/termoizolatie/',                        type: 'category',      label: 'cat RO termo',     budget: 6904 },
+  { path: '/ru/catalog/termoizolatie/',                     type: 'category',      label: 'cat RU termo',     budget: 6820 },
+  { path: '/catalog/termoizolatie/polistiren-expandat/',    type: 'subcategory',   label: 'sub RO eps',       budget: 3647 },
+  { path: '/ru/catalog/termoizolatie/polistiren-expandat/',  type: 'subcategory',   label: 'sub RU eps',       budget: 3564 },
+  { path: '/catalog/termoizolatie/polistiren-extrudat/',    type: 'subcategory',   label: 'sub RO xps',       budget: 3124 },
+  { path: '/ru/catalog/termoizolatie/polistiren-extrudat/',  type: 'subcategory',   label: 'sub RU xps',       budget: 3104 },
+  { path: '/catalog/termoizolatie/vata-minerala/',          type: 'subcategory',   label: 'sub RO vata',      budget: 3606 },
+  { path: '/ru/catalog/termoizolatie/vata-minerala/',       type: 'subcategory',   label: 'sub RU vata',      budget: 3607 },
+  { path: '/catalog/termoizolatie/adezivi-si-mase-de-spaclu/',  type: 'subcategory',   label: 'sub RO adez',      budget: 4123 },
+  { path: '/ru/catalog/termoizolatie/adezivi-si-mase-de-spaclu/',  type: 'subcategory',   label: 'sub RU adez',      budget: 4045 },
+  { path: '/catalog/termoizolatie/alte-produse/',           type: 'subcategory',   label: 'sub RO altep',     budget: 3096 },
+  { path: '/ru/catalog/termoizolatie/alte-produse/',        type: 'subcategory',   label: 'sub RU altep',     budget: 3055 },
+  { path: '/catalog/tencuieli-decorative/',                 type: 'category',      label: 'cat RO tencu',     budget: 5352 },
+  { path: '/ru/catalog/tencuieli-decorative/',              type: 'category',      label: 'cat RU tencu',     budget: 5429 },
+  { path: '/catalog/placi-ceramice/',                       type: 'category',      label: 'cat RO placi',     budget: 12847 },
+  { path: '/ru/catalog/placi-ceramice/',                    type: 'category',      label: 'cat RU placi',     budget: 13786 },
+  { path: '/catalog/elemente-decorative/',                  type: 'category',      label: 'cat RO elem',      budget: 10239 },
+  { path: '/ru/catalog/elemente-decorative/',               type: 'category',      label: 'cat RU elem',      budget: 10674 },
+  { path: '/catalog/vopsele/',                              type: 'category',      label: 'cat RO vopsele',   budget: 4344 },
+  { path: '/ru/catalog/vopsele/',                           type: 'category',      label: 'cat RU vopsele',   budget: 4440 },
+  { path: '/catalog/vopsele/vopsele-de-exterior/',          type: 'subcategory',   label: 'sub RO vopext',    budget: 3104 },
+  { path: '/ru/catalog/vopsele/vopsele-de-exterior/',       type: 'subcategory',   label: 'sub RU vopext',    budget: 3126 },
+  { path: '/catalog/vopsele/vopsele-de-interior/',          type: 'subcategory',   label: 'sub RO vopint',    budget: 3126 },
+  { path: '/ru/catalog/vopsele/vopsele-de-interior/',       type: 'subcategory',   label: 'sub RU vopint',    budget: 3172 },
+  { path: '/catalog/sisteme-iluminare/',                    type: 'category',      label: 'cat RO ilumin',    budget: 6356 },
+  { path: '/ru/catalog/sisteme-iluminare/',                 type: 'category',      label: 'cat RU ilumin',    budget: 6300 },
+  { path: '/catalog/alte-materiale/',                       type: 'category',      label: 'cat RO alte',      budget: 3745 },
+  { path: '/ru/catalog/alte-materiale/',                    type: 'category',      label: 'cat RU alte',      budget: 3745 },
   /* W25-09. The eighth catalogue category and its seven subcategories, 71
      Dasterum products under W25-R7. Every budget below is measured on the branch
      at 1280px with every reveal applied and settled, plus 60, under W24-R4.
@@ -544,7 +544,7 @@ const PROBE = `(async () => {
   const markers = {
     ratingPanel: q('.rating__score'),
     portfolioTiles: q('#portfolio-grid > *'),
-    profileAnchors: q('a[href*="maps.google.com"]'),
+    profileAnchors: q('a[data-reviews="google"]'),
     promoBar: q('.promo'),
     statTiles: q('.stat'),
     areaServed: area ? area.areaServed.length : 0,
@@ -612,12 +612,13 @@ const PROBE = `(async () => {
         declared on :root in src/styles.css, so --brand resolving to a non-empty
         value IS the stylesheet having applied, by definition rather than by
         guess. Nothing else in the document can set it.
-     2. THE PROMO BAR IS PRESENT. All ten marker sets expect promoBar 1, so it is
-        on every page in PAGES, and its absence is exactly what the false red
-        reported.
+     2. ~~THE PROMO BAR IS PRESENT.~~ AMENDED (W28-11, wave 28): the promo bar is gone
+        with its discount string (every marker set now expects promoBar 0), so the
+        second condition is the site header, which every page this gate reads renders
+        from its template, and which the false red would equally have missed.
 
    It returns how long it waited and whether both became true, so a page that is
-   genuinely missing its promo bar still reports UNVERIFIED rather than hanging:
+   genuinely missing its header still reports UNVERIFIED rather than hanging:
    the loop is bounded and a timeout returns ready false, which lets the marker
    assertion do its job.
 
@@ -627,15 +628,15 @@ const READY = `(async () => {
     const v = getComputedStyle(document.documentElement).getPropertyValue('--brand');
     return !!(v && v.trim());
   };
-  const promo = () => document.querySelectorAll('.promo').length > 0;
+  const header = () => document.querySelectorAll('header.header, .site-header, header').length > 0;
   const t0 = Date.now();
   for (let i = 0; i < 120; i++) {
-    if (document.readyState === 'complete' && tokenSet() && promo()) {
-      return { ready: true, waitedMs: Date.now() - t0, token: true, promo: true };
+    if (document.readyState === 'complete' && tokenSet() && header()) {
+      return { ready: true, waitedMs: Date.now() - t0, token: true, header: true };
     }
     await new Promise(r => setTimeout(r, 100));
   }
-  return { ready: false, waitedMs: Date.now() - t0, token: tokenSet(), promo: promo() };
+  return { ready: false, waitedMs: Date.now() - t0, token: tokenSet(), header: header() };
 })()`;
 
 async function main() {
@@ -723,10 +724,10 @@ async function main() {
     for (let i = 0; i < 80; i++) { if (await cdp.ev('document.readyState === "complete"').catch(() => false)) break; await sleep(200); }
     await cdp.ev('document.fonts ? document.fonts.ready.then(()=>1) : 1').catch(() => {});
     if (WAIT_READY) {
-      const st = await cdp.ev(READY).catch(() => ({ ready: false, waitedMs: -1, token: false, promo: false }));
+      const st = await cdp.ev(READY).catch(() => ({ ready: false, waitedMs: -1, token: false, header: false }));
       if (!st.ready) {
         notReady++;
-        console.log(`             NOT READY after ${st.waitedMs}ms: stylesheet applied ${st.token}, promo bar present ${st.promo}`);
+        console.log(`             NOT READY after ${st.waitedMs}ms: stylesheet applied ${st.token}, header present ${st.header}`);
       }
       return st;
     }
@@ -777,29 +778,29 @@ async function main() {
     console.log('W25-R11 proof: the readiness probe, and the re-read\n');
 
     /* Control: a document that is ready the moment it is written. */
-    await put('<style>:root{--brand:#F65308}</style><div class="promo">x</div><p>control</p>');
+    await put('<style>:root{--brand:#F65308}</style><header>x</header><p>control</p>');
     let st = await cdp.ev(READY);
-    say(st.ready === true && st.waitedMs < 1000, 'control, tokens and promo present at once', `ready ${st.ready}, waited ${st.waitedMs}ms`);
+    say(st.ready === true && st.waitedMs < 1000, 'control, tokens and header present at once', `ready ${st.ready}, waited ${st.waitedMs}ms`);
 
-    /* Arm 1: no stylesheet token and no promo bar. It must NOT report ready, and
+    /* Arm 1: no stylesheet token and no header. It must NOT report ready, and
        it must come back rather than hang. */
-    await put('<p>no tokens, no promo</p>');
+    await put('<p>no tokens, no header</p>');
     st = await cdp.ev(READY);
-    say(st.ready === false && st.token === false && st.promo === false, 'arm 1, neither token nor promo: refuses to report ready', `ready ${st.ready}, waited ${st.waitedMs}ms`);
+    say(st.ready === false && st.token === false && st.header === false, 'arm 1, neither token nor header: refuses to report ready', `ready ${st.ready}, waited ${st.waitedMs}ms`);
 
     /* Arm 2: both arrive late. It must WAIT for them, which is the whole fix. */
-    await put('<p>late</p><script>setTimeout(function(){document.documentElement.style.setProperty("--brand","#F65308");var d=document.createElement("div");d.className="promo";document.body.appendChild(d);},1200)<\/script>');
+    await put('<p>late</p><script>setTimeout(function(){document.documentElement.style.setProperty("--brand","#F65308");var d=document.createElement("header");document.body.appendChild(d);},1200)<\/script>');
     st = await cdp.ev(READY);
     say(st.ready === true && st.waitedMs >= 1100, 'arm 2, both arrive after 1200ms: waits for them', `ready ${st.ready}, waited ${st.waitedMs}ms`);
 
-    /* Arm 3: the stylesheet applies but the promo bar never does. Half ready is
+    /* Arm 3: the stylesheet applies but the header never does. Half ready is
        not ready, which is what makes the marker assertion still do its job. */
     await put('<style>:root{--brand:#F65308}</style><p>token only</p>');
     st = await cdp.ev(READY);
-    say(st.ready === false && st.token === true && st.promo === false, 'arm 3, token but no promo: half ready is not ready', `token ${st.token}, promo ${st.promo}`);
+    say(st.ready === false && st.token === true && st.header === false, 'arm 3, token but no header: half ready is not ready', `token ${st.token}, header ${st.header}`);
 
     /* Control again, after the arms (R-AB). */
-    await put('<style>:root{--brand:#F65308}</style><div class="promo">x</div><p>control</p>');
+    await put('<style>:root{--brand:#F65308}</style><header>x</header><p>control</p>');
     st = await cdp.ev(READY);
     say(st.ready === true, 'control again, after the arms', `ready ${st.ready}, waited ${st.waitedMs}ms`);
 

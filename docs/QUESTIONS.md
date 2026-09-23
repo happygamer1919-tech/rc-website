@@ -3454,3 +3454,19 @@ rendered every roofing product in a single grid, and the accessories are one fil
 summing to Toate). If "the two accessory grids" meant the "Accesorii Novatik Natura" and "Accesorii
 Creaton" tile blocks on Imperlux's own pages (Q-W27-03 part 4), those are not on this site, and
 making them cards is 43 pictures and a card of its own.
+
+## Q-W28-01 · The Search Console verification tag needs its content value from the owner · OPEN · opened 2026-09-23 (W28-00, for W28-20)
+
+**Raised W28-00, 2026-09-23. Shipped default: nothing; W28-20 is blocked on this one value and
+nothing else. Nothing else is blocked.**
+
+W28-20 asked for two things. The Google Business Profile URL arrived in the addendum and is
+applied by W28-11 under R-W28-03 (the share link, as given). The Google Search Console HTML
+tag is the one thing still missing: the `content` value of the `<meta
+name="google-site-verification">` tag that Search Console shows under "HTML tag" for the
+property `https://rapidconstruct.md/`. It is a public token, not a credential, and it goes
+into both locale heads from a committed ruling (the dispatch named it `GSC_META_CONTENT`).
+
+**Recommended default: send the value in chat, or paste the whole meta tag.** The card is
+then one line in `build.js` and two rendered heads, verified by `grep -c` on `/` and `/ru/`.
+Until then the site is not verified in Search Console and nothing else depends on it.

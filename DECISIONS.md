@@ -13835,3 +13835,33 @@ generators exit 0. Budgets: two new pages at 4,261 (4,321 with the margin); the 
 nine tiles filling the same three rows as seven. **What this card leaves for the morning**: the
 reuse of two hub pictures on the catalogue tiles reads W25-R17 ("the same product") as "the same
 subject"; one line each if the owner wants pictures of their own there.
+
+## W28-00 · The wave 28 rulings, the board and its artifact, recorded first, 2026-09-23
+
+Branch `w28/w28-00-rulings-board`, from `main` at `5751d2c` (#167 merged). First card of wave
+28, under R-W28-01 (self-merge on green `quality` for the whole wave, owner confirmed).
+
+**Three rulings recorded verbatim before any card ran**, in `docs/rulings/W28-R.md`: R-W28-01
+(protection on `main`, self-merge stays, the W27-R-05 and W27-R-07 reverts stay open, W28-T not
+run), R-W28-02 (fifteen years everywhere, overturning the dispatch's own "10+" before W28-11
+ran) and R-W28-03 (the Google reviews link is live now; the share link resolves to a search
+knowledge panel and not to maps or a business page, so it is used as given; W28-20 splits).
+
+**W28-10 executed before this branch was cut and recorded, not carded as a PR**: the dispatch
+says "No PR, record in W28-R.md". `main` had no protection at all (404); it now requires the
+`quality` context, strict, administrators not enforced, no reviews.
+
+**Three false premises in the dispatch, corrected by measurement rather than obeyed**: `main`
+was `5751d2c`, not `bc3e3a9` (eight cards merged during the day); no board JSON or board
+artifact existed in this repo, so `docs/board/W28-board.json` is created and an artifact
+published from it, while the per-card `.md` and the backlog statuses continue; and "R-05" and
+"R-07" are read as the wave 27 register's `W27-R-05` and `W27-R-07`.
+
+**Readings taken at boot and written into the board's cards, so the acceptance is
+machine-checkable before the work**: the home page's "3 CTA anchors" are counted on the
+section-level CTAs (four anchors to `#oferta` exist today, two of them the hero claim button
+and the mobile panel's copy of the header button); the fence models with prices live on
+`/servicii/modele-garduri/`, a product page, not the Garduri service page, and stay; the
+roofing catalogue moves to `/catalog/materiale-acoperis/`; the industrial page is
+`/servicii/industrial/`; "catalog detail pages" for the Product schema are the pages that
+render priced cards, because no per-product page exists. Each is open for ratification.

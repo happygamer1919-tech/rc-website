@@ -1257,3 +1257,60 @@ page is a real page again carrying the service page's two bentos and nothing els
 `roofcatalog` in the catalogue gate, its own live markers and budgets); Garduri is an `external`
 entry whose tile and row open `/servicii/modele-garduri/`; two index tiles reuse ACOP-01 and
 GARDB-01. Gates 20 (76 of 76) and 18 (82 of 82) exit 0; the seven child redirects unchanged.
+
+## Wave 28
+
+Dispatch of 2026-09-23 (evening, UTC) and its addendum the same evening. **Claims, structure,
+SEO and GEO.** `origin/main` was `5751d2c` (#167) at boot, nothing open, no branch protection;
+the dispatch's `bc3e3a9` was the morning's tip and is corrected in `docs/rulings/W28-R.md`.
+Rulings R-W28-01 to R-W28-03 recorded first. **Self-merge on green `quality` for the whole
+wave (R-W28-01, owner confirmed in the addendum)**, merge commits, section 12.0 on every merge
+sha, branches stacked each on the previous card's branch. The board of this wave is
+`docs/board/W28-board.json`, republished as an artifact after every change; these statuses
+and the per-card `docs/board/W28-*.md` continue as before.
+
+## W28-00 · The wave 28 rulings, the board and its artifact
+**Status: PR OPEN** (opened 2026-09-23). `docs/rulings/W28-R.md` with R-W28-01, R-W28-02,
+R-W28-03 and the record of W28-10; `docs/board/W28-board.json` with the thirteen cards, their
+dependencies and machine-checkable acceptance; the board artifact; Q-W28-01 (the Search Console
+tag). No page changes.
+
+## W28-10 · Branch protection on `main`
+**Status: shipped, no PR** (2026-09-23 23:13 UTC). `gh api PUT .../branches/main/protection`
+exit 0; GET exit 0, contexts `["quality"]`, strict true, admins not enforced, no reviews.
+Recorded under R-W28-01.
+
+## W28-11 · Claims cleanup, R-X enforcement, fifteen years, the Google reviews link
+**Status: todo.** Under R-W28-02 and R-W28-03.
+
+## W28-12 · Home CTA after the portfolio
+**Status: todo.**
+
+## W28-13 · Services versus catalog split
+**Status: todo.** Pre-change counts recorded on the board: 99 roofing cards, 9 tiles, 7 chips
+on `/servicii/acoperisuri/`; 8 fence model cards on `/servicii/modele-garduri/`.
+
+## W28-14 · Copertine: Imperlux photographs and prices, a Catalog group
+**Status: todo.**
+
+## W28-15 · Fatade images from fatade3d.md product pages
+**Status: todo.**
+
+## W28-16 · Construcții industriale: two service lines
+**Status: todo.**
+
+## W28-17 · Technical SEO and `scripts/seo-check.js`
+**Status: todo.**
+
+## W28-18 · Structured data and `scripts/schema-check.js`
+**Status: todo.**
+
+## W28-19 · GEO: llms.txt, the Despre facts block, one NAP, direct FAQ answers
+**Status: todo.**
+
+## W28-20 · Search Console tag
+**Status: blocked** on the owner (Q-W28-01, the tag's content value). The Business Profile
+half is done by W28-11 under R-W28-03.
+
+## W28-21 · Wave close: Lighthouse, W28-FINAL-RUN, the CRITIC pass, W28-REVIEW, W28-RUN
+**Status: todo.**

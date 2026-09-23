@@ -73,14 +73,13 @@ const OVERRIDES = [
     licence: 'owner_override_imperlux, competitor origin taken by owner decision W25-R15, no upscale, source URL per file, owner accepted 2026-09-21',
     files: [
       'GARD-01', 'GARD-02', 'GARD-03', 'GARD-04', 'GARD-05', 'GARD-06', 'GARD-07', 'GARD-08',
-      'GARDB-01', 'GARDB-02', 'GARDB-03', 'GARDB-04',
+      /* W27-FIX-11 (W27-R-17): GARDB-01 to GARDB-04 moved to the sixth entry below. */
     ],
   },
-  {
-    ruling: 'W26-R3',
-    licence: 'owner_override_imperlux, competitor origin taken by owner decision W26-R3, cropped to remove burned-in text, no upscale, source URL per file, owner accepted 2026-09-22',
-    files: ['ACOP-01', 'ACOP-02', 'ACOP-03', 'ACOP-04'],
-  },
+  /* W27-FIX-11 (W27-R-17): the W26-R3 entry is retired. Its two files (ACOP-01, ACOP-02, the
+     cropped category tiles) and the two the owner's photographs filled (ACOP-03, ACOP-04) all
+     carry imperlux.md's homepage bento renders now, under the sixth entry below; an entry
+     with no file standing on it is a dead exception, so it is gone rather than emptied. */
   /* AMENDED (W26-R10, W26-11): a THIRD override, the whole roofing page, with its
      own sentence and its own list again. "Cropped where burned-in text or branding
      sat" is the condition the three category tiles and the two IKO shingles were
@@ -127,6 +126,16 @@ const OVERRIDES = [
     ruling: 'W27-R-13',
     licence: "owner_override_imperlux, the maker's own packshot by owner decision W27-R-13 (strategy default, owner may overturn), imperlux.md's gallery render of the model without its mark or name, cropped to 4:3, no upscale, source URL per file, 2026-09-23",
     files: ['ACIM-10', 'ACIM-11', 'ACIM-12', 'ACIM-13', 'ACIM-14', 'ACIM-15', 'ACIM-16'],
+  },
+  /* AMENDED (W27-R-17, W27-FIX-11): a SIXTH override, the eight hub bento tiles. The owner's
+     instruction, verbatim in docs/rulings/W27-R.md: the four roofing and four fence tiles take
+     "the same exact pics" imperlux.md shows in its own homepage bentos. Those are its
+     /images/offers/ renders, installed as published (no crop, the tile's own cover fit frames
+     them), never upscaled. By name, eight files; nothing else may stand on this sentence. */
+  {
+    ruling: 'W27-R-17',
+    licence: "owner_override_imperlux, the hub bento pictures by owner instruction W27-R-17, imperlux.md's own homepage bento renders as published, no crop, no upscale, source URL per file, 2026-09-23",
+    files: ['ACOP-01', 'ACOP-02', 'ACOP-03', 'ACOP-04', 'GARDB-01', 'GARDB-02', 'GARDB-03', 'GARDB-04'],
   },
 ];
 const OVERRIDE_FILES = OVERRIDES.flatMap((o) => o.files);

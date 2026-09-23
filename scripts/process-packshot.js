@@ -101,7 +101,7 @@ const flag = (name, dflt) => {
   const i = process.argv.indexOf(`--${name}`);
   return i > -1 && process.argv[i + 1] ? process.argv[i + 1] : dflt;
 };
-if (args.length < 2) die('usage: node scripts/process-packshot.js <source-file> <SLOT-ID> [--dir catalog] [--crop t,r,b,l] [--label] [--floor-300]');
+if (args.length < 2) die('usage: node scripts/process-packshot.js <source-file> <SLOT-ID> [--dir catalog] [--crop t,r,b,l] [--label] [--floor-300] [--out px]');
 const [SRC, SLOT] = args;
 const DIR = flag('dir', 'catalog');
 
@@ -176,8 +176,16 @@ if (CROP) {
 }
 
 /* Never upscale. A 520px source is written at 520, not stretched to 600. */
-const target = Math.min(OUTPUT, Math.max(cw, ch));
-if (target < OUTPUT) console.log(`source is ${Math.max(cw, ch)}px on its longest side, under the ${OUTPUT}px output; writing at ${target}px rather than upscaling`);
+/* W27-FIX-11 (owner instruction W27-R-17): `--out <px>` raises the longest side written above
+   the 600px product-card output, for the HUB TILES only in practice: the wide bento tile is
+   drawn about 780px wide at 1440 and the tall one about 460px high, so a 600px file is under
+   1x on the wide tile and soft on a 2x screen. It never upscales: the longest side written is
+   the smaller of --out and the source, as before. */
+const OUT_RAW = flag('out', null);
+const OUT = OUT_RAW == null ? OUTPUT : Number(OUT_RAW);
+if (OUT_RAW != null && (!Number.isInteger(OUT) || OUT < OUTPUT || OUT > 2400)) die(`--out takes a whole number of pixels between ${OUTPUT} and 2400 for the longest side written. Got "${OUT_RAW}".`);
+const target = Math.min(OUT, Math.max(cw, ch));
+if (target < OUT) console.log(`source is ${Math.max(cw, ch)}px on its longest side, under the ${OUT}px output; writing at ${target}px rather than upscaling`);
 
 const outDir = path.join(ROOT, 'public', 'img', DIR);
 fs.mkdirSync(outDir, { recursive: true });
@@ -194,19 +202,25 @@ sips(['-s', 'format', 'jpeg', '-s', 'formatOptions', '88', SRC, '--out', tmp]);
 if (CROP) sips(['-c', String(ch), String(cw), '--cropOffset', String(CROP.top), String(CROP.left), tmp]);
 sips(['-Z', String(target), tmp]);
 
-/* Second pass where exiftool is installed. Not required: the assertion below is
-   what decides, and it runs either way. */
-try {
-  execFileSync('exiftool', ['-all=', '-overwrite_original', tmp], { stdio: 'ignore' });
-  console.log('exiftool: second metadata pass run');
-} catch { console.log('exiftool: not installed, sips strip only (the assertion below still decides)'); }
-
 /* Compress down until it fits, the way process-photos.js does. */
 let quality = 88;
 while (fs.statSync(tmp).size > MAX_BYTES && quality > 40) {
   quality -= 8;
   sips(['-s', 'format', 'jpeg', '-s', 'formatOptions', String(quality), tmp, '--out', tmp]);
 }
+
+/* Second pass where exiftool is installed. Not required: the assertion below is
+   what decides, and it runs either way.
+   W27-FIX-11: this pass runs AFTER the compression loop, not before it. sips writes a fresh
+   Exif APP1 block (ColorSpace, ExifImageWidth, ExifImageHeight) on every re-encode, so a
+   file large enough to go round the loop came out of the strip clean and went back in
+   dirty, and the assertion below refused it: two of the eight hub tile pictures, both over
+   the byte cap, failed on exactly that, while the six under the cap passed. The last
+   re-encode must be the one the strip follows. */
+try {
+  execFileSync('exiftool', ['-all=', '-overwrite_original', tmp], { stdio: 'ignore' });
+  console.log('exiftool: second metadata pass run');
+} catch { console.log('exiftool: not installed, sips strip only (the assertion below still decides)'); }
 
 /* THE ASSERTION, not the trust. Gate 17 refuses a committed image carrying GPS,
    and an image that reaches the repo dirty is a gate failure at the worst moment.

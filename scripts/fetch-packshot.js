@@ -96,6 +96,11 @@ const OVERRIDE_SLOTS = [
   'GARDB-01', 'GARDB-02', 'GARDB-03', 'GARDB-04',
   'ACOP-01', 'ACOP-02', 'ACOP-03', 'ACOP-04', 'ACOP-05', 'ACOP-06', 'ACOP-07',
   'ACIM-01', 'ACIM-02', 'ACIM-03', 'ACIM-04', 'ACIM-05', 'ACIM-06', 'ACIM-07', 'ACIM-08', 'ACIM-09',
+  /* AMENDED (W27-R-04, W27-C-03): imperlux.md is the source of record for everything under
+     Acoperisuri and Garduri, so the list grows by name to every product slot those pages
+     render: the seven metal tile models, the four Novatik models, and the ninth hub tile. */
+  'ACIM-10', 'ACIM-11', 'ACIM-12', 'ACIM-13', 'ACIM-14', 'ACIM-15', 'ACIM-16', 'NVK-01', 'NVK-02', 'NVK-03', 'NVK-04',
+  'ACOP-09',
 ];
 
 /* "Never a retailer, a marketplace, another reseller, a search result thumbnail."

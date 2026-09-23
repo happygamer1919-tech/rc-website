@@ -1068,3 +1068,16 @@ reproduces the W26-14 figures above to the pixel (19,436 and 19,622 re-read befo
 Plus 60 (W24-R4). No other page moved: the seven records changed group, not page, and the
 profnastil redirect page is the same size with a different anchor.
 
+## AMENDED (W27-C-03, wave 27): the seven imperlux metal tile models
+
+W27-R-04 and W27-R-05: seven model cards first in the Țiglă metalică section, each taller than a
+catalogue card by a tagline, a chip row and a facts line, and a derived "de la" line under each
+Compară heading. Same instrument, same method as the W27-C-02 block above:
+
+| Page | Before | After | Budget |
+|---|---|---|---|
+| `/servicii/acoperisuri/` | 20,180 | **21,643** | 20,240 to **21,703** |
+| `/ru/servicii/acoperisuri/` | 20,318 | **21,802** | 20,378 to **21,862** |
+
+Plus 60 (W24-R4). No other page moved.
+

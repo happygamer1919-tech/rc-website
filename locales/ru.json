@@ -392,7 +392,16 @@
     "showing": "Показано продуктов: {n}",
     "tableH": "Сравните модели:",
     "tableProduct": "Продукт",
-    "tableNone": "-"
+    "tableNone": "-",
+    "factWarranty": "гарантии",
+    "coloursOne": "цвет",
+    "coloursFew": "цвета",
+    "coloursMany": "цветов",
+    "coloursAria": "Доступные цвета",
+    "groupFrom": "{n} {models}, от {price}",
+    "modelsOne": "модель",
+    "modelsFew": "модели",
+    "modelsMany": "моделей"
   },
   "moved": {
     "h1": "Страница переехала",

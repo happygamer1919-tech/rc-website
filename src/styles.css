@@ -386,6 +386,22 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 .prod__variant {
   margin: 8px 0 0; font-size: 14px; line-height: 1.45; color: var(--ink-muted);
 }
+/* W27-C-03 (W27-R-04). The imperlux model card: one tagline line, the named colour
+   chips, and a facts line (warranty, weight, colour count) over a hairline. Same
+   prefix, same block: these are the catalogue card's own parts, not a second card. */
+.prod__tag { margin: 6px 0 0; font-size: 14px; line-height: 1.45; color: var(--ink-muted); }
+.prod__chips {
+  display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; padding: 0; list-style: none;
+}
+.prod__chip {
+  display: inline-flex; align-items: center; height: 28px; padding: 0 10px;
+  border: 1px solid var(--line); border-radius: var(--radius-pill);
+  font-size: 14px; font-weight: 700; line-height: 1; color: var(--ink);
+}
+.prod__facts {
+  margin: 12px 0 0; padding-top: 10px; border-top: 1px solid var(--hairline);
+  font-size: 14px; line-height: 1.45; color: var(--ink-muted);
+}
 /* The foot never wraps. It did at 511px and below, and a price long enough to
    need two lines then pushed the button onto a line of its own, left-aligned,
    which is the opposite of the row the card specifies. The price takes the slack
@@ -518,6 +534,8 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
    to be given the table its own rule: the tables sit outside the grid. */
 .roof-cmp.roof--off { display: none; }
 .roof-cmp__h { margin: 0 0 12px; font-size: 20px; }
+/* W27-C-03: the section's derived "de la" line under the table heading. */
+.roof-cmp__from { margin: -4px 0 12px; font-size: 15px; font-weight: 700; color: var(--ink); }
 .roof-cmp__scroll { overflow-x: auto; }
 .roof-cmp__scroll:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
 .roof-cmp__t { border-collapse: collapse; width: 100%; font-size: 15px; }

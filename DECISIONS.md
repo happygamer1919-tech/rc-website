@@ -12967,3 +12967,56 @@ on an instrument that re-read the W26-14 figures to the pixel first. Budgets 20,
 **Gates.** Every static gate exits 0; gate 20 (geometry, both widths, both locales) exits 0 with the
 five-tile bento; gate 14 (heading fit) exits 0 with the new table heading, 132 of 132 combinations.
 CI runs the full 29.
+
+## W27-C-03 · Țiglă metalică from Imperlux, seven models first, 2026-09-22
+
+Branch `w27/w27-c-03-tigla-imperlux`, stacked on W27-C-02.
+
+**W27-R-04 and W27-R-05 applied to the Țiglă metalică section of `/servicii/acoperisuri/`.** Seven
+records enter `content/roofing-sections.json` in imperlux's order (Barcelona, Madrid, Bavaria, Heta,
+Zet, Finn, Izi), each read from the rendered page under W26-R2 (the 47-page crawl of 2026-09-22 is
+in the session's scratch, its 20-page predecessor in `docs/audit/imperlux/`): the preview image, the
+tagline, the current price, the named colour chips, the warranty figure, the weight, the thickness and
+the colour count. **Verified against the rendered page, as the dispatch requires**: Barcelona 179.55,
+Madrid 179, Bavaria 240, Heta 248, Zet 336, Finn 236, Izi 403 lei/buc, and on all seven the section
+card, the Compară table and the product page agree. **Not taken**: the struck reference price and the
+percent badge (R-X, W27-R-05), and the "Popular" ribbon on Bavaria.
+
+**No Dasterum name matched any of the seven** (Monterrey, Valencia, modulară, Kascad), so the four
+Dasterum cards stay, after the seven. 78 + 7 = **85 cards**; the section's chip reads 11.
+
+**The card gained three parts, in the catalogue card's own prefix**: `.prod__tag` (the tagline),
+`.prod__chips` (the named colours) and `.prod__facts` ("15 ani garanție · 4,5 kg/m² · 3 culori"). The
+facts line is **derived** from the specs and the chip list at build time, never typed, and the build
+refuses a card that names more colours than it counts. Where the section card prints "+1" the fourth
+name is printed nowhere on imperlux.md, so five cards carry three names and a count of four
+(Q-W27-02). **The Russian chips go through the repo's own two colour dictionaries** (the fence
+palette and the tile legend), exact name only: Antracit becomes Антрацит; Maro, Negru and Ciocolată
+have no exact entry and keep their Romanian form, which is what the dispatch said to do and is the
+third point of Q-W27-02. Taglines are translated in the record, as the Novatik taglines were at
+W24-07.
+
+**The Compară table is imperlux's, minus one row.** Imperlux publishes Preț, Garanție, Grosime,
+Greutate, Culori. The section's table now carries Preț, Grosime, Greutate and Culori; **Garanție is
+held** (W26-R6, the roof warranty rows are still unconfirmed) and the figure shows on the card's
+facts line instead, which is where the owner's list puts "warranties". The two Dasterum-only columns
+(Acoperire, Tip de calitate) had to go: real on 4 of 11 rows, under the half the build requires. The
+`colours` cell for an imperlux row is the count its page prints.
+
+**A derived "de la" line under each Compară heading**: "7 modele, de la 179 lei/buc", the lowest
+current price among the section's imperlux models in their unit, computed at build, with a Russian
+plural. Sections whose imperlux models carry no price get none.
+
+**The pictures are the previews as published.** 1440x1080 PNGs, installed at 600x450 with no crop and
+no upscale, each with the category and the model name burned in and Imperlux's orange mark behind
+the sheet; flagged `label` (W25-R5) so the review list shows all seven. W26-R10 had refused Imperlux
+branding on one tile; W27-R-04's "same images, watermark untouched" is the later and wider order,
+the dispatch names this image in terms, and Q-W27-02 gives the owner the crop as a one-run choice.
+**The imperlux override grows by name to forty slots** in all three scripts that hold it, under a
+fourth `OVERRIDES` entry with W27-R-04's own sentence.
+
+**Rendered acceptance.** `dist/servicii/acoperisuri/index.html`: 85 `data-product-card`, the first
+seven in the section in imperlux order with image, `De la` price, chips and facts; 79 `.prod__price`
+plus 6 `.prod__ask`; 0 percent signs inside a price element; 0 occurrences of "Popular". Same on RU.
+
+**Heights.** 20,180 to **21,643** and 20,318 to **21,802**; budgets 21,703 / 21,862 (R-Y).

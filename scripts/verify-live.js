@@ -150,7 +150,9 @@ const MARKERS = {
        records into eleven of them as grades, and leaves one dasterum record whose
        model name imperlux does not carry. 71 - 13 + 20 = 78, and the arithmetic is
        written out because a count nobody can reproduce is a number, not a marker. */
-    productCards: 78,
+    /* AMENDED (W27-C-03, ruling W27-R-04): **85**. The seven imperlux.md metal tile
+       models, first in their section; no dasterum name matched, so none folded. 78 + 7. */
+    productCards: 85,
     /* AMENDED (W26-04): ~~8~~ **6**. Toate plus FIVE sections, not the seven
        catalogue subcategories the bar was built from. The seven catalogue pages
        still answer and still redirect here; what changed is what a visitor filters
@@ -322,8 +324,10 @@ const PAGES = [
      figures fall with the measurement. */
   /* AMENDED (W27-C-02): a fifth product tile on a third bento row and a fourth Compara
      table; measured 20,180 / 20,318 at 1440, settled, plus 60 (W24-R4), in R-Y. */
-  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 20240 },
-  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 20378 },
+  /* AMENDED (W27-C-03): seven imperlux metal tile cards, two more grid rows and the
+     derived "de la" lines; measured 21,643 / 21,802 at 1440, settled, plus 60, in R-Y. */
+  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 21703 },
+  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 21862 },
   /* W24-07. The rocă vulcanică mirror page. */
   { path: '/servicii/roca-vulcanica/',     type: 'novatik', label: 'novatik RO',  budget: 4348 },
   { path: '/ru/servicii/roca-vulcanica/',  type: 'novatik', label: 'novatik RU',  budget: 4446 },

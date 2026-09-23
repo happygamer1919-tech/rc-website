@@ -502,6 +502,104 @@
       }
     },
     {
+      "id": "ACIM-10",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Tigla metalica \"Barcelona\", imaginea de previzualizare a modelului asa cum o publica imperlux.md, cu numele modelului si categoria imprimate in imagine. W27-C-03 (W27-R-04): aceeasi imagine, neatinsa, fara decupaj, fara marire; W25-R5: marcata \"label\" pentru lista de revizuire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-10.jpg",
+      "alt": {
+        "ro": "Țiglă metalică Barcelona, foaia profilată",
+        "ru": "Металлочерепица Barcelona, лист с рельефом"
+      },
+      "label": true
+    },
+    {
+      "id": "ACIM-11",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Tigla metalica \"Madrid\", imaginea de previzualizare a modelului asa cum o publica imperlux.md, cu numele modelului si categoria imprimate in imagine. W27-C-03 (W27-R-04): aceeasi imagine, neatinsa, fara decupaj, fara marire; W25-R5: marcata \"label\" pentru lista de revizuire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-11.jpg",
+      "alt": {
+        "ro": "Țiglă metalică Madrid, foaia profilată",
+        "ru": "Металлочерепица Madrid, лист с рельефом"
+      },
+      "label": true
+    },
+    {
+      "id": "ACIM-12",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Tigla metalica \"Bavaria\", imaginea de previzualizare a modelului asa cum o publica imperlux.md, cu numele modelului si categoria imprimate in imagine. W27-C-03 (W27-R-04): aceeasi imagine, neatinsa, fara decupaj, fara marire; W25-R5: marcata \"label\" pentru lista de revizuire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-12.jpg",
+      "alt": {
+        "ro": "Țiglă metalică Bavaria, foaia profilată",
+        "ru": "Металлочерепица Bavaria, лист с рельефом"
+      },
+      "label": true
+    },
+    {
+      "id": "ACIM-13",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Tigla metalica \"Heta\", imaginea de previzualizare a modelului asa cum o publica imperlux.md, cu numele modelului si categoria imprimate in imagine. W27-C-03 (W27-R-04): aceeasi imagine, neatinsa, fara decupaj, fara marire; W25-R5: marcata \"label\" pentru lista de revizuire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-13.jpg",
+      "alt": {
+        "ro": "Țiglă metalică Heta, foaia profilată",
+        "ru": "Металлочерепица Heta, лист с рельефом"
+      },
+      "label": true
+    },
+    {
+      "id": "ACIM-14",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Tigla metalica \"Zet\", imaginea de previzualizare a modelului asa cum o publica imperlux.md, cu numele modelului si categoria imprimate in imagine. W27-C-03 (W27-R-04): aceeasi imagine, neatinsa, fara decupaj, fara marire; W25-R5: marcata \"label\" pentru lista de revizuire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-14.jpg",
+      "alt": {
+        "ro": "Țiglă metalică Zet, foaia profilată",
+        "ru": "Металлочерепица Zet, лист с рельефом"
+      },
+      "label": true
+    },
+    {
+      "id": "ACIM-15",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Tigla metalica \"Finn\", imaginea de previzualizare a modelului asa cum o publica imperlux.md, cu numele modelului si categoria imprimate in imagine. W27-C-03 (W27-R-04): aceeasi imagine, neatinsa, fara decupaj, fara marire; W25-R5: marcata \"label\" pentru lista de revizuire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-15.jpg",
+      "alt": {
+        "ro": "Țiglă metalică Finn, foaia profilată",
+        "ru": "Металлочерепица Finn, лист с рельефом"
+      },
+      "label": true
+    },
+    {
+      "id": "ACIM-16",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Tigla metalica \"Izi\", imaginea de previzualizare a modelului asa cum o publica imperlux.md, cu numele modelului si categoria imprimate in imagine. W27-C-03 (W27-R-04): aceeasi imagine, neatinsa, fara decupaj, fara marire; W25-R5: marcata \"label\" pentru lista de revizuire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-16.jpg",
+      "alt": {
+        "ro": "Țiglă metalică Izi, foaia profilată",
+        "ru": "Модульная металлочерепица Izi, лист с рельефом"
+      },
+      "label": true
+    },
+    {
       "id": "BA-01-before",
       "page": "/servicii/case-la-cheie/",
       "ratio": "1180 / 664",

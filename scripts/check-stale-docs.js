@@ -159,6 +159,13 @@ const SUPERSEDED = [
     clear: /#57534E|AMENDED|W28-01/,
   },
   {
+    id: 'warm-first',
+    find: /#F7F5F2/gi,
+    ruling: 'docs/CLAUDE.md section 3, AMENDED W28-03 (ruling W27-R-02)',
+    what: '--bg-warm as #F7F5F2; the live value is #FAF6F0 since W28-03',
+    clear: /#FAF6F0|AMENDED|W28-03/,
+  },
+  {
     id: 'line-cool',
     find: /#E2E2E2/gi,
     ruling: 'docs/CLAUDE.md section 3, AMENDED W28-01',
@@ -302,6 +309,12 @@ const KNOWN = [
     id: 'band-cool',
     contains: 'og:image regenerated on `#141414`',
     reason: 'W14 ticket body, a record of what the og image was generated on (R-S); the image itself keeps that colour until regenerated.',
+  },
+  {
+    file: 'docs/BACKLOG.md',
+    id: 'warm-first',
+    contains: 'light sections alternate white and `#F7F5F2` (the eleventh value,',
+    reason: 'W26-14 ticket body, the record of the value that card shipped (R-S).',
   },
   {
     file: 'RELEASE-NOTES.md',

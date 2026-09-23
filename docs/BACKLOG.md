@@ -1093,3 +1093,11 @@ gates 11, 18 and 28 exit 0.** Screenshots `docs/design/W27/w28-02-*`.
 14px floor grew the tile grid's small print by two lines. **All 53 budgets re-measured on the deployed
 tree plus 60**, generated into R-Y; `scripts/verify-live.js` carries them. No page changes.
 
+## W28-03 · Cream ground, white alternate, no section lines, 24/28px corners
+**Status: PR OPEN** (opened 2026-09-22). W27-R-02 applied: **`--bg-warm` is `#FAF6F0`** and is the page
+ground and the default light section; an even light section is white; `.section--divided` draws no
+line; `--radius-card` 24px, `--radius-hero` 28px. W26-14's `#F7F5F2` is retired (struck in section 3,
+added to `check-stale-docs.js` with the W26-14 ticket body excepted). Still exactly one off-white
+beside white, so the palette count holds. **Static gates, gates 20 and 28 exit 0.** Screenshots
+`docs/design/W27/w28-03-*`.
+

@@ -13200,6 +13200,30 @@ buttons will add more.
 
 **Gates.** Static gates exit 0; gate 11 (216 of 216, least RU slack recorded in the card), gate 18
 (dropdowns at rest) and gate 28 (text contrast) exit 0. Screenshots `docs/design/W27/w28-02-*`.
+
+## W28-03 · Cream ground, white alternate, no section lines, 2026-09-22
+
+Branch `w27/w28-03-cream-ground`, stacked on W28-02. Ruling W27-R-02: "off-white tint from #135
+stays; cream #FAF6F0 becomes the default section ground and white the alternate".
+
+**Read as one off-white, not two.** W26-14's tint was a value, `#F7F5F2`, on the even light sections.
+The ruling keeps the tinted alternation and names the cream as the default, so the one warm value
+becomes `#FAF6F0` and the order flips: the page and every light section are cream, an even light
+section is white, and the line `.section--divided` drew between sections is gone, tone separating
+them instead. Two warm values side by side would be the "dirty screen" the master plan records the
+first build being rejected for, so `#F7F5F2` is retired rather than kept beside the cream; section 3
+strikes it, `scripts/check-stale-docs.js` carries it, and the W26-14 ticket body that names it is
+excepted as a record. **The palette stays at eleven.**
+
+**Corners.** `--radius-card` 20px to 24px and `--radius-hero` 24px to 28px, the two tokens every card
+and hero container already read; nothing measured by gate 20 moves.
+
+**Contrast on the cream.** Every text colour was re-read on `#FAF6F0` by gate 28 at both widths and
+both locales: ink 16.2:1, muted 7.0:1, the eyebrow's dark orange 5.5:1, the brand orange at 3.2:1 only
+where the text is large (the stat numerals, the price lines at 20px bold). Gate 28 exits 0.
+
+**Gates.** Static gates exit 0 with the new staleness entry; gate 20 and gate 28 exit 0. Screenshots
+`docs/design/W27/w28-03-*`.
 ## W27-FIX-01 · Budgets after the 14px floor, and the section 12.0 failure that found it, 2026-09-22
 
 Branch `w27/w27-fix-01-budgets`, from `main` at `ff8a922` (#143 merged).

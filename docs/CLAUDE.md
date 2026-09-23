@@ -116,7 +116,7 @@ to this file, not a change to a stylesheet.
 | 8 | ~~`#E2E2E2`~~ **`#E6E1DA`** | `--line` | ~~Card borders, dividers~~ **AMENDED (W26-14): form field and chip borders, and small text on the dark band**; cards and dividers take the hairline below. **AMENDED (W28-01): warm; and `#9C9388` `--outline` is the CLEAR outline of form fields and filter buttons, borders only, never text, 3.02:1 on white** |
 | 9 | `#25D366` | - | WhatsApp's own colour, floating button only |
 | 10 | `#1EBE5A` | - | WhatsApp's own hover, floating button only |
-| 11 | `#F7F5F2` | `--bg-warm` | **W26-14**: the second light section ground, alternating with `#FFFFFF` |
+| 11 | ~~`#F7F5F2`~~ **`#FAF6F0`** | `--bg-warm` | **W26-14**: the second light section ground, alternating with `#FFFFFF`. **AMENDED (W28-03, ruling W27-R-02): the cream is the DEFAULT light ground and white the alternate, no line between sections; still exactly one off-white** |
 
 Values 9 and 10 are WhatsApp's brand colours, not the site's, and are confined
 to the floating contact button.
@@ -130,7 +130,8 @@ with hard edges. No gradients, no fades, no fourth off-white, no translucent
 overlay that creates an in-between shade. `--bg-grey` survives only as the
 image-placeholder fill.
 **AMENDED (W26-14, ruling W26-R16): "section backgrounds alternate white and a warm off-white
-neutral".** Two light sections that touch are never the same ground: counted among a page's
+neutral".** **AMENDED (W28-03, ruling W27-R-02): the order flips, cream `--bg-warm` is the page and
+the default section ground, an even light section is white, and `.section--divided` draws no line.** Two light sections that touch are never the same ground: counted among a page's
 sections, an even light section is `--bg-warm` (`src/styles.css`, at `.section--divided`). The
 `#141414` bands are unchanged (AMENDED W28-01: they are `#1C1917` now). Still hard edges, still no gradient, and **exactly one off-white**:
 the rejected first build had three near-identical light grounds and the client read them as "a

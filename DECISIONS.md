@@ -13519,3 +13519,37 @@ decides "+N", so the names are recorded in the data's note and not rendered.
 **Heights.** The roofing page reads identical to W27-FIX-03's measurement in both locales (the
 chip fits the row); the Novatik page grows 34px in each locale, 4,507 to 4,541 and 4,551 to 4,585
 at 1440 settled; all 53 re-measured, two move to measured plus 60 (R-Y).
+
+## W27-FIX-05 · Five near-twin pairs fold under W27-R-12, three are held, and the one grid is measured, 2026-09-23
+
+Branch `w27/w27-fix-05-near-twins`, stacked on W27-FIX-04.
+
+**W27-R-12 applied with "same physical item" as the test**, read pair by pair against both product
+pages and both pictures (the reading is under the ruling in `docs/rulings/W27-R.md`). **Folded**,
+each Imperlux record keeping its slot as the picture, its tagline and its specs, taking the folded
+grade's Dasterum "De la" (Imperlux prints none, W27-R-10), `match_tier` "near-twin", and both URLs
+in the record (`source.url` Imperlux's, `source.folded` Dasterum's): Coamă semicirculară takes
+CAT-0273 (210 lei); Bordură fronton takes CAT-0274 (180); Opritor zăpadă takes CAT-0275 (180), the
+same angle-profile strip, and not CAT-0271, a tubular guard on brackets; Racord perete takes
+CAT-0278 and CAT-0279 (180), the flashing with and without its groove; Dolie takes CAT-0277 (450),
+the inner valley Imperlux's page describes, and not CAT-0276, the upper valley cover. Their six
+ledger rows are removed as `orphaned_rows` (gate 19 refuses a row nothing renders); files and
+provenance rows stay; the three generated documents are regenerated.
+
+**Held, in Q-W27-04, with a recommended default each**: the five MDM VAXO membranes against the
+eight DACHMASTER and Decora membranes (three brands, no grammage on Imperlux's side to match on),
+Blachvent 175 against ROLL ECCO (two brands), and Folie anticondens (no Dasterum record of a
+vapour-barrier film: DRIPSTOP is a bonded felt, Dachmaster Alu 80 another maker's barrier). A fold
+there would print one maker's picture and name over another maker's price, which section 5 does
+not allow this terminal to decide.
+
+**"One accessory grid", measured rather than changed.** The roofing page renders every section in
+one `.prod-grid` and always has; read from the built pages in both locales: **1** grid, **99**
+cards (11 + 7 + 1 + 2 + 18 + 60), 60 of 60 accessory cards inside that grid, the six chips summing
+to Toate (99), **0** duplicate product names. If the dispatch meant Imperlux's "Accesorii Novatik
+Natura" and "Accesorii Creaton" tile blocks, those are not on this site (Q-W27-03 part 4, restated
+in Q-W27-04).
+
+**Heights.** Two grid rows fewer: 24,782 to 23,873 RO and 25,003 to 24,094 RU at 1440 settled; all
+53 re-measured, two move to measured plus 60 (R-Y). `scripts/verify-live.js` counts 99 cards. The
+mirror report's group table and near-name table carry the amendment.

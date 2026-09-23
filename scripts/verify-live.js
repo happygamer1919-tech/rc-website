@@ -154,7 +154,10 @@ const MARKERS = {
        models, first in their section; no dasterum name matched, so none folded. 78 + 7. */
     /* AMENDED (W27-C-06, ruling W27-R-04): **105**. Twenty metal tile accessories from
        imperlux.md (twenty-one on its pages, one with no picture at the floor). 85 + 20. */
-    productCards: 105,
+    /* AMENDED (W27-FIX-05, ruling W27-R-12): **99**. Six dasterum accessory records fold into
+       five imperlux near-twins (Coamă semirotundă, Bordura de fronton, Reținător de zăpadă, Dolie
+       interioară, and the two Plăci de racordare) and render nowhere. 105 - 6. */
+    productCards: 99,
     /* AMENDED (W26-04): ~~8~~ **6**. Toate plus FIVE sections, not the seven
        catalogue subcategories the bar was built from. The seven catalogue pages
        still answer and still redirect here; what changed is what a visitor filters
@@ -334,8 +337,10 @@ const PAGES = [
      24,393 at 1440, settled, plus 60, in R-Y. */
   /* AMENDED (W27-FIX-03, ruling W27-R-10): the eleven rainwater prices return and with them the
      section's "de la" line, one line; measured 24,782 / 25,003 at 1440, settled, plus 60, in R-Y. */
-  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 24842 },
-  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 25063 },
+  /* AMENDED (W27-FIX-05, ruling W27-R-12): six accessory cards fold away, two grid rows fewer;
+     measured 23,873 / 24,094 at 1440, settled, plus 60, in R-Y. */
+  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 23933 },
+  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 24154 },
   /* W24-07. The rocă vulcanică mirror page. */
   /* AMENDED (W27-C-04): chips, a warranty row and a price on each card, a derived "de la"
      line under the heading; measured 4,369 / 4,439 at 1440, settled, plus 60, in R-Y. */

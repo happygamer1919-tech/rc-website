@@ -3415,3 +3415,42 @@ not reach it. Either a picture from you, or it stays out.
 (22 tiles) and "Accesorii Creaton" (21 tiles) are names with pictures, no page, no price, no spec. They
 are listed in the report and not added. If you want them as cards, that is 43 more pictures and a card.
 
+
+## Q-W27-04 · Two branded near-twin pairs and Folie anticondens are held: the same product name on both sites is not the same product · OPEN · opened 2026-09-23 (W27-FIX-05)
+
+**Raised W27-FIX-05, 2026-09-23. Shipped default: the five near-twin pairs whose pictures and pages
+show the same physical item are folded (W27-R-12); these three are left as they were. Nothing is
+blocked.**
+
+W27-R-12 folds "near-twin products (same physical item from Imperlux and Dasterum)". Five of the
+seven rows in the mirror report's table pass that test and are folded: the semicircular ridge cap,
+the gable trim, the angle-profile snow strip, the wall flashing (both grades) and the inner valley.
+Two rows and Folie anticondens do not, and folding them would print one maker's picture and name
+over another maker's price:
+
+**1. The membranes.** Imperlux sells MDM's VAXO line, five sizes S to XXL, and its pages rank them
+by strength in words with no grammage. Dasterum sells DACHMASTER 100 and 120 and Decora 80 to 180,
+eight records of two other brands, named by grammage. Five against eight, three brands, nothing to
+match on. **Recommended default: keep them apart**, as shipped. If you want one membrane card per
+size, say which Dasterum grammage each VAXO size stands for, or that the Dasterum membranes should
+simply go, and it is one fold per pair.
+
+**2. The ridge ventilation band.** Imperlux's "Banda ventilare coamă MDM Blachvent 175" and
+Dasterum's "Banda coamă ROLL ECCO pentru ventilare" are two makers' products under their own brand
+names. **Recommended default: keep both**, as shipped. If they are interchangeable for you, one
+line folds ROLL ECCO under Blachvent at ROLL ECCO's "De la 232 lei".
+
+**3. Folie anticondens.** Imperlux describes it as a vapour-barrier film fitted under the roof.
+Dasterum has no such film: DRIPSTOP (CAT-0235, de la 50 lei) is an anti-condensation felt bonded
+to the underside of profiled sheet, and Dachmaster Alu 80 PARAIZOLARE (CAT-0247) is another maker's
+vapour barrier. Imperlux's own picture is 260x260, under the floor (W25-R4), so a fold would also
+have to borrow the Dasterum picture. **Recommended default: leave it off the site**, as W27-C-06
+did. If you name the twin (DRIPSTOP or Dachmaster Alu 80) or supply a picture at 450 or more, it is
+one card.
+
+**One more thing the ruling's last sentence raised.** "One accessory grid": the site has always
+rendered every roofing product in a single grid, and the accessories are one filter group of it
+(measured in W27-FIX-05: one `.prod-grid`, 60 of 60 accessory cards inside it, the six chips
+summing to Toate). If "the two accessory grids" meant the "Accesorii Novatik Natura" and "Accesorii
+Creaton" tile blocks on Imperlux's own pages (Q-W27-03 part 4), those are not on this site, and
+making them cards is 43 pictures and a card of its own.

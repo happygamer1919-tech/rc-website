@@ -1523,3 +1523,17 @@ Novatik page the row wraps once on Roman ("+2") and Wood ("+1"). All 53 budgets 
 |---|---|---|---|
 | `/servicii/roca-vulcanica/` | 4,507 | **4,541** | 4,567 to **4,601** |
 | `/ru/servicii/roca-vulcanica/` | 4,551 | **4,585** | 4,611 to **4,645** |
+
+## AMENDED (W27-FIX-05, wave 27 fix pass): six accessory cards fold away, two budgets move
+
+Added 2026-09-23 by card W27-FIX-05, under ruling W27-R-12. Nothing above this line moves.
+
+Six Dasterum accessory records fold into five Imperlux near-twins and render nowhere, so the
+roofing page's grid loses two rows in each locale. All 53 budgets re-measured at 1440, settled
+(reveals applied, 1,600ms), on the card's built tree; two move to measured plus 60 (W24-R4) and the
+other 51 read identical:
+
+| Page | Before (budget minus 60) | After | Budget |
+|---|---|---|---|
+| `/servicii/acoperisuri/` | 24,782 | **23,873** | 24,842 to **23,933** |
+| `/ru/servicii/acoperisuri/` | 25,003 | **24,094** | 25,063 to **24,154** |

@@ -13677,3 +13677,38 @@ W26-R12 is overturned for that one tile. Q-W26-05 is answered for the calculator
 heading; the "Reduceri" tile keeps the homepage offer form. One line of data in `build.js`, its
 comment carrying the owner's words; the hub keeps four tiles and four links, so no live marker
 moves and no height moves.
+
+## W27-FIX-11 · The eight hub bento pictures are Imperlux's own, under W27-R-17, 2026-09-23
+
+Branch `w27/w27-fix-11-hub-pictures`, from `main` at `bcd4825` (#162 merged, verified live).
+
+**The owner's instruction, recorded verbatim as W27-R-17; the first of its three options is
+taken, "the same exact pics".** The two bentos in the owner's screenshots are on imperlux.md's
+homepage, not on its section pages, which is why W26-03 found no pictures for two roofing tiles
+and cropped category tiles for the other two: the homepage renders them from `/images/offers/`,
+read tile by tile in a real browser (W26-R2) and matched by label. Eight files, every one looked
+at (no text, no logo, no watermark): `p-tigla.png` 1334x1337 (Țiglă metalică), `p-roca.png`,
+`p-shingle.png`, `p-bavaria.png` 1080x1080 (Rocă vulcanică Novatik, Calculează prețul, Reduceri),
+`g-il100.webp`, `g-il40.webp`, `g-il102.webp`, `g-il30.webp` 1296x1600 (Garduri tip jaluzele,
+Calculează prețul gardului, Modele de garduri, Prețuri & oferte). Installed as published,
+uncropped, because the tile's own `object-fit: cover` frames each one exactly as imperlux.md's
+does (the wide tile shows a band of the square render), through `fetch-packshot.js` and
+`process-packshot.js`, never upscaled: `ACOP-01` 1197x1200, `ACOP-02` 900x900, `ACOP-03`
+800x800, `ACOP-04` 1000x1000, `GARDB-01` and `-02` 972x1200, `GARDB-03` and `-04` 810x1000.
+
+**Two changes to `scripts/process-packshot.js`, both found by using it.** `--out <px>` raises the
+longest side written above the 600px product-card output, never above the source: the wide
+bento tile is drawn about 780px wide at 1440, so a 600px file was under 1x on it. And the
+exiftool pass now runs AFTER the compression loop: sips writes a fresh Exif APP1 block on every
+re-encode, so a file large enough to go round the loop came out of the strip clean and went back
+in dirty, and the tool's own assertion refused it; two of the eight (the two textures, over the
+220KB cap) failed on exactly that and the six under the cap passed. The assertion was right and
+the order was wrong.
+
+**Records.** A sixth override sentence naming W27-R-17 in `check-asset-provenance.js`, eight
+files by name; the W26-R3 entry retired (no file stood on it any more) and the four fence tiles
+moved out of the W25-R15 entry; eight provenance rows rewritten; eight ledger rows amended with
+new alt text describing the render; `docs/PHOTO-REVIEW-W25.md` regenerated. **What leaves**: the
+owner's two photographs on `ACOP-03` and `ACOP-04` (W26-R11), which stay in the owner's folder.
+**Measured**: gate 20 72 of 72 (four tiles, the W24-R5 gradient on every filled tile), gate 17
+clean, 0 of 53 budgets move.

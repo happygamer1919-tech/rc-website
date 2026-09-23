@@ -273,10 +273,10 @@ them apart: nothing from the earlier dispatch is a labelled swatch or carries a 
 | `NVK-02` | NVK-02 | /servicii/roca-vulcanica/ | https://imperlux.md/acoperisuri/images/products/novatik-slate/hero.png | owner_override_imperlux | 600x450 | labelled swatch |
 | `NVK-03` | NVK-03 | /servicii/roca-vulcanica/ | https://imperlux.md/acoperisuri/images/products/novatik-roman/hero.png | owner_override_imperlux | 600x450 | labelled swatch |
 | `NVK-04` | NVK-04 | /servicii/roca-vulcanica/ | https://imperlux.md/acoperisuri/images/products/novatik-wood/hero.png | owner_override_imperlux | 600x450 | labelled swatch |
-| `ACOP-01` | ACOP-01 | /servicii/acoperisuri/ | https://imperlux.md/acoperisuri/images/categories/tigla-metalica.png | owner_override_imperlux | 483x580 | none |
-| `ACOP-02` | ACOP-02 | /servicii/acoperisuri/ | https://imperlux.md/acoperisuri/images/categories/roca-vulcanica.png | owner_override_imperlux | 969x277 | none |
-| `ACOP-03` | ACOP-03 | /servicii/acoperisuri/ | client direct transfer, owner folder RC-webpics_v2 ACOPERIȘURI, 22.09.2026 | owned by Rapid Construct, supplied for site use | 1280x730 | none |
-| `ACOP-04` | ACOP-04 | /servicii/acoperisuri/ | client direct transfer, owner folder RC-webpics_v2 ACOPERIȘURI, 22.09.2026 | owned by Rapid Construct, supplied for site use | 1280x730 | none |
+| `ACOP-01` | ACOP-01 | /servicii/acoperisuri/ | https://imperlux.md/images/offers/p-tigla.png | owner_override_imperlux | 1197x1200 | none |
+| `ACOP-02` | ACOP-02 | /servicii/acoperisuri/ | https://imperlux.md/images/offers/p-roca.png | owner_override_imperlux | 900x900 | none |
+| `ACOP-03` | ACOP-03 | /servicii/acoperisuri/ | https://imperlux.md/images/offers/p-shingle.png | owner_override_imperlux | 800x800 | none |
+| `ACOP-04` | ACOP-04 | /servicii/acoperisuri/ | https://imperlux.md/images/offers/p-bavaria.png | owner_override_imperlux | 1000x1000 | none |
 | `ACOP-05` | ACOP-05 | /servicii/acoperisuri/ | https://imperlux.md/acoperisuri/images/categories/ceramica.png | owner_override_imperlux | 540x540 | none |
 | `ACOP-06` | ACOP-06 | /servicii/acoperisuri/ | https://imperlux.md/acoperisuri/images/categories/shingle.png | owner_override_imperlux | 1440x411 | none |
 | `ACOP-07` | ACOP-07 | /servicii/acoperisuri/ | https://imperlux.md/acoperisuri/images/categories/sisteme-pluviale.png | owner_override_imperlux | 840x480 | none |
@@ -398,10 +398,10 @@ them apart: nothing from the earlier dispatch is a labelled swatch or carries a 
 | `GARD-06` | GARD-06 | /servicii/modele-garduri/ | https://imperlux.md/garduri/images/products/il100/7016.webp | owner_override_imperlux | 486x600 | none |
 | `GARD-07` | GARD-07 | /servicii/modele-garduri/ | https://imperlux.md/garduri/images/products/il40/9005.webp | owner_override_imperlux | 486x600 | none |
 | `GARD-08` | GARD-08 | /servicii/modele-garduri/ | https://imperlux.md/garduri/images/products/il40/7016.webp | owner_override_imperlux | 486x600 | none |
-| `GARDB-01` | GARDB-01 | /servicii/garduri/ | https://imperlux.md/images/proiecte/ga-ansamblu-ialoveni.webp | owner_override_imperlux | 450x600 | none |
-| `GARDB-02` | GARDB-02 | /servicii/garduri/ | https://imperlux.md/garduri/images/lucrari/il40/1.jpg | owner_override_imperlux | 600x400 | none |
-| `GARDB-03` | GARDB-03 | /servicii/garduri/ | https://imperlux.md/images/proiecte/ga-curte-stauceni.webp | owner_override_imperlux | 450x600 | none |
-| `GARDB-04` | GARDB-04 | /servicii/garduri/ | https://imperlux.md/images/oferte/il100.jpg | owner_override_imperlux | 600x400 | none |
+| `GARDB-01` | GARDB-01 | /servicii/garduri/ | https://imperlux.md/images/offers/g-il100.webp | owner_override_imperlux | 972x1200 | none |
+| `GARDB-02` | GARDB-02 | /servicii/garduri/ | https://imperlux.md/images/offers/g-il40.webp | owner_override_imperlux | 972x1200 | none |
+| `GARDB-03` | GARDB-03 | /servicii/garduri/ | https://imperlux.md/images/offers/g-il102.webp | owner_override_imperlux | 810x1000 | none |
+| `GARDB-04` | GARDB-04 | /servicii/garduri/ | https://imperlux.md/images/offers/g-il30.webp | owner_override_imperlux | 810x1000 | none |
 
 ### Copertine (3)
 

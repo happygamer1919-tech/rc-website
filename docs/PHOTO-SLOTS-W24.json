@@ -125,12 +125,12 @@
       "page": "/servicii/garduri/",
       "ratio": "5 / 6",
       "min_px": "1000x1200",
-      "shows": "Garduri tip jaluzele: un gard terminat, vedere de ansamblu de-a lungul liniei gardului, format PORTRET (tila inalta).",
+      "shows": "Garduri tip jaluzele: un gard terminat, vedere de ansamblu de-a lungul liniei gardului, format PORTRET (tila inalta). AMENDED W27-FIX-11 (W27-R-17): imaginea din bento-ul de pe pagina principala imperlux.md, /images/offers/g-il100.webp, instalata asa cum e publicata, fara decupaj (tila o incadreaza singura prin object-fit), fara marire; niciun text, niciun logo in imagine.",
       "state": "filled",
       "provenance": "public/img/garduri/GARDB-01.jpg",
       "alt": {
-        "ro": "Gard metalic tip jaluzele terminat, vedere de-a lungul liniei gardului",
-        "ru": "Готовый металлический забор жалюзи, вид вдоль линии забора"
+        "ro": "Gard tip jaluzele negru, lamelele văzute de aproape",
+        "ru": "Чёрный забор жалюзи, ламели крупным планом"
       }
     },
     {
@@ -138,12 +138,12 @@
       "page": "/servicii/garduri/",
       "ratio": "7 / 2",
       "min_px": "1750x500",
-      "shows": "Linia unui gard terminat pe toata lungimea unei strazi, cadru LAT si jos (tila panoramica). AMENDED W25-18: ceruse masuratori pe teren, pe care sursa nu le publica.",
+      "shows": "Linia unui gard terminat pe toata lungimea unei strazi, cadru LAT si jos (tila panoramica). AMENDED W25-18: ceruse masuratori pe teren, pe care sursa nu le publica. AMENDED W27-FIX-11 (W27-R-17): imaginea din bento-ul de pe pagina principala imperlux.md, /images/offers/g-il40.webp, instalata asa cum e publicata, fara decupaj (tila o incadreaza singura prin object-fit), fara marire; niciun text, niciun logo in imagine.",
       "state": "filled",
       "provenance": "public/img/garduri/GARDB-02.jpg",
       "alt": {
-        "ro": "Linia unui gard metalic tip jaluzele pe toata lungimea strazii",
-        "ru": "Линия металлического забора жалюзи вдоль всей улицы"
+        "ro": "Gard tip jaluzele negru cu lamele drepte, de aproape",
+        "ru": "Чёрный забор жалюзи с прямыми ламелями, крупным планом"
       }
     },
     {
@@ -151,12 +151,12 @@
       "page": "/servicii/garduri/",
       "ratio": "7 / 4",
       "min_px": "900x520",
-      "shows": "Profilul lamelelor vazut de aproape pe un gard montat, ca sa se vada distanta dintre ele. Orizontal. AMENDED W25-18: ceruse trei profile alaturate, pe care sursa nu le publica.",
+      "shows": "Profilul lamelelor vazut de aproape pe un gard montat, ca sa se vada distanta dintre ele. Orizontal. AMENDED W25-18: ceruse trei profile alaturate, pe care sursa nu le publica. AMENDED W27-FIX-11 (W27-R-17): imaginea din bento-ul de pe pagina principala imperlux.md, /images/offers/g-il102.webp, instalata asa cum e publicata, fara decupaj (tila o incadreaza singura prin object-fit), fara marire; niciun text, niciun logo in imagine.",
       "state": "filled",
       "provenance": "public/img/garduri/GARDB-03.jpg",
       "alt": {
-        "ro": "Profilul lamelelor unui gard tip jaluzele, vazut de aproape",
-        "ru": "Профиль ламелей забора жалюзи, крупным планом"
+        "ro": "Gard tip jaluzele negru, lamele înclinate de aproape",
+        "ru": "Чёрный забор жалюзи, наклонные ламели крупным планом"
       }
     },
     {
@@ -164,12 +164,12 @@
       "page": "/servicii/garduri/",
       "ratio": "7 / 4",
       "min_px": "900x520",
-      "shows": "Un gard terminat la o casa moderna, orizontal, fara pret, fara eticheta si fara procent in cadru. AMENDED W25-18: ceruse lamele stivuite in depozit, pe care sursa nu le publica.",
+      "shows": "Un gard terminat la o casa moderna, orizontal, fara pret, fara eticheta si fara procent in cadru. AMENDED W25-18: ceruse lamele stivuite in depozit, pe care sursa nu le publica. AMENDED W27-FIX-11 (W27-R-17): imaginea din bento-ul de pe pagina principala imperlux.md, /images/offers/g-il30.webp, instalata asa cum e publicata, fara decupaj (tila o incadreaza singura prin object-fit), fara marire; niciun text, niciun logo in imagine.",
       "state": "filled",
       "provenance": "public/img/garduri/GARDB-04.jpg",
       "alt": {
-        "ro": "Gard metalic tip jaluzele terminat la o casa moderna",
-        "ru": "Готовый металлический забор жалюзи у современного дома"
+        "ro": "Gard tip jaluzele negru cu lamele dese, de aproape",
+        "ru": "Чёрный забор жалюзи с частыми ламелями, крупным планом"
       }
     },
     {
@@ -272,12 +272,12 @@
       "page": "/servicii/acoperisuri/",
       "ratio": "5 / 6",
       "min_px": "1000x1200",
-      "shows": "Tigla metalica: un acoperis terminat cu tigla metalica, vedere de ansamblu, format PORTRET (tila inalta a bento-ului). AMENDED W26-03 (ruling W26-R3): filled with the tile image imperlux.md shows for tigla metalica, CROPPED to the packshot. The source tile is 1440x1080 and carries a burned-in Romanian headline and a model count above the product, measured at y 270..494; the crop starts at y 500 so no text survives. It is not the subject this line asked for, which was a finished roof.",
+      "shows": "Tigla metalica: un acoperis terminat cu tigla metalica, vedere de ansamblu, format PORTRET (tila inalta a bento-ului). AMENDED W26-03 (ruling W26-R3): filled with the tile image imperlux.md shows for tigla metalica, CROPPED to the packshot. The source tile is 1440x1080 and carries a burned-in Romanian headline and a model count above the product, measured at y 270..494; the crop starts at y 500 so no text survives. It is not the subject this line asked for, which was a finished roof. AMENDED W27-FIX-11 (W27-R-17): imaginea din bento-ul de pe pagina principala imperlux.md, /images/offers/p-tigla.png, instalata asa cum e publicata, fara decupaj (tila o incadreaza singura prin object-fit), fara marire; niciun text, niciun logo in imagine.",
       "state": "filled",
       "provenance": "public/img/acoperisuri/ACOP-01.jpg",
       "alt": {
-        "ro": "Prim-plan cu profilul unei tigle metalice inchise la culoare",
-        "ru": "Крупный план профиля тёмной металлочерепицы"
+        "ro": "Țiglă metalică neagră, profilul foii de aproape",
+        "ru": "Чёрная металлочерепица, профиль листа крупным планом"
       }
     },
     {
@@ -285,12 +285,12 @@
       "page": "/servicii/acoperisuri/",
       "ratio": "7 / 2",
       "min_px": "1750x500",
-      "shows": "Roca vulcanica Novatik: un acoperis cu tigla Novatik, cadru LAT si jos (tila panoramica), cu cer deasupra. AMENDED W26-03 (ruling W26-R3): filled with the tile image imperlux.md shows for roca vulcanica, CROPPED to the packshot. The burned-in Romanian headline and model count sit at y 240..556 in the 1440x1080 source; the crop starts at y 608. It is not the subject this line asked for, which was a roof under sky.",
+      "shows": "Roca vulcanica Novatik: un acoperis cu tigla Novatik, cadru LAT si jos (tila panoramica), cu cer deasupra. AMENDED W26-03 (ruling W26-R3): filled with the tile image imperlux.md shows for roca vulcanica, CROPPED to the packshot. The burned-in Romanian headline and model count sit at y 240..556 in the 1440x1080 source; the crop starts at y 608. It is not the subject this line asked for, which was a roof under sky. AMENDED W27-FIX-11 (W27-R-17): imaginea din bento-ul de pe pagina principala imperlux.md, /images/offers/p-roca.png, instalata asa cum e publicata, fara decupaj (tila o incadreaza singura prin object-fit), fara marire; niciun text, niciun logo in imagine.",
       "state": "filled",
       "provenance": "public/img/acoperisuri/ACOP-02.jpg",
       "alt": {
-        "ro": "Prim-plan cu o tigla acoperita cu roca vulcanica, profil ondulat",
-        "ru": "Крупный план черепицы с вулканическим камнем, волнистый профиль"
+        "ro": "Țiglă cu rocă vulcanică Novatik, foaie cu textură de lemn",
+        "ru": "Черепица с вулканическим камнем Novatik, лист с текстурой дерева"
       }
     },
     {
@@ -298,12 +298,12 @@
       "page": "/servicii/acoperisuri/",
       "ratio": "7 / 4",
       "min_px": "900x520",
-      "shows": "Calcularea pretului: santier de acoperis cu masuratori in curs, ruleta sau plan pe masa. Orizontal. AMENDED W26-03 (ruling W26-R3): STILL EMPTY, and the reason is measured. The imperlux.md roofing hub carries six tile images: five product categories and one promo. NONE of them is a price calculator, so this tile has no counterpart to take. Nothing was substituted. AMENDED W26-11 (W26-R11): filled with the owner's own photograph from RC-webpics_v2/ACOPERIȘURI, a house mid-build with its roof battens on and no covering yet, the stage at which a roof is measured. The folder's files are all named \"WhatsApp Image\", so it was chosen by what it shows; cropped to 7:4 at its own width, no upscale.",
+      "shows": "Calcularea pretului: santier de acoperis cu masuratori in curs, ruleta sau plan pe masa. Orizontal. AMENDED W26-03 (ruling W26-R3): STILL EMPTY, and the reason is measured. The imperlux.md roofing hub carries six tile images: five product categories and one promo. NONE of them is a price calculator, so this tile has no counterpart to take. Nothing was substituted. AMENDED W26-11 (W26-R11): filled with the owner's own photograph from RC-webpics_v2/ACOPERIȘURI, a house mid-build with its roof battens on and no covering yet, the stage at which a roof is measured. The folder's files are all named \"WhatsApp Image\", so it was chosen by what it shows; cropped to 7:4 at its own width, no upscale. AMENDED W27-FIX-11 (W27-R-17): imaginea din bento-ul de pe pagina principala imperlux.md, /images/offers/p-shingle.png, instalata asa cum e publicata, fara decupaj (tila o incadreaza singura prin object-fit), fara marire; niciun text, niciun logo in imagine.",
       "state": "filled",
       "provenance": "public/img/acoperisuri/ACOP-03.jpg",
       "alt": {
-        "ro": "Casă în construcție cu șipcile acoperișului montate, înainte de învelitoare",
-        "ru": "Дом в стадии строительства с обрешёткой кровли, до укладки покрытия"
+        "ro": "Șindrilă bituminoasă gri, suprafața acoperișului de aproape",
+        "ru": "Серая битумная черепица, поверхность кровли крупным планом"
       }
     },
     {
@@ -311,12 +311,12 @@
       "page": "/servicii/acoperisuri/",
       "ratio": "7 / 4",
       "min_px": "900x520",
-      "shows": "Reduceri: material de acoperis stivuit in depozit sau pe santier. Orizontal. Fara pret, fara eticheta, fara procent in cadru. AMENDED W26-03 (ruling W26-R3): STILL EMPTY, and the reason is measured. The only imperlux.md tile left is the one its \"oferte\" tile shows, /acoperisuri/images/promo/scurgere-gratuit-cta.jpg, and it is an advert: it carries the IMPERLUX LOGO, the headline \"Vrei sistem de scurgere GRATUIT?\" and a \"Click si afla detalii\" button. A competitor logo and a free-offer claim are two separate refusals. Cropping to its photograph leaves a rainwater-system render, which matches neither this line nor the tile label \"Reduceri\". AMENDED W26-11 (W26-R11): filled with the owner's own photograph from RC-webpics_v2/ACOPERIȘURI, a drone view of a finished dark metal tile roof. The folder's files are all named \"WhatsApp Image\", so it was chosen by what it shows; cropped to 7:4 at its own width, no upscale.",
+      "shows": "Reduceri: material de acoperis stivuit in depozit sau pe santier. Orizontal. Fara pret, fara eticheta, fara procent in cadru. AMENDED W26-03 (ruling W26-R3): STILL EMPTY, and the reason is measured. The only imperlux.md tile left is the one its \"oferte\" tile shows, /acoperisuri/images/promo/scurgere-gratuit-cta.jpg, and it is an advert: it carries the IMPERLUX LOGO, the headline \"Vrei sistem de scurgere GRATUIT?\" and a \"Click si afla detalii\" button. A competitor logo and a free-offer claim are two separate refusals. Cropping to its photograph leaves a rainwater-system render, which matches neither this line nor the tile label \"Reduceri\". AMENDED W26-11 (W26-R11): filled with the owner's own photograph from RC-webpics_v2/ACOPERIȘURI, a drone view of a finished dark metal tile roof. The folder's files are all named \"WhatsApp Image\", so it was chosen by what it shows; cropped to 7:4 at its own width, no upscale. AMENDED W27-FIX-11 (W27-R-17): imaginea din bento-ul de pe pagina principala imperlux.md, /images/offers/p-bavaria.png, instalata asa cum e publicata, fara decupaj (tila o incadreaza singura prin object-fit), fara marire; niciun text, niciun logo in imagine.",
       "state": "filled",
       "provenance": "public/img/acoperisuri/ACOP-04.jpg",
       "alt": {
-        "ro": "Vedere de sus a unei case cu acoperiș nou din țiglă metalică gri închis",
-        "ru": "Вид сверху на дом с новой кровлей из тёмно-серой металлочерепицы"
+        "ro": "Foaie de țiglă metalică Bavaria, gri închis, pe fundal alb",
+        "ru": "Лист металлочерепицы Bavaria, тёмно-серый, на белом фоне"
       }
     },
     {

@@ -1222,3 +1222,10 @@ switch, no motion. Gate 28: 138 of 138. 0 budgets move.
 acoperișului" tile opens `/in-constructie/` as the fence calculator does, overturning W26-R12 for
 that tile; Q-W26-05 answered for the calculator half. One data line in `build.js`; no marker, no
 height moves.
+
+## W27-FIX-11 · The eight hub bento pictures are Imperlux's own
+**Status: PR OPEN** (opened 2026-09-23). Owner instruction W27-R-17: `ACOP-01` to `ACOP-04` and
+`GARDB-01` to `GARDB-04` take imperlux.md's homepage bento renders (`/images/offers/`), as
+published, uncropped, never upscaled, under a sixth override sentence; the owner's two roofing
+photographs leave those slots. `process-packshot.js` gains `--out` and strips after its
+compression loop. Gate 20 72 of 72; 0 budgets move.

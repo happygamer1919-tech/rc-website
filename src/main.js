@@ -434,7 +434,7 @@
     if (form.getAttribute('data-armed') !== '1') {
       status.hidden = false;
       status.textContent = form.getAttribute('data-demo');
-      status.style.color = '#5A5A5A';
+      status.style.color = '#57534E';
       return;
     }
 
@@ -642,7 +642,7 @@
       if (leadForm.getAttribute('data-armed') !== '1') {
         leadStatus.hidden = false;
         leadStatus.textContent = leadForm.getAttribute('data-demo');
-        leadStatus.style.color = '#5A5A5A';
+        leadStatus.style.color = '#57534E';
         return;
       }
       var button = leadForm.querySelector('button[type="submit"]');

@@ -57,7 +57,7 @@ Approved by Ivan. Do not reopen without his sign-off.
 |---|---|
 | Hero visual | **No photo.** Plain light background, headline, stat row, two CTAs, price box (Imperlux model). |
 | Prices | **Published.** Per m² figures visible in the hero. |
-| Header | **White bar carrying a dark pill.** Solid, opaque, fixed. The bar is `#FFFFFF` with a 1px `--line` bottom border; the nav, phone, CTA and language switcher sit inside a `#141414` pill with a 999px radius. Not transparent, and not floating: the bar is fixed and `<body>` carries a constant spacer. *Amended 2026-09-01, W8-04. This row previously read "Not transparent, not a floating dark pill", which the built header contradicted from phase 1 onward. Ratified by Ivan; see DECISIONS.md.* |
+| Header | **White bar carrying a dark pill.** Solid, opaque, fixed. The bar is `#FFFFFF` with a 1px `--line` bottom border; the nav, phone, CTA and language switcher sit inside a ~~`#141414`~~ `#1C1917` (AMENDED W28-01) pill with a 999px radius. Not transparent, and not floating: the bar is fixed and `<body>` carries a constant spacer. *Amended 2026-09-01, W8-04. This row previously read "Not transparent, not a floating dark pill", which the built header contradicted from phase 1 onward. Ratified by Ivan; see DECISIONS.md.* |
 | Languages | **RO + RU.** RO is the default locale at `/`, RU at `/ru`. Language switcher in the header. |
 | Copy | Sourced from the existing build, restructured and re-laid-out. Not rewritten from scratch. |
 | Photos | Not selected at build time. Build ships with labelled placeholders. See section 7. |
@@ -79,12 +79,12 @@ approved values and the only place to add an eleventh.**
 |---|---|---|
 | `--brand` | ~~`#F26419`~~ **`#F65308`** | Primary buttons, active states, numerals, logo mark. **AMENDED: DECISIONS.md, "The master plan is stale on two token values". `#F26419` predates the logo file and never shipped.** |
 | `--brand-dark` | `#B23C08` | Eyebrow labels, link hover, small text on light |
-| `--ink` | ~~`#1C1C1C`~~ **`#1A1A1A`** | All body and heading text on light backgrounds. **AMENDED: DECISIONS.md, "The master plan is stale on two token values". `#1C1C1C` predates the logo file and never shipped.** |
-| `--ink-muted` | `#5A5A5A` | Secondary text, captions, form hints |
+| `--ink` | ~~`#1C1C1C`~~ ~~`#1A1A1A`~~ **`#1C1917`** (AMENDED W28-01) | All body and heading text on light backgrounds. **AMENDED: DECISIONS.md, "The master plan is stale on two token values". `#1C1C1C` predates the logo file and never shipped.** |
+| `--ink-muted` | ~~`#5A5A5A`~~ **`#57534E`** | Secondary text, captions, form hints. **AMENDED (W28-01): warm grey** |
 | `--bg-light` | `#FFFFFF` | Section background A |
 | `--bg-grey` | `#F2F2F2` | Section background B |
-| `--bg-dark` | `#141414` | Section background C, white text |
-| `--line` | `#E2E2E2` | Card borders, dividers |
+| `--bg-dark` | ~~`#141414`~~ **`#1C1917`** | Section background C, white text. **AMENDED (W28-01): warm charcoal** |
+| `--line` | ~~`#E2E2E2`~~ **`#E6E1DA`** | Card borders, dividers. **AMENDED (W28-01): warm; cards take the hairline since W26-14** |
 
 **Background rule, non-negotiable:** exactly these three background values. Sections alternate `--bg-light` and `--bg-grey` with hard edges. `--bg-dark` is used exactly twice, on the stats band and the contact footer. No gradients, no fades, no fourth off-white, no `rgba` overlays that create in-between shades.
 
@@ -124,7 +124,7 @@ Eight sections. ~~Target total page height 7,000 to 8,000px desktop. If the buil
 
 `--bg-light`, opaque, 1px bottom border `--line`, height **96px desktop / 80px mobile** (amended 2026-09-01, W8-04; this read 72px and never matched the build).
 Left: logo. Centre: nav (Acasă, Servicii, Portofoliu, Despre noi, Contacte). Right: phone number as a clickable link, primary CTA button "Solicită ofertă", RO/RU switcher.
-These sit inside a `#141414` pill, 64px tall, compressing to 56px on scroll (52px mobile).
+These sit inside a ~~`#141414`~~ `#1C1917` (AMENDED W28-01) pill, 64px tall, compressing to 56px on scroll (52px mobile).
 Mobile: logo, phone icon, hamburger.
 **Fix carried over:** opaque background so nothing overlaps on scroll; `white-space: nowrap` on nav items so none wraps to two lines.
 

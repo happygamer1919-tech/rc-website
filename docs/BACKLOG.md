@@ -1066,3 +1066,16 @@ section (Folie anticondens has no picture at the floor), 46 Dasterum records kep
 Q-W27-03. **Garduri**: already equal on every field. **105 cards**: 11 + 7 + 1 + 2 + 18 + 66. Budgets
 **24,232 / 24,453**. **Static gates exit 0**; gates 20 and 28 run before the PR.
 
+## W28-01 · Warm tokens, one motion curve, outlines, quieter orange, 14px floor
+**Status: PR OPEN** (opened 2026-09-22). Design cards W27-01 to W27-05 as the dispatch numbers them,
+CSS and one JS colour literal only, no copy, no markup. **Tokens**: `--ink` and `--bg-dark` share
+`#1C1917`, `--ink-muted #57534E`, `--line #E6E1DA`, new `--outline #9C9388` (field and filter edges
+only), `--hairline` 10%. **Motion**: `--hover-dur` 320ms, `--reveal-dur` 380ms, every transition on
+`--ease-out`, buttons lift 1px with a soft shadow, none under reduced motion. **Orange**: the four 4px
+top stripes gone (hero price box, offers, tiles, teasers); the promo stripe is a warm ribbon with an
+orange dot. Dark-band dividers at 12% white; supplier logos 80%; **every 12 and 13px size is 14px**
+(26 rules); `scroll-padding-top: 112px` so an anchor lands under the fixed header. **Palette stays at
+eleven**: section 3 amended, the master plan struck in five places, and **`check-stale-docs.js` gains
+the four retired values** with three dated-record exceptions. **Static gates, gates 11, 18 and 28 exit
+0.** Screenshots `docs/design/W27/w28-01-*`.
+

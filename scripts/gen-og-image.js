@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-/* Builds a branded social-share card: the white logo centred on #141414 at
+/* Builds a branded social-share card: the white logo centred on #141414 (the og image keeps
+   the pre-W28-01 charcoal until it is regenerated; AMENDED W28-01, --bg-dark is #1C1917) at
    1200x630, written to public/img/og-image.jpg. Runs automatically as part of
    gen-placeholders. A real photo can overwrite it later like any other slot.
 

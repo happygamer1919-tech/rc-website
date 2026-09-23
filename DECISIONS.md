@@ -13129,3 +13129,49 @@ colour count, and their pictures have been Imperlux's since W25-R15; nothing to 
 in the six groups has a `source.url`; 0 percent signs in a price element; 0 "Popular"; every slot
 filled, 0 placeholders. **Heights** 21,725 to 24,172 and 21,883 to 24,393; budgets 24,232 / 24,453
 (R-Y). The override lists grow to 72 ids in the three scripts, still by name.
+
+## W28-01 · Warm tokens, one motion curve, visible outlines, quieter orange, a 14px floor, 2026-09-22
+
+Branch `w27/w28-01-warm-tokens`, stacked on W27-C-06. The dispatch's design cards W27-01 to W27-05,
+applied together as W28-01, under W27-R-07's delegation. **CSS, one colour literal in `src/main.js`
+(a status message's grey, moved with the token), no copy, no markup, no form field.**
+
+**The proposal files were absent, so the dispatch's numbers are the spec.** The two PDFs under
+`design/` are the "why" pages; their handoff panels say the find-and-replace edits are in a separate
+`.md` each, which the repo does not have. Every value below is the dispatch's; the transcribed pages
+were read where the dispatch is silent (the reveal keeps its 16px travel, which the dispatch does
+not name).
+
+**Tokens.** `--ink` and `--bg-dark` are both `#1C1917`, `--ink-muted` is `#57534E` (7.6:1 on white),
+`--line` is `#E6E1DA`, and `--outline` is new, `#9C9388`, the clear edge of form fields and filter
+buttons only (3.02:1 on white, WCAG 1.4.11's floor for a control's boundary; never a text colour, it
+would fail 4.5:1). `--hairline` goes from 6% to 10% black with the two-layer shadow it already had.
+**The palette stays at eleven**: text and band sharing one value frees the slot the outline takes.
+`docs/CLAUDE.md` section 3 is amended row by row; the master plan's token table and header line are
+struck in place (R-R); and **`scripts/check-stale-docs.js` now carries the four retired values** with
+`W28-01` and the live values as their clearing marks, three dated records excepted by name (R-Q's
+obligation, and the reason the gate exists). Stylesheet comments that quoted `#141414` say `--bg-dark`
+now (R-R: a dead number in a comment is how it gets copied again). The og image and the generated
+placeholder SVGs keep their own greys and their scripts say so beside the value.
+
+**Motion.** One curve, `--ease-out` (`cubic-bezier(0.16, 1, 0.3, 1)`), on every transition that
+named the `ease-out` keyword before, 24 of them; `--hover-dur` 320ms, `--reveal-dur` 380ms for the
+reveal and the image zoom; buttons ease their colour and lift 1px with a soft shadow; cards keep
+their 4px. All of it under the 400ms rule, all of it removed under reduced motion (the button lift
+joins the card list in the reduced-motion block). `scroll-padding-top: 112px` on `html`, so a
+`#fragment` lands below the 96px fixed header, which the proposal calls a bug fix and which is one.
+
+**Orange, where it means "act".** The four 4px orange top stripes are gone (hero price box, offer
+cards, metal tile cards, teasers). The promo stripe is a warm ribbon on `--bg-warm` with a hairline
+under it and an orange dot before the text; the text and its 10% are unchanged, so R-X's whitelist
+still matches it. Dark-band dividers (footer CTA row, footer bar, the process frames, the hero claim
+divider) are 12% white instead of solid white. Supplier logos rest at 80% opacity.
+
+**14px minimum.** Every `font-size: 12px` and `13px` in the stylesheet is 14px, 26 rules; the promo
+text's phone clamp becomes a flat 14px. The header pill's language switch and the catalogue heading
+grew with them, and **gate 11 measured the header slack afterwards** (its result is in the card).
+
+**Gates.** Static gates exit 0 including the staleness gate with its four new entries (51 marked, 17
+exceptions used, 0 unmarked); gate 28 (text contrast, both widths, both locales) exits 0 on the new
+tokens; gates 11 and 18 recorded in the card. Screenshots at 390 and 1440, both locales, five pages,
+in `docs/design/W27/` under `w28-01-`.

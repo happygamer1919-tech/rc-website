@@ -101,19 +101,19 @@ plus 60 at ship**, recorded in `docs/rulings/R-Y.md` with the measurement it cam
 
 ## 3. Colour
 
-~~**Ten values.**~~ **AMENDED (W26-14, ruling W26-R16): eleven values.** Adding one is a change
+~~**Ten values.**~~ **AMENDED (W26-14, ruling W26-R16): eleven values.** **AMENDED (W28-01, wave 27 design pass): still eleven. `--ink` and `--bg-dark` share `#1C1917`, and the slot that frees goes to `#9C9388`, the clear outline.** Adding one is a change
 to this file, not a change to a stylesheet.
 
 | # | Value | Token | Use |
 |---|---|---|---|
 | 1 | `#F65308` | `--brand` | Primary buttons, active states, numerals, focus rings |
 | 2 | `#B23C08` | `--brand-dark` | Eyebrows, link hover, the category chip fill |
-| 3 | `#1A1A1A` | `--ink` | Body and heading text on light |
-| 4 | `#5A5A5A` | `--ink-muted` | Secondary text, captions, form hints |
+| 3 | ~~`#1A1A1A`~~ **`#1C1917`** | `--ink` | Body and heading text on light. **AMENDED (W28-01): warm charcoal, shared with the dark band** |
+| 4 | ~~`#5A5A5A`~~ **`#57534E`** | `--ink-muted` | Secondary text, captions, form hints. **AMENDED (W28-01)**, 7.6:1 on white |
 | 5 | `#FFFFFF` | `--bg-light` | Section background A, white tiles, text on dark |
 | 6 | `#F2F2F2` | `--bg-grey` | Image placeholder fill only, never a section |
-| 7 | `#141414` | `--bg-dark` | Section background B, white text on it |
-| 8 | `#E2E2E2` | `--line` | ~~Card borders, dividers~~ **AMENDED (W26-14): form field and chip borders, and small text on the dark band**; cards and dividers take the hairline below |
+| 7 | ~~`#141414`~~ **`#1C1917`** | `--bg-dark` | Section background B, white text on it. **AMENDED (W28-01): the same value as `--ink`, which frees slot 7 for the outline below** |
+| 8 | ~~`#E2E2E2`~~ **`#E6E1DA`** | `--line` | ~~Card borders, dividers~~ **AMENDED (W26-14): form field and chip borders, and small text on the dark band**; cards and dividers take the hairline below. **AMENDED (W28-01): warm; and `#9C9388` `--outline` is the CLEAR outline of form fields and filter buttons, borders only, never text, 3.02:1 on white** |
 | 9 | `#25D366` | - | WhatsApp's own colour, floating button only |
 | 10 | `#1EBE5A` | - | WhatsApp's own hover, floating button only |
 | 11 | `#F7F5F2` | `--bg-warm` | **W26-14**: the second light section ground, alternating with `#FFFFFF` |
@@ -121,18 +121,18 @@ to this file, not a change to a stylesheet.
 Values 9 and 10 are WhatsApp's brand colours, not the site's, and are confined
 to the floating contact button.
 
-**`--brand` is `#F65308` and `--ink` is `#1A1A1A`.** The master plan's `#F26419`
+**`--brand` is `#F65308` and `--ink` is ~~`#1A1A1A`~~ `#1C1917` (AMENDED W28-01).** The master plan's `#F26419`
 and `#1C1C1C` predate the logo file and lose to these.
 *Source: DECISIONS.md "The master plan is stale on two token values".*
 
-**Background rule, non-negotiable.** Sections alternate `#FFFFFF` and `#141414`
+**Background rule, non-negotiable.** Sections alternate `#FFFFFF` and ~~`#141414`~~ `#1C1917` (AMENDED W28-01)
 with hard edges. No gradients, no fades, no fourth off-white, no translucent
 overlay that creates an in-between shade. `--bg-grey` survives only as the
 image-placeholder fill.
 **AMENDED (W26-14, ruling W26-R16): "section backgrounds alternate white and a warm off-white
 neutral".** Two light sections that touch are never the same ground: counted among a page's
 sections, an even light section is `--bg-warm` (`src/styles.css`, at `.section--divided`). The
-`#141414` bands are unchanged. Still hard edges, still no gradient, and **exactly one off-white**:
+`#141414` bands are unchanged (AMENDED W28-01: they are `#1C1917` now). Still hard edges, still no gradient, and **exactly one off-white**:
 the rejected first build had three near-identical light grounds and the client read them as "a
 dirty screen" (master plan, section 1), so a second off-white stays forbidden.
 *Source: master plan section 4, phase 2 amendment in `src/styles.css`.*
@@ -142,10 +142,10 @@ dirty screen" (master plan, section 1), so a second off-white stays forbidden.
 - `#000` inside a `mask-image` gradient. A mask stop is an alpha channel, not a
   paint. It never renders.
 - `rgba(255, 255, 255, x)` hairlines, dividers and icon-button hovers **on the
-  dark band**. These sit on `#141414` and read as one lighter line, not as a
+  dark band**. These sit on ~~`#141414`~~ `#1C1917` (AMENDED W28-01) and read as one lighter line, not as a
   new background.
 - `rgba(0, 0, 0, 0.08)` and `rgba(0, 0, 0, 0.12)` card and header shadows.
-- **AMENDED (W26-14, ruling W26-R16):** `rgba(0, 0, 0, 0.06)`, the `--hairline` border of cards,
+- **AMENDED (W26-14, ruling W26-R16):** `rgba(0, 0, 0, 0.06)`, **AMENDED (W28-01): `rgba(0, 0, 0, 0.10)`**, the `--hairline` border of cards,
   panels, dividers and image frames; and the two-layer card shadows, `--shadow-card` (0.04 and
   0.06) and `--shadow-card-hover` (0.06 and 0.1). Borders and shadows, never a ground. Form
   fields and chips keep `--line`, because a field's edge is how a visitor finds it.
@@ -182,7 +182,7 @@ prevents is silent.
 are (0,1,0), so specificity settles nothing and the later one in the file wins;
 the chooser's was later. Measured on the built page: the hub became a
 three-column grid, its tiles rendered white on a 10px radius with 24px of
-padding instead of `#141414` on 24px, and the tall tile came out **128px wide
+padding instead of `#141414` (the band's value then; AMENDED W28-01) on 24px, and the tall tile came out **128px wide
 against an intended 380**. It shipped that way and **all nineteen gates were
 green**, because not one of them read a painted box. W24-07a renamed it to
 `.hub__*` and W24-09 added gate 20, which measures geometry.

@@ -790,7 +790,7 @@ const placeholder = slotImage;
 /* A heading whose second part is muted, then four tiles: one tall on the left
    spanning both rows and about a third of the width, one wide at the top right,
    and two equal below it. Large radius, the label bottom left in white, and each
-   tile a #141414 placeholder carrying its slot id.
+   tile a --bg-dark placeholder carrying its slot id.
 
    GEOMETRY IS COPIED AND NOTHING ELSE IS (W24-R8). The reference's own numbers,
    measured: 3 equal columns at 1024px and above, rows of a fixed 244px, a 16px

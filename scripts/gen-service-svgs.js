@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /* Placeholder SVGs for the nine service cards, one per illustration ID.
-   Flat #F2F2F2 field, 1px #E2E2E2 border, the ID and ratio in #5A5A5A, at the
+   Flat #F2F2F2 field, 1px #E2E2E2 border, the ID and ratio in #5A5A5A (the generated files keep
+   these greys; AMENDED W28-01: the site tokens are #E6E1DA and #57534E now), at the
    card's 4:3 box. A real illustration from Claude Design simply overwrites the
    file; nothing in the template changes.
 

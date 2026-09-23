@@ -306,27 +306,30 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     <div class="grid grid--5" style="margin-top: 40px;">
       <div class="step" data-reveal data-stagger="0">
         <div class="step__n" data-reveal data-stagger="1">{{process.steps.0.n}}</div>
-        <div class="media media--4x3 media--framed"><img src="{{base}}/img/step-01-fundatie.jpg" srcset="{{base}}/img/step-01-fundatie.jpg 1x, {{base}}/img/step-01-fundatie@2x.jpg 2x" alt="{{process.steps.0.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
+        <!-- W27-FIX-14 (W27-R-20): the step pictures are described by width (900w, 1800w) with the
+             sizes measured on the built page (207px at 1440, 187 at 1101, 732 at 768, 354 at 390), so a
+             2x desktop screen takes the 900px file, not the 1800px one. -->
+        <div class="media media--4x3 media--framed"><img src="{{base}}/img/step-01-fundatie.jpg" srcset="{{base}}/img/step-01-fundatie.jpg 900w, {{base}}/img/step-01-fundatie@2x.jpg 1800w" sizes="(min-width: 1200px) 207px, (min-width: 900px) 17vw, 96vw" alt="{{process.steps.0.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
         <div><h3 class="step__title">{{process.steps.0.title}}</h3><p class="step__line">{{process.steps.0.line}}</p></div>
       </div>
       <div class="step" data-reveal data-stagger="2">
         <div class="step__n" data-reveal data-stagger="3">{{process.steps.1.n}}</div>
-        <div class="media media--4x3 media--framed"><img src="{{base}}/img/step-02-structura.jpg" srcset="{{base}}/img/step-02-structura.jpg 1x, {{base}}/img/step-02-structura@2x.jpg 2x" alt="{{process.steps.1.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
+        <div class="media media--4x3 media--framed"><img src="{{base}}/img/step-02-structura.jpg" srcset="{{base}}/img/step-02-structura.jpg 900w, {{base}}/img/step-02-structura@2x.jpg 1800w" sizes="(min-width: 1200px) 207px, (min-width: 900px) 17vw, 96vw" alt="{{process.steps.1.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
         <div><h3 class="step__title">{{process.steps.1.title}}</h3><p class="step__line">{{process.steps.1.line}}</p></div>
       </div>
       <div class="step" data-reveal data-stagger="4">
         <div class="step__n" data-reveal data-stagger="5">{{process.steps.2.n}}</div>
-        <div class="media media--4x3 media--framed"><img src="{{base}}/img/step-03-acoperis.jpg" srcset="{{base}}/img/step-03-acoperis.jpg 1x, {{base}}/img/step-03-acoperis@2x.jpg 2x" alt="{{process.steps.2.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
+        <div class="media media--4x3 media--framed"><img src="{{base}}/img/step-03-acoperis.jpg" srcset="{{base}}/img/step-03-acoperis.jpg 900w, {{base}}/img/step-03-acoperis@2x.jpg 1800w" sizes="(min-width: 1200px) 207px, (min-width: 900px) 17vw, 96vw" alt="{{process.steps.2.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
         <div><h3 class="step__title">{{process.steps.2.title}}</h3><p class="step__line">{{process.steps.2.line}}</p></div>
       </div>
       <div class="step" data-reveal data-stagger="6">
         <div class="step__n" data-reveal data-stagger="6">{{process.steps.3.n}}</div>
-        <div class="media media--4x3 media--framed"><img src="{{base}}/img/step-04-fatada.jpg" srcset="{{base}}/img/step-04-fatada.jpg 1x, {{base}}/img/step-04-fatada@2x.jpg 2x" alt="{{process.steps.3.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
+        <div class="media media--4x3 media--framed"><img src="{{base}}/img/step-04-fatada.jpg" srcset="{{base}}/img/step-04-fatada.jpg 900w, {{base}}/img/step-04-fatada@2x.jpg 1800w" sizes="(min-width: 1200px) 207px, (min-width: 900px) 17vw, 96vw" alt="{{process.steps.3.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
         <div><h3 class="step__title">{{process.steps.3.title}}</h3><p class="step__line">{{process.steps.3.line}}</p></div>
       </div>
       <div class="step" data-reveal data-stagger="6">
         <div class="step__n" data-reveal data-stagger="6">{{process.steps.4.n}}</div>
-        <div class="media media--4x3 media--framed"><img src="{{base}}/img/step-05-predare.jpg" srcset="{{base}}/img/step-05-predare.jpg 1x, {{base}}/img/step-05-predare@2x.jpg 2x" alt="{{process.steps.4.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
+        <div class="media media--4x3 media--framed"><img src="{{base}}/img/step-05-predare.jpg" srcset="{{base}}/img/step-05-predare.jpg 900w, {{base}}/img/step-05-predare@2x.jpg 1800w" sizes="(min-width: 1200px) 207px, (min-width: 900px) 17vw, 96vw" alt="{{process.steps.4.alt}}" width="900" height="675" loading="lazy" decoding="async"></div>
         <div><h3 class="step__title">{{process.steps.4.title}}</h3><p class="step__line">{{process.steps.4.line}}</p></div>
       </div>
     </div>

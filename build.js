@@ -1193,6 +1193,13 @@ function notFoundLocale(l) {
    first version of that string said "12" in words and would have quietly lied the
    moment this number moved. A number that appears twice is a number that drifts. */
 const PROD_STEP = 9;
+/* W27-FIX-14 (W27-R-20). `sizes` for the pictures inside a three-column card and a five-column
+   step, MEASURED on the built homepage at 1440, 1101, 768 and 390 (366/333/734/356px for the
+   card, 207/187/732/354 for the step). Written once so the two card families agree; a width
+   descriptor beside them lets the browser pick the 1x file for a 2x screen when the box is small
+   enough, which is the whole saving. */
+const SIZES_CARD_3 = '(min-width: 1200px) 366px, (min-width: 900px) 31vw, 96vw';
+const SIZES_STEP_5 = '(min-width: 1200px) 207px, (min-width: 900px) 17vw, 96vw';
 
 /* W25-19. The card, lifted out of catalogProducts unchanged, because the
    consolidated roofing section on /servicii/acoperisuri/ renders the SAME card
@@ -1505,8 +1512,11 @@ function roofOfferImage(i, alt) {
   const id = `offer-roof-0${i + 1}`;
   if (!fs.existsSync(`public/img/${id}.jpg`)) return '';
   if (!REAL(alt)) die(`public/img/${id}.jpg exists but roofOffers.items.${i}.alt is not real. An image that lands brings its alt text in both locales.`);
+  /* W27-FIX-14 (W27-R-20): by width, not density. The offer card's picture renders 255px wide
+     at 1440, 229 at 1101, 684 at 768 and 306 at 390 (measured), so a 2x desktop screen needs
+     510px and the 600px file serves it; "1x, 2x" fetched the 1200px file (210KB) for it. */
   const retina = fs.existsSync(`public/img/${id}@2x.jpg`)
-    ? ` srcset="${BASE}/img/${id}.jpg 1x, ${BASE}/img/${id}@2x.jpg 2x"` : '';
+    ? ` srcset="${BASE}/img/${id}.jpg 600w, ${BASE}/img/${id}@2x.jpg 1200w" sizes="(min-width: 1200px) 255px, (min-width: 900px) 21vw, 90vw"` : '';
   return `<div class="offer__media"><img src="${BASE}/img/${id}.jpg"${retina} alt="${esc(alt)}" width="600" height="740" loading="lazy" decoding="async"></div>`;
 }
 
@@ -3773,7 +3783,15 @@ function serviceMedia(l, base, i, variant) {
   }
   const box = hero ? 'svc-hero__art svc-hero__art--photo media media--4x3' : 'media media--4x3 media--card';
   const prio = hero ? ' fetchpriority="high"' : '';
-  return `<div class="${box}"><img src="${base}/img/${slot}.jpg" srcset="${base}/img/${slot}.jpg 1x, ${base}/img/${slot}@2x.jpg 2x" alt="${alt}" width="800" height="600"${load} decoding="async"${prio}></div>`;
+  /* W27-FIX-14 (W27-R-20): a CARD's picture is described by width, not by density. The card
+     renders 366px wide at 1440 and 333 at 1101 (measured), so a 2x screen needs 732px and the
+     800px file serves it; "1x, 2x" made every retina visitor fetch the 2x file, four times the
+     bytes, for a box a quarter of its size. The hero keeps "1x, 2x": it renders 562px
+     wide and its 2x is the largest paint on the page. */
+  const set = hero
+    ? `srcset="${base}/img/${slot}.jpg 1x, ${base}/img/${slot}@2x.jpg 2x"`
+    : `srcset="${base}/img/${slot}.jpg 800w, ${base}/img/${slot}@2x.jpg 1600w" sizes="${SIZES_CARD_3}"`;
+  return `<div class="${box}"><img src="${base}/img/${slot}.jpg" ${set} alt="${alt}" width="800" height="600"${load} decoding="async"${prio}></div>`;
 }
 
 // A renderable project always points at a cover file that exists. Stub covers

@@ -294,13 +294,16 @@ const PAGES = [
      the shared 6,000px service budget that RELEASE-NOTES's wave 7 acceptance
      holds and take their own, measured plus 60, under W24-R4. The other four
      service rows are untouched and stay on 6,000. docs/rulings/R-Y.md carries the
-     measurement each one came from. */
+     measurement each one came from.
+     AMENDED (W26-14, W26-R16 "budgets re-measured plus 60"): the three service rows
+     still on the shared 6,000 take their own too, so no row here is a ceiling to
+     hide under. */
   { path: '/in-constructie/',              type: 'inconstructie', label: 'in constr RO', budget: 1182 },
   { path: '/ru/in-constructie/',           type: 'inconstructie', label: 'in constr RU', budget: 1182 },
-  { path: '/servicii/case-la-cheie/',      type: 'service-ba', label: 'svc RO case', budget: 6436 },
-  { path: '/servicii/fatade/',             type: 'service', label: 'svc RO fatade',  budget: 6000 },
+  { path: '/servicii/case-la-cheie/',      type: 'service-ba', label: 'svc RO case', budget: 6411 },
+  { path: '/servicii/fatade/',             type: 'service', label: 'svc RO fatade',  budget: 5344 },
   { path: '/ru/servicii/case-la-cheie/',   type: 'service-ba', label: 'svc RU case', budget: 6543 },
-  { path: '/ru/servicii/fatade/',          type: 'service', label: 'svc RU fatade',  budget: 6000 },
+  { path: '/ru/servicii/fatade/',          type: 'service', label: 'svc RU fatade',  budget: 5551 },
   /* W24-06. The four roofing offers moved onto this page, so it leaves the shared
      6,000px service budget and takes its own, measured plus 60, under W24-R4. */
   /* W25-19, ruling W25-R18. The roofing catalogue moved onto this page, so the
@@ -312,12 +315,12 @@ const PAGES = [
      merge and corrected there if the live page differs. */
   /* AMENDED (W25-26): four cards left this section for the tile page, so the
      figures fall with the measurement. */
-  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 19518 },
-  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 19704 },
+  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 19496 },
+  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 19682 },
   /* W24-07. The rocă vulcanică mirror page. */
   { path: '/servicii/roca-vulcanica/',     type: 'novatik', label: 'novatik RO',  budget: 4348 },
   { path: '/ru/servicii/roca-vulcanica/',  type: 'novatik', label: 'novatik RU',  budget: 4446 },
-  { path: '/ru/servicii/finisaje/',        type: 'service', label: 'svc RU finis',   budget: 6000 },
+  { path: '/ru/servicii/finisaje/',        type: 'service', label: 'svc RU finis',   budget: 5471 },
   /* W25-09. Both rows take +39: this page gained one link-arrow to the new
      catalogue category, measured on the branch at 3979 RO and 4012 RU against
      3940 and 3973 with the link removed as a control. Budget is measured plus 60
@@ -374,7 +377,7 @@ const PAGES = [
   { path: '/catalog/termoizolatie/alte-produse/',           type: 'subcategory',   label: 'sub RO altep',     budget: 3057 },
   { path: '/ru/catalog/termoizolatie/alte-produse/',        type: 'subcategory',   label: 'sub RU altep',     budget: 3016 },
   { path: '/catalog/tencuieli-decorative/',                 type: 'category',      label: 'cat RO tencu',     budget: 5310 },
-  { path: '/ru/catalog/tencuieli-decorative/',              type: 'category',      label: 'cat RU tencu',     budget: 5416 },
+  { path: '/ru/catalog/tencuieli-decorative/',              type: 'category',      label: 'cat RU tencu',     budget: 5386 },
   { path: '/catalog/placi-ceramice/',                       type: 'category',      label: 'cat RO placi',     budget: 12783 },
   { path: '/ru/catalog/placi-ceramice/',                    type: 'category',      label: 'cat RU placi',     budget: 13721 },
   { path: '/catalog/elemente-decorative/',                  type: 'category',      label: 'cat RO elem',      budget: 10201 },

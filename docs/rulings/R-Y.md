@@ -1025,3 +1025,30 @@ same aside ("header, hero, prose block, offer button, quote form and footer"), u
 which bans the dash in every authored file and names rulings among them. No word, figure or budget
 changed. The sentence was repunctuated rather than struck because a struck dash is still a dash in
 the file; this block records the change where it was made (R-T).
+
+## AMENDED (W26-14, wave 26): the design pass
+
+W26-R16: "budgets re-measured plus 60 with reasons". **All 53 budgeted pages were measured before
+and after at 1440**, settled, with every `[data-reveal]` applied. **49 are identical to the pixel
+and none grew.** Four shrank, and three sat on the shared 6,000px service budget; all seven take
+measured plus 60:
+
+| Page | Before | After | Budget |
+|---|---|---|---|
+| `/servicii/case-la-cheie/` | 6,376 | **6,351** | 6,436 to **6,411** |
+| `/servicii/acoperisuri/` | 19,458 | **19,436** | 19,518 to **19,496** |
+| `/ru/servicii/acoperisuri/` | 19,644 | **19,622** | 19,704 to **19,682** |
+| `/ru/catalog/tencuieli-decorative/` | 5,356 | **5,326** | 5,416 to **5,386** |
+| `/servicii/fatade/` | 5,284 | **5,284** | shared 6,000 to **5,344** |
+| `/ru/servicii/fatade/` | 5,491 | **5,491** | shared 6,000 to **5,551** |
+| `/ru/servicii/finisaje/` | 5,411 | **5,411** | shared 6,000 to **5,471** |
+
+**Why they shrank**: headings are tracked at -0.01em, which was 0 on `h3` and on five component
+titles, so a few card titles that wrapped to three lines now fit on two. **Why nothing grew**: the
+spec's desktop section spacing, 96px, is what `--section-pad` already was, and the radius, border,
+shadow and colour changes move no box. **The three service pages** had 500 to 700px of headroom
+under a budget shared with pages they no longer resemble, which is a ceiling to hide under. The
+other 46 budgets were already their page's measurement plus 60 and stand.
+
+**On a phone the pages are taller**, because the spec's 64px replaces 56px of section padding:
+homepage +88, roofing +128, turnkey +58, catalogue +72 at 390 (RO). Phone heights carry no budget.

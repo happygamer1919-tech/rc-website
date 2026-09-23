@@ -12763,3 +12763,82 @@ source, found by a byte count before the gate first ran, and once in this entry,
 **Heights**: every page identical at 1440 and 390 except `/ru/servicii/terasamente/` **+27** at 1440
 (5,502, inside the shared 6,000 service budget) and `/ru/konfidentsialnost/` **+25** at 390, which
 has no budget.
+
+## W26-14 · The design pass, 2026-09-22
+
+Branch `w26/w26-14-design-pass`, stacked on W26-13 (#134).
+
+**W26-R16 applied.** Three sites studied first in a rendered browser (linear.app, stripe.com and
+apple.com/macbook-air/, at 1440 and at 390, every visible element's computed style read), and
+`docs/design/PRINCIPLES-W26.md` written from what they showed: ten principles, each with why it
+works and where it applies here. **Nothing was copied**: no asset, sentence or line of code.
+
+**The token spec, as applied:**
+
+| Spec | Before | After |
+|---|---|---|
+| Card radius 20px | 10px on most cards, 20px on four families, none on offers, teasers and metal tile cards | **20px on every card family**, one token |
+| Hero and section containers 24px | 10px (homepage claim panel and photo, service hero art); 24px (bento tiles) | **24px**, one token |
+| Buttons pill | 6px | **pill**: every `.btn`, the filters, the catalogue card's arrow, the icon buttons |
+| Hairline 1px rgba(0,0,0,0.06) | `--line` `#E2E2E2` | **hairline** on cards, panels, dividers, tables and image frames; **form fields and chips keep `--line`** |
+| Shadow, two layers | one, `0 1px 3px` at 8% | **`0 1px 2px` at 4% plus `0 12px 32px` at 6%**, on every card |
+| Hover: lift 4px, deeper shadow, image 1.03, 250ms ease-out, none under reduced motion | 200ms; **the lift never happened on a revealed card** (below) | **all of it, measured** |
+| Sections alternate white and a warm off-white | white and `#141414` only | light sections that touch alternate `#FFFFFF` and **`#F7F5F2`**; the `#141414` bands stay |
+| Section spacing 96 desktop, 64 phone | 96 and 56 | **96 and 64** |
+| Body line height 1.6, headings -0.01em | 1.6; h1 -0.02em, h2 -0.01em, h3 and five titles 0 | **1.6; every heading -0.01em** |
+| Visible focus rings | present | **634 focus stops tabbed on eight pages, every one shows a ring** |
+| Image corners match cards | square inside most cards | clipped by the card; **inset images 12px, concentric**; standalone 20px |
+
+**The eleventh value**, `#F7F5F2`, is added to `docs/CLAUDE.md` section 3 with the hairline and the
+shadows. **The dirty-screen history, which the owner should see**: the master plan records that the
+rejected first build used three near-identical light grounds and the client said the light
+sections read "as a dirty screen". This uses exactly one, never beside a second, and only where
+two light sections touch; it is one token, so reverting it is one line. The before and after
+screenshots are the way to judge it.
+
+**A defect found by measuring, and fixed, because the spec needs the lift**: before this card no
+revealed card ever lifted on hover. The reveal sets `transform: none` on
+`.js-motion [data-reveal].is-revealed`, (0,3,0), which beat the lift's `.card:hover`, (0,2,0), and
+124 of the 125 cards on the four main pages carry `data-reveal`. Hovered in a real browser, the
+card's `transform` read `none` in both the old build and my first draft. **The lift is now the
+`translate` property**, which the reveal never sets, and the reveal's transition list carries the
+hover properties with no stagger delay: a card with a 120ms stagger reads -0.84px 40ms after the
+pointer arrives and -4px at rest; under reduced motion it reads `none` throughout.
+
+**The dark bands keep their 56px padding.** They are bands, not sections, and the ruling's own
+record says they stay; giving them 96px would add height the spec does not ask for.
+
+**Heights, all 53 budgeted pages at 1440**: 49 identical to the pixel, none grew, four shorter by 22
+to 30px because tighter headings let a few titles fit on fewer lines. Budgets in R-Y: the four
+that moved and the three service pages that sat on the shared 6,000 take measured plus 60. On a
+phone the four main pages grow by the new section padding: +88, +128, +58 and +72.
+
+**Lighthouse, desktop preset, median of three, before and after.** The dispatch does not name the
+four main pages; my reading is the homepage, the roofing hub, one standard service page (turnkey
+houses) and the catalogue index, each in both locales:
+
+| Page | Performance before | after | Accessibility before | after |
+|---|---|---|---|---|
+| `/` | 99 [99 99 99] | **99** [99 99 99] | 100 | **100** |
+| `/ru/` | 99 [99 99 99] | **99** [99 99 99] | 100 | **100** |
+| `/servicii/acoperisuri/` | 98 [98 98 98] | **98** [98 98 98] | 100 | **100** |
+| `/ru/servicii/acoperisuri/` | 98 [98 91 98] | **98** [92 98 98] | 100 | **100** |
+| `/servicii/case-la-cheie/` | 100 | **100** | 100 | **100** |
+| `/ru/servicii/case-la-cheie/` | 100 | **100** | 100 | **100** |
+| `/catalog/` | 100 | **100** | 100 | **100** |
+| `/ru/catalog/` | 100 | **100** | 100 | **100** |
+
+**Not below current on any of the eight.** One reading needed more than three runs, and it is
+reported rather than rerun away: on my first draft the RO roofing page read **92** [98 92 92].
+Five interleaved pairs, old build and draft alternating, showed **both builds bimodal**: largest
+contentful paint lands near 1.07s (score 98) or near 1.85s (score 91 to 93), and the old build
+drew the slow mode twice in five, the draft twice in five, medians **98 and 98**. The before run
+above already holds one such draw (91). The table is the final stylesheet, three runs each.
+
+**CSS namespace rule 3.1**: no new class, only tokens. **Gate 20** (geometry, desktop and phone),
+**gate 28** (every text element's contrast, both widths, both locales, now on the off-white too)
+and **gate 14** (heading fit) pass.
+
+**Screenshots**: `docs/design/W26/`, the homepage, the roofing page, the turnkey service page and
+the catalogue, desktop (scaled to 960 wide) and phone (390), before and after, reduced motion on so
+every section is at rest, and the lead popup marked seen so it covers nothing.

@@ -30,6 +30,18 @@ That is the whole rule. What satisfies each clause today:
 | Fully disabled under reduced motion | Reveals render final, hover travel removed, marquee stopped dead, header does not animate, modal has no entrance | `@media (prefers-reduced-motion: reduce)` at the foot of `src/styles.css` |
 | No animation library | The repo has no `package.json` and no dependencies at all | Master plan section 8 |
 
+**AMENDED (W26-14, ruling W26-R16): "hover translateY(-4px) with deeper shadow and image scale
+1.03, 250ms ease-out, none under reduced motion".** `--hover-dur` is 250ms, still under 400. A
+card's photograph grows 3% inside its own frame, which clips it, so nothing around it moves and
+the growth is a transform: at the widest card image it is under the 20px travel limit. The
+reduced-motion block removes it with the lift.
+**And the lift is the `translate` property, not `transform`**, because until W26-14 no revealed
+card ever lifted: the reveal's `transform: none` on `.js-motion [data-reveal].is-revealed`
+outranked it, and 124 of the 125 cards on the four main pages carry `data-reveal`. `translate`
+is a transform the reveal never sets. The reveal's transition list carries the hover properties
+with no stagger delay, so a card answers the pointer at once. Measured: a card with a 120ms
+stagger reads -0.84px 40ms after the pointer arrives and -4px at rest.
+
 **The stricter parent rule still holds:** zero *scroll-driven* motion. No
 parallax, no scroll sequences, no count-up numerals, no auto-advancing
 carousels. The predecessor build was rejected over a scroll-driven section whose
@@ -52,7 +64,7 @@ Measured at a desktop width, settled, with every reveal applied.
 | Homepage RO and RU | ~~DECISIONS.md, ruling R-J~~ **AMENDED (W14-13): `docs/rulings/R-Y.md`, ruling R-Y** |
 | Țiglă metalică, copertine and garduri pages, either locale | **`docs/rulings/R-Y.md`, ruling R-Y** |
 | Catalog category pages, either locale | **`docs/rulings/R-Y.md`, ruling R-Y**, its latest dated block for those pages |
-| Service pages, either locale | **RELEASE-NOTES.md, wave 7 acceptance** |
+| Service pages, either locale | **RELEASE-NOTES.md, wave 7 acceptance**. **AMENDED (W24-05, W26-14): every service page `scripts/verify-live.js` reads has its own budget in `docs/rulings/R-Y.md`**; the shared figure holds the rest |
 
 The homepage budgets are **derived, not chosen**: a corrected baseline plus the
 measured cost of each element above the fold plus a stated headroom term. R-J
@@ -89,8 +101,8 @@ plus 60 at ship**, recorded in `docs/rulings/R-Y.md` with the measurement it cam
 
 ## 3. Colour
 
-**Ten values. Adding an eleventh is a change to this file, not a change to a
-stylesheet.**
+~~**Ten values.**~~ **AMENDED (W26-14, ruling W26-R16): eleven values.** Adding one is a change
+to this file, not a change to a stylesheet.
 
 | # | Value | Token | Use |
 |---|---|---|---|
@@ -101,9 +113,10 @@ stylesheet.**
 | 5 | `#FFFFFF` | `--bg-light` | Section background A, white tiles, text on dark |
 | 6 | `#F2F2F2` | `--bg-grey` | Image placeholder fill only, never a section |
 | 7 | `#141414` | `--bg-dark` | Section background B, white text on it |
-| 8 | `#E2E2E2` | `--line` | Card borders, dividers |
+| 8 | `#E2E2E2` | `--line` | ~~Card borders, dividers~~ **AMENDED (W26-14): form field and chip borders, and small text on the dark band**; cards and dividers take the hairline below |
 | 9 | `#25D366` | - | WhatsApp's own colour, floating button only |
 | 10 | `#1EBE5A` | - | WhatsApp's own hover, floating button only |
+| 11 | `#F7F5F2` | `--bg-warm` | **W26-14**: the second light section ground, alternating with `#FFFFFF` |
 
 Values 9 and 10 are WhatsApp's brand colours, not the site's, and are confined
 to the floating contact button.
@@ -116,9 +129,15 @@ and `#1C1C1C` predate the logo file and lose to these.
 with hard edges. No gradients, no fades, no fourth off-white, no translucent
 overlay that creates an in-between shade. `--bg-grey` survives only as the
 image-placeholder fill.
+**AMENDED (W26-14, ruling W26-R16): "section backgrounds alternate white and a warm off-white
+neutral".** Two light sections that touch are never the same ground: counted among a page's
+sections, an even light section is `--bg-warm` (`src/styles.css`, at `.section--divided`). The
+`#141414` bands are unchanged. Still hard edges, still no gradient, and **exactly one off-white**:
+the rejected first build had three near-identical light grounds and the client read them as "a
+dirty screen" (master plan, section 1), so a second off-white stays forbidden.
 *Source: master plan section 4, phase 2 amendment in `src/styles.css`.*
 
-**What is not a colour value**, and does not count against the ten:
+**What is not a colour value**, and does not count against the ~~ten~~ **eleven (W26-14)**:
 
 - `#000` inside a `mask-image` gradient. A mask stop is an alpha channel, not a
   paint. It never renders.
@@ -126,6 +145,10 @@ image-placeholder fill.
   dark band**. These sit on `#141414` and read as one lighter line, not as a
   new background.
 - `rgba(0, 0, 0, 0.08)` and `rgba(0, 0, 0, 0.12)` card and header shadows.
+- **AMENDED (W26-14, ruling W26-R16):** `rgba(0, 0, 0, 0.06)`, the `--hairline` border of cards,
+  panels, dividers and image frames; and the two-layer card shadows, `--shadow-card` (0.04 and
+  0.06) and `--shadow-card-hover` (0.06 and 0.1). Borders and shadows, never a ground. Form
+  fields and chips keep `--line`, because a field's edge is how a visitor finds it.
 - Product colour swatches inside the metal tile grid colour chips, and nowhere
   else. They depict a product finish, so they are data, not palette. Each value
   is an approximation authored in this repo against the 15-code legend in the
@@ -1170,7 +1193,7 @@ is the whole argument, and it was paid for three times:
 | Section 2 of this file | carried budgets that R-I and then R-J had superseded, 151px too tight on RO |
 
 What this file may still state: **rules and thresholds it owns**: "under 400ms",
-"under 20px", the ten colour values, the Lighthouse floors, the 1,400px section
+"under 20px", the ~~ten~~ **eleven (W26-14)** colour values, the Lighthouse floors, the 1,400px section
 cap. Those are chosen here, so here is their one place.
 
 What it may not state: **anything measured or derived elsewhere**: height

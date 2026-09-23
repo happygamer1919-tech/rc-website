@@ -959,7 +959,7 @@ Links: `#preturi`, and two cross-page fragments logged as **Q-W26-05**. Counts 4
 `sips` zero-offset crop fault caught by eye; `ffmpeg` crops, W26-07's re-checked identical.
 
 ## W26-12 · Galleries and gate 29
-**Status: PR OPEN #133** (opened 2026-09-22). W26-R14 on all 11 folders: **95 found, 89 installed** (Garduri's
+**Status: MERGED #133, section 12.0 exit 0 on `e221ebc`, the merge after it, 53 of 53** (opened 2026-09-22). W26-R14 on all 11 folders: **95 found, 89 installed** (Garduri's
 6 byte-identical duplicates once), **9 galleries, 2 empty folders, 0 unmatched**, matched by the
 site's own titles after NFC. "Deschide galeria" card after the described projects; Copertine gets a
 section; **new page `/servicii/galerie-garduri/`** for "Garduri tip jaluzele". Lightbox: scroll-snap
@@ -968,7 +968,7 @@ defects found by driving it and fixed. **Gate 29** 7 arms, 1 GREEN, watched on a
 Service pages identical; Copertine +629; gallery page 3,967. **Q-W26-06**: 8 photographs to confirm.
 
 ## W26-13 · The dash gate, gate 30
-**Status: PR OPEN** (opened 2026-09-22). W26-R15 applied. **547 dashes in 43 files found by a byte
+**Status: MERGED #134, section 12.0 exit 0 on `e221ebc`, 53 of 53** (opened 2026-09-22). W26-R15 applied. **547 dashes in 43 files found by a byte
 scan; 237 rewritten in 40 files.** Left, as the ruling exempts: 250 in the four R-S records, held
 line by line in a SHA-256 baseline that can only shrink, and 60 in imperlux titles quoted in the
 audit file, exempt by field. Gate 22's old stylesheet was not exempt: its three comment dashes are
@@ -976,3 +976,13 @@ hyphens and gate 22 now verifies it against git with that substitution. **Gate 3
 the tree, the built site (entities and escapes too) and the pull request's commits, title and body;
 20 arms, 4 GREEN; watched fail on the real tree, three problems on three messages. Five Russian
 sentences rewritten, not repunctuated. RU terasamente +27 (inside 6,000), RU privacy +25 at 390.
+
+## W26-14 · The design pass
+**Status: PR OPEN** (opened 2026-09-22). W26-R16 applied after a rendered study of linear.app,
+stripe.com and apple.com/macbook-air/; `docs/design/PRINCIPLES-W26.md` holds ten principles.
+Tokens: card 20px, hero 24px, pill buttons, 6% hairline (fields keep `--line`), two-layer shadow,
+250ms hover with image 1.03, light sections alternate white and `#F7F5F2` (the eleventh value,
+dirty-screen history flagged), phone sections 64px, headings -0.01em. **Found and fixed: no
+revealed card ever lifted**, the reveal's `transform: none` outranked it; the lift is `translate`
+now. 634 focus stops, every one ringed. 49 of 53 heights identical, none grew; seven budgets
+re-measured plus 60. Screenshots in `docs/design/W26/`.

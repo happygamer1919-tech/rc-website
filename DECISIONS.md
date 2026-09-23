@@ -13175,3 +13175,20 @@ grew with them, and **gate 11 measured the header slack afterwards** (its result
 exceptions used, 0 unmarked); gate 28 (text contrast, both widths, both locales) exits 0 on the new
 tokens; gates 11 and 18 recorded in the card. Screenshots at 390 and 1440, both locales, five pages,
 in `docs/design/W27/` under `w28-01-`.
+
+## W27-FIX-01 · Budgets after the 14px floor, and the section 12.0 failure that found it, 2026-09-22
+
+Branch `w27/w27-fix-01-budgets`, from `main` at `ff8a922` (#143 merged).
+
+**Section 12.0 on `ff8a922` failed and this is its correction.** The run: 53 of 53 pages read, every
+marker verified, 16 of 16 redirects, 0 retried, and **two rows OVER**: `/servicii/tigla-metalica/`
+at 4,347 against a budget of 4,283, and `/ru/servicii/tigla-metalica/` at 4,402 against 4,316. Exit 1.
+
+**The cause, found by measurement before the fix (section 12.0's own rule).** W28-01 raised every
+12 and 13px size to 14px. The metal tile page's grid prints four small lines per tile (grade,
+finish, the colour chips, the swatch note) that were 12 and 13px; at 14px they wrap once more, and
+the grid is two lines taller. W28-01 measured the four main pages and the header slack and not this
+page, which is the gap this card closes: **all 53 budgets are re-measured on the deployed tree** and
+set to measured plus 60 (W24-R4), in a generated table in R-Y, so no budget is a remembered number.
+
+**Nothing on any page changes.** `scripts/verify-live.js` budgets only, and the two records above.

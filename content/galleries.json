@@ -1,5 +1,5 @@
 {
-  "_note": "W26-12, ruling W26-R14. Written by scripts/intake-galleries.js from /Users/ivan/RC-webpics_v2, never typed. One gallery per folder whose name is a page title; `preview` is the 1-based photo the card shows and is the one field chosen by hand. Gate 29 (scripts/check-galleries.js) holds every page to this file: the lightbox shows exactly these photos, in this order.",
+  "_note": "W26-12, ruling W26-R14. Written by scripts/intake-galleries.js from /Users/ivan/RC-webpics_v2, never typed. One gallery per folder whose name is a page title; `preview` is the 1-based photo the card shows and `review` on a photograph is the answer the owner gave to a flag raised about it (W27-R-03); those two are the only fields chosen by hand, and both survive a re-run. Gate 29 (scripts/check-galleries.js) holds every page to this file: the lightbox shows exactly these photos, in this order.",
   "source_root": "/Users/ivan/RC-webpics_v2",
   "galleries": [
     {
@@ -299,7 +299,13 @@
           "thumb": "public/img/galerie/finisaje/04-t.jpg",
           "source_size": "1199x1403",
           "size": "1199x1403",
-          "thumb_size": "600x702"
+          "thumb_size": "600x702",
+          "review": {
+            "flag": "suspected_stock",
+            "flagged_by": "Q-W26-06",
+            "owner_confirmed": "2026-09-22",
+            "ruling": "W27-R-03"
+          }
         },
         {
           "source": "WhatsApp mage 2026-09-19 at 6.37.19 AM.jpeg",
@@ -549,7 +555,13 @@
           "thumb": "public/img/galerie/terasamente/02-t.jpg",
           "source_size": "418x627",
           "size": "418x627",
-          "thumb_size": "418x627"
+          "thumb_size": "418x627",
+          "review": {
+            "flag": "suspected_stock",
+            "flagged_by": "Q-W26-06",
+            "owner_confirmed": "2026-09-22",
+            "ruling": "W27-R-03"
+          }
         },
         {
           "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (3).jpeg",
@@ -567,7 +579,13 @@
           "thumb": "public/img/galerie/terasamente/04-t.jpg",
           "source_size": "736x1104",
           "size": "736x1104",
-          "thumb_size": "600x900"
+          "thumb_size": "600x900",
+          "review": {
+            "flag": "suspected_stock",
+            "flagged_by": "Q-W26-06",
+            "owner_confirmed": "2026-09-22",
+            "ruling": "W27-R-03"
+          }
         },
         {
           "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (5).jpeg",
@@ -576,7 +594,13 @@
           "thumb": "public/img/galerie/terasamente/05-t.jpg",
           "source_size": "747x1328",
           "size": "747x1328",
-          "thumb_size": "600x1066"
+          "thumb_size": "600x1066",
+          "review": {
+            "flag": "suspected_stock",
+            "flagged_by": "Q-W26-06",
+            "owner_confirmed": "2026-09-22",
+            "ruling": "W27-R-03"
+          }
         },
         {
           "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (6).jpeg",
@@ -621,7 +645,13 @@
           "thumb": "public/img/galerie/terasamente/10-t.jpg",
           "source_size": "1200x1600",
           "size": "1200x1600",
-          "thumb_size": "600x800"
+          "thumb_size": "600x800",
+          "review": {
+            "flag": "suspected_stock",
+            "flagged_by": "Q-W26-06",
+            "owner_confirmed": "2026-09-22",
+            "ruling": "W27-R-03"
+          }
         },
         {
           "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (11).jpeg",
@@ -648,7 +678,13 @@
           "thumb": "public/img/galerie/terasamente/13-t.jpg",
           "source_size": "736x920",
           "size": "736x920",
-          "thumb_size": "600x750"
+          "thumb_size": "600x750",
+          "review": {
+            "flag": "suspected_stock",
+            "flagged_by": "Q-W26-06",
+            "owner_confirmed": "2026-09-22",
+            "ruling": "W27-R-03"
+          }
         },
         {
           "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (14).jpeg",
@@ -657,7 +693,13 @@
           "thumb": "public/img/galerie/terasamente/14-t.jpg",
           "source_size": "1200x1500",
           "size": "1200x1500",
-          "thumb_size": "600x750"
+          "thumb_size": "600x750",
+          "review": {
+            "flag": "suspected_stock",
+            "flagged_by": "Q-W26-06",
+            "owner_confirmed": "2026-09-22",
+            "ruling": "W27-R-03"
+          }
         },
         {
           "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM copy.jpeg",
@@ -675,7 +717,13 @@
           "thumb": "public/img/galerie/terasamente/16-t.jpg",
           "source_size": "736x1308",
           "size": "736x1308",
-          "thumb_size": "600x1066"
+          "thumb_size": "600x1066",
+          "review": {
+            "flag": "suspected_stock",
+            "flagged_by": "Q-W26-06",
+            "owner_confirmed": "2026-09-22",
+            "ruling": "W27-R-03"
+          }
         }
       ],
       "duplicates_skipped": [],

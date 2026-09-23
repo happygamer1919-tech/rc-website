@@ -3323,7 +3323,7 @@ so neither your words nor a section of that page gives them a destination.
 **One tile your ruling did not name still opens "in construcție"**: the fence hub's "Calculează
 prețul gardului". W26-R12's ban names roofing tiles, so it is unchanged. Same three choices apply.
 
-## Q-W26-06 · Some photographs in two gallery folders may not be your own work · OPEN · opened 2026-09-22 (W26-12)
+## Q-W26-06 · Some photographs in two gallery folders may not be your own work · **ANSWERED 2026-09-22 (W27-R-03): all eight are Rapid Construct's own work, kept and marked owner_confirmed in the manifest** · opened 2026-09-22 (W26-12)
 
 **Raised W26-12, 2026-09-22. Shipped default: every photograph installed, as W26-R14 directs.
 Nothing is blocked.**

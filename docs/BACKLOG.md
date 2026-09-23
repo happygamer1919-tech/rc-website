@@ -998,3 +998,13 @@ section 10. **`docs/RC-PROJECT-RULES.md` does not exist**; the rules are `docs/C
 design proposals exist only as PDFs under `design/`, and their "why" pages were transcribed; the
 find-and-replace files they refer to are not in the repo, so the design cards build from the
 dispatch's numbers. Section 12.0 on `e3ba69d` (#135): **exit 0, PASS, 53 of 53, 0 retried.**
+
+## W27-C-01 · The eight gallery photographs, owner confirmed
+**Status: PR OPEN** (opened 2026-09-22). W27-R-03 applied: Q-W26-06's eight photographs (terasamente
+02, 04, 05, 10, 13, 14, 16 and finisaje 04) are the owner's own work. **The confirmation is data now**:
+each of the eight carries a `review` record in `content/galleries.json` naming the flag, the question,
+the ruling and the date, and **`scripts/intake-galleries.js` carries it across a re-run by the source
+file's sha256**, so a re-numbered folder keeps the mark on the same picture; before this the next
+`--apply` would have wiped it. Nothing on any page changes: no photograph moves, no provenance row
+changes, gate 29 reads no flag. Q-W26-06 heading moved to ANSWERED in place.
+

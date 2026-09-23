@@ -125,14 +125,22 @@ for (const e of empty) console.log(`${e.folder.padEnd(36)} -> /servicii/${e.page
 for (const u of unmatched) console.log(`${u.folder.padEnd(36)} -> no page of that name: a question, not a page`);
 if (!APPLY) { console.log('\nreport only; --apply installs.'); process.exit(0); }
 
-/* Keep a preview choice already made by hand in the ledger; everything else is recomputed. */
+/* Keep the two things chosen by hand in the ledger; everything else is recomputed. The preview
+   is per gallery. The `review` record is per photograph and is carried by the SOURCE file's
+   sha256, not by its number, so a folder that is re-ordered or re-numbered keeps the mark on the
+   same picture (W27-C-01, ruling W27-R-03: the eight photographs Q-W26-06 flagged as suspected
+   stock are the owner's own work, and that confirmation is data here, not prose). */
 const prev = fs.existsSync(LEDGER) ? JSON.parse(fs.readFileSync(LEDGER, 'utf8')) : null;
 for (const g of galleries) {
   const old = prev && prev.galleries.find((x) => x.folder === g.folder);
   if (old && Number.isInteger(old.preview) && old.preview >= 1 && old.preview <= g.installed) g.preview = old.preview;
+  for (const p of g.photos) {
+    const o = old && old.photos.find((x) => x.sha256 === p.sha256);
+    if (o && o.review) p.review = o.review;
+  }
 }
 const ledger = {
-  _note: 'W26-12, ruling W26-R14. Written by scripts/intake-galleries.js from /Users/ivan/RC-webpics_v2, never typed. One gallery per folder whose name is a page title; `preview` is the 1-based photo the card shows and is the one field chosen by hand. Gate 29 (scripts/check-galleries.js) holds every page to this file: the lightbox shows exactly these photos, in this order.',
+  _note: 'W26-12, ruling W26-R14. Written by scripts/intake-galleries.js from /Users/ivan/RC-webpics_v2, never typed. One gallery per folder whose name is a page title; `preview` is the 1-based photo the card shows and `review` on a photograph is the answer the owner gave to a flag raised about it (W27-R-03); those two are the only fields chosen by hand, and both survive a re-run. Gate 29 (scripts/check-galleries.js) holds every page to this file: the lightbox shows exactly these photos, in this order.',
   source_root: SRC,
   galleries, empty_folders: empty, unmatched_folders: unmatched,
 };

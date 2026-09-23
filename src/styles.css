@@ -187,13 +187,17 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
   height: var(--control-h); padding: 0 28px;
   display: inline-flex; align-items: center; justify-content: center;
   border-radius: var(--radius-pill); border: 1px solid transparent;
-  font-family: inherit; font-size: 19px; font-weight: 700; line-height: 1;
+  font-family: inherit; font-size: 17px /* W28-05: 19 to 17, the dark label needs no large-text allowance */; font-weight: 700; line-height: 1;
   white-space: nowrap; cursor: pointer;
 }
 /* 19px bold clears the 18.66px WCAG large-text threshold, where AA asks 3:1
    rather than 4.5:1. White on --brand is 3.41:1, so the button passes without
-   darkening the brand fill. Two pixels on a 48px control. */
-.btn--primary { background: var(--brand); color: var(--bg-light); }
+   darkening the brand fill. Two pixels on a 48px control. 
+   AMENDED (W28-05): the label is --ink on --brand at 17px, 5.3:1, and needs no allowance. */
+/* W28-05 (W27-R-07): a DARK label on the orange. #1C1917 on #F65308 is 5.3:1, so the label
+   passes WCAG at any size and the 19px large-text allowance is no longer what holds it; the
+   hover goes darker with a white label (5.6:1 on --brand-dark). */
+.btn--primary { background: var(--brand); color: var(--ink); }
 .btn--primary:hover { background: var(--brand-dark); color: var(--bg-light); }
 /* W28-01: the button answers the pointer the way a card does, eased on the one curve,
    lifted 1px with a soft shadow. Removed under reduced motion with the card lift. */
@@ -448,7 +452,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 .prod__cta {
   flex: none; width: 44px; height: 44px; border-radius: var(--radius-pill);
   display: inline-flex; align-items: center; justify-content: center;
-  background: var(--brand); color: var(--bg-light);
+  background: var(--brand); color: var(--ink)  /* W28-05: the arrow is dark on the orange too */;
   transition: background var(--hover-dur) var(--ease-out);
 }
 .prod__cta:hover { background: var(--brand-dark); color: var(--bg-light); }
@@ -983,7 +987,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   height: 40px; padding: 0 16px; border-radius: 999px;
   border: 1px solid var(--brand); background: var(--brand);
-  color: var(--bg-light); font-family: inherit; font-size: 19px; font-weight: 700; line-height: 1;
+  color: var(--ink); font-family: inherit; font-size: 17px; font-weight: 700; line-height: 1;  /* W28-05: dark label, 17px */
   white-space: nowrap; cursor: pointer;
 }
 .catalog__toggle:hover { background: var(--brand-dark); border-color: var(--brand-dark); color: var(--bg-light); }

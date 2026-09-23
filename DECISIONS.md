@@ -13251,6 +13251,25 @@ and set to measured plus 60 (W24-R4), in a generated table in R-Y. The homepage 
 
 **Master plan.** Its type table (h1 56/800/UPPERCASE, h2 40/800/UPPERCASE, eyebrow 13/12) is
 struck in place with this card named (R-R).
+
+## W28-05 · Buttons: a dark label on the orange, 17px, 2026-09-22
+
+Branch `w27/w28-05-buttons`, stacked on W28-04.
+
+**What held the white label was its size.** Section 4 records it: 19px bold clears WCAG's
+large-text threshold, so white on `--brand` (3.4:1) is judged at 3:1. The W28 proposal's pattern 9
+is the other way round: a dark label on the orange passes at any size, so the label can be a refined
+17px. `--ink` on `--brand` is 5.3:1 and passes the normal-text threshold outright. Every `.btn`, the
+catalogue toggle and the card's round arrow take the dark label at 17px; the primary hover goes to
+`--brand-dark` with a white label (5.6:1), so the pressed state still reads as a change. Section 4 is
+amended beside the sentence it changes; the stylesheet comment that explained the allowance carries
+the amendment too.
+
+**Gate 11.** A 17px label is narrower than a 19px one, so the header pill gains slack: recorded in
+the card. **Gate 18** (dropdowns, which hold the catalogue toggle) and **gate 28** exit 0.
+
+**Budgets.** Buttons keep their 48px height, so nothing moved by more than a line; all 53 budgets
+re-measured plus 60, generated into R-Y, as every design card does.
 ## W27-FIX-01 · Budgets after the 14px floor, and the section 12.0 failure that found it, 2026-09-22
 
 Branch `w27/w27-fix-01-budgets`, from `main` at `ff8a922` (#143 merged).

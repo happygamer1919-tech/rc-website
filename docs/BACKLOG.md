@@ -1109,3 +1109,11 @@ the text. **No locale string changes**: none was stored in capitals, the capital
 master plan's type table struck in place. **All 53 budgets re-measured plus 60** (R-Y table,
 generated). **Static gates, gates 14, 20 and 28 exit 0.** Screenshots `docs/design/W27/w28-04-*`.
 
+## W28-05 · Buttons: a dark label on the orange, 17px
+**Status: PR OPEN** (opened 2026-09-22). **`--ink` on `--brand` at 17px, 5.3:1**, which passes WCAG at any
+size, so the 19px large-text allowance that held white-on-orange (section 4) is no longer what holds
+it; the catalogue toggle and the card arrow take the same dark label; hover goes darker with a white
+label. Section 4 amended. Gate 11 gains slack from the smaller label (least RU slack recorded in the
+card). **Static gates, gates 11, 18 and 28 exit 0.** Budgets re-measured. Screenshots
+`docs/design/W27/w28-05-*`.
+

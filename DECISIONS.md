@@ -13290,6 +13290,22 @@ and the check is carried in the report for the owner.
 
 **Gates 20 and 28** exit 0 (labels, hints and field text on the cream). All 53 budgets re-measured plus
 60 into R-Y: every page with the form is a few lines taller.
+
+## W28-07 · The stats band as four dark cards, and the hero claim card, 2026-09-22
+
+Branch `w27/w28-07-stats-cards`, stacked on W28-06.
+
+**Three facts become three comparable objects** is the W28 proposal's pattern 5, and the site's
+four stats on the dark band take it: each is a `#232323` card with 24px of padding, left-aligned,
+its orange figure at 64px over a white label. The hero's claim card takes the same `#232323`, a shade
+above the band, so the two read as the same kind of object. **`#232323` is a new value**, the twelfth,
+and section 3 is amended to say so and what it is for: a card on the dark band, never a section
+ground. The alternative, a translucent white wash over `--bg-dark`, would have composited to a value
+the dispatch does not name, and section 3 already treats a wash on the dark band as not a colour;
+the dispatch names `#232323`, so the value is named.
+
+**Gate 28** exits 0: white on `#232323` at 15.7:1, the orange figures at 64px large. **Budgets**
+re-measured plus 60 into R-Y; the homepages grow by the cards' padding.
 ## W27-FIX-01 · Budgets after the 14px floor, and the section 12.0 failure that found it, 2026-09-22
 
 Branch `w27/w27-fix-01-budgets`, from `main` at `ff8a922` (#143 merged).

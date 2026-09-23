@@ -1284,7 +1284,10 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 /* --- dark stats band ------------------------------------------------------ */
 
 .band__stats { margin-bottom: 32px; }
-.band .stat { text-align: center; }
+/* W28-07 (W27-R-07): the four stats are four dark cards on the band, left-aligned, each a
+   huge orange figure over a white label, the same object the hero's claim card is. #232323 is
+   the twelfth value, named in docs/CLAUDE.md section 3. */
+.band .stat { text-align: left; background: #232323; border-radius: var(--radius-card); padding: 24px 28px; }
 .band .stat__n { font-size: 64px; }
 .band .stat__label { color: var(--bg-light); }
 .band__coverage { text-align: center; color: var(--line); }
@@ -1669,7 +1672,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
   text-align: left;
 }
 .hero-claim {
-  background: var(--bg-dark);
+  background: #232323  /* W28-07: the same treatment as the stat cards */;
   color: var(--bg-light);
   border-radius: var(--radius-hero);
   padding: 32px;
@@ -2188,6 +2191,10 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 
 @media (max-width: 1024px) {
   :root { --section-pad: 72px; }
+  /* W28-07: four padded stat cards do not fit four tracks below 1024px (the homepage scrolled
+     sideways by 14px at 769, gate 11 caught it in CI); two columns and a smaller figure here. */
+  .band__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .band .stat__n { font-size: 52px; }
   .bento, .models, .csteps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }

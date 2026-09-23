@@ -297,8 +297,8 @@ const PAGES = [
   /* W25-23. The Acoperisuri card left the product strip, so these fall with the
      measurement: R-Y's own rule is that removing an element's cost drops the
      budget by that cost, and a budget left high is a ceiling to hide under. */
-  { path: '/',                             type: 'home',    label: 'homepage RO',    budget: 9294 },
-  { path: '/ru/',                          type: 'home',    label: 'homepage RU',    budget: 9508 },
+  { path: '/',                             type: 'home',    label: 'homepage RO',    budget: 9342 },
+  { path: '/ru/',                          type: 'home',    label: 'homepage RU',    budget: 9583 },
   /* W24-05. The before/after slider moved onto this page, so these two rows leave
      the shared 6,000px service budget that RELEASE-NOTES's wave 7 acceptance
      holds and take their own, measured plus 60, under W24-R4. The other four
@@ -337,8 +337,8 @@ const PAGES = [
   /* W24-07. The rocă vulcanică mirror page. */
   /* AMENDED (W27-C-04): chips, a warranty row and a price on each card, a derived "de la"
      line under the heading; measured 4,369 / 4,439 at 1440, settled, plus 60, in R-Y. */
-  { path: '/servicii/roca-vulcanica/',     type: 'novatik', label: 'novatik RO',  budget: 4501 },
-  { path: '/ru/servicii/roca-vulcanica/',  type: 'novatik', label: 'novatik RU',  budget: 4572 },
+  { path: '/servicii/roca-vulcanica/',     type: 'novatik', label: 'novatik RO',  budget: 4528 },
+  { path: '/ru/servicii/roca-vulcanica/',  type: 'novatik', label: 'novatik RU',  budget: 4599 },
   { path: '/ru/servicii/finisaje/',        type: 'service', label: 'svc RU finis',   budget: 5575 },
   /* W25-09. Both rows take +39: this page gained one link-arrow to the new
      catalogue category, measured on the branch at 3979 RO and 4012 RU against

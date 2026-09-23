@@ -1125,3 +1125,9 @@ address string exists in the aside, so none is shown). The filter buttons take t
 W28-01 listed. Field names, action, hidden inputs untouched: **gate 13 (form wiring) 64 forms on 62
 pages exits 0.** Gates 20 and 28 exit 0. Budgets re-measured. Screenshots `docs/design/W27/w28-06-*`.
 
+## W28-07 · The stats band as four dark cards, and the hero claim card
+**Status: PR OPEN** (opened 2026-09-22). **Four `#232323` cards on the `#1C1917` band**, left-aligned,
+huge orange figure over a white label; the hero claim card takes the same `#232323`. **`#232323` is the
+twelfth value**, added to section 3 with its use, never a section ground. Gate 28 exits 0 (white on
+`#232323` 15.7:1). Budgets re-measured. Screenshots `docs/design/W27/w28-07-*`.
+

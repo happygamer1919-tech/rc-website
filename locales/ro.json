@@ -29,10 +29,6 @@
     "catalogExpand": "arată subcategoriile",
     "catalogBack": "Înapoi"
   },
-  "promo": {
-    "text": "Reducere 10% la orice serviciu doar până în 2027",
-    "endDate": "2027-01-01"
-  },
   "hero": {
     "eyebrow": "Construcții & Renovări · în toată Moldova",
     "h1": "Casa ta la cheie, fără să coordonezi singur echipele",
@@ -44,10 +40,7 @@
       "line1": "5 ani de garanție, direct în contract.",
       "line2": "Materiale verificate, producători de încredere și soluții alese pentru casa ta."
     },
-    "panelAlt": "Armătură de stâlp în lucru, echipă pe schelă într-o clădire în construcție",
-    "highlights": {
-      "0": "−10% la programări anticipate"
-    }
+    "panelAlt": "Armătură de stâlp în lucru, echipă pe schelă într-o clădire în construcție"
   },
   "stats": {
     "0": {
@@ -61,10 +54,6 @@
     "2": {
       "n": "5",
       "label": "ani garanție scrisă"
-    },
-    "3": {
-      "n": "4.9/5",
-      "label": "din 250+ recenzii"
     }
   },
   "services": {
@@ -588,7 +577,7 @@
         "line": "Stabilim termene clare de la început și le respectăm."
       },
       "3": {
-        "title": "Echipă cu 10+ ani experiență",
+        "title": "Echipă cu 15+ ani de experiență",
         "line": "Meșteri specializați pe fiecare tip de lucrare."
       },
       "4": {
@@ -626,10 +615,6 @@
         "tag": "Dezvoltator imobiliar"
       }
     },
-    "score": "4.9",
-    "outOf": "din 5",
-    "count": "250+ recenzii",
-    "aria": "Nota medie 4.9 din 5",
     "google": "Vezi recenziile pe Google"
   },
   "form": {
@@ -669,7 +654,6 @@
   },
   "footer": {
     "description": "Construcții și renovări la cheie în toată Moldova, cu garanție scrisă și materiale certificate UE.",
-    "offer": "−10% la programări anticipate",
     "navHeading": "Companie",
     "servicesHeading": "Servicii",
     "contactHeading": "Contact",
@@ -842,11 +826,11 @@
         },
         "2": {
           "q": "Cine coordonează echipele pe șantier?",
-          "a": "Noi. Un singur contract acoperă toate etapele, așa că nu ai de negociat separat cu echipa de fundații, cu zidarii, cu dulgherii și cu finisorii. Meșterii sunt specializați pe fiecare tip de lucrare și au peste zece ani de experiență, iar termenele se stabilesc clar de la început și se respectă."
+          "a": "Noi. Un singur contract acoperă toate etapele, așa că nu ai de negociat separat cu echipa de fundații, cu zidarii, cu dulgherii și cu finisorii. Meșterii sunt specializați pe fiecare tip de lucrare și au 15+ ani de experiență, iar termenele se stabilesc clar de la început și se respectă."
         },
         "3": {
           "q": "Ce garanție și ce preț primesc?",
-          "a": "Garanția este scrisă în contract, până la treizeci de ani, nu doar promisă verbal. Materialele sunt de la producători cu reputație, cu certificare UE, potrivite proiectului. Prețul este cel din deviz, fără costuri ascunse, iar la programările anticipate se aplică o reducere de zece la sută."
+          "a": "Garanția este scrisă în contract, până la treizeci de ani, nu doar promisă verbal. Materialele sunt de la producători cu reputație, cu certificare UE, potrivite proiectului. Prețul este cel din deviz, fără costuri ascunse."
         }
       },
       "related": {
@@ -899,7 +883,7 @@
         },
         "3": {
           "q": "Ce condiții de plată aveți la acoperiș?",
-          "a": "La programările anticipate se aplică o reducere de zece la sută. Prețul rămâne cel din deviz, fără costuri ascunse. Garanția se scrie în contract, până la treizeci de ani, iar materialele vin de la producători cu certificare UE."
+          "a": "Prețul rămâne cel din deviz, fără costuri ascunse. Garanția se scrie în contract, până la treizeci de ani, iar materialele vin de la producători cu certificare UE."
         }
       },
       "related": {
@@ -944,7 +928,7 @@
         },
         "3": {
           "q": "Ce materiale folosiți și ce garanție dați?",
-          "a": "Materialele vin de la producători cu reputație, cu certificare UE, alese potrivit proiectului. Garanția se scrie în contract, până la treizeci de ani, nu se promite doar verbal. Prețul este cel din deviz, fără costuri ascunse, iar la programările anticipate se aplică o reducere de zece la sută."
+          "a": "Materialele vin de la producători cu reputație, cu certificare UE, alese potrivit proiectului. Garanția se scrie în contract, până la treizeci de ani, nu se promite doar verbal. Prețul este cel din deviz, fără costuri ascunse."
         }
       },
       "related": {
@@ -968,7 +952,7 @@
         },
         "3": {
           "q": "Cât durează și cât costă?",
-          "a": "Termenele se stabilesc clar de la început și se respectă. Prețul este cel din deviz, fără costuri ascunse, iar la programările anticipate se aplică o reducere de zece la sută. Măsurarea este gratuită: venim, măsurăm și abia apoi întocmim devizul, ca să știi de la început ce plătești."
+          "a": "Termenele se stabilesc clar de la început și se respectă. Prețul este cel din deviz, fără costuri ascunse. Măsurarea este gratuită: venim, măsurăm și abia apoi întocmim devizul, ca să știi de la început ce plătești."
         }
       },
       "related": {
@@ -1013,7 +997,7 @@
         },
         "3": {
           "q": "Cine execută lucrarea?",
-          "a": "Meșteri specializați pe fiecare tip de lucrare, cu peste zece ani de experiență. Termenele se stabilesc clar de la început și se respectă, prețul rămâne cel din deviz, fără costuri ascunse, iar după finalizare rămânem alături de tine cu suport post-lucrare."
+          "a": "Meșteri specializați pe fiecare tip de lucrare, cu 15+ ani de experiență. Termenele se stabilesc clar de la început și se respectă, prețul rămâne cel din deviz, fără costuri ascunse, iar după finalizare rămânem alături de tine cu suport post-lucrare."
         }
       },
       "related": {
@@ -1037,7 +1021,7 @@
         },
         "3": {
           "q": "Proiectarea se poate lua separat de construcție?",
-          "a": "Da, proiectarea și vizualizarea 3D sunt un serviciu de sine stătător. Dacă mergi mai departe cu execuția, ele devin punctul de pornire pentru deviz, iar prețul rămâne cel din deviz, fără costuri ascunse. Măsurarea la fața locului este gratuită, iar la programările anticipate se aplică o reducere de zece la sută."
+          "a": "Da, proiectarea și vizualizarea 3D sunt un serviciu de sine stătător. Dacă mergi mai departe cu execuția, ele devin punctul de pornire pentru deviz, iar prețul rămâne cel din deviz, fără costuri ascunse. Măsurarea la fața locului este gratuită."
         }
       },
       "related": {
@@ -1192,7 +1176,7 @@
     "roofTigla": "Țiglă metalică",
     "roofNovatik": "Rocă vulcanică Novatik",
     "roofCalc": "Calculează prețul acoperișului",
-    "roofOffers": "Reduceri",
+    "roofOffers": "Solicită ofertă",
     "fenceH": "Garduri",
     "fenceHMuted": "tip jaluzele",
     "fenceJaluzele": "Garduri tip jaluzele",

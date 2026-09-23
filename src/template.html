@@ -162,11 +162,10 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     <h1>{{hero.h1}}</h1>
     <p class="hero__sub">{{hero.sub}}</p>
 
-    <div class="grid grid--4 stats">
+    <div class="grid grid--3 stats">
       <div class="stat"><div class="stat__n">{{stats.0.n}}</div><div class="stat__label">{{stats.0.label}}</div></div>
       <div class="stat"><div class="stat__n">{{stats.1.n}}</div><div class="stat__label">{{stats.1.label}}</div></div>
       <div class="stat"><div class="stat__n">{{stats.2.n}}</div><div class="stat__label">{{stats.2.label}}</div></div>
-      <div class="stat"><div class="stat__n">{{stats.3.n}}</div><div class="stat__label">{{stats.3.label}}</div></div>
     </div>
 
     <div class="hero-panels">
@@ -176,10 +175,6 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         <p class="hero-claim__line">{{hero.claim.line2}}</p>
         <a class="btn btn--primary hero-claim__cta" href="#oferta">{{hero.ctaPrimary}}</a>
         {{socialRow}}
-        <hr class="hero-claim__divider">
-        <ul class="hero-claim__highlights">
-          <li>{{hero.highlights.0}}</li>
-        </ul>
       </div>
       {{heroPanelMedia}}
     </div>
@@ -355,11 +350,10 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
 <!-- 6 · Stats band, --bg-dark, dark 1 of 2 -->
 <section class="section section--dark band">
   <div class="container">
-    <div class="grid grid--4 band__stats">
+    <div class="grid grid--3 band__stats">
       <div class="stat"><div class="stat__n">{{stats.0.n}}</div><div class="stat__label">{{stats.0.label}}</div></div>
       <div class="stat"><div class="stat__n">{{stats.1.n}}</div><div class="stat__label">{{stats.1.label}}</div></div>
       <div class="stat"><div class="stat__n">{{stats.2.n}}</div><div class="stat__label">{{stats.2.label}}</div></div>
-      <div class="stat"><div class="stat__n">{{stats.3.n}}</div><div class="stat__label">{{stats.3.label}}</div></div>
     </div>
     <p class="band__coverage"><strong>{{band.coverageTitle}}</strong> {{band.coverageLine}}</p>
   </div>
@@ -404,15 +398,10 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     <h2 data-reveal>{{reviews.h2}}</h2>
 
     <div class="reviews-layout" style="margin-top: 40px;">
-      <div class="rating" data-reveal>
-        <div class="rating__score">{{reviews.score}}</div>
-        <div class="rating__outof">{{reviews.outOf}}</div>
-        <div class="stars" role="img" aria-label="{{reviews.aria}}">
-          <div class="stars__base"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg></div>
-          <div class="stars__fill" style="width: 98%;"><svg width="20" height="20" viewBox="0 0 24 24" fill="#F65308" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="#F65308" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="#F65308" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="#F65308" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg><svg width="20" height="20" viewBox="0 0 24 24" fill="#F65308" stroke="#F65308" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 5.9 6.6.9-4.8 4.6 1.2 6.5-5.9-3.1-5.9 3.1 1.2-6.5L3.5 9.3l6.6-.9z"/></svg></div>
-        </div>
-        <div class="rating__count">{{reviews.count}}</div>
-      </div>
+      <!-- W28-11 (wave 28, R-W28-03): the R-N aggregate panel (score, stars, count) is gone
+           with the claim it carried, and the visible anchor to the Google profile is back under
+           the three testimonials, as R-O foresaw ("if R-N is later resolved ... the anchor may
+           return under a new ruling"). -->
 
       <div class="grid grid--3" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
       <figure class="review" style="margin: 0;">
@@ -437,10 +426,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         <blockquote class="review__quote" style="margin: 0;">{{reviews.items.2.quote}}</blockquote>
       </figure>
       </div>
-      <!-- W12-20, R-O. The visible anchor to the Google profile is gone while
-           the R-N review claim is live. The entity connection is carried by
-           sameAs in the JSON-LD above, which is unaffected: that URL is a
-           literal in this template and is not derived from GOOGLE_REVIEWS_URL. -->
+      <p class="reviews__google">{{googleLink}}</p>
     </div>
   </div>
 </section>
@@ -533,7 +519,6 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
       <div class="footer__brand">
         <img src="{{base}}/logo-mono.png" alt="{{meta.logoAlt}}" width="1542" height="568">
         <p class="footer__desc">{{footer.description}}</p>
-        <p class="footer__offer">{{footer.offer}}</p>
       </div>
 
       <div class="footer__lists">

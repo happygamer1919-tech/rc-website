@@ -13865,3 +13865,63 @@ and the mobile panel's copy of the header button); the fence models with prices 
 roofing catalogue moves to `/catalog/materiale-acoperis/`; the industrial page is
 `/servicii/industrial/`; "catalog detail pages" for the Product schema are the pages that
 render priced cards, because no per-product page exists. Each is open for ratification.
+
+## W28-11 · Claims cleanup RO and RU, R-X enforcement, fifteen years, the Google reviews link, 2026-09-23
+
+Branch `w28/w28-11-claims-cleanup`, stacked on W28-00. Under owner rulings R-W28-02 and R-W28-03
+and the wave 28 dispatch ("R-X enforcement").
+
+**Measured first, with a new instrument.** `scripts/dom-text.js` serves the built tree, opens
+every page in headless Chrome, waits for the stylesheet, applies the reveals and prints
+`document.body.innerText`, optionally with every `<table>` removed ("outside product spec
+tables"); the acceptance greps read that, not the markup. Before the card, over 85 pages: "2027"
+on 84, "10%" on 84, "−10%" on 82, "Reducere"/"Скидка" on 42 each, "reducere"/"скидка" in 12 FAQ
+answers, "Reduceri"/"Скидки" on 9 roofing pages each (a hub tile label), "4.9" and "250+" 6
+times, "10+" twice, "15+" four times.
+
+**What goes, both locales, one commit.** The promo bar's strings (`promo.text`, `promo.endDate`;
+the bar's mechanism in `build.js` and its CSS stay and render nothing, so a non-discount notice
+can use it by data), the hero highlight and the footer line "−10% la programări anticipate" /
+"−10% при ранней записи", the fourth stat card ("4.9/5 din 250+ recenzii", both stat grids go
+from four columns to three), the R-N rating panel (score, stars, count, aria), the discount
+clause inside five FAQ answers per locale, and the roofing hub tile label "Reduceri" / "Скидки",
+which now reads "Solicită ofertă" / "Запросить предложение" (it opens the quote form). The
+warranty line, the material line and every other claim stay.
+
+**What changes.** "15+ ani de experiență" / "15+ лет опыта" everywhere the figure appears: the
+stat card (already), the team line `trust.items.3` (was "10+"), and two FAQ answers per locale
+that said "peste zece ani" / "более десяти лет" (R-W28-02, the ruling says everywhere including
+prose). The Google reviews link is live under the three testimonials: `GOOGLE_REVIEWS_URL` is a
+committed constant (the share link as given; R-W28-03's test found it resolves to a
+`google.com/search` knowledge panel, not maps or a business page), the anchor carries
+`data-reviews="google"`, `rel="noopener noreferrer"`, `target="_blank"` and the two locales'
+existing `reviews.google` strings, which are the ruling's exact texts. R-O foresaw this
+("if R-N is later resolved ... the anchor may return under a new ruling"); R-N's claim is gone
+and R-W28-03 is that ruling.
+
+**R-X is amended** (`docs/rulings/R-X.md`, dated block): interpretation 1, which had kept the
+static discount lines, is overturned by the dispatch's words, and `scripts/check-scarcity.js`
+gains seven discount arms (RO and RU discount words, the early-booking form, the "doar până în
+<year>" / "только до <year> года" form, and percent-off), scoped to the locales and the built
+pages and not to the code files (a stylesheet's `translateX(-50%)` is not a claim), each
+self-tested against its own samples and against clean samples a discount pattern must not
+catch (a product figure, a spec percentage, a warranty year, the two permitted ask strings).
+Watched fail on the real tree: two discount lines planted into the built home page produced 5
+violations on 4 arms, exit 1, and the restored control exit 0.
+
+**`scripts/verify-live.js` follows the page.** `promoBar` 0 on every marker set, `ratingPanel`
+0, `statTiles` 6, `profileAnchors` 1 (its probe is now `a[data-reviews="google"]`; the old
+`maps.google.com` probe could never have counted the share link). The W25-R11 readiness probe
+waited for the promo bar, which no page carries any more; it now waits for the stylesheet token
+and the site header, and its five proof arms were rewritten and watched pass, with arm 4 (the
+bounded re-read) passing against the live origin. Note for the next reader: `--prove` takes the
+origin FIRST (`node scripts/verify-live.js https://rapidconstruct.md --prove`); the flag in
+first position is read as the origin and arm 4 cannot navigate, on `main` as well as here.
+
+**All 55 budgets move** (R-Y amendment): every page is 44px shorter without the bar; the home
+pages 29 (RO) and 111 (RU) shorter with the hero line, the stat card and the rating panel gone
+and the link added; case la cheie and fațade 71 shorter with a FAQ sentence gone.
+
+**After**, same instrument, 85 pages: the acceptance pattern returns 0 outside tables, "10+"
+returns 0, "15+" returns 3 on each home page, the link anchor is on `/` and `/ru/` once each and
+its href answers HTTP 200 to `curl -sIL`.

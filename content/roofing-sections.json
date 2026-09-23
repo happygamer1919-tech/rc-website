@@ -6,6 +6,31 @@
     "captured": "2026-09-22",
     "ruling": "W26-R5"
   },
+  "_colour_names_note": "W27-FIX-04, 2026-09-23 (Q-W27-02 part 3). The third source of build.js's Russian colour dictionary, after the fence palette and the metal tile legend: the bare colour words the imperlux model cards and the Novatik page print in Romanian and neither file carries. imperlux.md publishes no Russian page, so these Russian names are authored here the way the fence palette's are (garduri-modele.json, _colour_note); a colour name translated is not a claim. Matched on the exact Romanian word, case-insensitively. The RAL each word stands for on imperlux's own product page is recorded beside it, from the page's colour picker (Bavaria: RAL 7016 Gri Antracit, RAL 8017 Maro Ciocolata, RAL 8019 Maro, RAL 9005 Negru), so a later reader can check the word against the code.",
+  "colour_names": {
+    "Maro": {
+      "ru": "Коричневый",
+      "ral": "8019"
+    },
+    "Negru": {
+      "ru": "Чёрный",
+      "ral": "9005"
+    },
+    "Ciocolată": {
+      "ru": "Шоколадный",
+      "ral": "8017"
+    },
+    "Maro închis": {
+      "ru": "Тёмно-коричневый",
+      "ral": null,
+      "where": "Creaton Rapido, the one colour its product page names"
+    },
+    "Gri": {
+      "ru": "Серый",
+      "ral": null,
+      "where": "Novatik Wood, content/novatik.json"
+    }
+  },
   "groups": [
     {
       "id": "tigla-metalica",

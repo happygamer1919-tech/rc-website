@@ -13485,3 +13485,37 @@ move to measured plus 60 (24,842 and 25,063), generated into R-Y; the other 51 r
 **Not changed, noted.** The seventeen rainwater parts still print their Romanian names on the
 Russian page (W27-C-06 translated the taglines and not the names); outside this card's scope, listed
 in the fix-pass report.
+
+## W27-FIX-04 · Russian chip names, and the "+N" chip under W27-R-11, 2026-09-23
+
+Branch `w27/w27-fix-04-ru-chips`, stacked on W27-FIX-03.
+
+**Q-W27-02 part 3, the three missing dictionary entries.** `build.js`'s Russian colour dictionary
+had two sources, the fence palette and the metal tile legend, matched on the exact Romanian name;
+Maro, Negru and Ciocolată matched neither (the files carry "Maro Wenge", "Negru profund", "Maro
+ciocolată"), so seven roofing cards printed them in Romanian on the Russian page. The dictionary
+gains a **third source**, `colour_names` in `content/roofing-sections.json`: Maro (Коричневый),
+Negru (Чёрный), Ciocolată (Шоколадный), and the two more the Russian pages needed once looked at,
+Maro închis (Тёмно-коричневый, Creaton Rapido's one named colour) and Gri (Серый, Novatik Wood).
+imperlux.md publishes no Russian page (`/ru/` answers 403), so the Russian names are authored, as
+the fence palette's are, and the RAL each word stands for on imperlux's own page is recorded beside
+it. **Rendered acceptance**: on `/ru/servicii/acoperisuri/`, `/ru/servicii/roca-vulcanica/` and
+`/ru/servicii/tigla-metalica/`, the words Maro, Negru, Ciocolată and Gri each read **0** (before:
+8, 2, 5 on the roofing page, 1, 1 on the Novatik page).
+
+**W27-R-11 applied, in both card renderers.** A colour the count includes and the list does not
+name renders as one more chip, `+N` (`data-more="N"`), after the named chips, derived at build from
+the record's count and its names, never typed. Roofing page: Bavaria, Heta, Zet, Finn and Izi
+print "+1" (three names, count four), Creaton Rapido "+3" (one name, count four), IKO Cambridge "+1"
+(three codes, count four); Barcelona, Madrid and IKO Superglass Hex name every colour and print no
+chip. Novatik page: Roman "+2" (five, three named), Wood "+1" (four, three named); Classic and
+Slate none. The count on the facts line and in the Compară cell is unchanged. The same rule in the
+Novatik renderer, because a rule at one caller guards one caller.
+
+**The finding W27-R-11's reading records stands**: imperlux's colour picker names the fourth colour
+of the five tiles (RAL 9005 Negru) and the fourth code of IKO Cambridge (Cod 51); the ruling
+decides "+N", so the names are recorded in the data's note and not rendered.
+
+**Heights.** The roofing page reads identical to W27-FIX-03's measurement in both locales (the
+chip fits the row); the Novatik page grows 34px in each locale, 4,507 to 4,541 and 4,551 to 4,585
+at 1440 settled; all 53 re-measured, two move to measured plus 60 (R-Y).

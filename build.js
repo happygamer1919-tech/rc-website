@@ -1218,6 +1218,13 @@ const COLOUR_RU = (() => {
     for (const v of Object.values(gard.palette || {})) if (v && REAL(v.ro) && REAL(v.ru)) m.set(v.ro.toLowerCase(), v.ru);
     const tig = JSON.parse(fs.readFileSync('content/tigla-metalica.json', 'utf8'));
     for (const e of tig.legend || []) if (e.name && REAL(e.name.ro) && REAL(e.name.ru)) m.set(e.name.ro.toLowerCase(), e.name.ru);
+    /* AMENDED (W27-FIX-04, Q-W27-02 part 3): a THIRD source, the bare colour words the
+       imperlux model cards and the Novatik page print and neither file above carries (Maro,
+       Negru, Ciocolata, Maro inchis, Gri). They live in content/roofing-sections.json under
+       `colour_names`, authored the way the fence palette's Russian names are, and a name still
+       missing after all three keeps its Romanian form as before. */
+    const roof = JSON.parse(fs.readFileSync('content/roofing-sections.json', 'utf8'));
+    for (const [ro, v] of Object.entries(roof.colour_names || {})) if (REAL(ro) && v && REAL(v.ru)) m.set(ro.toLowerCase(), v.ru);
   } catch (e) { die(`colour dictionary: ${e.message}`); }
   if (!m.size) die('colour dictionary: no entries read from the fence palette or the tile legend.');
   return m;
@@ -1276,7 +1283,13 @@ function prodCard(l, r, i, extra = '') {
     if (REAL(variant)) parts.push(`          <p class="prod__variant">${esc(variant)}</p>`);
     if (Array.isArray(r.colours) && r.colours.length) {
       const chips = r.colours.map((c) => `<li class="prod__chip">${esc(colourName(l, c))}</li>`).join('');
-      parts.push(`          <ul class="prod__chips" aria-label="${esc(l.strings['roofProducts.coloursAria'] || '')}">${chips}</ul>`);
+      /* W27-FIX-04 (ruling W27-R-11): a colour the count includes and the list does not name
+         renders as one more chip, "+N", as imperlux's own card prints it. Derived from the count
+         the record states (specs.Culori) and the names it carries, never typed as a chip, so a
+         model that later names its colour loses the "+N" by itself. The count itself is unchanged. */
+      const count = r.specs && r.specs.Culori && Number(r.specs.Culori[l.code]);
+      const more = Number.isInteger(count) && count > r.colours.length ? `<li class="prod__chip" data-more="${count - r.colours.length}">+${count - r.colours.length}</li>` : '';
+      parts.push(`          <ul class="prod__chips" aria-label="${esc(l.strings['roofProducts.coloursAria'] || '')}">${chips}${more}</ul>`);
     }
     if (REAL(r.facts)) parts.push(`          <p class="prod__facts">${esc(r.facts)}</p>`);
     parts.push('          <div class="prod__foot">');
@@ -3035,8 +3048,15 @@ function novatikPage(l) {
   const price = (m, i) => (m.price && m.price.render && REAL(m.price.render[l.code]))
     ? `<span class="nvk__price" data-product="${esc(m.name)}">${esc(m.price.render[l.code])}</span>`
     : ask(m.name);
+  /* W27-FIX-04 (ruling W27-R-11): the same "+N" chip as the roofing model cards, for a colour
+     the count includes and the list does not name (Roman counts five and names three, Wood four
+     and three). One rule, every writer. */
+  const moreChip = (m) => {
+    const n = Number(m.colours) - m.colour_names.length;
+    return n > 0 ? `<li class="nvk__chip" data-more="${n}">+${n}</li>` : '';
+  };
   const chips = (m) => (Array.isArray(m.colour_names) && m.colour_names.length)
-    ? `\n          <ul class="nvk__chips" aria-label="${esc(l.strings['roofProducts.coloursAria'] || '')}">${m.colour_names.map((c) => `<li class="nvk__chip">${esc(colourName(l, c))}</li>`).join('')}</ul>`
+    ? `\n          <ul class="nvk__chips" aria-label="${esc(l.strings['roofProducts.coloursAria'] || '')}">${m.colour_names.map((c) => `<li class="nvk__chip">${esc(colourName(l, c))}</li>`).join('')}${moreChip(m)}</ul>`
     : '';
   const warrantyRow = (m, i) => (m.warranty && REAL(m.warranty[l.code]))
     ? `\n            <div><dt>${s('warranty')}</dt><dd>${esc(m.warranty[l.code])}</dd></div>`

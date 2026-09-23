@@ -1507,3 +1507,19 @@ measured plus 60 (W24-R4) and the other 51 read identical to their W28-08 measur
 
 `scripts/verify-live.js` carries the two new figures; section 12.0 on the merge sha is what checks
 them.
+
+## AMENDED (W27-FIX-04, wave 27 fix pass): the "+N" chip, two Novatik budgets move
+
+Added 2026-09-23 by card W27-FIX-04, under ruling W27-R-11. Nothing above this line moves.
+
+A colour the count includes and the list does not name renders as a "+N" chip after the named
+chips, on the roofing model cards and the Novatik cards alike. On the roofing page the chip fits
+the existing row on every card, and the page reads identical to its W27-FIX-03 measurement; on the
+Novatik page the row wraps once on Roman ("+2") and Wood ("+1"). All 53 budgets re-measured at
+1440, settled (reveals applied, 1,600ms), on the card's built tree; two move to measured plus 60
+(W24-R4) and the other 51 read identical:
+
+| Page | Before (budget minus 60) | After | Budget |
+|---|---|---|---|
+| `/servicii/roca-vulcanica/` | 4,507 | **4,541** | 4,567 to **4,601** |
+| `/ru/servicii/roca-vulcanica/` | 4,551 | **4,585** | 4,611 to **4,645** |

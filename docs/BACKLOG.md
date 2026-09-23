@@ -1172,3 +1172,11 @@ Dasterum "De la N lei" again (`price`, with a source line; `price_folded_not_sho
 Sisteme pluviale table's Preț column and the section's "11 modele, de la 33 lei" line are back.
 Rendered: 18 cards, 12 priced, 6 asking, the six being the parts no source prices; 0 "Preț la cerere"
 against a Dasterum price. Roofing page +32px both locales; budgets 24,842 / 25,063 (R-Y).
+
+## W27-FIX-04 · Russian chip names, and the "+N" chip
+**Status: PR OPEN** (opened 2026-09-23). Q-W27-02 part 3 and W27-R-11 applied: a third colour
+dictionary source (`colour_names` in `content/roofing-sections.json`: Maro, Negru, Ciocolată, plus
+Maro închis and Gri); the Russian roofing, Novatik and metal tile pages read 0 for each of the four
+Romanian words. A colour counted and not named renders "+N" on the roofing model cards and the
+Novatik cards: five tiles "+1", Creaton "+3", IKO Cambridge "+1", Novatik Roman "+2", Wood "+1".
+Novatik page +34px both locales; budgets 4,601 / 4,645 (R-Y).

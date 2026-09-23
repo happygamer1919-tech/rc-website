@@ -1975,10 +1975,24 @@ function tiglaGrid(l) {
      asks for that page to be reachable from here. Same `.link-arrow`, same
      source of truth: content/catalog.json. */
   const toCatalog = catalogLinkArrow(l, 'materiale-acoperis');
+  /* W27-FIX-08 (owner instruction W27-R-14): the seven imperlux.md metal tile models render
+     HERE too, first, as the same product card the roofing page shows them on (picture, tagline,
+     colour chips, facts, "De la N lei/buc"), read from content/roofing-sections.json; the four
+     Dasterum models keep their tile cards below. One card per model name still holds: no name
+     is in both lists (W25-26 settled that both sets differ). The grid is the catalogue grid, so
+     the phone fold and gate 20 read it as one. */
+  const imp = ROOF_SECTIONS.products.filter((p) => p.group === 'tigla-metalica');
+  if (imp.length === 0) die(`${ROOF_SECTIONS_FILE}: no product in the tigla-metalica group, so the metal tile page would render no imperlux model.`);
+  const dup = imp.map((p) => p.name[l.code]).filter((n) => TIGLA.models.some((m) => m.name[l.code] === n));
+  if (dup.length) die(`${TIGLA_FILE} and ${ROOF_SECTIONS_FILE} both carry ${dup.join(', ')}: one card per model name (W25-R21).`);
+  const impCards = imp.map((p, i) => prodCard(l, imperluxCardRecord(l, p, i), i)).join('\n');
   return `<section class="section section--light section--divided" id="tigla-metalica" aria-labelledby="tigla-h">
   <div class="container">
     <p class="eyebrow" data-reveal>${esc(t('eyebrow'))}</p>
     <h2 id="tigla-h" data-reveal>${esc(t('h2'))}</h2>
+    <div class="prod-grid" id="tigla-imperlux" data-prod-grid data-prod-step="${PROD_STEP}">
+${impCards}
+    </div>
     <div class="tiles">
 ${cards}
     </div>${toCatalog}
@@ -2718,6 +2732,61 @@ const PRODUCT_BENTOS = {
    four `ACTM-` slots it created survive: they render on
    `/servicii/tigla-metalica/`, beside the models they are pictures of. */
 
+/* W27-FIX-08 (owner instruction W27-R-14). THE IMPERLUX MODEL CARD RECORD IS BUILT IN ONE PLACE,
+   because two pages render it now: the roofing page's product grid (every group) and the
+   metal tile page (the seven Țiglă metalică models, above the four Dasterum tile cards). The
+   record is what prodCard() takes; the two die checks on group and picture stay at the
+   roofing call site, which is the one that walks every product. */
+function imperluxCardRecord(l, p, i) {
+  const s = (k) => {
+    const v = l.strings[`roofProducts.${k}`];
+    if (!REAL(v)) die(`roofProducts.${k} must be real in ${l.code}.`);
+    return v;
+  };
+  /* W26-05. THE VARIANT LINE IS DERIVED FROM THE SPECS, not written beside them.
+     W25-25 settled the same shape on the fence colours: a count stated next to
+     the list it counts is a second place to be wrong. Here the line under the
+     name and the row in the Compara table are the same cells, in the order
+     `spec_order` gives, so a spec corrected in one place is corrected in both. */
+  const specLine = (SPEC_ORDER
+    .filter((k) => p.specs && p.specs[k] && REAL(p.specs[k][l.code]))
+    .map((k) => p.specs[k][l.code])).join(' · ');
+  /* W27-C-03 (W27-R-04). A model card carries the imperlux tagline, the named colour
+     chips and a FACTS line, "15 ani garanție · 4,5 kg/m² · 3 culori", derived from the
+     specs and the chip list rather than typed beside them. The count is the count the
+     page prints (specs.Culori); the chips are the names it prints, which can be fewer
+     ("+1" names nothing), never more. A card with a tagline takes this shape; a card
+     without one keeps the spec line. */
+  const hasTagline = p.tagline && REAL(p.tagline[l.code]);
+  let facts = null;
+  if (hasTagline) {
+    const parts = [];
+    const sp = p.specs || {};
+    if (sp['Garanție'] && REAL(sp['Garanție'][l.code])) parts.push(`${sp['Garanție'][l.code]} ${s('factWarranty')}`);
+    if (sp.Greutate && REAL(sp.Greutate[l.code])) parts.push(sp.Greutate[l.code]);
+    if (sp.Culori && REAL(sp.Culori[l.code])) {
+      const n = Number(sp.Culori[l.code]);
+      if (!Number.isInteger(n) || n < 1) die(`${ROOF_SECTIONS_FILE}: products[${i}] "${p.slug}" has a colour count "${sp.Culori[l.code]}" that is not a count.`);
+      if ((p.colours || []).length > n) die(`${ROOF_SECTIONS_FILE}: products[${i}] "${p.slug}" names ${p.colours.length} colours and counts ${n}.`);
+      parts.push(`${n} ${colourWord(l, n)}`);
+    }
+    /* A card with a tagline and none of the three facts keeps the spec line (the rainwater
+       parts' Dimensiuni) as its facts line, so the size is not lost to the new shape. */
+    facts = parts.length ? parts.join(' · ') : (specLine || null);
+  }
+  return {
+    slot: p.slot || p.folds[0],
+    name: p.name,
+    tagline: hasTagline ? p.tagline : null,
+    colours: hasTagline ? (p.colours || []) : null,
+    facts,
+    variant: !hasTagline && specLine ? { [l.code]: specLine } : null,
+    price: p.price,
+    specs: p.specs || {},
+    _imperlux: true,
+  };
+}
+
 function roofSection(l) {
   const records = CATALOG_PRODUCTS[ROOF_CATEGORY] || [];
   if (!records.length) die('the roofing category has no records, so W25-19 would render an empty section.');
@@ -2782,48 +2851,7 @@ function roofSection(l) {
        AMENDED (W27-C-06, ruling W27-R-04): imperlux.md is the source of record for the
        picture too, so a product may carry its own slot AND fold the dasterum records it
        stands for; the slot is the picture, the folds render nowhere. */
-    /* W26-05. THE VARIANT LINE IS DERIVED FROM THE SPECS, not written beside them.
-       W25-25 settled the same shape on the fence colours: a count stated next to
-       the list it counts is a second place to be wrong. Here the line under the
-       name and the row in the Compara table are the same cells, in the order
-       `spec_order` gives, so a spec corrected in one place is corrected in both. */
-    const specLine = (SPEC_ORDER
-      .filter((k) => p.specs && p.specs[k] && REAL(p.specs[k][l.code]))
-      .map((k) => p.specs[k][l.code])).join(' · ');
-    /* W27-C-03 (W27-R-04). A model card carries the imperlux tagline, the named colour
-       chips and a FACTS line, "15 ani garanție · 4,5 kg/m² · 3 culori", derived from the
-       specs and the chip list rather than typed beside them. The count is the count the
-       page prints (specs.Culori); the chips are the names it prints, which can be fewer
-       ("+1" names nothing), never more. A card with a tagline takes this shape; a card
-       without one keeps the spec line. */
-    const hasTagline = p.tagline && REAL(p.tagline[l.code]);
-    let facts = null;
-    if (hasTagline) {
-      const parts = [];
-      const sp = p.specs || {};
-      if (sp['Garanție'] && REAL(sp['Garanție'][l.code])) parts.push(`${sp['Garanție'][l.code]} ${s('factWarranty')}`);
-      if (sp.Greutate && REAL(sp.Greutate[l.code])) parts.push(sp.Greutate[l.code]);
-      if (sp.Culori && REAL(sp.Culori[l.code])) {
-        const n = Number(sp.Culori[l.code]);
-        if (!Number.isInteger(n) || n < 1) die(`${ROOF_SECTIONS_FILE}: products[${i}] "${p.slug}" has a colour count "${sp.Culori[l.code]}" that is not a count.`);
-        if ((p.colours || []).length > n) die(`${ROOF_SECTIONS_FILE}: products[${i}] "${p.slug}" names ${p.colours.length} colours and counts ${n}.`);
-        parts.push(`${n} ${colourWord(l, n)}`);
-      }
-      /* A card with a tagline and none of the three facts keeps the spec line (the rainwater
-         parts' Dimensiuni) as its facts line, so the size is not lost to the new shape. */
-      facts = parts.length ? parts.join(' · ') : (specLine || null);
-    }
-    impBySection.get(p.group).push({
-      slot: p.slot || p.folds[0],
-      name: p.name,
-      tagline: hasTagline ? p.tagline : null,
-      colours: hasTagline ? (p.colours || []) : null,
-      facts,
-      variant: !hasTagline && specLine ? { [l.code]: specLine } : null,
-      price: p.price,
-      specs: p.specs || {},
-      _imperlux: true,
-    });
+    impBySection.get(p.group).push(imperluxCardRecord(l, p, i));
   });
   for (const f of folded) {
     if (!records.some((r) => r.slot === f)) die(`${ROOF_SECTIONS_FILE}: a product folds ${f}, which is not a roofing record.`);

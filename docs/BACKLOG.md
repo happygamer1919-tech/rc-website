@@ -1204,3 +1204,10 @@ logs: five cards merged and verified live (#154 to #158), none skipped, one part
 test (FIX-05, three folds held in Q-W27-04); 29 of 29 gates on the final tree; Lighthouse on the
 roofing page in both locales; the kept-imperlux list; the deviations; the five-line morning list.
 Five statuses above moved to MERGED with their section 12.0 exit codes.
+
+## W27-FIX-08 · The seven Imperlux tiles on the metal tile page
+**Status: PR OPEN** (opened 2026-09-23). Owner instruction W27-R-14: `/servicii/tigla-metalica/`
+renders the seven Imperlux model cards (the roofing page's card, one shared record builder) above
+the four Dasterum tile cards; the build refuses a name in both lists. The "Acoperișuri" arrow link at
+the foot of the section is the catalogue link the owner asked about, unchanged. Tile page 5,463 /
+5,538, budgets 5,523 / 5,598 (R-Y); `productCards: 7` asserted live.

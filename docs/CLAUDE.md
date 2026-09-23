@@ -323,6 +323,11 @@ carries exactly one of the two, never both and never neither.
 `scripts/check-catalog-pages.js` holds all of it and was negative-tested on thirteen
 arms, each firing on its own message between two controls watched clean in the same run.
 **No cart, no SKU, no `schema.org` `Offer`.**
+**AMENDED (W25-19, W27-FIX-08 under W27-R-14): "on a catalogue page" is a NAMED list in the
+script, not a path pattern.** The roofing catalogue renders on `/servicii/acoperisuri/` (W25-19) and
+the seven Imperlux tile cards on `/servicii/tigla-metalica/` (W27-R-14), both locales, so a
+catalogue card's price lives on those four pages as well; each is held to the same shape and the
+same counts, and a page not named there still has no permitted place for the element.
 *Source: DECISIONS.md, W24-R ruling R3, and W24-04.*
 
 **AMENDED (W24-R7, wave 24): the two phrases are permitted by their SHAPE, not by the

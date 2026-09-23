@@ -1101,6 +1101,12 @@ added to `check-stale-docs.js` with the W26-14 ticket body excepted). Still exac
 beside white, so the palette count holds. **Static gates, gates 20 and 28 exit 0.** Screenshots
 `docs/design/W27/w28-03-*`.
 
+## W27-FIX-02 · fetchpriority on the first hub tile, the roofing page's largest paint
+**Status: PR OPEN** (opened 2026-09-22). W27-REV-01 found the roofing page's Lighthouse performance
+**bimodal**, as W26-14 had recorded: LCP is the first hub tile's picture, 1.15s (98) or 1.9s (92).
+Lighthouse's LCP discovery insight named the one hint it lacked, `fetchpriority=high`; the first tile of
+each hub grid carries it now (build.js, one attribute). Five runs after: **98, 98, 98, 98 and one cold
+92** (LCP 1.13 to 1.15s, one at 1.9s); three runs before: 92, 98, 92. No page changes shape.
 ## W28-04 · Headings: 64 and 48, weight 800, tight, sentence case
 **Status: PR OPEN** (opened 2026-09-22). Approved under W27-R-07, owner may overturn. **h1 64px at
 -0.035em, h2 48px at -0.03em, weight 800, no capitals** (52 and 36 on smaller screens, 30 for h2 on

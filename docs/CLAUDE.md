@@ -246,7 +246,9 @@ clears itself when one lands.
 Accessibility 100 is held by two decisions that must not be quietly undone:
 button text sized to clear the WCAG large-text threshold, so white on `--brand`
 is judged against 3:1 rather than 4.5:1; and the category chip filled with
-`--brand-dark`. The sizes and the measured ratios are in the DECISIONS.md entry.
+`--brand-dark`. **AMENDED (W28-05): the primary button's label is `--ink` on `--brand`
+at 17px, 5.3:1, which passes the normal-text threshold outright; the size allowance is no
+longer what holds it, and the catalogue toggle and the card arrow take the same dark label.** The sizes and the measured ratios are in the DECISIONS.md entry.
 3:1 and 4.5:1 are WCAG's thresholds, not ours, and are quoted as the external
 standard they are.
 *Source: DECISIONS.md "Contrast, resolved 2026-08-28".*

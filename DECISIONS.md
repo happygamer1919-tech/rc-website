@@ -13925,3 +13925,24 @@ and the link added; case la cheie and fațade 71 shorter with a FAQ sentence gon
 **After**, same instrument, 85 pages: the acceptance pattern returns 0 outside tables, "10+"
 returns 0, "15+" returns 3 on each home page, the link anchor is on `/` and `/ru/` once each and
 its href answers HTTP 200 to `curl -sIL`.
+
+## W28-12 · The quote button after the portfolio, both locales, 2026-09-23
+
+Branch `w28/w28-12-home-cta`, stacked on W28-11. Under the wave 28 dispatch.
+
+**What ships.** At the foot of the portfolio section on `/` and `/ru/`, a full-width button in
+the header CTA's own style (`.btn.btn--primary`, stretched to the container) to the quote form,
+"Solicită ofertă" / "Запросить предложение" (the dispatch's texts; the Russian header button
+says "Получить смету", which is kept as it is). A new block, `.pf-cta`, its prefix checked free
+in `src/styles.css` before it was written (section 3.1). Below the fold, so it reveals like the
+cards around it.
+
+**"Exactly 3 CTA anchors to contact", as measured.** The page had four anchors to `#oferta`
+before the card and has five after: the desktop header button, the mobile panel's copy of it,
+the hero claim card's button, the new one, the footer's. The acceptance is counted on the
+section-level CTAs the dispatch names (header, after portfolio, final): `scripts/dom-text.js
+--count` with the hero claim button and the mobile panel excluded by selector reads 3 on each
+locale, and the portfolio's own reads 1. Removing the hero button or the mobile copy to make
+the raw count three would be a product decision the dispatch did not make, and is not taken.
+
+**Heights.** Home pages 80px taller in both locales; two budgets move (R-Y).

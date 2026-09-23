@@ -2761,7 +2761,10 @@ function roofSection(l) {
   ROOF_SECTIONS.products.forEach((p, i) => {
     if (!impBySection.has(p.group)) die(`${ROOF_SECTIONS_FILE}: products[${i}] "${p.slug}" is in section "${p.group}", which is not one of the six.`);
     if (!REAL(p.slot) && !(p.folds || []).length) die(`${ROOF_SECTIONS_FILE}: products[${i}] "${p.slug}" folds no record and has no slot of its own, so it has no picture to render.`);
-    if (REAL(p.slot) && (p.folds || []).length) die(`${ROOF_SECTIONS_FILE}: products[${i}] "${p.slug}" both folds a record and claims a slot; the folded record's slot IS its picture.`);
+    /* ~~A product with both a slot and folds dies: the folded record's slot IS its picture.~~
+       AMENDED (W27-C-06, ruling W27-R-04): imperlux.md is the source of record for the
+       picture too, so a product may carry its own slot AND fold the dasterum records it
+       stands for; the slot is the picture, the folds render nowhere. */
     /* W26-05. THE VARIANT LINE IS DERIVED FROM THE SPECS, not written beside them.
        W25-25 settled the same shape on the fence colours: a count stated next to
        the list it counts is a second place to be wrong. Here the line under the
@@ -2789,7 +2792,9 @@ function roofSection(l) {
         if ((p.colours || []).length > n) die(`${ROOF_SECTIONS_FILE}: products[${i}] "${p.slug}" names ${p.colours.length} colours and counts ${n}.`);
         parts.push(`${n} ${colourWord(l, n)}`);
       }
-      facts = parts.join(' · ');
+      /* A card with a tagline and none of the three facts keeps the spec line (the rainwater
+         parts' Dimensiuni) as its facts line, so the size is not lost to the new shape. */
+      facts = parts.length ? parts.join(' · ') : (specLine || null);
     }
     impBySection.get(p.group).push({
       slot: p.slot || p.folds[0],

@@ -1053,3 +1053,16 @@ name and Imperlux's orange mark (Q-W27-02); flagged `label`, and their two ids m
 override entry because the W26-R10 sentence says "cropped". The section's derived line reads "2 modele,
 de la 260 lei/m²". Budgets **21,785 / 21,943**. **Static gates exit 0**; gate 28 run before the PR.
 
+## W27-C-06 · The full Imperlux mirror sweep
+**Status: PR OPEN** (opened 2026-09-22). W27-R-04 across the six roofing groups, the Novatik page and
+the fence models, from a 47-page rendered crawl plus the 21 accessory pages. **Report:
+`docs/reports/W27-IMPERLUX-MIRROR.md`**, per group with Imperlux count, RC before, RC after and a source
+URL on every record. **Sisteme pluviale**: all 17 aligned; the 11 that folded a Dasterum record now
+carry Imperlux's product photo and, since Imperlux publishes no rainwater price, **ask for a price**
+(the Dasterum figure stays in the record, unshown); their 11 Dasterum ledger rows are removed as
+orphaned. **Țiglă ceramică**: the preview as published, tagline, 50 ani, one named colour; the tile
+ACOP-05 keeps the old crop as its own file. **Accesorii**: 20 of Imperlux's 21 added first in the
+section (Folie anticondens has no picture at the floor), 46 Dasterum records kept, near names in
+Q-W27-03. **Garduri**: already equal on every field. **105 cards**: 11 + 7 + 1 + 2 + 18 + 66. Budgets
+**24,232 / 24,453**. **Static gates exit 0**; gates 20 and 28 run before the PR.
+

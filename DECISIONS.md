@@ -13083,3 +13083,49 @@ branding sat", to the W27-R-04 entry, whose sentence says "as imperlux.md publis
 held to the sentence that describes it.
 
 **Heights** 21,643 to 21,725 and 21,802 to 21,883; budgets 21,785 / 21,943 (R-Y).
+
+## W27-C-06 · The full Imperlux mirror sweep, 2026-09-22
+
+Branch `w27/w27-c-06-imperlux-mirror`, stacked on W27-C-05.
+
+**W27-R-04 applied across everything under Acoperișuri and Garduri**, from a rendered crawl of 47
+pages (the six section pages, all 31 roofing product pages, the fence list, the fence calculator and
+the eight fence model pages) and a second pass over the 21 accessory pages, W26-R2's way. The report
+is `docs/reports/W27-IMPERLUX-MIRROR.md`: per group, Imperlux's count, RC before and after, and a source
+URL on every RC record in the six groups, the Novatik page and the fence models.
+
+**Sisteme pluviale.** Imperlux's 17 parts were all on the site since W26-04; six with their own
+picture and eleven standing on a folded Dasterum record's picture and cheaper price. Under "same
+images, same numbers" the eleven now carry Imperlux's product photo (`ACIM-17` to `ACIM-27`) and,
+because Imperlux publishes no rainwater price, **ask for a price**. The Dasterum figure is kept in the
+record as `price_folded_not_shown` and renders nowhere; Q-W27-03 asks whether the owner wants those
+eleven prices back. The eleven Dasterum records stay folded, so their pictures render nowhere and
+their ledger rows are removed as `orphaned_rows` (files and provenance rows stay), which is the rule
+W26-04 set for `CAT-0265` and `CAT-0268`. **`build.js` now permits a product with both a slot and
+folds**: the slot is the picture, the folds are the records it stands for; the old rule, "the folded
+record's slot IS its picture", was W26-R5's and is superseded by the wider ruling. The rainwater
+table loses its price column (real on no row) and keeps Dimensiuni, which is the size RC stocks. The
+section's derived "de la" line disappears with the prices. Every part gains its Imperlux tagline.
+
+**Țiglă ceramică.** Creaton Rapido takes the preview as published (with Imperlux's brand shapes,
+which W26-11 had avoided by cropping the category image), its tagline, "50 ani" and the one colour
+name its product page prints, "Maro închis", with the count of four; its section card prints the name
+split into three tokens, which is Imperlux's own rendering defect and is not copied. **`ACOP-05`, the
+section tile, stops reusing `ACIM-01`**: the W26-11 crop becomes that tile's own file under its own
+provenance row, because a portrait tile would cut through the printed name on the new preview.
+
+**Accesorii.** Imperlux sells 21 metal tile accessories with a page each, every one "Solicită
+prețul". Twenty are added as records `ACIM-28` to `ACIM-48` (Folie anticondens is left out: a 260x260
+picture, under the 450 floor, nothing larger published), first in the section, each with its tagline
+read from the page's own hero line and its product photo. **No Dasterum name matched exactly**, so the
+46 Dasterum records stay; seven near-twins are tabled in the report and in Q-W27-03 for the owner to
+fold. The 22 "Accesorii Novatik Natura" and 21 "Accesorii Creaton" tiles have no page, no price and no
+spec, and are listed rather than made into products.
+
+**Garduri.** All eight fence models already equal Imperlux's pages on price, style, thickness and
+colour count, and their pictures have been Imperlux's since W25-R15; nothing to change, recorded.
+
+**Rendered acceptance.** 105 cards (11 + 7 + 1 + 2 + 18 + 66), 68 priced and 37 asking; every record
+in the six groups has a `source.url`; 0 percent signs in a price element; 0 "Popular"; every slot
+filled, 0 placeholders. **Heights** 21,725 to 24,172 and 21,883 to 24,393; budgets 24,232 / 24,453
+(R-Y). The override lists grow to 72 ids in the three scripts, still by name.

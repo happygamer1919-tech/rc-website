@@ -324,15 +324,13 @@
       "page": "/servicii/acoperisuri/",
       "ratio": "5 / 6",
       "min_px": "1000x1200",
-      "shows": "Tigla ceramica: tila din al doilea bento al paginii de acoperisuri, format PORTRET (tila inalta a bento-ului). W26-04: NU este acoperita de suprascrierea W26-R3, care este tinuta la ACOP-01..04. AMENDED W26-11 (W26-R10): a declared reuse of ACIM-01, the one product this section holds, in W25-R22's shape for a category tile.",
+      "shows": "Tigla ceramica: tila din al doilea bento al paginii de acoperisuri, format PORTRET (tila inalta a bento-ului). W26-04: NU este acoperita de suprascrierea W26-R3, care este tinuta la ACOP-01..04. AMENDED W26-11 (W26-R10): a declared reuse of ACIM-01, the one product this section holds, in W25-R22's shape for a category tile. AMENDED W27-C-06: no longer a reuse; the W26-11 crop of imperlux's category image is this tile's own file, because ACIM-01 now carries the product preview with its printed name, which a portrait tile would cut through.",
       "state": "filled",
-      "provenance": "public/img/acoperisuri/ACIM-01.jpg",
+      "provenance": "public/img/acoperisuri/ACOP-05.jpg",
       "alt": {
         "ro": "Țiglă ceramică Creaton Rapido neagră",
         "ru": "Чёрная керамическая черепица Creaton Rapido"
-      },
-      "reuse_of": "ACIM-01",
-      "reuse_reason": "W26-R10 and W25-R22: the section tile stands on the one product of its section, Creaton Rapido, cropped to the tile ratio by the tile itself"
+      }
     },
     {
       "id": "ACOP-06",
@@ -391,15 +389,16 @@
     {
       "id": "ACIM-01",
       "page": "/servicii/acoperisuri/",
-      "ratio": "1 / 1",
-      "min_px": "1200x1200",
-      "shows": "Produsul \"Creaton Rapido\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el. AMENDED W26-11 (W26-R10): filled from imperlux.md under the widened override, cropped to the tile from the category image, which shows the same Creaton Rapido tile without the orange brand shapes the product hero carries.",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Produsul \"Creaton Rapido\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el. AMENDED W26-11 (W26-R10): filled from imperlux.md under the widened override, cropped to the tile from the category image, which shows the same Creaton Rapido tile without the orange brand shapes the product hero carries. AMENDED W27-C-06 (W27-R-04): the preview image as imperlux.md publishes it, with the category, the model name and imperlux's orange brand shapes, untouched; W25-R5: marked \"label\". The W26-11 category crop moved to ACOP-05 as that tile's own file.",
       "state": "filled",
       "provenance": "public/img/acoperisuri/ACIM-01.jpg",
       "alt": {
-        "ro": "Creaton Rapido, țiglă ceramică neagră",
-        "ru": "Creaton Rapido, чёрная керамическая черепица"
-      }
+        "ro": "Țiglă ceramică Creaton Rapido, foaia de previzualizare",
+        "ru": "Керамическая черепица Creaton Rapido, превью модели"
+      },
+      "label": true
     },
     {
       "id": "ACIM-02",
@@ -604,6 +603,409 @@
         "ru": "Модульная металлочерепица Izi, лист с рельефом"
       },
       "label": true
+    },
+    {
+      "id": "ACIM-17",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Jgheab\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-17.jpg",
+      "alt": {
+        "ro": "Jgheab, produsul",
+        "ru": "Желоб, продукт"
+      }
+    },
+    {
+      "id": "ACIM-18",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Burlan\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-18.jpg",
+      "alt": {
+        "ro": "Burlan, produsul",
+        "ru": "Водосточная труба, продукт"
+      }
+    },
+    {
+      "id": "ACIM-19",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Colțar interior\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-19.jpg",
+      "alt": {
+        "ro": "Colțar interior, produsul",
+        "ru": "Внутренний угол, продукт"
+      }
+    },
+    {
+      "id": "ACIM-20",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Colțar exterior\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-20.jpg",
+      "alt": {
+        "ro": "Colțar exterior, produsul",
+        "ru": "Наружный угол, продукт"
+      }
+    },
+    {
+      "id": "ACIM-21",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Brățară jgheab\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-21.jpg",
+      "alt": {
+        "ro": "Brățară jgheab, produsul",
+        "ru": "Хомут желоба, продукт"
+      }
+    },
+    {
+      "id": "ACIM-22",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Capac jgheab\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-22.jpg",
+      "alt": {
+        "ro": "Capac jgheab, produsul",
+        "ru": "Заглушка желоба, продукт"
+      }
+    },
+    {
+      "id": "ACIM-23",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Cârlig jgheab\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-23.jpg",
+      "alt": {
+        "ro": "Cârlig jgheab, produsul",
+        "ru": "Кронштейн желоба, продукт"
+      }
+    },
+    {
+      "id": "ACIM-24",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Cârlig jgheab lung\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-24.jpg",
+      "alt": {
+        "ro": "Cârlig jgheab lung, produsul",
+        "ru": "Длинный кронштейн желоба, продукт"
+      }
+    },
+    {
+      "id": "ACIM-25",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Racord jgheab-burlan\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-25.jpg",
+      "alt": {
+        "ro": "Racord jgheab-burlan, produsul",
+        "ru": "Соединение желоб-труба, продукт"
+      }
+    },
+    {
+      "id": "ACIM-26",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Brățară burlan\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-26.jpg",
+      "alt": {
+        "ro": "Brățară burlan, produsul",
+        "ru": "Хомут трубы, продукт"
+      }
+    },
+    {
+      "id": "ACIM-27",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Cot evacuare\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-27.jpg",
+      "alt": {
+        "ro": "Cot evacuare, produsul",
+        "ru": "Отводное колено, продукт"
+      }
+    },
+    {
+      "id": "ACIM-28",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Coamă Titan\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-28.jpg",
+      "alt": {
+        "ro": "Coamă Titan, produsul",
+        "ru": "Конёк Titan, продукт"
+      }
+    },
+    {
+      "id": "ACIM-29",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Coamă semicirculară\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-29.jpg",
+      "alt": {
+        "ro": "Coamă semicirculară, produsul",
+        "ru": "Полукруглый конёк, продукт"
+      }
+    },
+    {
+      "id": "ACIM-30",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Dolie\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-30.jpg",
+      "alt": {
+        "ro": "Dolie, produsul",
+        "ru": "Ендова, продукт"
+      }
+    },
+    {
+      "id": "ACIM-31",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Capac coamă circulară\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-31.jpg",
+      "alt": {
+        "ro": "Capac coamă circulară, produsul",
+        "ru": "Заглушка круглого конька, продукт"
+      }
+    },
+    {
+      "id": "ACIM-32",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Coamă de început\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-32.jpg",
+      "alt": {
+        "ro": "Coamă de început, produsul",
+        "ru": "Начальный конёк, продукт"
+      }
+    },
+    {
+      "id": "ACIM-33",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Sort streașină\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-33.jpg",
+      "alt": {
+        "ro": "Sort streașină, produsul",
+        "ru": "Карнизная планка, продукт"
+      }
+    },
+    {
+      "id": "ACIM-34",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Racord perete\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-34.jpg",
+      "alt": {
+        "ro": "Racord perete, produsul",
+        "ru": "Примыкание к стене, продукт"
+      }
+    },
+    {
+      "id": "ACIM-35",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Bordură fronton\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-35.jpg",
+      "alt": {
+        "ro": "Bordură fronton, produsul",
+        "ru": "Фронтонная планка, продукт"
+      }
+    },
+    {
+      "id": "ACIM-36",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Bordură fronton sub șindrilă\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-36.jpg",
+      "alt": {
+        "ro": "Bordură fronton sub șindrilă, produsul",
+        "ru": "Фронтонная планка под черепицу, продукт"
+      }
+    },
+    {
+      "id": "ACIM-37",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Opritor zăpadă\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-37.jpg",
+      "alt": {
+        "ro": "Opritor zăpadă, produsul",
+        "ru": "Снегозадержатель, продукт"
+      }
+    },
+    {
+      "id": "ACIM-38",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Opritor zăpadă potcoavă\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-38.jpg",
+      "alt": {
+        "ro": "Opritor zăpadă potcoavă, produsul",
+        "ru": "Снегозадержатель подкова, продукт"
+      }
+    },
+    {
+      "id": "ACIM-40",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Membrana Superdifuzie MDM S\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-40.jpg",
+      "alt": {
+        "ro": "Membrana Superdifuzie MDM S, produsul",
+        "ru": "Супердиффузионная мембрана MDM S, продукт"
+      }
+    },
+    {
+      "id": "ACIM-41",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Membrana Superdifuzie MDM M\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-41.jpg",
+      "alt": {
+        "ro": "Membrana Superdifuzie MDM M, produsul",
+        "ru": "Супердиффузионная мембрана MDM M, продукт"
+      }
+    },
+    {
+      "id": "ACIM-42",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Membrana Superdifuzie MDM L\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-42.jpg",
+      "alt": {
+        "ro": "Membrana Superdifuzie MDM L, produsul",
+        "ru": "Супердиффузионная мембрана MDM L, продукт"
+      }
+    },
+    {
+      "id": "ACIM-43",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Membrana Superdifuzie MDM XL\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-43.jpg",
+      "alt": {
+        "ro": "Membrana Superdifuzie MDM XL, produsul",
+        "ru": "Супердиффузионная мембрана MDM XL, продукт"
+      }
+    },
+    {
+      "id": "ACIM-44",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Membrana Superdifuzie MDM XXL\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-44.jpg",
+      "alt": {
+        "ro": "Membrana Superdifuzie MDM XXL, produsul",
+        "ru": "Супердиффузионная мембрана MDM XXL, продукт"
+      }
+    },
+    {
+      "id": "ACIM-45",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Banda ventilare coamă MDM Blachvent 175\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-45.jpg",
+      "alt": {
+        "ro": "Banda ventilare coamă MDM Blachvent 175, produsul",
+        "ru": "Вентиляционная лента конька MDM Blachvent 175, продукт"
+      }
+    },
+    {
+      "id": "ACIM-46",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Banda ventilare streașină cu mustață\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-46.jpg",
+      "alt": {
+        "ro": "Banda ventilare streașină cu mustață, produsul",
+        "ru": "Вентиляционная лента карниза с гребнем, продукт"
+      }
+    },
+    {
+      "id": "ACIM-47",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Banda ventilare streașină cu perforație\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-47.jpg",
+      "alt": {
+        "ro": "Banda ventilare streașină cu perforație, produsul",
+        "ru": "Вентиляционная лента карниза с перфорацией, продукт"
+      }
+    },
+    {
+      "id": "ACIM-48",
+      "page": "/servicii/acoperisuri/",
+      "ratio": "1 / 1",
+      "min_px": "1200x1200",
+      "shows": "Produsul \"Buretă autodezivă pentru dolie\", fotografia de produs a imperlux.md, singur, pe fundal alb uniform, incadrat patrat. W27-C-06 (W27-R-04): aceeasi imagine, neatinsa, fara marire.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACIM-48.jpg",
+      "alt": {
+        "ro": "Buretă autodezivă pentru dolie, produsul",
+        "ru": "Самоклеящийся уплотнитель для ендовы, продукт"
+      }
     },
     {
       "id": "BA-01-before",
@@ -4129,84 +4531,6 @@
       }
     },
     {
-      "id": "CAT-0257",
-      "page": "/catalog/materiale-acoperis/sistem-de-scurgere/",
-      "ratio": "1 / 1",
-      "min_px": "1200x1200",
-      "shows": "Produsul \"Brațara jgheab 125mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "filled",
-      "provenance": "public/img/catalog/CAT-0257.jpg",
-      "alt": {
-        "ro": "Brațara jgheab 125mm, fotografia produsului",
-        "ru": "Brațara jgheab 125mm, фотография продукта"
-      }
-    },
-    {
-      "id": "CAT-0258",
-      "page": "/catalog/materiale-acoperis/sistem-de-scurgere/",
-      "ratio": "1 / 1",
-      "min_px": "1200x1200",
-      "shows": "Produsul \"Racord jgheab 125mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "filled",
-      "provenance": "public/img/catalog/CAT-0258.jpg",
-      "alt": {
-        "ro": "Racord jgheab 125mm, fotografia produsului",
-        "ru": "Racord jgheab 125mm, фотография продукта"
-      }
-    },
-    {
-      "id": "CAT-0259",
-      "page": "/catalog/materiale-acoperis/sistem-de-scurgere/",
-      "ratio": "1 / 1",
-      "min_px": "1200x1200",
-      "shows": "Produsul \"Capac Jgheab 125 mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "filled",
-      "provenance": "public/img/catalog/CAT-0259.jpg",
-      "alt": {
-        "ro": "Capac Jgheab 125 mm, fotografia produsului",
-        "ru": "Capac Jgheab 125 mm, фотография продукта"
-      }
-    },
-    {
-      "id": "CAT-0260",
-      "page": "/catalog/materiale-acoperis/sistem-de-scurgere/",
-      "ratio": "1 / 1",
-      "min_px": "1200x1200",
-      "shows": "Produsul \"Colțar exterior 125mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "filled",
-      "provenance": "public/img/catalog/CAT-0260.jpg",
-      "alt": {
-        "ro": "Colțar exterior 125mm, fotografia produsului",
-        "ru": "Colțar exterior 125mm, фотография продукта"
-      }
-    },
-    {
-      "id": "CAT-0261",
-      "page": "/catalog/materiale-acoperis/sistem-de-scurgere/",
-      "ratio": "1 / 1",
-      "min_px": "1200x1200",
-      "shows": "Produsul \"Colțar interior 125mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "filled",
-      "provenance": "public/img/catalog/CAT-0261.jpg",
-      "alt": {
-        "ro": "Colțar interior 125mm, fotografia produsului",
-        "ru": "Colțar interior 125mm, фотография продукта"
-      }
-    },
-    {
-      "id": "CAT-0262",
-      "page": "/catalog/materiale-acoperis/sistem-de-scurgere/",
-      "ratio": "1 / 1",
-      "min_px": "1200x1200",
-      "shows": "Produsul \"Jgheab scurgere 125x2000 mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "filled",
-      "provenance": "public/img/catalog/CAT-0262.jpg",
-      "alt": {
-        "ro": "Jgheab scurgere 125x2000 mm, fotografia produsului",
-        "ru": "Jgheab scurgere 125x2000 mm, фотография продукта"
-      }
-    },
-    {
       "id": "CAT-0263",
       "page": "/catalog/materiale-acoperis/sistem-de-scurgere/",
       "ratio": "1 / 1",
@@ -4217,71 +4541,6 @@
       "alt": {
         "ro": "Cot burlan 90 mm, fotografia produsului",
         "ru": "Cot burlan 90 mm, фотография продукта"
-      }
-    },
-    {
-      "id": "CAT-0264",
-      "page": "/catalog/materiale-acoperis/sistem-de-scurgere/",
-      "ratio": "1 / 1",
-      "min_px": "1200x1200",
-      "shows": "Produsul \"Burlan scurgere 90x1000 mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "filled",
-      "provenance": "public/img/catalog/CAT-0264.jpg",
-      "alt": {
-        "ro": "Burlan scurgere 90x1000 mm, fotografia produsului",
-        "ru": "Burlan scurgere 90x1000 mm, фотография продукта"
-      }
-    },
-    {
-      "id": "CAT-0266",
-      "page": "/catalog/materiale-acoperis/sistem-de-scurgere/",
-      "ratio": "1 / 1",
-      "min_px": "1200x1200",
-      "shows": "Produsul \"Brațara burlan 90mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "filled",
-      "provenance": "public/img/catalog/CAT-0266.jpg",
-      "alt": {
-        "ro": "Brațara burlan 90mm, fotografia produsului",
-        "ru": "Brațara burlan 90mm, фотография продукта"
-      }
-    },
-    {
-      "id": "CAT-0267",
-      "page": "/catalog/materiale-acoperis/sistem-de-scurgere/",
-      "ratio": "1 / 1",
-      "min_px": "1200x1200",
-      "shows": "Produsul \"Cot evacuare 90mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "filled",
-      "provenance": "public/img/catalog/CAT-0267.jpg",
-      "alt": {
-        "ro": "Cot evacuare 90mm, fotografia produsului",
-        "ru": "Cot evacuare 90mm, фотография продукта"
-      }
-    },
-    {
-      "id": "CAT-0269",
-      "page": "/catalog/materiale-acoperis/sistem-de-scurgere/",
-      "ratio": "1 / 1",
-      "min_px": "1200x1200",
-      "shows": "Produsul \"Cîrlig jgheab scurt 125mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "filled",
-      "provenance": "public/img/catalog/CAT-0269.jpg",
-      "alt": {
-        "ro": "Cîrlig jgheab scurt 125mm, fotografia produsului",
-        "ru": "Cîrlig jgheab scurt 125mm, фотография продукта"
-      }
-    },
-    {
-      "id": "CAT-0270",
-      "page": "/catalog/materiale-acoperis/sistem-de-scurgere/",
-      "ratio": "1 / 1",
-      "min_px": "1200x1200",
-      "shows": "Produsul \"Cîrlig jgheab lung 125 mm\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "filled",
-      "provenance": "public/img/catalog/CAT-0270.jpg",
-      "alt": {
-        "ro": "Cîrlig jgheab lung 125 mm, fotografia produsului",
-        "ru": "Cîrlig jgheab lung 125 mm, фотография продукта"
       }
     },
     {

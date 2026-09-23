@@ -3299,7 +3299,7 @@ dasterum record covers, `ACIM-01` to `ACIM-09`, have no picture: Creaton Rapido,
 shingles, and six rainwater parts. Their pictures are on `imperlux.md` too and are outside
 every override. Same question, same answer either way.
 
-## Q-W26-05 · Two roofing tiles had no destination your ruling names, so I chose the nearest true ones · OPEN · opened 2026-09-22 (W26-11)
+## Q-W26-05 · Two roofing tiles had no destination your ruling names, so I chose the nearest true ones · **ANSWERED 2026-09-23 (W27-R-16) for the calculator tile: it opens /in-constructie/ as the fence calculator does; the Reduceri tile keeps the homepage offer form** · opened 2026-09-22 (W26-11)
 
 **Raised W26-11, 2026-09-22. Shipped defaults in place. Nothing is blocked.**
 

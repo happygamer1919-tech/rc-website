@@ -1610,7 +1610,12 @@ const BENTOS = {
          prices. The nearest true destination is the metal tile page's "Modele și
          prețuri", where the four models carry their prices per m². A cross-page
          fragment, which the ruling allows. Logged as Q-W26-05. */
-      { label: 'bento.roofCalc', slot: 'ACOP-03', page: 'tigla-metalica', fragment: 'tigla-metalica' },
+      /* AMENDED (W27-FIX-10, owner instruction W27-R-16, verbatim): "When I click on the
+         acoperisuri 'calculeaza pretul' it should transfer me to a page that says 'In
+         constructie, va fi disponibil in curand' ... same as Garduri has right now". This
+         overturns W26-R12 for THIS tile and answers Q-W26-05's first half: the roofing
+         calculator opens the "in construcție" page, as the fence calculator does. */
+      { label: 'bento.roofCalc', slot: 'ACOP-03', inConstructie: true },
       /* AMENDED (W25-24, under W25-R24): every hub tile has a destination now.
          This one had none and rendered inert. "Reduceri" opens the four roofing
          offers, which are a section of this same page (`#acoperisuri`), so the

@@ -1216,3 +1216,9 @@ the foot of the section is the catalogue link the owner asked about, unchanged. 
 **Status: PR OPEN** (opened 2026-09-23). Owner instruction W27-R-15: `.promo` is `--brand` with
 `--ink` text again (5.10:1), the W28-01 dot and hairline gone; same 44px cap, string and expiry
 switch, no motion. Gate 28: 138 of 138. 0 budgets move.
+
+## W27-FIX-10 · The roofing calculator tile opens the "in construcție" page
+**Status: PR OPEN** (opened 2026-09-23). Owner instruction W27-R-16: the "Calculează prețul
+acoperișului" tile opens `/in-constructie/` as the fence calculator does, overturning W26-R12 for
+that tile; Q-W26-05 answered for the calculator half. One data line in `build.js`; no marker, no
+height moves.

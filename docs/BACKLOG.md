@@ -1087,6 +1087,11 @@ spacer keeps the band's height, so nothing below moves (section 1). The language
 0.04em site-wide, which gives gate 11 back the slack the 14px floor took (least RU slack 8px at 1280+
 after W28-01, 10px now). Master plan header row and section 3's shadow list amended. **Static gates,
 gates 11, 18 and 28 exit 0.** Screenshots `docs/design/W27/w28-02-*`.
+## W27-FIX-01 · Budgets after the 14px floor
+**Status: PR OPEN** (opened 2026-09-22). **Section 12.0 on `ff8a922` (#143) failed**: `/servicii/tigla-metalica/`
+4,347 against 4,283 and RU 4,402 against 4,316, both OVER; every marker verified. Cause measured: the
+14px floor grew the tile grid's small print by two lines. **All 53 budgets re-measured on the deployed
+tree plus 60**, generated into R-Y; `scripts/verify-live.js` carries them. No page changes.
 
 ## W28-03 · Cream ground, white alternate, no section lines, 24/28px corners
 **Status: PR OPEN** (opened 2026-09-22). W27-R-02 applied: **`--bg-warm` is `#FAF6F0`** and is the page

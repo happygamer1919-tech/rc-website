@@ -3388,3 +3388,30 @@ repo's two dictionaries carry "Maro Wenge", "Negru profund" and "Maro ciocolată
 words. Three entries in the fence palette would translate them site-wide; that is a one-line
 answer.
 
+## Q-W27-03 · The mirror sweep removed eleven gutter prices, added twenty accessories beside their Dasterum near-twins, and left one accessory out · OPEN · opened 2026-09-22 (W27-C-06)
+
+**Raised W27-C-06, 2026-09-22. Shipped default: W27-R-04 applied literally. Nothing is blocked.**
+
+**1. Eleven rainwater prices are gone from the page.** Jgheab, Burlan, the two Colțare, Brățară jgheab,
+Capac jgheab, the two Cârlige, Racord, Brățară burlan and Cot evacuare printed a Dasterum "De la N lei"
+since W26-04, folded from the cheaper grade. Imperlux prints "Solicită prețul" for every rainwater part,
+and your ruling says imperlux.md is the source of record for prices, same numbers. So they ask for a
+price now. **The Dasterum figure is kept in each record** as `price_folded_not_shown`; putting the
+eleven prices back is one line per record, or one ruling that prices follow the supplier RC actually
+buys from.
+
+**2. Twenty Imperlux accessories sit beside forty-six Dasterum ones.** The rule matches names exactly
+(W26-R5), and none matched, so nothing folded. Seven pairs look like the same part under two spellings
+(the table at the foot of `docs/reports/W27-IMPERLUX-MIRROR.md`): Coamă semicirculară and Coamă
+semirotundă, Bordură fronton and Bordura de fronton, the snow guards, the MDM and DACHMASTER or Decora
+membranes, the ridge ventilation bands, the wall flashings, the valleys. Say which are the same product
+and they fold, Imperlux's card first, as the metal tiles did.
+
+**3. One accessory is not on the site.** Folie anticondens: Imperlux publishes a 260x260 picture and
+nothing larger. The floor is 450 (W25-R4). A floor-300 exception by id (W26-R13's shape) would still
+not reach it. Either a picture from you, or it stays out.
+
+**4. Two blocks on Imperlux's Novatik and Creaton pages are not products.** "Accesorii Novatik Natura"
+(22 tiles) and "Accesorii Creaton" (21 tiles) are names with pictures, no page, no price, no spec. They
+are listed in the report and not added. If you want them as cards, that is 43 more pictures and a card.
+

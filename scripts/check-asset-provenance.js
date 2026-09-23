@@ -94,7 +94,8 @@ const OVERRIDES = [
       'ACOP-05', 'ACOP-06', 'ACOP-07',
       /* W27-C-05: ACIM-02 and ACIM-03 moved to the W27-R-04 entry below, because their
          pictures are now the untouched previews and this sentence says "cropped". */
-      'ACIM-01', 'ACIM-04', 'ACIM-05', 'ACIM-06', 'ACIM-07', 'ACIM-08', 'ACIM-09',
+      /* W27-C-06: ACIM-01 moved below too; ACOP-05 keeps the W26-11 crop as its own file. */
+      'ACIM-04', 'ACIM-05', 'ACIM-06', 'ACIM-07', 'ACIM-08', 'ACIM-09',
     ],
   },
   /* AMENDED (W27-R-04, W27-C-03): a FOURTH override, imperlux.md as the source of record
@@ -109,7 +110,9 @@ const OVERRIDES = [
     files: [
       'ACIM-10', 'ACIM-11', 'ACIM-12', 'ACIM-13', 'ACIM-14', 'ACIM-15', 'ACIM-16', 'NVK-01', 'NVK-02', 'NVK-03', 'NVK-04',
       'ACOP-09',
-      'ACIM-02', 'ACIM-03',
+      'ACIM-02', 'ACIM-03', 'ACIM-01',
+      /* W27-C-06: the rainwater parts and the metal tile accessories. */
+      'ACIM-17', 'ACIM-18', 'ACIM-19', 'ACIM-20', 'ACIM-21', 'ACIM-22', 'ACIM-23', 'ACIM-24', 'ACIM-25', 'ACIM-26', 'ACIM-27', 'ACIM-28', 'ACIM-29', 'ACIM-30', 'ACIM-31', 'ACIM-32', 'ACIM-33', 'ACIM-34', 'ACIM-35', 'ACIM-36', 'ACIM-37', 'ACIM-38', 'ACIM-39', 'ACIM-40', 'ACIM-41', 'ACIM-42', 'ACIM-43', 'ACIM-44', 'ACIM-45', 'ACIM-46', 'ACIM-47', 'ACIM-48',
     ],
   },
 ];

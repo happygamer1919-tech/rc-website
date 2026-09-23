@@ -1105,3 +1105,16 @@ W27-R-04: IKO Cambridge and IKO Superglass Hex gain a tagline, colour code chips
 
 Plus 60 (W24-R4). Same instrument as the blocks above.
 
+## AMENDED (W27-C-06, wave 27): the mirror sweep
+
+W27-R-04: twenty Imperlux accessories join the Accesorii section (five more grid rows), the eleven
+rainwater parts and the ceramic tile take Imperlux's pictures and taglines. Same instrument and method:
+
+| Page | Before | After | Budget |
+|---|---|---|---|
+| `/servicii/acoperisuri/` | 21,725 | **24,172** | 21,785 to **24,232** |
+| `/ru/servicii/acoperisuri/` | 21,883 | **24,393** | 21,943 to **24,453** |
+
+Plus 60 (W24-R4). The section cap of 1,400px (`docs/CLAUDE.md` section 2) does not hold the
+catalogue grid, the third standing exception (W24-R4).
+

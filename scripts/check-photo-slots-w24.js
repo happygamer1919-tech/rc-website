@@ -188,6 +188,9 @@ const OVERRIDE_SLOTS = [
      Tabla cutata tile (ACOP-09). Still a permission, not a state. */
   'ACIM-10', 'ACIM-11', 'ACIM-12', 'ACIM-13', 'ACIM-14', 'ACIM-15', 'ACIM-16', 'NVK-01', 'NVK-02', 'NVK-03', 'NVK-04',
   'ACOP-09',
+  /* W27-C-06 (W27-R-04): the eleven rainwater parts that folded a dasterum record and the
+     twenty-one metal tile accessories imperlux.md sells with a page of their own. */
+  'ACIM-17', 'ACIM-18', 'ACIM-19', 'ACIM-20', 'ACIM-21', 'ACIM-22', 'ACIM-23', 'ACIM-24', 'ACIM-25', 'ACIM-26', 'ACIM-27', 'ACIM-28', 'ACIM-29', 'ACIM-30', 'ACIM-31', 'ACIM-32', 'ACIM-33', 'ACIM-34', 'ACIM-35', 'ACIM-36', 'ACIM-37', 'ACIM-38', 'ACIM-39', 'ACIM-40', 'ACIM-41', 'ACIM-42', 'ACIM-43', 'ACIM-44', 'ACIM-45', 'ACIM-46', 'ACIM-47', 'ACIM-48',
 ];
 
 /* The slot kinds R-W forbids a generated image on: a before/after pair and a

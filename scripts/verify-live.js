@@ -152,7 +152,9 @@ const MARKERS = {
        written out because a count nobody can reproduce is a number, not a marker. */
     /* AMENDED (W27-C-03, ruling W27-R-04): **85**. The seven imperlux.md metal tile
        models, first in their section; no dasterum name matched, so none folded. 78 + 7. */
-    productCards: 85,
+    /* AMENDED (W27-C-06, ruling W27-R-04): **105**. Twenty metal tile accessories from
+       imperlux.md (twenty-one on its pages, one with no picture at the floor). 85 + 20. */
+    productCards: 105,
     /* AMENDED (W26-04): ~~8~~ **6**. Toate plus FIVE sections, not the seven
        catalogue subcategories the bar was built from. The seven catalogue pages
        still answer and still redirect here; what changed is what a visitor filters
@@ -328,8 +330,10 @@ const PAGES = [
      derived "de la" lines; measured 21,643 / 21,802 at 1440, settled, plus 60, in R-Y. */
   /* AMENDED (W27-C-05): the two shingle cards gain a tagline, chips and a facts line;
      measured 21,725 / 21,883 at 1440, settled, plus 60, in R-Y. */
-  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 21785 },
-  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 21943 },
+  /* AMENDED (W27-C-06): twenty accessory cards, five more grid rows; measured 24,172 /
+     24,393 at 1440, settled, plus 60, in R-Y. */
+  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 24232 },
+  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 24453 },
   /* W24-07. The rocă vulcanică mirror page. */
   /* AMENDED (W27-C-04): chips, a warranty row and a price on each card, a derived "de la"
      line under the heading; measured 4,369 / 4,439 at 1440, settled, plus 60, in R-Y. */

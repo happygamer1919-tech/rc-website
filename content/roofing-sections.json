@@ -1,5 +1,5 @@
 {
-  "_note": "W26-04, ruling W26-R5. The roofing service page's product sections. FIVE groups replace the seven catalogue subcategories the filter bar was built from; `from_catalog` says where each old subcategory lands, and the eight redirect pages under /catalog/materiale-acoperis/ keep answering and now aim at the group their subcategory went into. `products` are the imperlux.md models W26-R5 puts first. Each one either FOLDS dasterum.md records in as grades, in which case the card carries the cheaper grade's price and its picture and the folded records are the variants, or it folds none and renders Pret la cerere against a slot of its own that is still empty. NOT TAKEN from imperlux.md: every image (W24-R2), the description sentence under each name, which is marketing rather than a product fact (W25-25's precedent), the struck price, the percent badge (W26-R5, R-X) and THE WARRANTY, which W26-R6 holds until the owner confirms the roof warranty rows. A dasterum.md record whose model name is absent from imperlux.md stays a card of its own and is listed in `dasterum_only`. AMENDED W27-C-03 (W27-R-04, W27-R-05): the imperlux tagline, the named colour chips and the warranty FIGURE on the card are taken from this card on; the percent badge and the struck price still are not, and the warranty ROW in a table still is not (W26-R6).",
+  "_note": "W26-04, ruling W26-R5. The roofing service page's product sections. FIVE groups replace the seven catalogue subcategories the filter bar was built from; `from_catalog` says where each old subcategory lands, and the eight redirect pages under /catalog/materiale-acoperis/ keep answering and now aim at the group their subcategory went into. `products` are the imperlux.md models W26-R5 puts first. Each one either FOLDS dasterum.md records in as grades, in which case the card carries the cheaper grade's price and its picture and the folded records are the variants, or it folds none and renders Pret la cerere against a slot of its own that is still empty. NOT TAKEN from imperlux.md: every image (W24-R2), the description sentence under each name, which is marketing rather than a product fact (W25-25's precedent), the struck price, the percent badge (W26-R5, R-X) and THE WARRANTY, which W26-R6 holds until the owner confirms the roof warranty rows. A dasterum.md record whose model name is absent from imperlux.md stays a card of its own and is listed in `dasterum_only`. AMENDED W27-C-03 (W27-R-04, W27-R-05): the imperlux tagline, the named colour chips and the warranty FIGURE on the card are taken from this card on; the percent badge and the struck price still are not, and the warranty ROW in a table still is not (W26-R6). AMENDED W27-C-06 (W27-R-04): a product may carry BOTH a slot and folds: the slot is its picture (imperlux's), the folds are the dasterum records it stands for, which render nowhere; price_folded_not_shown keeps the dasterum figure the card no longer prints.",
   "source": {
     "host": "imperlux.md",
     "audit": "docs/IMPERLUX-AUDIT-W26.md",
@@ -458,11 +458,12 @@
       "variant": null,
       "folds": [],
       "match_tier": "imperlux-only",
-      "match_note": "imperlux.md publishes one ceramic model and dasterum.md's roofing catalogue has no ceramic tile at all, so nothing folds in.",
+      "match_note": "imperlux.md publishes one ceramic model and dasterum.md's roofing catalogue has no ceramic tile at all, so nothing folds in. AMENDED W27-C-06 (W27-R-04): the preview image as published (untouched, flagged label), the tagline, the warranty figure; the one colour name the product page prints (its section card prints the name split into tokens), the count of four as printed.",
       "source": {
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/tigla-ceramica/creaton-rapido/",
-        "captured": "2026-09-22"
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/creaton-rapido/hero.png"
       },
       "specs": {
         "Greutate": {
@@ -472,8 +473,19 @@
         "Culori": {
           "ro": "4",
           "ru": "4"
+        },
+        "Garanție": {
+          "ro": "50 ani",
+          "ru": "50 лет"
         }
-      }
+      },
+      "tagline": {
+        "ro": "Tradiție germană, design XXL",
+        "ru": "Немецкая традиция, дизайн XXL"
+      },
+      "colours": [
+        "Maro închis"
+      ]
     },
     {
       "id": "imp-iko-cambridge",
@@ -583,267 +595,315 @@
     },
     {
       "id": "imp-jgheab",
-      "slot": null,
+      "slot": "ACIM-17",
       "slug": "jgheab",
       "name": {
         "ro": "Jgheab",
         "ru": "Jgheab"
       },
       "group": "sisteme-pluviale",
-      "price": {
-        "render": {
-          "ro": "De la 172 lei",
-          "ru": "От 172 lei"
-        }
-      },
+      "price": null,
       "variant": null,
       "folds": [
         "CAT-0262",
         "CAT-0268"
       ],
       "match_tier": "same-part-different-length",
-      "match_note": "dasterum.md sells the same gutter in two lengths, 125x2000 and 125x4000. They are grades of one model, so they are one card whose de la is the cheaper.",
+      "match_note": "dasterum.md sells the same gutter in two lengths, 125x2000 and 125x4000. They are grades of one model, so they are one card whose de la is the cheaper. AMENDED W27-C-06 (W27-R-04): imperlux is the source of record; its picture replaces the folded dasterum picture and, since it publishes no price, the card asks for one. The dasterum \"de la\" is kept in the record as price_folded_not_shown and renders nowhere.",
       "source": {
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/jgheab/",
-        "captured": "2026-09-22"
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/sisteme-pluviale/jgheab.jpg"
       },
       "specs": {
         "Dimensiuni": {
           "ro": "125x2000 mm · 125x4000 mm",
           "ru": "125x2000 мм · 125x4000 мм"
         }
+      },
+      "tagline": {
+        "ro": "Canal principal de colectare a apei",
+        "ru": "Основной канал сбора воды"
+      },
+      "price_folded_not_shown": {
+        "render": {
+          "ro": "De la 172 lei",
+          "ru": "От 172 lei"
+        }
       }
     },
     {
       "id": "imp-burlan",
-      "slot": null,
+      "slot": "ACIM-18",
       "slug": "burlan",
       "name": {
         "ro": "Burlan",
         "ru": "Burlan"
       },
       "group": "sisteme-pluviale",
-      "price": {
-        "render": {
-          "ro": "De la 107 lei",
-          "ru": "От 107 lei"
-        }
-      },
+      "price": null,
       "variant": null,
       "folds": [
         "CAT-0264",
         "CAT-0265"
       ],
       "match_tier": "same-part-different-length",
-      "match_note": "dasterum.md sells the downpipe in 90x1000 and 90x3000.",
+      "match_note": "dasterum.md sells the downpipe in 90x1000 and 90x3000. AMENDED W27-C-06 (W27-R-04): imperlux is the source of record; its picture replaces the folded dasterum picture and, since it publishes no price, the card asks for one. The dasterum \"de la\" is kept in the record as price_folded_not_shown and renders nowhere.",
       "source": {
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/burlan/",
-        "captured": "2026-09-22"
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/sisteme-pluviale/burlan.jpg"
       },
       "specs": {
         "Dimensiuni": {
           "ro": "90x1000 mm · 90x3000 mm",
           "ru": "90x1000 мм · 90x3000 мм"
         }
+      },
+      "tagline": {
+        "ro": "Conductă verticală de evacuare",
+        "ru": "Вертикальная водосточная труба"
+      },
+      "price_folded_not_shown": {
+        "render": {
+          "ro": "De la 107 lei",
+          "ru": "От 107 lei"
+        }
       }
     },
     {
       "id": "imp-coltar-interior",
-      "slot": null,
+      "slot": "ACIM-19",
       "slug": "coltar-interior",
       "name": {
         "ro": "Colțar interior",
         "ru": "Colțar interior"
       },
       "group": "sisteme-pluviale",
-      "price": {
-        "render": {
-          "ro": "De la 185 lei",
-          "ru": "От 185 lei"
-        }
-      },
+      "price": null,
       "variant": null,
       "folds": [
         "CAT-0261"
       ],
       "match_tier": "same-part-one-size",
-      "match_note": "dasterum.md publishes it at one size, 125mm.",
+      "match_note": "dasterum.md publishes it at one size, 125mm. AMENDED W27-C-06 (W27-R-04): imperlux is the source of record; its picture replaces the folded dasterum picture and, since it publishes no price, the card asks for one. The dasterum \"de la\" is kept in the record as price_folded_not_shown and renders nowhere.",
       "source": {
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/coltar-interior/",
-        "captured": "2026-09-22"
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/sisteme-pluviale/coltar-interior.jpg"
       },
       "specs": {
         "Dimensiuni": {
           "ro": "125 mm",
           "ru": "125 мм"
         }
+      },
+      "tagline": {
+        "ro": "Cot interior pentru jgheab",
+        "ru": "Внутренний угол желоба"
+      },
+      "price_folded_not_shown": {
+        "render": {
+          "ro": "De la 185 lei",
+          "ru": "От 185 lei"
+        }
       }
     },
     {
       "id": "imp-coltar-exterior",
-      "slot": null,
+      "slot": "ACIM-20",
       "slug": "coltar-exterior",
       "name": {
         "ro": "Colțar exterior",
         "ru": "Colțar exterior"
       },
       "group": "sisteme-pluviale",
-      "price": {
-        "render": {
-          "ro": "De la 185 lei",
-          "ru": "От 185 lei"
-        }
-      },
+      "price": null,
       "variant": null,
       "folds": [
         "CAT-0260"
       ],
       "match_tier": "same-part-one-size",
-      "match_note": "dasterum.md publishes it at one size, 125mm.",
+      "match_note": "dasterum.md publishes it at one size, 125mm. AMENDED W27-C-06 (W27-R-04): imperlux is the source of record; its picture replaces the folded dasterum picture and, since it publishes no price, the card asks for one. The dasterum \"de la\" is kept in the record as price_folded_not_shown and renders nowhere.",
       "source": {
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/coltar-exterior/",
-        "captured": "2026-09-22"
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/sisteme-pluviale/coltar-exterior.jpg"
       },
       "specs": {
         "Dimensiuni": {
           "ro": "125 mm",
           "ru": "125 мм"
         }
+      },
+      "tagline": {
+        "ro": "Cot exterior pentru jgheab",
+        "ru": "Наружный угол желоба"
+      },
+      "price_folded_not_shown": {
+        "render": {
+          "ro": "De la 185 lei",
+          "ru": "От 185 lei"
+        }
       }
     },
     {
       "id": "imp-bratara-jgheab",
-      "slot": null,
+      "slot": "ACIM-21",
       "slug": "bratara-jgheab",
       "name": {
         "ro": "Brățară jgheab",
         "ru": "Brățară jgheab"
       },
       "group": "sisteme-pluviale",
-      "price": {
-        "render": {
-          "ro": "De la 58 lei",
-          "ru": "От 58 lei"
-        }
-      },
+      "price": null,
       "variant": null,
       "folds": [
         "CAT-0257"
       ],
       "match_tier": "same-part-one-size",
-      "match_note": "dasterum.md publishes it at one size, 125mm.",
+      "match_note": "dasterum.md publishes it at one size, 125mm. AMENDED W27-C-06 (W27-R-04): imperlux is the source of record; its picture replaces the folded dasterum picture and, since it publishes no price, the card asks for one. The dasterum \"de la\" is kept in the record as price_folded_not_shown and renders nowhere.",
       "source": {
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/bratara-jgheab/",
-        "captured": "2026-09-22"
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/sisteme-pluviale/bratara-jgheab.jpg"
       },
       "specs": {
         "Dimensiuni": {
           "ro": "125 mm",
           "ru": "125 мм"
         }
+      },
+      "tagline": {
+        "ro": "Element de îmbinare jgheab",
+        "ru": "Соединительный элемент желоба"
+      },
+      "price_folded_not_shown": {
+        "render": {
+          "ro": "De la 58 lei",
+          "ru": "От 58 lei"
+        }
       }
     },
     {
       "id": "imp-capac-jgheab",
-      "slot": null,
+      "slot": "ACIM-22",
       "slug": "capac-jgheab",
       "name": {
         "ro": "Capac jgheab",
         "ru": "Capac jgheab"
       },
       "group": "sisteme-pluviale",
-      "price": {
-        "render": {
-          "ro": "De la 36 lei",
-          "ru": "От 36 lei"
-        }
-      },
+      "price": null,
       "variant": null,
       "folds": [
         "CAT-0259"
       ],
       "match_tier": "same-part-one-size",
-      "match_note": "dasterum.md publishes it at one size, 125mm.",
+      "match_note": "dasterum.md publishes it at one size, 125mm. AMENDED W27-C-06 (W27-R-04): imperlux is the source of record; its picture replaces the folded dasterum picture and, since it publishes no price, the card asks for one. The dasterum \"de la\" is kept in the record as price_folded_not_shown and renders nowhere.",
       "source": {
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/capac-jgheab/",
-        "captured": "2026-09-22"
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/sisteme-pluviale/capac-jgheab.jpg"
       },
       "specs": {
         "Dimensiuni": {
           "ro": "125 mm",
           "ru": "125 мм"
         }
+      },
+      "tagline": {
+        "ro": "Închidere capăt jgheab",
+        "ru": "Заглушка желоба"
+      },
+      "price_folded_not_shown": {
+        "render": {
+          "ro": "De la 36 lei",
+          "ru": "От 36 lei"
+        }
       }
     },
     {
       "id": "imp-carlig-jgheab",
-      "slot": null,
+      "slot": "ACIM-23",
       "slug": "carlig-jgheab",
       "name": {
         "ro": "Cârlig jgheab",
         "ru": "Cârlig jgheab"
       },
       "group": "sisteme-pluviale",
-      "price": {
-        "render": {
-          "ro": "De la 52 lei",
-          "ru": "От 52 lei"
-        }
-      },
+      "price": null,
       "variant": null,
       "folds": [
         "CAT-0269"
       ],
       "match_tier": "same-part-one-size",
-      "match_note": "dasterum.md's \"Cîrlig jgheab scurt 125mm\" is the short hook; imperlux.md lists the short and the long as two models and so does this.",
+      "match_note": "dasterum.md's \"Cîrlig jgheab scurt 125mm\" is the short hook; imperlux.md lists the short and the long as two models and so does this. AMENDED W27-C-06 (W27-R-04): imperlux is the source of record; its picture replaces the folded dasterum picture and, since it publishes no price, the card asks for one. The dasterum \"de la\" is kept in the record as price_folded_not_shown and renders nowhere.",
       "source": {
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/carlig-jgheab/",
-        "captured": "2026-09-22"
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/sisteme-pluviale/carlig-jgheab.jpg"
       },
       "specs": {
         "Dimensiuni": {
           "ro": "scurt · 125 mm",
           "ru": "короткий · 125 мм"
         }
+      },
+      "tagline": {
+        "ro": "Suport de fixare pentru jgheab",
+        "ru": "Крепёжный кронштейн желоба"
+      },
+      "price_folded_not_shown": {
+        "render": {
+          "ro": "De la 52 lei",
+          "ru": "От 52 lei"
+        }
       }
     },
     {
       "id": "imp-carlig-jgheab-lung",
-      "slot": null,
+      "slot": "ACIM-24",
       "slug": "carlig-jgheab-lung",
       "name": {
         "ro": "Cârlig jgheab lung",
         "ru": "Cârlig jgheab lung"
       },
       "group": "sisteme-pluviale",
-      "price": {
-        "render": {
-          "ro": "De la 48 lei",
-          "ru": "От 48 lei"
-        }
-      },
+      "price": null,
       "variant": null,
       "folds": [
         "CAT-0270"
       ],
       "match_tier": "same-part-one-size",
-      "match_note": "dasterum.md's \"Cîrlig jgheab lung 125 mm\".",
+      "match_note": "dasterum.md's \"Cîrlig jgheab lung 125 mm\". AMENDED W27-C-06 (W27-R-04): imperlux is the source of record; its picture replaces the folded dasterum picture and, since it publishes no price, the card asks for one. The dasterum \"de la\" is kept in the record as price_folded_not_shown and renders nowhere.",
       "source": {
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/carlig-jgheab-lung/",
-        "captured": "2026-09-22"
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/sisteme-pluviale/carlig-jgheab-lung.jpg"
       },
       "specs": {
         "Dimensiuni": {
           "ro": "lung · 125 mm",
           "ru": "длинный · 125 мм"
+        }
+      },
+      "tagline": {
+        "ro": "Suport lung de fixare pentru jgheab",
+        "ru": "Длинный крепёжный кронштейн желоба"
+      },
+      "price_folded_not_shown": {
+        "render": {
+          "ro": "De la 48 lei",
+          "ru": "От 48 lei"
         }
       }
     },
@@ -864,40 +924,51 @@
       "source": {
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/carlig-pazie-universal/",
-        "captured": "2026-09-22"
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/sisteme-pluviale/carlig-pazie-universal.jpg"
       },
-      "specs": {}
+      "specs": {},
+      "tagline": {
+        "ro": "Suport universal pentru pazie",
+        "ru": "Универсальный кронштейн на лобовую доску"
+      }
     },
     {
       "id": "imp-racord-jgheab-burlan",
-      "slot": null,
+      "slot": "ACIM-25",
       "slug": "racord-jgheab-burlan",
       "name": {
         "ro": "Racord jgheab-burlan",
         "ru": "Racord jgheab-burlan"
       },
       "group": "sisteme-pluviale",
-      "price": {
-        "render": {
-          "ro": "De la 69 lei",
-          "ru": "От 69 lei"
-        }
-      },
+      "price": null,
       "variant": null,
       "folds": [
         "CAT-0258"
       ],
       "match_tier": "same-part-one-size",
-      "match_note": "dasterum.md's \"Racord jgheab 125mm\" is the gutter-to-downpipe connector.",
+      "match_note": "dasterum.md's \"Racord jgheab 125mm\" is the gutter-to-downpipe connector. AMENDED W27-C-06 (W27-R-04): imperlux is the source of record; its picture replaces the folded dasterum picture and, since it publishes no price, the card asks for one. The dasterum \"de la\" is kept in the record as price_folded_not_shown and renders nowhere.",
       "source": {
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/racord-jgheab-burlan/",
-        "captured": "2026-09-22"
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/sisteme-pluviale/racord-jgheab-burlan.jpg"
       },
       "specs": {
         "Dimensiuni": {
           "ro": "125 mm",
           "ru": "125 мм"
+        }
+      },
+      "tagline": {
+        "ro": "Piesă de legătură jgheab-burlan",
+        "ru": "Соединение желоба с трубой"
+      },
+      "price_folded_not_shown": {
+        "render": {
+          "ro": "De la 69 lei",
+          "ru": "От 69 lei"
         }
       }
     },
@@ -918,9 +989,14 @@
       "source": {
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/cot-60/",
-        "captured": "2026-09-22"
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/sisteme-pluviale/cot-60.jpg"
       },
-      "specs": {}
+      "specs": {},
+      "tagline": {
+        "ro": "Cot burlan la 60 de grade",
+        "ru": "Колено трубы 60 градусов"
+      }
     },
     {
       "id": "imp-prelungitor",
@@ -939,40 +1015,51 @@
       "source": {
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/prelungitor/",
-        "captured": "2026-09-22"
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/sisteme-pluviale/prelungitor.jpg"
       },
-      "specs": {}
+      "specs": {},
+      "tagline": {
+        "ro": "Element de prelungire burlan",
+        "ru": "Удлинитель трубы"
+      }
     },
     {
       "id": "imp-bratara-burlan",
-      "slot": null,
+      "slot": "ACIM-26",
       "slug": "bratara-burlan",
       "name": {
         "ro": "Brățară burlan",
         "ru": "Brățară burlan"
       },
       "group": "sisteme-pluviale",
-      "price": {
-        "render": {
-          "ro": "De la 33 lei",
-          "ru": "От 33 lei"
-        }
-      },
+      "price": null,
       "variant": null,
       "folds": [
         "CAT-0266"
       ],
       "match_tier": "same-part-one-size",
-      "match_note": "dasterum.md publishes it at one size, 90mm.",
+      "match_note": "dasterum.md publishes it at one size, 90mm. AMENDED W27-C-06 (W27-R-04): imperlux is the source of record; its picture replaces the folded dasterum picture and, since it publishes no price, the card asks for one. The dasterum \"de la\" is kept in the record as price_folded_not_shown and renders nowhere.",
       "source": {
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/bratara-burlan/",
-        "captured": "2026-09-22"
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/sisteme-pluviale/bratara-burlan.jpg"
       },
       "specs": {
         "Dimensiuni": {
           "ro": "90 mm",
           "ru": "90 мм"
+        }
+      },
+      "tagline": {
+        "ro": "Fixare burlan pe perete",
+        "ru": "Крепление трубы к стене"
+      },
+      "price_folded_not_shown": {
+        "render": {
+          "ro": "De la 33 lei",
+          "ru": "От 33 lei"
         }
       }
     },
@@ -993,9 +1080,14 @@
       "source": {
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/palnie-colectoare/",
-        "captured": "2026-09-22"
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/sisteme-pluviale/palnie-colectoare.jpg"
       },
-      "specs": {}
+      "specs": {},
+      "tagline": {
+        "ro": "Element de colectare și tranziție",
+        "ru": "Воронка сбора и перехода"
+      }
     },
     {
       "id": "imp-ramificatie-burlan",
@@ -1014,9 +1106,14 @@
       "source": {
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/ramificatie-burlan/",
-        "captured": "2026-09-22"
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/sisteme-pluviale/ramificatie-burlan.jpg"
       },
-      "specs": {}
+      "specs": {},
+      "tagline": {
+        "ro": "Derivație pentru burlan",
+        "ru": "Тройник водосточной трубы"
+      }
     },
     {
       "id": "imp-element-captare",
@@ -1035,42 +1132,573 @@
       "source": {
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/element-captare/",
-        "captured": "2026-09-22"
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/sisteme-pluviale/element-captare.jpg"
       },
-      "specs": {}
+      "specs": {},
+      "tagline": {
+        "ro": "Captare apă din jgheab",
+        "ru": "Водосборный элемент желоба"
+      }
     },
     {
       "id": "imp-cot-evacuare",
-      "slot": null,
+      "slot": "ACIM-27",
       "slug": "cot-evacuare",
       "name": {
         "ro": "Cot evacuare",
         "ru": "Cot evacuare"
       },
       "group": "sisteme-pluviale",
-      "price": {
-        "render": {
-          "ro": "De la 88 lei",
-          "ru": "От 88 lei"
-        }
-      },
+      "price": null,
       "variant": null,
       "folds": [
         "CAT-0267"
       ],
       "match_tier": "same-part-one-size",
-      "match_note": "dasterum.md publishes it at one size, 90mm.",
+      "match_note": "dasterum.md publishes it at one size, 90mm. AMENDED W27-C-06 (W27-R-04): imperlux is the source of record; its picture replaces the folded dasterum picture and, since it publishes no price, the card asks for one. The dasterum \"de la\" is kept in the record as price_folded_not_shown and renders nowhere.",
       "source": {
         "host": "imperlux.md",
         "url": "https://imperlux.md/acoperisuri/produse/sisteme-pluviale/cot-evacuare/",
-        "captured": "2026-09-22"
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/sisteme-pluviale/cot-evacuare.jpg"
       },
       "specs": {
         "Dimensiuni": {
           "ro": "90 mm",
           "ru": "90 мм"
         }
+      },
+      "tagline": {
+        "ro": "Cot final de evacuare a apei",
+        "ru": "Отводное колено"
+      },
+      "price_folded_not_shown": {
+        "render": {
+          "ro": "De la 88 lei",
+          "ru": "От 88 lei"
+        }
       }
+    },
+    {
+      "id": "imp-coama-titan",
+      "slot": "ACIM-28",
+      "slug": "coama-titan",
+      "name": {
+        "ro": "Coamă Titan",
+        "ru": "Конёк Titan"
+      },
+      "group": "accesorii-de-acoperis",
+      "tagline": {
+        "ro": "Element de coamă cu profil titan",
+        "ru": "Элемент конька с профилем titan"
+      },
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-06 (W27-R-04): one of the twenty-one metal tile accessories imperlux.md sells with a page of its own; imperlux publishes no price for it. No dasterum record carries this exact name; the near names are listed in Q-W27-03 for the owner to fold or keep.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/accesorii/coama-titan/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/accesorii/coama-titan.jpg"
+      },
+      "specs": {}
+    },
+    {
+      "id": "imp-coama-semicirculara",
+      "slot": "ACIM-29",
+      "slug": "coama-semicirculara",
+      "name": {
+        "ro": "Coamă semicirculară",
+        "ru": "Полукруглый конёк"
+      },
+      "group": "accesorii-de-acoperis",
+      "tagline": {
+        "ro": "Coamă cu profil semicircular elegant",
+        "ru": "Конёк с элегантным полукруглым профилем"
+      },
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-06 (W27-R-04): one of the twenty-one metal tile accessories imperlux.md sells with a page of its own; imperlux publishes no price for it. No dasterum record carries this exact name; the near names are listed in Q-W27-03 for the owner to fold or keep.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/accesorii/coama-semicirculara/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/accesorii/coama-semicirculara.jpg"
+      },
+      "specs": {}
+    },
+    {
+      "id": "imp-dolie",
+      "slot": "ACIM-30",
+      "slug": "dolie",
+      "name": {
+        "ro": "Dolie",
+        "ru": "Ендова"
+      },
+      "group": "accesorii-de-acoperis",
+      "tagline": {
+        "ro": "Element de dolie pentru scurgerea apei",
+        "ru": "Элемент ендовы для отвода воды"
+      },
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-06 (W27-R-04): one of the twenty-one metal tile accessories imperlux.md sells with a page of its own; imperlux publishes no price for it. No dasterum record carries this exact name; the near names are listed in Q-W27-03 for the owner to fold or keep.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/accesorii/dolie/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/accesorii/dolie.jpg"
+      },
+      "specs": {}
+    },
+    {
+      "id": "imp-capac-coama-circulara",
+      "slot": "ACIM-31",
+      "slug": "capac-coama-circulara",
+      "name": {
+        "ro": "Capac coamă circulară",
+        "ru": "Заглушка круглого конька"
+      },
+      "group": "accesorii-de-acoperis",
+      "tagline": {
+        "ro": "Capac de finisare pentru coamă circulară",
+        "ru": "Заглушка для круглого конька"
+      },
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-06 (W27-R-04): one of the twenty-one metal tile accessories imperlux.md sells with a page of its own; imperlux publishes no price for it. No dasterum record carries this exact name; the near names are listed in Q-W27-03 for the owner to fold or keep.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/accesorii/capac-coama-circulara/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/accesorii/capac-coama-circulara.jpg"
+      },
+      "specs": {}
+    },
+    {
+      "id": "imp-coama-de-inceput",
+      "slot": "ACIM-32",
+      "slug": "coama-de-inceput",
+      "name": {
+        "ro": "Coamă de început",
+        "ru": "Начальный конёк"
+      },
+      "group": "accesorii-de-acoperis",
+      "tagline": {
+        "ro": "Element de pornire pentru linia de coamă",
+        "ru": "Начальный элемент линии конька"
+      },
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-06 (W27-R-04): one of the twenty-one metal tile accessories imperlux.md sells with a page of its own; imperlux publishes no price for it. No dasterum record carries this exact name; the near names are listed in Q-W27-03 for the owner to fold or keep.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/accesorii/coama-de-inceput/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/accesorii/coama-de-inceput.jpg"
+      },
+      "specs": {}
+    },
+    {
+      "id": "imp-sort-streasina",
+      "slot": "ACIM-33",
+      "slug": "sort-streasina",
+      "name": {
+        "ro": "Sort streașină",
+        "ru": "Карнизная планка"
+      },
+      "group": "accesorii-de-acoperis",
+      "tagline": {
+        "ro": "Element de pornire la streașină",
+        "ru": "Стартовый элемент карниза"
+      },
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-06 (W27-R-04): one of the twenty-one metal tile accessories imperlux.md sells with a page of its own; imperlux publishes no price for it. No dasterum record carries this exact name; the near names are listed in Q-W27-03 for the owner to fold or keep.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/accesorii/sort-streasina/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/accesorii/sort-streasina.jpg"
+      },
+      "specs": {}
+    },
+    {
+      "id": "imp-racord-perete",
+      "slot": "ACIM-34",
+      "slug": "racord-perete",
+      "name": {
+        "ro": "Racord perete",
+        "ru": "Примыкание к стене"
+      },
+      "group": "accesorii-de-acoperis",
+      "tagline": {
+        "ro": "Etanșare la joncțiunea acoperiș-perete",
+        "ru": "Герметизация примыкания кровли к стене"
+      },
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-06 (W27-R-04): one of the twenty-one metal tile accessories imperlux.md sells with a page of its own; imperlux publishes no price for it. No dasterum record carries this exact name; the near names are listed in Q-W27-03 for the owner to fold or keep.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/accesorii/racord-perete/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/accesorii/racord-perete.jpg"
+      },
+      "specs": {}
+    },
+    {
+      "id": "imp-bordura-fronton",
+      "slot": "ACIM-35",
+      "slug": "bordura-fronton",
+      "name": {
+        "ro": "Bordură fronton",
+        "ru": "Фронтонная планка"
+      },
+      "group": "accesorii-de-acoperis",
+      "tagline": {
+        "ro": "Finisare laterală a acoperișului",
+        "ru": "Боковая отделка кровли"
+      },
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-06 (W27-R-04): one of the twenty-one metal tile accessories imperlux.md sells with a page of its own; imperlux publishes no price for it. No dasterum record carries this exact name; the near names are listed in Q-W27-03 for the owner to fold or keep.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/accesorii/bordura-fronton/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/accesorii/bordura-fronton.jpg"
+      },
+      "specs": {}
+    },
+    {
+      "id": "imp-bordura-fronton-sub-sindrila",
+      "slot": "ACIM-36",
+      "slug": "bordura-fronton-sub-sindrila",
+      "name": {
+        "ro": "Bordură fronton sub șindrilă",
+        "ru": "Фронтонная планка под черепицу"
+      },
+      "group": "accesorii-de-acoperis",
+      "tagline": {
+        "ro": "Bordură fronton montată sub material",
+        "ru": "Фронтонная планка под кровельным материалом"
+      },
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-06 (W27-R-04): one of the twenty-one metal tile accessories imperlux.md sells with a page of its own; imperlux publishes no price for it. No dasterum record carries this exact name; the near names are listed in Q-W27-03 for the owner to fold or keep.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/accesorii/bordura-fronton-sub-sindrila/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/accesorii/bordura-fronton-sub-sindrila.jpg"
+      },
+      "specs": {}
+    },
+    {
+      "id": "imp-opritor-zapada",
+      "slot": "ACIM-37",
+      "slug": "opritor-zapada",
+      "name": {
+        "ro": "Opritor zăpadă",
+        "ru": "Снегозадержатель"
+      },
+      "group": "accesorii-de-acoperis",
+      "tagline": {
+        "ro": "Protecție împotriva alunecării zăpezii",
+        "ru": "Защита от схода снега"
+      },
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-06 (W27-R-04): one of the twenty-one metal tile accessories imperlux.md sells with a page of its own; imperlux publishes no price for it. No dasterum record carries this exact name; the near names are listed in Q-W27-03 for the owner to fold or keep.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/accesorii/opritor-zapada/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/accesorii/opritor-zapada.jpg"
+      },
+      "specs": {}
+    },
+    {
+      "id": "imp-opritor-zapada-potcoava",
+      "slot": "ACIM-38",
+      "slug": "opritor-zapada-potcoava",
+      "name": {
+        "ro": "Opritor zăpadă potcoavă",
+        "ru": "Снегозадержатель подкова"
+      },
+      "group": "accesorii-de-acoperis",
+      "tagline": {
+        "ro": "Opritor zăpadă cu formă de potcoavă",
+        "ru": "Снегозадержатель в форме подковы"
+      },
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-06 (W27-R-04): one of the twenty-one metal tile accessories imperlux.md sells with a page of its own; imperlux publishes no price for it. No dasterum record carries this exact name; the near names are listed in Q-W27-03 for the owner to fold or keep.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/accesorii/opritor-zapada-potcoava/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/accesorii/opritor-zapada-potcoava.jpg"
+      },
+      "specs": {}
+    },
+    {
+      "id": "imp-membrana-superdifuzie-mdm-s",
+      "slot": "ACIM-40",
+      "slug": "membrana-superdifuzie-mdm-s",
+      "name": {
+        "ro": "Membrana Superdifuzie MDM S",
+        "ru": "Супердиффузионная мембрана MDM S"
+      },
+      "group": "accesorii-de-acoperis",
+      "tagline": {
+        "ro": "Membrană superdifuzie VAXO S",
+        "ru": "Супердиффузионная мембрана VAXO S"
+      },
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-06 (W27-R-04): one of the twenty-one metal tile accessories imperlux.md sells with a page of its own; imperlux publishes no price for it. No dasterum record carries this exact name; the near names are listed in Q-W27-03 for the owner to fold or keep.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/accesorii/membrana-superdifuzie-mdm-s/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/accesorii/membrana-mdm-s.jpg"
+      },
+      "specs": {}
+    },
+    {
+      "id": "imp-membrana-superdifuzie-mdm-m",
+      "slot": "ACIM-41",
+      "slug": "membrana-superdifuzie-mdm-m",
+      "name": {
+        "ro": "Membrana Superdifuzie MDM M",
+        "ru": "Супердиффузионная мембрана MDM M"
+      },
+      "group": "accesorii-de-acoperis",
+      "tagline": {
+        "ro": "Membrană superdifuzie VAXO M",
+        "ru": "Супердиффузионная мембрана VAXO M"
+      },
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-06 (W27-R-04): one of the twenty-one metal tile accessories imperlux.md sells with a page of its own; imperlux publishes no price for it. No dasterum record carries this exact name; the near names are listed in Q-W27-03 for the owner to fold or keep.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/accesorii/membrana-superdifuzie-mdm-m/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/accesorii/membrana-mdm-m.jpg"
+      },
+      "specs": {}
+    },
+    {
+      "id": "imp-membrana-superdifuzie-mdm-l",
+      "slot": "ACIM-42",
+      "slug": "membrana-superdifuzie-mdm-l",
+      "name": {
+        "ro": "Membrana Superdifuzie MDM L",
+        "ru": "Супердиффузионная мембрана MDM L"
+      },
+      "group": "accesorii-de-acoperis",
+      "tagline": {
+        "ro": "Membrană superdifuzie VAXO L",
+        "ru": "Супердиффузионная мембрана VAXO L"
+      },
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-06 (W27-R-04): one of the twenty-one metal tile accessories imperlux.md sells with a page of its own; imperlux publishes no price for it. No dasterum record carries this exact name; the near names are listed in Q-W27-03 for the owner to fold or keep.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/accesorii/membrana-superdifuzie-mdm-l/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/accesorii/membrana-mdm-l.jpg"
+      },
+      "specs": {}
+    },
+    {
+      "id": "imp-membrana-superdifuzie-mdm-xl",
+      "slot": "ACIM-43",
+      "slug": "membrana-superdifuzie-mdm-xl",
+      "name": {
+        "ro": "Membrana Superdifuzie MDM XL",
+        "ru": "Супердиффузионная мембрана MDM XL"
+      },
+      "group": "accesorii-de-acoperis",
+      "tagline": {
+        "ro": "Membrană superdifuzie VAXO XL",
+        "ru": "Супердиффузионная мембрана VAXO XL"
+      },
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-06 (W27-R-04): one of the twenty-one metal tile accessories imperlux.md sells with a page of its own; imperlux publishes no price for it. No dasterum record carries this exact name; the near names are listed in Q-W27-03 for the owner to fold or keep.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/accesorii/membrana-superdifuzie-mdm-xl/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/accesorii/membrana-mdm-xl.jpg"
+      },
+      "specs": {}
+    },
+    {
+      "id": "imp-membrana-superdifuzie-mdm-xxl",
+      "slot": "ACIM-44",
+      "slug": "membrana-superdifuzie-mdm-xxl",
+      "name": {
+        "ro": "Membrana Superdifuzie MDM XXL",
+        "ru": "Супердиффузионная мембрана MDM XXL"
+      },
+      "group": "accesorii-de-acoperis",
+      "tagline": {
+        "ro": "Membrană superdifuzie VAXO XXL, top de gamă",
+        "ru": "Супердиффузионная мембрана VAXO XXL, топ линейки"
+      },
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-06 (W27-R-04): one of the twenty-one metal tile accessories imperlux.md sells with a page of its own; imperlux publishes no price for it. No dasterum record carries this exact name; the near names are listed in Q-W27-03 for the owner to fold or keep.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/accesorii/membrana-superdifuzie-mdm-xxl/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/accesorii/membrana-mdm-xxl.jpg"
+      },
+      "specs": {}
+    },
+    {
+      "id": "imp-banda-ventilare-coama-blachvent",
+      "slot": "ACIM-45",
+      "slug": "banda-ventilare-coama-blachvent",
+      "name": {
+        "ro": "Banda ventilare coamă MDM Blachvent 175",
+        "ru": "Вентиляционная лента конька MDM Blachvent 175"
+      },
+      "group": "accesorii-de-acoperis",
+      "tagline": {
+        "ro": "Ventilare coamă cu protecție la păsări și insecte",
+        "ru": "Вентиляция конька с защитой от птиц и насекомых"
+      },
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-06 (W27-R-04): one of the twenty-one metal tile accessories imperlux.md sells with a page of its own; imperlux publishes no price for it. No dasterum record carries this exact name; the near names are listed in Q-W27-03 for the owner to fold or keep.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/accesorii/banda-ventilare-coama-blachvent/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/accesorii/banda-ventilare-coama.jpg"
+      },
+      "specs": {}
+    },
+    {
+      "id": "imp-banda-ventilare-streasina-musteata",
+      "slot": "ACIM-46",
+      "slug": "banda-ventilare-streasina-musteata",
+      "name": {
+        "ro": "Banda ventilare streașină cu mustață",
+        "ru": "Вентиляционная лента карниза с гребнем"
+      },
+      "group": "accesorii-de-acoperis",
+      "tagline": {
+        "ro": "Ventilare la streașină cu protecție la păsări",
+        "ru": "Вентиляция карниза с защитой от птиц"
+      },
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-06 (W27-R-04): one of the twenty-one metal tile accessories imperlux.md sells with a page of its own; imperlux publishes no price for it. No dasterum record carries this exact name; the near names are listed in Q-W27-03 for the owner to fold or keep.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/accesorii/banda-ventilare-streasina-musteata/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/accesorii/banda-ventilare-streasina-musteata.jpg"
+      },
+      "specs": {}
+    },
+    {
+      "id": "imp-banda-ventilare-streasina-perforatie",
+      "slot": "ACIM-47",
+      "slug": "banda-ventilare-streasina-perforatie",
+      "name": {
+        "ro": "Banda ventilare streașină cu perforație",
+        "ru": "Вентиляционная лента карниза с перфорацией"
+      },
+      "group": "accesorii-de-acoperis",
+      "tagline": {
+        "ro": "Ventilare la streașină prin perforații",
+        "ru": "Вентиляция карниза через перфорацию"
+      },
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-06 (W27-R-04): one of the twenty-one metal tile accessories imperlux.md sells with a page of its own; imperlux publishes no price for it. No dasterum record carries this exact name; the near names are listed in Q-W27-03 for the owner to fold or keep.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/accesorii/banda-ventilare-streasina-perforatie/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/accesorii/banda-ventilare-streasina-perforatie.jpg"
+      },
+      "specs": {}
+    },
+    {
+      "id": "imp-bureta-autodeziva-dolie",
+      "slot": "ACIM-48",
+      "slug": "bureta-autodeziva-dolie",
+      "name": {
+        "ro": "Buretă autodezivă pentru dolie",
+        "ru": "Самоклеящийся уплотнитель для ендовы"
+      },
+      "group": "accesorii-de-acoperis",
+      "tagline": {
+        "ro": "Etanșare suplimentară la dolie",
+        "ru": "Дополнительная герметизация ендовы"
+      },
+      "price": null,
+      "variant": null,
+      "folds": [],
+      "match_tier": "imperlux-only",
+      "match_note": "W27-C-06 (W27-R-04): one of the twenty-one metal tile accessories imperlux.md sells with a page of its own; imperlux publishes no price for it. No dasterum record carries this exact name; the near names are listed in Q-W27-03 for the owner to fold or keep.",
+      "source": {
+        "host": "imperlux.md",
+        "url": "https://imperlux.md/acoperisuri/produse/accesorii/bureta-autodeziva-dolie/",
+        "captured": "2026-09-22",
+        "image": "https://imperlux.md/acoperisuri/images/products/accesorii/bureta-autodeziva-dolie.png"
+      },
+      "specs": {}
     }
   ],
   "dasterum_only": [
@@ -1091,6 +1719,71 @@
       "slot": "CAT-0265",
       "folded_into": "burlan",
       "why": "the 90x3000 downpipe is a grade of Burlan. Same handling."
+    },
+    {
+      "slot": "CAT-0262",
+      "folded_into": "jgheab",
+      "why": "W27-C-06 (W27-R-04): the card shows imperlux's picture and imperlux publishes no price, so the dasterum record it folds renders nowhere; its file and provenance row stay, its ledger row is removed because gate 19 refuses a row nothing renders."
+    },
+    {
+      "slot": "CAT-0268",
+      "folded_into": "jgheab",
+      "why": "W27-C-06 (W27-R-04): the card shows imperlux's picture and imperlux publishes no price, so the dasterum record it folds renders nowhere; its file and provenance row stay, its ledger row is removed because gate 19 refuses a row nothing renders."
+    },
+    {
+      "slot": "CAT-0264",
+      "folded_into": "burlan",
+      "why": "W27-C-06 (W27-R-04): the card shows imperlux's picture and imperlux publishes no price, so the dasterum record it folds renders nowhere; its file and provenance row stay, its ledger row is removed because gate 19 refuses a row nothing renders."
+    },
+    {
+      "slot": "CAT-0265",
+      "folded_into": "burlan",
+      "why": "W27-C-06 (W27-R-04): the card shows imperlux's picture and imperlux publishes no price, so the dasterum record it folds renders nowhere; its file and provenance row stay, its ledger row is removed because gate 19 refuses a row nothing renders."
+    },
+    {
+      "slot": "CAT-0261",
+      "folded_into": "coltar-interior",
+      "why": "W27-C-06 (W27-R-04): the card shows imperlux's picture and imperlux publishes no price, so the dasterum record it folds renders nowhere; its file and provenance row stay, its ledger row is removed because gate 19 refuses a row nothing renders."
+    },
+    {
+      "slot": "CAT-0260",
+      "folded_into": "coltar-exterior",
+      "why": "W27-C-06 (W27-R-04): the card shows imperlux's picture and imperlux publishes no price, so the dasterum record it folds renders nowhere; its file and provenance row stay, its ledger row is removed because gate 19 refuses a row nothing renders."
+    },
+    {
+      "slot": "CAT-0257",
+      "folded_into": "bratara-jgheab",
+      "why": "W27-C-06 (W27-R-04): the card shows imperlux's picture and imperlux publishes no price, so the dasterum record it folds renders nowhere; its file and provenance row stay, its ledger row is removed because gate 19 refuses a row nothing renders."
+    },
+    {
+      "slot": "CAT-0259",
+      "folded_into": "capac-jgheab",
+      "why": "W27-C-06 (W27-R-04): the card shows imperlux's picture and imperlux publishes no price, so the dasterum record it folds renders nowhere; its file and provenance row stay, its ledger row is removed because gate 19 refuses a row nothing renders."
+    },
+    {
+      "slot": "CAT-0269",
+      "folded_into": "carlig-jgheab",
+      "why": "W27-C-06 (W27-R-04): the card shows imperlux's picture and imperlux publishes no price, so the dasterum record it folds renders nowhere; its file and provenance row stay, its ledger row is removed because gate 19 refuses a row nothing renders."
+    },
+    {
+      "slot": "CAT-0270",
+      "folded_into": "carlig-jgheab-lung",
+      "why": "W27-C-06 (W27-R-04): the card shows imperlux's picture and imperlux publishes no price, so the dasterum record it folds renders nowhere; its file and provenance row stay, its ledger row is removed because gate 19 refuses a row nothing renders."
+    },
+    {
+      "slot": "CAT-0258",
+      "folded_into": "racord-jgheab-burlan",
+      "why": "W27-C-06 (W27-R-04): the card shows imperlux's picture and imperlux publishes no price, so the dasterum record it folds renders nowhere; its file and provenance row stay, its ledger row is removed because gate 19 refuses a row nothing renders."
+    },
+    {
+      "slot": "CAT-0266",
+      "folded_into": "bratara-burlan",
+      "why": "W27-C-06 (W27-R-04): the card shows imperlux's picture and imperlux publishes no price, so the dasterum record it folds renders nowhere; its file and provenance row stay, its ledger row is removed because gate 19 refuses a row nothing renders."
+    },
+    {
+      "slot": "CAT-0267",
+      "folded_into": "cot-evacuare",
+      "why": "W27-C-06 (W27-R-04): the card shows imperlux's picture and imperlux publishes no price, so the dasterum record it folds renders nowhere; its file and provenance row stay, its ledger row is removed because gate 19 refuses a row nothing renders."
     }
   ],
   "spec_order": [
@@ -1170,15 +1863,8 @@
     },
     {
       "group": "sisteme-pluviale",
-      "source": "built from the card specs. imperlux.md DOES publish a table here and every cell of it is empty: seventeen columns of \"La cerere\", \"-\", \"-\", \"-\" and \"0\". Copying it would publish a table that says nothing.",
+      "source": "built from the card specs. imperlux.md DOES publish a table here and every cell of it is empty: seventeen columns of \"La cerere\", \"-\", \"-\", \"-\" and \"0\". Copying it would publish a table that says nothing. AMENDED W27-C-06: the price column is gone, imperlux publishes no rainwater price and a column real on no row misleads; Dimensiuni stays, it is the size Rapid Construct stocks.",
       "columns": [
-        {
-          "key": "price",
-          "label": {
-            "ro": "Preț",
-            "ru": "Цена"
-          }
-        },
         {
           "key": "spec:Dimensiuni",
           "label": {
@@ -1232,6 +1918,20 @@
       "group": "accesorii-de-acoperis",
       "why": "fifty-three products that are not variants of one model: membranes, tapes, screws, ridge pieces and flashings. imperlux.md has no such section and publishes no such table. A table would be a second copy of the card grid with most cells empty: measured on the records, \"Tip de calitate\" is real on 24 of 53 and \"Acoperire\" on 23 of 53.",
       "amended": "W27-C-02: the seven profiled sheets left for their own group with a table; forty-six products remain here and the reason stands."
+    }
+  ],
+  "accessories_not_added": [
+    {
+      "name": "Folie anticondens",
+      "url": "https://imperlux.md/acoperisuri/produse/accesorii/folie-anticondens/",
+      "why": "W27-C-06: imperlux publishes only a 260x260 picture, under the 450 floor (W25-R4), and no larger file exists on its pages; not added rather than added empty."
+    },
+    {
+      "catalogues": [
+        "Accesorii Novatik Natura (22 tiles)",
+        "Accesorii Creaton (21 tiles)"
+      ],
+      "why": "W27-C-06: tiles with a name and a picture and no page, no price and no spec on imperlux.md; listed in docs/reports/W27-IMPERLUX-MIRROR.md, not added as products."
     }
   ]
 }

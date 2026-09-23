@@ -1490,3 +1490,20 @@ the pages with a specification table grow. All 53 budgets re-measured plus 60, g
 | `/catalog/alte-materiale/` | 3,720 | **3,729** | 3,780 to **3,789** |
 | `/ru/catalog/alte-materiale/` | 3,720 | **3,729** | 3,780 to **3,789** |
 
+
+## AMENDED (W27-FIX-03, wave 27 fix pass): the eleven rainwater prices return, two budgets move
+
+Added 2026-09-23 by card W27-FIX-03, under ruling W27-R-10. Nothing above this line moves.
+
+The eleven rainwater parts print their Dasterum "de la" again and the Sisteme pluviale section
+regains its derived "de la" line under the Compară heading, one line of text. All 53 budgets
+re-measured at 1440, settled (reveals applied, 1,600ms), on the card's built tree; two move to
+measured plus 60 (W24-R4) and the other 51 read identical to their W28-08 measurement:
+
+| Page | Before (budget minus 60) | After | Budget |
+|---|---|---|---|
+| `/servicii/acoperisuri/` | 24,750 | **24,782** | 24,810 to **24,842** |
+| `/ru/servicii/acoperisuri/` | 24,971 | **25,003** | 25,031 to **25,063** |
+
+`scripts/verify-live.js` carries the two new figures; section 12.0 on the merge sha is what checks
+them.

@@ -1165,3 +1165,10 @@ verbatim to `docs/rulings/W27-R.md` with a reading under each, before any fix ca
 the dispatch's self-merge framing recorded with them. Preflight: `main` at `383cf8a` live and
 verified, no open pull request, `main` unprotected. Q-W27-02 and Q-W27-03 answered in their
 headings. Documents only; no page changes.
+
+## W27-FIX-03 · The eleven rainwater prices, back
+**Status: PR OPEN** (opened 2026-09-23). W27-R-10 applied: the eleven rainwater parts show their
+Dasterum "De la N lei" again (`price`, with a source line; `price_folded_not_shown` retired); the
+Sisteme pluviale table's Preț column and the section's "11 modele, de la 33 lei" line are back.
+Rendered: 18 cards, 12 priced, 6 asking, the six being the parts no source prices; 0 "Preț la cerere"
+against a Dasterum price. Roofing page +32px both locales; budgets 24,842 / 25,063 (R-Y).

@@ -13454,3 +13454,34 @@ gallery render (W27-R-13's reading).
 **Q-W27-02 and Q-W27-03 move to answered in their headings** (status metadata, R-S), naming the
 rulings; Q-W27-01 stays open, its shipped default being the owner's own default, and is in the
 morning list. **Nothing on any page changes in this card.**
+
+## W27-FIX-03 · The eleven rainwater prices, back under W27-R-10, 2026-09-23
+
+Branch `w27/w27-fix-03-gutter-prices`, stacked on W27-FIX-00.
+
+**W27-R-10 applied to `content/roofing-sections.json`.** The eleven rainwater parts whose Imperlux
+page prints "Solicită prețul" and whose record folds a Dasterum grade with a price (Jgheab 172,
+Burlan 107, Colțar interior 185, Colțar exterior 185, Brățară jgheab 58, Capac jgheab 36, Cârlig
+jgheab 52, Cârlig jgheab lung 48, Racord jgheab-burlan 69, Brățară burlan 33, Cot evacuare 88, all
+"De la N lei") carry that figure in `price` again, each with a `source` line naming the cheapest
+folded grade, and `price_folded_not_shown` is retired; every match note and the file's own note say
+so. Nothing in `build.js` changes: the price element and the ask element were both already there,
+and the record decides which one renders.
+
+**Two things came back with the prices, because both had left only for want of one.** The Sisteme
+pluviale Compară table declares its Preț column again (real on eleven of eighteen rows, above the
+half the build requires; the twelfth priced row, Cot burlan 90 mm, is Dasterum-only and was never
+folded), and the section's derived "de la" line reads "11 modele, de la 33 lei" (RU "11 моделей, от
+33 lei"), computed as W27-C-03 defined it.
+
+**Rendered acceptance, both locales, read from the built cards by section.** Sisteme pluviale:
+18 cards, 12 priced, 6 asking; the six asking are exactly the parts no source prices (Cârlig pazie
+universal, Cot 60°, Prelungitor, Pâlnie colectoare, Ramificație burlan, Element captare); zero
+"Preț la cerere" on a card whose record has a Dasterum price. Page totals: 79 priced, 26 asking
+(was 68 and 37). **Heights**: the roofing page grows 32px in each locale for the returned "de la"
+line, 24,750 to 24,782 RO and 24,971 to 25,003 RU at 1440 settled; all 53 budgets re-measured, two
+move to measured plus 60 (24,842 and 25,063), generated into R-Y; the other 51 read identical.
+
+**Not changed, noted.** The seventeen rainwater parts still print their Romanian names on the
+Russian page (W27-C-06 translated the taglines and not the names); outside this card's scope, listed
+in the fix-pass report.

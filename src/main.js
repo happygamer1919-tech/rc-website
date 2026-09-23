@@ -495,13 +495,20 @@
       nodes.forEach(function (n) { n.classList.add('is-revealed'); });
       return;
     }
+    /* W27-FIX-14 (owner instruction W27-R-20, "make them appear instant along with the
+       smoothness appearance at the time of scrolling"). The observer's margin reaches a quarter
+       of the viewport BELOW the fold, so an element is revealed before it scrolls into view
+       rather than after a tenth of it has: at a normal scrolling pace the reveal has finished by
+       the time the element is on screen, and at a fast pace it is caught mid-fade, which is the
+       smoothness the owner asked to keep. Still one IntersectionObserver, still once, still no
+       scroll handler (docs/CLAUDE.md section 1). */
     var io = new IntersectionObserver(function (entries, obs) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
         e.target.classList.add('is-revealed');
         obs.unobserve(e.target);
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0, rootMargin: '0px 0px 25% 0px' });
     nodes.forEach(function (n) { io.observe(n); });
   })();
 

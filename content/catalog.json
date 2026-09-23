@@ -1,5 +1,5 @@
 {
-  "_note": "W14-06, filled at RC-106b (Q-W14-04 closed by the wave 14 close-out dispatch). Catalog mega-menu data (S-01): exactly the 7 top-level categories and 7 subcategories of the wave 14 audit section 1.2, RO labels verbatim and in order, RU labels translated in the site's existing vocabulary. AMENDED (W24-04): every row opens its own page. RC-130 repointed each row from a service page to its category page, and until wave 24 a SUBCATEGORY row opened its parent's page, which is finding F-03: a visitor clicking Polistiren expandat landed on the top of Sisteme de termoizolație. Each subcategory now has a real page of its own at /catalog/<parent>/<child>/, and build.js asserts that every menu href is a page this build emits and that a child's page sits under its parent's. Shape: categories[] of { label: {ro, ru}, href: {ro, ru}, children?: [ { label: {ro, ru}, href: {ro, ru} } ] }. Two levels, never three: build.js refuses a child with children, a label that is not real in both locales, and a row with no href. AMENDED (W26-06, rulings W26-R5 and W26-R7): a top-level row may carry 'listed': false, which keeps every page and data use it has and takes it off the /catalog/ index and the header Catalog panel. Acoperișuri carries it: its products live on /servicii/acoperisuri/ and its catalogue pages are redirects there. And categories[2] is labelled 'Plăci flexibile' / 'Гибкая плитка', URL unchanged: the records are flexible stone and clay sheets, not fired ceramic tile.",
+  "_note": "W14-06, filled at RC-106b (Q-W14-04 closed by the wave 14 close-out dispatch). Catalog mega-menu data (S-01): exactly the 7 top-level categories and 7 subcategories of the wave 14 audit section 1.2, RO labels verbatim and in order, RU labels translated in the site's existing vocabulary. AMENDED (W24-04): every row opens its own page. RC-130 repointed each row from a service page to its category page, and until wave 24 a SUBCATEGORY row opened its parent's page, which is finding F-03: a visitor clicking Polistiren expandat landed on the top of Sisteme de termoizolație. Each subcategory now has a real page of its own at /catalog/<parent>/<child>/, and build.js asserts that every menu href is a page this build emits and that a child's page sits under its parent's. Shape: categories[] of { label: {ro, ru}, href: {ro, ru}, children?: [ { label: {ro, ru}, href: {ro, ru} } ] }. Two levels, never three: build.js refuses a child with children, a label that is not real in both locales, and a row with no href. AMENDED (W26-06, rulings W26-R5 and W26-R7): a top-level row may carry 'listed': false, which keeps every page and data use it has and takes it off the /catalog/ index and the header Catalog panel. Acoperișuri carries it: its products live on /servicii/acoperisuri/ and its catalogue pages are redirects there. And categories[2] is labelled 'Plăci flexibile' / 'Гибкая плитка', URL unchanged: the records are flexible stone and clay sheets, not fired ceramic tile. AMENDED W27-FIX-15 (W27-R-21): `menu_position` orders the index tiles and the menu rows (1 termoizolatie, 2 Acoperisuri, 3 Garduri; the rest keep their data order after them); `menu_children: false` lists a category as one row with no sub-list; `external: true` marks a category whose href is not a catalogue page and that builds none. The roofing category is LISTED again and its parent route is a real page, the two roofing bentos and nothing else; its seven children stay redirect pages.",
   "categories": [
     {
       "label": {
@@ -61,7 +61,8 @@
             "ru": "/ru/catalog/termoizolatie/alte-produse/"
           }
         }
-      ]
+      ],
+      "menu_position": 1
     },
     {
       "label": {
@@ -150,7 +151,6 @@
         "ro": "Acoperișuri",
         "ru": "Кровля"
       },
-      "listed": false,
       "href": {
         "ro": "/catalog/materiale-acoperis/",
         "ru": "/ru/catalog/materiale-acoperis/"
@@ -226,7 +226,22 @@
             "ru": "/ru/catalog/materiale-acoperis/elemente-de-fixare/"
           }
         }
-      ]
+      ],
+      "menu_position": 2,
+      "menu_children": false
+    },
+    {
+      "label": {
+        "ro": "Garduri",
+        "ru": "Заборы"
+      },
+      "href": {
+        "ro": "/servicii/modele-garduri/",
+        "ru": "/ru/servicii/modele-garduri/"
+      },
+      "external": true,
+      "menu_position": 3,
+      "_note": "W27-FIX-15 (owner instruction W27-R-21, from Mihai): a catalogue entry with no catalogue page of its own. Fences have one product section, so the tile and the menu row open the fence models page directly. `external` tells build.js to build no page for it; the tile is CATEG-09."
     }
   ]
 }

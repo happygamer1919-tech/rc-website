@@ -13791,3 +13791,47 @@ files are legacy-fingerprinted by R-W's amendment, so a re-encode would need a l
 and no WebP (W25-R2, JPEG only). The roofing page's remaining weight is its 99 product pictures
 (600px, about 30KB each) and the gallery, all lazy; the two heaviest hub tiles there are W26's
 `ACOP-08` (251KB) and `ACOP-06` (223KB).
+
+## W27-FIX-15 · Acoperișuri and Garduri in the Catalog, under W27-R-21, 2026-09-23
+
+Branch `w27/w27-fix-15-catalog-roof-fences`, from `main` at `2aa6bb5` (#166 merged). Urgent, from
+Mihai through the owner; recorded verbatim as W27-R-21 and read there.
+
+**Data, not code, where the decision is a decision.** `content/catalog.json` gains three flags,
+each type-checked by the build: `menu_position` (1 termoizolație, 2 Acoperișuri, 3 Garduri; the
+other six keep their data order after them), `menu_children: false` on the roofing category (one
+menu row, no sub-list of the seven old supplier subcategories), and `external: true` on the new
+Garduri category, whose href is `/servicii/modele-garduri/` in both locales. The roofing category
+is listed again (W26-06's `listed: false` removed). The index tiles and the Catalog panel rows
+are sorted by `menu_position`; slot numbering stays the data index, so the seven existing tiles
+keep their pictures and the two new ones are `CATEG-08` and `CATEG-09`.
+
+**The roofing catalogue page.** The parent route leaves `ROOF_MOVED_ROUTES` (7 child redirects
+now, asserted) and is built by the category loop as a kind of its own: the category template with
+no lede, no prose, no product grid, and `cat.block` set to the two bentos the service page renders
+(`bentoSection` on `BENTOS.acoperisuri` and `PRODUCT_BENTOS.acoperisuri`). The product bento's
+tiles open sections of the roofing page by anchor, so off that page each anchor is prefixed with
+the roofing page's path (`anchorBase`, W26-R12's cross-page fragment); the hub tiles keep their
+destinations. The page joins the sitemap, carries the quote form, and has its own live marker set
+(`roofcatalog`: hub four tiles, four links, no prose, no cards) and budgets.
+
+**Garduri.** An external category builds no page: `CATEGORIES` filters it out, the menu-row check
+skips it and a second check below `PRODUCT_PAGES` holds its href to a product or service page the
+build emits. Its tile and its row open the fence models page directly.
+
+**Gates taught the new shape, each narrowly.** `check-catalog-pages.js`: the parent is kind
+`roofcatalog`, required once per locale, held to "the hub bento followed by the product bento"
+(two self-test arms, matched and refused), scanned whole for every prohibition with the two
+bentos' tile labels blanked first (the hub's "Calculează prețul acoperișului" is navigation, the
+owner's own tile wording under W27-R-16, not a price claim); the child redirects are seven.
+`check-photo-slots-w24.js`: `CATEG-08` and `CATEG-09` are declared reuses (W25-R17) of `ACOP-01` and
+`GARDB-01`, so they are named in the override list those pictures stand on. `gen-catalog-image-slots.js`
+counts only categories that carry records. `verify-live.js`: the parent leaves the redirect list
+(fourteen redirect rows), the index counts nine tiles, two new pages.
+
+**Measured.** Gate 20 (layout) 76 of 76 combinations, the new page's bentos included; gate 18
+(menu contrast) 82 of 82 with the new rows; the catalogue gate, links, slots, provenance and the
+generators exit 0. Budgets: two new pages at 4,261 (4,321 with the margin); the index unchanged,
+nine tiles filling the same three rows as seven. **What this card leaves for the morning**: the
+reuse of two hub pictures on the catalogue tiles reads W25-R17 ("the same product") as "the same
+subject"; one line each if the owner wants pictures of their own there.

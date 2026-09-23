@@ -4933,6 +4933,36 @@
       },
       "reuse_of": "CAT-0226",
       "reuse_reason": "W25-R17: the same Dasterum product under two records, the catalogue card and the model card on /servicii/tigla-metalica/. Matched by model name, not by id order."
+    },
+    {
+      "id": "CATEG-08",
+      "page": "/catalog/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Tila categoriei Acoperisuri din indexul catalogului (W27-FIX-15, W27-R-21). Reutilizare declarata a fotografiei ACOP-01, prima tila a hub-ului de acoperisuri: tigla metalica neagra de aproape. Tila o incadreaza singura la 4:3.",
+      "state": "filled",
+      "provenance": "public/img/acoperisuri/ACOP-01.jpg",
+      "alt": {
+        "ro": "Țiglă metalică neagră, profilul foii de aproape",
+        "ru": "Чёрная металлочерепица, профиль листа крупным планом"
+      },
+      "reuse_of": "ACOP-01",
+      "reuse_reason": "W27-FIX-15 (W27-R-21) and W25-R17: the catalogue index tile for Acoperisuri stands on the roofing hub's own first tile picture, the same subject on a second page"
+    },
+    {
+      "id": "CATEG-09",
+      "page": "/catalog/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Tila categoriei Garduri din indexul catalogului (W27-FIX-15, W27-R-21). Reutilizare declarata a fotografiei GARDB-01, prima tila a hub-ului de garduri: gard tip jaluzele negru de aproape. Tila o incadreaza singura la 4:3.",
+      "state": "filled",
+      "provenance": "public/img/garduri/GARDB-01.jpg",
+      "alt": {
+        "ro": "Gard tip jaluzele negru, lamelele văzute de aproape",
+        "ru": "Чёрный забор жалюзи, ламели крупным планом"
+      },
+      "reuse_of": "GARDB-01",
+      "reuse_reason": "W27-FIX-15 (W27-R-21) and W25-R17: the catalogue index tile for Garduri stands on the fence hub's own first tile picture, the same subject on a second page"
     }
   ]
 }

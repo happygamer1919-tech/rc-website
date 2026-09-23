@@ -293,7 +293,20 @@ const MARKERS = {
     areaServed: 0,
     catProse: 0,
     productCards: 0,
-    catTiles: 7,
+    /* AMENDED (W27-FIX-15, W27-R-21): **9**. The roofing category is listed again and the fence
+       entry is new (a tile that opens the fence models page). 7 + 2. */
+    catTiles: 9,
+  },
+  /* W27-FIX-15 (W27-R-21). The roofing catalogue page: the hub bento (four tiles, four links)
+     and the product bento, no prose, no product cards. `bentoTiles` counts the hub only. */
+  roofcatalog: {
+    promoBar: 1,
+    profileAnchors: 0,
+    areaServed: 0,
+    catProse: 0,
+    productCards: 0,
+    bentoTiles: 4,
+    bentoLinks: 4,
   },
 };
 
@@ -401,6 +414,9 @@ const PAGES = [
   // why a category page rolling up 88 products is 12,613px and inside budget.
   { path: '/catalog/',                                      type: 'index',         label: 'idx RO',           budget: 3766 },
   { path: '/ru/catalog/',                                   type: 'index',         label: 'idx RU',           budget: 3791 },
+  /* W27-FIX-15 (W27-R-21): the roofing catalogue page, both locales; budgets measured plus 60. */
+  { path: '/catalog/materiale-acoperis/',                   type: 'roofcatalog',   label: 'cat RO acoper',    budget: 4321 },
+  { path: '/ru/catalog/materiale-acoperis/',                type: 'roofcatalog',   label: 'cat RU acoper',    budget: 4321 },
   { path: '/catalog/termoizolatie/',                        type: 'category',      label: 'cat RO termo',     budget: 6948 },
   { path: '/ru/catalog/termoizolatie/',                     type: 'category',      label: 'cat RU termo',     budget: 6864 },
   { path: '/catalog/termoizolatie/polistiren-expandat/',    type: 'subcategory',   label: 'sub RO eps',       budget: 3691 },
@@ -457,10 +473,11 @@ const PAGES = [
    this. The route list stays what it always was, the eight catalogue URLs that
    must keep answering; what moves with the page is the ANCHOR each one lands on,
    and it is written once, here, as the map the build uses. */
-const REDIRECT_ROUTES = ['', 'tigla-metalica/', 'profnastil/', 'hidroizolatie/',
+/* AMENDED (W27-FIX-15, W27-R-21): the parent route is a real page again (its own PAGES row
+   below); the seven children are the redirect pages. */
+const REDIRECT_ROUTES = ['tigla-metalica/', 'profnastil/', 'hidroizolatie/',
   'sistem-de-scurgere/', 'elemente-suplimentare/', 'elemente-de-siguranta/', 'elemente-de-fixare/'];
 const REDIRECT_SECTION = {
-  '': 'toate',
   'tigla-metalica': 'tigla-metalica',
   'sistem-de-scurgere': 'sisteme-pluviale',
   profnastil: 'tabla-cutata',

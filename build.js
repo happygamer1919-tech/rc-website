@@ -880,7 +880,7 @@ function bentoSection(l, cfg) {
     const frag = x.fragment ? `#${x.fragment}` : '';
     x = { ...x, href: x.page ? `${BASE}${SERVICES_ROOT[l.code]}${x.page}/${frag}`
       : (x.home ? `${BASE}${l.home}${frag}`
-        : (x.inConstructie ? BASE + IN_CONSTRUCTIE[l.code] : (x.anchor ? `#${x.anchor}` : null))) };
+        : (x.inConstructie ? BASE + IN_CONSTRUCTIE[l.code] : (x.anchor ? `${cfg.anchorBase || ''}#${x.anchor}` : null))) };
     const ph = placeholder(x.slot, { variant: 'dark', className: `${P}__ph`, locale: l.code, eager: i < 2, priority: hub && i === 0 });
     const body = `${ph}<span class="${P}__grad" aria-hidden="true"></span><span class="${P}__label">${label}</span>`;
     const cls = `${P}__tile ${P}__tile--${i + 1}`;
@@ -936,6 +936,23 @@ CATALOG.categories.forEach((c, i) => {
   if ('listed' in c && typeof c.listed !== 'boolean') die(`${CATALOG_FILE}: categories[${i}].listed is ${JSON.stringify(c.listed)}; it must be true or false.`);
 });
 const catalogListed = (c) => c.listed !== false;
+/* W27-FIX-15 (owner instruction W27-R-21, from Mihai). Three more data flags, each refused on a
+   wrong type so a typo cannot hide behind a default:
+     menu_position   an integer; the index tiles and the menu rows are sorted by it, and a
+                     category without one keeps its data order after those that have one;
+     menu_children   false lists the category as ONE row, no sub-list (the roofing children are
+                     the old supplier subcategories, still answering as redirect pages, and are
+                     not a menu a visitor should open);
+     external        true marks a category whose href is not a catalogue page; it gets a tile
+                     and a row and builds no page (Garduri opens the fence models page). */
+CATALOG.categories.forEach((c, i) => {
+  if ('menu_position' in c && !Number.isInteger(c.menu_position)) die(`${CATALOG_FILE}: categories[${i}].menu_position is ${JSON.stringify(c.menu_position)}; it must be an integer.`);
+  if ('menu_children' in c && typeof c.menu_children !== 'boolean') die(`${CATALOG_FILE}: categories[${i}].menu_children is ${JSON.stringify(c.menu_children)}; it must be true or false.`);
+  if ('external' in c && typeof c.external !== 'boolean') die(`${CATALOG_FILE}: categories[${i}].external is ${JSON.stringify(c.external)}; it must be true or false.`);
+  if (c.external === true && (c.children || []).length) die(`${CATALOG_FILE}: categories[${i}] is external and has children; an external category is one row.`);
+});
+const catalogPos = (c, i) => (Number.isInteger(c.menu_position) ? c.menu_position : 100 + i);
+const catalogOrdered = () => CATALOG.categories.map((c, i) => ({ c, i })).sort((a, b) => catalogPos(a.c, a.i) - catalogPos(b.c, b.i));
 if (!CATALOG.categories.some(catalogListed)) die(`${CATALOG_FILE}: every category is unlisted, so the catalogue index and menu would be empty.`);
 
 function catalogField(entry, field, l, where) {
@@ -975,14 +992,16 @@ function catalogMenu(l) {
   if (CATALOG.categories.length === 0) return '';
   const chevron = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 6 15 12 9 18"></polyline></svg>';
   const back = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 6 9 12 15 18"></polyline></svg>';
-  const rows = CATALOG.categories.map((c, i) => {
+  /* W27-FIX-15 (W27-R-21): rows in menu_position order, and a category flagged menu_children
+     false is one row with no sub-list. */
+  const rows = catalogOrdered().map(({ c, i }) => {
     /* W26-06. An unlisted category has no row. `i` stays the data index, so a
        sub-list keeps its id when a category above it is unlisted. */
     if (!catalogListed(c)) return null;
     const where = `categories[${i}]`;
     const label = esc(catalogField(c, 'label', l, where));
     const href = catalogHref(c, l, where);
-    const kids = c.children || [];
+    const kids = c.menu_children === false ? [] : (c.children || []);
     if (kids.length === 0) {
       return `          <li class="catalog__row"><a class="catalog__link" href="${href}">${label}</a></li>`;
     }
@@ -1401,14 +1420,16 @@ function catalogIndexTiles(l) {
   /* W26-06. Only listed categories get a tile. The slot id is the category's DATA
      position, not its position on this page, so CATEG-01 to CATEG-07 keep their
      photographs and ledger rows whatever is unlisted after them. */
-  return PARENT_CATEGORIES.filter((c) => catalogListed(CATALOG.categories[c.i])).map((c, i) => {
+  /* W27-FIX-15 (W27-R-21): tiles in menu_position order; an external category's tile opens
+     its own href (Garduri: the fence models page); the roofing tile opens the roofing
+     catalogue page, which is a real page again, the two roofing bentos and nothing else. */
+  const order = catalogOrdered().map(({ i }) => i);
+  return PARENT_CATEGORIES.filter((c) => catalogListed(CATALOG.categories[c.i]))
+    .sort((a, b) => order.indexOf(a.i) - order.indexOf(b.i)).map((c, i) => {
     const label = categoryLabel(l, c);
-    /* W25-19. The roofing tile opens the consolidated section rather than a page
-       that now only forwards to it. AMENDED (W26-06): roofing is unlisted, so this
-       branch renders nothing today; it stays so that listing it again is the one
-       data flag and not a second edit here. */
-    const href = c.slug === ROOF_CATEGORY
-      ? `${BASE}${ROOF_SECTION_PATH(l)}#${roofAnchor(ROOF_ALL)}`
+    const entry = CATALOG.categories[c.i];
+    const href = c.external
+      ? catalogHref(entry, l, `${CATALOG_FILE}: categories[${c.i}]`)
       : `${BASE}${CATALOG_ROOT[l.code]}${c.slug}/`;
     /* The tile's name is the category, stated. Without it the accessible name is
        assembled from the contents and opens with the placeholder's own slot id,
@@ -2325,6 +2346,11 @@ const PARENT_CATEGORIES = [
      page over another silently, which build.js refuses. The LABEL is
      "Acoperișuri"; only the URL segment differs. */
   { slug: 'materiale-acoperis',   i: 7, service: 'acoperisuri' },
+  /* W27-FIX-15 (owner instruction W27-R-21, from Mihai). The ninth category is EXTERNAL: a
+     tile and a menu row that open /servicii/modele-garduri/, the one fence product section,
+     and no catalogue page. Its slug is a label for this list only (the service slug `garduri`
+     is taken and the collision check below would refuse it); nothing is emitted under it. */
+  { slug: 'garduri-catalog',      i: 8, service: 'garduri', external: true },
 ];
 
 /* W24-04, finding F-03. Every subcategory gets a real page of its own, under its
@@ -2353,7 +2379,8 @@ const SUB_CATEGORIES = PARENT_CATEGORIES.flatMap((p) => {
   });
 });
 
-const CATEGORIES = [...PARENT_CATEGORIES, ...SUB_CATEGORIES];
+/* W27-FIX-15: an external category builds no page and has no route. */
+const CATEGORIES = [...PARENT_CATEGORIES.filter((p) => !p.external), ...SUB_CATEGORIES];
 const CATEGORY_ROUTES = new Set(CATEGORIES.map((c) => c.slug));
 
 (() => {
@@ -2398,9 +2425,12 @@ const CATEGORY_ROUTES = new Set(CATEGORIES.map((c) => c.slug));
     legal.add(`${CATALOG_ROOT.ru}${c.slug}/`);
   }
   if (legal.size !== CATEGORIES.length * 2) die(`the catalogue menu's legal destination set is ${legal.size} for ${CATEGORIES.length} pages in two locales.`);
+  /* W27-FIX-15 (W27-R-21): an EXTERNAL row opens a product or service page, not a category
+     page; it is held to that below PRODUCT_PAGES, where that set is known. */
   const bad = [];
   const walk = (list) => {
     list.forEach((row) => {
+      if (row.external === true) return;
       for (const code of ['ro', 'ru']) {
         const href = row.href && row.href[code];
         if (!legal.has(href)) bad.push(`${row.label && row.label.ro} [${code}] -> ${href}`);
@@ -2707,14 +2737,16 @@ const ROOF_ALL = 'toate';
 const ROOF_MOVED_ROUTES = new Set();
 const MOVED_RAW_KEYS = new Set(['promoBar']);
 const roofAnchor = (child) => `mat-${child}`;
-ROOF_MOVED_ROUTES.add(ROOF_CATEGORY);
+/* ~~ROOF_MOVED_ROUTES.add(ROOF_CATEGORY);~~ AMENDED (W27-FIX-15, W27-R-21): the PARENT route
+   is a real catalogue page again, the two roofing bentos and nothing else; only the seven
+   children stay redirect pages. */
 /* AMENDED (W26-04): the routes are the CATALOGUE's seven children, which is what
    they always were; before the regrouping the two lists happened to be the same
    list and the code took the wrong one of the two. W26-R5 keeps every one of
    these pages answering, so they are derived from catalog.json and never from the
    new sections, two of which have no catalogue page and never had one. */
 for (const c of ROOF_GROUP_OF_CHILD.keys()) ROOF_MOVED_ROUTES.add(`${ROOF_CATEGORY}/${c}`);
-if (ROOF_MOVED_ROUTES.size !== 8) die(`W25-19 expects 8 roofing routes to become redirect pages, derived ${ROOF_MOVED_ROUTES.size}.`);
+if (ROOF_MOVED_ROUTES.size !== 7) die(`W27-FIX-15 expects 7 roofing child routes to be redirect pages, derived ${ROOF_MOVED_ROUTES.size}.`);
 /* W26-04, ruling W26-R5: the SECOND bento on /servicii/acoperisuri/, under the hub.
    Four product sections, each tile pressing its own filter button on the same page.
    The four slots are ACOP-05 to ACOP-08 and all four are EMPTY: imperlux.md
@@ -3571,6 +3603,25 @@ const PRODUCT_PAGES = [
      lists every product page so none is unreachable on a phone (F-02). */
   { slug: 'galerie-garduri', key: 'galerieGarduri', parent: 'garduri', block: (l) => galleryPage(l, 'galerie-garduri'), sources: ['content/galleries.json'], formless: true },
 ];
+/* W27-FIX-15 (W27-R-21): an EXTERNAL catalogue row (a tile and a menu row with no catalogue
+   page) opens a product or service page this build emits, in both locales, and nothing else.
+   Computed from the pages the build emits, as the category set above is. */
+(() => {
+  const legal = new Set();
+  for (const code of ['ro', 'ru']) {
+    for (const p of PRODUCT_PAGES) legal.add(`${SERVICES_ROOT[code]}${p.slug}/`);
+    for (const sg of SERVICE_SLUGS) legal.add(`${SERVICES_ROOT[code]}${sg}/`);
+  }
+  const bad = [];
+  CATALOG.categories.forEach((row, i) => {
+    if (row.external !== true) return;
+    for (const code of ['ro', 'ru']) {
+      const href = row.href && row.href[code];
+      if (!legal.has(href)) bad.push(`categories[${i}] ${row.label && row.label.ro} [${code}] -> ${href}`);
+    }
+  });
+  if (bad.length) die(`${CATALOG_FILE}: ${bad.length} external row(s) do not open a product or service page this build emits:\n  ${bad.join('\n  ')}`);
+})();
 const TOP_LEVEL_PRODUCT_PAGES = PRODUCT_PAGES.filter((p) => !p.parent);
 /* The title of a page another page is a child of, from whichever list holds it. */
 function parentTitle(l, slug) {
@@ -4172,6 +4223,11 @@ for (const l of loaded) {
     }
     const parent = c.parent == null ? null : PARENT_CATEGORIES.find((x) => x.slug === c.parent);
     if (c.parent != null && !parent) die(`${c.slug} names the parent ${c.parent}, which is not a category page.`);
+    /* W27-FIX-15 (owner instruction W27-R-21, from Mihai): the roofing catalogue page carries
+       "all the tiles rendered we have in the service page ... without any info and project
+       pictures": the hub bento and the product bento, the same components the service page
+       renders, each tile opening what it opens there; no authored prose, no product grid. */
+    const roofCatalog = c.slug === ROOF_CATEGORY;
     const crumb = (href, text) => `      <a href="${href}">${esc(text)}</a>\n      <span aria-hidden="true">/</span>`;
     const catVars = {
       ...vars,
@@ -4183,7 +4239,7 @@ for (const l of loaded) {
         parent ? crumb(BASE + CATALOG_ROOT[l.code] + parent.slug + '/', categoryLabel(l, parent)) : '',
         `      <span aria-current="page">${esc(head.title)}</span>`,
       ].filter(Boolean).join('\n'),
-      'cat.ledeBlock': c.parent != null ? ''
+      'cat.ledeBlock': (c.parent != null || roofCatalog) ? ''
         : `<p class="hero__sub" data-cat-prose="lede" style="margin: 16px 0 0;">${esc(categoryProse(l, c).lede)}</p>`,
       'cat.metaTitle': head.metaTitle,
       'cat.metaDesc': head.metaDesc,
@@ -4193,8 +4249,11 @@ for (const l of loaded) {
       'cat.pathRo': BASE + CATALOG_ROOT.ro + c.slug + '/',
       'cat.pathRu': BASE + CATALOG_ROOT.ru + c.slug + '/',
       'cat.subject': `[${l.code.toUpperCase()}] ${head.title} - ${CATALOG_ROOT[l.code]}${c.slug}/`,
-      'cat.block': c.parent == null ? categoryBlock(l, c) : '',
-      'cat.products': catalogProducts(l, c.slug),
+      /* The product bento's tiles open SECTIONS of the roofing page; rendered here, off that page,
+         each anchor is prefixed with the roofing page's path (W26-R12 allows a fragment on a
+         different page), so a tile lands on the same filter it opens from the service page. */
+      'cat.block': roofCatalog ? bentoSection(l, BENTOS.acoperisuri) + bentoSection(l, { ...PRODUCT_BENTOS.acoperisuri, anchorBase: BASE + ROOF_SECTION_PATH(l) }) : (c.parent == null ? categoryBlock(l, c) : ''),
+      'cat.products': roofCatalog ? '' : catalogProducts(l, c.slug),
       'cat.footerLinks': SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
         `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join(''),
     };

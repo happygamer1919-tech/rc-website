@@ -71,7 +71,10 @@ const labelOf = (s) => labelFor[s] || null;
 const slugs = all.filter((s) => labelOf(s));
 const orphan = all.filter((s) => !labelOf(s) && !slugs.some((p) => s.startsWith(p + '/')));
 if (orphan.length) fail(`${orphan.length} category slug(s) with no catalog category and no parent that has one: ${orphan.join(', ')}.`);
-if (slugs.length !== catalog.categories.length) fail(`${slugs.length} top-level slugs in the data for ${catalog.categories.length} catalog categories.`);
+/* W27-FIX-15 (W27-R-21): an EXTERNAL category (Garduri, a tile and a menu row that open the fence
+   models page) carries no records by design, so it is not counted against the data's slugs. */
+const withRecords = catalog.categories.filter((c) => c.external !== true).length;
+if (slugs.length !== withRecords) fail(`${slugs.length} top-level slugs in the data for ${withRecords} catalog categories that carry records.`);
 
 /* One row per product, in catalogue order, never one per membership: a product in
    two categories needs one photograph, not two. Its first category names it. */

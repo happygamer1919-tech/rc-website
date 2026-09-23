@@ -988,7 +988,7 @@ now. 634 focus stops, every one ringed. 49 of 53 heights identical, none grew; s
 re-measured plus 60. Screenshots in `docs/design/W26/`.
 
 ## W27-R-00 · The wave 27 rulings, and the self-merge preflight
-**Status: PR OPEN** (opened 2026-09-22). The eight owner rulings W27-R-01 to W27-R-08 recorded
+**Status: MERGED #136, section 12.0 exit 0** (opened 2026-09-22). The eight owner rulings W27-R-01 to W27-R-08 recorded
 verbatim in `docs/rulings/W27-R.md` before any card acted on them. **Preflight measured, not
 assumed:** `main` carried **no branch protection** (404) and **no rulesets**, so nothing was deleted
 and there was no required check to preserve; auto-merge enabled on the repository. Two protocol
@@ -1000,7 +1000,7 @@ find-and-replace files they refer to are not in the repo, so the design cards bu
 dispatch's numbers. Section 12.0 on `e3ba69d` (#135): **exit 0, PASS, 53 of 53, 0 retried.**
 
 ## W27-C-01 · The eight gallery photographs, owner confirmed
-**Status: PR OPEN** (opened 2026-09-22). W27-R-03 applied: Q-W26-06's eight photographs (terasamente
+**Status: MERGED #137, section 12.0 exit 0** (opened 2026-09-22). W27-R-03 applied: Q-W26-06's eight photographs (terasamente
 02, 04, 05, 10, 13, 14, 16 and finisaje 04) are the owner's own work. **The confirmation is data now**:
 each of the eight carries a `review` record in `content/galleries.json` naming the flag, the question,
 the ruling and the date, and **`scripts/intake-galleries.js` carries it across a re-run by the source
@@ -1009,7 +1009,7 @@ file's sha256**, so a re-numbered folder keeps the mark on the same picture; bef
 changes, gate 29 reads no flag. Q-W26-06 heading moved to ANSWERED in place.
 
 ## W27-C-02 · Tablă cutată, its own group and a ninth roofing tile
-**Status: PR OPEN** (opened 2026-09-22). W27-R-06 applied. **The seven profiled sheets** (T-12, VP-20,
+**Status: MERGED #138, section 12.0 exit 0** (opened 2026-09-22). W27-R-06 applied. **The seven profiled sheets** (T-12, VP-20,
 PK-20, H-35, C-15, C-44, H-60) leave Accesorii for a group of their own with a filter chip, a section
 and a Compară table; DRIPSTOP, a coating, stays in Accesorii. **Chips: Toate 78 = 4 + 7 + 1 + 2 + 18 +
 46.** A **fifth product tile** on a third bento row, `ACOP-09`, a declared reuse of the T-12 packshot
@@ -1019,7 +1019,7 @@ verify-live markers 7 chips, 5 pb tiles, 4 tables. Budgets **20,240 / 20,378** (
 a real photograph for the strip tile. **Static gates, gate 20 and gate 14 exit 0 locally.**
 
 ## W27-C-03 · Țiglă metalică from Imperlux: the seven models
-**Status: PR OPEN** (opened 2026-09-22). W27-R-04 and W27-R-05 applied. **Barcelona, Madrid, Bavaria,
+**Status: MERGED #139, section 12.0 exit 0** (opened 2026-09-22). W27-R-04 and W27-R-05 applied. **Barcelona, Madrid, Bavaria,
 Heta, Zet, Finn, Izi**, in imperlux order, first in the section, each with the imperlux preview image
 as published (burned-in model name, flagged `label`, W25-R5), the tagline, `De la N lei/buc` with the
 current figure only, the named colour chips, and a facts line "N ani garanție · 4,5 kg/m² · N culori"
@@ -1032,7 +1032,7 @@ in price blocks, 0 "Popular". Budgets **21,703 / 21,862**. Q-W27-02 on the brand
 colour. **Static gates exit 0**; gates 20 and 28 run before the PR.
 
 ## W27-C-04 · Rocă vulcanică Novatik from Imperlux
-**Status: PR OPEN** (opened 2026-09-22). W27-R-04 and W27-R-05 applied to `/servicii/roca-vulcanica/`.
+**Status: MERGED #140, section 12.0 exit 0** (opened 2026-09-22). W27-R-04 and W27-R-05 applied to `/servicii/roca-vulcanica/`.
 **The four "Preț la cerere" cards now price**: Classic **De la 207.06 lei/buc**, Slate, Roman and Wood
 **227.59**, verified on the rendered page, current figure only. Each card: Imperlux's preview picture
 (model name printed in it, flagged `label`; no orange mark on these four), the tagline it already had,
@@ -1044,7 +1044,7 @@ its warranty row stays held (W26-R6, claims-held rows 7 and 9 amended). A derive
 before the PR.
 
 ## W27-C-05 · Șindrilă bituminoasă from Imperlux
-**Status: PR OPEN** (opened 2026-09-22). W27-R-04 applied to the two IKO shingles the section already
+**Status: MERGED #141, section 12.0 exit 0** (opened 2026-09-22). W27-R-04 applied to the two IKO shingles the section already
 had: **IKO Cambridge De la 357 lei/m²** and **IKO Superglass Hex De la 260 lei/m²**, re-verified on the
 rendered page; each card gains the tagline, the colour code chips (52, 53, 54; 01, 27, 23), the
 warranty line exactly as printed ("25 ani (total) / 15 ani (Platinum) garanție") and kg/m². **The
@@ -1054,7 +1054,7 @@ override entry because the W26-R10 sentence says "cropped". The section's derive
 de la 260 lei/m²". Budgets **21,785 / 21,943**. **Static gates exit 0**; gate 28 run before the PR.
 
 ## W27-C-06 · The full Imperlux mirror sweep
-**Status: PR OPEN** (opened 2026-09-22). W27-R-04 across the six roofing groups, the Novatik page and
+**Status: MERGED #142, section 12.0 exit 0** (opened 2026-09-22). W27-R-04 across the six roofing groups, the Novatik page and
 the fence models, from a 47-page rendered crawl plus the 21 accessory pages. **Report:
 `docs/reports/W27-IMPERLUX-MIRROR.md`**, per group with Imperlux count, RC before, RC after and a source
 URL on every record. **Sisteme pluviale**: all 17 aligned; the 11 that folded a Dasterum record now
@@ -1067,7 +1067,7 @@ Q-W27-03. **Garduri**: already equal on every field. **105 cards**: 11 + 7 + 1 +
 **24,232 / 24,453**. **Static gates exit 0**; gates 20 and 28 run before the PR.
 
 ## W28-01 · Warm tokens, one motion curve, outlines, quieter orange, 14px floor
-**Status: PR OPEN** (opened 2026-09-22). Design cards W27-01 to W27-05 as the dispatch numbers them,
+**Status: MERGED #143, section 12.0 FAILED on `ff8a922` (two budgets), corrected by #147** (opened 2026-09-22). Design cards W27-01 to W27-05 as the dispatch numbers them,
 CSS and one JS colour literal only, no copy, no markup. **Tokens**: `--ink` and `--bg-dark` share
 `#1C1917`, `--ink-muted #57534E`, `--line #E6E1DA`, new `--outline #9C9388` (field and filter edges
 only), `--hairline` 10%. **Motion**: `--hover-dur` 320ms, `--reveal-dur` 380ms, every transition on
@@ -1080,7 +1080,7 @@ the four retired values** with three dated-record exceptions. **Static gates, ga
 0.** Screenshots `docs/design/W27/w28-01-*`.
 
 ## W28-02 · The floating header
-**Status: PR OPEN** (opened 2026-09-22). Approved under W27-R-07, owner may overturn. **The white strip
+**Status: MERGED #144, section 12.0 exit 0** (opened 2026-09-22). Approved under W27-R-07, owner may overturn. **The white strip
 and its bottom line are gone**: the band is transparent and lets the pointer through, the pill is 72px
 (64 on a phone, 60 scrolled) and floats on a two-layer shadow, the page scrolls behind it. The body
 spacer keeps the band's height, so nothing below moves (section 1). The language switch's tracking is
@@ -1088,13 +1088,13 @@ spacer keeps the band's height, so nothing below moves (section 1). The language
 after W28-01, 10px now). Master plan header row and section 3's shadow list amended. **Static gates,
 gates 11, 18 and 28 exit 0.** Screenshots `docs/design/W27/w28-02-*`.
 ## W27-FIX-01 · Budgets after the 14px floor
-**Status: PR OPEN** (opened 2026-09-22). **Section 12.0 on `ff8a922` (#143) failed**: `/servicii/tigla-metalica/`
+**Status: MERGED #147, section 12.0 exit 0** (opened 2026-09-22). **Section 12.0 on `ff8a922` (#143) failed**: `/servicii/tigla-metalica/`
 4,347 against 4,283 and RU 4,402 against 4,316, both OVER; every marker verified. Cause measured: the
 14px floor grew the tile grid's small print by two lines. **All 53 budgets re-measured on the deployed
 tree plus 60**, generated into R-Y; `scripts/verify-live.js` carries them. No page changes.
 
 ## W28-03 · Cream ground, white alternate, no section lines, 24/28px corners
-**Status: PR OPEN** (opened 2026-09-22). W27-R-02 applied: **`--bg-warm` is `#FAF6F0`** and is the page
+**Status: MERGED #145, section 12.0 exit 0** (opened 2026-09-22). W27-R-02 applied: **`--bg-warm` is `#FAF6F0`** and is the page
 ground and the default light section; an even light section is white; `.section--divided` draws no
 line; `--radius-card` 24px, `--radius-hero` 28px. W26-14's `#F7F5F2` is retired (struck in section 3,
 added to `check-stale-docs.js` with the W26-14 ticket body excepted). Still exactly one off-white
@@ -1102,13 +1102,13 @@ beside white, so the palette count holds. **Static gates, gates 20 and 28 exit 0
 `docs/design/W27/w28-03-*`.
 
 ## W27-FIX-02 · fetchpriority on the first hub tile, the roofing page's largest paint
-**Status: PR OPEN** (opened 2026-09-22). W27-REV-01 found the roofing page's Lighthouse performance
+**Status: MERGED #152, section 12.0 exit 0** (opened 2026-09-22). W27-REV-01 found the roofing page's Lighthouse performance
 **bimodal**, as W26-14 had recorded: LCP is the first hub tile's picture, 1.15s (98) or 1.9s (92).
 Lighthouse's LCP discovery insight named the one hint it lacked, `fetchpriority=high`; the first tile of
 each hub grid carries it now (build.js, one attribute). Five runs after: **98, 98, 98, 98 and one cold
 92** (LCP 1.13 to 1.15s, one at 1.9s); three runs before: 92, 98, 92. No page changes shape.
 ## W28-04 · Headings: 64 and 48, weight 800, tight, sentence case
-**Status: PR OPEN** (opened 2026-09-22). Approved under W27-R-07, owner may overturn. **h1 64px at
+**Status: MERGED #146, section 12.0 exit 0** (opened 2026-09-22). Approved under W27-R-07, owner may overturn. **h1 64px at
 -0.035em, h2 48px at -0.03em, weight 800, no capitals** (52 and 36 on smaller screens, 30 for h2 on
 a phone); the catalogue h1 too. **Eyebrows keep their capitals and gain a 24px orange rule** before
 the text. **No locale string changes**: none was stored in capitals, the capitals were CSS. The
@@ -1116,7 +1116,7 @@ master plan's type table struck in place. **All 53 budgets re-measured plus 60**
 generated). **Static gates, gates 14, 20 and 28 exit 0.** Screenshots `docs/design/W27/w28-04-*`.
 
 ## W28-05 · Buttons: a dark label on the orange, 17px
-**Status: PR OPEN** (opened 2026-09-22). **`--ink` on `--brand` at 17px, 5.3:1**, which passes WCAG at any
+**Status: MERGED #148, section 12.0 exit 0** (opened 2026-09-22). **`--ink` on `--brand` at 17px, 5.3:1**, which passes WCAG at any
 size, so the 19px large-text allowance that held white-on-orange (section 4) is no longer what holds
 it; the catalogue toggle and the card arrow take the same dark label; hover goes darker with a white
 label. Section 4 amended. Gate 11 gains slack from the smaller label (least RU slack recorded in the
@@ -1124,7 +1124,7 @@ card). **Static gates, gates 11, 18 and 28 exit 0.** Budgets re-measured. Screen
 `docs/design/W27/w28-05-*`.
 
 ## W28-06 · The form: cream fields with a visible edge, a full-width submit, the aside as a list
-**Status: PR OPEN** (opened 2026-09-22). **CSS only**: fields fill `--bg-warm` with a `--outline` edge,
+**Status: MERGED #149, section 12.0 exit 0** (opened 2026-09-22). **CSS only**: fields fill `--bg-warm` with a `--outline` edge,
 56px tall, 14px corners; labels 16px, sentence case, ink; the submit is full width; the contact aside
 loses its two boxes and reads as a list on hairlines (the big orange phone, the hours, the note; no
 address string exists in the aside, so none is shown). The filter buttons take the `--outline` edge
@@ -1132,13 +1132,13 @@ W28-01 listed. Field names, action, hidden inputs untouched: **gate 13 (form wir
 pages exits 0.** Gates 20 and 28 exit 0. Budgets re-measured. Screenshots `docs/design/W27/w28-06-*`.
 
 ## W28-07 · The stats band as four dark cards, and the hero claim card
-**Status: PR OPEN** (opened 2026-09-22). **Four `#232323` cards on the `#1C1917` band**, left-aligned,
+**Status: MERGED #150, section 12.0 exit 0** (opened 2026-09-22). **Four `#232323` cards on the `#1C1917` band**, left-aligned,
 huge orange figure over a white label; the hero claim card takes the same `#232323`. **`#232323` is the
 twelfth value**, added to section 3 with its use, never a section ground. Gate 28 exits 0 (white on
 `#232323` 15.7:1). Budgets re-measured. Screenshots `docs/design/W27/w28-07-*`.
 
 ## W28-08 · Product cards, bento labels, a quiet footer, zebra tables
-**Status: PR OPEN** (opened 2026-09-22). CSS only. **Product cards** in the fixed order packshot, name,
+**Status: MERGED #151, section 12.0 exit 0** (opened 2026-09-22). CSS only. **Product cards** in the fixed order packshot, name,
 one line, orange price, soft-filled chips, hairline, facts (the facts pinned to the foot; a card with
 no chips keeps its price row at the foot); `.nvk__price` orange too. **Bento labels 32px** (24 on a
 phone), and the tile gradient 55% so a two-line label stays covered (gate 20 caught the 40% at
@@ -1148,4 +1148,13 @@ gate 28's phone arm on the Compară table now watches the row label, because the
 planted on is dark on purpose. **W28-T is skipped** (optional, W27-R-08): a two-tone split needs a
 generator change, and the card allows CSS and locale strings only. **Static gates, gates 14, 20 and
 28 exit 0.** Budgets re-measured. Screenshots `docs/design/W27/w28-08-*`.
+
+## W27-REV-01 · The full site review, and the final run report
+**Status: PR OPEN** (opened 2026-09-23). On `main` at `a944714` after #152: **29 of 29 gate commands exit
+0**; a rendered crawl of 83 pages at three widths in both locales finds **0 dead links, 0 missing images,
+0 console errors, 0 sideways scroll, 0 hub anchors**, 16 redirects intact, the form on every service page;
+Lighthouse 99/99/100/100/99/99 on six main pages and the roofing page bimodal (RO 92 [98 92 91], RU 98
+[92 98 98]), a pre-existing condition recorded, not a fix card. `docs/reports/W27-REVIEW.md` and
+`docs/reports/W27-FINAL-RUN.md`; the final screenshot set `docs/design/W27/final-*`. Seventeen statuses
+above moved to MERGED with their PR numbers, read from GitHub.
 

@@ -1550,3 +1550,16 @@ card's built tree; two move to measured plus 60 (W24-R4) and the other 51 read i
 |---|---|---|---|
 | `/servicii/tigla-metalica/` | 4,419 | **5,463** | 4,479 to **5,523** |
 | `/ru/servicii/tigla-metalica/` | 4,473 | **5,538** | 4,533 to **5,598** |
+
+## AMENDED (W27-FIX-12, wave 27 fix pass): the fence gallery loses one photograph, two budgets move
+
+Added 2026-09-23 by card W27-FIX-12, under owner instruction W27-R-18. Nothing above this line moves.
+
+The fence gallery grid drops from thirteen thumbnails to twelve, one row fewer. All 53 budgets
+re-measured at 1440, settled (reveals applied, 1,600ms), on the card's built tree; two move to
+measured plus 60 (W24-R4) and the other 51 read identical:
+
+| Page | Before (budget minus 60) | After | Budget |
+|---|---|---|---|
+| `/servicii/galerie-garduri/` | 4,050 | **3,750** | 4,110 to **3,810** |
+| `/ru/servicii/galerie-garduri/` | 4,050 | **3,750** | 4,110 to **3,810** |

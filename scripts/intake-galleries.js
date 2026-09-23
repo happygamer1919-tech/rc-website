@@ -66,6 +66,11 @@ for (const [k, v] of Object.entries(ro.pages || {})) {
   if (m && v && v.title) titles.set(key(v.title), m[1]);
 }
 
+/* W27-FIX-12 (owner instruction W27-R-18): photographs the owner refused, by the SOURCE file's
+   sha256, in content/galleries-refused.json. A match is recorded under the gallery's `refused`
+   with its reason and is never installed, so a re-run cannot put a refused picture back. */
+const REFUSED_FILE = path.join(ROOT, 'content/galleries-refused.json');
+const REFUSED = fs.existsSync(REFUSED_FILE) ? (JSON.parse(fs.readFileSync(REFUSED_FILE, 'utf8')).refused || {}) : {};
 const magicJpeg = (b) => b[0] === 0xff && b[1] === 0xd8 && b[2] === 0xff;
 const sips = (a) => execFileSync('sips', a, { stdio: ['ignore', 'pipe', 'pipe'] }).toString();
 const dims = (f) => { const g = sips(['-g', 'pixelWidth', '-g', 'pixelHeight', f]); return [Number(g.match(/pixelWidth:\s*(\d+)/)[1]), Number(g.match(/pixelHeight:\s*(\d+)/)[1])]; };
@@ -100,6 +105,7 @@ for (const dir of fs.readdirSync(SRC).sort(natural)) {
     const b = fs.readFileSync(path.join(abs, f));
     if (!magicJpeg(b)) { refused.push({ file: nfc(f), why: 'not a JPEG by its bytes' }); continue; }
     const sha = crypto.createHash('sha256').update(b).digest('hex');
+    if (REFUSED[sha]) { refused.push({ file: nfc(f), sha256: sha, why: REFUSED[sha].why }); continue; }
     if (seen.has(sha)) { skipped.push({ file: nfc(f), same_as: seen.get(sha) }); continue; }
     seen.set(sha, nfc(f));
     photos.push({ source: nfc(f), sha256: sha, abs: path.join(abs, f) });
@@ -140,7 +146,7 @@ for (const g of galleries) {
   }
 }
 const ledger = {
-  _note: 'W26-12, ruling W26-R14. Written by scripts/intake-galleries.js from /Users/ivan/RC-webpics_v2, never typed. One gallery per folder whose name is a page title; `preview` is the 1-based photo the card shows and `review` on a photograph is the answer the owner gave to a flag raised about it (W27-R-03); those two are the only fields chosen by hand, and both survive a re-run. Gate 29 (scripts/check-galleries.js) holds every page to this file: the lightbox shows exactly these photos, in this order.',
+  _note: 'W26-12, ruling W26-R14. Written by scripts/intake-galleries.js from /Users/ivan/RC-webpics_v2, never typed. One gallery per folder whose name is a page title; `preview` is the 1-based photo the card shows and `review` on a photograph is the answer the owner gave to a flag raised about it (W27-R-03); those two are the only fields chosen by hand, and both survive a re-run. Gate 29 (scripts/check-galleries.js) holds every page to this file: the lightbox shows exactly these photos, in this order. W27-FIX-12 (W27-R-18): a photograph the owner refused is listed by sha256 in content/galleries-refused.json, recorded under `refused` here, and never installed; the fence gallery entry of 2026-09-23 was amended by hand to that shape because the source folder was no longer on this machine to re-run the intake against.',
   source_root: SRC,
   galleries, empty_folders: empty, unmatched_folders: unmatched,
 };

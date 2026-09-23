@@ -1,5 +1,5 @@
 {
-  "_note": "W26-12, ruling W26-R14. Written by scripts/intake-galleries.js from /Users/ivan/RC-webpics_v2, never typed. One gallery per folder whose name is a page title; `preview` is the 1-based photo the card shows and `review` on a photograph is the answer the owner gave to a flag raised about it (W27-R-03); those two are the only fields chosen by hand, and both survive a re-run. Gate 29 (scripts/check-galleries.js) holds every page to this file: the lightbox shows exactly these photos, in this order.",
+  "_note": "W26-12, ruling W26-R14. Written by scripts/intake-galleries.js from /Users/ivan/RC-webpics_v2, never typed. One gallery per folder whose name is a page title; `preview` is the 1-based photo the card shows and `review` on a photograph is the answer the owner gave to a flag raised about it (W27-R-03); those two are the only fields chosen by hand, and both survive a re-run. Gate 29 (scripts/check-galleries.js) holds every page to this file: the lightbox shows exactly these photos, in this order. W27-FIX-12 (W27-R-18): a photograph the owner refused is listed by sha256 in content/galleries-refused.json, recorded under `refused` here, and never installed; the fence gallery entry of 2026-09-23 was amended by hand to that shape because the source folder was no longer on this machine to re-run the intake against.",
   "source_root": "/Users/ivan/RC-webpics_v2",
   "galleries": [
     {
@@ -325,7 +325,7 @@
       "page": "garduri",
       "render_on": "galerie-garduri",
       "found": 19,
-      "installed": 13,
+      "installed": 12,
       "preview": 1,
       "photos": [
         {
@@ -392,19 +392,10 @@
           "thumb_size": "600x799"
         },
         {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.16 AM (3).jpeg",
-          "sha256": "d8447f804a84f81fde0ae278f25c7e94d127f02998c068b11e423d6811a27f2f",
-          "full": "public/img/galerie/galerie-garduri/08.jpg",
-          "thumb": "public/img/galerie/galerie-garduri/08-t.jpg",
-          "source_size": "960x858",
-          "size": "960x858",
-          "thumb_size": "600x536"
-        },
-        {
           "source": "WhatsApp Image 2026-09-19 at 6.35.23 AM (3).jpeg",
           "sha256": "463439dfce0a1edbec648a6ca59649881d471611f53adc363cdd9bf929edea70",
-          "full": "public/img/galerie/galerie-garduri/09.jpg",
-          "thumb": "public/img/galerie/galerie-garduri/09-t.jpg",
+          "full": "public/img/galerie/galerie-garduri/08.jpg",
+          "thumb": "public/img/galerie/galerie-garduri/08-t.jpg",
           "source_size": "325x500",
           "size": "325x500",
           "thumb_size": "325x500"
@@ -412,8 +403,8 @@
         {
           "source": "WhatsApp Image 2026-09-19 at 6.35.23 AM (5).jpeg",
           "sha256": "5c13d7f691f81a6f2883fbd5b6db4ad55913cef0ab9d5efb9bd2f9beaf27f18f",
-          "full": "public/img/galerie/galerie-garduri/10.jpg",
-          "thumb": "public/img/galerie/galerie-garduri/10-t.jpg",
+          "full": "public/img/galerie/galerie-garduri/09.jpg",
+          "thumb": "public/img/galerie/galerie-garduri/09-t.jpg",
           "source_size": "750x1244",
           "size": "750x1244",
           "thumb_size": "600x995"
@@ -421,8 +412,8 @@
         {
           "source": "WhatsApp Image 2026-09-19 at 6.35.23 AM (6).jpeg",
           "sha256": "66822f03e9a38d60cc031e29727f407db9b0e2946d6b852ce4881af24a8e85c7",
-          "full": "public/img/galerie/galerie-garduri/11.jpg",
-          "thumb": "public/img/galerie/galerie-garduri/11-t.jpg",
+          "full": "public/img/galerie/galerie-garduri/10.jpg",
+          "thumb": "public/img/galerie/galerie-garduri/10-t.jpg",
           "source_size": "1200x1600",
           "size": "1200x1600",
           "thumb_size": "600x800"
@@ -430,8 +421,8 @@
         {
           "source": "WhatsApp Image 2026-09-19 at 6.35.23 AM copy.jpeg",
           "sha256": "64b77d3009c09ad1b329f77f24e0d317a0e12549d98a673bbceccc0eb7235c19",
-          "full": "public/img/galerie/galerie-garduri/12.jpg",
-          "thumb": "public/img/galerie/galerie-garduri/12-t.jpg",
+          "full": "public/img/galerie/galerie-garduri/11.jpg",
+          "thumb": "public/img/galerie/galerie-garduri/11-t.jpg",
           "source_size": "736x1104",
           "size": "736x1104",
           "thumb_size": "600x900"
@@ -439,8 +430,8 @@
         {
           "source": "WhatsApp Image 2026-09-19 at 6.36.35 AM.jpeg",
           "sha256": "2686f83dad4cc078fdf05a965f99459bc648fc7303afe1b7966181aae6f4c312",
-          "full": "public/img/galerie/galerie-garduri/13.jpg",
-          "thumb": "public/img/galerie/galerie-garduri/13-t.jpg",
+          "full": "public/img/galerie/galerie-garduri/12.jpg",
+          "thumb": "public/img/galerie/galerie-garduri/12-t.jpg",
           "source_size": "736x981",
           "size": "736x981",
           "thumb_size": "600x799"
@@ -472,7 +463,13 @@
           "same_as": "WhatsApp Image 2026-09-18 at 4.21.04 AM (1).jpeg"
         }
       ],
-      "refused": []
+      "refused": [
+        {
+          "file": "WhatsApp Image 2026-09-19 at 6.35.16 AM (3).jpeg",
+          "sha256": "d8447f804a84f81fde0ae278f25c7e94d127f02998c068b11e423d6811a27f2f",
+          "why": "owner instruction W27-R-18, 2026-09-23: a roofing photograph (a gable clad in standing-seam sheet), not a fence; removed from the fence gallery"
+        }
+      ]
     },
     {
       "folder": "Instalații",

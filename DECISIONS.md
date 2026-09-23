@@ -13712,3 +13712,27 @@ new alt text describing the render; `docs/PHOTO-REVIEW-W25.md` regenerated. **Wh
 owner's two photographs on `ACOP-03` and `ACOP-04` (W26-R11), which stay in the owner's folder.
 **Measured**: gate 20 72 of 72 (four tiles, the W24-R5 gradient on every filled tile), gate 17
 clean, 0 of 53 budgets move.
+
+## W27-FIX-12 · A roofing photograph leaves the fence gallery, under W27-R-18, 2026-09-23
+
+Branch `w27/w27-fix-12-fence-gallery`, from `main` at `459b906` (#163 merged).
+
+**The owner's instruction, recorded verbatim as W27-R-18.** The eighth of the thirteen fence gallery
+photographs is a gable clad in standing-seam sheet, a roofing job; it leaves
+`/servicii/galerie-garduri/`. The gallery keeps twelve, in their order, renumbered `01` to `12` as
+the intake numbers them (`09` to `13` moved down by one, two files deleted, two provenance rows
+removed; the rows of the moved files stay true, every one being the same client-supplied origin).
+
+**Why the ledger was amended by hand, and how that stays honest.** `content/galleries.json` is
+written by `scripts/intake-galleries.js` from the owner's folder and never typed, but
+`/Users/ivan/RC-webpics_v2` is no longer on this machine, so the intake cannot run. The entry was
+edited to exactly the shape a re-run would write: twelve photographs, `installed: 12`, the
+refused photograph under `refused` with its reason and sha256, the `_note` equal to the intake's
+literal. And the refusal is durable: the intake now reads `content/galleries-refused.json`, a list
+of refused photographs keyed by the source file's sha256, and records a match under `refused`
+without installing it, so a future re-run against a restored folder cannot put the picture back.
+Nothing is deleted from the owner's folder on their behalf.
+
+**Measured.** Gate 29 (galleries): every gallery renders exactly the ledger's photographs, in
+order, 12 on the fence gallery. Gate R-W (provenance): every image has a row. `scripts/verify-live.js`
+counts `galSlides: 12` on the gallery page. Heights re-measured: see R-Y if any moved.

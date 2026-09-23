@@ -1094,3 +1094,14 @@ lei/buc" line sits under the heading. Same instrument and method as the blocks a
 
 Plus 60 (W24-R4). "Before" is the budget less 60, the way the budget was set.
 
+## AMENDED (W27-C-05, wave 27): the two shingle cards
+
+W27-R-04: IKO Cambridge and IKO Superglass Hex gain a tagline, colour code chips and a facts line.
+
+| Page | Before | After | Budget |
+|---|---|---|---|
+| `/servicii/acoperisuri/` | 21,643 | **21,725** | 21,703 to **21,785** |
+| `/ru/servicii/acoperisuri/` | 21,802 | **21,883** | 21,862 to **21,943** |
+
+Plus 60 (W24-R4). Same instrument as the blocks above.
+

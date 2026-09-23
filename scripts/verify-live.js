@@ -326,8 +326,10 @@ const PAGES = [
      table; measured 20,180 / 20,318 at 1440, settled, plus 60 (W24-R4), in R-Y. */
   /* AMENDED (W27-C-03): seven imperlux metal tile cards, two more grid rows and the
      derived "de la" lines; measured 21,643 / 21,802 at 1440, settled, plus 60, in R-Y. */
-  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 21703 },
-  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 21862 },
+  /* AMENDED (W27-C-05): the two shingle cards gain a tagline, chips and a facts line;
+     measured 21,725 / 21,883 at 1440, settled, plus 60, in R-Y. */
+  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 21785 },
+  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 21943 },
   /* W24-07. The rocă vulcanică mirror page. */
   /* AMENDED (W27-C-04): chips, a warranty row and a price on each card, a derived "de la"
      line under the heading; measured 4,369 / 4,439 at 1440, settled, plus 60, in R-Y. */

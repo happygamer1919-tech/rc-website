@@ -92,7 +92,9 @@ const OVERRIDES = [
     licence: 'owner_override_imperlux, competitor origin taken by owner decision W26-R10, cropped where burned-in text or branding sat, no upscale, source URL per file, owner accepted 2026-09-22',
     files: [
       'ACOP-05', 'ACOP-06', 'ACOP-07',
-      'ACIM-01', 'ACIM-02', 'ACIM-03', 'ACIM-04', 'ACIM-05', 'ACIM-06', 'ACIM-07', 'ACIM-08', 'ACIM-09',
+      /* W27-C-05: ACIM-02 and ACIM-03 moved to the W27-R-04 entry below, because their
+         pictures are now the untouched previews and this sentence says "cropped". */
+      'ACIM-01', 'ACIM-04', 'ACIM-05', 'ACIM-06', 'ACIM-07', 'ACIM-08', 'ACIM-09',
     ],
   },
   /* AMENDED (W27-R-04, W27-C-03): a FOURTH override, imperlux.md as the source of record
@@ -107,6 +109,7 @@ const OVERRIDES = [
     files: [
       'ACIM-10', 'ACIM-11', 'ACIM-12', 'ACIM-13', 'ACIM-14', 'ACIM-15', 'ACIM-16', 'NVK-01', 'NVK-02', 'NVK-03', 'NVK-04',
       'ACOP-09',
+      'ACIM-02', 'ACIM-03',
     ],
   },
 ];

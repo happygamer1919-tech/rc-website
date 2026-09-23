@@ -379,8 +379,7 @@
       "dast-tabla-cutata-h-35",
       "dast-tabla-cutata-c-15",
       "dast-tabla-cutata-s-44",
-      "dast-tabla-cutata-h-60",
-      "dast-dripstop-acoperire-anticondens-pentru-tabla-prof"
+      "dast-tabla-cutata-h-60"
     ],
     "materiale-acoperis/hidroizolatie": [
       "dast-dripstop-acoperire-anticondens-pentru-tabla-prof",
@@ -9111,7 +9110,6 @@
         }
       },
       "categories": [
-        "materiale-acoperis/profnastil",
         "materiale-acoperis/hidroizolatie",
         "materiale-acoperis/elemente-de-siguranta"
       ],

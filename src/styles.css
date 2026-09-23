@@ -598,6 +598,10 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
 .pb__tile--3 { grid-column: 2; grid-row: 2; }
 .hub__tile--4,
 .pb__tile--4 { grid-column: 3; grid-row: 2; }
+/* W27-C-02 (W27-R-06). The product bento's FIFTH tile, Tabla cutata, is a third row
+   across all three columns: rows one and two keep the pattern above untouched.
+   Only the product bento has five; the hub grids stay at four (gate 20 judges both). */
+.pb__tile--5 { grid-column: 1 / -1; grid-row: 3; }
 .hub__ph,
 .pb__ph {
   position: absolute; inset: 0; width: 100%; height: 100%;
@@ -679,7 +683,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-warm);
   .hub__grid,
   .pb__grid { grid-template-columns: minmax(0, 1fr); grid-auto-rows: auto; }
   .hub__tile--1, .hub__tile--2, .hub__tile--3, .hub__tile--4,
-  .pb__tile--1, .pb__tile--2, .pb__tile--3, .pb__tile--4 {
+  .pb__tile--1, .pb__tile--2, .pb__tile--3, .pb__tile--4, .pb__tile--5 {
     grid-column: auto; grid-row: auto; min-height: 280px;
   }
 }

@@ -827,7 +827,11 @@ const placeholder = slotImage;
    than two declarations that could drift. */
 function bentoSection(l, cfg) {
   const need = (v, where) => { if (!REAL(v)) die(`bento ${cfg.id}: ${where} is not real for ${l.code}.`); return v; };
-  if (!Array.isArray(cfg.tiles) || cfg.tiles.length !== 4) die(`bento ${cfg.id}: ${(cfg.tiles || []).length} tiles, expected exactly 4.`);
+  /* W27-C-02 (W27-R-06): a bento is four tiles unless its config says how many. Only the
+     roofing product bento says five, for the Tabla cutata tile on a third row; every hub
+     grid stays at four, and gate 20 measures both shapes. */
+  const wantTiles = cfg.tileCount || 4;
+  if (!Array.isArray(cfg.tiles) || cfg.tiles.length !== wantTiles) die(`bento ${cfg.id}: ${(cfg.tiles || []).length} tiles, expected exactly ${wantTiles}.`);
   const hub = cfg.kind !== 'product';
   const P = hub ? 'hub' : 'pb';
   /* AMENDED (W25-24, ruling W25-R24): every hub tile has a destination. The old
@@ -2574,7 +2578,8 @@ const roofGroups = (() => {
     return m[1];
   });
   const groups = ROOF_SECTIONS.groups;
-  if (!Array.isArray(groups) || groups.length !== 5) die(`${ROOF_SECTIONS_FILE}: W26-R5 names five roofing sections, found ${(groups || []).length}.`);
+  /* W26-R5 named five; W27-R-06 (W27-C-02) makes Tabla cutata a sixth, its own group. */
+  if (!Array.isArray(groups) || groups.length !== 6) die(`${ROOF_SECTIONS_FILE}: W26-R5 and W27-R-06 name six roofing sections, found ${(groups || []).length}.`);
   const seen = new Map();
   for (const g of groups) {
     if (!REAL(g.id) || !g.label || !REAL(g.label.ro) || !REAL(g.label.ru)) die(`${ROOF_SECTIONS_FILE}: group "${g.id}" needs an id and a label in both locales.`);
@@ -2642,11 +2647,15 @@ const PRODUCT_BENTOS = {
     kind: 'product',
     head: 'pbento.roofH',
     headMuted: 'pbento.roofHMuted',
+    /* W27-C-02 (W27-R-06): a FIFTH tile, Tabla cutata, on a third row across the grid;
+       the hub grids stay at four. */
+    tileCount: 5,
     tiles: [
       { label: 'pbento.ceramica', slot: 'ACOP-05', anchor: roofAnchor('tigla-ceramica') },
       { label: 'pbento.sindrila', slot: 'ACOP-06', anchor: roofAnchor('sindrila-bituminoasa') },
       { label: 'pbento.pluviale', slot: 'ACOP-07', anchor: roofAnchor('sisteme-pluviale') },
       { label: 'pbento.accesorii', slot: 'ACOP-08', anchor: roofAnchor('accesorii-de-acoperis') },
+      { label: 'pbento.tablaCutata', slot: 'ACOP-09', anchor: roofAnchor('tabla-cutata') },
     ],
   },
 };
@@ -2716,7 +2725,7 @@ function roofSection(l) {
   const folded = new Set(ROOF_SECTIONS.products.flatMap((p) => p.folds || []));
   const impBySection = new Map(roofGroups.map((g) => [g.child, []]));
   ROOF_SECTIONS.products.forEach((p, i) => {
-    if (!impBySection.has(p.group)) die(`${ROOF_SECTIONS_FILE}: products[${i}] "${p.slug}" is in section "${p.group}", which is not one of the five.`);
+    if (!impBySection.has(p.group)) die(`${ROOF_SECTIONS_FILE}: products[${i}] "${p.slug}" is in section "${p.group}", which is not one of the six.`);
     if (!REAL(p.slot) && !(p.folds || []).length) die(`${ROOF_SECTIONS_FILE}: products[${i}] "${p.slug}" folds no record and has no slot of its own, so it has no picture to render.`);
     if (REAL(p.slot) && (p.folds || []).length) die(`${ROOF_SECTIONS_FILE}: products[${i}] "${p.slug}" both folds a record and claims a slot; the folded record's slot IS its picture.`);
     /* W26-05. THE VARIANT LINE IS DERIVED FROM THE SPECS, not written beside them.

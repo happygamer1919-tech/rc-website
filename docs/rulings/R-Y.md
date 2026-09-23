@@ -1052,3 +1052,19 @@ other 46 budgets were already their page's measurement plus 60 and stand.
 
 **On a phone the pages are taller**, because the spec's 64px replaces 56px of section padding:
 homepage +88, roofing +128, turnkey +58, catalogue +72 at 390 (RO). Phone heights carry no budget.
+
+## AMENDED (W27-C-02, wave 27): Tablă cutată, a ninth roofing tile and a fourth table
+
+W27-R-06 makes Tablă cutată its own group. The roofing page gains a third row in the product
+bento (244px plus the 16px gap), a seventh filter chip and a fourth Compară table. Measured at
+1440 with every `[data-reveal]` applied and settled for 1,600ms, on the same instrument that
+reproduces the W26-14 figures above to the pixel (19,436 and 19,622 re-read before measuring):
+
+| Page | Before | After | Budget |
+|---|---|---|---|
+| `/servicii/acoperisuri/` | 19,436 | **20,180** | 19,496 to **20,240** |
+| `/ru/servicii/acoperisuri/` | 19,622 | **20,318** | 19,682 to **20,378** |
+
+Plus 60 (W24-R4). No other page moved: the seven records changed group, not page, and the
+profnastil redirect page is the same size with a different anchor.
+

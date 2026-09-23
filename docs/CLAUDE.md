@@ -670,7 +670,11 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     `dist/` rather than listed. For each bento hub: four tiles visible; at 1440 the
     tall tile spans two rows, sits between 30 and 38 percent of the grid's width and
     the wide tile is wider than each bottom tile, and no tile is under 280px; at 390
-    the hub is one column. For each catalogue grid: four column tracks at 1440 and
+    the hub is one column. **AMENDED (W27-C-02, ruling W27-R-06): the roofing PRODUCT
+    bento carries five, and only it.** Its fifth tile, Tablă cutată, must start below the
+    bottom of the first four and, at 1440, be at least as wide as the widest of them: a
+    third row across the grid. The first four are judged by the rules above, unchanged,
+    and a hub grid with five tiles still fails. For each catalogue grid: four column tracks at 1440 and
     one at 390, read from the grid's own used tracks rather than from how many cards
     happen to fill them, cross-checked against the cards actually painted; and the
     W24-09 phone reveal paints exactly the page's own `data-prod-step` with its
@@ -790,7 +794,8 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     beside it, and when either list is not the eight it must be.
     **AMENDED (W26-11): both lists are now EMPTY, because every ledger row is filled**, and an
     empty list is accepted only when that is demonstrable: the walk saw all twelve hub tiles and
-    all eight fence cards, and the whole ledger reads filled. Anything less is still the broken
+    all eight fence cards, and the whole ledger reads filled. **AMENDED (W27-C-02): thirteen hub
+    tiles**, nine roofing (the Tablă cutată tile, `ACOP-09`) and four fence. Anything less is still the broken
     walk this gate refuses. Watched: one row set back to a placeholder fails it, naming the row.
 
 26. `node scripts/check-hub-tile-links.js` clean. **Since W25-24 (wave 25)**, ruling W25-R24,

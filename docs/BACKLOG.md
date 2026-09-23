@@ -1008,3 +1008,13 @@ file's sha256**, so a re-numbered folder keeps the mark on the same picture; bef
 `--apply` would have wiped it. Nothing on any page changes: no photograph moves, no provenance row
 changes, gate 29 reads no flag. Q-W26-06 heading moved to ANSWERED in place.
 
+## W27-C-02 · Tablă cutată, its own group and a ninth roofing tile
+**Status: PR OPEN** (opened 2026-09-22). W27-R-06 applied. **The seven profiled sheets** (T-12, VP-20,
+PK-20, H-35, C-15, C-44, H-60) leave Accesorii for a group of their own with a filter chip, a section
+and a Compară table; DRIPSTOP, a coating, stays in Accesorii. **Chips: Toate 78 = 4 + 7 + 1 + 2 + 18 +
+46.** A **fifth product tile** on a third bento row, `ACOP-09`, a declared reuse of the T-12 packshot
+cropped by the tile itself; hub grids stay at four, so 4 + 5 = **9 tiles** on the page. Gate 20 judges the
+fifth on its own two facts; the profnastil redirect lands on `#mat-tabla-cutata`, coupled at build;
+verify-live markers 7 chips, 5 pb tiles, 4 tables. Budgets **20,240 / 20,378** (R-Y). Q-W27-01 asks for
+a real photograph for the strip tile. **Static gates, gate 20 and gate 14 exit 0 locally.**
+

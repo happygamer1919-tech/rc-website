@@ -93,7 +93,7 @@ const ALL_FILLED = !hub.length && !fence.length;
 if (ALL_FILLED) {
   const empty = ledger.slots.filter((r) => r.state !== 'filled').map((r) => r.id);
   if (empty.length) die(`both lists are empty and ${empty.length} ledger row(s) are not filled (${empty.slice(0, 8).join(', ')}), so the walk missed them.`);
-  if (hubSeen !== 12) die(`both lists are empty and the walk saw ${hubSeen} hub tiles, not the 12 the two hubs render (8 roofing, 4 fence).`);
+  if (hubSeen !== 13) die(`both lists are empty and the walk saw ${hubSeen} hub tiles, not the 13 the two hubs render (9 roofing since W27-C-02, 4 fence).`);
 }
 
 const L = [];

@@ -309,8 +309,18 @@ const PROBE = `(async () => {
 function judgeHub(r, where, w) {
   const p = [];
   if (!r) { p.push({ id: 'hub-missing', text: `${where}: no .hub__grid on a page whose markup carries one` }); return p; }
-  const t = r.tiles;
-  if (t.length !== 4) { p.push({ id: 'hub-tiles', text: `${where}: ${t.length} visible tile(s) of ${r.total}, expected 4` }); return p; }
+  /* W27-C-02 (W27-R-06): the roofing PRODUCT bento carries a fifth tile, Tabla cutata, on
+     a third row across the whole grid. A hub grid is still exactly four. The fifth is
+     judged on its own two facts and the first four on the rules below, unchanged. */
+  const want = r.kind === 'pb' && r.tiles.length === 5 ? 5 : 4;
+  if (r.tiles.length !== want) { p.push({ id: 'hub-tiles', text: `${where}: ${r.tiles.length} visible tile(s) of ${r.total}, expected ${want}` }); return p; }
+  const t = r.tiles.slice(0, 4);
+  if (want === 5) {
+    const fifth = r.tiles[4];
+    const below = Math.max(...t.map((x) => x.y + x.h));
+    if (!(fifth.y >= below - 1)) p.push({ id: 'hub-fifth-row', text: `${where}: the fifth tile starts at ${fifth.y}px, above the bottom of the first four (${below}px), so it is not a third row` });
+    if (w >= 1024 && !(fifth.w >= Math.max(...t.map((x) => x.w)))) p.push({ id: 'hub-fifth-row', text: `${where}: the fifth tile is ${fifth.w}px wide, narrower than the widest of the first four, so it does not span the grid` });
+  }
 
   if (w >= 1024) {
     const byArea = [...t];

@@ -31,8 +31,8 @@ it and no card is waiting for it.
 
 ## (b) Hub tiles, 0, the PRIORITY BATCH
 
-**Nothing is waiting here.** All 12 hub tiles on the two hubs are filled.
+**Nothing is waiting here.** All 13 hub tiles on the two hubs are filled.
 
-**And nothing is waiting anywhere: all 347 ledger rows are filled** (W26-11). A
+**And nothing is waiting anywhere: all 348 ledger rows are filled** (W26-11). A
 real photograph from the owner's own work is still the better picture for any tile that
 holds a supplier or library image, and the intake still takes one, but no slot is empty.

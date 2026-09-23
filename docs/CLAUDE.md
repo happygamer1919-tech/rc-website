@@ -145,6 +145,8 @@ dirty screen" (master plan, section 1), so a second off-white stays forbidden.
   dark band**. These sit on ~~`#141414`~~ `#1C1917` (AMENDED W28-01) and read as one lighter line, not as a
   new background.
 - `rgba(0, 0, 0, 0.08)` and `rgba(0, 0, 0, 0.12)` card and header shadows.
+  **AMENDED (W28-02):** the header pill floats on `rgba(0, 0, 0, 0.22)` and `rgba(0, 0, 0, 0.10)`,
+  two layers, and the white strip and its line under it are gone; the band is transparent.
 - **AMENDED (W26-14, ruling W26-R16):** `rgba(0, 0, 0, 0.06)`, **AMENDED (W28-01): `rgba(0, 0, 0, 0.10)`**, the `--hairline` border of cards,
   panels, dividers and image frames; and the two-layer card shadows, `--shadow-card` (0.04 and
   0.06) and `--shadow-card-hover` (0.06 and 0.1). Borders and shadows, never a ground. Form

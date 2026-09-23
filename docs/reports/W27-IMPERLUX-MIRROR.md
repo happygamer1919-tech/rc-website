@@ -17,7 +17,7 @@ leaves them, and "before" from the same files as W27-R-00 left them.
 | `tigla-ceramica` | 1 | 1 | 1 (1 Imperlux, 0 Dasterum) | W27-C-06: Creaton Rapido aligned (preview, tagline, warranty, colour) |
 | `sindrila-bituminoasa` | 2 | 2 | 2 (2 Imperlux, 0 Dasterum) | W27-C-05: both IKO shingles aligned |
 | `sisteme-pluviale` | 17 | 18 | 18 (17 Imperlux, 1 Dasterum) | W27-C-06: all 17 aligned; the 11 that folded a Dasterum record take Imperlux's picture and no price, Cot burlan 90 mm (Dasterum only) kept |
-| `accesorii-de-acoperis` | 21 | 53 | 66 (20 Imperlux, 46 Dasterum) | W27-C-06: 20 of Imperlux's 21 added (Folie anticondens has no picture at the floor); 46 Dasterum records kept, no exact name matched |
+| `accesorii-de-acoperis` | 21 | 53 | ~~66 (20 Imperlux, 46 Dasterum)~~ **60 (20 Imperlux, 40 Dasterum), AMENDED W27-FIX-05** | W27-C-06: 20 of Imperlux's 21 added (Folie anticondens has no picture at the floor); 46 Dasterum records kept, no exact name matched. **W27-FIX-05 (W27-R-12): six Dasterum records fold into five Imperlux near-twins, see the amendments below** |
 | Rocă vulcanică Novatik (`/servicii/roca-vulcanica/`) | 4 | 4 | 4 | W27-C-04: prices, chips, warranty, previews aligned |
 | Garduri, fence models (`/servicii/modele-garduri/`) | 8 | 8 | 8 | already aligned: every price, style, thickness and colour count equals Imperlux's page tonight; pictures are Imperlux's since W25-R15 |
 | Hub tiles, roofing | 5 | 4 + 5 | 4 + 5 | ACOP-01, 02, 06, 07 are Imperlux's tile images (W26-R3, W26-R10); ACOP-03, 04, 08 have no Imperlux counterpart and carry the owner's photographs (W26-R11); ACOP-05 the Creaton crop; ACOP-09 the T-12 packshot |
@@ -194,3 +194,18 @@ in `price` with a source line; `price_folded_not_shown` is retired. The six part
 prices (Cârlig pazie universal, Cot 60°, Prelungitor, Pâlnie colectoare, Ramificație burlan, Element
 captare) still ask for a price. The Sisteme pluviale Compară table has its Preț column back, and the
 section's derived line reads "11 modele, de la 33 lei".
+
+**W27-FIX-05 (ruling W27-R-12).** The near-name table above was read pair by pair against both
+product pages and both pictures, with "same physical item" as the test. Folded, the Imperlux
+record keeping its picture, tagline and specs, showing the folded grade's Dasterum price, and both
+URLs in the record (`source.url`, `source.folded`): Coamă semicirculară takes Coamă semirotundă
+(CAT-0273, de la 210 lei); Bordură fronton takes Bordura de fronton (CAT-0274, 180); Opritor
+zăpadă takes Reținător de zăpadă (CAT-0275, 180), the same angle-profile strip, while Opritor de
+zapadă cilindric (CAT-0271) is a tubular guard and stays; Racord perete takes Placă de racordare
+cu margine and fără margine (CAT-0278, CAT-0279, 180), two grades of one part; Dolie takes Dolie
+interioară (CAT-0277, 450), the inner valley, while Dolie de sus (CAT-0276) is the upper valley
+cover and stays. Held, because the brands differ and nothing measurable matches: the five MDM VAXO
+membranes against the eight DACHMASTER and Decora ones, and Blachvent 175 against ROLL ECCO; and
+Folie anticondens, which has no Dasterum twin (DRIPSTOP is a bonded felt, Dachmaster Alu 80 another
+brand's barrier). All three are Q-W27-04. Accesorii: 66 cards to **60** (20 Imperlux, 40
+Dasterum); the roofing page 105 cards to **99**, in one grid, the six chips summing to Toate.

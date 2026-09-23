@@ -4570,45 +4570,6 @@
       }
     },
     {
-      "id": "CAT-0273",
-      "page": "/catalog/materiale-acoperis/elemente-suplimentare/",
-      "ratio": "1 / 1",
-      "min_px": "1200x1200",
-      "shows": "Produsul \"Coamă semirotundă\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "filled",
-      "provenance": "public/img/catalog/CAT-0273.jpg",
-      "alt": {
-        "ro": "Coamă semirotundă, fotografia produsului",
-        "ru": "Coamă semirotundă, фотография продукта"
-      }
-    },
-    {
-      "id": "CAT-0274",
-      "page": "/catalog/materiale-acoperis/elemente-suplimentare/",
-      "ratio": "1 / 1",
-      "min_px": "1200x1200",
-      "shows": "Produsul \"Bordura de fronton\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "filled",
-      "provenance": "public/img/catalog/CAT-0274.jpg",
-      "alt": {
-        "ro": "Bordura de fronton, fotografia produsului",
-        "ru": "Bordura de fronton, фотография продукта"
-      }
-    },
-    {
-      "id": "CAT-0275",
-      "page": "/catalog/materiale-acoperis/elemente-suplimentare/",
-      "ratio": "1 / 1",
-      "min_px": "1200x1200",
-      "shows": "Produsul \"Reținător de zăpadă\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "filled",
-      "provenance": "public/img/catalog/CAT-0275.jpg",
-      "alt": {
-        "ro": "Reținător de zăpadă, fotografia produsului",
-        "ru": "Reținător de zăpadă, фотография продукта"
-      }
-    },
-    {
       "id": "CAT-0276",
       "page": "/catalog/materiale-acoperis/elemente-suplimentare/",
       "ratio": "1 / 1",
@@ -4619,45 +4580,6 @@
       "alt": {
         "ro": "Dolie de sus, fotografia produsului",
         "ru": "Dolie de sus, фотография продукта"
-      }
-    },
-    {
-      "id": "CAT-0277",
-      "page": "/catalog/materiale-acoperis/elemente-suplimentare/",
-      "ratio": "1 / 1",
-      "min_px": "1200x1200",
-      "shows": "Produsul \"Dolie interioară\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "filled",
-      "provenance": "public/img/catalog/CAT-0277.jpg",
-      "alt": {
-        "ro": "Dolie interioară, fotografia produsului",
-        "ru": "Dolie interioară, фотография продукта"
-      }
-    },
-    {
-      "id": "CAT-0278",
-      "page": "/catalog/materiale-acoperis/elemente-suplimentare/",
-      "ratio": "1 / 1",
-      "min_px": "1200x1200",
-      "shows": "Produsul \"Placă de racordare cu margine\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "filled",
-      "provenance": "public/img/catalog/CAT-0278.jpg",
-      "alt": {
-        "ro": "Placă de racordare cu margine, fotografia produsului",
-        "ru": "Placă de racordare cu margine, фотография продукта"
-      }
-    },
-    {
-      "id": "CAT-0279",
-      "page": "/catalog/materiale-acoperis/elemente-suplimentare/",
-      "ratio": "1 / 1",
-      "min_px": "1200x1200",
-      "shows": "Produsul \"Placă de racordare fără margine\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "filled",
-      "provenance": "public/img/catalog/CAT-0279.jpg",
-      "alt": {
-        "ro": "Placă de racordare fără margine, fotografia produsului",
-        "ru": "Placă de racordare fără margine, фотография продукта"
       }
     },
     {

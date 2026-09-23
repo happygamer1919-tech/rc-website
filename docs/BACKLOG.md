@@ -1180,3 +1180,11 @@ Maro închis and Gri); the Russian roofing, Novatik and metal tile pages read 0 
 Romanian words. A colour counted and not named renders "+N" on the roofing model cards and the
 Novatik cards: five tiles "+1", Creaton "+3", IKO Cambridge "+1", Novatik Roman "+2", Wood "+1".
 Novatik page +34px both locales; budgets 4,601 / 4,645 (R-Y).
+
+## W27-FIX-05 · Five near-twin pairs fold, three held, one grid measured
+**Status: PR OPEN** (opened 2026-09-23). W27-R-12 applied with "same physical item" as the test:
+Coamă semicirculară, Bordură fronton, Opritor zăpadă, Racord perete (two grades) and Dolie fold
+their Dasterum twins (CAT-0273, 0274, 0275, 0278, 0279, 0277), show the folded grade's price, keep
+both URLs; six ledger rows orphaned, generated docs regenerated. The membranes, the ridge band and
+Folie anticondens held in Q-W27-04. Measured: 1 grid, 99 cards, 60 of 60 accessories in it, chips
+sum to Toate, 0 duplicate names. Roofing page 23,873 / 24,094, budgets 23,933 / 24,154 (R-Y).

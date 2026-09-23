@@ -13553,3 +13553,53 @@ in Q-W27-04).
 **Heights.** Two grid rows fewer: 24,782 to 23,873 RO and 25,003 to 24,094 RU at 1440 settled; all
 53 re-measured, two move to measured plus 60 (R-Y). `scripts/verify-live.js` counts 99 cards. The
 mirror report's group table and near-name table carry the amendment.
+
+## W27-FIX-06 · The ten marked previews replaced by the makers' own packshots under W27-R-13, 2026-09-23
+
+Branch `w27/w27-fix-06-packshots`, stacked on W27-FIX-05.
+
+**W27-R-13 applied to the nine previews it names and the tenth that carries the same mark.** Every
+picture went through `scripts/fetch-packshot.js` (the one thing in the repo that reaches the network
+for an image) into staging and `scripts/process-packshot.js` into `public/`, cropped to the card's
+4:3 with both sides above the 450 floor, never upscaled, metadata stripped, and each file was looked
+at by a person (this terminal, with the file open) before it landed.
+
+**Who makes what, read from the source pages, decided the origin.**
+
+- **The seven metal tiles (ACIM-10 to ACIM-16) are Imperlux's own make**: every product page declares
+  brand Imperlux and ArcelorMittal steel, so no other manufacturer's packshot exists. Each page also
+  publishes a gallery of 1080x1080 renders of the bare sheet (`gallery-1.png` on Barcelona, Madrid,
+  Bavaria; `photo-1.png` on Heta, Zet, Finn, Izi), with neither the orange mark nor the burned-in
+  name the preview carried. Those are installed under a **fifth override sentence naming W27-R-13**
+  in `scripts/check-asset-provenance.js` (seven files, by name); the seven left the W27-R-04 list.
+  In the ruling's own terms these seven are the **kept-imperlux list**: still Imperlux's pictures,
+  because Imperlux is the maker, now without its mark.
+- **The two IKO shingles (ACIM-02, ACIM-03)** take IKO's own colour swatches from iko.eu (IKO Sales
+  International NV, the maker, by the site's own imprint): Cambridge in 52 Dual Black, the colour
+  Imperlux shows first, 1200x1175; Superglass Hex in 01 Black, 1200x1165. IKO publishes no loose
+  shingle or bundle packshot; its media library is login-only. Manufacturer-packshot origin.
+- **Creaton Rapido (ACIM-01)** takes the maker's rendered close-up of the roof in dark brown engobe
+  ("Maro închis", the colour the card names), 1165x1083, from swissporton.ro. The CREATON
+  South-East Europe works that make Rapido (Lenti, Hungary) sell under the swissporTON brand since
+  the swisspor group took them over, and every CREATON domain the research tried is either the
+  German parent (no Rapido) or unreachable; the site's own imprint is the maker, not a reseller.
+  Manufacturer-packshot origin, with the maker named in the row.
+
+**The research and the sweep were adversarial, on purpose.** Two finders per product (one walking
+the maker's site, one searching) and one skeptic per candidate, each measuring the file and
+reading the site's legal pages before accepting a host; the IKO and swissporTON candidates survived
+every check, and the swissporTON one was refuted only on the literal domain list the brief gave
+and accepted here on the imprint. Then every filled product-card picture on the roofing, Novatik
+and fence pages, 76 files, was looked at twice by independent viewers with a tie-break: the only
+overlaid third-party marks were the ten previews this card replaces. What else was found is on
+the products themselves and is recorded, not touched: the BILKA stamp embossed on four rainwater
+parts (ACIM-22, 25, 26, 31), so Imperlux's gutters are Bilka-made; the "mdm VAXO" factory print on
+the five membranes (ACIM-40 to 44); the Novatik previews' burned-in caption (category and model
+name, no orange mark, W25-R5's label case); and Dasterum's watermark on its own five tile pictures
+(CAT-0224 to 0228), permitted by W25-R7.
+
+**Records.** Ten provenance rows rewritten with the new source page, image URL, maker, licence
+sentence and date; ten ledger rows amended and their `label` flag dropped (no burned-in name any
+more), `docs/PHOTO-REVIEW-W25.md` regenerated; ACIM-01, 02 and 03 leave the imperlux override lists
+in `check-photo-slots-w24.js` and `fetch-packshot.js` (a permission nothing stands on is a dead
+exception). **Heights**: all 53 measured, 0 move (the pictures fill the same 4:3 boxes).

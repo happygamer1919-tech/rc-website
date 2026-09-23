@@ -391,42 +391,39 @@
       "page": "/servicii/acoperisuri/",
       "ratio": "4 / 3",
       "min_px": "1200x900",
-      "shows": "Produsul \"Creaton Rapido\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el. AMENDED W26-11 (W26-R10): filled from imperlux.md under the widened override, cropped to the tile from the category image, which shows the same Creaton Rapido tile without the orange brand shapes the product hero carries. AMENDED W27-C-06 (W27-R-04): the preview image as imperlux.md publishes it, with the category, the model name and imperlux's orange brand shapes, untouched; W25-R5: marked \"label\". The W26-11 category crop moved to ACOP-05 as that tile's own file.",
+      "shows": "Produsul \"Creaton Rapido\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el. AMENDED W26-11 (W26-R10): filled from imperlux.md under the widened override, cropped to the tile from the category image, which shows the same Creaton Rapido tile without the orange brand shapes the product hero carries. AMENDED W27-C-06 (W27-R-04): the preview image as imperlux.md publishes it, with the category, the model name and imperlux's orange brand shapes, untouched; W25-R5: marked \"label\". The W26-11 category crop moved to ACOP-05 as that tile's own file. AMENDED W27-FIX-06 (W27-R-13): imaginea producatorului, swissporTON (fosta CREATON Europa de Sud-Est, fabrica din Lenti care face Rapido), un randare apropiata a acoperisului Rapido in maro inchis angobat, fara niciun marcaj; decupata la 4:3, fara marire; semnul \"label\" ridicat, nu mai exista nume imprimat.",
       "state": "filled",
       "provenance": "public/img/acoperisuri/ACIM-01.jpg",
       "alt": {
         "ro": "Țiglă ceramică Creaton Rapido, foaia de previzualizare",
         "ru": "Керамическая черепица Creaton Rapido, превью модели"
-      },
-      "label": true
+      }
     },
     {
       "id": "ACIM-02",
       "page": "/servicii/acoperisuri/",
       "ratio": "4 / 3",
       "min_px": "1200x900",
-      "shows": "Produsul \"IKO Cambridge\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el. AMENDED W26-11 (W26-R10): filled from imperlux.md under the widened override, a 490x490 corner of the shingle texture, clear of the imperlux mark and the name band. AMENDED W27-C-05 (W27-R-04): the preview image as imperlux.md publishes it, with the category, the model name and imperlux's orange mark in it, untouched, no crop, no upscale; W25-R5: marked \"label\". The W26-11 corner crop is replaced.",
+      "shows": "Produsul \"IKO Cambridge\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el. AMENDED W26-11 (W26-R10): filled from imperlux.md under the widened override, a 490x490 corner of the shingle texture, clear of the imperlux mark and the name band. AMENDED W27-C-05 (W27-R-04): the preview image as imperlux.md publishes it, with the category, the model name and imperlux's orange mark in it, untouched, no crop, no upscale; W25-R5: marked \"label\". The W26-11 corner crop is replaced. AMENDED W27-FIX-06 (W27-R-13): imaginea producatorului, IKO, mostra de culoare Cambridge 52 Dual Black de pe iko.eu, fara niciun marcaj; decupata la 4:3, fara marire; semnul \"label\" ridicat.",
       "state": "filled",
       "provenance": "public/img/acoperisuri/ACIM-02.jpg",
       "alt": {
         "ro": "Șindrilă bituminoasă IKO Cambridge, suprafața acoperișului",
         "ru": "Битумная черепица IKO Cambridge, поверхность кровли"
-      },
-      "label": true
+      }
     },
     {
       "id": "ACIM-03",
       "page": "/servicii/acoperisuri/",
       "ratio": "4 / 3",
       "min_px": "1200x900",
-      "shows": "Produsul \"IKO Superglass Hex\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el. AMENDED W26-11 (W26-R10): filled from imperlux.md under the widened override, a 490x490 corner of the shingle texture, clear of the imperlux mark and the name band. AMENDED W27-C-05 (W27-R-04): the preview image as imperlux.md publishes it, with the category, the model name and imperlux's orange mark in it, untouched, no crop, no upscale; W25-R5: marked \"label\". The W26-11 corner crop is replaced.",
+      "shows": "Produsul \"IKO Superglass Hex\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. W26-04: model publicat de imperlux.md pe care dasterum.md nu il are, deci nu exista o fotografie mostenita pentru el. AMENDED W26-11 (W26-R10): filled from imperlux.md under the widened override, a 490x490 corner of the shingle texture, clear of the imperlux mark and the name band. AMENDED W27-C-05 (W27-R-04): the preview image as imperlux.md publishes it, with the category, the model name and imperlux's orange mark in it, untouched, no crop, no upscale; W25-R5: marked \"label\". The W26-11 corner crop is replaced. AMENDED W27-FIX-06 (W27-R-13): imaginea producatorului, IKO, mostra de culoare Superglass Hex 01 Black de pe iko.eu, fara niciun marcaj; decupata la 4:3, fara marire; semnul \"label\" ridicat.",
       "state": "filled",
       "provenance": "public/img/acoperisuri/ACIM-03.jpg",
       "alt": {
         "ro": "Șindrilă bituminoasă IKO Superglass Hex, suprafața acoperișului",
         "ru": "Битумная черепица IKO Superglass Hex, поверхность кровли"
-      },
-      "label": true
+      }
     },
     {
       "id": "ACIM-04",
@@ -511,98 +508,91 @@
       "page": "/servicii/acoperisuri/",
       "ratio": "4 / 3",
       "min_px": "1200x900",
-      "shows": "Tigla metalica \"Barcelona\", imaginea de previzualizare a modelului asa cum o publica imperlux.md, cu numele modelului si categoria imprimate in imagine. W27-C-03 (W27-R-04): aceeasi imagine, neatinsa, fara decupaj, fara marire; W25-R5: marcata \"label\" pentru lista de revizuire.",
+      "shows": "Tigla metalica \"Barcelona\", imaginea de previzualizare a modelului asa cum o publica imperlux.md, cu numele modelului si categoria imprimate in imagine. W27-C-03 (W27-R-04): aceeasi imagine, neatinsa, fara decupaj, fara marire; W25-R5: marcata \"label\" pentru lista de revizuire. AMENDED W27-FIX-06 (W27-R-13): Imperlux este producatorul modelului (pagina: brand Imperlux, otel ArcelorMittal), deci fotografia de produs a producatorului este randarea din galeria paginii, foaia singura pe alb, fara marcajul portocaliu si fara numele imprimat; decupata la 4:3, fara marire; semnul \"label\" ridicat.",
       "state": "filled",
       "provenance": "public/img/acoperisuri/ACIM-10.jpg",
       "alt": {
         "ro": "Țiglă metalică Barcelona, foaia profilată",
         "ru": "Металлочерепица Barcelona, лист с рельефом"
-      },
-      "label": true
+      }
     },
     {
       "id": "ACIM-11",
       "page": "/servicii/acoperisuri/",
       "ratio": "4 / 3",
       "min_px": "1200x900",
-      "shows": "Tigla metalica \"Madrid\", imaginea de previzualizare a modelului asa cum o publica imperlux.md, cu numele modelului si categoria imprimate in imagine. W27-C-03 (W27-R-04): aceeasi imagine, neatinsa, fara decupaj, fara marire; W25-R5: marcata \"label\" pentru lista de revizuire.",
+      "shows": "Tigla metalica \"Madrid\", imaginea de previzualizare a modelului asa cum o publica imperlux.md, cu numele modelului si categoria imprimate in imagine. W27-C-03 (W27-R-04): aceeasi imagine, neatinsa, fara decupaj, fara marire; W25-R5: marcata \"label\" pentru lista de revizuire. AMENDED W27-FIX-06 (W27-R-13): Imperlux este producatorul modelului (pagina: brand Imperlux, otel ArcelorMittal), deci fotografia de produs a producatorului este randarea din galeria paginii, foaia singura pe alb, fara marcajul portocaliu si fara numele imprimat; decupata la 4:3, fara marire; semnul \"label\" ridicat.",
       "state": "filled",
       "provenance": "public/img/acoperisuri/ACIM-11.jpg",
       "alt": {
         "ro": "Țiglă metalică Madrid, foaia profilată",
         "ru": "Металлочерепица Madrid, лист с рельефом"
-      },
-      "label": true
+      }
     },
     {
       "id": "ACIM-12",
       "page": "/servicii/acoperisuri/",
       "ratio": "4 / 3",
       "min_px": "1200x900",
-      "shows": "Tigla metalica \"Bavaria\", imaginea de previzualizare a modelului asa cum o publica imperlux.md, cu numele modelului si categoria imprimate in imagine. W27-C-03 (W27-R-04): aceeasi imagine, neatinsa, fara decupaj, fara marire; W25-R5: marcata \"label\" pentru lista de revizuire.",
+      "shows": "Tigla metalica \"Bavaria\", imaginea de previzualizare a modelului asa cum o publica imperlux.md, cu numele modelului si categoria imprimate in imagine. W27-C-03 (W27-R-04): aceeasi imagine, neatinsa, fara decupaj, fara marire; W25-R5: marcata \"label\" pentru lista de revizuire. AMENDED W27-FIX-06 (W27-R-13): Imperlux este producatorul modelului (pagina: brand Imperlux, otel ArcelorMittal), deci fotografia de produs a producatorului este randarea din galeria paginii, foaia singura pe alb, fara marcajul portocaliu si fara numele imprimat; decupata la 4:3, fara marire; semnul \"label\" ridicat.",
       "state": "filled",
       "provenance": "public/img/acoperisuri/ACIM-12.jpg",
       "alt": {
         "ro": "Țiglă metalică Bavaria, foaia profilată",
         "ru": "Металлочерепица Bavaria, лист с рельефом"
-      },
-      "label": true
+      }
     },
     {
       "id": "ACIM-13",
       "page": "/servicii/acoperisuri/",
       "ratio": "4 / 3",
       "min_px": "1200x900",
-      "shows": "Tigla metalica \"Heta\", imaginea de previzualizare a modelului asa cum o publica imperlux.md, cu numele modelului si categoria imprimate in imagine. W27-C-03 (W27-R-04): aceeasi imagine, neatinsa, fara decupaj, fara marire; W25-R5: marcata \"label\" pentru lista de revizuire.",
+      "shows": "Tigla metalica \"Heta\", imaginea de previzualizare a modelului asa cum o publica imperlux.md, cu numele modelului si categoria imprimate in imagine. W27-C-03 (W27-R-04): aceeasi imagine, neatinsa, fara decupaj, fara marire; W25-R5: marcata \"label\" pentru lista de revizuire. AMENDED W27-FIX-06 (W27-R-13): Imperlux este producatorul modelului (pagina: brand Imperlux, otel ArcelorMittal), deci fotografia de produs a producatorului este randarea din galeria paginii, foaia singura pe alb, fara marcajul portocaliu si fara numele imprimat; decupata la 4:3, fara marire; semnul \"label\" ridicat.",
       "state": "filled",
       "provenance": "public/img/acoperisuri/ACIM-13.jpg",
       "alt": {
         "ro": "Țiglă metalică Heta, foaia profilată",
         "ru": "Металлочерепица Heta, лист с рельефом"
-      },
-      "label": true
+      }
     },
     {
       "id": "ACIM-14",
       "page": "/servicii/acoperisuri/",
       "ratio": "4 / 3",
       "min_px": "1200x900",
-      "shows": "Tigla metalica \"Zet\", imaginea de previzualizare a modelului asa cum o publica imperlux.md, cu numele modelului si categoria imprimate in imagine. W27-C-03 (W27-R-04): aceeasi imagine, neatinsa, fara decupaj, fara marire; W25-R5: marcata \"label\" pentru lista de revizuire.",
+      "shows": "Tigla metalica \"Zet\", imaginea de previzualizare a modelului asa cum o publica imperlux.md, cu numele modelului si categoria imprimate in imagine. W27-C-03 (W27-R-04): aceeasi imagine, neatinsa, fara decupaj, fara marire; W25-R5: marcata \"label\" pentru lista de revizuire. AMENDED W27-FIX-06 (W27-R-13): Imperlux este producatorul modelului (pagina: brand Imperlux, otel ArcelorMittal), deci fotografia de produs a producatorului este randarea din galeria paginii, foaia singura pe alb, fara marcajul portocaliu si fara numele imprimat; decupata la 4:3, fara marire; semnul \"label\" ridicat.",
       "state": "filled",
       "provenance": "public/img/acoperisuri/ACIM-14.jpg",
       "alt": {
         "ro": "Țiglă metalică Zet, foaia profilată",
         "ru": "Металлочерепица Zet, лист с рельефом"
-      },
-      "label": true
+      }
     },
     {
       "id": "ACIM-15",
       "page": "/servicii/acoperisuri/",
       "ratio": "4 / 3",
       "min_px": "1200x900",
-      "shows": "Tigla metalica \"Finn\", imaginea de previzualizare a modelului asa cum o publica imperlux.md, cu numele modelului si categoria imprimate in imagine. W27-C-03 (W27-R-04): aceeasi imagine, neatinsa, fara decupaj, fara marire; W25-R5: marcata \"label\" pentru lista de revizuire.",
+      "shows": "Tigla metalica \"Finn\", imaginea de previzualizare a modelului asa cum o publica imperlux.md, cu numele modelului si categoria imprimate in imagine. W27-C-03 (W27-R-04): aceeasi imagine, neatinsa, fara decupaj, fara marire; W25-R5: marcata \"label\" pentru lista de revizuire. AMENDED W27-FIX-06 (W27-R-13): Imperlux este producatorul modelului (pagina: brand Imperlux, otel ArcelorMittal), deci fotografia de produs a producatorului este randarea din galeria paginii, foaia singura pe alb, fara marcajul portocaliu si fara numele imprimat; decupata la 4:3, fara marire; semnul \"label\" ridicat.",
       "state": "filled",
       "provenance": "public/img/acoperisuri/ACIM-15.jpg",
       "alt": {
         "ro": "Țiglă metalică Finn, foaia profilată",
         "ru": "Металлочерепица Finn, лист с рельефом"
-      },
-      "label": true
+      }
     },
     {
       "id": "ACIM-16",
       "page": "/servicii/acoperisuri/",
       "ratio": "4 / 3",
       "min_px": "1200x900",
-      "shows": "Tigla metalica \"Izi\", imaginea de previzualizare a modelului asa cum o publica imperlux.md, cu numele modelului si categoria imprimate in imagine. W27-C-03 (W27-R-04): aceeasi imagine, neatinsa, fara decupaj, fara marire; W25-R5: marcata \"label\" pentru lista de revizuire.",
+      "shows": "Tigla metalica \"Izi\", imaginea de previzualizare a modelului asa cum o publica imperlux.md, cu numele modelului si categoria imprimate in imagine. W27-C-03 (W27-R-04): aceeasi imagine, neatinsa, fara decupaj, fara marire; W25-R5: marcata \"label\" pentru lista de revizuire. AMENDED W27-FIX-06 (W27-R-13): Imperlux este producatorul modelului (pagina: brand Imperlux, otel ArcelorMittal), deci fotografia de produs a producatorului este randarea din galeria paginii, foaia singura pe alb, fara marcajul portocaliu si fara numele imprimat; decupata la 4:3, fara marire; semnul \"label\" ridicat.",
       "state": "filled",
       "provenance": "public/img/acoperisuri/ACIM-16.jpg",
       "alt": {
         "ro": "Țiglă metalică Izi, foaia profilată",
         "ru": "Модульная металлочерепица Izi, лист с рельефом"
-      },
-      "label": true
+      }
     },
     {
       "id": "ACIM-17",

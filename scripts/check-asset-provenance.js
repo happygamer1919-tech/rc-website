@@ -108,12 +108,25 @@ const OVERRIDES = [
     ruling: 'W27-R-04',
     licence: 'owner_override_imperlux, source of record by owner decision W27-R-04, the preview image as imperlux.md publishes it, watermark untouched, no upscale, source URL per file, owner accepted 2026-09-22',
     files: [
-      'ACIM-10', 'ACIM-11', 'ACIM-12', 'ACIM-13', 'ACIM-14', 'ACIM-15', 'ACIM-16', 'NVK-01', 'NVK-02', 'NVK-03', 'NVK-04',
+      /* W27-FIX-06 (W27-R-13): ACIM-10 to ACIM-16 moved to the fifth entry below (the maker's
+         own render, no mark); ACIM-01, ACIM-02 and ACIM-03 left the overrides altogether, their
+         pictures are the makers' own (swissporTON, IKO) under the manufacturer-packshot origin. */
+      'NVK-01', 'NVK-02', 'NVK-03', 'NVK-04',
       'ACOP-09',
-      'ACIM-02', 'ACIM-03', 'ACIM-01',
       /* W27-C-06: the rainwater parts and the metal tile accessories. */
       'ACIM-17', 'ACIM-18', 'ACIM-19', 'ACIM-20', 'ACIM-21', 'ACIM-22', 'ACIM-23', 'ACIM-24', 'ACIM-25', 'ACIM-26', 'ACIM-27', 'ACIM-28', 'ACIM-29', 'ACIM-30', 'ACIM-31', 'ACIM-32', 'ACIM-33', 'ACIM-34', 'ACIM-35', 'ACIM-36', 'ACIM-37', 'ACIM-38', 'ACIM-39', 'ACIM-40', 'ACIM-41', 'ACIM-42', 'ACIM-43', 'ACIM-44', 'ACIM-45', 'ACIM-46', 'ACIM-47', 'ACIM-48',
     ],
+  },
+  /* AMENDED (W27-R-13, W27-FIX-06): a FIFTH override, with its own sentence. Imperlux is the
+     maker of its seven metal tile models (every page: brand Imperlux, ArcelorMittal steel), so
+     "the manufacturer's own packshot" for them is Imperlux's own gallery render of the sheet,
+     which carries neither its orange mark nor the burned-in name the preview did. The sentence
+     records the 4:3 crop the card takes and that the decision is a strategy default the owner
+     may overturn. Seven files, by name; nothing else may stand on this sentence. */
+  {
+    ruling: 'W27-R-13',
+    licence: "owner_override_imperlux, the maker's own packshot by owner decision W27-R-13 (strategy default, owner may overturn), imperlux.md's gallery render of the model without its mark or name, cropped to 4:3, no upscale, source URL per file, 2026-09-23",
+    files: ['ACIM-10', 'ACIM-11', 'ACIM-12', 'ACIM-13', 'ACIM-14', 'ACIM-15', 'ACIM-16'],
   },
 ];
 const OVERRIDE_FILES = OVERRIDES.flatMap((o) => o.files);

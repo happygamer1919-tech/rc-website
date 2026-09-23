@@ -95,7 +95,11 @@ const OVERRIDE_SLOTS = [
   'GARD-01', 'GARD-02', 'GARD-03', 'GARD-04', 'GARD-05', 'GARD-06', 'GARD-07', 'GARD-08',
   'GARDB-01', 'GARDB-02', 'GARDB-03', 'GARDB-04',
   'ACOP-01', 'ACOP-02', 'ACOP-03', 'ACOP-04', 'ACOP-05', 'ACOP-06', 'ACOP-07',
-  'ACIM-01', 'ACIM-02', 'ACIM-03', 'ACIM-04', 'ACIM-05', 'ACIM-06', 'ACIM-07', 'ACIM-08', 'ACIM-09',
+  /* AMENDED (W27-R-13, W27-FIX-06): ACIM-01, ACIM-02 and ACIM-03 left this list. Their pictures
+     are the makers' own (swissporTON for Creaton Rapido, IKO for the two shingles) under the
+     manufacturer-packshot origin, so the override no longer covers them; a permission nothing
+     stands on is a dead exception. ACIM-10 to ACIM-16 stay: Imperlux is their maker. */
+  'ACIM-04', 'ACIM-05', 'ACIM-06', 'ACIM-07', 'ACIM-08', 'ACIM-09',
   /* AMENDED (W27-R-04, W27-C-03): imperlux.md is the source of record for everything under
      Acoperisuri and Garduri, so the list grows by name to every product slot those pages
      render: the seven metal tile models, the four Novatik models, and the ninth hub tile. */

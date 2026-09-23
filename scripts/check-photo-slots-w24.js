@@ -181,7 +181,11 @@ const OVERRIDE_SLOTS = [
      "the entire /servicii/acoperisuri/ hub including the second bento tiles":
      the second bento's three pictured tiles and the nine imperlux-only cards. */
   'ACOP-05', 'ACOP-06', 'ACOP-07',
-  'ACIM-01', 'ACIM-02', 'ACIM-03', 'ACIM-04', 'ACIM-05', 'ACIM-06', 'ACIM-07', 'ACIM-08', 'ACIM-09',
+  /* AMENDED (W27-R-13, W27-FIX-06): ACIM-01, ACIM-02 and ACIM-03 left this list. Their pictures
+     are the makers' own (swissporTON for Creaton Rapido, IKO for the two shingles) under the
+     manufacturer-packshot origin, so the override no longer covers them; a permission nothing
+     stands on is a dead exception. ACIM-10 to ACIM-16 stay: Imperlux is their maker. */
+  'ACIM-04', 'ACIM-05', 'ACIM-06', 'ACIM-07', 'ACIM-08', 'ACIM-09',
   /* AMENDED (W27-R-04, W27-C-03): FORTY. "imperlux.md is the source of record for
      EVERYTHING under Acoperisuri and Garduri ... Same images, same numbers." The seven
      metal tile models (ACIM-10 to 16), the four Novatik models (NVK-01 to 04) and the

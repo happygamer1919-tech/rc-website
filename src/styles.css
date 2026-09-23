@@ -125,8 +125,11 @@ h1, h2, h3 {
   overflow-wrap: break-word;
 }
 h1, h2 { -webkit-hyphens: auto; hyphens: auto; hyphenate-limit-chars: 14 6 4; }
-h1 { font-size: 56px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; }
-h2 { font-size: 40px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; }
+/* W28-04 (W27-R-07): big, heavy, tight, SENTENCE CASE. The capitals are gone from h1 and h2;
+   the eyebrow keeps its capitals with an orange rule before it, which is RC's own signature.
+   The strings were never stored in capitals, so no locale string changes. */
+h1 { font-size: 64px; font-weight: 800; letter-spacing: -0.035em; }
+h2 { font-size: 48px; font-weight: 800; letter-spacing: -0.03em; }
 h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
 p { margin: 0; }
 
@@ -163,6 +166,11 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 .eyebrow {
   font-size: 14px; font-weight: 700; text-transform: uppercase;
   letter-spacing: 0.08em; color: var(--brand-dark); margin-bottom: 16px;
+}
+/* W28-04: a short orange rule before every eyebrow, the section's anchor. */
+.eyebrow::before {
+  content: ''; display: inline-block; width: 24px; height: 2px; background: var(--brand);
+  vertical-align: middle; margin-right: 10px;
 }
 .section--dark .eyebrow { color: var(--brand); }
 .lede { margin-top: 16px; max-width: 720px; }
@@ -467,7 +475,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 /* W24-04. The catalogue heading is uppercase, which is the reference's treatment
    and a permitted edit under docs/CLAUDE.md section 5: a heading may be set
    uppercase, and the string itself is unchanged. */
-.cat-h1 { text-transform: uppercase; }
+.cat-h1 { text-transform: none; }  /* W28-04: sentence case, like every h1 */
 
 /* The dispatch's columns: 4 at 1440, 3 at 1024, 2 at 768, 1 at 390. The stated
    widths are the breakpoints, so each rule takes effect at or below the width
@@ -2172,7 +2180,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
   .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grid--5 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  h1 { font-size: 44px; }
+  h1 { font-size: 52px; }  /* W28-04: 44 to 52 */
   .form-layout { grid-template-columns: minmax(0, 1fr); }
   .hero-panels { grid-template-columns: minmax(0, 1fr); }
   .footer__cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
@@ -2191,8 +2199,8 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
   }
 
   body { font-size: 16px; }
-  h1 { font-size: 32px; letter-spacing: -0.01em; }
-  h2 { font-size: 26px; letter-spacing: -0.01em; }
+  h1 { font-size: 36px; letter-spacing: -0.025em; }  /* W28-04: 32 to 36 */
+  h2 { font-size: 30px; letter-spacing: -0.02em; }   /* W28-04: 26 to 30 */
   h3 { font-size: 19px; }
 
 

@@ -12895,3 +12895,31 @@ dispatch is silent.
 published prices and shows a competitor's product photography under its own name for two product
 sections, and a change on imperlux.md is a change this site does not see until the next crawl.
 Recorded at W25 and W26 and unchanged.
+
+## W27-C-01 · The eight gallery photographs are the owner's, and the manifest says so, 2026-09-22
+
+Branch `w27/w27-c-01-gallery-confirmed`, stacked on W27-R-00 (#136).
+
+**W27-R-03 applied, and Q-W26-06 answered.** The eight photographs that question flagged (Lucrări de
+terasament și excavare 02, 04, 05, 10, 13, 14 and 16, and Finisaje 04, numbered as installed) are
+Rapid Construct's own work. Their provenance rows were right all along and do not change.
+
+**Where the confirmation lives.** The manifest `content/galleries.json` had no field of any kind for a
+review flag: the flag existed only as prose in the question and the W26-12 card. Each of the eight
+photograph objects now carries
+`"review": { "flag": "suspected_stock", "flagged_by": "Q-W26-06", "owner_confirmed": "2026-09-22", "ruling": "W27-R-03" }`,
+which the build does not render and gate 29 does not read, so nothing on any page moves.
+
+**The field had to be made to survive.** `scripts/intake-galleries.js --apply` rebuilds every gallery
+from the folders and carried forward exactly one hand-chosen field, `preview`; a `review` added by hand
+would have been wiped on the next run. It now carries `review` too, matched by the source file's sha256
+rather than its number, so a folder that is re-ordered keeps the mark on the same photograph. The
+manifest's `_note` names both fields, and the note literal in the script was changed with it, because
+the script overwrites the note on every run and a note that disagreed with the script would be the next
+drift.
+
+**Acceptance, as the dispatch states it.** "Manifest has zero suspected_stock entries": read literally
+that would mean removing the flag, which would also remove the record that the owner was asked and
+answered. The flag is kept as the name of what was raised, and every entry carrying it carries
+`owner_confirmed`; the count that is zero is the number of flagged photographs without an owner answer,
+which is the count the acceptance is about. Gate 29 exits 0; the built pages carry no `review` text.

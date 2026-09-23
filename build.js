@@ -776,8 +776,12 @@ function slotImage(id, opts = {}) {
      must not be lazy; everything after it is. The caller says which, because only
      the caller knows where in a list it is. */
   const loading = opts.eager ? 'eager' : 'lazy';
+  /* W27-FIX-02. The first hub tile's picture is the roofing page's largest contentful paint,
+     and Lighthouse's LCP discovery insight named the one hint it lacked: fetchpriority=high.
+     The caller says which slot is that picture; nothing else changes. */
+  const priority = opts.priority ? ' fetchpriority="high"' : '';
   const sources = hasWebp ? `<source type="image/webp" srcset="${BASE}/${esc(webpRel)}">` : '';
-  return `<picture class="ph ph--filled ph--${variant}${extra}" data-photo-slot="${esc(id)}" style="--ph-ratio: ${esc(row.ratio)};">${sources}<img src="${BASE}/${esc(rel)}" alt="${esc(alt)}" width="${W}" height="${H}" loading="${loading}" decoding="async"></picture>`;
+  return `<picture class="ph ph--filled ph--${variant}${extra}" data-photo-slot="${esc(id)}" style="--ph-ratio: ${esc(row.ratio)};">${sources}<img src="${BASE}/${esc(rel)}" alt="${esc(alt)}" width="${W}" height="${H}" loading="${loading}"${priority} decoding="async"></picture>`;
 }
 
 /* The name every call site has used since W24-01. Kept, because renaming it would
@@ -877,7 +881,7 @@ function bentoSection(l, cfg) {
     x = { ...x, href: x.page ? `${BASE}${SERVICES_ROOT[l.code]}${x.page}/${frag}`
       : (x.home ? `${BASE}${l.home}${frag}`
         : (x.inConstructie ? BASE + IN_CONSTRUCTIE[l.code] : (x.anchor ? `#${x.anchor}` : null))) };
-    const ph = placeholder(x.slot, { variant: 'dark', className: `${P}__ph`, locale: l.code, eager: i < 2 });
+    const ph = placeholder(x.slot, { variant: 'dark', className: `${P}__ph`, locale: l.code, eager: i < 2, priority: hub && i === 0 });
     const body = `${ph}<span class="${P}__grad" aria-hidden="true"></span><span class="${P}__label">${label}</span>`;
     const cls = `${P}__tile ${P}__tile--${i + 1}`;
     /* W25-24. There is no non-link branch any more. The assertion above refuses a

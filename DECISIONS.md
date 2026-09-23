@@ -13240,3 +13240,25 @@ page, which is the gap this card closes: **all 53 budgets are re-measured on the
 set to measured plus 60 (W24-R4), in a generated table in R-Y, so no budget is a remembered number.
 
 **Nothing on any page changes.** `scripts/verify-live.js` budgets only, and the two records above.
+
+## W27-FIX-02 · fetchpriority on the first hub tile, the roofing page's largest paint, 2026-09-22
+
+Branch `w27/w27-fix-02-lcp-priority`, from `main` at `4ae1cc1` (#145 merged); a review fix card.
+
+**The finding.** The final review's Lighthouse pass (desktop preset, median of three, local server)
+read the roofing page at **92 [92 98 92]** RO and 98 [98 98 98] RU, against 99 on both homepages and
+100 on the turnkey page. The dispatch asks for 98 to 100 on the four main pages. **The page is
+bimodal, and was before this wave**: W26-14 recorded the same two modes (LCP near 1.07s scoring 98,
+near 1.85s scoring 91 to 93) and drew the slow one twice in five on the old build. This run's LCP
+element is the first hub tile's picture (`ACOP-01`, eager, 373x504 painted), and Lighthouse's own
+LCP discovery insight names exactly one missing thing: `fetchpriority=high`.
+
+**The fix.** `build.js` gives the first tile of each hub grid's picture `fetchpriority="high"`, one
+attribute, through a `priority` option on the image renderer; nothing else moves. **Five runs after,
+same instrument: 98, 98, 98, 98 and one 92 (the first, cold, run), LCP 1.13 to 1.15s against 1.9s.**
+The slow mode is not gone, it is rarer; it is a cold-cache draw on a page that eagerly loads two tile
+pictures and the service hero, and the remaining lever (a smaller first tile, or a `<link rel=preload>`
+for it) is a taste decision for the owner and is in the review report, not here.
+
+**Gates.** Links, template literals, photo slots, svg a11y and dashes exit 0 locally; CI runs the
+full 29, including gate 5's own three-run Lighthouse median with its 95 floor.

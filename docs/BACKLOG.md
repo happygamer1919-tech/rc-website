@@ -1117,3 +1117,11 @@ label. Section 4 amended. Gate 11 gains slack from the smaller label (least RU s
 card). **Static gates, gates 11, 18 and 28 exit 0.** Budgets re-measured. Screenshots
 `docs/design/W27/w28-05-*`.
 
+## W28-06 · The form: cream fields with a visible edge, a full-width submit, the aside as a list
+**Status: PR OPEN** (opened 2026-09-22). **CSS only**: fields fill `--bg-warm` with a `--outline` edge,
+56px tall, 14px corners; labels 16px, sentence case, ink; the submit is full width; the contact aside
+loses its two boxes and reads as a list on hairlines (the big orange phone, the hours, the note; no
+address string exists in the aside, so none is shown). The filter buttons take the `--outline` edge
+W28-01 listed. Field names, action, hidden inputs untouched: **gate 13 (form wiring) 64 forms on 62
+pages exits 0.** Gates 20 and 28 exit 0. Budgets re-measured. Screenshots `docs/design/W27/w28-06-*`.
+

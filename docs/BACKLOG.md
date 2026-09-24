@@ -1362,7 +1362,7 @@ min-content floor so a 94px Russian word cannot spill out of a 91px column at 32
 390 and 768 in both locales: no label overflow, no hidden hero child. 0 budgets move; the crawl reads 36 small-text nodes, all SVG labels.
 
 ## W28-FIX-02 · The Russian header pill spills 17px at 320
-**Status: blocked** on Q-W28-04 (is 320 a supported width?). Found while proving W28-FIX-01; present on
+**Status: closed, absorbed into W28-28** (R-W28-13: 320 is supported). Was blocked on Q-W28-04 (is 320 a supported width?). Found while proving W28-FIX-01; present on
 `main` today; below the smallest width any gate measures (769 for the header, 360 for headings, 390 for
 the crawl). Not worked until the owner answers.
 
@@ -1396,3 +1396,16 @@ gallery surface; the two intakes keep stock pictures; two budgets move.
 ## W28-R4 · The closing report W28-FINAL-RUN-2 and the board sync
 **Status: board sync, not a card** (opened 2026-09-24). `docs/reports/W28-FINAL-RUN-2.md`; the board JSON names #186; the
 artifact is republished from `main` after this merges. Documents only.
+
+## W28-R5 · The fourth dispatch: R-W28-12 to R-W28-15, cards W28-27, W28-28, W28-29
+**Status: board sync, not a card** (opened 2026-09-24). The dispatch's W28-25 and W28-26 were taken; recorded as W28-27 and
+W28-28. Two owner answers recorded as R-W28-14 and R-W28-15. Documents only.
+
+## W28-29 · Copertine: a button to the contact form on every model card
+**Status: todo.** R-W28-14; no price, one button to `#oferta` per card, both locales.
+
+## W28-27 · Turnkey examples: masonry instead of timber frame
+**Status: todo.** Five timber-frame stock pictures on the turnkey gallery replaced in place; count stays 12.
+
+## W28-28 · The 320 sweep
+**Status: todo.** R-W28-13; every page both locales at 320, gate 35; absorbs W28-FIX-02.

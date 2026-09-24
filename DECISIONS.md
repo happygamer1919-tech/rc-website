@@ -14428,3 +14428,15 @@ pages (100 on every one, median of three), the gates, the membrane under R-W28-1
 and four taste notes. The board JSON names W28-24 verified (#186) and lists this sync under
 `board_syncs`; the artifact is drawn from `main` after this merges, as the register's "Ratified and
 not ratified" section of the third dispatch sets out.
+
+## W28-R5 · The fourth dispatch and two owner answers, 2026-09-24
+
+Branch `w28/w28-r5-rulings-board`, on `main` at `dd2a51a`. Documents only.
+
+**Done.** R-W28-12 (the third dispatch's five deviations ratified, the board rule standing) and
+R-W28-13 (320 is the minimum viewport, answering Q-W28-04) recorded as given. The dispatch's cards
+W28-25 and W28-26 were taken and are W28-27 (turnkey examples) and W28-28 (the 320 sweep). Two owner
+messages that arrived during the dispatch answer Q-W28-02 (no price, a button to the contact form:
+R-W28-14, card W28-29) and Q-W28-03 (no change: R-W28-15). The dispatch said those questions stay
+open; the owner's own answers came after it and are applied. W28-FIX-02 is absorbed into W28-28.
+The board JSON records #187 verified and lists this sync.

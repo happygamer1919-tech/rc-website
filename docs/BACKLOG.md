@@ -1405,7 +1405,7 @@ W28-28. Two owner answers recorded as R-W28-14 and R-W28-15. Documents only.
 **Status: PR OPEN** (opened 2026-09-24). R-W28-14; no price, one button to `#oferta` per card, both locales; two budgets move.
 
 ## W28-27 · Turnkey examples: masonry instead of timber frame
-**Status: todo.** Five timber-frame stock pictures on the turnkey gallery replaced in place; count stays 12.
+**Status: PR OPEN** (opened 2026-09-24). Five timber-frame stock pictures on the turnkey gallery replaced in place by masonry and brick (four Commons CC0, one Pexels); count stays 12.
 
 ## W28-28 · The 320 sweep
 **Status: todo.** R-W28-13; every page both locales at 320, gate 35; absorbs W28-FIX-02.

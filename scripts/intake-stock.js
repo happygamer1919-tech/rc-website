@@ -20,6 +20,12 @@
    - kind "gallery": { page, site, id, page_url, image_url, download_url, licence, licence_url,
      subject, alt:{ro,ru} }. Appended after the owner's photographs in content/galleries.json as
      full (1600) and thumb (600) WebP; a page listed under empty_folders gains its gallery.
+     W28-27: an item with `replaces: "<full path of a stock picture in that gallery>"` takes that
+     picture's place instead of appending (same files, same order): the ledger entry is rewritten
+     and its PROVENANCE and SOURCES rows are replaced. Only a stock picture can be replaced.
+   A LOCAL DERIVATIVE (W28-27). An item with `local_file` and `crop` installs that local file (a
+   crop of the source picture, which the licence permits) instead of fetching; the source URLs
+   still name the original, and the crop is written into the PROVENANCE row and the subject.
 
    WHAT IT REFUSES. A licence that is not in R-W28-06's allowed set; a file host that is not the
    site's own; bytes that are not JPEG, PNG or WebP; a plan item for a catalogue slot that is not
@@ -87,6 +93,7 @@ const sha = (f) => crypto.createHash('sha256').update(fs.readFileSync(f)).digest
 const sizeOf = (f) => { const s = webpSize(fs.readFileSync(f)); return s ? `${s.width}x${s.height}` : 'unreadable'; };
 const provRow = (file, item, extra) => `| \`${file}\` | ${item.page_url} · ${item.image_url} · ${item.site} | stock library, ${item.licence}, R-W28-06, fetched from the site's own file host, viewed by independent viewers (no logo, brand, text, watermark, livery or identifiable face), encoded to WebP at most 1600 wide by scripts/webp-encode.js${extra || ''}, recorded in docs/images/SOURCES.md | ${item.licence_url} | ${TODAY} |`;
 const srcRow = (file, page, item) => `| \`${file}\` | ${page} | ${item.page_url} · ${item.image_url} | ${item.licence} | ${(item.subject || '').replace(/\|/g, '/')} |`;
+const removeSrcRow = (file) => { sources = sources.split('\n').filter((l) => !l.startsWith('| `' + file + '`')).join('\n'); };
 const removeProvRow = (file) => { const before = prov.length; prov = prov.split('\n').filter((l) => !l.startsWith('| `' + file + '`')).join('\n'); return prov.length !== before; };
 const esc = (s) => String(s || '').replace(/\|/g, '/');
 
@@ -106,6 +113,8 @@ for (const it of items) {
   } else if (it.kind === 'gallery') {
     const g = galOf(it.page); const e = galleries.empty_folders.find((x) => x.page === it.page);
     if (!g && !e) problems.push(`${it.page}: no gallery and no empty folder of that page in content/galleries.json`);
+    if (it.replaces) { const old = g && g.photos.find((ph) => ph.full === it.replaces); if (!old) problems.push(`${it.page} ${it.id}: replaces ${it.replaces}, which is not a picture of that gallery`); else if (old.origin !== 'stock') problems.push(`${it.page} ${it.id}: replaces ${it.replaces}, which is the owner's photograph; only a stock picture can be replaced`); }
+    if (it.local_file && (!it.crop || !fs.existsSync(it.local_file))) problems.push(`${it.page} ${it.id}: local_file needs an existing file and a crop note`);
     if (!it.alt || !it.alt.ro || !it.alt.ru) problems.push(`${it.page} ${it.id}: alt text missing in a locale`);
     if (!it.download_url || !lic.hosts.includes(hostOf(it.download_url))) problems.push(`${it.page} ${it.id}: download host ${hostOf(it.download_url)} is not the site's file host`);
     if (!lic.pages.includes(hostOf(it.page_url))) problems.push(`${it.page} ${it.id}: page host ${hostOf(it.page_url)} is not the site`);
@@ -124,6 +133,7 @@ if (!APPLY) process.exit(0);
   const toEncode = []; const staged = new Map();
   for (const it of [...origins, ...gal]) {
     const key = `${it.site}-${it.id}`; let f = path.join(STAGE, key + '.bin');
+    if (it.local_file) { const b = fs.readFileSync(it.local_file); if (!kindOf(b)) die(`${key}: local_file is not JPEG, PNG or WebP`); staged.set(key, it.local_file); continue; }
     if (!fs.existsSync(f) || fs.statSync(f).size === 0) { let b; try { b = await fetchBytes(it.download_url); } catch (e) { die(`${key}: fetch failed: ${e.message}`); } if (!kindOf(b)) die(`${key}: bytes are not JPEG, PNG or WebP`); if (b.length > 25 * 1024 * 1024) die(`${key}: over 25MB`); fs.writeFileSync(f, b); }
     staged.set(key, f);
   }
@@ -133,7 +143,7 @@ if (!APPLY) process.exit(0);
   const nextIndex = {};
   for (const g of galleries.galleries) nextIndex[g.render_on] = g.photos.length;
   for (const e of galleries.empty_folders) nextIndex[e.page] = 0;
-  for (const it of gal) { const g0 = galOf(it.page); it._on = g0 ? g0.render_on : it.page; nextIndex[it._on] += 1; const n = String(nextIndex[it._on]).padStart(2, '0'); it._n = n; const full = `public/img/galerie/${it._on}/${n}.webp`, thumb = `public/img/galerie/${it._on}/${n}-t.webp`; enc.push({ it, inp: staged.get(`${it.site}-${it.id}`), out: full, maxw: 1600, q: 0.82, role: 'full' }); enc.push({ it, inp: staged.get(`${it.site}-${it.id}`), out: thumb, maxw: 600, q: 0.72, role: 'thumb' }); }
+  for (const it of gal) { const g0 = galOf(it.page); it._on = g0 ? g0.render_on : it.page; let n; if (it.replaces) n = path.basename(it.replaces, '.webp'); else { nextIndex[it._on] += 1; n = String(nextIndex[it._on]).padStart(2, '0'); } it._n = n; const full = `public/img/galerie/${it._on}/${n}.webp`, thumb = `public/img/galerie/${it._on}/${n}-t.webp`; enc.push({ it, inp: staged.get(`${it.site}-${it.id}`), out: full, maxw: 1600, q: 0.82, role: 'full' }); enc.push({ it, inp: staged.get(`${it.site}-${it.id}`), out: thumb, maxw: 600, q: 0.72, role: 'thumb' }); }
   for (const group of [[1200, 0.82], [1600, 0.82], [600, 0.72]]) {
     const batch = enc.filter((e) => e.maxw === group[0] && e.q === group[1]);
     if (!batch.length) continue;
@@ -166,10 +176,13 @@ if (!APPLY) process.exit(0);
     let g = galOf(it.page);
     if (!g) { const e = galleries.empty_folders.find((x) => x.page === it.page); g = { folder: e.folder, page: e.page, render_on: e.page, found: 0, installed: 0, preview: 1, photos: [], duplicates_skipped: [], refused: [] }; galleries.galleries.push(g); galleries.empty_folders = galleries.empty_folders.filter((x) => x.page !== it.page); }
     const full = `public/img/galerie/${it._on}/${it._n}.webp`, thumb = `public/img/galerie/${it._on}/${it._n}-t.webp`;
-    g.photos.push({ source: `${it.site}:${it.id}`, sha256: sha(path.join(ROOT, full)), full, thumb, source_size: (() => { const r = enc.find((e) => e.it === it && e.role === 'full').result; return `${r.sourceWidth}x${r.sourceHeight}`; })(), size: sizeOf(path.join(ROOT, full)), thumb_size: sizeOf(path.join(ROOT, thumb)), origin: 'stock', licence: it.licence, licence_url: it.licence_url, source_url: it.page_url, image_url: it.image_url, subject: it.subject, alt: { ro: it.alt.ro, ru: it.alt.ru } });
+    const subject = it.crop ? `${it.subject} (${it.crop})` : it.subject;
+    const entry = { source: `${it.site}:${it.id}`, sha256: sha(path.join(ROOT, full)), full, thumb, source_size: (() => { const r = enc.find((e) => e.it === it && e.role === 'full').result; return `${r.sourceWidth}x${r.sourceHeight}`; })(), size: sizeOf(path.join(ROOT, full)), thumb_size: sizeOf(path.join(ROOT, thumb)), origin: 'stock', licence: it.licence, licence_url: it.licence_url, source_url: it.page_url, image_url: it.image_url, subject, alt: { ro: it.alt.ro, ru: it.alt.ru } };
+    if (it.replaces) { const i = g.photos.findIndex((ph) => ph.full === it.replaces); removeSrcRow(g.photos[i].full); g.photos[i] = entry; } else g.photos.push(entry);
     g.installed = g.photos.length;
-    for (const f of [full, thumb]) { removeProvRow(f); prov = prov.trimEnd() + '\n' + provRow(f, it, f === thumb ? ' (the 600px thumbnail of the same picture)' : '') + '\n'; }
-    sources = sources.trimEnd() + '\n' + srcRow(full, `/servicii/${g.render_on}/`, it) + '\n';
+    const crop = it.crop ? `, ${it.crop}` : '';
+    for (const f of [full, thumb]) { removeProvRow(f); prov = prov.trimEnd() + '\n' + provRow(f, it, (f === thumb ? ' (the 600px thumbnail of the same picture)' : '') + crop) + '\n'; }
+    sources = sources.trimEnd() + '\n' + srcRow(full, `/servicii/${g.render_on}/`, { ...it, subject }) + '\n';
   }
   /* 5. write everything */
   fs.writeFileSync(ledgerPath, JSON.stringify(ledger, null, 2) + '\n');

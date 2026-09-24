@@ -14348,7 +14348,6 @@ the two service sets at zero tiles and give the fence models page a `product-fen
 four. Both service pages open with their hero; the six catalogue link cards stay on
 Acoperisuri. Six budgets move (R-Y): the two roofing and the two fence service pages shorten
 by about 800px, the two fence models pages grow by the same.
- main
 
 ## W28-26 · The owner's photographs for the membrane and the corner bead, 2026-09-24
 
@@ -14367,3 +14366,20 @@ Looked at before installing: no logo, text or mark on either.
 **Flagged.** The membrane file is 225x225, below the 450 floor (W25-R12) that every other
 catalogue picture meets; the encoder never upscales, so the card will paint it soft. Installed as
 the owner instructed; a larger file of the same picture is one more run.
+
+## W28-R3 · The third dispatch and the board sync, 2026-09-24
+
+Branch `w28/w28-r3-rulings-board-sync`, on `main` at `86e2ca3`. Documents only.
+
+**Done.** The dispatch's two answers are recorded as R-W28-10 (the 113 manufacturer packshots
+stay, Q-W28-05 answered) and R-W28-11 (the membrane's Google Images condition), because #184 had
+already used R-W28-09 for the owner's photograph message. R-W28-11 arrived after the owner's own
+photograph filled CAT-0221, so no Google find was used and no placeholder remains. The ratified
+deviations and the one not ratified are recorded in the register.
+
+**The board.** The committed JSON lagged because each pull request carried its own card's state
+at opening, so the last card of a run never recorded its merge, while the artifact was republished
+from a working copy. The JSON now names #184 as verified, the artifact is rendered only from the
+JSON on `main` after a merge, and a run ends with a documents-only board sync listed under
+`board_syncs`, never as a card. Two stray lines left by earlier union merges are removed (one here,
+one in the backlog, where W28-23 also carried two contradicting status lines).

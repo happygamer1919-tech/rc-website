@@ -5,7 +5,7 @@
   "main_at_open": "5751d2c2bd6e98634bf7c67cd9fe58aefda4a7ea",
   "renders_to": "https://claude.ai/artifact/JrELJq3JM8Ub8pmLkdvatk",
   "rulings_file": "docs/rulings/W28-R.md",
-  "_note": "W28-00. The wave 28 board, created by the dispatch of 2026-09-23 (no board JSON existed in this repo before this file; the per-card docs/board/<card>.md and the statuses in docs/BACKLOG.md continue as before). Every card carries the dispatch's text as `ask`, this terminal's reading as `reading`, and `acceptance` as commands run from the repo root against the built tree (node build.js first) or against the live site where the command says so; each acceptance line ends in the value that passes. Statuses: todo, in_progress, pr_open, merged, verified (section 12.0 exit 0 on the merge sha), blocked, skipped. Defaults: lane queue, priority normal, owner_terminal yellow (the session colour), depends_on the previous card because every branch is stacked on the previous card's branch. The board is republished as an artifact after every change; `renders_to` is its URL.",
+  "_note": "W28-00. The wave 28 board, created by the dispatch of 2026-09-23 (no board JSON existed in this repo before this file; the per-card docs/board/<card>.md and the statuses in docs/BACKLOG.md continue as before). Every card carries the dispatch's text as `ask`, this terminal's reading as `reading`, and `acceptance` as commands run from the repo root against the built tree (node build.js first) or against the live site where the command says so; each acceptance line ends in the value that passes. Statuses: todo, in_progress, pr_open, merged, verified (section 12.0 exit 0 on the merge sha), blocked, skipped. Defaults: lane queue, priority normal, owner_terminal yellow (the session colour), depends_on the previous card because every branch is stacked on the previous card's branch. The board is republished as an artifact after every change; `renders_to` is its URL. From the third dispatch (see R-W28-11 in the register): the artifact is rendered only from this file as it stands on main after a merge; a card's merged and verified state lands in the next pull request; a run closes with a documents-only board sync, which is not a card and is listed under board_syncs.",
   "defaults": {
     "lane": "queue",
     "status": "todo",
@@ -91,6 +91,24 @@
     {
       "id": "R-W28-09",
       "title": "Two stock pictures refused (membrane, corner bead); the owner's own photographs replace them (owner chat after #183)",
+      "date": "2026-09-24",
+      "ruled_by": "owner",
+      "applied_by": [
+        "W28-26"
+      ]
+    },
+    {
+      "id": "R-W28-10",
+      "title": "The 113 manufacturer packshots in the fatade group stay; only the fatade3d marks are excluded; a maker's own packshot is allowed per W27-R-13 (answers Q-W28-05; the dispatch called it R-W28-09, an id already taken)",
+      "date": "2026-09-24",
+      "ruled_by": "owner",
+      "applied_by": [
+        "W28-23"
+      ]
+    },
+    {
+      "id": "R-W28-11",
+      "title": "The membrane roll may use a Google Images Creative Commons find only with the licence confirmed, no mark and a SOURCES row, else the placeholder; overtaken by the owner's photograph (R-W28-09, #184), no find used (the dispatch called it R-W28-10)",
       "date": "2026-09-24",
       "ruled_by": "owner",
       "applied_by": [
@@ -534,13 +552,13 @@
     {
       "id": "W28-26",
       "title": "The owner's photographs for the membrane and the corner bead (R-W28-09)",
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "high",
       "owner_terminal": "yellow",
       "branch": "w28/w28-26-owner-photos-membrane-corner",
-      "pr": null,
-      "merge_sha": null,
+      "pr": 184,
+      "merge_sha": "86e2ca326ea8df5ffa8730bd4ea35a0ca2fcd479",
       "depends_on": [
         "W28-23"
       ],
@@ -550,7 +568,15 @@
         "node scripts/check-image-sources.js  -> exit 0, 2 owner photographs counted, 0 waiting",
         "node scripts/check-photo-slots-w24.js && node scripts/check-image-metadata.js  -> exit 0 (no metadata on the two client-supplied files)",
         "node scripts/run-gates.js --keep-going  -> every command exit 0"
-      ]
+      ],
+      "evidence": "quality green; merged 2026-09-24 18:10:11Z as 86e2ca3; section 12.0 EXIT=0 at 18:13:17Z; gate 32 counts 78 stock, 2 owner photographs, 0 waiting"
+    }
+  ],
+  "board_syncs": [
+    {
+      "branch": "w28/w28-r3-rulings-board-sync",
+      "date": "2026-09-24",
+      "records": "R-W28-10 and R-W28-11 (the third dispatch), W28-26 verified (#184), Q-W28-05 answered"
     }
   ]
 }

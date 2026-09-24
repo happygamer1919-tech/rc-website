@@ -3540,7 +3540,11 @@ Russian or a tighter pill, both of which cost the common widths a little for the
 **If 320 is to be supported**, W28-FIX-02 tightens the phone header under 340 (the button's padding or
 its label) and adds 320 to gate 14's matrix so it stays fixed; one small card.
 
-## Q-W28-05 · Do the 113 manufacturer packshots in the fatade group stay, or does "no mark of any kind, the maker's included" reach them too? · OPEN · opened 2026-09-24 (W28-R2, for W28-23)
+## Q-W28-05 · Do the 113 manufacturer packshots in the fatade group stay, or does "no mark of any kind, the maker's included" reach them too? · ANSWERED 2026-09-24, they stay (R-W28-10) · opened 2026-09-24 (W28-R2, for W28-23)
+
+**Answered 2026-09-24 by the third dispatch (R-W28-10, the dispatch's R-W28-09): the 113 stay; only
+the fatade3d marks are excluded; a maker's own packshot is allowed per W27-R-13. The shipped default
+stands and nothing changes on the site.**
 
 **Raised at the second wave 28 dispatch, 2026-09-24. Shipped default: they stay. W28-23 replaces
 the 110 pictures fetched from fatade3d.md with generic stock photographs; the 113 whose picture is
@@ -3562,6 +3566,11 @@ picture each (no stock site has them; a colour-mismatch is already Q-W28-03), an
 records take the generic type photographs W28-23 installs, by reuse. Say which.
 
 ## Q-W28-06 · No mark-free photograph of a roof diffusion membrane exists in the allowed stock set; CAT-0221 waits as a placeholder · ANSWERED 2026-09-24, the owner supplied the photograph (W28-26) · opened 2026-09-24 (W28-23)
+
+**Ruled after the answer, 2026-09-24 (R-W28-11, the dispatch's R-W28-10)**: a Google Images Creative
+Commons find may stand only with the licence confirmed on the landing page, no visible mark and a
+SOURCES row; otherwise the placeholder. The owner's photograph (W28-26, #184) had already filled the slot,
+so no find was used and no placeholder remains.
 
 **Raised W28-23, 2026-09-24. Shipped default: the membrane card shows the site's placeholder box until a
 photograph arrives; the category tile of Alte materiale stands on the reinforcing mesh picture instead.**

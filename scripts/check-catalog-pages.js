@@ -248,7 +248,9 @@ const ROOF_CATALOG_ROUTE = 'materiale-acoperis';
    counts must agree, exactly as on the roofing page. Nothing else changes: a fifth page still has
    no permitted place at all. */
 const CONSOLIDATED = new Set([
-  'servicii/acoperisuri/index.html', 'ru/servicii/acoperisuri/index.html',
+  /* AMENDED (W28-13): the roofing catalogue is on its catalogue page, so the service page is
+     an ordinary page again with no permitted place for a price. */
+  'catalog/materiale-acoperis/index.html', 'ru/catalog/materiale-acoperis/index.html',
   'servicii/tigla-metalica/index.html', 'ru/servicii/tigla-metalica/index.html',
 ]);
 const ROOTS = [
@@ -328,12 +330,16 @@ const PROSE_MIN = { lede: 60, p1: 250, p2: 250 };
 /* W27-FIX-15 self-test, two arms: the roofing catalogue shape is matched with both bentos and
    refused with the product bento alone, so the assertion has been watched both ways. */
 (() => {
-  const both = '<div class="hub__grid">x</div><div class="pb__grid">y</div>';
-  const one = '<div class="pb__grid">y</div>';
-  const re = /<div class="hub__grid"[^>]*>[\s\S]*?<div class="pb__grid"[^>]*>/;
-  if (!re.test(both)) fail('self-test: the roofing catalogue shape did not match a page with both bentos');
+  /* AMENDED (W28-13): three parts, hub, product bento, product grid, and a third arm: the
+     two bentos WITHOUT the grid (the W27-FIX-15 page) is refused too. */
+  const both = '<div class="hub__grid">x</div><div class="pb__grid">y</div><div class="prod-grid" id="produse-grid" data-prod-grid data-roof-grid>z</div>';
+  const one = '<div class="pb__grid">y</div><div class="prod-grid" data-roof-grid>z</div>';
+  const noGrid = '<div class="hub__grid">x</div><div class="pb__grid">y</div>';
+  const re = /<div class="hub__grid"[^>]*>[\s\S]*?<div class="pb__grid"[^>]*>[\s\S]*?<div class="prod-grid"[^>]*data-roof-grid[^>]*>/;
+  if (!re.test(both)) fail('self-test: the roofing catalogue shape did not match a page with both bentos and the grid');
   if (re.test(one)) fail('self-test: the roofing catalogue shape matched a page with the product bento alone');
-  selfTested += 2;
+  if (re.test(noGrid)) fail('self-test: the roofing catalogue shape matched the two bentos without the product grid');
+  selfTested += 3;
 })();
 const decode = (s) => s.replace(/<[^>]+>/g, '').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
 const proseHits = [];
@@ -353,7 +359,8 @@ const STRUCTURE = {
   /* W27-FIX-15 (W27-R-21): the roofing catalogue page carries the roofing hub bento AND the
      product bento, in that order, and no prose block (the stray-prose rule below holds it to
      that) and no product grid. */
-  roofcatalog: { re: /<div class="hub__grid"[^>]*>[\s\S]*?<div class="pb__grid"[^>]*>/, what: 'the roofing hub bento followed by the product bento' },
+  /* AMENDED (W28-13): and the product grid after them, the whole catalogue on its page. */
+  roofcatalog: { re: /<div class="hub__grid"[^>]*>[\s\S]*?<div class="pb__grid"[^>]*>[\s\S]*?<div class="prod-grid"[^>]*data-roof-grid[^>]*>/, what: 'the roofing hub bento, the product bento and then the roofing product grid' },
   index: { re: /<div class="cat-tiles"[^>]*>[\s\S]*?<a class="cat-tile"/, what: 'the category tiles' },
   /* W25-19. A redirect page carries all three mechanisms or it is not one: the
      meta refresh that moves a visitor with no JavaScript, the noindex that stops
@@ -361,8 +368,9 @@ const STRUCTURE = {
      the case where the refresh is blocked. All three aim at the SAME section, and
      `REDIRECT_TARGET` below asserts that they agree. */
   redirect: {
-    re: /<meta http-equiv="refresh" content="0; url=\/(?:ru\/)?servicii\/acoperisuri\/#mat-[a-z-]+">/,
-    what: 'a meta refresh to the consolidated roofing section',
+    /* AMENDED (W28-13): the section lives on the catalogue page, one directory up from the redirect. */
+    re: /<meta http-equiv="refresh" content="0; url=\/(?:ru\/)?catalog\/materiale-acoperis\/#mat-[a-z-]+">/,
+    what: 'a meta refresh to the roofing catalogue page',
   },
 };
 const REDIRECT_TARGET = /<meta http-equiv="refresh" content="0; url=([^"]+)">/;
@@ -545,9 +553,43 @@ const PRODUCT_PRICE = PRODUCT_PRICE_SHAPE;
 const PRICE_CLASS = /\bprod__price\b/g;
 let priceEls = 0, priceClassSeen = 0;
 const shapeProblems = [];
+/* W28-13 (wave 28). THE COMPARE TABLES ARE ON THE CATALOGUE PAGE NOW. The roofing section
+   carries four "Compară" tables (W26-R6, listed in content/roofing-sections.json `tables`) and,
+   above each, a derived "N modele, de la X lei" line (W27-C-03); every figure in them is a
+   figure a card on the same page already shows in its permitted `.prod__price`. While the
+   section sat on /servicii/acoperisuri/ only the card shape was held (CONSOLIDATED); under
+   /catalog/ the whole page is scanned and the tables fire money-amount 35 times per locale on a
+   correct page. So the table blocks, `<div class="roof-cmp" data-roof-table ...>` through their
+   `</table>`, are blanked in the PRICE buffer only, on the roofing catalogue kind only, and their
+   COUNT is held to the data file: a fifth table, or a table on any other kind of page, still
+   fires. `pg.scan` keeps them, so a cart, a stock claim, a product record or a manufacturer
+   name inside a table still fires. A price in prose outside the tables still fires, and the
+   arm below watches it. Read as a permission of the same shape as `.prod__price`, open for
+   ratification (DECISIONS.md, W28-13). */
+const ROOF_TABLE = /<div class="roof-cmp" data-roof-table[^>]*>[\s\S]*?<\/table>/g;
+const ROOF_TABLES_EXPECTED = (() => {
+  const f = path.join(ROOT, 'content/roofing-sections.json');
+  if (!fs.existsSync(f)) fail('content/roofing-sections.json is missing, so the compare-table count cannot be held to the data');
+  const t = JSON.parse(fs.readFileSync(f, 'utf8')).tables;
+  if (!Array.isArray(t) || !t.length) fail('content/roofing-sections.json names no compare tables; a permission for zero tables is a licence');
+  return t.length;
+})();
+(() => {
+  const table = '<div class="roof-cmp" data-roof-table data-roof-groups="x"><p class="roof-cmp__from">7 modele, de la 179 lei/buc</p><table class="roof-cmp__t"><tr><td>De la 179 lei/buc</td></tr></table></div>';
+  const prose = '<p>reducere la 100 lei pentru toți</p>';
+  const blanked = (table + prose).replace(ROOF_TABLE, (m) => ' '.repeat(m.length));
+  if (/179/.test(blanked)) fail('self-test: the compare-table permission left a table figure in the price buffer');
+  if (!/100 lei/.test(blanked)) fail('self-test: the compare-table permission blanked a price in prose outside the tables');
+  selfTested += 2;
+})();
 for (const pg of pages) {
   pg.priceScan = pg.scan;
   let matched = 0;
+  if (pg.kind === 'roofcatalog') {
+    let tables = 0;
+    pg.priceScan = pg.priceScan.replace(ROOF_TABLE, (m) => { tables++; return ' '.repeat(m.length); });
+    if (tables !== ROOF_TABLES_EXPECTED) shapeProblems.push(`${pg.where}: ${tables} compare table(s) on the roofing catalogue page, content/roofing-sections.json names ${ROOF_TABLES_EXPECTED}`);
+  }
   for (const m of pg.scan.matchAll(PRODUCT_PRICE)) {
     priceEls++; matched++;
     pg.priceScan = pg.priceScan.slice(0, m.index) + ' '.repeat(m[0].length) + pg.priceScan.slice(m.index + m[0].length);

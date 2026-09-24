@@ -181,6 +181,12 @@ jobs:
       # request's own commit messages, title and body. The four R-S records keep only
       # the dash lines in scripts/fixtures/dash-baseline.json. The env values reach the
       # script as data, never as shell text. Static, after the build.
+      # W28-13. Gate 31. The roofing catalogue lives on /catalog/materiale-acoperis/ and the
+      # fence models on /servicii/modele-garduri/; the counts the owner's card names (99 cards,
+      # 9 tiles, 7 filters, 8 fence cards) are read from the built pages and held to the data
+      # files, both locales, and no service page carries a product card or a price.
+      - name: The catalogue counts are the recorded ones and no service page carries a price (W28-13)
+        run: node scripts/check-catalog-counts.js
       - name: No em dash or en dash in any file, the built site or this pull request (W26-13)
         env:
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}

@@ -174,7 +174,8 @@ refused once: the `form-bg` slot was struck for needing exactly that.
 `.bento__*` belongs to the garduri chooser, which has carried it since wave 16.
 `.hub__*` belongs to the bento hub. `.prod__*` belongs to the catalogue card,
 `.cat-*` to the catalogue category page, `.nvk-*` to the Novatik grid,
-`.xsell-*` to the cross-sell row.
+`.xsell-*` to the cross-sell row, **`.pf-cta*` to the portfolio's quote button (W28-12) and
+`.lk-*` to the catalogue link cards on a service page (W28-13)**.
 
 **Before writing a new block's first rule, grep `src/styles.css` for its prefix.**
 If anything comes back, the prefix is taken and the new block gets a different
@@ -324,10 +325,16 @@ carries exactly one of the two, never both and never neither.
 arms, each firing on its own message between two controls watched clean in the same run.
 **No cart, no SKU, no `schema.org` `Offer`.**
 **AMENDED (W25-19, W27-FIX-08 under W27-R-14): "on a catalogue page" is a NAMED list in the
-script, not a path pattern.** The roofing catalogue renders on `/servicii/acoperisuri/` (W25-19) and
+script, not a path pattern.** The roofing catalogue renders on ~~`/servicii/acoperisuri/` (W25-19)~~
+**`/catalog/materiale-acoperis/` (AMENDED W28-13, wave 28: the service page carries no product
+card and no price any more, and the named list names the catalogue page instead)** and
 the seven Imperlux tile cards on `/servicii/tigla-metalica/` (W27-R-14), both locales, so a
 catalogue card's price lives on those four pages as well; each is held to the same shape and the
 same counts, and a page not named there still has no permitted place for the element.
+**AMENDED (W28-13): on the roofing catalogue page the four "Compară" tables (W26-R6) and their
+derived "de la" lines are permitted by SHAPE in the price scan, `<div class="roof-cmp"
+data-roof-table>` through its `</table>`, held to the count `content/roofing-sections.json`
+names; a price in prose outside them still fires, and the arm watches both.**
 *Source: DECISIONS.md, W24-R ruling R3, and W24-04.*
 
 **AMENDED (W24-R7, wave 24): the two phrases are permitted by their SHAPE, not by the
@@ -944,6 +951,18 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     message. It fails on zero text files, zero built files, a missing record or baseline, and in
     a pull request on fewer commits read than GitHub counts.
 
+31. `node scripts/check-catalog-counts.js` clean. **Since W28-13 (wave 28)**, run by `quality`
+    after gate 29. **The roofing catalogue lives on `/catalog/materiale-acoperis/` and the fence
+    models on `/servicii/modele-garduri/`, and the numbers the owner's card names are read off
+    the built pages, both locales, and held to the data**: the roofing cards against the page's
+    own "Toate" count and the recorded 99, the tiles (hub plus product bento) against the
+    recorded 9, the filter buttons against `content/roofing-sections.json` groups plus Toate and
+    the recorded 7, the fence cards against `content/garduri-modele.json` and the recorded 8;
+    and the two service pages carry no product card and no price element. The recorded numbers
+    are named in the script so a data change that moves one is reported by name rather than
+    absorbed. `--llms` (W28-19) additionally requires every top-level catalogue URL in
+    `dist/llms.txt`. It fails on zero pages, a missing data file or a page it cannot find.
+
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number (Q-W14-03 was found "at gate 9") and those bodies are immutable under
 R-S, so renumbering would falsify them. A gate added later takes the next number
@@ -988,13 +1007,16 @@ gates, because gate 13 rebuilds `dist/` armed.
 runs after gate 1 and needs no browser.
 **AMENDED (W26-13):** gate 30 runs after gate 29. It reads the built site as well as the tree, so
 it runs after gate 1, and needs no browser.
+**AMENDED (W28-13):** gate 31 runs after gate 29 and before gate 30. It reads the built pages and
+two data files, so it runs after gate 1, and needs no browser.
 
 **The count, so it stops drifting (W25-03c).** ~~This list numbers **25** gates.~~
 ~~**AMENDED (W25-24): 26**, and `quality` runs **25** commands.~~
 ~~**AMENDED (W26-04): 27**, and `quality` runs **26** commands.~~
 ~~**AMENDED (W26-05a): 28**, and `quality` runs **27** commands.~~
 ~~**AMENDED (W26-12): 29**, and `quality` runs **28** commands.~~
-**AMENDED (W26-13): 30**, and `quality` runs **29** commands. The number to report is the one
+~~**AMENDED (W26-13): 30**, and `quality` runs **29** commands.~~
+**AMENDED (W28-13): 31**, and `quality` runs **30** commands. The number to report is the one
 `node scripts/run-gates.js` prints, never this sentence. Five of them
 are not scripts and `quality` cannot run them: gate 4 (heights measured settled), gate 6 (no
 new colour), gate 7 (reduced motion), gate 8 (the three documents updated) and **gate 9,

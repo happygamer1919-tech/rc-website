@@ -375,7 +375,7 @@
   "roofProducts": {
     "eyebrow": "Materiale pentru acoperiș",
     "h2": "Produse pentru acoperiș",
-    "lede": "Toate materialele de acoperiș pe care le montăm, într-un singur loc. Alege grupul care te interesează și cere prețul pentru produsul potrivit.",
+    "lede": "Toate materialele de acoperiș pe care le montăm, într-un singur loc. Alege grupul care te interesează și cere ofertă pentru produsul potrivit.",
     "filterAria": "Filtrează produsele după grup",
     "all": "Toate",
     "showing": "{n} produse afișate",
@@ -394,7 +394,7 @@
   },
   "moved": {
     "h1": "Pagina s-a mutat",
-    "lede": "Materialele pentru acoperiș sunt acum pe pagina de acoperișuri, într-o singură listă cu filtru.",
+    "lede": "Materialele pentru acoperiș sunt acum în catalog, pe pagina Acoperișuri, într-o singură listă cu filtru.",
     "cta": "Deschide lista de produse",
     "note": "Te redirecționăm automat. Dacă nu se întâmplă, apasă butonul."
   },

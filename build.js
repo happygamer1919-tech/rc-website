@@ -167,9 +167,8 @@ const SVC_RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu',
   // W24-07. The bento hub, the first section after the header on its page.
   'svc.bento',
   // W26-04. The second, product bento, on the acoperisuri page only.
-  'svc.productBento',
+  'svc.catalogLinks',
   // W25-19. The consolidated roofing catalogue, on the acoperisuri page only.
-  'svc.roofProducts',
   // W12-06. The bar is site-wide, so the service template needs it raw too.
   'promoBar',
   // W12-09. Generated JSON-LD fragment, must not be escaped.
@@ -2293,7 +2292,7 @@ ${steps}
     </ol>
   </div>
 </section>
-<section class="section section--light section--divided section--compact" id="intrebari" aria-labelledby="garduri-faq-h">
+${catalogLinkCards(l, categoryLabel(l, PARENT_CATEGORIES.find((x) => x.external && x.service === 'garduri')), [{ label: l.strings['bento.fenceModele'], href: `${BASE}${SERVICES_ROOT[l.code]}${(PRODUCT_PAGES.find((pp) => pp.slug === 'modele-garduri') || die('the fence models page is gone')).slug}/` }])}<section class="section section--light section--divided section--compact" id="intrebari" aria-labelledby="garduri-faq-h">
   <div class="container">
     <h2 id="garduri-faq-h" data-reveal>${esc(l.strings['servicePage.faqH'])}</h2>
     <div class="faq" data-reveal>
@@ -2657,7 +2656,14 @@ const CATALOG_PRODUCTS = Object.fromEntries(
    THE PREFIX IS `.roof-*` and rule 3.1 was checked before the first rule was
    written: `grep '\.roof' src/styles.css` returned nothing. */
 const ROOF_CATEGORY = 'materiale-acoperis';
-const ROOF_SECTION_PATH = (l) => `${SERVICES_ROOT[l.code]}acoperisuri/`;
+/* ~~const ROOF_SECTION_PATH = (l) => `${SERVICES_ROOT[l.code]}acoperisuri/`;~~ AMENDED (W28-13, wave
+   28, "services versus catalog"): THE ROOFING CATALOGUE LIVES ON THE CATALOGUE PAGE AGAIN,
+   /catalog/materiale-acoperis/ in each locale. This one constant names where the section renders,
+   and every reader of it moves with it: the seven child redirects, the catalogue arrow links on
+   the tile page and under the roofing offers, and the product bento's anchors. The service page
+   keeps its hub, hero, "ce include", the four roofing works, its projects, FAQ and form, and
+   gains one link card per catalogue group (catalogLinkCards below). */
+const ROOF_SECTION_PATH = (l) => `${CATALOG_ROOT[l.code]}${ROOF_CATEGORY}/`;
 
 /* The groups, and the ids the redirect pages and the menu aim at. `mat-<slug>` is
    on the filter BUTTON, so a hash lands on the control it names and main.js has
@@ -2836,6 +2842,32 @@ function imperluxCardRecord(l, p, i) {
     specs: p.specs || {},
     _imperlux: true,
   };
+}
+
+/* W28-13 (wave 28). One link card per catalogue group, on a service page: the service page
+   explains the work and sends a visitor to the catalogue for the products. Text only (no
+   picture, so no ledger row, no provenance, no gate 19 or 25); the labels are the groups' own
+   labels from content/roofing-sections.json or an existing string, never new copy (section 5).
+   Its own prefix, .lk-*, grepped free in src/styles.css before the first rule was written
+   (section 3.1). `scripts/verify-live.js` counts .lk-card as linkCards. */
+function catalogLinkCards(l, h2, items) {
+  if (!REAL(h2)) die('catalogLinkCards: the heading must be an existing real string.');
+  if (!Array.isArray(items) || !items.length) die('catalogLinkCards: no items, a section of zero link cards would render a heading over nothing.');
+  const arrow = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+  const cards = items.map((x, i) => {
+    if (!REAL(x.label) || !x.href) die(`catalogLinkCards: item ${i} needs a real label and an href.`);
+    return `      <a class="lk-card" href="${x.href}" data-reveal data-stagger="${Math.min(i, 6)}"><span class="lk-card__label">${esc(x.label)}</span>${arrow}</a>`;
+  }).join('\n');
+  return `<section class="section section--light section--divided" id="catalog-grupe" aria-labelledby="catalog-grupe-h">
+  <div class="container">
+    <p class="eyebrow" data-reveal>${esc(l.strings['header.catalog'])}</p>
+    <h2 id="catalog-grupe-h" data-reveal>${esc(h2)}</h2>
+    <div class="lk-grid">
+${cards}
+    </div>
+  </div>
+</section>
+`;
 }
 
 function roofSection(l) {
@@ -4097,9 +4129,13 @@ for (const l of loaded) {
     /* W26-04, W26-R5. The product bento sits directly above the section its tiles
        filter, because a tile that presses a control the visitor cannot see when
        they land is a tile that appears to do nothing. */
-    svcVars['svc.productBento'] = PRODUCT_BENTOS[slug] ? bentoSection(l, PRODUCT_BENTOS[slug]) : '';
-    /* W25-19. The same one-page rule the roofing offers already follow. */
-    svcVars['svc.roofProducts'] = slug === ROOF_OFFERS_SLUG ? roofSection(l) : '';
+    /* ~~svcVars['svc.productBento'] = PRODUCT_BENTOS[slug] ? bentoSection(l, PRODUCT_BENTOS[slug]) : '';~~
+       ~~svcVars['svc.roofProducts'] = slug === ROOF_OFFERS_SLUG ? roofSection(l) : '';~~
+       AMENDED (W28-13): the product bento and the roofing catalogue render on the catalogue page
+       (cat.block below) and nowhere else; the service page carries one link card per group. */
+    svcVars['svc.catalogLinks'] = slug === ROOF_OFFERS_SLUG
+      ? catalogLinkCards(l, categoryLabel(l, PARENT_CATEGORIES.find((x) => x.slug === ROOF_CATEGORY)), roofGroups.map((g) => ({ label: g.label[l.code], href: `${BASE}${ROOF_SECTION_PATH(l)}#${roofAnchor(g.child)}` })))
+      : '';
     svcVars['svc.gallerySection'] = renderGallerySection(l, slug, vars);
     svcVars['svc.footerLinks'] = SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
       `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join('');
@@ -4229,7 +4265,9 @@ for (const l of loaded) {
     /* W27-FIX-15 (owner instruction W27-R-21, from Mihai): the roofing catalogue page carries
        "all the tiles rendered we have in the service page ... without any info and project
        pictures": the hub bento and the product bento, the same components the service page
-       renders, each tile opening what it opens there; no authored prose, no product grid. */
+       renders, each tile opening what it opens there; no authored prose, ~~no product grid~~.
+       AMENDED (W28-13): AND the product grid, the filter bar, the counts and the compare tables,
+       the whole roofing catalogue, which the service page no longer renders. */
     const roofCatalog = c.slug === ROOF_CATEGORY;
     const crumb = (href, text) => `      <a href="${href}">${esc(text)}</a>\n      <span aria-hidden="true">/</span>`;
     const catVars = {
@@ -4255,7 +4293,10 @@ for (const l of loaded) {
       /* The product bento's tiles open SECTIONS of the roofing page; rendered here, off that page,
          each anchor is prefixed with the roofing page's path (W26-R12 allows a fragment on a
          different page), so a tile lands on the same filter it opens from the service page. */
-      'cat.block': roofCatalog ? bentoSection(l, BENTOS.acoperisuri) + bentoSection(l, { ...PRODUCT_BENTOS.acoperisuri, anchorBase: BASE + ROOF_SECTION_PATH(l) }) : (c.parent == null ? categoryBlock(l, c) : ''),
+      /* AMENDED (W28-13): the whole roofing catalogue renders HERE, hub, product bento (its tiles
+         now open sections of this same page, W26-R5's shape) and the section with the filter
+         bar, the counts, the compare tables and every card. The service page holds none of it. */
+      'cat.block': roofCatalog ? bentoSection(l, BENTOS.acoperisuri) + bentoSection(l, PRODUCT_BENTOS.acoperisuri) + roofSection(l) : (c.parent == null ? categoryBlock(l, c) : ''),
       'cat.products': roofCatalog ? '' : catalogProducts(l, c.slug),
       'cat.footerLinks': SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
         `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join(''),

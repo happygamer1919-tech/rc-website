@@ -1290,13 +1290,18 @@ R-X amended and the gate holds seven discount arms; `scripts/dom-text.js` is the
 instrument the acceptance greps read. All 55 budgets move (R-Y).
 
 ## W28-12 · Home CTA after the portfolio
-**Status: PR OPEN** (opened 2026-09-23). A full-width "Solicită ofertă" / "Запросить предложение"
+**Status: MERGED #170, section 12.0 exit 0** (opened 2026-09-23, merged 2026-09-24 00:05 UTC as `1bf9166`). A full-width "Solicită ofertă" / "Запросить предложение"
 button in the header CTA's style at the foot of the portfolio section, both locales; three
 section-level CTAs to the form (header, after portfolio, footer). Two budgets move (R-Y).
 
 ## W28-13 · Services versus catalog split
-**Status: todo.** Pre-change counts recorded on the board: 99 roofing cards, 9 tiles, 7 chips
-on `/servicii/acoperisuri/`; 8 fence model cards on `/servicii/modele-garduri/`.
+**Status: PR OPEN** (opened 2026-09-23). Pre-change counts recorded on the board: 99 roofing cards, 9 tiles, 7 chips
+on `/servicii/acoperisuri/`; 8 fence model cards on `/servicii/modele-garduri/`. The whole roofing
+catalogue (product bento, filter bar with counts, compare tables, 99 cards) renders on
+`/catalog/materiale-acoperis/` in both locales; the service page keeps its hub, hero, "ce include",
+the four roofing works, projects, FAQ and form and gains six link cards into the catalogue's groups;
+the fence page gains one to the fence models. Gate 31, `scripts/check-catalog-counts.js`, holds
+the counts. Budgets move (R-Y).
 
 ## W28-14 · Copertine: Imperlux photographs and prices, a Catalog group
 **Status: todo.**

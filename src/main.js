@@ -679,7 +679,7 @@
      which is the honest state: "Toate" is what the page is without the script.
 
      THE HASH SELECTS A FILTER. `mat-<slug>` is the id of the button itself, so
-     /servicii/acoperisuri/#mat-profnastil lands on the control and opens it. That
+     /catalog/materiale-acoperis/#mat-profnastil (W28-13; was /servicii/acoperisuri/) lands on the control and opens it. That
      is what the eight redirect pages at /catalog/materiale-acoperis/* aim at, and
      it is why the id is on the button rather than on a wrapper: the browser does
      the scrolling and this does the selecting, and neither has to know about the

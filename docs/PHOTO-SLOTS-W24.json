@@ -321,7 +321,7 @@
     },
     {
       "id": "ACOP-05",
-      "page": "/servicii/acoperisuri/",
+      "page": "/catalog/materiale-acoperis/",
       "ratio": "5 / 6",
       "min_px": "1000x1200",
       "shows": "Tigla ceramica: tila din al doilea bento al paginii de acoperisuri, format PORTRET (tila inalta a bento-ului). W26-04: NU este acoperita de suprascrierea W26-R3, care este tinuta la ACOP-01..04. AMENDED W26-11 (W26-R10): a declared reuse of ACIM-01, the one product this section holds, in W25-R22's shape for a category tile. AMENDED W27-C-06: no longer a reuse; the W26-11 crop of imperlux's category image is this tile's own file, because ACIM-01 now carries the product preview with its printed name, which a portrait tile would cut through.",
@@ -334,7 +334,7 @@
     },
     {
       "id": "ACOP-06",
-      "page": "/servicii/acoperisuri/",
+      "page": "/catalog/materiale-acoperis/",
       "ratio": "7 / 2",
       "min_px": "1750x500",
       "shows": "Sindrila bituminoasa: tila din al doilea bento al paginii de acoperisuri, cadru LAT si jos (tila panoramica). W26-04: NU este acoperita de suprascrierea W26-R3, care este tinuta la ACOP-01..04. AMENDED W26-11 (W26-R10): filled from imperlux.md under the widened override, a full-width 7:2 band of the shingle texture below the burned-in headline and model count.",
@@ -347,7 +347,7 @@
     },
     {
       "id": "ACOP-07",
-      "page": "/servicii/acoperisuri/",
+      "page": "/catalog/materiale-acoperis/",
       "ratio": "7 / 4",
       "min_px": "900x520",
       "shows": "Sisteme pluviale: tila din al doilea bento al paginii de acoperisuri, orizontal. W26-04: NU este acoperita de suprascrierea W26-R3, care este tinuta la ACOP-01..04. AMENDED W26-11 (W26-R10): filled from imperlux.md under the widened override, the band below the burned-in headline and model count, the downpipe and its outlet.",
@@ -360,7 +360,7 @@
     },
     {
       "id": "ACOP-08",
-      "page": "/servicii/acoperisuri/",
+      "page": "/catalog/materiale-acoperis/",
       "ratio": "7 / 4",
       "min_px": "900x520",
       "shows": "Accesorii de acoperis: tila din al doilea bento al paginii de acoperisuri, orizontal. W26-04: NU este acoperita de suprascrierea W26-R3, care este tinuta la ACOP-01..04. AMENDED W26-11 (W26-R11): filled with the owner's own photograph from RC-webpics_v2/ACOPERIȘURI, a gutter, its bend and a downpipe under a timber soffit, which is what the accessories tile names. The folder's files are all named \"WhatsApp Image\", so it was chosen by what it shows; cropped to 7:4 at its own width, no upscale.",
@@ -373,7 +373,7 @@
     },
     {
       "id": "ACOP-09",
-      "page": "/servicii/acoperisuri/",
+      "page": "/catalog/materiale-acoperis/",
       "ratio": "5 / 1",
       "min_px": "1500x300",
       "shows": "Tabla cutata: a cincea tila a bento-ului de produse, un rand intreg pe toate cele trei coloane, format BANDA. W27-C-02 (W27-R-06): a declared reuse of CAT-0228, foaia T-12, singura tabla cutata cu fotografie de produs; tila o decupeaza singura la formatul benzii, fisierul nu este atins.",

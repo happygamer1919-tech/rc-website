@@ -113,13 +113,13 @@
     {
       "id": "W28-12",
       "title": "Home CTA after the portfolio, both locales",
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "normal",
       "owner_terminal": "yellow",
       "branch": "w28/w28-12-home-cta",
-      "pr": null,
-      "merge_sha": null,
+      "pr": 170,
+      "merge_sha": "1bf91662134bea319f285c1a100eac46d88de8fd",
       "depends_on": [
         "W28-11"
       ],
@@ -128,13 +128,14 @@
       "acceptance": [
         "node build.js && node scripts/dom-text.js --count \"a.btn--primary[href$=\\\"#oferta\\\"]:not(.hero-claim__cta):not(.mobile-panel a)\" / /ru/  -> 3 and 3",
         "node scripts/dom-text.js --count \"#portofoliu .pf-cta a.btn--primary[href$=\\\"#oferta\\\"]\" / /ru/  -> 1 and 1"
-      ]
+      ],
+      "evidence": "quality green 7m6s; merged 2026-09-24 00:05:34Z as 1bf9166; section 12.0 EXIT=0"
     },
     {
       "id": "W28-13",
       "title": "Services versus catalog: the roofing catalogue leaves the Acoperisuri service page for the Catalog",
-      "lane": "queue",
-      "status": "todo",
+      "lane": "in_flight",
+      "status": "pr_open",
       "priority": "high",
       "owner_terminal": "yellow",
       "branch": "w28/w28-13-services-catalog-split",
@@ -144,10 +145,10 @@
         "W28-12"
       ],
       "ask": "Acoperisuri and Garduri pages (RO and RU) keep hero, service explanation, portfolio gallery, CTA. Remove product grids, filter chips, counts and every price from service pages. Add one link card per catalog group into the matching Catalog section. Product detail URLs unchanged. Catalog keeps all 9 hub tiles including tabla cutata and all 99 roofing cards plus garduri cards unchanged. Acceptance: DOM of /acoperisuri and /garduri (RO and RU) grep \"lei\" returns 0; catalog roofing card count equals 99 and garduri count equals pre-change count recorded in the card; named test catalog-counts passes.",
-      "reading": "Measured before the card: /servicii/acoperisuri/ renders the roofing catalogue (99 .prod cards, 4 hub tiles + 5 product-bento tiles = 9, 7 chips with counts, 113 'lei'); /servicii/garduri/ has 0 'lei' already; the fence models with prices are 8 .nvk cards on /servicii/modele-garduri/, which is a product page, not the Garduri service page, and stays where it is (its URL is the Catalog's Garduri tile). The roofing catalogue moves whole to /catalog/materiale-acoperis/ (the category page W25-19 redirected away), both locales, with its tiles, chips and counts; the service page keeps hero, the two explanation sections, the projects, the FAQ and the CTA, and gains one link card per catalog group (six) into the matching #mat-* section. The seven child redirects and every product page URL are unchanged. Pre-change garduri count: 8.",
+      "reading": "Measured before the card: /servicii/acoperisuri/ renders the roofing catalogue (99 .prod cards, 4 hub tiles + 5 product-bento tiles = 9, 7 chips with counts, 113 'lei'); /servicii/garduri/ has 0 'lei' already; the fence models with prices are 8 .nvk cards on /servicii/modele-garduri/, which is a product page, not the Garduri service page, and stays where it is (its URL is the Catalog's Garduri tile). The roofing catalogue moves whole to /catalog/materiale-acoperis/ (the category page W25-19 redirected away), both locales, with its tiles, chips and counts; the service page keeps hero, the two explanation sections, the projects, the FAQ and the CTA, and gains one link card per catalog group (six) into the matching #mat-* section. The seven child redirects and every product page URL are unchanged. Pre-change garduri count: 8. Done as read: the roofing hub stays on the service page as navigation (it carries no price); the six link cards are text only under a new .lk-* prefix; the compare tables travel with the catalogue and are permitted there by shape in the price scan (their figures are the cards' own), a reading open for ratification; the roofing section lede on the catalogue page says 'cere oferta' / 'zaprosite predlozhenie' instead of asking for a price.",
       "acceptance": [
         "node build.js && node scripts/dom-text.js /servicii/acoperisuri/ /ru/servicii/acoperisuri/ /servicii/garduri/ /ru/servicii/garduri/ | grep -c ' lei'  -> 0",
-        "node scripts/check-catalog-counts.js  -> exit 0 (roofing cards 99 on the catalogue page both locales, 9 tiles, garduri cards 8, printed)",
+        "node scripts/check-catalog-counts.js  -> exit 0 (99 cards on the catalogue page both locales, 9 tiles, 7 filters, 8 fence cards, 0 cards and 0 price elements on the four service pages, printed); registered as gate 31 in quality.yml",
         "node scripts/check-links.js && node scripts/check-hub-tile-links.js  -> exit 0"
       ]
     },

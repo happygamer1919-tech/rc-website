@@ -13946,3 +13946,60 @@ locale, and the portfolio's own reads 1. Removing the hero button or the mobile 
 the raw count three would be a product decision the dispatch did not make, and is not taken.
 
 **Heights.** Home pages 80px taller in both locales; two budgets move (R-Y).
+
+## W28-13 · Services versus catalog: the roofing catalogue lives on its catalogue page, 2026-09-23
+
+Branch `w28/w28-13-services-catalog-split`, stacked on W28-12. Under the wave 28 dispatch.
+
+**Measured first, before any edit** (recorded on the board): `/servicii/acoperisuri/` rendered 99
+product cards, 9 tiles (4 hub, 5 product bento), 7 filter buttons, 4 compare tables and 113 "lei";
+`/servicii/garduri/` rendered 0 "lei"; the fence models with prices are the 8 cards on
+`/servicii/modele-garduri/`, a product page.
+
+**One constant moved and everything that reads it moved with it.** `ROOF_SECTION_PATH` in
+`build.js` names where the roofing section renders; it now names `/catalog/materiale-acoperis/`
+in each locale, so the seven child redirects, their canonicals, the catalogue arrow links on the
+tile page and under the roofing works, and the product bento's anchors all point at the
+catalogue page without a second edit. The catalogue page renders the hub, the product bento
+(its tiles now same-page anchors, W26-R5's shape) and the whole section: filter bar, counts,
+compare tables, 99 cards. The service page keeps its hub (navigation to the tile page, the
+Novatik page, the calculator and the form; no price), its hero, "ce include", the four roofing
+works, its projects, FAQ and form, and gains **six text link cards**, one per catalogue group,
+each opening its `#mat-*` section on the catalogue page; the fence service page gains one card to
+the fence models. The cards are a new block, `.lk-*` (prefix grepped free), text only, labelled by
+the groups' own labels from `content/roofing-sections.json` and the category labels from
+`content/catalog.json`: no new copy. `/servicii/modele-garduri/` and every product page URL are
+unchanged; the seven redirects still answer.
+
+**Six gates named the service page as the catalogue's home and were repointed in the same
+commit**: `scripts/check-catalog-pages.js` (the CONSOLIDATED list, the redirect rule's target, the
+roofing-catalogue shape now requires the product grid after the bentos, three arms),
+`scripts/verify-live.js` (service-roof markers to 0 cards, 0 filters, 0 product tiles, 0 tables and
+6 link cards; roofcatalog markers to 99, 7, 5, 4; the fence hub to 1 link card; the redirects'
+destination; a `linkCards` probe), `scripts/check-hub-tile-links.js` (the catalogue page's hub is
+listed too, six hubs), `scripts/gen-owner-intake-w25.js` (the nine roofing tiles are read from
+the catalogue page), the five product-bento rows of `docs/PHOTO-SLOTS-W24.json` (their `page`,
+and `docs/PHOTO-REVIEW-W25.md` regenerated), and `docs/CLAUDE.md` section 5's named list.
+
+**One reading, open for ratification.** Under `/catalog/` the RC-129 gate scans the whole page
+for price words and figures and blanks only the `.prod__price` elements, so the four compare
+tables (W26-R6) and their "N modele, de la X lei" lines (W27-C-03) fired 149 times on a correct
+page: every figure in them is one a card on the same page already shows in its permitted shape.
+The gate now blanks the table blocks (`<div class="roof-cmp" data-roof-table>` through
+`</table>`) in its PRICE buffer only, on the roofing-catalogue kind only, and holds their count to
+`content/roofing-sections.json`; `pg.scan` keeps them, so a cart, a stock claim, a product record
+or a manufacturer name inside a table still fires, and a price in prose outside them still fires,
+which two new arms watch. The alternative readings (leave the tables on the service page against
+"every price leaves the service page"; drop a ruled feature) were not taken. The roofing section's
+lede, now on a catalogue page, said "cere prețul" / "запросите цену"; it says "cere ofertă" /
+"запросите предложение", the site's own CTA words, because a price word in prose on a catalogue
+page is refused and the cards carry the prices.
+
+**Gate 31, `scripts/check-catalog-counts.js`**, the named test the card asked for: the recorded
+counts (99, 9, 7, 8) read off the built pages in both locales and held to the data files and to
+the pages' own Toate count, and no product card or price element on the four service pages.
+Registered in `quality.yml` and in `docs/CLAUDE.md`; `quality` runs 30 commands.
+
+**Heights.** The service page falls by 15,696 (RO) and 15,779 (RU); the catalogue page rises by
+15,163 and 15,246; the fence page grows by 390 and 389 with its card section. Six budgets move
+(R-Y).

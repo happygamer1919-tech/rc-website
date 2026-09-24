@@ -3501,3 +3501,22 @@ pictures). W27-R-13's "no third-party mark on a product card" was written for th
 overlaid on the image; a car in a carport photograph is the photograph's subject, so these ship as
 they are, recorded here. If a car badge counts for you, C-06, C-08 and C-12 have no badge-free
 picture at the source and would go back to their diagrams.
+
+## Q-W28-03 · Three plate pictures show a different colour than the product they stand for · OPEN · opened 2026-09-24 (W28-15)
+
+**Raised W28-15, 2026-09-24. Shipped default: the three pictures stay as they are (each is a plain
+photograph, which is all W28-15 replaces); their provenance rows now name the record's own product
+page. Nothing is blocked.**
+
+Two viewers, independently, found that three flexible-plate pictures show a different colour of the
+same plate family than the product they are filed under: **CAT-0051** "Placă Elsa Black Grey" shows
+the family's Agean White texture (the family page's own `Travertine-elsa-black-grey.jpg` exists,
+2362x1181); **CAT-0060** "Placă Sandstorm" shows the Ink Dyed texture (`Sandstorm-1.png` exists);
+**CAT-0077** "Placă H06" shows another colour of the Rough Surface family (its H06 image exists).
+A colour mismatch is not a poster, a table or an overlay, so the card left them. **Recommended
+default: swap the three for the family page's picture of the named colour**, one intake run each,
+under the same direct-supplier licence. Say the word and it is one small card.
+
+**Also noted by the second look:** fatade3d.md publishes one and the same render for RED 69 and
+RED 70 (CAT-0184 and CAT-0185), so those two cards show one picture, as the supplier's own pages do.
+If you would rather the second card declared the reuse (W25-R17) or showed nothing, say which.

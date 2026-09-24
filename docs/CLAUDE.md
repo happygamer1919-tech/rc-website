@@ -963,6 +963,15 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     absorbed. `--llms` (W28-19) additionally requires every top-level catalogue URL in
     `dist/llms.txt`. It fails on zero pages, a missing data file or a page it cannot find.
 
+32. `node scripts/check-image-sources.js` clean. **Since W28-15 (wave 28)**, run by `quality`
+    after gate 31. **Every catalogue picture on the fatade3d.md direct-supplier licence names a
+    fatade3d.md product page and a fatade3d.md image file, and the page is the record's own
+    source page**; every fatade3d.md record has a filled ledger slot with a provenance row; the
+    pictures that stand on a manufacturer's packshot, an owner-picked picture or a declared
+    reuse (W25-R1, W25-R20, W25-R17) are counted and printed, never refused, because three
+    rulings permit them. It fails on zero records, zero rows, zero direct-supplier rows or a
+    missing file.
+
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number (Q-W14-03 was found "at gate 9") and those bodies are immutable under
 R-S, so renumbering would falsify them. A gate added later takes the next number
@@ -1009,6 +1018,8 @@ runs after gate 1 and needs no browser.
 it runs after gate 1, and needs no browser.
 **AMENDED (W28-13):** gate 31 runs after gate 29 and before gate 30. It reads the built pages and
 two data files, so it runs after gate 1, and needs no browser.
+**AMENDED (W28-15):** gate 32 runs after gate 31. It reads three data files and the image files,
+no build and no browser.
 
 **The count, so it stops drifting (W25-03c).** ~~This list numbers **25** gates.~~
 ~~**AMENDED (W25-24): 26**, and `quality` runs **25** commands.~~
@@ -1016,7 +1027,8 @@ two data files, so it runs after gate 1, and needs no browser.
 ~~**AMENDED (W26-05a): 28**, and `quality` runs **27** commands.~~
 ~~**AMENDED (W26-12): 29**, and `quality` runs **28** commands.~~
 ~~**AMENDED (W26-13): 30**, and `quality` runs **29** commands.~~
-**AMENDED (W28-13): 31**, and `quality` runs **30** commands. The number to report is the one
+~~**AMENDED (W28-13): 31**, and `quality` runs **30** commands.~~
+**AMENDED (W28-15): 32**, and `quality` runs **31** commands. The number to report is the one
 `node scripts/run-gates.js` prints, never this sentence. Five of them
 are not scripts and `quality` cannot run them: gate 4 (heights measured settled), gate 6 (no
 new colour), gate 7 (reduced motion), gate 8 (the three documents updated) and **gate 9,

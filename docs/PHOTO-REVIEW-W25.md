@@ -19,14 +19,14 @@ them apart: nothing from the earlier dispatch is a labelled swatch or carries a 
 
 | Flag | Rows | What to look for |
 |---|---|---|
-| labelled swatch | 127 | the product name or code is printed into the photograph, and the card prints it again underneath |
+| labelled swatch | 63 | the product name or code is printed into the photograph, and the card prints it again underneath |
 | watermark | 61 | a supplier mark on the picture or on the product. It is there on purpose and must not be cropped |
 | reuse | 27 | one picture filling a second record of the same product (W25-R17). Check the two cards are the same product |
 | google_pick | 12 | found by search because the product's own source publishes nothing at the 450 floor (W25-R20). Check it is the right product, and correct it if not |
 | library | 3 | a licence-free stock photograph from Unsplash or Pexels (W25-R23, W26-R8), decoration only. Check it suits the page |
 | low_res | 4 | the longest side is under the site's 450 floor, installed under W26-R13's floor of 300 for the last empty products. Replace it when a larger picture exists |
 | low confidence match | 9 | the plate matched Phomi at a tier that is not an exact string match. Check the name in the picture against the name on the card |
-| no flag | 161 | an ordinary manufacturer packshot |
+| no flag | 225 | an ordinary manufacturer packshot |
 
 ## Table one: every image on the site in these 4 sections
 
@@ -160,70 +160,70 @@ them apart: nothing from the earlier dispatch is a labelled swatch or carries a 
 | `CAT-0124` | Chiseled Stone | /catalog/placi-ceramice/ | https://phomi.com/wp-content/uploads/2025/07/斧琢石-1-1.png | manufacturer official site | 459x398 | none |
 | `CAT-0125` | Bush Hammered | /catalog/placi-ceramice/ | https://phomi.com/wp-content/uploads/2025/07/荔枝面-1-1.png | manufacturer official site | 459x398 | none |
 | `CAT-0126` | Stone Ridged | /catalog/placi-ceramice/ | https://phomi.com/wp-content/uploads/2025/07/脊线石-1-1.png | manufacturer official site | 459x398 | none |
-| `CAT-0127` | Element decorativ RED 01 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_01.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0128` | Element decorativ RED 02 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_02.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0129` | Element decorativ RED 03 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_03.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0130` | Element decorativ RED 04 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_04.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0131` | Element decorativ RED 05 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_05.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0132` | Element decorativ RED 06 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_06.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0133` | Element decorativ RED 07 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_07.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0134` | Element decorativ RED 08 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_08.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0135` | Element decorativ RED 09 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_09.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0136` | Element decorativ RED 10 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_10.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0137` | Element decorativ RED 12 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_12.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0138` | Element decorativ RED 14 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_14.jpg | direct_supplier fatade3d.md | 600x337 | labelled swatch |
-| `CAT-0139` | Element decorativ RED 15 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_15.jpg | direct_supplier fatade3d.md | 600x337 | labelled swatch |
-| `CAT-0140` | Element decorativ RED 17 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_17.jpg | direct_supplier fatade3d.md | 600x337 | labelled swatch |
-| `CAT-0141` | Element decorativ RED 18 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_18.jpg | direct_supplier fatade3d.md | 600x337 | labelled swatch |
-| `CAT-0142` | Element decorativ RED 19 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_19.jpg | direct_supplier fatade3d.md | 600x337 | labelled swatch |
-| `CAT-0143` | Element decorativ RED 20 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_20.jpg | direct_supplier fatade3d.md | 600x337 | labelled swatch |
-| `CAT-0144` | Element decorativ RED 21 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_21.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0145` | Element decorativ RED 22 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_22.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0146` | Element decorativ RED 23 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_23.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0147` | Element decorativ RED 24 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_24.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0148` | Element decorativ RED 25 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_25.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0149` | Element decorativ RED 26 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_26.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0150` | Element decorativ RED 27 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_27.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0151` | Element decorativ RED 28 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_28.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0152` | Element decorativ RED 29 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_29.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0153` | Element decorativ RED 30 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_30.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0154` | Element decorativ RED 31 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_31.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0155` | Element decorativ RED 32 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_32.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0156` | Element decorativ RED 33 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_33.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0157` | Element decorativ RED 34 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_34.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0158` | Element decorativ RED 35 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_35.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0159` | Element decorativ RED 37 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_37.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0160` | Element decorativ RED 38 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_38.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0161` | Element decorativ RED 39 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_39.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0162` | Element decorativ RED 41 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_41.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0163` | Element decorativ RED 42 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_42.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0164` | Element decorativ RED 43 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_43.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0165` | Element decorativ RED 44 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_44.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0166` | Element decorativ RED 45 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_45.jpg | direct_supplier fatade3d.md | 600x462 | labelled swatch |
-| `CAT-0167` | Element decorativ RED 46 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_46.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0168` | Element decorativ RED 47 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_47.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0169` | Element decorativ RED 49 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_49.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0170` | Element decorativ RED 50 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_50.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0171` | Element decorativ RED 53 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_53.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0172` | Element decorativ RED 55 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_55.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0173` | Element decorativ RED 56 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_56.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0174` | Element decorativ RED 57 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_57.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0175` | Element decorativ RED 58 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_58.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0176` | Element decorativ RED 61 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_61.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0177` | Element decorativ RED 62 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_62.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0178` | Element decorativ RED 63 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_63.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0179` | Element decorativ RED 64 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_64.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0180` | Element decorativ RED 65 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_65.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0181` | Element decorativ RED 66 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_66.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0182` | Element decorativ RED 67 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_67.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0183` | Element decorativ RED 68 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_68.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0184` | Element decorativ RED 69 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_69.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0185` | Element decorativ RED 70 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_70.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0186` | Element decorativ RED 73 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/09/red_73.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0187` | Element decorativ RED 74 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/09/red_74.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0188` | Element decorativ RED 76 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/09/red_76.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0189` | Element decorativ RED 77 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/09/red_77.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
-| `CAT-0190` | Element decorativ RED 78 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/09/red_78.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch |
+| `CAT-0127` | Element decorativ RED 01 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_01_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0128` | Element decorativ RED 02 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_02_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0129` | Element decorativ RED 03 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_03_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0130` | Element decorativ RED 04 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_04_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0131` | Element decorativ RED 05 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_05_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0132` | Element decorativ RED 06 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_06_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0133` | Element decorativ RED 07 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_07_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0134` | Element decorativ RED 08 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_08_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0135` | Element decorativ RED 09 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_09_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0136` | Element decorativ RED 10 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_10_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0137` | Element decorativ RED 12 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_12_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0138` | Element decorativ RED 14 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_14_render-scaled.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0139` | Element decorativ RED 15 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_15_render-scaled.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0140` | Element decorativ RED 17 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_17_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0141` | Element decorativ RED 18 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_18_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0142` | Element decorativ RED 19 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_19_render-scaled.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0143` | Element decorativ RED 20 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_20_render-scaled.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0144` | Element decorativ RED 21 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_21_render-scaled.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0145` | Element decorativ RED 22 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_22_render-scaled.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0146` | Element decorativ RED 23 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_23_render-scaled.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0147` | Element decorativ RED 24 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_24_render-scaled.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0148` | Element decorativ RED 25 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_25_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0149` | Element decorativ RED 26 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_26_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0150` | Element decorativ RED 27 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_27_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0151` | Element decorativ RED 28 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_28_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0152` | Element decorativ RED 29 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/07/red_29_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0153` | Element decorativ RED 30 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_30_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0154` | Element decorativ RED 31 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_31_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0155` | Element decorativ RED 32 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_32_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0156` | Element decorativ RED 33 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_33_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0157` | Element decorativ RED 34 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_34_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0158` | Element decorativ RED 35 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_35_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0159` | Element decorativ RED 37 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_37_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0160` | Element decorativ RED 38 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_38_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0161` | Element decorativ RED 39 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_39_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0162` | Element decorativ RED 41 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_41_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0163` | Element decorativ RED 42 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_42_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0164` | Element decorativ RED 43 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_43_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0165` | Element decorativ RED 44 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_44_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0166` | Element decorativ RED 45 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_45_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0167` | Element decorativ RED 46 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_46_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0168` | Element decorativ RED 47 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_47_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0169` | Element decorativ RED 49 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_49_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0170` | Element decorativ RED 50 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_50_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0171` | Element decorativ RED 53 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_53_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0172` | Element decorativ RED 55 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_55_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0173` | Element decorativ RED 56 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_56_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0174` | Element decorativ RED 57 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_57_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0175` | Element decorativ RED 58 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_58_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0176` | Element decorativ RED 61 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_61_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0177` | Element decorativ RED 62 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_62_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0178` | Element decorativ RED 63 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_63_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0179` | Element decorativ RED 64 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_64_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0180` | Element decorativ RED 65 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_65_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0181` | Element decorativ RED 66 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_66_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0182` | Element decorativ RED 67 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_67_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0183` | Element decorativ RED 68 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_68_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0184` | Element decorativ RED 69 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_69_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0185` | Element decorativ RED 70 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/08/red_70_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0186` | Element decorativ RED 73 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/09/red_73_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0187` | Element decorativ RED 74 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/09/red_74_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0188` | Element decorativ RED 76 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/09/red_76_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0189` | Element decorativ RED 77 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/09/red_77_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
+| `CAT-0190` | Element decorativ RED 78 | /catalog/elemente-decorative/ | https://fatade3d.md/wp-content/uploads/2025/09/red_78_render.jpg | direct_supplier fatade3d.md | 600x450 | none |
 | `CAT-0191` | Amphibolin - Vopsea acrilică universală | /catalog/vopsele/ | https://www.caparol.md/fileadmin/user_upload/059435_Amphibolin.jpg | manufacturer official site | 600x375 | none |
 | `CAT-0192` | Isomat Flexcoat - Vopsea hidroizolantă | /catalog/vopsele/ | https://cdn.dedeman.ro/media/catalog/product/5/0/5021062.jpg | google_pick | 600x600 | google_pick |
 | `CAT-0193` | Vopsea de fațadă universală - Muresko-plus | /catalog/vopsele/ | https://www.caparol.md/fileadmin/user_upload/Muresko-plus_Produs.png | manufacturer official site | 600x375 | none |
@@ -255,12 +255,12 @@ them apart: nothing from the earlier dispatch is a labelled swatch or carries a 
 | `CAT-0219` | Lampă K2842 | /catalog/sisteme-iluminare/ | https://fatade3d.md/wp-content/uploads/2026/05/omni-0081965d-7abe-4016-90a5-6f2d0a054465.png | direct_supplier fatade3d.md | 448x600 | none |
 | `CAT-0220` | Lampă K1823 | /catalog/sisteme-iluminare/ | https://fatade3d.md/wp-content/uploads/2026/05/omni-efc90a7b-29f0-4aa3-a776-0caae4f0157f.png | direct_supplier fatade3d.md | 448x600 | none |
 | `CAT-0221` | Membrana de DIFUZIE pentru acoperișuri | /catalog/alte-materiale/ | https://fatade3d.md/wp-content/uploads/2025/06/IMG_5609.png | direct_supplier fatade3d.md | 600x469 | watermark |
-| `CAT-0222` | Plasă de armare | /catalog/alte-materiale/ | https://fatade3d.md/wp-content/uploads/2025/06/Screenshot-2025-06-25-at-00.36.34.png | direct_supplier fatade3d.md | 424x600 | watermark |
-| `CAT-0223` | Colțar PVC | /catalog/alte-materiale/ | https://fatade3d.md/wp-content/uploads/2025/06/Screenshot-2025-06-25-at-00.56.13.png | direct_supplier fatade3d.md | 426x600 | watermark |
+| `CAT-0222` | Plasă de armare | /catalog/alte-materiale/ | https://fatade3d.md/wp-content/uploads/2025/06/IMG_8629.jpg | direct_supplier fatade3d.md | 600x600 | watermark |
+| `CAT-0223` | Colțar PVC | /catalog/alte-materiale/ | https://fatade3d.md/wp-content/uploads/2025/06/IMG_8667.png | direct_supplier fatade3d.md | 600x361 | watermark |
 | `CATEG-01` | CATEG-01 | /catalog/ | https://fatade3d.md/wp-content/uploads/2025/06/photo_transparent_1-1226x1080.png | direct_supplier fatade3d.md | 600x528 | reuse of CAT-0004 |
 | `CATEG-02` | CATEG-02 | /catalog/ | https://muralshop.ro/cdn/shop/files/tds_st_sk_1200x960.jpg | google_pick | 600x480 | reuse of CAT-0032, google_pick |
 | `CATEG-03` | CATEG-03 | /catalog/ | https://fatade3d.md/wp-content/uploads/2025/08/nk-Dyed-1.png | direct_supplier fatade3d.md | 600x284 | reuse of CAT-0060 |
-| `CATEG-04` | CATEG-04 | /catalog/ | https://fatade3d.md/wp-content/uploads/2025/07/red_01.jpg | direct_supplier fatade3d.md | 600x461 | labelled swatch, reuse of CAT-0127 |
+| `CATEG-04` | CATEG-04 | /catalog/ | https://fatade3d.md/wp-content/uploads/2025/07/red_01_render.jpg | direct_supplier fatade3d.md | 600x450 | labelled swatch, reuse of CAT-0127 |
 | `CATEG-05` | CATEG-05 | /catalog/ | https://www.caparol.md/fileadmin/user_upload/059435_Amphibolin.jpg | manufacturer official site | 600x375 | reuse of CAT-0191 |
 | `CATEG-06` | CATEG-06 | /catalog/ | https://fatade3d.md/wp-content/uploads/2025/06/4.png | direct_supplier fatade3d.md | 600x600 | reuse of CAT-0206 |
 | `CATEG-07` | CATEG-07 | /catalog/ | https://fatade3d.md/wp-content/uploads/2025/06/IMG_5609.png | direct_supplier fatade3d.md | 600x469 | watermark, reuse of CAT-0221 |

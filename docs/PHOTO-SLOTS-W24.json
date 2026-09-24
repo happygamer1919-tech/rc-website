@@ -2768,896 +2768,832 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 01\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 01\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a white moulding profile with the dimensions 40 and 132 and the code RED-01 burned in. 600x461.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_01_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0127.jpg",
       "alt": {
-        "ro": "Element decorativ RED 01, profilul elementului",
-        "ru": "Декоративный элемент RED 01, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ de fatada RED 01, profil alb montat orizontal pe coltul unui perete, deasupra unui soclu placat cu piatra",
+        "ru": "Декоративный элемент фасада RED 01, белый профиль, смонтированный горизонтально на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0128",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 02\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 02\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a white moulding profile with a rounded top and groove, the dimensions 43 and 122 and the code RED-02 burned in. 600x461.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_02_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0128.jpg",
       "alt": {
-        "ro": "Element decorativ RED 02, profilul elementului",
-        "ru": "Декоративный элемент RED 02, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ de fatada RED 02, profil alb cu muchie rotunjita montat orizontal pe coltul unui perete, deasupra unui soclu placat cu piatra",
+        "ru": "Декоративный элемент фасада RED 02, белый профиль со скруглённым верхом, смонтированный горизонтально на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0129",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 03\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 03\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a small white half-round moulding with the dimensions 30 and 60 and the code RED-03 burned in. 600x461.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_03_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0129.jpg",
       "alt": {
-        "ro": "Element decorativ RED 03, profilul elementului",
-        "ru": "Декоративный элемент RED 03, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ de fatada RED 03, profil alb semirotund montat orizontal pe coltul unui perete, deasupra unui soclu placat cu piatra",
+        "ru": "Декоративный элемент фасада RED 03, белый полукруглый профиль, смонтированный горизонтально на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0130",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 04\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 04\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a white cove moulding under a flat top with the dimensions 25 and 100 and the code RED-04 burned in. 600x461.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_04_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0130.jpg",
       "alt": {
-        "ro": "Element decorativ RED 04, profilul elementului",
-        "ru": "Декоративный элемент RED 04, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ de fatada RED 04, profil alb concav montat orizontal pe coltul unui perete, deasupra unui soclu placat cu piatra",
+        "ru": "Декоративный элемент фасада RED 04, белый вогнутый профиль, смонтированный горизонтально на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0131",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 05\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 05\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a white S-curved (ogee) moulding with the dimensions 50 and 140 and the code RED-05 burned in. 600x461.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_05_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0131.jpg",
       "alt": {
-        "ro": "Element decorativ RED 05, profilul elementului",
-        "ru": "Декоративный элемент RED 05, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ de fatada RED 05, profil alb in forma de S montat orizontal pe coltul unui perete, deasupra unui soclu placat cu piatra",
+        "ru": "Декоративный элемент фасада RED 05, белый S-образный профиль, смонтированный горизонтально на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0132",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 06\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 06\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a white double-bead moulding with the dimensions 20 and 85 and the code RED-06 burned in. 600x461.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_06_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0132.jpg",
       "alt": {
-        "ro": "Element decorativ RED 06, profilul elementului",
-        "ru": "Декоративный элемент RED 06, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ de fatada RED 06, profil alb cu doua nervuri rotunjite montat orizontal pe coltul unui perete, deasupra unui soclu placat cu piatra",
+        "ru": "Декоративный элемент фасада RED 06, белый профиль с двумя скруглёнными валиками, смонтированный горизонтально на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0133",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 07\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 07\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a large white quarter-round moulding with a stepped base, the dimensions 50 and 130 and the code RED-07 burned in. 600x461.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_07_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0133.jpg",
       "alt": {
-        "ro": "Element decorativ RED 07, profilul elementului",
-        "ru": "Декоративный элемент RED 07, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ de fatada RED 07, profil alb cu muchie rotunjita si treapta la baza, montat orizontal pe coltul unui perete, deasupra unui soclu placat cu piatra",
+        "ru": "Декоративный элемент фасада RED 07, белый профиль со скруглённой кромкой и ступенькой у основания, смонтированный горизонтально на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0134",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 08\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 08\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a half-round moulding profile with burned-in dimension figures 40 and 100 and a red RED-08 code in the corner; 600x461, a downscale of galler); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_08_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0134.jpg",
       "alt": {
-        "ro": "Element decorativ RED 08, profilul elementului",
-        "ru": "Декоративный элемент RED 08, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 08, profil rotunjit, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
+        "ru": "Декоративный элемент RED 08 с закруглённым профилем, установлен как фасадный пояс на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0135",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 09\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 09\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of an S-curved (ogee) moulding profile with burned-in dimension figures 47 and 125 and a red RED-09 code; 600x461, a downscale of gallery item 1); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_09_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0135.jpg",
       "alt": {
-        "ro": "Element decorativ RED 09, profilul elementului",
-        "ru": "Декоративный элемент RED 09, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 09, profil curbat în S, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
+        "ru": "Декоративный элемент RED 09 с S-образным профилем, установлен как фасадный пояс на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0136",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 10\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 10\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a concave (cove) moulding profile with burned-in dimension figures 40 and 115 and a red RED-10 code; 600x461, a downscale of gallery item 1.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_10_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0136.jpg",
       "alt": {
-        "ro": "Element decorativ RED 10, profilul elementului",
-        "ru": "Декоративный элемент RED 10, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 10, profil concav, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
+        "ru": "Декоративный элемент RED 10 с вогнутым профилем, установлен как фасадный пояс на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0137",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 12\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 12\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a flat rectangular band profile with burned-in dimension figures 40, 120 and 40 and a red RED-12 code; 600x461, a downscale of gallery item 1); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_12_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0137.jpg",
       "alt": {
-        "ro": "Element decorativ RED 12, profilul elementului",
-        "ru": "Декоративный элемент RED 12, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 12, profil drept dreptunghiular, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
+        "ru": "Декоративный элемент RED 12 с прямым прямоугольным профилем, установлен как фасадный пояс на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0138",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 14\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 14\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a stepped moulding profile with burned-in dimension figures 40, 110 and 17 and a red RED-14 code; 600x337, a downscale of gallery item 1.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_14_render-scaled.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0138.jpg",
       "alt": {
-        "ro": "Element decorativ RED 14, profilul elementului",
-        "ru": "Декоративный элемент RED 14, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 14, profil în trepte, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
+        "ru": "Декоративный элемент RED 14 со ступенчатым профилем, установлен как фасадный пояс на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0139",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 15\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 15\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a small cornice profile with burned-in dimension figures 42, 82 and 8 and a red RED-15 code; 600x337, a downscale of gallery item 1.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_15_render-scaled.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0139.jpg",
       "alt": {
-        "ro": "Element decorativ RED 15, profilul elementului",
-        "ru": "Декоративный элемент RED 15, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 15, profil de cornișă îngust, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
+        "ru": "Декоративный элемент RED 15 с узким карнизным профилем, установлен как фасадный пояс на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0140",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 17\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 17\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a stepped cornice profile with burned-in dimension figures 34, 120 and 11 and a red RED-17 code; 600x337, a downscale of gallery item 1.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_17_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0140.jpg",
       "alt": {
-        "ro": "Element decorativ RED 17, profilul elementului",
-        "ru": "Декоративный элемент RED 17, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 17, profil în trepte, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
+        "ru": "Декоративный элемент RED 17 со ступенчатым профилем, установлен как фасадный пояс на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0141",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 18\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 18\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a rounded moulding profile with burned-in dimension figures 39, 130 and 10 and a red RED-18 code; 600x337, a downscale of gallery item 1.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_18_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0141.jpg",
       "alt": {
-        "ro": "Element decorativ RED 18, profilul elementului",
-        "ru": "Декоративный элемент RED 18, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 18, profil rotunjit, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
+        "ru": "Декоративный элемент RED 18 с закруглённым профилем, установлен как фасадный пояс на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0142",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 19\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 19\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a concave (cove) moulding profile with burned-in dimension figures 40, 130 and 9 and a red RED-19 code; 600x337, a downscale of gallery item ); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_19_render-scaled.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0142.jpg",
       "alt": {
-        "ro": "Element decorativ RED 19, profilul elementului",
-        "ru": "Декоративный элемент RED 19, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 19, profil concav, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
+        "ru": "Декоративный элемент RED 19 с вогнутым профилем, установлен как фасадный пояс на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0143",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 20\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 20\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a cove profile with a round bead at the base, burned-in dimension figures 35, 120 and 10 and a red RED-20 code; 600x337, a downscale of galle); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_20_render-scaled.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0143.jpg",
       "alt": {
-        "ro": "Element decorativ RED 20, profilul elementului",
-        "ru": "Декоративный элемент RED 20, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 20, profil concav cu baghetă rotundă la bază, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
+        "ru": "Декоративный элемент RED 20 с вогнутым профилем и круглым валиком внизу, установлен как фасадный пояс на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0144",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 21\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 21\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of an S-curved (ogee) moulding profile with burned-in dimension figures 40, 125 and 20 and a red RED-21 code; 600x461, a downscale of gallery it); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_21_render-scaled.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0144.jpg",
       "alt": {
-        "ro": "Element decorativ RED 21, profilul elementului",
-        "ru": "Декоративный элемент RED 21, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 21, profil curbat în S, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
+        "ru": "Декоративный элемент RED 21 с S-образным профилем, установлен как фасадный пояс на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0145",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 22\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 22\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a flat band profile with cove-chamfered top and bottom edges, burned-in dimension figures 40, 146 and 12 and a red RED-22 code; 600x461, a do); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_22_render-scaled.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0145.jpg",
       "alt": {
-        "ro": "Element decorativ RED 22, profilul elementului",
-        "ru": "Декоративный элемент RED 22, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 22, profil drept cu margini teșite, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
+        "ru": "Декоративный элемент RED 22 с прямым профилем и скошенными кромками, установлен как фасадный пояс на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0146",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 23\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 23\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a double-cove moulding profile with burned-in dimension figures 50, 125 and 18 and a red RED-23 code; 600x461, a downscale of gallery item 1.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_23_render-scaled.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0146.jpg",
       "alt": {
-        "ro": "Element decorativ RED 23, profilul elementului",
-        "ru": "Декоративный элемент RED 23, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 23, profil cu două curburi concave, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
+        "ru": "Декоративный элемент RED 23 с двойным вогнутым профилем, установлен как фасадный пояс на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0147",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 24\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 24\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a tall base profile with a curved top section, burned-in dimension figures 17, 150 and 38 and a red RED-24 code; 600x461, a downscale of gall); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_24_render-scaled.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0147.jpg",
       "alt": {
-        "ro": "Element decorativ RED 24, profilul elementului",
-        "ru": "Декоративный элемент RED 24, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 24, profil drept cu curbură în partea de sus, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
+        "ru": "Декоративный элемент RED 24 с прямым профилем и изгибом в верхней части, установлен как фасадный пояс на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0148",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 25\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 25\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a half-round moulding profile with burned-in dimensions (44, 160, 44 mm) and the code RED-25 in red; a 600x461 downscale of the page's first galler); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_25_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0148.jpg",
       "alt": {
-        "ro": "Element decorativ RED 25, profilul elementului",
-        "ru": "Декоративный элемент RED 25, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 25, profil semirotund montat ca brâu pe soclul unui perete, la colț",
+        "ru": "Декоративный элемент RED 25, полукруглый профиль, установленный как пояс на цоколе стены, на углу"
+      }
     },
     {
       "id": "CAT-0149",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 26\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 26\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a moulding with a flat top block and rounded lower band, burned-in dimensions (85, 182, 35 mm) and the code RED-26 in red; a 600x461 downscale of r); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_26_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0149.jpg",
       "alt": {
-        "ro": "Element decorativ RED 26, profilul elementului",
-        "ru": "Декоративный элемент RED 26, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 26, profil cu partea de sus dreaptă și partea de jos rotunjită, montat ca brâu pe soclul unui perete, la colț",
+        "ru": "Декоративный элемент RED 26, профиль с прямым верхом и скруглённым низом, установленный как пояс на цоколе стены, на углу"
+      }
     },
     {
       "id": "CAT-0150",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 27\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 27\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a tall S-curve (ogee) moulding with burned-in dimensions (92, 283, 32 mm) and the code RED-27 in red; a 600x461 downscale of red_27.jpg.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_27_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0150.jpg",
       "alt": {
-        "ro": "Element decorativ RED 27, profilul elementului",
-        "ru": "Декоративный элемент RED 27, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 27, profil în formă de S, montat ca brâu pe soclul unui perete, la colț",
+        "ru": "Декоративный элемент RED 27, S-образный профиль, установленный как пояс на цоколе стены, на углу"
+      }
     },
     {
       "id": "CAT-0151",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 28\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 28\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a moulding with a flat top, cove and lower step, burned-in dimensions (127, 203, 30 mm) and the code RED-28 in red; a 600x461 downscale of red_28.j); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_28_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0151.jpg",
       "alt": {
-        "ro": "Element decorativ RED 28, profilul elementului",
-        "ru": "Декоративный элемент RED 28, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 28, profil cu scafă și treaptă, montat ca brâu pe soclul unui perete, la colț",
+        "ru": "Декоративный элемент RED 28, профиль с выкружкой и ступенькой, установленный как пояс на цоколе стены, на углу"
+      }
     },
     {
       "id": "CAT-0152",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 29\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 29\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a moulding with a flat top, torus band and lower step, burned-in dimensions (65, 165, 22 mm) and the code RED-29 in red; a 600x461 downscale of red); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_29_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0152.jpg",
       "alt": {
-        "ro": "Element decorativ RED 29, profilul elementului",
-        "ru": "Декоративный элемент RED 29, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 29, profil cu tor și treaptă, montat ca brâu pe soclul unui perete, la colț",
+        "ru": "Декоративный элемент RED 29, профиль с валиком и ступенькой, установленный как пояс на цоколе стены, на углу"
+      }
     },
     {
       "id": "CAT-0153",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 30\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 30\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a deep moulding with a flat top and large cove, burned-in dimensions (130, 165, 85 mm) and the code RED-30 in red; a 600x461 downscale of red_30.jp); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_30_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0153.jpg",
       "alt": {
-        "ro": "Element decorativ RED 30, profilul elementului",
-        "ru": "Декоративный элемент RED 30, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 30, profil cu scafă adâncă, montat ca brâu pe soclul unui perete, la colț",
+        "ru": "Декоративный элемент RED 30, профиль с глубокой выкружкой, установленный как пояс на цоколе стены, на углу"
+      }
     },
     {
       "id": "CAT-0154",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 31\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 31\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a chamfered moulding with a flat top block and angled lower face, burned-in dimensions (80, 180, 15 mm) and the code RED-31 in red; a 600x461 downs); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_31_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0154.jpg",
       "alt": {
-        "ro": "Element decorativ RED 31, profilul elementului",
-        "ru": "Декоративный элемент RED 31, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 31, profil teșit, montat ca brâu pe soclul unui perete, la colț",
+        "ru": "Декоративный элемент RED 31, профиль со скосом, установленный как пояс на цоколе стены, на углу"
+      }
     },
     {
       "id": "CAT-0155",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 32\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 32\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a moulding with a flat top, cove and two lower steps, burned-in dimensions (110, 192, 30 mm) and the code RED-32 in red; a 600x461 downscale of red); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_32_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0155.jpg",
       "alt": {
-        "ro": "Element decorativ RED 32, profilul elementului",
-        "ru": "Декоративный элемент RED 32, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 32, profil cu scafă și două trepte, montat ca brâu pe soclul unui perete, la colț",
+        "ru": "Декоративный элемент RED 32, профиль с выкружкой и двумя ступеньками, установленный как пояс на цоколе стены, на углу"
+      }
     },
     {
       "id": "CAT-0156",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 33\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 33\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a small S-curve (ogee) moulding with burned-in dimensions (100, 152, 36 mm) and the code RED-33 in red; a 600x461 downscale of red_33.jpg.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_33_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0156.jpg",
       "alt": {
-        "ro": "Element decorativ RED 33, profilul elementului",
-        "ru": "Декоративный элемент RED 33, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 33, profil mic în formă de S, montat ca brâu pe soclul unui perete, la colț",
+        "ru": "Декоративный элемент RED 33, небольшой S-образный профиль, установленный как пояс на цоколе стены, на углу"
+      }
     },
     {
       "id": "CAT-0157",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 34\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 34\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a narrow chamfered moulding with burned-in dimensions (50, 150, 15 mm) and the code RED-34 in red; a 600x461 downscale of red_34.jpg.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_34_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0157.jpg",
       "alt": {
-        "ro": "Element decorativ RED 34, profilul elementului",
-        "ru": "Декоративный элемент RED 34, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 34, profil îngust teșit, montat ca brâu pe soclul unui perete, la colț",
+        "ru": "Декоративный элемент RED 34, узкий профиль со скосом, установленный как пояс на цоколе стены, на углу"
+      }
     },
     {
       "id": "CAT-0158",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 35\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 35\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a low moulding with a flat top block and small cove, burned-in dimensions (100, 110, 40 mm) and the code RED-35 in red; a 600x461 downscale of red_); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_35_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0158.jpg",
       "alt": {
-        "ro": "Element decorativ RED 35, profilul elementului",
-        "ru": "Декоративный элемент RED 35, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 35, profil jos cu scafă mică, montat ca brâu pe soclul unui perete, la colț",
+        "ru": "Декоративный элемент RED 35, низкий профиль с небольшой выкружкой, установленный как пояс на цоколе стены, на углу"
+      }
     },
     {
       "id": "CAT-0159",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 37\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 37\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a moulding with a flat top, cove and small beads below, burned-in dimensions (145, 210, 17 mm) and the code RED-37 in red; a 600x461 downscale of r); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_37_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0159.jpg",
       "alt": {
-        "ro": "Element decorativ RED 37, profilul elementului",
-        "ru": "Декоративный элемент RED 37, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 37, profil cu scafă și baghete, montat ca brâu pe soclul unui perete, la colț",
+        "ru": "Декоративный элемент RED 37, профиль с выкружкой и валиками, установленный как пояс на цоколе стены, на углу"
+      }
     },
     {
       "id": "CAT-0160",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 38\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 38\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a moulding with two stepped bands, burned-in dimensions (70, 220, 20 mm) and the code RED-38 in red; a 600x461 downscale of red_38.jpg.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_38_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0160.jpg",
       "alt": {
-        "ro": "Element decorativ RED 38, profilul elementului",
-        "ru": "Декоративный элемент RED 38, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 38, profil cu două benzi în trepte, montat ca brâu pe soclul unui perete, la colț",
+        "ru": "Декоративный элемент RED 38, профиль с двумя ступенчатыми полосами, установленный как пояс на цоколе стены, на углу"
+      }
     },
     {
       "id": "CAT-0161",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 39\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 39\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a tall stepped cornice-type moulding with burned-in dimensions (132, 288, 23 mm) and the code RED-39 in red; a 600x461 downscale of red_39.jpg.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_39_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0161.jpg",
       "alt": {
-        "ro": "Element decorativ RED 39, profilul elementului",
-        "ru": "Декоративный элемент RED 39, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 39, profil înalt în trepte, montat ca brâu pe soclul unui perete, la colț",
+        "ru": "Декоративный элемент RED 39, высокий ступенчатый профиль, установленный как пояс на цоколе стены, на углу"
+      }
     },
     {
       "id": "CAT-0162",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 41\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 41\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-41 wall band profile on white with burned-in dimension numbers 53, 120, 12 and the red code RED-41; 600x461 px, a downscale of red_41.jpg.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_41_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0162.jpg",
       "alt": {
-        "ro": "Element decorativ RED 41, profilul elementului",
-        "ru": "Декоративный элемент RED 41, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 41, profil orizontal alb cu partea superioară rotunjită, montat la colțul unui perete deasupra unui soclu din piatră",
+        "ru": "Декоративный элемент RED 41, белый горизонтальный профиль со скруглённым верхом, установленный на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0163",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 42\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 42\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-42 wide band profile on white with burned-in dimension numbers 60, 253, 30 and the red code RED-42; 600x461 px, a downscale of red_42.jpg.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_42_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0163.jpg",
       "alt": {
-        "ro": "Element decorativ RED 42, profilul elementului",
-        "ru": "Декоративный элемент RED 42, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 42, brâu orizontal alb lat cu muchie superioară profilată, montat la colțul unui perete deasupra unui soclu din piatră",
+        "ru": "Декоративный элемент RED 42, широкий белый горизонтальный пояс с профилированной верхней кромкой на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0164",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 43\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 43\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-43 narrow double-curve profile on white with burned-in dimension numbers 32, 158, 10 and the red code RED-43; 600x461 px, a downscale of re); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_43_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0164.jpg",
       "alt": {
-        "ro": "Element decorativ RED 43, profilul elementului",
-        "ru": "Декоративный элемент RED 43, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 43, profil orizontal alb îngust cu două curburi, montat la colțul unui perete deasupra unui soclu din piatră",
+        "ru": "Декоративный элемент RED 43, узкий белый горизонтальный профиль с двойным изгибом на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0165",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 44\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 44\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-44 cyma profile with a flat top on white, burned-in dimension numbers 65, 160, 20 and the red code RED-44; 600x461 px, a downscale of red_4); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_44_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0165.jpg",
       "alt": {
-        "ro": "Element decorativ RED 44, profilul elementului",
-        "ru": "Декоративный элемент RED 44, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 44, profil orizontal alb cu partea superioară plată și curbură în S, montat la colțul unui perete deasupra unui soclu din piatră",
+        "ru": "Декоративный элемент RED 44, белый горизонтальный профиль с плоским верхом и S-образным изгибом на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0166",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 45\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 45\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-45 cornice profile with a cove on white, burned-in dimension numbers 95, 150, 25 and the red code RED-45; 600x462 px, a downscale of red_45); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_45_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0166.jpg",
       "alt": {
-        "ro": "Element decorativ RED 45, profilul elementului",
-        "ru": "Декоративный элемент RED 45, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 45, profil orizontal alb cu treaptă superioară lată și scafă, montat la colțul unui perete deasupra unui soclu din piatră",
+        "ru": "Декоративный элемент RED 45, белый горизонтальный профиль с широкой верхней ступенью и выкружкой на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0167",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 46\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 46\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-46 wide band profile on white with burned-in dimension numbers 140, 250, 20 and the red code RED-46; 600x461 px, a downscale of red_46.jpg.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_46_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0167.jpg",
       "alt": {
-        "ro": "Element decorativ RED 46, profilul elementului",
-        "ru": "Декоративный элемент RED 46, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 46, brâu orizontal alb lat cu treaptă superioară și curbură ușoară, montat la colțul unui perete deasupra unui soclu din piatră",
+        "ru": "Декоративный элемент RED 46, широкий белый горизонтальный пояс с верхней ступенью и плавным изгибом на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0168",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 47\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 47\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-47 wide band profile with top and bottom ledges on white, burned-in dimension numbers 90, 235, 30 and the red code RED-47; 600x461 px, a do); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_47_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0168.jpg",
       "alt": {
-        "ro": "Element decorativ RED 47, profilul elementului",
-        "ru": "Декоративный элемент RED 47, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 47, brâu orizontal alb lat cu trepte în partea de sus și de jos, montat la colțul unui perete deasupra unui soclu din piatră",
+        "ru": "Декоративный элемент RED 47, широкий белый горизонтальный пояс со ступенями сверху и снизу на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0169",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 49\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 49\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-49 flat stepped band profile on white with burned-in dimension numbers 30, 150, 7 and the red code RED-49; 600x461 px, a downscale of red_4); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_49_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0169.jpg",
       "alt": {
-        "ro": "Element decorativ RED 49, profilul elementului",
-        "ru": "Декоративный элемент RED 49, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 49, profil orizontal alb plat cu trepte drepte, montat la colțul unui perete deasupra unui soclu din piatră",
+        "ru": "Декоративный элемент RED 49, плоский белый горизонтальный профиль с прямыми ступенями на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0170",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 50\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 50\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-50 cornice profile with a large cove on white, burned-in dimension numbers 126, 150, 30 and the red code RED-50; 600x461 px, a downscale of); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_50_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0170.jpg",
       "alt": {
-        "ro": "Element decorativ RED 50, profilul elementului",
-        "ru": "Декоративный элемент RED 50, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 50, cornișă albă cu scafă mare și trepte la bază, montată la colțul unui perete deasupra unui soclu din piatră",
+        "ru": "Декоративный элемент RED 50, белый карниз с крупной выкружкой и ступенями в основании на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0171",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 53\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 53\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-53 bulged band profile on white with burned-in dimension numbers 60, 180, 13 and the red code RED-53; 600x461 px, a downscale of red_53.jpg); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_53_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0171.jpg",
       "alt": {
-        "ro": "Element decorativ RED 53, profilul elementului",
-        "ru": "Декоративный элемент RED 53, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 53, profil orizontal alb bombat, montat la colțul unui perete deasupra unui soclu din piatră",
+        "ru": "Декоративный элемент RED 53, белый горизонтальный профиль с выпуклой серединой на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0172",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 55\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 55\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-55 cornice profile with a cove and stepped base on white, burned-in dimension numbers 165, 170, 40 and the red code RED-55; 600x461 px, a d); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_55_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0172.jpg",
       "alt": {
-        "ro": "Element decorativ RED 55, profilul elementului",
-        "ru": "Декоративный элемент RED 55, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 55, cornișă albă cu treaptă superioară lată, scafă și trepte la bază, montată la colțul unui perete deasupra unui soclu din piatră",
+        "ru": "Декоративный элемент RED 55, белый карниз с широкой верхней ступенью, выкружкой и ступенями в основании на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0173",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 56\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 56\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-56 tall cove profile with a rounded bottom bead on white, burned-in dimension numbers 75, 230, 33 and the red code RED-56; 600x461 px, a do); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_56_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0173.jpg",
       "alt": {
-        "ro": "Element decorativ RED 56, profilul elementului",
-        "ru": "Декоративный элемент RED 56, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 56, profil orizontal alb cu scafă înaltă și muchie rotunjită la bază, montat la colțul unui perete deasupra unui soclu din piatră",
+        "ru": "Декоративный элемент RED 56, белый горизонтальный профиль с высокой выкружкой и скруглённой нижней кромкой на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0174",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 57\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 57\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-57 two-tier cornice profile on white with burned-in dimension numbers 151, 151, 35 and the red code RED-57; 600x461 px, a downscale of red_); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_57_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0174.jpg",
       "alt": {
-        "ro": "Element decorativ RED 57, profilul elementului",
-        "ru": "Декоративный элемент RED 57, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 57, cornișă albă cu două curburi suprapuse, montată la colțul unui perete deasupra unui soclu din piatră",
+        "ru": "Декоративный элемент RED 57, белый карниз с двумя ярусами изгибов на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0175",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 58\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 58\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-58 cornice profile with a cove, steps and a rounded bottom bead on white, burned-in dimension numbers 119, 260, 38 and the red code RED-58;); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_58_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0175.jpg",
       "alt": {
-        "ro": "Element decorativ RED 58, profilul elementului",
-        "ru": "Декоративный элемент RED 58, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 58, cornișă albă cu scafă, trepte și muchie rotunjită la bază, montată la colțul unui perete deasupra unui soclu din piatră",
+        "ru": "Декоративный элемент RED 58, белый карниз с выкружкой, ступенями и скруглённой нижней кромкой на углу стены над каменным цоколем"
+      }
     },
     {
       "id": "CAT-0176",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 61\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 61\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a white panel with three half-round flutes, burned-in red code RED-61 and dimension numbers 30 and 170 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_61_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0176.jpg",
       "alt": {
-        "ro": "Element decorativ RED 61, profilul elementului",
-        "ru": "Декоративный элемент REd 61, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 61 montat pe colțul unui perete, pilastru cu trei caneluri rotunjite",
+        "ru": "Декоративный элемент RED 61 на углу стены, пилястра с тремя закруглёнными канелюрами"
+      }
     },
     {
       "id": "CAT-0177",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 62\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 62\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a narrow white panel with three half-round flutes, burned-in red code RED-62 and dimensions 30 and 125 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_62_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0177.jpg",
       "alt": {
-        "ro": "Element decorativ RED 62, profilul elementului",
-        "ru": "Декоративный элемент RED 62, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 62 montat pe colțul unui perete, pilastru îngust cu caneluri rotunjite",
+        "ru": "Декоративный элемент RED 62 на углу стены, узкая пилястра с закруглёнными канелюрами"
+      }
     },
     {
       "id": "CAT-0178",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 63\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 63\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a white panel with four flat rectangular grooves, burned-in red code RED-63 and dimensions 30 and 200 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_63_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0178.jpg",
       "alt": {
-        "ro": "Element decorativ RED 63, profilul elementului",
-        "ru": "Декоративный элемент RED 63, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 63 montat pe colțul unui perete, pilastru cu caneluri drepte",
+        "ru": "Декоративный элемент RED 63 на углу стены, пилястра с прямоугольными пазами"
+      }
     },
     {
       "id": "CAT-0179",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 64\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 64\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a white panel with five half-round flutes, burned-in red code RED-64 and dimensions 30 and 260 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_64_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0179.jpg",
       "alt": {
-        "ro": "Element decorativ RED 64, profilul elementului",
-        "ru": "Декоративный элемент RED 64, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 64 montat pe colțul unui perete, pilastru cu cinci caneluri rotunjite",
+        "ru": "Декоративный элемент RED 64 на углу стены, пилястра с пятью закруглёнными канелюрами"
+      }
     },
     {
       "id": "CAT-0180",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 65\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 65\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a wide white panel with four flat rectangular grooves, burned-in red code RED-65 and dimensions 30 and 280 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_65_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0180.jpg",
       "alt": {
-        "ro": "Element decorativ RED 65, profilul elementului",
-        "ru": "Декоративный элемент RED 65, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 65 montat pe colțul unui perete, pilastru lat cu caneluri drepte",
+        "ru": "Декоративный элемент RED 65 на углу стены, широкая пилястра с прямоугольными пазами"
+      }
     },
     {
       "id": "CAT-0181",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 66\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 66\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a wide white panel with six half-round flutes, burned-in red code RED-66 and dimensions 35 and 350 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_66_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0181.jpg",
       "alt": {
-        "ro": "Element decorativ RED 66, profilul elementului",
-        "ru": "Декоративный элемент RED 66, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 66 montat pe colțul unui perete, pilastru lat cu șase caneluri rotunjite",
+        "ru": "Декоративный элемент RED 66 на углу стены, широкая пилястра с шестью закруглёнными канелюрами"
+      }
     },
     {
       "id": "CAT-0182",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 67\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 67\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a wide white panel with six half-round flutes, burned-in red code RED-67 and dimensions 35 and 420 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_67_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0182.jpg",
       "alt": {
-        "ro": "Element decorativ RED 67, profilul elementului",
-        "ru": "Декоративный элемент RED 67, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 67 montat pe colțul unui perete, pilastru lat cu caneluri rotunjite",
+        "ru": "Декоративный элемент RED 67 на углу стены, широкая пилястра с закруглёнными канелюрами"
+      }
     },
     {
       "id": "CAT-0183",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 68\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 68\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a very wide white panel with six half-round flutes, burned-in red code RED-68 and dimensions 50 and 500 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_68_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0183.jpg",
       "alt": {
-        "ro": "Element decorativ RED 68, profilul elementului",
-        "ru": "Декоративный элемент RED 68, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 68 montat pe colțul unui perete, pilastru foarte lat cu caneluri rotunjite",
+        "ru": "Декоративный элемент RED 68 на углу стены, очень широкая пилястра с закруглёнными канелюрами"
+      }
     },
     {
       "id": "CAT-0184",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 69\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 69\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a tall flat white board with a coved edge, burned-in red code RED-69 and dimensions 330 and 30 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_69_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0184.jpg",
       "alt": {
-        "ro": "Element decorativ RED 69, profilul elementului",
-        "ru": "Декоративный элемент RED 69, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 69 montat pe colțul unui perete, profil de colț plat cu margine teșită",
+        "ru": "Декоративный элемент RED 69 на углу стены, плоский угловой профиль со скошенной кромкой"
+      }
     },
     {
       "id": "CAT-0185",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 70\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 70\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a flat white board with a coved edge, burned-in red code RED-70 and dimensions 224 and 23 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_70_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0185.jpg",
       "alt": {
-        "ro": "Element decorativ RED 70, profilul elementului",
-        "ru": "Декоративный элемент RED 70, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 70 montat pe colțul unui perete, profil de colț plat îngust",
+        "ru": "Декоративный элемент RED 70 на углу стены, узкий плоский угловой профиль"
+      }
     },
     {
       "id": "CAT-0186",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 73\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 73\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a white wall panel with a horizontal groove and tongue edges, burned-in red code RED-73 and dimensions 500 and 80 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/09/red_73_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0186.jpg",
       "alt": {
-        "ro": "Element decorativ RED 73, profilul elementului",
-        "ru": "Декоративный элемент RED 73, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 73, panouri orizontale cu nut montate pe pereții unui colț de clădire",
+        "ru": "Декоративный элемент RED 73, горизонтальные панели с пазом на стенах угла здания"
+      }
     },
     {
       "id": "CAT-0187",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 74\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 74\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a thin white wall panel with a stepped lower edge, burned-in red code RED-74 and dimensions 370 and 18 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/09/red_74_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0187.jpg",
       "alt": {
-        "ro": "Element decorativ RED 74, profilul elementului",
-        "ru": "Декоративный элемент RED 74, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 74, panouri orizontale înguste montate pe pereții unui colț de clădire",
+        "ru": "Декоративный элемент RED 74, узкие горизонтальные панели на стенах угла здания"
+      }
     },
     {
       "id": "CAT-0188",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 76\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 76\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a white stepped keystone, burned-in red code RED-76 and dimensions 260, 260 and 210 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/09/red_76_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0188.jpg",
       "alt": {
-        "ro": "Element decorativ RED 76, profilul elementului",
-        "ru": "Декоративный элемент RED 76, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 76, cheie de boltă montată deasupra unei ferestre cu ancadrament",
+        "ru": "Декоративный элемент RED 76, замковый камень над окном с оконным обрамлением"
+      }
     },
     {
       "id": "CAT-0189",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 77\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 77\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a small white faceted keystone, burned-in red code RED-77 and dimensions 160, 190 and 120 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/09/red_77_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0189.jpg",
       "alt": {
-        "ro": "Element decorativ RED 77, profilul elementului",
-        "ru": "Декоративный элемент RED 77, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 77, cheie de boltă mică montată deasupra unei ferestre cu ancadrament",
+        "ru": "Декоративный элемент RED 77, небольшой замковый камень над окном с оконным обрамлением"
+      }
     },
     {
       "id": "CAT-0190",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 78\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Element decorativ RED 78\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a tapered console/keystone block on a white background with the code RED-78 in red and the dimensions 230, 220 and 90 burned in; 600x461 down); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/09/red_78_render.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0190.jpg",
       "alt": {
-        "ro": "Element decorativ RED 78, profilul elementului",
-        "ru": "Декоративный элемент RED 78, профиль элемента"
-      },
-      "label": true
+        "ro": "Element decorativ RED 78 montat ca cheie de bolta deasupra unei ferestre cu ancadrament alb, pe o fatada tencuita",
+        "ru": "Декоративный элемент RED 78, установленный как замковый камень над окном с белым обрамлением на оштукатуренном фасаде"
+      }
     },
     {
       "id": "CAT-0191",
@@ -4068,12 +4004,12 @@
       "page": "/catalog/alte-materiale/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Plasă de armare\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Plasă de armare\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was poster or flyer (Flyer: PLASA DE ARMARE FATADE 3D title, pentru pereti fara fisuri slogan, PARAMETRI table (density 160, 1x50 m, 50 m2 per roll, 4 mm mesh) with a mesh roll on t); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/06/IMG_8629.jpg, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0222.jpg",
       "alt": {
-        "ro": "Plasă de armare, produsul",
-        "ru": "Армирующая сетка, продукт"
+        "ro": "Rulou de plasă de armare gri, desfășurat parțial la un capăt",
+        "ru": "Рулон серой армирующей сетки, частично развёрнутый с одного края"
       },
       "watermark": true
     },
@@ -4082,12 +4018,12 @@
       "page": "/catalog/alte-materiale/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Colțar PVC\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Produsul \"Colțar PVC\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was poster or flyer (Flyer layout (426x600): black header with the title COLTAR PVC and the slogan pentru colturi durabile la fatada, a render of the corner bead, and a PARAMETRI bl); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/06/IMG_8667.png, looked at by two independent viewers, no burned-in text.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0223.jpg",
       "alt": {
-        "ro": "Colțar PVC, produsul",
-        "ru": "ПВХ уголок, продукт"
+        "ro": "Coltar PVC cu plasa din fibra de sticla rosie pentru colturi de fatada",
+        "ru": "ПВХ уголок с красной стеклосеткой для углов фасада"
       },
       "watermark": true
     },

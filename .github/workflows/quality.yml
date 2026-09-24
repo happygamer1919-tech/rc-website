@@ -187,6 +187,12 @@ jobs:
       # files, both locales, and no service page carries a product card or a price.
       - name: The catalogue counts are the recorded ones and no service page carries a price (W28-13)
         run: node scripts/check-catalog-counts.js
+
+      # W28-15. Gate 32. Every catalogue picture on the fatade3d direct-supplier licence names a
+      # fatade3d.md product page and a fatade3d.md image file matching its record; every fatade3d
+      # record has a filled slot with a provenance row; the other origins are counted, not refused.
+      - name: Every fatade3d picture names its fatade3d.md page and file (W28-15)
+        run: node scripts/check-image-sources.js
       - name: No em dash or en dash in any file, the built site or this pull request (W26-13)
         env:
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}

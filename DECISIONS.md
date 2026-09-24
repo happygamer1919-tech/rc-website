@@ -14048,3 +14048,44 @@ only, because a source URL carries the maker's code by construction (the fence d
 excluded its source block since W26-09). Gate 28 caught the chip's status line on the first
 run: the muted ink on the dark models band read 2.29:1 on both locales at both widths; on that
 section it takes the light line colour. Budgets move (R-Y).
+
+## W28-15 · Fatade images: the product page's own plain photograph on every fatade3d picture that was a poster, a table or an overlay, 2026-09-24
+
+Branch `w28/w28-15-fatade-images`, stacked on W28-14. Under the wave 28 dispatch, W25-R14 (the
+direct-supplier origin) and W27-R-13 (a maker's own mark allowed).
+
+**Measured first, all 110.** Every catalogue picture whose provenance row names fatade3d.md (110
+of the 223 fatade3d records; the other 113 stand on a manufacturer's packshot, an owner-picked
+picture or a declared reuse under W25-R1, W25-R20 and W25-R17, outside this card) was looked at
+by eight independent viewers, each product page's own gallery fetched and every gallery picture
+looked at and measured: 44 already plain photographs (packshots whose printed sack or bucket
+label is the maker's own), 50 renders with a burned-in product code and dimension figures (the
+facade mouldings), 14 parameter tables, 2 flyers. **The mouldings' pages publish a second, text-free
+render of each element** (`red_NN_render.jpg`), which W25-17 had not found.
+
+**What ships.** 66 pictures replaced, every one through `scripts/fetch-packshot.js --fatade3d`
+and `scripts/process-packshot.js` (floor 450, never upscaled, metadata stripped), the same file
+path, the same provenance row with the new image URL and today's date, the record's own page as
+the page cell, the `label` flag lifted where the burned-in code is gone, the viewers' alt texts;
+44 kept; 0 without a plain photograph at the source, so no model goes to a question for that.
+Then **a second, adversarial look** at all 66 installed files by six more viewers prompted to
+refute (plain photograph? the named product?); the outcome is in the report. Three provenance rows
+named a family page with a colour attribute instead of the record's own page (CAT-0051, 0060,
+0077); they name the record's page now and the picture is unchanged, and the colour mismatch the
+viewers found on those three is Q-W28-03. `docs/reports/W28-FATADE-IMAGES.md` lists all 110 with
+old image, new image, status and source URL, and the reviewer checklist.
+
+**Gate 32, `scripts/check-image-sources.js`**, the named test: every direct-supplier picture names
+a fatade3d.md product page and a fatade3d.md image file matching its record; every fatade3d record
+has a filled slot with a provenance row; the manufacturer, owner-picked and reuse origins are
+counted and printed, never refused, because three rulings permit them. The acceptance's "every
+fatade image source_url hosts on fatade3d.md" read literally would refuse 113 pictures three rulings
+allow, so the gate is scoped to the rows W28-15 governs and says so. Zero budgets move. Two
+catches on the way: the RC-129 stock arm read "наличником" (a window casing) as "наличие"
+(availability) in two Russian alt texts, which now say "оконным обрамлением"; and the second
+look found that fatade3d.md serves one and the same render for RED 69 and RED 70, so CAT-0184 and
+CAT-0185 show one picture, as the supplier's pages do (noted in Q-W28-03).
+
+**Two chat instructions arrived during this card and are recorded as R-W28-04 (the phone hero
+matches the desktop hero, card W28-22) and R-W28-05 (services versus catalog, which W28-13 had
+already shipped as #171) in `docs/rulings/W28-R.md`.**

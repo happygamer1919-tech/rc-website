@@ -42,6 +42,24 @@
         "W28-11",
         "W28-20"
       ]
+    },
+    {
+      "id": "R-W28-04",
+      "title": "The phone hero matches the desktop hero (owner chat, 2026-09-24 00:45 UTC)",
+      "date": "2026-09-24",
+      "ruled_by": "owner",
+      "applied_by": [
+        "W28-22"
+      ]
+    },
+    {
+      "id": "R-W28-05",
+      "title": "Services versus catalog confirmed after the fact: the Acoperisuri and Garduri service pages keep description and projects, the Catalog holds the priced products (W28-13, #171)",
+      "date": "2026-09-24",
+      "ruled_by": "owner",
+      "applied_by": [
+        "W28-13"
+      ]
     }
   ],
   "cards": [
@@ -156,13 +174,13 @@
     {
       "id": "W28-14",
       "title": "Copertine: Imperlux photographs and prices per model, a Catalog group with tile, chip and count",
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "normal",
       "owner_terminal": "yellow",
       "branch": "w28/w28-14-copertine",
-      "pr": null,
-      "merge_sha": null,
+      "pr": 172,
+      "merge_sha": "40d144f823f411f0f83573f48b6ae4a77309365c",
       "depends_on": [
         "W28-13"
       ],
@@ -173,13 +191,14 @@
         "node -e \"const c=require('./content/copertine.json'); console.log(c.models.filter(m=>m.price==null).map(m=>m.designation).join(' '))\"  -> the twelve models with no price, which is the source's state (Q-W28-02); the dispatch's 'price non-null' half FAILS by design and is reported",
         "node scripts/check-catalog-counts.js  -> exit 0 (copertine cards 12 on the copertine page both locales, chip count 12, data 12 with a picture)",
         "node scripts/check-asset-provenance.js && node scripts/check-photo-slots-w24.js  -> exit 0"
-      ]
+      ],
+      "evidence": "quality green 7m6s; merged 2026-09-24 00:51:43Z as 40d144f; section 12.0 EXIT=0 at 00:54:57Z"
     },
     {
       "id": "W28-15",
       "title": "Fatade images: plain product photographs from fatade3d.md, no posters, tables or overlays",
-      "lane": "queue",
-      "status": "todo",
+      "lane": "in_flight",
+      "status": "pr_open",
       "priority": "normal",
       "owner_terminal": "yellow",
       "branch": "w28/w28-15-fatade-images",
@@ -189,11 +208,32 @@
         "W28-14"
       ],
       "ask": "For fatade3d.md products, any image with text overlay, parameter table, poster or flyer layout is replaced by a plain product photo from the fatade3d.md product page (maker's own mark allowed under R-13). No Google image results as source. Record source_url per image. Models with no plain photo listed as a blocked question. Acceptance: docs/reports/W28-FATADE-IMAGES.md lists every fatade record with old image, new image, source_url; reviewer checklist in the report; named test image-sources passes (every fatade image source_url hosts on fatade3d.md).",
-      "reading": "110 catalogue pictures carry a fatade3d.md ledger row. Every one is looked at; the ones that are posters, flyers, parameter tables or text overlays are replaced by a plain photograph from the same product's page gallery when one exists, through the existing intake, and the rest are listed in Q-W28-02. scripts/check-image-sources.js asserts every fatade3d record's picture has a source_url on fatade3d.md.",
+      "reading": "110 catalogue pictures carry a fatade3d.md ledger row. Every one is looked at; the ones that are posters, flyers, parameter tables or text overlays are replaced by a plain photograph from the same product's page gallery when one exists, through the existing intake, and the rest are listed in Q-W28-02. scripts/check-image-sources.js asserts every fatade3d record's picture has a source_url on fatade3d.md. Done as read: eight viewers classified all 110, 66 replaced (the mouldings' pages publish a text-free second render, which W25-17 had not found), 44 kept, none without a plain photograph; six more viewers refuted or accepted each installed file; the named test is scoped to the direct-supplier rows because three rulings put 113 fatade3d pictures on other hosts.",
       "acceptance": [
         "test -f docs/reports/W28-FATADE-IMAGES.md && grep -c '^| CAT-' docs/reports/W28-FATADE-IMAGES.md  -> equals the number of fatade3d records with a picture (printed by the test)",
         "node scripts/check-image-sources.js  -> exit 0",
         "node scripts/check-asset-provenance.js  -> exit 0"
+      ]
+    },
+    {
+      "id": "W28-22",
+      "title": "The phone hero matches the desktop hero",
+      "lane": "queue",
+      "status": "todo",
+      "priority": "high",
+      "owner_terminal": "yellow",
+      "branch": "w28/w28-22-phone-hero",
+      "pr": null,
+      "merge_sha": null,
+      "depends_on": [
+        "W28-15"
+      ],
+      "ask": "Make sure the phone hero matches the pc hero",
+      "reading": "Owner chat instruction 2026-09-24 00:45 UTC, recorded as R-W28-04. Measured before the card at 390 and 1440: the hero renders the same five children at both widths and hides nothing; the desktop hero is centred (eyebrow, heading, sub-line, three stat cards in one row, the claim card and the photograph side by side), the phone hero is left-aligned with the stats stacked one per row and the panels stacked. The card centres the phone hero text and keeps the three stats in one row at a smaller numeral; the claim card and the photograph stay stacked in the desktop order.",
+      "acceptance": [
+        "node build.js && node scripts/dom-text.js --count '.hero .stats .stat' / /ru/  -> 3 and 3 (unchanged)",
+        "a probe at 390 (the session hero-shot.js): every .hero child visible, .hero text-align center, the .stats grid three column tracks; at 1440 the same  -> recorded in the card",
+        "node scripts/check-heading-fit.js && node scripts/check-text-contrast.js  -> exit 0"
       ]
     },
     {

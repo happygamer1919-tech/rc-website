@@ -14215,3 +14215,29 @@ rewritten FAQ answer is shorter.
 **Acceptance.** `dist/llms.txt` carries the company name, the phone, both locale roots and all ten
 catalogue group URLs (`node scripts/check-catalog-counts.js --llms`); `data-nap` is on 85 of 85
 pages and the block hashes to one value.
+
+## W28-21 · Wave close: the measurements, the review, one fix card, 2026-09-24
+
+Branch `w28/w28-21-wave-close`, stacked on W28-19. Under the wave 28 dispatch ("Lighthouse on home,
+acoperisuri, garduri, catalog, contact, both locales, recorded in docs/reports/W28-FINAL-RUN.md with
+all gate commands and exit codes; then invoke CRITIC per CLAUDE.md, max 5 fix cards").
+
+**Measured on the wave-close tree, which is byte-identical to `main` at `36669bd`** (proved with
+`git diff --stat`, printed empty; the measurements ran while #178's `quality` check was still
+running, to save the wait, and the identity is what makes them measurements of `main`). 33 of 33
+gate commands exit 0; the crawl at 1440, 768 and 390 reads 83 pages clean except 24 text nodes at
+13px, the hero stat labels W28-22 shrank to fit three in a row on a phone; Lighthouse desktop reads
+97 to 99 on performance with 100 on the other three categories on all eight pages, the roofing
+page's wave 27 bimodality gone.
+
+**The critic pass is the W27-REV-01 shape**, because the dispatch's "CRITIC per CLAUDE.md" names no
+procedure in the repo (docs/CLAUDE.md never uses the word; there is no root CLAUDE.md). One fix
+card comes out of it, W28-FIX-01 (14px), worked after this card; five taste findings are recorded
+in W28-REVIEW and none is a fix card, three of them because the condition predates the wave (the
+hub above the roofing hero since W25-24, the floating buttons over phone text, the branded
+termoizolatie tile) and two because they are the supplier's material (the moulding renders' shared
+scene, the copertine type diagrams).
+
+**The contact page is the home page's footer**, so its Lighthouse row is the home row (D17 in
+W28-RUN). Every deviation from the dispatch, D1 to D18, is in `docs/reports/W28-RUN.md`. No page
+changes in this card: three reports, the board and its `.md`, this entry.

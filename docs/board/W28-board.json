@@ -283,13 +283,13 @@
     {
       "id": "W28-18",
       "title": "Structured data on every page, and scripts/schema-check.js",
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "normal",
       "owner_terminal": "yellow",
       "branch": "w28/w28-18-structured-data",
       "pr": 177,
-      "merge_sha": null,
+      "merge_sha": "3c30f001a2efc208e5acb49db92bc8be4dbd480d",
       "depends_on": [
         "W28-17"
       ],
@@ -299,18 +299,18 @@
         "node build.js && node scripts/schema-check.js  -> exit 0",
         "grep -rl 'AggregateRating' dist --include=*.html | wc -l  -> 0"
       ],
-      "evidence": "PR 177 opened 2026-09-24 02:12Z, 33 of 33 gate commands exit 0 locally, quality pending; queued behind 176; built tree: 85 pages, 173 JSON-LD blocks parsed, 704 Product entries, 30 Service pages, 83 BreadcrumbList pages, 22 FAQPage pages; gate 34 schema-check exit 0; 0 budgets move"
+      "evidence": "quality green; merged 2026-09-24 01:55:23Z as 3c30f00; section 12.0 EXIT=0 at 01:58:36Z"
     },
     {
       "id": "W28-19",
       "title": "GEO: llms.txt, the Despre facts block, one NAP string on every page, FAQ answers as direct statements",
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "normal",
       "owner_terminal": "yellow",
       "branch": "w28/w28-19-geo",
-      "pr": null,
-      "merge_sha": null,
+      "pr": 178,
+      "merge_sha": "36669bd9082261918000d86afef133d6c65bbcd7",
       "depends_on": [
         "W28-18"
       ],
@@ -320,7 +320,8 @@
         "node build.js && for s in 'Rapid Construct' '+373 76 837 180' 'https://rapidconstruct.md/' 'https://rapidconstruct.md/ru/'; do grep -c \"$s\" dist/llms.txt; done  -> each at least 1",
         "node scripts/check-catalog-counts.js --llms  -> exit 0 (all 9 catalog group URLs present in dist/llms.txt)",
         "test \"$(grep -rl 'data-nap' dist --include=*.html | wc -l | tr -d ' ')\" = \"$(find dist -name '*.html' | wc -l | tr -d ' ')\"  -> exit 0, and the NAP block's bytes are identical on every page (sha256 of the extracted block, one distinct value)"
-      ]
+      ],
+      "evidence": "quality green; merged 2026-09-24 02:06:57Z as 36669bd; section 12.0 EXIT=0 at 02:10:21Z"
     },
     {
       "id": "W28-20",
@@ -345,8 +346,8 @@
     {
       "id": "W28-21",
       "title": "Wave close: Lighthouse, W28-FINAL-RUN, the CRITIC pass with up to five fix cards, W28-REVIEW, W28-RUN",
-      "lane": "queue",
-      "status": "todo",
+      "lane": "in_flight",
+      "status": "pr_open",
       "priority": "normal",
       "owner_terminal": "yellow",
       "branch": "w28/w28-21-wave-close",
@@ -361,7 +362,30 @@
         "test -f docs/reports/W28-FINAL-RUN.md && test -f docs/reports/W28-REVIEW.md && test -f docs/reports/W28-RUN.md  -> exit 0",
         "node scripts/run-gates.js --keep-going  -> exit 0 on the final tree, the count printed"
       ],
-      "owner_action": "After the last merge, send one real lead in RO and one in RU through the form."
+      "owner_action": "After the last merge, send one real lead in RO and one in RU through the form.",
+      "evidence": "measured 02:00 to 02:17Z on the tree byte-identical to main 36669bd: 33 of 33 gate commands exit 0; crawl 83 pages x 3 widths, 0 dead links, 0 missing images, 0 console errors, 0 sideways scroll, 14 of 14 redirects, 30 of 30 forms; Lighthouse perf 97 to 99, a11y/bp/seo 100 on all 8 pages; one defect (stat labels 13px on phones, W28-22) = W28-FIX-01; five taste findings"
+    },
+    {
+      "id": "W28-FIX-01",
+      "title": "The hero stat labels read 14px on phones and tablets (from W28-REVIEW)",
+      "lane": "queue",
+      "status": "todo",
+      "priority": "normal",
+      "owner_terminal": "yellow",
+      "branch": "w28/w28-fix-01-stat-labels",
+      "pr": null,
+      "merge_sha": null,
+      "depends_on": [
+        "W28-21"
+      ],
+      "ask": "W28-REVIEW defect 1: W28-22 set .stat__label to 13px inside the under-1024 block so three stats fit one row at 390; the crawl floor is 14px. Raise to 14px and prove the Russian labels still fit three in a row at 320 and 390 without clipping or sideways scroll.",
+      "reading": "One CSS value in the W28-22 phone block. Wrapping to a third line is allowed; overflow is not. Measured with the hero probe at 320, 390 and 768 in both locales: hidden children 0, scrollWidth equal to clientWidth, every .stat__label computed 14px. Budgets re-measured (the stats block may grow by one line on the Russian page).",
+      "acceptance": [
+        "node build.js && node scripts/dom-text.js --count \".stat__label\" / /ru/  -> 3 and 3",
+        "headless Chrome at 320, 390 and 768 on / and /ru/: every .stat__label getComputedStyle fontSize 14px, document.documentElement.scrollWidth <= clientWidth, 0 hidden hero children  -> printed and true",
+        "the crawl at 390 and 768 on / and /ru/ counts 0 visible text nodes under 14px that are not SVG diagram labels",
+        "node scripts/run-gates.js --keep-going  -> 33 of 33 exit 0"
+      ]
     }
   ]
 }

@@ -14440,3 +14440,15 @@ messages that arrived during the dispatch answer Q-W28-02 (no price, a button to
 R-W28-14, card W28-29) and Q-W28-03 (no change: R-W28-15). The dispatch said those questions stay
 open; the owner's own answers came after it and are applied. W28-FIX-02 is absorbed into W28-28.
 The board JSON records #187 verified and lists this sync.
+
+## W28-29 · Copertine: a button to the contact form on every model card, 2026-09-24
+
+Branch `w28/w28-29-copertine-cta`, stacked on W28-R5. Owner ruling R-W28-14: "leave copertine
+without prices if imperlux doesn't has, just a button to transfer to the contact form that's it".
+
+**Done.** Each of the twelve model cards on `/servicii/copertine/`, both locales, drops the line
+"Preț la cerere" (the W24-R7 ask shape) and carries one `a.btn.btn--primary.model__cta` to the page's
+contact form `#oferta`, labelled from a key of its own, `pages.copertine.cardCta`, "Solicită ofertă" /
+"Запросить предложение". Its accessible name starts with the visible words and names the model, so
+the twelve do not share a name. No price is shown; a record that ever carries one still stops the
+build (W28-14). New class `.model__cta`, prefix grepped free. Two budgets move (R-Y).

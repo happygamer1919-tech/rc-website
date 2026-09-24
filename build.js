@@ -2255,8 +2255,14 @@ function copertine(l) {
     if (!m.image || !REAL(m.image.slot)) die(`${COP_FILE}: ${w} has no image.slot; every model card carries a photograph (W28-14).`);
     if (!REAL(m.source_url)) die(`${COP_FILE}: ${w} has no source_url (W28-14).`);
     const media = placeholder(m.image.slot, { variant: 'dark', className: 'model__ph', locale: l.code, eager: i < 3 });
+    /* AMENDED (W28-29, owner ruling R-W28-14): "leave copertine without prices if imperlux doesn't
+       has, just a button to transfer to the contact form". No price and no ask line: one button to the
+       page's contact form. Its accessible name starts with the visible words and names the model, so
+       twelve buttons on one page do not share a name (the catalogue card does the same, W24-04). */
+    const cta = l.strings['pages.copertine.cardCta'];
+    if (!REAL(cta)) die(`pages.copertine.cardCta is not real in ${l.code} (W28-29).`);
     const price = m.price == null
-      ? `<p class="prod__ask" data-product="${esc(m.designation)}">${esc(l.strings['catalogProducts.ask'])}</p>`
+      ? `<a class="btn btn--primary model__cta" href="#oferta" data-product="${esc(m.designation)}" aria-label="${esc(cta)}: ${esc(m.designation)}">${esc(cta)}</a>`
       : die(`${COP_FILE}: ${w} carries a price; render it in a copertine-owned shape before shipping one (W28-14).`);
     return `      <article class="model" data-product-card data-roof-groups="copertine" data-reveal data-stagger="${Math.min(i, 6)}">
         ${media}<p class="model__cat">${txt(m.category, `${w}.category`)}</p>

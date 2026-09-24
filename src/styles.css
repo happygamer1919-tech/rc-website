@@ -1981,6 +1981,8 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
    under its descriptor, the W24-R7 ask line in the catalogue card's permitted shape. */
 .model__ph { margin-bottom: 16px; border-radius: 8px; overflow: hidden; }
 .model__ph.ph--filled img { object-fit: cover; }
+/* W28-29 (R-W28-14): the model card's one button, to the page's contact form. Prefix grepped free. */
+.model__cta { margin-top: 16px; }
 .model .prod__ask { margin: 12px 0 0; color: var(--bg-light); font-weight: 700; }
 /* The group chip's status line sits on the dark models band: the muted ink reads 2.29:1 there
    (gate 28), so on this section it takes the light line colour, 12.9:1. */

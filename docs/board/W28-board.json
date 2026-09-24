@@ -241,13 +241,13 @@
     {
       "id": "W28-16",
       "title": "Constructii industriale: two service lines, RO and RU",
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "normal",
       "owner_terminal": "yellow",
       "branch": "w28/w28-16-industrial-lines",
       "pr": 175,
-      "merge_sha": null,
+      "merge_sha": "01ee981ca972f582dd2586646e0368dda1282afa",
       "depends_on": [
         "W28-15"
       ],
@@ -257,18 +257,19 @@
         "node build.js && node scripts/dom-text.js /servicii/industrial/ | iconv -f utf-8 -t ascii//TRANSLIT | grep -c 'Depozite din constructie metalica'  -> 1",
         "node scripts/dom-text.js /servicii/industrial/ | iconv -f utf-8 -t ascii//TRANSLIT | grep -c 'Montare panouri sandwich'  -> 1",
         "node scripts/dom-text.js /ru/servicii/industrial/ | grep -c 'Склады из металлоконструкций'  -> 1; grep -c 'Монтаж сэндвич-панелей'  -> 1"
-      ]
+      ],
+      "evidence": "quality green; merged 2026-09-24 01:31:32Z as 01ee981; section 12.0 EXIT=0 at 01:34:39Z"
     },
     {
       "id": "W28-17",
       "title": "Technical SEO: titles, descriptions, canonical, hreflang, sitemap, robots, Open Graph, 404, and scripts/seo-check.js",
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "normal",
       "owner_terminal": "yellow",
       "branch": "w28/w28-17-technical-seo",
       "pr": 176,
-      "merge_sha": null,
+      "merge_sha": "4d763b26873a3a77d5660c7d624a13a367b90e35",
       "depends_on": [
         "W28-16"
       ],
@@ -277,7 +278,7 @@
       "acceptance": [
         "node build.js && node scripts/seo-check.js  -> exit 0"
       ],
-      "evidence": "PR 176 opened 2026-09-24 01:52Z, 32 of 32 gate commands exit 0 locally, quality pending; queued behind 175"
+      "evidence": "quality green; merged 2026-09-24 01:45:00Z as 4d763b2; section 12.0 EXIT=0 at 01:48:03Z"
     },
     {
       "id": "W28-18",
@@ -287,7 +288,7 @@
       "priority": "normal",
       "owner_terminal": "yellow",
       "branch": "w28/w28-18-structured-data",
-      "pr": null,
+      "pr": 177,
       "merge_sha": null,
       "depends_on": [
         "W28-17"
@@ -298,13 +299,13 @@
         "node build.js && node scripts/schema-check.js  -> exit 0",
         "grep -rl 'AggregateRating' dist --include=*.html | wc -l  -> 0"
       ],
-      "evidence": "built tree: 85 pages, 173 JSON-LD blocks parsed, 704 Product entries, 30 Service pages, 83 BreadcrumbList pages, 22 FAQPage pages; gate 34 schema-check exit 0; 0 budgets move"
+      "evidence": "PR 177 opened 2026-09-24 02:12Z, 33 of 33 gate commands exit 0 locally, quality pending; queued behind 176; built tree: 85 pages, 173 JSON-LD blocks parsed, 704 Product entries, 30 Service pages, 83 BreadcrumbList pages, 22 FAQPage pages; gate 34 schema-check exit 0; 0 budgets move"
     },
     {
       "id": "W28-19",
       "title": "GEO: llms.txt, the Despre facts block, one NAP string on every page, FAQ answers as direct statements",
-      "lane": "queue",
-      "status": "todo",
+      "lane": "in_flight",
+      "status": "pr_open",
       "priority": "normal",
       "owner_terminal": "yellow",
       "branch": "w28/w28-19-geo",

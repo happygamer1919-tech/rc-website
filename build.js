@@ -65,6 +65,17 @@ const SERVICES_ROOT = { ro: '/servicii/', ru: '/ru/servicii/' };
 const CATALOG_ROOT = { ro: '/catalog/', ru: '/ru/catalog/' };
 // The city already named in meta.title, band.coverageLine and areaServed.
 const PRIMARY_CITY = { ro: 'Chișinău', ru: 'Кишинёве' };
+/* W28-19: the NAP as one string. */
+const NAP = { name: 'Rapid Construct', street: 'Nicolae Zelinski 24', locality: 'Chișinău', phone: '+373 76 837 180', email: 'rapidconstructmd@gmail.com' };
+const NAP_TEXT = `${NAP.name} · ${NAP.street}, ${NAP.locality} · ${NAP.phone} · ${NAP.email}`;
+const NAP_HTML = `<address class="nap" data-nap>${NAP_TEXT}</address>`;
+function despreFacts(l) {
+  const f = (k) => { const v = l.strings[`despre.facts.${k}`]; if (!REAL(v)) die(`despre.facts.${k} must be real in ${l.code}.`); return v; };
+  const fill = (t) => t.replace('{brand}', NAP.name).replace('{city}', l.code === 'ro' ? 'Chișinău' : 'Кишинёв').replace('{coverage}', l.strings['band.coverageTitle'])
+    .replace('{exp}', `${l.strings['stats.1.n']} ${l.strings['stats.1.label']}`).replace('{projects}', `${l.strings['stats.0.n']} ${l.strings['stats.0.label']}`)
+    .replace('{years}', l.strings['warranty.years']).replace('{phone}', NAP.phone).replace('{email}', NAP.email);
+  return ['f0', 'f1', 'f2', 'f3', 'f4'].map((k) => fill(f(k))).join(' ');
+}
 
 // Nine service slugs, matching the delivered SVG filenames and the order of
 // services.items.N in the locale files.
@@ -151,8 +162,8 @@ const RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu', 'prod
   // built, so what lands here is already safe. Escaping it again turned the
   // quotes into &quot; and truncated the notice at its first space.
   'demoAttr',
-  'portfolioCards', 'portfolioFilters', 'googleLink', 'supplierChips', 'heroPanelMedia', 'promoBar',
-  'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal', 'nf.schema', 'privacySchema',
+  'portfolioCards', 'portfolioFilters', 'googleLink', 'supplierChips', 'heroPanelMedia', 'promoBar', 'nap',
+  'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal', 'nf.schema', 'privacySchema', 'nap',
   'areaServedJson', 'workTypeOptions', 'notFoundLocale',
   ...Array.from({ length: 9 }, (_, i) => `svcMedia${i}`),
 ]);
@@ -174,7 +185,7 @@ const SVC_RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu',
   // W12-09. Generated JSON-LD fragment, must not be escaped.
   'areaServedJson',
   // W12-17. Anchor fragments and a bare attribute.
-  'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal', 'nf.schema', 'privacySchema',
+  'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal', 'nf.schema', 'privacySchema', 'nap',
 ]);
 
 const die = (msg) => { console.error('\nBUILD FAILED: ' + msg + '\n'); process.exit(1); };
@@ -2832,7 +2843,7 @@ const ROOF_ALL = 'toate';
    Derived, never listed: the parent plus its own children, so adding a roofing
    subcategory to content/catalog.json adds its redirect page too. */
 const ROOF_MOVED_ROUTES = new Set();
-const MOVED_RAW_KEYS = new Set(['promoBar', 'moved.schema']);
+const MOVED_RAW_KEYS = new Set(['promoBar', 'moved.schema', 'nap']);
 const roofAnchor = (child) => `mat-${child}`;
 /* ~~ROOF_MOVED_ROUTES.add(ROOF_CATEGORY);~~ AMENDED (W27-FIX-15, W27-R-21): the PARENT route
    is a real catalogue page again, the two roofing bentos and nothing else; only the seven
@@ -3781,7 +3792,7 @@ function parentTitle(l, slug) {
 })();
 const PROD_RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu',
   'demoAttr', 'promoBar', 'areaServedJson', 'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
-  'prod.block', 'prod.footerLinks', 'prod.faqSchema',
+  'prod.block', 'prod.footerLinks', 'prod.faqSchema', 'nap',
   // W24-08. The garduri bento, and the copertine hero and cross-sell row.
   'prod.bento', 'prod.hero', 'prod.crossSell', 'prod.heroHidden',
   // W24-06. Three levels on a parented product page, two on the others.
@@ -3790,7 +3801,7 @@ const PROD_RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu',
 const productTemplate = fs.readFileSync('src/product.html', 'utf8');
 const CAT_RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu',
   'demoAttr', 'promoBar', 'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
-  'cat.block', 'cat.products', 'cat.footerLinks', 'cat.schema',
+  'cat.block', 'cat.products', 'cat.footerLinks', 'cat.schema', 'nap',
   // W24-04. Built here because a parent page and a subcategory page differ in
   // both: a parent has three breadcrumb levels and an authored lede, a
   // subcategory has four and none.
@@ -4037,6 +4048,14 @@ for (const l of loaded) {
     base: BASE,
     buildSha: BUILD_SHA,
     homeHref: BASE + l.home,
+    /* W28-19 (wave 28 dispatch, GEO): ONE NAP, the same bytes on every page and in both locales
+       (name, street, locality, phone, e-mail), rendered from this constant and nowhere else; the
+       localized labels of the footer's contact list stay in the list, outside the block, so the
+       block hashes to one value site-wide. The JSON-LD literals say the same street. */
+    nap: NAP_HTML,
+    /* W28-19: the "Despre" facts, plain declarative sentences from figures the site already
+       states (the stats, the warranty years, the coverage line, the contact), never a new fact. */
+    despreFacts: despreFacts(l),
     hrefRo: BASE + '/',
     hrefRu: BASE + '/ru/',
     canonical: SITE + BASE + l.home,
@@ -4271,7 +4290,7 @@ for (const l of loaded) {
     };
     const missing = new Set();
     const html = inConstructieTemplate.replace(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/g, (_, key) => {
-      if (key in icVars) return CAT_RAW_KEYS.has(key) || key === 'ic.footerLinks' || key === 'ic.schema' ? icVars[key] : esc(icVars[key]);
+      if (key in icVars) return CAT_RAW_KEYS.has(key) || key === 'ic.footerLinks' || key === 'ic.schema' || key === 'nap' ? icVars[key] : esc(icVars[key]);
       missing.add(key); return `{{${key}}}`;
     });
     if (missing.size) die(`src/in-constructie.html references unknown keys for ${l.code}: ${[...missing].join(', ')}`);
@@ -4638,10 +4657,20 @@ fs.writeFileSync('dist/sitemap.xml',
     '## Zonă deservită / Зона обслуживания', '',
     coverageLine(ro),
     coverageLine(ru), '',
+    /* W28-19 (wave 28, GEO): the "Despre" facts in both languages, the catalogue groups with
+       their URLs, the address, and the Russian hours; the phone and e-mail from the one NAP. */
+    '## Despre / О компании', '',
+    despreFacts(ro),
+    despreFacts(ru), '',
+    '## Catalog / Каталог', '',
+    ...CATALOG.categories.map((c) => `- [${c.label.ro}](${SITE}${BASE}${c.href.ro}): RU ${c.label.ru}, ${SITE}${BASE}${c.href.ru}`),
+    '',
     '## Contact', '',
-    `- Telefon: ${ro.strings['footer.phone'] || '+373 76 837 180'}`,
-    `- Email: ${ro.strings['footer.email'] || 'rapidconstructmd@gmail.com'}`,
+    `- ${NAP.name}, ${NAP.street}, ${NAP.locality}, Republica Moldova`,
+    `- Telefon: ${NAP.phone}`,
+    `- Email: ${NAP.email}`,
     `- Program: ${ro.strings['form.hours']}`,
+    `- График: ${ru.strings['form.hours']}`,
     '',
     '## Limbi / Языки', '',
     `- Română: ${SITE}${BASE}/`,
@@ -4727,6 +4756,7 @@ ${items}
     </div>
   </section>
 </main>
+${NAP_HTML}
 </body>
 </html>
 `;

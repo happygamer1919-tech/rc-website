@@ -652,7 +652,7 @@
     "contactHeading": "Contact",
     "socialHeading": "Urmărește-ne",
     "addressLabel": "Adresă",
-    "address": "Nicolae Zelinski St 24, Chișinău",
+    "address": "Nicolae Zelinski 24, Chișinău",
     "phoneLabel": "Telefon",
     "emailLabel": "Email",
     "email": "rapidconstructmd@gmail.com",
@@ -823,7 +823,7 @@
         },
         "3": {
           "q": "Ce garanție și ce preț primesc?",
-          "a": "Garanția este scrisă în contract, până la treizeci de ani, nu doar promisă verbal. Materialele sunt de la producători cu reputație, cu certificare UE, potrivite proiectului. Prețul este cel din deviz, fără costuri ascunse."
+          "a": "Garanția este scrisă în contract, cinci ani, nu doar promisă verbal. Materialele sunt de la producători cu reputație, cu certificare UE, potrivite proiectului. Prețul este cel din deviz, fără costuri ascunse."
         }
       },
       "related": {
@@ -876,7 +876,7 @@
         },
         "3": {
           "q": "Ce condiții de plată aveți la acoperiș?",
-          "a": "Prețul rămâne cel din deviz, fără costuri ascunse. Garanția se scrie în contract, până la treizeci de ani, iar materialele vin de la producători cu certificare UE."
+          "a": "Prețul rămâne cel din deviz, fără costuri ascunse. Garanția se scrie în contract, cinci ani, iar materialele vin de la producători cu certificare UE."
         }
       },
       "related": {
@@ -921,7 +921,7 @@
         },
         "3": {
           "q": "Ce materiale folosiți și ce garanție dați?",
-          "a": "Materialele vin de la producători cu reputație, cu certificare UE, alese potrivit proiectului. Garanția se scrie în contract, până la treizeci de ani, nu se promite doar verbal. Prețul este cel din deviz, fără costuri ascunse."
+          "a": "Materialele vin de la producători cu reputație, cu certificare UE, alese potrivit proiectului. Garanția se scrie în contract, cinci ani, nu se promite doar verbal. Prețul este cel din deviz, fără costuri ascunse."
         }
       },
       "related": {
@@ -1002,7 +1002,7 @@
       "faq": {
         "0": {
           "q": "Ce primesc înainte să înceapă lucrul?",
-          "a": "Primești vizualizări 3D ale casei și planurile pe hârtie, înainte de începerea lucrului. Scopul este să știi exact ce primești, nu să aproximezi din descriere. Randările din această pagină arată nivelul de detaliu: materiale, culori, corpuri de iluminat și mobilier fix, așa cum vor arăta la execuție."
+          "a": "Vizualizările 3D ale casei și planurile pe hârtie, înainte de începerea lucrului. Scopul este să știi exact ce primești, nu să aproximezi din descriere. Randările din această pagină arată nivelul de detaliu: materiale, culori, corpuri de iluminat și mobilier fix, așa cum vor arăta la execuție."
         },
         "1": {
           "q": "Ce încăperi se pot vizualiza?",
@@ -1014,7 +1014,7 @@
         },
         "3": {
           "q": "Proiectarea se poate lua separat de construcție?",
-          "a": "Da, proiectarea și vizualizarea 3D sunt un serviciu de sine stătător. Dacă mergi mai departe cu execuția, ele devin punctul de pornire pentru deviz, iar prețul rămâne cel din deviz, fără costuri ascunse. Măsurarea la fața locului este gratuită."
+          "a": "Proiectarea și vizualizarea 3D sunt un serviciu de sine stătător. Dacă mergi mai departe cu execuția, ele devin punctul de pornire pentru deviz, iar prețul rămâne cel din deviz, fără costuri ascunse. Măsurarea la fața locului este gratuită."
         }
       },
       "related": {
@@ -1063,7 +1063,7 @@
         },
         "3": {
           "q": "Instalațiile vin cu garanție?",
-          "a": "Da, sunt pornite cu garanție, iar garanția se scrie în contract, nu se promite doar verbal. Materialele vin de la producători cu reputație, cu certificare UE. După finalizare rămânem alături de tine cu suport post-lucrare, iar prețul este cel din deviz, fără costuri ascunse."
+          "a": "Instalațiile sunt pornite cu garanție scrisă în contract, nu doar promisă verbal. Materialele vin de la producători cu reputație, cu certificare UE. După finalizare rămânem alături de tine cu suport post-lucrare, iar prețul este cel din deviz, fără costuri ascunse."
         }
       },
       "related": {
@@ -1083,7 +1083,7 @@
         },
         "2": {
           "q": "Ce garanție se aplică la o lucrare industrială?",
-          "a": "Aceeași ca la restul lucrărilor: garanția se scrie în contract, până la treizeci de ani, nu se promite doar verbal. Materialele vin de la producători cu reputație, cu certificare UE, potrivite proiectului, iar prețul rămâne cel din deviz, fără costuri ascunse."
+          "a": "Aceeași ca la restul lucrărilor: garanția se scrie în contract, cinci ani, nu se promite doar verbal. Materialele vin de la producători cu reputație, cu certificare UE, potrivite proiectului, iar prețul rămâne cel din deviz, fără costuri ascunse."
         },
         "3": {
           "q": "De unde începe o lucrare industrială?",
@@ -1229,5 +1229,14 @@
     "next": "Fotografia următoare",
     "sectionH": "Galerie foto",
     "gridAria": "Fotografiile galeriei"
+  },
+  "despre": {
+    "facts": {
+      "f0": "{brand} este un antreprenor general de construcții din {city}.",
+      "f1": "{coverage}",
+      "f2": "{exp} și {projects}.",
+      "f3": "Garanția de {years} ani este scrisă în contract.",
+      "f4": "Telefon {phone}, e-mail {email}."
+    }
   }
 }

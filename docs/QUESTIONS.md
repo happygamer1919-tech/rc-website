@@ -3471,7 +3471,11 @@ into both locale heads from a committed ruling (the dispatch named it `GSC_META_
 then one line in `build.js` and two rendered heads, verified by `grep -c` on `/` and `/ru/`.
 Until then the site is not verified in Search Console and nothing else depends on it.
 
-## Q-W28-02 · The twelve copertine models have photographs now and no price, because imperlux.md publishes none · OPEN · opened 2026-09-24 (W28-14)
+## Q-W28-02 · The twelve copertine models have photographs now and no price, because imperlux.md publishes none · ANSWERED 2026-09-24, no price, a button to the contact form (R-W28-14) · opened 2026-09-24 (W28-14)
+
+**Answered by the owner, 2026-09-24 (R-W28-14): "leave copertine without prices if imperlux doesn't has, just a button to
+transfer to the contact form that's it". Card W28-29 replaces the "Preț la cerere" line with the button. The render and badge
+parts keep their shipped defaults.**
 
 **Raised W28-14, 2026-09-24. Shipped default: every model card shows imperlux.md's own photograph
 of that model and the W24-R7 ask line ("Preț la cerere" / "Цена по запросу"); the group is in the
@@ -3502,7 +3506,10 @@ overlaid on the image; a car in a carport photograph is the photograph's subject
 they are, recorded here. If a car badge counts for you, C-06, C-08 and C-12 have no badge-free
 picture at the source and would go back to their diagrams.
 
-## Q-W28-03 · Three plate pictures show a different colour than the product they stand for · OPEN · opened 2026-09-24 (W28-15)
+## Q-W28-03 · Three plate pictures show a different colour than the product they stand for · ANSWERED 2026-09-24, no change (R-W28-15) · opened 2026-09-24 (W28-15)
+
+**Answered by the owner, 2026-09-24 (R-W28-15): "stays as it is, no need for change". The three plate pictures and the
+shared RED 69/70 render stay; nothing moves.**
 
 **Raised W28-15, 2026-09-24. Shipped default: the three pictures stay as they are (each is a plain
 photograph, which is all W28-15 replaces); their provenance rows now name the record's own product
@@ -3521,7 +3528,10 @@ under the same direct-supplier licence. Say the word and it is one small card.
 RED 70 (CAT-0184 and CAT-0185), so those two cards show one picture, as the supplier's own pages do.
 If you would rather the second card declared the reuse (W25-R17) or showed nothing, say which.
 
-## Q-W28-04 · Is 320px a supported width? The Russian header spills 17px there · OPEN · opened 2026-09-24 (W28-FIX-01)
+## Q-W28-04 · Is 320px a supported width? The Russian header spills 17px there · ANSWERED 2026-09-24, yes, 320 is the minimum (R-W28-13) · opened 2026-09-24 (W28-FIX-01)
+
+**Answered by the fourth dispatch, 2026-09-24 (R-W28-13): 320px is the minimum supported viewport; every page, both
+locales, scrollWidth equal to 320 in headless Chrome. Card W28-28 (the 320 sweep) absorbs W28-FIX-02.**
 
 **Raised W28-FIX-01, 2026-09-24. Shipped default: nothing changes at 320; the tested floor stays 360,
 which is the smallest width any gate measures. W28-FIX-02 is on the board, blocked on this answer.**

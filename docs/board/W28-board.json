@@ -114,6 +114,40 @@
       "applied_by": [
         "W28-26"
       ]
+    },
+    {
+      "id": "R-W28-12",
+      "title": "The five deviations of the third dispatch ratified; standing rule: the artifact is rendered only from main after a merge and every run ends with a documents-only board sync",
+      "date": "2026-09-24",
+      "ruled_by": "owner",
+      "applied_by": [
+        "W28-R5"
+      ]
+    },
+    {
+      "id": "R-W28-13",
+      "title": "320px is the minimum supported viewport: every page, both locales, scrollWidth equal to 320 in headless Chrome (answers Q-W28-04)",
+      "date": "2026-09-24",
+      "ruled_by": "owner",
+      "applied_by": [
+        "W28-28"
+      ]
+    },
+    {
+      "id": "R-W28-14",
+      "title": "Copertine: no price where Imperlux publishes none, one button to the contact form on each model card (owner message, answers Q-W28-02)",
+      "date": "2026-09-24",
+      "ruled_by": "owner",
+      "applied_by": [
+        "W28-29"
+      ]
+    },
+    {
+      "id": "R-W28-15",
+      "title": "The three plate pictures and the shared RED 69/70 render stay as they are (owner message, answers Q-W28-03)",
+      "date": "2026-09-24",
+      "ruled_by": "owner",
+      "applied_by": []
     }
   ],
   "cards": [
@@ -445,8 +479,8 @@
     {
       "id": "W28-FIX-02",
       "title": "The Russian header pill spills 17px at 320 (found by W28-FIX-01, below every gate's floor)",
-      "lane": "blocked_on_owner",
-      "status": "blocked",
+      "lane": "done",
+      "status": "skipped",
       "priority": "low",
       "owner_terminal": "yellow",
       "branch": null,
@@ -456,7 +490,7 @@
         "W28-FIX-01"
       ],
       "ask": "On /ru/ at 320px the header pill measures 305px inside a 337px header inner and the document scrolls 17px sideways; the Romanian page fits. Found while proving W28-FIX-01; present on main today.",
-      "reading": "Below the smallest width any gate measures (gate 11 starts at 769, gate 14 and the crawl at 360 and 390), so whether 320 is a supported width is the owner's call: Q-W28-04. If yes, the card tightens the phone header at under 340 (the Каталог button or the pill padding) and adds 320 to gate 14's matrix so it stays fixed; if no, the card closes with the floor recorded as 360.",
+      "reading": "Below the smallest width any gate measures (gate 11 starts at 769, gate 14 and the crawl at 360 and 390), so whether 320 is a supported width is the owner's call: Q-W28-04. If yes, the card tightens the phone header at under 340 (the Каталог button or the pill padding) and adds 320 to gate 14's matrix so it stays fixed; if no, the card closes with the floor recorded as 360. Closed by R-W28-13 (320 is supported): absorbed into W28-28, the 320 sweep, which fixes this overflow with every other one it finds.",
       "acceptance": [
         "blocked on Q-W28-04",
         "if worked: at 320 on / and /ru/ document.documentElement.scrollWidth equals clientWidth and the header pill fits inside the viewport; gate 14 measures 320 as well as 360 and 1280; 33 of 33 gates exit 0"
@@ -571,6 +605,69 @@
         "node scripts/run-gates.js --keep-going  -> every command exit 0"
       ],
       "evidence": "quality green; merged 2026-09-24 18:10:11Z as 86e2ca3; section 12.0 EXIT=0 at 18:13:17Z; gate 32 counts 78 stock, 2 owner photographs, 0 waiting"
+    },
+    {
+      "lane": "queue",
+      "status": "todo",
+      "priority": "high",
+      "owner_terminal": "yellow",
+      "pr": null,
+      "merge_sha": null,
+      "id": "W28-29",
+      "title": "Copertine: a button to the contact form on every model card, no price (R-W28-14)",
+      "branch": "w28/w28-29-copertine-cta",
+      "depends_on": [
+        "W28-R5"
+      ],
+      "ask": "A) Q-W28-02: leave copertine without prices if imperlux doesn't has, just a button to transfer to the contact form that's it",
+      "reading": "Each of the twelve model cards on /servicii/copertine/, both locales, drops the \"Preț la cerere\" line and carries one button to the page's contact form (#oferta), \"Solicită ofertă\" / \"Запросить предложение\". No price shown. The renders and badges parts of Q-W28-02 keep their shipped defaults.",
+      "acceptance": [
+        "node build.js && node scripts/dom-text.js --count \".model a[href$=\\\"#oferta\\\"]\" /servicii/copertine/ /ru/servicii/copertine/  -> 12 and 12",
+        "node scripts/dom-text.js --count \".model .prod__ask\" /servicii/copertine/ /ru/servicii/copertine/  -> 0 and 0",
+        "node scripts/run-gates.js --keep-going  -> every command exit 0"
+      ]
+    },
+    {
+      "lane": "queue",
+      "status": "todo",
+      "priority": "normal",
+      "owner_terminal": "yellow",
+      "pr": null,
+      "merge_sha": null,
+      "id": "W28-27",
+      "title": "Turnkey examples: the timber-frame stock pictures on the turnkey gallery replaced by masonry or brick construction",
+      "branch": "w28/w28-27-turnkey-masonry",
+      "depends_on": [
+        "W28-29"
+      ],
+      "ask": "Card W28-25 turnkey examples: on the turnkey-house service page, both locales, replace every gallery stock picture showing a timber-frame house with masonry or brick construction under the same sourcing rule and manifest. Acceptance: manifest rows updated, gallery count unchanged, image-sources test exit 0, Lighthouse performance stays at or above 90.",
+      "reading": "The id W28-25 is taken; recorded as W28-27. Five of the ten stock pictures on /servicii/case-la-cheie/ show a North American timber-frame house (09 to 12 with the frame or OSB visible, 08 a stucco-over-frame tract house). Each is replaced in place (same slot number, same order) by a masonry or brick house picture from the allowed set, viewed twice under the owner's words, with its PROVENANCE and SOURCES rows replaced and alt text in both locales. Gallery count stays 12.",
+      "acceptance": [
+        "node build.js && node scripts/check-galleries.js  -> exit 0, case-la-cheie 12",
+        "node scripts/check-image-sources.js  -> exit 0",
+        "grep -c \"case-la-cheie\" docs/images/SOURCES.md  -> 10, none naming a replaced source",
+        "Lighthouse desktop, median of three, /servicii/case-la-cheie/ and /ru/servicii/case-la-cheie/  -> performance >= 90"
+      ]
+    },
+    {
+      "lane": "queue",
+      "status": "todo",
+      "priority": "high",
+      "owner_terminal": "yellow",
+      "pr": null,
+      "merge_sha": null,
+      "id": "W28-28",
+      "title": "The 320 sweep: every page, both locales, scrollWidth equal to 320, and a gate that keeps it",
+      "branch": "w28/w28-28-320-sweep",
+      "depends_on": [
+        "W28-27"
+      ],
+      "ask": "Card W28-26 320 sweep: run the R-W28-13 check on every page, fix any overflow, report the list. Acceptance: the check exits 0 across all pages.",
+      "reading": "The id W28-26 is taken; recorded as W28-28. A new check renders every built page in headless Chrome at 320 wide with mobile emulation, both locales, and requires document.documentElement.scrollWidth to equal 320; it is registered as gate 35 so the floor holds. Every overflow found is fixed in the same card and listed in the report with its cause. W28-FIX-02 (the Russian header pill) is one of them.",
+      "acceptance": [
+        "node build.js && node scripts/check-viewport-320.js  -> exit 0, every built page both locales, the page count printed",
+        "node scripts/run-gates.js --keep-going  -> every command exit 0"
+      ]
     }
   ],
   "board_syncs": [
@@ -586,7 +683,16 @@
     {
       "branch": "w28/w28-r4-final-run-2",
       "date": "2026-09-24",
-      "records": "W28-24 verified (#186), docs/reports/W28-FINAL-RUN-2.md; the artifact republished from main after this merges"
+      "records": "W28-24 verified (#186), docs/reports/W28-FINAL-RUN-2.md; the artifact republished from main after this merges",
+      "pr": 187,
+      "merge_sha": "dd2a51a1039222eb79f27a75fd710d6451273145",
+      "status": "verified",
+      "evidence": "quality green 7m10s; merged 2026-09-24 19:14:29Z as dd2a51a; section 12.0 EXIT=0 at 19:17:27Z; artifact Version 25 rendered from main dd2a51a"
+    },
+    {
+      "branch": "w28/w28-r5-rulings-board",
+      "date": "2026-09-24",
+      "records": "R-W28-12 to R-W28-15, cards W28-27, W28-28, W28-29, W28-FIX-02 absorbed, Q-W28-02, 03, 04 answered, #187 verified"
     }
   ]
 }

@@ -507,8 +507,8 @@
     {
       "id": "W28-24",
       "title": "Service galleries: ten stock pictures more on every service gallery (fifteen on fatade), galleries for industrial and proiectare-3d, the heading \"Exemple de lucrari si solutii\"",
-      "lane": "queue",
-      "status": "todo",
+      "lane": "in_flight",
+      "status": "pr_open",
       "priority": "high",
       "owner_terminal": "yellow",
       "branch": "w28/w28-24-service-galleries",
@@ -518,13 +518,14 @@
         "W28-23"
       ],
       "ask": "W28-23 service galleries: every service page RO and RU gets 10 additional images, fatade gets 15, Constructii industriale and Proiectare 3D get a gallery with 10 since they have none. Subjects match the service. Gallery heading on service pages becomes RO \"Exemple de lucrari si solutii\", RU \"Примеры работ и решений\". RC's own photos stay first in order, stock after. Portofoliu page untouched. Acceptance: per service page gallery item count equals previous count plus 10 (fatade plus 15, the two new galleries equal 10), heading string present in both locales, image-sources test exit 0, Lighthouse performance on every service page at or above 90 both locales.",
-      "reading": "R-W28-07. Eleven galleries (nine service pages plus copertine and the fence gallery page), 115 stock pictures from the allowed set appended after the owner's in content/galleries.json with origin, source, licence and alt in both locales, WebP full and thumb; the heading through a key of its own, with diacritics; Lighthouse measured on all eighteen service pages, median of three, recorded in W28-FINAL-RUN-2.",
+      "reading": "R-W28-07. Eleven galleries (nine service pages plus copertine and the fence gallery page), 115 stock pictures from the allowed set appended after the owner's in content/galleries.json with origin, source, licence and alt in both locales, WebP full and thumb; the heading through a key of its own, with diacritics; Lighthouse measured on all eighteen service pages, median of three, recorded in W28-FINAL-RUN-2. Done as read: the heading goes on every gallery surface that now holds stock (the eighteen service pages, the copertine gallery section, and the fence gallery page, whose heading was screen-reader only and is now visible); stock pictures render their own alt in both locales; the stock intake files a gallery by the page it renders on (the fence folder is page garduri, rendering on galerie-garduri); the folder intake carries stock pictures over on a re-run. The pictures come from the W28-23 harvest, viewed twice there; no new browser gathering (the Chrome route was ratified for W28-23 only).",
       "acceptance": [
         "node build.js && node scripts/check-galleries.js  -> exit 0 with the new counts printed (acoperisuri 25, case-la-cheie 12, fatade 19, finisaje 15, instalatii 15, terasamente 26, reparatii 37, copertine 12, galerie-garduri 22, industrial 10, proiectare-3d 10)",
         "node scripts/dom-text.js on every service page both locales | grep -c 'Exemple de lucrări și soluții\\|Примеры работ и решений'  -> 1 per page",
         "node scripts/check-image-sources.js  -> exit 0 (every gallery stock picture has a licensed SOURCES row)",
         "Lighthouse desktop, median of three, performance >= 90 on all 18 service pages  -> recorded in docs/reports/W28-FINAL-RUN-2.md"
-      ]
+      ],
+      "evidence": "gate 29: 11 galleries, 406 photographs matched on 22 pages, counts as the acceptance lists; heading once on each of 22 pages (rendered DOM); gate 32: 115 stock gallery photographs, 193 SOURCES rows; two budgets move (galerie-garduri both locales, 3,725 to 4,981); Lighthouse in docs/reports/W28-FINAL-RUN-2.md"
     },
     {
       "id": "W28-25",
@@ -576,7 +577,11 @@
     {
       "branch": "w28/w28-r3-rulings-board-sync",
       "date": "2026-09-24",
-      "records": "R-W28-10 and R-W28-11 (the third dispatch), W28-26 verified (#184), Q-W28-05 answered"
+      "records": "R-W28-10 and R-W28-11 (the third dispatch), W28-26 verified (#184), Q-W28-05 answered",
+      "pr": 185,
+      "merge_sha": "07256ee92b465f5fe1af949a9480b93ee333133b",
+      "status": "verified",
+      "evidence": "quality green 6m51s; merged 2026-09-24 18:31:09Z as 07256ee; section 12.0 EXIT=0 at 18:34:09Z; artifact Version 24 rendered from main 07256ee"
     }
   ]
 }

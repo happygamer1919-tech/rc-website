@@ -246,7 +246,8 @@ const MARKERS = {
     bentoTiles: 0,
     /* AMENDED (W27-FIX-12, owner instruction W27-R-18): **12**. One photograph, a roofing gable,
        refused from the fence gallery by the owner; the ledger and the page agree at twelve. */
-    galSlides: 12,
+    /* AMENDED (W28-24, R-W28-07): **22**. Ten stock pictures follow the owner's twelve. */
+    galSlides: 22,
   },
   // W18-01 (RC-138). The tile page is a product page that now carries one
   // profile diagram per model. A tile page built before W18-01 carries 0, so a
@@ -427,8 +428,8 @@ const PAGES = [
   /* W26-12. The fence gallery page, measured 3967 in both locales; plus 60 (W24-R4). */
   /* AMENDED (W27-FIX-12, W27-R-18): twelve thumbnails, one grid row fewer; measured 3,750 / 3,750
      at 1440, settled, plus 60, in R-Y. */
-  { path: '/servicii/galerie-garduri/',    type: 'gallery', label: 'gal garduri RO', budget: 3785 },
-  { path: '/ru/servicii/galerie-garduri/', type: 'gallery', label: 'gal garduri RU', budget: 3785 },
+  { path: '/servicii/galerie-garduri/',    type: 'gallery', label: 'gal garduri RO', budget: 5041 },
+  { path: '/ru/servicii/galerie-garduri/', type: 'gallery', label: 'gal garduri RU', budget: 5041 },
   // ~~W16-02, RC-129. The seven catalog category pages.~~
   // AMENDED (W24-04): thirty pages, and every budget re-measured. The catalogue
   // index at /catalog/ is new (it answered 404), every subcategory has a page of

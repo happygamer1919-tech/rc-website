@@ -7,7 +7,7 @@
    "page": "acoperisuri",
    "render_on": "acoperisuri",
    "found": 15,
-   "installed": 15,
+   "installed": 25,
    "preview": 13,
    "photos": [
     {
@@ -144,6 +144,196 @@
      "source_size": "1280x960",
      "size": "1280x960",
      "thumb_size": "600x450"
+    },
+    {
+     "source": "pexels:38439444",
+     "sha256": "5f19f4e949886f65648d65657bd98860a7ad5b0e3a812ca06829b4b9e5be745f",
+     "full": "public/img/galerie/acoperisuri/16.webp",
+     "thumb": "public/img/galerie/acoperisuri/16-t.webp",
+     "source_size": "1600x1068",
+     "size": "1600x1068",
+     "thumb_size": "600x401",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/38439444/",
+     "image_url": "https://images.pexels.com/photos/38439444/pexels-photo-38439444.jpeg",
+     "subject": "Close view of orange and dark grey tile-profile metal roofs on adjacent houses against a blue sky",
+     "alt": {
+      "ro": "Acoperișuri din țiglă metalică portocalie și gri închis pe case alăturate, sub cer albastru.",
+      "ru": "Крыши из оранжевой и тёмно-серой металлочерепицы на соседних домах на фоне синего неба."
+     }
+    },
+    {
+     "source": "pexels:17191633",
+     "sha256": "3c9d39c84afdafca3597cad0b2853309ac423738a8b6e344c6f3d431d5c6f7b6",
+     "full": "public/img/galerie/acoperisuri/17.webp",
+     "thumb": "public/img/galerie/acoperisuri/17-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/17191633/",
+     "image_url": "https://images.pexels.com/photos/17191633/pexels-photo-17191633.jpeg",
+     "subject": "Orange metal tile roof panels on a pitched roof with four roof vent pipes on flashing plates",
+     "alt": {
+      "ro": "Acoperiș înclinat din țiglă metalică portocalie cu patru aerisitoare montate pe plăci de etanșare.",
+      "ru": "Скатная крыша из оранжевой металлочерепицы с четырьмя вентиляционными выходами на планках примыкания."
+     }
+    },
+    {
+     "source": "pexels:16760539",
+     "sha256": "96a81ab1b494ea735f63edcae3ccd4da03473d8aebee7fdf7df1350e374891ec",
+     "full": "public/img/galerie/acoperisuri/18.webp",
+     "thumb": "public/img/galerie/acoperisuri/18-t.webp",
+     "source_size": "1600x2400",
+     "size": "1600x2400",
+     "thumb_size": "600x900",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/16760539/",
+     "image_url": "https://images.pexels.com/photos/16760539/pexels-photo-16760539.jpeg",
+     "subject": "Finished dark standing-seam metal roof with a turret, chimney and dormer on a white villa",
+     "alt": {
+      "ro": "Acoperiș din tablă fălțuită de culoare închisă cu turn și coș de fum pe o vilă albă.",
+      "ru": "Тёмная фальцевая металлическая крыша с башенкой и дымоходом на белой вилле."
+     }
+    },
+    {
+     "source": "pexels:5264825",
+     "sha256": "de86dc4758742c27270d9caf423fd72d6388ab2ff72ed37b29950564acad8fd8",
+     "full": "public/img/galerie/acoperisuri/19.webp",
+     "thumb": "public/img/galerie/acoperisuri/19-t.webp",
+     "source_size": "1600x1200",
+     "size": "1600x1200",
+     "thumb_size": "600x450",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/5264825/",
+     "image_url": "https://images.pexels.com/photos/5264825/pexels-photo-5264825.jpeg",
+     "subject": "Aerial view of a crew installing ridge caps on a new green metal sheet roof.",
+     "alt": {
+      "ro": "O echipă montează coama pe un acoperiș nou din tablă verde, vedere aeriană.",
+      "ru": "Бригада монтирует конёк на новой зелёной металлической крыше, вид с высоты."
+     }
+    },
+    {
+     "source": "pexels:11767927",
+     "sha256": "2380eb105552fa20fcb854871de2a39d180aebf846f0cb310ffe16c293208fb1",
+     "full": "public/img/galerie/acoperisuri/20.webp",
+     "thumb": "public/img/galerie/acoperisuri/20-t.webp",
+     "source_size": "1600x2400",
+     "size": "1600x2400",
+     "thumb_size": "600x900",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/11767927/",
+     "image_url": "https://images.pexels.com/photos/11767927/pexels-photo-11767927.jpeg",
+     "subject": "Dark trapezoidal metal sheet roof on the gable of a timber-clad building at dusk, tiled roof of a neighbouring house at left",
+     "alt": {
+      "ro": "Acoperiș din tablă cutată închisă la culoare pe frontonul unei clădiri placate cu lemn, la apus.",
+      "ru": "Тёмная крыша из профилированного листа на фронтоне здания с деревянной обшивкой на закате."
+     }
+    },
+    {
+     "source": "pexels:26570514",
+     "sha256": "f805f2616c4314e2fc18b514438501361e4bc5aa6d143612183e5e5991234448",
+     "full": "public/img/galerie/acoperisuri/21.webp",
+     "thumb": "public/img/galerie/acoperisuri/21-t.webp",
+     "source_size": "1600x2400",
+     "size": "1600x2400",
+     "thumb_size": "600x900",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/26570514/",
+     "image_url": "https://images.pexels.com/photos/26570514/pexels-photo-26570514.jpeg",
+     "subject": "Grey standing-seam metal roof with snow guards and a red gutter on a beige wooden house with a white window",
+     "alt": {
+      "ro": "Acoperiș din tablă fălțuită gri cu parazăpezi și jgheab roșu pe o casă din lemn bej.",
+      "ru": "Серая фальцевая крыша со снегозадержателями и красным водостоком на бежевом деревянном доме."
+     }
+    },
+    {
+     "source": "pexels:10443918",
+     "sha256": "3f6c258c2bf4b1d27667d8df5b27b6bed17f7045b8e49d28631539b35072afd9",
+     "full": "public/img/galerie/acoperisuri/22.webp",
+     "thumb": "public/img/galerie/acoperisuri/22-t.webp",
+     "source_size": "1600x1061",
+     "size": "1600x1061",
+     "thumb_size": "600x398",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/10443918/",
+     "image_url": "https://images.pexels.com/photos/10443918/pexels-photo-10443918.jpeg",
+     "subject": "Slope of a bright blue corrugated metal sheet roof against a sky with clouds.",
+     "alt": {
+      "ro": "Pantă de acoperiș din tablă cutată albastră pe fundal de cer cu nori.",
+      "ru": "Скат крыши из голубого профнастила на фоне неба с облаками."
+     }
+    },
+    {
+     "source": "pexels:11557060",
+     "sha256": "61e00e49b0d83ac774b4749b19cfa00cc924076d66c54d703a245c3d26ed5030",
+     "full": "public/img/galerie/acoperisuri/23.webp",
+     "thumb": "public/img/galerie/acoperisuri/23-t.webp",
+     "source_size": "1600x2400",
+     "size": "1600x2400",
+     "thumb_size": "600x900",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/11557060/",
+     "image_url": "https://images.pexels.com/photos/11557060/pexels-photo-11557060.jpeg",
+     "subject": "Grey ribbed metal roof panels on a red barn with a louvred cupola, seen from below",
+     "alt": {
+      "ro": "Acoperiș din panouri metalice gri cu nervuri pe o clădire roșie, cu un turnuleț de ventilație.",
+      "ru": "Серая металлическая крыша с рёбрами на красном здании и вентиляционная башенка."
+     }
+    },
+    {
+     "source": "pexels:28999250",
+     "sha256": "b2ea4a55a772edbab5eac77e14a62127daa25a85dc7d6dd87fcbd95566d3ff81",
+     "full": "public/img/galerie/acoperisuri/24.webp",
+     "thumb": "public/img/galerie/acoperisuri/24-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/28999250/",
+     "image_url": "https://images.pexels.com/photos/28999250/pexels-photo-28999250.jpeg",
+     "subject": "Corrugated metal roof with four timber-clad dormer windows under a clear blue sky",
+     "alt": {
+      "ro": "Acoperiș din tablă cutată cu patru lucarne placate cu lemn, pe cer senin.",
+      "ru": "Крыша из профнастила с четырьмя мансардными окнами, обшитыми деревом, на фоне ясного неба."
+     }
+    },
+    {
+     "source": "pexels:38439476",
+     "sha256": "ff3d778d5af796ef3b98c553752393b41896382846f31cd81a30a59061dc3308",
+     "full": "public/img/galerie/acoperisuri/25.webp",
+     "thumb": "public/img/galerie/acoperisuri/25-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/38439476/",
+     "image_url": "https://images.pexels.com/photos/38439476/pexels-photo-38439476.jpeg",
+     "subject": "Grey standing-seam metal roof on a building with multicoloured timber cladding under a blue sky",
+     "alt": {
+      "ro": "Acoperiș metalic gri cu falț pe o clădire placată cu lemn colorat, sub cer senin.",
+      "ru": "Серая фальцевая металлическая крыша на здании с разноцветной деревянной обшивкой под ясным небом."
+     }
     }
    ],
    "duplicates_skipped": [],
@@ -154,7 +344,7 @@
    "page": "case-la-cheie",
    "render_on": "case-la-cheie",
    "found": 2,
-   "installed": 2,
+   "installed": 12,
    "preview": 1,
    "photos": [
     {
@@ -174,6 +364,196 @@
      "source_size": "1200x1566",
      "size": "1200x1566",
      "thumb_size": "600x783"
+    },
+    {
+     "source": "pexels:30580640",
+     "sha256": "a077073fe99593e518a9a207090e9eea455350fbb2ba2641ff38553d16a63ba1",
+     "full": "public/img/galerie/case-la-cheie/03.webp",
+     "thumb": "public/img/galerie/case-la-cheie/03-t.webp",
+     "source_size": "1600x961",
+     "size": "1600x961",
+     "thumb_size": "600x360",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/30580640/",
+     "image_url": "https://images.pexels.com/photos/30580640/pexels-photo-30580640.jpeg",
+     "subject": "Newly finished white two-storey house with a double garage on an unlandscaped plot with grass.",
+     "alt": {
+      "ro": "Casă nouă cu două niveluri, fațadă albă și garaj dublu, pe un teren încă neamenajat.",
+      "ru": "Новый двухэтажный дом с белым фасадом и двойным гаражом на ещё не благоустроенном участке."
+     }
+    },
+    {
+     "source": "pexels:29278167",
+     "sha256": "8be20ee7ff47d23dcb69a0c5517748a81f6441218cbbdd5c9a882d3b6cb63f04",
+     "full": "public/img/galerie/case-la-cheie/04.webp",
+     "thumb": "public/img/galerie/case-la-cheie/04-t.webp",
+     "source_size": "1600x2133",
+     "size": "1600x2133",
+     "thumb_size": "600x800",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/29278167/",
+     "image_url": "https://images.pexels.com/photos/29278167/pexels-photo-29278167.jpeg",
+     "subject": "Freshly laid hollow clay block walls meeting at an interior corner on a construction site, mortar joints and dusty floor",
+     "alt": {
+      "ro": "Pereți din blocuri ceramice proaspăt zidiți, la colțul unei încăperi de pe un șantier de casă.",
+      "ru": "Свежевыложенные стены из керамических блоков в углу помещения на стройке дома."
+     }
+    },
+    {
+     "source": "pexels:19370548",
+     "sha256": "228cae4e082cc7d13923d6a76af1d6c2c4d1f07729f2d0512ed2a807a49231bd",
+     "full": "public/img/galerie/case-la-cheie/05.webp",
+     "thumb": "public/img/galerie/case-la-cheie/05-t.webp",
+     "source_size": "1600x2133",
+     "size": "1600x2133",
+     "thumb_size": "600x800",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/19370548/",
+     "image_url": "https://images.pexels.com/photos/19370548/pexels-photo-19370548.jpeg",
+     "subject": "Brick house under construction with a poured concrete beam, rebar columns and formwork boards.",
+     "alt": {
+      "ro": "Casă în construcție din cărămidă, cu grindă de beton turnată, stâlpi cu armătură și cofraje de lemn.",
+      "ru": "Строящийся кирпичный дом с залитой бетонной балкой, арматурными колоннами и деревянной опалубкой."
+     }
+    },
+    {
+     "source": "pexels:18080903",
+     "sha256": "a80c281dbb0187ce579aaf7f7e1e140282a8db00c83566bfedaf306a86903eec",
+     "full": "public/img/galerie/case-la-cheie/06.webp",
+     "thumb": "public/img/galerie/case-la-cheie/06-t.webp",
+     "source_size": "1600x2400",
+     "size": "1600x2400",
+     "thumb_size": "600x900",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/18080903/",
+     "image_url": "https://images.pexels.com/photos/18080903/pexels-photo-18080903.jpeg",
+     "subject": "New timber window frames braced in the brick walls of a house under construction.",
+     "alt": {
+      "ro": "Tocuri de lemn pentru ferestre montate în pereții de cărămidă ai unei case în construcție.",
+      "ru": "Деревянные оконные рамы установлены в кирпичных стенах строящегося дома."
+     }
+    },
+    {
+     "source": "pexels:34640157",
+     "sha256": "7448e62c551016769cec84243446427aada5f84fed0ab421d92236532e1812c5",
+     "full": "public/img/galerie/case-la-cheie/07.webp",
+     "thumb": "public/img/galerie/case-la-cheie/07-t.webp",
+     "source_size": "1600x2133",
+     "size": "1600x2133",
+     "thumb_size": "600x800",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/34640157/",
+     "image_url": "https://images.pexels.com/photos/34640157/pexels-photo-34640157.jpeg",
+     "subject": "Fresh brick walls with rebar columns and timber props on a house construction site, stacked bricks behind.",
+     "alt": {
+      "ro": "Pereți noi din cărămidă cu stâlpi de armătură și proptele de lemn pe un șantier de casă.",
+      "ru": "Новые кирпичные стены с арматурными колоннами и деревянными подпорками на стройке дома."
+     }
+    },
+    {
+     "source": "pexels:39494021",
+     "sha256": "65fe942ca4c10dd0b6eaa4891664b701214417b6679ad35e699fe31c6b36993a",
+     "full": "public/img/galerie/case-la-cheie/08.webp",
+     "thumb": "public/img/galerie/case-la-cheie/08-t.webp",
+     "source_size": "1600x898",
+     "size": "1600x898",
+     "thumb_size": "600x337",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/39494021/",
+     "image_url": "https://images.pexels.com/photos/39494021/pexels-photo-39494021.jpeg",
+     "subject": "Two-storey house under construction with scaffolding, roof tiles stacked on the roof and a cement mixer in front",
+     "alt": {
+      "ro": "Casă cu două niveluri în construcție, cu schele montate și țiglă pregătită pe acoperiș.",
+      "ru": "Двухэтажный дом на этапе строительства, с установленными лесами и черепицей, сложенной на крыше."
+     }
+    },
+    {
+     "source": "pexels:38210401",
+     "sha256": "08ad839e0b417be0e09beac84c78bb56f13933b69b27fb9eaac05d3e69bac4d7",
+     "full": "public/img/galerie/case-la-cheie/09.webp",
+     "thumb": "public/img/galerie/case-la-cheie/09-t.webp",
+     "source_size": "1600x898",
+     "size": "1600x898",
+     "thumb_size": "600x337",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/38210401/",
+     "image_url": "https://images.pexels.com/photos/38210401/pexels-photo-38210401.jpeg",
+     "subject": "Two-storey timber-framed house with OSB sheathing under construction, roof deck on, red container in front",
+     "alt": {
+      "ro": "Casă cu două niveluri în construcție, cu structură de lemn și panouri OSB pe pereți și acoperiș.",
+      "ru": "Двухэтажный дом на этапе строительства с деревянным каркасом и плитами OSB на стенах и крыше."
+     }
+    },
+    {
+     "source": "pexels:37510301",
+     "sha256": "a4b425f870eeb5bab7fbe1446ba638f6abf2ec4eda97aa3e2f90f4a01477ff13",
+     "full": "public/img/galerie/case-la-cheie/10.webp",
+     "thumb": "public/img/galerie/case-la-cheie/10-t.webp",
+     "source_size": "1600x898",
+     "size": "1600x898",
+     "thumb_size": "600x337",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/37510301/",
+     "image_url": "https://images.pexels.com/photos/37510301/pexels-photo-37510301.jpeg",
+     "subject": "Two-storey timber-framed house under construction with OSB walls, porch columns and a small fenced garden in front",
+     "alt": {
+      "ro": "Casă cu două niveluri în construcție, cu structură de lemn, pereți OSB și terasă acoperită la intrare.",
+      "ru": "Двухэтажный дом на этапе строительства с деревянным каркасом, стенами OSB и крытым крыльцом."
+     }
+    },
+    {
+     "source": "pexels:39151690",
+     "sha256": "981f2405f597d5c264fa2bc235927e5a332996e1a8397206b786b1ee22312694",
+     "full": "public/img/galerie/case-la-cheie/11.webp",
+     "thumb": "public/img/galerie/case-la-cheie/11-t.webp",
+     "source_size": "1600x898",
+     "size": "1600x898",
+     "thumb_size": "600x337",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/39151690/",
+     "image_url": "https://images.pexels.com/photos/39151690/pexels-photo-39151690.jpeg",
+     "subject": "Two timber-frame houses under construction with OSB sheathing and scaffolding under a clear sky.",
+     "alt": {
+      "ro": "Două case cu structură din lemn în construcție, cu panouri OSB și schele, sub cer senin.",
+      "ru": "Два дома с деревянным каркасом на этапе строительства, с панелями OSB и лесами под ясным небом."
+     }
+    },
+    {
+     "source": "pexels:39367475",
+     "sha256": "6ab67fe1fdf881b28a4b85afcd7e556f1b9772a9660c1797112da8caf20b2e7d",
+     "full": "public/img/galerie/case-la-cheie/12.webp",
+     "thumb": "public/img/galerie/case-la-cheie/12-t.webp",
+     "source_size": "1600x898",
+     "size": "1600x898",
+     "thumb_size": "600x337",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/39367475/",
+     "image_url": "https://images.pexels.com/photos/39367475/pexels-photo-39367475.jpeg",
+     "subject": "Timber stud frame of a two-storey house with OSB sheathing on a cleared plot under a clear sky.",
+     "alt": {
+      "ro": "Structura din lemn a unei case cu etaj, în construcție pe un teren pregătit.",
+      "ru": "Деревянный каркас двухэтажного дома на подготовленном участке."
+     }
     }
    ],
    "duplicates_skipped": [],
@@ -184,7 +564,7 @@
    "page": "copertine",
    "render_on": "copertine",
    "found": 2,
-   "installed": 2,
+   "installed": 12,
    "preview": 1,
    "photos": [
     {
@@ -204,6 +584,196 @@
      "source_size": "1600x1200",
      "size": "1600x1200",
      "thumb_size": "600x450"
+    },
+    {
+     "source": "pexels:9800008",
+     "sha256": "c25ba0b354be9036387e48c47e030a422bd7e205ef33fa6a40d4f8f31266d11e",
+     "full": "public/img/galerie/copertine/03.webp",
+     "thumb": "public/img/galerie/copertine/03-t.webp",
+     "source_size": "1600x1200",
+     "size": "1600x1200",
+     "thumb_size": "600x450",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/9800008/",
+     "image_url": "https://images.pexels.com/photos/9800008/pexels-photo-9800008.jpeg",
+     "subject": "Steel-post solar panel carport seen from below, white SUV parked beneath, low-rise building and pines behind",
+     "alt": {
+      "ro": "Copertină de parcare pe stâlpi de oțel, cu acoperiș din panouri solare, deasupra unui SUV alb.",
+      "ru": "Парковочный навес на стальных стойках с крышей из солнечных панелей над белым внедорожником."
+     }
+    },
+    {
+     "source": "pexels:2547578",
+     "sha256": "9d043e103ae5e4e89895b1fedb8681baf6ecd368b95ea7154e8f99f36e924cef",
+     "full": "public/img/galerie/copertine/04.webp",
+     "thumb": "public/img/galerie/copertine/04-t.webp",
+     "source_size": "1600x2416",
+     "size": "1600x2416",
+     "thumb_size": "600x906",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/2547578/",
+     "image_url": "https://images.pexels.com/photos/2547578/pexels-photo-2547578.jpeg",
+     "subject": "Black aluminium louvred pergola on steel posts over a seaside terrace with a wooden table",
+     "alt": {
+      "ro": "Pergolă metalică neagră cu lamele, montată peste o terasă cu masă din lemn, lângă mare.",
+      "ru": "Черная металлическая пергола с ламелями над террасой с деревянным столом у моря."
+     }
+    },
+    {
+     "source": "pexels:36388699",
+     "sha256": "80f6dd4f3774f5e194900b740d2ae0ad19b888a131f5e9b9ca5b74249939cd02",
+     "full": "public/img/galerie/copertine/05.webp",
+     "thumb": "public/img/galerie/copertine/05-t.webp",
+     "source_size": "1600x2133",
+     "size": "1600x2133",
+     "thumb_size": "600x800",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/36388699/",
+     "image_url": "https://images.pexels.com/photos/36388699/pexels-photo-36388699.jpeg",
+     "subject": "Modern pergola with steel columns and slatted roof over stone steps and a hillside terrace",
+     "alt": {
+      "ro": "Pergolă modernă cu stâlpi metalici și acoperiș din lamele, deasupra unor trepte din piatră.",
+      "ru": "Современная пергола на стальных колоннах с реечной крышей над каменными ступенями."
+     }
+    },
+    {
+     "source": "pexels:7587879",
+     "sha256": "6377b2b709189eeeef4dfee889db40983d4f8bd694adc15d4f587fe13d1c6ec3",
+     "full": "public/img/galerie/copertine/06.webp",
+     "thumb": "public/img/galerie/copertine/06-t.webp",
+     "source_size": "1600x1068",
+     "size": "1600x1068",
+     "thumb_size": "600x401",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/7587879/",
+     "image_url": "https://images.pexels.com/photos/7587879/pexels-photo-7587879.jpeg",
+     "subject": "Black steel pergola with open beams over a wooden deck terrace beside a dark modern house, dining set underneath",
+     "alt": {
+      "ro": "Pergolă metalică neagră cu grinzi deschise peste o terasă cu deck de lemn, lângă o casă modernă.",
+      "ru": "Черная металлическая пергола с открытыми балками над деревянной террасой у современного дома."
+     }
+    },
+    {
+     "source": "pexels:38524590",
+     "sha256": "8359ff1a186ef2edab0d6c4f205d4f598799c737d82b2525312248762bb56be7",
+     "full": "public/img/galerie/copertine/07.webp",
+     "thumb": "public/img/galerie/copertine/07-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/38524590/",
+     "image_url": "https://images.pexels.com/photos/38524590/pexels-photo-38524590.jpeg",
+     "subject": "A long flat-roofed metal carport with parked cars in front of a modern apartment building, shrubs in the foreground.",
+     "alt": {
+      "ro": "Copertină metalică lungă pentru parcare, cu mașini dedesubt, în fața unui bloc de locuințe modern.",
+      "ru": "Длинный металлический навес для парковки с автомобилями под ним перед современным жилым домом."
+     }
+    },
+    {
+     "source": "pexels:9799727",
+     "sha256": "f589fdc24fefa89bd3630adc79c3e453b9d78089445a04e2fdb52d3d0d3fa3cd",
+     "full": "public/img/galerie/copertine/08.webp",
+     "thumb": "public/img/galerie/copertine/08-t.webp",
+     "source_size": "1600x1200",
+     "size": "1600x1200",
+     "thumb_size": "600x450",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/9799727/",
+     "image_url": "https://images.pexels.com/photos/9799727/pexels-photo-9799727.jpeg",
+     "subject": "Aerial view of long steel carport canopies topped with solar panels over a parking lot",
+     "alt": {
+      "ro": "Copertine metalice lungi cu panouri solare deasupra unei parcări, văzute de sus.",
+      "ru": "Длинные металлические навесы с солнечными панелями над парковкой, вид сверху."
+     }
+    },
+    {
+     "source": "pexels:9799761",
+     "sha256": "025837ad5bb2e24c1acc3205ff954f801fc856ebce6414b77d0c7dcf0034d754",
+     "full": "public/img/galerie/copertine/09.webp",
+     "thumb": "public/img/galerie/copertine/09-t.webp",
+     "source_size": "1600x1200",
+     "size": "1600x1200",
+     "thumb_size": "600x450",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/9799761/",
+     "image_url": "https://images.pexels.com/photos/9799761/pexels-photo-9799761.jpeg",
+     "subject": "Underside of a steel-post carport canopy roofed with solar panels against the sun",
+     "alt": {
+      "ro": "Structură de copertină pe stâlpi de oțel, cu acoperiș din panouri solare, văzută de dedesubt.",
+      "ru": "Каркас навеса на стальных стойках с крышей из солнечных панелей, вид снизу."
+     }
+    },
+    {
+     "source": "pexels:9799731",
+     "sha256": "973afc0cb21a51c39f9bb3f03537b79ab005fd439d2ecc6dc8effcc60089277f",
+     "full": "public/img/galerie/copertine/10.webp",
+     "thumb": "public/img/galerie/copertine/10-t.webp",
+     "source_size": "1600x1200",
+     "size": "1600x1200",
+     "thumb_size": "600x450",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/9799731/",
+     "image_url": "https://images.pexels.com/photos/9799731/pexels-photo-9799731.jpeg",
+     "subject": "Aerial view of long solar-panel carport rows over a parking lot beside a flat-roofed commercial building",
+     "alt": {
+      "ro": "Vedere aeriană a unor copertine lungi cu panouri solare peste o parcare, lângă o clădire comercială.",
+      "ru": "Вид сверху на длинные навесы с солнечными панелями над парковкой рядом с коммерческим зданием."
+     }
+    },
+    {
+     "source": "pexels:10795799",
+     "sha256": "b563475836abd73c945e8a77f8e28f120138f501371a228c282df41375f0b5f8",
+     "full": "public/img/galerie/copertine/11.webp",
+     "thumb": "public/img/galerie/copertine/11-t.webp",
+     "source_size": "1600x2136",
+     "size": "1600x2136",
+     "thumb_size": "600x801",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/10795799/",
+     "image_url": "https://images.pexels.com/photos/10795799/pexels-photo-10795799.jpeg",
+     "subject": "Dark steel pergola frame with open slats over a rooftop terrace with a brick wall and wicker chairs",
+     "alt": {
+      "ro": "Pergolă din profile metalice negre, cu lamele deschise, peste o terasă cu perete de cărămidă.",
+      "ru": "Пергола из черного металлического профиля с открытыми рейками над террасой у кирпичной стены."
+     }
+    },
+    {
+     "source": "pexels:12184742",
+     "sha256": "080790870549f3c2033765dc2c8f58bb67668b4c3b1ab2768a2aafce887a31da",
+     "full": "public/img/galerie/copertine/12.webp",
+     "thumb": "public/img/galerie/copertine/12-t.webp",
+     "source_size": "1600x2241",
+     "size": "1600x2241",
+     "thumb_size": "600x840",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/12184742/",
+     "image_url": "https://images.pexels.com/photos/12184742/pexels-photo-12184742.jpeg",
+     "subject": "White metal pergola with open beams along a stone-paved terrace, climbing plants on the posts, hills behind",
+     "alt": {
+      "ro": "Pergolă metalică albă cu grinzi deschise de-a lungul unei terase pavate, cu plante cățărătoare pe stâlpi.",
+      "ru": "Белая металлическая пергола с открытыми балками вдоль мощеной террасы, на столбах вьющиеся растения."
+     }
     }
    ],
    "duplicates_skipped": [],
@@ -214,7 +784,7 @@
    "page": "fatade",
    "render_on": "fatade",
    "found": 4,
-   "installed": 4,
+   "installed": 19,
    "preview": 3,
    "photos": [
     {
@@ -252,6 +822,291 @@
      "source_size": "1080x1440",
      "size": "1080x1440",
      "thumb_size": "600x800"
+    },
+    {
+     "source": "pexels:38166271",
+     "sha256": "0582775a125d3b9fb353a774264bd5d26482a9b000e23ed9def4314f8d9996da",
+     "full": "public/img/galerie/fatade/05.webp",
+     "thumb": "public/img/galerie/fatade/05-t.webp",
+     "source_size": "1600x2133",
+     "size": "1600x2133",
+     "thumb_size": "600x800",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/38166271/",
+     "image_url": "https://images.pexels.com/photos/38166271/pexels-photo-38166271.jpeg",
+     "subject": "Freshly rendered terracotta facade with textured decorative plaster around a window",
+     "alt": {
+      "ro": "Fațadă cu tencuială decorativă texturată în ton teracotă, în jurul unei ferestre.",
+      "ru": "Фасад с фактурной декоративной штукатуркой терракотового цвета вокруг окна."
+     }
+    },
+    {
+     "source": "pexels:38561969",
+     "sha256": "8cbef0b0b13531bd0448dae357731b848a68d4cf4b6c7f428f7a8f4014b3f432",
+     "full": "public/img/galerie/fatade/06.webp",
+     "thumb": "public/img/galerie/fatade/06-t.webp",
+     "source_size": "1600x900",
+     "size": "1600x900",
+     "thumb_size": "600x338",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/38561969/",
+     "image_url": "https://images.pexels.com/photos/38561969/pexels-photo-38561969.jpeg",
+     "subject": "Gloved hand holding a trowel loaded with wet render in front of a freshly rendered wall",
+     "alt": {
+      "ro": "Mână cu mănușă ține o mistrie cu tencuială proaspătă în fața unui perete tencuit.",
+      "ru": "Рука в перчатке держит мастерок со свежим раствором перед оштукатуренной стеной."
+     }
+    },
+    {
+     "source": "pexels:6127359",
+     "sha256": "be27533c61d5db3da1a6f967270ba52aa877eb2509fe4cd38f476cd68add6755",
+     "full": "public/img/galerie/fatade/07.webp",
+     "thumb": "public/img/galerie/fatade/07-t.webp",
+     "source_size": "1600x2169",
+     "size": "1600x2169",
+     "thumb_size": "600x813",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/6127359/",
+     "image_url": "https://images.pexels.com/photos/6127359/pexels-photo-6127359.jpeg",
+     "subject": "Orange rendered building facade with white raised bands framing the wall panels",
+     "alt": {
+      "ro": "Fațadă tencuită în portocaliu, cu benzi albe în relief care încadrează panourile.",
+      "ru": "Оштукатуренный оранжевый фасад с белыми рельефными полосами, обрамляющими панели."
+     }
+    },
+    {
+     "source": "pexels:37352217",
+     "sha256": "662214b8c6f1f528fae0a401d257a0ac11543847cf35ece5b8347808b38f8b80",
+     "full": "public/img/galerie/fatade/08.webp",
+     "thumb": "public/img/galerie/fatade/08-t.webp",
+     "source_size": "1600x900",
+     "size": "1600x900",
+     "thumb_size": "600x338",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/37352217/",
+     "image_url": "https://images.pexels.com/photos/37352217/pexels-photo-37352217.jpeg",
+     "subject": "Worker in hi-vis vest and helmet on tube scaffolding rendering a facade around a window opening, face hidden",
+     "alt": {
+      "ro": "Un muncitor pe schelă tencuiește fațada unei clădiri în jurul unui gol de fereastră.",
+      "ru": "Рабочий на строительных лесах штукатурит фасад здания вокруг оконного проёма."
+     }
+    },
+    {
+     "source": "pexels:29274535",
+     "sha256": "fd1a315c1f78c6299fed75d629e15f8b1ba5241f468a40905a7f66d76b7513d1",
+     "full": "public/img/galerie/fatade/09.webp",
+     "thumb": "public/img/galerie/fatade/09-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/29274535/",
+     "image_url": "https://images.pexels.com/photos/29274535/pexels-photo-29274535.jpeg",
+     "subject": "A worker in a lift basket applies render to the damaged facade of a white apartment block under a blue sky.",
+     "alt": {
+      "ro": "Muncitor într-o nacelă aplică tencuială pe fațada unui bloc alb cu mai multe etaje.",
+      "ru": "Рабочий в люльке подъёмника наносит штукатурку на фасад белого многоэтажного дома."
+     }
+    },
+    {
+     "source": "pexels:5511097",
+     "sha256": "977f59033408e3fbea0950fb13661fd5ac57ebd710b7c0ac825e8c8248758a6b",
+     "full": "public/img/galerie/fatade/10.webp",
+     "thumb": "public/img/galerie/fatade/10-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/5511097/",
+     "image_url": "https://images.pexels.com/photos/5511097/pexels-photo-5511097.jpeg",
+     "subject": "Scaffolding along a multi-storey facade with grey insulation boards fixed to the wall and taped window openings",
+     "alt": {
+      "ro": "Schelă montată pe fațada unei clădiri, cu plăci de izolație fixate pe perete și goluri de ferestre protejate.",
+      "ru": "Строительные леса вдоль фасада здания с утеплительными плитами на стене и закрытыми оконными проёмами."
+     }
+    },
+    {
+     "source": "pexels:266812",
+     "sha256": "91723a75838f9276a1aaf115c7df20809a300a06fe232c9e9f44c48b0fc3c683",
+     "full": "public/img/galerie/fatade/11.webp",
+     "thumb": "public/img/galerie/fatade/11-t.webp",
+     "source_size": "1600x1064",
+     "size": "1600x1064",
+     "thumb_size": "600x399",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/266812/",
+     "image_url": "https://images.pexels.com/photos/266812/pexels-photo-266812.jpeg",
+     "subject": "Apartment blocks under construction with yellow insulation exposed and blue and pink facade cladding being fitted",
+     "alt": {
+      "ro": "Blocuri de locuințe în construcție, cu izolație galbenă vizibilă și placare de fațadă albastră și roz.",
+      "ru": "Жилые дома на этапе строительства с видимой жёлтой изоляцией и синей и розовой облицовкой фасада."
+     }
+    },
+    {
+     "source": "pexels:13598299",
+     "sha256": "bd2b54eb67cb6cbfcd1a3e97c3dc96eca0189476731219b7f72ef2ebf12b2013",
+     "full": "public/img/galerie/fatade/12.webp",
+     "thumb": "public/img/galerie/fatade/12-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/13598299/",
+     "image_url": "https://images.pexels.com/photos/13598299/pexels-photo-13598299.jpeg",
+     "subject": "Textured beige rendered facade with coloured panels beside the windows",
+     "alt": {
+      "ro": "Fațadă cu tencuială texturată bej și panouri colorate lângă ferestre.",
+      "ru": "Фасад с бежевой фактурной штукатуркой и цветными панелями у окон."
+     }
+    },
+    {
+     "source": "pexels:18435146",
+     "sha256": "eaabb88b70bbd52197b1b1ad7c4214d4ca6039ac61225d9665ec1b9e478bd375",
+     "full": "public/img/galerie/fatade/13.webp",
+     "thumb": "public/img/galerie/fatade/13-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/18435146/",
+     "image_url": "https://images.pexels.com/photos/18435146/pexels-photo-18435146.jpeg",
+     "subject": "Yellow textured render with grooved rectangular block pattern next to a white rendered wall section",
+     "alt": {
+      "ro": "Tencuială decorativă galbenă cu rosturi în formă de blocuri, lângă un perete tencuit alb.",
+      "ru": "Жёлтая декоративная штукатурка с расшивкой под блоки рядом с белой оштукатуренной стеной."
+     }
+    },
+    {
+     "source": "pexels:17691355",
+     "sha256": "77776578a94eff8f274b1bfe434af40cb00629713dc8046f50d4019ac9911c0c",
+     "full": "public/img/galerie/fatade/14.webp",
+     "thumb": "public/img/galerie/fatade/14-t.webp",
+     "source_size": "1600x2133",
+     "size": "1600x2133",
+     "thumb_size": "600x800",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/17691355/",
+     "image_url": "https://images.pexels.com/photos/17691355/pexels-photo-17691355.jpeg",
+     "subject": "Decorative plaster wall with a fan-shaped trowelled texture pattern",
+     "alt": {
+      "ro": "Perete cu tencuială decorativă aplicată cu mistria în model de evantai.",
+      "ru": "Стена с декоративной штукатуркой, нанесённой мастерком веерным узором."
+     }
+    },
+    {
+     "source": "pexels:30222116",
+     "sha256": "cc3fad4ed28e0daeb8ccee09cbe25921f5e001da0bee4002be4cb8bd4fb92419",
+     "full": "public/img/galerie/fatade/15.webp",
+     "thumb": "public/img/galerie/fatade/15-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/30222116/",
+     "image_url": "https://images.pexels.com/photos/30222116/pexels-photo-30222116.jpeg",
+     "subject": "Close-up of a white textured decorative render next to a smooth plastered corner, in sunlight",
+     "alt": {
+      "ro": "Tencuială decorativă albă cu textură rugoasă, lângă un colț cu tencuială netedă.",
+      "ru": "Белая декоративная штукатурка с рельефной фактурой рядом с гладко оштукатуренным углом."
+     }
+    },
+    {
+     "source": "pexels:14966131",
+     "sha256": "89efcb684ddc3dd107048a9752d4c56e88a77d24ad419ce8a9bbc41865caf976",
+     "full": "public/img/galerie/fatade/16.webp",
+     "thumb": "public/img/galerie/fatade/16-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/14966131/",
+     "image_url": "https://images.pexels.com/photos/14966131/pexels-photo-14966131.jpeg",
+     "subject": "Yellow rendered facade of a terraced building with white window reveals and downpipes",
+     "alt": {
+      "ro": "Fațadă tencuită în galben, cu ferestre albe și burlane, la o clădire cu două niveluri.",
+      "ru": "Оштукатуренный жёлтый фасад двухэтажного здания с белыми окнами и водосточными трубами."
+     }
+    },
+    {
+     "source": "pexels:6260920",
+     "sha256": "ab46ed3a5aa3da0c1bb5f0e44f6210505d8ad6fcbcd0d57c0c9f3f709b67e87f",
+     "full": "public/img/galerie/fatade/17.webp",
+     "thumb": "public/img/galerie/fatade/17-t.webp",
+     "source_size": "1600x2133",
+     "size": "1600x2133",
+     "thumb_size": "600x800",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/6260920/",
+     "image_url": "https://images.pexels.com/photos/6260920/pexels-photo-6260920.jpeg",
+     "subject": "Two apartment towers with cream and yellow ventilated facade panels against a blue sky",
+     "alt": {
+      "ro": "Două blocuri de locuințe cu fațade placate cu panouri crem și galbene, pe cer senin.",
+      "ru": "Два жилых дома с фасадами, облицованными кремовыми и жёлтыми панелями, на фоне ясного неба."
+     }
+    },
+    {
+     "source": "pexels:6221089",
+     "sha256": "b0e76c4dce8b6517bb54ae2a4d65c71e3bdc10c706415636866fc6e613d232ff",
+     "full": "public/img/galerie/fatade/18.webp",
+     "thumb": "public/img/galerie/fatade/18-t.webp",
+     "source_size": "1600x2400",
+     "size": "1600x2400",
+     "thumb_size": "600x900",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/6221089/",
+     "image_url": "https://images.pexels.com/photos/6221089/pexels-photo-6221089.jpeg",
+     "subject": "Corner of a high-rise with rendered facade in white, dark grey and olive stripes, seen from below",
+     "alt": {
+      "ro": "Colț de bloc înalt cu fațadă tencuită în benzi albe, gri închis și verde măsliniu, văzut de jos.",
+      "ru": "Угол высотного дома с оштукатуренным фасадом в белых, тёмно-серых и оливковых полосах, вид снизу."
+     }
+    },
+    {
+     "source": "pexels:39494025",
+     "sha256": "f4703ecb87a96cd8b12dcfc0c902c1296f24f2f5c00d906636b35c1a7ed96019",
+     "full": "public/img/galerie/fatade/19.webp",
+     "thumb": "public/img/galerie/fatade/19-t.webp",
+     "source_size": "1600x898",
+     "size": "1600x898",
+     "thumb_size": "600x337",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/39494025/",
+     "image_url": "https://images.pexels.com/photos/39494025/pexels-photo-39494025.jpeg",
+     "subject": "A building with a freshly rendered grey facade, scaffolding on one side and stacked roof tiles on top, bare earth around it.",
+     "alt": {
+      "ro": "Clădire cu fațadă proaspăt tencuită în gri, schele pe o latură și țigle stivuite pe acoperiș.",
+      "ru": "Здание со свежеоштукатуренным серым фасадом, лесами с одной стороны и стопками черепицы на крыше."
+     }
     }
    ],
    "duplicates_skipped": [],
@@ -262,7 +1117,7 @@
    "page": "finisaje",
    "render_on": "finisaje",
    "found": 5,
-   "installed": 5,
+   "installed": 15,
    "preview": 2,
    "photos": [
     {
@@ -315,6 +1170,196 @@
      "source_size": "735x674",
      "size": "735x674",
      "thumb_size": "600x550"
+    },
+    {
+     "source": "pexels:5691612",
+     "sha256": "410c031c34e5c44a629a7f80b4ef127cf02bec3751b5c634098796b4c6cf896a",
+     "full": "public/img/galerie/finisaje/06.webp",
+     "thumb": "public/img/galerie/finisaje/06-t.webp",
+     "source_size": "1600x2397",
+     "size": "1600x2397",
+     "thumb_size": "600x899",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/5691612/",
+     "image_url": "https://images.pexels.com/photos/5691612/pexels-photo-5691612.jpeg",
+     "subject": "Two hands loading fresh putty onto a wide trowel in front of a white wall",
+     "alt": {
+      "ro": "Mâini care încarcă chit pe o gletieră lată în fața unui perete alb.",
+      "ru": "Руки набирают шпаклёвку на широкий шпатель перед белой стеной."
+     }
+    },
+    {
+     "source": "pexels:5691622",
+     "sha256": "b64b4036b91d27297423c34ae13a09496452d00e7824f68709d1a4afbea68d50",
+     "full": "public/img/galerie/finisaje/07.webp",
+     "thumb": "public/img/galerie/finisaje/07-t.webp",
+     "source_size": "1600x2397",
+     "size": "1600x2397",
+     "thumb_size": "600x899",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/5691622/",
+     "image_url": "https://images.pexels.com/photos/5691622/pexels-photo-5691622.jpeg",
+     "subject": "Gloved hand smoothing a white wall with a wide finishing trowel",
+     "alt": {
+      "ro": "Mână cu mănușă netezind un perete alb cu o gletieră lată.",
+      "ru": "Рука в перчатке разглаживает белую стену широким шпателем."
+     }
+    },
+    {
+     "source": "pexels:5767932",
+     "sha256": "f7c2eafb02f51b864671e6286c952dd34ae7958d11ac8f20423a8ee8ee05ac84",
+     "full": "public/img/galerie/finisaje/08.webp",
+     "thumb": "public/img/galerie/finisaje/08-t.webp",
+     "source_size": "1600x2396",
+     "size": "1600x2396",
+     "thumb_size": "600x899",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/5767932/",
+     "image_url": "https://images.pexels.com/photos/5767932/pexels-photo-5767932.jpeg",
+     "subject": "Gloved hand pressing a long finishing trowel against a white wall",
+     "alt": {
+      "ro": "Mână cu mănușă apăsând o gletieră lungă pe un perete alb.",
+      "ru": "Рука в перчатке прижимает длинный шпатель к белой стене."
+     }
+    },
+    {
+     "source": "pexels:38561968",
+     "sha256": "9b55f6321ffb89fef183ecf20345c444cd7014b3cf3db269b2fc45068dbe7b3a",
+     "full": "public/img/galerie/finisaje/09.webp",
+     "thumb": "public/img/galerie/finisaje/09-t.webp",
+     "source_size": "1600x900",
+     "size": "1600x900",
+     "thumb_size": "600x338",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/38561968/",
+     "image_url": "https://images.pexels.com/photos/38561968/pexels-photo-38561968.jpeg",
+     "subject": "Gloved hand holding a trowel loaded with plaster in front of a freshly plastered wall",
+     "alt": {
+      "ro": "Mână cu mănușă ține o mistrie cu tencuială în fața unui perete proaspăt tencuit.",
+      "ru": "Рука в перчатке держит мастерок со штукатуркой на фоне свежеоштукатуренной стены."
+     }
+    },
+    {
+     "source": "pexels:6474135",
+     "sha256": "5676f4518a38dbdfd768f8aa7942433f2673bfbe6f5275ed5b44961640cf01eb",
+     "full": "public/img/galerie/finisaje/10.webp",
+     "thumb": "public/img/galerie/finisaje/10-t.webp",
+     "source_size": "1600x2400",
+     "size": "1600x2400",
+     "thumb_size": "600x900",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/6474135/",
+     "image_url": "https://images.pexels.com/photos/6474135/pexels-photo-6474135.jpeg",
+     "subject": "Worker seen from behind skimming a white wall with a wide trowel in a room with plasterboard ceiling",
+     "alt": {
+      "ro": "Muncitor văzut din spate gletuiește un perete alb cu o gletieră lată într-o încăpere în renovare.",
+      "ru": "Рабочий со спины шпаклюет белую стену широким шпателем в помещении на ремонте."
+     }
+    },
+    {
+     "source": "pexels:5691596",
+     "sha256": "2a264ce74aa35819ea51f81521130d0c43d9fe708cda06d7ecf8be4a8f2d9834",
+     "full": "public/img/galerie/finisaje/11.webp",
+     "thumb": "public/img/galerie/finisaje/11-t.webp",
+     "source_size": "1600x2397",
+     "size": "1600x2397",
+     "thumb_size": "600x899",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/5691596/",
+     "image_url": "https://images.pexels.com/photos/5691596/pexels-photo-5691596.jpeg",
+     "subject": "Gloved hand skimming a white wall near the ceiling with a wide finishing blade, from a ladder",
+     "alt": {
+      "ro": "Mână cu mănușă întinde glet pe un perete alb, lângă tavan, cu o gletieră lată.",
+      "ru": "Рука в перчатке наносит шпаклёвку на белую стену у потолка широким шпателем."
+     }
+    },
+    {
+     "source": "pexels:5691603",
+     "sha256": "127fbbf8539f803fdb370701d9cec8fdb3a2ec338289a76f3b86416ac3c30533",
+     "full": "public/img/galerie/finisaje/12.webp",
+     "thumb": "public/img/galerie/finisaje/12-t.webp",
+     "source_size": "1600x2397",
+     "size": "1600x2397",
+     "thumb_size": "600x899",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/5691603/",
+     "image_url": "https://images.pexels.com/photos/5691603/pexels-photo-5691603.jpeg",
+     "subject": "Two hands with a putty knife and a trowel loaded with filler skimming a white wall",
+     "alt": {
+      "ro": "Două mâini cu șpaclu și gletieră cu glet finisează un perete alb.",
+      "ru": "Две руки со шпателем и гладилкой со шпаклёвкой выравнивают белую стену."
+     }
+    },
+    {
+     "source": "pexels:5691637",
+     "sha256": "6fb70f94ff88105c50fd0cfd05294dd88360c4236ff2718d99a5cb44a50e5f69",
+     "full": "public/img/galerie/finisaje/13.webp",
+     "thumb": "public/img/galerie/finisaje/13-t.webp",
+     "source_size": "1600x2397",
+     "size": "1600x2397",
+     "thumb_size": "600x899",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/5691637/",
+     "image_url": "https://images.pexels.com/photos/5691637/pexels-photo-5691637.jpeg",
+     "subject": "Gloved hand pressing a wide skimming blade across a freshly filled white wall",
+     "alt": {
+      "ro": "Mână cu mănușă întinde glet pe un perete alb cu o gletieră lată.",
+      "ru": "Рука в перчатке разравнивает шпаклёвку на белой стене широким шпателем."
+     }
+    },
+    {
+     "source": "pexels:9423038",
+     "sha256": "bfaa8d9987f170fbc3a091e78919a97a3f2213db749dad960b3951250690427f",
+     "full": "public/img/galerie/finisaje/14.webp",
+     "thumb": "public/img/galerie/finisaje/14-t.webp",
+     "source_size": "1600x2844",
+     "size": "1600x2844",
+     "thumb_size": "600x1067",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/9423038/",
+     "image_url": "https://images.pexels.com/photos/9423038/pexels-photo-9423038.jpeg",
+     "subject": "Finished floor of cream octagonal tiles with blue diamond inserts and a blue border strip",
+     "alt": {
+      "ro": "Pardoseală finisată cu plăci octogonale crem, inserții albastre și bordură albastră.",
+      "ru": "Готовый пол из кремовой восьмиугольной плитки с синими вставками и синим бордюром."
+     }
+    },
+    {
+     "source": "pexels:5583119",
+     "sha256": "91d8975f6fb54a83e69404936681e011b03256b08f70b43fe3f95236a7a39f76",
+     "full": "public/img/galerie/finisaje/15.webp",
+     "thumb": "public/img/galerie/finisaje/15-t.webp",
+     "source_size": "1600x2400",
+     "size": "1600x2400",
+     "thumb_size": "600x900",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/5583119/",
+     "image_url": "https://images.pexels.com/photos/5583119/pexels-photo-5583119.jpeg",
+     "subject": "Hand holding a wide putty knife against a smooth beige wall",
+     "alt": {
+      "ro": "Mână ținând un șpaclu lat lipit de un perete bej neted.",
+      "ru": "Рука держит широкий шпатель у гладкой бежевой стены."
+     }
     }
    ],
    "duplicates_skipped": [],
@@ -325,7 +1370,7 @@
    "page": "garduri",
    "render_on": "galerie-garduri",
    "found": 19,
-   "installed": 12,
+   "installed": 22,
    "preview": 1,
    "photos": [
     {
@@ -435,6 +1480,196 @@
      "source_size": "736x981",
      "size": "736x981",
      "thumb_size": "600x799"
+    },
+    {
+     "source": "pexels:20182917",
+     "sha256": "81d8c36199ad1f551bef9e395f25885959e229d21553b4b414703083c8b9e28d",
+     "full": "public/img/galerie/galerie-garduri/13.webp",
+     "thumb": "public/img/galerie/galerie-garduri/13-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/20182917/",
+     "image_url": "https://images.pexels.com/photos/20182917/pexels-photo-20182917.jpeg",
+     "subject": "Green welded mesh fence panel with a round metal post in front of a white corrugated building wall",
+     "alt": {
+      "ro": "Panou de gard din plasă sudată verde, cu stâlp metalic, în fața unui perete din tablă albă.",
+      "ru": "Зелёная панель забора из сварной сетки со столбом на фоне стены из белого профлиста."
+     }
+    },
+    {
+     "source": "pexels:33903903",
+     "sha256": "d53cfd787b639de19a318639f3e9cbc090ce4ade673a38bcd71fc67c6d6cdf29",
+     "full": "public/img/galerie/galerie-garduri/14.webp",
+     "thumb": "public/img/galerie/galerie-garduri/14-t.webp",
+     "source_size": "1600x1066",
+     "size": "1600x1066",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/33903903/",
+     "image_url": "https://images.pexels.com/photos/33903903/pexels-photo-33903903.jpeg",
+     "subject": "Black metal slat fence with square posts in front of a brick and corrugated metal wall",
+     "alt": {
+      "ro": "Gard metalic negru din lamele verticale cu stâlpi pătrați, în fața unui perete de cărămidă.",
+      "ru": "Чёрный металлический забор из вертикальных ламелей с квадратными столбами перед кирпичной стеной."
+     }
+    },
+    {
+     "source": "pexels:38668767",
+     "sha256": "bc0e95593a2ac7ef35e562529fde76e5dbcc9759387a77d88bc29deafda180b4",
+     "full": "public/img/galerie/galerie-garduri/15.webp",
+     "thumb": "public/img/galerie/galerie-garduri/15-t.webp",
+     "source_size": "1600x2133",
+     "size": "1600x2133",
+     "thumb_size": "600x800",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/38668767/",
+     "image_url": "https://images.pexels.com/photos/38668767/pexels-photo-38668767.jpeg",
+     "subject": "Long black wrought-iron fence with scroll top rail and gold-tipped finials along a lawn under trees",
+     "alt": {
+      "ro": "Gard lung din fier forjat negru, cu ornamente rotunde și vârfuri aurii, de-a lungul unei peluze cu copaci.",
+      "ru": "Длинный кованый забор чёрного цвета с завитками и золотистыми наконечниками вдоль газона под деревьями."
+     }
+    },
+    {
+     "source": "pexels:5798851",
+     "sha256": "ab2acb2abeaf19e1bf1649ce86a5e8322bfde4d0963496fdc91903bce6d2ee59",
+     "full": "public/img/galerie/galerie-garduri/16.webp",
+     "thumb": "public/img/galerie/galerie-garduri/16-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/5798851/",
+     "image_url": "https://images.pexels.com/photos/5798851/pexels-photo-5798851.jpeg",
+     "subject": "Grey double swing metal gate with spear finials at a house entrance beside a flowering shrub",
+     "alt": {
+      "ro": "Poartă metalică dublă gri cu vârfuri decorative la intrarea unei case, lângă un arbust înflorit.",
+      "ru": "Серые двустворчатые металлические ворота с декоративными пиками у входа в дом рядом с цветущим кустом."
+     }
+    },
+    {
+     "source": "pexels:35492457",
+     "sha256": "00a1a690577c3a00f52762667ba524e5b1475f3d687532cea3cc2fcb8a21a1bd",
+     "full": "public/img/galerie/galerie-garduri/17.webp",
+     "thumb": "public/img/galerie/galerie-garduri/17-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/35492457/",
+     "image_url": "https://images.pexels.com/photos/35492457/pexels-photo-35492457.jpeg",
+     "subject": "A black wrought iron swing gate with spear tops at a snowy driveway between a house and a hedge, garage behind.",
+     "alt": {
+      "ro": "Poartă metalică batantă neagră cu vârfuri decorative, la o alee înzăpezită între casă și gard viu.",
+      "ru": "Черные распашные металлические ворота с декоративными пиками у заснеженного въезда между домом и живой изгородью."
+     }
+    },
+    {
+     "source": "pexels:7912825",
+     "sha256": "4fa7b7676cb599bbf4620bffdc3ea51f4c5d0a84147edb7852afae40bf27b24f",
+     "full": "public/img/galerie/galerie-garduri/18.webp",
+     "thumb": "public/img/galerie/galerie-garduri/18-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/7912825/",
+     "image_url": "https://images.pexels.com/photos/7912825/pexels-photo-7912825.jpeg",
+     "subject": "Low black metal railing fence along a lawn beside a road, greenhouses in the background",
+     "alt": {
+      "ro": "Gard metalic scund din bare verticale de-a lungul unei peluze, lângă drum.",
+      "ru": "Невысокий металлический забор из вертикальных прутьев вдоль газона у дороги."
+     }
+    },
+    {
+     "source": "pexels:34272815",
+     "sha256": "aa6069daed6d15b0545f4b19308e3df39dbbd26355217eee1e018443d9805e23",
+     "full": "public/img/galerie/galerie-garduri/19.webp",
+     "thumb": "public/img/galerie/galerie-garduri/19-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/34272815/",
+     "image_url": "https://images.pexels.com/photos/34272815/pexels-photo-34272815.jpeg",
+     "subject": "Black wrought iron fence with arched panels on a stone base in a garden, orange chairs and a table in front, forested hill behind",
+     "alt": {
+      "ro": "Gard din fier forjat negru cu panouri arcuite pe soclu de piatră, într-o grădină.",
+      "ru": "Чёрный кованый забор с арочными секциями на каменном цоколе в саду."
+     }
+    },
+    {
+     "source": "pexels:18436382",
+     "sha256": "8a3d8085eef4426ac31a7c6b0693db266f18e9c403e8538b96a15f1eb48a066c",
+     "full": "public/img/galerie/galerie-garduri/20.webp",
+     "thumb": "public/img/galerie/galerie-garduri/20-t.webp",
+     "source_size": "1600x2084",
+     "size": "1600x2084",
+     "thumb_size": "600x782",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/18436382/",
+     "image_url": "https://images.pexels.com/photos/18436382/pexels-photo-18436382.jpeg",
+     "subject": "Close-up of a gabion fence panel, welded wire mesh filled with dark and light stones in bands",
+     "alt": {
+      "ro": "Panou de gard tip gabion din plasă sudată, umplut cu piatră în benzi de culoare închisă și deschisă.",
+      "ru": "Габионная секция забора из сварной сетки, заполненная камнем тёмного и светлого цвета полосами."
+     }
+    },
+    {
+     "source": "pexels:36221294",
+     "sha256": "41a9f22bfab625bc84025f86d7ef3cec4ef040f7626673113aaa31f419e1c8c5",
+     "full": "public/img/galerie/galerie-garduri/21.webp",
+     "thumb": "public/img/galerie/galerie-garduri/21-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/36221294/",
+     "image_url": "https://images.pexels.com/photos/36221294/pexels-photo-36221294.jpeg",
+     "subject": "Chain-link mesh fence with metal posts and rails seen straight on against a beige wall",
+     "alt": {
+      "ro": "Gard din plasă împletită, cu stâlpi și lonjeroane metalice, văzut frontal pe fundalul unui perete bej.",
+      "ru": "Забор из сетки-рабицы с металлическими столбами и перекладинами на фоне бежевой стены."
+     }
+    },
+    {
+     "source": "pexels:18654631",
+     "sha256": "9155facde573cea013a8644d7f367ea8e9d8f8aa0a54b6af8eddb2971a0b204e",
+     "full": "public/img/galerie/galerie-garduri/22.webp",
+     "thumb": "public/img/galerie/galerie-garduri/22-t.webp",
+     "source_size": "1600x2400",
+     "size": "1600x2400",
+     "thumb_size": "600x900",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/18654631/",
+     "image_url": "https://images.pexels.com/photos/18654631/pexels-photo-18654631.jpeg",
+     "subject": "A green metal swing gate and picket fence at the drive of a log house, autumn leaves on the ground.",
+     "alt": {
+      "ro": "Poartă metalică batantă verde și gard din șipci la intrarea unei case din bârne, toamna.",
+      "ru": "Зеленые распашные металлические ворота и штакетный забор у входа к бревенчатому дому осенью."
+     }
     }
    ],
    "duplicates_skipped": [
@@ -476,7 +1711,7 @@
    "page": "instalatii",
    "render_on": "instalatii",
    "found": 5,
-   "installed": 5,
+   "installed": 15,
    "preview": 1,
    "photos": [
     {
@@ -523,6 +1758,196 @@
      "source_size": "1062x1600",
      "size": "1062x1600",
      "thumb_size": "600x904"
+    },
+    {
+     "source": "pexels:7937299",
+     "sha256": "430eb4116f4fc0086ab700cc707783490402d969d043650595b0be5f25c487ac",
+     "full": "public/img/galerie/instalatii/06.webp",
+     "thumb": "public/img/galerie/instalatii/06-t.webp",
+     "source_size": "1600x1068",
+     "size": "1600x1068",
+     "thumb_size": "600x401",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/7937299/",
+     "image_url": "https://images.pexels.com/photos/7937299/pexels-photo-7937299.jpeg",
+     "subject": "Underfloor heating manifold with flow meters, circulation pump and red supply pipe on a bare wall",
+     "alt": {
+      "ro": "Distribuitor de încălzire în pardoseală cu debitmetre și pompă de circulație montat pe perete.",
+      "ru": "Коллектор тёплого пола с расходомерами и циркуляционным насосом, смонтированный на стене."
+     }
+    },
+    {
+     "source": "pexels:5691588",
+     "sha256": "5dab355ff7933df3bf897f803cd4674e66280fcfa96502ed3144a9e5c35fb06b",
+     "full": "public/img/galerie/instalatii/07.webp",
+     "thumb": "public/img/galerie/instalatii/07-t.webp",
+     "source_size": "1600x2397",
+     "size": "1600x2397",
+     "thumb_size": "600x899",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/5691588/",
+     "image_url": "https://images.pexels.com/photos/5691588/pexels-photo-5691588.jpeg",
+     "subject": "Hands with pliers wiring a socket frame into a row of wall boxes on a dark grey wall",
+     "alt": {
+      "ro": "Mâini cu clește conectând firele unei prize într-un rând de doze montate în perete gri.",
+      "ru": "Руки с плоскогубцами подключают провода розетки в ряду подрозетников на серой стене."
+     }
+    },
+    {
+     "source": "pexels:6419128",
+     "sha256": "942eeda53f73d094b12cc86bebfa8452fc93c7937c3dc406a5dc4a39fee8b057",
+     "full": "public/img/galerie/instalatii/08.webp",
+     "thumb": "public/img/galerie/instalatii/08-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/6419128/",
+     "image_url": "https://images.pexels.com/photos/6419128/pexels-photo-6419128.jpeg",
+     "subject": "Two hands tightening a stainless steel pipe fitting under a counter with foil insulation behind",
+     "alt": {
+      "ro": "Mâini strângând un fiting metalic pe o conductă de apă sub blat.",
+      "ru": "Руки затягивают металлический фитинг на водопроводной трубе под столешницей."
+     }
+    },
+    {
+     "source": "pexels:9679179",
+     "sha256": "90890867c3a90642276dd10e1ef5f1210c76d87eab0bd7d4a87e25f1b64832b3",
+     "full": "public/img/galerie/instalatii/09.webp",
+     "thumb": "public/img/galerie/instalatii/09-t.webp",
+     "source_size": "1600x2133",
+     "size": "1600x2133",
+     "thumb_size": "600x800",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/9679179/",
+     "image_url": "https://images.pexels.com/photos/9679179/pexels-photo-9679179.jpeg",
+     "subject": "Electrician seen from behind working with a drill inside an open switchboard cabinet full of breakers and wiring",
+     "alt": {
+      "ro": "Electrician lucrează la un tablou electric deschis, cu siguranțe, contactoare și cabluri.",
+      "ru": "Электрик работает в открытом электрощите с автоматами, контакторами и проводкой."
+     }
+    },
+    {
+     "source": "pexels:3614757",
+     "sha256": "8cf728dac359598aad4c9542ebfeac06a96867c819f6f7917ea64bbc311c298c",
+     "full": "public/img/galerie/instalatii/10.webp",
+     "thumb": "public/img/galerie/instalatii/10-t.webp",
+     "source_size": "1600x2400",
+     "size": "1600x2400",
+     "thumb_size": "600x900",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/3614757/",
+     "image_url": "https://images.pexels.com/photos/3614757/pexels-photo-3614757.jpeg",
+     "subject": "Two red flush-mount junction boxes with bare wires in a freshly plastered wall",
+     "alt": {
+      "ro": "Două doze electrice îngropate cu conductoare pregătite, într-un perete proaspăt tencuit.",
+      "ru": "Две встроенные монтажные коробки с выведенными проводами в свежеоштукатуренной стене."
+     }
+    },
+    {
+     "source": "pexels:5691483",
+     "sha256": "7326333b7c3d49cb5b1c5ddef6664d4a3e7916a7f7d25d978c7aa1b808d9aece",
+     "full": "public/img/galerie/instalatii/11.webp",
+     "thumb": "public/img/galerie/instalatii/11-t.webp",
+     "source_size": "1600x2397",
+     "size": "1600x2397",
+     "thumb_size": "600x899",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/5691483/",
+     "image_url": "https://images.pexels.com/photos/5691483/pexels-photo-5691483.jpeg",
+     "subject": "A wall with a new socket, roughed-in heating pipes with a valve, and cables waiting for fittings",
+     "alt": {
+      "ro": "Perete cu priză nouă, țevi de încălzire cu robinet și cabluri electrice pregătite pentru montaj.",
+      "ru": "Стена с новой розеткой, трубами отопления с краном и электрическими кабелями, подготовленными к монтажу."
+     }
+    },
+    {
+     "source": "pexels:29226620",
+     "sha256": "c5a39c740d80c2caec905d5c174eb1b82be16ab014164d0ff03b475693afe103",
+     "full": "public/img/galerie/instalatii/12.webp",
+     "thumb": "public/img/galerie/instalatii/12-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/29226620/",
+     "image_url": "https://images.pexels.com/photos/29226620/pexels-photo-29226620.jpeg",
+     "subject": "Gloved hands screwing a threaded fitting into a panel radiator, pliers on the bench",
+     "alt": {
+      "ro": "Un muncitor cu mănuși înșurubează un racord filetat într-un radiator de panou.",
+      "ru": "Рабочий в перчатках вкручивает резьбовой фитинг в панельный радиатор."
+     }
+    },
+    {
+     "source": "pexels:14845870",
+     "sha256": "1f88060f63eb0e2fc21ef5b60f9d9eda2fdd5dd2fe4aa930ccb71529e82b3dc9",
+     "full": "public/img/galerie/instalatii/13.webp",
+     "thumb": "public/img/galerie/instalatii/13-t.webp",
+     "source_size": "1600x1200",
+     "size": "1600x1200",
+     "thumb_size": "600x450",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/14845870/",
+     "image_url": "https://images.pexels.com/photos/14845870/pexels-photo-14845870.jpeg",
+     "subject": "Grey metal ducts and copper pipes bending around a building corner",
+     "alt": {
+      "ro": "Conducte metalice gri și țevi de cupru montate pe peretele exterior al unei clădiri.",
+      "ru": "Серые металлические трубы и медные трубопроводы, смонтированные на наружной стене здания."
+     }
+    },
+    {
+     "source": "pexels:17180355",
+     "sha256": "f9ced56f57f08314d61a045d497c8bd1de37be15e5aa67559c05d330a4efc6e6",
+     "full": "public/img/galerie/instalatii/14.webp",
+     "thumb": "public/img/galerie/instalatii/14-t.webp",
+     "source_size": "1600x2400",
+     "size": "1600x2400",
+     "thumb_size": "600x900",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/17180355/",
+     "image_url": "https://images.pexels.com/photos/17180355/pexels-photo-17180355.jpeg",
+     "subject": "Rows of grey conduit pipes and PVC elbows fixed on a concrete wall",
+     "alt": {
+      "ro": "Rânduri de tuburi gri și coturi din PVC fixate pe un perete de beton.",
+      "ru": "Ряды серых труб и колен из ПВХ, закреплённых на бетонной стене."
+     }
+    },
+    {
+     "source": "pexels:11851260",
+     "sha256": "ff128870f2428cd252bf336a11db7878cce085c32857db2018414f8e5d0de493",
+     "full": "public/img/galerie/instalatii/15.webp",
+     "thumb": "public/img/galerie/instalatii/15-t.webp",
+     "source_size": "1600x2398",
+     "size": "1600x2398",
+     "thumb_size": "600x899",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/11851260/",
+     "image_url": "https://images.pexels.com/photos/11851260/pexels-photo-11851260.jpeg",
+     "subject": "White-painted pipes with flanges and valves on a white block wall",
+     "alt": {
+      "ro": "Țevi vopsite în alb cu flanșe și robinete montate pe un perete de zidărie.",
+      "ru": "Окрашенные в белый цвет трубы с фланцами и вентилями на стене из блоков."
+     }
     }
    ],
    "duplicates_skipped": [],
@@ -533,7 +1958,7 @@
    "page": "terasamente",
    "render_on": "terasamente",
    "found": 16,
-   "installed": 16,
+   "installed": 26,
    "preview": 7,
    "photos": [
     {
@@ -721,6 +2146,196 @@
       "owner_confirmed": "2026-09-22",
       "ruling": "W27-R-03"
      }
+    },
+    {
+     "source": "pexels:11680715",
+     "sha256": "682d95e0d9e416a492ceb2671d864e04e8903cb0762db98cc3b3fdc5e6de0d7d",
+     "full": "public/img/galerie/terasamente/17.webp",
+     "thumb": "public/img/galerie/terasamente/17-t.webp",
+     "source_size": "1600x1065",
+     "size": "1600x1065",
+     "thumb_size": "600x399",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/11680715/",
+     "image_url": "https://images.pexels.com/photos/11680715/pexels-photo-11680715.jpeg",
+     "subject": "A tracked excavator working in a large open excavation pit for a building foundation, with mixer trucks and apartment blocks behind",
+     "alt": {
+      "ro": "Excavator pe șenile lucrând într-o groapă de fundație largă, cu autobetoniere și blocuri în fundal.",
+      "ru": "Гусеничный экскаватор работает в широком котловане под фундамент, на фоне автобетоносмесители и дома."
+     }
+    },
+    {
+     "source": "pexels:14840752",
+     "sha256": "4604b97c9c57bab045c94ad5ff70c50296ffb62fc6283c4f5e6d58ee05c9d659",
+     "full": "public/img/galerie/terasamente/18.webp",
+     "thumb": "public/img/galerie/terasamente/18-t.webp",
+     "source_size": "1600x1200",
+     "size": "1600x1200",
+     "thumb_size": "600x450",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/14840752/",
+     "image_url": "https://images.pexels.com/photos/14840752/pexels-photo-14840752.jpeg",
+     "subject": "A drilling rig auger boring a pile hole into the ground, with loose soil piled around the bit",
+     "alt": {
+      "ro": "Burghiu de foraj al unei instalații de piloți sapă în pământ, cu sol afânat în jurul găurii.",
+      "ru": "Шнек буровой установки для свай врезается в грунт, вокруг скважины насыпана рыхлая земля."
+     }
+    },
+    {
+     "source": "pexels:39129108",
+     "sha256": "0b44f0454030e16473270c3a838a7a4a9800d2fddd29bcbd06ea5f1a7601b2db",
+     "full": "public/img/galerie/terasamente/19.webp",
+     "thumb": "public/img/galerie/terasamente/19-t.webp",
+     "source_size": "1600x900",
+     "size": "1600x900",
+     "thumb_size": "600x338",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/39129108/",
+     "image_url": "https://images.pexels.com/photos/39129108/pexels-photo-39129108.jpeg",
+     "subject": "Large excavation pit with wall formwork, rebar cages and stacked props, workers seen from far away",
+     "alt": {
+      "ro": "Groapă de fundație cu cofraje de perete, carcase de armătură și popi stivuiți.",
+      "ru": "Котлован с опалубкой стен, арматурными каркасами и сложенными стойками."
+     }
+    },
+    {
+     "source": "pexels:37733176",
+     "sha256": "dc7ae9c6323b165757c4be8e847a44ab588c5f97a9dc0b3d48a34f29c9d2f1d6",
+     "full": "public/img/galerie/terasamente/20.webp",
+     "thumb": "public/img/galerie/terasamente/20-t.webp",
+     "source_size": "1600x1071",
+     "size": "1600x1071",
+     "thumb_size": "600x402",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/37733176/",
+     "image_url": "https://images.pexels.com/photos/37733176/pexels-photo-37733176.jpeg",
+     "subject": "Worker seen from behind guiding a concrete pump hose over a rebar mat in an excavated pit",
+     "alt": {
+      "ro": "Muncitor dirijează furtunul pompei de beton peste plasa de armătură a unei fundații.",
+      "ru": "Рабочий направляет шланг бетононасоса над арматурной сеткой фундамента."
+     }
+    },
+    {
+     "source": "pexels:12032980",
+     "sha256": "3d72170c8741df92a9426b4e4837bc677b2330cff69e0b07c1961ad01aede712",
+     "full": "public/img/galerie/terasamente/21.webp",
+     "thumb": "public/img/galerie/terasamente/21-t.webp",
+     "source_size": "1600x1200",
+     "size": "1600x1200",
+     "thumb_size": "600x450",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/12032980/",
+     "image_url": "https://images.pexels.com/photos/12032980/pexels-photo-12032980.jpeg",
+     "subject": "Deep pit with timber shoring and steel struts around a rebar cage, workers in helmets seen from far away",
+     "alt": {
+      "ro": "Groapă adâncă cu sprijiniri din lemn și carcasă de armătură pentru o fundație.",
+      "ru": "Глубокий котлован с деревянным креплением и арматурным каркасом фундамента."
+     }
+    },
+    {
+     "source": "pexels:26107204",
+     "sha256": "b858f07abb147eb554b9082c4a7158e411afb35f94ba3889e5627d01af92cd96",
+     "full": "public/img/galerie/terasamente/22.webp",
+     "thumb": "public/img/galerie/terasamente/22-t.webp",
+     "source_size": "1600x2133",
+     "size": "1600x2133",
+     "thumb_size": "600x800",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/26107204/",
+     "image_url": "https://images.pexels.com/photos/26107204/pexels-photo-26107204.jpeg",
+     "subject": "Concrete poured from a pump hose into a small square foundation pit, bundle of rebar in the foreground, worker seen only from the waist down",
+     "alt": {
+      "ro": "Beton turnat cu pompa într-o groapă de fundație, cu bare de armătură în prim-plan.",
+      "ru": "Заливка бетона насосом в яму под фундамент, на переднем плане арматурные стержни."
+     }
+    },
+    {
+     "source": "pexels:37733180",
+     "sha256": "c1ca68af06ec42e5b210c48f0640c92071510556b8f20cbbd0d57a54812a1c7d",
+     "full": "public/img/galerie/terasamente/23.webp",
+     "thumb": "public/img/galerie/terasamente/23-t.webp",
+     "source_size": "1600x1280",
+     "size": "1600x1280",
+     "thumb_size": "600x480",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/37733180/",
+     "image_url": "https://images.pexels.com/photos/37733180/pexels-photo-37733180.jpeg",
+     "subject": "Timber formwork and rebar for strip foundations inside an excavated pit, two workers seen small and far away",
+     "alt": {
+      "ro": "Cofraj din lemn și armătură pentru fundații continue într-o groapă excavată.",
+      "ru": "Деревянная опалубка и арматура ленточного фундамента в вырытом котловане."
+     }
+    },
+    {
+     "source": "pexels:29735767",
+     "sha256": "cf60e2b249278fe00169d73457e261885afe60857d31e3d368bb32a704c344a7",
+     "full": "public/img/galerie/terasamente/24.webp",
+     "thumb": "public/img/galerie/terasamente/24-t.webp",
+     "source_size": "1600x1205",
+     "size": "1600x1205",
+     "thumb_size": "600x452",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/29735767/",
+     "image_url": "https://images.pexels.com/photos/29735767/pexels-photo-29735767.jpeg",
+     "subject": "Worker in a cap bent over timber formwork with rebar for a strip foundation in a red earth trench, face hidden",
+     "alt": {
+      "ro": "Muncitor montând cofrajul și armătura unei fundații continue într-un șanț săpat.",
+      "ru": "Рабочий устанавливает опалубку и арматуру ленточного фундамента в вырытой траншее."
+     }
+    },
+    {
+     "source": "pexels:37733179",
+     "sha256": "992916176de3d36ab116032355bd90bca7a527d815918ee8a9fc0e283cfbf6f4",
+     "full": "public/img/galerie/terasamente/25.webp",
+     "thumb": "public/img/galerie/terasamente/25-t.webp",
+     "source_size": "1600x1280",
+     "size": "1600x1280",
+     "thumb_size": "600x480",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/37733179/",
+     "image_url": "https://images.pexels.com/photos/37733179/pexels-photo-37733179.jpeg",
+     "subject": "Large rebar mat for a raft foundation inside an excavation, two workers far away with faces not visible",
+     "alt": {
+      "ro": "Armătură din plasă de oțel pentru o fundație tip radier într-o excavație.",
+      "ru": "Арматурная сетка плитного фундамента в котловане."
+     }
+    },
+    {
+     "source": "pexels:37733177",
+     "sha256": "24d87d56c76619cb66f9b85ed9453accf485c1e9490c3ea30929b4150991da69",
+     "full": "public/img/galerie/terasamente/26.webp",
+     "thumb": "public/img/galerie/terasamente/26-t.webp",
+     "source_size": "1600x2000",
+     "size": "1600x2000",
+     "thumb_size": "600x750",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/37733177/",
+     "image_url": "https://images.pexels.com/photos/37733177/pexels-photo-37733177.jpeg",
+     "subject": "Rebar grid for a foundation slab with column starter cages, one worker walking across, face down and small",
+     "alt": {
+      "ro": "Grilă de armătură pentru placa de fundație, cu carcase de armătură pentru stâlpi.",
+      "ru": "Арматурная сетка фундаментной плиты с каркасами для колонн."
+     }
     }
    ],
    "duplicates_skipped": [],
@@ -731,7 +2346,7 @@
    "page": "reparatii",
    "render_on": "reparatii",
    "found": 27,
-   "installed": 27,
+   "installed": 37,
    "preview": 17,
    "photos": [
     {
@@ -976,21 +2591,606 @@
      "source_size": "1200x1600",
      "size": "1200x1600",
      "thumb_size": "600x800"
+    },
+    {
+     "source": "pexels:15798785",
+     "sha256": "e735a832333b3a9b42b8f5c15421aa8ad296aa9d4dea54aa9f70bc34ea63961c",
+     "full": "public/img/galerie/reparatii/28.webp",
+     "thumb": "public/img/galerie/reparatii/28-t.webp",
+     "source_size": "1600x2400",
+     "size": "1600x2400",
+     "thumb_size": "600x900",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/15798785/",
+     "image_url": "https://images.pexels.com/photos/15798785/pexels-photo-15798785.jpeg",
+     "subject": "Small room with newly laid hollow brick walls, a wooden ladder and a bare concrete floor during a rebuild",
+     "alt": {
+      "ro": "Cameră mică în reconstrucție, cu pereți noi din cărămidă cu goluri, o scară de lemn și pardoseală de beton.",
+      "ru": "Небольшая комната в перестройке: новые стены из пустотелого кирпича, деревянная лестница и бетонный пол."
+     }
+    },
+    {
+     "source": "pexels:15798784",
+     "sha256": "853e6f61511484d7202c4ceb29666da00bd7e117c67d145f443998bf35194500",
+     "full": "public/img/galerie/reparatii/29.webp",
+     "thumb": "public/img/galerie/reparatii/29-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/15798784/",
+     "image_url": "https://images.pexels.com/photos/15798784/pexels-photo-15798784.jpeg",
+     "subject": "A large room being renovated with a concrete mixer, buckets, a stripped wall and old radiators",
+     "alt": {
+      "ro": "Cameră mare în renovare, cu betonieră, găleți, un perete decopertat și calorifere vechi.",
+      "ru": "Большая комната в ремонте с бетономешалкой, вёдрами, оголённой стеной и старыми радиаторами."
+     }
+    },
+    {
+     "source": "pexels:4756489",
+     "sha256": "205c78bcb5499a4630bcaffba46ca6ac2056ae128fe3f7440306f82a6696a32b",
+     "full": "public/img/galerie/reparatii/30.webp",
+     "thumb": "public/img/galerie/reparatii/30-t.webp",
+     "source_size": "1600x1200",
+     "size": "1600x1200",
+     "thumb_size": "600x450",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/4756489/",
+     "image_url": "https://images.pexels.com/photos/4756489/pexels-photo-4756489.jpeg",
+     "subject": "A house interior stripped to the wall studs during demolition, with a tool box and exposed pipes",
+     "alt": {
+      "ro": "Interior de casă decopertat până la montanții de lemn în timpul demolării, cu o ladă de scule și țevi la vedere.",
+      "ru": "Интерьер дома, разобранный до деревянных стоек при демонтаже, с ящиком для инструментов и открытыми трубами."
+     }
+    },
+    {
+     "source": "pexels:5691533",
+     "sha256": "56c97ddfec0c4b97a996962295b0bb659c15dc7249353e6645b8518cf7310e8c",
+     "full": "public/img/galerie/reparatii/31.webp",
+     "thumb": "public/img/galerie/reparatii/31-t.webp",
+     "source_size": "1600x2397",
+     "size": "1600x2397",
+     "thumb_size": "600x899",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/5691533/",
+     "image_url": "https://images.pexels.com/photos/5691533/pexels-photo-5691533.jpeg",
+     "subject": "View through an open double door into a room mid-renovation with plastic sheeting, a vacuum, pipes and tools on the floor",
+     "alt": {
+      "ro": "Cameră în renovare văzută prin ușa dublă, cu folie de protecție pe podea și unelte.",
+      "ru": "Комната в процессе ремонта, вид через двустворчатую дверь, на полу защитная пленка и инструменты."
+     }
+    },
+    {
+     "source": "pexels:6473982",
+     "sha256": "2874ee258e425ee82671c32192c032a297c69b7d356ce7480cfd674f333b1bd5",
+     "full": "public/img/galerie/reparatii/32.webp",
+     "thumb": "public/img/galerie/reparatii/32-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/6473982/",
+     "image_url": "https://images.pexels.com/photos/6473982/pexels-photo-6473982.jpeg",
+     "subject": "Worker seen from behind smoothing a plastered wall with a long level in a room under renovation",
+     "alt": {
+      "ro": "Muncitor văzut din spate verifică cu un dreptar un perete tencuit, într-o cameră în renovare.",
+      "ru": "Рабочий, стоя спиной, выравнивает правилом оштукатуренную стену в комнате во время ремонта."
+     }
+    },
+    {
+     "source": "pexels:15964928",
+     "sha256": "013d2a291efed3ff0957eb42e5a45ad53716291a082fa24a32b141c9338f2ca4",
+     "full": "public/img/galerie/reparatii/33.webp",
+     "thumb": "public/img/galerie/reparatii/33-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/15964928/",
+     "image_url": "https://images.pexels.com/photos/15964928/pexels-photo-15964928.jpeg",
+     "subject": "Two workers seen from a distance repairing a clay tile roof on a house, with a ladder against the wall and blue sky.",
+     "alt": {
+      "ro": "Doi muncitori repară un acoperiș de țiglă pe o casă, cu o scară sprijinită de perete.",
+      "ru": "Двое рабочих ремонтируют черепичную крышу дома, к стене приставлена лестница."
+     }
+    },
+    {
+     "source": "pexels:6474494",
+     "sha256": "ab8b41c61ef047f4a42a29c2b55590785adebec27dc9017c06158f55db659853",
+     "full": "public/img/galerie/reparatii/34.webp",
+     "thumb": "public/img/galerie/reparatii/34-t.webp",
+     "source_size": "1600x2400",
+     "size": "1600x2400",
+     "thumb_size": "600x900",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/6474494/",
+     "image_url": "https://images.pexels.com/photos/6474494/pexels-photo-6474494.jpeg",
+     "subject": "Woman in a white helmet with a tablet, seen from behind, pointing at a plastic-covered window in a room under renovation",
+     "alt": {
+      "ro": "Persoană cu cască și tabletă indică o fereastră acoperită cu folie într-o cameră în renovare.",
+      "ru": "Человек в каске с планшетом указывает на окно, закрытое плёнкой, в комнате во время ремонта."
+     }
+    },
+    {
+     "source": "pexels:5691521",
+     "sha256": "5b6aabb9e94406a3e07bd61b034bcbac9632bdf4d865429c5843eee963b934da",
+     "full": "public/img/galerie/reparatii/35.webp",
+     "thumb": "public/img/galerie/reparatii/35-t.webp",
+     "source_size": "1600x2397",
+     "size": "1600x2397",
+     "thumb_size": "600x899",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/5691521/",
+     "image_url": "https://images.pexels.com/photos/5691521/pexels-photo-5691521.jpeg",
+     "subject": "Worker seen from behind fitting a white window sash in a room mid-renovation, drill on the sill, floor covered with paper",
+     "alt": {
+      "ro": "Muncitor văzut din spate montează un canat de fereastră într-o cameră în renovare.",
+      "ru": "Рабочий, стоящий спиной, устанавливает створку окна в комнате во время ремонта."
+     }
+    },
+    {
+     "source": "pexels:6474313",
+     "sha256": "4fe90d687bae19c210a324bc91213c32c0ad8203d1204c07d1d8a4c9e7f042b3",
+     "full": "public/img/galerie/reparatii/36.webp",
+     "thumb": "public/img/galerie/reparatii/36-t.webp",
+     "source_size": "1600x2400",
+     "size": "1600x2400",
+     "thumb_size": "600x900",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/6474313/",
+     "image_url": "https://images.pexels.com/photos/6474313/pexels-photo-6474313.jpeg",
+     "subject": "Vaulted plasterboard ceiling with taped joints above wooden scaffolding, no people",
+     "alt": {
+      "ro": "Tavan din gips-carton cu rosturi chituite, deasupra unei schele din lemn, într-o încăpere în renovare.",
+      "ru": "Потолок из гипсокартона с зашпаклёванными швами над деревянными лесами в ремонтируемом помещении."
+     }
+    },
+    {
+     "source": "pexels:5691507",
+     "sha256": "b76687b57bdfbbed40b5e1247b740fa60d58ab19a85e499147bd3bd1e3444436",
+     "full": "public/img/galerie/reparatii/37.webp",
+     "thumb": "public/img/galerie/reparatii/37-t.webp",
+     "source_size": "1600x2397",
+     "size": "1600x2397",
+     "thumb_size": "600x899",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/5691507/",
+     "image_url": "https://images.pexels.com/photos/5691507/pexels-photo-5691507.jpeg",
+     "subject": "A wooden sawhorse on dust sheets in a room mid-renovation, with window sashes leaning against the wall",
+     "alt": {
+      "ro": "Capră de lemn pe folie de protecție într-o cameră în renovare, cu cercevele de ferestre sprijinite de perete.",
+      "ru": "Деревянные козлы на защитной плёнке в комнате во время ремонта, у стены стоят оконные рамы."
+     }
+    }
+   ],
+   "duplicates_skipped": [],
+   "refused": []
+  },
+  {
+   "folder": "Construcții industriale",
+   "page": "industrial",
+   "render_on": "industrial",
+   "found": 0,
+   "installed": 10,
+   "preview": 1,
+   "photos": [
+    {
+     "source": "pexels:13261149",
+     "sha256": "750216d3b00533654ad83f9a53b3f0bcfb2c9f32fb38d657d297f55514571efc",
+     "full": "public/img/galerie/industrial/01.webp",
+     "thumb": "public/img/galerie/industrial/01-t.webp",
+     "source_size": "1600x2133",
+     "size": "1600x2133",
+     "thumb_size": "600x800",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/13261149/",
+     "image_url": "https://images.pexels.com/photos/13261149/pexels-photo-13261149.jpeg",
+     "subject": "Steel-frame hall under construction with red columns and open metal roof deck, wet ground in front",
+     "alt": {
+      "ro": "Hală metalică în construcție cu stâlpi roșii din oțel și acoperiș din tablă profilată.",
+      "ru": "Металлический ангар в процессе строительства с красными стальными колоннами и кровлей из профлиста."
+     }
+    },
+    {
+     "source": "pexels:3330639",
+     "sha256": "fadaeef71f053250143ecac140b041343f28ae23ca7c22ba8c0ab8d397d2cc63",
+     "full": "public/img/galerie/industrial/02.webp",
+     "thumb": "public/img/galerie/industrial/02-t.webp",
+     "source_size": "1600x2133",
+     "size": "1600x2133",
+     "thumb_size": "600x800",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/3330639/",
+     "image_url": "https://images.pexels.com/photos/3330639/pexels-photo-3330639.jpeg",
+     "subject": "Interior of a steel-frame hall under construction with purlins, wall girts, glazing and floor rails",
+     "alt": {
+      "ro": "Structură metalică a unei hale în construcție, cu pane, rigle de perete și fațadă vitrată.",
+      "ru": "Металлический каркас строящегося цеха с прогонами, стеновыми ригелями и остеклением."
+     }
+    },
+    {
+     "source": "pexels:31197870",
+     "sha256": "c7a4f8099999ad5dc89a0b5eb533d4895cb43d051a2beb41da637ea296f99606",
+     "full": "public/img/galerie/industrial/03.webp",
+     "thumb": "public/img/galerie/industrial/03-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/31197870/",
+     "image_url": "https://images.pexels.com/photos/31197870/pexels-photo-31197870.jpeg",
+     "subject": "Steel frame of an industrial building under construction, columns and roof beams against a clear sky",
+     "alt": {
+      "ro": "Structură metalică a unei hale industriale în construcție, cu stâlpi și grinzi de acoperiș pe cer senin.",
+      "ru": "Стальной каркас промышленного здания в процессе строительства, колонны и балки крыши на фоне неба."
+     }
+    },
+    {
+     "source": "pexels:10501161",
+     "sha256": "bbfb3fddd982f70970b3d97ce544d4a600ec07d00dccb6f03009a1e6208392b5",
+     "full": "public/img/galerie/industrial/04.webp",
+     "thumb": "public/img/galerie/industrial/04-t.webp",
+     "source_size": "1600x2000",
+     "size": "1600x2000",
+     "thumb_size": "600x750",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/10501161/",
+     "image_url": "https://images.pexels.com/photos/10501161/pexels-photo-10501161.jpeg",
+     "subject": "Corner of a finished industrial building with grey and dark metal panel cladding and an orange-framed window",
+     "alt": {
+      "ro": "Colț de clădire industrială finisată, cu pereți din panouri metalice și fereastră cu ramă portocalie.",
+      "ru": "Угол готового промышленного здания с металлическими стеновыми панелями и окном в оранжевой раме."
+     }
+    },
+    {
+     "source": "pexels:34006092",
+     "sha256": "523b3e89a3bf23f468b8be43052cae629a73db4426cfa6fe53c581a11da43527",
+     "full": "public/img/galerie/industrial/05.webp",
+     "thumb": "public/img/galerie/industrial/05-t.webp",
+     "source_size": "1600x2133",
+     "size": "1600x2133",
+     "thumb_size": "600x800",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/34006092/",
+     "image_url": "https://images.pexels.com/photos/34006092/pexels-photo-34006092.jpeg",
+     "subject": "Underside of a corrugated metal roof on steel beams with cross bracing and skylight strips",
+     "alt": {
+      "ro": "Acoperiș din tablă cutată pe grinzi metalice cu contravântuiri, văzut din interior.",
+      "ru": "Кровля из профнастила на стальных балках с раскосами, вид изнутри здания."
+     }
+    },
+    {
+     "source": "pexels:15602604",
+     "sha256": "a8643d142f84326cd627911692b4a8918eb52c6c27bf29803c011f189aec9cf0",
+     "full": "public/img/galerie/industrial/06.webp",
+     "thumb": "public/img/galerie/industrial/06-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/15602604/",
+     "image_url": "https://images.pexels.com/photos/15602604/pexels-photo-15602604.jpeg",
+     "subject": "Blue and grey corrugated metal wall of an industrial building behind a mesh fence on bare ground",
+     "alt": {
+      "ro": "Perete din panouri metalice albastre și gri al unei hale industriale, cu gard din plasă în față.",
+      "ru": "Стена промышленного здания из синих и серых металлических панелей за сетчатым ограждением."
+     }
+    },
+    {
+     "source": "pexels:35414718",
+     "sha256": "67d29b6740d183cbac8d7621c6e3acee1ca79ee970201471a8121ca08d1d885f",
+     "full": "public/img/galerie/industrial/07.webp",
+     "thumb": "public/img/galerie/industrial/07-t.webp",
+     "source_size": "1600x1068",
+     "size": "1600x1068",
+     "thumb_size": "600x401",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/35414718/",
+     "image_url": "https://images.pexels.com/photos/35414718/pexels-photo-35414718.jpeg",
+     "subject": "Red and white corrugated metal wall of a finished industrial hall against a clear blue sky",
+     "alt": {
+      "ro": "Fațadă din tablă cutată roșie și albă a unei hale metalice, pe cer senin.",
+      "ru": "Фасад металлического ангара из красно-белого профнастила на фоне ясного неба."
+     }
+    },
+    {
+     "source": "pexels:10505211",
+     "sha256": "86675cbdb478ac6ba0c25b7c8b4872d2d9c35147b7aeb617aebc326f12ea85be",
+     "full": "public/img/galerie/industrial/08.webp",
+     "thumb": "public/img/galerie/industrial/08-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/10505211/",
+     "image_url": "https://images.pexels.com/photos/10505211/pexels-photo-10505211.jpeg",
+     "subject": "Corrugated metal cladding wall of an industrial building with a red horizontal stripe under blue sky",
+     "alt": {
+      "ro": "Perete din tablă cutată al unei clădiri industriale, cu o bandă roșie orizontală, pe cer albastru.",
+      "ru": "Стена промышленного здания из профилированного металла с красной горизонтальной полосой на фоне неба."
+     }
+    },
+    {
+     "source": "pexels:236709",
+     "sha256": "050211644908d17a4b2e4cc900bc445ad84f7aaada560b31f94241ce5a99ef9e",
+     "full": "public/img/galerie/industrial/09.webp",
+     "thumb": "public/img/galerie/industrial/09-t.webp",
+     "source_size": "1600x858",
+     "size": "1600x858",
+     "thumb_size": "600x322",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/236709/",
+     "image_url": "https://images.pexels.com/photos/236709/pexels-photo-236709.jpeg",
+     "subject": "Empty interior of a large steel-frame factory hall with columns, overhead crane beam and skylights",
+     "alt": {
+      "ro": "Interiorul gol al unei hale industriale pe structură metalică, cu stâlpi, grindă de pod rulant și luminatoare.",
+      "ru": "Пустой интерьер большого промышленного цеха на стальном каркасе с колоннами, краном и световыми фонарями."
+     }
+    },
+    {
+     "source": "pexels:416435",
+     "sha256": "22c0be7b14e2db6b62c2a9a75072ac02ce5242cc0e78d8822a373a922fbd46ab",
+     "full": "public/img/galerie/industrial/10.webp",
+     "thumb": "public/img/galerie/industrial/10-t.webp",
+     "source_size": "1600x1524",
+     "size": "1600x1524",
+     "thumb_size": "600x572",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/416435/",
+     "image_url": "https://images.pexels.com/photos/416435/pexels-photo-416435.jpeg",
+     "subject": "Blue corrugated steel cladding of an industrial building with roof railing and pipework",
+     "alt": {
+      "ro": "Fațadă industrială din tablă cutată albastră, cu balustradă și conducte pe acoperiș.",
+      "ru": "Промышленный фасад из синего профнастила с ограждением и трубами на крыше."
+     }
+    }
+   ],
+   "duplicates_skipped": [],
+   "refused": []
+  },
+  {
+   "folder": "Proiectare și vizualizare 3D",
+   "page": "proiectare-3d",
+   "render_on": "proiectare-3d",
+   "found": 0,
+   "installed": 10,
+   "preview": 1,
+   "photos": [
+    {
+     "source": "pexels:30484316",
+     "sha256": "db60d5a716a0313c6dd041210881c7490720aef0d3c7c6a3f5277b32ed58f10c",
+     "full": "public/img/galerie/proiectare-3d/01.webp",
+     "thumb": "public/img/galerie/proiectare-3d/01-t.webp",
+     "source_size": "1600x2400",
+     "size": "1600x2400",
+     "thumb_size": "600x900",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/30484316/",
+     "image_url": "https://images.pexels.com/photos/30484316/pexels-photo-30484316.jpeg",
+     "subject": "3D render of a narrow minimalist house facade with concrete, wood cladding and a small lawn",
+     "alt": {
+      "ro": "Randare 3D a fațadei unei case minimaliste cu beton, lambriu din lemn și gazon.",
+      "ru": "3D-визуализация фасада минималистичного дома с бетоном, деревянной обшивкой и газоном."
+     }
+    },
+    {
+     "source": "pexels:13203191",
+     "sha256": "2aee8988a6da2bda0b5856f8415b9a117be3c46e2e8802c1571cc9f12ecb0b77",
+     "full": "public/img/galerie/proiectare-3d/02.webp",
+     "thumb": "public/img/galerie/proiectare-3d/02-t.webp",
+     "source_size": "1600x2000",
+     "size": "1600x2000",
+     "thumb_size": "600x750",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/13203191/",
+     "image_url": "https://images.pexels.com/photos/13203191/pexels-photo-13203191.jpeg",
+     "subject": "3D render of a white modern house with sliding glass doors, terrace, lawn and stone wall",
+     "alt": {
+      "ro": "Randare 3D a unei case moderne albe cu uși glisante din sticlă, terasă și gazon.",
+      "ru": "3D-визуализация современного белого дома с раздвижными стеклянными дверями и террасой."
+     }
+    },
+    {
+     "source": "pexels:13203180",
+     "sha256": "649fc55c39d842135a99343a88462d12b1746bf3bcfbcc705dc4cf17ce97f4c8",
+     "full": "public/img/galerie/proiectare-3d/03.webp",
+     "thumb": "public/img/galerie/proiectare-3d/03-t.webp",
+     "source_size": "1600x2000",
+     "size": "1600x2000",
+     "thumb_size": "600x750",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/13203180/",
+     "image_url": "https://images.pexels.com/photos/13203180/pexels-photo-13203180.jpeg",
+     "subject": "3D render of a modern house with dark timber cladding, white upper floor and a canopy entrance",
+     "alt": {
+      "ro": "Randare 3D a unei case moderne cu lambriu închis, etaj alb și copertină la intrare.",
+      "ru": "3D-визуализация современного дома с тёмной обшивкой, белым этажом и навесом у входа."
+     }
+    },
+    {
+     "source": "pexels:13203179",
+     "sha256": "79d775a6ed6b3518e2b2599cc0b94998f97a1c8d9ed908454d88c5e68c49d402",
+     "full": "public/img/galerie/proiectare-3d/04.webp",
+     "thumb": "public/img/galerie/proiectare-3d/04-t.webp",
+     "source_size": "1600x1600",
+     "size": "1600x1600",
+     "thumb_size": "600x600",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/13203179/",
+     "image_url": "https://images.pexels.com/photos/13203179/pexels-photo-13203179.jpeg",
+     "subject": "3D render of a white modern house with glass wall, swimming pool and garden",
+     "alt": {
+      "ro": "Randare 3D a unei case moderne albe cu perete de sticlă, piscină și grădină.",
+      "ru": "3D-визуализация современного белого дома со стеклянной стеной, бассейном и садом."
+     }
+    },
+    {
+     "source": "pexels:13203188",
+     "sha256": "ab259e3cd9eb3e77da03ed7718cff0b11aea5d382da00dc7a55a43aa93d77a6b",
+     "full": "public/img/galerie/proiectare-3d/05.webp",
+     "thumb": "public/img/galerie/proiectare-3d/05-t.webp",
+     "source_size": "1600x2000",
+     "size": "1600x2000",
+     "thumb_size": "600x750",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/13203188/",
+     "image_url": "https://images.pexels.com/photos/13203188/pexels-photo-13203188.jpeg",
+     "subject": "Photorealistic 3D render of a modern white and glass house with an infinity pool in front",
+     "alt": {
+      "ro": "Randare 3D a unei case moderne cu fațadă albă, pereți de sticlă și piscină în față.",
+      "ru": "3D-визуализация современного дома с белым фасадом, стеклянными стенами и бассейном перед ним."
+     }
+    },
+    {
+     "source": "pexels:13203194",
+     "sha256": "54781f751637a49753c851585e44e7d1472acc262e3d9e0c59ea48b65d9c6e58",
+     "full": "public/img/galerie/proiectare-3d/06.webp",
+     "thumb": "public/img/galerie/proiectare-3d/06-t.webp",
+     "source_size": "1600x2000",
+     "size": "1600x2000",
+     "thumb_size": "600x750",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/13203194/",
+     "image_url": "https://images.pexels.com/photos/13203194/pexels-photo-13203194.jpeg",
+     "subject": "3D render of a white cubic two-storey house with narrow windows, glass ground floor and lawn",
+     "alt": {
+      "ro": "Randare 3D a unei case cubice albe pe două niveluri, cu parter vitrat și gazon în față.",
+      "ru": "3D-визуализация белого двухэтажного дома кубической формы с остеклённым первым этажом и газоном."
+     }
+    },
+    {
+     "source": "pexels:13041126",
+     "sha256": "3da3ff027e9ed9a1ed18c3bb914882e5bf3ce50d70f0acb19fde84880000023c",
+     "full": "public/img/galerie/proiectare-3d/07.webp",
+     "thumb": "public/img/galerie/proiectare-3d/07-t.webp",
+     "source_size": "1600x1600",
+     "size": "1600x1600",
+     "thumb_size": "600x600",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/13041126/",
+     "image_url": "https://images.pexels.com/photos/13041126/pexels-photo-13041126.jpeg",
+     "subject": "3D render of a concrete modernist house with pool terrace, garden furniture and lawn seen from the garden",
+     "alt": {
+      "ro": "Randare 3D a unei case moderne din beton cu terasă, piscină și grădină cu gazon în prim-plan.",
+      "ru": "3D-визуализация современного бетонного дома с террасой, бассейном и садом с газоном на переднем плане."
+     }
+    },
+    {
+     "source": "pexels:13203193",
+     "sha256": "676ac53ae0452c69f711896f78e1a8fcd96a531dfaa379206225774c95d8f547",
+     "full": "public/img/galerie/proiectare-3d/08.webp",
+     "thumb": "public/img/galerie/proiectare-3d/08-t.webp",
+     "source_size": "1600x2000",
+     "size": "1600x2000",
+     "thumb_size": "600x750",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/13203193/",
+     "image_url": "https://images.pexels.com/photos/13203193/pexels-photo-13203193.jpeg",
+     "subject": "3D render of a modern villa courtyard with glass facade, stone wall, garden and pool",
+     "alt": {
+      "ro": "Randare 3D a curții unei vile moderne cu fațadă de sticlă, zid de piatră, grădină și piscină.",
+      "ru": "3D-визуализация двора современной виллы со стеклянным фасадом, каменной стеной, садом и бассейном."
+     }
+    },
+    {
+     "source": "pexels:13203177",
+     "sha256": "5c5e68f1d761226c5b4ea68223774a642e36c56621c607a0aeb02c45c497e3ab",
+     "full": "public/img/galerie/proiectare-3d/09.webp",
+     "thumb": "public/img/galerie/proiectare-3d/09-t.webp",
+     "source_size": "1600x2000",
+     "size": "1600x2000",
+     "thumb_size": "600x750",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/13203177/",
+     "image_url": "https://images.pexels.com/photos/13203177/pexels-photo-13203177.jpeg",
+     "subject": "3D render of a house with dark horizontal cladding, wooden slat door, bollard lights and a bicycle",
+     "alt": {
+      "ro": "Randare 3D a unei case cu placare orizontală neagră, ușă din lamele de lemn și alee betonată.",
+      "ru": "3D-визуализация дома с тёмной горизонтальной обшивкой, дверью из деревянных реек и бетонной дорожкой."
+     }
+    },
+    {
+     "source": "pexels:9616959",
+     "sha256": "2764d6748106f3484b256cf01117a1ba72311fee7c35e98555aa5aeb304ce1ba",
+     "full": "public/img/galerie/proiectare-3d/10.webp",
+     "thumb": "public/img/galerie/proiectare-3d/10-t.webp",
+     "source_size": "1600x1067",
+     "size": "1600x1067",
+     "thumb_size": "600x400",
+     "origin": "stock",
+     "licence": "Pexels License",
+     "licence_url": "https://www.pexels.com/license/",
+     "source_url": "https://www.pexels.com/photo/9616959/",
+     "image_url": "https://images.pexels.com/photos/9616959/pexels-photo-9616959.jpeg",
+     "subject": "A man seen from behind and above leaning over architectural drawings on a wooden desk, holding a pencil.",
+     "alt": {
+      "ro": "Un arhitect văzut din spate lucrează cu creionul pe planuri de construcție întinse pe birou.",
+      "ru": "Архитектор, вид со спины, работает карандашом над строительными чертежами на столе."
+     }
     }
    ],
    "duplicates_skipped": [],
    "refused": []
   }
  ],
- "empty_folders": [
-  {
-   "folder": "Construcții industriale",
-   "page": "industrial"
-  },
-  {
-   "folder": "Proiectare și vizualizare 3D",
-   "page": "proiectare-3d"
-  }
- ],
+ "empty_folders": [],
  "unmatched_folders": []
 }

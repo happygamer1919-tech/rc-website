@@ -193,6 +193,13 @@ jobs:
       # record has a filled slot with a provenance row; the other origins are counted, not refused.
       - name: Every fatade3d picture names its fatade3d.md page and file (W28-15)
         run: node scripts/check-image-sources.js
+
+      # W28-17. Gate 33. Every built page: a unique title under 60, a description under 155, a
+      # canonical, symmetric ro/ru/x-default alternates, Open Graph and Twitter tags with a measured
+      # og:image; the sitemap lists both locales and every URL answers 200 on the built output;
+      # robots.txt allows all and names the sitemap; both 404 pages exist.
+      - name: Technical SEO on every built page (W28-17)
+        run: node scripts/seo-check.js
       - name: No em dash or en dash in any file, the built site or this pull request (W26-13)
         env:
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}

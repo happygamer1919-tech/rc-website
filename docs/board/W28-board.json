@@ -219,13 +219,13 @@
     {
       "id": "W28-22",
       "title": "The phone hero matches the desktop hero",
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "high",
       "owner_terminal": "yellow",
       "branch": "w28/w28-22-phone-hero",
       "pr": 174,
-      "merge_sha": null,
+      "merge_sha": "7ddd241c9b5f4cd9a8bc1c4650f6a72bc9815f65",
       "depends_on": [
         "W28-15"
       ],
@@ -235,7 +235,8 @@
         "node build.js && node scripts/dom-text.js --count '.hero .stats .stat' / /ru/  -> 3 and 3 (unchanged)",
         "a probe at 390 (the session hero-shot.js): every .hero child visible, .hero text-align center, the .stats grid three column tracks; at 1440 the same  -> recorded in the card",
         "node scripts/check-heading-fit.js && node scripts/check-text-contrast.js  -> exit 0"
-      ]
+      ],
+      "evidence": "quality green 7m3s; merged 2026-09-24 01:22:18Z as 7ddd241; section 12.0 EXIT=0 at 01:25:14Z"
     },
     {
       "id": "W28-16",
@@ -245,7 +246,7 @@
       "priority": "normal",
       "owner_terminal": "yellow",
       "branch": "w28/w28-16-industrial-lines",
-      "pr": null,
+      "pr": 175,
       "merge_sha": null,
       "depends_on": [
         "W28-15"
@@ -261,8 +262,8 @@
     {
       "id": "W28-17",
       "title": "Technical SEO: titles, descriptions, canonical, hreflang, sitemap, robots, Open Graph, 404, and scripts/seo-check.js",
-      "lane": "queue",
-      "status": "todo",
+      "lane": "in_flight",
+      "status": "pr_open",
       "priority": "normal",
       "owner_terminal": "yellow",
       "branch": "w28/w28-17-technical-seo",
@@ -272,7 +273,7 @@
         "W28-16"
       ],
       "ask": "Every HTML page gets a unique title under 60 chars and meta description under 155 chars in its locale, canonical, hreflang ro and ru and x-default pairs symmetric, sitemap.xml listing both locales, robots.txt allowing all and pointing to the sitemap, Open Graph and Twitter tags with a real OG image 1200x630 from RC work, custom 404 in both locales. Acceptance: node script scripts/seo-check.js exits 0.",
-      "reading": "Measured before the card: 85 pages, 3 titles at exactly 60 characters, 4 duplicate title pairs (the redirect pages under /catalog/materiale-acoperis/ share their target's title), every description under 155, canonical and 7 hreflang links on every page, sitemap with 66 URLs in both locales, robots allowing all with the sitemap line, og-image.jpg 1200x630, 404 in both locales. The script checks all of it on the built output, serving dist/ locally for the 200 check.",
+      "reading": "Measured before the card: 85 pages, 3 titles at exactly 60 characters, 4 duplicate title pairs (the redirect pages under /catalog/materiale-acoperis/ share their target's title), every description under 155, canonical and 7 hreflang links on every page, sitemap with 66 URLs in both locales, robots allowing all with the sitemap line, og-image.jpg 1200x630, 404 in both locales. The script checks all of it on the built output, serving dist/ locally for the 200 check. Done: 19 pages gained Open Graph and Twitter tags, 17 the alternates, 3 a canonical; 3 RU titles under 60; 4 duplicate title pairs resolved (redirect and catalogue titles carry the Catalog word); the sitemap names each entry's own pair (the privacy pages had the home pages as alternates); the catalogue index description keeps as many labels as fit. Gate 33 registered.",
       "acceptance": [
         "node build.js && node scripts/seo-check.js  -> exit 0"
       ]

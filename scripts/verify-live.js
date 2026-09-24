@@ -333,8 +333,8 @@ const PAGES = [
   /* W25-23. The Acoperisuri card left the product strip, so these fall with the
      measurement: R-Y's own rule is that removing an element's cost drops the
      budget by that cost, and a budget left high is a ceiling to hide under. */
-  { path: '/',                             type: 'home',    label: 'homepage RO',    budget: 9401 },
-  { path: '/ru/',                          type: 'home',    label: 'homepage RU',    budget: 9560 },
+  { path: '/',                             type: 'home',    label: 'homepage RO',    budget: 9518 },
+  { path: '/ru/',                          type: 'home',    label: 'homepage RU',    budget: 9705 },
   /* W24-05. The before/after slider moved onto this page, so these two rows leave
      the shared 6,000px service budget that RELEASE-NOTES's wave 7 acceptance
      holds and take their own, measured plus 60, under W24-R4. The other four
@@ -343,12 +343,12 @@ const PAGES = [
      AMENDED (W26-14, W26-R16 "budgets re-measured plus 60"): the three service rows
      still on the shared 6,000 take their own too, so no row here is a ceiling to
      hide under. */
-  { path: '/in-constructie/',              type: 'inconstructie', label: 'in constr RO', budget: 1161 },
-  { path: '/ru/in-constructie/',           type: 'inconstructie', label: 'in constr RU', budget: 1161 },
-  { path: '/servicii/case-la-cheie/',      type: 'service-ba', label: 'svc RO case', budget: 6539 },
-  { path: '/servicii/fatade/',             type: 'service', label: 'svc RO fatade',  budget: 5401 },
-  { path: '/ru/servicii/case-la-cheie/',   type: 'service-ba', label: 'svc RU case', budget: 6644 },
-  { path: '/ru/servicii/fatade/',          type: 'service', label: 'svc RU fatade',  budget: 5617 },
+  { path: '/in-constructie/',              type: 'inconstructie', label: 'in constr RO', budget: 1181 },
+  { path: '/ru/in-constructie/',           type: 'inconstructie', label: 'in constr RU', budget: 1181 },
+  { path: '/servicii/case-la-cheie/',      type: 'service-ba', label: 'svc RO case', budget: 6558 },
+  { path: '/servicii/fatade/',             type: 'service', label: 'svc RO fatade',  budget: 5421 },
+  { path: '/ru/servicii/case-la-cheie/',   type: 'service-ba', label: 'svc RU case', budget: 6663 },
+  { path: '/ru/servicii/fatade/',          type: 'service', label: 'svc RU fatade',  budget: 5636 },
   /* W24-06. The four roofing offers moved onto this page, so it leaves the shared
      6,000px service budget and takes its own, measured plus 60, under W24-R4. */
   /* W25-19, ruling W25-R18. The roofing catalogue moved onto this page, so the
@@ -372,16 +372,16 @@ const PAGES = [
      section's "de la" line, one line; measured 24,782 / 25,003 at 1440, settled, plus 60, in R-Y. */
   /* AMENDED (W27-FIX-05, ruling W27-R-12): six accessory cards fold away, two grid rows fewer;
      measured 23,873 / 24,094 at 1440, settled, plus 60, in R-Y. */
-  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 8166 },
-  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 8331 },
+  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 8186 },
+  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 8324 },
   /* W24-07. The rocă vulcanică mirror page. */
   /* AMENDED (W27-C-04): chips, a warranty row and a price on each card, a derived "de la"
      line under the heading; measured 4,369 / 4,439 at 1440, settled, plus 60, in R-Y. */
   /* AMENDED (W27-FIX-04, ruling W27-R-11): the "+N" chip on Roman and Wood makes the chip row
      wrap once; measured 4,541 / 4,585 at 1440, settled, plus 60, in R-Y. */
-  { path: '/servicii/roca-vulcanica/',     type: 'novatik', label: 'novatik RO',  budget: 4557 },
-  { path: '/ru/servicii/roca-vulcanica/',  type: 'novatik', label: 'novatik RU',  budget: 4601 },
-  { path: '/ru/servicii/finisaje/',        type: 'service', label: 'svc RU finis',   budget: 5564 },
+  { path: '/servicii/roca-vulcanica/',     type: 'novatik', label: 'novatik RO',  budget: 4577 },
+  { path: '/ru/servicii/roca-vulcanica/',  type: 'novatik', label: 'novatik RU',  budget: 4620 },
+  { path: '/ru/servicii/finisaje/',        type: 'service', label: 'svc RU finis',   budget: 5584 },
   /* W25-09. Both rows take +39: this page gained one link-arrow to the new
      catalogue category, measured on the branch at 3979 RO and 4012 RU against
      3940 and 3973 with the link removed as a control. Budget is measured plus 60
@@ -391,18 +391,18 @@ const PAGES = [
   /* AMENDED (W25-26): the four model cards gained a picture each, so these rise. */
   /* AMENDED (W27-FIX-08, W27-R-14): the seven imperlux model cards above the four tile cards,
      two more grid rows; measured 5,463 / 5,538 at 1440, settled, plus 60, in R-Y. */
-  { path: '/servicii/tigla-metalica/',     type: 'tigla',   label: 'tigla RO',       budget: 5479 },
-  { path: '/ru/servicii/tigla-metalica/',  type: 'tigla',   label: 'tigla RU',       budget: 5554 },
+  { path: '/servicii/tigla-metalica/',     type: 'tigla',   label: 'tigla RO',       budget: 5499 },
+  { path: '/ru/servicii/tigla-metalica/',  type: 'tigla',   label: 'tigla RU',       budget: 5574 },
   /* AMENDED (W26-12): the gallery section, one card and its lightbox, +629 in both
      locales, measured 7184 / 7260. Budget measured plus 60 (W24-R4), R-Y. */
-  { path: '/servicii/copertine/',          type: 'product', label: 'copertine RO',   budget: 8165 },
-  { path: '/ru/servicii/copertine/',       type: 'product', label: 'copertine RU',   budget: 8242 },
+  { path: '/servicii/copertine/',          type: 'product', label: 'copertine RO',   budget: 8185 },
+  { path: '/ru/servicii/copertine/',       type: 'product', label: 'copertine RU',   budget: 8261 },
   /* W24-08. The garduri page gained the fence bento; the copertine page gained a
      dark hero and a cross-sell row; modele de garduri is new. All under W24-R4. */
   /* W26-03: 5728 held since W24-08 while the page fell to 5,547. See R-Y's
      2026-09-22 block: a budget may never stay still while its page moves. */
-  { path: '/servicii/garduri/',            type: 'product-hub', label: 'garduri RO',  budget: 6085 },
-  { path: '/ru/servicii/garduri/',         type: 'product-hub', label: 'garduri RU',  budget: 6106 },
+  { path: '/servicii/garduri/',            type: 'product-hub', label: 'garduri RO',  budget: 6104 },
+  { path: '/ru/servicii/garduri/',         type: 'product-hub', label: 'garduri RU',  budget: 6126 },
   /* W25-11. Both rows DROP. The "Preț la cerere" line became a "De la ... lei/m2"
      price, and the new line is shorter because it does not carry the catalogue
      card's shared 44px flex min-height: measured 3686 RO and 3707 RU against 3720
@@ -411,13 +411,13 @@ const PAGES = [
   /* W25-25. Each of the eight cards gained its colour NAMES beside the count, so
      one fact line became three or four wrapped lines on a 4-column card.
      Measured plus 60, under W24-R4, and recorded in docs/rulings/R-Y.md. */
-  { path: '/servicii/modele-garduri/',     type: 'product', label: 'gard modele RO', budget: 4525 },
-  { path: '/ru/servicii/modele-garduri/',  type: 'product', label: 'gard modele RU', budget: 4547 },
+  { path: '/servicii/modele-garduri/',     type: 'product', label: 'gard modele RO', budget: 4545 },
+  { path: '/ru/servicii/modele-garduri/',  type: 'product', label: 'gard modele RU', budget: 4566 },
   /* W26-12. The fence gallery page, measured 3967 in both locales; plus 60 (W24-R4). */
   /* AMENDED (W27-FIX-12, W27-R-18): twelve thumbnails, one grid row fewer; measured 3,750 / 3,750
      at 1440, settled, plus 60, in R-Y. */
-  { path: '/servicii/galerie-garduri/',    type: 'gallery', label: 'gal garduri RO', budget: 3766 },
-  { path: '/ru/servicii/galerie-garduri/', type: 'gallery', label: 'gal garduri RU', budget: 3766 },
+  { path: '/servicii/galerie-garduri/',    type: 'gallery', label: 'gal garduri RO', budget: 3785 },
+  { path: '/ru/servicii/galerie-garduri/', type: 'gallery', label: 'gal garduri RU', budget: 3785 },
   // ~~W16-02, RC-129. The seven catalog category pages.~~
   // AMENDED (W24-04): thirty pages, and every budget re-measured. The catalogue
   // index at /catalog/ is new (it answered 404), every subcategory has a page of
@@ -427,39 +427,39 @@ const PAGES = [
   // docs/rulings/R-Y.md carries the measurement each one came from.
   // The 1,400px section cap does not apply to a catalogue grid (W24-R4), which is
   // why a category page rolling up 88 products is 12,613px and inside budget.
-  { path: '/catalog/',                                      type: 'index',         label: 'idx RO',           budget: 4087 },
-  { path: '/ru/catalog/',                                   type: 'index',         label: 'idx RU',           budget: 4112 },
+  { path: '/catalog/',                                      type: 'index',         label: 'idx RO',           budget: 4107 },
+  { path: '/ru/catalog/',                                   type: 'index',         label: 'idx RU',           budget: 4132 },
   /* W27-FIX-15 (W27-R-21): the roofing catalogue page, both locales; budgets measured plus 60. */
-  { path: '/catalog/materiale-acoperis/',                   type: 'roofcatalog',   label: 'cat RO acoper',    budget: 19440 },
-  { path: '/ru/catalog/materiale-acoperis/',                type: 'roofcatalog',   label: 'cat RU acoper',    budget: 19523 },
-  { path: '/catalog/termoizolatie/',                        type: 'category',      label: 'cat RO termo',     budget: 6904 },
-  { path: '/ru/catalog/termoizolatie/',                     type: 'category',      label: 'cat RU termo',     budget: 6820 },
-  { path: '/catalog/termoizolatie/polistiren-expandat/',    type: 'subcategory',   label: 'sub RO eps',       budget: 3647 },
-  { path: '/ru/catalog/termoizolatie/polistiren-expandat/',  type: 'subcategory',   label: 'sub RU eps',       budget: 3564 },
-  { path: '/catalog/termoizolatie/polistiren-extrudat/',    type: 'subcategory',   label: 'sub RO xps',       budget: 3124 },
-  { path: '/ru/catalog/termoizolatie/polistiren-extrudat/',  type: 'subcategory',   label: 'sub RU xps',       budget: 3104 },
-  { path: '/catalog/termoizolatie/vata-minerala/',          type: 'subcategory',   label: 'sub RO vata',      budget: 3606 },
-  { path: '/ru/catalog/termoizolatie/vata-minerala/',       type: 'subcategory',   label: 'sub RU vata',      budget: 3607 },
-  { path: '/catalog/termoizolatie/adezivi-si-mase-de-spaclu/',  type: 'subcategory',   label: 'sub RO adez',      budget: 4123 },
-  { path: '/ru/catalog/termoizolatie/adezivi-si-mase-de-spaclu/',  type: 'subcategory',   label: 'sub RU adez',      budget: 4045 },
-  { path: '/catalog/termoizolatie/alte-produse/',           type: 'subcategory',   label: 'sub RO altep',     budget: 3096 },
-  { path: '/ru/catalog/termoizolatie/alte-produse/',        type: 'subcategory',   label: 'sub RU altep',     budget: 3055 },
-  { path: '/catalog/tencuieli-decorative/',                 type: 'category',      label: 'cat RO tencu',     budget: 5352 },
-  { path: '/ru/catalog/tencuieli-decorative/',              type: 'category',      label: 'cat RU tencu',     budget: 5429 },
-  { path: '/catalog/placi-ceramice/',                       type: 'category',      label: 'cat RO placi',     budget: 12847 },
-  { path: '/ru/catalog/placi-ceramice/',                    type: 'category',      label: 'cat RU placi',     budget: 13786 },
-  { path: '/catalog/elemente-decorative/',                  type: 'category',      label: 'cat RO elem',      budget: 10239 },
-  { path: '/ru/catalog/elemente-decorative/',               type: 'category',      label: 'cat RU elem',      budget: 10674 },
-  { path: '/catalog/vopsele/',                              type: 'category',      label: 'cat RO vopsele',   budget: 4344 },
-  { path: '/ru/catalog/vopsele/',                           type: 'category',      label: 'cat RU vopsele',   budget: 4440 },
-  { path: '/catalog/vopsele/vopsele-de-exterior/',          type: 'subcategory',   label: 'sub RO vopext',    budget: 3104 },
-  { path: '/ru/catalog/vopsele/vopsele-de-exterior/',       type: 'subcategory',   label: 'sub RU vopext',    budget: 3126 },
-  { path: '/catalog/vopsele/vopsele-de-interior/',          type: 'subcategory',   label: 'sub RO vopint',    budget: 3126 },
-  { path: '/ru/catalog/vopsele/vopsele-de-interior/',       type: 'subcategory',   label: 'sub RU vopint',    budget: 3172 },
-  { path: '/catalog/sisteme-iluminare/',                    type: 'category',      label: 'cat RO ilumin',    budget: 6356 },
-  { path: '/ru/catalog/sisteme-iluminare/',                 type: 'category',      label: 'cat RU ilumin',    budget: 6300 },
-  { path: '/catalog/alte-materiale/',                       type: 'category',      label: 'cat RO alte',      budget: 3745 },
-  { path: '/ru/catalog/alte-materiale/',                    type: 'category',      label: 'cat RU alte',      budget: 3745 },
+  { path: '/catalog/materiale-acoperis/',                   type: 'roofcatalog',   label: 'cat RO acoper',    budget: 19460 },
+  { path: '/ru/catalog/materiale-acoperis/',                type: 'roofcatalog',   label: 'cat RU acoper',    budget: 19543 },
+  { path: '/catalog/termoizolatie/',                        type: 'category',      label: 'cat RO termo',     budget: 6924 },
+  { path: '/ru/catalog/termoizolatie/',                     type: 'category',      label: 'cat RU termo',     budget: 6840 },
+  { path: '/catalog/termoizolatie/polistiren-expandat/',    type: 'subcategory',   label: 'sub RO eps',       budget: 3667 },
+  { path: '/ru/catalog/termoizolatie/polistiren-expandat/',  type: 'subcategory',   label: 'sub RU eps',       budget: 3584 },
+  { path: '/catalog/termoizolatie/polistiren-extrudat/',    type: 'subcategory',   label: 'sub RO xps',       budget: 3144 },
+  { path: '/ru/catalog/termoizolatie/polistiren-extrudat/',  type: 'subcategory',   label: 'sub RU xps',       budget: 3123 },
+  { path: '/catalog/termoizolatie/vata-minerala/',          type: 'subcategory',   label: 'sub RO vata',      budget: 3625 },
+  { path: '/ru/catalog/termoizolatie/vata-minerala/',       type: 'subcategory',   label: 'sub RU vata',      budget: 3627 },
+  { path: '/catalog/termoizolatie/adezivi-si-mase-de-spaclu/',  type: 'subcategory',   label: 'sub RO adez',      budget: 4143 },
+  { path: '/ru/catalog/termoizolatie/adezivi-si-mase-de-spaclu/',  type: 'subcategory',   label: 'sub RU adez',      budget: 4065 },
+  { path: '/catalog/termoizolatie/alte-produse/',           type: 'subcategory',   label: 'sub RO altep',     budget: 3115 },
+  { path: '/ru/catalog/termoizolatie/alte-produse/',        type: 'subcategory',   label: 'sub RU altep',     budget: 3075 },
+  { path: '/catalog/tencuieli-decorative/',                 type: 'category',      label: 'cat RO tencu',     budget: 5372 },
+  { path: '/ru/catalog/tencuieli-decorative/',              type: 'category',      label: 'cat RU tencu',     budget: 5448 },
+  { path: '/catalog/placi-ceramice/',                       type: 'category',      label: 'cat RO placi',     budget: 12867 },
+  { path: '/ru/catalog/placi-ceramice/',                    type: 'category',      label: 'cat RU placi',     budget: 13805 },
+  { path: '/catalog/elemente-decorative/',                  type: 'category',      label: 'cat RO elem',      budget: 10258 },
+  { path: '/ru/catalog/elemente-decorative/',               type: 'category',      label: 'cat RU elem',      budget: 10693 },
+  { path: '/catalog/vopsele/',                              type: 'category',      label: 'cat RO vopsele',   budget: 4364 },
+  { path: '/ru/catalog/vopsele/',                           type: 'category',      label: 'cat RU vopsele',   budget: 4459 },
+  { path: '/catalog/vopsele/vopsele-de-exterior/',          type: 'subcategory',   label: 'sub RO vopext',    budget: 3123 },
+  { path: '/ru/catalog/vopsele/vopsele-de-exterior/',       type: 'subcategory',   label: 'sub RU vopext',    budget: 3146 },
+  { path: '/catalog/vopsele/vopsele-de-interior/',          type: 'subcategory',   label: 'sub RO vopint',    budget: 3146 },
+  { path: '/ru/catalog/vopsele/vopsele-de-interior/',       type: 'subcategory',   label: 'sub RU vopint',    budget: 3192 },
+  { path: '/catalog/sisteme-iluminare/',                    type: 'category',      label: 'cat RO ilumin',    budget: 6376 },
+  { path: '/ru/catalog/sisteme-iluminare/',                 type: 'category',      label: 'cat RU ilumin',    budget: 6319 },
+  { path: '/catalog/alte-materiale/',                       type: 'category',      label: 'cat RO alte',      budget: 3764 },
+  { path: '/ru/catalog/alte-materiale/',                    type: 'category',      label: 'cat RU alte',      budget: 3764 },
   /* W25-09. The eighth catalogue category and its seven subcategories, 71
      Dasterum products under W25-R7. Every budget below is measured on the branch
      at 1280px with every reveal applied and settled, plus 60, under W24-R4.

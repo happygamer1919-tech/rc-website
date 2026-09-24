@@ -371,6 +371,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   <div class="container">
     <p class="eyebrow" data-reveal>{{trust.eyebrow}}</p>
     <h2 data-reveal>{{trust.h2}}</h2>
+    <p class="despre-facts" data-reveal>{{despreFacts}}</p>
 
     <div class="grid grid--3 trust-grid" style="margin-top: 40px;">
       <div class="trust-item" data-reveal data-stagger="0">
@@ -560,7 +561,8 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
           <div><dt>{{footer.phoneLabel}}</dt><dd><a href="tel:+37376837180">{{header.phone}}</a></dd></div>
           <div><dt>{{footer.emailLabel}}</dt><dd><a href="mailto:rapidconstructmd@gmail.com">{{footer.email}}</a></dd></div>
           <div><dt>{{footer.hoursLabel}}</dt><dd>{{form.hours}}</dd></div>
-        </dl>      </div>
+        </dl>
+        {{nap}}      </div>
     </div>
   </div>
 

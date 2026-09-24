@@ -14182,3 +14182,36 @@ a new record buffer read only by the product-record arm; `pg.scan` keeps it, so 
 manufacturer names inside it still fire; a block that is anything else stays where the arm names
 it. Seven arms, one green, run before any page is read. `scripts/verify-live.js`'s rating probe
 gains the capitalised `AggregateRating`. Nothing moves on any page; no budget moves.
+
+## W28-19 · GEO: llms.txt, one NAP on every page, the Despre facts, direct FAQ answers, 2026-09-24
+
+Branch `w28/w28-19-geo`, stacked on W28-18. Under the wave 28 dispatch and W25-22 (the warranty
+figure has one home and is stated everywhere as that figure).
+
+**Measured first.** `/llms.txt` (W9-06) carried the services, the coverage and the contact, with
+the phone from a dead key's fallback, and no catalogue group, no address, no Russian hours, no
+company facts; the footer's contact block sat on 70 of 85 pages (the 14 redirect pages and the
+review page have no footer) in three spellings of one address ("Nicolae Zelinski St 24, Chișinău"
+in the footer, "Nicolae Zelinski 24" in the JSON-LD); nine FAQ answers opened with "Da,"; and
+**four FAQ answers per locale still said "garanție până la treizeci de ani" / "до тридцати лет"**
+in prose and in their FAQPage blocks, against `warranty.years` = 5, the hero's "5 ani de garanție"
+and W25-22's "everywhere". A machine grep never found it because the figure is spelled out.
+
+**What ships.** One NAP constant in `build.js` (name, street, locality, phone, e-mail) rendered as
+`<address class="nap" data-nap>` with the same bytes on all 85 pages in both locales (below the
+footer's contact list, at the foot of a redirect page, at the foot of the review page); the
+footer's own address string takes the same spelling in both locales, so the site has one. A
+"Despre" facts paragraph under the "De ce Rapid Construct" heading, five plain declarative
+sentences in each locale whose every figure comes from data the site already states (the stats,
+`warranty.years`, the coverage line, the NAP), with the glue words in locale strings that carry
+placeholders and never the figure. `/llms.txt` gains the same facts in both languages, the ten
+catalogue groups with their Romanian and Russian URLs, the address and the Russian hours, and
+reads the phone from the NAP. The FAQ answers that opened by restating their question are direct
+statements now (the 3D design and the installations answers, both locales), and the four
+thirty-year answers say five years, as the ruling and the rest of the site do. Every footer grows by the NAP block and the home pages by the facts paragraph, so all 55
+budgets move (R-Y), by up to 145 pixels; one page, `/ru/servicii/acoperisuri/`, shrinks by 7 pixels where a
+rewritten FAQ answer is shorter.
+
+**Acceptance.** `dist/llms.txt` carries the company name, the phone, both locale roots and all ten
+catalogue group URLs (`node scripts/check-catalog-counts.js --llms`); `data-nap` is on 85 of 85
+pages and the block hashes to one value.

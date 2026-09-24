@@ -1324,22 +1324,25 @@ the desktop hero is centred with the three stats in one row, the phone hero is l
 the stats stacked one per row. The card centres the phone hero and keeps the stats in one row.
 
 ## W28-16 · Construcții industriale: two service lines
-**Status: PR OPEN #175** (opened 2026-09-24). Two named lines under the industrial page's answer, both
+**Status: MERGED #175, section 12.0 exit 0** (opened 2026-09-24, merged 01:31 UTC as `01ee981`). Two named lines under the industrial page's answer, both
 locales, the dispatch's own titles, one sentence each; each phrase once in the DOM; 0 budgets move.
 
 ## W28-17 · Technical SEO and `scripts/seo-check.js`
-**Status: PR OPEN #176** (opened 2026-09-24). Every page a unique title under 60, description, canonical,
+**Status: MERGED #176, section 12.0 exit 0** (opened 2026-09-24, merged 01:45 UTC as `4d763b2`). Every page a unique title under 60, description, canonical,
 symmetric alternates, Open Graph and Twitter tags; the sitemap's privacy alternates fixed; gate 33
 `scripts/seo-check.js`; 0 budgets move.
 
 ## W28-18 · Structured data and `scripts/schema-check.js`
-**Status: PR OPEN** (opened 2026-09-24). JSON-LD on all 85 pages: Organization and LocalBusiness with
+**Status: PR OPEN #177** (opened 2026-09-24). JSON-LD on all 85 pages: Organization and LocalBusiness with
 the NAP on home, Service on the 30 service pages, one Product with an AggregateOffer in MDL per
 priced card (704), BreadcrumbList on 83 inner pages, FAQPage on the 22 pages with a visible FAQ, no
 AggregateRating or Review; gate 34 `scripts/schema-check.js`; 0 budgets move.
 
 ## W28-19 · GEO: llms.txt, the Despre facts block, one NAP, direct FAQ answers
-**Status: todo.**
+**Status: PR OPEN** (opened 2026-09-24). `dist/llms.txt` with the company facts, the nine catalogue groups
+and their URLs, the Russian section and the coverage; one `<address data-nap>` block with identical bytes
+on 85 of 85 pages; the Despre facts block on both home pages; nine FAQ answers as direct statements and
+four per locale corrected from a thirty-year warranty to W25-22's five; all 55 budgets move (R-Y).
 
 ## W28-20 · Search Console tag
 **Status: blocked** on the owner (Q-W28-01, the tag's content value). The Business Profile

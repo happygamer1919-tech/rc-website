@@ -1401,6 +1401,10 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 .footer__contact { display: flex; flex-direction: column; gap: 12px; }
 .footer__contact dt { font-size: 14px; color: var(--line); }
 .footer__contact dd { margin: 0; font-weight: 700; }
+/* W28-19: the one NAP line, the same bytes on every page; the moved pages carry it without a footer. */
+.nap { font-style: normal; font-size: 14px; margin: 16px 0 0; color: var(--line); }
+.moved .nap, body > .nap { display: block; padding: 24px 16px; color: var(--ink-muted); text-align: center; }
+.despre-facts { max-width: 720px; margin: 16px 0 0; color: var(--ink-muted); }
 .footer__bar { border-top: 0; }  /* W28-08 */
 .footer__bar-inner { max-width: var(--container); margin: 0 auto; padding: 20px var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: 14px; color: var(--line); }
 .footer__bar-inner a:hover { color: var(--brand); }

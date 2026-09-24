@@ -14521,3 +14521,10 @@ judged, five accepted and five refused (a brand on pallets and a site banner, a 
 recognisable face, boxed brand names on a non-house building, a timber-frame membrane), plus one crop
 refused by both viewers because it had been cut in the wrong place (sips centred it instead of anchoring
 it at the top; the tape measure was still in frame). The corrected crop is the one installed.
+
+## W28-R7 · The fifth dispatch, 2026-09-24
+
+Branch `w28/w28-r7-rulings-board`, on `main` at `8ce9d8a`. Documents only. R-W28-16 recorded (the fourth
+dispatch's seven deviations ratified, turnkey picture 11 stays, the user-agent incident closed with the
+rule already recorded). Cards W28-30 (copertine placement, read as "under Catalog by navigation") and
+W28-31 (the wave close) on the board. The board JSON records #192 verified and lists this sync.

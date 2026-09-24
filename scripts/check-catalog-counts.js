@@ -25,7 +25,12 @@
 
    W28-14: the copertine group: the twelve model cards on /servicii/copertine/ (both locales)
    equal content/copertine.json models carrying an image, and the page's own chip count says
-   the same number. Zero dependency. */
+   the same number.
+   AMENDED (W28-30, the fifth dispatch: "the 12 copertine cards with no price must not sit under
+   Catalog"): the copertine group left the Catalog. The copertine page carries its twelve cards,
+   each with one button to #oferta, and NO group chip; and no page under /catalog/, either locale,
+   carries a copertine card, a Catalog tile to the copertine page, or a Catalog menu row to it (the
+   Catalog menu is on every page, so every built page is read for the menu row). Zero dependency. */
 
 const fs = require('fs');
 const path = require('path');
@@ -79,14 +84,37 @@ for (const loc of ['ro', 'ru']) {
   if (nvk !== RECORDED.fenceCards) bad(`${FENCE_PAGE[loc]}: ${nvk} fence cards, the card records ${RECORDED.fenceCards}`);
   const cp = read(COP_PAGE[loc]); pagesRead++;
   const copCards = count(cp, /<article class="model"[^>]*data-product-card/g);
-  const copChip = cp.match(/data-roof-filter="copertine"[^>]*>[^<]*<span class="roof-filter__n">(\d+)<\/span>/);
-  const copChipN = copChip ? Number(copChip[1]) : null;
-  out.push(`${loc} copertine: ${copCards} model cards, chip count ${copChipN === null ? 'MISSING' : copChipN}, data has ${copWithImage} with a picture`);
-  if (copChipN === null) bad(`${COP_PAGE[loc]}: no copertine chip with a count`);
-  else if (copChipN !== copCards) bad(`${COP_PAGE[loc]}: the chip says ${copChipN} and ${copCards} cards render`);
+  const copButtons = count(cp, /<a class="btn btn--primary model__cta" href="#oferta"/g);
+  const copChip = count(cp, /data-roof-filter="copertine"/g);
+  out.push(`${loc} copertine: ${copCards} model cards, ${copButtons} buttons to #oferta, ${copChip} group chip(s), data has ${copWithImage} with a picture`);
+  if (copChip) bad(`${COP_PAGE[loc]}: carries the copertine group chip, which left with the Catalog group (W28-30)`);
+  if (copButtons !== copCards) bad(`${COP_PAGE[loc]}: ${copButtons} buttons to #oferta for ${copCards} cards`);
   if (copCards !== copWithImage) bad(`${COP_PAGE[loc]}: ${copCards} model cards, content/copertine.json has ${copWithImage} models with a picture`);
   if (copCards !== RECORDED.copertineCards) bad(`${COP_PAGE[loc]}: ${copCards} copertine cards, the card records ${RECORDED.copertineCards}`);
 }
+/* W28-30: nothing copertine under the Catalog. */
+const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : [path.join(d, e.name)]));
+const allPages = walk(DIST).filter((f) => f.endsWith('.html'));
+const catalogPages = allPages.filter((f) => /[\\/]catalog[\\/]/.test(path.relative(DIST, f)) || path.relative(DIST, f).startsWith('catalog'));
+if (!catalogPages.some((f) => path.relative(DIST, f).startsWith('ru'))) fail('no Russian catalogue page found under dist/ru/catalog/');
+if (!catalogPages.length) fail('no catalogue page found under dist/catalog/');
+let copUnderCatalog = 0, copTiles = 0, copMenuRows = 0;
+for (const f of catalogPages) {
+  const html = fs.readFileSync(f, 'utf8'); const rel = path.relative(DIST, f);
+  const cards = count(html, /data-roof-groups="copertine"/g) + count(html, /<article class="model"/g);
+  const tiles = count(html, /class="cat-tile" href="[^"]*\/servicii\/copertine\//g);
+  copUnderCatalog += cards; copTiles += tiles;
+  if (cards) bad(`dist/${rel}: ${cards} copertine card(s) on a Catalog page (W28-30)`);
+  if (tiles) bad(`dist/${rel}: a Catalog tile opens the copertine page (W28-30)`);
+}
+for (const f of allPages) {
+  const n = count(fs.readFileSync(f, 'utf8'), /class="catalog__link" href="[^"]*\/servicii\/copertine\//g);
+  copMenuRows += n;
+  if (n) bad(`dist/${path.relative(DIST, f)}: the Catalog menu carries a copertine row (W28-30)`);
+}
+pagesRead += allPages.length;
+out.push(`Catalog pages read: ${catalogPages.length}; copertine cards on them: ${copUnderCatalog}; copertine Catalog tiles: ${copTiles}; copertine Catalog menu rows on ${allPages.length} pages: ${copMenuRows}`);
+
 for (const rel of SERVICE_PAGES) {
   const html = read(rel); pagesRead++;
   const cards = count(html, /<article class="prod"[^>]*data-product-card/g) + count(html, /<article class="nvk"/g);

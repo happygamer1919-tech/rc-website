@@ -2271,12 +2271,8 @@ function copertine(l) {
         ${price}
       </article>`;
   }).join('\n');
-  /* The group chip with its count (the dispatch's "chip and count"), the roofing filter bar's
-     own component with one button, pressed, and the status line it writes. */
-  const chip = `    <div class="roof-filter" role="group" aria-label="${esc(t('eyebrow'))}" data-roof-bar>
-        <button class="roof-filter__btn" type="button" id="mat-copertine" data-roof-filter="copertine" aria-pressed="true">${esc(t('eyebrow'))} <span class="roof-filter__n">${COP.models.length}</span></button>
-    </div>
-    <p class="roof-filter__status muted" data-roof-status data-roof-showing="${esc(l.strings['roofProducts.showing'])}" aria-live="polite">${esc(l.strings['roofProducts.showing'].replace('{n}', String(COP.models.length)))}</p>`;
+  /* W28-14 put the Catalog group's chip and count here. AMENDED (W28-30): removed with the group;
+     the twelve cards stand alone, each with its button to the contact form (W28-29). */
 
   const steps = [0, 1, 2, 3].map((i) => `      <li class="csteps__step" data-reveal data-stagger="${i}">
         <span class="csteps__n" aria-hidden="true">${i + 1}</span>
@@ -2294,17 +2290,6 @@ ${tiles}
     </div>
   </div>
 </section>
-<section class="section section--dark" id="copertine-modele" aria-labelledby="copertine-modele-h">
-  <div class="container">
-    <p class="eyebrow" data-reveal>${t('eyebrow')}</p>
-    <h2 id="copertine-modele-h" data-reveal>${t('modelsH2')}</h2>
-    <p class="lede cop-lede--dark" data-reveal>${t('modelsLede')}</p>
-${chip}
-    <div class="models" data-roof-grid>
-${models}
-    </div>
-  </div>
-</section>
 <section class="section section--light" id="copertine-pasi" aria-labelledby="copertine-pasi-h">
   <div class="container">
     <p class="eyebrow" data-reveal>${t('eyebrow')}</p>
@@ -2315,6 +2300,16 @@ ${steps}
   </div>
 </section>
 ${gallerySectionAlone(l, 'copertine', galNeed(l.strings['pages.copertine.title'], 'pages.copertine.title'))}
+<section class="section section--dark" id="copertine-modele" aria-labelledby="copertine-modele-h">
+  <div class="container">
+    <p class="eyebrow" data-reveal>${t('eyebrow')}</p>
+    <h2 id="copertine-modele-h" data-reveal>${t('modelsH2')}</h2>
+    <p class="lede cop-lede--dark" data-reveal>${t('modelsLede')}</p>
+    <div class="models">
+${models}
+    </div>
+  </div>
+</section>
 `;
 }
 
@@ -2455,9 +2450,9 @@ const PARENT_CATEGORIES = [
      and no catalogue page. Its slug is a label for this list only (the service slug `garduri`
      is taken and the collision check below would refuse it); nothing is emitted under it. */
   { slug: 'garduri-catalog',      i: 8, service: 'garduri', external: true },
-  /* W28-14: the copertine group, external like the fence one; its service is the copertine
-     product page, which the external-row guard below holds to a page this build emits. */
-  { slug: 'copertine-catalog',    i: 9, service: 'copertine', external: true },
+  /* W28-14 added the copertine group here, external like the fence one. AMENDED (W28-30, the fifth
+     dispatch): gone. The Catalog is materials plus prices, and the copertine models carry no price,
+     so the group has no tile, no menu row and no chip; its models live on the copertine page only. */
 ];
 
 /* W24-04, finding F-03. Every subcategory gets a real page of its own, under its

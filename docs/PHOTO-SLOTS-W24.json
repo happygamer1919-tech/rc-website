@@ -5111,21 +5111,6 @@
         "ro": "Copertină auto cu acoperiș asimetric ascuțit, structură din tiranți metalici și benzi de iluminat LED aprinse la asfințit, cu o mașină parcată dedesubt",
         "ru": "Навес для автомобиля с асимметричной остроконечной крышей на металлических раскосах и включённой светодиодной подсветкой в сумерках, под которым стоит автомобиль"
       }
-    },
-    {
-      "id": "CATEG-10",
-      "page": "/catalog/",
-      "ratio": "4 / 3",
-      "min_px": "1200x900",
-      "shows": "Tila categoriei Copertine din indexul catalogului (W28-14). Reutilizare declarata a fotografiei COPM-01, primul model: copertina standard pe stalpi. Tila o incadreaza singura la 4:3.",
-      "state": "filled",
-      "provenance": "public/img/copertine/COPM-01.jpg",
-      "alt": {
-        "ro": "Copertină auto pe stâlpi metalici antracit, cu acoperiș plat din policarbonat, sub care este parcată o mașină albă pe o alee pavată, lângă o casă",
-        "ru": "Автомобильный навес на металлических стойках антрацитового цвета с плоской крышей из поликарбоната, под которым на мощёной площадке у дома стоит белый автомобиль"
-      },
-      "reuse_of": "COPM-01",
-      "reuse_reason": "W28-14 and W25-R17: the catalogue index tile for Copertine stands on the first model's own photograph, the same subject on a second page"
     }
   ]
 }

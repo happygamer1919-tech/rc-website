@@ -1813,3 +1813,19 @@ measured plus 60 (W24-R4) and the other 53 read identical:
 |---|---|---|---|
 | `/servicii/copertine/` | 8,125 | **8,157** | 8,185 to **8,217** |
 | `/ru/servicii/copertine/` | 8,201 | **8,233** | 8,261 to **8,293** |
+
+## AMENDED (W28-30, wave 28): copertine leaves the Catalog, four budgets move
+
+Added 2026-09-24 by card W28-30, the fifth dispatch. Nothing above this line moves.
+
+The copertine group leaves the Catalog: its tile goes from the Catalog index (a row of tiles fewer),
+and its group chip and status line go from the copertine page, whose twelve cards now sit below the
+gallery. All 55 budgeted pages re-measured at 1440, settled (reveals applied, 1,600ms), on the card's
+built tree; four move to measured plus 60 (W24-R4) and the other 51 read identical:
+
+| Page | Before (budget minus 60) | After | Budget |
+|---|---|---|---|
+| `/servicii/copertine/` | 8,157 | **8,053** | 8,217 to **8,113** |
+| `/ru/servicii/copertine/` | 8,233 | **8,129** | 8,293 to **8,189** |
+| `/catalog/` | 4,047 | **3,682** | 4,107 to **3,742** |
+| `/ru/catalog/` | 4,072 | **3,706** | 4,132 to **3,766** |

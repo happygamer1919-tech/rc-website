@@ -682,8 +682,8 @@
       "evidence": "quality green 7m17s; merged 2026-09-24 22:39:01Z as 3c2e11c; section 12.0 EXIT=0 at 22:42:28Z; check-viewport-320 on main 3c2e11c: 71 of 71 at 320 (36 RO, 35 RU, 14 redirects skipped); before the fix /ru/ 337px from a filter chip; gate 35, quality runs 34 commands"
     },
     {
-      "lane": "queue",
-      "status": "todo",
+      "lane": "in_flight",
+      "status": "pr_open",
       "priority": "high",
       "owner_terminal": "yellow",
       "pr": null,
@@ -699,7 +699,8 @@
       "acceptance": [
         "node build.js && node scripts/check-catalog-counts.js  -> exit 0 (0 copertine cards and 0 copertine tiles or menu rows under Catalog, both locales; 12 cards and 12 buttons on the copertine page, each locale; no copertine chip)",
         "node scripts/run-gates.js --keep-going  -> every command exit 0"
-      ]
+      ],
+      "evidence": "catalog index 9 tiles; 0 copertine cards, tiles and menu rows on 46 Catalog pages (menu rows read on all 85 pages); copertine page 12 cards and 12 buttons per locale, below the gallery, no chip; catalog-counts exit 0, and exit 1 with 70 problems on the build of main before the change; four budgets move (R-Y)"
     },
     {
       "lane": "queue",

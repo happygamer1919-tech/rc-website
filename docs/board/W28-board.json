@@ -60,6 +60,24 @@
       "applied_by": [
         "W28-13"
       ]
+    },
+    {
+      "id": "R-W28-06",
+      "title": "Fatade images: no mark of any kind, the maker's included; the stock source set, the manifest, WebP, the generic type photograph (the dispatch called it R-W28-04, an id already taken)",
+      "date": "2026-09-24",
+      "ruled_by": "owner",
+      "applied_by": [
+        "W28-23"
+      ]
+    },
+    {
+      "id": "R-W28-07",
+      "title": "Service galleries labelled as examples, stock after the owner's photographs; the Portofoliu section RC-own only (the dispatch called it R-W28-05, an id already taken)",
+      "date": "2026-09-24",
+      "ruled_by": "owner",
+      "applied_by": [
+        "W28-24"
+      ]
     }
   ],
   "cards": [
@@ -368,13 +386,13 @@
     {
       "id": "W28-FIX-01",
       "title": "The hero stat labels read 14px on phones and tablets (from W28-REVIEW)",
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "normal",
       "owner_terminal": "yellow",
       "branch": "w28/w28-fix-01-stat-labels",
-      "pr": null,
-      "merge_sha": null,
+      "pr": 180,
+      "merge_sha": "9e9a92116048fc900115b2a02ecd5e82562547b9",
       "depends_on": [
         "W28-21"
       ],
@@ -386,7 +404,7 @@
         "the crawl at 390 and 768 on / and /ru/ counts 0 visible text nodes under 14px that are not SVG diagram labels",
         "node scripts/run-gates.js --keep-going  -> 33 of 33 exit 0"
       ],
-      "evidence": "hero probe at 320, 360, 390, 768 both locales: 3 labels, all 14px, label overflow false everywhere (the track floor minmax(min-content, 1fr) keeps a 94px Russian word inside its 91px column at 320), 0 hidden hero children; 1440 unchanged at 17px. The Russian page still scrolls 17px sideways at 320 from the HEADER pill, on main today too (Q-W28-04, W28-FIX-02). Crawl on this build: 36 text nodes under 14px, all SVG labels; 0 sideways scroll at 390, 768, 1440. 0 budgets move."
+      "evidence": "quality green; merged 2026-09-24 03:02:11Z as 9e9a921; section 12.0 EXIT=0 at 03:05:08Z. hero probe at 320, 360, 390, 768 both locales: 3 labels, all 14px, label overflow false everywhere (the track floor minmax(min-content, 1fr) keeps a 94px Russian word inside its 91px column at 320), 0 hidden hero children; 1440 unchanged at 17px. The Russian page still scrolls 17px sideways at 320 from the HEADER pill, on main today too (Q-W28-04, W28-FIX-02). Crawl on this build: 36 text nodes under 14px, all SVG labels; 0 sideways scroll at 390, 768, 1440. 0 budgets move."
     },
     {
       "id": "W28-FIX-02",
@@ -406,6 +424,68 @@
       "acceptance": [
         "blocked on Q-W28-04",
         "if worked: at 320 on / and /ru/ document.documentElement.scrollWidth equals clientWidth and the header pill fits inside the viewport; gate 14 measures 320 as well as 360 and 1280; 33 of 33 gates exit 0"
+      ]
+    },
+    {
+      "id": "W28-R2",
+      "title": "The second dispatch: R-W28-06 and R-W28-07 recorded, the two cards on the board, Q-W28-05",
+      "lane": "in_flight",
+      "status": "pr_open",
+      "priority": "high",
+      "owner_terminal": "yellow",
+      "branch": "w28/w28-r2-rulings-board",
+      "pr": null,
+      "merge_sha": null,
+      "depends_on": [],
+      "ask": "Record R-W28-04 (fatade images: no mark of any kind, maker's included) and R-W28-05 (service galleries labelled as examples, Portofoliu page RC-own only, stock never on it) in docs/rulings/W28-R.md.",
+      "reading": "Both ids were taken (the phone hero and the services-versus-catalog confirmation), and W28-22 was taken too; the register is append-only under R-S, so the rulings are R-W28-06 and R-W28-07 and the cards W28-23 and W28-24, each quoting the dispatch. The 113 fatade3d records whose picture is the manufacturer's own packshot are put to the owner as Q-W28-05 with the default \"kept\". Documents only.",
+      "acceptance": [
+        "grep -c '^## R-W28-0[67]' docs/rulings/W28-R.md  -> 2",
+        "node -e \"const b=require('./docs/board/W28-board.json'); if(!b.cards.find(c=>c.id==='W28-23')||!b.cards.find(c=>c.id==='W28-24')) process.exit(1)\"  -> exit 0"
+      ]
+    },
+    {
+      "id": "W28-23",
+      "title": "Fatade product images: every picture fetched from fatade3d.md replaced by a generic, mark-free stock photograph of its product type",
+      "lane": "queue",
+      "status": "todo",
+      "priority": "high",
+      "owner_terminal": "yellow",
+      "branch": "w28/w28-23-fatade-stock-images",
+      "pr": null,
+      "merge_sha": null,
+      "depends_on": [
+        "W28-R2"
+      ],
+      "ask": "W28-22 fatade product images: for every product in the fatade group (cards and detail pages, RO and RU) whose image shows the FATADE mark or logo, replace with a generic photo of the same product type: diffusion membrane roll, fibreglass reinforcement mesh roll, PVC corner bead with mesh, and so on per product. Specs, prices, names unchanged. Acceptance: image-sources test exit 0, docs/reports/W28-FATADE-IMAGES-2.md lists every fatade record with old file, new file, source, licence, and a rendered-DOM check that no fatade product image file name or alt contains fatade or fatade3d.",
+      "reading": "R-W28-06. The 110 pictures fetched from fatade3d.md (64 RED mouldings, 25 lamps, 21 material packshots) are replaced by stock photographs of the product type from the allowed set, one origin slot per type and reuse_of on the rest, encoded to WebP at most 1600 wide by the Chrome the gates run, with alt in both locales written by the viewer that accepted each picture. The 113 manufacturer and owner-picked packshots are kept (Q-W28-05). Gate 32 flips: no fatade-group picture may come from fatade3d.md, every stock picture has a docs/images/SOURCES.md row with a licence in the allowed set, the packshots are counted. Gates 19 and 24 learn the stock origin and WebP. There is no product detail page; the card is the surface.",
+      "acceptance": [
+        "node scripts/check-image-sources.js  -> exit 0 (0 fatade3d.md hosts among the 223, every stock row licensed from the allowed set, the packshots counted)",
+        "test -f docs/reports/W28-FATADE-IMAGES-2.md && grep -c '^| CAT-' docs/reports/W28-FATADE-IMAGES-2.md  -> 223",
+        "node build.js && node scripts/dom-text.js --count 'img[src*=\"fatade\"], img[alt*=\"fatade3d\" i], img[alt*=\"fatade 3d\" i], img[alt*=\"FATADE\"]' on every catalogue page both locales  -> 0",
+        "node scripts/run-gates.js --keep-going  -> every command exit 0"
+      ]
+    },
+    {
+      "id": "W28-24",
+      "title": "Service galleries: ten stock pictures more on every service gallery (fifteen on fatade), galleries for industrial and proiectare-3d, the heading \"Exemple de lucrari si solutii\"",
+      "lane": "queue",
+      "status": "todo",
+      "priority": "high",
+      "owner_terminal": "yellow",
+      "branch": "w28/w28-24-service-galleries",
+      "pr": null,
+      "merge_sha": null,
+      "depends_on": [
+        "W28-23"
+      ],
+      "ask": "W28-23 service galleries: every service page RO and RU gets 10 additional images, fatade gets 15, Constructii industriale and Proiectare 3D get a gallery with 10 since they have none. Subjects match the service. Gallery heading on service pages becomes RO \"Exemple de lucrari si solutii\", RU \"Примеры работ и решений\". RC's own photos stay first in order, stock after. Portofoliu page untouched. Acceptance: per service page gallery item count equals previous count plus 10 (fatade plus 15, the two new galleries equal 10), heading string present in both locales, image-sources test exit 0, Lighthouse performance on every service page at or above 90 both locales.",
+      "reading": "R-W28-07. Eleven galleries (nine service pages plus copertine and the fence gallery page), 115 stock pictures from the allowed set appended after the owner's in content/galleries.json with origin, source, licence and alt in both locales, WebP full and thumb; the heading through a key of its own, with diacritics; Lighthouse measured on all eighteen service pages, median of three, recorded in W28-FINAL-RUN-2.",
+      "acceptance": [
+        "node build.js && node scripts/check-galleries.js  -> exit 0 with the new counts printed (acoperisuri 25, case-la-cheie 12, fatade 19, finisaje 15, instalatii 15, terasamente 26, reparatii 37, copertine 12, galerie-garduri 22, industrial 10, proiectare-3d 10)",
+        "node scripts/dom-text.js on every service page both locales | grep -c 'Exemple de lucrări și soluții\\|Примеры работ и решений'  -> 1 per page",
+        "node scripts/check-image-sources.js  -> exit 0 (every gallery stock picture has a licensed SOURCES row)",
+        "Lighthouse desktop, median of three, performance >= 90 on all 18 service pages  -> recorded in docs/reports/W28-FINAL-RUN-2.md"
       ]
     }
   ]

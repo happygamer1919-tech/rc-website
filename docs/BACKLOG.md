@@ -1402,10 +1402,14 @@ artifact is republished from `main` after this merges. Documents only.
 W28-28. Two owner answers recorded as R-W28-14 and R-W28-15. Documents only.
 
 ## W28-29 · Copertine: a button to the contact form on every model card
-**Status: PR OPEN** (opened 2026-09-24). R-W28-14; no price, one button to `#oferta` per card, both locales; two budgets move.
+**Status: MERGED #189, section 12.0 exit 0** (opened 2026-09-24, merged 22:19 UTC as `02ff0dd`). R-W28-14; no price, one button to `#oferta` per card, both locales; two budgets move.
 
 ## W28-27 · Turnkey examples: masonry instead of timber frame
-**Status: PR OPEN** (opened 2026-09-24). Five timber-frame stock pictures on the turnkey gallery replaced in place by masonry and brick (four Commons CC0, one Pexels); count stays 12.
+**Status: MERGED #190, section 12.0 exit 0** (opened 2026-09-24, merged 22:29 UTC as `191f999`). Five timber-frame stock pictures on the turnkey gallery replaced in place by masonry and brick (four Commons CC0, one Pexels); count stays 12.
 
 ## W28-28 · The 320 sweep
-**Status: PR OPEN** (opened 2026-09-24). R-W28-13; 71 pages measured, one failed (`/ru/`, a filter chip, not the header pill), fixed under 360 only; gate 35 registered; absorbs W28-FIX-02.
+**Status: MERGED #191, section 12.0 exit 0** (opened 2026-09-24, merged 22:39 UTC as `3c2e11c`). R-W28-13; 71 pages measured, one failed (`/ru/`, a filter chip, not the header pill), fixed under 360 only; gate 35 registered; absorbs W28-FIX-02.
+
+## W28-R6 · The closing report W28-FINAL-RUN-3 and the board sync
+**Status: board sync, not a card** (opened 2026-09-24). `docs/reports/W28-FINAL-RUN-3.md`; the board JSON names #188 to #191;
+the artifact is republished from `main` after this merges. Documents only.

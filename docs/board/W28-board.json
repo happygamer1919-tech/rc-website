@@ -607,12 +607,12 @@
       "evidence": "quality green; merged 2026-09-24 18:10:11Z as 86e2ca3; section 12.0 EXIT=0 at 18:13:17Z; gate 32 counts 78 stock, 2 owner photographs, 0 waiting"
     },
     {
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "high",
       "owner_terminal": "yellow",
-      "pr": null,
-      "merge_sha": null,
+      "pr": 189,
+      "merge_sha": "02ff0ddef0f734bee0c8f3857a91de5454f53c03",
       "id": "W28-29",
       "title": "Copertine: a button to the contact form on every model card, no price (R-W28-14)",
       "branch": "w28/w28-29-copertine-cta",
@@ -626,15 +626,15 @@
         "node scripts/dom-text.js --count \".model .prod__ask\" /servicii/copertine/ /ru/servicii/copertine/  -> 0 and 0",
         "node scripts/run-gates.js --keep-going  -> every command exit 0"
       ],
-      "evidence": "12 buttons to #oferta on /servicii/copertine/ and /ru/servicii/copertine/, 0 ask lines (rendered DOM); catalog-pages, catalog-counts, links, css-collisions, text-contrast, schema-check, seo-check exit 0; two budgets move (copertine both locales, +32px)"
+      "evidence": "quality green 6m54s; merged 2026-09-24 22:19:30Z as 02ff0dd; section 12.0 EXIT=0 at 22:22:43Z; live: 12 buttons to #oferta and 0 ask lines on /servicii/copertine/ and /ru/servicii/copertine/; two budgets move (R-Y)"
     },
     {
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "normal",
       "owner_terminal": "yellow",
-      "pr": null,
-      "merge_sha": null,
+      "pr": 190,
+      "merge_sha": "191f999f1e014691c2e6d8a155bceb7fe4981628",
       "id": "W28-27",
       "title": "Turnkey examples: the timber-frame stock pictures on the turnkey gallery replaced by masonry or brick construction",
       "branch": "w28/w28-27-turnkey-masonry",
@@ -649,15 +649,15 @@
         "grep -c \"case-la-cheie\" docs/images/SOURCES.md  -> 10, none naming a replaced source",
         "Lighthouse desktop, median of three, /servicii/case-la-cheie/ and /ru/servicii/case-la-cheie/  -> performance >= 90"
       ],
-      "evidence": "08 to 12 replaced in place (Wikimedia Commons CC0 x4, two of them crops; Pexels x1), each accepted by two viewers at full size; case-la-cheie 12 (gate 29); gate 32 exit 0; 0 turnkey SOURCES rows name a timber frame; gates 17, R-W, R-Z, 30 exit 0; Lighthouse desktop median of three: 100 on /servicii/case-la-cheie/ and /ru/servicii/case-la-cheie/ (a11y, bp, seo 100); 33 of 33 gates exit 0"
+      "evidence": "quality green 6m48s; merged 2026-09-24 22:29:04Z as 191f999; section 12.0 EXIT=0 at 22:32:10Z; live: the five replaced files byte-identical to the repo; case-la-cheie 12; Lighthouse 100 both locales; gate 32 exit 0"
     },
     {
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "high",
       "owner_terminal": "yellow",
-      "pr": null,
-      "merge_sha": null,
+      "pr": 191,
+      "merge_sha": "3c2e11cf8aeaa54a1fcdbc57264aa8b5bbeba5c1",
       "id": "W28-28",
       "title": "The 320 sweep: every page, both locales, scrollWidth equal to 320, and a gate that keeps it",
       "branch": "w28/w28-28-320-sweep",
@@ -670,7 +670,7 @@
         "node build.js && node scripts/check-viewport-320.js  -> exit 0, every built page both locales, the page count printed",
         "node scripts/run-gates.js --keep-going  -> every command exit 0"
       ],
-      "evidence": "check-viewport-320: 85 html files, 14 redirects skipped, 71 measured (36 RO, 35 RU); before the fix 1 failed (/ru/ 337px, the portfolio filter chip, not the header pill); after, 71 of 71 at 320; self-test 5 arms (2 green); gate 35 registered, quality runs 34 commands"
+      "evidence": "quality green 7m17s; merged 2026-09-24 22:39:01Z as 3c2e11c; section 12.0 EXIT=0 at 22:42:28Z; check-viewport-320 on main 3c2e11c: 71 of 71 at 320 (36 RO, 35 RU, 14 redirects skipped); before the fix /ru/ 337px from a filter chip; gate 35, quality runs 34 commands"
     }
   ],
   "board_syncs": [
@@ -695,7 +695,16 @@
     {
       "branch": "w28/w28-r5-rulings-board",
       "date": "2026-09-24",
-      "records": "R-W28-12 to R-W28-15, cards W28-27, W28-28, W28-29, W28-FIX-02 absorbed, Q-W28-02, 03, 04 answered, #187 verified"
+      "records": "R-W28-12 to R-W28-15, cards W28-27, W28-28, W28-29, W28-FIX-02 absorbed, Q-W28-02, 03, 04 answered, #187 verified",
+      "pr": 188,
+      "merge_sha": "cc1deff74c47254b8b487a94cc873b3dce5f3722",
+      "status": "verified",
+      "evidence": "quality green 7m3s; merged 2026-09-24 22:12:29Z as cc1deff; section 12.0 EXIT=0 at 22:15:43Z"
+    },
+    {
+      "branch": "w28/w28-r6-final-run-3",
+      "date": "2026-09-24",
+      "records": "W28-29, W28-27, W28-28 verified (#189, #190, #191), #188 verified, docs/reports/W28-FINAL-RUN-3.md; the artifact republished from main after this merges"
     }
   ]
 }

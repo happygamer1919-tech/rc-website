@@ -14292,3 +14292,37 @@ gathered through the owner's own Chrome, viewed by independent viewers, and fetc
 sites' file hosts by a zero-dependency intake. No WebP encoder exists here (Q-W25-01, "JPEG only,
 no new dependency"); the Chrome the gates run exports WebP from a canvas, which is the encoder
 W28-23 and W28-24 use and no new dependency. Documents only in this card.
+
+## W28-23 · Fatade product images: every fatade3d.md picture replaced by a generic stock photograph, 2026-09-24
+
+Branch `w28/w28-23-fatade-stock-images`, stacked on W28-R2. Under R-W28-06.
+
+**Measured first.** 223 fatade-group records; 110 pictures fetched from fatade3d.md (64 RED
+mouldings, 25 lamps, 21 material packshots), the FATADE print burned into three, a maker's brand
+in eleven more; 113 manufacturer or owner-picked packshots (Q-W28-05, kept).
+
+**How the pictures were found and judged.** Pexels, Pixabay and Unsplash refuse a scripted search
+(a bot challenge to curl and to headless Chrome alike) and Commons has almost no CC0 photograph of
+these subjects, so candidates were gathered through the owner's own Chrome (search pages read for
+photo ids only) and fetched from the sites' file hosts. 1,166 candidate previews over four rounds
+were each looked at by an independent viewer (eight per viewer) against the subject, refusing any
+logo, brand, readable label, watermark, livery, identifiable face or wrong subject and writing alt
+text in both locales for what it accepted (380 of the first 936 accepted); every chosen picture was
+then looked at twice more at full size by adversarial refuters, whose standard (embossed size
+codes, tool colours, illegible labels) proved stricter than the owner's words, so a calibrated
+pair of judges re-read the 84 refused under the rule verbatim and both had to accept to restore
+one (63 restored, 21 stayed refused). **109 of the 110 slots carry a stock photograph now: 79
+distinct pictures, 30 declared reuses of the same type's picture (R-W28-06), all Pexels or
+Unsplash, encoded to WebP at most 1200 wide by the Chrome the gates run (`scripts/webp-encode.js`,
+no new dependency), each with an R-W row and a `docs/images/SOURCES.md` row, and 109 old JPEGs
+deleted with their rows.** The one slot with no mark-free candidate in the allowed set, the
+diffusion membrane CAT-0221, waits as a placeholder under Q-W28-06, named in gate 32; the
+category tile stands on the reinforcing mesh picture instead.
+
+**Gates.** Gate 32 reversed (six arms, two green): no fatade-group picture from fatade3d.md, every
+stock picture licensed from the allowed set in both manifests, packshots counted, the waiting
+placeholder named. Gate 19 gained the stock origin held to the fatade group (a red and a green
+arm). Gate 24 reads WebP sizes. The rendered-DOM check counts 0 product images whose file name or
+alt carries fatade3d, fatade 3d or FATADE across every catalogue page in both locales.
+`docs/reports/W28-FATADE-IMAGES-2.md` lists all 223 records with old file, new file, source,
+licence and status.

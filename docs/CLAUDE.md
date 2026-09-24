@@ -679,6 +679,12 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     imperlux override is held to its list: a library licence on any other slot fails. The red
     arm plants one on a product slot; the green arm is the same row on a copertine slot.
 
+    **AMENDED (W28-23, R-W28-06): the stock origin, and two arms, one GREEN.** `stock library` joins
+    the approved origins and is held to the fatade group: a filled slot whose record's `source.host`
+    is fatade3d.md, or a tile declaring reuse of one. The red arm plants it on a slot outside the
+    group (`stock-not-fatade`); the green arm is the same row on a slot the arm's own fatade set
+    names. The real run computes the set from `content/catalog-products.json` and fails on an
+    empty one.
 20. `node scripts/check-layout-geometry.js` clean. **Since W24-09 (wave 24)**, run by
     `quality`. **The nineteen gates above do not read a layout.** W24-07 shipped a
     bento whose tiles were named `.bento__tile`, which the garduri chooser had owned
@@ -804,6 +810,9 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     first run, which is gate 22's lesson arriving where the dependency was the operating
     system rather than the clone depth.
 
+    **AMENDED (W28-23, R-W28-06):** its `dims()` reads WebP as well (the VP8, VP8L and VP8X chunk
+    headers, through `scripts/webp-encode.js`), because the stock pictures are WebP, and its origin
+    classes gain `stock library (R-W28-06), <site>`.
 25. `node scripts/gen-owner-intake-w25.js --check` clean. **Since W25-16 (wave 25)**, run by
     `quality` with the other static checks. `docs/OWNER-INTAKE-W25.md` is the list the owner
     drops photographs against, and **the intake matches on the filename being the slot id
@@ -819,6 +828,9 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     tiles**, nine roofing (the Tablă cutată tile, `ACOP-09`) and four fence. Anything less is still the broken
     walk this gate refuses. Watched: one row set back to a placeholder fails it, naming the row.
 
+    **AMENDED (W28-23, R-W28-06):** a catalogue slot that waits as a placeholder because no mark-free
+    stock photograph exists in the allowed set is named in the script with its question (`CAT-0221`,
+    Q-W28-06) and printed; it is not a row the walk missed. Any other unfilled row still fails.
 26. `node scripts/check-hub-tile-links.js` clean. **Since W25-24 (wave 25)**, ruling W25-R24,
     run by `quality` with the other static checks. **Every hub tile on
     `/servicii/acoperisuri/` and `/servicii/garduri/`, both locales, has an href that
@@ -974,6 +986,18 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     reuse (W25-R1, W25-R20, W25-R17) are counted and printed, never refused, because three
     rulings permit them. It fails on zero records, zero rows, zero direct-supplier rows or a
     missing file.
+
+    **AMENDED (W28-23, ruling R-W28-06): reversed.** The owner's rule: "no fatade product image
+    source host is fatade3d.md", and every fatade-group picture on the stock set (Pexels, Unsplash,
+    Pixabay, Wikimedia Commons CC0 or public domain, Google Images under the owner's two
+    conditions) and every stock gallery photograph has a `docs/images/SOURCES.md` row whose licence
+    is in the allowed set. The fatade group is the 223 records with `source.host` fatade3d.md. The
+    gate now fails a fatade-group picture standing on a fatade3d.md row, a stock picture without a
+    SOURCES row, a SOURCES licence outside the set, a SOURCES row without a PROVENANCE row, and a
+    stock gallery photograph without both files, both rows or alt text in both locales; it COUNTS
+    the manufacturer and owner-picked packshots (Q-W28-05) and never licenses them as stock. It
+    fails on zero fatade records, zero stock pictures and a missing SOURCES manifest, and runs six
+    self-test arms first, two of them green (a stock picture with both rows; a packshot counted).
 
 33. `node scripts/seo-check.js` clean. **Since W28-17 (wave 28)**, run by `quality` after gate
     32. **Every built page**: a `<title>` unique across all 85 pages and under 60 characters, a

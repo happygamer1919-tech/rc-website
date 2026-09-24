@@ -1145,12 +1145,12 @@
       "page": "/catalog/termoizolatie/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Polistiren expandat STOP FIRE\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"insulation-board\" (R-W28-06): Pink XPS boards fixed on a basement wall below masonry, with pipe penetrations and a sand pile in front. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0004.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0004.jpg",
+      "provenance": "public/img/catalog/CAT-0004.webp",
       "alt": {
-        "ro": "Polistiren expandat STOP FIRE, ambalajul produsului",
-        "ru": "Пенополистирол STOP FIRE, упаковка продукта"
+        "ro": "Plăci XPS roz montate pe peretele unui subsol, sub zidărie, cu treceri de țevi și nisip în față.",
+        "ru": "Розовые плиты XPS, закреплённые на стене подвала под кладкой, с проходами труб и песком на переднем плане."
       }
     },
     {
@@ -1173,12 +1173,12 @@
       "page": "/catalog/termoizolatie/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Polistiren Penoplex\" (Penoplex), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the product's own Fatade 3D page, 400x400.",
+      "shows": "Fotografie generica de tip \"insulation-board\" (R-W28-06): Close-up of the corner of a light blue rigid foam board (XPS-type) on a white surface. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0006.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0006.jpg",
+      "provenance": "public/img/catalog/CAT-0006.webp",
       "alt": {
-        "ro": "Polistiren Penoplex, produsul",
-        "ru": "Полистирол Пеноплекс, продукт"
+        "ro": "Colțul unei plăci albastre de polistiren extrudat, fotografiat de aproape.",
+        "ru": "Угол синей плиты экструдированного пенополистирола крупным планом."
       }
     },
     {
@@ -1186,13 +1186,15 @@
       "page": "/catalog/termoizolatie/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Polistiren Tehnoplex XPS Carbon\" (SWEETONDALE), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the product's own Fatade 3D page, 600x417.",
+      "shows": "Fotografie generica de tip \"insulation-board\" (R-W28-06), aceeasi ca CAT-0004: Pink XPS boards fixed on a basement wall below masonry, with pipe penetrations and a sand pile in front. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0007.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0007.jpg",
+      "provenance": "public/img/catalog/CAT-0004.webp",
       "alt": {
-        "ro": "Polistiren Tehnoplex XPS Carbon, produsul",
-        "ru": "Полистирол Техноплекс XPS Карбон, продукт"
-      }
+        "ro": "Plăci XPS roz montate pe peretele unui subsol, sub zidărie, cu treceri de țevi și nisip în față.",
+        "ru": "Розовые плиты XPS, закреплённые на стене подвала под кладкой, с проходами труб и песком на переднем плане."
+      },
+      "reuse_of": "CAT-0004",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"insulation-board\" stands on every record of that type; the origin is CAT-0004."
     },
     {
       "id": "CAT-0008",
@@ -1212,12 +1214,12 @@
       "page": "/catalog/termoizolatie/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Vată minerală OBIO 165\" (IZOVAT), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the product's own Fatade 3D page, 720x443.",
+      "shows": "Fotografie generica de tip \"mineral-wool\" (R-W28-06): Pink glass wool insulation batts fitted between timber wall studs, a worker in gloves seen from behind. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0009.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0009.jpg",
+      "provenance": "public/img/catalog/CAT-0009.webp",
       "alt": {
-        "ro": "Vată minerală OBIO 165, produsul",
-        "ru": "Минеральная вата ОБИО 165, продукт"
+        "ro": "Plăci de vată de sticlă roz montate între montanții de lemn ai unui perete.",
+        "ru": "Плиты розовой стекловаты, установленные между деревянными стойками стены."
       }
     },
     {
@@ -1251,13 +1253,15 @@
       "page": "/catalog/termoizolatie/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Vată minerală Novoterm\" (NOVOTERM), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the product's own Fatade 3D page, 970x970.",
+      "shows": "Fotografie generica de tip \"mineral-wool\" (R-W28-06), aceeasi ca CAT-0009: Pink glass wool insulation batts fitted between timber wall studs, a worker in gloves seen from behind. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0012.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0012.jpg",
+      "provenance": "public/img/catalog/CAT-0009.webp",
       "alt": {
-        "ro": "Vată minerală Novoterm, produsul",
-        "ru": "Минеральная вата Новотерм, продукт"
-      }
+        "ro": "Plăci de vată de sticlă roz montate între montanții de lemn ai unui perete.",
+        "ru": "Плиты розовой стекловаты, установленные между деревянными стойками стены."
+      },
+      "reuse_of": "CAT-0009",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"mineral-wool\" stands on every record of that type; the origin is CAT-0009."
     },
     {
       "id": "CAT-0013",
@@ -1355,12 +1359,12 @@
       "page": "/catalog/termoizolatie/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Meșterul Dibaci Universal - Adeziv pentru plăci ceramice\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"adhesive-bag\" (R-W28-06): Plain orange and kraft paper sacks of dry mortar stacked on a wooden pallet on a concrete yard. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0020.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0020.jpg",
+      "provenance": "public/img/catalog/CAT-0020.webp",
       "alt": {
-        "ro": "Meșterul Dibaci Universal - Adeziv pentru plăci ceramice, ambalajul produsului",
-        "ru": "Мештерул Дибачи Универсал - Клей для керамической плитки, упаковка продукта"
+        "ro": "Saci de mortar uscat stivuiți pe un palet de lemn într-o curte betonată.",
+        "ru": "Мешки сухой смеси сложены на деревянном поддоне на бетонной площадке."
       }
     },
     {
@@ -1407,12 +1411,12 @@
       "page": "/catalog/termoizolatie/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Diblu din plastic LTX\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"anchor\" (R-W28-06): Top-down view of orange, blue and grey plastic wall plugs with screws and a sleeve anchor on marble. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0024.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0024.jpg",
+      "provenance": "public/img/catalog/CAT-0024.webp",
       "alt": {
-        "ro": "Diblu din plastic LTX, produsul",
-        "ru": "Пластиковый дюбель ЛТХ, продукт"
+        "ro": "Dibluri din plastic portocalii, albastre și gri, cu șuruburi și o ancoră metalică, văzute de sus pe marmură.",
+        "ru": "Оранжевые, синие и серые пластиковые дюбели с шурупами и металлическим анкером, вид сверху на мраморе."
       }
     },
     {
@@ -1420,12 +1424,12 @@
       "page": "/catalog/termoizolatie/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Diblu din oțel LGX\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the product's own Fatade 3D page, 400x266.",
+      "shows": "Fotografie generica de tip \"anchor\" (R-W28-06): Grey, blue and orange plastic wall plugs with screws and a sleeve anchor laid out on a marble surface. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0025.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0025.jpg",
+      "provenance": "public/img/catalog/CAT-0025.webp",
       "alt": {
-        "ro": "Diblu din oțel LGX, produsul",
-        "ru": "Дюбель из стали ЛГХ, продукт"
+        "ro": "Dibluri din plastic în mai multe culori, șuruburi și o ancoră metalică așezate pe o suprafață de marmură.",
+        "ru": "Пластиковые дюбели разных цветов, шурупы и металлический анкер, разложенные на мраморной поверхности."
       }
     },
     {
@@ -1446,12 +1450,12 @@
       "page": "/catalog/tencuieli-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Baumit DuoTop Tencuială decorativă acrilică\" (Baumit), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the product's own Fatade 3D page, 400x400.",
+      "shows": "Fotografie generica de tip \"render-bucket\" (R-W28-06): Top-down view of a green plaster bucket lid with two filling knives and a blob of white filler on a hexagon tile floor. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0027.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0027.jpg",
+      "provenance": "public/img/catalog/CAT-0027.webp",
       "alt": {
-        "ro": "Baumit DuoTop Tencuială decorativă acrilică, produsul",
-        "ru": "Баумит ДуоТоп - Акриловая декоративная штукатурка, продукт"
+        "ro": "Găleată verde cu chit și două șpacluri cu tencuială albă, văzute de sus pe o pardoseală cu plăci hexagonale.",
+        "ru": "Зелёное ведро со шпаклёвкой и два шпателя с белым составом, вид сверху на полу с шестиугольной плиткой."
       }
     },
     {
@@ -1537,12 +1541,12 @@
       "page": "/catalog/tencuieli-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Tencuială decorativă siliconică STICKY\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"render-bucket\" (R-W28-06): Black rubber tub of white lime plaster with a trowel, a watering can and a patch of fresh render on a tiled floor. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0034.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0034.jpg",
+      "provenance": "public/img/catalog/CAT-0034.webp",
       "alt": {
-        "ro": "Tencuială decorativă siliconică STICKY, ambalajul produsului",
-        "ru": "Силиконовая декоративная штукатурка STICKY, упаковка продукта"
+        "ro": "Găleată de cauciuc cu tencuială albă, mistrie și stropitoare pe o podea cu gresie.",
+        "ru": "Резиновое ведро с белой штукатуркой, шпатель и лейка на плиточном полу."
       }
     },
     {
@@ -1576,26 +1580,30 @@
       "page": "/catalog/tencuieli-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Tencuială de cuarţ colorat DURAZIV Clima Protect® cu Kauciuc®\" (DURAZIV), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the product's own Fatade 3D page, 1200x1200.",
+      "shows": "Fotografie generica de tip \"render-bucket\" (R-W28-06), aceeasi ca CAT-0027: Top-down view of a green plaster bucket lid with two filling knives and a blob of white filler on a hexagon tile floor. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0037.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0037.jpg",
+      "provenance": "public/img/catalog/CAT-0027.webp",
       "alt": {
-        "ro": "Tencuială de cuarţ colorat DURAZIV Clima Protect® cu Kauciuc®, produsul",
-        "ru": "Цветная кварцевая штукатурка DURAZIV Clima Protect® с Kauciuc®, продукт"
-      }
+        "ro": "Găleată verde cu chit și două șpacluri cu tencuială albă, văzute de sus pe o pardoseală cu plăci hexagonale.",
+        "ru": "Зелёное ведро со шпаклёвкой и два шпателя с белым составом, вид сверху на полу с шестиугольной плиткой."
+      },
+      "reuse_of": "CAT-0027",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"render-bucket\" stands on every record of that type; the origin is CAT-0027."
     },
     {
       "id": "CAT-0038",
       "page": "/catalog/tencuieli-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Tencuială decorativă mozaicată Omitka Rokomozaikova\" (ROKO AquaMix), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the product's own Fatade 3D page, 423x400.",
+      "shows": "Fotografie generica de tip \"render-bucket\" (R-W28-06), aceeasi ca CAT-0034: Black rubber tub of white lime plaster with a trowel, a watering can and a patch of fresh render on a tiled floor. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0038.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0038.jpg",
+      "provenance": "public/img/catalog/CAT-0034.webp",
       "alt": {
-        "ro": "Tencuială decorativă mozaicată Omitka Rokomozaikova, produsul",
-        "ru": "Декоративная мозаичная штукатурка Omitka Rokomozaikova, продукт"
-      }
+        "ro": "Găleată de cauciuc cu tencuială albă, mistrie și stropitoare pe o podea cu gresie.",
+        "ru": "Резиновое ведро с белой штукатуркой, шпатель и лейка на плиточном полу."
+      },
+      "reuse_of": "CAT-0034",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"render-bucket\" stands on every record of that type; the origin is CAT-0034."
     },
     {
       "id": "CAT-0039",
@@ -1760,12 +1768,12 @@
       "page": "/catalog/placi-ceramice/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Placă Elsa Black Grey\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"stone-veneer\" (R-W28-06): Wall clad with thin stacked ledger stone strips in warm beige and brown tones, full-frame texture. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0051.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0051.jpg",
+      "provenance": "public/img/catalog/CAT-0051.webp",
       "alt": {
-        "ro": "Placă Elsa Black Grey, textura placii",
-        "ru": "Плитка Elsa Black Grey, текстура плитки"
+        "ro": "Perete placat cu fâșii subțiri de piatră naturală stivuite, în nuanțe de bej și maro.",
+        "ru": "Стена, облицованная тонкими полосами натурального камня в бежевых и коричневых тонах."
       }
     },
     {
@@ -1877,12 +1885,12 @@
       "page": "/catalog/placi-ceramice/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Placă Sandstorm\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"stone-veneer\" (R-W28-06): Grey stacked-stone veneer wall with rust-coloured accent strips, filling the frame. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0060.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0060.jpg",
+      "provenance": "public/img/catalog/CAT-0060.webp",
       "alt": {
-        "ro": "Placă Sandstorm, textura placii",
-        "ru": "Плитка Sandstorm, текстура плитки"
+        "ro": "Perete placat cu piatră decorativă gri în fâșii suprapuse, cu accente ruginii.",
+        "ru": "Стена, облицованная серым декоративным камнем в виде наборных полос с ржавыми вставками."
       }
     },
     {
@@ -2100,12 +2108,12 @@
       "page": "/catalog/placi-ceramice/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Placă H06\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"stone-veneer\" (R-W28-06): Brown stacked-stone veneer panels on a wall, close-up, vertical framing. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0077.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0077.jpg",
+      "provenance": "public/img/catalog/CAT-0077.webp",
       "alt": {
-        "ro": "Placă H06, textura placii",
-        "ru": "Плитка H06, текстура плитки"
+        "ro": "Panouri de piatră decorativă maro cu plăci subțiri suprapuse pe un perete.",
+        "ru": "Панели из коричневого декоративного камня с тонкими плитами на стене."
       }
     },
     {
@@ -2547,12 +2555,12 @@
       "page": "/catalog/placi-ceramice/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Polished Concrete Wall\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the product's own Fatade 3D page, 1070x535.",
+      "shows": "Fotografie generica de tip \"stone-veneer\" (R-W28-06): Beige and pink sandstone ledgestone veneer wall, close-up. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0110.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0110.jpg",
+      "provenance": "public/img/catalog/CAT-0110.webp",
       "alt": {
-        "ro": "Polished Concrete Wall, produsul",
-        "ru": "Polished Concrete Wall, продукт"
+        "ro": "Perete placat cu piatră decorativă din gresie în nuanțe de bej și roz, dispusă în straturi.",
+        "ru": "Стена, облицованная декоративным камнем из песчаника бежевых и розовых оттенков, уложенным слоями."
       }
     },
     {
@@ -2573,12 +2581,12 @@
       "page": "/catalog/placi-ceramice/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Polish Concrete Wall\" (Phomi), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the product's own Fatade 3D page, 1070x535.",
+      "shows": "Fotografie generica de tip \"stone-veneer\" (R-W28-06): Close-up of a wall clad with beige sandstone veneer plates of varied sizes in a split-face finish. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0112.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0112.jpg",
+      "provenance": "public/img/catalog/CAT-0112.webp",
       "alt": {
-        "ro": "Polish Concrete Wall, produsul",
-        "ru": "Polish Concrete Wall, продукт"
+        "ro": "Perete placat cu plăci de piatră decorativă bej, cu suprafață spartă și dimensiuni variate.",
+        "ru": "Стена, облицованная бежевыми плитами декоративного камня с колотой поверхностью разных размеров."
       }
     },
     {
@@ -2768,12 +2776,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 01\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a white moulding profile with the dimensions 40 and 132 and the code RED-01 burned in. 600x461.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_01_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Close-up of a white profiled cornice and pilaster capital on a yellow rendered facade. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0127.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0127.jpg",
+      "provenance": "public/img/catalog/CAT-0127.webp",
       "alt": {
-        "ro": "Element decorativ de fatada RED 01, profil alb montat orizontal pe coltul unui perete, deasupra unui soclu placat cu piatra",
-        "ru": "Декоративный элемент фасада RED 01, белый профиль, смонтированный горизонтально на углу стены над каменным цоколем"
+        "ro": "Cornișă albă profilată și capitel de pilastru pe o fațadă tencuită galbenă.",
+        "ru": "Белый профилированный карниз и капитель пилястры на жёлтом оштукатуренном фасаде."
       }
     },
     {
@@ -2781,12 +2789,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 02\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a white moulding profile with a rounded top and groove, the dimensions 43 and 122 and the code RED-02 burned in. 600x461.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_02_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): White stucco cornice, arched window pediment and pilaster capitals on a yellow facade under a blue sky. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0128.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0128.jpg",
+      "provenance": "public/img/catalog/CAT-0128.webp",
       "alt": {
-        "ro": "Element decorativ de fatada RED 02, profil alb cu muchie rotunjita montat orizontal pe coltul unui perete, deasupra unui soclu placat cu piatra",
-        "ru": "Декоративный элемент фасада RED 02, белый профиль со скруглённым верхом, смонтированный горизонтально на углу стены над каменным цоколем"
+        "ro": "Cornișă albă, ancadrament de fereastră cu fronton arcuit și capiteluri de pilastru pe o fațadă galbenă.",
+        "ru": "Белый карниз, арочное обрамление окна и капители пилястр на жёлтом фасаде здания."
       }
     },
     {
@@ -2794,12 +2802,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 03\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a small white half-round moulding with the dimensions 30 and 60 and the code RED-03 burned in. 600x461.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_03_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Peach-toned facade corner with profiled cornice, string course, brackets and window surrounds. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0129.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0129.jpg",
+      "provenance": "public/img/catalog/CAT-0129.webp",
       "alt": {
-        "ro": "Element decorativ de fatada RED 03, profil alb semirotund montat orizontal pe coltul unui perete, deasupra unui soclu placat cu piatra",
-        "ru": "Декоративный элемент фасада RED 03, белый полукруглый профиль, смонтированный горизонтально на углу стены над каменным цоколем"
+        "ro": "Colț de fațadă cu cornișă profilată, brâu orizontal, console și ancadramente de ferestre.",
+        "ru": "Угол фасада с профилированным карнизом, горизонтальным поясом, консолями и обрамлениями окон."
       }
     },
     {
@@ -2807,12 +2815,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 04\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a white cove moulding under a flat top with the dimensions 25 and 100 and the code RED-04 burned in. 600x461.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_04_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Three horizontal white carved plaster bands with a guilloche pattern on a pale brick facade. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0130.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0130.jpg",
+      "provenance": "public/img/catalog/CAT-0130.webp",
       "alt": {
-        "ro": "Element decorativ de fatada RED 04, profil alb concav montat orizontal pe coltul unui perete, deasupra unui soclu placat cu piatra",
-        "ru": "Декоративный элемент фасада RED 04, белый вогнутый профиль, смонтированный горизонтально на углу стены над каменным цоколем"
+        "ro": "Trei brâuri orizontale din ipsos alb cu model împletit pe o fațadă din cărămidă deschisă.",
+        "ru": "Три горизонтальных пояса из белого гипса с плетёным узором на фасаде из светлого кирпича."
       }
     },
     {
@@ -2820,12 +2828,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 05\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a white S-curved (ogee) moulding with the dimensions 50 and 140 and the code RED-05 burned in. 600x461.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_05_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Beige stucco facade with dentil cornice, arched window surrounds and ornamental pilasters. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0131.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0131.jpg",
+      "provenance": "public/img/catalog/CAT-0131.webp",
       "alt": {
-        "ro": "Element decorativ de fatada RED 05, profil alb in forma de S montat orizontal pe coltul unui perete, deasupra unui soclu placat cu piatra",
-        "ru": "Декоративный элемент фасада RED 05, белый S-образный профиль, смонтированный горизонтально на углу стены над каменным цоколем"
+        "ro": "Fațadă din stuc bej cu cornișă dințată, ancadramente arcuite de ferestre și pilaștri ornamentali.",
+        "ru": "Бежевый лепной фасад с зубчатым карнизом, арочными обрамлениями окон и декоративными пилястрами."
       }
     },
     {
@@ -2833,12 +2841,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 06\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a white double-bead moulding with the dimensions 20 and 85 and the code RED-06 burned in. 600x461.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_06_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): White stucco pilaster capital with stepped cornice moulding against a yellow wall. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0132.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0132.jpg",
+      "provenance": "public/img/catalog/CAT-0132.webp",
       "alt": {
-        "ro": "Element decorativ de fatada RED 06, profil alb cu doua nervuri rotunjite montat orizontal pe coltul unui perete, deasupra unui soclu placat cu piatra",
-        "ru": "Декоративный элемент фасада RED 06, белый профиль с двумя скруглёнными валиками, смонтированный горизонтально на углу стены над каменным цоколем"
+        "ro": "Capitel de pilastru din stuc alb cu profil de cornișă în trepte, pe un perete galben.",
+        "ru": "Белая штукатурная капитель пилястры со ступенчатым карнизным профилем на жёлтой стене."
       }
     },
     {
@@ -2846,12 +2854,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 07\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a large white quarter-round moulding with a stepped base, the dimensions 50 and 130 and the code RED-07 burned in. 600x461.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_07_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Ornamental fretwork parapet band and cornice moulding above a turquoise facade. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0133.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0133.jpg",
+      "provenance": "public/img/catalog/CAT-0133.webp",
       "alt": {
-        "ro": "Element decorativ de fatada RED 07, profil alb cu muchie rotunjita si treapta la baza, montat orizontal pe coltul unui perete, deasupra unui soclu placat cu piatra",
-        "ru": "Декоративный элемент фасада RED 07, белый профиль со скруглённой кромкой и ступенькой у основания, смонтированный горизонтально на углу стены над каменным цоколем"
+        "ro": "Bandă decorativă ajurată și profil de cornișă deasupra unei fațade turcoaz.",
+        "ru": "Ажурный декоративный пояс и карнизный профиль над бирюзовым фасадом."
       }
     },
     {
@@ -2859,12 +2867,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 08\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a half-round moulding profile with burned-in dimension figures 40 and 100 and a red RED-08 code in the corner; 600x461, a downscale of galler); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_08_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Stucco window surround with a baluster and rosette ornaments on a beige rendered facade. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0134.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0134.jpg",
+      "provenance": "public/img/catalog/CAT-0134.webp",
       "alt": {
-        "ro": "Element decorativ RED 08, profil rotunjit, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
-        "ru": "Декоративный элемент RED 08 с закруглённым профилем, установлен как фасадный пояс на углу стены над каменным цоколем"
+        "ro": "Ancadrament de fereastră din stuc cu balustru și rozete pe o fațadă tencuită bej.",
+        "ru": "Штукатурное обрамление окна с балясиной и розетками на бежевом оштукатуренном фасаде."
       }
     },
     {
@@ -2872,12 +2880,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 09\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of an S-curved (ogee) moulding profile with burned-in dimension figures 47 and 125 and a red RED-09 code; 600x461, a downscale of gallery item 1); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_09_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Stone cornice with dentils and egg-and-dart band above rusticated corner quoins on an ochre facade. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0135.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0135.jpg",
+      "provenance": "public/img/catalog/CAT-0135.webp",
       "alt": {
-        "ro": "Element decorativ RED 09, profil curbat în S, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
-        "ru": "Декоративный элемент RED 09 с S-образным профилем, установлен как фасадный пояс на углу стены над каменным цоколем"
+        "ro": "Cornișă din piatră cu denticuli și bandă ornamentală deasupra bosajelor de colț ale unei fațade ocru.",
+        "ru": "Каменный карниз с дентикулами и орнаментальной полосой над угловым рустом фасада цвета охры."
       }
     },
     {
@@ -2885,12 +2893,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 10\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a concave (cove) moulding profile with burned-in dimension figures 40 and 115 and a red RED-10 code; 600x461, a downscale of gallery item 1.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_10_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): White plastered wall with a stepped stucco string course and cornice details casting shadows. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0136.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0136.jpg",
+      "provenance": "public/img/catalog/CAT-0136.webp",
       "alt": {
-        "ro": "Element decorativ RED 10, profil concav, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
-        "ru": "Декоративный элемент RED 10 с вогнутым профилем, установлен как фасадный пояс на углу стены над каменным цоколем"
+        "ro": "Brâu decorativ în trepte din tencuială albă pe o fațadă tencuită, sub un cornișă.",
+        "ru": "Ступенчатый декоративный пояс из белой штукатурки на оштукатуренном фасаде под карнизом."
       }
     },
     {
@@ -2898,12 +2906,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 12\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a flat rectangular band profile with burned-in dimension figures 40, 120 and 40 and a red RED-12 code; 600x461, a downscale of gallery item 1); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_12_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Cream stucco decorative window surround on an orange rendered wall with a dark sash window. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0137.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0137.jpg",
+      "provenance": "public/img/catalog/CAT-0137.webp",
       "alt": {
-        "ro": "Element decorativ RED 12, profil drept dreptunghiular, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
-        "ru": "Декоративный элемент RED 12 с прямым прямоугольным профилем, установлен как фасадный пояс на углу стены над каменным цоколем"
+        "ro": "Ancadrament decorativ din stuc crem în jurul unei ferestre pe un perete tencuit portocaliu.",
+        "ru": "Декоративное обрамление окна из кремовой лепнины на оранжевой оштукатуренной стене."
       }
     },
     {
@@ -2911,12 +2919,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 14\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a stepped moulding profile with burned-in dimension figures 40, 110 and 17 and a red RED-14 code; 600x337, a downscale of gallery item 1.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_14_render-scaled.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Three arched windows with pink stucco surrounds on a whitewashed wall. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0138.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0138.jpg",
+      "provenance": "public/img/catalog/CAT-0138.webp",
       "alt": {
-        "ro": "Element decorativ RED 14, profil în trepte, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
-        "ru": "Декоративный элемент RED 14 со ступенчатым профилем, установлен как фасадный пояс на углу стены над каменным цоколем"
+        "ro": "Trei ferestre arcuite cu ancadramente din stuc roz pe un perete văruit în alb.",
+        "ru": "Три арочных окна с обрамлением из розовой лепнины на побелённой стене."
       }
     },
     {
@@ -2924,12 +2932,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 15\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a small cornice profile with burned-in dimension figures 42, 82 and 8 and a red RED-15 code; 600x337, a downscale of gallery item 1.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_15_render-scaled.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Turquoise decorative cornice with modillions and a window surround band on a white building corner. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0139.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0139.jpg",
+      "provenance": "public/img/catalog/CAT-0139.webp",
       "alt": {
-        "ro": "Element decorativ RED 15, profil de cornișă îngust, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
-        "ru": "Декоративный элемент RED 15 с узким карнизным профилем, установлен как фасадный пояс на углу стены над каменным цоколем"
+        "ro": "Cornișă decorativă turcoaz cu console și ancadrament de fereastră pe colțul unei clădiri albe.",
+        "ru": "Бирюзовый декоративный карниз с консолями и обрамлением окна на углу белого здания."
       }
     },
     {
@@ -2937,12 +2945,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 17\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a stepped cornice profile with burned-in dimension figures 34, 120 and 11 and a red RED-17 code; 600x337, a downscale of gallery item 1.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_17_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Peach stucco facade with white window surrounds, a balustrade, a string course and a sculpted keystone mask above a barred window. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0140.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0140.jpg",
+      "provenance": "public/img/catalog/CAT-0140.webp",
       "alt": {
-        "ro": "Element decorativ RED 17, profil în trepte, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
-        "ru": "Декоративный элемент RED 17 со ступенчатым профилем, установлен как фасадный пояс на углу стены над каменным цоколем"
+        "ro": "Fațadă tencuită cu ancadramente albe de ferestre, balustradă și brâu decorativ între etaje.",
+        "ru": "Оштукатуренный фасад с белыми обрамлениями окон, балюстрадой и декоративным поясом между этажами."
       }
     },
     {
@@ -2950,12 +2958,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 18\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a rounded moulding profile with burned-in dimension figures 39, 130 and 10 and a red RED-18 code; 600x337, a downscale of gallery item 1.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_18_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Yellow stucco facade top in evening light with a projecting cornice, dentil band, volute finials and brown downpipes against a blue sky. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0141.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0141.jpg",
+      "provenance": "public/img/catalog/CAT-0141.webp",
       "alt": {
-        "ro": "Element decorativ RED 18, profil rotunjit, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
-        "ru": "Декоративный элемент RED 18 с закруглённым профилем, установлен как фасадный пояс на углу стены над каменным цоколем"
+        "ro": "Cornișă proeminentă cu brâu de denticuli și volute pe o fațadă galbenă tencuită, în lumina serii.",
+        "ru": "Выступающий карниз с поясом дентикул и волютами на жёлтом оштукатуренном фасаде в вечернем свете."
       }
     },
     {
@@ -2963,12 +2971,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 19\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a concave (cove) moulding profile with burned-in dimension figures 40, 130 and 9 and a red RED-19 code; 600x337, a downscale of gallery item ); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_19_render-scaled.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Ornate carved sandstone cornice and parapet band at the corner of a building against blue sky. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0142.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0142.jpg",
+      "provenance": "public/img/catalog/CAT-0142.webp",
       "alt": {
-        "ro": "Element decorativ RED 19, profil concav, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
-        "ru": "Декоративный элемент RED 19 с вогнутым профилем, установлен как фасадный пояс на углу стены над каменным цоколем"
+        "ro": "Cornișă din piatră sculptată și bandă de parapet la colțul unei clădiri, pe cer albastru.",
+        "ru": "Резной каменный карниз и полоса парапета на углу здания на фоне синего неба."
       }
     },
     {
@@ -2976,12 +2984,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 20\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a cove profile with a round bead at the base, burned-in dimension figures 35, 120 and 10 and a red RED-20 code; 600x337, a downscale of galle); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_20_render-scaled.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Upper facade of a classical building with dentil cornice, pilaster capitals and window surrounds under a slate roof. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0143.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0143.jpg",
+      "provenance": "public/img/catalog/CAT-0143.webp",
       "alt": {
-        "ro": "Element decorativ RED 20, profil concav cu baghetă rotundă la bază, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
-        "ru": "Декоративный элемент RED 20 с вогнутым профилем и круглым валиком внизу, установлен как фасадный пояс на углу стены над каменным цоколем"
+        "ro": "Fațadă clasică cu cornișă profilată, capiteluri de pilaștri și ancadramente de ferestre sub acoperiș de ardezie.",
+        "ru": "Классический фасад с профилированным карнизом, капителями пилястр и обрамлением окон под шиферной крышей."
       }
     },
     {
@@ -2989,12 +2997,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 21\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of an S-curved (ogee) moulding profile with burned-in dimension figures 40, 125 and 20 and a red RED-21 code; 600x461, a downscale of gallery it); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_21_render-scaled.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Limestone building seen from below with arched corbel bands and cornice profiles along the roof edges. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0144.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0144.jpg",
+      "provenance": "public/img/catalog/CAT-0144.webp",
       "alt": {
-        "ro": "Element decorativ RED 21, profil curbat în S, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
-        "ru": "Декоративный элемент RED 21 с S-образным профилем, установлен как фасадный пояс на углу стены над каменным цоколем"
+        "ro": "Clădire din calcar văzută de jos, cu benzi de arcaturi și profile de cornișă la marginea acoperișului.",
+        "ru": "Здание из известняка снизу, с арочными поясами и профилями карниза по краям крыши."
       }
     },
     {
@@ -3002,12 +3010,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 22\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a flat band profile with cove-chamfered top and bottom edges, burned-in dimension figures 40, 146 and 12 and a red RED-22 code; 600x461, a do); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_22_render-scaled.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Corner of a Victorian building with cornice, balustrade parapet, pilasters and arched window surrounds. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0145.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0145.jpg",
+      "provenance": "public/img/catalog/CAT-0145.webp",
       "alt": {
-        "ro": "Element decorativ RED 22, profil drept cu margini teșite, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
-        "ru": "Декоративный элемент RED 22 с прямым профилем и скошенными кромками, установлен как фасадный пояс на углу стены над каменным цоколем"
+        "ro": "Colț de clădire istorică cu cornișă, parapet cu balustradă, pilaștri și ancadramente arcuite de ferestre.",
+        "ru": "Угол исторического здания с карнизом, парапетом с балюстрадой, пилястрами и арочными обрамлениями окон."
       }
     },
     {
@@ -3015,12 +3023,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 23\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a double-cove moulding profile with burned-in dimension figures 50, 125 and 18 and a red RED-23 code; 600x461, a downscale of gallery item 1.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_23_render-scaled.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Carved sandstone cornice with columns and crenellated parapet at a building corner under clear sky. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0146.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0146.jpg",
+      "provenance": "public/img/catalog/CAT-0146.webp",
       "alt": {
-        "ro": "Element decorativ RED 23, profil cu două curburi concave, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
-        "ru": "Декоративный элемент RED 23 с двойным вогнутым профилем, установлен как фасадный пояс на углу стены над каменным цоколем"
+        "ro": "Cornișă din piatră sculptată cu coloane și parapet crenelat la colțul unei clădiri, pe cer senin.",
+        "ru": "Резной каменный карниз с колоннами и зубчатым парапетом на углу здания на фоне ясного неба."
       }
     },
     {
@@ -3028,12 +3036,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 24\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a tall base profile with a curved top section, burned-in dimension figures 17, 150 and 38 and a red RED-24 code; 600x461, a downscale of gall); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_24_render-scaled.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Decorative white plaster arch with fluted columns framing a niche on a whitewashed facade. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0147.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0147.jpg",
+      "provenance": "public/img/catalog/CAT-0147.webp",
       "alt": {
-        "ro": "Element decorativ RED 24, profil drept cu curbură în partea de sus, montat ca brâu de fațadă la colțul unui perete, deasupra soclului din piatră",
-        "ru": "Декоративный элемент RED 24 с прямым профилем и изгибом в верхней части, установлен как фасадный пояс на углу стены над каменным цоколем"
+        "ro": "Arc decorativ din tencuială albă cu coloane canelate care încadrează o nișă pe o fațadă albă.",
+        "ru": "Декоративная белая штукатурная арка с рифлёными колоннами, обрамляющая нишу на фасаде."
       }
     },
     {
@@ -3041,12 +3049,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 25\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a half-round moulding profile with burned-in dimensions (44, 160, 44 mm) and the code RED-25 in red; a 600x461 downscale of the page's first galler); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_25_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Green historic facade with white stucco window surround and sculpted figurative relief above the arch. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0148.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0148.jpg",
+      "provenance": "public/img/catalog/CAT-0148.webp",
       "alt": {
-        "ro": "Element decorativ RED 25, profil semirotund montat ca brâu pe soclul unui perete, la colț",
-        "ru": "Декоративный элемент RED 25, полукруглый профиль, установленный как пояс на цоколе стены, на углу"
+        "ro": "Fațadă verde cu ancadrament de fereastră din stuc alb și relief sculptat deasupra arcului.",
+        "ru": "Зелёный фасад с белым штукатурным обрамлением окна и лепным рельефом над аркой."
       }
     },
     {
@@ -3054,12 +3062,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 26\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a moulding with a flat top block and rounded lower band, burned-in dimensions (85, 182, 35 mm) and the code RED-26 in red; a 600x461 downscale of r); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_26_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): White cornice with dentil blocks over a column portico on a yellow building, red railing on the roof. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0149.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0149.jpg",
+      "provenance": "public/img/catalog/CAT-0149.webp",
       "alt": {
-        "ro": "Element decorativ RED 26, profil cu partea de sus dreaptă și partea de jos rotunjită, montat ca brâu pe soclul unui perete, la colț",
-        "ru": "Декоративный элемент RED 26, профиль с прямым верхом и скруглённым низом, установленный как пояс на цоколе стены, на углу"
+        "ro": "Cornișă albă cu denticuli deasupra unui portic cu coloane pe o clădire galbenă.",
+        "ru": "Белый карниз с дентикулами над портиком с колоннами на жёлтом здании."
       }
     },
     {
@@ -3067,12 +3075,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 27\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a tall S-curve (ogee) moulding with burned-in dimensions (92, 283, 32 mm) and the code RED-27 in red; a 600x461 downscale of red_27.jpg.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_27_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Carved console bracket under a white rendered balcony slab, arched windows with louvred shutters. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0150.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0150.jpg",
+      "provenance": "public/img/catalog/CAT-0150.webp",
       "alt": {
-        "ro": "Element decorativ RED 27, profil în formă de S, montat ca brâu pe soclul unui perete, la colț",
-        "ru": "Декоративный элемент RED 27, S-образный профиль, установленный как пояс на цоколе стены, на углу"
+        "ro": "Consolă sculptată sub o placă de balcon tencuită în alb, cu ferestre arcuite și obloane cu lamele.",
+        "ru": "Резная консоль под оштукатуренной белой плитой балкона, арочные окна с жалюзийными ставнями."
       }
     },
     {
@@ -3080,12 +3088,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 28\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a moulding with a flat top, cove and lower step, burned-in dimensions (127, 203, 30 mm) and the code RED-28 in red; a 600x461 downscale of red_28.j); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_28_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Ornate stone entablature and cornice with sculpted frieze and column capitals on a historic facade. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0151.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0151.jpg",
+      "provenance": "public/img/catalog/CAT-0151.webp",
       "alt": {
-        "ro": "Element decorativ RED 28, profil cu scafă și treaptă, montat ca brâu pe soclul unui perete, la colț",
-        "ru": "Декоративный элемент RED 28, профиль с выкружкой и ступенькой, установленный как пояс на цоколе стены, на углу"
+        "ro": "Antablament din piatră cu cornișă, friză sculptată și capiteluri de coloane pe o fațadă istorică.",
+        "ru": "Каменный антаблемент с карнизом, скульптурным фризом и капителями колонн на историческом фасаде."
       }
     },
     {
@@ -3093,12 +3101,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 29\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a moulding with a flat top, torus band and lower step, burned-in dimensions (65, 165, 22 mm) and the code RED-29 in red; a 600x461 downscale of red); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/07/red_29_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Carved plaster corbel under a cornice on a cream facade between two arched shuttered windows. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0152.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0152.jpg",
+      "provenance": "public/img/catalog/CAT-0152.webp",
       "alt": {
-        "ro": "Element decorativ RED 29, profil cu tor și treaptă, montat ca brâu pe soclul unui perete, la colț",
-        "ru": "Декоративный элемент RED 29, профиль с валиком и ступенькой, установленный как пояс на цоколе стены, на углу"
+        "ro": "Consolă sculptată din ipsos sub cornișa unei fațade crem, lângă ferestre arcuite cu obloane.",
+        "ru": "Резная гипсовая консоль под карнизом кремового фасада рядом с арочными окнами со ставнями."
       }
     },
     {
@@ -3106,12 +3114,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 30\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a deep moulding with a flat top and large cove, burned-in dimensions (130, 165, 85 mm) and the code RED-30 in red; a 600x461 downscale of red_30.jp); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_30_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Corner of a stucco facade with a dentil cornice, arched pediment and fluted pilasters with Corinthian capitals against a pale sky. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0153.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0153.jpg",
+      "provenance": "public/img/catalog/CAT-0153.webp",
       "alt": {
-        "ro": "Element decorativ RED 30, profil cu scafă adâncă, montat ca brâu pe soclul unui perete, la colț",
-        "ru": "Декоративный элемент RED 30, профиль с глубокой выкружкой, установленный как пояс на цоколе стены, на углу"
+        "ro": "Cornișă cu denticuli și pilaștri cu capiteluri decorative pe o fațadă tencuită, văzute de jos.",
+        "ru": "Карниз с дентикулами и пилястры с декоративными капителями на оштукатуренном фасаде, вид снизу."
       }
     },
     {
@@ -3119,12 +3127,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 31\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a chamfered moulding with a flat top block and angled lower face, burned-in dimensions (80, 180, 15 mm) and the code RED-31 in red; a 600x461 downs); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_31_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Upward view of a beige stucco facade corner with stacked cornice bands, engaged columns and Corinthian capitals. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0154.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0154.jpg",
+      "provenance": "public/img/catalog/CAT-0154.webp",
       "alt": {
-        "ro": "Element decorativ RED 31, profil teșit, montat ca brâu pe soclul unui perete, la colț",
-        "ru": "Декоративный элемент RED 31, профиль со скосом, установленный как пояс на цоколе стены, на углу"
+        "ro": "Colț de fațadă tencuită cu cornișe suprapuse, coloane angajate și capiteluri corintice, văzut de jos.",
+        "ru": "Угол оштукатуренного фасада с ярусными карнизами, полуколоннами и коринфскими капителями, вид снизу."
       }
     },
     {
@@ -3132,12 +3140,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 32\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a moulding with a flat top, cove and two lower steps, burned-in dimensions (110, 192, 30 mm) and the code RED-32 in red; a 600x461 downscale of red); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_32_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Ornately carved stone corner of a facade with floral relief pilasters, string courses and cornice mouldings. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0155.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0155.jpg",
+      "provenance": "public/img/catalog/CAT-0155.webp",
       "alt": {
-        "ro": "Element decorativ RED 32, profil cu scafă și două trepte, montat ca brâu pe soclul unui perete, la colț",
-        "ru": "Декоративный элемент RED 32, профиль с выкружкой и двумя ступеньками, установленный как пояс на цоколе стены, на углу"
+        "ro": "Colț de fațadă din piatră cu pilaștri sculptați, brâuri orizontale și profile de cornișă.",
+        "ru": "Каменный угол фасада с резными пилястрами, горизонтальными поясами и профилями карниза."
       }
     },
     {
@@ -3145,12 +3153,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 33\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a small S-curve (ogee) moulding with burned-in dimensions (100, 152, 36 mm) and the code RED-33 in red; a 600x461 downscale of red_33.jpg.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_33_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): White classical facade corner with a projecting cornice, entablature and fluted columns with Corinthian capitals under an overcast sky. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0156.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0156.jpg",
+      "provenance": "public/img/catalog/CAT-0156.webp",
       "alt": {
-        "ro": "Element decorativ RED 33, profil mic în formă de S, montat ca brâu pe soclul unui perete, la colț",
-        "ru": "Декоративный элемент RED 33, небольшой S-образный профиль, установленный как пояс на цоколе стены, на углу"
+        "ro": "Cornișă și antablament alb pe o fațadă clasică cu coloane canelate, văzute de jos.",
+        "ru": "Белый карниз и антаблемент на классическом фасаде с каннелированными колоннами, вид снизу."
       }
     },
     {
@@ -3158,12 +3166,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 34\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a narrow chamfered moulding with burned-in dimensions (50, 150, 15 mm) and the code RED-34 in red; a 600x461 downscale of red_34.jpg.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_34_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06): Sandstone neoclassical pediment with dentil cornice over Ionic columns, monumental public building. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0157.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0157.jpg",
+      "provenance": "public/img/catalog/CAT-0157.webp",
       "alt": {
-        "ro": "Element decorativ RED 34, profil îngust teșit, montat ca brâu pe soclul unui perete, la colț",
-        "ru": "Декоративный элемент RED 34, узкий профиль со скосом, установленный как пояс на цоколе стены, на углу"
+        "ro": "Fronton din piatră cu cornișă cu denticuli deasupra unor coloane ionice pe o clădire monumentală.",
+        "ru": "Каменный фронтон с карнизом с дентикулами над ионическими колоннами монументального здания."
       }
     },
     {
@@ -3171,246 +3179,282 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 35\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a low moulding with a flat top block and small cove, burned-in dimensions (100, 110, 40 mm) and the code RED-35 in red; a 600x461 downscale of red_); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_35_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06), aceeasi ca CAT-0127: Close-up of a white profiled cornice and pilaster capital on a yellow rendered facade. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0158.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0158.jpg",
+      "provenance": "public/img/catalog/CAT-0127.webp",
       "alt": {
-        "ro": "Element decorativ RED 35, profil jos cu scafă mică, montat ca brâu pe soclul unui perete, la colț",
-        "ru": "Декоративный элемент RED 35, низкий профиль с небольшой выкружкой, установленный как пояс на цоколе стены, на углу"
-      }
+        "ro": "Cornișă albă profilată și capitel de pilastru pe o fațadă tencuită galbenă.",
+        "ru": "Белый профилированный карниз и капитель пилястры на жёлтом оштукатуренном фасаде."
+      },
+      "reuse_of": "CAT-0127",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"moulding-band\" stands on every record of that type; the origin is CAT-0127."
     },
     {
       "id": "CAT-0159",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 37\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a moulding with a flat top, cove and small beads below, burned-in dimensions (145, 210, 17 mm) and the code RED-37 in red; a 600x461 downscale of r); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_37_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06), aceeasi ca CAT-0128: White stucco cornice, arched window pediment and pilaster capitals on a yellow facade under a blue sky. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0159.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0159.jpg",
+      "provenance": "public/img/catalog/CAT-0128.webp",
       "alt": {
-        "ro": "Element decorativ RED 37, profil cu scafă și baghete, montat ca brâu pe soclul unui perete, la colț",
-        "ru": "Декоративный элемент RED 37, профиль с выкружкой и валиками, установленный как пояс на цоколе стены, на углу"
-      }
+        "ro": "Cornișă albă, ancadrament de fereastră cu fronton arcuit și capiteluri de pilastru pe o fațadă galbenă.",
+        "ru": "Белый карниз, арочное обрамление окна и капители пилястр на жёлтом фасаде здания."
+      },
+      "reuse_of": "CAT-0128",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"moulding-band\" stands on every record of that type; the origin is CAT-0128."
     },
     {
       "id": "CAT-0160",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 38\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a moulding with two stepped bands, burned-in dimensions (70, 220, 20 mm) and the code RED-38 in red; a 600x461 downscale of red_38.jpg.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_38_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06), aceeasi ca CAT-0129: Peach-toned facade corner with profiled cornice, string course, brackets and window surrounds. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0160.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0160.jpg",
+      "provenance": "public/img/catalog/CAT-0129.webp",
       "alt": {
-        "ro": "Element decorativ RED 38, profil cu două benzi în trepte, montat ca brâu pe soclul unui perete, la colț",
-        "ru": "Декоративный элемент RED 38, профиль с двумя ступенчатыми полосами, установленный как пояс на цоколе стены, на углу"
-      }
+        "ro": "Colț de fațadă cu cornișă profilată, brâu orizontal, console și ancadramente de ferestre.",
+        "ru": "Угол фасада с профилированным карнизом, горизонтальным поясом, консолями и обрамлениями окон."
+      },
+      "reuse_of": "CAT-0129",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"moulding-band\" stands on every record of that type; the origin is CAT-0129."
     },
     {
       "id": "CAT-0161",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 39\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was parameter table (3D render of a tall stepped cornice-type moulding with burned-in dimensions (132, 288, 23 mm) and the code RED-39 in red; a 600x461 downscale of red_39.jpg.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_39_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06), aceeasi ca CAT-0130: Three horizontal white carved plaster bands with a guilloche pattern on a pale brick facade. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0161.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0161.jpg",
+      "provenance": "public/img/catalog/CAT-0130.webp",
       "alt": {
-        "ro": "Element decorativ RED 39, profil înalt în trepte, montat ca brâu pe soclul unui perete, la colț",
-        "ru": "Декоративный элемент RED 39, высокий ступенчатый профиль, установленный как пояс на цоколе стены, на углу"
-      }
+        "ro": "Trei brâuri orizontale din ipsos alb cu model împletit pe o fațadă din cărămidă deschisă.",
+        "ru": "Три горизонтальных пояса из белого гипса с плетёным узором на фасаде из светлого кирпича."
+      },
+      "reuse_of": "CAT-0130",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"moulding-band\" stands on every record of that type; the origin is CAT-0130."
     },
     {
       "id": "CAT-0162",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 41\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-41 wall band profile on white with burned-in dimension numbers 53, 120, 12 and the red code RED-41; 600x461 px, a downscale of red_41.jpg.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_41_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06), aceeasi ca CAT-0131: Beige stucco facade with dentil cornice, arched window surrounds and ornamental pilasters. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0162.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0162.jpg",
+      "provenance": "public/img/catalog/CAT-0131.webp",
       "alt": {
-        "ro": "Element decorativ RED 41, profil orizontal alb cu partea superioară rotunjită, montat la colțul unui perete deasupra unui soclu din piatră",
-        "ru": "Декоративный элемент RED 41, белый горизонтальный профиль со скруглённым верхом, установленный на углу стены над каменным цоколем"
-      }
+        "ro": "Fațadă din stuc bej cu cornișă dințată, ancadramente arcuite de ferestre și pilaștri ornamentali.",
+        "ru": "Бежевый лепной фасад с зубчатым карнизом, арочными обрамлениями окон и декоративными пилястрами."
+      },
+      "reuse_of": "CAT-0131",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"moulding-band\" stands on every record of that type; the origin is CAT-0131."
     },
     {
       "id": "CAT-0163",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 42\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-42 wide band profile on white with burned-in dimension numbers 60, 253, 30 and the red code RED-42; 600x461 px, a downscale of red_42.jpg.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_42_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06), aceeasi ca CAT-0132: White stucco pilaster capital with stepped cornice moulding against a yellow wall. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0163.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0163.jpg",
+      "provenance": "public/img/catalog/CAT-0132.webp",
       "alt": {
-        "ro": "Element decorativ RED 42, brâu orizontal alb lat cu muchie superioară profilată, montat la colțul unui perete deasupra unui soclu din piatră",
-        "ru": "Декоративный элемент RED 42, широкий белый горизонтальный пояс с профилированной верхней кромкой на углу стены над каменным цоколем"
-      }
+        "ro": "Capitel de pilastru din stuc alb cu profil de cornișă în trepte, pe un perete galben.",
+        "ru": "Белая штукатурная капитель пилястры со ступенчатым карнизным профилем на жёлтой стене."
+      },
+      "reuse_of": "CAT-0132",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"moulding-band\" stands on every record of that type; the origin is CAT-0132."
     },
     {
       "id": "CAT-0164",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 43\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-43 narrow double-curve profile on white with burned-in dimension numbers 32, 158, 10 and the red code RED-43; 600x461 px, a downscale of re); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_43_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06), aceeasi ca CAT-0133: Ornamental fretwork parapet band and cornice moulding above a turquoise facade. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0164.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0164.jpg",
+      "provenance": "public/img/catalog/CAT-0133.webp",
       "alt": {
-        "ro": "Element decorativ RED 43, profil orizontal alb îngust cu două curburi, montat la colțul unui perete deasupra unui soclu din piatră",
-        "ru": "Декоративный элемент RED 43, узкий белый горизонтальный профиль с двойным изгибом на углу стены над каменным цоколем"
-      }
+        "ro": "Bandă decorativă ajurată și profil de cornișă deasupra unei fațade turcoaz.",
+        "ru": "Ажурный декоративный пояс и карнизный профиль над бирюзовым фасадом."
+      },
+      "reuse_of": "CAT-0133",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"moulding-band\" stands on every record of that type; the origin is CAT-0133."
     },
     {
       "id": "CAT-0165",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 44\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-44 cyma profile with a flat top on white, burned-in dimension numbers 65, 160, 20 and the red code RED-44; 600x461 px, a downscale of red_4); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_44_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06), aceeasi ca CAT-0134: Stucco window surround with a baluster and rosette ornaments on a beige rendered facade. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0165.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0165.jpg",
+      "provenance": "public/img/catalog/CAT-0134.webp",
       "alt": {
-        "ro": "Element decorativ RED 44, profil orizontal alb cu partea superioară plată și curbură în S, montat la colțul unui perete deasupra unui soclu din piatră",
-        "ru": "Декоративный элемент RED 44, белый горизонтальный профиль с плоским верхом и S-образным изгибом на углу стены над каменным цоколем"
-      }
+        "ro": "Ancadrament de fereastră din stuc cu balustru și rozete pe o fațadă tencuită bej.",
+        "ru": "Штукатурное обрамление окна с балясиной и розетками на бежевом оштукатуренном фасаде."
+      },
+      "reuse_of": "CAT-0134",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"moulding-band\" stands on every record of that type; the origin is CAT-0134."
     },
     {
       "id": "CAT-0166",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 45\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-45 cornice profile with a cove on white, burned-in dimension numbers 95, 150, 25 and the red code RED-45; 600x462 px, a downscale of red_45); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_45_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06), aceeasi ca CAT-0135: Stone cornice with dentils and egg-and-dart band above rusticated corner quoins on an ochre facade. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0166.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0166.jpg",
+      "provenance": "public/img/catalog/CAT-0135.webp",
       "alt": {
-        "ro": "Element decorativ RED 45, profil orizontal alb cu treaptă superioară lată și scafă, montat la colțul unui perete deasupra unui soclu din piatră",
-        "ru": "Декоративный элемент RED 45, белый горизонтальный профиль с широкой верхней ступенью и выкружкой на углу стены над каменным цоколем"
-      }
+        "ro": "Cornișă din piatră cu denticuli și bandă ornamentală deasupra bosajelor de colț ale unei fațade ocru.",
+        "ru": "Каменный карниз с дентикулами и орнаментальной полосой над угловым рустом фасада цвета охры."
+      },
+      "reuse_of": "CAT-0135",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"moulding-band\" stands on every record of that type; the origin is CAT-0135."
     },
     {
       "id": "CAT-0167",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 46\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-46 wide band profile on white with burned-in dimension numbers 140, 250, 20 and the red code RED-46; 600x461 px, a downscale of red_46.jpg.); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_46_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06), aceeasi ca CAT-0136: White plastered wall with a stepped stucco string course and cornice details casting shadows. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0167.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0167.jpg",
+      "provenance": "public/img/catalog/CAT-0136.webp",
       "alt": {
-        "ro": "Element decorativ RED 46, brâu orizontal alb lat cu treaptă superioară și curbură ușoară, montat la colțul unui perete deasupra unui soclu din piatră",
-        "ru": "Декоративный элемент RED 46, широкий белый горизонтальный пояс с верхней ступенью и плавным изгибом на углу стены над каменным цоколем"
-      }
+        "ro": "Brâu decorativ în trepte din tencuială albă pe o fațadă tencuită, sub un cornișă.",
+        "ru": "Ступенчатый декоративный пояс из белой штукатурки на оштукатуренном фасаде под карнизом."
+      },
+      "reuse_of": "CAT-0136",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"moulding-band\" stands on every record of that type; the origin is CAT-0136."
     },
     {
       "id": "CAT-0168",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 47\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-47 wide band profile with top and bottom ledges on white, burned-in dimension numbers 90, 235, 30 and the red code RED-47; 600x461 px, a do); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_47_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06), aceeasi ca CAT-0137: Cream stucco decorative window surround on an orange rendered wall with a dark sash window. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0168.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0168.jpg",
+      "provenance": "public/img/catalog/CAT-0137.webp",
       "alt": {
-        "ro": "Element decorativ RED 47, brâu orizontal alb lat cu trepte în partea de sus și de jos, montat la colțul unui perete deasupra unui soclu din piatră",
-        "ru": "Декоративный элемент RED 47, широкий белый горизонтальный пояс со ступенями сверху и снизу на углу стены над каменным цоколем"
-      }
+        "ro": "Ancadrament decorativ din stuc crem în jurul unei ferestre pe un perete tencuit portocaliu.",
+        "ru": "Декоративное обрамление окна из кремовой лепнины на оранжевой оштукатуренной стене."
+      },
+      "reuse_of": "CAT-0137",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"moulding-band\" stands on every record of that type; the origin is CAT-0137."
     },
     {
       "id": "CAT-0169",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 49\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-49 flat stepped band profile on white with burned-in dimension numbers 30, 150, 7 and the red code RED-49; 600x461 px, a downscale of red_4); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_49_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06), aceeasi ca CAT-0138: Three arched windows with pink stucco surrounds on a whitewashed wall. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0169.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0169.jpg",
+      "provenance": "public/img/catalog/CAT-0138.webp",
       "alt": {
-        "ro": "Element decorativ RED 49, profil orizontal alb plat cu trepte drepte, montat la colțul unui perete deasupra unui soclu din piatră",
-        "ru": "Декоративный элемент RED 49, плоский белый горизонтальный профиль с прямыми ступенями на углу стены над каменным цоколем"
-      }
+        "ro": "Trei ferestre arcuite cu ancadramente din stuc roz pe un perete văruit în alb.",
+        "ru": "Три арочных окна с обрамлением из розовой лепнины на побелённой стене."
+      },
+      "reuse_of": "CAT-0138",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"moulding-band\" stands on every record of that type; the origin is CAT-0138."
     },
     {
       "id": "CAT-0170",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 50\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-50 cornice profile with a large cove on white, burned-in dimension numbers 126, 150, 30 and the red code RED-50; 600x461 px, a downscale of); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_50_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06), aceeasi ca CAT-0139: Turquoise decorative cornice with modillions and a window surround band on a white building corner. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0170.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0170.jpg",
+      "provenance": "public/img/catalog/CAT-0139.webp",
       "alt": {
-        "ro": "Element decorativ RED 50, cornișă albă cu scafă mare și trepte la bază, montată la colțul unui perete deasupra unui soclu din piatră",
-        "ru": "Декоративный элемент RED 50, белый карниз с крупной выкружкой и ступенями в основании на углу стены над каменным цоколем"
-      }
+        "ro": "Cornișă decorativă turcoaz cu console și ancadrament de fereastră pe colțul unei clădiri albe.",
+        "ru": "Бирюзовый декоративный карниз с консолями и обрамлением окна на углу белого здания."
+      },
+      "reuse_of": "CAT-0139",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"moulding-band\" stands on every record of that type; the origin is CAT-0139."
     },
     {
       "id": "CAT-0171",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 53\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-53 bulged band profile on white with burned-in dimension numbers 60, 180, 13 and the red code RED-53; 600x461 px, a downscale of red_53.jpg); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_53_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06), aceeasi ca CAT-0140: Peach stucco facade with white window surrounds, a balustrade, a string course and a sculpted keystone mask above a barred window. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0171.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0171.jpg",
+      "provenance": "public/img/catalog/CAT-0140.webp",
       "alt": {
-        "ro": "Element decorativ RED 53, profil orizontal alb bombat, montat la colțul unui perete deasupra unui soclu din piatră",
-        "ru": "Декоративный элемент RED 53, белый горизонтальный профиль с выпуклой серединой на углу стены над каменным цоколем"
-      }
+        "ro": "Fațadă tencuită cu ancadramente albe de ferestre, balustradă și brâu decorativ între etaje.",
+        "ru": "Оштукатуренный фасад с белыми обрамлениями окон, балюстрадой и декоративным поясом между этажами."
+      },
+      "reuse_of": "CAT-0140",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"moulding-band\" stands on every record of that type; the origin is CAT-0140."
     },
     {
       "id": "CAT-0172",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 55\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-55 cornice profile with a cove and stepped base on white, burned-in dimension numbers 165, 170, 40 and the red code RED-55; 600x461 px, a d); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_55_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06), aceeasi ca CAT-0141: Yellow stucco facade top in evening light with a projecting cornice, dentil band, volute finials and brown downpipes against a blue sky. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0172.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0172.jpg",
+      "provenance": "public/img/catalog/CAT-0141.webp",
       "alt": {
-        "ro": "Element decorativ RED 55, cornișă albă cu treaptă superioară lată, scafă și trepte la bază, montată la colțul unui perete deasupra unui soclu din piatră",
-        "ru": "Декоративный элемент RED 55, белый карниз с широкой верхней ступенью, выкружкой и ступенями в основании на углу стены над каменным цоколем"
-      }
+        "ro": "Cornișă proeminentă cu brâu de denticuli și volute pe o fațadă galbenă tencuită, în lumina serii.",
+        "ru": "Выступающий карниз с поясом дентикул и волютами на жёлтом оштукатуренном фасаде в вечернем свете."
+      },
+      "reuse_of": "CAT-0141",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"moulding-band\" stands on every record of that type; the origin is CAT-0141."
     },
     {
       "id": "CAT-0173",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 56\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-56 tall cove profile with a rounded bottom bead on white, burned-in dimension numbers 75, 230, 33 and the red code RED-56; 600x461 px, a do); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_56_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06), aceeasi ca CAT-0142: Ornate carved sandstone cornice and parapet band at the corner of a building against blue sky. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0173.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0173.jpg",
+      "provenance": "public/img/catalog/CAT-0142.webp",
       "alt": {
-        "ro": "Element decorativ RED 56, profil orizontal alb cu scafă înaltă și muchie rotunjită la bază, montat la colțul unui perete deasupra unui soclu din piatră",
-        "ru": "Декоративный элемент RED 56, белый горизонтальный профиль с высокой выкружкой и скруглённой нижней кромкой на углу стены над каменным цоколем"
-      }
+        "ro": "Cornișă din piatră sculptată și bandă de parapet la colțul unei clădiri, pe cer albastru.",
+        "ru": "Резной каменный карниз и полоса парапета на углу здания на фоне синего неба."
+      },
+      "reuse_of": "CAT-0142",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"moulding-band\" stands on every record of that type; the origin is CAT-0142."
     },
     {
       "id": "CAT-0174",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 57\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-57 two-tier cornice profile on white with burned-in dimension numbers 151, 151, 35 and the red code RED-57; 600x461 px, a downscale of red_); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_57_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06), aceeasi ca CAT-0143: Upper facade of a classical building with dentil cornice, pilaster capitals and window surrounds under a slate roof. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0174.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0174.jpg",
+      "provenance": "public/img/catalog/CAT-0143.webp",
       "alt": {
-        "ro": "Element decorativ RED 57, cornișă albă cu două curburi suprapuse, montată la colțul unui perete deasupra unui soclu din piatră",
-        "ru": "Декоративный элемент RED 57, белый карниз с двумя ярусами изгибов на углу стены над каменным цоколем"
-      }
+        "ro": "Fațadă clasică cu cornișă profilată, capiteluri de pilaștri și ancadramente de ferestre sub acoperiș de ardezie.",
+        "ru": "Классический фасад с профилированным карнизом, капителями пилястр и обрамлением окон под шиферной крышей."
+      },
+      "reuse_of": "CAT-0143",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"moulding-band\" stands on every record of that type; the origin is CAT-0143."
     },
     {
       "id": "CAT-0175",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 58\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of the RED-58 cornice profile with a cove, steps and a rounded bottom bead on white, burned-in dimension numbers 119, 260, 38 and the red code RED-58;); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_58_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"moulding-band\" (R-W28-06), aceeasi ca CAT-0144: Limestone building seen from below with arched corbel bands and cornice profiles along the roof edges. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0175.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0175.jpg",
+      "provenance": "public/img/catalog/CAT-0144.webp",
       "alt": {
-        "ro": "Element decorativ RED 58, cornișă albă cu scafă, trepte și muchie rotunjită la bază, montată la colțul unui perete deasupra unui soclu din piatră",
-        "ru": "Декоративный элемент RED 58, белый карниз с выкружкой, ступенями и скруглённой нижней кромкой на углу стены над каменным цоколем"
-      }
+        "ro": "Clădire din calcar văzută de jos, cu benzi de arcaturi și profile de cornișă la marginea acoperișului.",
+        "ru": "Здание из известняка снизу, с арочными поясами и профилями карниза по краям крыши."
+      },
+      "reuse_of": "CAT-0144",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"moulding-band\" stands on every record of that type; the origin is CAT-0144."
     },
     {
       "id": "CAT-0176",
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 61\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a white panel with three half-round flutes, burned-in red code RED-61 and dimension numbers 30 and 170 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_61_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"pilaster\" (R-W28-06): Fluted Corinthian pilaster on a plastered facade between two windows, seen from below with cornice above. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0176.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0176.jpg",
+      "provenance": "public/img/catalog/CAT-0176.webp",
       "alt": {
-        "ro": "Element decorativ RED 61 montat pe colțul unui perete, pilastru cu trei caneluri rotunjite",
-        "ru": "Декоративный элемент RED 61 на углу стены, пилястра с тремя закруглёнными канелюрами"
+        "ro": "Pilastru canelat cu capitel corintic pe o fațadă tencuită, între două ferestre, sub cornișă.",
+        "ru": "Каннелированный пилястр с коринфской капителью на оштукатуренном фасаде между двумя окнами."
       }
     },
     {
@@ -3418,12 +3462,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 62\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a narrow white panel with three half-round flutes, burned-in red code RED-62 and dimensions 30 and 125 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_62_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"pilaster\" (R-W28-06): Ornate sandstone facade with fluted half-columns, Corinthian capitals and carved friezes between windows. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0177.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0177.jpg",
+      "provenance": "public/img/catalog/CAT-0177.webp",
       "alt": {
-        "ro": "Element decorativ RED 62 montat pe colțul unui perete, pilastru îngust cu caneluri rotunjite",
-        "ru": "Декоративный элемент RED 62 на углу стены, узкая пилястра с закруглёнными канелюрами"
+        "ro": "Fațadă din gresie cu semicoloane canelate, capiteluri corintice și frize sculptate între ferestre.",
+        "ru": "Фасад из песчаника с каннелированными полуколоннами, коринфскими капителями и резными фризами."
       }
     },
     {
@@ -3431,12 +3475,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 63\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a white panel with four flat rectangular grooves, burned-in red code RED-63 and dimensions 30 and 200 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_63_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"pilaster\" (R-W28-06): Two yellow Ionic half-columns flanking an arched window with balustrades on an ornate facade. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0178.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0178.jpg",
+      "provenance": "public/img/catalog/CAT-0178.webp",
       "alt": {
-        "ro": "Element decorativ RED 63 montat pe colțul unui perete, pilastru cu caneluri drepte",
-        "ru": "Декоративный элемент RED 63 на углу стены, пилястра с прямоугольными пазами"
+        "ro": "Două semicoloane ionice galbene încadrează o fereastră arcuită pe o fațadă ornamentată.",
+        "ru": "Две жёлтые ионические полуколонны обрамляют арочное окно на декорированном фасаде."
       }
     },
     {
@@ -3444,12 +3488,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 64\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a white panel with five half-round flutes, burned-in red code RED-64 and dimensions 30 and 260 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_64_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"pilaster\" (R-W28-06): Corner of a stone building with Corinthian pilasters, rusticated quoins and a cornice against a blue sky. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0179.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0179.jpg",
+      "provenance": "public/img/catalog/CAT-0179.webp",
       "alt": {
-        "ro": "Element decorativ RED 64 montat pe colțul unui perete, pilastru cu cinci caneluri rotunjite",
-        "ru": "Декоративный элемент RED 64 на углу стены, пилястра с пятью закруглёнными канелюрами"
+        "ro": "Colț de clădire din piatră cu pilaștri corintici, bosaje și cornișă pe fundal de cer albastru.",
+        "ru": "Угол каменного здания с коринфскими пилястрами, рустом и карнизом на фоне голубого неба."
       }
     },
     {
@@ -3457,12 +3501,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 65\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a wide white panel with four flat rectangular grooves, burned-in red code RED-65 and dimensions 30 and 280 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_65_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"pilaster\" (R-W28-06): Richly carved stone facade with fluted Corinthian columns and pilasters in sunlight. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0180.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0180.jpg",
+      "provenance": "public/img/catalog/CAT-0180.webp",
       "alt": {
-        "ro": "Element decorativ RED 65 montat pe colțul unui perete, pilastru lat cu caneluri drepte",
-        "ru": "Декоративный элемент RED 65 на углу стены, широкая пилястра с прямоугольными пазами"
+        "ro": "Fațadă de piatră bogat sculptată, cu coloane canelate și pilaștri corintici în lumina soarelui.",
+        "ru": "Богато украшенный каменный фасад с каннелированными колоннами и коринфскими пилястрами."
       }
     },
     {
@@ -3470,12 +3514,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 66\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a wide white panel with six half-round flutes, burned-in red code RED-66 and dimensions 35 and 350 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_66_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"pilaster\" (R-W28-06): Stone facade with Corinthian pilasters flanking tall arched windows with iron grilles, foliage in front. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0181.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0181.jpg",
+      "provenance": "public/img/catalog/CAT-0181.webp",
       "alt": {
-        "ro": "Element decorativ RED 66 montat pe colțul unui perete, pilastru lat cu șase caneluri rotunjite",
-        "ru": "Декоративный элемент RED 66 на углу стены, широкая пилястра с шестью закруглёнными канелюрами"
+        "ro": "Fațadă din piatră cu pilaștri cu capiteluri corintice încadrând ferestre arcuite cu grilaje.",
+        "ru": "Каменный фасад с пилястрами с коринфскими капителями по сторонам арочных окон с решетками."
       }
     },
     {
@@ -3483,12 +3527,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 67\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a wide white panel with six half-round flutes, burned-in red code RED-67 and dimensions 35 and 420 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_67_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"pilaster\" (R-W28-06): Corner of an ornate light stone building with fluted Corinthian half-columns and pilasters against a blue sky. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0182.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0182.jpg",
+      "provenance": "public/img/catalog/CAT-0182.webp",
       "alt": {
-        "ro": "Element decorativ RED 67 montat pe colțul unui perete, pilastru lat cu caneluri rotunjite",
-        "ru": "Декоративный элемент RED 67 на углу стены, широкая пилястра с закруглёнными канелюрами"
+        "ro": "Colț de clădire din piatră deschisă cu semicoloane canelate și pilaștri corintici pe cer albastru.",
+        "ru": "Угол здания из светлого камня с каннелированными полуколоннами и коринфскими пилястрами на фоне неба."
       }
     },
     {
@@ -3496,12 +3540,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 68\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a very wide white panel with six half-round flutes, burned-in red code RED-68 and dimensions 50 and 500 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_68_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"pilaster\" (R-W28-06): Upward view of a red facade with white pilasters, engaged columns and cornices around windows. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0183.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0183.jpg",
+      "provenance": "public/img/catalog/CAT-0183.webp",
       "alt": {
-        "ro": "Element decorativ RED 68 montat pe colțul unui perete, pilastru foarte lat cu caneluri rotunjite",
-        "ru": "Декоративный элемент RED 68 на углу стены, очень широкая пилястра с закруглёнными канелюрами"
+        "ro": "Fațadă roșie văzută de jos cu pilaștri albi, semicoloane și cornișe în jurul ferestrelor.",
+        "ru": "Красный фасад снизу с белыми пилястрами, полуколоннами и карнизами вокруг окон."
       }
     },
     {
@@ -3509,12 +3553,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 69\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a tall flat white board with a coved edge, burned-in red code RED-69 and dimensions 330 and 30 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_69_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"corner-board\" (R-W28-06): Building corner with rusticated stone quoins between smooth rendered walls and a dentil cornice. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0184.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0184.jpg",
+      "provenance": "public/img/catalog/CAT-0184.webp",
       "alt": {
-        "ro": "Element decorativ RED 69 montat pe colțul unui perete, profil de colț plat cu margine teșită",
-        "ru": "Декоративный элемент RED 69 на углу стены, плоский угловой профиль со скошенной кромкой"
+        "ro": "Colțul unei clădiri cu bosaje din piatră între pereți tencuiți și cornișă cu denticuli.",
+        "ru": "Угол здания с каменными рустами между оштукатуренными стенами и карнизом с дентикулами."
       }
     },
     {
@@ -3522,12 +3566,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 70\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a flat white board with a coved edge, burned-in red code RED-70 and dimensions 224 and 23 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/08/red_70_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"corner-board\" (R-W28-06): Corner of a brick building with alternating stone quoins and a heavy stone cornice, seen from below. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0185.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0185.jpg",
+      "provenance": "public/img/catalog/CAT-0185.webp",
       "alt": {
-        "ro": "Element decorativ RED 70 montat pe colțul unui perete, profil de colț plat îngust",
-        "ru": "Декоративный элемент RED 70 на углу стены, узкий плоский угловой профиль"
+        "ro": "Colțul unei clădiri din cărămidă cu bosaje din piatră alternante și cornișă masivă.",
+        "ru": "Угол кирпичного здания с чередующимися каменными рустами и массивным карнизом."
       }
     },
     {
@@ -3535,12 +3579,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 73\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a white wall panel with a horizontal groove and tongue edges, burned-in red code RED-73 and dimensions 500 and 80 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/09/red_73_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"wall-panel\" (R-W28-06): Grey facade covered in pyramidal 3D relief panels in a repeating diamond pattern. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0186.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0186.jpg",
+      "provenance": "public/img/catalog/CAT-0186.webp",
       "alt": {
-        "ro": "Element decorativ RED 73, panouri orizontale cu nut montate pe pereții unui colț de clădire",
-        "ru": "Декоративный элемент RED 73, горизонтальные панели с пазом на стенах угла здания"
+        "ro": "Fațadă acoperită cu panouri decorative cu relief piramidal, în nuanțe de gri.",
+        "ru": "Фасад, облицованный декоративными панелями с пирамидальным рельефом в серых тонах."
       }
     },
     {
@@ -3548,12 +3592,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 74\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a thin white wall panel with a stepped lower edge, burned-in red code RED-74 and dimensions 370 and 18 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/09/red_74_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"wall-panel\" (R-W28-06): Terracotta perforated geometric screen panels on a modern building facade. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0187.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0187.jpg",
+      "provenance": "public/img/catalog/CAT-0187.webp",
       "alt": {
-        "ro": "Element decorativ RED 74, panouri orizontale înguste montate pe pereții unui colț de clădire",
-        "ru": "Декоративный элемент RED 74, узкие горизонтальные панели на стенах угла здания"
+        "ro": "Panouri perforate din teracotă cu model geometric pe fațada unei clădiri moderne.",
+        "ru": "Перфорированные терракотовые панели с геометрическим узором на фасаде современного здания."
       }
     },
     {
@@ -3561,12 +3605,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 76\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a white stepped keystone, burned-in red code RED-76 and dimensions 260, 260 and 210 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/09/red_76_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"keystone\" (R-W28-06): Brick bow window with a prominent keystone at the top of the segmental arch above it. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0188.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0188.jpg",
+      "provenance": "public/img/catalog/CAT-0188.webp",
       "alt": {
-        "ro": "Element decorativ RED 76, cheie de boltă montată deasupra unei ferestre cu ancadrament",
-        "ru": "Декоративный элемент RED 76, замковый камень над окном с оконным обрамлением"
+        "ro": "Fereastră bovindou din cărămidă cu o cheie de boltă proeminentă în vârful arcului de deasupra.",
+        "ru": "Эркерное окно в кирпичной стене с выразительным замковым камнем на вершине арки над ним."
       }
     },
     {
@@ -3574,12 +3618,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 77\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (3D render of a small white faceted keystone, burned-in red code RED-77 and dimensions 160, 190 and 120 (600x461)); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/09/red_77_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"keystone\" (R-W28-06): Ornate brick arch with decorative keystone above an arched window on a classical facade. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0189.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0189.jpg",
+      "provenance": "public/img/catalog/CAT-0189.webp",
       "alt": {
-        "ro": "Element decorativ RED 77, cheie de boltă mică montată deasupra unei ferestre cu ancadrament",
-        "ru": "Декоративный элемент RED 77, небольшой замковый камень над окном с оконным обрамлением"
+        "ro": "Arc decorativ din cărămidă cu cheie de boltă deasupra unei ferestre arcuite pe o fațadă clasică.",
+        "ru": "Декоративная кирпичная арка с замковым камнем над арочным окном на классическом фасаде."
       }
     },
     {
@@ -3587,12 +3631,12 @@
       "page": "/catalog/elemente-decorative/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Element decorativ RED 78\" (RedConstruct), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was render with code (White 3D render of a tapered console/keystone block on a white background with the code RED-78 in red and the dimensions 230, 220 and 90 burned in; 600x461 down); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/09/red_78_render.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"keystone\" (R-W28-06): Ornate terracotta pointed arch with carved rosettes above a tall window on a red brick facade. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0190.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0190.jpg",
+      "provenance": "public/img/catalog/CAT-0190.webp",
       "alt": {
-        "ro": "Element decorativ RED 78 montat ca cheie de bolta deasupra unei ferestre cu ancadrament alb, pe o fatada tencuita",
-        "ru": "Декоративный элемент RED 78, установленный как замковый камень над окном с белым обрамлением на оштукатуренном фасаде"
+        "ro": "Arc ornamental din teracotă cu rozete sculptate deasupra unei ferestre înalte pe o fațadă de cărămidă.",
+        "ru": "Орнаментальная терракотовая арка с резными розетками над высоким окном на кирпичном фасаде."
       }
     },
     {
@@ -3639,12 +3683,12 @@
       "page": "/catalog/vopsele/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Ultrapal - Vopsea universală\" (STANCOLAC), singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W26-10 (W26-R13): filled from the product's own Fatade 3D page, 1000x1000.",
+      "shows": "Fotografie generica de tip \"paint-bucket\" (R-W28-06): A blue paint can with a white roller resting on it beside a blue paint tray on a grey floor. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0194.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0194.jpg",
+      "provenance": "public/img/catalog/CAT-0194.webp",
       "alt": {
-        "ro": "Ultrapal - Vopsea universală, produsul",
-        "ru": "Ultrapal - Универсальная краска, продукт"
+        "ro": "O cutie de vopsea albastră cu un trafalet și o tavă de vopsit pe o podea gri.",
+        "ru": "Синяя банка краски с валиком и малярный лоток на сером полу."
       }
     },
     {
@@ -3665,12 +3709,12 @@
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă GMD-881F\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-bollard\" (R-W28-06): Black bollard lights along a paved garden path under trees in low evening sun. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0196.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0196.jpg",
+      "provenance": "public/img/catalog/CAT-0196.webp",
       "alt": {
-        "ro": "Lampă GMD-881F, corpul de iluminat",
-        "ru": "Лампа GMD-881F, светильник"
+        "ro": "Lămpi bollard negre de-a lungul unei alei pavate din grădină, sub copaci, în lumina serii.",
+        "ru": "Черные светильники-боллардc вдоль мощеной садовой дорожки под деревьями в вечернем свете."
       }
     },
     {
@@ -3678,12 +3722,12 @@
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă GMD-881Y\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-bollard\" (R-W28-06): A modern black rectangular bollard light standing among ornamental grasses next to a low stone wall. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0197.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0197.jpg",
+      "provenance": "public/img/catalog/CAT-0197.webp",
       "alt": {
-        "ro": "Lampă GMD-881Y, corpul de iluminat",
-        "ru": "Лампа GMD-881Y, светильник"
+        "ro": "Lampă bollard neagră cu formă dreptunghiulară, montată între ierburi ornamentale lângă un zid de piatră.",
+        "ru": "Чёрный прямоугольный светильник-боллард среди декоративных трав у низкой каменной стены."
       }
     },
     {
@@ -3691,12 +3735,12 @@
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă GMD-F841F-2\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-bollard\" (R-W28-06): A lantern-style bollard light on a lawn beside a curved paved path with flowering shrubs at sunset. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0198.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0198.jpg",
+      "provenance": "public/img/catalog/CAT-0198.webp",
       "alt": {
-        "ro": "Lampă GMD-F841F-2, corpul de iluminat",
-        "ru": "Лампа GMD-F841F-2, светильник"
+        "ro": "Lampă bollard în stil felinar pe gazon, lângă o alee pavată curbată și arbuști înfloriți.",
+        "ru": "Светильник-боллард в виде фонаря на газоне рядом с изогнутой мощёной дорожкой и цветущими кустами."
       }
     },
     {
@@ -3704,12 +3748,12 @@
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă K1207\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-wall\" (R-W28-06): Cylindrical up/down wall light lit on a dark brick wall at night. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0199.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0199.jpg",
+      "provenance": "public/img/catalog/CAT-0199.webp",
       "alt": {
-        "ro": "Lampă K1207, corpul de iluminat",
-        "ru": "Лампа K1207, светильник"
+        "ro": "Aplică cilindrică de exterior cu lumină în sus și în jos, montată pe un perete de cărămidă.",
+        "ru": "Цилиндрический уличный настенный светильник с направленным вверх и вниз светом на кирпичной стене."
       }
     },
     {
@@ -3717,12 +3761,12 @@
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă K1212S\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-wall\" (R-W28-06): A white cylindrical down-light wall fixture mounted on a white rendered house wall under the eaves. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0200.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0200.jpg",
+      "provenance": "public/img/catalog/CAT-0200.webp",
       "alt": {
-        "ro": "Lampă K1212S, corpul de iluminat",
-        "ru": "Лампа K1212S, светильник"
+        "ro": "Aplică cilindrică albă montată pe un perete exterior tencuit, sub streașina casei.",
+        "ru": "Белый цилиндрический настенный светильник на оштукатуренной наружной стене дома под карнизом."
       }
     },
     {
@@ -3730,12 +3774,12 @@
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă K1213M\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-wall\" (R-W28-06): A lit rectangular modern wall lamp with black slat frame mounted on a grey stone-clad exterior wall. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0201.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0201.jpg",
+      "provenance": "public/img/catalog/CAT-0201.webp",
       "alt": {
-        "ro": "Lampă K1213M, corpul de iluminat",
-        "ru": "Лампа K1213M, светильник"
+        "ro": "Aplică exterioară modernă cu rame negre, aprinsă, montată pe un perete placat cu piatră.",
+        "ru": "Современный уличный настенный светильник с черными планками на стене, облицованной камнем."
       }
     },
     {
@@ -3743,12 +3787,12 @@
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă K1241\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-wall\" (R-W28-06): Two small modern up/down wall lights flanking a dark front door on a white stone-clad house wall with a porch railing. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0202.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0202.jpg",
+      "provenance": "public/img/catalog/CAT-0202.webp",
       "alt": {
-        "ro": "Lampă K1241, corpul de iluminat",
-        "ru": "Лампа K1241, светильник"
+        "ro": "Două aplice moderne de exterior montate de o parte și de alta a ușii de intrare, pe un perete placat cu piatră albă.",
+        "ru": "Два современных уличных настенных светильника по обе стороны входной двери на стене, облицованной белым камнем."
       }
     },
     {
@@ -3756,12 +3800,12 @@
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă K1247\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-wall\" (R-W28-06): A modern black box-frame wall lantern with a filament bulb mounted on a pale blue house wall beside a door. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0203.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0203.jpg",
+      "provenance": "public/img/catalog/CAT-0203.webp",
       "alt": {
-        "ro": "Lampă K1247, corpul de iluminat",
-        "ru": "Лампа K1247, светильник"
+        "ro": "Aplică modernă de exterior cu carcasă neagră, montată pe un perete albastru deschis lângă ușa de intrare.",
+        "ru": "Современный уличный настенный светильник в черном каркасе на светло-голубой стене дома рядом с дверью."
       }
     },
     {
@@ -3769,38 +3813,42 @@
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă K2148\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-wall\" (R-W28-06), aceeasi ca CAT-0203: A modern black box-frame wall lantern with a filament bulb mounted on a pale blue house wall beside a door. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0204.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0204.jpg",
+      "provenance": "public/img/catalog/CAT-0203.webp",
       "alt": {
-        "ro": "Lampă K2148, corpul de iluminat",
-        "ru": "Лампа K2148, светильник"
-      }
+        "ro": "Aplică modernă de exterior cu carcasă neagră, montată pe un perete albastru deschis lângă ușa de intrare.",
+        "ru": "Современный уличный настенный светильник в черном каркасе на светло-голубой стене дома рядом с дверью."
+      },
+      "reuse_of": "CAT-0203",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"lamp-wall\" stands on every record of that type; the origin is CAT-0203."
     },
     {
       "id": "CAT-0205",
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă K2276\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-wall\" (R-W28-06), aceeasi ca CAT-0199: Cylindrical up/down wall light lit on a dark brick wall at night. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0205.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0205.jpg",
+      "provenance": "public/img/catalog/CAT-0199.webp",
       "alt": {
-        "ro": "Lampă K2276, corpul de iluminat",
-        "ru": "Лампа K2276, светильник"
-      }
+        "ro": "Aplică cilindrică de exterior cu lumină în sus și în jos, montată pe un perete de cărămidă.",
+        "ru": "Цилиндрический уличный настенный светильник с направленным вверх и вниз светом на кирпичной стене."
+      },
+      "reuse_of": "CAT-0199",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"lamp-wall\" stands on every record of that type; the origin is CAT-0199."
     },
     {
       "id": "CAT-0206",
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă K5014\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-bollard\" (R-W28-06): A lit round-top bollard light standing among garden flowers under a frangipani tree beside a paved path at dusk. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0206.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0206.jpg",
+      "provenance": "public/img/catalog/CAT-0206.webp",
       "alt": {
-        "ro": "Lampă K5014, corpul de iluminat",
-        "ru": "Лампа K5014, светильник"
+        "ro": "Lampă de grădină tip bolard aprinsă între flori, lângă o alee pavată, la lăsarea serii.",
+        "ru": "Садовый светильник-боллард горит среди цветов рядом с мощёной дорожкой в сумерках."
       }
     },
     {
@@ -3808,12 +3856,12 @@
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă K5016\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-bollard\" (R-W28-06): Foggy pine park at dusk with a brick-paved path, a wooden bench and a lit bollard light beside the path. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0207.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0207.jpg",
+      "provenance": "public/img/catalog/CAT-0207.webp",
       "alt": {
-        "ro": "Lampă K5016, corpul de iluminat",
-        "ru": "Лампа K5016, светильник"
+        "ro": "Alee din pavele printre pini pe ceață, cu o bancă din lemn și o lampă bolard aprinsă la margine.",
+        "ru": "Дорожка из брусчатки среди сосен в тумане, деревянная скамейка и горящий светильник-боллард у края."
       }
     },
     {
@@ -3821,12 +3869,12 @@
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă K41041\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-wall\" (R-W28-06): Round black bulkhead wall light with a grille mounted on a brick pier between grey cladding and a door frame. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0208.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0208.jpg",
+      "provenance": "public/img/catalog/CAT-0208.webp",
       "alt": {
-        "ro": "Lampă K41041, corpul de iluminat",
-        "ru": "Лампа K41041, светильник"
+        "ro": "Aplică rotundă de exterior cu grilaj negru, montată pe un stâlp de cărămidă lângă o ușă.",
+        "ru": "Круглый уличный настенный светильник с чёрной решёткой на кирпичном простенке у двери."
       }
     },
     {
@@ -3834,12 +3882,12 @@
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă K41047\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-wall\" (R-W28-06): White globe wall light on a white rendered wall under a tiled roof and gutter. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0209.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0209.jpg",
+      "provenance": "public/img/catalog/CAT-0209.webp",
       "alt": {
-        "ro": "Lampă K41047, corpul de iluminat",
-        "ru": "Лампа K41047, светильник"
+        "ro": "Aplică sferică albă montată pe un perete tencuit alb, sub o streașină cu țiglă.",
+        "ru": "Белый шарообразный настенный светильник на белой оштукатуренной стене под черепичной кровлей."
       }
     },
     {
@@ -3847,38 +3895,42 @@
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă K41059\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-wall\" (R-W28-06), aceeasi ca CAT-0199: Cylindrical up/down wall light lit on a dark brick wall at night. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0210.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0210.jpg",
+      "provenance": "public/img/catalog/CAT-0199.webp",
       "alt": {
-        "ro": "Lampă K41059, corpul de iluminat",
-        "ru": "Лампа K41059, светильник"
-      }
+        "ro": "Aplică cilindrică de exterior cu lumină în sus și în jos, montată pe un perete de cărămidă.",
+        "ru": "Цилиндрический уличный настенный светильник с направленным вверх и вниз светом на кирпичной стене."
+      },
+      "reuse_of": "CAT-0199",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"lamp-wall\" stands on every record of that type; the origin is CAT-0199."
     },
     {
       "id": "CAT-0211",
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă K41061\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-wall\" (R-W28-06), aceeasi ca CAT-0200: A white cylindrical down-light wall fixture mounted on a white rendered house wall under the eaves. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0211.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0211.jpg",
+      "provenance": "public/img/catalog/CAT-0200.webp",
       "alt": {
-        "ro": "Lampă K41061, corpul de iluminat",
-        "ru": "Лампа K41061, светильник"
-      }
+        "ro": "Aplică cilindrică albă montată pe un perete exterior tencuit, sub streașina casei.",
+        "ru": "Белый цилиндрический настенный светильник на оштукатуренной наружной стене дома под карнизом."
+      },
+      "reuse_of": "CAT-0200",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"lamp-wall\" stands on every record of that type; the origin is CAT-0200."
     },
     {
       "id": "CAT-0212",
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă K45015\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-spot\" (R-W28-06): A grey LED floodlight on a ground stake pointing upward among sunlit garden foliage. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0212.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0212.jpg",
+      "provenance": "public/img/catalog/CAT-0212.webp",
       "alt": {
-        "ro": "Lampă K45015, corpul de iluminat",
-        "ru": "Лампа K45015, светильник"
+        "ro": "Proiector LED cu suport de împământare montat într-o grădină, cu frunziș verde în fundal.",
+        "ru": "Светодиодный прожектор на садовом колышке среди зелёной листвы на солнце."
       }
     },
     {
@@ -3886,51 +3938,57 @@
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă K1247\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-wall\" (R-W28-06), aceeasi ca CAT-0201: A lit rectangular modern wall lamp with black slat frame mounted on a grey stone-clad exterior wall. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0213.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0213.jpg",
+      "provenance": "public/img/catalog/CAT-0201.webp",
       "alt": {
-        "ro": "Lampă K1247, corpul de iluminat",
-        "ru": "Lampă K1247, светильник"
-      }
+        "ro": "Aplică exterioară modernă cu rame negre, aprinsă, montată pe un perete placat cu piatră.",
+        "ru": "Современный уличный настенный светильник с черными планками на стене, облицованной камнем."
+      },
+      "reuse_of": "CAT-0201",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"lamp-wall\" stands on every record of that type; the origin is CAT-0201."
     },
     {
       "id": "CAT-0214",
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă K2146\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-wall\" (R-W28-06), aceeasi ca CAT-0208: Round black bulkhead wall light with a grille mounted on a brick pier between grey cladding and a door frame. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0214.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0214.jpg",
+      "provenance": "public/img/catalog/CAT-0208.webp",
       "alt": {
-        "ro": "Lampă K2146, corpul de iluminat",
-        "ru": "Lampă K2146, светильник"
-      }
+        "ro": "Aplică rotundă de exterior cu grilaj negru, montată pe un stâlp de cărămidă lângă o ușă.",
+        "ru": "Круглый уличный настенный светильник с чёрной решёткой на кирпичном простенке у двери."
+      },
+      "reuse_of": "CAT-0208",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"lamp-wall\" stands on every record of that type; the origin is CAT-0208."
     },
     {
       "id": "CAT-0215",
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă K2880\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-wall\" (R-W28-06), aceeasi ca CAT-0209: White globe wall light on a white rendered wall under a tiled roof and gutter. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0215.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0215.jpg",
+      "provenance": "public/img/catalog/CAT-0209.webp",
       "alt": {
-        "ro": "Lampă K2880, corpul de iluminat",
-        "ru": "Lampă K2880, светильник"
-      }
+        "ro": "Aplică sferică albă montată pe un perete tencuit alb, sub o streașină cu țiglă.",
+        "ru": "Белый шарообразный настенный светильник на белой оштукатуренной стене под черепичной кровлей."
+      },
+      "reuse_of": "CAT-0209",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"lamp-wall\" stands on every record of that type; the origin is CAT-0209."
     },
     {
       "id": "CAT-0216",
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă K2088L\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-lantern\" (R-W28-06): A black hexagonal wall lantern lit on a wooden clapboard house wall. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0216.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0216.jpg",
+      "provenance": "public/img/catalog/CAT-0216.webp",
       "alt": {
-        "ro": "Lampă K2088L, corpul de iluminat",
-        "ru": "Lampă K2088L, светильник"
+        "ro": "Lampă de perete neagră în formă de felinar, aprinsă, montată pe un perete din lambriu de lemn.",
+        "ru": "Черный настенный светильник-фонарь, включенный, установлен на стене из деревянной обшивки."
       }
     },
     {
@@ -3938,25 +3996,27 @@
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă K2222\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-wall\" (R-W28-06), aceeasi ca CAT-0202: Two small modern up/down wall lights flanking a dark front door on a white stone-clad house wall with a porch railing. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0217.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0217.jpg",
+      "provenance": "public/img/catalog/CAT-0202.webp",
       "alt": {
-        "ro": "Lampă K2222, corpul de iluminat",
-        "ru": "Lampă K2222, светильник"
-      }
+        "ro": "Două aplice moderne de exterior montate de o parte și de alta a ușii de intrare, pe un perete placat cu piatră albă.",
+        "ru": "Два современных уличных настенных светильника по обе стороны входной двери на стене, облицованной белым камнем."
+      },
+      "reuse_of": "CAT-0202",
+      "reuse_reason": "R-W28-06: a generic photograph of the product type \"lamp-wall\" stands on every record of that type; the origin is CAT-0202."
     },
     {
       "id": "CAT-0218",
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă K2841\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-lantern\" (R-W28-06): A black scrolled wall lantern with a filament bulb on a wooden clapboard wall, greenery in the foreground. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0218.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0218.jpg",
+      "provenance": "public/img/catalog/CAT-0218.webp",
       "alt": {
-        "ro": "Lampă K2841, corpul de iluminat",
-        "ru": "Lampă K2841, светильник"
+        "ro": "Felinar negru de perete cu bec cu filament, montat pe un perete din scânduri de lemn, lângă un arbust.",
+        "ru": "Черный настенный фонарь с лампой накаливания на стене из деревянных досок, рядом кустарник."
       }
     },
     {
@@ -3964,12 +4024,12 @@
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă K2842\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-lantern\" (R-W28-06): A black wrought-iron wall lantern with a scrolled bracket, lit, on a red brick wall. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0219.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0219.jpg",
+      "provenance": "public/img/catalog/CAT-0219.webp",
       "alt": {
-        "ro": "Lampă K2842, corpul de iluminat",
-        "ru": "Lampă K2842, светильник"
+        "ro": "Felinar negru din fier forjat cu suport ondulat, aprins, montat pe un perete de cărămidă roșie.",
+        "ru": "Черный кованый настенный фонарь с фигурным кронштейном, включенный, на стене из красного кирпича."
       }
     },
     {
@@ -3977,12 +4037,12 @@
       "page": "/catalog/sisteme-iluminare/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Lampă K1823\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
+      "shows": "Fotografie generica de tip \"lamp-post\" (R-W28-06): A row of curved single-arm lamp posts with hanging lanterns among bare trees in winter. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0220.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0220.jpg",
+      "provenance": "public/img/catalog/CAT-0220.webp",
       "alt": {
-        "ro": "Lampă K1823, corpul de iluminat",
-        "ru": "Lampă K1823, светильник"
+        "ro": "Șir de stâlpi de iluminat cu braț curbat și felinare suspendate, printre copaci desfrunziți.",
+        "ru": "Ряд фонарных столбов с изогнутым кронштейном и подвесными светильниками среди голых деревьев."
       }
     },
     {
@@ -3990,42 +4050,38 @@
       "page": "/catalog/alte-materiale/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Membrana de DIFUZIE pentru acoperișuri\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru.",
-      "state": "filled",
-      "provenance": "public/img/catalog/CAT-0221.jpg",
+      "shows": "Membrana de difuzie pentru acoperisuri, fotografie generica fara nicio marca (R-W28-06). Niciuna gasita in setul permis pana la W28-23 (Q-W28-06); slotul asteapta.",
+      "state": "placeholder",
       "alt": {
         "ro": "Membrana de DIFUZIE pentru acoperișuri, produsul",
         "ru": "ДИФФУЗИОННАЯ мембрана для крыш, продукт"
-      },
-      "watermark": true
+      }
     },
     {
       "id": "CAT-0222",
       "page": "/catalog/alte-materiale/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Plasă de armare\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was poster or flyer (Flyer: PLASA DE ARMARE FATADE 3D title, pentru pereti fara fisuri slogan, PARAMETRI table (density 160, 1x50 m, 50 m2 per roll, 4 mm mesh) with a mesh roll on t); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/06/IMG_8629.jpg, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"mesh\" (R-W28-06): Close-up of a rolled yellow fibreglass reinforcing mesh with a fine square weave. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0222.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0222.jpg",
+      "provenance": "public/img/catalog/CAT-0222.webp",
       "alt": {
-        "ro": "Rulou de plasă de armare gri, desfășurat parțial la un capăt",
-        "ru": "Рулон серой армирующей сетки, частично развёрнутый с одного края"
-      },
-      "watermark": true
+        "ro": "Rulou de plasă din fibră de sticlă galbenă, cu ochiuri pătrate fine, pentru armarea tencuielii.",
+        "ru": "Рулон жёлтой стеклотканевой сетки с мелкой квадратной ячейкой для армирования штукатурки."
+      }
     },
     {
       "id": "CAT-0223",
       "page": "/catalog/alte-materiale/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Produsul \"Colțar PVC\", singur, pe fundal deschis si uniform, incadrat patrat, fara mana, fara decor, fara alt produs in cadru. AMENDED W28-15 (wave 28): the installed picture was poster or flyer (Flyer layout (426x600): black header with the title COLTAR PVC and the slogan pentru colturi durabile la fatada, a render of the corner bead, and a PARAMETRI bl); replaced by the product page's own plain photograph https://fatade3d.md/wp-content/uploads/2025/06/IMG_8667.png, looked at by two independent viewers, no burned-in text.",
+      "shows": "Fotografie generica de tip \"corner-bead\" (R-W28-06): A worker seen from behind presses a metal edge profile into the corner where a plasterboard wall meets the ceiling.. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0223.jpg).",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0223.jpg",
+      "provenance": "public/img/catalog/CAT-0223.webp",
       "alt": {
-        "ro": "Coltar PVC cu plasa din fibra de sticla rosie pentru colturi de fatada",
-        "ru": "ПВХ уголок с красной стеклосеткой для углов фасада"
-      },
-      "watermark": true
+        "ro": "Muncitor fixează un profil metalic de colț la îmbinarea dintre peretele de gips-carton și tavan.",
+        "ru": "Рабочий закрепляет металлический угловой профиль на стыке гипсокартонной стены и потолка."
+      }
     },
     {
       "id": "CAT-0224",
@@ -4710,7 +4766,7 @@
       "min_px": "1200x900",
       "shows": "Categoria \"Sisteme de termoizolație\": un material sau un grup de materiale din aceasta categorie, fotografiat pe santier sau in depozit, orizontal, cu loc liber jos-stanga pentru eticheta.",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0004.jpg",
+      "provenance": "public/img/catalog/CAT-0004.webp",
       "alt": {
         "ro": "Sisteme de termoizolatie: Polistiren expandat STOP FIRE",
         "ru": "Системы теплоизоляции: Пенополистирол STOP FIRE"
@@ -4740,7 +4796,7 @@
       "min_px": "1200x900",
       "shows": "Categoria \"Plăci flexibile\": un material sau un grup de materiale din aceasta categorie, fotografiat pe santier sau in depozit, orizontal, cu loc liber jos-stanga pentru eticheta.",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0060.jpg",
+      "provenance": "public/img/catalog/CAT-0060.webp",
       "alt": {
         "ro": "Plăci flexibile: Placă Sandstorm",
         "ru": "Гибкая плитка: Плитка Sandstorm"
@@ -4755,7 +4811,7 @@
       "min_px": "1200x900",
       "shows": "Categoria \"Elemente decorative\": un material sau un grup de materiale din aceasta categorie, fotografiat pe santier sau in depozit, orizontal, cu loc liber jos-stanga pentru eticheta.",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0127.jpg",
+      "provenance": "public/img/catalog/CAT-0127.webp",
       "alt": {
         "ro": "Elemente decorative: Element decorativ RED 01",
         "ru": "Декоративные элементы: Декоративный элемент RED 01"
@@ -4786,7 +4842,7 @@
       "min_px": "1200x900",
       "shows": "Categoria \"Sisteme de iluminare\": un material sau un grup de materiale din aceasta categorie, fotografiat pe santier sau in depozit, orizontal, cu loc liber jos-stanga pentru eticheta.",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0206.jpg",
+      "provenance": "public/img/catalog/CAT-0206.webp",
       "alt": {
         "ro": "Sisteme de iluminare: Lampă K5014",
         "ru": "Системы освещения: Лампа K5014"
@@ -4801,14 +4857,13 @@
       "min_px": "1200x900",
       "shows": "Categoria \"Alte materiale de construcții\": un material sau un grup de materiale din aceasta categorie, fotografiat pe santier sau in depozit, orizontal, cu loc liber jos-stanga pentru eticheta.",
       "state": "filled",
-      "provenance": "public/img/catalog/CAT-0221.jpg",
+      "provenance": "public/img/catalog/CAT-0222.webp",
       "alt": {
-        "ro": "Alte materiale de constructii: Membrana de DIFUZIE pentru acoperișuri",
-        "ru": "Другие стройматериалы: ДИФФУЗИОННАЯ мембрана для крыш"
+        "ro": "Alte materiale de construcții: plasă de armare din fibră de sticlă",
+        "ru": "Другие стройматериалы: стеклосетка для армирования"
       },
-      "reuse_of": "CAT-0221",
-      "reuse_reason": "W25-R22: the category tile stands on an installed product image of this category (alte-materiale), cropped to the tile ratio by the tile itself, which paints object-fit: cover in a 4/3 box.",
-      "watermark": true
+      "reuse_of": "CAT-0222",
+      "reuse_reason": "W25-R22 and R-W28-06: the category tile stands on an installed product picture of this category (alte-materiale), the reinforcing mesh now that the membrane slot waits (Q-W28-06)."
     },
     {
       "id": "ACTM-01",

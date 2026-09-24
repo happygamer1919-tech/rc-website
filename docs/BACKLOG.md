@@ -1367,11 +1367,13 @@ min-content floor so a 94px Russian word cannot spill out of a 91px column at 32
 the crawl). Not worked until the owner answers.
 
 ## W28-R2 · The second dispatch: R-W28-06, R-W28-07, the two cards, Q-W28-05
-**Status: PR OPEN** (opened 2026-09-24). The dispatch's R-W28-04, R-W28-05 and W28-22 were taken;
+**Status: MERGED #181, section 12.0 exit 0** (opened 2026-09-24, merged 13:04 UTC as `c99bab8`). The dispatch's R-W28-04, R-W28-05 and W28-22 were taken;
 recorded as R-W28-06, R-W28-07, W28-23 and W28-24 with the dispatch quoted. Documents only.
 
 ## W28-23 · Fatade product images: the 110 fatade3d.md pictures replaced by generic stock photographs
-**Status: todo.** R-W28-06; the 113 manufacturer packshots kept under Q-W28-05.
+**Status: PR OPEN** (opened 2026-09-24). 109 of 110 slots on a stock photograph (79 distinct, 30 reuses, Pexels and
+Unsplash, WebP), the membrane slot CAT-0221 waiting as a placeholder (Q-W28-06); gates 19, 24, 32 amended;
+`docs/images/SOURCES.md` created; the 113 manufacturer packshots kept under Q-W28-05.
 
 ## W28-24 · Service galleries: ten stock pictures more per gallery, two new galleries, the examples heading
 **Status: todo.** R-W28-07; 115 stock pictures across eleven galleries.

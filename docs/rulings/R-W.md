@@ -201,3 +201,36 @@ The leading class is now `[^a-z0-9-]`, which accepts a preceding dot. `notdaster
 still not caught, because the character before is a letter, and `dasterum.md.example.com` is
 still not caught, because the trailing class still refuses a following dot. Both of those
 are interpretation 3's own words and both still hold.
+
+---
+
+## AMENDED (W28-23, wave 28, ruling R-W28-06): the stock set on the fatade group
+
+Added 2026-09-24 by card W28-23. Nothing above this line moves.
+
+**The owner's rule, verbatim** (second wave 28 dispatch): "allowed sources are Pexels, Unsplash,
+Pixabay, Wikimedia Commons with CC0 or public domain, and Google Images only with usage-rights
+filter Creative Commons and the licence verified on the landing page. No attribution-required
+licences, no editorial-only, no watermark, no visible logo, brand, company name, vehicle livery or
+text overlay in the frame, no identifiable faces. Every image gets a row in docs/images/SOURCES.md:
+file, page, source URL, licence, subject."
+
+**What it adds to this ruling.** A new approved origin, written in the licence cell as
+`stock library, <licence>, R-W28-06, ...` where `<licence>` is one of `Pexels License`,
+`Unsplash License`, `Pixabay Content License`, `CC0 1.0`, `Public domain` (the last two for
+Wikimedia Commons, or Google Images with the licence verified on the landing page). The source
+cell names the picture page and the picture file on the site's own hosts. The licence URL is the
+site's licence page. **It is permitted on the fatade group only** (a catalogue record whose data
+came from fatade3d.md, or a category tile standing on one), where R-W28-06 makes it the product
+picture; W25-R23's "licence-free library" origin keeps its three secondary slots and nothing else
+changes. `docs/images/SOURCES.md` is the owner's manifest of the same pictures (file, page, source
+URL, licence, subject), written by `scripts/intake-stock.js` in the same step as this ledger's row,
+and gate 32 (`scripts/check-image-sources.js`) holds the two together: a stock picture without a
+SOURCES row, a SOURCES licence outside the allowed set, or a SOURCES row without a row here fails.
+Gate 19 (`scripts/check-photo-slots-w24.js`) refuses the origin off the fatade group (arm
+`stock-not-fatade`) and accepts it on the group (a green arm). W28-24 uses the same origin for the
+service galleries' stock photographs, whose rows sit in `content/galleries.json` beside the owner's.
+
+**Pictures may be WebP.** The stock pictures are encoded by the Chrome the gates run
+(`scripts/webp-encode.js`, a canvas export, no dependency); this ledger's rows name `.webp` files
+like any other, and gate 17 reads their chunks.

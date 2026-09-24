@@ -74,7 +74,7 @@ const TILE_PREFIXES = ['NVK-', 'ACTM-'];
 const FOLDERS = [
   [/^GARDB?-/, 'garduri'],
   [/^(ACOP|ACTM|NVK)-/, 'acoperisuri'],
-  [/^(COPX-|COP-HERO)/, 'copertine'],
+  [/^(COPX-|COPM-|COP-HERO)/, 'copertine'],
   [/^BA-/, 'before-after'],
 ];
 const folderFor = (id) => (FOLDERS.find(([re]) => re.test(id)) || [null, 'catalog'])[1];

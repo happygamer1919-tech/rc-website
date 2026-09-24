@@ -1969,6 +1969,14 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 }
 .section--dark .model__name { margin-top: 12px; font-size: 22px; color: var(--bg-light); }
 .model__desc { margin: 6px 0 0; color: var(--bg-light); }
+/* W28-14: the model card carries a photograph (4:3, covers its box on the dark card) and,
+   under its descriptor, the W24-R7 ask line in the catalogue card's permitted shape. */
+.model__ph { margin-bottom: 16px; border-radius: 8px; overflow: hidden; }
+.model__ph.ph--filled img { object-fit: cover; }
+.model .prod__ask { margin: 12px 0 0; color: var(--bg-light); font-weight: 700; }
+/* The group chip's status line sits on the dark models band: the muted ink reads 2.29:1 there
+   (gate 28), so on this section it takes the light line colour, 12.9:1. */
+#copertine-modele .roof-filter__status { color: var(--line); }
 
 .csteps { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
 .csteps__step { background: var(--bg-light); border: 1px solid var(--hairline); border-radius: var(--radius-card); box-shadow: var(--shadow-card); padding: 24px; }

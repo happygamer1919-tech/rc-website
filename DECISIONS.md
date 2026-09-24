@@ -14003,3 +14003,48 @@ Registered in `quality.yml` and in `docs/CLAUDE.md`; `quality` runs 30 commands.
 **Heights.** The service page falls by 15,696 (RO) and 15,779 (RU); the catalogue page rises by
 15,163 and 15,246; the fence page grows by 390 and 389 with its card section. Six budgets move
 (R-Y).
+
+## W28-14 · Copertine: Imperlux photographs on every model, the ask line, a Catalog group, 2026-09-24
+
+Branch `w28/w28-14-copertine`, stacked on W28-13. Under the wave 28 dispatch, W27-R-04 (imperlux.md
+as the source of record for everything under its roofing tree), W24-R7 (an Imperlux product with no
+published price asks for one) and W25-R17 (declared reuse).
+
+**Measured first.** All twelve imperlux.md copertine model pages exist and each publishes a
+1200px hero photograph and one or two gallery photographs, none carrying an Imperlux mark or any
+burned-in text; none prints a price. The repo's C-01 to C-12 map onto IL301 to IL312 one to one
+(W14-23 de-badged them in that order). Three independent viewers looked at all 36 pictures.
+
+**What ships.** Twelve new slots `COPM-01` to `COPM-12`, one photograph per model, fetched through
+`scripts/fetch-packshot.js --imperlux-override` and installed by `scripts/process-packshot.js`
+(4:3 by a few pixels of edge crop, 800px long side, never upscaled, metadata stripped); the hero
+on nine models, the viewers' pick on three (C-01 the badge-free gallery picture, C-02 the gallery
+photograph of the built structure, C-10 the gallery picture that shows every inclined post). Each
+`content/copertine.json` record carries `source_url` (its model page), `image` (slot and source
+file) and `price: null`; the model card renders the photograph and the W24-R7 ask line in the
+catalogue card's permitted shape; the five family tiles keep their line diagrams, and the two
+diagrams only model cards used (gable, inclined) are gone with their strings. The seventh
+provenance override entry names the card and the ruling it stands on, with the twelve files; the
+ledger rows carry the viewers' alt texts; the intake's folder rule, the review list's section and
+the three override lists know the prefix. **The Catalog group**: an external entry like Garduri
+(tile `CATEG-10`, a declared reuse of `COPM-01`; a header menu row; `catTiles` 10), opening the
+copertine page, whose models section now carries the group chip "Copertine 12" in the roofing
+filter bar's own component, the status line, and the twelve cards marked as product cards of that
+group; gate 31 holds the count to the data.
+
+**The acceptance as written cannot pass on the price half, and is reported rather than absorbed.**
+"Every record has price and source_url non-null": `source_url` is non-null on all twelve, `price`
+is null on all twelve because the source publishes none (Q-W28-02, with the model list). No image
+under a copertine record is a sketch or diagram any more.
+
+**Two readings, open for ratification.** A car maker badge inside a carport photograph is not a
+"third-party mark on a product card" under W27-R-13, which was written for the supplier's overlaid
+mark; the seven cards with a visible badge ship and are listed in Q-W28-02. And the override for
+imperlux.md's copertine pictures stands on W27-R-04 read as the dispatch's own words apply it ("a
+real product photo from imperlux.md when the model exists there"); the sentence names the card.
+
+**Gates.** The competitor-code guard on `content/copertine.json` now reads the rendered fields
+only, because a source URL carries the maker's code by construction (the fence data's guard has
+excluded its source block since W26-09). Gate 28 caught the chip's status line on the first
+run: the muted ink on the dark models band read 2.29:1 on both locales at both widths; on that
+section it takes the light line colour. Budgets move (R-Y).

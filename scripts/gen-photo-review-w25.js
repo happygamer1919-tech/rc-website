@@ -70,7 +70,8 @@ function section(id) {
   /* W26-07. The three copertine secondary images are the first library pictures
      on the site, and a picture the owner's review list cannot see is a picture
      nobody reviews: every row of this section carries the library flag. */
-  if (id === 'COP-HERO' || id.startsWith('COPX-')) return 'Copertine';
+  /* W28-14: the twelve model photographs, COPM-01 to COPM-12, imperlux override rows. */
+  if (id === 'COP-HERO' || id.startsWith('COPX-') || id.startsWith('COPM-')) return 'Copertine';
   return null;
 }
 const SECTIONS = ['Catalog', 'Acoperisuri', 'Garduri', 'Copertine'];

@@ -242,6 +242,19 @@
       "external": true,
       "menu_position": 3,
       "_note": "W27-FIX-15 (owner instruction W27-R-21, from Mihai): a catalogue entry with no catalogue page of its own. Fences have one product section, so the tile and the menu row open the fence models page directly. `external` tells build.js to build no page for it; the tile is CATEG-09."
+    },
+    {
+      "label": {
+        "ro": "Copertine",
+        "ru": "Навесы"
+      },
+      "href": {
+        "ro": "/servicii/copertine/",
+        "ru": "/ru/servicii/copertine/"
+      },
+      "external": true,
+      "menu_position": 4,
+      "_note": "W28-14 (wave 28 dispatch): the copertine group, an external entry like Garduri: the twelve models with their photographs live on the copertine page, which the tile (CATEG-10, a declared reuse of COPM-01) and the menu row open directly; the page carries the group chip with its count."
     }
   ]
 }

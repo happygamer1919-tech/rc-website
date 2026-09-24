@@ -3470,3 +3470,34 @@ into both locale heads from a committed ruling (the dispatch named it `GSC_META_
 **Recommended default: send the value in chat, or paste the whole meta tag.** The card is
 then one line in `build.js` and two rendered heads, verified by `grep -c` on `/` and `/ru/`.
 Until then the site is not verified in Search Console and nothing else depends on it.
+
+## Q-W28-02 · The twelve copertine models have photographs now and no price, because imperlux.md publishes none · OPEN · opened 2026-09-24 (W28-14)
+
+**Raised W28-14, 2026-09-24. Shipped default: every model card shows imperlux.md's own photograph
+of that model and the W24-R7 ask line ("Preț la cerere" / "Цена по запросу"); the group is in the
+Catalog with its tile, chip and count. Nothing is blocked; the price half of the card is what waits.**
+
+**1. No price exists at the source.** W28-14 asks for "prices from imperlux.md shown de la N". All
+twelve model pages (IL301 Basic to IL312 Exclusive, mapped one to one onto C-01 to C-12) print
+"Preț după măsurători" and no figure, and the copertine index's own FAQ says why ("un preț pe metru
+pătrat afișat pe site ar fi orientativ în cel mai bun caz și înșelător în cel mai rău"). The only MDL
+figures on those pages are the roofing business's JSON-LD `priceRange`, which is not a model price.
+Under section 5 nothing is invented, so `price` is null on all twelve records and each card asks for
+a price, which is exactly what W24-R7 ruled for an Imperlux product with no published price. The
+site's own copertine copy ("Prețul se stabilește după măsurare", the steps, the teaser) stays true.
+**Recommended default: leave it so.** If you want "de la N" on any model, send the twelve figures
+(or the ones you have) and their unit; each lands as one field per record and renders in the fence
+page's own price shape.
+
+**2. Two of the source's pictures read as renders, not photographs.** Two independent viewers read
+C-01's three pictures and C-02's hero as photoreal renders (blank plates, merged grilles, uniform
+lawns). C-01 ships its badge-free gallery picture; C-02 ships its gallery photograph of the built
+structure without a car, which is a real photograph. If you would rather C-01 kept its line diagram
+until a photograph exists, that is one row.
+
+**3. Seven photographs show a parked car with a readable maker badge** (C-05 Mercedes, tiny; C-06
+Mazda; C-08 Hyundai; C-10 Mercedes; C-12 Lexus, large; C-01 and C-02 were swapped for badge-free
+pictures). W27-R-13's "no third-party mark on a product card" was written for the supplier's mark
+overlaid on the image; a car in a carport photograph is the photograph's subject, so these ship as
+they are, recorded here. If a car badge counts for you, C-06, C-08 and C-12 have no badge-free
+picture at the source and would go back to their diagrams.

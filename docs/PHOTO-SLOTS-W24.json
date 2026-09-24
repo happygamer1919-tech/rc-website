@@ -4963,6 +4963,177 @@
       },
       "reuse_of": "GARDB-01",
       "reuse_reason": "W27-FIX-15 (W27-R-21) and W25-R17: the catalogue index tile for Garduri stands on the fence hub's own first tile picture, the same subject on a second page"
+    },
+    {
+      "id": "COPM-01",
+      "page": "/servicii/copertine/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Modelul C-01 (Pe stâlpi): fotografia principala a paginii de model de pe imperlux.md (W28-14, dispecerarea valului 28, sub W27-R-04 ca sursa de referinta), gallery-1.jpg (nu hero.jpg: doi cititori independenti au ales varianta din galerie, fara emblema de producator auto), 1200 px latime, decupata la 4:3 din margini, fara marire; fara logo, fara text imprimat. Inlocuieste schema desenata a modelului.",
+      "state": "filled",
+      "provenance": "public/img/copertine/COPM-01.jpg",
+      "alt": {
+        "ro": "Copertină auto pe stâlpi metalici antracit, cu acoperiș plat din policarbonat, sub care este parcată o mașină albă pe o alee pavată, lângă o casă",
+        "ru": "Автомобильный навес на металлических стойках антрацитового цвета с плоской крышей из поликарбоната, под которым на мощёной площадке у дома стоит белый автомобиль"
+      }
+    },
+    {
+      "id": "COPM-02",
+      "page": "/servicii/copertine/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Modelul C-02 (Consolă, deschidere mare): fotografia principala a paginii de model de pe imperlux.md (W28-14, dispecerarea valului 28, sub W27-R-04 ca sursa de referinta), gallery-2.jpg (nu hero.jpg: doi cititori independenti au ales varianta din galerie, fara emblema de producator auto), 1200 px latime, decupata la 4:3 din margini, fara marire; fara logo, fara text imprimat. Inlocuieste schema desenata a modelului.",
+      "state": "filled",
+      "provenance": "public/img/copertine/COPM-02.jpg",
+      "alt": {
+        "ro": "Copertină auto în consolă, cu stâlpi metalici maro doar pe o latură și un acoperiș mare din policarbonat bronz, deasupra unei alei pavate fără mașini",
+        "ru": "Консольный автомобильный навес с коричневыми металлическими стойками только с одной стороны и большой крышей из бронзового поликарбоната над пустой мощёной площадкой"
+      }
+    },
+    {
+      "id": "COPM-03",
+      "page": "/servicii/copertine/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Modelul C-03 (Prinsă de perete): fotografia principala a paginii de model de pe imperlux.md (W28-14, dispecerarea valului 28, sub W27-R-04 ca sursa de referinta), hero.jpg, 1200 px latime, decupata la 4:3 din margini, fara marire; fara logo, fara text imprimat. Inlocuieste schema desenata a modelului.",
+      "state": "filled",
+      "provenance": "public/img/copertine/COPM-03.jpg",
+      "alt": {
+        "ro": "Copertină auto prinsă de peretele casei, cu acoperiș înclinat din policarbonat opal sprijinit pe trei stâlpi metalici antracit, deasupra unei alei pavate",
+        "ru": "Автомобильный навес, закреплённый на стене дома, с наклонной крышей из матового поликарбоната на трёх металлических стойках антрацитового цвета над мощёной дорожкой"
+      }
+    },
+    {
+      "id": "COPM-04",
+      "page": "/servicii/copertine/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Modelul C-04 (În două ape): fotografia principala a paginii de model de pe imperlux.md (W28-14, dispecerarea valului 28, sub W27-R-04 ca sursa de referinta), hero.jpg, 1200 px latime, decupata la 4:3 din margini, fara marire; fara logo, fara text imprimat. Inlocuieste schema desenata a modelului.",
+      "state": "filled",
+      "provenance": "public/img/copertine/COPM-04.jpg",
+      "alt": {
+        "ro": "Copertină auto în două ape, pe stâlpi metalici negri, cu acoperiș din tablă profilată, deasupra unei alei pavate din fața unei case",
+        "ru": "Двускатный автомобильный навес на чёрных металлических стойках с крышей из профилированного листа над мощёной площадкой перед домом"
+      }
+    },
+    {
+      "id": "COPM-05",
+      "page": "/servicii/copertine/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Modelul C-05 (Pe stâlpi): fotografia principala a paginii de model de pe imperlux.md (W28-14, dispecerarea valului 28, sub W27-R-04 ca sursa de referinta), hero.jpg, 1200 px latime, decupata la 4:3 din margini, fara marire; fara logo, fara text imprimat. Inlocuieste schema desenata a modelului.",
+      "state": "filled",
+      "provenance": "public/img/copertine/COPM-05.jpg",
+      "alt": {
+        "ro": "Copertină auto cu acoperiș plat din tablă, pe stâlpi metalici gri antracit, cu o mașină parcată sub ea într-o curte pavată",
+        "ru": "Навес для автомобиля с плоской крышей из металлического листа на серых стальных столбах, под которым стоит машина на мощёном дворе"
+      }
+    },
+    {
+      "id": "COPM-06",
+      "page": "/servicii/copertine/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Modelul C-06 (Arcuită): fotografia principala a paginii de model de pe imperlux.md (W28-14, dispecerarea valului 28, sub W27-R-04 ca sursa de referinta), hero.jpg, 1200 px latime, decupata la 4:3 din margini, fara marire; fara logo, fara text imprimat. Inlocuieste schema desenata a modelului.",
+      "state": "filled",
+      "provenance": "public/img/copertine/COPM-06.jpg",
+      "alt": {
+        "ro": "Copertină auto arcuită din policarbonat pe structură metalică maro cu elemente forjate, cu o mașină parcată dedesubt",
+        "ru": "Арочный навес для автомобиля из поликарбоната на коричневом металлическом каркасе с коваными элементами, под которым стоит машина"
+      }
+    },
+    {
+      "id": "COPM-07",
+      "page": "/servicii/copertine/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Modelul C-07 (Arcuită sau semiarcuită): fotografia principala a paginii de model de pe imperlux.md (W28-14, dispecerarea valului 28, sub W27-R-04 ca sursa de referinta), hero.jpg, 1200 px latime, decupata la 4:3 din margini, fara marire; fara logo, fara text imprimat. Inlocuieste schema desenata a modelului.",
+      "state": "filled",
+      "provenance": "public/img/copertine/COPM-07.jpg",
+      "alt": {
+        "ro": "Copertină arcuită din policarbonat pe stâlpi metalici negri cu elemente forjate, montată deasupra aleii de acces din spatele unei porți",
+        "ru": "Арочный навес из поликарбоната на чёрных металлических столбах с коваными элементами над въездом во двор за воротами"
+      }
+    },
+    {
+      "id": "COPM-08",
+      "page": "/servicii/copertine/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Modelul C-08 (Pe stâlpi, bordură închisă): fotografia principala a paginii de model de pe imperlux.md (W28-14, dispecerarea valului 28, sub W27-R-04 ca sursa de referinta), hero.jpg, 1200 px latime, decupata la 4:3 din margini, fara marire; fara logo, fara text imprimat. Inlocuieste schema desenata a modelului.",
+      "state": "filled",
+      "provenance": "public/img/copertine/COPM-08.jpg",
+      "alt": {
+        "ro": "Copertină auto cu acoperiș plat și bordură închisă, pe șase stâlpi metalici gri antracit, cu un SUV parcat sub ea lângă casă",
+        "ru": "Навес для автомобиля с плоской крышей и закрытым бортом на шести серых металлических столбах, под которым стоит внедорожник рядом с домом"
+      }
+    },
+    {
+      "id": "COPM-09",
+      "page": "/servicii/copertine/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Modelul C-09 (Consolă): fotografia principala a paginii de model de pe imperlux.md (W28-14, dispecerarea valului 28, sub W27-R-04 ca sursa de referinta), hero.jpg, 1200 px latime, decupata la 4:3 din margini, fara marire; fara logo, fara text imprimat. Inlocuieste schema desenata a modelului.",
+      "state": "filled",
+      "provenance": "public/img/copertine/COPM-09.jpg",
+      "alt": {
+        "ro": "Copertină auto în consolă, cu acoperiș din policarbonat susținut de stâlpi metalici pe o singură parte, lângă un gard metalic",
+        "ru": "Консольный навес для автомобиля с крышей из поликарбоната на металлических стойках, установленных только с одной стороны, вдоль металлического забора"
+      }
+    },
+    {
+      "id": "COPM-10",
+      "page": "/servicii/copertine/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Modelul C-10 (Stâlpi înclinați): fotografia principala a paginii de model de pe imperlux.md (W28-14, dispecerarea valului 28, sub W27-R-04 ca sursa de referinta), gallery-1.jpg (nu hero.jpg: doi cititori independenti au ales varianta din galerie, pentru ca arata intreaga structura cu toti stalpii inclinati), 1200 px latime, decupata la 4:3 din margini, fara marire; fara logo, fara text imprimat. Inlocuieste schema desenata a modelului.",
+      "state": "filled",
+      "provenance": "public/img/copertine/COPM-10.jpg",
+      "alt": {
+        "ro": "Copertină auto cu stâlpi metalici înclinați și acoperiș din policarbonat, sub care sunt parcate două mașini, în fața unui gard din lamele",
+        "ru": "Навес для автомобилей с наклонными металлическими стойками и крышей из поликарбоната, под которым стоят две машины у забора из ламелей"
+      }
+    },
+    {
+      "id": "COPM-11",
+      "page": "/servicii/copertine/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Modelul C-11 (Arhitecturală): fotografia principala a paginii de model de pe imperlux.md (W28-14, dispecerarea valului 28, sub W27-R-04 ca sursa de referinta), hero.jpg, 1200 px latime, decupata la 4:3 din margini, fara marire; fara logo, fara text imprimat. Inlocuieste schema desenata a modelului.",
+      "state": "filled",
+      "provenance": "public/img/copertine/COPM-11.jpg",
+      "alt": {
+        "ro": "Copertină auto deschisă, cu cadru din profile metalice masive de culoare antracit și acoperiș plat cu lamele, pe o platformă de beton lângă gazon",
+        "ru": "Открытый навес для автомобиля с каркасом из массивных металлических профилей антрацитового цвета и плоской крышей с ламелями на бетонной площадке рядом с газоном"
+      }
+    },
+    {
+      "id": "COPM-12",
+      "page": "/servicii/copertine/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Modelul C-12 (Arhitecturală, după proiect): fotografia principala a paginii de model de pe imperlux.md (W28-14, dispecerarea valului 28, sub W27-R-04 ca sursa de referinta), hero.jpg, 1200 px latime, decupata la 4:3 din margini, fara marire; fara logo, fara text imprimat. Inlocuieste schema desenata a modelului.",
+      "state": "filled",
+      "provenance": "public/img/copertine/COPM-12.jpg",
+      "alt": {
+        "ro": "Copertină auto cu acoperiș asimetric ascuțit, structură din tiranți metalici și benzi de iluminat LED aprinse la asfințit, cu o mașină parcată dedesubt",
+        "ru": "Навес для автомобиля с асимметричной остроконечной крышей на металлических раскосах и включённой светодиодной подсветкой в сумерках, под которым стоит автомобиль"
+      }
+    },
+    {
+      "id": "CATEG-10",
+      "page": "/catalog/",
+      "ratio": "4 / 3",
+      "min_px": "1200x900",
+      "shows": "Tila categoriei Copertine din indexul catalogului (W28-14). Reutilizare declarata a fotografiei COPM-01, primul model: copertina standard pe stalpi. Tila o incadreaza singura la 4:3.",
+      "state": "filled",
+      "provenance": "public/img/copertine/COPM-01.jpg",
+      "alt": {
+        "ro": "Copertină auto pe stâlpi metalici antracit, cu acoperiș plat din policarbonat, sub care este parcată o mașină albă pe o alee pavată, lângă o casă",
+        "ru": "Автомобильный навес на металлических стойках антрацитового цвета с плоской крышей из поликарбоната, под которым на мощёной площадке у дома стоит белый автомобиль"
+      },
+      "reuse_of": "COPM-01",
+      "reuse_reason": "W28-14 and W25-R17: the catalogue index tile for Copertine stands on the first model's own photograph, the same subject on a second page"
     }
   ]
 }

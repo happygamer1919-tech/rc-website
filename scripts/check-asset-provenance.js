@@ -137,6 +137,16 @@ const OVERRIDES = [
     licence: "owner_override_imperlux, the hub bento pictures by owner instruction W27-R-17, imperlux.md's own homepage bento renders as published, no crop, no upscale, source URL per file, 2026-09-23",
     files: ['ACOP-01', 'ACOP-02', 'ACOP-03', 'ACOP-04', 'GARDB-01', 'GARDB-02', 'GARDB-03', 'GARDB-04'],
   },
+  /* W28-14 (wave 28 dispatch): a SEVENTH override, the twelve copertine model photographs.
+     imperlux.md's model pages are under its /acoperisuri/ tree, which W27-R-04 names as the
+     source of record; the dispatch's own words are "replace sketch or diagram images with a
+     real product photo from imperlux.md when the model exists there", and all twelve exist.
+     Each file is the page's own hero photograph, cropped to 4:3, never upscaled, no mark. */
+  {
+    ruling: 'W28-14 (wave 28 dispatch, under W27-R-04)',
+    licence: "owner_override_imperlux, the copertine model photographs by the wave 28 dispatch (card W28-14, under W27-R-04 as the source of record), imperlux.md's own model page hero photograph, cropped to 4:3, no upscale, source URL per file, 2026-09-24",
+    files: ['COPM-01', 'COPM-02', 'COPM-03', 'COPM-04', 'COPM-05', 'COPM-06', 'COPM-07', 'COPM-08', 'COPM-09', 'COPM-10', 'COPM-11', 'COPM-12'],
+  },
 ];
 const OVERRIDE_FILES = OVERRIDES.flatMap((o) => o.files);
 /* R-W amendment, 2026-09-15 (W14-02b). Legacy status is a fingerprint: the path

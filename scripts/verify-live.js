@@ -299,7 +299,9 @@ const MARKERS = {
     productCards: 0,
     /* AMENDED (W27-FIX-15, W27-R-21): **9**. The roofing category is listed again and the fence
        entry is new (a tile that opens the fence models page). 7 + 2. */
-    catTiles: 9,
+    /* AMENDED (W28-14): **10**. The copertine group joins the index as an external tile that
+       opens the copertine page. 9 + 1. */
+    catTiles: 10,
   },
   /* W27-FIX-15 (W27-R-21). The roofing catalogue page: the hub bento (four tiles, four links)
      and the product bento, no prose, no product cards. `bentoTiles` counts the hub only. */
@@ -393,8 +395,8 @@ const PAGES = [
   { path: '/ru/servicii/tigla-metalica/',  type: 'tigla',   label: 'tigla RU',       budget: 5554 },
   /* AMENDED (W26-12): the gallery section, one card and its lightbox, +629 in both
      locales, measured 7184 / 7260. Budget measured plus 60 (W24-R4), R-Y. */
-  { path: '/servicii/copertine/',          type: 'product', label: 'copertine RO',   budget: 7359 },
-  { path: '/ru/servicii/copertine/',       type: 'product', label: 'copertine RU',   budget: 7436 },
+  { path: '/servicii/copertine/',          type: 'product', label: 'copertine RO',   budget: 8165 },
+  { path: '/ru/servicii/copertine/',       type: 'product', label: 'copertine RU',   budget: 8242 },
   /* W24-08. The garduri page gained the fence bento; the copertine page gained a
      dark hero and a cross-sell row; modele de garduri is new. All under W24-R4. */
   /* W26-03: 5728 held since W24-08 while the page fell to 5,547. See R-Y's
@@ -425,8 +427,8 @@ const PAGES = [
   // docs/rulings/R-Y.md carries the measurement each one came from.
   // The 1,400px section cap does not apply to a catalogue grid (W24-R4), which is
   // why a category page rolling up 88 products is 12,613px and inside budget.
-  { path: '/catalog/',                                      type: 'index',         label: 'idx RO',           budget: 3722 },
-  { path: '/ru/catalog/',                                   type: 'index',         label: 'idx RU',           budget: 3747 },
+  { path: '/catalog/',                                      type: 'index',         label: 'idx RO',           budget: 4087 },
+  { path: '/ru/catalog/',                                   type: 'index',         label: 'idx RU',           budget: 4112 },
   /* W27-FIX-15 (W27-R-21): the roofing catalogue page, both locales; budgets measured plus 60. */
   { path: '/catalog/materiale-acoperis/',                   type: 'roofcatalog',   label: 'cat RO acoper',    budget: 19440 },
   { path: '/ru/catalog/materiale-acoperis/',                type: 'roofcatalog',   label: 'cat RU acoper',    budget: 19523 },

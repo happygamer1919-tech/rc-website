@@ -972,6 +972,18 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     rulings permit them. It fails on zero records, zero rows, zero direct-supplier rows or a
     missing file.
 
+33. `node scripts/seo-check.js` clean. **Since W28-17 (wave 28)**, run by `quality` after gate
+    32. **Every built page**: a `<title>` unique across all 85 pages and under 60 characters, a
+    description under 155, an absolute canonical on the site origin (a redirect page's names its
+    target), `ro`, `ru` and `x-default` alternates whose pair is symmetric (the page named as the
+    ru alternate names this page as its ro alternate; a noindex page with no page in the other
+    locale is counted and exempt from the pair), Open Graph and Twitter tags whose `og:image` is
+    a file in `dist/` measured by its bytes at the size the tags state, the site image 1200x630.
+    Once: `sitemap.xml` parses, lists both locales, names no noindex page, and every `<loc>`
+    answers 200 from a local server over the built output; `robots.txt` allows all and names the
+    sitemap; both 404 pages exist with their `lang` and a link home. It fails on zero pages, a
+    missing sitemap, robots or 404, and prints every count it read.
+
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number (Q-W14-03 was found "at gate 9") and those bodies are immutable under
 R-S, so renumbering would falsify them. A gate added later takes the next number
@@ -1020,6 +1032,8 @@ it runs after gate 1, and needs no browser.
 two data files, so it runs after gate 1, and needs no browser.
 **AMENDED (W28-15):** gate 32 runs after gate 31. It reads three data files and the image files,
 no build and no browser.
+**AMENDED (W28-17):** gate 33 runs after gate 32. It reads the built pages and serves them to
+itself for the 200 check; no browser.
 
 **The count, so it stops drifting (W25-03c).** ~~This list numbers **25** gates.~~
 ~~**AMENDED (W25-24): 26**, and `quality` runs **25** commands.~~
@@ -1028,7 +1042,8 @@ no build and no browser.
 ~~**AMENDED (W26-12): 29**, and `quality` runs **28** commands.~~
 ~~**AMENDED (W26-13): 30**, and `quality` runs **29** commands.~~
 ~~**AMENDED (W28-13): 31**, and `quality` runs **30** commands.~~
-**AMENDED (W28-15): 32**, and `quality` runs **31** commands. The number to report is the one
+~~**AMENDED (W28-15): 32**, and `quality` runs **31** commands.~~
+**AMENDED (W28-17): 33**, and `quality` runs **32** commands. The number to report is the one
 `node scripts/run-gates.js` prints, never this sentence. Five of them
 are not scripts and `quality` cannot run them: gate 4 (heights measured settled), gate 6 (no
 new colour), gate 7 (reduced motion), gate 8 (the three documents updated) and **gate 9,

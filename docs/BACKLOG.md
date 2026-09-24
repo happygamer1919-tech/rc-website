@@ -1318,17 +1318,19 @@ Q-W28-03; report `docs/reports/W28-FATADE-IMAGES.md`; gate 32 `scripts/check-ima
 0 budgets move.
 
 ## W28-22 · The phone hero matches the desktop hero (R-W28-04)
-**Status: PR OPEN #174** (opened 2026-09-24). The phone rule centres the hero and keeps the three stats in
+**Status: MERGED #174, section 12.0 exit 0** (opened 2026-09-24, merged 01:22 UTC as `7ddd241`). The phone rule centres the hero and keeps the three stats in
 one row; hero 1,313 to 1,147px at 390; no desktop budget moves. Owner chat instruction 2026-09-24 00:45 UTC. Measured: nothing is hidden at 390;
 the desktop hero is centred with the three stats in one row, the phone hero is left-aligned with
 the stats stacked one per row. The card centres the phone hero and keeps the stats in one row.
 
 ## W28-16 · Construcții industriale: two service lines
-**Status: PR OPEN** (opened 2026-09-24). Two named lines under the industrial page's answer, both
+**Status: PR OPEN #175** (opened 2026-09-24). Two named lines under the industrial page's answer, both
 locales, the dispatch's own titles, one sentence each; each phrase once in the DOM; 0 budgets move.
 
 ## W28-17 · Technical SEO and `scripts/seo-check.js`
-**Status: todo.**
+**Status: PR OPEN** (opened 2026-09-24). Every page a unique title under 60, description, canonical,
+symmetric alternates, Open Graph and Twitter tags; the sitemap's privacy alternates fixed; gate 33
+`scripts/seo-check.js`; 0 budgets move.
 
 ## W28-18 · Structured data and `scripts/schema-check.js`
 **Status: todo.**

@@ -490,7 +490,7 @@ function serviceHeadVars(l, slug, i) {
 
   // Longest form that still fits, never a truncation mid-word.
   const candidates = [title + inCity + BRAND, title + BRAND, title];
-  const metaTitle = candidates.find((c) => c.length <= TITLE_MAX) || candidates[2];
+  const metaTitle = candidates.find((c) => c.length < TITLE_MAX) || candidates[2];
 
   // W14-05b. band.coverageLine left the locale files at W12-09 and is composed by
   // coverageLine(l); reading it from l.strings returned undefined, and 18 live
@@ -2560,7 +2560,7 @@ ${kids.map((k, j) => {
 function categoryHeadVars(l, c) {
   const title = categoryLabel(l, c);
   const inCity = l.code === 'ro' ? ` în ${PRIMARY_CITY.ro}` : ` в ${PRIMARY_CITY.ru}`;
-  const metaTitle = [title + inCity + BRAND, title + BRAND, title].find((s) => s.length <= TITLE_MAX) || title;
+  const metaTitle = [title + inCity + BRAND, title + BRAND, title].find((s) => s.length < TITLE_MAX) || title;
   const si = SERVICE_SLUGS.indexOf(c.service);
   const desc = l.strings[`services.items.${si}.desc`];
   /* A subcategory has no lede of its own, so its description falls to the next
@@ -3817,7 +3817,7 @@ function productHeadVars(l, p) {
   const title = l.strings[`pages.${p.key}.title`];
   const lede = l.strings[`pages.${p.key}.lede`];
   const inCity = l.code === 'ro' ? ` în ${PRIMARY_CITY.ro}` : ` в ${PRIMARY_CITY.ru}`;
-  const metaTitle = [title + inCity + BRAND, title + BRAND, title].find((c) => c.length <= TITLE_MAX) || title;
+  const metaTitle = [title + inCity + BRAND, title + BRAND, title].find((c) => c.length < TITLE_MAX) || title;
   const withCoverage = `${lede} ${coverageLine(l)}`;
   const metaDesc = withCoverage.length <= DESC_MAX ? withCoverage : lede;
   if (/\bundefined\b/.test(metaDesc)) die(`meta description for ${p.slug} (${l.code}) contains "undefined"`);
@@ -4101,6 +4101,10 @@ for (const l of loaded) {
   vars.serviciiMenu = serviciiMenu(l);
   vars.workTypeOptions = workTypeOptions(l);
   vars.notFoundLocale = notFoundLocale(l);
+  /* W28-17: the two 404 pages carry a canonical, both alternates and Open Graph like every page. */
+  vars['nf.canonical'] = SITE + BASE + (l.code === 'ro' ? '/404.html' : '/ru/404.html');
+  vars['nf.urlRo'] = SITE + BASE + '/404.html';
+  vars['nf.urlRu'] = SITE + BASE + '/ru/404.html';
   vars.productTeaser = productTeaser(l);
   vars.socialRow = socialRow(l);
   // Overrides nothing: band.coverageLine is no longer a locale key, it is
@@ -4238,8 +4242,10 @@ for (const l of loaded) {
     const idxVars = {
       ...vars,
       'cat.title': title,
-      'cat.metaTitle': [title + inCity + BRAND, title + BRAND, title].find((s) => s.length <= TITLE_MAX) || title,
-      'cat.metaDesc': [`${title}: ${labels}`, labels, title].find((s) => s.length <= DESC_MAX) || title,
+      'cat.metaTitle': [title + inCity + BRAND, title + BRAND, title].find((s) => s.length < TITLE_MAX) || title,
+      /* AMENDED (W28-17): with ten categories the full list passed 155 and the description fell to
+         the bare word; it now keeps as many labels as fit, in order, and never fewer than one. */
+      'cat.metaDesc': (() => { const ls = labels.split(', '); let out = ''; for (const lb of ls) { const next = out ? `${out}, ${lb}` : `${title}: ${lb}`; if (next.length < DESC_MAX) out = next; else break; } return out || title; })(),
       'cat.canonical': SITE + BASE + CATALOG_ROOT[l.code],
       'cat.urlRo': SITE + BASE + CATALOG_ROOT.ro,
       'cat.urlRu': SITE + BASE + CATALOG_ROOT.ru,
@@ -4285,8 +4291,13 @@ for (const l of loaded) {
         'moved.target': target,
         'moved.canonical': SITE + BASE + ROOF_SECTION_PATH(l),
         'moved.eyebrow': head.title,
-        'moved.metaTitle': head.metaTitle,
+        /* AMENDED (W28-17): a redirect page's title carried its target's; it names the catalogue so no
+           two pages share a title, and it carries both alternates and Open Graph like every page. */
+        'moved.metaTitle': [`${head.title} · ${l.strings['header.catalog']}${BRAND}`, `${head.title} · ${l.strings['header.catalog']}`].find((s) => s.length < TITLE_MAX),
         'moved.metaDesc': head.metaDesc,
+        'moved.url': SITE + BASE + CATALOG_ROOT[l.code] + c.slug + '/',
+        'moved.urlRo': SITE + BASE + CATALOG_ROOT.ro + c.slug + '/',
+        'moved.urlRu': SITE + BASE + CATALOG_ROOT.ru + c.slug + '/',
       };
       const missingMoved = new Set();
       const movedHtml = movedTemplate.replace(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/g, (_, key) => {
@@ -4321,7 +4332,9 @@ for (const l of loaded) {
       ].filter(Boolean).join('\n'),
       'cat.ledeBlock': (c.parent != null || roofCatalog) ? ''
         : `<p class="hero__sub" data-cat-prose="lede" style="margin: 16px 0 0;">${esc(categoryProse(l, c).lede)}</p>`,
-      'cat.metaTitle': head.metaTitle,
+      /* AMENDED (W28-17): the roofing catalogue page's title was the service page's, byte for byte;
+         it carries the Catalog word first, so no two pages share a title. */
+      'cat.metaTitle': roofCatalog ? ([`${l.strings['header.catalog']}: ${head.metaTitle}`, `${l.strings['header.catalog']}: ${head.title}${BRAND}`, `${l.strings['header.catalog']}: ${head.title}`].find((s) => s.length < TITLE_MAX)) : head.metaTitle,
       'cat.metaDesc': head.metaDesc,
       'cat.canonical': SITE + BASE + CATALOG_ROOT[l.code] + c.slug + '/',
       'cat.urlRo': SITE + BASE + CATALOG_ROOT.ro + c.slug + '/',
@@ -4504,12 +4517,14 @@ servicePairs.push(...categoryPairs);
 fs.writeFileSync('dist/sitemap.xml',
   '<?xml version="1.0" encoding="UTF-8"?>\n' +
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +
-  pages.concat(extraPages).map((p) => '  <url>\n' +
+  /* AMENDED (W28-17): each entry names ITS OWN pair as alternates. The privacy pages used to name
+     the home pages as theirs, which is what a symmetric hreflang check refuses. */
+  pages.concat(extraPages).map((p, k, all) => { const set = k < pages.length ? pages : extraPages; return '  <url>\n' +
     `    <loc>${p.loc}</loc>\n` +
-    pages.map((a) => `    <xhtml:link rel="alternate" hreflang="${a.lang}" href="${a.loc}"/>\n`).join('') +
-    `    <xhtml:link rel="alternate" hreflang="x-default" href="${pages[0].loc}"/>\n` +
+    set.map((a) => `    <xhtml:link rel="alternate" hreflang="${a.lang}" href="${a.loc}"/>\n`).join('') +
+    `    <xhtml:link rel="alternate" hreflang="x-default" href="${set[0].loc}"/>\n` +
     (p.lastmod ? `    <lastmod>${p.lastmod}</lastmod>\n` : '') +
-    '    <changefreq>monthly</changefreq>\n  </url>\n').join('') +
+    '    <changefreq>monthly</changefreq>\n  </url>\n'; }).join('') +
   servicePairs.flatMap((pair) => ['ro', 'ru'].map((lang) => '  <url>\n' +
     `    <loc>${pair[lang]}</loc>\n` +
     `    <xhtml:link rel="alternate" hreflang="ro" href="${pair.ro}"/>\n` +
@@ -4621,7 +4636,7 @@ fs.writeFileSync('dist/sitemap.xml',
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fotografii reținute · Rapid Construct</title>
 <meta name="description" content="Pagină internă. Cele cinci fotografii reținute de la publicare, cu motivul fiecăreia.">
-<meta name="robots" content="noindex, nofollow">\n<meta name="build-sha" content="${BUILD_SHA}">
+<meta name="robots" content="noindex, nofollow">\n<meta name="build-sha" content="${BUILD_SHA}">\n<link rel="canonical" href="${SITE}${BASE}/review/">\n<meta property="og:type" content="website">\n<meta property="og:title" content="Fotografii reținute · Rapid Construct">\n<meta property="og:description" content="Pagină internă. Cele cinci fotografii reținute de la publicare, cu motivul fiecăreia.">\n<meta property="og:url" content="${SITE}${BASE}/review/">\n<meta property="og:locale" content="ro_MD">\n<meta property="og:image" content="${SITE}${BASE}/img/og-image.jpg">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F65308">
 <link rel="stylesheet" href="${BASE}/styles.css">
 <style>

@@ -14126,3 +14126,28 @@ service and names no sub-services, so it does not change; the acceptance's path
 **Measured.** `scripts/dom-text.js` on the built page, diacritics folded: each Romanian phrase
 appears exactly once, each Russian phrase exactly once. R-X and the catalogue gate read the new
 strings clean.
+
+## W28-17 · Technical SEO on every page, and gate 33, 2026-09-24
+
+Branch `w28/w28-17-technical-seo`, stacked on W28-16. Under the wave 28 dispatch.
+
+**Measured first, with the gate written before the fixes.** `scripts/seo-check.js` on the tree
+before this card: 85 pages; 19 without Open Graph or Twitter tags (the 14 redirect pages, the two
+privacy pages, the two 404 pages, the review page), 17 without alternates, 3 without a canonical,
+3 Russian titles at exactly 60 characters, 4 duplicate title pairs (each redirect page carried its
+target's title; the roofing catalogue page carried the service page's), and the sitemap naming the
+two HOME pages as the alternates of the two privacy pages, a defect no earlier check read.
+
+**What ships.** Every template's head carries the full set: the redirect template gains both
+alternates, the Open Graph set and a title of its own (the target's name plus "Catalog"); the
+privacy and 404 templates gain what they lacked; the review page too; the roofing catalogue page's
+title starts with the Catalog word; the four title ladders in `build.js` test "under 60" rather
+than "at most 60" and the Russian home title is one word shorter ("..., Chișinău" for "în
+Chișinău"); the catalogue index description keeps as many category labels as fit (it had fallen to
+the bare word "Catalog" once ten categories no longer fit); the sitemap writes each entry's OWN
+pair as its alternates. The OG image is the existing `og-image.jpg`, 1200x630 by its bytes, and
+each service page keeps its own cover. Nothing moves on any page, so no budget moves.
+
+**Gate 33.** `node scripts/seo-check.js` reads the built output and nothing else, exits 0 on the
+card's tree with 85 distinct titles and 66 sitemap URLs each answering 200, and is registered in
+`quality.yml`; `quality` runs 32 commands.

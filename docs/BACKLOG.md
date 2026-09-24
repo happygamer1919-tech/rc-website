@@ -1413,3 +1413,12 @@ W28-28. Two owner answers recorded as R-W28-14 and R-W28-15. Documents only.
 ## W28-R6 · The closing report W28-FINAL-RUN-3 and the board sync
 **Status: board sync, not a card** (opened 2026-09-24). `docs/reports/W28-FINAL-RUN-3.md`; the board JSON names #188 to #191;
 the artifact is republished from `main` after this merges. Documents only.
+
+## W28-R7 · The fifth dispatch: R-W28-16, cards W28-30 and W28-31
+**Status: board sync, not a card** (opened 2026-09-24). Documents only.
+
+## W28-30 · Copertine placement: out of the Catalog, the cards below the gallery
+**Status: todo.** The copertine Catalog group (tile, menu row, chip and count) leaves the Catalog; the twelve cards stay on the service page with their buttons.
+
+## W28-31 · Wave close: CRITIC, W28-REVIEW, fix cards, W28-FINAL-RUN-4
+**Status: todo.** At most five fix cards, defects only, W28-FIX-03 onward.

@@ -14089,3 +14089,21 @@ CAT-0185 show one picture, as the supplier's pages do (noted in Q-W28-03).
 **Two chat instructions arrived during this card and are recorded as R-W28-04 (the phone hero
 matches the desktop hero, card W28-22) and R-W28-05 (services versus catalog, which W28-13 had
 already shipped as #171) in `docs/rulings/W28-R.md`.**
+
+## W28-22 · The phone hero matches the desktop hero, under R-W28-04, 2026-09-24
+
+Branch `w28/w28-22-phone-hero`, stacked on W28-15. Owner chat instruction of 2026-09-24 00:45 UTC,
+recorded verbatim as R-W28-04.
+
+**Measured first, at 390 and 1440, on the built tree.** The hero renders the same five children at
+both widths and hides nothing (eyebrow, heading, sub-line, the three stat cards, the two panels).
+What differed was composition: the desktop hero is centred and shows the three stats in one row;
+the phone hero was left-aligned (`.hero { text-align: left }` under 512px since wave 12) with the
+stats stacked one per row, and the hero ran to 1,313px tall at 390.
+
+**What changes, in the phone rule only.** The phone hero is centred like the desktop one; the three
+stats keep one row (`.stats.grid--3` three tracks under 512px, numerals 28px, labels 13px); the
+claim card and the photograph stay stacked in the desktop's left-to-right order. Hero height at
+390: 1,313 to 1,147px. Nothing above 511px moves, so no desktop budget moves; gates 14 (heading
+fit at 360) and 28 (text contrast at 390) pass on the new rule. The floating WhatsApp and phone
+buttons sit over the claim card's right edge at 390 as they did before this card; not touched.

@@ -2306,11 +2306,15 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
      rhythm of 56px, which was already inside the intended range. */
   .hero { padding-top: 56px; }
   .hero .eyebrow { margin-bottom: 16px; }
-  .hero { text-align: left; }
-  .hero h1 { margin: 0 0 16px; }
-  .hero__sub { margin: 0 0 24px; }
+  /* W28-22 (R-W28-04): the phone hero matches the desktop hero: centred, the three stats in one
+     row at a smaller numeral, the claim card and the photograph stacked in the desktop order. */
+  .hero { text-align: center; }
+  .hero h1 { margin: 0 auto 16px; }
+  .hero__sub { margin: 0 auto 24px; }
   .stats { padding: 24px 0; margin-bottom: 24px; }
-  .stat__n { font-size: 32px; }
+  .stats.grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .stat__n { font-size: 28px; }
+  .stat__label { font-size: 13px; }
   .price-box { padding: 16px 20px; margin-bottom: 24px; }
   .price-box__title { font-size: 19px; }
   .cta-row { flex-direction: column; }

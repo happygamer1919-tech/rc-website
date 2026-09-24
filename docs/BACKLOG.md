@@ -1311,14 +1311,15 @@ on every record, the W24-R7 ask line on every card because imperlux.md publishes
 its count on the page, gate 31 holding the twelve. Four budgets move (R-Y).
 
 ## W28-15 · Fatade images from fatade3d.md product pages
-**Status: PR OPEN** (opened 2026-09-24). 110 fatade3d pictures looked at, 66 replaced by the
+**Status: PR OPEN #173** (opened 2026-09-24). 110 fatade3d pictures looked at, 66 replaced by the
 product page's own plain photograph through the intake (50 code renders, 14 tables, 2 flyers), 44
 kept, 0 without a photograph; a second adversarial look at all 66; three colour mismatches held in
 Q-W28-03; report `docs/reports/W28-FATADE-IMAGES.md`; gate 32 `scripts/check-image-sources.js`.
 0 budgets move.
 
 ## W28-22 · The phone hero matches the desktop hero (R-W28-04)
-**Status: todo.** Owner chat instruction 2026-09-24 00:45 UTC. Measured: nothing is hidden at 390;
+**Status: PR OPEN** (opened 2026-09-24). The phone rule centres the hero and keeps the three stats in
+one row; hero 1,313 to 1,147px at 390; no desktop budget moves. Owner chat instruction 2026-09-24 00:45 UTC. Measured: nothing is hidden at 390;
 the desktop hero is centred with the three stats in one row, the phone hero is left-aligned with
 the stats stacked one per row. The card centres the phone hero and keeps the stats in one row.
 

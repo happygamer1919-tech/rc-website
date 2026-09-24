@@ -202,7 +202,7 @@
       "priority": "normal",
       "owner_terminal": "yellow",
       "branch": "w28/w28-15-fatade-images",
-      "pr": null,
+      "pr": 173,
       "merge_sha": null,
       "depends_on": [
         "W28-14"
@@ -218,8 +218,8 @@
     {
       "id": "W28-22",
       "title": "The phone hero matches the desktop hero",
-      "lane": "queue",
-      "status": "todo",
+      "lane": "in_flight",
+      "status": "pr_open",
       "priority": "high",
       "owner_terminal": "yellow",
       "branch": "w28/w28-22-phone-hero",
@@ -229,7 +229,7 @@
         "W28-15"
       ],
       "ask": "Make sure the phone hero matches the pc hero",
-      "reading": "Owner chat instruction 2026-09-24 00:45 UTC, recorded as R-W28-04. Measured before the card at 390 and 1440: the hero renders the same five children at both widths and hides nothing; the desktop hero is centred (eyebrow, heading, sub-line, three stat cards in one row, the claim card and the photograph side by side), the phone hero is left-aligned with the stats stacked one per row and the panels stacked. The card centres the phone hero text and keeps the three stats in one row at a smaller numeral; the claim card and the photograph stay stacked in the desktop order.",
+      "reading": "Owner chat instruction 2026-09-24 00:45 UTC, recorded as R-W28-04. Measured before the card at 390 and 1440: the hero renders the same five children at both widths and hides nothing; the desktop hero is centred (eyebrow, heading, sub-line, three stat cards in one row, the claim card and the photograph side by side), the phone hero is left-aligned with the stats stacked one per row and the panels stacked. The card centres the phone hero text and keeps the three stats in one row at a smaller numeral; the claim card and the photograph stay stacked in the desktop order. Done: hero at 390 centred, stats in one row, 1,313 to 1,147px; heading fit and contrast pass; 0 desktop budgets move.",
       "acceptance": [
         "node build.js && node scripts/dom-text.js --count '.hero .stats .stat' / /ru/  -> 3 and 3 (unchanged)",
         "a probe at 390 (the session hero-shot.js): every .hero child visible, .hero text-align center, the .stats grid three column tracks; at 1440 the same  -> recorded in the card",

@@ -197,13 +197,13 @@
     {
       "id": "W28-15",
       "title": "Fatade images: plain product photographs from fatade3d.md, no posters, tables or overlays",
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "normal",
       "owner_terminal": "yellow",
       "branch": "w28/w28-15-fatade-images",
       "pr": 173,
-      "merge_sha": null,
+      "merge_sha": "31dc8c621a9be91f52843f444e88c9dc12f29ca2",
       "depends_on": [
         "W28-14"
       ],
@@ -213,7 +213,8 @@
         "test -f docs/reports/W28-FATADE-IMAGES.md && grep -c '^| CAT-' docs/reports/W28-FATADE-IMAGES.md  -> equals the number of fatade3d records with a picture (printed by the test)",
         "node scripts/check-image-sources.js  -> exit 0",
         "node scripts/check-asset-provenance.js  -> exit 0"
-      ]
+      ],
+      "evidence": "quality green; merged 2026-09-24 as 31dc8c6; section 12.0 EXIT=0 at 01:14:58Z"
     },
     {
       "id": "W28-22",
@@ -223,7 +224,7 @@
       "priority": "high",
       "owner_terminal": "yellow",
       "branch": "w28/w28-22-phone-hero",
-      "pr": null,
+      "pr": 174,
       "merge_sha": null,
       "depends_on": [
         "W28-15"
@@ -239,8 +240,8 @@
     {
       "id": "W28-16",
       "title": "Constructii industriale: two service lines, RO and RU",
-      "lane": "queue",
-      "status": "todo",
+      "lane": "in_flight",
+      "status": "pr_open",
       "priority": "normal",
       "owner_terminal": "yellow",
       "branch": "w28/w28-16-industrial-lines",
@@ -250,7 +251,7 @@
         "W28-15"
       ],
       "ask": "Add two service lines with one sentence each in RC voice, RO \"Depozite din constructie metalica\" and \"Montare panouri sandwich\", RU equivalents, on the service page and in the home services list if the list names sub-services. Acceptance: DOM grep for both RO phrases on /constructii-industriale returns 1 each, RU page likewise.",
-      "reading": "The industrial service page is /servicii/industrial/ (there is no /constructii-industriale/ route; the acceptance is read on the page that exists). The home services list carries one sentence per service and names no sub-services, so only the service page changes. The phrases render with the site's diacritics; the grep normalises them.",
+      "reading": "The industrial service page is /servicii/industrial/ (there is no /constructii-industriale/ route; the acceptance is read on the page that exists). The home services list carries one sentence per service and names no sub-services, so only the service page changes. The phrases render with the site's diacritics; the grep normalises them. Done: svcContent.industrial.lines (title plus one sentence, both locales) rendered as a list under the answer by a new svcLines() in build.js; each RO phrase once, each RU phrase once, measured; the home list unchanged.",
       "acceptance": [
         "node build.js && node scripts/dom-text.js /servicii/industrial/ | iconv -f utf-8 -t ascii//TRANSLIT | grep -c 'Depozite din constructie metalica'  -> 1",
         "node scripts/dom-text.js /servicii/industrial/ | iconv -f utf-8 -t ascii//TRANSLIT | grep -c 'Montare panouri sandwich'  -> 1",

@@ -1168,6 +1168,10 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 .hero .eyebrow { margin-bottom: 24px; }
 .hero h1 { max-width: 900px; margin: 0 auto 24px; text-wrap: pretty; }
 .hero__sub { max-width: 640px; margin: 0 auto 40px; }
+/* W28-16: named service lines under a service page's answer, a list of title plus one sentence. */
+.svc-lines { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 10px; max-width: 640px; }
+.svc-lines__item { color: var(--ink-muted); }
+.svc-lines__t { color: var(--ink); }
 
 .stats {
   padding: 32px 0;

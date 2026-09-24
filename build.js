@@ -370,7 +370,21 @@ const RELATED = require('./content/related-services.json');
 // paragraph. A one-line answer renders exactly as before.
 const svcAnswer = (l, slug) => l.strings[`svcContent.${slug}.answer`].split('\n')
   .map((line) => line.trim()).filter(Boolean)
-  .map((line) => `<p class="hero__sub svc-answer__p">${esc(line)}</p>`).join('\n        ');
+  .map((line) => `<p class="hero__sub svc-answer__p">${esc(line)}</p>`).join('\n        ')
+  + svcLines(l, slug);
+/* W28-16 (wave 28 dispatch): a service may carry named service LINES under its answer, each a
+   title and one sentence, from svcContent.<slug>.lines.N.{title,text}; the owner's own words
+   for the two industrial lines. Rendered as a list, the title once (the acceptance greps it
+   once), no heading, so the page's heading matrix does not move. Nothing else renders it. */
+function svcLines(l, slug) {
+  const items = [];
+  for (let i = 0; l.strings[`svcContent.${slug}.lines.${i}.title`] !== undefined; i++) {
+    const t = l.strings[`svcContent.${slug}.lines.${i}.title`], x = l.strings[`svcContent.${slug}.lines.${i}.text`];
+    if (!REAL(t) || !REAL(x)) die(`svcContent.${slug}.lines.${i} needs a real title and text in ${l.code}.`);
+    items.push(`          <li class="svc-lines__item"><strong class="svc-lines__t">${esc(t)}</strong> <span class="svc-lines__x">${esc(x)}</span></li>`);
+  }
+  return items.length ? `\n        <ul class="svc-lines">\n${items.join('\n')}\n        </ul>` : '';
+}
 
 /* A specification table, only where the page's own content already supports
    one. Six services have one; reparatii, proiectare-3d and industrial do not,

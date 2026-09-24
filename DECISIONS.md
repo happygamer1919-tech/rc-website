@@ -14241,3 +14241,31 @@ scene, the copertine type diagrams).
 **The contact page is the home page's footer**, so its Lighthouse row is the home row (D17 in
 W28-RUN). Every deviation from the dispatch, D1 to D18, is in `docs/reports/W28-RUN.md`. No page
 changes in this card: three reports, the board and its `.md`, this entry.
+
+## W28-FIX-01 · The hero stat labels read 14px on phones and tablets, 2026-09-24
+
+Branch `w28/w28-fix-01-stat-labels`, stacked on W28-21. From W28-REVIEW defect 1: W28-22's phone
+rule set `.stat__label` to 13px under 1024px so three stats fit one row at 390, and the review's
+crawl holds visible text to 14px; those 24 nodes were the only wave 28 text under it.
+
+**Measured first, at 320, 360, 390 and 768 in both locales, with the session's hero probe.** At
+14px every label fits at 360 and above. At 320 the Russian "завершённых" is 94px wide and its track
+91px (three equal tracks of 288 minus two 8px gaps), so the word spilled out of its column. The
+track rule takes a floor: `repeat(3, minmax(min-content, 1fr))`. Where the three fit, the tracks
+are equal as before (at 390: 114px each); where a word is wider than an equal share, that track
+takes the word's width and the other two share the rest (at 320 on the Russian page: 94, 89, 89).
+Nothing at 1440 changes: the labels are 17px there and the rule is inside the phone block.
+Result: three labels, all 14px, no label wider than its box, no hidden hero child, at every width
+measured; the Russian third label wraps to three lines at 320 and 360 (allowed by the card), the
+stats block 149px there against 127 before.
+
+**Found on the way, not this card's: the Russian header pill at 320.** The document still scrolls
+17px sideways at 320 on `/ru/`, on `main` today as well, because the header pill (305px) does
+not fit the header inner (337px): "Каталог", the phone icon and the menu button. No gate measures
+320 (gate 11 starts at 769, gate 14 and the crawl at 360 and 390). Whether 320 is a supported width
+is the owner's call: Q-W28-04, shipped default "360 stays the floor", and W28-FIX-02 on the board
+blocked on the answer.
+
+**Budgets.** All 55 budgeted pages re-measured at 1440, settled: 0 budgets move, because the rule
+sits inside the phone block and the labels are 17px at 1440. The crawl on this build reads 36 text
+nodes under 14px, all of them the SVG diagram labels; 0 pages scroll sideways at 390, 768 or 1440.

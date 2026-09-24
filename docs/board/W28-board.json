@@ -346,13 +346,13 @@
     {
       "id": "W28-21",
       "title": "Wave close: Lighthouse, W28-FINAL-RUN, the CRITIC pass with up to five fix cards, W28-REVIEW, W28-RUN",
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "normal",
       "owner_terminal": "yellow",
       "branch": "w28/w28-21-wave-close",
-      "pr": null,
-      "merge_sha": null,
+      "pr": 179,
+      "merge_sha": "4dc99bb486bb26b8628a6fded566249e6784ded1",
       "depends_on": [
         "W28-19"
       ],
@@ -363,13 +363,13 @@
         "node scripts/run-gates.js --keep-going  -> exit 0 on the final tree, the count printed"
       ],
       "owner_action": "After the last merge, send one real lead in RO and one in RU through the form.",
-      "evidence": "measured 02:00 to 02:17Z on the tree byte-identical to main 36669bd: 33 of 33 gate commands exit 0; crawl 83 pages x 3 widths, 0 dead links, 0 missing images, 0 console errors, 0 sideways scroll, 14 of 14 redirects, 30 of 30 forms; Lighthouse perf 97 to 99, a11y/bp/seo 100 on all 8 pages; one defect (stat labels 13px on phones, W28-22) = W28-FIX-01; five taste findings"
+      "evidence": "quality green; merged 2026-09-24 02:44:20Z as 4dc99bb; section 12.0 EXIT=0 at 02:47:22Z; measured 02:00 to 02:17Z on the tree byte-identical to main 36669bd: 33 of 33 gate commands exit 0; crawl 83 pages x 3 widths, 0 dead links, 0 missing images, 0 console errors, 0 sideways scroll, 14 of 14 redirects, 30 of 30 forms; Lighthouse perf 97 to 99, a11y/bp/seo 100 on all 8 pages; one defect (stat labels 13px on phones, W28-22) = W28-FIX-01; five taste findings"
     },
     {
       "id": "W28-FIX-01",
       "title": "The hero stat labels read 14px on phones and tablets (from W28-REVIEW)",
-      "lane": "queue",
-      "status": "todo",
+      "lane": "in_flight",
+      "status": "pr_open",
       "priority": "normal",
       "owner_terminal": "yellow",
       "branch": "w28/w28-fix-01-stat-labels",
@@ -382,9 +382,30 @@
       "reading": "One CSS value in the W28-22 phone block. Wrapping to a third line is allowed; overflow is not. Measured with the hero probe at 320, 390 and 768 in both locales: hidden children 0, scrollWidth equal to clientWidth, every .stat__label computed 14px. Budgets re-measured (the stats block may grow by one line on the Russian page).",
       "acceptance": [
         "node build.js && node scripts/dom-text.js --count \".stat__label\" / /ru/  -> 3 and 3",
-        "headless Chrome at 320, 390 and 768 on / and /ru/: every .stat__label getComputedStyle fontSize 14px, document.documentElement.scrollWidth <= clientWidth, 0 hidden hero children  -> printed and true",
+        "headless Chrome at 320, 360, 390 and 768 on / and /ru/: every .stat__label getComputedStyle fontSize 14px, no label wider than its box, 0 hidden hero children, and document.documentElement.scrollWidth <= clientWidth at 360 and above  -> printed and true (at 320 the Russian page scrolls 17px from the HEADER pill, on main today: Q-W28-04)",
         "the crawl at 390 and 768 on / and /ru/ counts 0 visible text nodes under 14px that are not SVG diagram labels",
         "node scripts/run-gates.js --keep-going  -> 33 of 33 exit 0"
+      ],
+      "evidence": "hero probe at 320, 360, 390, 768 both locales: 3 labels, all 14px, label overflow false everywhere (the track floor minmax(min-content, 1fr) keeps a 94px Russian word inside its 91px column at 320), 0 hidden hero children; 1440 unchanged at 17px. The Russian page still scrolls 17px sideways at 320 from the HEADER pill, on main today too (Q-W28-04, W28-FIX-02). Crawl on this build: 36 text nodes under 14px, all SVG labels; 0 sideways scroll at 390, 768, 1440. 0 budgets move."
+    },
+    {
+      "id": "W28-FIX-02",
+      "title": "The Russian header pill spills 17px at 320 (found by W28-FIX-01, below every gate's floor)",
+      "lane": "blocked_on_owner",
+      "status": "blocked",
+      "priority": "low",
+      "owner_terminal": "yellow",
+      "branch": null,
+      "pr": null,
+      "merge_sha": null,
+      "depends_on": [
+        "W28-FIX-01"
+      ],
+      "ask": "On /ru/ at 320px the header pill measures 305px inside a 337px header inner and the document scrolls 17px sideways; the Romanian page fits. Found while proving W28-FIX-01; present on main today.",
+      "reading": "Below the smallest width any gate measures (gate 11 starts at 769, gate 14 and the crawl at 360 and 390), so whether 320 is a supported width is the owner's call: Q-W28-04. If yes, the card tightens the phone header at under 340 (the Каталог button or the pill padding) and adds 320 to gate 14's matrix so it stays fixed; if no, the card closes with the floor recorded as 360.",
+      "acceptance": [
+        "blocked on Q-W28-04",
+        "if worked: at 320 on / and /ru/ document.documentElement.scrollWidth equals clientWidth and the header pill fits inside the viewport; gate 14 measures 320 as well as 360 and 1280; 33 of 33 gates exit 0"
       ]
     }
   ]

@@ -14,8 +14,10 @@ wraps to two lines at 390); a third line is allowed, clipping or a sideways scro
 ## Acceptance
 
 - `node build.js && node scripts/dom-text.js --count ".stat__label" / /ru/`: 3 and 3.
-- Headless Chrome at 320, 390 and 768 on `/` and `/ru/`: every `.stat__label` computed font-size
-  14px, `scrollWidth <= clientWidth`, 0 hidden hero children; printed.
+- Headless Chrome at 320, 360, 390 and 768 on `/` and `/ru/`: every `.stat__label` computed font-size
+  14px, no label wider than its box, 0 hidden hero children, and `scrollWidth <= clientWidth` at 360
+  and above; printed. (At 320 the Russian page scrolls 17px from the header pill, on `main` today as
+  well: Q-W28-04, W28-FIX-02.)
 - The crawl at 390 and 768 on `/` and `/ru/` counts 0 visible text nodes under 14px that are not the
   SVG diagram labels.
 - Budgets re-measured; any that move go to R-Y.

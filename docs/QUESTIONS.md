@@ -3520,3 +3520,22 @@ under the same direct-supplier licence. Say the word and it is one small card.
 **Also noted by the second look:** fatade3d.md publishes one and the same render for RED 69 and
 RED 70 (CAT-0184 and CAT-0185), so those two cards show one picture, as the supplier's own pages do.
 If you would rather the second card declared the reuse (W25-R17) or showed nothing, say which.
+
+## Q-W28-04 · Is 320px a supported width? The Russian header spills 17px there · OPEN · opened 2026-09-24 (W28-FIX-01)
+
+**Raised W28-FIX-01, 2026-09-24. Shipped default: nothing changes at 320; the tested floor stays 360,
+which is the smallest width any gate measures. W28-FIX-02 is on the board, blocked on this answer.**
+
+**What was measured.** Proving W28-FIX-01 at 320px (the width of the 2016 iPhone SE and of a few small
+Android phones; 360 and 375 are the common floors), the Russian home page scrolls 17px sideways: the
+header pill measures 305px inside a header inner of 337px, because "Каталог", the phone icon and the
+menu button do not fit the pill at that width. The Romanian page fits (320 of 320). It is the same on
+`main` today, so it is not this card's doing; no gate measures 320 (gate 11, the header fit, starts at
+769; gate 14 and the crawl read 360 and 390), which is how it has never been seen.
+
+**Recommended default: 360 stays the floor**, and the card closes with that recorded. Nearly every phone
+sold since 2017 is 360 or wider, and holding the header to 320 means either a shorter button label in
+Russian or a tighter pill, both of which cost the common widths a little for the rare one.
+
+**If 320 is to be supported**, W28-FIX-02 tightens the phone header under 340 (the button's padding or
+its label) and adds 320 to gate 14's matrix so it stays fixed; one small card.

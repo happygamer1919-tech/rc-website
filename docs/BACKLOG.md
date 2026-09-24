@@ -1349,7 +1349,7 @@ four per locale corrected from a thirty-year warranty to W25-22's five; all 55 b
 half is done by W28-11 under R-W28-03.
 
 ## W28-21 · Wave close: Lighthouse, W28-FINAL-RUN, the review, W28-RUN
-**Status: PR OPEN** (opened 2026-09-24). Measured on the tree byte-identical to `main` at `36669bd`: 33 of 33
+**Status: MERGED #179, section 12.0 exit 0** (opened 2026-09-24, merged 02:44 UTC as `4dc99bb`). Measured on the tree byte-identical to `main` at `36669bd`: 33 of 33
 gate commands exit 0; the crawl (83 pages at three widths) finds 0 dead links, 0 missing images, 0 console
 errors, 0 sideways scroll, 14 of 14 redirects, 30 of 30 forms; Lighthouse performance 97 to 99 with 100 on
 accessibility, best practices and SEO on all eight pages. One defect, W28-FIX-01. Reports:
@@ -1357,5 +1357,11 @@ accessibility, best practices and SEO on all eight pages. One defect, W28-FIX-01
 
 
 ## W28-FIX-01 · The hero stat labels read 14px on phones and tablets
-**Status: todo**, from W28-REVIEW defect 1 (W28-22 set them to 13px under 1024). Raise to 14px and prove
-the Russian labels fit three in a row at 320 and 390 without clipping; budgets re-measured.
+**Status: PR OPEN** (opened 2026-09-24), from W28-REVIEW defect 1. 14px, and the phone stat tracks take a
+min-content floor so a 94px Russian word cannot spill out of a 91px column at 320; measured at 320, 360,
+390 and 768 in both locales: no label overflow, no hidden hero child. 0 budgets move; the crawl reads 36 small-text nodes, all SVG labels.
+
+## W28-FIX-02 · The Russian header pill spills 17px at 320
+**Status: blocked** on Q-W28-04 (is 320 a supported width?). Found while proving W28-FIX-01; present on
+`main` today; below the smallest width any gate measures (769 for the header, 360 for headings, 390 for
+the crawl). Not worked until the owner answers.

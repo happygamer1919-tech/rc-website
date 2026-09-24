@@ -96,7 +96,7 @@ const ALL_FILLED = !hub.length && !fence.length;
 if (ALL_FILLED) {
   /* W28-23 (R-W28-06, Q-W28-06): a catalogue slot with no mark-free stock photograph in the allowed
      set waits as a placeholder, named here with its question; it is not a slot the walk missed. */
-  const WAITING = { 'CAT-0221': 'Q-W28-06' };
+  const WAITING = {}; /* CAT-0221 waited under Q-W28-06 until W28-26; nothing waits now */
   const empty = ledger.slots.filter((r) => r.state !== 'filled' && !WAITING[r.id]).map((r) => r.id);
   const waiting = ledger.slots.filter((r) => r.state !== 'filled' && WAITING[r.id]).map((r) => `${r.id} (${WAITING[r.id]})`);
   if (waiting.length) console.log(`waiting as a placeholder, named: ${waiting.join(', ')}`);

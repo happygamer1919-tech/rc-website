@@ -4050,12 +4050,13 @@
       "page": "/catalog/alte-materiale/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Membrana de difuzie pentru acoperisuri, fotografie generica fara nicio marca (R-W28-06). Niciuna gasita in setul permis pana la W28-23 (Q-W28-06); slotul asteapta.",
-      "state": "placeholder",
+      "shows": "Fotografia proprietarului (transfer direct, 24.09.2026): rulou de membrana de difuzie, fara nicio marca. Inlocuieste placeholderul W28-23 (Q-W28-06 raspuns).",
+      "state": "filled",
       "alt": {
-        "ro": "Membrana de DIFUZIE pentru acoperișuri, produsul",
-        "ru": "ДИФФУЗИОННАЯ мембрана для крыш, продукт"
-      }
+        "ro": "Membrană de difuzie pentru acoperișuri, rulou cu fața gri și spatele negru",
+        "ru": "Диффузионная мембрана для крыш, рулон с серой лицевой и чёрной изнаночной стороной"
+      },
+      "provenance": "public/img/catalog/CAT-0221.webp"
     },
     {
       "id": "CAT-0222",
@@ -4075,12 +4076,12 @@
       "page": "/catalog/alte-materiale/",
       "ratio": "1 / 1",
       "min_px": "1200x1200",
-      "shows": "Fotografie generica de tip \"corner-bead\" (R-W28-06): A worker seen from behind presses a metal edge profile into the corner where a plasterboard wall meets the ceiling.. A stat pe fatade3d.md pana la W28-23 (public/img/catalog/CAT-0223.jpg).",
+      "shows": "Fotografia proprietarului (transfer direct, 24.09.2026): coltar PVC perforat, fara nicio marca. Inlocuieste fotografia stock W28-23 pe care proprietarul a refuzat-o.",
       "state": "filled",
       "provenance": "public/img/catalog/CAT-0223.webp",
       "alt": {
-        "ro": "Muncitor fixează un profil metalic de colț la îmbinarea dintre peretele de gips-carton și tavan.",
-        "ru": "Рабочий закрепляет металлический угловой профиль на стыке гипсокартонной стены и потолка."
+        "ro": "Colțar PVC perforat pentru tencuială, profil alb în unghi",
+        "ru": "Перфорированный ПВХ уголок для штукатурки, белый угловой профиль"
       }
     },
     {

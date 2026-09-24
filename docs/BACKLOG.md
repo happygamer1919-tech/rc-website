@@ -1371,9 +1371,13 @@ the crawl). Not worked until the owner answers.
 recorded as R-W28-06, R-W28-07, W28-23 and W28-24 with the dispatch quoted. Documents only.
 
 ## W28-25 · The hub tiles leave the Acoperisuri and Garduri service pages
-**Status: PR OPEN** (opened 2026-09-24). R-W28-08 (owner chat, 17:11 UTC, thirty-minute limit). Service pages
+**Status: MERGED #182, section 12.0 exit 0** (opened 2026-09-24, merged 17:30 UTC as `870727b`). R-W28-08 (owner chat, 17:11 UTC, thirty-minute limit). Service pages
 open with their hero; the roofing hub stays on the roofing catalogue page, the fence hub moves to the fence
 models page; gates 25 and 26 and the live markers follow; six budgets move.
+
+## W28-26 · The owner's photographs for the membrane and the corner bead
+**Status: PR OPEN** (opened 2026-09-24). R-W28-09; CAT-0221 filled, CAT-0223's stock picture replaced; the membrane
+file is 225x225, under the 450 floor, installed as instructed and flagged.
 
 ## W28-23 · Fatade product images: the 110 fatade3d.md pictures replaced by generic stock photographs
  w28/w28-23-fatade-stock-images

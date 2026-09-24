@@ -45,7 +45,7 @@ const HOST = 'fatade3d.md';
 const STOCK = 'stock library';
 /* Q-W28-06 (W28-23): a fatade-group slot with no mark-free photograph in the allowed set waits as a
    placeholder; it is named here with its question so the exception is visible and counted, never silent. */
-const PLACEHOLDER_WAITING = { 'CAT-0221': 'Q-W28-06' };
+const PLACEHOLDER_WAITING = {}; /* CAT-0221 waited under Q-W28-06 until the owner's own photograph landed (W28-26) */
 const ALLOWED = {
   'Pexels License': ['pexels.com', 'images.pexels.com'],
   'Unsplash License': ['unsplash.com', 'images.unsplash.com'],
@@ -86,6 +86,7 @@ function check({ products, ledger, prov, sources, galleries, exists }) {
     for (const u of [pr.source, pr.licenceUrl].join(' · ').split(' · ').map((s) => s.trim()).filter((s) => /^https?:/.test(s))) { const h = hostOf(u); if (h === HOST || (h && h.endsWith('.' + HOST))) { problems.push(`${where}: its picture ${row.provenance} stands on a ${HOST} row (${u}). R-W28-06: no fatade product image source host is ${HOST}.`); break; } }
     if (row.reuse_of) { counts.reuse++; continue; }
     if (pr.licence.includes(STOCK)) { counts.stock++; stockRowOk(row.provenance, pr.licence, pr.source, where); }
+    else if (/owned by Rapid Construct/.test(pr.licence)) counts.owner = (counts.owner || 0) + 1;
     else if (/manufacturer|packshot|google_pick|owner/.test(pr.licence)) counts.packshot++;
     else { counts.other++; problems.push(`${where}: licence "${pr.licence}" is neither the stock set nor a manufacturer or owner-picked origin`); }
   }
@@ -149,7 +150,7 @@ const sources = parseRows(fs.readFileSync(srcPath, 'utf8'));
 const galleries = JSON.parse(fs.readFileSync(path.join(ROOT, 'content/galleries.json'), 'utf8')).galleries || [];
 if (!products.length) fail('zero catalogue records'); if (!ledger.length) fail('zero ledger rows'); if (!prov.length) fail('zero provenance rows');
 const { problems, counts } = check({ products, ledger, prov, sources, galleries, exists: (f) => fs.existsSync(path.join(ROOT, f)) });
-console.log(`fatade-group records: ${counts.records}; files checked: ${counts.filesChecked}; pictures by origin: ${counts.stock} stock (R-W28-06), ${counts.packshot} manufacturer or owner-picked under W25-R1/W25-R20 (Q-W28-05, counted), ${counts.reuse} declared reuse, ${counts.other} other, ${counts.waiting || 0} waiting as a placeholder (Q-W28-06); stock gallery photographs: ${counts.galleryStock}; SOURCES rows: ${counts.sourcesRows}`);
+console.log(`fatade-group records: ${counts.records}; files checked: ${counts.filesChecked}; pictures by origin: ${counts.stock} stock (R-W28-06), ${counts.packshot} manufacturer or owner-picked under W25-R1/W25-R20 (Q-W28-05, counted), ${counts.reuse} declared reuse, ${counts.owner || 0} the owner's own photographs (client direct transfer, W28-26), ${counts.other} other, ${counts.waiting || 0} waiting as a placeholder; stock gallery photographs: ${counts.galleryStock}; SOURCES rows: ${counts.sourcesRows}`);
 if (!counts.records) fail('zero fatade-group records read');
 if (!counts.stock) fail('zero stock pictures on the fatade group, so the manifest assertion proved nothing (W28-23 installs 110)');
 if (problems.length) { console.error(`\n${problems.length} problem(s):`); problems.forEach((p) => console.error('  ' + p)); process.exit(1); }

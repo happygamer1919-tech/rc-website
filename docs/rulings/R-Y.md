@@ -1681,3 +1681,19 @@ identical:
 | `/ru/servicii/garduri/` | 5,657 | **6,046** | 5,717 to **6,106** |
 | `/catalog/materiale-acoperis/` | 4,217 | **19,380** | 4,277 to **19,440** |
 | `/ru/catalog/materiale-acoperis/` | 4,217 | **19,463** | 4,277 to **19,523** |
+
+## AMENDED (W28-14, wave 28): photographs on the twelve copertine models and a tenth catalogue tile, four budgets move
+
+Added 2026-09-24 by card W28-14, under the wave 28 dispatch. Nothing above this line moves.
+
+The copertine page's twelve model cards carry a 4:3 photograph each, the group chip and its
+status line; the catalogue index gains a tenth tile, a fourth row. All 55 budgeted pages
+re-measured at 1440, settled (reveals applied, 1,600ms), on the card's built tree; four move to
+measured plus 60 (W24-R4) and the other 51 read identical:
+
+| Page | Before (budget minus 60) | After | Budget |
+|---|---|---|---|
+| `/servicii/copertine/` | 7,299 | **8,105** | 7,359 to **8,165** |
+| `/ru/servicii/copertine/` | 7,376 | **8,182** | 7,436 to **8,242** |
+| `/catalog/` | 3,662 | **4,027** | 3,722 to **4,087** |
+| `/ru/catalog/` | 3,687 | **4,052** | 3,747 to **4,112** |

@@ -23,7 +23,9 @@
        node scripts/check-catalog-counts.js          the four assertions
        node scripts/check-catalog-counts.js --llms   W28-19: every catalogue group URL in dist/llms.txt
 
-   The copertine group (W28-14) is added by that card. Zero dependency. */
+   W28-14: the copertine group: the twelve model cards on /servicii/copertine/ (both locales)
+   equal content/copertine.json models carrying an image, and the page's own chip count says
+   the same number. Zero dependency. */
 
 const fs = require('fs');
 const path = require('path');
@@ -35,9 +37,10 @@ const problems = [];
 const bad = (m) => problems.push(m);
 
 /* The recorded numbers, from the board card W28-13 (docs/board/W28-board.json). */
-const RECORDED = { roofingCards: 99, roofingTiles: 9, roofingFilters: 7, fenceCards: 8 };
+const RECORDED = { roofingCards: 99, roofingTiles: 9, roofingFilters: 7, fenceCards: 8, copertineCards: 12 };
 const ROOF_PAGE = { ro: 'catalog/materiale-acoperis/index.html', ru: 'ru/catalog/materiale-acoperis/index.html' };
 const FENCE_PAGE = { ro: 'servicii/modele-garduri/index.html', ru: 'ru/servicii/modele-garduri/index.html' };
+const COP_PAGE = { ro: 'servicii/copertine/index.html', ru: 'ru/servicii/copertine/index.html' };
 const SERVICE_PAGES = ['servicii/acoperisuri/index.html', 'ru/servicii/acoperisuri/index.html', 'servicii/garduri/index.html', 'ru/servicii/garduri/index.html'];
 
 if (!fs.existsSync(DIST)) fail('no dist/, run: node build.js');
@@ -46,6 +49,9 @@ const count = (html, re) => (html.match(re) || []).length;
 
 const sections = JSON.parse(fs.readFileSync(path.join(ROOT, 'content/roofing-sections.json'), 'utf8'));
 const fences = JSON.parse(fs.readFileSync(path.join(ROOT, 'content/garduri-modele.json'), 'utf8'));
+const cop = JSON.parse(fs.readFileSync(path.join(ROOT, 'content/copertine.json'), 'utf8'));
+const copWithImage = (cop.models || []).filter((m) => m.image && m.image.slot).length;
+if (!copWithImage) fail('content/copertine.json has no model with an image slot');
 if (!Array.isArray(sections.groups) || !sections.groups.length) fail('content/roofing-sections.json has no groups');
 if (!Array.isArray(fences.models) || !fences.models.length) fail('content/garduri-modele.json has no models');
 
@@ -71,6 +77,15 @@ for (const loc of ['ro', 'ru']) {
   out.push(`${loc} fence models: ${nvk} cards, data has ${fences.models.length}`);
   if (nvk !== fences.models.length) bad(`${FENCE_PAGE[loc]}: ${nvk} fence cards, content/garduri-modele.json has ${fences.models.length}`);
   if (nvk !== RECORDED.fenceCards) bad(`${FENCE_PAGE[loc]}: ${nvk} fence cards, the card records ${RECORDED.fenceCards}`);
+  const cp = read(COP_PAGE[loc]); pagesRead++;
+  const copCards = count(cp, /<article class="model"[^>]*data-product-card/g);
+  const copChip = cp.match(/data-roof-filter="copertine"[^>]*>[^<]*<span class="roof-filter__n">(\d+)<\/span>/);
+  const copChipN = copChip ? Number(copChip[1]) : null;
+  out.push(`${loc} copertine: ${copCards} model cards, chip count ${copChipN === null ? 'MISSING' : copChipN}, data has ${copWithImage} with a picture`);
+  if (copChipN === null) bad(`${COP_PAGE[loc]}: no copertine chip with a count`);
+  else if (copChipN !== copCards) bad(`${COP_PAGE[loc]}: the chip says ${copChipN} and ${copCards} cards render`);
+  if (copCards !== copWithImage) bad(`${COP_PAGE[loc]}: ${copCards} model cards, content/copertine.json has ${copWithImage} models with a picture`);
+  if (copCards !== RECORDED.copertineCards) bad(`${COP_PAGE[loc]}: ${copCards} copertine cards, the card records ${RECORDED.copertineCards}`);
 }
 for (const rel of SERVICE_PAGES) {
   const html = read(rel); pagesRead++;
@@ -96,4 +111,4 @@ if (process.argv.includes('--llms')) {
 console.log(`pages read: ${pagesRead}`);
 out.forEach((l) => console.log('  ' + l));
 if (problems.length) { console.error(`\n${problems.length} problem(s):`); problems.forEach((p) => console.error('  ' + p)); process.exit(1); }
-console.log(`roofing cards ${RECORDED.roofingCards}, tiles ${RECORDED.roofingTiles}, filters ${RECORDED.roofingFilters}, fence cards ${RECORDED.fenceCards}, both locales, and no product card or price on a service page.`);
+console.log(`roofing cards ${RECORDED.roofingCards}, tiles ${RECORDED.roofingTiles}, filters ${RECORDED.roofingFilters}, fence cards ${RECORDED.fenceCards}, copertine cards ${RECORDED.copertineCards}, both locales, and no product card or price on a service page.`);

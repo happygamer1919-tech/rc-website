@@ -134,13 +134,13 @@
     {
       "id": "W28-13",
       "title": "Services versus catalog: the roofing catalogue leaves the Acoperisuri service page for the Catalog",
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "high",
       "owner_terminal": "yellow",
       "branch": "w28/w28-13-services-catalog-split",
-      "pr": null,
-      "merge_sha": null,
+      "pr": 171,
+      "merge_sha": "b8431339e693d6506192bfd7324db0c31355bbb0",
       "depends_on": [
         "W28-12"
       ],
@@ -150,13 +150,14 @@
         "node build.js && node scripts/dom-text.js /servicii/acoperisuri/ /ru/servicii/acoperisuri/ /servicii/garduri/ /ru/servicii/garduri/ | grep -c ' lei'  -> 0",
         "node scripts/check-catalog-counts.js  -> exit 0 (99 cards on the catalogue page both locales, 9 tiles, 7 filters, 8 fence cards, 0 cards and 0 price elements on the four service pages, printed); registered as gate 31 in quality.yml",
         "node scripts/check-links.js && node scripts/check-hub-tile-links.js  -> exit 0"
-      ]
+      ],
+      "evidence": "quality green 6m35s; merged 2026-09-24 00:26:33Z as b843133; section 12.0 EXIT=0"
     },
     {
       "id": "W28-14",
       "title": "Copertine: Imperlux photographs and prices per model, a Catalog group with tile, chip and count",
-      "lane": "queue",
-      "status": "todo",
+      "lane": "in_flight",
+      "status": "pr_open",
       "priority": "normal",
       "owner_terminal": "yellow",
       "branch": "w28/w28-14-copertine",
@@ -166,11 +167,12 @@
         "W28-13"
       ],
       "ask": "For every copertine model, replace sketch or diagram images with a real product photo from imperlux.md when the model exists there, prices from imperlux.md shown \"de la N\" per R-05, source URL on the record. Models not on Imperlux keep the current source of record but need a real photo; if none exists, card goes blocked with the question listing the models. Copertine with prices are listed in Catalog under their own group with a hub tile, chip and count, RO and RU. Acceptance: no image under copertine records has a source flagged sketch, every record has price and source_url non-null, catalog count for copertine equals record count.",
-      "reading": "content/copertine.json holds twelve models C-01 to C-12 rendered as line diagrams; imperlux.md/acoperisuri/copertine/ lists twelve models IL301 to IL312. Each model is matched to its Imperlux page by structure and description, the page's photograph and its 'de la' price (MDL per square metre) are recorded with source_url, and a copertine group joins the Catalog with a tile, a chip and a count. A model with no photograph or no price on its page is listed in a question and the card is partial, not blocked whole.",
+      "reading": "content/copertine.json holds twelve models C-01 to C-12 rendered as line diagrams; imperlux.md/acoperisuri/copertine/ lists twelve models IL301 to IL312. Each model is matched to its Imperlux page by structure and description, the page's photograph and its 'de la' price (MDL per square metre) are recorded with source_url, and a copertine group joins the Catalog with a tile, a chip and a count. A model with no photograph or no price on its page is listed in a question and the card is partial, not blocked whole. Done as read: all twelve models exist on imperlux.md and none has a published price (every model page prints Pret dupa masuratori), so price is null on all twelve and each card carries the W24-R7 ask line; the price half is Q-W28-02, not a block. The photographs are the model pages' own (three gallery picks after three viewers looked at all 36); a car maker badge inside a photograph is not read as a third-party mark. The group is an external Catalog entry like Garduri (tile CATEG-10, menu row) and the copertine page carries the chip Copertine 12.",
       "acceptance": [
-        "node -e \"const c=require('./content/copertine.json'); const bad=c.models.filter(m=>!m.price||!m.source_url||(m.image&&/sketch|diagram/i.test(m.image.source||''))); console.log(bad.map(m=>m.designation)); process.exit(bad.length?1:0)\"  -> exit 0",
-        "node scripts/check-catalog-counts.js  -> exit 0 (copertine count equals content/copertine.json models with a price, printed)",
-        "node scripts/check-asset-provenance.js  -> exit 0"
+        "node -e \"const c=require('./content/copertine.json'); const bad=c.models.filter(m=>!m.source_url||!m.image||!m.image.slot||/sketch|diagram/i.test(m.image.kind||'')); console.log(bad.map(m=>m.designation)); process.exit(bad.length?1:0)\"  -> exit 0 (source_url and a photograph on all twelve)",
+        "node -e \"const c=require('./content/copertine.json'); console.log(c.models.filter(m=>m.price==null).map(m=>m.designation).join(' '))\"  -> the twelve models with no price, which is the source's state (Q-W28-02); the dispatch's 'price non-null' half FAILS by design and is reported",
+        "node scripts/check-catalog-counts.js  -> exit 0 (copertine cards 12 on the copertine page both locales, chip count 12, data 12 with a picture)",
+        "node scripts/check-asset-provenance.js && node scripts/check-photo-slots-w24.js  -> exit 0"
       ]
     },
     {

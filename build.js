@@ -2058,7 +2058,10 @@ ${cards}
 const COP_FILE = 'content/copertine.json';
 const COP = JSON.parse(fs.readFileSync(COP_FILE, 'utf8'));
 if (!Array.isArray(COP.families) || !Array.isArray(COP.models)) die(`${COP_FILE} needs "families" and "models" arrays.`);
-if (/\bIL\s?\d{3}\b/i.test(JSON.stringify({ families: COP.families, models: COP.models }))) {
+/* AMENDED (W28-14): the guard reads the RENDERED fields only. A model's source_url and image
+   source name imperlux.md's own page and file, which carry the maker's code by construction
+   (the fence data's guard excludes its source block the same way, W26-09). */
+if (/\bIL\s?\d{3}\b/i.test(JSON.stringify({ families: COP.families, models: COP.models.map((m) => ({ designation: m.designation, category: m.category, descriptor: m.descriptor })) }))) {
   die(`${COP_FILE} still carries a competitor model code (IL followed by three digits). Models use Rapid Construct designations.`);
 }
 (() => {
@@ -2103,11 +2106,9 @@ const COP_DIAGRAMS = {
   // A wall carries the roof, with a brace and no posts.
   wall: copSvg(copLine(20, 12, 20, 88) + copLine(20, 34, 146, 40, true) + copLine(20, 62, 72, 37)),
   // Two posts under a roof pitched both ways.
-  gable: copSvg('<polyline class="d-accent" points="16,50 80,22 144,50" vector-effect="non-scaling-stroke"/>' + copLine(30, 44, 30, 88) + copLine(130, 44, 130, 88)),
   // Two posts under a curved roof.
   arched: copSvg('<path class="d-accent" d="M16 50 Q80 2 144 50" vector-effect="non-scaling-stroke"/>' + copLine(30, 44, 30, 88) + copLine(130, 44, 130, 88)),
   // Raked posts, each foot outside its head, under a roof that runs past both.
-  inclined: copSvg(copLine(12, 34, 148, 34, true) + copLine(40, 34, 28, 88) + copLine(120, 34, 132, 88)),
   // A deep roof slab on two off-centre posts: 42px of overhang left, 22 right.
   architectural: copSvg('<polyline class="d-accent" points="10,36 10,26 150,26 150,36" vector-effect="non-scaling-stroke"/>' + copLine(52, 36, 52, 88) + copLine(128, 36, 128, 88)),
 };
@@ -2129,12 +2130,13 @@ const COP_DIAGRAMS = {
    Every family and model must be mapped and every diagram used, or the build
    fails. The posts drawing is still used, by C-01, C-05, C-08 and the family
    tile. */
-const COP_MODEL_DIAGRAM = { c01: 'posts', c02: 'cantilever', c03: 'wall', c04: 'gable', c05: 'posts', c06: 'arched', c07: 'arched', c08: 'posts', c09: 'cantilever', c10: 'inclined', c11: 'architectural', c12: 'architectural' };
+/* ~~const COP_MODEL_DIAGRAM = { c01: 'posts', c02: 'cantilever', c03: 'wall', c04: 'gable', c05: 'posts', c06: 'arched', c07: 'arched', c08: 'posts', c09: 'cantilever', c10: 'inclined', c11: 'architectural', c12: 'architectural' };~~ AMENDED (W28-14): model cards carry photographs; the family tiles keep their diagrams. */
 const COP_FAMILY_DIAGRAM = { stalpi: 'posts', consola: 'cantilever', perete: 'wall', arcuita: 'arched', arhitecturala: 'architectural' };
 (() => {
-  const unmapped = [...COP.models.filter((m) => !COP_DIAGRAMS[COP_MODEL_DIAGRAM[m.id]]).map((m) => m.id), ...COP.families.filter((f) => !COP_DIAGRAMS[COP_FAMILY_DIAGRAM[f.id]]).map((f) => f.id)];
-  if (unmapped.length) die(`${COP_FILE}: no diagram for ${unmapped.join(', ')}.`);
-  const used = new Set([...Object.values(COP_MODEL_DIAGRAM), ...Object.values(COP_FAMILY_DIAGRAM)]);
+  /* AMENDED (W28-14): the model cards carry photographs, so only the family tiles are held to
+     the diagram table, and a diagram no family uses is a dead one. */
+  const unmapped = COP.families.filter((f) => !COP_DIAGRAMS[COP_FAMILY_DIAGRAM[f.id]]).map((f) => f.id);
+  const used = new Set(Object.values(COP_FAMILY_DIAGRAM));
   const unused = Object.keys(COP_DIAGRAMS).filter((k) => !used.has(k));
   if (unused.length) die(`carport diagrams defined but used by no card: ${unused.join(', ')}.`);
 })();
@@ -2168,15 +2170,34 @@ function copertine(l) {
       </article>`;
   }).join('\n');
 
+  /* AMENDED (W28-14, wave 28 dispatch): a model card carries the model's own photograph from
+     imperlux.md (content/copertine.json image.slot, a filled ledger slot) instead of the line
+     diagram, and under the descriptor the W24-R7 ask shape, because imperlux.md publishes no
+     copertine price (price is null on every record; the day a figure lands it renders here in
+     the fence page's own shape, gardModele.priceFrom + a copertine-owned class). The cards are
+     product cards of the one group "copertine", so the chip above them counts them and
+     scripts/check-catalog-counts.js holds the count to the data. */
   const models = COP.models.map((m, i) => {
     const w = `models[${i}]`;
-    const media = copDiagram(l, COP_MODEL_DIAGRAM[m.id], m.id);
-    return `      <article class="model" data-reveal data-stagger="${Math.min(i, 6)}">
+    if (!m.image || !REAL(m.image.slot)) die(`${COP_FILE}: ${w} has no image.slot; every model card carries a photograph (W28-14).`);
+    if (!REAL(m.source_url)) die(`${COP_FILE}: ${w} has no source_url (W28-14).`);
+    const media = placeholder(m.image.slot, { variant: 'dark', className: 'model__ph', locale: l.code, eager: i < 3 });
+    const price = m.price == null
+      ? `<p class="prod__ask" data-product="${esc(m.designation)}">${esc(l.strings['catalogProducts.ask'])}</p>`
+      : die(`${COP_FILE}: ${w} carries a price; render it in a copertine-owned shape before shipping one (W28-14).`);
+    return `      <article class="model" data-product-card data-roof-groups="copertine" data-reveal data-stagger="${Math.min(i, 6)}">
         ${media}<p class="model__cat">${txt(m.category, `${w}.category`)}</p>
         <h3 class="model__name">${esc(m.designation)}</h3>
         <p class="model__desc">${txt(m.descriptor, `${w}.descriptor`)}</p>
+        ${price}
       </article>`;
   }).join('\n');
+  /* The group chip with its count (the dispatch's "chip and count"), the roofing filter bar's
+     own component with one button, pressed, and the status line it writes. */
+  const chip = `    <div class="roof-filter" role="group" aria-label="${esc(t('eyebrow'))}" data-roof-bar>
+        <button class="roof-filter__btn" type="button" id="mat-copertine" data-roof-filter="copertine" aria-pressed="true">${esc(t('eyebrow'))} <span class="roof-filter__n">${COP.models.length}</span></button>
+    </div>
+    <p class="roof-filter__status muted" data-roof-status data-roof-showing="${esc(l.strings['roofProducts.showing'])}" aria-live="polite">${esc(l.strings['roofProducts.showing'].replace('{n}', String(COP.models.length)))}</p>`;
 
   const steps = [0, 1, 2, 3].map((i) => `      <li class="csteps__step" data-reveal data-stagger="${i}">
         <span class="csteps__n" aria-hidden="true">${i + 1}</span>
@@ -2199,7 +2220,8 @@ ${tiles}
     <p class="eyebrow" data-reveal>${t('eyebrow')}</p>
     <h2 id="copertine-modele-h" data-reveal>${t('modelsH2')}</h2>
     <p class="lede cop-lede--dark" data-reveal>${t('modelsLede')}</p>
-    <div class="models">
+${chip}
+    <div class="models" data-roof-grid>
 ${models}
     </div>
   </div>
@@ -2354,6 +2376,9 @@ const PARENT_CATEGORIES = [
      and no catalogue page. Its slug is a label for this list only (the service slug `garduri`
      is taken and the collision check below would refuse it); nothing is emitted under it. */
   { slug: 'garduri-catalog',      i: 8, service: 'garduri', external: true },
+  /* W28-14: the copertine group, external like the fence one; its service is the copertine
+     product page, which the external-row guard below holds to a page this build emits. */
+  { slug: 'copertine-catalog',    i: 9, service: 'copertine', external: true },
 ];
 
 /* W24-04, finding F-03. Every subcategory gets a real page of its own, under its

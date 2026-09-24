@@ -200,6 +200,10 @@ const OVERRIDE_SLOTS = [
      which stand on imperlux.md under W27-R-17; a reuse of an overridden picture is the same
      picture, so the two slots are named here too. Still a permission, not a state. */
   'CATEG-08', 'CATEG-09',
+  /* W28-14 (wave 28 dispatch): the twelve copertine model photographs from imperlux.md's own
+     model pages (COPM-01 to COPM-12), and CATEG-10, the catalogue index tile that is a declared
+     reuse of COPM-01. */
+  'COPM-01', 'COPM-02', 'COPM-03', 'COPM-04', 'COPM-05', 'COPM-06', 'COPM-07', 'COPM-08', 'COPM-09', 'COPM-10', 'COPM-11', 'COPM-12', 'CATEG-10',
 ];
 
 /* The slot kinds R-W forbids a generated image on: a before/after pair and a

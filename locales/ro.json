@@ -226,17 +226,9 @@
         "name": "Schemă: copertină prinsă de perete",
         "desc": "Un perete vertical în stânga; acoperișul pornește din perete, ușor înclinat, și este sprijinit de o contrafișă, fără stâlpi."
       },
-      "gable": {
-        "name": "Schemă: copertină în două ape",
-        "desc": "Doi stâlpi verticali sub un acoperiș în două ape, cu coama la mijloc."
-      },
       "arched": {
         "name": "Schemă: copertină arcuită",
         "desc": "Doi stâlpi verticali sub un acoperiș curbat în arc."
-      },
-      "inclined": {
-        "name": "Schemă: copertină cu stâlpi înclinați",
-        "desc": "Doi stâlpi înclinați spre exterior, cu baza mai largă decât vârful, sub un acoperiș orizontal care îi depășește la ambele capete."
       },
       "architectural": {
         "name": "Schemă: copertină arhitecturală",

@@ -1295,7 +1295,7 @@ button in the header CTA's style at the foot of the portfolio section, both loca
 section-level CTAs to the form (header, after portfolio, footer). Two budgets move (R-Y).
 
 ## W28-13 · Services versus catalog split
-**Status: PR OPEN** (opened 2026-09-23). Pre-change counts recorded on the board: 99 roofing cards, 9 tiles, 7 chips
+**Status: MERGED #171, section 12.0 exit 0** (opened 2026-09-24, merged 00:26 UTC as `b843133`). Pre-change counts recorded on the board: 99 roofing cards, 9 tiles, 7 chips
 on `/servicii/acoperisuri/`; 8 fence model cards on `/servicii/modele-garduri/`. The whole roofing
 catalogue (product bento, filter bar with counts, compare tables, 99 cards) renders on
 `/catalog/materiale-acoperis/` in both locales; the service page keeps its hub, hero, "ce include",
@@ -1304,7 +1304,11 @@ the fence page gains one to the fence models. Gate 31, `scripts/check-catalog-co
 the counts. Budgets move (R-Y).
 
 ## W28-14 · Copertine: Imperlux photographs and prices, a Catalog group
-**Status: todo.**
+**Status: PR OPEN, partial by the source** (opened 2026-09-24). Twelve model photographs from
+imperlux.md's own model pages (COPM-01 to COPM-12, three viewers, three gallery picks), source_url
+on every record, the W24-R7 ask line on every card because imperlux.md publishes no copertine price
+(Q-W28-02 lists all twelve), the Copertine tile and menu row in the Catalog, the group chip with
+its count on the page, gate 31 holding the twelve. Four budgets move (R-Y).
 
 ## W28-15 · Fatade images from fatade3d.md product pages
 **Status: todo.**

@@ -14269,3 +14269,26 @@ blocked on the answer.
 **Budgets.** All 55 budgeted pages re-measured at 1440, settled: 0 budgets move, because the rule
 sits inside the phone block and the labels are 17px at 1440. The crawl on this build reads 36 text
 nodes under 14px, all of them the SVG diagram labels; 0 pages scroll sideways at 390, 768 or 1440.
+
+## W28-R2 · The second dispatch of wave 28: two rulings, two cards, one question, 2026-09-24
+
+Branch `w28/w28-r2-rulings-board`, on `main` at `9e9a921`. The dispatch of the early morning
+(UTC) brings two cards from the client review and asks for two rulings recorded as R-W28-04 and
+R-W28-05. **Both ids are taken** (the phone hero and the services-versus-catalog confirmation,
+merged and on the board) and so is the card id W28-22 (the phone hero, #174). The register is
+append-only under R-S, so the rulings are recorded as **R-W28-06** and **R-W28-07** and the cards
+as **W28-23** and **W28-24**, each quoting the dispatch; the report files keep the names the
+dispatch gave them.
+
+**Measured at boot, and what it decides.** The fatade group has no field: the only definition in
+code is `source.host === 'fatade3d.md'` (223 records); 110 of their pictures were fetched from
+fatade3d.md (the FATADE print is burned into three, CAT-0221 to CAT-0223, the products the
+dispatch names; eleven more show a maker's brand), 113 are manufacturer or owner-picked
+packshots. W28-23 replaces the 110 and keeps the 113 under Q-W28-05 (shipped default: kept). A
+catalogue record has no detail page in this build; the card is the surface. The four allowed
+stock sites refuse a scripted search (Pexels, Pixabay and Unsplash answer a bot challenge even to
+headless Chrome; Commons has almost no CC0 photograph of these subjects), so candidates are
+gathered through the owner's own Chrome, viewed by independent viewers, and fetched from the
+sites' file hosts by a zero-dependency intake. No WebP encoder exists here (Q-W25-01, "JPEG only,
+no new dependency"); the Chrome the gates run exports WebP from a canvas, which is the encoder
+W28-23 and W28-24 use and no new dependency. Documents only in this card.

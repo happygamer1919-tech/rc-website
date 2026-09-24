@@ -1357,7 +1357,7 @@ accessibility, best practices and SEO on all eight pages. One defect, W28-FIX-01
 
 
 ## W28-FIX-01 · The hero stat labels read 14px on phones and tablets
-**Status: PR OPEN** (opened 2026-09-24), from W28-REVIEW defect 1. 14px, and the phone stat tracks take a
+**Status: MERGED #180, section 12.0 exit 0** (opened 2026-09-24, merged 03:02 UTC as `9e9a921`), from W28-REVIEW defect 1. 14px, and the phone stat tracks take a
 min-content floor so a 94px Russian word cannot spill out of a 91px column at 320; measured at 320, 360,
 390 and 768 in both locales: no label overflow, no hidden hero child. 0 budgets move; the crawl reads 36 small-text nodes, all SVG labels.
 
@@ -1365,3 +1365,13 @@ min-content floor so a 94px Russian word cannot spill out of a 91px column at 32
 **Status: blocked** on Q-W28-04 (is 320 a supported width?). Found while proving W28-FIX-01; present on
 `main` today; below the smallest width any gate measures (769 for the header, 360 for headings, 390 for
 the crawl). Not worked until the owner answers.
+
+## W28-R2 · The second dispatch: R-W28-06, R-W28-07, the two cards, Q-W28-05
+**Status: PR OPEN** (opened 2026-09-24). The dispatch's R-W28-04, R-W28-05 and W28-22 were taken;
+recorded as R-W28-06, R-W28-07, W28-23 and W28-24 with the dispatch quoted. Documents only.
+
+## W28-23 · Fatade product images: the 110 fatade3d.md pictures replaced by generic stock photographs
+**Status: todo.** R-W28-06; the 113 manufacturer packshots kept under Q-W28-05.
+
+## W28-24 · Service galleries: ten stock pictures more per gallery, two new galleries, the examples heading
+**Status: todo.** R-W28-07; 115 stock pictures across eleven galleries.

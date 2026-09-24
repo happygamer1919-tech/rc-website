@@ -3539,3 +3539,24 @@ Russian or a tighter pill, both of which cost the common widths a little for the
 
 **If 320 is to be supported**, W28-FIX-02 tightens the phone header under 340 (the button's padding or
 its label) and adds 320 to gate 14's matrix so it stays fixed; one small card.
+
+## Q-W28-05 · Do the 113 manufacturer packshots in the fatade group stay, or does "no mark of any kind, the maker's included" reach them too? · OPEN · opened 2026-09-24 (W28-R2, for W28-23)
+
+**Raised at the second wave 28 dispatch, 2026-09-24. Shipped default: they stay. W28-23 replaces
+the 110 pictures fetched from fatade3d.md with generic stock photographs; the 113 whose picture is
+the manufacturer's own packshot (Phomi 83, Caparol 15, Domic 5, Dedeman 2, one each from eight
+others; 102 under the W25-R1 packshot licence and 11 owner-picked under W25-R20) keep their
+pictures and are counted, not licensed, by gate 32.**
+
+**Why the default.** R-W28-06 says "no mark of any kind, maker's included" for the fatade group,
+and the test rule says every fatade-group picture carries a licence from the stock set. Read to the
+letter, a Caparol bucket with its label is a maker's mark and a Phomi plate photograph from
+phomi.com is not a Pexels picture, so all 223 would go generic: 83 flexible plates of different
+colours would share a handful of "stone veneer" stock photographs, and the paint and render cards
+would show unbranded buckets that are not the product sold. The client's complaint was the
+supplier's FATADE print and the fatade3d.md renders, which W28-23 removes whole. A manufacturer's
+packshot shows the product as it is sold, under a licence the owner accepted on 2026-09-20.
+
+**If the answer is "they go too"**, it is one more card: 83 plate records need one colour-true
+picture each (no stock site has them; a colour-mismatch is already Q-W28-03), and 30 material
+records take the generic type photographs W28-23 installs, by reuse. Say which.

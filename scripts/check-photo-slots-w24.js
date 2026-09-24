@@ -141,7 +141,17 @@ const APPROVED_ORIGINS = [
      found by searching the library and fetched from the photo page. It names the
      permission, and LIBRARY_SLOTS below holds it to the slots W25-R23 means. */
   'licence-free library',
+  /* R-W28-06 (wave 28, W28-23). The stock set the owner allowed for the FATADE GROUP:
+     Pexels, Unsplash, Pixabay, Wikimedia Commons CC0 or public domain, Google Images under
+     the owner's two conditions. It names itself so a reader never confuses it with the
+     secondary-image library origin above, and STOCK_FATADE below holds it to the slots the
+     ruling means: a fatade-group record (source.host fatade3d.md) or a tile standing on one. */
+  'stock library',
 ];
+
+/* R-W28-06. A stock picture is a product picture ONLY on the fatade group. The set of slots
+   is computed from content/catalog-products.json at the real run and planted by the arms. */
+const STOCK_ORIGIN = 'stock library';
 
 /* W25-R23: "Secondary images: licence-free libraries only". A library picture is
    decoration, so it never fills a product, project or evidence slot; the
@@ -247,7 +257,7 @@ const MANUFACTURER_ORIGIN = 'manufacturer packshot';
    the module's own REAL_BRAND is initialised. */
 const REAL_FIELD = (v) => v !== null && v !== undefined && String(v).trim() !== '';
 
-function check(pages, rows, provenance, brandBySlot) {
+function check(pages, rows, provenance, brandBySlot, fatadeSlots) {
   const problems = [];
   const byId = new Map(rows.map((r) => [r.id, r]));
   const prov = provenance || new Map();
@@ -327,6 +337,13 @@ function check(pages, rows, provenance, brandBySlot) {
       }
       if (lic.includes(LIBRARY_ORIGIN) && !LIBRARY_SLOTS.includes(ph.id)) {
         problems.push({ id: 'library-not-secondary', text: `${ph.where} is filled from a licence-free library and is not one of the secondary slots W25-R23 permits it on (${LIBRARY_SLOTS.join(', ')}). A library picture is decoration, never a product, project or evidence picture.` });
+      }
+      if (lic.includes(STOCK_ORIGIN)) {
+        const fset = fatadeSlots || new Set();
+        const viaReuse = REAL_FIELD(row.reuse_of) && fset.has(String(row.reuse_of));
+        if (!fset.has(ph.id) && !viaReuse) {
+          problems.push({ id: 'stock-not-fatade', text: `${ph.where} is filled from the stock set and is not a fatade-group record nor a tile standing on one. R-W28-06 permits a generic stock photograph on the fatade group only; every other product, project or evidence slot keeps its own picture.` });
+        }
       }
       if (/ai generated/i.test(prow.licence) && EVIDENCE_PREFIXES.some((p) => ph.id.startsWith(p))) {
         problems.push({ id: 'render-as-proof', text: `${ph.where} is an evidence slot filled with a generated image. W25-R3: a render is never a proof image.` });
@@ -505,6 +522,25 @@ const SELF = [
     pages: [{ rel: 'self-test/lib-red.html', html: FILLED_HTML('SELFTEST-40', '1 / 1') }],
     rows: [FILLED_ROW('SELFTEST-40', 'public/img/selftest-40.jpg')],
     prov: [{ file: 'public/img/selftest-40.jpg', source: 'https://www.pexels.com/photo/x-1/ \u00b7 https://images.pexels.com/photos/1/x.jpeg \u00b7 Pexels', licence: 'licence-free library, Pexels License, W25-R23 and W26-R8', licenceUrl: 'https://www.pexels.com/license/', date: '2026-09-22' }],
+  },
+  /* R-W28-06 (W28-23). The stock origin: refused off the fatade group, and GREEN on it. The
+     two arms are the same row and the same provenance; they differ only in whether the slot is
+     in the fatade set the real run computes from the catalogue records. */
+  {
+    arm: 'R-W28-06: a stock library picture on a slot outside the fatade group',
+    want: 'stock-not-fatade',
+    pages: [{ rel: 'self-test/stock-red.html', html: FILLED_HTML('SELFTEST-42', '1 / 1') }],
+    rows: [FILLED_ROW('SELFTEST-42', 'public/img/selftest-42.webp')],
+    prov: [{ file: 'public/img/selftest-42.webp', source: 'https://www.pexels.com/photo/x-3/ \u00b7 https://images.pexels.com/photos/3/x.jpeg \u00b7 Pexels', licence: 'stock library, Pexels License, R-W28-06', licenceUrl: 'https://www.pexels.com/license/', date: '2026-09-24' }],
+    fatade: [],
+  },
+  {
+    arm: 'R-W28-06 GREEN: a stock library picture on a fatade-group slot',
+    want: null,
+    pages: [{ rel: 'self-test/stock-green.html', html: FILLED_HTML('SELFTEST-43', '1 / 1') }],
+    rows: [FILLED_ROW('SELFTEST-43', 'public/img/selftest-43.webp')],
+    prov: [{ file: 'public/img/selftest-43.webp', source: 'https://www.pexels.com/photo/x-4/ \u00b7 https://images.pexels.com/photos/4/x.jpeg \u00b7 Pexels', licence: 'stock library, Pexels License, R-W28-06', licenceUrl: 'https://www.pexels.com/license/', date: '2026-09-24' }],
+    fatade: ['SELFTEST-43'],
   },
   {
     arm: 'W26-07 GREEN: a licence-free library picture on a copertine secondary slot',
@@ -716,12 +752,12 @@ const CONTROL = {
 const provMap = (rows) => new Map((rows || []).map((r) => [r.file, r]));
 const brandMap = (pairs) => new Map(pairs || []);
 
-const controlBefore = check(CONTROL.pages, CONTROL.rows, provMap(CONTROL.prov), brandMap(CONTROL.brands));
+const controlBefore = check(CONTROL.pages, CONTROL.rows, provMap(CONTROL.prov), brandMap(CONTROL.brands), new Set());
 if (controlBefore.length) fail(`the self-test control is not clean, so its arms prove nothing: ${controlBefore.map((p) => p.text).join(' | ')}`);
 console.log('self-test control: clean');
 
 for (const t of SELF) {
-  const got = check(t.pages, t.rows, provMap(t.prov), brandMap(t.brands));
+  const got = check(t.pages, t.rows, provMap(t.prov), brandMap(t.brands), new Set(t.fatade || []));
   /* W25-R17. `want: null` is a GREEN arm: a shape that MUST be accepted. It is
      not decoration. The reuse permission is the first thing this gate lets
      through rather than refuses, and a permission nobody has watched succeed is
@@ -742,7 +778,7 @@ for (const t of SELF) {
   console.log(`self-test arm fired on its own message: ${t.arm} -> ${t.want}`);
 }
 
-const controlAfter = check(CONTROL.pages, CONTROL.rows, provMap(CONTROL.prov), brandMap(CONTROL.brands));
+const controlAfter = check(CONTROL.pages, CONTROL.rows, provMap(CONTROL.prov), brandMap(CONTROL.brands), new Set());
 if (controlAfter.length) fail(`the self-test control is dirty after the arms, so the arms left residue: ${controlAfter.map((p) => p.text).join(' | ')}`);
 console.log('self-test control, again: clean\n');
 
@@ -787,8 +823,13 @@ const REAL_BRAND = (b) => b !== null && b !== undefined && String(b).trim() !== 
 const brands = new Map(productRecords.filter((r) => r.slot).map((r) => [r.slot, REAL_BRAND(r.brand) && !r.brand_hidden ? String(r.brand) : null]));
 const withoutBrand = [...brands.values()].filter((b) => !b).length;
 console.log(`catalogue records read: ${brands.size}, of which ${withoutBrand} name no usable manufacturer`);
+/* R-W28-06. The fatade group, by the one definition the data has: the records whose data came
+   from fatade3d.md. A stock picture is permitted on these slots and on a tile that reuses one. */
+const fatadeSlots = new Set(productRecords.filter((r) => r.slot && r.source && r.source.host === 'fatade3d.md').map((r) => r.slot));
+if (!fatadeSlots.size) fail('zero fatade-group records read, so the stock-origin rule would pass by finding nothing.');
+console.log(`fatade-group slots (source.host fatade3d.md): ${fatadeSlots.size}`);
 
-const problems = check(pages, ledger.slots, provenance, brands);
+const problems = check(pages, ledger.slots, provenance, brands, fatadeSlots);
 
 if (problems.length) {
   console.error(`\n${problems.length} problem${problems.length === 1 ? '' : 's'}:`);

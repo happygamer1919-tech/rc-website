@@ -1376,8 +1376,14 @@ open with their hero; the roofing hub stays on the roofing catalogue page, the f
 models page; gates 25 and 26 and the live markers follow; six budgets move.
 
 ## W28-23 · Fatade product images: the 110 fatade3d.md pictures replaced by generic stock photographs
+ w28/w28-23-fatade-stock-images
+**Status: PR OPEN** (opened 2026-09-24). 109 of 110 slots on a stock photograph (79 distinct, 30 reuses, Pexels and
+Unsplash, WebP), the membrane slot CAT-0221 waiting as a placeholder (Q-W28-06); gates 19, 24, 32 amended;
+`docs/images/SOURCES.md` created; the 113 manufacturer packshots kept under Q-W28-05.
+
 **Status: in progress** (branch w28/w28-23-fatade-stock-images: intake, encoder, gates 19, 24, 32 done; 109 of 110
 pictures chosen and viewed twice; no mark-free membrane photograph found in the allowed set). R-W28-06; the 113 manufacturer packshots kept under Q-W28-05.
+ main
 
 ## W28-24 · Service galleries: ten stock pictures more per gallery, two new galleries, the examples heading
 **Status: todo.** R-W28-07; 115 stock pictures across eleven galleries.

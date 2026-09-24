@@ -98,6 +98,11 @@ function dims(file) {
   if (b.length > 24 && b.readUInt32BE(0) === 0x89504e47 && b.toString('latin1', 12, 16) === 'IHDR') {
     return `${b.readUInt32BE(16)}x${b.readUInt32BE(20)}`;
   }
+  /* W28-23 (R-W28-06): the stock pictures are WebP; the size sits in the first chunk header. */
+  if (b.length > 30 && b.toString('latin1', 0, 4) === 'RIFF' && b.toString('latin1', 8, 12) === 'WEBP') {
+    const s = require('./webp-encode').webpSize(b);
+    return s ? `${s.width}x${s.height}` : 'unreadable';
+  }
   if (b.length > 4 && b[0] === 0xff && b[1] === 0xd8) {
     let i = 2;
     while (i + 9 < b.length) {
@@ -131,6 +136,8 @@ function originClass(licence) {
   if (l.includes('google_pick')) return 'google_pick';
   /* W25-R23 and W26-R8, named by library so the reviewer sees which one. */
   if (l.includes('licence-free library')) return l.includes('unsplash') ? 'licence-free library, Unsplash' : 'licence-free library, Pexels';
+  /* R-W28-06 (W28-23): the stock set on the fatade group, named by site so the reviewer sees which. */
+  if (l.includes('stock library')) return 'stock library (R-W28-06), ' + (l.includes('unsplash') ? 'Unsplash' : l.includes('pixabay') ? 'Pixabay' : l.includes('cc0') || l.includes('public domain') ? 'Wikimedia Commons' : 'Pexels');
   if (l.includes('manufacturer packshot')) return 'manufacturer official site';
   if (l.includes('ai generated')) return 'owner AI generated';
   if (l.includes('supplier permission')) return 'supplier permission';

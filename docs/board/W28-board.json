@@ -457,8 +457,8 @@
     {
       "id": "W28-23",
       "title": "Fatade product images: every picture fetched from fatade3d.md replaced by a generic, mark-free stock photograph of its product type",
-      "lane": "queue",
-      "status": "todo",
+      "lane": "in_flight",
+      "status": "pr_open",
       "priority": "high",
       "owner_terminal": "yellow",
       "branch": "w28/w28-23-fatade-stock-images",
@@ -474,7 +474,8 @@
         "test -f docs/reports/W28-FATADE-IMAGES-2.md && grep -c '^| CAT-' docs/reports/W28-FATADE-IMAGES-2.md  -> 223",
         "node build.js && node scripts/dom-text.js --count 'img[src*=\"fatade\"], img[alt*=\"fatade3d\" i], img[alt*=\"fatade 3d\" i], img[alt*=\"FATADE\"]' on every catalogue page both locales  -> 0",
         "node scripts/run-gates.js --keep-going  -> every command exit 0"
-      ]
+      ],
+      "evidence": "109 of 110 slots on a stock photograph (79 distinct, 30 reuses); CAT-0221 waiting as a placeholder (Q-W28-06); gates 19, 24, 32, asset-provenance, catalog-pages, catalog-counts, image-metadata, photo-review, image-slots exit 0 on the tree; DOM check 0 marks"
     },
     {
       "id": "W28-24",

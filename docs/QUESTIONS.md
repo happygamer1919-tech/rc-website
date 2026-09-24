@@ -3560,3 +3560,17 @@ packshot shows the product as it is sold, under a licence the owner accepted on 
 **If the answer is "they go too"**, it is one more card: 83 plate records need one colour-true
 picture each (no stock site has them; a colour-mismatch is already Q-W28-03), and 30 material
 records take the generic type photographs W28-23 installs, by reuse. Say which.
+
+## Q-W28-06 · No mark-free photograph of a roof diffusion membrane exists in the allowed stock set; CAT-0221 waits as a placeholder · OPEN · opened 2026-09-24 (W28-23)
+
+**Raised W28-23, 2026-09-24. Shipped default: the membrane card shows the site's placeholder box until a
+photograph arrives; the category tile of Alte materiale stands on the reinforcing mesh picture instead.**
+
+Four harvest rounds on Pexels, Unsplash, Pixabay and Wikimedia Commons (about 90 candidates viewed) found
+no roofing or diffusion membrane roll without a manufacturer's name printed on the membrane itself; the
+one mark-free frame (battens over an unprinted underlay) was refused by the calibrated judges as not
+showing the product. Under R-W28-06 the fatade3d.md picture may not stay and a branded roll may not go
+in, so the slot is a placeholder, named in gate 32 as waiting with this question so it can never pass
+silently. **Options**: (1) send one photograph of a membrane roll of your own stock, mark-free, and it is
+one intake run; (2) approve a Google Images Creative Commons find with the licence verified on its
+landing page, which the rule allows and this card did not use; (3) keep the placeholder.

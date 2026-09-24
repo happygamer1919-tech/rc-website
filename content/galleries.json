@@ -1,996 +1,996 @@
 {
-  "_note": "W26-12, ruling W26-R14. Written by scripts/intake-galleries.js from /Users/ivan/RC-webpics_v2, never typed. One gallery per folder whose name is a page title; `preview` is the 1-based photo the card shows and `review` on a photograph is the answer the owner gave to a flag raised about it (W27-R-03); those two are the only fields chosen by hand, and both survive a re-run. Gate 29 (scripts/check-galleries.js) holds every page to this file: the lightbox shows exactly these photos, in this order. W27-FIX-12 (W27-R-18): a photograph the owner refused is listed by sha256 in content/galleries-refused.json, recorded under `refused` here, and never installed; the fence gallery entry of 2026-09-23 was amended by hand to that shape because the source folder was no longer on this machine to re-run the intake against.",
-  "source_root": "/Users/ivan/RC-webpics_v2",
-  "galleries": [
+ "_note": "W26-12, ruling W26-R14. Written by scripts/intake-galleries.js from /Users/ivan/RC-webpics_v2, never typed. One gallery per folder whose name is a page title; `preview` is the 1-based photo the card shows and `review` on a photograph is the answer the owner gave to a flag raised about it (W27-R-03); those two are the only fields chosen by hand, and both survive a re-run. Gate 29 (scripts/check-galleries.js) holds every page to this file: the lightbox shows exactly these photos, in this order. W27-FIX-12 (W27-R-18): a photograph the owner refused is listed by sha256 in content/galleries-refused.json, recorded under `refused` here, and never installed; the fence gallery entry of 2026-09-23 was amended by hand to that shape because the source folder was no longer on this machine to re-run the intake against.",
+ "source_root": "/Users/ivan/RC-webpics_v2",
+ "galleries": [
+  {
+   "folder": "ACOPERIȘURI",
+   "page": "acoperisuri",
+   "render_on": "acoperisuri",
+   "found": 15,
+   "installed": 15,
+   "preview": 13,
+   "photos": [
     {
-      "folder": "ACOPERIȘURI",
-      "page": "acoperisuri",
-      "render_on": "acoperisuri",
-      "found": 15,
-      "installed": 15,
-      "preview": 13,
-      "photos": [
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.13 AM.jpeg",
-          "sha256": "2f836321d956c16a51a18d2e45c5516209ede6861c81937a56a6544be91e9f13",
-          "full": "public/img/galerie/acoperisuri/01.jpg",
-          "thumb": "public/img/galerie/acoperisuri/01-t.jpg",
-          "source_size": "960x1280",
-          "size": "960x1280",
-          "thumb_size": "600x800"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.14 AM (1).jpeg",
-          "sha256": "d466fca8c392dbdbfba4314a667fc93e9b19cb07b68a04032c112e2db56affd2",
-          "full": "public/img/galerie/acoperisuri/02.jpg",
-          "thumb": "public/img/galerie/acoperisuri/02-t.jpg",
-          "source_size": "960x1280",
-          "size": "960x1280",
-          "thumb_size": "600x800"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.14 AM copy.jpeg",
-          "sha256": "2e0cf05671115fafea7406d27ee4b752c3a3d421684c509042c00998d9e3dca3",
-          "full": "public/img/galerie/acoperisuri/03.jpg",
-          "thumb": "public/img/galerie/acoperisuri/03-t.jpg",
-          "source_size": "1280x960",
-          "size": "1280x960",
-          "thumb_size": "600x450"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.14 AM.jpeg",
-          "sha256": "46f4c63c59dc8ddb0d1ecd09a80942890cffe8cdf5bcd6c9abf511b70aa9427f",
-          "full": "public/img/galerie/acoperisuri/04.jpg",
-          "thumb": "public/img/galerie/acoperisuri/04-t.jpg",
-          "source_size": "960x1280",
-          "size": "960x1280",
-          "thumb_size": "600x800"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.15 AM (1).jpeg",
-          "sha256": "ed371e95163147850814a95f74fd7ad07de7f40b30413bc2d78574570fae7730",
-          "full": "public/img/galerie/acoperisuri/05.jpg",
-          "thumb": "public/img/galerie/acoperisuri/05-t.jpg",
-          "source_size": "1600x900",
-          "size": "1600x900",
-          "thumb_size": "600x337"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.15 AM (2).jpeg",
-          "sha256": "5ae3871a09abbcfbec1de7faca2141d26208e203acd34ce6b60c2848b1589bcb",
-          "full": "public/img/galerie/acoperisuri/06.jpg",
-          "thumb": "public/img/galerie/acoperisuri/06-t.jpg",
-          "source_size": "1280x720",
-          "size": "1280x720",
-          "thumb_size": "600x337"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.15 AM (3).jpeg",
-          "sha256": "e56cd0e3f3105c6b5d02ffbf75bee72ca1f11379b6aa72429c867e63e46385bc",
-          "full": "public/img/galerie/acoperisuri/07.jpg",
-          "thumb": "public/img/galerie/acoperisuri/07-t.jpg",
-          "source_size": "1280x720",
-          "size": "1280x720",
-          "thumb_size": "600x337"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.15 AM (4).jpeg",
-          "sha256": "6b5f6e27285c480dc020a78732742fc3466bddd922f5d517b42daeb3a7cec914",
-          "full": "public/img/galerie/acoperisuri/08.jpg",
-          "thumb": "public/img/galerie/acoperisuri/08-t.jpg",
-          "source_size": "1280x720",
-          "size": "1280x720",
-          "thumb_size": "600x337"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.15 AM (5).jpeg",
-          "sha256": "54619a69c5fe84f481925a222112a849e5439a48d55ab21b9b9dc5ff73c79969",
-          "full": "public/img/galerie/acoperisuri/09.jpg",
-          "thumb": "public/img/galerie/acoperisuri/09-t.jpg",
-          "source_size": "1600x900",
-          "size": "1600x900",
-          "thumb_size": "600x337"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.15 AM (6).jpeg",
-          "sha256": "677869fdaa146fa20c16fa59b757425c5194edc9558213dfa2c15fe21c9b1cf2",
-          "full": "public/img/galerie/acoperisuri/10.jpg",
-          "thumb": "public/img/galerie/acoperisuri/10-t.jpg",
-          "source_size": "1600x900",
-          "size": "1600x900",
-          "thumb_size": "600x337"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.15 AM (7).jpeg",
-          "sha256": "e612cde2b472bcdd00bfa6f3ef278d0c4bf8f95e1ed1f34db2bc198dca7ae97a",
-          "full": "public/img/galerie/acoperisuri/11.jpg",
-          "thumb": "public/img/galerie/acoperisuri/11-t.jpg",
-          "source_size": "1280x960",
-          "size": "1280x960",
-          "thumb_size": "600x450"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.15 AM.jpeg",
-          "sha256": "d02003d23bf9f2dcf586ffa41d5c2ded11c7cf17ffff29497d5e13fb010f7b91",
-          "full": "public/img/galerie/acoperisuri/12.jpg",
-          "thumb": "public/img/galerie/acoperisuri/12-t.jpg",
-          "source_size": "1280x720",
-          "size": "1280x720",
-          "thumb_size": "600x337"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.16 AM (1).jpeg",
-          "sha256": "b8643915a69e0f3a2ab3a9a2d0c8180c3779ae018cade9307581c8cffd17261e",
-          "full": "public/img/galerie/acoperisuri/13.jpg",
-          "thumb": "public/img/galerie/acoperisuri/13-t.jpg",
-          "source_size": "1280x960",
-          "size": "1280x960",
-          "thumb_size": "600x450"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.16 AM (2).jpeg",
-          "sha256": "3b940e2b43badab3e3b5a24d1b1dd601d595141ad72ec49f20185c565dd2189f",
-          "full": "public/img/galerie/acoperisuri/14.jpg",
-          "thumb": "public/img/galerie/acoperisuri/14-t.jpg",
-          "source_size": "1280x960",
-          "size": "1280x960",
-          "thumb_size": "600x450"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.16 AM.jpeg",
-          "sha256": "5a3cfc6ff2de68e2ea86038c6301b3c0ce5e7203f7204bff529d29cfd6366c21",
-          "full": "public/img/galerie/acoperisuri/15.jpg",
-          "thumb": "public/img/galerie/acoperisuri/15-t.jpg",
-          "source_size": "1280x960",
-          "size": "1280x960",
-          "thumb_size": "600x450"
-        }
-      ],
-      "duplicates_skipped": [],
-      "refused": []
+     "source": "WhatsApp Image 2026-09-19 at 6.35.13 AM.jpeg",
+     "sha256": "2f836321d956c16a51a18d2e45c5516209ede6861c81937a56a6544be91e9f13",
+     "full": "public/img/galerie/acoperisuri/01.jpg",
+     "thumb": "public/img/galerie/acoperisuri/01-t.jpg",
+     "source_size": "960x1280",
+     "size": "960x1280",
+     "thumb_size": "600x800"
     },
     {
-      "folder": "CONSTRUCȚIE CASE LA CHEIE",
-      "page": "case-la-cheie",
-      "render_on": "case-la-cheie",
-      "found": 2,
-      "installed": 2,
-      "preview": 1,
-      "photos": [
-        {
-          "source": "WhatsApp Image 226-09-19 at 6.36.35 AM.jpeg",
-          "sha256": "4b80743dd2344556df58e9a014e8b9e4eb2ead56335ca507d84c218461314c05",
-          "full": "public/img/galerie/case-la-cheie/01.jpg",
-          "thumb": "public/img/galerie/case-la-cheie/01-t.jpg",
-          "source_size": "859x1600",
-          "size": "859x1600",
-          "thumb_size": "600x1117"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.35 AM.jpeg",
-          "sha256": "fe37a18f7ab9c7d04be2147c20f34e39a4f18853a0109194638957a2eb41fc64",
-          "full": "public/img/galerie/case-la-cheie/02.jpg",
-          "thumb": "public/img/galerie/case-la-cheie/02-t.jpg",
-          "source_size": "1200x1566",
-          "size": "1200x1566",
-          "thumb_size": "600x783"
-        }
-      ],
-      "duplicates_skipped": [],
-      "refused": []
+     "source": "WhatsApp Image 2026-09-19 at 6.35.14 AM (1).jpeg",
+     "sha256": "d466fca8c392dbdbfba4314a667fc93e9b19cb07b68a04032c112e2db56affd2",
+     "full": "public/img/galerie/acoperisuri/02.jpg",
+     "thumb": "public/img/galerie/acoperisuri/02-t.jpg",
+     "source_size": "960x1280",
+     "size": "960x1280",
+     "thumb_size": "600x800"
     },
     {
-      "folder": "Copertine",
-      "page": "copertine",
-      "render_on": "copertine",
-      "found": 2,
-      "installed": 2,
-      "preview": 1,
-      "photos": [
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.16 AM.jpeg",
-          "sha256": "08900921984aa1052cefc3a1be28d2b3a9a55859a0e69e3a7df09e3aaab4833f",
-          "full": "public/img/galerie/copertine/01.jpg",
-          "thumb": "public/img/galerie/copertine/01-t.jpg",
-          "source_size": "1600x1200",
-          "size": "1600x1200",
-          "thumb_size": "600x450"
-        },
-        {
-          "source": "WhatsApp Image 20209-19 at 6.35.16 AM.jpeg",
-          "sha256": "cb15c6bbb4a0856f58fb0cbd92c048c154521e1d37d4d329aebe9c78981a5115",
-          "full": "public/img/galerie/copertine/02.jpg",
-          "thumb": "public/img/galerie/copertine/02-t.jpg",
-          "source_size": "1600x1200",
-          "size": "1600x1200",
-          "thumb_size": "600x450"
-        }
-      ],
-      "duplicates_skipped": [],
-      "refused": []
+     "source": "WhatsApp Image 2026-09-19 at 6.35.14 AM copy.jpeg",
+     "sha256": "2e0cf05671115fafea7406d27ee4b752c3a3d421684c509042c00998d9e3dca3",
+     "full": "public/img/galerie/acoperisuri/03.jpg",
+     "thumb": "public/img/galerie/acoperisuri/03-t.jpg",
+     "source_size": "1280x960",
+     "size": "1280x960",
+     "thumb_size": "600x450"
     },
     {
-      "folder": "Fațade",
-      "page": "fatade",
-      "render_on": "fatade",
-      "found": 4,
-      "installed": 4,
-      "preview": 3,
-      "photos": [
-        {
-          "source": "WhatsApp Image 206-09-19 at 6.36.35 AM.jpeg",
-          "sha256": "ea6afe475454cf46e72299cc175032e4f622374101e2fcf12a509cac4dfb6c47",
-          "full": "public/img/galerie/fatade/01.jpg",
-          "thumb": "public/img/galerie/fatade/01-t.jpg",
-          "source_size": "736x981",
-          "size": "736x981",
-          "thumb_size": "600x799"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.35 AM copy.jpeg",
-          "sha256": "aa9938116c98c30c2bba8063867dbe8a4d6b14e0f9411af36fcadaf3fd3c247d",
-          "full": "public/img/galerie/fatade/02.jpg",
-          "thumb": "public/img/galerie/fatade/02-t.jpg",
-          "source_size": "960x1200",
-          "size": "960x1200",
-          "thumb_size": "600x750"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.35 AM.jpeg",
-          "sha256": "b7b23cf4bbb320fed74f84014f8a931160c107b1d7a51005bf669447e5683858",
-          "full": "public/img/galerie/fatade/03.jpg",
-          "thumb": "public/img/galerie/fatade/03-t.jpg",
-          "source_size": "1080x1439",
-          "size": "1080x1439",
-          "thumb_size": "600x799"
-        },
-        {
-          "source": "WhatsApp Imge 2026-09-19 at 6.36.35 AM.jpeg",
-          "sha256": "e3c05a750ddbc17c97cfbb47dbde7aaeefa5180df24b164ab08afaf67c903094",
-          "full": "public/img/galerie/fatade/04.jpg",
-          "thumb": "public/img/galerie/fatade/04-t.jpg",
-          "source_size": "1080x1440",
-          "size": "1080x1440",
-          "thumb_size": "600x800"
-        }
-      ],
-      "duplicates_skipped": [],
-      "refused": []
+     "source": "WhatsApp Image 2026-09-19 at 6.35.14 AM.jpeg",
+     "sha256": "46f4c63c59dc8ddb0d1ecd09a80942890cffe8cdf5bcd6c9abf511b70aa9427f",
+     "full": "public/img/galerie/acoperisuri/04.jpg",
+     "thumb": "public/img/galerie/acoperisuri/04-t.jpg",
+     "source_size": "960x1280",
+     "size": "960x1280",
+     "thumb_size": "600x800"
     },
     {
-      "folder": "Finisaje",
-      "page": "finisaje",
-      "render_on": "finisaje",
-      "found": 5,
-      "installed": 5,
-      "preview": 2,
-      "photos": [
-        {
-          "source": "WhatsApp Iage 2026-09-19 at 6.37.19 AM.jpeg",
-          "sha256": "0b357cae4d5635065162f378247ab79eb589091c27a33fda68da8b6b1753f71f",
-          "full": "public/img/galerie/finisaje/01.jpg",
-          "thumb": "public/img/galerie/finisaje/01-t.jpg",
-          "source_size": "736x1012",
-          "size": "736x1012",
-          "thumb_size": "600x825"
-        },
-        {
-          "source": "WhatsApp Image 206-09-19 at 6.36.35 AM.jpeg",
-          "sha256": "e0c0cbd241655119cc5176a33cc1da9a374d6872cf7452f9c9583e27f3d0da01",
-          "full": "public/img/galerie/finisaje/02.jpg",
-          "thumb": "public/img/galerie/finisaje/02-t.jpg",
-          "source_size": "864x1152",
-          "size": "864x1152",
-          "thumb_size": "600x800"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.35 AM.jpeg",
-          "sha256": "ac83d468f8607402b4e1a5096489234a60f8e7ce7f57465f202a33225d247fac",
-          "full": "public/img/galerie/finisaje/03.jpg",
-          "thumb": "public/img/galerie/finisaje/03-t.jpg",
-          "source_size": "630x806",
-          "size": "630x806",
-          "thumb_size": "600x767"
-        },
-        {
-          "source": "WhatsApp Imge 2026-09-19 at 6.36.35 AM.jpeg",
-          "sha256": "cb60ac3741f25c7ccc58db905c08f16b7b6d210808187fcecbb4abafd0334606",
-          "full": "public/img/galerie/finisaje/04.jpg",
-          "thumb": "public/img/galerie/finisaje/04-t.jpg",
-          "source_size": "1199x1403",
-          "size": "1199x1403",
-          "thumb_size": "600x702",
-          "review": {
-            "flag": "suspected_stock",
-            "flagged_by": "Q-W26-06",
-            "owner_confirmed": "2026-09-22",
-            "ruling": "W27-R-03"
-          }
-        },
-        {
-          "source": "WhatsApp mage 2026-09-19 at 6.37.19 AM.jpeg",
-          "sha256": "acb7243335f7a015d4ef10ba1fc88a4c687f83004bbd8e5fdfac6903952b8f0e",
-          "full": "public/img/galerie/finisaje/05.jpg",
-          "thumb": "public/img/galerie/finisaje/05-t.jpg",
-          "source_size": "735x674",
-          "size": "735x674",
-          "thumb_size": "600x550"
-        }
-      ],
-      "duplicates_skipped": [],
-      "refused": []
+     "source": "WhatsApp Image 2026-09-19 at 6.35.15 AM (1).jpeg",
+     "sha256": "ed371e95163147850814a95f74fd7ad07de7f40b30413bc2d78574570fae7730",
+     "full": "public/img/galerie/acoperisuri/05.jpg",
+     "thumb": "public/img/galerie/acoperisuri/05-t.jpg",
+     "source_size": "1600x900",
+     "size": "1600x900",
+     "thumb_size": "600x337"
     },
     {
-      "folder": "Garduri",
-      "page": "garduri",
-      "render_on": "galerie-garduri",
-      "found": 19,
-      "installed": 12,
-      "preview": 1,
-      "photos": [
-        {
-          "source": "WhatsApp Iage 2026-09-19 at 6.36.35 AM.jpeg",
-          "sha256": "743b51fe5ffc0a39584bd2e72f4981854bc1228ed76b53437ce475e20b004596",
-          "full": "public/img/galerie/galerie-garduri/01.jpg",
-          "thumb": "public/img/galerie/galerie-garduri/01-t.jpg",
-          "source_size": "1200x1600",
-          "size": "1200x1600",
-          "thumb_size": "600x800"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-18 at 4.21.04 AM (1).jpeg",
-          "sha256": "ade8529fe1dc43b03da7931faff91a35dd396b03a5a65d8f9ad8167c58a4f67b",
-          "full": "public/img/galerie/galerie-garduri/02.jpg",
-          "thumb": "public/img/galerie/galerie-garduri/02-t.jpg",
-          "source_size": "510x462",
-          "size": "510x462",
-          "thumb_size": "510x462"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-18 at 4.21.04 AM (2).jpeg",
-          "sha256": "c89cfe431e40de7bc0251f922391c4cb3193ad134d533a81a999219552be0549",
-          "full": "public/img/galerie/galerie-garduri/03.jpg",
-          "thumb": "public/img/galerie/galerie-garduri/03-t.jpg",
-          "source_size": "736x1308",
-          "size": "736x1308",
-          "thumb_size": "600x1066"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-18 at 4.21.04 AM (3).jpeg",
-          "sha256": "bae1a9c94a05a592bcc2bb3723825d78e3f408d4905f00f3fb703a74b202e56c",
-          "full": "public/img/galerie/galerie-garduri/04.jpg",
-          "thumb": "public/img/galerie/galerie-garduri/04-t.jpg",
-          "source_size": "640x800",
-          "size": "640x800",
-          "thumb_size": "600x750"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-18 at 4.21.04 AM (4).jpeg",
-          "sha256": "922e39ad44cbf77391e12f461b93d3751b39931aa7035335e13b64adb36771bf",
-          "full": "public/img/galerie/galerie-garduri/05.jpg",
-          "thumb": "public/img/galerie/galerie-garduri/05-t.jpg",
-          "source_size": "676x1200",
-          "size": "676x1200",
-          "thumb_size": "600x1065"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-18 at 4.21.04 AM (5).jpeg",
-          "sha256": "55d5d9f1271bae14eed5774755173ba3444c92e2ac5600891330756c8656a12b",
-          "full": "public/img/galerie/galerie-garduri/06.jpg",
-          "thumb": "public/img/galerie/galerie-garduri/06-t.jpg",
-          "source_size": "736x736",
-          "size": "736x736",
-          "thumb_size": "600x600"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-18 at 4.21.04 AM.jpeg",
-          "sha256": "f12fd9a284f8a160a3164db79da30a8970f4ad4e96aff7cd6fd595e9fa2d0bd8",
-          "full": "public/img/galerie/galerie-garduri/07.jpg",
-          "thumb": "public/img/galerie/galerie-garduri/07-t.jpg",
-          "source_size": "736x981",
-          "size": "736x981",
-          "thumb_size": "600x799"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.23 AM (3).jpeg",
-          "sha256": "463439dfce0a1edbec648a6ca59649881d471611f53adc363cdd9bf929edea70",
-          "full": "public/img/galerie/galerie-garduri/08.jpg",
-          "thumb": "public/img/galerie/galerie-garduri/08-t.jpg",
-          "source_size": "325x500",
-          "size": "325x500",
-          "thumb_size": "325x500"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.23 AM (5).jpeg",
-          "sha256": "5c13d7f691f81a6f2883fbd5b6db4ad55913cef0ab9d5efb9bd2f9beaf27f18f",
-          "full": "public/img/galerie/galerie-garduri/09.jpg",
-          "thumb": "public/img/galerie/galerie-garduri/09-t.jpg",
-          "source_size": "750x1244",
-          "size": "750x1244",
-          "thumb_size": "600x995"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.23 AM (6).jpeg",
-          "sha256": "66822f03e9a38d60cc031e29727f407db9b0e2946d6b852ce4881af24a8e85c7",
-          "full": "public/img/galerie/galerie-garduri/10.jpg",
-          "thumb": "public/img/galerie/galerie-garduri/10-t.jpg",
-          "source_size": "1200x1600",
-          "size": "1200x1600",
-          "thumb_size": "600x800"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.23 AM copy.jpeg",
-          "sha256": "64b77d3009c09ad1b329f77f24e0d317a0e12549d98a673bbceccc0eb7235c19",
-          "full": "public/img/galerie/galerie-garduri/11.jpg",
-          "thumb": "public/img/galerie/galerie-garduri/11-t.jpg",
-          "source_size": "736x1104",
-          "size": "736x1104",
-          "thumb_size": "600x900"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.35 AM.jpeg",
-          "sha256": "2686f83dad4cc078fdf05a965f99459bc648fc7303afe1b7966181aae6f4c312",
-          "full": "public/img/galerie/galerie-garduri/12.jpg",
-          "thumb": "public/img/galerie/galerie-garduri/12-t.jpg",
-          "source_size": "736x981",
-          "size": "736x981",
-          "thumb_size": "600x799"
-        }
-      ],
-      "duplicates_skipped": [
-        {
-          "file": "WhatsApp Image 2026-09-19 at 6.35.23 AM (1).jpeg",
-          "same_as": "WhatsApp Image 2026-09-18 at 4.21.04 AM (2).jpeg"
-        },
-        {
-          "file": "WhatsApp Image 2026-09-19 at 6.35.23 AM (2).jpeg",
-          "same_as": "WhatsApp Image 2026-09-18 at 4.21.04 AM (3).jpeg"
-        },
-        {
-          "file": "WhatsApp Image 2026-09-19 at 6.35.23 AM (4).jpeg",
-          "same_as": "WhatsApp Image 2026-09-18 at 4.21.04 AM (4).jpeg"
-        },
-        {
-          "file": "WhatsApp Image 2026-09-19 at 6.35.23 AM (7).jpeg",
-          "same_as": "WhatsApp Image 2026-09-18 at 4.21.04 AM (5).jpeg"
-        },
-        {
-          "file": "WhatsApp Image 2026-09-19 at 6.35.23 AM (8).jpeg",
-          "same_as": "WhatsApp Image 2026-09-18 at 4.21.04 AM.jpeg"
-        },
-        {
-          "file": "WhatsApp Image 2026-09-19 at 6.35.23 AM.jpeg",
-          "same_as": "WhatsApp Image 2026-09-18 at 4.21.04 AM (1).jpeg"
-        }
-      ],
-      "refused": [
-        {
-          "file": "WhatsApp Image 2026-09-19 at 6.35.16 AM (3).jpeg",
-          "sha256": "d8447f804a84f81fde0ae278f25c7e94d127f02998c068b11e423d6811a27f2f",
-          "why": "owner instruction W27-R-18, 2026-09-23: a roofing photograph (a gable clad in standing-seam sheet), not a fence; removed from the fence gallery"
-        }
-      ]
+     "source": "WhatsApp Image 2026-09-19 at 6.35.15 AM (2).jpeg",
+     "sha256": "5ae3871a09abbcfbec1de7faca2141d26208e203acd34ce6b60c2848b1589bcb",
+     "full": "public/img/galerie/acoperisuri/06.jpg",
+     "thumb": "public/img/galerie/acoperisuri/06-t.jpg",
+     "source_size": "1280x720",
+     "size": "1280x720",
+     "thumb_size": "600x337"
     },
     {
-      "folder": "Instalații",
-      "page": "instalatii",
-      "render_on": "instalatii",
-      "found": 5,
-      "installed": 5,
-      "preview": 1,
-      "photos": [
-        {
-          "source": "WhatsAp Image 2026-09-19 at 6.37.31 AM.jpeg",
-          "sha256": "b0f4efacf4967a90a1fc5d924a222c62257a30b88b3ce99a73ce8673fd1fd7a9",
-          "full": "public/img/galerie/instalatii/01.jpg",
-          "thumb": "public/img/galerie/instalatii/01-t.jpg",
-          "source_size": "1200x1504",
-          "size": "1200x1504",
-          "thumb_size": "600x752"
-        },
-        {
-          "source": "WhatsApp Image 206-09-19 at 6.37.30 AM.jpeg",
-          "sha256": "6a0060fb228e5c5c473f6cdeada48698171bdfc182ce7dbbf50ce0346dac1295",
-          "full": "public/img/galerie/instalatii/02.jpg",
-          "thumb": "public/img/galerie/instalatii/02-t.jpg",
-          "source_size": "736x981",
-          "size": "736x981",
-          "thumb_size": "600x799"
-        },
-        {
-          "source": "WhatsApp Image 226-09-19 at 6.37.30 AM.jpeg",
-          "sha256": "51b12c264d5fd125632347a7d54b7d6fa0f0931854e182fd71d219cd74a3fd51",
-          "full": "public/img/galerie/instalatii/03.jpg",
-          "thumb": "public/img/galerie/instalatii/03-t.jpg",
-          "source_size": "1042x773",
-          "size": "1042x773",
-          "thumb_size": "600x445"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.37.30 AM.jpeg",
-          "sha256": "f91b1482bda813175579e5dd21591a81bfcabb28ae7e07f00d6d231cee3c4689",
-          "full": "public/img/galerie/instalatii/04.jpg",
-          "thumb": "public/img/galerie/instalatii/04-t.jpg",
-          "source_size": "621x828",
-          "size": "621x828",
-          "thumb_size": "600x800"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.37.31 AM.jpeg",
-          "sha256": "b028e82dafa5fd0ad0addcd07a01e7e0766f7ee30d1502cdb53c002f6d8c48d7",
-          "full": "public/img/galerie/instalatii/05.jpg",
-          "thumb": "public/img/galerie/instalatii/05-t.jpg",
-          "source_size": "1062x1600",
-          "size": "1062x1600",
-          "thumb_size": "600x904"
-        }
-      ],
-      "duplicates_skipped": [],
-      "refused": []
+     "source": "WhatsApp Image 2026-09-19 at 6.35.15 AM (3).jpeg",
+     "sha256": "e56cd0e3f3105c6b5d02ffbf75bee72ca1f11379b6aa72429c867e63e46385bc",
+     "full": "public/img/galerie/acoperisuri/07.jpg",
+     "thumb": "public/img/galerie/acoperisuri/07-t.jpg",
+     "source_size": "1280x720",
+     "size": "1280x720",
+     "thumb_size": "600x337"
     },
     {
-      "folder": "Lucrări de terasament și excavare",
-      "page": "terasamente",
-      "render_on": "terasamente",
-      "found": 16,
-      "installed": 16,
-      "preview": 7,
-      "photos": [
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (1).jpeg",
-          "sha256": "6aa030f108ceb375c32fa6bb05d59d2c71810bfd7cc9ef31bdeda03408dd96af",
-          "full": "public/img/galerie/terasamente/01.jpg",
-          "thumb": "public/img/galerie/terasamente/01-t.jpg",
-          "source_size": "736x1311",
-          "size": "736x1311",
-          "thumb_size": "600x1068"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (2).jpeg",
-          "sha256": "e70960667c83f532b4eec45ceb121e22749b33974594f1bec5e8132cc9bb8212",
-          "full": "public/img/galerie/terasamente/02.jpg",
-          "thumb": "public/img/galerie/terasamente/02-t.jpg",
-          "source_size": "418x627",
-          "size": "418x627",
-          "thumb_size": "418x627",
-          "review": {
-            "flag": "suspected_stock",
-            "flagged_by": "Q-W26-06",
-            "owner_confirmed": "2026-09-22",
-            "ruling": "W27-R-03"
-          }
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (3).jpeg",
-          "sha256": "d0d5477cb2d834a73ec0533c01c08aa581223a93f1fbb332259307bb1beea3f0",
-          "full": "public/img/galerie/terasamente/03.jpg",
-          "thumb": "public/img/galerie/terasamente/03-t.jpg",
-          "source_size": "736x1466",
-          "size": "736x1466",
-          "thumb_size": "600x1195"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (4).jpeg",
-          "sha256": "9f3df2855f345a52fee73a8610cc6a75b610a8beb0e13f2aa359f66f4cecef61",
-          "full": "public/img/galerie/terasamente/04.jpg",
-          "thumb": "public/img/galerie/terasamente/04-t.jpg",
-          "source_size": "736x1104",
-          "size": "736x1104",
-          "thumb_size": "600x900",
-          "review": {
-            "flag": "suspected_stock",
-            "flagged_by": "Q-W26-06",
-            "owner_confirmed": "2026-09-22",
-            "ruling": "W27-R-03"
-          }
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (5).jpeg",
-          "sha256": "540304a52923a00ba1f5d0fcb9a0a51dcf9d229c7c58cf633f63b0af8fe8c7d6",
-          "full": "public/img/galerie/terasamente/05.jpg",
-          "thumb": "public/img/galerie/terasamente/05-t.jpg",
-          "source_size": "747x1328",
-          "size": "747x1328",
-          "thumb_size": "600x1066",
-          "review": {
-            "flag": "suspected_stock",
-            "flagged_by": "Q-W26-06",
-            "owner_confirmed": "2026-09-22",
-            "ruling": "W27-R-03"
-          }
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (6).jpeg",
-          "sha256": "84b84d745a73ce187497512998b9d556a935e2180d255a4c855fade55316d789",
-          "full": "public/img/galerie/terasamente/06.jpg",
-          "thumb": "public/img/galerie/terasamente/06-t.jpg",
-          "source_size": "736x1104",
-          "size": "736x1104",
-          "thumb_size": "600x900"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (7).jpeg",
-          "sha256": "96a087b99e09ee067210cb7d13842b3e80adac67f974e664934b4d4769687318",
-          "full": "public/img/galerie/terasamente/07.jpg",
-          "thumb": "public/img/galerie/terasamente/07-t.jpg",
-          "source_size": "960x960",
-          "size": "960x960",
-          "thumb_size": "600x600"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (8).jpeg",
-          "sha256": "d0f90b48d7336df626192b62bb9e8cd00479612303e90dc85b7fc04174199e92",
-          "full": "public/img/galerie/terasamente/08.jpg",
-          "thumb": "public/img/galerie/terasamente/08-t.jpg",
-          "source_size": "675x1200",
-          "size": "675x1200",
-          "thumb_size": "600x1066"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (9).jpeg",
-          "sha256": "1e09f38880c753b2ba33e8d0278830147c519f2646c41bf5dda6d8b45819d2eb",
-          "full": "public/img/galerie/terasamente/09.jpg",
-          "thumb": "public/img/galerie/terasamente/09-t.jpg",
-          "source_size": "960x1280",
-          "size": "960x1280",
-          "thumb_size": "600x800"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (10).jpeg",
-          "sha256": "a7f6b2fbe3ba4cde3c4a4a9ede53334e5d1ff9c5fae930f503c11ba964b0fe57",
-          "full": "public/img/galerie/terasamente/10.jpg",
-          "thumb": "public/img/galerie/terasamente/10-t.jpg",
-          "source_size": "1200x1600",
-          "size": "1200x1600",
-          "thumb_size": "600x800",
-          "review": {
-            "flag": "suspected_stock",
-            "flagged_by": "Q-W26-06",
-            "owner_confirmed": "2026-09-22",
-            "ruling": "W27-R-03"
-          }
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (11).jpeg",
-          "sha256": "5e58730bd6fd79266dd0eff2f258813470dc06720db0fcb1be5d886fffc4a778",
-          "full": "public/img/galerie/terasamente/11.jpg",
-          "thumb": "public/img/galerie/terasamente/11-t.jpg",
-          "source_size": "736x981",
-          "size": "736x981",
-          "thumb_size": "600x799"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (12).jpeg",
-          "sha256": "408f0cbc6753bafc868827741bcb4ab4a4798d1e07426056eae8a3c537a99874",
-          "full": "public/img/galerie/terasamente/12.jpg",
-          "thumb": "public/img/galerie/terasamente/12-t.jpg",
-          "source_size": "736x1209",
-          "size": "736x1209",
-          "thumb_size": "600x985"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (13).jpeg",
-          "sha256": "05749e322b55ef5f163b552793f7dd6c633b73621637a73fde012829af3e0545",
-          "full": "public/img/galerie/terasamente/13.jpg",
-          "thumb": "public/img/galerie/terasamente/13-t.jpg",
-          "source_size": "736x920",
-          "size": "736x920",
-          "thumb_size": "600x750",
-          "review": {
-            "flag": "suspected_stock",
-            "flagged_by": "Q-W26-06",
-            "owner_confirmed": "2026-09-22",
-            "ruling": "W27-R-03"
-          }
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (14).jpeg",
-          "sha256": "0fbecdb3f8db8bd3f389acc42a06748344d6883027a55b3c1dae0027cf98e741",
-          "full": "public/img/galerie/terasamente/14.jpg",
-          "thumb": "public/img/galerie/terasamente/14-t.jpg",
-          "source_size": "1200x1500",
-          "size": "1200x1500",
-          "thumb_size": "600x750",
-          "review": {
-            "flag": "suspected_stock",
-            "flagged_by": "Q-W26-06",
-            "owner_confirmed": "2026-09-22",
-            "ruling": "W27-R-03"
-          }
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM copy.jpeg",
-          "sha256": "df8e40e09ada0c7e99389e496530c7206e23cdc3a745365abe00c7ab697b2f2a",
-          "full": "public/img/galerie/terasamente/15.jpg",
-          "thumb": "public/img/galerie/terasamente/15-t.jpg",
-          "source_size": "899x1600",
-          "size": "899x1600",
-          "thumb_size": "600x1068"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM.jpeg",
-          "sha256": "e45fd8edd7751502cf9ee06708df6c863f9353988b71efef03db9120fecf6eea",
-          "full": "public/img/galerie/terasamente/16.jpg",
-          "thumb": "public/img/galerie/terasamente/16-t.jpg",
-          "source_size": "736x1308",
-          "size": "736x1308",
-          "thumb_size": "600x1066",
-          "review": {
-            "flag": "suspected_stock",
-            "flagged_by": "Q-W26-06",
-            "owner_confirmed": "2026-09-22",
-            "ruling": "W27-R-03"
-          }
-        }
-      ],
-      "duplicates_skipped": [],
-      "refused": []
+     "source": "WhatsApp Image 2026-09-19 at 6.35.15 AM (4).jpeg",
+     "sha256": "6b5f6e27285c480dc020a78732742fc3466bddd922f5d517b42daeb3a7cec914",
+     "full": "public/img/galerie/acoperisuri/08.jpg",
+     "thumb": "public/img/galerie/acoperisuri/08-t.jpg",
+     "source_size": "1280x720",
+     "size": "1280x720",
+     "thumb_size": "600x337"
     },
     {
-      "folder": "Renovări la cheie",
-      "page": "reparatii",
-      "render_on": "reparatii",
-      "found": 27,
-      "installed": 27,
-      "preview": 17,
-      "photos": [
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (1).jpeg",
-          "sha256": "4ddf55e7577cc29c4e6a1444d769d5ba672c873afa2d1760b245f64536d92903",
-          "full": "public/img/galerie/reparatii/01.jpg",
-          "thumb": "public/img/galerie/reparatii/01-t.jpg",
-          "source_size": "1017x1600",
-          "size": "1017x1600",
-          "thumb_size": "600x944"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (2).jpeg",
-          "sha256": "62abae091b283157fbd64e98e48e6c54199c8c6e66ed64882fab8e82edb1c700",
-          "full": "public/img/galerie/reparatii/02.jpg",
-          "thumb": "public/img/galerie/reparatii/02-t.jpg",
-          "source_size": "1200x1600",
-          "size": "1200x1600",
-          "thumb_size": "600x800"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (3).jpeg",
-          "sha256": "c46988ed6fdf591d12585c0858024b1396654485a15c8a63f787b559ad7398f9",
-          "full": "public/img/galerie/reparatii/03.jpg",
-          "thumb": "public/img/galerie/reparatii/03-t.jpg",
-          "source_size": "736x981",
-          "size": "736x981",
-          "thumb_size": "600x799"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (4).jpeg",
-          "sha256": "a6f129ad8464499a96f47909f12cd1c4d35ee0dab49b3aa5879b46c58249e858",
-          "full": "public/img/galerie/reparatii/04.jpg",
-          "thumb": "public/img/galerie/reparatii/04-t.jpg",
-          "source_size": "1200x1600",
-          "size": "1200x1600",
-          "thumb_size": "600x800"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (5).jpeg",
-          "sha256": "42c9dddbc44f16b8005ed6b372e358c9f7ab7f525500f59895fb61bf1e8a1eda",
-          "full": "public/img/galerie/reparatii/05.jpg",
-          "thumb": "public/img/galerie/reparatii/05-t.jpg",
-          "source_size": "1200x1600",
-          "size": "1200x1600",
-          "thumb_size": "600x800"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (6).jpeg",
-          "sha256": "bebdeef15c2275aa060c1adba9942dd94e279bb2a8c83c7c66d9c6fd5d2128d1",
-          "full": "public/img/galerie/reparatii/06.jpg",
-          "thumb": "public/img/galerie/reparatii/06-t.jpg",
-          "source_size": "750x1000",
-          "size": "750x1000",
-          "thumb_size": "600x800"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (7).jpeg",
-          "sha256": "5b043e6d8ea3961134c96bdc1be6d202ba1c7ee83c64d2e15e69c09525c1d273",
-          "full": "public/img/galerie/reparatii/07.jpg",
-          "thumb": "public/img/galerie/reparatii/07-t.jpg",
-          "source_size": "1200x1457",
-          "size": "1200x1457",
-          "thumb_size": "600x728"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (8).jpeg",
-          "sha256": "7307be674ef2ef6b9f10ac62b6bac2469399a8c481cb12b88e050d556800ab57",
-          "full": "public/img/galerie/reparatii/08.jpg",
-          "thumb": "public/img/galerie/reparatii/08-t.jpg",
-          "source_size": "736x1308",
-          "size": "736x1308",
-          "thumb_size": "600x1066"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (9).jpeg",
-          "sha256": "2f177967df2b10d587110f5ec522ea10735221e394bd7cdc23a7d6381e8f8844",
-          "full": "public/img/galerie/reparatii/09.jpg",
-          "thumb": "public/img/galerie/reparatii/09-t.jpg",
-          "source_size": "896x1152",
-          "size": "896x1152",
-          "thumb_size": "600x771"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (10).jpeg",
-          "sha256": "91a7f64269aef8bd2d1f43cdf11b5be72f4dd8f5ce65f6974eb40869e3c461ec",
-          "full": "public/img/galerie/reparatii/10.jpg",
-          "thumb": "public/img/galerie/reparatii/10-t.jpg",
-          "source_size": "768x1024",
-          "size": "768x1024",
-          "thumb_size": "600x800"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (11).jpeg",
-          "sha256": "5e7b5dff45c1a5966b520b01aeb2f889aa615b0b752445b9e5312552c8b59204",
-          "full": "public/img/galerie/reparatii/11.jpg",
-          "thumb": "public/img/galerie/reparatii/11-t.jpg",
-          "source_size": "900x1600",
-          "size": "900x1600",
-          "thumb_size": "600x1066"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (12).jpeg",
-          "sha256": "1c28b3e58cc0020ecc2ebd226450e03ffae5d9b545c8890dae809075d1d7963c",
-          "full": "public/img/galerie/reparatii/12.jpg",
-          "thumb": "public/img/galerie/reparatii/12-t.jpg",
-          "source_size": "676x1200",
-          "size": "676x1200",
-          "thumb_size": "600x1065"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (13).jpeg",
-          "sha256": "0e63a94dafdcc1a71fe5b2143442b40c482262b0c2933318f47feb71a0017149",
-          "full": "public/img/galerie/reparatii/13.jpg",
-          "thumb": "public/img/galerie/reparatii/13-t.jpg",
-          "source_size": "1179x1457",
-          "size": "1179x1457",
-          "thumb_size": "600x741"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (14).jpeg",
-          "sha256": "7c279362f9da33f3c7c4d815c7298a98600171899c65b13e1699b0bbd9c7d1d7",
-          "full": "public/img/galerie/reparatii/14.jpg",
-          "thumb": "public/img/galerie/reparatii/14-t.jpg",
-          "source_size": "736x981",
-          "size": "736x981",
-          "thumb_size": "600x799"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (15).jpeg",
-          "sha256": "990601655ee33c808ba159c315905066d558df02dcfba61d6e9079dd5fe7c548",
-          "full": "public/img/galerie/reparatii/15.jpg",
-          "thumb": "public/img/galerie/reparatii/15-t.jpg",
-          "source_size": "736x1308",
-          "size": "736x1308",
-          "thumb_size": "600x1066"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (16).jpeg",
-          "sha256": "838e5c4e3a8aa93221f734b774db0c7ca755127aa697b865b893652adf45fc30",
-          "full": "public/img/galerie/reparatii/16.jpg",
-          "thumb": "public/img/galerie/reparatii/16-t.jpg",
-          "source_size": "900x1200",
-          "size": "900x1200",
-          "thumb_size": "600x800"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (17).jpeg",
-          "sha256": "ed0410d2ad5b7035f21109ce58eced80839259601cb5a4db0511f1cf7572367f",
-          "full": "public/img/galerie/reparatii/17.jpg",
-          "thumb": "public/img/galerie/reparatii/17-t.jpg",
-          "source_size": "1024x1536",
-          "size": "1024x1536",
-          "thumb_size": "600x900"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (18).jpeg",
-          "sha256": "74fab786a6a4c6d77b9c32e15768dc6cde50fd8fc20a0bbe98c6013a416d9170",
-          "full": "public/img/galerie/reparatii/18.jpg",
-          "thumb": "public/img/galerie/reparatii/18-t.jpg",
-          "source_size": "1066x1600",
-          "size": "1066x1600",
-          "thumb_size": "600x900"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (19).jpeg",
-          "sha256": "054b9d456ba4e21642dfec7bac406f5b5e53650b244e913c0605bcbaea5c4e4b",
-          "full": "public/img/galerie/reparatii/19.jpg",
-          "thumb": "public/img/galerie/reparatii/19-t.jpg",
-          "source_size": "1200x1600",
-          "size": "1200x1600",
-          "thumb_size": "600x800"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (20).jpeg",
-          "sha256": "359adb0e39b1128dadce3f4e3bdddd622f504f4d9aa3bf530b9897c61dfac1b8",
-          "full": "public/img/galerie/reparatii/20.jpg",
-          "thumb": "public/img/galerie/reparatii/20-t.jpg",
-          "source_size": "736x1308",
-          "size": "736x1308",
-          "thumb_size": "600x1066"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (21).jpeg",
-          "sha256": "6d83881ea390254c31abda514ae5e4b76edf1da1d9cc6a0316b66f1e390ebece",
-          "full": "public/img/galerie/reparatii/21.jpg",
-          "thumb": "public/img/galerie/reparatii/21-t.jpg",
-          "source_size": "736x1104",
-          "size": "736x1104",
-          "thumb_size": "600x900"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (22).jpeg",
-          "sha256": "05bcf71e3d1c947fbcfcf0cfd6e98541449b2b5549f522e0cf666832894fd77a",
-          "full": "public/img/galerie/reparatii/22.jpg",
-          "thumb": "public/img/galerie/reparatii/22-t.jpg",
-          "source_size": "736x981",
-          "size": "736x981",
-          "thumb_size": "600x799"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (23).jpeg",
-          "sha256": "6ba98c743aea50deaca463f4c98efb5e963e86d91dddb1fe3248015bcd943dd0",
-          "full": "public/img/galerie/reparatii/23.jpg",
-          "thumb": "public/img/galerie/reparatii/23-t.jpg",
-          "source_size": "736x981",
-          "size": "736x981",
-          "thumb_size": "600x799"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (24).jpeg",
-          "sha256": "568949b340707cabfbeee0f7149eeda5e54cca885d886e655fa96caa6ada8157",
-          "full": "public/img/galerie/reparatii/24.jpg",
-          "thumb": "public/img/galerie/reparatii/24-t.jpg",
-          "source_size": "1024x1536",
-          "size": "1024x1536",
-          "thumb_size": "600x900"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (25).jpeg",
-          "sha256": "37c93930bdf1024e6665f093409fdff58761ca86c76a556ea72cc814733048ba",
-          "full": "public/img/galerie/reparatii/25.jpg",
-          "thumb": "public/img/galerie/reparatii/25-t.jpg",
-          "source_size": "900x1200",
-          "size": "900x1200",
-          "thumb_size": "600x800"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (26).jpeg",
-          "sha256": "5518979adbeec4d1b49bd8f33659db5834fefa96f1f1241a4e6fe4c724659fc9",
-          "full": "public/img/galerie/reparatii/26.jpg",
-          "thumb": "public/img/galerie/reparatii/26-t.jpg",
-          "source_size": "736x1104",
-          "size": "736x1104",
-          "thumb_size": "600x900"
-        },
-        {
-          "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM.jpeg",
-          "sha256": "97f89477073e8cad2b60dcacabc7beee6ff60ebdd893cee89ed2667c3fccc926",
-          "full": "public/img/galerie/reparatii/27.jpg",
-          "thumb": "public/img/galerie/reparatii/27-t.jpg",
-          "source_size": "1200x1600",
-          "size": "1200x1600",
-          "thumb_size": "600x800"
-        }
-      ],
-      "duplicates_skipped": [],
-      "refused": []
+     "source": "WhatsApp Image 2026-09-19 at 6.35.15 AM (5).jpeg",
+     "sha256": "54619a69c5fe84f481925a222112a849e5439a48d55ab21b9b9dc5ff73c79969",
+     "full": "public/img/galerie/acoperisuri/09.jpg",
+     "thumb": "public/img/galerie/acoperisuri/09-t.jpg",
+     "source_size": "1600x900",
+     "size": "1600x900",
+     "thumb_size": "600x337"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.15 AM (6).jpeg",
+     "sha256": "677869fdaa146fa20c16fa59b757425c5194edc9558213dfa2c15fe21c9b1cf2",
+     "full": "public/img/galerie/acoperisuri/10.jpg",
+     "thumb": "public/img/galerie/acoperisuri/10-t.jpg",
+     "source_size": "1600x900",
+     "size": "1600x900",
+     "thumb_size": "600x337"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.15 AM (7).jpeg",
+     "sha256": "e612cde2b472bcdd00bfa6f3ef278d0c4bf8f95e1ed1f34db2bc198dca7ae97a",
+     "full": "public/img/galerie/acoperisuri/11.jpg",
+     "thumb": "public/img/galerie/acoperisuri/11-t.jpg",
+     "source_size": "1280x960",
+     "size": "1280x960",
+     "thumb_size": "600x450"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.15 AM.jpeg",
+     "sha256": "d02003d23bf9f2dcf586ffa41d5c2ded11c7cf17ffff29497d5e13fb010f7b91",
+     "full": "public/img/galerie/acoperisuri/12.jpg",
+     "thumb": "public/img/galerie/acoperisuri/12-t.jpg",
+     "source_size": "1280x720",
+     "size": "1280x720",
+     "thumb_size": "600x337"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.16 AM (1).jpeg",
+     "sha256": "b8643915a69e0f3a2ab3a9a2d0c8180c3779ae018cade9307581c8cffd17261e",
+     "full": "public/img/galerie/acoperisuri/13.jpg",
+     "thumb": "public/img/galerie/acoperisuri/13-t.jpg",
+     "source_size": "1280x960",
+     "size": "1280x960",
+     "thumb_size": "600x450"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.16 AM (2).jpeg",
+     "sha256": "3b940e2b43badab3e3b5a24d1b1dd601d595141ad72ec49f20185c565dd2189f",
+     "full": "public/img/galerie/acoperisuri/14.jpg",
+     "thumb": "public/img/galerie/acoperisuri/14-t.jpg",
+     "source_size": "1280x960",
+     "size": "1280x960",
+     "thumb_size": "600x450"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.16 AM.jpeg",
+     "sha256": "5a3cfc6ff2de68e2ea86038c6301b3c0ce5e7203f7204bff529d29cfd6366c21",
+     "full": "public/img/galerie/acoperisuri/15.jpg",
+     "thumb": "public/img/galerie/acoperisuri/15-t.jpg",
+     "source_size": "1280x960",
+     "size": "1280x960",
+     "thumb_size": "600x450"
     }
-  ],
-  "empty_folders": [
+   ],
+   "duplicates_skipped": [],
+   "refused": []
+  },
+  {
+   "folder": "CONSTRUCȚIE CASE LA CHEIE",
+   "page": "case-la-cheie",
+   "render_on": "case-la-cheie",
+   "found": 2,
+   "installed": 2,
+   "preview": 1,
+   "photos": [
     {
-      "folder": "Construcții industriale",
-      "page": "industrial"
+     "source": "WhatsApp Image 226-09-19 at 6.36.35 AM.jpeg",
+     "sha256": "4b80743dd2344556df58e9a014e8b9e4eb2ead56335ca507d84c218461314c05",
+     "full": "public/img/galerie/case-la-cheie/01.jpg",
+     "thumb": "public/img/galerie/case-la-cheie/01-t.jpg",
+     "source_size": "859x1600",
+     "size": "859x1600",
+     "thumb_size": "600x1117"
     },
     {
-      "folder": "Proiectare și vizualizare 3D",
-      "page": "proiectare-3d"
+     "source": "WhatsApp Image 2026-09-19 at 6.36.35 AM.jpeg",
+     "sha256": "fe37a18f7ab9c7d04be2147c20f34e39a4f18853a0109194638957a2eb41fc64",
+     "full": "public/img/galerie/case-la-cheie/02.jpg",
+     "thumb": "public/img/galerie/case-la-cheie/02-t.jpg",
+     "source_size": "1200x1566",
+     "size": "1200x1566",
+     "thumb_size": "600x783"
     }
-  ],
-  "unmatched_folders": []
+   ],
+   "duplicates_skipped": [],
+   "refused": []
+  },
+  {
+   "folder": "Copertine",
+   "page": "copertine",
+   "render_on": "copertine",
+   "found": 2,
+   "installed": 2,
+   "preview": 1,
+   "photos": [
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.16 AM.jpeg",
+     "sha256": "08900921984aa1052cefc3a1be28d2b3a9a55859a0e69e3a7df09e3aaab4833f",
+     "full": "public/img/galerie/copertine/01.jpg",
+     "thumb": "public/img/galerie/copertine/01-t.jpg",
+     "source_size": "1600x1200",
+     "size": "1600x1200",
+     "thumb_size": "600x450"
+    },
+    {
+     "source": "WhatsApp Image 20209-19 at 6.35.16 AM.jpeg",
+     "sha256": "cb15c6bbb4a0856f58fb0cbd92c048c154521e1d37d4d329aebe9c78981a5115",
+     "full": "public/img/galerie/copertine/02.jpg",
+     "thumb": "public/img/galerie/copertine/02-t.jpg",
+     "source_size": "1600x1200",
+     "size": "1600x1200",
+     "thumb_size": "600x450"
+    }
+   ],
+   "duplicates_skipped": [],
+   "refused": []
+  },
+  {
+   "folder": "Fațade",
+   "page": "fatade",
+   "render_on": "fatade",
+   "found": 4,
+   "installed": 4,
+   "preview": 3,
+   "photos": [
+    {
+     "source": "WhatsApp Image 206-09-19 at 6.36.35 AM.jpeg",
+     "sha256": "ea6afe475454cf46e72299cc175032e4f622374101e2fcf12a509cac4dfb6c47",
+     "full": "public/img/galerie/fatade/01.jpg",
+     "thumb": "public/img/galerie/fatade/01-t.jpg",
+     "source_size": "736x981",
+     "size": "736x981",
+     "thumb_size": "600x799"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.35 AM copy.jpeg",
+     "sha256": "aa9938116c98c30c2bba8063867dbe8a4d6b14e0f9411af36fcadaf3fd3c247d",
+     "full": "public/img/galerie/fatade/02.jpg",
+     "thumb": "public/img/galerie/fatade/02-t.jpg",
+     "source_size": "960x1200",
+     "size": "960x1200",
+     "thumb_size": "600x750"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.35 AM.jpeg",
+     "sha256": "b7b23cf4bbb320fed74f84014f8a931160c107b1d7a51005bf669447e5683858",
+     "full": "public/img/galerie/fatade/03.jpg",
+     "thumb": "public/img/galerie/fatade/03-t.jpg",
+     "source_size": "1080x1439",
+     "size": "1080x1439",
+     "thumb_size": "600x799"
+    },
+    {
+     "source": "WhatsApp Imge 2026-09-19 at 6.36.35 AM.jpeg",
+     "sha256": "e3c05a750ddbc17c97cfbb47dbde7aaeefa5180df24b164ab08afaf67c903094",
+     "full": "public/img/galerie/fatade/04.jpg",
+     "thumb": "public/img/galerie/fatade/04-t.jpg",
+     "source_size": "1080x1440",
+     "size": "1080x1440",
+     "thumb_size": "600x800"
+    }
+   ],
+   "duplicates_skipped": [],
+   "refused": []
+  },
+  {
+   "folder": "Finisaje",
+   "page": "finisaje",
+   "render_on": "finisaje",
+   "found": 5,
+   "installed": 5,
+   "preview": 2,
+   "photos": [
+    {
+     "source": "WhatsApp Iage 2026-09-19 at 6.37.19 AM.jpeg",
+     "sha256": "0b357cae4d5635065162f378247ab79eb589091c27a33fda68da8b6b1753f71f",
+     "full": "public/img/galerie/finisaje/01.jpg",
+     "thumb": "public/img/galerie/finisaje/01-t.jpg",
+     "source_size": "736x1012",
+     "size": "736x1012",
+     "thumb_size": "600x825"
+    },
+    {
+     "source": "WhatsApp Image 206-09-19 at 6.36.35 AM.jpeg",
+     "sha256": "e0c0cbd241655119cc5176a33cc1da9a374d6872cf7452f9c9583e27f3d0da01",
+     "full": "public/img/galerie/finisaje/02.jpg",
+     "thumb": "public/img/galerie/finisaje/02-t.jpg",
+     "source_size": "864x1152",
+     "size": "864x1152",
+     "thumb_size": "600x800"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.35 AM.jpeg",
+     "sha256": "ac83d468f8607402b4e1a5096489234a60f8e7ce7f57465f202a33225d247fac",
+     "full": "public/img/galerie/finisaje/03.jpg",
+     "thumb": "public/img/galerie/finisaje/03-t.jpg",
+     "source_size": "630x806",
+     "size": "630x806",
+     "thumb_size": "600x767"
+    },
+    {
+     "source": "WhatsApp Imge 2026-09-19 at 6.36.35 AM.jpeg",
+     "sha256": "cb60ac3741f25c7ccc58db905c08f16b7b6d210808187fcecbb4abafd0334606",
+     "full": "public/img/galerie/finisaje/04.jpg",
+     "thumb": "public/img/galerie/finisaje/04-t.jpg",
+     "source_size": "1199x1403",
+     "size": "1199x1403",
+     "thumb_size": "600x702",
+     "review": {
+      "flag": "suspected_stock",
+      "flagged_by": "Q-W26-06",
+      "owner_confirmed": "2026-09-22",
+      "ruling": "W27-R-03"
+     }
+    },
+    {
+     "source": "WhatsApp mage 2026-09-19 at 6.37.19 AM.jpeg",
+     "sha256": "acb7243335f7a015d4ef10ba1fc88a4c687f83004bbd8e5fdfac6903952b8f0e",
+     "full": "public/img/galerie/finisaje/05.jpg",
+     "thumb": "public/img/galerie/finisaje/05-t.jpg",
+     "source_size": "735x674",
+     "size": "735x674",
+     "thumb_size": "600x550"
+    }
+   ],
+   "duplicates_skipped": [],
+   "refused": []
+  },
+  {
+   "folder": "Garduri",
+   "page": "garduri",
+   "render_on": "galerie-garduri",
+   "found": 19,
+   "installed": 12,
+   "preview": 1,
+   "photos": [
+    {
+     "source": "WhatsApp Iage 2026-09-19 at 6.36.35 AM.jpeg",
+     "sha256": "743b51fe5ffc0a39584bd2e72f4981854bc1228ed76b53437ce475e20b004596",
+     "full": "public/img/galerie/galerie-garduri/01.jpg",
+     "thumb": "public/img/galerie/galerie-garduri/01-t.jpg",
+     "source_size": "1200x1600",
+     "size": "1200x1600",
+     "thumb_size": "600x800"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-18 at 4.21.04 AM (1).jpeg",
+     "sha256": "ade8529fe1dc43b03da7931faff91a35dd396b03a5a65d8f9ad8167c58a4f67b",
+     "full": "public/img/galerie/galerie-garduri/02.jpg",
+     "thumb": "public/img/galerie/galerie-garduri/02-t.jpg",
+     "source_size": "510x462",
+     "size": "510x462",
+     "thumb_size": "510x462"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-18 at 4.21.04 AM (2).jpeg",
+     "sha256": "c89cfe431e40de7bc0251f922391c4cb3193ad134d533a81a999219552be0549",
+     "full": "public/img/galerie/galerie-garduri/03.jpg",
+     "thumb": "public/img/galerie/galerie-garduri/03-t.jpg",
+     "source_size": "736x1308",
+     "size": "736x1308",
+     "thumb_size": "600x1066"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-18 at 4.21.04 AM (3).jpeg",
+     "sha256": "bae1a9c94a05a592bcc2bb3723825d78e3f408d4905f00f3fb703a74b202e56c",
+     "full": "public/img/galerie/galerie-garduri/04.jpg",
+     "thumb": "public/img/galerie/galerie-garduri/04-t.jpg",
+     "source_size": "640x800",
+     "size": "640x800",
+     "thumb_size": "600x750"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-18 at 4.21.04 AM (4).jpeg",
+     "sha256": "922e39ad44cbf77391e12f461b93d3751b39931aa7035335e13b64adb36771bf",
+     "full": "public/img/galerie/galerie-garduri/05.jpg",
+     "thumb": "public/img/galerie/galerie-garduri/05-t.jpg",
+     "source_size": "676x1200",
+     "size": "676x1200",
+     "thumb_size": "600x1065"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-18 at 4.21.04 AM (5).jpeg",
+     "sha256": "55d5d9f1271bae14eed5774755173ba3444c92e2ac5600891330756c8656a12b",
+     "full": "public/img/galerie/galerie-garduri/06.jpg",
+     "thumb": "public/img/galerie/galerie-garduri/06-t.jpg",
+     "source_size": "736x736",
+     "size": "736x736",
+     "thumb_size": "600x600"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-18 at 4.21.04 AM.jpeg",
+     "sha256": "f12fd9a284f8a160a3164db79da30a8970f4ad4e96aff7cd6fd595e9fa2d0bd8",
+     "full": "public/img/galerie/galerie-garduri/07.jpg",
+     "thumb": "public/img/galerie/galerie-garduri/07-t.jpg",
+     "source_size": "736x981",
+     "size": "736x981",
+     "thumb_size": "600x799"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.23 AM (3).jpeg",
+     "sha256": "463439dfce0a1edbec648a6ca59649881d471611f53adc363cdd9bf929edea70",
+     "full": "public/img/galerie/galerie-garduri/08.jpg",
+     "thumb": "public/img/galerie/galerie-garduri/08-t.jpg",
+     "source_size": "325x500",
+     "size": "325x500",
+     "thumb_size": "325x500"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.23 AM (5).jpeg",
+     "sha256": "5c13d7f691f81a6f2883fbd5b6db4ad55913cef0ab9d5efb9bd2f9beaf27f18f",
+     "full": "public/img/galerie/galerie-garduri/09.jpg",
+     "thumb": "public/img/galerie/galerie-garduri/09-t.jpg",
+     "source_size": "750x1244",
+     "size": "750x1244",
+     "thumb_size": "600x995"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.23 AM (6).jpeg",
+     "sha256": "66822f03e9a38d60cc031e29727f407db9b0e2946d6b852ce4881af24a8e85c7",
+     "full": "public/img/galerie/galerie-garduri/10.jpg",
+     "thumb": "public/img/galerie/galerie-garduri/10-t.jpg",
+     "source_size": "1200x1600",
+     "size": "1200x1600",
+     "thumb_size": "600x800"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.23 AM copy.jpeg",
+     "sha256": "64b77d3009c09ad1b329f77f24e0d317a0e12549d98a673bbceccc0eb7235c19",
+     "full": "public/img/galerie/galerie-garduri/11.jpg",
+     "thumb": "public/img/galerie/galerie-garduri/11-t.jpg",
+     "source_size": "736x1104",
+     "size": "736x1104",
+     "thumb_size": "600x900"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.35 AM.jpeg",
+     "sha256": "2686f83dad4cc078fdf05a965f99459bc648fc7303afe1b7966181aae6f4c312",
+     "full": "public/img/galerie/galerie-garduri/12.jpg",
+     "thumb": "public/img/galerie/galerie-garduri/12-t.jpg",
+     "source_size": "736x981",
+     "size": "736x981",
+     "thumb_size": "600x799"
+    }
+   ],
+   "duplicates_skipped": [
+    {
+     "file": "WhatsApp Image 2026-09-19 at 6.35.23 AM (1).jpeg",
+     "same_as": "WhatsApp Image 2026-09-18 at 4.21.04 AM (2).jpeg"
+    },
+    {
+     "file": "WhatsApp Image 2026-09-19 at 6.35.23 AM (2).jpeg",
+     "same_as": "WhatsApp Image 2026-09-18 at 4.21.04 AM (3).jpeg"
+    },
+    {
+     "file": "WhatsApp Image 2026-09-19 at 6.35.23 AM (4).jpeg",
+     "same_as": "WhatsApp Image 2026-09-18 at 4.21.04 AM (4).jpeg"
+    },
+    {
+     "file": "WhatsApp Image 2026-09-19 at 6.35.23 AM (7).jpeg",
+     "same_as": "WhatsApp Image 2026-09-18 at 4.21.04 AM (5).jpeg"
+    },
+    {
+     "file": "WhatsApp Image 2026-09-19 at 6.35.23 AM (8).jpeg",
+     "same_as": "WhatsApp Image 2026-09-18 at 4.21.04 AM.jpeg"
+    },
+    {
+     "file": "WhatsApp Image 2026-09-19 at 6.35.23 AM.jpeg",
+     "same_as": "WhatsApp Image 2026-09-18 at 4.21.04 AM (1).jpeg"
+    }
+   ],
+   "refused": [
+    {
+     "file": "WhatsApp Image 2026-09-19 at 6.35.16 AM (3).jpeg",
+     "sha256": "d8447f804a84f81fde0ae278f25c7e94d127f02998c068b11e423d6811a27f2f",
+     "why": "owner instruction W27-R-18, 2026-09-23: a roofing photograph (a gable clad in standing-seam sheet), not a fence; removed from the fence gallery"
+    }
+   ]
+  },
+  {
+   "folder": "Instalații",
+   "page": "instalatii",
+   "render_on": "instalatii",
+   "found": 5,
+   "installed": 5,
+   "preview": 1,
+   "photos": [
+    {
+     "source": "WhatsAp Image 2026-09-19 at 6.37.31 AM.jpeg",
+     "sha256": "b0f4efacf4967a90a1fc5d924a222c62257a30b88b3ce99a73ce8673fd1fd7a9",
+     "full": "public/img/galerie/instalatii/01.jpg",
+     "thumb": "public/img/galerie/instalatii/01-t.jpg",
+     "source_size": "1200x1504",
+     "size": "1200x1504",
+     "thumb_size": "600x752"
+    },
+    {
+     "source": "WhatsApp Image 206-09-19 at 6.37.30 AM.jpeg",
+     "sha256": "6a0060fb228e5c5c473f6cdeada48698171bdfc182ce7dbbf50ce0346dac1295",
+     "full": "public/img/galerie/instalatii/02.jpg",
+     "thumb": "public/img/galerie/instalatii/02-t.jpg",
+     "source_size": "736x981",
+     "size": "736x981",
+     "thumb_size": "600x799"
+    },
+    {
+     "source": "WhatsApp Image 226-09-19 at 6.37.30 AM.jpeg",
+     "sha256": "51b12c264d5fd125632347a7d54b7d6fa0f0931854e182fd71d219cd74a3fd51",
+     "full": "public/img/galerie/instalatii/03.jpg",
+     "thumb": "public/img/galerie/instalatii/03-t.jpg",
+     "source_size": "1042x773",
+     "size": "1042x773",
+     "thumb_size": "600x445"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.37.30 AM.jpeg",
+     "sha256": "f91b1482bda813175579e5dd21591a81bfcabb28ae7e07f00d6d231cee3c4689",
+     "full": "public/img/galerie/instalatii/04.jpg",
+     "thumb": "public/img/galerie/instalatii/04-t.jpg",
+     "source_size": "621x828",
+     "size": "621x828",
+     "thumb_size": "600x800"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.37.31 AM.jpeg",
+     "sha256": "b028e82dafa5fd0ad0addcd07a01e7e0766f7ee30d1502cdb53c002f6d8c48d7",
+     "full": "public/img/galerie/instalatii/05.jpg",
+     "thumb": "public/img/galerie/instalatii/05-t.jpg",
+     "source_size": "1062x1600",
+     "size": "1062x1600",
+     "thumb_size": "600x904"
+    }
+   ],
+   "duplicates_skipped": [],
+   "refused": []
+  },
+  {
+   "folder": "Lucrări de terasament și excavare",
+   "page": "terasamente",
+   "render_on": "terasamente",
+   "found": 16,
+   "installed": 16,
+   "preview": 7,
+   "photos": [
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (1).jpeg",
+     "sha256": "6aa030f108ceb375c32fa6bb05d59d2c71810bfd7cc9ef31bdeda03408dd96af",
+     "full": "public/img/galerie/terasamente/01.jpg",
+     "thumb": "public/img/galerie/terasamente/01-t.jpg",
+     "source_size": "736x1311",
+     "size": "736x1311",
+     "thumb_size": "600x1068"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (2).jpeg",
+     "sha256": "e70960667c83f532b4eec45ceb121e22749b33974594f1bec5e8132cc9bb8212",
+     "full": "public/img/galerie/terasamente/02.jpg",
+     "thumb": "public/img/galerie/terasamente/02-t.jpg",
+     "source_size": "418x627",
+     "size": "418x627",
+     "thumb_size": "418x627",
+     "review": {
+      "flag": "suspected_stock",
+      "flagged_by": "Q-W26-06",
+      "owner_confirmed": "2026-09-22",
+      "ruling": "W27-R-03"
+     }
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (3).jpeg",
+     "sha256": "d0d5477cb2d834a73ec0533c01c08aa581223a93f1fbb332259307bb1beea3f0",
+     "full": "public/img/galerie/terasamente/03.jpg",
+     "thumb": "public/img/galerie/terasamente/03-t.jpg",
+     "source_size": "736x1466",
+     "size": "736x1466",
+     "thumb_size": "600x1195"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (4).jpeg",
+     "sha256": "9f3df2855f345a52fee73a8610cc6a75b610a8beb0e13f2aa359f66f4cecef61",
+     "full": "public/img/galerie/terasamente/04.jpg",
+     "thumb": "public/img/galerie/terasamente/04-t.jpg",
+     "source_size": "736x1104",
+     "size": "736x1104",
+     "thumb_size": "600x900",
+     "review": {
+      "flag": "suspected_stock",
+      "flagged_by": "Q-W26-06",
+      "owner_confirmed": "2026-09-22",
+      "ruling": "W27-R-03"
+     }
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (5).jpeg",
+     "sha256": "540304a52923a00ba1f5d0fcb9a0a51dcf9d229c7c58cf633f63b0af8fe8c7d6",
+     "full": "public/img/galerie/terasamente/05.jpg",
+     "thumb": "public/img/galerie/terasamente/05-t.jpg",
+     "source_size": "747x1328",
+     "size": "747x1328",
+     "thumb_size": "600x1066",
+     "review": {
+      "flag": "suspected_stock",
+      "flagged_by": "Q-W26-06",
+      "owner_confirmed": "2026-09-22",
+      "ruling": "W27-R-03"
+     }
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (6).jpeg",
+     "sha256": "84b84d745a73ce187497512998b9d556a935e2180d255a4c855fade55316d789",
+     "full": "public/img/galerie/terasamente/06.jpg",
+     "thumb": "public/img/galerie/terasamente/06-t.jpg",
+     "source_size": "736x1104",
+     "size": "736x1104",
+     "thumb_size": "600x900"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (7).jpeg",
+     "sha256": "96a087b99e09ee067210cb7d13842b3e80adac67f974e664934b4d4769687318",
+     "full": "public/img/galerie/terasamente/07.jpg",
+     "thumb": "public/img/galerie/terasamente/07-t.jpg",
+     "source_size": "960x960",
+     "size": "960x960",
+     "thumb_size": "600x600"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (8).jpeg",
+     "sha256": "d0f90b48d7336df626192b62bb9e8cd00479612303e90dc85b7fc04174199e92",
+     "full": "public/img/galerie/terasamente/08.jpg",
+     "thumb": "public/img/galerie/terasamente/08-t.jpg",
+     "source_size": "675x1200",
+     "size": "675x1200",
+     "thumb_size": "600x1066"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (9).jpeg",
+     "sha256": "1e09f38880c753b2ba33e8d0278830147c519f2646c41bf5dda6d8b45819d2eb",
+     "full": "public/img/galerie/terasamente/09.jpg",
+     "thumb": "public/img/galerie/terasamente/09-t.jpg",
+     "source_size": "960x1280",
+     "size": "960x1280",
+     "thumb_size": "600x800"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (10).jpeg",
+     "sha256": "a7f6b2fbe3ba4cde3c4a4a9ede53334e5d1ff9c5fae930f503c11ba964b0fe57",
+     "full": "public/img/galerie/terasamente/10.jpg",
+     "thumb": "public/img/galerie/terasamente/10-t.jpg",
+     "source_size": "1200x1600",
+     "size": "1200x1600",
+     "thumb_size": "600x800",
+     "review": {
+      "flag": "suspected_stock",
+      "flagged_by": "Q-W26-06",
+      "owner_confirmed": "2026-09-22",
+      "ruling": "W27-R-03"
+     }
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (11).jpeg",
+     "sha256": "5e58730bd6fd79266dd0eff2f258813470dc06720db0fcb1be5d886fffc4a778",
+     "full": "public/img/galerie/terasamente/11.jpg",
+     "thumb": "public/img/galerie/terasamente/11-t.jpg",
+     "source_size": "736x981",
+     "size": "736x981",
+     "thumb_size": "600x799"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (12).jpeg",
+     "sha256": "408f0cbc6753bafc868827741bcb4ab4a4798d1e07426056eae8a3c537a99874",
+     "full": "public/img/galerie/terasamente/12.jpg",
+     "thumb": "public/img/galerie/terasamente/12-t.jpg",
+     "source_size": "736x1209",
+     "size": "736x1209",
+     "thumb_size": "600x985"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (13).jpeg",
+     "sha256": "05749e322b55ef5f163b552793f7dd6c633b73621637a73fde012829af3e0545",
+     "full": "public/img/galerie/terasamente/13.jpg",
+     "thumb": "public/img/galerie/terasamente/13-t.jpg",
+     "source_size": "736x920",
+     "size": "736x920",
+     "thumb_size": "600x750",
+     "review": {
+      "flag": "suspected_stock",
+      "flagged_by": "Q-W26-06",
+      "owner_confirmed": "2026-09-22",
+      "ruling": "W27-R-03"
+     }
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM (14).jpeg",
+     "sha256": "0fbecdb3f8db8bd3f389acc42a06748344d6883027a55b3c1dae0027cf98e741",
+     "full": "public/img/galerie/terasamente/14.jpg",
+     "thumb": "public/img/galerie/terasamente/14-t.jpg",
+     "source_size": "1200x1500",
+     "size": "1200x1500",
+     "thumb_size": "600x750",
+     "review": {
+      "flag": "suspected_stock",
+      "flagged_by": "Q-W26-06",
+      "owner_confirmed": "2026-09-22",
+      "ruling": "W27-R-03"
+     }
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM copy.jpeg",
+     "sha256": "df8e40e09ada0c7e99389e496530c7206e23cdc3a745365abe00c7ab697b2f2a",
+     "full": "public/img/galerie/terasamente/15.jpg",
+     "thumb": "public/img/galerie/terasamente/15-t.jpg",
+     "source_size": "899x1600",
+     "size": "899x1600",
+     "thumb_size": "600x1068"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.35.47 AM.jpeg",
+     "sha256": "e45fd8edd7751502cf9ee06708df6c863f9353988b71efef03db9120fecf6eea",
+     "full": "public/img/galerie/terasamente/16.jpg",
+     "thumb": "public/img/galerie/terasamente/16-t.jpg",
+     "source_size": "736x1308",
+     "size": "736x1308",
+     "thumb_size": "600x1066",
+     "review": {
+      "flag": "suspected_stock",
+      "flagged_by": "Q-W26-06",
+      "owner_confirmed": "2026-09-22",
+      "ruling": "W27-R-03"
+     }
+    }
+   ],
+   "duplicates_skipped": [],
+   "refused": []
+  },
+  {
+   "folder": "Renovări la cheie",
+   "page": "reparatii",
+   "render_on": "reparatii",
+   "found": 27,
+   "installed": 27,
+   "preview": 17,
+   "photos": [
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (1).jpeg",
+     "sha256": "4ddf55e7577cc29c4e6a1444d769d5ba672c873afa2d1760b245f64536d92903",
+     "full": "public/img/galerie/reparatii/01.jpg",
+     "thumb": "public/img/galerie/reparatii/01-t.jpg",
+     "source_size": "1017x1600",
+     "size": "1017x1600",
+     "thumb_size": "600x944"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (2).jpeg",
+     "sha256": "62abae091b283157fbd64e98e48e6c54199c8c6e66ed64882fab8e82edb1c700",
+     "full": "public/img/galerie/reparatii/02.jpg",
+     "thumb": "public/img/galerie/reparatii/02-t.jpg",
+     "source_size": "1200x1600",
+     "size": "1200x1600",
+     "thumb_size": "600x800"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (3).jpeg",
+     "sha256": "c46988ed6fdf591d12585c0858024b1396654485a15c8a63f787b559ad7398f9",
+     "full": "public/img/galerie/reparatii/03.jpg",
+     "thumb": "public/img/galerie/reparatii/03-t.jpg",
+     "source_size": "736x981",
+     "size": "736x981",
+     "thumb_size": "600x799"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (4).jpeg",
+     "sha256": "a6f129ad8464499a96f47909f12cd1c4d35ee0dab49b3aa5879b46c58249e858",
+     "full": "public/img/galerie/reparatii/04.jpg",
+     "thumb": "public/img/galerie/reparatii/04-t.jpg",
+     "source_size": "1200x1600",
+     "size": "1200x1600",
+     "thumb_size": "600x800"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (5).jpeg",
+     "sha256": "42c9dddbc44f16b8005ed6b372e358c9f7ab7f525500f59895fb61bf1e8a1eda",
+     "full": "public/img/galerie/reparatii/05.jpg",
+     "thumb": "public/img/galerie/reparatii/05-t.jpg",
+     "source_size": "1200x1600",
+     "size": "1200x1600",
+     "thumb_size": "600x800"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (6).jpeg",
+     "sha256": "bebdeef15c2275aa060c1adba9942dd94e279bb2a8c83c7c66d9c6fd5d2128d1",
+     "full": "public/img/galerie/reparatii/06.jpg",
+     "thumb": "public/img/galerie/reparatii/06-t.jpg",
+     "source_size": "750x1000",
+     "size": "750x1000",
+     "thumb_size": "600x800"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (7).jpeg",
+     "sha256": "5b043e6d8ea3961134c96bdc1be6d202ba1c7ee83c64d2e15e69c09525c1d273",
+     "full": "public/img/galerie/reparatii/07.jpg",
+     "thumb": "public/img/galerie/reparatii/07-t.jpg",
+     "source_size": "1200x1457",
+     "size": "1200x1457",
+     "thumb_size": "600x728"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (8).jpeg",
+     "sha256": "7307be674ef2ef6b9f10ac62b6bac2469399a8c481cb12b88e050d556800ab57",
+     "full": "public/img/galerie/reparatii/08.jpg",
+     "thumb": "public/img/galerie/reparatii/08-t.jpg",
+     "source_size": "736x1308",
+     "size": "736x1308",
+     "thumb_size": "600x1066"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (9).jpeg",
+     "sha256": "2f177967df2b10d587110f5ec522ea10735221e394bd7cdc23a7d6381e8f8844",
+     "full": "public/img/galerie/reparatii/09.jpg",
+     "thumb": "public/img/galerie/reparatii/09-t.jpg",
+     "source_size": "896x1152",
+     "size": "896x1152",
+     "thumb_size": "600x771"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (10).jpeg",
+     "sha256": "91a7f64269aef8bd2d1f43cdf11b5be72f4dd8f5ce65f6974eb40869e3c461ec",
+     "full": "public/img/galerie/reparatii/10.jpg",
+     "thumb": "public/img/galerie/reparatii/10-t.jpg",
+     "source_size": "768x1024",
+     "size": "768x1024",
+     "thumb_size": "600x800"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (11).jpeg",
+     "sha256": "5e7b5dff45c1a5966b520b01aeb2f889aa615b0b752445b9e5312552c8b59204",
+     "full": "public/img/galerie/reparatii/11.jpg",
+     "thumb": "public/img/galerie/reparatii/11-t.jpg",
+     "source_size": "900x1600",
+     "size": "900x1600",
+     "thumb_size": "600x1066"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (12).jpeg",
+     "sha256": "1c28b3e58cc0020ecc2ebd226450e03ffae5d9b545c8890dae809075d1d7963c",
+     "full": "public/img/galerie/reparatii/12.jpg",
+     "thumb": "public/img/galerie/reparatii/12-t.jpg",
+     "source_size": "676x1200",
+     "size": "676x1200",
+     "thumb_size": "600x1065"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (13).jpeg",
+     "sha256": "0e63a94dafdcc1a71fe5b2143442b40c482262b0c2933318f47feb71a0017149",
+     "full": "public/img/galerie/reparatii/13.jpg",
+     "thumb": "public/img/galerie/reparatii/13-t.jpg",
+     "source_size": "1179x1457",
+     "size": "1179x1457",
+     "thumb_size": "600x741"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (14).jpeg",
+     "sha256": "7c279362f9da33f3c7c4d815c7298a98600171899c65b13e1699b0bbd9c7d1d7",
+     "full": "public/img/galerie/reparatii/14.jpg",
+     "thumb": "public/img/galerie/reparatii/14-t.jpg",
+     "source_size": "736x981",
+     "size": "736x981",
+     "thumb_size": "600x799"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (15).jpeg",
+     "sha256": "990601655ee33c808ba159c315905066d558df02dcfba61d6e9079dd5fe7c548",
+     "full": "public/img/galerie/reparatii/15.jpg",
+     "thumb": "public/img/galerie/reparatii/15-t.jpg",
+     "source_size": "736x1308",
+     "size": "736x1308",
+     "thumb_size": "600x1066"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (16).jpeg",
+     "sha256": "838e5c4e3a8aa93221f734b774db0c7ca755127aa697b865b893652adf45fc30",
+     "full": "public/img/galerie/reparatii/16.jpg",
+     "thumb": "public/img/galerie/reparatii/16-t.jpg",
+     "source_size": "900x1200",
+     "size": "900x1200",
+     "thumb_size": "600x800"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (17).jpeg",
+     "sha256": "ed0410d2ad5b7035f21109ce58eced80839259601cb5a4db0511f1cf7572367f",
+     "full": "public/img/galerie/reparatii/17.jpg",
+     "thumb": "public/img/galerie/reparatii/17-t.jpg",
+     "source_size": "1024x1536",
+     "size": "1024x1536",
+     "thumb_size": "600x900"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (18).jpeg",
+     "sha256": "74fab786a6a4c6d77b9c32e15768dc6cde50fd8fc20a0bbe98c6013a416d9170",
+     "full": "public/img/galerie/reparatii/18.jpg",
+     "thumb": "public/img/galerie/reparatii/18-t.jpg",
+     "source_size": "1066x1600",
+     "size": "1066x1600",
+     "thumb_size": "600x900"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (19).jpeg",
+     "sha256": "054b9d456ba4e21642dfec7bac406f5b5e53650b244e913c0605bcbaea5c4e4b",
+     "full": "public/img/galerie/reparatii/19.jpg",
+     "thumb": "public/img/galerie/reparatii/19-t.jpg",
+     "source_size": "1200x1600",
+     "size": "1200x1600",
+     "thumb_size": "600x800"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (20).jpeg",
+     "sha256": "359adb0e39b1128dadce3f4e3bdddd622f504f4d9aa3bf530b9897c61dfac1b8",
+     "full": "public/img/galerie/reparatii/20.jpg",
+     "thumb": "public/img/galerie/reparatii/20-t.jpg",
+     "source_size": "736x1308",
+     "size": "736x1308",
+     "thumb_size": "600x1066"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (21).jpeg",
+     "sha256": "6d83881ea390254c31abda514ae5e4b76edf1da1d9cc6a0316b66f1e390ebece",
+     "full": "public/img/galerie/reparatii/21.jpg",
+     "thumb": "public/img/galerie/reparatii/21-t.jpg",
+     "source_size": "736x1104",
+     "size": "736x1104",
+     "thumb_size": "600x900"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (22).jpeg",
+     "sha256": "05bcf71e3d1c947fbcfcf0cfd6e98541449b2b5549f522e0cf666832894fd77a",
+     "full": "public/img/galerie/reparatii/22.jpg",
+     "thumb": "public/img/galerie/reparatii/22-t.jpg",
+     "source_size": "736x981",
+     "size": "736x981",
+     "thumb_size": "600x799"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (23).jpeg",
+     "sha256": "6ba98c743aea50deaca463f4c98efb5e963e86d91dddb1fe3248015bcd943dd0",
+     "full": "public/img/galerie/reparatii/23.jpg",
+     "thumb": "public/img/galerie/reparatii/23-t.jpg",
+     "source_size": "736x981",
+     "size": "736x981",
+     "thumb_size": "600x799"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (24).jpeg",
+     "sha256": "568949b340707cabfbeee0f7149eeda5e54cca885d886e655fa96caa6ada8157",
+     "full": "public/img/galerie/reparatii/24.jpg",
+     "thumb": "public/img/galerie/reparatii/24-t.jpg",
+     "source_size": "1024x1536",
+     "size": "1024x1536",
+     "thumb_size": "600x900"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (25).jpeg",
+     "sha256": "37c93930bdf1024e6665f093409fdff58761ca86c76a556ea72cc814733048ba",
+     "full": "public/img/galerie/reparatii/25.jpg",
+     "thumb": "public/img/galerie/reparatii/25-t.jpg",
+     "source_size": "900x1200",
+     "size": "900x1200",
+     "thumb_size": "600x800"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM (26).jpeg",
+     "sha256": "5518979adbeec4d1b49bd8f33659db5834fefa96f1f1241a4e6fe4c724659fc9",
+     "full": "public/img/galerie/reparatii/26.jpg",
+     "thumb": "public/img/galerie/reparatii/26-t.jpg",
+     "source_size": "736x1104",
+     "size": "736x1104",
+     "thumb_size": "600x900"
+    },
+    {
+     "source": "WhatsApp Image 2026-09-19 at 6.36.15 AM.jpeg",
+     "sha256": "97f89477073e8cad2b60dcacabc7beee6ff60ebdd893cee89ed2667c3fccc926",
+     "full": "public/img/galerie/reparatii/27.jpg",
+     "thumb": "public/img/galerie/reparatii/27-t.jpg",
+     "source_size": "1200x1600",
+     "size": "1200x1600",
+     "thumb_size": "600x800"
+    }
+   ],
+   "duplicates_skipped": [],
+   "refused": []
+  }
+ ],
+ "empty_folders": [
+  {
+   "folder": "Construcții industriale",
+   "page": "industrial"
+  },
+  {
+   "folder": "Proiectare și vizualizare 3D",
+   "page": "proiectare-3d"
+  }
+ ],
+ "unmatched_folders": []
 }

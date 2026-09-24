@@ -94,7 +94,12 @@ for (const h of HUBS) {
    less is still the broken walk this line always refused. */
 const ALL_FILLED = !hub.length && !fence.length;
 if (ALL_FILLED) {
-  const empty = ledger.slots.filter((r) => r.state !== 'filled').map((r) => r.id);
+  /* W28-23 (R-W28-06, Q-W28-06): a catalogue slot with no mark-free stock photograph in the allowed
+     set waits as a placeholder, named here with its question; it is not a slot the walk missed. */
+  const WAITING = { 'CAT-0221': 'Q-W28-06' };
+  const empty = ledger.slots.filter((r) => r.state !== 'filled' && !WAITING[r.id]).map((r) => r.id);
+  const waiting = ledger.slots.filter((r) => r.state !== 'filled' && WAITING[r.id]).map((r) => `${r.id} (${WAITING[r.id]})`);
+  if (waiting.length) console.log(`waiting as a placeholder, named: ${waiting.join(', ')}`);
   if (empty.length) die(`both lists are empty and ${empty.length} ledger row(s) are not filled (${empty.slice(0, 8).join(', ')}), so the walk missed them.`);
   if (hubSeen !== 13) die(`both lists are empty and the walk saw ${hubSeen} hub tiles, not the 13 the two hubs render (9 roofing since W27-C-02, 4 fence).`);
 }

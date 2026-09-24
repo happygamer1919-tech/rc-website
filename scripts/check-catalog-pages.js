@@ -549,6 +549,39 @@ for (const pg of pages) {
    the other kinds still read them: a cart, a stock claim, a product record or a
    manufacturer name inside a `.prod__price` still fires. Only the price kind is
    relaxed, and only there. */
+/* W28-18 (wave 28 dispatch): a catalogue page carries ONE JSON-LD block of Product entries, one per
+   priced card, each with an AggregateOffer (numeric lowPrice above zero, priceCurrency MDL, no
+   highPrice, no key named price, no brand, no rating, no review). W24-R3's "no schema.org Offer" is
+   amended by the dispatch for exactly that shape. A block that IS that shape is blanked from the
+   PRICE buffer (its "MDL" is not a currency word in prose) and from a RECORD buffer read only by the
+   product-record arm; `pg.scan` keeps it, so a cart, a stock claim or a manufacturer name inside it
+   still fires. A block that is anything else is left where it is, so the product-record arm names
+   it. Self-tested below, both ways, before any page is read. */
+const LD_BLOCK = /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g;
+function productBlockOk(json) {
+  let v; try { v = JSON.parse(json); } catch { return false; }
+  const list = Array.isArray(v) ? v : [v];
+  if (!list.length) return false;
+  const text = JSON.stringify(v);
+  if (/AggregateRating|"Review"|ratingValue|reviewCount|"brand"|"manufacturer"|"highPrice"|"price":/.test(text)) return false;
+  return list.every((p) => p && p['@type'] === 'Product' && typeof p.name === 'string' && p.name.trim()
+    && p.offers && p.offers['@type'] === 'AggregateOffer' && typeof p.offers.lowPrice === 'number' && p.offers.lowPrice > 0
+    && p.offers.priceCurrency === 'MDL');
+}
+(() => {
+  const good = '[{"@type":"Product","name":"X","offers":{"@type":"AggregateOffer","lowPrice":110,"priceCurrency":"MDL"}}]';
+  const arms = [
+    ['an Offer without a Product', '[{"@type":"Offer","price":110,"priceCurrency":"MDL"}]'],
+    ['a highPrice', '[{"@type":"Product","name":"X","offers":{"@type":"AggregateOffer","lowPrice":110,"highPrice":200,"priceCurrency":"MDL"}}]'],
+    ['a rating', '[{"@type":"Product","name":"X","aggregateRating":{"@type":"AggregateRating","ratingValue":4.9},"offers":{"@type":"AggregateOffer","lowPrice":110,"priceCurrency":"MDL"}}]'],
+    ['a currency that is not MDL', '[{"@type":"Product","name":"X","offers":{"@type":"AggregateOffer","lowPrice":110,"priceCurrency":"EUR"}}]'],
+    ['a lowPrice of zero', '[{"@type":"Product","name":"X","offers":{"@type":"AggregateOffer","lowPrice":0,"priceCurrency":"MDL"}}]'],
+    ['a brand', '[{"@type":"Product","name":"X","brand":{"@type":"Brand","name":"Y"},"offers":{"@type":"AggregateOffer","lowPrice":110,"priceCurrency":"MDL"}}]'],
+  ];
+  if (!productBlockOk(good)) fail('self-test: the permitted Product block was refused');
+  for (const [what, json] of arms) if (productBlockOk(json)) fail(`self-test: a Product block with ${what} was accepted`);
+  selfTested += 1 + arms.length;
+})();
 const PRODUCT_PRICE = PRODUCT_PRICE_SHAPE;
 const PRICE_CLASS = /\bprod__price\b/g;
 let priceEls = 0, priceClassSeen = 0;
@@ -582,8 +615,17 @@ const ROOF_TABLES_EXPECTED = (() => {
   if (!/100 lei/.test(blanked)) fail('self-test: the compare-table permission blanked a price in prose outside the tables');
   selfTested += 2;
 })();
+let ldBlanked = 0;
 for (const pg of pages) {
   pg.priceScan = pg.scan;
+  pg.recordScan = pg.scan;
+  for (const m of pg.scan.matchAll(LD_BLOCK)) {
+    if (!productBlockOk(m[1])) continue;
+    const blank = ' '.repeat(m[0].length);
+    pg.priceScan = pg.priceScan.slice(0, m.index) + blank + pg.priceScan.slice(m.index + m[0].length);
+    pg.recordScan = pg.recordScan.slice(0, m.index) + blank + pg.recordScan.slice(m.index + m[0].length);
+    ldBlanked++;
+  }
   let matched = 0;
   if (pg.kind === 'roofcatalog') {
     let tables = 0;
@@ -608,7 +650,7 @@ for (const pg of pages) {
 const hits = [];
 for (const pg of pages) {
   for (const p of PATTERNS) {
-    const text = p.kind === 'price' ? pg.priceScan : pg.scan;
+    const text = p.kind === 'price' ? pg.priceScan : (p.kind === 'product record' ? pg.recordScan : pg.scan);
     const g = new RegExp(p.re.source, p.re.flags.includes('g') ? p.re.flags : p.re.flags + 'g');
     for (const m of text.matchAll(g)) {
       const at = Math.max(0, m.index - 50);
@@ -702,7 +744,7 @@ for (const f of allPages) {
 
 const ro = pages.filter((p) => p.locale === 'ro').length;
 const ru = pages.filter((p) => p.locale === 'ru').length;
-console.log(`patterns: ${PATTERNS.length}   self-test assertions: ${selfTested}`);
+console.log(`patterns: ${PATTERNS.length}   self-test assertions: ${selfTested}   permitted Product blocks blanked from the price and record buffers: ${ldBlanked}`);
 console.log(`scanned: ${pages.length} catalogue pages (${ro} RO, ${ru} RU)`);
 console.log(`manufacturer names, whole page: ${MANUFACTURER_NAMES.join(', ')}`);
 for (const [list, terms] of Object.entries(TERMS)) console.log(`${list} terms, prose only (${terms.length}): ${terms.join(' | ')}`);

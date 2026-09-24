@@ -65,6 +65,17 @@ const SERVICES_ROOT = { ro: '/servicii/', ru: '/ru/servicii/' };
 const CATALOG_ROOT = { ro: '/catalog/', ru: '/ru/catalog/' };
 // The city already named in meta.title, band.coverageLine and areaServed.
 const PRIMARY_CITY = { ro: 'Chișinău', ru: 'Кишинёве' };
+/* W28-19: the NAP as one string. */
+const NAP = { name: 'Rapid Construct', street: 'Nicolae Zelinski 24', locality: 'Chișinău', phone: '+373 76 837 180', email: 'rapidconstructmd@gmail.com' };
+const NAP_TEXT = `${NAP.name} · ${NAP.street}, ${NAP.locality} · ${NAP.phone} · ${NAP.email}`;
+const NAP_HTML = `<address class="nap" data-nap>${NAP_TEXT}</address>`;
+function despreFacts(l) {
+  const f = (k) => { const v = l.strings[`despre.facts.${k}`]; if (!REAL(v)) die(`despre.facts.${k} must be real in ${l.code}.`); return v; };
+  const fill = (t) => t.replace('{brand}', NAP.name).replace('{city}', l.code === 'ro' ? 'Chișinău' : 'Кишинёв').replace('{coverage}', l.strings['band.coverageTitle'])
+    .replace('{exp}', `${l.strings['stats.1.n']} ${l.strings['stats.1.label']}`).replace('{projects}', `${l.strings['stats.0.n']} ${l.strings['stats.0.label']}`)
+    .replace('{years}', l.strings['warranty.years']).replace('{phone}', NAP.phone).replace('{email}', NAP.email);
+  return ['f0', 'f1', 'f2', 'f3', 'f4'].map((k) => fill(f(k))).join(' ');
+}
 
 // Nine service slugs, matching the delivered SVG filenames and the order of
 // services.items.N in the locale files.
@@ -151,8 +162,8 @@ const RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu', 'prod
   // built, so what lands here is already safe. Escaping it again turned the
   // quotes into &quot; and truncated the notice at its first space.
   'demoAttr',
-  'portfolioCards', 'portfolioFilters', 'googleLink', 'supplierChips', 'heroPanelMedia', 'promoBar',
-  'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
+  'portfolioCards', 'portfolioFilters', 'googleLink', 'supplierChips', 'heroPanelMedia', 'promoBar', 'nap',
+  'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal', 'nf.schema', 'privacySchema', 'nap',
   'areaServedJson', 'workTypeOptions', 'notFoundLocale',
   ...Array.from({ length: 9 }, (_, i) => `svcMedia${i}`),
 ]);
@@ -174,7 +185,7 @@ const SVC_RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu',
   // W12-09. Generated JSON-LD fragment, must not be escaped.
   'areaServedJson',
   // W12-17. Anchor fragments and a bare attribute.
-  'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
+  'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal', 'nf.schema', 'privacySchema', 'nap',
 ]);
 
 const die = (msg) => { console.error('\nBUILD FAILED: ' + msg + '\n'); process.exit(1); };
@@ -442,6 +453,54 @@ ${dl}
 }
 
 // FAQPage, mirroring the visible FAQ exactly.
+/* W28-18 (wave 28 dispatch): structured data on EVERY page. One writer for a block, a
+   BreadcrumbList builder for the pages that had none (the catalogue index, the category and
+   subcategory pages, the redirect pages, the privacy pages, the 404 pages, the "in construcție"
+   page, the review page), and Product entries derived from the RENDERED cards of a page, so a
+   Product exists exactly where a priced card exists and the two counts cannot drift: the card's
+   own name, its own picture and its own price, read back from the markup this file just wrote.
+   Each Product carries an AggregateOffer with a numeric lowPrice in MDL and nothing else: no
+   highPrice, no key named price, no rating, no review (the dispatch's words), and no brand,
+   because a manufacturer name is refused on a catalogue page by RC-129 whatever markup it sits
+   in. W24-R3's "no schema.org Offer" is amended by this dispatch for this one shape, and
+   scripts/check-catalog-pages.js holds the shape (a block that is anything else still fires
+   its product-record arm). No backtick inside the JSON; the block is built by JSON.stringify. */
+const LD = (obj) => '\n<script type="application/ld+json">\n' + JSON.stringify(obj, null, 2) + '\n</script>';
+const unesc = (t) => String(t).replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+function breadcrumbLd(crumbs) {
+  return LD({ '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: crumbs.map((c, i) => Object.assign({ '@type': 'ListItem', position: i + 1, name: c.name }, c.item ? { item: c.item } : {})) });
+}
+/* The first figure in a rendered price, as a number: "1.750,00 lei" (thousands dot, decimal
+   comma) is 1750; "179.55 lei/buc" (imperlux's decimal dot) is 179.55; "De la 110 lei" is 110. */
+function priceNumber(text) {
+  const m = String(text).match(/\d[\d.,]*/); if (!m) return null;
+  let t = m[0].replace(/[.,]$/, '');
+  if (t.includes(',')) t = t.replace(/\./g, '').replace(',', '.');
+  else if (/\.\d{3}(\.|$)/.test(t)) t = t.replace(/\./g, '');
+  const v = Number(t); return Number.isFinite(v) && v > 0 ? v : null;
+}
+const PRODUCT_LD_MARK = '<!--ld:products-->';
+function productLdFromHtml(html, pageUrl) {
+  const items = [];
+  for (const m of html.matchAll(/<article class="(?:prod|nvk)"[\s\S]*?<\/article>/g)) {
+    const card = m[0];
+    const name = (card.match(/class="(?:prod|nvk)__name">([^<]*)</) || [])[1];
+    const price = (card.match(/class="(?:prod|nvk)__price"[^>]*>([^<]*)</) || [])[1];
+    if (!name || price === undefined) continue;
+    const low = priceNumber(unesc(price));
+    if (low === null) die(`W28-18: the priced card "${unesc(name)}" on ${pageUrl} prints "${unesc(price)}", which carries no figure to publish as lowPrice.`);
+    const img = (card.match(/<img[^>]*\ssrc="([^"]+)"/) || [])[1];
+    items.push(Object.assign({ '@type': 'Product', name: unesc(name), url: pageUrl },
+      img ? { image: SITE + (img.startsWith('/') ? img : '/' + img) } : {},
+      { offers: { '@type': 'AggregateOffer', lowPrice: low, priceCurrency: 'MDL', offerCount: 1, url: pageUrl } }));
+  }
+  return items.length ? LD(items) : '';
+}
+/* Every page template carries the marker in its head; once the page is composed, the marker
+   becomes the Product block for the cards on THAT page, or nothing. */
+const fillProducts = (html, pageUrl) => html.replace(PRODUCT_LD_MARK, productLdFromHtml(html, pageUrl));
+
 function svcFaqSchema(l, slug) {
   const items = svcFaqItems(l, slug);
   if (!items.length) return '';
@@ -2770,7 +2829,7 @@ const ROOF_ALL = 'toate';
    Derived, never listed: the parent plus its own children, so adding a roofing
    subcategory to content/catalog.json adds its redirect page too. */
 const ROOF_MOVED_ROUTES = new Set();
-const MOVED_RAW_KEYS = new Set(['promoBar']);
+const MOVED_RAW_KEYS = new Set(['promoBar', 'moved.schema', 'nap']);
 const roofAnchor = (child) => `mat-${child}`;
 /* ~~ROOF_MOVED_ROUTES.add(ROOF_CATEGORY);~~ AMENDED (W27-FIX-15, W27-R-21): the PARENT route
    is a real catalogue page again, the two roofing bentos and nothing else; only the seven
@@ -3654,7 +3713,8 @@ ${galleryLightbox(l, g, title)}`;
 
 const PRODUCT_PAGES = [
   { slug: 'tigla-metalica', key: 'tigla', parent: 'acoperisuri', block: (l) => tiglaGrid(l), sources: ['content/tigla-metalica.json'] },
-  { slug: 'roca-vulcanica', key: 'novatik', parent: 'acoperisuri', block: (l) => novatikPage(l), sources: ['content/novatik.json'] },
+  /* W28-18: the page renders a visible FAQ (content/novatik.json), so it carries the FAQPage too. */
+  { slug: 'roca-vulcanica', key: 'novatik', parent: 'acoperisuri', block: (l) => novatikPage(l), faqSchema: (l) => LD({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: NOVATIK.faq.map((f) => ({ '@type': 'Question', name: f.q[l.code], acceptedAnswer: { '@type': 'Answer', text: f.a[l.code] } })) }), sources: ['content/novatik.json'] },
   { slug: 'copertine', key: 'copertine', block: (l) => copertine(l), sources: ['content/copertine.json'] },
   { slug: 'garduri', key: 'garduri', block: (l) => gardPage(l), faqSchema: (l) => gardFaqSchema(l), sources: [] },
   { slug: 'modele-garduri', key: 'gardModele', parent: 'garduri', block: (l) => gardModelePage(l), sources: ['content/garduri-modele.json'] },
@@ -3718,7 +3778,7 @@ function parentTitle(l, slug) {
 })();
 const PROD_RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu',
   'demoAttr', 'promoBar', 'areaServedJson', 'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
-  'prod.block', 'prod.footerLinks', 'prod.faqSchema',
+  'prod.block', 'prod.footerLinks', 'prod.faqSchema', 'nap',
   // W24-08. The garduri bento, and the copertine hero and cross-sell row.
   'prod.bento', 'prod.hero', 'prod.crossSell', 'prod.heroHidden',
   // W24-06. Three levels on a parented product page, two on the others.
@@ -3727,7 +3787,7 @@ const PROD_RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu',
 const productTemplate = fs.readFileSync('src/product.html', 'utf8');
 const CAT_RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu',
   'demoAttr', 'promoBar', 'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
-  'cat.block', 'cat.products', 'cat.footerLinks',
+  'cat.block', 'cat.products', 'cat.footerLinks', 'cat.schema', 'nap',
   // W24-04. Built here because a parent page and a subcategory page differ in
   // both: a parent has three breadcrumb levels and an authored lede, a
   // subcategory has four and none.
@@ -3974,6 +4034,14 @@ for (const l of loaded) {
     base: BASE,
     buildSha: BUILD_SHA,
     homeHref: BASE + l.home,
+    /* W28-19 (wave 28 dispatch, GEO): ONE NAP, the same bytes on every page and in both locales
+       (name, street, locality, phone, e-mail), rendered from this constant and nowhere else; the
+       localized labels of the footer's contact list stay in the list, outside the block, so the
+       block hashes to one value site-wide. The JSON-LD literals say the same street. */
+    nap: NAP_HTML,
+    /* W28-19: the "Despre" facts, plain declarative sentences from figures the site already
+       states (the stats, the warranty years, the coverage line, the contact), never a new fact. */
+    despreFacts: despreFacts(l),
     hrefRo: BASE + '/',
     hrefRu: BASE + '/ru/',
     canonical: SITE + BASE + l.home,
@@ -4091,6 +4159,8 @@ for (const l of loaded) {
   vars['nf.canonical'] = SITE + BASE + (l.code === 'ro' ? '/404.html' : '/ru/404.html');
   vars['nf.urlRo'] = SITE + BASE + '/404.html';
   vars['nf.urlRu'] = SITE + BASE + '/ru/404.html';
+  vars['nf.schema'] = breadcrumbLd([{ name: l.strings['servicePage.home'], item: SITE + BASE + l.home }, { name: l.strings['notfound.title'] }]);
+  vars.privacySchema = breadcrumbLd([{ name: l.strings['servicePage.home'], item: SITE + BASE + l.home }, { name: l.strings['privacy.title'] }]);
   vars.productTeaser = productTeaser(l);
   vars.socialRow = socialRow(l);
   // Overrides nothing: band.coverageLine is no longer a locale key, it is
@@ -4193,6 +4263,7 @@ for (const l of loaded) {
     }
     const icVars = {
       ...vars,
+      'ic.schema': breadcrumbLd([{ name: l.strings['servicePage.home'], item: SITE + BASE + l.home }, { name: title }]),
       'ic.metaTitle': title + BRAND,
       'ic.metaDesc': l.strings['inConstructie.line'],
       'ic.canonical': SITE + BASE + IN_CONSTRUCTIE[l.code],
@@ -4205,7 +4276,7 @@ for (const l of loaded) {
     };
     const missing = new Set();
     const html = inConstructieTemplate.replace(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/g, (_, key) => {
-      if (key in icVars) return CAT_RAW_KEYS.has(key) || key === 'ic.footerLinks' ? icVars[key] : esc(icVars[key]);
+      if (key in icVars) return CAT_RAW_KEYS.has(key) || key === 'ic.footerLinks' || key === 'ic.schema' || key === 'nap' ? icVars[key] : esc(icVars[key]);
       missing.add(key); return `{{${key}}}`;
     });
     if (missing.size) die(`src/in-constructie.html references unknown keys for ${l.code}: ${[...missing].join(', ')}`);
@@ -4239,6 +4310,7 @@ for (const l of loaded) {
       'cat.pathRu': BASE + CATALOG_ROOT.ru,
       'cat.subject': `[${l.code.toUpperCase()}] ${title} - ${CATALOG_ROOT[l.code]}`,
       'cat.tiles': catalogIndexTiles(l),
+      'cat.schema': breadcrumbLd([{ name: l.strings['servicePage.home'], item: SITE + BASE + l.home }, { name: title }]),
       'cat.footerLinks': SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
         `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join(''),
     };
@@ -4277,6 +4349,7 @@ for (const l of loaded) {
         'moved.target': target,
         'moved.canonical': SITE + BASE + ROOF_SECTION_PATH(l),
         'moved.eyebrow': head.title,
+        'moved.schema': breadcrumbLd([{ name: l.strings['servicePage.home'], item: SITE + BASE + l.home }, { name: l.strings['header.catalog'], item: SITE + BASE + CATALOG_ROOT[l.code] }, { name: head.title }]),
         /* AMENDED (W28-17): a redirect page's title carried its target's; it names the catalogue so no
            two pages share a title, and it carries both alternates and Open Graph like every page. */
         'moved.metaTitle': [`${head.title} · ${l.strings['header.catalog']}${BRAND}`, `${head.title} · ${l.strings['header.catalog']}`].find((s) => s.length < TITLE_MAX),
@@ -4316,6 +4389,13 @@ for (const l of loaded) {
         parent ? crumb(BASE + CATALOG_ROOT[l.code] + parent.slug + '/', categoryLabel(l, parent)) : '',
         `      <span aria-current="page">${esc(head.title)}</span>`,
       ].filter(Boolean).join('\n'),
+      /* W28-18: the same crumbs as structured data, and the Product block for this page's cards. */
+      'cat.schema': breadcrumbLd([
+        { name: l.strings['servicePage.home'], item: SITE + BASE + l.home },
+        { name: l.strings['header.catalog'], item: SITE + BASE + CATALOG_ROOT[l.code] },
+        ...(parent ? [{ name: categoryLabel(l, parent), item: SITE + BASE + CATALOG_ROOT[l.code] + parent.slug + '/' }] : []),
+        { name: head.title },
+      ]) + PRODUCT_LD_MARK,
       'cat.ledeBlock': (c.parent != null || roofCatalog) ? ''
         : `<p class="hero__sub" data-cat-prose="lede" style="margin: 16px 0 0;">${esc(categoryProse(l, c).lede)}</p>`,
       /* AMENDED (W28-17): the roofing catalogue page's title was the service page's, byte for byte;
@@ -4347,7 +4427,7 @@ for (const l of loaded) {
     if (missing.size) die(`src/category.html references unknown keys for ${l.code}/${c.slug}: ${[...missing].join(', ')}`);
     if (html.includes('{{')) die(`unsubstituted placeholder survived in ${out}`);
     fs.mkdirSync(path.dirname(out), { recursive: true });
-    fs.writeFileSync(out, html);
+    fs.writeFileSync(out, fillProducts(html, catVars['cat.canonical']));
   }
 
   // --- W14-16, the three product pages --------------------------------------
@@ -4389,7 +4469,7 @@ for (const l of loaded) {
          template, so the two heroes stay side by side in one file and a reader
          can see that exactly one of them shows. */
       'prod.heroHidden': p.slug === 'copertine' ? ' hidden' : '',
-      'prod.faqSchema': p.faqSchema ? p.faqSchema(l) : '',
+      'prod.faqSchema': (p.faqSchema ? p.faqSchema(l) : '') + PRODUCT_LD_MARK,
       'prod.footerLinks': SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
         `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join(''),
     };
@@ -4401,7 +4481,7 @@ for (const l of loaded) {
     if (missing.size) die(`src/product.html references unknown keys for ${l.code}/${p.slug}: ${[...missing].join(', ')}`);
     if (html.includes('{{')) die(`unsubstituted placeholder survived in ${out}`);
     fs.mkdirSync(path.dirname(out), { recursive: true });
-    fs.writeFileSync(out, html);
+    fs.writeFileSync(out, fillProducts(html, prodVars['prod.canonical']));
     console.log(`wrote ${out}  (${(html.length / 1024).toFixed(1)} KB)`);
   }
 
@@ -4563,10 +4643,20 @@ fs.writeFileSync('dist/sitemap.xml',
     '## Zonă deservită / Зона обслуживания', '',
     coverageLine(ro),
     coverageLine(ru), '',
+    /* W28-19 (wave 28, GEO): the "Despre" facts in both languages, the catalogue groups with
+       their URLs, the address, and the Russian hours; the phone and e-mail from the one NAP. */
+    '## Despre / О компании', '',
+    despreFacts(ro),
+    despreFacts(ru), '',
+    '## Catalog / Каталог', '',
+    ...CATALOG.categories.map((c) => `- [${c.label.ro}](${SITE}${BASE}${c.href.ro}): RU ${c.label.ru}, ${SITE}${BASE}${c.href.ru}`),
+    '',
     '## Contact', '',
-    `- Telefon: ${ro.strings['footer.phone'] || '+373 76 837 180'}`,
-    `- Email: ${ro.strings['footer.email'] || 'rapidconstructmd@gmail.com'}`,
+    `- ${NAP.name}, ${NAP.street}, ${NAP.locality}, Republica Moldova`,
+    `- Telefon: ${NAP.phone}`,
+    `- Email: ${NAP.email}`,
     `- Program: ${ro.strings['form.hours']}`,
+    `- График: ${ru.strings['form.hours']}`,
     '',
     '## Limbi / Языки', '',
     `- Română: ${SITE}${BASE}/`,
@@ -4622,7 +4712,7 @@ fs.writeFileSync('dist/sitemap.xml',
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fotografii reținute · Rapid Construct</title>
 <meta name="description" content="Pagină internă. Cele cinci fotografii reținute de la publicare, cu motivul fiecăreia.">
-<meta name="robots" content="noindex, nofollow">\n<meta name="build-sha" content="${BUILD_SHA}">\n<link rel="canonical" href="${SITE}${BASE}/review/">\n<meta property="og:type" content="website">\n<meta property="og:title" content="Fotografii reținute · Rapid Construct">\n<meta property="og:description" content="Pagină internă. Cele cinci fotografii reținute de la publicare, cu motivul fiecăreia.">\n<meta property="og:url" content="${SITE}${BASE}/review/">\n<meta property="og:locale" content="ro_MD">\n<meta property="og:image" content="${SITE}${BASE}/img/og-image.jpg">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="noindex, nofollow">\n<meta name="build-sha" content="${BUILD_SHA}">\n<link rel="canonical" href="${SITE}${BASE}/review/">\n<meta property="og:type" content="website">\n<meta property="og:title" content="Fotografii reținute · Rapid Construct">\n<meta property="og:description" content="Pagină internă. Cele cinci fotografii reținute de la publicare, cu motivul fiecăreia.">\n<meta property="og:url" content="${SITE}${BASE}/review/">\n<meta property="og:locale" content="ro_MD">\n<meta property="og:image" content="${SITE}${BASE}/img/og-image.jpg">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n<meta name="twitter:card" content="summary_large_image">${breadcrumbLd([{ name: 'Acasă', item: SITE + BASE + '/' }, { name: 'Fotografii reținute' }])}
 <meta name="theme-color" content="#F65308">
 <link rel="stylesheet" href="${BASE}/styles.css">
 <style>
@@ -4652,6 +4742,7 @@ ${items}
     </div>
   </section>
 </main>
+${NAP_HTML}
 </body>
 </html>
 `;

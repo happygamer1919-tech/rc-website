@@ -71,6 +71,9 @@ const HUBS = [
   'ru/servicii/acoperisuri/index.html',
   'servicii/garduri/index.html',
   'ru/servicii/garduri/index.html',
+  /* W28-13: the roofing catalogue page renders the same hub above the product bento. */
+  'catalog/materiale-acoperis/index.html',
+  'ru/catalog/materiale-acoperis/index.html',
 ];
 const TILES_PER_HUB = 4;
 

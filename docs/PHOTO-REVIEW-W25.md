@@ -279,11 +279,11 @@ them apart: nothing from the earlier dispatch is a labelled swatch or carries a 
 | `ACOP-02` | ACOP-02 | /servicii/acoperisuri/ | https://imperlux.md/images/offers/p-roca.png | owner_override_imperlux | 900x900 | none |
 | `ACOP-03` | ACOP-03 | /servicii/acoperisuri/ | https://imperlux.md/images/offers/p-shingle.png | owner_override_imperlux | 800x800 | none |
 | `ACOP-04` | ACOP-04 | /servicii/acoperisuri/ | https://imperlux.md/images/offers/p-bavaria.png | owner_override_imperlux | 1000x1000 | none |
-| `ACOP-05` | ACOP-05 | /servicii/acoperisuri/ | https://imperlux.md/acoperisuri/images/categories/ceramica.png | owner_override_imperlux | 540x540 | none |
-| `ACOP-06` | ACOP-06 | /servicii/acoperisuri/ | https://imperlux.md/acoperisuri/images/categories/shingle.png | owner_override_imperlux | 1440x411 | none |
-| `ACOP-07` | ACOP-07 | /servicii/acoperisuri/ | https://imperlux.md/acoperisuri/images/categories/sisteme-pluviale.png | owner_override_imperlux | 840x480 | none |
-| `ACOP-08` | ACOP-08 | /servicii/acoperisuri/ | client direct transfer, owner folder RC-webpics_v2 ACOPERIȘURI, 22.09.2026 | owned by Rapid Construct, supplied for site use | 1280x730 | none |
-| `ACOP-09` | ACOP-09 | /servicii/acoperisuri/ | https://www.dasterum.md/content/catalog/products/vmt7scs4.jpg | direct_supplier dasterum.md | 488x488 | watermark, reuse of CAT-0228 |
+| `ACOP-05` | ACOP-05 | /catalog/materiale-acoperis/ | https://imperlux.md/acoperisuri/images/categories/ceramica.png | owner_override_imperlux | 540x540 | none |
+| `ACOP-06` | ACOP-06 | /catalog/materiale-acoperis/ | https://imperlux.md/acoperisuri/images/categories/shingle.png | owner_override_imperlux | 1440x411 | none |
+| `ACOP-07` | ACOP-07 | /catalog/materiale-acoperis/ | https://imperlux.md/acoperisuri/images/categories/sisteme-pluviale.png | owner_override_imperlux | 840x480 | none |
+| `ACOP-08` | ACOP-08 | /catalog/materiale-acoperis/ | client direct transfer, owner folder RC-webpics_v2 ACOPERIȘURI, 22.09.2026 | owned by Rapid Construct, supplied for site use | 1280x730 | none |
+| `ACOP-09` | ACOP-09 | /catalog/materiale-acoperis/ | https://www.dasterum.md/content/catalog/products/vmt7scs4.jpg | direct_supplier dasterum.md | 488x488 | watermark, reuse of CAT-0228 |
 | `ACIM-01` | ACIM-01 | /servicii/acoperisuri/ | https://www.swissporton.ro/media/4225/download/texture_125732.jpg | manufacturer official site | 600x450 | none |
 | `ACIM-02` | ACIM-02 | /servicii/acoperisuri/ | https://www.iko.eu/sites/default/files/public/2021-05/CAMBRIDGE_Xpress_52_B.jpg | manufacturer official site | 600x450 | none |
 | `ACIM-03` | ACIM-03 | /servicii/acoperisuri/ | https://www.iko.eu/sites/default/files/public/2021-06/Superglass_HEX_01.jpg | manufacturer official site | 600x450 | none |

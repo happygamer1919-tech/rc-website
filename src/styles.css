@@ -1476,14 +1476,14 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
      whatever their specificity. The reveal's transition list carries it too,
      below, because on a revealed card that list is the one in force. */
   .card, .trust-item, .review,
-  .prod, .cat-tile, .nvk, .xsell, .teaser, .offer {
+  .prod, .cat-tile, .nvk, .xsell, .teaser, .offer, .lk-card {
     transition: translate var(--hover-dur) var(--ease-out),
                 box-shadow var(--hover-dur) var(--ease-out),
                 border-color var(--hover-dur) var(--ease-out),
                 background-color var(--hover-dur) var(--ease-out);
   }
   .card:hover, .review:hover,
-  .prod:hover, .cat-tile:hover, .nvk:hover, .xsell:hover, .teaser:hover, .offer:hover {
+  .prod:hover, .cat-tile:hover, .nvk:hover, .xsell:hover, .teaser:hover, .offer:hover, .lk-card:hover {
     translate: 0 -4px;
     box-shadow: var(--shadow-card-hover);
     border-color: var(--brand);
@@ -2003,6 +2003,20 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 .teaser__title { font-size: 20px; text-transform: uppercase; letter-spacing: -0.01em; }
 .teaser__line { margin: 0; color: var(--ink-muted); }
 .teaser__more { display: inline-flex; align-items: center; gap: 6px; margin-top: auto; font-weight: 700; color: var(--brand-dark); }
+
+/* --- W28-13: catalogue link cards on a service page ----------------------- */
+/* One text card per catalogue group, .lk-* (prefix grepped free, section 3.1). The same
+   surface as a teaser; the label is the group's own label and the arrow says it is a link. */
+.lk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-top: 32px; }
+.lk-card {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  background: var(--bg-light); border: 1px solid var(--hairline);
+  border-radius: var(--radius-card); padding: 20px 24px; color: var(--ink);
+  box-shadow: var(--shadow-card); font-weight: 700; text-decoration: none; min-height: 72px;
+}
+.lk-card svg { flex: none; color: var(--brand-dark); }
+.lk-card:hover .lk-card__label { color: var(--brand-dark); }
+.lk-card:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
 
 /* --- 8. service illustration box ------------------------------------------ */
 /* Fixed 4:3 box, illustration centred and contained. The <img> always resolves

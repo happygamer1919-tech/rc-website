@@ -1661,3 +1661,23 @@ tree; two move to measured plus 60 (W24-R4) and the other 53 read identical:
 |---|---|---|---|
 | `/` | 9,261 | **9,341** | 9,321 to **9,401** |
 | `/ru/` | 9,420 | **9,500** | 9,480 to **9,560** |
+
+## AMENDED (W28-13, wave 28): the roofing catalogue moves to its catalogue page, six budgets move
+
+Added 2026-09-23 by card W28-13, under the wave 28 dispatch ("services versus catalog"). Nothing
+above this line moves.
+
+The product bento, the filter bar with its counts, the four compare tables and the 99 cards leave
+`/servicii/acoperisuri/` for `/catalog/materiale-acoperis/`; the service page gains six link
+cards, the fence page one. All 55 budgeted pages re-measured at 1440, settled (reveals applied,
+1,600ms), on the card's built tree; six move to measured plus 60 (W24-R4) and the other 49 read
+identical:
+
+| Page | Before (budget minus 60) | After | Budget |
+|---|---|---|---|
+| `/servicii/acoperisuri/` | 23,802 | **8,106** | 23,862 to **8,166** |
+| `/ru/servicii/acoperisuri/` | 24,050 | **8,271** | 24,110 to **8,331** |
+| `/servicii/garduri/` | 5,635 | **6,025** | 5,695 to **6,085** |
+| `/ru/servicii/garduri/` | 5,657 | **6,046** | 5,717 to **6,106** |
+| `/catalog/materiale-acoperis/` | 4,217 | **19,380** | 4,277 to **19,440** |
+| `/ru/catalog/materiale-acoperis/` | 4,217 | **19,463** | 4,277 to **19,523** |

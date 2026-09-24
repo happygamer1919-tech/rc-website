@@ -51,7 +51,9 @@ const fence = fenceAll.filter((f) => !f.filled);
 const DIST = path.join(ROOT, 'dist');
 if (!fs.existsSync(DIST)) die('no dist/, run: node build.js');
 const HUBS = [
-  { prefix: 'ACOP-', file: 'dist/servicii/acoperisuri/index.html' },
+  /* AMENDED (W28-13): the nine roofing tiles (hub and product bento) render on the catalogue
+     page; the service page keeps the hub only, so reading it would count four. */
+  { prefix: 'ACOP-', file: 'dist/catalog/materiale-acoperis/index.html' },
   { prefix: 'GARDB-', file: 'dist/servicii/garduri/index.html' },
 ];
 const hub = [];

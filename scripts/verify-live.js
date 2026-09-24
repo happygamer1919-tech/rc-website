@@ -157,29 +157,32 @@ const MARKERS = {
     /* AMENDED (W27-FIX-05, ruling W27-R-12): **99**. Six dasterum accessory records fold into
        five imperlux near-twins (Coamă semirotundă, Bordura de fronton, Reținător de zăpadă, Dolie
        interioară, and the two Plăci de racordare) and render nowhere. 105 - 6. */
-    productCards: 99,
+    /* AMENDED (W28-13): ZERO. The catalogue moved to /catalog/materiale-acoperis/ (see the
+       roofcatalog set); the service page carries six link cards to it instead. */
+    productCards: 0,
     /* AMENDED (W26-04): ~~8~~ **6**. Toate plus FIVE sections, not the seven
        catalogue subcategories the bar was built from. The seven catalogue pages
        still answer and still redirect here; what changed is what a visitor filters
        by. */
     /* AMENDED (W27-C-02, ruling W27-R-06): ~~6~~ **7**. Tabla cutata is its own
        section, so Toate plus SIX. */
-    roofFilters: 7,
+    roofFilters: 0,
     roofOff: 0,
     foldedCards: 0,
+    linkCards: 6,
     /* W26-04. The SECOND bento, four product tiles, all four of them anchors into
        the section below. It carries its own prefix (build.js says why), so
        `bentoTiles` above still counts the hub and only the hub, and a build that
        gave the product bento the hub's class would move BOTH numbers at once. */
     /* AMENDED (W27-C-02, ruling W27-R-06): ~~4~~ **5**. A ninth tile on the page,
        Tabla cutata, as a third row of the product bento; the hub above stays four. */
-    pbTiles: 5,
+    pbTiles: 0,
     /* W26-05. Three Compara tables, one per section that has one. The two that do
        not are recorded in content/roofing-sections.json with the reason, so a
        build that quietly grew a fourth is a build that took a decision nobody
        wrote down. */
     /* AMENDED (W27-C-02): ~~3~~ **4**. Tabla cutata declares a table of its own. */
-    cmpTables: 4,
+    cmpTables: 0,
   },
   /* W24-07. The rocă vulcanică page: four model cards, and no price anywhere.
      `bentoTiles: 0` is asserted because this page is a bento DESTINATION, not a
@@ -212,6 +215,7 @@ const MARKERS = {
     /* W26-04: this page is not a product-bento page, and the zero holds that. */
     pbTiles: 0,
     cmpTables: 0,
+    linkCards: 1,          // W28-13: the card to the fence models catalogue
   },
   // W14-13. The three product pages carry the service page's site-wide parts.
   product: {
@@ -304,9 +308,18 @@ const MARKERS = {
     profileAnchors: 0,
     areaServed: 0,
     catProse: 0,
-    productCards: 0,
+    /* AMENDED (W28-13): the WHOLE roofing catalogue is here: the hub, the product bento
+       (five tiles, same-page anchors), Toate plus six filters, the four compare tables and
+       the 99 cards that were on the service page (their arithmetic is in the service-roof
+       comment above and does not change by moving). */
+    productCards: 99,
+    roofFilters: 7,
+    roofOff: 0,
+    foldedCards: 0,
     bentoTiles: 4,
     bentoLinks: 4,
+    pbTiles: 5,
+    cmpTables: 4,
   },
 };
 
@@ -357,8 +370,8 @@ const PAGES = [
      section's "de la" line, one line; measured 24,782 / 25,003 at 1440, settled, plus 60, in R-Y. */
   /* AMENDED (W27-FIX-05, ruling W27-R-12): six accessory cards fold away, two grid rows fewer;
      measured 23,873 / 24,094 at 1440, settled, plus 60, in R-Y. */
-  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 23862 },
-  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 24110 },
+  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 8166 },
+  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 8331 },
   /* W24-07. The rocă vulcanică mirror page. */
   /* AMENDED (W27-C-04): chips, a warranty row and a price on each card, a derived "de la"
      line under the heading; measured 4,369 / 4,439 at 1440, settled, plus 60, in R-Y. */
@@ -386,8 +399,8 @@ const PAGES = [
      dark hero and a cross-sell row; modele de garduri is new. All under W24-R4. */
   /* W26-03: 5728 held since W24-08 while the page fell to 5,547. See R-Y's
      2026-09-22 block: a budget may never stay still while its page moves. */
-  { path: '/servicii/garduri/',            type: 'product-hub', label: 'garduri RO',  budget: 5695 },
-  { path: '/ru/servicii/garduri/',         type: 'product-hub', label: 'garduri RU',  budget: 5717 },
+  { path: '/servicii/garduri/',            type: 'product-hub', label: 'garduri RO',  budget: 6085 },
+  { path: '/ru/servicii/garduri/',         type: 'product-hub', label: 'garduri RU',  budget: 6106 },
   /* W25-11. Both rows DROP. The "Preț la cerere" line became a "De la ... lei/m2"
      price, and the new line is shorter because it does not carry the catalogue
      card's shared 44px flex min-height: measured 3686 RO and 3707 RU against 3720
@@ -415,8 +428,8 @@ const PAGES = [
   { path: '/catalog/',                                      type: 'index',         label: 'idx RO',           budget: 3722 },
   { path: '/ru/catalog/',                                   type: 'index',         label: 'idx RU',           budget: 3747 },
   /* W27-FIX-15 (W27-R-21): the roofing catalogue page, both locales; budgets measured plus 60. */
-  { path: '/catalog/materiale-acoperis/',                   type: 'roofcatalog',   label: 'cat RO acoper',    budget: 4277 },
-  { path: '/ru/catalog/materiale-acoperis/',                type: 'roofcatalog',   label: 'cat RU acoper',    budget: 4277 },
+  { path: '/catalog/materiale-acoperis/',                   type: 'roofcatalog',   label: 'cat RO acoper',    budget: 19440 },
+  { path: '/ru/catalog/materiale-acoperis/',                type: 'roofcatalog',   label: 'cat RU acoper',    budget: 19523 },
   { path: '/catalog/termoizolatie/',                        type: 'category',      label: 'cat RO termo',     budget: 6904 },
   { path: '/ru/catalog/termoizolatie/',                     type: 'category',      label: 'cat RU termo',     budget: 6820 },
   { path: '/catalog/termoizolatie/polistiren-expandat/',    type: 'subcategory',   label: 'sub RO eps',       budget: 3647 },
@@ -487,7 +500,8 @@ const REDIRECT_SECTION = {
   'elemente-de-fixare': 'accesorii-de-acoperis',
 };
 const REDIRECTS = [];
-for (const [loc, root, dest] of [['RO', '/catalog/', '/servicii/acoperisuri/'], ['RU', '/ru/catalog/', '/ru/servicii/acoperisuri/']]) {
+/* AMENDED (W28-13): the children redirect to the catalogue page itself, one directory up. */
+for (const [loc, root, dest] of [['RO', '/catalog/', '/catalog/materiale-acoperis/'], ['RU', '/ru/catalog/', '/ru/catalog/materiale-acoperis/']]) {
   for (const r of REDIRECT_ROUTES) {
     const child = r.replace(/\/$/, '');
     const section = REDIRECT_SECTION[child];
@@ -580,6 +594,7 @@ const PROBE = `(async () => {
     tileDiagrams: q('[data-tile-diagram]'),
     /* W25-19. The roofing filter bar, and how many cards it is hiding. */
     pbTiles: q('.pb__tile'),
+    linkCards: q('.lk-card'),
     cmpTables: q('[data-roof-table]'),
     roofFilters: q('[data-roof-filter]'),
     roofOff: q('.roof--off'),

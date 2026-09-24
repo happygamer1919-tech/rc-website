@@ -2320,9 +2320,12 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
   .hero h1 { margin: 0 auto 16px; }
   .hero__sub { margin: 0 auto 24px; }
   .stats { padding: 24px 0; margin-bottom: 24px; }
-  .stats.grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  /* W28-FIX-01: a track is never narrower than its longest word, so a 14px label cannot spill
+     out of its column at 320; where the three fit, the tracks stay equal. */
+  .stats.grid--3 { grid-template-columns: repeat(3, minmax(min-content, 1fr)); gap: 8px; }
   .stat__n { font-size: 28px; }
-  .stat__label { font-size: 13px; }
+  /* W28-FIX-01: 14px, the review's floor for visible text; the Russian labels wrap instead. */
+  .stat__label { font-size: 14px; }
   .price-box { padding: 16px 20px; margin-bottom: 24px; }
   .price-box__title { font-size: 19px; }
   .cta-row { flex-direction: column; }

@@ -745,8 +745,8 @@
       "evidence": "cop-hero__more href #copertine-modele on /servicii/copertine/ and /ru/servicii/copertine/ (1 and 1); check-links exit 0"
     },
     {
-      "lane": "queue",
-      "status": "todo",
+      "lane": "in_flight",
+      "status": "pr_open",
       "priority": "normal",
       "owner_terminal": "yellow",
       "pr": null,
@@ -762,7 +762,8 @@
       "acceptance": [
         "node build.js && every built page with a phone menu: the copertine row follows the Servicii link and precedes the Catalog link  -> 0 pages otherwise",
         "node scripts/run-gates.js --keep-going  -> every command exit 0"
-      ]
+      ],
+      "evidence": "66 pages with the phone menu, the copertine row once after Servicii and before Catalog; check-catalog-counts exit 0 (exit 1 with 66 problems on main's build)"
     },
     {
       "lane": "queue",

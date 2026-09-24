@@ -1427,7 +1427,7 @@ the artifact is republished from `main` after this merges. Documents only.
 **Status: PR OPEN** (opened 2026-09-24). The hero button opens `#copertine-modele`, both locales. From W28-REVIEW (second pass), defect 1.
 
 ## W28-FIX-04 · On a phone, Copertine sits under Servicii
-**Status: todo.** From W28-REVIEW (second pass), defect 2.
+**Status: PR OPEN** (opened 2026-09-24). The copertine phone-menu row renders after Servicii on all 66 pages with the phone menu; check-catalog-counts holds it. From W28-REVIEW (second pass), defect 2.
 
 ## W28-FIX-05 · The copertine page back in llms.txt
 **Status: todo.** From W28-REVIEW (second pass), defect 3.

@@ -107,13 +107,28 @@ for (const f of catalogPages) {
   if (cards) bad(`dist/${rel}: ${cards} copertine card(s) on a Catalog page (W28-30)`);
   if (tiles) bad(`dist/${rel}: a Catalog tile opens the copertine page (W28-30)`);
 }
+let phoneMenus = 0, phoneOk = 0;
 for (const f of allPages) {
-  const n = count(fs.readFileSync(f, 'utf8'), /class="catalog__link" href="[^"]*\/servicii\/copertine\//g);
+  const html = fs.readFileSync(f, 'utf8');
+  const n = count(html, /class="catalog__link" href="[^"]*\/servicii\/copertine\//g);
   copMenuRows += n;
   if (n) bad(`dist/${path.relative(DIST, f)}: the Catalog menu carries a copertine row (W28-30)`);
+  /* W28-FIX-04: on a phone the menu is one list, and a row indented after "Catalog" reads as a
+     Catalog entry. The copertine row must appear once, after "Servicii" and before "Catalog". */
+  const i = html.indexOf('id="mobile-panel"');
+  if (i < 0) continue;
+  phoneMenus++;
+  const seg = html.slice(i, html.indexOf('</div>', i));
+  const svc = seg.search(/class="mobile-nav-link" href="[^"]*#servicii"/);
+  const cat = seg.search(/class="mobile-nav-link" href="[^"]*\/catalog\/"/);
+  const rows = [...seg.matchAll(/mobile-nav-link--sub" href="[^"]*\/servicii\/copertine\/"/g)];
+  if (rows.length === 1 && svc >= 0 && cat > svc && rows[0].index > svc && rows[0].index < cat) phoneOk++;
+  else bad(`dist/${path.relative(DIST, f)}: the phone menu has ${rows.length} copertine row(s)${rows.length === 1 ? ', not between "Servicii" and "Catalog"' : ''} (W28-FIX-04)`);
 }
+if (!phoneMenus) fail('no built page carries the phone menu, so the W28-FIX-04 rule read nothing');
 pagesRead += allPages.length;
 out.push(`Catalog pages read: ${catalogPages.length}; copertine cards on them: ${copUnderCatalog}; copertine Catalog tiles: ${copTiles}; copertine Catalog menu rows on ${allPages.length} pages: ${copMenuRows}`);
+out.push(`phone menus read: ${phoneMenus}; with the copertine row once, under Servicii and before Catalog: ${phoneOk}`);
 
 for (const rel of SERVICE_PAGES) {
   const html = read(rel); pagesRead++;

@@ -1304,14 +1304,23 @@ the fence page gains one to the fence models. Gate 31, `scripts/check-catalog-co
 the counts. Budgets move (R-Y).
 
 ## W28-14 · Copertine: Imperlux photographs and prices, a Catalog group
-**Status: PR OPEN, partial by the source** (opened 2026-09-24). Twelve model photographs from
+**Status: MERGED #172, section 12.0 exit 0, partial by the source** (opened 2026-09-24, merged 00:51 UTC as `40d144f`). Twelve model photographs from
 imperlux.md's own model pages (COPM-01 to COPM-12, three viewers, three gallery picks), source_url
 on every record, the W24-R7 ask line on every card because imperlux.md publishes no copertine price
 (Q-W28-02 lists all twelve), the Copertine tile and menu row in the Catalog, the group chip with
 its count on the page, gate 31 holding the twelve. Four budgets move (R-Y).
 
 ## W28-15 · Fatade images from fatade3d.md product pages
-**Status: todo.**
+**Status: PR OPEN** (opened 2026-09-24). 110 fatade3d pictures looked at, 66 replaced by the
+product page's own plain photograph through the intake (50 code renders, 14 tables, 2 flyers), 44
+kept, 0 without a photograph; a second adversarial look at all 66; three colour mismatches held in
+Q-W28-03; report `docs/reports/W28-FATADE-IMAGES.md`; gate 32 `scripts/check-image-sources.js`.
+0 budgets move.
+
+## W28-22 · The phone hero matches the desktop hero (R-W28-04)
+**Status: todo.** Owner chat instruction 2026-09-24 00:45 UTC. Measured: nothing is hidden at 390;
+the desktop hero is centred with the three stats in one row, the phone hero is left-aligned with
+the stats stacked one per row. The card centres the phone hero and keeps the stats in one row.
 
 ## W28-16 · Construcții industriale: two service lines
 **Status: todo.**

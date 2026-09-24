@@ -14452,3 +14452,30 @@ contact form `#oferta`, labelled from a key of its own, `pages.copertine.cardCta
 "Запросить предложение". Its accessible name starts with the visible words and names the model, so
 the twelve do not share a name. No price is shown; a record that ever carries one still stops the
 build (W28-14). New class `.model__cta`, prefix grepped free. Two budgets move (R-Y).
+
+## W28-27 · Turnkey examples: masonry and brick instead of timber frame, 2026-09-24
+
+Branch `w28/w28-27-turnkey-masonry`, stacked on W28-29. The fourth dispatch's card "W28-25" (the id
+was taken).
+
+**Read.** Five of the ten stock pictures on `/servicii/case-la-cheie/` showed a North American
+timber-frame house: 09 to 12 with the stud frame or OSB sheathing in view, and 08 a stucco tract house
+of the same construction. The other five already show masonry (clay block, brick walls, a finished
+rendered house).
+
+**Done.** Each of the five is replaced in place, same file names and same order, so the gallery stays
+at 12 with the owner's two photographs first: 08 a two-storey concrete block house in scaffolding,
+09 a brick terrace in scaffolding, 10 brick houses with roof trusses going up, 11 a mason laying
+concrete blocks, 12 a finished brick house. Four are from Wikimedia Commons under CC0 1.0 (the licence
+read from each file's own page) and one from Pexels. Two are crops of the CC0 original, which the
+licence permits, made to cut off a developer's site hoarding (10) and a tool with a maker logo and a
+clothing tag (11); the crop is written into both manifest rows. Candidates came from the W28-23
+harvest's unused accepted pictures and from Commons searched through its API and Openverse, no
+browser; two viewers judged every candidate at full size under the owner's words and both had to
+accept (six of fifteen refused for a brand on pallets or a hoarding, a logo on a tape measure, a
+recognisable face, boxes with a brand name, a timber-frame membrane, or a non-house). The second viewer
+named the mason (11) as the closest call on faces: only the back of the jaw shows. The stock intake
+learned `replaces` (an in-place swap of a stock picture, its PROVENANCE and SOURCES rows replaced, an
+owner's photograph refused) and `local_file` with `crop` (a derivative installed while the rows name
+the original). Wikimedia's file host answers the intake's generic user agent with HTTP 429; the two
+originals were staged with a contact user agent.

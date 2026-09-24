@@ -1402,7 +1402,7 @@ artifact is republished from `main` after this merges. Documents only.
 W28-28. Two owner answers recorded as R-W28-14 and R-W28-15. Documents only.
 
 ## W28-29 · Copertine: a button to the contact form on every model card
-**Status: todo.** R-W28-14; no price, one button to `#oferta` per card, both locales.
+**Status: PR OPEN** (opened 2026-09-24). R-W28-14; no price, one button to `#oferta` per card, both locales; two budgets move.
 
 ## W28-27 · Turnkey examples: masonry instead of timber frame
 **Status: todo.** Five timber-frame stock pictures on the turnkey gallery replaced in place; count stays 12.

@@ -1799,3 +1799,17 @@ the card's built tree; two move to measured plus 60 (W24-R4) and the other 53 re
 |---|---|---|---|
 | `/servicii/galerie-garduri/` | 3,725 | **4,981** | 3,785 to **5,041** |
 | `/ru/servicii/galerie-garduri/` | 3,725 | **4,981** | 3,785 to **5,041** |
+
+## AMENDED (W28-29, wave 28): a button on every copertine model card, two budgets move
+
+Added 2026-09-24 by card W28-29, under R-W28-14. Nothing above this line moves.
+
+Each of the twelve copertine model cards trades its one-line ask for a button to the contact form,
+which is taller, so the model grid grows by one button height per row. All 55 budgeted pages
+re-measured at 1440, settled (reveals applied, 1,600ms), on the card's built tree; two move to
+measured plus 60 (W24-R4) and the other 53 read identical:
+
+| Page | Before (budget minus 60) | After | Budget |
+|---|---|---|---|
+| `/servicii/copertine/` | 8,125 | **8,157** | 8,185 to **8,217** |
+| `/ru/servicii/copertine/` | 8,201 | **8,233** | 8,261 to **8,293** |

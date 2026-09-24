@@ -407,8 +407,8 @@ const PAGES = [
   { path: '/ru/servicii/tigla-metalica/',  type: 'tigla',   label: 'tigla RU',       budget: 5574 },
   /* AMENDED (W26-12): the gallery section, one card and its lightbox, +629 in both
      locales, measured 7184 / 7260. Budget measured plus 60 (W24-R4), R-Y. */
-  { path: '/servicii/copertine/',          type: 'product', label: 'copertine RO',   budget: 8185 },
-  { path: '/ru/servicii/copertine/',       type: 'product', label: 'copertine RU',   budget: 8261 },
+  { path: '/servicii/copertine/',          type: 'product', label: 'copertine RO',   budget: 8217 },
+  { path: '/ru/servicii/copertine/',       type: 'product', label: 'copertine RU',   budget: 8293 },
   /* W24-08. The garduri page gained the fence bento; the copertine page gained a
      dark hero and a cross-sell row; modele de garduri is new. All under W24-R4. */
   /* W26-03: 5728 held since W24-08 while the page fell to 5,547. See R-Y's

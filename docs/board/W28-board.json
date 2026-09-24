@@ -607,8 +607,8 @@
       "evidence": "quality green; merged 2026-09-24 18:10:11Z as 86e2ca3; section 12.0 EXIT=0 at 18:13:17Z; gate 32 counts 78 stock, 2 owner photographs, 0 waiting"
     },
     {
-      "lane": "queue",
-      "status": "todo",
+      "lane": "in_flight",
+      "status": "pr_open",
       "priority": "high",
       "owner_terminal": "yellow",
       "pr": null,
@@ -625,7 +625,8 @@
         "node build.js && node scripts/dom-text.js --count \".model a[href$=\\\"#oferta\\\"]\" /servicii/copertine/ /ru/servicii/copertine/  -> 12 and 12",
         "node scripts/dom-text.js --count \".model .prod__ask\" /servicii/copertine/ /ru/servicii/copertine/  -> 0 and 0",
         "node scripts/run-gates.js --keep-going  -> every command exit 0"
-      ]
+      ],
+      "evidence": "12 buttons to #oferta on /servicii/copertine/ and /ru/servicii/copertine/, 0 ask lines (rendered DOM); catalog-pages, catalog-counts, links, css-collisions, text-contrast, schema-check, seo-check exit 0; two budgets move (copertine both locales, +32px)"
     },
     {
       "lane": "queue",

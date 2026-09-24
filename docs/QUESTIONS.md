@@ -3561,7 +3561,7 @@ packshot shows the product as it is sold, under a licence the owner accepted on 
 picture each (no stock site has them; a colour-mismatch is already Q-W28-03), and 30 material
 records take the generic type photographs W28-23 installs, by reuse. Say which.
 
-## Q-W28-06 · No mark-free photograph of a roof diffusion membrane exists in the allowed stock set; CAT-0221 waits as a placeholder · OPEN · opened 2026-09-24 (W28-23)
+## Q-W28-06 · No mark-free photograph of a roof diffusion membrane exists in the allowed stock set; CAT-0221 waits as a placeholder · ANSWERED 2026-09-24, the owner supplied the photograph (W28-26) · opened 2026-09-24 (W28-23)
 
 **Raised W28-23, 2026-09-24. Shipped default: the membrane card shows the site's placeholder box until a
 photograph arrives; the category tile of Alte materiale stands on the reinforcing mesh picture instead.**

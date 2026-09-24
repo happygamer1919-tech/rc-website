@@ -234,8 +234,8 @@ For each row marked "replaced", open the catalogue page named in the second colu
 | CAT-0218 | /catalog/sisteme-iluminare/ | Lampă K2841 | CAT-0218.jpg | CAT-0218.webp | https://www.pexels.com/photo/38523677/ | Pexels License | replaced |
 | CAT-0219 | /catalog/sisteme-iluminare/ | Lampă K2842 | CAT-0219.jpg | CAT-0219.webp | https://www.pexels.com/photo/18234667/ | Pexels License | replaced |
 | CAT-0220 | /catalog/sisteme-iluminare/ | Lampă K1823 | CAT-0220.jpg | CAT-0220.webp | https://www.pexels.com/photo/21367324/ | Pexels License | replaced |
-| CAT-0221 | /catalog/alte-materiale/ | Membrana de DIFUZIE pentru acoperișuri | CAT-0221.jpg (fatade3d.md, FATADE print) | placeholder | none in the allowed set | none | waiting (Q-W28-06) |
+| CAT-0221 | /catalog/alte-materiale/ | Membrana de DIFUZIE pentru acoperișuri | CAT-0221.jpg (fatade3d.md, FATADE print) | CAT-0221.webp | the owner's own photograph, client direct transfer 24.09.2026 (W28-26) | owned by Rapid Construct | replaced by the owner's photograph (225x225, under the 450 floor, flagged) |
 | CAT-0222 | /catalog/alte-materiale/ | Plasă de armare | CAT-0222.jpg | CAT-0222.webp | https://www.pexels.com/photo/36536055/ | Pexels License | replaced |
-| CAT-0223 | /catalog/alte-materiale/ | Colțar PVC | CAT-0223.jpg | CAT-0223.webp | https://www.pexels.com/photo/6474123/ | Pexels License | replaced |
+| CAT-0223 | /catalog/alte-materiale/ | Colțar PVC | CAT-0223.jpg (fatade3d.md, FATADE print) | CAT-0223.webp | the owner's own photograph, client direct transfer 24.09.2026 (W28-26) | owned by Rapid Construct | replaced by the owner's photograph (the W28-23 stock picture refused) |
 
-**109 replaced, 114 kept.**
+**109 replaced by stock, 2 replaced by the owner's own photographs (W28-26, after the owner refused the corner bead's stock picture and supplied the membrane's), 112 kept.**

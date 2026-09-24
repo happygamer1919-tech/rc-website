@@ -14349,3 +14349,21 @@ four. Both service pages open with their hero; the six catalogue link cards stay
 Acoperisuri. Six budgets move (R-Y): the two roofing and the two fence service pages shorten
 by about 800px, the two fence models pages grow by the same.
  main
+
+## W28-26 · The owner's photographs for the membrane and the corner bead, 2026-09-24
+
+Branch `w28/w28-26-owner-photos-membrane-corner`, on `main` at `b95c4b9`. Owner message after
+#183 (R-W28-09): the two W28-23 pictures for CAT-0221 (a placeholder) and CAT-0223 (a stock
+photograph the owner refused) are replaced by two files the owner put in the home folder.
+
+**Done.** Both files encoded to WebP by `scripts/webp-encode.js` (the canvas drops every
+metadata block, which R-W's client-supplied origin requires and gate 17 checks), installed as
+`public/img/catalog/CAT-0221.webp` and `CAT-0223.webp` with the client-direct-transfer row each,
+the corner bead's stock file and its PROVENANCE and SOURCES rows removed, both ledger rows
+filled with new alt text in both locales. Gate 32 counts owner photographs on the fatade group
+as their own origin; the waiting-placeholder exception in gates 25 and 32 is empty again.
+Looked at before installing: no logo, text or mark on either.
+
+**Flagged.** The membrane file is 225x225, below the 450 floor (W25-R12) that every other
+catalogue picture meets; the encoder never upscales, so the card will paint it soft. Installed as
+the owner instructed; a larger file of the same picture is one more run.

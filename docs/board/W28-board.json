@@ -87,6 +87,15 @@
       "applied_by": [
         "W28-25"
       ]
+    },
+    {
+      "id": "R-W28-09",
+      "title": "Two stock pictures refused (membrane, corner bead); the owner's own photographs replace them (owner chat after #183)",
+      "date": "2026-09-24",
+      "ruled_by": "owner",
+      "applied_by": [
+        "W28-26"
+      ]
     }
   ],
   "cards": [
@@ -457,13 +466,13 @@
     {
       "id": "W28-23",
       "title": "Fatade product images: every picture fetched from fatade3d.md replaced by a generic, mark-free stock photograph of its product type",
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "high",
       "owner_terminal": "yellow",
       "branch": "w28/w28-23-fatade-stock-images",
-      "pr": null,
-      "merge_sha": null,
+      "pr": 183,
+      "merge_sha": "b95c4b993c4ead7133a48bdf0b219b321da53a25",
       "depends_on": [
         "W28-R2"
       ],
@@ -475,7 +484,7 @@
         "node build.js && node scripts/dom-text.js --count 'img[src*=\"fatade\"], img[alt*=\"fatade3d\" i], img[alt*=\"fatade 3d\" i], img[alt*=\"FATADE\"]' on every catalogue page both locales  -> 0",
         "node scripts/run-gates.js --keep-going  -> every command exit 0"
       ],
-      "evidence": "109 of 110 slots on a stock photograph (79 distinct, 30 reuses); CAT-0221 waiting as a placeholder (Q-W28-06); gates 19, 24, 32, asset-provenance, catalog-pages, catalog-counts, image-metadata, photo-review, image-slots exit 0 on the tree; DOM check 0 marks"
+      "evidence": "quality green; merged 2026-09-24 17:43:27Z as b95c4b9; section 12.0 EXIT=0 at 17:46:48Z; 109 of 110 slots on a stock photograph (79 distinct, 30 reuses); CAT-0221 waiting as a placeholder (Q-W28-06); gates 19, 24, 32, asset-provenance, catalog-pages, catalog-counts, image-metadata, photo-review, image-slots exit 0 on the tree; DOM check 0 marks"
     },
     {
       "id": "W28-24",
@@ -502,13 +511,13 @@
     {
       "id": "W28-25",
       "title": "The hub tiles leave the Acoperisuri and Garduri service pages (owner chat, R-W28-08)",
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "high",
       "owner_terminal": "yellow",
       "branch": "w28/w28-25-hub-tiles-off-service",
-      "pr": null,
-      "merge_sha": null,
+      "pr": 182,
+      "merge_sha": "870727ba38a63cfd20ea9c48fc119ec4bb627fcc",
       "depends_on": [
         "W28-R2"
       ],
@@ -518,6 +527,28 @@
         "node build.js && node scripts/dom-text.js --count \".hub__tile\" /servicii/acoperisuri/ /ru/servicii/acoperisuri/ /servicii/garduri/ /ru/servicii/garduri/  -> 0 on all four",
         "node scripts/dom-text.js --count \".hub__tile\" /catalog/materiale-acoperis/ /servicii/modele-garduri/  -> 4 and 4",
         "node scripts/dom-text.js --count \".lk-card\" /servicii/acoperisuri/  -> 6",
+        "node scripts/run-gates.js --keep-going  -> every command exit 0"
+      ],
+      "evidence": "quality green; merged 2026-09-24 17:30:12Z as 870727b; section 12.0 EXIT=0 at 17:33:18Z"
+    },
+    {
+      "id": "W28-26",
+      "title": "The owner's photographs for the membrane and the corner bead (R-W28-09)",
+      "lane": "in_flight",
+      "status": "pr_open",
+      "priority": "high",
+      "owner_terminal": "yellow",
+      "branch": "w28/w28-26-owner-photos-membrane-corner",
+      "pr": null,
+      "merge_sha": null,
+      "depends_on": [
+        "W28-23"
+      ],
+      "ask": "2 pics you swapped are awful (Membrana de DIFUZIE, Coltar PVC); two new files in the home folder; replace them accordingly.",
+      "reading": "Owner-supplied pictures under R-W's client-direct-transfer origin, WebP with no metadata, never upscaled; the membrane file is 225x225 (under the 450 floor), installed as instructed and flagged; gate 32 counts owner photographs; the waiting placeholder exception is empty.",
+      "acceptance": [
+        "node scripts/check-image-sources.js  -> exit 0, 2 owner photographs counted, 0 waiting",
+        "node scripts/check-photo-slots-w24.js && node scripts/check-image-metadata.js  -> exit 0 (no metadata on the two client-supplied files)",
         "node scripts/run-gates.js --keep-going  -> every command exit 0"
       ]
     }

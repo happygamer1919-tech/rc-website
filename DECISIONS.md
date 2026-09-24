@@ -14293,6 +14293,7 @@ sites' file hosts by a zero-dependency intake. No WebP encoder exists here (Q-W2
 no new dependency"); the Chrome the gates run exports WebP from a canvas, which is the encoder
 W28-23 and W28-24 use and no new dependency. Documents only in this card.
 
+ w28/w28-23-fatade-stock-images
 ## W28-23 · Fatade product images: every fatade3d.md picture replaced by a generic stock photograph, 2026-09-24
 
 Branch `w28/w28-23-fatade-stock-images`, stacked on W28-R2. Under R-W28-06.
@@ -14326,3 +14327,25 @@ arm). Gate 24 reads WebP sizes. The rendered-DOM check counts 0 product images w
 alt carries fatade3d, fatade 3d or FATADE across every catalogue page in both locales.
 `docs/reports/W28-FATADE-IMAGES-2.md` lists all 223 records with old file, new file, source,
 licence and status.
+
+## W28-25 · The hub tiles leave the Acoperisuri and Garduri service pages, 2026-09-24
+
+Branch `w28/w28-25-hub-tiles-off-service`, on `main` at `c99bab8`. Owner message at 17:11 UTC
+with a thirty-minute limit, recorded as R-W28-08: the hub tiles go from the two service pages
+and stay in the Catalog; the service description, the projects and the compact six-card
+catalogue block are what remain on Acoperisuri.
+
+**Measured first.** `/servicii/acoperisuri/` opened with the four-tile roofing hub above its
+hero (kept there by W28-13 as navigation, R-W28-05); `/servicii/garduri/` is a product page
+carrying the four-tile fence hub. The roofing hub already renders on the roofing catalogue page.
+The fence hub rendered nowhere else, and gate 25 counts all thirteen hub tiles on built pages.
+
+**Done.** `svc.bento` is empty on every service page; the Garduri page renders no hub; the fence
+hub renders on `/servicii/modele-garduri/`, the Catalog's Garduri entry, so every hub tile still
+renders and its ledger row is still rendered. Gate 26 reads the roofing catalogue page and the
+fence models page; gate 25 reads the fence hub on the fence models page; the live markers put
+the two service sets at zero tiles and give the fence models page a `product-fence` set at
+four. Both service pages open with their hero; the six catalogue link cards stay on
+Acoperisuri. Six budgets move (R-Y): the two roofing and the two fence service pages shorten
+by about 800px, the two fence models pages grow by the same.
+ main

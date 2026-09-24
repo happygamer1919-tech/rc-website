@@ -1370,10 +1370,20 @@ the crawl). Not worked until the owner answers.
 **Status: MERGED #181, section 12.0 exit 0** (opened 2026-09-24, merged 13:04 UTC as `c99bab8`). The dispatch's R-W28-04, R-W28-05 and W28-22 were taken;
 recorded as R-W28-06, R-W28-07, W28-23 and W28-24 with the dispatch quoted. Documents only.
 
+## W28-25 · The hub tiles leave the Acoperisuri and Garduri service pages
+**Status: PR OPEN** (opened 2026-09-24). R-W28-08 (owner chat, 17:11 UTC, thirty-minute limit). Service pages
+open with their hero; the roofing hub stays on the roofing catalogue page, the fence hub moves to the fence
+models page; gates 25 and 26 and the live markers follow; six budgets move.
+
 ## W28-23 · Fatade product images: the 110 fatade3d.md pictures replaced by generic stock photographs
+ w28/w28-23-fatade-stock-images
 **Status: PR OPEN** (opened 2026-09-24). 109 of 110 slots on a stock photograph (79 distinct, 30 reuses, Pexels and
 Unsplash, WebP), the membrane slot CAT-0221 waiting as a placeholder (Q-W28-06); gates 19, 24, 32 amended;
 `docs/images/SOURCES.md` created; the 113 manufacturer packshots kept under Q-W28-05.
+
+**Status: in progress** (branch w28/w28-23-fatade-stock-images: intake, encoder, gates 19, 24, 32 done; 109 of 110
+pictures chosen and viewed twice; no mark-free membrane photograph found in the allowed set). R-W28-06; the 113 manufacturer packshots kept under Q-W28-05.
+ main
 
 ## W28-24 · Service galleries: ten stock pictures more per gallery, two new galleries, the examples heading
 **Status: todo.** R-W28-07; 115 stock pictures across eleven galleries.

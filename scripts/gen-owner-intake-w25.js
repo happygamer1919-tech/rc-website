@@ -54,7 +54,8 @@ const HUBS = [
   /* AMENDED (W28-13): the nine roofing tiles (hub and product bento) render on the catalogue
      page; the service page keeps the hub only, so reading it would count four. */
   { prefix: 'ACOP-', file: 'dist/catalog/materiale-acoperis/index.html' },
-  { prefix: 'GARDB-', file: 'dist/servicii/garduri/index.html' },
+  /* W28-25: the fence hub renders on the fence models page now. */
+  { prefix: 'GARDB-', file: 'dist/servicii/modele-garduri/index.html' },
 ];
 const hub = [];
 let hubSeen = 0;

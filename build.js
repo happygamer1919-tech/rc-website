@@ -4238,7 +4238,10 @@ for (const l of loaded) {
     /* W24-07. The bento is the FIRST section after the header on its page, which
        the dispatch is explicit about, so it renders above the hero block rather
        than below it. W24-08 adds the garduri one from the same table. */
-    svcVars['svc.bento'] = BENTOS[slug] ? bentoSection(l, BENTOS[slug]) : '';
+    /* W28-25 (owner, 2026-09-24, R-W28-08): the hub tiles leave the Acoperisuri and Garduri service
+       pages; they stay in the Catalog (the roofing hub on /catalog/materiale-acoperis/, the fence hub
+       on the fence models page). A service page opens with its own hero. */
+    svcVars['svc.bento'] = '';
     /* W26-04, W26-R5. The product bento sits directly above the section its tiles
        filter, because a tile that presses a control the visitor cannot see when
        they land is a tile that appears to do nothing. */
@@ -4475,7 +4478,8 @@ for (const l of loaded) {
       /* W24-08. The garduri bento is the first section after the header on its
          page; the copertine hero replaces that page's standard hero and its
          cross-sell row closes the page. Empty on every other product page. */
-      'prod.bento': BENTOS[p.slug] ? bentoSection(l, BENTOS[p.slug]) : '',
+      /* W28-25: the fence hub renders on the fence models page, the Catalog's Garduri entry. */
+      'prod.bento': p.slug === 'garduri' ? '' : BENTOS[p.slug] ? bentoSection(l, BENTOS[p.slug]) : (p.slug === 'modele-garduri' ? bentoSection(l, BENTOS.garduri) : ''),
       'prod.hero': p.slug === 'copertine' ? copertineHero(l) : '',
       'prod.crossSell': p.slug === 'copertine' ? copertineCrossSell(l) : '',
       /* A page with its own hero does not also render the standard one. The

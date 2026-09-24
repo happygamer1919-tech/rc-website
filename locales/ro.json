@@ -1092,6 +1092,16 @@
       },
       "related": {
         "sentence": "Lucrarea începe de la teren, cu {0}, și folosește aceeași organizare pe etape ca la {1}."
+      },
+      "lines": {
+        "0": {
+          "title": "Depozite din construcție metalică",
+          "text": "Ridicăm depozite pe structură metalică, de la fundație până la închideri, dimensionate după ce urmează să depozitezi."
+        },
+        "1": {
+          "title": "Montare panouri sandwich",
+          "text": "Montăm panouri sandwich pentru pereți și acoperiș, cu îmbinări etanșe și termoizolație continuă."
+        }
       }
     },
     "terasamente": {

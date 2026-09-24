@@ -14107,3 +14107,22 @@ claim card and the photograph stay stacked in the desktop's left-to-right order.
 390: 1,313 to 1,147px. Nothing above 511px moves, so no desktop budget moves; gates 14 (heading
 fit at 360) and 28 (text contrast at 390) pass on the new rule. The floating WhatsApp and phone
 buttons sit over the claim card's right edge at 390 as they did before this card; not touched.
+
+## W28-16 · Construcții industriale: two named service lines, 2026-09-24
+
+Branch `w28/w28-16-industrial-lines`, stacked on W28-22. Under the wave 28 dispatch, whose card
+names the two lines and asks for "one sentence each in RC voice".
+
+**The copy is the owner's instruction, not an invention.** The two line titles are the dispatch's
+own words ("Depozite din construcție metalică", "Montare panouri sandwich", with the site's
+diacritics; RU "Склады из металлоконструкций", "Монтаж сэндвич-панелей"), and the sentence under
+each states what the work is and nothing else: no figure, no warranty, no lead time, no
+certificate, no locality. They render under the industrial page's answer as a list
+(`svcContent.industrial.lines`, a new shape any service may carry: title plus one sentence, no
+heading, so the heading matrix does not move). The home services list carries one sentence per
+service and names no sub-services, so it does not change; the acceptance's path
+`/constructii-industriale` does not exist and is read on the page that does, `/servicii/industrial/`.
+
+**Measured.** `scripts/dom-text.js` on the built page, diacritics folded: each Romanian phrase
+appears exactly once, each Russian phrase exactly once. R-X and the catalogue gate read the new
+strings clean.

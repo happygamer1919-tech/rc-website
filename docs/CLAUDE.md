@@ -323,7 +323,10 @@ permitted shape, a `.prod__ask` element in the place the price would have taken;
 carries exactly one of the two, never both and never neither.
 `scripts/check-catalog-pages.js` holds all of it and was negative-tested on thirteen
 arms, each firing on its own message between two controls watched clean in the same run.
-**No cart, no SKU, no `schema.org` `Offer`.**
+**No cart, no SKU, ~~no `schema.org` `Offer`~~.** **AMENDED (W28-18, wave 28): one shape of
+`schema.org` markup is permitted on a catalogue page, and only that shape: a Product per priced
+card with an AggregateOffer (numeric `lowPrice` in MDL, no `highPrice`, no `price`, no brand, no
+rating, no review), derived from the rendered cards; anything else still fires the gate.**
 **AMENDED (W25-19, W27-FIX-08 under W27-R-14): "on a catalogue page" is a NAMED list in the
 script, not a path pattern.** The roofing catalogue renders on ~~`/servicii/acoperisuri/` (W25-19)~~
 **`/catalog/materiale-acoperis/` (AMENDED W28-13, wave 28: the service page carries no product
@@ -984,6 +987,19 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     sitemap; both 404 pages exist with their `lang` and a link home. It fails on zero pages, a
     missing sitemap, robots or 404, and prints every count it read.
 
+34. `node scripts/schema-check.js` clean. **Since W28-18 (wave 28)**, run by `quality` after
+    gate 33. **Every built page carries parsed JSON-LD**: the home pages an Organization and a
+    LocalBusiness (one node of both types) with name, telephone, e-mail and a PostalAddress, the
+    telephone matching the page's NAP block; every service page a Service; every page that renders
+    a priced product card exactly one Product per card, each with an AggregateOffer whose
+    `lowPrice` is a number above zero in `MDL`, with no `highPrice`, no key named `price`, no
+    brand; every page but the two home pages a BreadcrumbList; FAQPage exactly where a FAQ is
+    visible; and the strings AggregateRating, Review, ratingValue and reviewCount in no block. The
+    Product entries are derived in `build.js` from the RENDERED cards of the page, so the two
+    counts cannot drift; `scripts/check-catalog-pages.js` blanks a VALIDATED Product block from its
+    price and record buffers only (seven arms, one green) and still reads it for cart, stock and
+    manufacturer names. It fails on zero pages or zero blocks.
+
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number (Q-W14-03 was found "at gate 9") and those bodies are immutable under
 R-S, so renumbering would falsify them. A gate added later takes the next number
@@ -1034,6 +1050,7 @@ two data files, so it runs after gate 1, and needs no browser.
 no build and no browser.
 **AMENDED (W28-17):** gate 33 runs after gate 32. It reads the built pages and serves them to
 itself for the 200 check; no browser.
+**AMENDED (W28-18):** gate 34 runs after gate 33. It reads the built pages only; no browser.
 
 **The count, so it stops drifting (W25-03c).** ~~This list numbers **25** gates.~~
 ~~**AMENDED (W25-24): 26**, and `quality` runs **25** commands.~~
@@ -1043,7 +1060,8 @@ itself for the 200 check; no browser.
 ~~**AMENDED (W26-13): 30**, and `quality` runs **29** commands.~~
 ~~**AMENDED (W28-13): 31**, and `quality` runs **30** commands.~~
 ~~**AMENDED (W28-15): 32**, and `quality` runs **31** commands.~~
-**AMENDED (W28-17): 33**, and `quality` runs **32** commands. The number to report is the one
+~~**AMENDED (W28-17): 33**, and `quality` runs **32** commands.~~
+**AMENDED (W28-18): 34**, and `quality` runs **33** commands. The number to report is the one
 `node scripts/run-gates.js` prints, never this sentence. Five of them
 are not scripts and `quality` cannot run them: gate 4 (heights measured settled), gate 6 (no
 new colour), gate 7 (reduced motion), gate 8 (the three documents updated) and **gate 9,

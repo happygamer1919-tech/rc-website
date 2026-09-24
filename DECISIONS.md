@@ -14151,3 +14151,34 @@ each service page keeps its own cover. Nothing moves on any page, so no budget m
 **Gate 33.** `node scripts/seo-check.js` reads the built output and nothing else, exits 0 on the
 card's tree with 85 distinct titles and 66 sitemap URLs each answering 200, and is registered in
 `quality.yml`; `quality` runs 32 commands.
+
+## W28-18 · Structured data on every page, and gate 34, 2026-09-24
+
+Branch `w28/w28-18-structured-data`, stacked on W28-17. Under the wave 28 dispatch.
+
+**Measured first, with the gate written before the change.** `scripts/schema-check.js` on the tree
+before this card: 85 pages, 82 JSON-LD blocks, 53 pages with none (every catalogue page, the
+index, the redirects, the privacy, 404 and "in construcție" pages, the review page), no Product
+anywhere, the home page a GeneralContractor without the Organization type, and the Novatik page
+a visible FAQ with no FAQPage.
+
+**What ships.** One block writer and one BreadcrumbList builder in `build.js`; a BreadcrumbList on
+every inner page (83 of 85, the home pages excepted); the home node typed GeneralContractor,
+LocalBusiness and Organization at once, its NAP the one the footer prints (the checker compares
+the telephone by digits); the Novatik page's FAQPage from its own FAQ; and **Product entries
+derived from the rendered cards**: after a catalogue or product page is composed, a marker in its
+head becomes one Product per priced card (name, picture, and an AggregateOffer with the card's
+own figure as a numeric `lowPrice` in MDL, `offerCount` 1, no `highPrice`, no key named `price`,
+no brand), read back from the markup this file just wrote, so a Product exists exactly where a
+card is priced: 704 on the card's tree (the 30 catalogue pages, the roofing catalogue, the tile
+page, the fence models and the Novatik page, both locales). A card that asks for a price gets no
+entry. "Catalog detail pages" in the dispatch is read as the pages that render priced cards,
+because no per-product page exists (recorded on the board before the work).
+
+**W24-R3's "no `schema.org` `Offer`" is amended for that one shape** (docs/CLAUDE.md section 5):
+`scripts/check-catalog-pages.js` validates every block on a catalogue page and blanks a block that
+IS the permitted shape from its price buffer (its "MDL" is not a currency word in prose) and from
+a new record buffer read only by the product-record arm; `pg.scan` keeps it, so cart, stock and
+manufacturer names inside it still fire; a block that is anything else stays where the arm names
+it. Seven arms, one green, run before any page is read. `scripts/verify-live.js`'s rating probe
+gains the capitalised `AggregateRating`. Nothing moves on any page; no budget moves.

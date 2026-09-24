@@ -1328,12 +1328,15 @@ the stats stacked one per row. The card centres the phone hero and keeps the sta
 locales, the dispatch's own titles, one sentence each; each phrase once in the DOM; 0 budgets move.
 
 ## W28-17 · Technical SEO and `scripts/seo-check.js`
-**Status: PR OPEN** (opened 2026-09-24). Every page a unique title under 60, description, canonical,
+**Status: PR OPEN #176** (opened 2026-09-24). Every page a unique title under 60, description, canonical,
 symmetric alternates, Open Graph and Twitter tags; the sitemap's privacy alternates fixed; gate 33
 `scripts/seo-check.js`; 0 budgets move.
 
 ## W28-18 · Structured data and `scripts/schema-check.js`
-**Status: todo.**
+**Status: PR OPEN** (opened 2026-09-24). JSON-LD on all 85 pages: Organization and LocalBusiness with
+the NAP on home, Service on the 30 service pages, one Product with an AggregateOffer in MDL per
+priced card (704), BreadcrumbList on 83 inner pages, FAQPage on the 22 pages with a visible FAQ, no
+AggregateRating or Review; gate 34 `scripts/schema-check.js`; 0 budgets move.
 
 ## W28-19 · GEO: llms.txt, the Despre facts block, one NAP, direct FAQ answers
 **Status: todo.**

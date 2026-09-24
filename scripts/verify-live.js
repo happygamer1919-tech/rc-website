@@ -605,7 +605,7 @@ const PROBE = `(async () => {
   };
   const facts = {
     sameAsProfile: biz ? biz.sameAs.includes('https://maps.google.com/?cid=1981309119616115698') : null,
-    ratingMarkup: /aggregateRating|ratingValue|reviewCount|"@type"\\s*:\\s*"Review"/.test(
+    ratingMarkup: /aggregateRating|AggregateRating|ratingValue|reviewCount|"@type"\\s*:\\s*"Review"/.test(
       [...document.querySelectorAll('script[type="application/ld+json"]')].map(s=>s.textContent).join(' ')),
     todoVisible: (document.body.innerText.match(/TODO/gi) || []).length,
     robots: (document.querySelector('meta[name="robots"]') || {}).content || '',

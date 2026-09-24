@@ -200,6 +200,13 @@ jobs:
       # robots.txt allows all and names the sitemap; both 404 pages exist.
       - name: Technical SEO on every built page (W28-17)
         run: node scripts/seo-check.js
+
+      # W28-18. Gate 34. JSON-LD on every built page: Organization and LocalBusiness with the NAP on
+      # home, Service on every service page, one Product with an AggregateOffer (numeric lowPrice in
+      # MDL, no highPrice) per priced card, BreadcrumbList on every inner page, FAQPage exactly where
+      # a FAQ is visible, and no AggregateRating or Review anywhere.
+      - name: Structured data on every built page (W28-18)
+        run: node scripts/schema-check.js
       - name: No em dash or en dash in any file, the built site or this pull request (W26-13)
         env:
           PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}

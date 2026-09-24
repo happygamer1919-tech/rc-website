@@ -67,13 +67,12 @@ const fail = (m) => { console.error(`\nHUB TILE LINK GATE FAILED: ${m}\n`); proc
    a hub that stopped rendering would vanish from a discovery walk and the gate
    would pass on nothing, which is section 13's own case. */
 const HUBS = [
-  'servicii/acoperisuri/index.html',
-  'ru/servicii/acoperisuri/index.html',
-  'servicii/garduri/index.html',
-  'ru/servicii/garduri/index.html',
-  /* W28-13: the roofing catalogue page renders the same hub above the product bento. */
+  /* W28-25 (R-W28-08): the hubs left the two service pages and live in the Catalog: the roofing
+     hub on the roofing catalogue page (since W28-13), the fence hub on the fence models page. */
   'catalog/materiale-acoperis/index.html',
   'ru/catalog/materiale-acoperis/index.html',
+  'servicii/modele-garduri/index.html',
+  'ru/servicii/modele-garduri/index.html',
 ];
 const TILES_PER_HUB = 4;
 

@@ -78,6 +78,15 @@
       "applied_by": [
         "W28-24"
       ]
+    },
+    {
+      "id": "R-W28-08",
+      "title": "The hub tiles leave the Acoperisuri and Garduri service pages; they stay in the Catalog; the compact catalogue links stay (owner chat 17:11 UTC, thirty-minute limit)",
+      "date": "2026-09-24",
+      "ruled_by": "owner",
+      "applied_by": [
+        "W28-25"
+      ]
     }
   ],
   "cards": [
@@ -429,20 +438,21 @@
     {
       "id": "W28-R2",
       "title": "The second dispatch: R-W28-06 and R-W28-07 recorded, the two cards on the board, Q-W28-05",
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "high",
       "owner_terminal": "yellow",
       "branch": "w28/w28-r2-rulings-board",
-      "pr": null,
-      "merge_sha": null,
+      "pr": 181,
+      "merge_sha": "c99bab84ea070f478bd6d8876236e0aeb0011822",
       "depends_on": [],
       "ask": "Record R-W28-04 (fatade images: no mark of any kind, maker's included) and R-W28-05 (service galleries labelled as examples, Portofoliu page RC-own only, stock never on it) in docs/rulings/W28-R.md.",
       "reading": "Both ids were taken (the phone hero and the services-versus-catalog confirmation), and W28-22 was taken too; the register is append-only under R-S, so the rulings are R-W28-06 and R-W28-07 and the cards W28-23 and W28-24, each quoting the dispatch. The 113 fatade3d records whose picture is the manufacturer's own packshot are put to the owner as Q-W28-05 with the default \"kept\". Documents only.",
       "acceptance": [
         "grep -c '^## R-W28-0[67]' docs/rulings/W28-R.md  -> 2",
         "node -e \"const b=require('./docs/board/W28-board.json'); if(!b.cards.find(c=>c.id==='W28-23')||!b.cards.find(c=>c.id==='W28-24')) process.exit(1)\"  -> exit 0"
-      ]
+      ],
+      "evidence": "quality green; merged 2026-09-24 13:04:01Z as c99bab8; section 12.0 EXIT=0 at 13:07:14Z"
     },
     {
       "id": "W28-23",
@@ -486,6 +496,28 @@
         "node scripts/dom-text.js on every service page both locales | grep -c 'Exemple de lucrări și soluții\\|Примеры работ и решений'  -> 1 per page",
         "node scripts/check-image-sources.js  -> exit 0 (every gallery stock picture has a licensed SOURCES row)",
         "Lighthouse desktop, median of three, performance >= 90 on all 18 service pages  -> recorded in docs/reports/W28-FINAL-RUN-2.md"
+      ]
+    },
+    {
+      "id": "W28-25",
+      "title": "The hub tiles leave the Acoperisuri and Garduri service pages (owner chat, R-W28-08)",
+      "lane": "in_flight",
+      "status": "pr_open",
+      "priority": "high",
+      "owner_terminal": "yellow",
+      "branch": "w28/w28-25-hub-tiles-off-service",
+      "pr": null,
+      "merge_sha": null,
+      "depends_on": [
+        "W28-R2"
+      ],
+      "ask": "The hub tiles have to go from /servicii/acoperisuri/ and /servicii/garduri/; those remain in Catalog. The service description with the projects pictures and the compact catalogue block are what remain. Thirty minutes.",
+      "reading": "svc.bento empty on the service pages; the Garduri product page renders no hub; the fence hub renders on the fence models page (the Catalog Garduri entry) so all thirteen hub tiles still render; gates 25 and 26 and the live markers follow; budgets re-measured.",
+      "acceptance": [
+        "node build.js && node scripts/dom-text.js --count \".hub__tile\" /servicii/acoperisuri/ /ru/servicii/acoperisuri/ /servicii/garduri/ /ru/servicii/garduri/  -> 0 on all four",
+        "node scripts/dom-text.js --count \".hub__tile\" /catalog/materiale-acoperis/ /servicii/modele-garduri/  -> 4 and 4",
+        "node scripts/dom-text.js --count \".lk-card\" /servicii/acoperisuri/  -> 6",
+        "node scripts/run-gates.js --keep-going  -> every command exit 0"
       ]
     }
   ]

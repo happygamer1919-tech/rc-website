@@ -1418,7 +1418,16 @@ the artifact is republished from `main` after this merges. Documents only.
 **Status: board sync, not a card** (opened 2026-09-24). Documents only.
 
 ## W28-30 · Copertine placement: out of the Catalog, the cards below the gallery
-**Status: PR OPEN** (opened 2026-09-24). The copertine Catalog group (tile, menu row, chip and count) leaves the Catalog; the twelve cards sit below the gallery with their buttons; four budgets move.
+**Status: MERGED #194, section 12.0 exit 0** (opened 2026-09-24, merged 23:30 UTC as `0a2c173`). The copertine Catalog group (tile, menu row, chip and count) leaves the Catalog; the twelve cards sit below the gallery with their buttons; four budgets move.
 
 ## W28-31 · Wave close: CRITIC, W28-REVIEW, fix cards, W28-FINAL-RUN-4
-**Status: todo.** At most five fix cards, defects only, W28-FIX-03 onward.
+**Status: in progress.** CRITIC on `0a2c173`: three defects, W28-FIX-03 to 05; W28-REVIEW second pass written.
+
+## W28-FIX-03 · The copertine hero button lands on the models
+**Status: todo.** From W28-REVIEW (second pass), defect 1.
+
+## W28-FIX-04 · On a phone, Copertine sits under Servicii
+**Status: todo.** From W28-REVIEW (second pass), defect 2.
+
+## W28-FIX-05 · The copertine page back in llms.txt
+**Status: todo.** From W28-REVIEW (second pass), defect 3.

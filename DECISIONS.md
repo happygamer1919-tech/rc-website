@@ -14548,3 +14548,13 @@ and zero copertine cards, Catalog tiles and Catalog menu rows on every Catalog p
 the menu); watched fail on the build of `main` before the change: exit 1, 70 problems (66 menu rows,
 2 tiles, 2 chips). The photo review list and the owner intake list regenerate without CATEG-10. Four
 budgets move (R-Y).
+
+## W28-31 · The CRITIC pass, second W28-REVIEW, 2026-09-24
+
+Branch `w28/w28-31-review`, on `main` at `0a2c173`. Documents only. The W27-REV-01 shape on `main`
+after W28-30: 34 of 34 gates, a crawl of 83 pages at three widths (0 dead links, 0 console errors,
+0 sideways scroll; 47 empty alts read one by one, none a defect), Lighthouse 96 to 100. Three defects,
+all side effects of W28-30, each a fix card: W28-FIX-03 (the copertine hero button lands on the
+chooser, not the models), W28-FIX-04 (the phone menu still lists Copertine under Catalog), W28-FIX-05
+(the copertine page left llms.txt). Taste in `docs/reports/W28-REVIEW.md`, second pass. The board
+records #193 and #194 verified.

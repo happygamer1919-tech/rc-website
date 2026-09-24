@@ -1281,7 +1281,7 @@ exit 0; GET exit 0, contexts `["quality"]`, strict true, admins not enforced, no
 Recorded under R-W28-01.
 
 ## W28-11 · Claims cleanup, R-X enforcement, fifteen years, the Google reviews link
-**Status: PR OPEN** (opened 2026-09-23). Under R-W28-02 and R-W28-03: the promo bar, the hero and
+**Status: MERGED #169, section 12.0 exit 0** (opened 2026-09-23, merged 23:53 UTC as `29346a7`). Under R-W28-02 and R-W28-03: the promo bar, the hero and
 footer "−10%" line, the fourth stat card, the rating panel and the discount clause in five FAQ
 answers per locale are gone; "15+ ani de experiență" / "15+ лет опыта" everywhere including the
 team line; the reviews link is live under the three testimonials (the share link as given, it
@@ -1290,7 +1290,9 @@ R-X amended and the gate holds seven discount arms; `scripts/dom-text.js` is the
 instrument the acceptance greps read. All 55 budgets move (R-Y).
 
 ## W28-12 · Home CTA after the portfolio
-**Status: todo.**
+**Status: PR OPEN** (opened 2026-09-23). A full-width "Solicită ofertă" / "Запросить предложение"
+button in the header CTA's style at the foot of the portfolio section, both locales; three
+section-level CTAs to the form (header, after portfolio, footer). Two budgets move (R-Y).
 
 ## W28-13 · Services versus catalog split
 **Status: todo.** Pre-change counts recorded on the board: 99 roofing cards, 9 tiles, 7 chips

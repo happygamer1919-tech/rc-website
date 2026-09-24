@@ -88,13 +88,13 @@
     {
       "id": "W28-11",
       "title": "Claims cleanup RO and RU, R-X enforcement, fifteen years, the Google reviews link",
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "high",
       "owner_terminal": "yellow",
       "branch": "w28/w28-11-claims-cleanup",
-      "pr": null,
-      "merge_sha": null,
+      "pr": 169,
+      "merge_sha": "29346a717df3d1645d2f695576a7a1780bf5b30f",
       "depends_on": [
         "W28-00"
       ],
@@ -107,13 +107,14 @@
         "grep -c 'href=\"https://share.google/t05qzuoiFA6LWKBF1\"' dist/index.html dist/ru/index.html  -> 1 and 1",
         "curl -sIL -o /dev/null -w '%{http_code}' https://share.google/t05qzuoiFA6LWKBF1  -> 200",
         "node scripts/check-scarcity.js  -> exit 0, with its new discount arms self-tested"
-      ]
+      ],
+      "evidence": "quality green; merged 2026-09-23 23:53:49Z as 29346a7; section 12.0 EXIT=0"
     },
     {
       "id": "W28-12",
       "title": "Home CTA after the portfolio, both locales",
-      "lane": "queue",
-      "status": "todo",
+      "lane": "in_flight",
+      "status": "pr_open",
       "priority": "normal",
       "owner_terminal": "yellow",
       "branch": "w28/w28-12-home-cta",
@@ -125,8 +126,8 @@
       "ask": "After the portfolio section on / and /ru/, a full-width \"Solicita oferta\" / \"Запросить предложение\" button to the contact form, same style as the header CTA. Acceptance: DOM has exactly 3 CTA anchors to contact on home (header, after portfolio, final), RO and RU.",
       "reading": "The contact form is #oferta and the header CTA is a.btn--primary[href='#oferta']. Measured before the card: four such anchors exist (the desktop header, the mobile panel's copy of it, the hero claim card's button, the footer's). The count of three is taken on the section-level CTAs the ask names: header, after portfolio, footer; the hero claim button and the mobile panel copy are not section CTAs and are excluded by selector, stated in the card.",
       "acceptance": [
-        "node build.js && node scripts/dom-text.js --count 'a.btn--primary[href$=\"#oferta\"]:not(.hero-claim__cta):not(.mobile-panel a)' / /ru/  -> 3 and 3",
-        "node scripts/dom-text.js --count '#portofoliu + section a.btn--primary[href$=\"#oferta\"], .cta-band a.btn--primary[href$=\"#oferta\"]' / /ru/  -> 1 and 1"
+        "node build.js && node scripts/dom-text.js --count \"a.btn--primary[href$=\\\"#oferta\\\"]:not(.hero-claim__cta):not(.mobile-panel a)\" / /ru/  -> 3 and 3",
+        "node scripts/dom-text.js --count \"#portofoliu .pf-cta a.btn--primary[href$=\\\"#oferta\\\"]\" / /ru/  -> 1 and 1"
       ]
     },
     {

@@ -1295,6 +1295,10 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 
 .portfolio__foot { display: flex; justify-content: center; margin-top: 40px; }
 .portfolio__empty { color: var(--ink-muted); margin-top: 8px; }
+/* W28-12: the full-width quote button after the portfolio grid. Its own prefix (section 3.1);
+   the button is .btn--primary exactly as the header's, stretched to the container. */
+.pf-cta { margin-top: 32px; }
+.pf-cta__btn { display: flex; width: 100%; }
 
 /* --- dark stats band ------------------------------------------------------ */
 

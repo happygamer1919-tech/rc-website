@@ -1648,3 +1648,16 @@ card's built tree; every budget is measured plus 60 (W24-R4):
 | `/ru/catalog/sisteme-iluminare/` | 6,284 | **6,240** | 6,344 to **6,300** |
 | `/catalog/alte-materiale/` | 3,729 | **3,685** | 3,789 to **3,745** |
 | `/ru/catalog/alte-materiale/` | 3,729 | **3,685** | 3,789 to **3,745** |
+
+## AMENDED (W28-12, wave 28): the quote button after the portfolio, two budgets move
+
+Added 2026-09-23 by card W28-12, under the wave 28 dispatch. Nothing above this line moves.
+
+The home pages gain a full-width quote button at the foot of the portfolio section. All 55
+budgeted pages re-measured at 1440, settled (reveals applied, 1,600ms), on the card's built
+tree; two move to measured plus 60 (W24-R4) and the other 53 read identical:
+
+| Page | Before (budget minus 60) | After | Budget |
+|---|---|---|---|
+| `/` | 9,261 | **9,341** | 9,321 to **9,401** |
+| `/ru/` | 9,420 | **9,500** | 9,480 to **9,560** |

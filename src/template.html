@@ -344,6 +344,13 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     {{portfolioCards}}
 
     <p class="portfolio__empty" id="portfolio-empty" hidden>{{portfolio.empty}}</p>
+
+    <!-- W28-12 (wave 28): the full-width quote button after the portfolio, the header
+         CTA's own style, the third section-level CTA on the page after the header's and
+         the footer's. Below the fold, so it may reveal (section 1). -->
+    <div class="pf-cta" data-reveal>
+      <a class="btn btn--primary pf-cta__btn" href="#oferta">{{portfolio.cta}}</a>
+    </div>
   </div>
 </section>
 

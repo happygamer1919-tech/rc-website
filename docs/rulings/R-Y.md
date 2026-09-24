@@ -1765,3 +1765,21 @@ rewritten FAQ answer is shorter):
 | `/ru/catalog/sisteme-iluminare/` | 6,240 | **6,259** | 6,300 to **6,319** |
 | `/catalog/alte-materiale/` | 3,685 | **3,704** | 3,745 to **3,764** |
 | `/ru/catalog/alte-materiale/` | 3,685 | **3,704** | 3,745 to **3,764** |
+
+## AMENDED (W28-25, wave 28): the hub tiles leave the two service pages for the Catalog, six budgets move
+
+Added 2026-09-24 by card W28-25, under R-W28-08. Nothing above this line moves.
+
+The roofing hub leaves `/servicii/acoperisuri/` (it stays on `/catalog/materiale-acoperis/`) and
+the fence hub leaves `/servicii/garduri/` for the fence models page. All 55 budgeted pages
+re-measured at 1440, settled (reveals applied, 1,600ms), on the card's built tree; six move to
+measured plus 60 (W24-R4) and the other 49 read identical:
+
+| Page | Before (budget minus 60) | After | Budget |
+|---|---|---|---|
+| `/servicii/acoperisuri/` | 8,126 | **7,326** | 8,186 to **7,386** |
+| `/ru/servicii/acoperisuri/` | 8,264 | **7,464** | 8,324 to **7,524** |
+| `/servicii/garduri/` | 6,044 | **5,245** | 6,104 to **5,305** |
+| `/ru/servicii/garduri/` | 6,066 | **5,267** | 6,126 to **5,327** |
+| `/servicii/modele-garduri/` | 4,485 | **5,284** | 4,545 to **5,344** |
+| `/ru/servicii/modele-garduri/` | 4,506 | **5,306** | 4,566 to **5,366** |

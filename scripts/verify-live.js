@@ -131,8 +131,9 @@ const MARKERS = {
        names is not a marker*. W25-24 changed what the thing IS and did not come
        here. The count is four because a hub of four tiles now has four links,
        which is the whole point of W25-R24. */
-    bentoTiles: 4,
-    bentoLinks: 4,
+    /* W28-25 (R-W28-08): the hub left the service page for the Catalog; zero holds that. */
+    bentoTiles: 0,
+    bentoLinks: 0,
     /* W25-19. The consolidated roofing catalogue. 75 cards: 71 roofing records
        plus the four metal tile models. The EXACT count is asserted here and not
        `atLeast1`, unlike a catalogue page, because this section is not "whatever
@@ -210,8 +211,9 @@ const MARKERS = {
     promoBar: 0,
     profileAnchors: 0,
     areaServed: 20,
-    bentoTiles: 4,
-    bentoLinks: 4,  // W26-01: see the note on the service-roof set above.
+    /* W28-25 (R-W28-08): the fence hub left the Garduri page for the fence models page. */
+    bentoTiles: 0,
+    bentoLinks: 0,
     /* W26-04: this page is not a product-bento page, and the zero holds that. */
     pbTiles: 0,
     cmpTables: 0,
@@ -224,6 +226,15 @@ const MARKERS = {
     areaServed: 20,
     // W24-08. A plain product page carries no hub. The zero holds that.
     bentoTiles: 0,
+  },
+  /* W28-25 (R-W28-08): the fence models page is the Catalog's Garduri entry and carries the
+     fence hub (four tiles, four links) above its eight models. */
+  'product-fence': {
+    promoBar: 0,
+    profileAnchors: 0,
+    areaServed: 20,
+    bentoTiles: 4,
+    bentoLinks: 4,
   },
   /* W26-12, ruling W26-R14. The fence gallery page: a product page whose block is the
      owner's thirteen fence photographs. `galSlides` counts the lightbox's slides, so a
@@ -372,8 +383,8 @@ const PAGES = [
      section's "de la" line, one line; measured 24,782 / 25,003 at 1440, settled, plus 60, in R-Y. */
   /* AMENDED (W27-FIX-05, ruling W27-R-12): six accessory cards fold away, two grid rows fewer;
      measured 23,873 / 24,094 at 1440, settled, plus 60, in R-Y. */
-  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 8186 },
-  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 8324 },
+  { path: '/servicii/acoperisuri/',        type: 'service-roof', label: 'svc RO acoper', budget: 7386 },
+  { path: '/ru/servicii/acoperisuri/',     type: 'service-roof', label: 'svc RU acoper', budget: 7524 },
   /* W24-07. The rocă vulcanică mirror page. */
   /* AMENDED (W27-C-04): chips, a warranty row and a price on each card, a derived "de la"
      line under the heading; measured 4,369 / 4,439 at 1440, settled, plus 60, in R-Y. */
@@ -401,8 +412,8 @@ const PAGES = [
      dark hero and a cross-sell row; modele de garduri is new. All under W24-R4. */
   /* W26-03: 5728 held since W24-08 while the page fell to 5,547. See R-Y's
      2026-09-22 block: a budget may never stay still while its page moves. */
-  { path: '/servicii/garduri/',            type: 'product-hub', label: 'garduri RO',  budget: 6104 },
-  { path: '/ru/servicii/garduri/',         type: 'product-hub', label: 'garduri RU',  budget: 6126 },
+  { path: '/servicii/garduri/',            type: 'product-hub', label: 'garduri RO',  budget: 5305 },
+  { path: '/ru/servicii/garduri/',         type: 'product-hub', label: 'garduri RU',  budget: 5327 },
   /* W25-11. Both rows DROP. The "Preț la cerere" line became a "De la ... lei/m2"
      price, and the new line is shorter because it does not carry the catalogue
      card's shared 44px flex min-height: measured 3686 RO and 3707 RU against 3720
@@ -411,8 +422,8 @@ const PAGES = [
   /* W25-25. Each of the eight cards gained its colour NAMES beside the count, so
      one fact line became three or four wrapped lines on a 4-column card.
      Measured plus 60, under W24-R4, and recorded in docs/rulings/R-Y.md. */
-  { path: '/servicii/modele-garduri/',     type: 'product', label: 'gard modele RO', budget: 4545 },
-  { path: '/ru/servicii/modele-garduri/',  type: 'product', label: 'gard modele RU', budget: 4566 },
+  { path: '/servicii/modele-garduri/',     type: 'product-fence', label: 'gard modele RO', budget: 5344 },
+  { path: '/ru/servicii/modele-garduri/',  type: 'product-fence', label: 'gard modele RU', budget: 5366 },
   /* W26-12. The fence gallery page, measured 3967 in both locales; plus 60 (W24-R4). */
   /* AMENDED (W27-FIX-12, W27-R-18): twelve thumbnails, one grid row fewer; measured 3,750 / 3,750
      at 1440, settled, plus 60, in R-Y. */

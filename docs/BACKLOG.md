@@ -1367,11 +1367,17 @@ min-content floor so a 94px Russian word cannot spill out of a 91px column at 32
 the crawl). Not worked until the owner answers.
 
 ## W28-R2 · The second dispatch: R-W28-06, R-W28-07, the two cards, Q-W28-05
-**Status: PR OPEN** (opened 2026-09-24). The dispatch's R-W28-04, R-W28-05 and W28-22 were taken;
+**Status: MERGED #181, section 12.0 exit 0** (opened 2026-09-24, merged 13:04 UTC as `c99bab8`). The dispatch's R-W28-04, R-W28-05 and W28-22 were taken;
 recorded as R-W28-06, R-W28-07, W28-23 and W28-24 with the dispatch quoted. Documents only.
 
+## W28-25 · The hub tiles leave the Acoperisuri and Garduri service pages
+**Status: PR OPEN** (opened 2026-09-24). R-W28-08 (owner chat, 17:11 UTC, thirty-minute limit). Service pages
+open with their hero; the roofing hub stays on the roofing catalogue page, the fence hub moves to the fence
+models page; gates 25 and 26 and the live markers follow; six budgets move.
+
 ## W28-23 · Fatade product images: the 110 fatade3d.md pictures replaced by generic stock photographs
-**Status: todo.** R-W28-06; the 113 manufacturer packshots kept under Q-W28-05.
+**Status: in progress** (branch w28/w28-23-fatade-stock-images: intake, encoder, gates 19, 24, 32 done; 109 of 110
+pictures chosen and viewed twice; no mark-free membrane photograph found in the allowed set). R-W28-06; the 113 manufacturer packshots kept under Q-W28-05.
 
 ## W28-24 · Service galleries: ten stock pictures more per gallery, two new galleries, the examples heading
 **Status: todo.** R-W28-07; 115 stock pictures across eleven galleries.

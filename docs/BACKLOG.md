@@ -1376,18 +1376,17 @@ open with their hero; the roofing hub stays on the roofing catalogue page, the f
 models page; gates 25 and 26 and the live markers follow; six budgets move.
 
 ## W28-26 · The owner's photographs for the membrane and the corner bead
-**Status: PR OPEN** (opened 2026-09-24). R-W28-09; CAT-0221 filled, CAT-0223's stock picture replaced; the membrane
+**Status: MERGED #184, section 12.0 exit 0** (opened 2026-09-24, merged 18:10 UTC as `86e2ca3`). R-W28-09; CAT-0221 filled, CAT-0223's stock picture replaced; the membrane
 file is 225x225, under the 450 floor, installed as instructed and flagged.
 
 ## W28-23 · Fatade product images: the 110 fatade3d.md pictures replaced by generic stock photographs
- w28/w28-23-fatade-stock-images
-**Status: PR OPEN** (opened 2026-09-24). 109 of 110 slots on a stock photograph (79 distinct, 30 reuses, Pexels and
-Unsplash, WebP), the membrane slot CAT-0221 waiting as a placeholder (Q-W28-06); gates 19, 24, 32 amended;
-`docs/images/SOURCES.md` created; the 113 manufacturer packshots kept under Q-W28-05.
+**Status: MERGED #183, section 12.0 exit 0** (opened 2026-09-24, merged 17:43 UTC as `b95c4b9`). 109 of 110 slots on a stock photograph (79 distinct, 30 reuses, Pexels and
+Unsplash, WebP), the membrane slot CAT-0221 waiting as a placeholder until W28-26 filled it; gates 19, 24, 32 amended;
+`docs/images/SOURCES.md` created; the 113 manufacturer packshots kept (R-W28-10 answers Q-W28-05).
 
-**Status: in progress** (branch w28/w28-23-fatade-stock-images: intake, encoder, gates 19, 24, 32 done; 109 of 110
-pictures chosen and viewed twice; no mark-free membrane photograph found in the allowed set). R-W28-06; the 113 manufacturer packshots kept under Q-W28-05.
- main
+## W28-R3 · The third dispatch: R-W28-10, R-W28-11, the board sync
+**Status: board sync, not a card** (opened 2026-09-24). The dispatch's R-W28-09 and R-W28-10 were taken; recorded as
+R-W28-10 and R-W28-11. The committed board JSON names #184; the artifact renders only from `main` from here on. Documents only.
 
 ## W28-24 · Service galleries: ten stock pictures more per gallery, two new galleries, the examples heading
 **Status: todo.** R-W28-07; 115 stock pictures across eleven galleries.

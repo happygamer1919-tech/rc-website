@@ -1430,4 +1430,4 @@ the artifact is republished from `main` after this merges. Documents only.
 **Status: PR OPEN** (opened 2026-09-24). The copertine phone-menu row renders after Servicii on all 66 pages with the phone menu; check-catalog-counts holds it. From W28-REVIEW (second pass), defect 2.
 
 ## W28-FIX-05 · The copertine page back in llms.txt
-**Status: todo.** From W28-REVIEW (second pass), defect 3.
+**Status: PR OPEN** (opened 2026-09-24). The copertine page is listed under Servicii in llms.txt, both locales; check-catalog-counts holds it. From W28-REVIEW (second pass), defect 3.

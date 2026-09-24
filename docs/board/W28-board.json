@@ -766,8 +766,8 @@
       "evidence": "66 pages with the phone menu, the copertine row once after Servicii and before Catalog; check-catalog-counts exit 0 (exit 1 with 66 problems on main's build)"
     },
     {
-      "lane": "queue",
-      "status": "todo",
+      "lane": "in_flight",
+      "status": "pr_open",
       "priority": "normal",
       "owner_terminal": "yellow",
       "pr": null,
@@ -783,7 +783,8 @@
       "acceptance": [
         "node build.js && grep -c \"servicii/copertine/\" dist/llms.txt  -> 2 (RO and RU URLs on one line) and the line sits under the Servicii heading",
         "node scripts/check-catalog-counts.js --llms  -> exit 0"
-      ]
+      ],
+      "evidence": "llms.txt: copertine listed under Servicii / Услуги with both locale URLs; check-catalog-counts exit 0 (fails on main's build naming the line); --llms 9 of 9 Catalog groups"
     }
   ],
   "board_syncs": [

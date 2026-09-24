@@ -14577,3 +14577,12 @@ moves and never goes (on a phone it is the only way to the page); the build stil
 product page across both lists. Measured: 66 pages carry the phone menu, each with the copertine row
 once, after "Servicii" and before "Catalog". `scripts/check-catalog-counts.js` holds it now; on the
 build of `main` before this card it exits 1 with 66 problems, one per phone menu.
+
+## W28-FIX-05 · The copertine page back in llms.txt, 2026-09-24
+
+Branch `w28/w28-fix-05-llms-copertine`, stacked on W28-FIX-04. From W28-REVIEW, second pass, defect 3.
+`llms.txt` listed the copertine page only as a Catalog group, so W28-30 took it out of the file. It is
+listed under "Servicii / Услуги" now, after the nine services and in their shape: the page title, the
+first sentence of its own lede ("Pe stâlpi, în consolă, prinse de perete, arcuite sau arhitecturale"),
+and both locale URLs. `scripts/check-catalog-counts.js` holds it in its default run (the one `quality`
+runs); on the build of `main` before this card it fails naming the missing line.

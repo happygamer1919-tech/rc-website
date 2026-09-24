@@ -14383,3 +14383,37 @@ from a working copy. The JSON now names #184 as verified, the artifact is render
 JSON on `main` after a merge, and a run ends with a documents-only board sync listed under
 `board_syncs`, never as a card. Two stray lines left by earlier union merges are removed (one here,
 one in the backlog, where W28-23 also carried two contradicting status lines).
+
+## W28-24 · Service galleries: stock examples after the owner's photographs, two new galleries, the examples heading, 2026-09-24
+
+Branch `w28/w28-24-service-galleries`, stacked on the board sync W28-R3. Under R-W28-07.
+
+**Done.** 115 Pexels pictures from the W28-23 harvest, each viewed twice before this card (no
+logo, brand, text, livery or identifiable face; subject matching the service), installed by
+`scripts/intake-stock.js` as WebP (full at most 1600 wide, thumb 600) after the owner's photographs
+in `content/galleries.json`, with origin, source, licence and alt text in both locales; one
+PROVENANCE row per file and one SOURCES row per picture. Counts: acoperisuri 25, case-la-cheie 12,
+copertine 12, fatade 19, finisaje 15, galerie-garduri 22, instalatii 15, terasamente 26,
+reparatii 37, industrial 10, proiectare-3d 10; the two empty folders are galleries now.
+
+**The heading.** A key of its own, `servicePage.examplesH`, "Exemple de lucrări și soluții" /
+"Примеры работ и решений", replaces the shared `portfolio.h2` in the service pages' projects
+section, so the home page's Portofoliu keeps "Proiecte recente". The same heading goes on the two
+other gallery surfaces that now hold stock: the copertine gallery section (was "Galerie foto") and
+the fence gallery page, whose heading was screen-reader only and is now visible, because a
+picture from a stock library must be seen to be labelled as an example.
+
+**Alt text.** A stock picture renders its own alt in each locale; an owner's photograph keeps the
+numbered alt. A stock entry without an alt in a locale stops the build.
+
+**The two intakes.** `intake-stock.js` found a gallery by `page` only, and the fence folder's
+page is `garduri` while it renders (and its files live) on `galerie-garduri`; it now finds a
+gallery by the page it renders on and files under that folder. `intake-galleries.js`, which
+rewrites the ledger from the owner's folders, carries the stock pictures over after the owner's
+photographs and keeps a stock-only gallery out of `empty_folders`; its source folder can be
+pointed elsewhere with `RC_GALLERY_SRC`, which is how the carry-over was dry-run (the owner's
+folders are no longer on this machine): 115 carried, a missing folder refused, nothing written.
+
+**Measured.** Two budgets move (the fence gallery page, both locales, +1,256px for ten
+thumbnails and the heading); the service pages do not grow because their gallery is one card.
+`galSlides` on the fence gallery page is 22.

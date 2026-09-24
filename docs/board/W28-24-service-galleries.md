@@ -21,3 +21,14 @@ projects-and-gallery heading on the service pages becomes "Exemple de lucrÄƒri È
 - `node scripts/check-image-sources.js`: exit 0.
 - Lighthouse desktop, median of three, performance at or above 90 on all 18 service pages,
   recorded in `docs/reports/W28-FINAL-RUN-2.md`.
+
+## Done
+
+- 115 stock pictures installed after the owner's photographs; the eleven counts above, measured by
+  gate 29 (406 photographs matched on 22 pages).
+- The heading on all eighteen service pages, and on the copertine gallery section and the fence
+  gallery page, both locales: one per page, rendered DOM.
+- Gate 32: 115 stock gallery photographs, each with a licensed SOURCES row and PROVENANCE rows.
+- Alt text per stock picture in both locales; the owner's photographs keep the numbered alt.
+- Both intakes keep the stock pictures (dry run against synthetic folders: 115 carried over).
+- Lighthouse on the 22 gallery pages: see `docs/reports/W28-FINAL-RUN-2.md`.

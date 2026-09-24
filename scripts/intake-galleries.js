@@ -38,7 +38,9 @@ const crypto = require('crypto');
 const { execFileSync } = require('child_process');
 
 const ROOT = path.join(__dirname, '..');
-const SRC = '/Users/ivan/RC-webpics_v2';
+/* RC_GALLERY_SRC points a dry run at another folder set (W28-24 tested the stock carry-over that
+   way, with the owner's folders no longer on this machine). */
+const SRC = process.env.RC_GALLERY_SRC || '/Users/ivan/RC-webpics_v2';
 const LEDGER = path.join(ROOT, 'content/galleries.json');
 const PROV = path.join(ROOT, 'docs/assets/PROVENANCE.md');
 const APPLY = process.argv.includes('--apply');
@@ -126,7 +128,29 @@ for (const dir of fs.readdirSync(SRC).sort(natural)) {
   galleries.push({ folder: nfc(dir), page, render_on: on, found: files.length, installed: photos.length, preview: 1, photos, duplicates_skipped: skipped, refused });
 }
 
-for (const g of galleries) console.log(`${g.folder.padEnd(36)} -> /servicii/${g.render_on}/  found ${g.found}, unique ${g.installed}, duplicates ${g.duplicates_skipped.length}, refused ${g.refused.length}`);
+/* W28-24 (ruling R-W28-07): the stock pictures that follow the owner's photographs are not in
+   any folder; scripts/intake-stock.js appended them to the ledger with `origin: "stock"`. A re-run
+   carries them over from the ledger as it stands, after the owner's photographs and in their
+   order, so it never drops them; a folder that is empty but has stock pictures keeps its
+   gallery instead of going back to empty_folders. Their files, PROVENANCE and SOURCES rows are
+   the stock intake's and are not touched here. Runs in report mode too, so a dry run shows it. */
+const prev = fs.existsSync(LEDGER) ? JSON.parse(fs.readFileSync(LEDGER, 'utf8')) : null;
+let carried = 0;
+for (const og of prev ? prev.galleries : []) {
+  const stock = og.photos.filter((p) => p.origin === 'stock');
+  if (!stock.length) continue;
+  let g = galleries.find((x) => x.render_on === og.render_on);
+  if (!g) {
+    const ei = empty.findIndex((e) => e.page === og.page);
+    if (ei < 0) die(`the ledger holds ${stock.length} stock picture(s) for ${og.render_on} and no folder of that page exists in ${SRC}.`);
+    empty.splice(ei, 1);
+    g = { folder: og.folder, page: og.page, render_on: og.render_on, found: 0, installed: 0, preview: 1, photos: [], duplicates_skipped: [], refused: [] };
+    galleries.push(g);
+  }
+  g.photos.push(...stock); g.installed = g.photos.length; carried += stock.length;
+}
+
+for (const g of galleries) console.log(`${g.folder.padEnd(36)} -> /servicii/${g.render_on}/  found ${g.found}, unique ${g.installed - g.photos.filter((p) => p.origin === 'stock').length}, stock carried ${g.photos.filter((p) => p.origin === 'stock').length}, duplicates ${g.duplicates_skipped.length}, refused ${g.refused.length}`);
 for (const e of empty) console.log(`${e.folder.padEnd(36)} -> /servicii/${e.page}/  EMPTY, no gallery`);
 for (const u of unmatched) console.log(`${u.folder.padEnd(36)} -> no page of that name: a question, not a page`);
 if (!APPLY) { console.log('\nreport only; --apply installs.'); process.exit(0); }
@@ -136,7 +160,6 @@ if (!APPLY) { console.log('\nreport only; --apply installs.'); process.exit(0); 
    sha256, not by its number, so a folder that is re-ordered or re-numbered keeps the mark on the
    same picture (W27-C-01, ruling W27-R-03: the eight photographs Q-W26-06 flagged as suspected
    stock are the owner's own work, and that confirmation is data here, not prose). */
-const prev = fs.existsSync(LEDGER) ? JSON.parse(fs.readFileSync(LEDGER, 'utf8')) : null;
 for (const g of galleries) {
   const old = prev && prev.galleries.find((x) => x.folder === g.folder);
   if (old && Number.isInteger(old.preview) && old.preview >= 1 && old.preview <= g.installed) g.preview = old.preview;
@@ -150,14 +173,14 @@ const ledger = {
   source_root: SRC,
   galleries, empty_folders: empty, unmatched_folders: unmatched,
 };
-fs.writeFileSync(LEDGER, JSON.stringify(ledger, null, 2) + '\n');
+fs.writeFileSync(LEDGER, JSON.stringify(ledger, null, 1) + '\n');
 
 /* Provenance, one row per installed file, R-W's client-supplied origin in its own words. */
 const prov = fs.readFileSync(PROV, 'utf8');
 const rows = [];
-for (const g of galleries) for (const p of g.photos) for (const f of [p.full, p.thumb]) {
+for (const g of galleries) for (const p of g.photos) if (p.origin !== 'stock') for (const f of [p.full, p.thumb]) {
   if (prov.includes(`| \`${f}\` |`)) continue;
   rows.push(`| \`${f}\` | client direct transfer, owner folder RC-webpics_v2 ${g.folder}, ${DATE} | owned by Rapid Construct, supplied for site use | not required, client-supplied original | 2026-09-22 |`);
 }
 if (rows.length) fs.appendFileSync(PROV, rows.join('\n') + '\n');
-console.log(`\nwrote ${path.relative(ROOT, LEDGER)}: ${galleries.length} galleries, ${galleries.reduce((n, g) => n + g.installed, 0)} photographs; ${rows.length} provenance rows appended.`);
+console.log(`\nwrote ${path.relative(ROOT, LEDGER)}: ${galleries.length} galleries, ${galleries.reduce((n, g) => n + g.installed, 0)} photographs (${carried} stock carried over); ${rows.length} provenance rows appended.`);

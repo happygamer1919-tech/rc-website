@@ -64,6 +64,10 @@ const ledger = JSON.parse(fs.readFileSync(ledgerPath, 'utf8'));
 const rowById = new Map(ledger.slots.map((r) => [r.id, r]));
 const galPath = path.join(ROOT, 'content/galleries.json');
 const galleries = JSON.parse(fs.readFileSync(galPath, 'utf8'));
+/* W28-24: a plan names a gallery by the page it RENDERS on. The fence folder is "Garduri"
+   (page garduri) and renders on its own page, galerie-garduri (W26-R12), where its files live;
+   every other gallery renders on its own page. Found by either name, filed by render_on. */
+const galOf = (pg) => galleries.galleries.find((x) => x.render_on === pg) || galleries.galleries.find((x) => x.page === pg) || null;
 const provPath = path.join(ROOT, 'docs/assets/PROVENANCE.md');
 let prov = fs.readFileSync(provPath, 'utf8');
 const srcPath = path.join(ROOT, 'docs/images/SOURCES.md');
@@ -100,7 +104,7 @@ for (const it of items) {
     if (it.origin_slot) { const o = items.find((x) => x.kind === 'catalog' && x.slot === it.origin_slot && !x.origin_slot); if (!o) problems.push(`${it.slot}: origin_slot ${it.origin_slot} is not an origin item of this plan`); }
     else { if (!it.download_url || !lic.hosts.includes(hostOf(it.download_url))) problems.push(`${it.slot}: download host ${hostOf(it.download_url)} is not the site's file host`); if (!lic.pages.includes(hostOf(it.page_url))) problems.push(`${it.slot}: page host ${hostOf(it.page_url)} is not the site`); }
   } else if (it.kind === 'gallery') {
-    const g = galleries.galleries.find((x) => x.page === it.page); const e = galleries.empty_folders.find((x) => x.page === it.page);
+    const g = galOf(it.page); const e = galleries.empty_folders.find((x) => x.page === it.page);
     if (!g && !e) problems.push(`${it.page}: no gallery and no empty folder of that page in content/galleries.json`);
     if (!it.alt || !it.alt.ro || !it.alt.ru) problems.push(`${it.page} ${it.id}: alt text missing in a locale`);
     if (!it.download_url || !lic.hosts.includes(hostOf(it.download_url))) problems.push(`${it.page} ${it.id}: download host ${hostOf(it.download_url)} is not the site's file host`);
@@ -127,9 +131,9 @@ if (!APPLY) process.exit(0);
   const enc = [];
   for (const it of origins) { const out = `public/img/catalog/${it.slot}.webp`; enc.push({ it, inp: staged.get(`${it.site}-${it.id}`), out, maxw: 1200, q: 0.82, role: 'catalog' }); }
   const nextIndex = {};
-  for (const g of galleries.galleries) nextIndex[g.page] = g.photos.length;
+  for (const g of galleries.galleries) nextIndex[g.render_on] = g.photos.length;
   for (const e of galleries.empty_folders) nextIndex[e.page] = 0;
-  for (const it of gal) { nextIndex[it.page] += 1; const n = String(nextIndex[it.page]).padStart(2, '0'); it._n = n; const full = `public/img/galerie/${it.page}/${n}.webp`, thumb = `public/img/galerie/${it.page}/${n}-t.webp`; enc.push({ it, inp: staged.get(`${it.site}-${it.id}`), out: full, maxw: 1600, q: 0.82, role: 'full' }); enc.push({ it, inp: staged.get(`${it.site}-${it.id}`), out: thumb, maxw: 600, q: 0.72, role: 'thumb' }); }
+  for (const it of gal) { const g0 = galOf(it.page); it._on = g0 ? g0.render_on : it.page; nextIndex[it._on] += 1; const n = String(nextIndex[it._on]).padStart(2, '0'); it._n = n; const full = `public/img/galerie/${it._on}/${n}.webp`, thumb = `public/img/galerie/${it._on}/${n}-t.webp`; enc.push({ it, inp: staged.get(`${it.site}-${it.id}`), out: full, maxw: 1600, q: 0.82, role: 'full' }); enc.push({ it, inp: staged.get(`${it.site}-${it.id}`), out: thumb, maxw: 600, q: 0.72, role: 'thumb' }); }
   for (const group of [[1200, 0.82], [1600, 0.82], [600, 0.72]]) {
     const batch = enc.filter((e) => e.maxw === group[0] && e.q === group[1]);
     if (!batch.length) continue;
@@ -159,19 +163,19 @@ if (!APPLY) process.exit(0);
   }
   /* 4. galleries: append after the owner's photographs; an empty folder becomes a gallery */
   for (const it of gal) {
-    let g = galleries.galleries.find((x) => x.page === it.page);
+    let g = galOf(it.page);
     if (!g) { const e = galleries.empty_folders.find((x) => x.page === it.page); g = { folder: e.folder, page: e.page, render_on: e.page, found: 0, installed: 0, preview: 1, photos: [], duplicates_skipped: [], refused: [] }; galleries.galleries.push(g); galleries.empty_folders = galleries.empty_folders.filter((x) => x.page !== it.page); }
-    const full = `public/img/galerie/${it.page}/${it._n}.webp`, thumb = `public/img/galerie/${it.page}/${it._n}-t.webp`;
+    const full = `public/img/galerie/${it._on}/${it._n}.webp`, thumb = `public/img/galerie/${it._on}/${it._n}-t.webp`;
     g.photos.push({ source: `${it.site}:${it.id}`, sha256: sha(path.join(ROOT, full)), full, thumb, source_size: (() => { const r = enc.find((e) => e.it === it && e.role === 'full').result; return `${r.sourceWidth}x${r.sourceHeight}`; })(), size: sizeOf(path.join(ROOT, full)), thumb_size: sizeOf(path.join(ROOT, thumb)), origin: 'stock', licence: it.licence, licence_url: it.licence_url, source_url: it.page_url, image_url: it.image_url, subject: it.subject, alt: { ro: it.alt.ro, ru: it.alt.ru } });
     g.installed = g.photos.length;
     for (const f of [full, thumb]) { removeProvRow(f); prov = prov.trimEnd() + '\n' + provRow(f, it, f === thumb ? ' (the 600px thumbnail of the same picture)' : '') + '\n'; }
-    sources = sources.trimEnd() + '\n' + srcRow(full, `/servicii/${it.page}/`, it) + '\n';
+    sources = sources.trimEnd() + '\n' + srcRow(full, `/servicii/${g.render_on}/`, it) + '\n';
   }
   /* 5. write everything */
   fs.writeFileSync(ledgerPath, JSON.stringify(ledger, null, 2) + '\n');
   fs.writeFileSync(galPath, JSON.stringify(galleries, null, 1) + '\n');
   fs.writeFileSync(provPath, prov);
   fs.mkdirSync(path.dirname(srcPath), { recursive: true }); fs.writeFileSync(srcPath, sources);
-  fs.writeFileSync(path.join(STAGE, 'last-run.json'), JSON.stringify({ date: TODAY, replaced, galleries: gal.map((i) => ({ page: i.page, n: i._n, id: i.id })) }, null, 1));
+  fs.writeFileSync(path.join(STAGE, 'last-run.json'), JSON.stringify({ date: TODAY, replaced, galleries: gal.map((i) => ({ page: i._on, n: i._n, id: i.id })) }, null, 1));
   console.log(`installed: ${origins.length} catalogue pictures (${reuses.length} reuses declared), ${gal.length} gallery pictures; provenance and sources rows written; ledger and galleries updated. Run: node build.js && node scripts/check-photo-slots-w24.js && node scripts/check-galleries.js && node scripts/check-image-sources.js && node scripts/gen-photo-review-w25.js && node scripts/check-asset-provenance.js`);
 })().catch((e) => die(e.stack || e.message));

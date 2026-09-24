@@ -1783,3 +1783,19 @@ measured plus 60 (W24-R4) and the other 49 read identical:
 | `/ru/servicii/garduri/` | 6,066 | **5,267** | 6,126 to **5,327** |
 | `/servicii/modele-garduri/` | 4,485 | **5,284** | 4,545 to **5,344** |
 | `/ru/servicii/modele-garduri/` | 4,506 | **5,306** | 4,566 to **5,366** |
+
+## AMENDED (W28-24, wave 28): ten stock pictures join the fence gallery page, two budgets move
+
+Added 2026-09-24 by card W28-24, under R-W28-07. Nothing above this line moves.
+
+Every gallery gains stock pictures after the owner's photographs. On the service pages the
+gallery is one card that opens a lightbox, so the page does not grow and the new heading
+"Exemple de lucrări și soluții" / "Примеры работ и решений" takes the old heading's line. The fence
+gallery page shows every picture as a thumbnail, so it grows by the ten new ones and gains a
+visible heading. All 55 budgeted pages re-measured at 1440, settled (reveals applied, 1,600ms), on
+the card's built tree; two move to measured plus 60 (W24-R4) and the other 53 read identical:
+
+| Page | Before (budget minus 60) | After | Budget |
+|---|---|---|---|
+| `/servicii/galerie-garduri/` | 3,725 | **4,981** | 3,785 to **5,041** |
+| `/ru/servicii/galerie-garduri/` | 3,725 | **4,981** | 3,785 to **5,041** |

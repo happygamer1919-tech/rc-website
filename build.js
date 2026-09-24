@@ -3651,13 +3651,26 @@ function galleryAlt(l, title, i, n) {
   return t.replace('{title}', title).replace('{i}', String(i)).replace('{n}', String(n));
 }
 
+/* W28-24 (R-W28-07): a stock picture carries its own alt text in both locales, written by the
+   viewer that accepted it; an owner's photograph keeps the numbered alt above. A stock entry
+   without its alt in this locale stops the build instead of falling back. */
+function photoAlt(l, title, p, i, n) {
+  if (p.origin !== 'stock') return galleryAlt(l, title, i, n);
+  const a = p.alt && p.alt[l.code];
+  if (!REAL(a)) die(`gallery: ${p.full} is a stock picture with no ${l.code} alt text in ${GALLERY_FILE}.`);
+  return a;
+}
+/* W28-24 (R-W28-07): every gallery surface is headed as examples, because stock pictures
+   follow the owner's photographs in it. */
+const examplesH = (l) => esc(galNeed(l.strings['servicePage.examplesH'], 'servicePage.examplesH'));
+
 /* The lightbox, once per gallery per page. */
 function galleryLightbox(l, g, title) {
   const s = (k) => esc(galNeed(l.strings[`gallery.${k}`], `gallery.${k}`));
   const n = g.photos.length;
   const slides = g.photos.map((p, i) => {
     const [w, h] = String(p.size).split('x').map(Number);
-    return `        <li class="lbx__slide"><img src="${BASE}/${esc(p.full.replace(/^public\//, ''))}" alt="${esc(galleryAlt(l, title, i + 1, n))}" width="${w}" height="${h}" loading="lazy" decoding="async"></li>`;
+    return `        <li class="lbx__slide"><img src="${BASE}/${esc(p.full.replace(/^public\//, ''))}" alt="${esc(photoAlt(l, title, p, i + 1, n))}" width="${w}" height="${h}" loading="lazy" decoding="async"></li>`;
   }).join('\n');
   const chevron = (pts) => `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="${pts}"></polyline></svg>`;
   return `<div class="lbx" id="lbx-${esc(g.render_on)}" data-gal-box data-gal-count="${n}" role="dialog" aria-modal="true" aria-label="${s('dialogAria')}: ${esc(title)}" hidden>
@@ -3695,7 +3708,7 @@ function gallerySectionAlone(l, slug, title) {
   if (!g) return '';
   return `<section class="section section--light section--divided" id="galerie" aria-labelledby="galerie-h">
   <div class="container">
-    <h2 id="galerie-h" data-reveal>${esc(galNeed(l.strings['gallery.sectionH'], 'gallery.sectionH'))}</h2>
+    <h2 id="galerie-h" data-reveal>${examplesH(l)}</h2>
     <div class="grid grid--3" style="margin-top: 40px;">
 ${galleryCard(l, g, title, 0)}
     </div>
@@ -3712,11 +3725,11 @@ function galleryPage(l, slug) {
   const title = galNeed(l.strings['pages.galerieGarduri.title'], 'pages.galerieGarduri.title');
   const items = g.photos.map((p, i) => {
     const [w, h] = String(p.thumb_size).split('x').map(Number);
-    return `      <li><a class="gal-grid__item" href="#lbx-${esc(g.render_on)}" data-gal-open="lbx-${esc(g.render_on)}" data-gal-index="${i}" aria-haspopup="dialog"><img src="${BASE}/${esc(p.thumb.replace(/^public\//, ''))}" alt="${esc(galleryAlt(l, title, i + 1, g.photos.length))}" width="${w}" height="${h}" loading="${i < 6 ? 'eager' : 'lazy'}" decoding="async"></a></li>`;
+    return `      <li><a class="gal-grid__item" href="#lbx-${esc(g.render_on)}" data-gal-open="lbx-${esc(g.render_on)}" data-gal-index="${i}" aria-haspopup="dialog"><img src="${BASE}/${esc(p.thumb.replace(/^public\//, ''))}" alt="${esc(photoAlt(l, title, p, i + 1, g.photos.length))}" width="${w}" height="${h}" loading="${i < 6 ? 'eager' : 'lazy'}" decoding="async"></a></li>`;
   }).join('\n');
   return `<section class="section section--light section--divided" id="galerie" aria-labelledby="galerie-h">
   <div class="container">
-    <h2 id="galerie-h" class="sr-only">${esc(galNeed(l.strings['gallery.gridAria'], 'gallery.gridAria'))}</h2>
+    <h2 id="galerie-h" data-reveal>${examplesH(l)}</h2>
     <ul class="gal-grid" data-gal-grid>
 ${items}
     </ul>
@@ -4030,7 +4043,7 @@ function renderGallerySection(l, slug, vars) {
   return `<section class="section section--light section--divided" id="proiecte">
   <div class="container">
     <p class="eyebrow" data-reveal>${esc(l.strings['servicePage.galleryH'])}</p>
-    <h2 data-reveal>${esc(l.strings['portfolio.h2'])}</h2>
+    <h2 data-reveal>${examplesH(l)}</h2>
     <div class="grid grid--3" style="margin-top: 40px;">
 ${cards}${gal ? '\n' + galleryCard(l, gal, svcTitle, mine.length) : ''}
     </div>

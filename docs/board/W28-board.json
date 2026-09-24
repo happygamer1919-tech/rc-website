@@ -652,8 +652,8 @@
       "evidence": "08 to 12 replaced in place (Wikimedia Commons CC0 x4, two of them crops; Pexels x1), each accepted by two viewers at full size; case-la-cheie 12 (gate 29); gate 32 exit 0; 0 turnkey SOURCES rows name a timber frame; gates 17, R-W, R-Z, 30 exit 0; Lighthouse desktop median of three: 100 on /servicii/case-la-cheie/ and /ru/servicii/case-la-cheie/ (a11y, bp, seo 100); 33 of 33 gates exit 0"
     },
     {
-      "lane": "queue",
-      "status": "todo",
+      "lane": "in_flight",
+      "status": "pr_open",
       "priority": "high",
       "owner_terminal": "yellow",
       "pr": null,
@@ -669,7 +669,8 @@
       "acceptance": [
         "node build.js && node scripts/check-viewport-320.js  -> exit 0, every built page both locales, the page count printed",
         "node scripts/run-gates.js --keep-going  -> every command exit 0"
-      ]
+      ],
+      "evidence": "check-viewport-320: 85 html files, 14 redirects skipped, 71 measured (36 RO, 35 RU); before the fix 1 failed (/ru/ 337px, the portfolio filter chip, not the header pill); after, 71 of 71 at 320; self-test 5 arms (2 green); gate 35 registered, quality runs 34 commands"
     }
   ],
   "board_syncs": [

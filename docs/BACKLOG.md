@@ -1389,6 +1389,10 @@ Unsplash, WebP), the membrane slot CAT-0221 waiting as a placeholder until W28-2
 R-W28-10 and R-W28-11. The committed board JSON names #184; the artifact renders only from `main` from here on. Documents only.
 
 ## W28-24 · Service galleries: ten stock pictures more per gallery, two new galleries, the examples heading
-**Status: PR OPEN** (opened 2026-09-24). R-W28-07; 115 stock pictures across eleven galleries after the owner's
+**Status: MERGED #186, section 12.0 exit 0** (opened 2026-09-24, merged 18:54 UTC as `97e56bb`). R-W28-07; 115 stock pictures across eleven galleries after the owner's
 photographs, industrial and proiectare-3d gain galleries, the heading "Exemple de lucrări și soluții" on every
 gallery surface; the two intakes keep stock pictures; two budgets move.
+
+## W28-R4 · The closing report W28-FINAL-RUN-2 and the board sync
+**Status: board sync, not a card** (opened 2026-09-24). `docs/reports/W28-FINAL-RUN-2.md`; the board JSON names #186; the
+artifact is republished from `main` after this merges. Documents only.

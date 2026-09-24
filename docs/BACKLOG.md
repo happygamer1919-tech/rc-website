@@ -1333,13 +1333,13 @@ symmetric alternates, Open Graph and Twitter tags; the sitemap's privacy alterna
 `scripts/seo-check.js`; 0 budgets move.
 
 ## W28-18 · Structured data and `scripts/schema-check.js`
-**Status: PR OPEN #177** (opened 2026-09-24). JSON-LD on all 85 pages: Organization and LocalBusiness with
+**Status: MERGED #177, section 12.0 exit 0** (opened 2026-09-24, merged 01:55 UTC as `3c30f00`). JSON-LD on all 85 pages: Organization and LocalBusiness with
 the NAP on home, Service on the 30 service pages, one Product with an AggregateOffer in MDL per
 priced card (704), BreadcrumbList on 83 inner pages, FAQPage on the 22 pages with a visible FAQ, no
 AggregateRating or Review; gate 34 `scripts/schema-check.js`; 0 budgets move.
 
 ## W28-19 · GEO: llms.txt, the Despre facts block, one NAP, direct FAQ answers
-**Status: PR OPEN** (opened 2026-09-24). `dist/llms.txt` with the company facts, the nine catalogue groups
+**Status: MERGED #178, section 12.0 exit 0** (opened 2026-09-24, merged 02:07 UTC as `36669bd`). `dist/llms.txt` with the company facts, the nine catalogue groups
 and their URLs, the Russian section and the coverage; one `<address data-nap>` block with identical bytes
 on 85 of 85 pages; the Despre facts block on both home pages; nine FAQ answers as direct statements and
 four per locale corrected from a thirty-year warranty to W25-22's five; all 55 budgets move (R-Y).
@@ -1348,5 +1348,14 @@ four per locale corrected from a thirty-year warranty to W25-22's five; all 55 b
 **Status: blocked** on the owner (Q-W28-01, the tag's content value). The Business Profile
 half is done by W28-11 under R-W28-03.
 
-## W28-21 · Wave close: Lighthouse, W28-FINAL-RUN, the CRITIC pass, W28-REVIEW, W28-RUN
-**Status: todo.**
+## W28-21 · Wave close: Lighthouse, W28-FINAL-RUN, the review, W28-RUN
+**Status: PR OPEN** (opened 2026-09-24). Measured on the tree byte-identical to `main` at `36669bd`: 33 of 33
+gate commands exit 0; the crawl (83 pages at three widths) finds 0 dead links, 0 missing images, 0 console
+errors, 0 sideways scroll, 14 of 14 redirects, 30 of 30 forms; Lighthouse performance 97 to 99 with 100 on
+accessibility, best practices and SEO on all eight pages. One defect, W28-FIX-01. Reports:
+`docs/reports/W28-FINAL-RUN.md`, `W28-REVIEW.md`, `W28-RUN.md`.
+
+
+## W28-FIX-01 · The hero stat labels read 14px on phones and tablets
+**Status: todo**, from W28-REVIEW defect 1 (W28-22 set them to 13px under 1024). Raise to 14px and prove
+the Russian labels fit three in a row at 320 and 390 without clipping; budgets re-measured.

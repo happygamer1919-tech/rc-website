@@ -14417,3 +14417,14 @@ folders are no longer on this machine): 115 carried, a missing folder refused, n
 **Measured.** Two budgets move (the fence gallery page, both locales, +1,256px for ten
 thumbnails and the heading); the service pages do not grow because their gallery is one card.
 `galSlides` on the fence gallery page is 22.
+
+## W28-R4 · The closing report and the board sync, 2026-09-24
+
+Branch `w28/w28-r4-final-run-2`, on `main` at `97e56bb`. Documents only.
+
+**Done.** `docs/reports/W28-FINAL-RUN-2.md` closes the third dispatch: the pull requests (#185, #186),
+the #183 live check, W28-24 read on the live site page by page, Lighthouse on the eighteen service
+pages (100 on every one, median of three), the gates, the membrane under R-W28-11, seven deviations
+and four taste notes. The board JSON names W28-24 verified (#186) and lists this sync under
+`board_syncs`; the artifact is drawn from `main` after this merges, as the register's "Ratified and
+not ratified" section of the third dispatch sets out.

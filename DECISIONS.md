@@ -14528,3 +14528,23 @@ Branch `w28/w28-r7-rulings-board`, on `main` at `8ce9d8a`. Documents only. R-W28
 dispatch's seven deviations ratified, turnkey picture 11 stays, the user-agent incident closed with the
 rule already recorded). Cards W28-30 (copertine placement, read as "under Catalog by navigation") and
 W28-31 (the wave close) on the board. The board JSON records #192 verified and lists this sync.
+
+## W28-30 · Copertine placement: the group leaves the Catalog, the cards below the gallery, 2026-09-24
+
+Branch `w28/w28-30-copertine-placement`, stacked on W28-R7. The fifth dispatch: "the 12 copertine cards
+with no price must not sit under Catalog (Catalog is materials plus prices per client ruling)".
+
+**Read.** On `main` at `8ce9d8a` the cards rendered only on `/servicii/copertine/`, but W28-14 had made
+copertine a Catalog group: an external row in `content/catalog.json` shown as the Catalog index tile
+`CATEG-10`, a Catalog menu row on all 66 pages that carry the menu, and a group chip "Copertine 12" with
+its status line above the cards. That is "under Catalog" by navigation, so the dispatch's first branch.
+
+**Done.** The external row leaves `content/catalog.json` and the build's parent list; the `CATEG-10`
+ledger row (a declared reuse of COPM-01, rendered nowhere now) leaves the ledger and gate 19's imperlux
+list; the chip and the status line leave the copertine page; the twelve cards, each with its
+"Solicită ofertă" button (W28-29), move below the gallery. The Catalog index has 9 tiles (live marker
+`catTiles` 9). `scripts/check-catalog-counts.js` now asserts 12 cards and 12 buttons per locale, no chip,
+and zero copertine cards, Catalog tiles and Catalog menu rows on every Catalog page (and every page, for
+the menu); watched fail on the build of `main` before the change: exit 1, 70 problems (66 menu rows,
+2 tiles, 2 chips). The photo review list and the owner intake list regenerate without CATEG-10. Four
+budgets move (R-Y).

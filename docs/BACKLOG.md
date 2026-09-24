@@ -1418,7 +1418,7 @@ the artifact is republished from `main` after this merges. Documents only.
 **Status: board sync, not a card** (opened 2026-09-24). Documents only.
 
 ## W28-30 · Copertine placement: out of the Catalog, the cards below the gallery
-**Status: todo.** The copertine Catalog group (tile, menu row, chip and count) leaves the Catalog; the twelve cards stay on the service page with their buttons.
+**Status: PR OPEN** (opened 2026-09-24). The copertine Catalog group (tile, menu row, chip and count) leaves the Catalog; the twelve cards sit below the gallery with their buttons; four budgets move.
 
 ## W28-31 · Wave close: CRITIC, W28-REVIEW, fix cards, W28-FINAL-RUN-4
 **Status: todo.** At most five fix cards, defects only, W28-FIX-03 onward.

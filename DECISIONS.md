@@ -14506,3 +14506,18 @@ its own font, and runs a five-arm self-test (three red, two green) on a page it 
 version named nothing on the long-word arm (text spilling from a box that fits) and was refused by its
 own self-test; its second named the supplier marquee (clipped) and every stretched wrapper; both fixed
 before it read the site.
+
+## W28-R6 · The closing report and the board sync, 2026-09-24
+
+Branch `w28/w28-r6-final-run-3`, on `main` at `3c2e11c`. Documents only.
+
+**Done.** `docs/reports/W28-FINAL-RUN-3.md` closes the fourth dispatch: #188 to #191, the live checks,
+the turnkey replacements with their sources, the 320 list, the gates and seven deviations. The board
+JSON names W28-29, W28-27 and W28-28 verified and #188 as a verified sync, and lists this sync under
+`board_syncs`; the artifact is drawn from `main` after this merges (R-W28-12).
+
+**Correction to W28-27 (#190).** Its entry says "six of fifteen refused". The count was ten candidates
+judged, five accepted and five refused (a brand on pallets and a site banner, a tape-measure logo, a
+recognisable face, boxed brand names on a non-house building, a timber-frame membrane), plus one crop
+refused by both viewers because it had been cut in the wrong place (sips centred it instead of anchoring
+it at the top; the tape measure was still in frame). The corrected crop is the one installed.

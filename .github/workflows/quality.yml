@@ -237,6 +237,13 @@ jobs:
       - name: Every visible text element readable at rest, WCAG 1.4.3 (W26-05a)
         run: node scripts/check-text-contrast.js
 
+      # W28-28. Gate 35, owner ruling R-W28-13: 320px is the minimum supported viewport.
+      # Every built page, both locales, at 320 wide with mobile emulation: the document's
+      # scrollWidth equals 320. Nothing read 320 before (gate 14 starts at 360), and the
+      # Russian home page scrolled 17px there. Before RC-145's step, which rebuilds dist/ armed.
+      - name: Every page fits a 320px screen, both locales (W28-28)
+        run: node scripts/check-viewport-320.js
+
       # RC-145. Every form POSTs to build.js's FORM_ENDPOINT_URL, armed, with the
       # configured recipient (the Web3Forms access key) and a subject, and every
       # sitemap page carries its form. A check has no secret, so this step alone

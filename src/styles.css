@@ -1225,6 +1225,13 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 }
 .filter:hover { border-color: var(--brand); color: var(--brand-dark); }
 .filter[aria-pressed='true'] { background: var(--bg-light); border-color: var(--brand); color: var(--brand-dark); font-weight: 700; }
+/* W28-28 (R-W28-13: 320 is the minimum viewport). Below 360, the width every other gate starts at, a
+   chip may wrap onto two lines inside the column instead of pushing the page sideways: the Russian
+   "Проектирование и 3D-визуализация" set nowrap was 305px wide in a 288px column and made the Russian
+   home page 337px wide at 320. At 360 and above nothing changes. */
+@media (max-width: 359px) {
+  .filter { max-width: 100%; height: auto; min-height: 44px; padding: 10px 14px; line-height: 1.25; white-space: normal; text-align: center; }
+}
 
 .project__media { position: relative; }
 .chip {

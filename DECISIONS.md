@@ -14479,3 +14479,30 @@ learned `replaces` (an in-place swap of a stock picture, its PROVENANCE and SOUR
 owner's photograph refused) and `local_file` with `crop` (a derivative installed while the rows name
 the original). Wikimedia's file host answers the intake's generic user agent with HTTP 429; the two
 originals were staged with a contact user agent.
+
+## W28-28 · The 320 sweep, and gate 35, 2026-09-24
+
+Branch `w28/w28-28-320-sweep`, stacked on W28-27. Owner ruling R-W28-13 (320 is the minimum
+viewport); the fourth dispatch's card "W28-26" (the id was taken). Absorbs W28-FIX-02.
+
+**The sweep.** `scripts/check-viewport-320.js` rendered every built page at 320 wide, both locales:
+85 html files, 14 meta-refresh redirects skipped, 71 measured (36 RO, 35 RU). **One page failed:
+`/ru/`, scrollWidth 337.** Every other page, `/review/` included, measured exactly 320.
+
+**The cause, and a correction.** The deepest element past the edge was a portfolio filter chip,
+"Проектирование и 3D-визуализация", set `white-space: nowrap` at a fixed height: 305px of label in a
+288px column, ending at 337px. W28-FIX-01 and Q-W28-04 had named the header pill (305px inside a 337px
+header); the pill only measured that wide because the chip had already widened the layout to 337. With
+the chip fixed the pill fits.
+
+**The fix.** Under 360px only, the width every other gate starts at, a filter chip may wrap onto two
+lines inside its column (`max-width: 100%`, height from its content with a 44px minimum, normal
+white-space). Nothing changes at 360 or above, so no budget moves and gate 14 reads what it read.
+
+**The gate.** Registered as gate 35 (docs/CLAUDE.md section 11, `quality.yml`), after gate 28 and before
+gate 13; the count is 35 and `quality` runs 34 commands. It names the deepest overflowing elements (box
+or spilled text), skips anything clipped by an ancestor that fits, measures a page that loads no Inter in
+its own font, and runs a five-arm self-test (three red, two green) on a page it serves itself. Its first
+version named nothing on the long-word arm (text spilling from a box that fits) and was refused by its
+own self-test; its second named the supplier marquee (clipped) and every stretched wrapper; both fixed
+before it read the site.

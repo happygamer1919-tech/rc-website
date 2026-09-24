@@ -1024,6 +1024,23 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     price and record buffers only (seven arms, one green) and still reads it for cart, stock and
     manufacturer names. It fails on zero pages or zero blocks.
 
+35. `node scripts/check-viewport-320.js` clean. **Since W28-28 (wave 28)**, owner ruling R-W28-13,
+    run by `quality` after gate 28 and before gate 13. **320px is the minimum supported viewport.**
+    Every `.html` file in `dist/`, found by walking it, both locales, at 320 wide with mobile
+    emulation, reveals applied and Inter loaded: `document.documentElement.scrollWidth` equals 320.
+    Meta-refresh redirect pages are counted and skipped; a page that loads no Inter (the internal
+    `/review/` page) is measured in its own font and named. **Nothing read 320 before**: gate 11
+    starts at 769, gate 14 and the review crawl at 360 and 390, and the Russian home page scrolled
+    17px sideways at 320 from a portfolio filter chip set `nowrap`, which W28-FIX-01 had read as the
+    header pill (the pill only measured wide because the chip had already widened the layout). On a
+    failure it names the deepest elements that stick out past the right edge, box or spilled text,
+    leaving out anything clipped inside an ancestor that fits. **Its self-test runs first on a page
+    the gate serves itself**: three RED arms (a 400px box, a long word with no break opportunity, an
+    image wider than the screen) and two GREEN (a wide table in its own scroll box, a wide element
+    under overflow hidden), between two clean controls (R-AB). Watched fail on the real tree before
+    the fix: `/ru/`, 337px, the chip named. It fails on zero pages, either locale missing, Inter not
+    loading where it is asked for, and fewer pages measured than read.
+
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number (Q-W14-03 was found "at gate 9") and those bodies are immutable under
 R-S, so renumbering would falsify them. A gate added later takes the next number
@@ -1075,6 +1092,8 @@ no build and no browser.
 **AMENDED (W28-17):** gate 33 runs after gate 32. It reads the built pages and serves them to
 itself for the 200 check; no browser.
 **AMENDED (W28-18):** gate 34 runs after gate 33. It reads the built pages only; no browser.
+**AMENDED (W28-28):** gate 35 runs after gate 28 and before gate 13, with the other browser gates,
+because gate 13 rebuilds `dist/` armed.
 
 **The count, so it stops drifting (W25-03c).** ~~This list numbers **25** gates.~~
 ~~**AMENDED (W25-24): 26**, and `quality` runs **25** commands.~~
@@ -1085,7 +1104,8 @@ itself for the 200 check; no browser.
 ~~**AMENDED (W28-13): 31**, and `quality` runs **30** commands.~~
 ~~**AMENDED (W28-15): 32**, and `quality` runs **31** commands.~~
 ~~**AMENDED (W28-17): 33**, and `quality` runs **32** commands.~~
-**AMENDED (W28-18): 34**, and `quality` runs **33** commands. The number to report is the one
+~~**AMENDED (W28-18): 34**, and `quality` runs **33** commands.~~
+**AMENDED (W28-28): 35**, and `quality` runs **34** commands. The number to report is the one
 `node scripts/run-gates.js` prints, never this sentence. Five of them
 are not scripts and `quality` cannot run them: gate 4 (heights measured settled), gate 6 (no
 new colour), gate 7 (reduced motion), gate 8 (the three documents updated) and **gate 9,

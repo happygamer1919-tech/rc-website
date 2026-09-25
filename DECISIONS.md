@@ -14565,3 +14565,15 @@ Branch `w28/w28-fix-03-copertine-hero-anchor`, stacked on W28-31. From W28-REVIE
 defect 1. The hero's second button, "Vezi cele 12 modele" / "Смотреть 12 моделей", opened `#copertine`,
 the chooser, which sat right above the models until W28-30 moved them below the gallery. It opens
 `#copertine-modele` now, both locales. One href; no height moves.
+
+## W28-FIX-04 · On a phone, Copertine sits under Servicii, 2026-09-24
+
+Branch `w28/w28-fix-04-mobile-copertine-row`, stacked on W28-FIX-03. From W28-REVIEW, second pass,
+defect 2. The phone menu rendered every product page as an indented row after "Catalog"
+(`mobileProducts`, W24-08), so Copertine still read as a Catalog entry on phones after W28-30. The list
+splits in two: the copertine row renders after "Servicii" through a new `mobileServiceProducts` slot in
+the six templates that carry the phone menu, and every other product row stays after "Catalog". It
+moves and never goes (on a phone it is the only way to the page); the build still asserts one row per
+product page across both lists. Measured: 66 pages carry the phone menu, each with the copertine row
+once, after "Servicii" and before "Catalog". `scripts/check-catalog-counts.js` holds it now; on the
+build of `main` before this card it exits 1 with 66 problems, one per phone menu.

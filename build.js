@@ -156,7 +156,7 @@ const PAGES = [
 
 // Keys whose value is already HTML built by this file. Everything else is
 // escaped on substitution.
-const RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu', 'productTeaser', 'socialRow',
+const RAW_KEYS = new Set(['mobileProducts', 'mobileServiceProducts', 'catalogMenu', 'serviciiMenu', 'productTeaser', 'socialRow',
   // demoAttr is a whole attribute, ` data-demo="..."`, not an attribute value:
   // it is either present or absent. Its inner text is escaped where it is
   // built, so what lands here is already safe. Escaping it again turned the
@@ -168,7 +168,7 @@ const RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu', 'prod
   ...Array.from({ length: 9 }, (_, i) => `svcMedia${i}`),
 ]);
 // Same idea for the service-page template.
-const SVC_RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu',
+const SVC_RAW_KEYS = new Set(['mobileProducts', 'mobileServiceProducts', 'catalogMenu', 'serviciiMenu',
   'demoAttr', 'svc.imageObjects', 'svc.answer', 'svc.table', 'svc.faqSection', 'svc.faqSchema',
   'svc.gallerySection', 'svc.footerLinks', 'svc.media',
   // W24-05. The before/after slider, on the case la cheie page only.
@@ -3807,7 +3807,7 @@ function parentTitle(l, slug) {
   const collide = CATEGORIES.filter((c) => SERVICE_SLUGS.includes(c.slug) || PRODUCT_PAGES.some((p) => p.slug === c.slug));
   if (collide.length) die(`category slug collides with a service or product slug: ${collide.map((c) => c.slug).join(', ')}`);
 })();
-const PROD_RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu',
+const PROD_RAW_KEYS = new Set(['mobileProducts', 'mobileServiceProducts', 'catalogMenu', 'serviciiMenu',
   'demoAttr', 'promoBar', 'areaServedJson', 'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
   'prod.block', 'prod.footerLinks', 'prod.faqSchema', 'nap',
   // W24-08. The garduri bento, and the copertine hero and cross-sell row.
@@ -3816,7 +3816,7 @@ const PROD_RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu',
   'prod.breadcrumb',
 ]);
 const productTemplate = fs.readFileSync('src/product.html', 'utf8');
-const CAT_RAW_KEYS = new Set(['mobileProducts', 'catalogMenu', 'serviciiMenu',
+const CAT_RAW_KEYS = new Set(['mobileProducts', 'mobileServiceProducts', 'catalogMenu', 'serviciiMenu',
   'demoAttr', 'promoBar', 'privacyLinkOpen', 'privacyLinkClose', 'privacyFooterLegal',
   'cat.block', 'cat.products', 'cat.footerLinks', 'cat.schema', 'nap',
   // W24-04. Built here because a parent page and a subcategory page differ in
@@ -4127,14 +4127,23 @@ for (const l of loaded) {
        that a phone cannot navigate to is the defect F-02 names.
        The count is asserted, not assumed: every product page this build emits has
        a row, so a page added later is in the menu or the build fails. */
-    mobileProducts: (() => {
-      const rows = PRODUCT_PAGES.map((p) => {
+    /* AMENDED (W28-FIX-04, from W28-REVIEW second pass): the phone menu split in two. The rows after
+       "Catalog" (mobileProducts) are the product pages that belong to the Catalog; the copertine page
+       left the Catalog at W28-30 and its breadcrumb is Acasa, Servicii, Copertine, so its row renders
+       after "Servicii" (mobileServiceProducts). On a phone that row is the only way to the page, so it
+       moves and never goes: the count below still asserts one row per product page across both. */
+    ...(() => {
+      const SERVICE_SIDE = new Set(['copertine']);
+      const row = (p) => {
         const title = l.strings[`pages.${p.key}.title`];
         if (!REAL(title)) die(`mobileProducts: pages.${p.key}.title is not real for ${l.code}.`);
         return `  <a class="mobile-nav-link mobile-nav-link--sub" href="${BASE}${SERVICES_ROOT[l.code]}${p.slug}/">${esc(title)}</a>`;
-      });
-      if (rows.length !== PRODUCT_PAGES.length) die(`mobileProducts: ${rows.length} rows for ${PRODUCT_PAGES.length} product pages.`);
-      return rows.join('\n');
+      };
+      const cat = PRODUCT_PAGES.filter((p) => !SERVICE_SIDE.has(p.slug)).map(row);
+      const svc = PRODUCT_PAGES.filter((p) => SERVICE_SIDE.has(p.slug)).map(row);
+      if (svc.length !== SERVICE_SIDE.size) die(`mobileServiceProducts: ${svc.length} rows for ${SERVICE_SIDE.size} service-side product pages.`);
+      if (cat.length + svc.length !== PRODUCT_PAGES.length) die(`mobileProducts: ${cat.length + svc.length} rows for ${PRODUCT_PAGES.length} product pages.`);
+      return { mobileProducts: cat.join('\n'), mobileServiceProducts: svc.join('\n') };
     })(),
     // JSON-LD `item` must be an absolute URL. servicesHref is a path, correct
     // for an <a href> and invalid inside the BreadcrumbList.

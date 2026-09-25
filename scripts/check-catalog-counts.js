@@ -138,6 +138,18 @@ for (const rel of SERVICE_PAGES) {
   if (cards || prices) bad(`${rel}: a service page carries ${cards} product card(s) and ${prices} price element(s); W28-13 says none`);
 }
 
+/* W28-FIX-05: the copertine page left the Catalog group list at W28-30, so it must be listed with
+   the services in dist/llms.txt, both locale URLs, under the Servicii heading. */
+{
+  const llmsFile = path.join(DIST, 'llms.txt');
+  if (!fs.existsSync(llmsFile)) fail('dist/llms.txt is missing');
+  const llmsTxt = fs.readFileSync(llmsFile, 'utf8');
+  const svcSection = (llmsTxt.split(/^## /m).find((sec) => sec.startsWith('Servicii')) || '');
+  const ok = svcSection.includes('https://rapidconstruct.md/servicii/copertine/') && svcSection.includes('https://rapidconstruct.md/ru/servicii/copertine/');
+  out.push(`llms.txt: the copertine page ${ok ? 'is' : 'is NOT'} listed under Servicii, both locales`);
+  if (!ok) bad('dist/llms.txt does not list the copertine page under Servicii in both locales (W28-FIX-05)');
+}
+
 /* W28-19: every catalogue group URL is in dist/llms.txt. */
 if (process.argv.includes('--llms')) {
   const llms = path.join(DIST, 'llms.txt');

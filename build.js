@@ -4683,6 +4683,13 @@ fs.writeFileSync('dist/sitemap.xml',
       `RU: ${ru.strings[`services.items.${i}.title`]}, ` +
       `${SITE}${BASE}${SERVICES_ROOT.ru}${slug}/`);
   });
+  /* W28-FIX-05 (from W28-REVIEW, second pass): the copertine page. It was listed only as a Catalog
+     group below, so W28-30 took it out of this file with the group; it is a published page with its
+     own quote form, in the Servicii menu, so it is listed with the services, in the same shape: its
+     title and the first sentence of its own lede, both languages. */
+  lines.push(`- [${ro.strings['pages.copertine.title']}](${SITE}${BASE}${SERVICES_ROOT.ro}copertine/): ` +
+    `${firstSentence(ro.strings['pages.copertine.lede'])}. ` +
+    `RU: ${ru.strings['pages.copertine.title']}, ${SITE}${BASE}${SERVICES_ROOT.ru}copertine/`);
   lines.push('',
     '## Zonă deservită / Зона обслуживания', '',
     coverageLine(ro),

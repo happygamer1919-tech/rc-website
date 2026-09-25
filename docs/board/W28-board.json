@@ -703,12 +703,12 @@
       "evidence": "merged 2026-09-24 23:30:48Z as 0a2c173; section 12.0 EXIT=0 at 23:33:52Z; live: /catalog/ and /ru/catalog/ 9 tiles, 0 copertine tiles and menu rows; the copertine page 12 buttons per locale, no chip, cards after the gallery. catalog index 9 tiles; 0 copertine cards, tiles and menu rows on 46 Catalog pages (menu rows read on all 85 pages); copertine page 12 cards and 12 buttons per locale, below the gallery, no chip; catalog-counts exit 0, and exit 1 with 70 problems on the build of main before the change; four budgets move (R-Y)"
     },
     {
-      "lane": "in_flight",
-      "status": "in_progress",
+      "lane": "done",
+      "status": "verified",
       "priority": "normal",
       "owner_terminal": "yellow",
-      "pr": null,
-      "merge_sha": null,
+      "pr": 195,
+      "merge_sha": "1bc5d38a0893dc6906c83f5db3e1de21198bf644",
       "id": "W28-31",
       "title": "Wave close: the CRITIC pass, W28-REVIEW, up to five fix cards, W28-FINAL-RUN-4",
       "branch": "w28/w28-31-wave-close",
@@ -721,15 +721,15 @@
         "test -f docs/reports/W28-REVIEW.md && test -f docs/reports/W28-FINAL-RUN-4.md  -> exit 0",
         "node scripts/run-gates.js --keep-going  -> every command exit 0 on the final tree"
       ],
-      "evidence": "CRITIC on main 0a2c173: 34 of 34 gates; crawl 83 pages x 3 widths, 0 dead links, 0 console errors, 0 sideways scroll; Lighthouse 96 to 100; three defects, W28-FIX-03 to 05; taste in docs/reports/W28-REVIEW.md (second pass)"
+      "evidence": "quality green 6m55s; merged 2026-09-25 00:08:16Z as 1bc5d38; section 12.0 EXIT=0 at 00:11:18Z; CRITIC on main 0a2c173 (34 of 34 gates, crawl 83 pages x 3 widths clean, Lighthouse 96 to 100), three defects as W28-FIX-03 to 05, W28-REVIEW second pass; the final run on ceaf080 is in docs/reports/W28-FINAL-RUN-4.md (this sync)"
     },
     {
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "normal",
       "owner_terminal": "yellow",
-      "pr": null,
-      "merge_sha": null,
+      "pr": 196,
+      "merge_sha": "84ad11b78415fc3b5f0a11189f5e1cd6f4b03349",
       "id": "W28-FIX-03",
       "title": "The copertine hero button \"see the 12 models\" lands on the models (from W28-REVIEW, second pass)",
       "branch": "w28/w28-fix-03-copertine-hero-anchor",
@@ -742,15 +742,15 @@
         "node build.js && grep -c \"cop-hero__more\\\" href=\\\"#copertine-modele\\\"\" dist/servicii/copertine/index.html dist/ru/servicii/copertine/index.html  -> 1 and 1",
         "node scripts/check-links.js  -> exit 0"
       ],
-      "evidence": "cop-hero__more href #copertine-modele on /servicii/copertine/ and /ru/servicii/copertine/ (1 and 1); check-links exit 0"
+      "evidence": "quality green 7m32s; merged 2026-09-25 00:11:24Z as 84ad11b; section 12.0 EXIT=0 at 00:14:25Z; live: the hero button opens #copertine-modele in both locales"
     },
     {
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "normal",
       "owner_terminal": "yellow",
-      "pr": null,
-      "merge_sha": null,
+      "pr": 197,
+      "merge_sha": "fc1b1dace1cceb0eed10ae33a01b4a2cb9e13dd4",
       "id": "W28-FIX-04",
       "title": "On a phone, Copertine sits under Servicii, not under Catalog (from W28-REVIEW, second pass)",
       "branch": "w28/w28-fix-04-mobile-copertine-row",
@@ -763,15 +763,15 @@
         "node build.js && every built page with a phone menu: the copertine row follows the Servicii link and precedes the Catalog link  -> 0 pages otherwise",
         "node scripts/run-gates.js --keep-going  -> every command exit 0"
       ],
-      "evidence": "66 pages with the phone menu, the copertine row once after Servicii and before Catalog; check-catalog-counts exit 0 (exit 1 with 66 problems on main's build)"
+      "evidence": "quality green 7m18s; merged 2026-09-25 00:14:32Z as fc1b1da; section 12.0 EXIT=0 at 00:17:43Z; live: the phone menu lists Copertine after Servicii and before Catalog; check-catalog-counts holds it on 66 phone menus"
     },
     {
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "normal",
       "owner_terminal": "yellow",
-      "pr": null,
-      "merge_sha": null,
+      "pr": 198,
+      "merge_sha": "ceaf080e64fc95134d808b122de31ff8115602ca",
       "id": "W28-FIX-05",
       "title": "The copertine page is back in llms.txt, in the services list (from W28-REVIEW, second pass)",
       "branch": "w28/w28-fix-05-llms-copertine",
@@ -784,7 +784,7 @@
         "node build.js && grep -c \"servicii/copertine/\" dist/llms.txt  -> 2 (RO and RU URLs on one line) and the line sits under the Servicii heading",
         "node scripts/check-catalog-counts.js --llms  -> exit 0"
       ],
-      "evidence": "llms.txt: copertine listed under Servicii / Услуги with both locale URLs; check-catalog-counts exit 0 (fails on main's build naming the line); --llms 9 of 9 Catalog groups"
+      "evidence": "quality green 7m23s; merged 2026-09-25 00:17:47Z as ceaf080; section 12.0 EXIT=0 at 00:21:15Z; live: llms.txt lists Copertine under Servicii / Услуги with both URLs"
     }
   ],
   "board_syncs": [
@@ -832,6 +832,11 @@
       "merge_sha": "75bf125546e180184b9e69d06841c0c270131c1a",
       "status": "verified",
       "evidence": "quality green; merged 2026-09-24 23:23:33Z as 75bf125; section 12.0 EXIT=0 at 23:26:33Z"
+    },
+    {
+      "branch": "w28/w28-r8-final-run-4",
+      "date": "2026-09-25",
+      "records": "W28-31 and W28-FIX-03 to 05 verified (#195 to #198), docs/reports/W28-FINAL-RUN-4.md; the artifact republished from main after this merges; the wave closes here"
     }
   ]
 }

@@ -682,12 +682,12 @@
       "evidence": "quality green 7m17s; merged 2026-09-24 22:39:01Z as 3c2e11c; section 12.0 EXIT=0 at 22:42:28Z; check-viewport-320 on main 3c2e11c: 71 of 71 at 320 (36 RO, 35 RU, 14 redirects skipped); before the fix /ru/ 337px from a filter chip; gate 35, quality runs 34 commands"
     },
     {
-      "lane": "in_flight",
-      "status": "pr_open",
+      "lane": "done",
+      "status": "verified",
       "priority": "high",
       "owner_terminal": "yellow",
-      "pr": null,
-      "merge_sha": null,
+      "pr": 194,
+      "merge_sha": "0a2c173b3197cd93cdd2e8da9871839bcd292b3e",
       "id": "W28-30",
       "title": "Copertine placement: the group leaves the Catalog, the twelve cards sit below the gallery on the service page",
       "branch": "w28/w28-30-copertine-placement",
@@ -700,11 +700,11 @@
         "node build.js && node scripts/check-catalog-counts.js  -> exit 0 (0 copertine cards and 0 copertine tiles or menu rows under Catalog, both locales; 12 cards and 12 buttons on the copertine page, each locale; no copertine chip)",
         "node scripts/run-gates.js --keep-going  -> every command exit 0"
       ],
-      "evidence": "catalog index 9 tiles; 0 copertine cards, tiles and menu rows on 46 Catalog pages (menu rows read on all 85 pages); copertine page 12 cards and 12 buttons per locale, below the gallery, no chip; catalog-counts exit 0, and exit 1 with 70 problems on the build of main before the change; four budgets move (R-Y)"
+      "evidence": "merged 2026-09-24 23:30:48Z as 0a2c173; section 12.0 EXIT=0 at 23:33:52Z; live: /catalog/ and /ru/catalog/ 9 tiles, 0 copertine tiles and menu rows; the copertine page 12 buttons per locale, no chip, cards after the gallery. catalog index 9 tiles; 0 copertine cards, tiles and menu rows on 46 Catalog pages (menu rows read on all 85 pages); copertine page 12 cards and 12 buttons per locale, below the gallery, no chip; catalog-counts exit 0, and exit 1 with 70 problems on the build of main before the change; four budgets move (R-Y)"
     },
     {
-      "lane": "queue",
-      "status": "todo",
+      "lane": "in_flight",
+      "status": "in_progress",
       "priority": "normal",
       "owner_terminal": "yellow",
       "pr": null,
@@ -720,6 +720,67 @@
       "acceptance": [
         "test -f docs/reports/W28-REVIEW.md && test -f docs/reports/W28-FINAL-RUN-4.md  -> exit 0",
         "node scripts/run-gates.js --keep-going  -> every command exit 0 on the final tree"
+      ],
+      "evidence": "CRITIC on main 0a2c173: 34 of 34 gates; crawl 83 pages x 3 widths, 0 dead links, 0 console errors, 0 sideways scroll; Lighthouse 96 to 100; three defects, W28-FIX-03 to 05; taste in docs/reports/W28-REVIEW.md (second pass)"
+    },
+    {
+      "lane": "queue",
+      "status": "todo",
+      "priority": "normal",
+      "owner_terminal": "yellow",
+      "pr": null,
+      "merge_sha": null,
+      "id": "W28-FIX-03",
+      "title": "The copertine hero button \"see the 12 models\" lands on the models (from W28-REVIEW, second pass)",
+      "branch": "w28/w28-fix-03-copertine-hero-anchor",
+      "depends_on": [
+        "W28-31"
+      ],
+      "ask": "W28-REVIEW second pass, defect 1: the hero link \"Vezi cele 12 modele\" / \"Смотреть 12 моделей\" points at #copertine (the chooser); the models are at #copertine-modele since W28-30.",
+      "reading": "One href in copertineHero(): #copertine to #copertine-modele.",
+      "acceptance": [
+        "node build.js && grep -c \"cop-hero__more\\\" href=\\\"#copertine-modele\\\"\" dist/servicii/copertine/index.html dist/ru/servicii/copertine/index.html  -> 1 and 1",
+        "node scripts/check-links.js  -> exit 0"
+      ]
+    },
+    {
+      "lane": "queue",
+      "status": "todo",
+      "priority": "normal",
+      "owner_terminal": "yellow",
+      "pr": null,
+      "merge_sha": null,
+      "id": "W28-FIX-04",
+      "title": "On a phone, Copertine sits under Servicii, not under Catalog (from W28-REVIEW, second pass)",
+      "branch": "w28/w28-fix-04-mobile-copertine-row",
+      "depends_on": [
+        "W28-FIX-03"
+      ],
+      "ask": "W28-REVIEW second pass, defect 2: the phone menu lists Copertine as an indented row after Catalog on every template, both locales.",
+      "reading": "The copertine row leaves mobileProducts (the rows after Catalog) and renders as an indented row after Servicii through a new mobileServiceProducts slot in the six templates; every product page keeps exactly one phone menu row.",
+      "acceptance": [
+        "node build.js && every built page with a phone menu: the copertine row follows the Servicii link and precedes the Catalog link  -> 0 pages otherwise",
+        "node scripts/run-gates.js --keep-going  -> every command exit 0"
+      ]
+    },
+    {
+      "lane": "queue",
+      "status": "todo",
+      "priority": "normal",
+      "owner_terminal": "yellow",
+      "pr": null,
+      "merge_sha": null,
+      "id": "W28-FIX-05",
+      "title": "The copertine page is back in llms.txt, in the services list (from W28-REVIEW, second pass)",
+      "branch": "w28/w28-fix-05-llms-copertine",
+      "depends_on": [
+        "W28-FIX-04"
+      ],
+      "ask": "W28-REVIEW second pass, defect 3: W28-30 took the copertine page out of llms.txt entirely.",
+      "reading": "llms.txt services list gains a copertine line in both languages, from the page title and its own lede.",
+      "acceptance": [
+        "node build.js && grep -c \"servicii/copertine/\" dist/llms.txt  -> 2 (RO and RU URLs on one line) and the line sits under the Servicii heading",
+        "node scripts/check-catalog-counts.js --llms  -> exit 0"
       ]
     }
   ],
@@ -763,7 +824,11 @@
     {
       "branch": "w28/w28-r7-rulings-board",
       "date": "2026-09-24",
-      "records": "R-W28-16, cards W28-30 and W28-31, #192 verified"
+      "records": "R-W28-16, cards W28-30 and W28-31, #192 verified",
+      "pr": 193,
+      "merge_sha": "75bf125546e180184b9e69d06841c0c270131c1a",
+      "status": "verified",
+      "evidence": "quality green; merged 2026-09-24 23:23:33Z as 75bf125; section 12.0 EXIT=0 at 23:26:33Z"
     }
   ]
 }

@@ -97,3 +97,83 @@ No other defect was found by the gates, the crawl or Lighthouse.
   sketches.
 - **The catalogue index's first tile** (Sisteme de termoizolație) is a heavily branded "STOP FIRE"
   packshot next to nine quieter tiles. Pre-existing; a plainer family picture would sit better.
+
+---
+
+# W28-REVIEW, second pass · the wave close after the fifth dispatch, 2026-09-24 (night, UTC)
+
+The CRITIC pass for W28-31, run on `main` at `0a2c173` (after #194, W28-30), in the W27-REV-01 shape
+used by the first pass above: every gate, a rendered crawl of every page at three widths, Lighthouse on
+the final-run pages, and a look at the pages this wave changed. Defects only become fix cards (at most
+five); taste is listed below and changes nothing.
+
+## Gates
+
+`node scripts/run-gates.js --keep-going` on `0a2c173`: **34 of 34 gate commands exit 0.**
+
+## The crawl, in numbers
+
+83 pages (both locales) at 390, 768 and 1440 from a clean build, served locally:
+
+| Check | Count |
+|---|---|
+| dead same-origin links | 0 |
+| console errors | 0 |
+| sideways scroll at 390, 768, 1440 | 0 |
+| redirect pages carrying their meta refresh | 14 of 14 |
+| service pages missing the quote form | 0 |
+| visible text under 14px | 36, all SVG diagram labels (the known set) |
+| images with an empty alt | 47, none a defect (below) |
+
+**The 47 empty alts, read one by one:** 22 are the supplier logos' second copy on the two home pages,
+the marquee's loop copy inside `aria-hidden`, whose first copy is named (TechnoNICOL, Bilka and nine
+more); 20 are the gallery card thumbnails, inside a link that names itself ("Deschide galeria: ...");
+5 are the internal `/review/` page's held photographs. Empty alt is the right value for all three.
+
+## Lighthouse, desktop, median of three (local server, `0a2c173`)
+
+| Page | Perf | A11y | BP | SEO |
+|---|---|---|---|---|
+| `/` (and the contact footer) | 99 | 100 | 100 | 100 |
+| `/ru/` | 99 | 100 | 100 | 100 |
+| `/catalog/` | 96 | 100 | 100 | 100 |
+| `/ru/catalog/` | 97 | 100 | 100 | 100 |
+| `/servicii/acoperisuri/` and `/ru/` | 100, 100 | 100 | 100 | 100 |
+| `/servicii/garduri/` and `/ru/` | 100, 100 | 100 | 100 | 100 |
+| `/servicii/fatade/` and `/ru/` | 100, 100 | 100 | 100 | 100 |
+
+## Defects: three, each a fix card
+
+All three are side effects of W28-30 (copertine leaving the Catalog), found on the built pages:
+
+1. **W28-FIX-03 · The copertine hero's "see the 12 models" button lands on the wrong section.** "Vezi
+   cele 12 modele" / "Смотреть 12 моделей" points at `#copertine`, the "Cum alegi copertina" chooser.
+   Since W28-30 the twelve models sit three sections further down, at `#copertine-modele`, below the
+   gallery. A link must mean what it says (docs/CLAUDE.md section 9).
+2. **W28-FIX-04 · On a phone, Copertine is still listed under Catalog.** The phone menu renders every
+   product page as an indented row after "Catalog" (`mobileProducts`, W24-08), so Copertine still reads
+   as a Catalog entry on phones, both locales, on every template. W28-30 removed it from the desktop
+   Catalog menu only. It has to move, not go: on a phone that row is the only way to the page (the
+   desktop reaches it through the Servicii menu, which phones do not have). The page's own breadcrumb
+   is Acasă, Servicii, Copertine, so the row belongs under Servicii.
+3. **W28-FIX-05 · The copertine page left `llms.txt`.** `llms.txt` lists the nine services and the
+   Catalog groups; copertine was there only as a Catalog group, so W28-30 took a published page that
+   carries a quote form out of the file entirely (0 mentions). It belongs in the services list, in both
+   languages, as the Servicii menu already has it.
+
+## Taste findings, not fix cards
+
+- **The copertine page now opens with the chooser, the steps and the gallery before any model**, while
+  its hero says "Douăsprezece modele". The dispatch put the models below the gallery on purpose; the
+  hero's button (W28-FIX-03) is what keeps the promise.
+- **The phone menu's Servicii row gains a single sub-row (Copertine)** after W28-FIX-04, while the
+  desktop Servicii menu lists every service. Consistent with the breadcrumb, but a phone user sees one
+  indented service only.
+- **The Catalog index is the slowest page measured (96 and 97)**, from nine photograph tiles above the
+  fold (LCP about 1.3s locally). Above the floor; the first tile is still the branded "STOP FIRE"
+  packshot noted in the first pass.
+- **The Russian home page's layout shift (0.044)** is the Cyrillic fallback font swap on the hero
+  panels, as in the first pass. Below 0.1.
+- **Carried from W28-FINAL-RUN-2 and 3:** the membrane card paints the owner's 225px photograph soft; two
+  installation gallery pictures are weak on subject; a finishing and a renovation picture share one photo
+  shoot.

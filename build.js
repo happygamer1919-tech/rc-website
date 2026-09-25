@@ -3510,6 +3510,9 @@ ${gardTable}
 `;
 }
 
+/* AMENDED (W28-FIX-03): the hero's second button, "see the 12 models", opens #copertine-modele. It
+   opened the chooser (#copertine), which sat right above the models until W28-30 moved them below
+   the gallery; a link must mean what it says. */
 /* W24-08, the copertine hero and its cross-sell row. Mirrors
    imperlux.md/acoperisuri/copertine/ under W24-R6 and W24-R7.
 
@@ -3548,7 +3551,7 @@ function copertineHero(l) {
     </ul>
     <div class="cop-hero__cta">
       <a class="btn btn--primary" href="#oferta">${s('ctaPrimary')}</a>
-      <a class="cop-hero__more" href="#copertine">${s('ctaSecondary')}${down}</a>
+      <a class="cop-hero__more" href="#copertine-modele">${s('ctaSecondary')}${down}</a>
     </div>
   </div>
 </section>

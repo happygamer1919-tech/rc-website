@@ -1424,7 +1424,7 @@ the artifact is republished from `main` after this merges. Documents only.
 **Status: in progress.** CRITIC on `0a2c173`: three defects, W28-FIX-03 to 05; W28-REVIEW second pass written.
 
 ## W28-FIX-03 · The copertine hero button lands on the models
-**Status: todo.** From W28-REVIEW (second pass), defect 1.
+**Status: PR OPEN** (opened 2026-09-24). The hero button opens `#copertine-modele`, both locales. From W28-REVIEW (second pass), defect 1.
 
 ## W28-FIX-04 · On a phone, Copertine sits under Servicii
 **Status: todo.** From W28-REVIEW (second pass), defect 2.

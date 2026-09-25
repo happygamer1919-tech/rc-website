@@ -14558,3 +14558,10 @@ all side effects of W28-30, each a fix card: W28-FIX-03 (the copertine hero butt
 chooser, not the models), W28-FIX-04 (the phone menu still lists Copertine under Catalog), W28-FIX-05
 (the copertine page left llms.txt). Taste in `docs/reports/W28-REVIEW.md`, second pass. The board
 records #193 and #194 verified.
+
+## W28-FIX-03 · The copertine hero button lands on the models, 2026-09-24
+
+Branch `w28/w28-fix-03-copertine-hero-anchor`, stacked on W28-31. From W28-REVIEW, second pass,
+defect 1. The hero's second button, "Vezi cele 12 modele" / "Смотреть 12 моделей", opened `#copertine`,
+the chooser, which sat right above the models until W28-30 moved them below the gallery. It opens
+`#copertine-modele` now, both locales. One href; no height moves.

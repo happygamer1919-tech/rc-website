@@ -724,8 +724,8 @@
       "evidence": "CRITIC on main 0a2c173: 34 of 34 gates; crawl 83 pages x 3 widths, 0 dead links, 0 console errors, 0 sideways scroll; Lighthouse 96 to 100; three defects, W28-FIX-03 to 05; taste in docs/reports/W28-REVIEW.md (second pass)"
     },
     {
-      "lane": "queue",
-      "status": "todo",
+      "lane": "in_flight",
+      "status": "pr_open",
       "priority": "normal",
       "owner_terminal": "yellow",
       "pr": null,
@@ -741,7 +741,8 @@
       "acceptance": [
         "node build.js && grep -c \"cop-hero__more\\\" href=\\\"#copertine-modele\\\"\" dist/servicii/copertine/index.html dist/ru/servicii/copertine/index.html  -> 1 and 1",
         "node scripts/check-links.js  -> exit 0"
-      ]
+      ],
+      "evidence": "cop-hero__more href #copertine-modele on /servicii/copertine/ and /ru/servicii/copertine/ (1 and 1); check-links exit 0"
     },
     {
       "lane": "queue",

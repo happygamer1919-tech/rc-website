@@ -14586,3 +14586,12 @@ listed under "Servicii / Услуги" now, after the nine services and in their
 first sentence of its own lede ("Pe stâlpi, în consolă, prinse de perete, arcuite sau arhitecturale"),
 and both locale URLs. `scripts/check-catalog-counts.js` holds it in its default run (the one `quality`
 runs); on the build of `main` before this card it fails naming the missing line.
+
+## W28-R8 · The closing report W28-FINAL-RUN-4 and the board sync; wave 28 closes, 2026-09-25
+
+Branch `w28/w28-r8-final-run-4`, on `main` at `ceaf080`. Documents only. `docs/reports/W28-FINAL-RUN-4.md`
+closes the fifth dispatch and the wave: #193 to #198, W28-30's acceptance read live, the CRITIC pass and
+its three fix cards, 34 of 34 gates on `ceaf080`, Lighthouse on home (and the contact footer), catalog,
+acoperisuri, garduri and fatade in both locales (96 to 100), and four deviations. The board JSON names
+W28-31 and W28-FIX-03 to 05 verified and lists this sync; the artifact is drawn from `main` after this
+merges (R-W28-12). Q-W28-01 stays open.

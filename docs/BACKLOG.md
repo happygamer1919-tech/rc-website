@@ -1421,13 +1421,17 @@ the artifact is republished from `main` after this merges. Documents only.
 **Status: MERGED #194, section 12.0 exit 0** (opened 2026-09-24, merged 23:30 UTC as `0a2c173`). The copertine Catalog group (tile, menu row, chip and count) leaves the Catalog; the twelve cards sit below the gallery with their buttons; four budgets move.
 
 ## W28-31 · Wave close: CRITIC, W28-REVIEW, fix cards, W28-FINAL-RUN-4
-**Status: in progress.** CRITIC on `0a2c173`: three defects, W28-FIX-03 to 05; W28-REVIEW second pass written.
+**Status: MERGED #195, section 12.0 exit 0** (opened 2026-09-24, merged 2026-09-25 00:08 UTC as `1bc5d38`). CRITIC on `0a2c173`: three defects, W28-FIX-03 to 05; W28-REVIEW second pass; W28-FINAL-RUN-4 in the closing sync.
 
 ## W28-FIX-03 · The copertine hero button lands on the models
-**Status: PR OPEN** (opened 2026-09-24). The hero button opens `#copertine-modele`, both locales. From W28-REVIEW (second pass), defect 1.
+**Status: MERGED #196, section 12.0 exit 0** (opened 2026-09-24, merged 2026-09-25 00:11 UTC as `84ad11b`). The hero button opens `#copertine-modele`, both locales. From W28-REVIEW (second pass), defect 1.
 
 ## W28-FIX-04 · On a phone, Copertine sits under Servicii
-**Status: PR OPEN** (opened 2026-09-24). The copertine phone-menu row renders after Servicii on all 66 pages with the phone menu; check-catalog-counts holds it. From W28-REVIEW (second pass), defect 2.
+**Status: MERGED #197, section 12.0 exit 0** (opened 2026-09-24, merged 2026-09-25 00:14 UTC as `fc1b1da`). The copertine phone-menu row renders after Servicii on all 66 pages with the phone menu; check-catalog-counts holds it. From W28-REVIEW (second pass), defect 2.
 
 ## W28-FIX-05 · The copertine page back in llms.txt
-**Status: PR OPEN** (opened 2026-09-24). The copertine page is listed under Servicii in llms.txt, both locales; check-catalog-counts holds it. From W28-REVIEW (second pass), defect 3.
+**Status: MERGED #198, section 12.0 exit 0** (opened 2026-09-24, merged 2026-09-25 00:17 UTC as `ceaf080`). The copertine page is listed under Servicii in llms.txt, both locales; check-catalog-counts holds it. From W28-REVIEW (second pass), defect 3.
+
+## W28-R8 · The closing report W28-FINAL-RUN-4 and the board sync; wave 28 closes
+**Status: board sync, not a card** (opened 2026-09-25). `docs/reports/W28-FINAL-RUN-4.md`; the board JSON names #193 to #198;
+the artifact is republished from `main` after this merges. Documents only.

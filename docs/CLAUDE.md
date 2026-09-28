@@ -1135,6 +1135,9 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     (R-W29-02) and names a fatade3d.md source; the four W29-01 exceptions show exactly their files, whose
     bytes hash to the values recorded from `main` before the card. RED arms: no SOURCES row, another
     licence, an exception whose file changed.
+    **AMENDED (W29-05):** a tile the owner replaced with his own photograph (listed in
+    `content/catalog-images-w29.json` `owner_tiles`, written by the intake) stands on the client-supplied
+    origin instead and must carry no fatade licence row.
 41. `node scripts/gen-catalog-w29.js --check` clean. **Since W29-01.** The catalogue data
     (`content/catalog-products.json`, `content/catalog.json`, `content/plate-brand-settlement.json`) and
     `docs/catalog/FATADE-PARITY.json` are GENERATED from `docs/catalog/FATADE-CAPTURE-W29.json` and

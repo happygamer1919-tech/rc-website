@@ -62,6 +62,16 @@ function check({ pics, sources, prov, exists, sha, seen, products }) {
       const where = `${p.page}: ${p.what} ${u}`;
       if (!exists(file)) { problems.push(`${where}: no such file under public/`); continue; }
       if (!pv.has(file)) problems.push(`${where}: no docs/assets/PROVENANCE.md row`);
+      /* W29-05: a tile the owner replaced with his own photograph stands on the client-supplied origin
+         and carries no fatade licence row. */
+      if (p.owner) {
+        counts.owner = (counts.owner || 0) + 1;
+        const pr = prov.find((r) => r.file === file);
+        if (!pr || !/owned by Rapid Construct, supplied for site use/.test((pr.cells || [])[1] || '')) problems.push(`${where}: an owner-replaced tile whose PROVENANCE row is not the client-supplied origin`);
+        const k = keyOf(file, (f) => src.has(f));
+        if (k && src.get(k).licence === LICENCE) problems.push(`${where}: an owner-replaced tile carries the fatade licence row`);
+        continue;
+      }
       const ex = p.id && EXCEPT[p.id];
       if (ex) {
         counts.exceptions++;
@@ -112,6 +122,8 @@ const urlsOf = (pic) => {
   for (const m of pic.matchAll(/\s(?:src|srcset)="([^"]+)"/g)) for (const part of m[1].split(',')) { const u = part.trim().split(/\s+/)[0]; if (u.startsWith('/')) out.push(u); }
   return [...new Set(out)];
 };
+/* W29-05: the tiles the owner replaced with his own photograph, from the intake's own list. */
+const OWNER_TILES = new Set(Object.keys(JSON.parse(fs.readFileSync(path.join(ROOT, 'content/catalog-images-w29.json'), 'utf8')).owner_tiles || {}));
 const pics = [];
 const seen = new Set();
 for (const f of pages) {
@@ -137,14 +149,14 @@ for (const f of pages) {
     for (const t of html.matchAll(/<button class="pd__thumb"[^>]*data-pd-webp="([^"]+)" data-pd-jpg="([^"]+)"[\s\S]*?<img src="([^"]+)"/g)) pics.push({ page: pageUrl, what: 'thumbnail', id: own.r.id, urls: [t[1], t[2], t[3]] });
   }
   /* Category and sub-category tiles (R-W29-02: every picture from fatade3d.md). */
-  for (const m of html.matchAll(/<picture class="ph[^"]*(?:subcat__ph|cat-tile__ph)[^"]*"[^>]*data-photo-slot="(CATEG-0[1-7]|CATSUB-\d+)"[\s\S]*?<\/picture>/g)) pics.push({ page: pageUrl, what: `tile ${m[1]}`, id: null, urls: urlsOf(m[0]) });
+  for (const m of html.matchAll(/<picture class="ph[^"]*(?:subcat__ph|cat-tile__ph)[^"]*"[^>]*data-photo-slot="(CATEG-0[1-7]|CATSUB-\d+)"[\s\S]*?<\/picture>/g)) pics.push({ page: pageUrl, what: `tile ${m[1]}`, id: null, owner: OWNER_TILES.has(m[1]), urls: urlsOf(m[0]) });
 }
 const sources = rows(path.join(ROOT, 'docs/images/SOURCES.md'));
 const prov = rows(path.join(ROOT, 'docs/assets/PROVENANCE.md'));
 const shaCache = new Map();
 const sha = (f) => { if (!shaCache.has(f)) shaCache.set(f, crypto.createHash('sha256').update(fs.readFileSync(path.join(ROOT, f))).digest('hex')); return shaCache.get(f); };
 const { problems, counts } = check({ pics, sources, prov, exists: (f) => fs.existsSync(path.join(ROOT, f)), sha, seen, products });
-console.log(`catalogue pages read: ${pages.length}; fatade-group products: ${products.length}; pictures: ${counts.pictures}; picture URLs: ${counts.urls}, of which ${counts.fatade} on the fatade licence and ${counts.exceptions} on the four exceptions`);
+console.log(`catalogue pages read: ${pages.length}; fatade-group products: ${products.length}; pictures: ${counts.pictures}; picture URLs: ${counts.urls}, of which ${counts.fatade} on the fatade licence, ${counts.exceptions} on the four exceptions and ${counts.owner || 0} on the owner's own tile photographs (W29-05: ${[...OWNER_TILES].join(', ') || 'none'})`);
 if (!counts.pictures || !counts.fatade) fail('zero pictures read, so nothing was proved.');
 if (problems.length) { console.error(`\nCATALOG IMAGES FAILED: ${problems.length} problem(s)`); [...new Set(problems)].slice(0, 60).forEach((p) => console.error('  ' + p)); process.exit(1); }
 console.log(`every fatade-group picture maps to a SOURCES row licensed "${LICENCE}"; the four exceptions show exactly their files, unchanged since main.`);

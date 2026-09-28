@@ -14676,6 +14676,19 @@ out animations, gate 31 counts the fatade categories, gate 32 reversed for R-W29
 pattern reads "1-2%" as a range, the catalogue page gate knows a product page, the provenance gate lifts
 fatade3d.md for the catalogue folder only. Questions Q-W29-04 to Q-W29-09.
 
+## W29-05 · The Alte produse tile shows the owner's photograph, 2026-09-28
+
+Branch `w29/w29-05-alte-produse-tile`, on `main` at `1f1d647`. The owner, by message: the Alte produse preview
+"holds fatade3d brand on it"; swap it for his picture. The sub-category tile CATSUB-05 (Sisteme de
+termoizolație page, both locales) now shows the owner's photograph of a plastic insulation dowel (447x447, no
+mark), encoded by the gates' Chrome to the tile's three files with no metadata, on the client-supplied origin
+(R-W's PROVENANCE sentence; no SOURCES row, which is the stock and fatade manifest). `scripts/intake-catalog-w29.js`
+lists it in `OWNER_TILES`, so a re-run keeps the committed files and never puts fatade's picture back; gate 40
+(catalog-images) accepts an owner tile on that origin and refuses the fatade licence on it. **Reading**: the
+catalogue hub's "Alte materiale de construcții" tile (CATEG-07) showed the same FATADE membrane picture, as a
+reuse of CATSUB-05; the owner named only Alte produse, so CATEG-07 keeps fatade's picture, now as its own file
+under `public/images/catalog/alte-materiale/`. Say so and it takes the owner's photograph too.
+
 ## W29-04 · Non-Moldova stock leaves the service galleries, 2026-09-28
 
 Branch `w29/w29-04-gallery-non-moldova`, on `main` at `1f1d647`. Ruling R-W29-04 (the addendum dispatch).

@@ -3966,15 +3966,13 @@
       "page": "/catalog/",
       "ratio": "4 / 3",
       "min_px": "1200x900",
-      "shows": "Aceeasi imagine fatade3d.md ca slotul CATSUB-05 (R-W29-02).",
+      "shows": "Imaginea fatade3d.md pentru \"Alte materiale de construcții\", la rezolutia cea mai mare publicata (602x356), R-W29-01 si R-W29-02.",
       "state": "filled",
-      "provenance": "public/images/catalog/termoizolatie/alte-produse/subcategory.jpg",
+      "provenance": "public/images/catalog/alte-materiale/category.jpg",
       "alt": {
         "ro": "Alte materiale de construcții, fotografia categoriei",
         "ru": "Другие строительные материалы, фотография категории"
-      },
-      "reuse_of": "CATSUB-05",
-      "reuse_reason": "R-W29-02: fatade3d.md shows this same picture here and on the origin slot; one picture, one set of files."
+      }
     },
     {
       "id": "ACTM-01",
@@ -4281,12 +4279,12 @@
       "page": "/catalog/termoizolatie/",
       "ratio": "4 / 3",
       "min_px": "800x600",
-      "shows": "Imaginea fatade3d.md pentru \"Alte produse\", la rezolutia cea mai mare publicata (602x356), R-W29-01 si R-W29-02.",
+      "shows": "Fotografia proprietarului (transfer direct, 28.09.2026): Alte produse, fara nicio marca. Inlocuieste imaginea fatade3d.md la cererea proprietarului (W29-05).",
       "state": "filled",
-      "provenance": "public/images/catalog/termoizolatie/alte-produse/subcategory.jpg",
+      "provenance": "public/images/catalog/termoizolatie/alte-produse/subcategory-rc.jpg",
       "alt": {
-        "ro": "Alte produse, fotografia subcategoriei",
-        "ru": "Другие продукты, фотография подкатегории"
+        "ro": "Alte produse: diblu de plastic pentru termoizolație",
+        "ru": "Другие продукты: пластиковый дюбель для теплоизоляции"
       }
     },
     {

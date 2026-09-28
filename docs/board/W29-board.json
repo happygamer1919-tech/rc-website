@@ -120,6 +120,26 @@
     "node scripts/check-viewport-320.js  -> exit 0 (409 pages)",
     "Lighthouse on hub, tiles page, sub-category, the two largest grids and a product page, both locales  -> performance at or above 90, accessibility 100 (recorded in the PR and docs/reports/W29-RUN.md)"
    ]
+  },
+  {
+   "lane": "doing",
+   "status": "pr_open",
+   "priority": "high",
+   "owner_terminal": "yellow",
+   "pr": null,
+   "id": "W29-05",
+   "title": "The Alte produse tile shows the owner's photograph, not fatade's FATADE membrane",
+   "branch": "w29/w29-05-alte-produse-tile",
+   "depends_on": [
+    "W29-01"
+   ],
+   "ask": "a quick one, the preview image for ''Alte Produse'' should be another one, because the current holds fatade3d brand on it, I downloaded a pic you can swap it for, Ivan/RC-Alte Produse.jpeg",
+   "reading": "The Alte produse sub-category tile (CATSUB-05, on the Sisteme de termoizolatie page) takes the owner's photograph (a plastic insulation dowel, 447x447, no mark), encoded by the gates' Chrome with no metadata, on the client-supplied origin. scripts/intake-catalog-w29.js lists it as an owner tile so a re-run never puts fatade's picture back. The catalogue hub's Alte materiale de constructii tile (CATEG-07) showed the same FATADE membrane picture as a reuse; the owner named only Alte produse, so CATEG-07 keeps fatade's picture, now as its own file.",
+   "acceptance": [
+    "node build.js && grep -o 'data-photo-slot=\"CATSUB-05\"[^>]*><source[^>]*srcset=\"[^\"]*subcategory-rc' dist/catalog/termoizolatie/index.html dist/ru/catalog/termoizolatie/index.html  -> one match each",
+    "node scripts/check-catalog-images.js  -> exit 0 (6 URLs on the owner's tile photograph)",
+    "node scripts/check-image-metadata.js && node scripts/check-photo-slots-w24.js && node scripts/check-asset-provenance.js  -> exit 0"
+   ]
   }
  ],
  "board_syncs": []

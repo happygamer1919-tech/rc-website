@@ -1222,7 +1222,7 @@
   },
   "gallery": {
     "open": "Deschide galeria",
-    "cardAria": "Deschide galeria: {title}",
+    "cardAria": "Deschide galeria ({count}): {title}",
     "alt": "{title}, fotografia {i} din {n}",
     "dialogAria": "Galerie foto",
     "trackAria": "Fotografiile galeriei. Derulează sau folosește săgețile.",
@@ -1230,7 +1230,10 @@
     "prev": "Fotografia anterioară",
     "next": "Fotografia următoare",
     "sectionH": "Galerie foto",
-    "gridAria": "Fotografiile galeriei"
+    "gridAria": "Fotografiile galeriei",
+    "countOne": "{n} fotografie",
+    "countFew": "{n} fotografii",
+    "countMany": "{n} de fotografii"
   },
   "despre": {
     "facts": {

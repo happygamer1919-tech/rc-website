@@ -1439,10 +1439,10 @@ the artifact is republished from `main` after this merges. Documents only.
 **Status: MERGED #200, section 12.0 exit 0** (opened 2026-09-28, merged 2026-09-28 15:35 UTC as `09c273a`). `docs/rulings/W29-R.md`, R-W29-00 to R-W29-03 verbatim with readings; Q-W29-01 to 03. Documents only.
 
 ## W29-02 · Service cards fully clickable
-**Status: PR open** (opened 2026-09-28). The nine home page service cards are one link each, RO and RU; gate 36 (`scripts/check-service-cards.js`) clicks the picture and the description of every card. Creates `docs/board/W29-board.json` and the three wave 29 card files.
+**Status: MERGED #201, section 12.0 exit 0** (opened 2026-09-28, merged 2026-09-28 15:54 UTC as `0098d17`). The nine home page service cards are one link each, RO and RU; gate 36 (`scripts/check-service-cards.js`) clicks the picture and the description of every card. Creates `docs/board/W29-board.json` and the three wave 29 card files.
 
 ## W29-03 · Gallery preview visibility and a distinct image
-**Status: todo** (opened 2026-09-28).
+**Status: PR open** (opened 2026-09-28). The "Deschide galeria" card is an orange button with icon and count on all 20 gallery cards; two previews replaced (Fatade 3 to 1, Terasamente 7 to 1); gate 37 (`scripts/check-gallery-preview.js`, gallery-preview-distinct).
 
 ## W29-01 · Catalogue: the fatade3d.md structure, pages and pictures
 **Status: todo** (opened 2026-09-28).

@@ -2397,6 +2397,22 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
    so it is not a translucent overlay on a section (section 3). */
 .gal-card { display: flex; flex-direction: column; color: inherit; text-decoration: none; }
 .gal-card .card__body h3 { margin: 0; }
+/* W29-03 (R-W29-03): the card reads as a button at first sight. The body is filled --brand with
+   --bg-light text, bold and at 19px or more, which is WCAG large text: 3.41:1 against the 3:1 large
+   threshold (docs/CLAUDE.md section 4 keeps the same size allowance). On hover and on focus the fill
+   darkens to --brand-dark, 5.93:1. The global `a:hover` colour would turn the text brand-dark on a
+   brand-dark fill, so the card pins its text to --bg-light in every state. No new colour. */
+.gal-card .gal-card__body {
+  background: var(--brand); color: var(--bg-light);
+  flex-direction: row; align-items: center; gap: 14px;
+  padding: 20px 24px;
+}
+.gal-card, .gal-card:hover, .gal-card:focus-visible { color: var(--bg-light); }
+.gal-card:hover .gal-card__body, .gal-card:focus-visible .gal-card__body { background: var(--brand-dark); }
+.gal-card__icon { flex: none; display: block; }
+.gal-card__text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.gal-card .gal-card__label { font-size: 21px; font-weight: 700; line-height: 1.2; color: var(--bg-light); }
+.gal-card__count { font-size: 19px; font-weight: 700; line-height: 1.2; }
 .gal-grid {
   list-style: none; margin: 0; padding: 0;
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap);

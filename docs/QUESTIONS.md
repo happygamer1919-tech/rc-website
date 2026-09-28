@@ -3687,3 +3687,41 @@ owner to rule on:
   Default: keep, it is the manufacturer's own packaging.
 - **A fatade data slip**: the picture fatade3d.md publishes for "Baghetă decorativă fațadă RED-01" is the
   drawing labelled RED-06; the real RED-01 drawing is on the product fatade calls "RED01". Copied as is.
+
+## Q-W29-10 · The fence gallery's three kept stock pictures are not jaluzele close-ups · OPEN · opened 2026-09-28 (W29-04)
+
+**Shipped default: all three stay (galerie-garduri 13, 14 and 15).** The dispatch says to keep "the three
+jaluzele close-ups". The gallery held ten stock pictures and the list of seven removes 16 to 22, which leaves
+exactly these three, but none of them is a jaluzele (louvre) panel: 13 is a green welded mesh panel against a
+white wall, 14 a black steel palisade against brick and cladding, and 15 an ornate cast-iron fence with gold
+star finials along a park lawn under large trees, which is not a close-up at all. No criterion of R-W29-04
+applies to any of the three (15 is a fence, not a gate, and no villa is in frame). The only jaluzele close-ups
+in the gallery are RC-own photographs (09, 10, 11), which stay regardless. Say "remove 15" (or any of them)
+and it is the same cleanup as the others.
+
+## Q-W29-11 · Eight removals rest on a reading of the criteria, not a plain hit · OPEN · opened 2026-09-28 (W29-04)
+
+**Shipped default: removed, because a criterion's words apply.** Each can come back with one line:
+
+- case-la-cheie 03: a backyard polytunnel and a small glass greenhouse behind an otherwise local-looking new
+  house ("greenhouse or industrial campus backdrops").
+- case-la-cheie 09: a UK site safety sign with text panels on the scaffold, text not readable ("visible
+  foreign signage or plates").
+- copertine 04: an open sea horizon behind the pergola, no plants in frame ("Mediterranean or coastal
+  vegetation", read as coastal scenery).
+- copertine 09: a white industrial building at the edge of a carport close-up, the same business park as 03.
+- fatade 19: a green street-name sign at the left edge of a stucco tract house.
+- reparatii 30: a house interior stripped to its timber wall studs ("log cabins or timber houses").
+- industrial 01: factory sheds and parked motorbikes behind the steel frame, in the gallery whose subject is
+  industrial buildings; it was that gallery's preview, which now shows 02.
+- acoperisuri 23: a timber barn, not a house.
+
+## Q-W29-12 · Pictures no criterion hits that may still read as non-Moldova · OPEN · opened 2026-09-28 (W29-04)
+
+**Shipped default: kept, because no criterion's words apply.** For the owner's eye: garduri 15 (Texas star
+finials, live oaks), acoperisuri 18 (turreted villa with carved timber brackets), acoperisuri 24 (timber-clad
+dormers on a stone house), case-la-cheie 08 and 10 (English terraces, a railway platform), case-la-cheie 12
+(a tropical-looking tree), copertine 11 (a patterned railing, a South Asian skyline), fatade 10 (a Dutch
+new-build street), terasamente 17 (West European blocks behind an excavation), reparatii 33 (a stucco house
+with an S-tile roof), industrial 09 (a German factory hall with language-free safety pictograms). Name any
+and it goes the same way.

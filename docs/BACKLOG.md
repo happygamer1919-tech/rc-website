@@ -1449,3 +1449,6 @@ the artifact is republished from `main` after this merges. Documents only.
 
 ## W29-05 · The Alte produse tile shows the owner's photograph
 **Status: PR open** (opened 2026-09-28). CATSUB-05 on the owner's photograph; the intake keeps it on a re-run. Owner message.
+
+## W29-04 · Garduri gallery: remove non-Moldova stock, audit all galleries
+**Status: PR open** (opened 2026-09-28). R-W29-04: 25 stock pictures (50 files) leave eleven galleries under seven criteria, no replacement; the fence gallery keeps its twelve RC-own photographs and three stock pictures. `docs/reports/W29-04-REMOVED.md` lists every file; gate 42 (`scripts/check-gallery-removed.js`, gallery-removed). Q-W29-10 to 12.

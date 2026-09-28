@@ -1143,6 +1143,18 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     `docs/catalog/FATADE-PARITY.json` are GENERATED from `docs/catalog/FATADE-CAPTURE-W29.json` and
     `content/catalog-ru-w29.json` (the Russian fatade lacks, and the logged text edits); a hand edit that
     drifts from the capture, or a capture change nobody regenerated, fails here.
+42. `node scripts/check-gallery-removed.js` clean. **Since W29-04 (wave 29)**, owner ruling R-W29-04,
+    the dispatch's gallery-removed. **A removed gallery picture stays removed.** It reads the list from
+    `docs/reports/W29-04-REMOVED.md`, not a copy, and for every listed path, its thumb and its JPEG
+    twin: no built page in either locale, no other built text file, no `content/` or `locales/` JSON,
+    `docs/PHOTO-SLOTS-W24.json`, `docs/images/SOURCES.md` or `docs/assets/PROVENANCE.md` names it, and
+    it is on disk under neither `public/` nor `dist/img/` (build.js never empties `dist/`, so rebuild
+    from an empty one before reading that as real); no source URL in the list is back in a ledger or
+    manifest, which is how a removed picture would return under a new number. It fails on an empty
+    list, a table that disagrees with the report's own `Total:` line, no `dist/` and either locale
+    unread. **Its self-test runs first** on a synthetic tree: seven RED arms, an empty-list arm and a
+    GREEN arm (kept names sharing the removed digits, `116.webp` beside a removed `16.webp`), between
+    two clean controls (R-AB). Watched fail on the build of `main` at `1f1d647`: 366 problems.
 
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number (Q-W14-03 was found "at gate 9") and those bodies are immutable under
@@ -1201,6 +1213,7 @@ because gate 13 rebuilds `dist/` armed.
 browser gates, because gate 13 rebuilds `dist/` armed.
 **AMENDED (W29-01):** gates 38 to 41 run after gate 37 and before gate 13; 39 drives Chrome, the other
 three read files.
+**AMENDED (W29-04):** gate 42 runs after gate 41 and before gate 13. It reads files only.
 
 **The count, so it stops drifting (W25-03c).** ~~This list numbers **25** gates.~~
 ~~**AMENDED (W25-24): 26**, and `quality` runs **25** commands.~~
@@ -1214,7 +1227,8 @@ three read files.
 ~~**AMENDED (W28-18): 34**, and `quality` runs **33** commands.~~
 ~~**AMENDED (W28-28): 35**, and `quality` runs **34** commands.~~
 ~~**AMENDED (W29-03): 37**, and `quality` runs **36** commands (W29-02 added gate 36 and left this line at 35; corrected here).~~
-**AMENDED (W29-01): 41**, and `quality` runs **40** commands. The number to report is the one
+~~**AMENDED (W29-01): 41**, and `quality` runs **40** commands.~~
+**AMENDED (W29-04): 42**, and `quality` runs **41** commands. The number to report is the one
 `node scripts/run-gates.js` prints, never this sentence. Five of them
 are not scripts and `quality` cannot run them: gate 4 (heights measured settled), gate 6 (no
 new colour), gate 7 (reduced motion), gate 8 (the three documents updated) and **gate 9,

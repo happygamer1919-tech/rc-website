@@ -1877,3 +1877,18 @@ keep their budgets. `scripts/verify-live.js` carries the same figures; change on
 | `/ru/catalog/termoizolatie/polistiren-expandat/polistiren-dalmatina/` | prod RU dalmat | new page | 4073 | **4133** |
 | `/catalog/placi-ceramice/stone-alpes/` | prod RO alpes | new page | 3210 | **3270** |
 | `/ru/catalog/placi-ceramice/stone-alpes/` | prod RU alpes | new page | 3210 | **3270** |
+
+## AMENDED 2026-09-28 (W29-04, wave 29): seven stock pictures leave the fence gallery page, two budgets move
+
+**Measured on the branch `w29/w29-04-gallery-non-moldova` at 1280 wide, every reveal applied and settled 1.6s,
+`document.documentElement.scrollHeight`, the method section 2 of docs/CLAUDE.md states; each new budget is the
+measurement plus 60 (W24-R4).** Under R-W29-04 the fence gallery page's grid goes from 22 thumbnails to 15,
+three rows fewer at three columns. The ten service pages with a gallery card were measured before (the build
+of `main` at `1f1d647`) and after, both locales, and read identical: their gallery is one card whose lightbox
+is hidden, so a shorter gallery does not move them. `scripts/verify-live.js` carries the same figures; change
+one and the other with it.
+
+| page | label | old budget | measured | new budget |
+|---|---|---|---|---|
+| `/servicii/galerie-garduri/` | gal garduri RO | 5041 | 4081 | **4141** |
+| `/ru/servicii/galerie-garduri/` | gal garduri RU | 5041 | 4081 | **4141** |

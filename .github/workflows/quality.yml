@@ -277,6 +277,12 @@ jobs:
       - name: The catalogue data matches the committed capture (W29-01)
         run: node scripts/gen-catalog-w29.js --check
 
+      # W29-04. Gate 42, owner ruling R-W29-04. The stock pictures the card removed, listed in
+      # docs/reports/W29-04-REMOVED.md, are named by no built page, manifest or ledger, are gone from
+      # disk, and their sources are not back under a new name. Static; self-test first.
+      - name: No removed gallery picture is referenced anywhere (W29-04, gallery-removed)
+        run: node scripts/check-gallery-removed.js
+
       # RC-145. Every form POSTs to build.js's FORM_ENDPOINT_URL, armed, with the
       # configured recipient (the Web3Forms access key) and a subject, and every
       # sitemap page carries its form. A check has no secret, so this step alone

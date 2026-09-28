@@ -7,7 +7,7 @@
    "page": "acoperisuri",
    "render_on": "acoperisuri",
    "found": 15,
-   "installed": 25,
+   "installed": 20,
    "preview": 13,
    "photos": [
     {
@@ -203,63 +203,6 @@
      }
     },
     {
-     "source": "pexels:5264825",
-     "sha256": "de86dc4758742c27270d9caf423fd72d6388ab2ff72ed37b29950564acad8fd8",
-     "full": "public/img/galerie/acoperisuri/19.webp",
-     "thumb": "public/img/galerie/acoperisuri/19-t.webp",
-     "source_size": "1600x1200",
-     "size": "1600x1200",
-     "thumb_size": "600x450",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/5264825/",
-     "image_url": "https://images.pexels.com/photos/5264825/pexels-photo-5264825.jpeg",
-     "subject": "Aerial view of a crew installing ridge caps on a new green metal sheet roof.",
-     "alt": {
-      "ro": "O echipă montează coama pe un acoperiș nou din tablă verde, vedere aeriană.",
-      "ru": "Бригада монтирует конёк на новой зелёной металлической крыше, вид с высоты."
-     }
-    },
-    {
-     "source": "pexels:11767927",
-     "sha256": "2380eb105552fa20fcb854871de2a39d180aebf846f0cb310ffe16c293208fb1",
-     "full": "public/img/galerie/acoperisuri/20.webp",
-     "thumb": "public/img/galerie/acoperisuri/20-t.webp",
-     "source_size": "1600x2400",
-     "size": "1600x2400",
-     "thumb_size": "600x900",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/11767927/",
-     "image_url": "https://images.pexels.com/photos/11767927/pexels-photo-11767927.jpeg",
-     "subject": "Dark trapezoidal metal sheet roof on the gable of a timber-clad building at dusk, tiled roof of a neighbouring house at left",
-     "alt": {
-      "ro": "Acoperiș din tablă cutată închisă la culoare pe frontonul unei clădiri placate cu lemn, la apus.",
-      "ru": "Тёмная крыша из профилированного листа на фронтоне здания с деревянной обшивкой на закате."
-     }
-    },
-    {
-     "source": "pexels:26570514",
-     "sha256": "f805f2616c4314e2fc18b514438501361e4bc5aa6d143612183e5e5991234448",
-     "full": "public/img/galerie/acoperisuri/21.webp",
-     "thumb": "public/img/galerie/acoperisuri/21-t.webp",
-     "source_size": "1600x2400",
-     "size": "1600x2400",
-     "thumb_size": "600x900",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/26570514/",
-     "image_url": "https://images.pexels.com/photos/26570514/pexels-photo-26570514.jpeg",
-     "subject": "Grey standing-seam metal roof with snow guards and a red gutter on a beige wooden house with a white window",
-     "alt": {
-      "ro": "Acoperiș din tablă fălțuită gri cu parazăpezi și jgheab roșu pe o casă din lemn bej.",
-      "ru": "Серая фальцевая крыша со снегозадержателями и красным водостоком на бежевом деревянном доме."
-     }
-    },
-    {
      "source": "pexels:10443918",
      "sha256": "3f6c258c2bf4b1d27667d8df5b27b6bed17f7045b8e49d28631539b35072afd9",
      "full": "public/img/galerie/acoperisuri/22.webp",
@@ -276,25 +219,6 @@
      "alt": {
       "ro": "Pantă de acoperiș din tablă cutată albastră pe fundal de cer cu nori.",
       "ru": "Скат крыши из голубого профнастила на фоне неба с облаками."
-     }
-    },
-    {
-     "source": "pexels:11557060",
-     "sha256": "61e00e49b0d83ac774b4749b19cfa00cc924076d66c54d703a245c3d26ed5030",
-     "full": "public/img/galerie/acoperisuri/23.webp",
-     "thumb": "public/img/galerie/acoperisuri/23-t.webp",
-     "source_size": "1600x2400",
-     "size": "1600x2400",
-     "thumb_size": "600x900",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/11557060/",
-     "image_url": "https://images.pexels.com/photos/11557060/pexels-photo-11557060.jpeg",
-     "subject": "Grey ribbed metal roof panels on a red barn with a louvred cupola, seen from below",
-     "alt": {
-      "ro": "Acoperiș din panouri metalice gri cu nervuri pe o clădire roșie, cu un turnuleț de ventilație.",
-      "ru": "Серая металлическая крыша с рёбрами на красном здании и вентиляционная башенка."
      }
     },
     {
@@ -315,25 +239,6 @@
       "ro": "Acoperiș din tablă cutată cu patru lucarne placate cu lemn, pe cer senin.",
       "ru": "Крыша из профнастила с четырьмя мансардными окнами, обшитыми деревом, на фоне ясного неба."
      }
-    },
-    {
-     "source": "pexels:38439476",
-     "sha256": "ff3d778d5af796ef3b98c553752393b41896382846f31cd81a30a59061dc3308",
-     "full": "public/img/galerie/acoperisuri/25.webp",
-     "thumb": "public/img/galerie/acoperisuri/25-t.webp",
-     "source_size": "1600x1067",
-     "size": "1600x1067",
-     "thumb_size": "600x400",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/38439476/",
-     "image_url": "https://images.pexels.com/photos/38439476/pexels-photo-38439476.jpeg",
-     "subject": "Grey standing-seam metal roof on a building with multicoloured timber cladding under a blue sky",
-     "alt": {
-      "ro": "Acoperiș metalic gri cu falț pe o clădire placată cu lemn colorat, sub cer senin.",
-      "ru": "Серая фальцевая металлическая крыша на здании с разноцветной деревянной обшивкой под ясным небом."
-     }
     }
    ],
    "duplicates_skipped": [],
@@ -344,7 +249,7 @@
    "page": "case-la-cheie",
    "render_on": "case-la-cheie",
    "found": 2,
-   "installed": 12,
+   "installed": 10,
    "preview": 1,
    "photos": [
     {
@@ -364,25 +269,6 @@
      "source_size": "1200x1566",
      "size": "1200x1566",
      "thumb_size": "600x783"
-    },
-    {
-     "source": "pexels:30580640",
-     "sha256": "a077073fe99593e518a9a207090e9eea455350fbb2ba2641ff38553d16a63ba1",
-     "full": "public/img/galerie/case-la-cheie/03.webp",
-     "thumb": "public/img/galerie/case-la-cheie/03-t.webp",
-     "source_size": "1600x961",
-     "size": "1600x961",
-     "thumb_size": "600x360",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/30580640/",
-     "image_url": "https://images.pexels.com/photos/30580640/pexels-photo-30580640.jpeg",
-     "subject": "Newly finished white two-storey house with a double garage on an unlandscaped plot with grass.",
-     "alt": {
-      "ro": "Casă nouă cu două niveluri, fațadă albă și garaj dublu, pe un teren încă neamenajat.",
-      "ru": "Новый двухэтажный дом с белым фасадом и двойным гаражом на ещё не благоустроенном участке."
-     }
     },
     {
      "source": "pexels:29278167",
@@ -480,25 +366,6 @@
      }
     },
     {
-     "source": "wikimedia:191864039",
-     "sha256": "6c19f910bf4a9fc660697e63b05926e3d2945c47367a3aaae79e594825adc4ce",
-     "full": "public/img/galerie/case-la-cheie/09.webp",
-     "thumb": "public/img/galerie/case-la-cheie/09-t.webp",
-     "source_size": "4882x3258",
-     "size": "1600x1068",
-     "thumb_size": "600x400",
-     "origin": "stock",
-     "licence": "CC0 1.0",
-     "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-     "source_url": "https://commons.wikimedia.org/wiki/File:Under_construction_housing,_Sandiacre_-_8_May_2026.jpg",
-     "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Under_construction_housing%2C_Sandiacre_-_8_May_2026.jpg",
-     "subject": "Terrace of red-brick houses under construction in full scaffolding, roof partly tiled, with dormers",
-     "alt": {
-      "ro": "Șir de case din cărămidă roșie în construcție, înconjurate de schelă, cu acoperișul din țiglă parțial montat.",
-      "ru": "Ряд строящихся домов из красного кирпича в строительных лесах, с частично уложенной черепичной кровлей."
-     }
-    },
-    {
      "source": "wikimedia:174751839",
      "sha256": "6e65c52f19c7e963eb4411fe2b73e9b11b79b7cc4adcac5837b67a5f824c1154",
      "full": "public/img/galerie/case-la-cheie/10.webp",
@@ -564,7 +431,7 @@
    "page": "copertine",
    "render_on": "copertine",
    "found": 2,
-   "installed": 12,
+   "installed": 4,
    "preview": 1,
    "photos": [
     {
@@ -586,63 +453,6 @@
      "thumb_size": "600x450"
     },
     {
-     "source": "pexels:9800008",
-     "sha256": "c25ba0b354be9036387e48c47e030a422bd7e205ef33fa6a40d4f8f31266d11e",
-     "full": "public/img/galerie/copertine/03.webp",
-     "thumb": "public/img/galerie/copertine/03-t.webp",
-     "source_size": "1600x1200",
-     "size": "1600x1200",
-     "thumb_size": "600x450",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/9800008/",
-     "image_url": "https://images.pexels.com/photos/9800008/pexels-photo-9800008.jpeg",
-     "subject": "Steel-post solar panel carport seen from below, white SUV parked beneath, low-rise building and pines behind",
-     "alt": {
-      "ro": "Copertină de parcare pe stâlpi de oțel, cu acoperiș din panouri solare, deasupra unui SUV alb.",
-      "ru": "Парковочный навес на стальных стойках с крышей из солнечных панелей над белым внедорожником."
-     }
-    },
-    {
-     "source": "pexels:2547578",
-     "sha256": "9d043e103ae5e4e89895b1fedb8681baf6ecd368b95ea7154e8f99f36e924cef",
-     "full": "public/img/galerie/copertine/04.webp",
-     "thumb": "public/img/galerie/copertine/04-t.webp",
-     "source_size": "1600x2416",
-     "size": "1600x2416",
-     "thumb_size": "600x906",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/2547578/",
-     "image_url": "https://images.pexels.com/photos/2547578/pexels-photo-2547578.jpeg",
-     "subject": "Black aluminium louvred pergola on steel posts over a seaside terrace with a wooden table",
-     "alt": {
-      "ro": "Pergolă metalică neagră cu lamele, montată peste o terasă cu masă din lemn, lângă mare.",
-      "ru": "Черная металлическая пергола с ламелями над террасой с деревянным столом у моря."
-     }
-    },
-    {
-     "source": "pexels:36388699",
-     "sha256": "80f6dd4f3774f5e194900b740d2ae0ad19b888a131f5e9b9ca5b74249939cd02",
-     "full": "public/img/galerie/copertine/05.webp",
-     "thumb": "public/img/galerie/copertine/05-t.webp",
-     "source_size": "1600x2133",
-     "size": "1600x2133",
-     "thumb_size": "600x800",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/36388699/",
-     "image_url": "https://images.pexels.com/photos/36388699/pexels-photo-36388699.jpeg",
-     "subject": "Modern pergola with steel columns and slatted roof over stone steps and a hillside terrace",
-     "alt": {
-      "ro": "Pergolă modernă cu stâlpi metalici și acoperiș din lamele, deasupra unor trepte din piatră.",
-      "ru": "Современная пергола на стальных колоннах с реечной крышей над каменными ступенями."
-     }
-    },
-    {
      "source": "pexels:7587879",
      "sha256": "6377b2b709189eeeef4dfee889db40983d4f8bd694adc15d4f587fe13d1c6ec3",
      "full": "public/img/galerie/copertine/06.webp",
@@ -659,82 +469,6 @@
      "alt": {
       "ro": "Pergolă metalică neagră cu grinzi deschise peste o terasă cu deck de lemn, lângă o casă modernă.",
       "ru": "Черная металлическая пергола с открытыми балками над деревянной террасой у современного дома."
-     }
-    },
-    {
-     "source": "pexels:38524590",
-     "sha256": "8359ff1a186ef2edab0d6c4f205d4f598799c737d82b2525312248762bb56be7",
-     "full": "public/img/galerie/copertine/07.webp",
-     "thumb": "public/img/galerie/copertine/07-t.webp",
-     "source_size": "1600x1067",
-     "size": "1600x1067",
-     "thumb_size": "600x400",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/38524590/",
-     "image_url": "https://images.pexels.com/photos/38524590/pexels-photo-38524590.jpeg",
-     "subject": "A long flat-roofed metal carport with parked cars in front of a modern apartment building, shrubs in the foreground.",
-     "alt": {
-      "ro": "Copertină metalică lungă pentru parcare, cu mașini dedesubt, în fața unui bloc de locuințe modern.",
-      "ru": "Длинный металлический навес для парковки с автомобилями под ним перед современным жилым домом."
-     }
-    },
-    {
-     "source": "pexels:9799727",
-     "sha256": "f589fdc24fefa89bd3630adc79c3e453b9d78089445a04e2fdb52d3d0d3fa3cd",
-     "full": "public/img/galerie/copertine/08.webp",
-     "thumb": "public/img/galerie/copertine/08-t.webp",
-     "source_size": "1600x1200",
-     "size": "1600x1200",
-     "thumb_size": "600x450",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/9799727/",
-     "image_url": "https://images.pexels.com/photos/9799727/pexels-photo-9799727.jpeg",
-     "subject": "Aerial view of long steel carport canopies topped with solar panels over a parking lot",
-     "alt": {
-      "ro": "Copertine metalice lungi cu panouri solare deasupra unei parcări, văzute de sus.",
-      "ru": "Длинные металлические навесы с солнечными панелями над парковкой, вид сверху."
-     }
-    },
-    {
-     "source": "pexels:9799761",
-     "sha256": "025837ad5bb2e24c1acc3205ff954f801fc856ebce6414b77d0c7dcf0034d754",
-     "full": "public/img/galerie/copertine/09.webp",
-     "thumb": "public/img/galerie/copertine/09-t.webp",
-     "source_size": "1600x1200",
-     "size": "1600x1200",
-     "thumb_size": "600x450",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/9799761/",
-     "image_url": "https://images.pexels.com/photos/9799761/pexels-photo-9799761.jpeg",
-     "subject": "Underside of a steel-post carport canopy roofed with solar panels against the sun",
-     "alt": {
-      "ro": "Structură de copertină pe stâlpi de oțel, cu acoperiș din panouri solare, văzută de dedesubt.",
-      "ru": "Каркас навеса на стальных стойках с крышей из солнечных панелей, вид снизу."
-     }
-    },
-    {
-     "source": "pexels:9799731",
-     "sha256": "973afc0cb21a51c39f9bb3f03537b79ab005fd439d2ecc6dc8effcc60089277f",
-     "full": "public/img/galerie/copertine/10.webp",
-     "thumb": "public/img/galerie/copertine/10-t.webp",
-     "source_size": "1600x1200",
-     "size": "1600x1200",
-     "thumb_size": "600x450",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/9799731/",
-     "image_url": "https://images.pexels.com/photos/9799731/pexels-photo-9799731.jpeg",
-     "subject": "Aerial view of long solar-panel carport rows over a parking lot beside a flat-roofed commercial building",
-     "alt": {
-      "ro": "Vedere aeriană a unor copertine lungi cu panouri solare peste o parcare, lângă o clădire comercială.",
-      "ru": "Вид сверху на длинные навесы с солнечными панелями над парковкой рядом с коммерческим зданием."
      }
     },
     {
@@ -755,25 +489,6 @@
       "ro": "Pergolă din profile metalice negre, cu lamele deschise, peste o terasă cu perete de cărămidă.",
       "ru": "Пергола из черного металлического профиля с открытыми рейками над террасой у кирпичной стены."
      }
-    },
-    {
-     "source": "pexels:12184742",
-     "sha256": "080790870549f3c2033765dc2c8f58bb67668b4c3b1ab2768a2aafce887a31da",
-     "full": "public/img/galerie/copertine/12.webp",
-     "thumb": "public/img/galerie/copertine/12-t.webp",
-     "source_size": "1600x2241",
-     "size": "1600x2241",
-     "thumb_size": "600x840",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/12184742/",
-     "image_url": "https://images.pexels.com/photos/12184742/pexels-photo-12184742.jpeg",
-     "subject": "White metal pergola with open beams along a stone-paved terrace, climbing plants on the posts, hills behind",
-     "alt": {
-      "ro": "Pergolă metalică albă cu grinzi deschise de-a lungul unei terase pavate, cu plante cățărătoare pe stâlpi.",
-      "ru": "Белая металлическая пергола с открытыми балками вдоль мощеной террасы, на столбах вьющиеся растения."
-     }
     }
    ],
    "duplicates_skipped": [],
@@ -784,7 +499,7 @@
    "page": "fatade",
    "render_on": "fatade",
    "found": 4,
-   "installed": 19,
+   "installed": 18,
    "preview": 1,
    "photos": [
     {
@@ -1088,25 +803,6 @@
       "ro": "Colț de bloc înalt cu fațadă tencuită în benzi albe, gri închis și verde măsliniu, văzut de jos.",
       "ru": "Угол высотного дома с оштукатуренным фасадом в белых, тёмно-серых и оливковых полосах, вид снизу."
      }
-    },
-    {
-     "source": "pexels:39494025",
-     "sha256": "f4703ecb87a96cd8b12dcfc0c902c1296f24f2f5c00d906636b35c1a7ed96019",
-     "full": "public/img/galerie/fatade/19.webp",
-     "thumb": "public/img/galerie/fatade/19-t.webp",
-     "source_size": "1600x898",
-     "size": "1600x898",
-     "thumb_size": "600x337",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/39494025/",
-     "image_url": "https://images.pexels.com/photos/39494025/pexels-photo-39494025.jpeg",
-     "subject": "A building with a freshly rendered grey facade, scaffolding on one side and stacked roof tiles on top, bare earth around it.",
-     "alt": {
-      "ro": "Clădire cu fațadă proaspăt tencuită în gri, schele pe o latură și țigle stivuite pe acoperiș.",
-      "ru": "Здание со свежеоштукатуренным серым фасадом, лесами с одной стороны и стопками черепицы на крыше."
-     }
     }
    ],
    "duplicates_skipped": [],
@@ -1370,7 +1066,7 @@
    "page": "garduri",
    "render_on": "galerie-garduri",
    "found": 19,
-   "installed": 22,
+   "installed": 15,
    "preview": 1,
    "photos": [
     {
@@ -1536,139 +1232,6 @@
      "alt": {
       "ro": "Gard lung din fier forjat negru, cu ornamente rotunde și vârfuri aurii, de-a lungul unei peluze cu copaci.",
       "ru": "Длинный кованый забор чёрного цвета с завитками и золотистыми наконечниками вдоль газона под деревьями."
-     }
-    },
-    {
-     "source": "pexels:5798851",
-     "sha256": "ab2acb2abeaf19e1bf1649ce86a5e8322bfde4d0963496fdc91903bce6d2ee59",
-     "full": "public/img/galerie/galerie-garduri/16.webp",
-     "thumb": "public/img/galerie/galerie-garduri/16-t.webp",
-     "source_size": "1600x1067",
-     "size": "1600x1067",
-     "thumb_size": "600x400",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/5798851/",
-     "image_url": "https://images.pexels.com/photos/5798851/pexels-photo-5798851.jpeg",
-     "subject": "Grey double swing metal gate with spear finials at a house entrance beside a flowering shrub",
-     "alt": {
-      "ro": "Poartă metalică dublă gri cu vârfuri decorative la intrarea unei case, lângă un arbust înflorit.",
-      "ru": "Серые двустворчатые металлические ворота с декоративными пиками у входа в дом рядом с цветущим кустом."
-     }
-    },
-    {
-     "source": "pexels:35492457",
-     "sha256": "00a1a690577c3a00f52762667ba524e5b1475f3d687532cea3cc2fcb8a21a1bd",
-     "full": "public/img/galerie/galerie-garduri/17.webp",
-     "thumb": "public/img/galerie/galerie-garduri/17-t.webp",
-     "source_size": "1600x1067",
-     "size": "1600x1067",
-     "thumb_size": "600x400",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/35492457/",
-     "image_url": "https://images.pexels.com/photos/35492457/pexels-photo-35492457.jpeg",
-     "subject": "A black wrought iron swing gate with spear tops at a snowy driveway between a house and a hedge, garage behind.",
-     "alt": {
-      "ro": "Poartă metalică batantă neagră cu vârfuri decorative, la o alee înzăpezită între casă și gard viu.",
-      "ru": "Черные распашные металлические ворота с декоративными пиками у заснеженного въезда между домом и живой изгородью."
-     }
-    },
-    {
-     "source": "pexels:7912825",
-     "sha256": "4fa7b7676cb599bbf4620bffdc3ea51f4c5d0a84147edb7852afae40bf27b24f",
-     "full": "public/img/galerie/galerie-garduri/18.webp",
-     "thumb": "public/img/galerie/galerie-garduri/18-t.webp",
-     "source_size": "1600x1067",
-     "size": "1600x1067",
-     "thumb_size": "600x400",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/7912825/",
-     "image_url": "https://images.pexels.com/photos/7912825/pexels-photo-7912825.jpeg",
-     "subject": "Low black metal railing fence along a lawn beside a road, greenhouses in the background",
-     "alt": {
-      "ro": "Gard metalic scund din bare verticale de-a lungul unei peluze, lângă drum.",
-      "ru": "Невысокий металлический забор из вертикальных прутьев вдоль газона у дороги."
-     }
-    },
-    {
-     "source": "pexels:34272815",
-     "sha256": "aa6069daed6d15b0545f4b19308e3df39dbbd26355217eee1e018443d9805e23",
-     "full": "public/img/galerie/galerie-garduri/19.webp",
-     "thumb": "public/img/galerie/galerie-garduri/19-t.webp",
-     "source_size": "1600x1067",
-     "size": "1600x1067",
-     "thumb_size": "600x400",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/34272815/",
-     "image_url": "https://images.pexels.com/photos/34272815/pexels-photo-34272815.jpeg",
-     "subject": "Black wrought iron fence with arched panels on a stone base in a garden, orange chairs and a table in front, forested hill behind",
-     "alt": {
-      "ro": "Gard din fier forjat negru cu panouri arcuite pe soclu de piatră, într-o grădină.",
-      "ru": "Чёрный кованый забор с арочными секциями на каменном цоколе в саду."
-     }
-    },
-    {
-     "source": "pexels:18436382",
-     "sha256": "8a3d8085eef4426ac31a7c6b0693db266f18e9c403e8538b96a15f1eb48a066c",
-     "full": "public/img/galerie/galerie-garduri/20.webp",
-     "thumb": "public/img/galerie/galerie-garduri/20-t.webp",
-     "source_size": "1600x2084",
-     "size": "1600x2084",
-     "thumb_size": "600x782",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/18436382/",
-     "image_url": "https://images.pexels.com/photos/18436382/pexels-photo-18436382.jpeg",
-     "subject": "Close-up of a gabion fence panel, welded wire mesh filled with dark and light stones in bands",
-     "alt": {
-      "ro": "Panou de gard tip gabion din plasă sudată, umplut cu piatră în benzi de culoare închisă și deschisă.",
-      "ru": "Габионная секция забора из сварной сетки, заполненная камнем тёмного и светлого цвета полосами."
-     }
-    },
-    {
-     "source": "pexels:36221294",
-     "sha256": "41a9f22bfab625bc84025f86d7ef3cec4ef040f7626673113aaa31f419e1c8c5",
-     "full": "public/img/galerie/galerie-garduri/21.webp",
-     "thumb": "public/img/galerie/galerie-garduri/21-t.webp",
-     "source_size": "1600x1067",
-     "size": "1600x1067",
-     "thumb_size": "600x400",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/36221294/",
-     "image_url": "https://images.pexels.com/photos/36221294/pexels-photo-36221294.jpeg",
-     "subject": "Chain-link mesh fence with metal posts and rails seen straight on against a beige wall",
-     "alt": {
-      "ro": "Gard din plasă împletită, cu stâlpi și lonjeroane metalice, văzut frontal pe fundalul unui perete bej.",
-      "ru": "Забор из сетки-рабицы с металлическими столбами и перекладинами на фоне бежевой стены."
-     }
-    },
-    {
-     "source": "pexels:18654631",
-     "sha256": "9155facde573cea013a8644d7f367ea8e9d8f8aa0a54b6af8eddb2971a0b204e",
-     "full": "public/img/galerie/galerie-garduri/22.webp",
-     "thumb": "public/img/galerie/galerie-garduri/22-t.webp",
-     "source_size": "1600x2400",
-     "size": "1600x2400",
-     "thumb_size": "600x900",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/18654631/",
-     "image_url": "https://images.pexels.com/photos/18654631/pexels-photo-18654631.jpeg",
-     "subject": "A green metal swing gate and picket fence at the drive of a log house, autumn leaves on the ground.",
-     "alt": {
-      "ro": "Poartă metalică batantă verde și gard din șipci la intrarea unei case din bârne, toamna.",
-      "ru": "Зеленые распашные металлические ворота и штакетный забор у входа к бревенчатому дому осенью."
      }
     }
    ],
@@ -2346,7 +1909,7 @@
    "page": "reparatii",
    "render_on": "reparatii",
    "found": 27,
-   "installed": 37,
+   "installed": 36,
    "preview": 17,
    "photos": [
     {
@@ -2631,25 +2194,6 @@
      }
     },
     {
-     "source": "pexels:4756489",
-     "sha256": "205c78bcb5499a4630bcaffba46ca6ac2056ae128fe3f7440306f82a6696a32b",
-     "full": "public/img/galerie/reparatii/30.webp",
-     "thumb": "public/img/galerie/reparatii/30-t.webp",
-     "source_size": "1600x1200",
-     "size": "1600x1200",
-     "thumb_size": "600x450",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/4756489/",
-     "image_url": "https://images.pexels.com/photos/4756489/pexels-photo-4756489.jpeg",
-     "subject": "A house interior stripped to the wall studs during demolition, with a tool box and exposed pipes",
-     "alt": {
-      "ro": "Interior de casă decopertat până la montanții de lemn în timpul demolării, cu o ladă de scule și țevi la vedere.",
-      "ru": "Интерьер дома, разобранный до деревянных стоек при демонтаже, с ящиком для инструментов и открытыми трубами."
-     }
-    },
-    {
      "source": "pexels:5691533",
      "sha256": "56c97ddfec0c4b97a996962295b0bb659c15dc7249353e6645b8518cf7310e8c",
      "full": "public/img/galerie/reparatii/31.webp",
@@ -2791,28 +2335,9 @@
    "page": "industrial",
    "render_on": "industrial",
    "found": 0,
-   "installed": 10,
+   "installed": 9,
    "preview": 1,
    "photos": [
-    {
-     "source": "pexels:13261149",
-     "sha256": "750216d3b00533654ad83f9a53b3f0bcfb2c9f32fb38d657d297f55514571efc",
-     "full": "public/img/galerie/industrial/01.webp",
-     "thumb": "public/img/galerie/industrial/01-t.webp",
-     "source_size": "1600x2133",
-     "size": "1600x2133",
-     "thumb_size": "600x800",
-     "origin": "stock",
-     "licence": "Pexels License",
-     "licence_url": "https://www.pexels.com/license/",
-     "source_url": "https://www.pexels.com/photo/13261149/",
-     "image_url": "https://images.pexels.com/photos/13261149/pexels-photo-13261149.jpeg",
-     "subject": "Steel-frame hall under construction with red columns and open metal roof deck, wet ground in front",
-     "alt": {
-      "ro": "Hală metalică în construcție cu stâlpi roșii din oțel și acoperiș din tablă profilată.",
-      "ru": "Металлический ангар в процессе строительства с красными стальными колоннами и кровлей из профлиста."
-     }
-    },
     {
      "source": "pexels:3330639",
      "sha256": "fadaeef71f053250143ecac140b041343f28ae23ca7c22ba8c0ab8d397d2cc63",

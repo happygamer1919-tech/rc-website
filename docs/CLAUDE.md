@@ -1051,6 +1051,25 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     nested-anchor arm, between two clean controls (R-AB). Watched fail on the build of `main` before
     the card: 18 cards named, exit 1. The Chrome, server and protocol code is the shared
     `scripts/lib/headless.js`, lifted from gate 35 so the wave 29 tests carry no copy of their own.
+37. `node scripts/check-gallery-preview.js` clean. **Since W29-03 (wave 29)**, owner ruling R-W29-03,
+    run by `quality` after gate 36; the dispatch names it gallery-preview-distinct. **A gallery's
+    preview never repeats a described picture.** Every service page in `dist/`, found by walking it,
+    both locales: the "Deschide galeria" card's preview is not the `src` of any described card (a
+    project) in the same grid, and not the same PHOTOGRAPH either. A cover and a gallery photograph
+    are separate files cut from one original by two pipelines, so names never match; Chrome draws both
+    in grey and looks for one inside the other as a window at twelve scales and 289 positions, and a
+    best normalised correlation at or above `SAME` (0.9, in the script) is one photograph. Calibrated
+    on every gallery photograph against every cover: identical pairs 0.96 to 0.99, different subjects
+    under 0.80. **A second shot of the same subject is a person's judgement, not this gate's**, and is
+    recorded where it is made (DECISIONS.md W29-03). The same card must read as a button: one link,
+    nothing interactive inside, the body `--brand` with white bold text, an icon, the photograph count
+    equal to the lightbox's slides, and a darker fill under a real pointer. **Its self-test runs first
+    on pages it serves itself**: a control, a RED arm with the preview's `src` on a cover, and a RED arm
+    with the real pair W29-03 fixed (Terasamente photograph 07 against `proj-terasamente-03-cover`,
+    caught at 0.981 and not by name), between two clean controls (R-AB). Watched fail on the build of
+    `main` before the card: Terasamente in both locales named, and all twenty cards on the button
+    assertions, exit 1. It fails on no service page in either locale, a locale count mismatch and zero
+    gallery cards.
 
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number (Q-W14-03 was found "at gate 9") and those bodies are immutable under
@@ -1105,6 +1124,8 @@ itself for the 200 check; no browser.
 **AMENDED (W28-18):** gate 34 runs after gate 33. It reads the built pages only; no browser.
 **AMENDED (W28-28):** gate 35 runs after gate 28 and before gate 13, with the other browser gates,
 because gate 13 rebuilds `dist/` armed.
+**AMENDED (W29-02, W29-03):** gates 36 and 37 run after gate 35 and before gate 13, with the other
+browser gates, because gate 13 rebuilds `dist/` armed.
 
 **The count, so it stops drifting (W25-03c).** ~~This list numbers **25** gates.~~
 ~~**AMENDED (W25-24): 26**, and `quality` runs **25** commands.~~
@@ -1116,7 +1137,8 @@ because gate 13 rebuilds `dist/` armed.
 ~~**AMENDED (W28-15): 32**, and `quality` runs **31** commands.~~
 ~~**AMENDED (W28-17): 33**, and `quality` runs **32** commands.~~
 ~~**AMENDED (W28-18): 34**, and `quality` runs **33** commands.~~
-**AMENDED (W28-28): 35**, and `quality` runs **34** commands. The number to report is the one
+~~**AMENDED (W28-28): 35**, and `quality` runs **34** commands.~~
+**AMENDED (W29-03): 37**, and `quality` runs **36** commands (W29-02 added gate 36 and left this line at 35; corrected here). The number to report is the one
 `node scripts/run-gates.js` prints, never this sentence. Five of them
 are not scripts and `quality` cannot run them: gate 4 (heights measured settled), gate 6 (no
 new colour), gate 7 (reduced motion), gate 8 (the three documents updated) and **gate 9,

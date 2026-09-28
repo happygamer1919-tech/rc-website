@@ -250,6 +250,13 @@ jobs:
       - name: Every service card is one link, picture and text both land (W29-02)
         run: node scripts/check-service-cards.js
 
+      # W29-03 (R-W29-03), gallery-preview-distinct. On every service page, both locales, the
+      # "Deschide galeria" card's preview is neither the file nor the photograph of any described
+      # card in its grid (a crop-aware correlation drawn by Chrome), and the card reads as a button:
+      # orange fill, white bold label, icon, photo count, one link, darker on hover. Self-test first.
+      - name: Every gallery preview differs from the described cards, and reads as a button (W29-03)
+        run: node scripts/check-gallery-preview.js
+
       # RC-145. Every form POSTs to build.js's FORM_ENDPOINT_URL, armed, with the
       # configured recipient (the Web3Forms access key) and a subject, and every
       # sitemap page carries its form. A check has no secret, so this step alone

@@ -14621,3 +14621,24 @@ pointer and asserts the landing path, and asserts no interactive element inside 
 it exits 1 on the build of `main` before this card (18 cards named). The Chrome, server and protocol code the
 wave 29 tests share is `scripts/lib/headless.js`, lifted from gate 35. This card also opens the wave 29 board,
 `docs/board/W29-board.json`, with the three dispatch cards and W29-00 recorded as verified.
+
+## W29-03 · Gallery preview visibility and a distinct picture, 2026-09-28
+
+Branch `w29/w29-03-gallery-preview-distinct`, on `main` at `0098d17`. Ruling R-W29-03. **The card.** On the
+twenty gallery cards (ten service pages with a gallery, both locales) the "Deschide galeria" card is now an
+orange button: the body is `--brand` with white bold text at 21px and 19px (WCAG large text, 3.41:1 against
+3:1), a gallery icon, the count in each language's plural ("25 de fotografii", "25 фотографий"; Romanian takes
+"de" from 20, which the dispatch's "(N fotografii)" leaves out), the whole card one link, and a `--brand-dark`
+fill on hover and focus. The accessible name carries the count too (`gallery.cardAria` now needs `{count}`,
+WCAG 2.5.3). No new colour. **The audit**, by eye on screenshots of every gallery section and by a crop-aware
+correlation over every gallery photograph against every project cover: **Terasamente**'s preview (photograph
+07) was the "Radier armat, cofraj montat înainte de turnare" cover's own photograph (0.981), and **Fațade**'s
+(photograph 03) was a second shot of the "Fațadă cu placaj din plăci mari de piatră" facade from nearly the
+same place (0.84), which reads as the same picture to a visitor and is replaced on that judgement. Both take
+the first RC-own photograph not shown above, photograph 01 of each gallery (`preview` in
+`content/galleries.json`, a hand-chosen field that survives an intake re-run). The other eight previews were
+already distinct; **Acoperișuri**'s (photograph 13) is a different drone shot of the house in "Acoperiș montat
+peste structură la roșu" (0.80) and is left, because the rule is about the same picture and it is not.
+**Gate 37**, gallery-preview-distinct, asserts the src rule the dispatch names and the photograph rule under
+it, and the button; it exits 1 on the build of `main` before this card. **Also corrected**: the gate count in
+docs/CLAUDE.md section 11 was left at 35 by W29-02; it reads 37 gates and 36 `quality` commands now.

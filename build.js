@@ -3700,10 +3700,28 @@ function galleryCard(l, g, title, stagger) {
   const [w, h] = String(p.thumb_size).split('x').map(Number);
   const aria = galNeed(l.strings['gallery.cardAria'], 'gallery.cardAria');
   if (!aria.includes('{title}')) die(`gallery.cardAria for ${l.code} needs {title}.`);
-  return `      <a class="card gal-card" href="#lbx-${esc(g.render_on)}" data-gal-open="lbx-${esc(g.render_on)}" data-gal-index="${g.preview - 1}" aria-haspopup="dialog" aria-label="${esc(aria.replace('{title}', title))}" data-reveal data-stagger="${Math.min(stagger, 6)}">
+  if (!aria.includes('{count}')) die(`gallery.cardAria for ${l.code} needs {count}: the accessible name must carry the visible count (WCAG 2.5.3).`);
+  /* W29-03 (R-W29-03): the card reads as a button at first sight, an orange body with white bold
+     text, a gallery icon and the photograph count, and the whole card is the one link. The count
+     is the gallery's own length, never typed. */
+  const count = galleryCount(l, g.photos.length);
+  const icon = '<svg class="gal-card__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="15" height="13" rx="2"></rect><path d="M7 3h12a2 2 0 0 1 2 2v10"></path><circle cx="8.5" cy="9.5" r="1.5"></circle><path d="M18 15l-4-4-8 7"></path></svg>';
+  return `      <a class="card gal-card" href="#lbx-${esc(g.render_on)}" data-gal-open="lbx-${esc(g.render_on)}" data-gal-index="${g.preview - 1}" aria-haspopup="dialog" aria-label="${esc(aria.replace('{count}', count).replace('{title}', title))}" data-reveal data-stagger="${Math.min(stagger, 6)}">
         <div class="media media--4x3 media--card gal-card__media"><img src="${BASE}/${esc(p.thumb.replace(/^public\//, ''))}" alt="" width="${w}" height="${h}" loading="lazy" decoding="async"></div>
-        <div class="card__body"><h3>${esc(galNeed(l.strings['gallery.open'], 'gallery.open'))}</h3></div>
+        <div class="card__body gal-card__body">${icon}<div class="gal-card__text"><h3 class="gal-card__label">${esc(galNeed(l.strings['gallery.open'], 'gallery.open'))}</h3><span class="gal-card__count">(${esc(count)})</span></div></div>
       </a>`;
+}
+
+/* W29-03. "N fotografii" in each language's own plural: Romanian takes "de" from 20 (and on every
+   number whose last two digits are 00 or 20 to 99), Russian has three forms. */
+function galleryCount(l, n) {
+  let form;
+  if (l.code === 'ro') form = n === 1 ? 'countOne' : (n % 100 === 0 || n % 100 >= 20 ? 'countMany' : 'countFew');
+  else if (l.code === 'ru') {
+    const t = n % 10, h = n % 100;
+    form = t === 1 && h !== 11 ? 'countOne' : (t >= 2 && t <= 4 && (h < 12 || h > 14) ? 'countFew' : 'countMany');
+  } else die(`galleryCount: no plural rule for locale ${l.code}.`);
+  return galNeed(l.strings[`gallery.${form}`], `gallery.${form}`).replace('{n}', String(n));
 }
 
 /* A page with no project section gets its gallery card in a section of its own. */

@@ -14595,3 +14595,14 @@ its three fix cards, 34 of 34 gates on `ceaf080`, Lighthouse on home (and the co
 acoperisuri, garduri and fatade in both locales (96 to 100), and four deviations. The board JSON names
 W28-31 and W28-FIX-03 to 05 verified and lists this sync; the artifact is drawn from `main` after this
 merges (R-W28-12). Q-W28-01 stays open.
+
+## W29-00 · The wave 29 ruling register, 2026-09-28
+
+Branch `w29/w29-00-rulings`, on `main` at `595a7cd`. Documents only. `docs/rulings/W29-R.md` records
+R-W29-00 to R-W29-03 verbatim from the wave 29 dispatch with this terminal's readings, none ratified. One
+premise corrected: the dispatch's "R-W28-04 and R-W28-06" both point at the recorded R-W28-06 (the fatade
+picture ruling the second wave 28 dispatch had called R-W28-04); the phone hero ruling R-W28-04 stands.
+R-W29-01 also lifts R-W28-10's fatade3d mark exclusion and W24-R2's file ban for catalogue pictures only;
+imperlux.md and dasterum.md keep W24-R2. Two tooling readings recorded ahead of the cards: the named
+Playwright tests are zero-dependency CDP scripts and "axe" is Lighthouse accessibility, and fatade's motion
+values are reproduced inside docs/CLAUDE.md section 1. Questions Q-W29-01 to 03 opened with defaults.

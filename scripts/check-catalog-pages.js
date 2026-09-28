@@ -284,8 +284,13 @@ for (const r of ROOTS) {
     const isIndex = path.basename(f) === 'index.html';
     const rel = path.relative(r.dir, path.dirname(f));
     const depth = rel === '' ? 0 : rel.split(path.sep).length;
-    if (depth > 2) fail(`${path.relative(ROOT, f)} is ${depth} levels below /catalog/; the catalogue is two levels, never three`);
+    /* AMENDED (W29-01, R-W29-01): the catalogue gains fatade3d.md's product page, one level below the
+       page that lists the product, so three levels under a sub-category. A product page is known by
+       what it carries (the product block), never by its depth alone, because a product of a category
+       with no sub-categories sits two levels down, where a sub-category page also sits. */
     const text = fs.readFileSync(f, 'utf8');
+    const isProduct = /<section class="section section--light pd-sec">/.test(text);
+    if (depth > 3 || (depth === 3 && !isProduct)) fail(`${path.relative(ROOT, f)} is ${depth} levels below /catalog/; the catalogue is two levels, and a product page one below the page that lists it`);
     if (text.length < 500) fail(`${path.relative(ROOT, f)} is suspiciously small (${text.length} bytes)`);
     pages.push({
       where: path.relative(ROOT, f), text, locale: r.locale, depth,
@@ -304,6 +309,7 @@ for (const r of ROOTS) {
         /* W27-FIX-15 (W27-R-21): the roofing catalogue page is a kind of its own, the two
            roofing bentos and nothing else; held to that shape below, scanned whole like the rest. */
         : path.relative(r.dir, path.dirname(f)).split(path.sep).join('/') === ROOF_CATALOG_ROUTE ? 'roofcatalog'
+        : isProduct ? 'product'
         : depth === 0 ? 'index' : depth === 1 ? 'category' : 'subcategory',
     });
   }
@@ -311,9 +317,9 @@ for (const r of ROOTS) {
   if (cats.length < 7) fail(`${path.relative(ROOT, r.dir)} holds ${cats.length} categories, expected at least 7`);
   if (!present.some((f) => path.dirname(f) === r.dir)) fail(`${path.relative(ROOT, r.dir)} has no index.html, so the catalogue root answers nothing`);
 }
-const byKind = { index: 0, category: 0, subcategory: 0, redirect: 0, roofcatalog: 0, other: 0 };
+const byKind = { index: 0, category: 0, subcategory: 0, redirect: 0, roofcatalog: 0, product: 0, other: 0 };
 for (const pg of pages) byKind[pg.kind]++;
-if (byKind.category === 0 || byKind.subcategory === 0 || byKind.index === 0 || byKind.redirect === 0 || byKind.roofcatalog !== 2) {
+if (byKind.category === 0 || byKind.subcategory === 0 || byKind.index === 0 || byKind.redirect === 0 || byKind.roofcatalog !== 2 || byKind.product === 0) {
   fail(`the walk found ${byKind.index} index, ${byKind.category} category, ${byKind.subcategory} subcategory, ${byKind.redirect} redirect and ${byKind.roofcatalog} roofing catalogue page(s); each kind must be present (the roofing catalogue page once per locale) or its own assertion proves nothing.`);
 }
 /* W25-19. Eight routes in each locale, and the number is asserted: a redirect
@@ -356,6 +362,9 @@ let proseBlocks = 0;
    a page that has been emptied, and that fails here rather than passing quietly. */
 const STRUCTURE = {
   subcategory: { re: /<div class="prod-grid"[^>]*>[\s\S]*?<article class="prod"/, what: 'a product grid' },
+  /* W29-01: a product page carries its product block: the article that names the product, one price
+     shape (a price or the price-on-request element, each carrying data-product) and the quote button. */
+  product: { re: /<article class="prod pd__info" data-product-card data-ld-name="[^"]+">[\s\S]*?class="(?:prod__price|prod__ask)" data-product="[^"]+"[\s\S]*?<a class="btn btn--primary prod__cta pd__cta" href="#oferta" data-product="[^"]+">/, what: 'the product block (its name, one price shape and the quote button)' },
   /* W27-FIX-15 (W27-R-21): the roofing catalogue page carries the roofing hub bento AND the
      product bento, in that order, and no prose block (the stray-prose rule below holds it to
      that) and no product grid. */

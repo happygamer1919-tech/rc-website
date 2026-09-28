@@ -14642,3 +14642,36 @@ peste structură la roșu" (0.80) and is left, because the rule is about the sam
 **Gate 37**, gallery-preview-distinct, asserts the src rule the dispatch names and the photograph rule under
 it, and the button; it exits 1 on the build of `main` before this card. **Also corrected**: the gate count in
 docs/CLAUDE.md section 11 was left at 35 by W29-02; it reads 37 gates and 36 `quality` commands now.
+
+## W29-01 · The catalogue: fatade3d.md's structure, pages and pictures, in RC's design, 2026-09-28
+
+Branch `w29/w29-01-catalog-fatade`, on `main` at `00b260a`. Rulings R-W29-01 and R-W29-02. **The capture.**
+fatade3d.md's Catalog menu, every category and sub-category page (scrolled to the end, paginated, "load
+more" pressed) and every product page in RO and, through the site's own switcher, RU, read in headless
+Chrome on 2026-09-28 and committed as `docs/catalog/FATADE-CAPTURE-W29.json` with its method and gaps
+(`docs/catalog/CAPTURE-NOTES-W29.md`) and the measured motion (`docs/catalog/FATADE-MOTION-W29.json`). 162
+products in 165 placements; the menu matches the owner's list exactly. **The data** is generated from it
+by `scripts/gen-catalog-w29.js` (gate 41 holds it): names, variant lines, prices as shown ("0,00 lei - X"
+shows X), descriptions, variants and specifications per language, the same category, sub-category and
+order; the labels as fatade prints them (Plăci flexibile becomes Plăci ceramice; the slug was already
+`placi-ceramice`, so there is no old URL to redirect). The 61 hidden single-colour plates leave the
+catalogue (Q-W29-07). Russian from fatade where it exists, translated in `content/catalog-ru-w29.json` where
+it does not (10 products' names and texts, 60 specification labels and values). The supplier's name is
+dropped from one product name, its URL slug and its descriptions (section 5); two Russian phrases a
+prohibition reads as a stock claim are edited with their reason. **The pictures**: 309 source files taken
+at the largest resolution served by `scripts/intake-catalog-w29.js`, encoded by the gates' own Chrome to a
+JPEG fallback, a WebP and a 600px card WebP (912 files, 60.7 MB) under `public/images/catalog/`, each with
+a SOURCES row on the R-W29-02 licence and an R-W row; 177 old fatade-group files and 61 ledger rows go. The
+four exceptions keep their files byte for byte (CT 80 F its neutral board picture, as its own file). 40
+source pictures are under 600px wide on fatade itself and are served as published. **The pages**: the hub's
+nine tiles on fatade's category pictures; a parent with sub-categories shows its sub-category tiles (whole
+tile one link, TOP badge where fatade has one) instead of the product dump; product grids at 4, 2 and 1
+columns; cards with the manufacturer's logo and a link to a new PRODUCT page per product (324 pages), which
+carries the name, the logo, the price, the variants, "Solicită ofertă" to the quote form, the description,
+the specifications and the pictures with thumbnails. **The menu**: the flyout opens beside its row, top on
+the row's top, headed by the category's name, chevron right; on a phone it opens at the row's height from
+the right; fatade's 300ms ease-in-out timing with the travel capped at 16px (Q-W29-08). **Gates**: 38
+catalog-structure, 39 catalog-parity, 40 catalog-images, 41 the generator check; amended: gate 18 waits
+out animations, gate 31 counts the fatade categories, gate 32 reversed for R-W29-02, the R-X percent-off
+pattern reads "1-2%" as a range, the catalogue page gate knows a product page, the provenance gate lifts
+fatade3d.md for the catalogue folder only. Questions Q-W29-04 to Q-W29-09.

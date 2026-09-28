@@ -1,0 +1,1733 @@
+{
+  "_note": "W29-01. Written by scripts/intake-catalog-w29.js, never typed. `gallery` is each product's extra pictures after its ledger slot's own, as bases (the build adds .jpg, .webp and -600.webp); `logos` is the manufacturer logo per brand name, as a base (.png and .webp); `tiles` is the category and sub-category tile slots; `exceptions` names the four products W29-01 keeps off fatade3d.md; `files` is every file this script wrote, so a re-run can remove what it no longer writes.",
+  "gallery": {
+    "f3d-1924": [
+      {
+        "base": "public/images/catalog/termoizolatie/polistiren-expandat/polistiren-expandat-stop-fire-2",
+        "size": "1600x1409"
+      },
+      {
+        "base": "public/images/catalog/termoizolatie/polistiren-expandat/polistiren-expandat-stop-fire-3",
+        "size": "525x378"
+      }
+    ],
+    "f3d-1970": [
+      {
+        "base": "public/images/catalog/termoizolatie/vata-minerala/vata-minerala-obio-165-2",
+        "size": "636x424"
+      }
+    ],
+    "f3d-1992": [
+      {
+        "base": "public/images/catalog/termoizolatie/alte-produse/diblu-din-plastic-ltx-2",
+        "size": "550x300"
+      }
+    ],
+    "f3d-2475": [
+      {
+        "base": "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-siliconica-sticky-2",
+        "size": "1230x888"
+      },
+      {
+        "base": "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-siliconica-sticky-3",
+        "size": "1232x888"
+      }
+    ],
+    "f3d-2486": [
+      {
+        "base": "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-2",
+        "size": "395x269"
+      },
+      {
+        "base": "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-3",
+        "size": "395x269"
+      },
+      {
+        "base": "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-4",
+        "size": "395x269"
+      },
+      {
+        "base": "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-5",
+        "size": "395x269"
+      },
+      {
+        "base": "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-6",
+        "size": "395x269"
+      },
+      {
+        "base": "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-7",
+        "size": "395x269"
+      },
+      {
+        "base": "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-8",
+        "size": "395x269"
+      },
+      {
+        "base": "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-9",
+        "size": "395x269"
+      },
+      {
+        "base": "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-10",
+        "size": "395x269"
+      },
+      {
+        "base": "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-11",
+        "size": "395x269"
+      },
+      {
+        "base": "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-12",
+        "size": "395x269"
+      },
+      {
+        "base": "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-13",
+        "size": "395x269"
+      },
+      {
+        "base": "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-14",
+        "size": "395x269"
+      }
+    ],
+    "f3d-2606": [
+      {
+        "base": "public/images/catalog/tencuieli-decorative/tencuiala-de-cuart-colorat-duraziv-clima-protect-cu-kauciuc-2",
+        "size": "870x1254"
+      },
+      {
+        "base": "public/images/catalog/tencuieli-decorative/tencuiala-de-cuart-colorat-duraziv-clima-protect-cu-kauciuc-3",
+        "size": "870x1281"
+      },
+      {
+        "base": "public/images/catalog/tencuieli-decorative/tencuiala-de-cuart-colorat-duraziv-clima-protect-cu-kauciuc-4",
+        "size": "870x1277"
+      }
+    ],
+    "f3d-2619": [
+      {
+        "base": "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-mozaicata-omitka-rokomozaikova-2",
+        "size": "1210x1074"
+      }
+    ],
+    "f3d-6117": [
+      {
+        "base": "public/images/catalog/placi-ceramice/35-piece-stone-2",
+        "size": "1200x597"
+      }
+    ],
+    "f3d-6120": [
+      {
+        "base": "public/images/catalog/placi-ceramice/rough-surface-2",
+        "size": "1070x535"
+      },
+      {
+        "base": "public/images/catalog/placi-ceramice/rough-surface-3",
+        "size": "1070x535"
+      },
+      {
+        "base": "public/images/catalog/placi-ceramice/rough-surface-4",
+        "size": "1600x845"
+      },
+      {
+        "base": "public/images/catalog/placi-ceramice/rough-surface-5",
+        "size": "795x370"
+      },
+      {
+        "base": "public/images/catalog/placi-ceramice/rough-surface-6",
+        "size": "1200x600"
+      },
+      {
+        "base": "public/images/catalog/placi-ceramice/rough-surface-7",
+        "size": "959x466"
+      },
+      {
+        "base": "public/images/catalog/placi-ceramice/rough-surface-8",
+        "size": "1200x600"
+      }
+    ],
+    "f3d-6134": [
+      {
+        "base": "public/images/catalog/placi-ceramice/stone-alpes-2",
+        "size": "772x537"
+      },
+      {
+        "base": "public/images/catalog/placi-ceramice/stone-alpes-3",
+        "size": "776x532"
+      },
+      {
+        "base": "public/images/catalog/placi-ceramice/stone-alpes-4",
+        "size": "647x364"
+      }
+    ],
+    "f3d-6140": [
+      {
+        "base": "public/images/catalog/placi-ceramice/oceanic-travertine-2",
+        "size": "777x540"
+      },
+      {
+        "base": "public/images/catalog/placi-ceramice/oceanic-travertine-3",
+        "size": "1406x600"
+      }
+    ],
+    "f3d-6149": [
+      {
+        "base": "public/images/catalog/placi-ceramice/rome-travertine-2",
+        "size": "1600x791"
+      },
+      {
+        "base": "public/images/catalog/placi-ceramice/rome-travertine-3",
+        "size": "1600x790"
+      },
+      {
+        "base": "public/images/catalog/placi-ceramice/rome-travertine-4",
+        "size": "1306x649"
+      },
+      {
+        "base": "public/images/catalog/placi-ceramice/rome-travertine-5",
+        "size": "1600x800"
+      }
+    ],
+    "f3d-6157": [
+      {
+        "base": "public/images/catalog/placi-ceramice/concrete-pouring-slab-2",
+        "size": "856x405"
+      },
+      {
+        "base": "public/images/catalog/placi-ceramice/concrete-pouring-slab-3",
+        "size": "854x422"
+      }
+    ],
+    "f3d-6163": [
+      {
+        "base": "public/images/catalog/placi-ceramice/mount-celestial-2",
+        "size": "1070x535"
+      },
+      {
+        "base": "public/images/catalog/placi-ceramice/mount-celestial-3",
+        "size": "1181x591"
+      },
+      {
+        "base": "public/images/catalog/placi-ceramice/mount-celestial-4",
+        "size": "1181x591"
+      }
+    ],
+    "f3d-6170": [
+      {
+        "base": "public/images/catalog/placi-ceramice/marble-2",
+        "size": "1200x646"
+      }
+    ],
+    "f3d-6175": [
+      {
+        "base": "public/images/catalog/placi-ceramice/polished-concrete-wall-2",
+        "size": "614x334"
+      },
+      {
+        "base": "public/images/catalog/placi-ceramice/polished-concrete-wall-3",
+        "size": "635x360"
+      },
+      {
+        "base": "public/images/catalog/placi-ceramice/polished-concrete-wall-4",
+        "size": "611x368"
+      }
+    ],
+    "f3d-6199": [
+      {
+        "base": "public/images/catalog/placi-ceramice/sawtooth-wood-2",
+        "size": "798x395"
+      }
+    ],
+    "f3d-6211": [
+      {
+        "base": "public/images/catalog/placi-ceramice/polished-wood-4-0-2",
+        "size": "798x394"
+      }
+    ],
+    "f3d-6218": [
+      {
+        "base": "public/images/catalog/placi-ceramice/rammed-earth-wall-2",
+        "size": "806x400"
+      }
+    ],
+    "f3d-6225": [
+      {
+        "base": "public/images/catalog/placi-ceramice/chiseled-stone-2",
+        "size": "1200x600"
+      }
+    ],
+    "f3d-3004": [
+      {
+        "base": "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red01-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3014": [
+      {
+        "base": "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red02-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3019": [
+      {
+        "base": "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red03-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3026": [
+      {
+        "base": "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red04-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3033": [
+      {
+        "base": "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-05-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3040": [
+      {
+        "base": "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-01-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3047": [
+      {
+        "base": "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-07-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3054": [
+      {
+        "base": "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-08-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3061": [
+      {
+        "base": "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-09-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3068": [
+      {
+        "base": "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-10-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3181": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-12-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3200": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-14-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3207": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-15-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3222": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-17-2",
+        "size": "777x583"
+      }
+    ],
+    "f3d-3229": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-18-2",
+        "size": "777x583"
+      }
+    ],
+    "f3d-3236": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-19-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3243": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-20-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3250": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-21-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3257": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-22-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3268": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-23-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3275": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-24-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3291": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-25-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3298": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-26-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3305": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-27-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3312": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-28-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3319": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-29-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3330": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-30-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3337": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-31-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3344": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-32-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3352": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-33-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3359": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-34-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3367": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-35-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3383": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-37-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3394": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-38-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3401": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-39-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3594": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-41-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3604": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-42-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3613": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-43-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3623": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-44-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3632": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-45-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3641": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-46-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3648": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-47-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3663": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-49-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3670": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-50-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3694": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-53-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3707": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-55-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3714": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-56-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3721": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-57-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3728": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-58-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3780": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-61-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3799": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-62-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3806": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-63-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3813": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-64-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3822": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-65-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3828": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-66-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3835": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-67-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3843": [
+      {
+        "base": "public/images/catalog/elemente-decorative/elemente-decorativ-red-68-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3884": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-69-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-3891": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-70-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-4043": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-73-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-4050": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-74-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-4057": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-76-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-4064": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-77-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-4070": [
+      {
+        "base": "public/images/catalog/elemente-decorative/element-decorativ-red-78-2",
+        "size": "1600x1200"
+      }
+    ],
+    "f3d-1780": [
+      {
+        "base": "public/images/catalog/sisteme-iluminare/lampa-k41061-2",
+        "size": "800x800"
+      },
+      {
+        "base": "public/images/catalog/sisteme-iluminare/lampa-k41061-3",
+        "size": "800x800"
+      }
+    ],
+    "f3d-5395": [
+      {
+        "base": "public/images/catalog/sisteme-iluminare/lampa-k41061-2",
+        "size": "800x800"
+      },
+      {
+        "base": "public/images/catalog/sisteme-iluminare/lampa-k41061-3",
+        "size": "800x800"
+      }
+    ],
+    "f3d-5405": [
+      {
+        "base": "public/images/catalog/sisteme-iluminare/lampa-k2146-2",
+        "size": "800x800"
+      },
+      {
+        "base": "public/images/catalog/sisteme-iluminare/lampa-k2146-3",
+        "size": "800x800"
+      },
+      {
+        "base": "public/images/catalog/sisteme-iluminare/lampa-k2146-4",
+        "size": "800x800"
+      }
+    ],
+    "f3d-5417": [
+      {
+        "base": "public/images/catalog/sisteme-iluminare/lampa-k2880-2",
+        "size": "800x800"
+      },
+      {
+        "base": "public/images/catalog/sisteme-iluminare/lampa-k2880-3",
+        "size": "800x800"
+      },
+      {
+        "base": "public/images/catalog/sisteme-iluminare/lampa-k2880-4",
+        "size": "475x475"
+      },
+      {
+        "base": "public/images/catalog/sisteme-iluminare/lampa-k2880-5",
+        "size": "626x700"
+      }
+    ]
+  },
+  "logos": {
+    "Caparol": {
+      "base": "public/images/catalog/brands/caparol",
+      "size": "112x86"
+    },
+    "Penoplex": {
+      "base": "public/images/catalog/brands/penoplex",
+      "size": "400x145"
+    },
+    "SWEETONDALE": {
+      "base": "public/images/catalog/brands/sweetondale",
+      "size": "400x300"
+    },
+    "IZOVAT": {
+      "base": "public/images/catalog/brands/izovat",
+      "size": "400x400"
+    },
+    "ROCKWOOL": {
+      "base": "public/images/catalog/brands/rockwool",
+      "size": "400x400"
+    },
+    "FAWORI": {
+      "base": "public/images/catalog/brands/fawori",
+      "size": "400x400"
+    },
+    "NOVOTERM": {
+      "base": "public/images/catalog/brands/novoterm",
+      "size": "400x400"
+    },
+    "KREISEL": {
+      "base": "public/images/catalog/brands/kreisel",
+      "size": "400x400"
+    },
+    "Baumit": {
+      "base": "public/images/catalog/brands/baumit",
+      "size": "400x400"
+    },
+    "Ceresit": {
+      "base": "public/images/catalog/brands/ceresit",
+      "size": "400x400"
+    },
+    "DURAZIV": {
+      "base": "public/images/catalog/brands/duraziv",
+      "size": "400x301"
+    },
+    "ROKO AquaMix": {
+      "base": "public/images/catalog/brands/roko-aquamix",
+      "size": "400x141"
+    },
+    "RedConstruct": {
+      "base": "public/images/catalog/brands/redconstruct",
+      "size": "144x50"
+    },
+    "ISOMAT": {
+      "base": "public/images/catalog/brands/isomat",
+      "size": "290x288"
+    },
+    "STANCOLAC": {
+      "base": "public/images/catalog/brands/stancolac",
+      "size": "360x280"
+    }
+  },
+  "tiles": {
+    "termoizolatie": {
+      "slot": "CATEG-01",
+      "base": "public/images/catalog/termoizolatie/category"
+    },
+    "termoizolatie/polistiren-expandat": {
+      "slot": "CATSUB-01",
+      "base": "public/images/catalog/termoizolatie/polistiren-expandat/subcategory"
+    },
+    "termoizolatie/polistiren-extrudat": {
+      "slot": "CATSUB-02",
+      "base": "public/images/catalog/termoizolatie/polistiren-extrudat/subcategory"
+    },
+    "termoizolatie/vata-minerala": {
+      "slot": "CATSUB-03",
+      "base": "public/images/catalog/termoizolatie/vata-minerala/subcategory"
+    },
+    "termoizolatie/adezivi-si-mase-de-spaclu": {
+      "slot": "CATSUB-04",
+      "base": "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/mortar-universal-caparol-armareno-700"
+    },
+    "termoizolatie/alte-produse": {
+      "slot": "CATSUB-05",
+      "base": "public/images/catalog/termoizolatie/alte-produse/subcategory"
+    },
+    "tencuieli-decorative": {
+      "slot": "CATEG-02",
+      "base": "public/images/catalog/tencuieli-decorative/category"
+    },
+    "placi-ceramice": {
+      "slot": "CATEG-03",
+      "base": "public/images/catalog/placi-ceramice/category"
+    },
+    "elemente-decorative": {
+      "slot": "CATEG-04",
+      "base": "public/images/catalog/elemente-decorative/category"
+    },
+    "vopsele": {
+      "slot": "CATEG-05",
+      "base": "public/images/catalog/vopsele/category"
+    },
+    "vopsele/vopsele-de-exterior": {
+      "slot": "CATSUB-06",
+      "base": "public/images/catalog/tencuieli-decorative/projektputz-r-si-k-tencuiala-decorativa-acrilica-caparol"
+    },
+    "vopsele/vopsele-de-interior": {
+      "slot": "CATSUB-07",
+      "base": "public/images/catalog/vopsele/category"
+    },
+    "sisteme-iluminare": {
+      "slot": "CATEG-06",
+      "base": "public/images/catalog/sisteme-iluminare/category"
+    },
+    "alte-materiale": {
+      "slot": "CATEG-07",
+      "base": "public/images/catalog/termoizolatie/alte-produse/subcategory"
+    }
+  },
+  "exceptions": {
+    "f3d-3283": "the neutral EPS board picture, as its own file (W29-01 exception 1)",
+    "f3d-2583": "current picture kept exactly (W29-01 exception 2)",
+    "f3d-2576": "current picture kept exactly (W29-01 exception 3)",
+    "f3d-2569": "current picture kept exactly (W29-01 exception 4)"
+  },
+  "files": [
+    "public/images/catalog/brands/baumit.png",
+    "public/images/catalog/brands/baumit.webp",
+    "public/images/catalog/brands/caparol.png",
+    "public/images/catalog/brands/caparol.webp",
+    "public/images/catalog/brands/ceresit.png",
+    "public/images/catalog/brands/ceresit.webp",
+    "public/images/catalog/brands/duraziv.png",
+    "public/images/catalog/brands/duraziv.webp",
+    "public/images/catalog/brands/fawori.png",
+    "public/images/catalog/brands/fawori.webp",
+    "public/images/catalog/brands/isomat.png",
+    "public/images/catalog/brands/isomat.webp",
+    "public/images/catalog/brands/izovat.png",
+    "public/images/catalog/brands/izovat.webp",
+    "public/images/catalog/brands/kreisel.png",
+    "public/images/catalog/brands/kreisel.webp",
+    "public/images/catalog/brands/novoterm.png",
+    "public/images/catalog/brands/novoterm.webp",
+    "public/images/catalog/brands/penoplex.png",
+    "public/images/catalog/brands/penoplex.webp",
+    "public/images/catalog/brands/redconstruct.png",
+    "public/images/catalog/brands/redconstruct.webp",
+    "public/images/catalog/brands/rockwool.png",
+    "public/images/catalog/brands/rockwool.webp",
+    "public/images/catalog/brands/roko-aquamix.png",
+    "public/images/catalog/brands/roko-aquamix.webp",
+    "public/images/catalog/brands/stancolac.png",
+    "public/images/catalog/brands/stancolac.webp",
+    "public/images/catalog/brands/sweetondale.png",
+    "public/images/catalog/brands/sweetondale.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-01-2-600.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-01-2.jpg",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-01-2.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-01-600.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-01.jpg",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-01.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-05-2-600.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-05-2.jpg",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-05-2.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-05-600.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-05.jpg",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-05.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-07-2-600.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-07-2.jpg",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-07-2.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-07-600.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-07.jpg",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-07.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-08-2-600.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-08-2.jpg",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-08-2.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-08-600.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-08.jpg",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-08.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-09-2-600.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-09-2.jpg",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-09-2.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-09-600.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-09.jpg",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-09.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-10-2-600.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-10-2.jpg",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-10-2.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-10-600.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-10.jpg",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red-10.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red01-2-600.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red01-2.jpg",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red01-2.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red01-600.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red01.jpg",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red01.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red02-2-600.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red02-2.jpg",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red02-2.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red02-600.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red02.jpg",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red02.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red03-2-600.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red03-2.jpg",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red03-2.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red03-600.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red03.jpg",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red03.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red04-2-600.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red04-2.jpg",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red04-2.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red04-600.webp",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red04.jpg",
+    "public/images/catalog/elemente-decorative/bagheta-decorativa-fatada-red04.webp",
+    "public/images/catalog/elemente-decorative/category-600.webp",
+    "public/images/catalog/elemente-decorative/category.jpg",
+    "public/images/catalog/elemente-decorative/category.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-12-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-12-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-12-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-12-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-12.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-12.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-14-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-14-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-14-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-14-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-14.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-14.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-15-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-15-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-15-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-15-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-15.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-15.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-17-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-17-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-17-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-17-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-17.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-17.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-18-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-18-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-18-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-18-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-18.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-18.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-19-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-19-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-19-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-19-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-19.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-19.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-20-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-20-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-20-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-20-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-20.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-20.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-21-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-21-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-21-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-21-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-21.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-21.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-22-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-22-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-22-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-22-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-22.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-22.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-23-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-23-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-23-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-23-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-23.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-23.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-24-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-24-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-24-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-24-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-24.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-24.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-25-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-25-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-25-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-25-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-25.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-25.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-26-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-26-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-26-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-26-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-26.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-26.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-27-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-27-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-27-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-27-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-27.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-27.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-28-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-28-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-28-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-28-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-28.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-28.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-29-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-29-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-29-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-29-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-29.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-29.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-30-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-30-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-30-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-30-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-30.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-30.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-31-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-31-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-31-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-31-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-31.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-31.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-32-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-32-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-32-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-32-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-32.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-32.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-33-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-33-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-33-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-33-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-33.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-33.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-34-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-34-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-34-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-34-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-34.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-34.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-35-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-35-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-35-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-35-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-35.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-35.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-37-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-37-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-37-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-37-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-37.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-37.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-38-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-38-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-38-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-38-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-38.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-38.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-39-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-39-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-39-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-39-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-39.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-39.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-41-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-41-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-41-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-41-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-41.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-41.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-42-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-42-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-42-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-42-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-42.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-42.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-43-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-43-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-43-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-43-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-43.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-43.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-44-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-44-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-44-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-44-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-44.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-44.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-45-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-45-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-45-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-45-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-45.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-45.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-46-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-46-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-46-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-46-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-46.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-46.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-47-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-47-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-47-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-47-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-47.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-47.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-49-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-49-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-49-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-49-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-49.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-49.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-50-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-50-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-50-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-50-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-50.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-50.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-53-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-53-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-53-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-53-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-53.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-53.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-55-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-55-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-55-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-55-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-55.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-55.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-56-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-56-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-56-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-56-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-56.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-56.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-57-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-57-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-57-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-57-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-57.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-57.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-58-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-58-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-58-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-58-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-58.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-58.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-61-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-61-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-61-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-61-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-61.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-61.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-62-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-62-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-62-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-62-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-62.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-62.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-63-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-63-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-63-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-63-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-63.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-63.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-64-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-64-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-64-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-64-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-64.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-64.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-65-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-65-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-65-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-65-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-65.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-65.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-66-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-66-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-66-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-66-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-66.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-66.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-67-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-67-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-67-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-67-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-67.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-67.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-69-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-69-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-69-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-69-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-69.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-69.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-70-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-70-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-70-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-70-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-70.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-70.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-73-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-73-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-73-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-73-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-73.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-73.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-74-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-74-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-74-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-74-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-74.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-74.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-76-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-76-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-76-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-76-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-76.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-76.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-77-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-77-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-77-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-77-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-77.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-77.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-78-2-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-78-2.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-78-2.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-78-600.webp",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-78.jpg",
+    "public/images/catalog/elemente-decorative/element-decorativ-red-78.webp",
+    "public/images/catalog/elemente-decorative/elemente-decorativ-red-68-2-600.webp",
+    "public/images/catalog/elemente-decorative/elemente-decorativ-red-68-2.jpg",
+    "public/images/catalog/elemente-decorative/elemente-decorativ-red-68-2.webp",
+    "public/images/catalog/elemente-decorative/elemente-decorativ-red-68-600.webp",
+    "public/images/catalog/elemente-decorative/elemente-decorativ-red-68.jpg",
+    "public/images/catalog/elemente-decorative/elemente-decorativ-red-68.webp",
+    "public/images/catalog/placi-ceramice/35-piece-stone-2-600.webp",
+    "public/images/catalog/placi-ceramice/35-piece-stone-2.jpg",
+    "public/images/catalog/placi-ceramice/35-piece-stone-2.webp",
+    "public/images/catalog/placi-ceramice/35-piece-stone-600.webp",
+    "public/images/catalog/placi-ceramice/35-piece-stone.jpg",
+    "public/images/catalog/placi-ceramice/35-piece-stone.webp",
+    "public/images/catalog/placi-ceramice/bush-hammered-600.webp",
+    "public/images/catalog/placi-ceramice/bush-hammered.jpg",
+    "public/images/catalog/placi-ceramice/bush-hammered.webp",
+    "public/images/catalog/placi-ceramice/category-600.webp",
+    "public/images/catalog/placi-ceramice/category.jpg",
+    "public/images/catalog/placi-ceramice/category.webp",
+    "public/images/catalog/placi-ceramice/chiseled-stone-2-600.webp",
+    "public/images/catalog/placi-ceramice/chiseled-stone-2.jpg",
+    "public/images/catalog/placi-ceramice/chiseled-stone-2.webp",
+    "public/images/catalog/placi-ceramice/chiseled-stone-600.webp",
+    "public/images/catalog/placi-ceramice/chiseled-stone.jpg",
+    "public/images/catalog/placi-ceramice/chiseled-stone.webp",
+    "public/images/catalog/placi-ceramice/concrete-pouring-slab-2-600.webp",
+    "public/images/catalog/placi-ceramice/concrete-pouring-slab-2.jpg",
+    "public/images/catalog/placi-ceramice/concrete-pouring-slab-2.webp",
+    "public/images/catalog/placi-ceramice/concrete-pouring-slab-3-600.webp",
+    "public/images/catalog/placi-ceramice/concrete-pouring-slab-3.jpg",
+    "public/images/catalog/placi-ceramice/concrete-pouring-slab-3.webp",
+    "public/images/catalog/placi-ceramice/concrete-pouring-slab-600.webp",
+    "public/images/catalog/placi-ceramice/concrete-pouring-slab.jpg",
+    "public/images/catalog/placi-ceramice/concrete-pouring-slab.webp",
+    "public/images/catalog/placi-ceramice/devine-mushroom-stone-600.webp",
+    "public/images/catalog/placi-ceramice/devine-mushroom-stone.jpg",
+    "public/images/catalog/placi-ceramice/devine-mushroom-stone.webp",
+    "public/images/catalog/placi-ceramice/ghana-travertine-600.webp",
+    "public/images/catalog/placi-ceramice/ghana-travertine.jpg",
+    "public/images/catalog/placi-ceramice/ghana-travertine.webp",
+    "public/images/catalog/placi-ceramice/marble-2-600.webp",
+    "public/images/catalog/placi-ceramice/marble-2.jpg",
+    "public/images/catalog/placi-ceramice/marble-2.webp",
+    "public/images/catalog/placi-ceramice/marble-600.webp",
+    "public/images/catalog/placi-ceramice/marble.jpg",
+    "public/images/catalog/placi-ceramice/marble.webp",
+    "public/images/catalog/placi-ceramice/mount-celestial-2-600.webp",
+    "public/images/catalog/placi-ceramice/mount-celestial-2.jpg",
+    "public/images/catalog/placi-ceramice/mount-celestial-2.webp",
+    "public/images/catalog/placi-ceramice/mount-celestial-3-600.webp",
+    "public/images/catalog/placi-ceramice/mount-celestial-3.jpg",
+    "public/images/catalog/placi-ceramice/mount-celestial-3.webp",
+    "public/images/catalog/placi-ceramice/mount-celestial-4-600.webp",
+    "public/images/catalog/placi-ceramice/mount-celestial-4.jpg",
+    "public/images/catalog/placi-ceramice/mount-celestial-4.webp",
+    "public/images/catalog/placi-ceramice/mount-celestial-600.webp",
+    "public/images/catalog/placi-ceramice/mount-celestial.jpg",
+    "public/images/catalog/placi-ceramice/mount-celestial.webp",
+    "public/images/catalog/placi-ceramice/oceanic-travertine-2-600.webp",
+    "public/images/catalog/placi-ceramice/oceanic-travertine-2.jpg",
+    "public/images/catalog/placi-ceramice/oceanic-travertine-2.webp",
+    "public/images/catalog/placi-ceramice/oceanic-travertine-3-600.webp",
+    "public/images/catalog/placi-ceramice/oceanic-travertine-3.jpg",
+    "public/images/catalog/placi-ceramice/oceanic-travertine-3.webp",
+    "public/images/catalog/placi-ceramice/oceanic-travertine-600.webp",
+    "public/images/catalog/placi-ceramice/oceanic-travertine.jpg",
+    "public/images/catalog/placi-ceramice/oceanic-travertine.webp",
+    "public/images/catalog/placi-ceramice/oman-linear-stone-600.webp",
+    "public/images/catalog/placi-ceramice/oman-linear-stone.jpg",
+    "public/images/catalog/placi-ceramice/oman-linear-stone.webp",
+    "public/images/catalog/placi-ceramice/original-wood-600.webp",
+    "public/images/catalog/placi-ceramice/original-wood.jpg",
+    "public/images/catalog/placi-ceramice/original-wood.webp",
+    "public/images/catalog/placi-ceramice/polish-concrete-wall-600.webp",
+    "public/images/catalog/placi-ceramice/polish-concrete-wall.jpg",
+    "public/images/catalog/placi-ceramice/polish-concrete-wall.webp",
+    "public/images/catalog/placi-ceramice/polished-concrete-wall-2-600.webp",
+    "public/images/catalog/placi-ceramice/polished-concrete-wall-2.jpg",
+    "public/images/catalog/placi-ceramice/polished-concrete-wall-2.webp",
+    "public/images/catalog/placi-ceramice/polished-concrete-wall-3-600.webp",
+    "public/images/catalog/placi-ceramice/polished-concrete-wall-3.jpg",
+    "public/images/catalog/placi-ceramice/polished-concrete-wall-3.webp",
+    "public/images/catalog/placi-ceramice/polished-concrete-wall-4-600.webp",
+    "public/images/catalog/placi-ceramice/polished-concrete-wall-4.jpg",
+    "public/images/catalog/placi-ceramice/polished-concrete-wall-4.webp",
+    "public/images/catalog/placi-ceramice/polished-concrete-wall-600.webp",
+    "public/images/catalog/placi-ceramice/polished-concrete-wall.jpg",
+    "public/images/catalog/placi-ceramice/polished-concrete-wall.webp",
+    "public/images/catalog/placi-ceramice/polished-stone-600.webp",
+    "public/images/catalog/placi-ceramice/polished-stone.jpg",
+    "public/images/catalog/placi-ceramice/polished-stone.webp",
+    "public/images/catalog/placi-ceramice/polished-wood-4-0-2-600.webp",
+    "public/images/catalog/placi-ceramice/polished-wood-4-0-2.jpg",
+    "public/images/catalog/placi-ceramice/polished-wood-4-0-2.webp",
+    "public/images/catalog/placi-ceramice/polished-wood-4-0-600.webp",
+    "public/images/catalog/placi-ceramice/polished-wood-4-0.jpg",
+    "public/images/catalog/placi-ceramice/polished-wood-4-0.webp",
+    "public/images/catalog/placi-ceramice/poly-wood-600.webp",
+    "public/images/catalog/placi-ceramice/poly-wood.jpg",
+    "public/images/catalog/placi-ceramice/poly-wood.webp",
+    "public/images/catalog/placi-ceramice/rammed-earth-wall-2-600.webp",
+    "public/images/catalog/placi-ceramice/rammed-earth-wall-2.jpg",
+    "public/images/catalog/placi-ceramice/rammed-earth-wall-2.webp",
+    "public/images/catalog/placi-ceramice/rammed-earth-wall-600.webp",
+    "public/images/catalog/placi-ceramice/rammed-earth-wall.jpg",
+    "public/images/catalog/placi-ceramice/rammed-earth-wall.webp",
+    "public/images/catalog/placi-ceramice/rome-travertine-2-600.webp",
+    "public/images/catalog/placi-ceramice/rome-travertine-2.jpg",
+    "public/images/catalog/placi-ceramice/rome-travertine-2.webp",
+    "public/images/catalog/placi-ceramice/rome-travertine-3-600.webp",
+    "public/images/catalog/placi-ceramice/rome-travertine-3.jpg",
+    "public/images/catalog/placi-ceramice/rome-travertine-3.webp",
+    "public/images/catalog/placi-ceramice/rome-travertine-4-600.webp",
+    "public/images/catalog/placi-ceramice/rome-travertine-4.jpg",
+    "public/images/catalog/placi-ceramice/rome-travertine-4.webp",
+    "public/images/catalog/placi-ceramice/rome-travertine-5-600.webp",
+    "public/images/catalog/placi-ceramice/rome-travertine-5.jpg",
+    "public/images/catalog/placi-ceramice/rome-travertine-5.webp",
+    "public/images/catalog/placi-ceramice/rome-travertine-600.webp",
+    "public/images/catalog/placi-ceramice/rome-travertine.jpg",
+    "public/images/catalog/placi-ceramice/rome-travertine.webp",
+    "public/images/catalog/placi-ceramice/rope-wave-b-600.webp",
+    "public/images/catalog/placi-ceramice/rope-wave-b.jpg",
+    "public/images/catalog/placi-ceramice/rope-wave-b.webp",
+    "public/images/catalog/placi-ceramice/rough-surface-2-600.webp",
+    "public/images/catalog/placi-ceramice/rough-surface-2.jpg",
+    "public/images/catalog/placi-ceramice/rough-surface-2.webp",
+    "public/images/catalog/placi-ceramice/rough-surface-3-600.webp",
+    "public/images/catalog/placi-ceramice/rough-surface-3.jpg",
+    "public/images/catalog/placi-ceramice/rough-surface-3.webp",
+    "public/images/catalog/placi-ceramice/rough-surface-4-600.webp",
+    "public/images/catalog/placi-ceramice/rough-surface-4.jpg",
+    "public/images/catalog/placi-ceramice/rough-surface-4.webp",
+    "public/images/catalog/placi-ceramice/rough-surface-5-600.webp",
+    "public/images/catalog/placi-ceramice/rough-surface-5.jpg",
+    "public/images/catalog/placi-ceramice/rough-surface-5.webp",
+    "public/images/catalog/placi-ceramice/rough-surface-6-600.webp",
+    "public/images/catalog/placi-ceramice/rough-surface-6.jpg",
+    "public/images/catalog/placi-ceramice/rough-surface-6.webp",
+    "public/images/catalog/placi-ceramice/rough-surface-600.webp",
+    "public/images/catalog/placi-ceramice/rough-surface-7-600.webp",
+    "public/images/catalog/placi-ceramice/rough-surface-7.jpg",
+    "public/images/catalog/placi-ceramice/rough-surface-7.webp",
+    "public/images/catalog/placi-ceramice/rough-surface-8-600.webp",
+    "public/images/catalog/placi-ceramice/rough-surface-8.jpg",
+    "public/images/catalog/placi-ceramice/rough-surface-8.webp",
+    "public/images/catalog/placi-ceramice/rough-surface.jpg",
+    "public/images/catalog/placi-ceramice/rough-surface.webp",
+    "public/images/catalog/placi-ceramice/rusty-slab-600.webp",
+    "public/images/catalog/placi-ceramice/rusty-slab.jpg",
+    "public/images/catalog/placi-ceramice/rusty-slab.webp",
+    "public/images/catalog/placi-ceramice/sawtooth-wood-2-600.webp",
+    "public/images/catalog/placi-ceramice/sawtooth-wood-2.jpg",
+    "public/images/catalog/placi-ceramice/sawtooth-wood-2.webp",
+    "public/images/catalog/placi-ceramice/sawtooth-wood-600.webp",
+    "public/images/catalog/placi-ceramice/sawtooth-wood.jpg",
+    "public/images/catalog/placi-ceramice/sawtooth-wood.webp",
+    "public/images/catalog/placi-ceramice/skyline-600.webp",
+    "public/images/catalog/placi-ceramice/skyline.jpg",
+    "public/images/catalog/placi-ceramice/skyline.webp",
+    "public/images/catalog/placi-ceramice/spliced-wood-600.webp",
+    "public/images/catalog/placi-ceramice/spliced-wood.jpg",
+    "public/images/catalog/placi-ceramice/spliced-wood.webp",
+    "public/images/catalog/placi-ceramice/stackle-square-4-0-600.webp",
+    "public/images/catalog/placi-ceramice/stackle-square-4-0.jpg",
+    "public/images/catalog/placi-ceramice/stackle-square-4-0.webp",
+    "public/images/catalog/placi-ceramice/stone-alpes-2-600.webp",
+    "public/images/catalog/placi-ceramice/stone-alpes-2.jpg",
+    "public/images/catalog/placi-ceramice/stone-alpes-2.webp",
+    "public/images/catalog/placi-ceramice/stone-alpes-3-600.webp",
+    "public/images/catalog/placi-ceramice/stone-alpes-3.jpg",
+    "public/images/catalog/placi-ceramice/stone-alpes-3.webp",
+    "public/images/catalog/placi-ceramice/stone-alpes-4-600.webp",
+    "public/images/catalog/placi-ceramice/stone-alpes-4.jpg",
+    "public/images/catalog/placi-ceramice/stone-alpes-4.webp",
+    "public/images/catalog/placi-ceramice/stone-alpes-600.webp",
+    "public/images/catalog/placi-ceramice/stone-alpes.jpg",
+    "public/images/catalog/placi-ceramice/stone-alpes.webp",
+    "public/images/catalog/placi-ceramice/stone-ridged-600.webp",
+    "public/images/catalog/placi-ceramice/stone-ridged.jpg",
+    "public/images/catalog/placi-ceramice/stone-ridged.webp",
+    "public/images/catalog/sisteme-iluminare/5437-600.webp",
+    "public/images/catalog/sisteme-iluminare/5437.jpg",
+    "public/images/catalog/sisteme-iluminare/5437.webp",
+    "public/images/catalog/sisteme-iluminare/category-600.webp",
+    "public/images/catalog/sisteme-iluminare/category.jpg",
+    "public/images/catalog/sisteme-iluminare/category.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-gmd-881f-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-gmd-881f.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-gmd-881f.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-gmd-881y-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-gmd-881y.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-gmd-881y.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-gmd-f841f-2-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-gmd-f841f-2.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-gmd-f841f-2.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k1207-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k1207.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k1207.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k1212s-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k1212s.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k1212s.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k1213m-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k1213m.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k1213m.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k1241-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k1241.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k1241.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k1247-2-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k1247-2.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k1247-2.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k1247-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k1247.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k1247.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k1823-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k1823.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k1823.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2088l-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2088l.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k2088l.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2146-2-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2146-2.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k2146-2.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2146-3-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2146-3.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k2146-3.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2146-4-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2146-4.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k2146-4.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2146-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2146.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k2146.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2148-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2148.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k2148.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2222-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2222.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k2222.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2276-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2276.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k2276.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2842-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2842.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k2842.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2880-2-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2880-2.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k2880-2.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2880-3-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2880-3.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k2880-3.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2880-4-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2880-4.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k2880-4.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2880-5-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2880-5.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k2880-5.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2880-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k2880.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k2880.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k41041-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k41041.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k41041.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k41047-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k41047.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k41047.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k41059-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k41059.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k41059.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k41061-2-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k41061-2.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k41061-2.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k41061-3-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k41061-3.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k41061-3.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k41061-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k41061.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k41061.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k45015-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k45015.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k45015.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k5014-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k5014.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k5014.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k5016-600.webp",
+    "public/images/catalog/sisteme-iluminare/lampa-k5016.jpg",
+    "public/images/catalog/sisteme-iluminare/lampa-k5016.webp",
+    "public/images/catalog/tencuieli-decorative/baumit-duotop-tencuiala-decorativa-acrilica-600.webp",
+    "public/images/catalog/tencuieli-decorative/baumit-duotop-tencuiala-decorativa-acrilica.jpg",
+    "public/images/catalog/tencuieli-decorative/baumit-duotop-tencuiala-decorativa-acrilica.webp",
+    "public/images/catalog/tencuieli-decorative/baumit-silikontop-tencuiala-decorativa-siliconica-600.webp",
+    "public/images/catalog/tencuieli-decorative/baumit-silikontop-tencuiala-decorativa-siliconica.jpg",
+    "public/images/catalog/tencuieli-decorative/baumit-silikontop-tencuiala-decorativa-siliconica.webp",
+    "public/images/catalog/tencuieli-decorative/carbon-fassadenputz-k-si-r-tencuiala-decorativa-carbonica-600.webp",
+    "public/images/catalog/tencuieli-decorative/carbon-fassadenputz-k-si-r-tencuiala-decorativa-carbonica.jpg",
+    "public/images/catalog/tencuieli-decorative/carbon-fassadenputz-k-si-r-tencuiala-decorativa-carbonica.webp",
+    "public/images/catalog/tencuieli-decorative/category-600.webp",
+    "public/images/catalog/tencuieli-decorative/category.jpg",
+    "public/images/catalog/tencuieli-decorative/category.webp",
+    "public/images/catalog/tencuieli-decorative/duraziv-standard-tds-cu-silicon-tencuiala-decorativa-siliconica-600.webp",
+    "public/images/catalog/tencuieli-decorative/duraziv-standard-tds-cu-silicon-tencuiala-decorativa-siliconica.jpg",
+    "public/images/catalog/tencuieli-decorative/duraziv-standard-tds-cu-silicon-tencuiala-decorativa-siliconica.webp",
+    "public/images/catalog/tencuieli-decorative/projekt-caparol-grund-pentru-tencuieli-decorative-600.webp",
+    "public/images/catalog/tencuieli-decorative/projekt-caparol-grund-pentru-tencuieli-decorative.jpg",
+    "public/images/catalog/tencuieli-decorative/projekt-caparol-grund-pentru-tencuieli-decorative.webp",
+    "public/images/catalog/tencuieli-decorative/projektputz-r-si-k-tencuiala-decorativa-acrilica-caparol-600.webp",
+    "public/images/catalog/tencuieli-decorative/projektputz-r-si-k-tencuiala-decorativa-acrilica-caparol.jpg",
+    "public/images/catalog/tencuieli-decorative/projektputz-r-si-k-tencuiala-decorativa-acrilica-caparol.webp",
+    "public/images/catalog/tencuieli-decorative/silicon-fassadenputz-k-si-r-tencuiala-decorativa-600.webp",
+    "public/images/catalog/tencuieli-decorative/silicon-fassadenputz-k-si-r-tencuiala-decorativa.jpg",
+    "public/images/catalog/tencuieli-decorative/silicon-fassadenputz-k-si-r-tencuiala-decorativa.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-de-cuart-colorat-duraziv-clima-protect-cu-kauciuc-2-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-de-cuart-colorat-duraziv-clima-protect-cu-kauciuc-2.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-de-cuart-colorat-duraziv-clima-protect-cu-kauciuc-2.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-de-cuart-colorat-duraziv-clima-protect-cu-kauciuc-3-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-de-cuart-colorat-duraziv-clima-protect-cu-kauciuc-3.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-de-cuart-colorat-duraziv-clima-protect-cu-kauciuc-3.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-de-cuart-colorat-duraziv-clima-protect-cu-kauciuc-4-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-de-cuart-colorat-duraziv-clima-protect-cu-kauciuc-4.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-de-cuart-colorat-duraziv-clima-protect-cu-kauciuc-4.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-de-cuart-colorat-duraziv-clima-protect-cu-kauciuc-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-de-cuart-colorat-duraziv-clima-protect-cu-kauciuc.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-de-cuart-colorat-duraziv-clima-protect-cu-kauciuc.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-mozaicata-omitka-rokomozaikova-2-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-mozaicata-omitka-rokomozaikova-2.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-mozaicata-omitka-rokomozaikova-2.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-mozaicata-omitka-rokomozaikova-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-mozaicata-omitka-rokomozaikova.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-mozaicata-omitka-rokomozaikova.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-10-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-10.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-10.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-11-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-11.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-11.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-12-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-12.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-12.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-13-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-13.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-13.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-14-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-14.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-14.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-2-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-2.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-2.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-3-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-3.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-3.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-4-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-4.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-4.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-5-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-5.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-5.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-6-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-6.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-6.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-7-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-7.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-7.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-8-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-8.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-8.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-9-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-9.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz-9.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-pentru-soclu-caparol-buntsteinputz.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-roko-omitka-silikon-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-roko-omitka-silikon.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-roko-omitka-silikon.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-silacrilica-caparol-silacril-fassadenputz-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-silacrilica-caparol-silacril-fassadenputz.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-silacrilica-caparol-silacril-fassadenputz.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-siliconica-sticky-2-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-siliconica-sticky-2.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-siliconica-sticky-2.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-siliconica-sticky-3-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-siliconica-sticky-3.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-siliconica-sticky-3.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-siliconica-sticky-600.webp",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-siliconica-sticky.jpg",
+    "public/images/catalog/tencuieli-decorative/tencuiala-decorativa-siliconica-sticky.webp",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/adeziv-baumit-bianco-alb-600.webp",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/adeziv-baumit-bianco-alb.jpg",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/adeziv-baumit-bianco-alb.webp",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/adeziv-duocontact-baumit-600.webp",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/adeziv-duocontact-baumit.jpg",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/adeziv-duocontact-baumit.webp",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/adeziv-kreisel-215-600.webp",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/adeziv-kreisel-215.jpg",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/adeziv-kreisel-215.webp",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/baumit-pro-contact-adeziv-si-masa-de-spaclu-600.webp",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/baumit-pro-contact-adeziv-si-masa-de-spaclu.jpg",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/baumit-pro-contact-adeziv-si-masa-de-spaclu.webp",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/ceresit-ct-82-mortar-adeziv-si-masa-de-spaclu-pentru-polistiren-600.webp",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/ceresit-ct-82-mortar-adeziv-si-masa-de-spaclu-pentru-polistiren.jpg",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/ceresit-ct-82-mortar-adeziv-si-masa-de-spaclu-pentru-polistiren.webp",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/kleber-90r-adeziv-lipire-polistiren-600.webp",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/kleber-90r-adeziv-lipire-polistiren.jpg",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/kleber-90r-adeziv-lipire-polistiren.webp",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/masa-de-spaclu-armare-klebespachtel-100r-caparol-600.webp",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/masa-de-spaclu-armare-klebespachtel-100r-caparol.jpg",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/masa-de-spaclu-armare-klebespachtel-100r-caparol.webp",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/mesterul-dibaci-polistiren-600.webp",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/mesterul-dibaci-polistiren.jpg",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/mesterul-dibaci-polistiren.webp",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/mesterul-dibaci-universal-adeziv-pentru-placi-ceramice-600.webp",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/mesterul-dibaci-universal-adeziv-pentru-placi-ceramice.jpg",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/mesterul-dibaci-universal-adeziv-pentru-placi-ceramice.webp",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/mesterul-dibaci-vata-minerala-600.webp",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/mesterul-dibaci-vata-minerala.jpg",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/mesterul-dibaci-vata-minerala.webp",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/mortar-universal-caparol-armareno-700-600.webp",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/mortar-universal-caparol-armareno-700.jpg",
+    "public/images/catalog/termoizolatie/adezivi-si-mase-de-spaclu/mortar-universal-caparol-armareno-700.webp",
+    "public/images/catalog/termoizolatie/alte-produse/diblu-din-otel-lgx-600.webp",
+    "public/images/catalog/termoizolatie/alte-produse/diblu-din-otel-lgx.jpg",
+    "public/images/catalog/termoizolatie/alte-produse/diblu-din-otel-lgx.webp",
+    "public/images/catalog/termoizolatie/alte-produse/diblu-din-plastic-ltx-2-600.webp",
+    "public/images/catalog/termoizolatie/alte-produse/diblu-din-plastic-ltx-2.jpg",
+    "public/images/catalog/termoizolatie/alte-produse/diblu-din-plastic-ltx-2.webp",
+    "public/images/catalog/termoizolatie/alte-produse/diblu-din-plastic-ltx-600.webp",
+    "public/images/catalog/termoizolatie/alte-produse/diblu-din-plastic-ltx.jpg",
+    "public/images/catalog/termoizolatie/alte-produse/diblu-din-plastic-ltx.webp",
+    "public/images/catalog/termoizolatie/alte-produse/subcategory-600.webp",
+    "public/images/catalog/termoizolatie/alte-produse/subcategory.jpg",
+    "public/images/catalog/termoizolatie/alte-produse/subcategory.webp",
+    "public/images/catalog/termoizolatie/category-600.webp",
+    "public/images/catalog/termoizolatie/category.jpg",
+    "public/images/catalog/termoizolatie/category.webp",
+    "public/images/catalog/termoizolatie/polistiren-expandat/polistiren-600.webp",
+    "public/images/catalog/termoizolatie/polistiren-expandat/polistiren-dalmatina-600.webp",
+    "public/images/catalog/termoizolatie/polistiren-expandat/polistiren-dalmatina.jpg",
+    "public/images/catalog/termoizolatie/polistiren-expandat/polistiren-dalmatina.webp",
+    "public/images/catalog/termoizolatie/polistiren-expandat/polistiren-expandat-eps-50-eps-70-eps-80-eps-200-600.webp",
+    "public/images/catalog/termoizolatie/polistiren-expandat/polistiren-expandat-eps-50-eps-70-eps-80-eps-200.jpg",
+    "public/images/catalog/termoizolatie/polistiren-expandat/polistiren-expandat-eps-50-eps-70-eps-80-eps-200.webp",
+    "public/images/catalog/termoizolatie/polistiren-expandat/polistiren-expandat-stop-fire-2-600.webp",
+    "public/images/catalog/termoizolatie/polistiren-expandat/polistiren-expandat-stop-fire-2.jpg",
+    "public/images/catalog/termoizolatie/polistiren-expandat/polistiren-expandat-stop-fire-2.webp",
+    "public/images/catalog/termoizolatie/polistiren-expandat/polistiren-expandat-stop-fire-3-600.webp",
+    "public/images/catalog/termoizolatie/polistiren-expandat/polistiren-expandat-stop-fire-3.jpg",
+    "public/images/catalog/termoizolatie/polistiren-expandat/polistiren-expandat-stop-fire-3.webp",
+    "public/images/catalog/termoizolatie/polistiren-expandat/polistiren-expandat-stop-fire-600.webp",
+    "public/images/catalog/termoizolatie/polistiren-expandat/polistiren-expandat-stop-fire.jpg",
+    "public/images/catalog/termoizolatie/polistiren-expandat/polistiren-expandat-stop-fire.webp",
+    "public/images/catalog/termoizolatie/polistiren-expandat/polistiren.jpg",
+    "public/images/catalog/termoizolatie/polistiren-expandat/polistiren.webp",
+    "public/images/catalog/termoizolatie/polistiren-expandat/subcategory-600.webp",
+    "public/images/catalog/termoizolatie/polistiren-expandat/subcategory.jpg",
+    "public/images/catalog/termoizolatie/polistiren-expandat/subcategory.webp",
+    "public/images/catalog/termoizolatie/polistiren-extrudat/polistiren-penoplex-600.webp",
+    "public/images/catalog/termoizolatie/polistiren-extrudat/polistiren-penoplex.jpg",
+    "public/images/catalog/termoizolatie/polistiren-extrudat/polistiren-penoplex.webp",
+    "public/images/catalog/termoizolatie/polistiren-extrudat/polistiren-tehnoplex-xps-carbon-600.webp",
+    "public/images/catalog/termoizolatie/polistiren-extrudat/polistiren-tehnoplex-xps-carbon.jpg",
+    "public/images/catalog/termoizolatie/polistiren-extrudat/polistiren-tehnoplex-xps-carbon.webp",
+    "public/images/catalog/termoizolatie/polistiren-extrudat/subcategory-600.webp",
+    "public/images/catalog/termoizolatie/polistiren-extrudat/subcategory.jpg",
+    "public/images/catalog/termoizolatie/polistiren-extrudat/subcategory.webp",
+    "public/images/catalog/termoizolatie/vata-minerala/subcategory-600.webp",
+    "public/images/catalog/termoizolatie/vata-minerala/subcategory.jpg",
+    "public/images/catalog/termoizolatie/vata-minerala/subcategory.webp",
+    "public/images/catalog/termoizolatie/vata-minerala/vata-minerala-fawori-600.webp",
+    "public/images/catalog/termoizolatie/vata-minerala/vata-minerala-fawori.jpg",
+    "public/images/catalog/termoizolatie/vata-minerala/vata-minerala-fawori.webp",
+    "public/images/catalog/termoizolatie/vata-minerala/vata-minerala-novoterm-600.webp",
+    "public/images/catalog/termoizolatie/vata-minerala/vata-minerala-novoterm.jpg",
+    "public/images/catalog/termoizolatie/vata-minerala/vata-minerala-novoterm.webp",
+    "public/images/catalog/termoizolatie/vata-minerala/vata-minerala-obio-165-2-600.webp",
+    "public/images/catalog/termoizolatie/vata-minerala/vata-minerala-obio-165-2.jpg",
+    "public/images/catalog/termoizolatie/vata-minerala/vata-minerala-obio-165-2.webp",
+    "public/images/catalog/termoizolatie/vata-minerala/vata-minerala-obio-165-600.webp",
+    "public/images/catalog/termoizolatie/vata-minerala/vata-minerala-obio-165.jpg",
+    "public/images/catalog/termoizolatie/vata-minerala/vata-minerala-obio-165.webp",
+    "public/images/catalog/termoizolatie/vata-minerala/vata-minerala-rockton-super-600.webp",
+    "public/images/catalog/termoizolatie/vata-minerala/vata-minerala-rockton-super.jpg",
+    "public/images/catalog/termoizolatie/vata-minerala/vata-minerala-rockton-super.webp",
+    "public/images/catalog/termoizolatie/vata-minerala/vata-minerala-thermowool-fas-efect-600.webp",
+    "public/images/catalog/termoizolatie/vata-minerala/vata-minerala-thermowool-fas-efect.jpg",
+    "public/images/catalog/termoizolatie/vata-minerala/vata-minerala-thermowool-fas-efect.webp",
+    "public/images/catalog/vopsele/category-600.webp",
+    "public/images/catalog/vopsele/category.jpg",
+    "public/images/catalog/vopsele/category.webp",
+    "public/images/catalog/vopsele/vopsele-de-exterior/amphibolin-600.webp",
+    "public/images/catalog/vopsele/vopsele-de-exterior/amphibolin.jpg",
+    "public/images/catalog/vopsele/vopsele-de-exterior/amphibolin.webp",
+    "public/images/catalog/vopsele/vopsele-de-exterior/isomat-flexcoat-vopsea-hidroizolanta-600.webp",
+    "public/images/catalog/vopsele/vopsele-de-exterior/isomat-flexcoat-vopsea-hidroizolanta.jpg",
+    "public/images/catalog/vopsele/vopsele-de-exterior/isomat-flexcoat-vopsea-hidroizolanta.webp",
+    "public/images/catalog/vopsele/vopsele-de-exterior/ultrapal-vopsea-universala-600.webp",
+    "public/images/catalog/vopsele/vopsele-de-exterior/ultrapal-vopsea-universala.jpg",
+    "public/images/catalog/vopsele/vopsele-de-exterior/ultrapal-vopsea-universala.webp",
+    "public/images/catalog/vopsele/vopsele-de-exterior/vopsea-de-fatada-universala-muresko-plus-600.webp",
+    "public/images/catalog/vopsele/vopsele-de-exterior/vopsea-de-fatada-universala-muresko-plus.jpg",
+    "public/images/catalog/vopsele/vopsele-de-exterior/vopsea-de-fatada-universala-muresko-plus.webp",
+    "public/images/catalog/vopsele/vopsele-de-interior/caparol-tiefgrund-amorsa-acrilica-pentru-interior-si-exterior-600.webp",
+    "public/images/catalog/vopsele/vopsele-de-interior/caparol-tiefgrund-amorsa-acrilica-pentru-interior-si-exterior.jpg",
+    "public/images/catalog/vopsele/vopsele-de-interior/caparol-tiefgrund-amorsa-acrilica-pentru-interior-si-exterior.webp"
+  ]
+}

@@ -257,6 +257,26 @@ jobs:
       - name: Every gallery preview differs from the described cards, and reads as a button (W29-03)
         run: node scripts/check-gallery-preview.js
 
+      # W29-01 (R-W29-01, R-W29-02). The three tests the dispatch names. catalog-structure: the owner's
+      # category and sub-category tree in the menu, the hub, the tiles and the breadcrumbs, both
+      # locales (static). catalog-parity: every product fatade3d.md renders, in the same category,
+      # sub-category and order, with its name, price and picture source, read in Chrome against the
+      # committed docs/catalog/FATADE-PARITY.json. catalog-images: every fatade-group picture on the
+      # owner's Fatade 3D licence, and the four exceptions byte for byte as they were. Self-tests first.
+      - name: The catalogue tree is the owner's, both locales (W29-01, catalog-structure)
+        run: node scripts/check-catalog-structure.js
+
+      - name: Every fatade3d.md product is in the catalogue, same place and order (W29-01, catalog-parity)
+        run: node scripts/check-catalog-parity.js
+
+      - name: Every catalogue picture from fatade3d.md is on the owner's licence; four exceptions exact (W29-01, catalog-images)
+        run: node scripts/check-catalog-images.js
+
+      # W29-01. The catalogue data is generated from the committed capture; a hand edit that drifts
+      # from it, or a capture change nobody regenerated, fails here.
+      - name: The catalogue data matches the committed capture (W29-01)
+        run: node scripts/gen-catalog-w29.js --check
+
       # RC-145. Every form POSTs to build.js's FORM_ENDPOINT_URL, armed, with the
       # configured recipient (the Web3Forms access key) and a subject, and every
       # sitemap page carries its form. A check has no secret, so this step alone

@@ -295,6 +295,31 @@ const MARKERS = {
     catProse: 0,
     productCards: 'atLeast1',
     foldedCards: 0,
+    subcatTiles: 0,
+  },
+  /* W29-01 (R-W29-01). A parent category with sub-categories, fatade3d.md's level b: its prose and
+     its sub-category tiles, and NO product card. A build made before W29-01 shows the product dump
+     and no tile, so it cannot match this. */
+  parentcategory: {
+    promoBar: 0,
+    profileAnchors: 0,
+    areaServed: 0,
+    catProse: 3,
+    productCards: 0,
+    subcatTiles: 'atLeast1',
+    foldedCards: 0,
+  },
+  /* W29-01. A catalogue product page: exactly one product block (its article carries
+     data-product-card), no prose, no tile. It did not exist before W29-01. Named catproduct, not
+     product: `product` is the W14-16 product pages' set, and a second key of the same name in this
+     object silently replaced it (measured: the copertine rows went UNVERIFIED). */
+  catproduct: {
+    promoBar: 0,
+    profileAnchors: 0,
+    areaServed: 0,
+    catProse: 0,
+    productCards: 1,
+    subcatTiles: 0,
   },
   // W24-04. The catalogue index: no prose, no product card.
   // AMENDED (W25-09): ~~seven tiles~~ **EIGHT**. Acoperișuri is the eighth
@@ -446,34 +471,41 @@ const PAGES = [
   /* W27-FIX-15 (W27-R-21): the roofing catalogue page, both locales; budgets measured plus 60. */
   { path: '/catalog/materiale-acoperis/',                   type: 'roofcatalog',   label: 'cat RO acoper',    budget: 19460 },
   { path: '/ru/catalog/materiale-acoperis/',                type: 'roofcatalog',   label: 'cat RU acoper',    budget: 19543 },
-  { path: '/catalog/termoizolatie/',                        type: 'category',      label: 'cat RO termo',     budget: 6924 },
-  { path: '/ru/catalog/termoizolatie/',                     type: 'category',      label: 'cat RU termo',     budget: 6840 },
-  { path: '/catalog/termoizolatie/polistiren-expandat/',    type: 'subcategory',   label: 'sub RO eps',       budget: 3667 },
-  { path: '/ru/catalog/termoizolatie/polistiren-expandat/',  type: 'subcategory',   label: 'sub RU eps',       budget: 3584 },
-  { path: '/catalog/termoizolatie/polistiren-extrudat/',    type: 'subcategory',   label: 'sub RO xps',       budget: 3144 },
-  { path: '/ru/catalog/termoizolatie/polistiren-extrudat/',  type: 'subcategory',   label: 'sub RU xps',       budget: 3123 },
-  { path: '/catalog/termoizolatie/vata-minerala/',          type: 'subcategory',   label: 'sub RO vata',      budget: 3625 },
-  { path: '/ru/catalog/termoizolatie/vata-minerala/',       type: 'subcategory',   label: 'sub RU vata',      budget: 3627 },
-  { path: '/catalog/termoizolatie/adezivi-si-mase-de-spaclu/',  type: 'subcategory',   label: 'sub RO adez',      budget: 4143 },
-  { path: '/ru/catalog/termoizolatie/adezivi-si-mase-de-spaclu/',  type: 'subcategory',   label: 'sub RU adez',      budget: 4065 },
+  /* AMENDED (W29-01): the two parents with sub-categories show tiles (type parentcategory), every
+     catalogue budget below is re-measured on the branch at 1280 settled, plus 60 (W24-R4, R-Y), and
+     two product pages per locale join the list. */
+  { path: '/catalog/termoizolatie/',                        type: 'parentcategory', label: 'cat RO termo',     budget: 4105 },
+  { path: '/ru/catalog/termoizolatie/',                     type: 'parentcategory', label: 'cat RU termo',     budget: 4159 },
+  { path: '/catalog/termoizolatie/polistiren-expandat/',    type: 'subcategory',   label: 'sub RO eps',       budget: 3672 },
+  { path: '/ru/catalog/termoizolatie/polistiren-expandat/',  type: 'subcategory',   label: 'sub RU eps',       budget: 3607 },
+  { path: '/catalog/termoizolatie/polistiren-extrudat/',    type: 'subcategory',   label: 'sub RO xps',       budget: 3157 },
+  { path: '/ru/catalog/termoizolatie/polistiren-extrudat/',  type: 'subcategory',   label: 'sub RU xps',       budget: 3137 },
+  { path: '/catalog/termoizolatie/vata-minerala/',          type: 'subcategory',   label: 'sub RO vata',      budget: 3653 },
+  { path: '/ru/catalog/termoizolatie/vata-minerala/',       type: 'subcategory',   label: 'sub RU vata',      budget: 3653 },
+  { path: '/catalog/termoizolatie/adezivi-si-mase-de-spaclu/',  type: 'subcategory',   label: 'sub RO adez',      budget: 4182 },
+  { path: '/ru/catalog/termoizolatie/adezivi-si-mase-de-spaclu/',  type: 'subcategory',   label: 'sub RU adez',      budget: 4182 },
   { path: '/catalog/termoizolatie/alte-produse/',           type: 'subcategory',   label: 'sub RO altep',     budget: 3115 },
-  { path: '/ru/catalog/termoizolatie/alte-produse/',        type: 'subcategory',   label: 'sub RU altep',     budget: 3075 },
-  { path: '/catalog/tencuieli-decorative/',                 type: 'category',      label: 'cat RO tencu',     budget: 5372 },
-  { path: '/ru/catalog/tencuieli-decorative/',              type: 'category',      label: 'cat RU tencu',     budget: 5448 },
-  { path: '/catalog/placi-ceramice/',                       type: 'category',      label: 'cat RO placi',     budget: 12867 },
-  { path: '/ru/catalog/placi-ceramice/',                    type: 'category',      label: 'cat RU placi',     budget: 13805 },
-  { path: '/catalog/elemente-decorative/',                  type: 'category',      label: 'cat RO elem',      budget: 10258 },
-  { path: '/ru/catalog/elemente-decorative/',               type: 'category',      label: 'cat RU elem',      budget: 10693 },
-  { path: '/catalog/vopsele/',                              type: 'category',      label: 'cat RO vopsele',   budget: 4364 },
-  { path: '/ru/catalog/vopsele/',                           type: 'category',      label: 'cat RU vopsele',   budget: 4459 },
-  { path: '/catalog/vopsele/vopsele-de-exterior/',          type: 'subcategory',   label: 'sub RO vopext',    budget: 3123 },
-  { path: '/ru/catalog/vopsele/vopsele-de-exterior/',       type: 'subcategory',   label: 'sub RU vopext',    budget: 3146 },
-  { path: '/catalog/vopsele/vopsele-de-interior/',          type: 'subcategory',   label: 'sub RO vopint',    budget: 3146 },
-  { path: '/ru/catalog/vopsele/vopsele-de-interior/',       type: 'subcategory',   label: 'sub RU vopint',    budget: 3192 },
+  { path: '/ru/catalog/termoizolatie/alte-produse/',        type: 'subcategory',   label: 'sub RU altep',     budget: 3115 },
+  { path: '/catalog/tencuieli-decorative/',                 type: 'category',      label: 'cat RO tencu',     budget: 5425 },
+  { path: '/ru/catalog/tencuieli-decorative/',              type: 'category',      label: 'cat RU tencu',     budget: 5501 },
+  { path: '/catalog/placi-ceramice/',                       type: 'category',      label: 'cat RO placi',     budget: 6333 },
+  { path: '/ru/catalog/placi-ceramice/',                    type: 'category',      label: 'cat RU placi',     budget: 6469 },
+  { path: '/catalog/elemente-decorative/',                  type: 'category',      label: 'cat RO elem',      budget: 10834 },
+  { path: '/ru/catalog/elemente-decorative/',               type: 'category',      label: 'cat RU elem',      budget: 11269 },
+  { path: '/catalog/vopsele/',                              type: 'parentcategory', label: 'cat RO vopsele',   budget: 3688 },
+  { path: '/ru/catalog/vopsele/',                           type: 'parentcategory', label: 'cat RU vopsele',   budget: 3715 },
+  { path: '/catalog/vopsele/vopsele-de-exterior/',          type: 'subcategory',   label: 'sub RO vopext',    budget: 3137 },
+  { path: '/ru/catalog/vopsele/vopsele-de-exterior/',       type: 'subcategory',   label: 'sub RU vopext',    budget: 3159 },
+  { path: '/catalog/vopsele/vopsele-de-interior/',          type: 'subcategory',   label: 'sub RO vopint',    budget: 3159 },
+  { path: '/ru/catalog/vopsele/vopsele-de-interior/',       type: 'subcategory',   label: 'sub RU vopint',    budget: 3205 },
   { path: '/catalog/sisteme-iluminare/',                    type: 'category',      label: 'cat RO ilumin',    budget: 6376 },
-  { path: '/ru/catalog/sisteme-iluminare/',                 type: 'category',      label: 'cat RU ilumin',    budget: 6319 },
+  { path: '/ru/catalog/sisteme-iluminare/',                 type: 'category',      label: 'cat RU ilumin',    budget: 6372 },
   { path: '/catalog/alte-materiale/',                       type: 'category',      label: 'cat RO alte',      budget: 3764 },
   { path: '/ru/catalog/alte-materiale/',                    type: 'category',      label: 'cat RU alte',      budget: 3764 },
+  { path: '/catalog/termoizolatie/polistiren-expandat/polistiren-dalmatina/', type: 'catproduct', label: 'prod RO dalmat',  budget: 4090 },
+  { path: '/ru/catalog/termoizolatie/polistiren-expandat/polistiren-dalmatina/', type: 'catproduct', label: 'prod RU dalmat', budget: 4133 },
+  { path: '/catalog/placi-ceramice/stone-alpes/',           type: 'catproduct',    label: 'prod RO alpes',    budget: 3270 },
+  { path: '/ru/catalog/placi-ceramice/stone-alpes/',        type: 'catproduct',    label: 'prod RU alpes',    budget: 3270 },
   /* W25-09. The eighth catalogue category and its seven subcategories, 71
      Dasterum products under W25-R7. Every budget below is measured on the branch
      at 1280px with every reveal applied and settled, plus 60, under W24-R4.
@@ -600,6 +632,8 @@ const PROBE = `(async () => {
     galSlides: q('.lbx__slide'),
     bentoLinks: q('a.hub__tile'),
     catTiles: q('.cat-tile'),
+    /* W29-01. The sub-category tiles a parent category shows instead of its products. */
+    subcatTiles: q('.subcat__link'),
     /* W24-09. This run measures at 1440, where the phone reveal folds nothing.
        The ZERO is the assertion: the fold is a class main.js adds, and the rule
        that paints it lives inside a max-width 768px query, so a desktop card

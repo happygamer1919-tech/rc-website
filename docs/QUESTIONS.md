@@ -3623,3 +3623,67 @@ rules) plus a static nested-interactive check.**
 The wave 29 acceptance lines name "playwright test" and "axe". The repo has no `package.json` and adds no
 dependency without the owner. Adding them means a `package.json`, a lockfile, an install step in `quality`
 and about 2 to 3 minutes more CI per pull request. Say "add them" and it is one card.
+
+## Q-W29-04 · A real person advertises on the Sisteme de termoizolație tile · OPEN · opened 2026-09-28 (W29-01)
+
+**Shipped default: the tile shows fatade3d.md's category picture, as the dispatch says ("All other images:
+fatade's, exactly").** Recommended instead: replace it with the Polistiren expandat sub-category picture
+(a plain stack of EPS boards), one line in `scripts/intake-catalog-w29.js`.
+
+The picture is an advert: a recognisable public figure (the text reads "GHEORGHE ȚOPA ALEGE POLISTIREN
+EPS80") holding Fatade's EPS80 pack. On rapidconstruct.md it reads as that person endorsing Rapid
+Construct's catalogue. The Fatade 3D permission covers Fatade's pictures; it is unlikely to cover the
+right to use that person's likeness to advertise another business. Say "replace" or "keep".
+
+## Q-W29-05 · Where Acoperișuri and Garduri sit in the Catalog menu and hub · OPEN · opened 2026-09-28 (W29-01)
+
+**Shipped default: where they were, second and third (W27-R-21, from Mihai), with the seven fatade
+categories in the dispatch's order around them.** The dispatch lists the seven "in this order ... plus our
+Acoperisuri and Garduri", which can also mean the two go last. Say "last" and it is two numbers in
+`content/catalog.json`.
+
+## Q-W29-06 · Brand logos on the cards: which ones show · OPEN · opened 2026-09-28 (W29-01)
+
+**Shipped default: a card and a product page carry the manufacturer's logo where fatade3d.md prints one
+(Caparol, Baumit, Ceresit and 12 more), in place of the brand line; the logo never shows where the brand
+line is withheld (`brand_hidden`), so the 64 decorative elements keep no RedConstruct mark (the owner's
+Q-W24-03 answer) and no plate shows a maker the plate settlement did not confirm (gate 23); and the
+"Fatade3D" logo fatade prints on its lamps and three building materials is left off, because it would put
+the supplier's name on the card, which docs/CLAUDE.md section 5 still refuses as text (R-W29-01 lifts it for
+pictures).** fatade3d.md shows the RedConstruct logo on all 64 decorative elements; say "show RedConstruct"
+and it is one flag per record.
+
+## Q-W29-07 · The 61 single-colour plates are gone from the catalogue · OPEN · opened 2026-09-28 (W29-01)
+
+**Shipped default: Plăci ceramice shows the 27 plates fatade3d.md renders, as the dispatch says ("Every
+product fatade has must exist on ours in the same category ... and the same order"); the 61 single-colour
+plates the site showed since wave 24 are removed with their pictures and rows.** On fatade3d.md each of the
+61 is a hidden product that redirects to its parent plate with the colour preselected, so the colours are
+now the parent's "Culoare" options on its product page. fatade's Russian catalogue lists the 61 instead of
+the 27; this site shows the same 27 in both languages. Say "restore the 61" and they come back as cards.
+
+## Q-W29-08 · The Catalog menu now animates in the header · OPEN · opened 2026-09-28 (W29-01)
+
+**Shipped default: the panel and its flyout open with fatade3d.md's timing (300ms ease-in-out), fading and
+moving 16px, none under reduced motion.** docs/CLAUDE.md section 1 says nothing in the header animates and
+travel stays under 20px; fatade's panel travels 511px and its flyout 330px. The timing is fatade's, the
+distance is capped by the rule. Ratify the header motion, or say "no motion" and it is two lines of CSS.
+
+## Q-W29-09 · What a person saw on the fatade3d.md pictures · OPEN · opened 2026-09-28 (W29-01)
+
+**Shipped default: every picture as fatade3d.md publishes it, per the dispatch ("fatade's, exactly").** All
+294 product, category and sub-category pictures were looked at by eye for text no gate reads (a price, a
+discount, financing, a warranty, a countdown, review stars): none carries any. What they do carry, for the
+owner to rule on:
+
+- **A celebrity advert** on the Sisteme de termoizolație tile: Q-W29-04.
+- **A marketplace watermark**: `termoizolatie/vata-minerala/vata-minerala-obio-165-2.jpg` carries "FLAGMA",
+  a third-party marketplace's mark. fatade3d.md serves it, but the picture was probably not theirs to give.
+  Recommended: drop it (it is the second picture of that product; the product keeps its first).
+- **Manufacturers' contact details on their own packs**: the IZOTERM STOP FIRE pack (two pictures: a Polish
+  phone number, e-mail and address) and the SWEETONDALE Thermowool pack (a phone number). Manufacturer marks
+  are allowed on catalogue pictures (R-W29-01); a phone number on a pack is part of the pack. Default: keep.
+- **Faces on manufacturer label art**: three Baumit buckets print a model's face as the label design.
+  Default: keep, it is the manufacturer's own packaging.
+- **A fatade data slip**: the picture fatade3d.md publishes for "Baghetă decorativă fațadă RED-01" is the
+  drawing labelled RED-06; the real RED-01 drawing is on the product fatade calls "RED01". Copied as is.

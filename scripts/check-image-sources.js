@@ -31,6 +31,15 @@
    5. Every fatade-group record has a filled ledger slot with a provenance row and its file on
       disk; a declared reuse (W25-R17, R-W28-06) inherits its origin's row.
 
+   REVERSED AGAIN AT W29-01 under rulings R-W29-01 and R-W29-02 (wave 29): the owner obtained permission
+   from Fatade 3D on 2026-09-28, and "fatade3d.md is the source of record for every fatade category. Each
+   image gets a SOURCES.md row: source URL, licence "permission Fatade 3D via owner 2026-09-28", alt RO
+   and RU. Exceptions listed in W29-01." Rule 1 now reads: every fatade-group picture stands on that
+   licence, with a SOURCES row carrying it and a fatade3d.md source URL, EXCEPT the four products W29-01
+   keeps off fatade3d.md (CT 80 F, Colțar PVC, Plasă de armare, Membrana de difuzie), which keep the origin
+   they had and are counted by name. The rendered side of the same rule is catalog-images
+   (scripts/check-catalog-images.js). Rules 2 to 5 are unchanged.
+
    Presence, not silence (docs/CLAUDE.md section 13): it prints how many records, rows and files
    it read, fails on zero fatade records, zero stock rows and a missing SOURCES manifest, and runs
    a six-arm self-test (two green) on synthetic rows before the real run. Zero dependency. */
@@ -46,7 +55,11 @@ const STOCK = 'stock library';
 /* Q-W28-06 (W28-23): a fatade-group slot with no mark-free photograph in the allowed set waits as a
    placeholder; it is named here with its question so the exception is visible and counted, never silent. */
 const PLACEHOLDER_WAITING = {}; /* CAT-0221 waited under Q-W28-06 until the owner's own photograph landed (W28-26) */
+const W29_LICENCE = 'permission Fatade 3D via owner 2026-09-28';
+const W29_EXCEPT = { 'f3d-3283': 'CT 80 F - Polistiren expandat', 'f3d-2583': 'Colțar PVC', 'f3d-2576': 'Plasă de armare', 'f3d-2569': 'Membrana de DIFUZIE pentru acoperișuri' };
 const ALLOWED = {
+  /* R-W29-02: the catalogue pictures taken from fatade3d.md under the owner's permission. */
+  [W29_LICENCE]: ['fatade3d.md'],
   'Pexels License': ['pexels.com', 'images.pexels.com'],
   'Unsplash License': ['unsplash.com', 'images.unsplash.com'],
   'Pixabay Content License': ['pixabay.com', 'cdn.pixabay.com'],
@@ -82,8 +95,19 @@ function check({ products, ledger, prov, sources, galleries, exists }) {
     const pr = provBy.get(row.provenance);
     if (!pr) { problems.push(`${where}: provenance path ${row.provenance} has no row`); continue; }
     if (!exists(row.provenance)) problems.push(`${where}: file missing ${row.provenance}`); else counts.filesChecked++;
-    /* rule 1, on every fatade-group record, reuse or not: the row it stands on names no fatade3d.md */
-    for (const u of [pr.source, pr.licenceUrl].join(' · ').split(' · ').map((s) => s.trim()).filter((s) => /^https?:/.test(s))) { const h = hostOf(u); if (h === HOST || (h && h.endsWith('.' + HOST))) { problems.push(`${where}: its picture ${row.provenance} stands on a ${HOST} row (${u}). R-W28-06: no fatade product image source host is ${HOST}.`); break; } }
+    /* rule 1 (AMENDED W29-01, R-W29-02): every fatade-group picture stands on the owner's Fatade 3D
+       permission, with its SOURCES row, except the four exceptions, which keep the origin they had. */
+    if (W29_EXCEPT[p.id]) { counts.w29Except = (counts.w29Except || 0) + 1; }
+    else {
+      const s = srcBy.get(row.provenance);
+      if (!pr.licence.includes(W29_LICENCE)) problems.push(`${where}: its picture ${row.provenance} stands on "${pr.licence}", not on the owner's Fatade 3D permission. R-W29-02: fatade3d.md is the source of record.`);
+      else if (!s) problems.push(`${where}: its picture ${row.provenance} has no docs/images/SOURCES.md row (R-W29-02: each image gets a row)`);
+      else if (s.licence !== W29_LICENCE) problems.push(`${where}: its SOURCES row's licence is "${s.licence}", not "${W29_LICENCE}"`);
+      else if (!String(s.source).split(' · ').some((u) => { const h = hostOf(u.trim()); return h === HOST || (h && h.endsWith('.' + HOST)); })) problems.push(`${where}: its SOURCES row names no ${HOST} source URL`);
+      else counts.w29 = (counts.w29 || 0) + 1;
+      if (row.reuse_of) counts.reuse++;
+      continue;
+    }
     if (row.reuse_of) { counts.reuse++; continue; }
     if (pr.licence.includes(STOCK)) { counts.stock++; stockRowOk(row.provenance, pr.licence, pr.source, where); }
     else if (/owned by Rapid Construct/.test(pr.licence)) counts.owner = (counts.owner || 0) + 1;
@@ -122,13 +146,17 @@ const STOCK_PROV = (file, n) => ({ file, cells: [`https://www.pexels.com/photo/$
 const SRC = (file, lic = 'Pexels License', n = 1) => ({ file, cells: ['/catalog/x/', `https://www.pexels.com/photo/${n}/ · https://images.pexels.com/photos/${n}/x.jpeg`, lic, 'a thing'] });
 const PACK_PROV = (file) => ({ file, cells: ['https://caparol.md/p/ · https://caparol.md/x.jpg · Caparol', 'manufacturer packshot, reseller display, licence not verified, owner accepted 2026-09-20', 'https://caparol.md/p/', '2026-09-20'] });
 const F3D_PROV = (file) => ({ file, cells: ['https://fatade3d.md/produs/x/ · https://fatade3d.md/wp-content/uploads/x.jpg · Fatade 3D', 'direct supplier, fatade3d.md, owner buys catalogue goods directly and accepts use of their product data and product images, watermark as published, owner accepted 2026-09-21', 'https://fatade3d.md/produs/x/', '2026-09-21'] });
+const W29_PROV = (file) => ({ file, cells: ['https://fatade3d.md/wp-content/uploads/x.jpg · https://fatade3d.md/produs/x/ · Fatade 3D, source 800x800', 'direct supplier, fatade3d.md, permission Fatade 3D via owner 2026-09-28 (R-W29-01, R-W29-02)', 'https://fatade3d.md/', '2026-09-28'] });
+const W29_SRC = (file) => ({ file, cells: ['/catalog/x/', 'https://fatade3d.md/wp-content/uploads/x.jpg · https://fatade3d.md/produs/x/', W29_LICENCE, 'alt RO: a · alt RU: b'] });
 const ARMS = [
-  { arm: 'GREEN: a stock picture on a fatade-group record with both rows', want: null, data: { products: [REC('CAT-9001')], ledger: [ROW('CAT-9001', 'public/img/catalog/CAT-9001.webp')], prov: [STOCK_PROV('public/img/catalog/CAT-9001.webp', 1)], sources: [SRC('public/img/catalog/CAT-9001.webp')], galleries: [] } },
-  { arm: 'GREEN: a manufacturer packshot on a fatade-group record is counted, not refused (Q-W28-05)', want: null, data: { products: [REC('CAT-9002')], ledger: [ROW('CAT-9002', 'public/img/catalog/CAT-9002.jpg')], prov: [PACK_PROV('public/img/catalog/CAT-9002.jpg')], sources: [], galleries: [] } },
-  { arm: 'a fatade-group picture still standing on a fatade3d.md row', want: /stands on a fatade3d\.md row/, data: { products: [REC('CAT-9003')], ledger: [ROW('CAT-9003', 'public/img/catalog/CAT-9003.jpg')], prov: [F3D_PROV('public/img/catalog/CAT-9003.jpg')], sources: [], galleries: [] } },
-  { arm: 'a stock picture with no SOURCES row', want: /no docs\/images\/SOURCES\.md row/, data: { products: [REC('CAT-9004')], ledger: [ROW('CAT-9004', 'public/img/catalog/CAT-9004.webp')], prov: [STOCK_PROV('public/img/catalog/CAT-9004.webp', 4)], sources: [], galleries: [] } },
-  { arm: 'a SOURCES licence outside the allowed set (CC BY requires attribution)', want: /^r-CAT-9005 \(CAT-9005\): SOURCES licence "CC BY 4\.0" is not in the allowed set/, data: { products: [REC('CAT-9005')], ledger: [ROW('CAT-9005', 'public/img/catalog/CAT-9005.webp')], prov: [STOCK_PROV('public/img/catalog/CAT-9005.webp', 5)], sources: [SRC('public/img/catalog/CAT-9005.webp', 'CC BY 4.0', 5)], galleries: [] } },
-  { arm: 'a stock gallery photograph whose thumb has no PROVENANCE row', want: /has no PROVENANCE row/, data: { products: [REC('CAT-9006')], ledger: [ROW('CAT-9006', 'public/img/catalog/CAT-9006.webp')], prov: [STOCK_PROV('public/img/catalog/CAT-9006.webp', 6), STOCK_PROV('public/img/galerie/x/09.webp', 7)], sources: [SRC('public/img/catalog/CAT-9006.webp', 'Pexels License', 6), SRC('public/img/galerie/x/09.webp', 'Pexels License', 7)], galleries: [{ render_on: 'x', photos: [{ origin: 'stock', full: 'public/img/galerie/x/09.webp', thumb: 'public/img/galerie/x/09-t.webp', alt: { ro: 'a', ru: 'b' } }] }] } },
+  { arm: 'GREEN: a fatade-group picture on the owner\'s Fatade 3D permission with its SOURCES row (R-W29-02)', want: null, data: { products: [REC('CAT-9007')], ledger: [ROW('CAT-9007', 'public/images/catalog/x/a.jpg')], prov: [W29_PROV('public/images/catalog/x/a.jpg')], sources: [W29_SRC('public/images/catalog/x/a.jpg')], galleries: [] } },
+  { arm: 'a fatade-group picture on the owner\'s permission with no SOURCES row', want: /has no docs\/images\/SOURCES\.md row \(R-W29-02/, data: { products: [REC('CAT-9008')], ledger: [ROW('CAT-9008', 'public/images/catalog/x/b.jpg')], prov: [W29_PROV('public/images/catalog/x/b.jpg')], sources: [], galleries: [] } },
+  { arm: 'GREEN: a stock picture on one of the four exceptions, with both rows', want: null, data: { products: [{ ...REC('CAT-9001'), id: 'f3d-2576' }], ledger: [ROW('CAT-9001', 'public/img/catalog/CAT-9001.webp')], prov: [STOCK_PROV('public/img/catalog/CAT-9001.webp', 1)], sources: [SRC('public/img/catalog/CAT-9001.webp')], galleries: [] } },
+  { arm: 'GREEN: a manufacturer packshot on an exception is counted, not refused (CT 80 F keeps its board picture)', want: null, data: { products: [{ ...REC('CAT-9002'), id: 'f3d-3283' }], ledger: [ROW('CAT-9002', 'public/img/catalog/CAT-9002.jpg')], prov: [PACK_PROV('public/img/catalog/CAT-9002.jpg')], sources: [], galleries: [] } },
+  { arm: 'a fatade-group picture on the W25-R14 sentence instead of the R-W29-02 permission', want: /not on the owner's Fatade 3D permission/, data: { products: [REC('CAT-9003')], ledger: [ROW('CAT-9003', 'public/img/catalog/CAT-9003.jpg')], prov: [F3D_PROV('public/img/catalog/CAT-9003.jpg')], sources: [], galleries: [] } },
+  { arm: 'a stock picture with no SOURCES row', want: /a stock picture with no docs\/images\/SOURCES\.md row/, data: { products: [{ ...REC('CAT-9004'), id: 'f3d-2583' }], ledger: [ROW('CAT-9004', 'public/img/catalog/CAT-9004.webp')], prov: [STOCK_PROV('public/img/catalog/CAT-9004.webp', 4)], sources: [], galleries: [] } },
+  { arm: 'a SOURCES licence outside the allowed set (CC BY requires attribution)', want: /^f3d-2569 \(CAT-9005\): SOURCES licence "CC BY 4\.0" is not in the allowed set/, data: { products: [{ ...REC('CAT-9005'), id: 'f3d-2569' }], ledger: [ROW('CAT-9005', 'public/img/catalog/CAT-9005.webp')], prov: [STOCK_PROV('public/img/catalog/CAT-9005.webp', 5)], sources: [SRC('public/img/catalog/CAT-9005.webp', 'CC BY 4.0', 5)], galleries: [] } },
+  { arm: 'a stock gallery photograph whose thumb has no PROVENANCE row', want: /has no PROVENANCE row/, data: { products: [{ ...REC('CAT-9006'), id: 'f3d-2576' }], ledger: [ROW('CAT-9006', 'public/img/catalog/CAT-9006.webp')], prov: [STOCK_PROV('public/img/catalog/CAT-9006.webp', 6), STOCK_PROV('public/img/galerie/x/09.webp', 7)], sources: [SRC('public/img/catalog/CAT-9006.webp', 'Pexels License', 6), SRC('public/img/galerie/x/09.webp', 'Pexels License', 7)], galleries: [{ render_on: 'x', photos: [{ origin: 'stock', full: 'public/img/galerie/x/09.webp', thumb: 'public/img/galerie/x/09-t.webp', alt: { ro: 'a', ru: 'b' } }] }] } },
 ];
 let green = 0;
 for (const a of ARMS) {
@@ -150,8 +178,10 @@ const sources = parseRows(fs.readFileSync(srcPath, 'utf8'));
 const galleries = JSON.parse(fs.readFileSync(path.join(ROOT, 'content/galleries.json'), 'utf8')).galleries || [];
 if (!products.length) fail('zero catalogue records'); if (!ledger.length) fail('zero ledger rows'); if (!prov.length) fail('zero provenance rows');
 const { problems, counts } = check({ products, ledger, prov, sources, galleries, exists: (f) => fs.existsSync(path.join(ROOT, f)) });
-console.log(`fatade-group records: ${counts.records}; files checked: ${counts.filesChecked}; pictures by origin: ${counts.stock} stock (R-W28-06), ${counts.packshot} manufacturer or owner-picked under W25-R1/W25-R20 (Q-W28-05, counted), ${counts.reuse} declared reuse, ${counts.owner || 0} the owner's own photographs (client direct transfer, W28-26), ${counts.other} other, ${counts.waiting || 0} waiting as a placeholder; stock gallery photographs: ${counts.galleryStock}; SOURCES rows: ${counts.sourcesRows}`);
+console.log(`fatade-group records: ${counts.records}; files checked: ${counts.filesChecked}; on the owner's Fatade 3D permission (R-W29-02): ${counts.w29 || 0}; the four W29-01 exceptions: ${counts.w29Except || 0}; of the exceptions by origin: ${counts.stock} stock (R-W28-06), ${counts.packshot} manufacturer or owner-picked under W25-R1/W25-R20 (Q-W28-05, counted), ${counts.reuse} declared reuse, ${counts.owner || 0} the owner's own photographs (client direct transfer, W28-26), ${counts.other} other, ${counts.waiting || 0} waiting as a placeholder; stock gallery photographs: ${counts.galleryStock}; SOURCES rows: ${counts.sourcesRows}`);
 if (!counts.records) fail('zero fatade-group records read');
-if (!counts.stock) fail('zero stock pictures on the fatade group, so the manifest assertion proved nothing (W28-23 installs 110)');
+if (!counts.w29) fail('zero fatade-group pictures on the owner\'s Fatade 3D permission, so rule 1 proved nothing (W29-01 installs 158)');
+if ((counts.w29Except || 0) !== 4) fail(`the four W29-01 exceptions were read ${counts.w29Except || 0} time(s), not 4`);
+if (!counts.galleryStock) fail('zero stock gallery photographs, so rules 2 and 3 proved nothing');
 if (problems.length) { console.error(`\n${problems.length} problem(s):`); problems.forEach((p) => console.error('  ' + p)); process.exit(1); }
-console.log(`no fatade-group picture stands on a ${HOST} row; every stock picture on the fatade group and in the galleries has a SOURCES row licensed from the allowed set and a PROVENANCE row; the manufacturer packshots are counted.`);
+console.log(`every fatade-group picture stands on the owner's Fatade 3D permission with its SOURCES row, the four exceptions keep their origin; every stock picture on the fatade group and in the galleries has a SOURCES row licensed from the allowed set and a PROVENANCE row; the manufacturer packshots are counted.`);

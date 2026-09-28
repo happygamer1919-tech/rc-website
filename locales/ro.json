@@ -1243,5 +1243,18 @@
       "f3": "Garanția de {years} ani este scrisă în contract.",
       "f4": "Telefon {phone}, e-mail {email}."
     }
+  },
+  "catalogW29": {
+    "tilesH": "Subcategorii",
+    "viewProducts": "Vezi produse",
+    "top": "Top",
+    "viewAria": "Vezi produsul",
+    "descH": "Descriere",
+    "specsH": "Caracteristici",
+    "offer": "Solicită ofertă",
+    "photo": "fotografia",
+    "galleryAria": "Fotografiile produsului",
+    "thumbAria": "Arată fotografia {i}",
+    "flyoutBack": "Înapoi la categorii"
   }
 }

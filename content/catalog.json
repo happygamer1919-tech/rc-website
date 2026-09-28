@@ -14,21 +14,35 @@
         {
           "label": {
             "ro": "Polistiren expandat",
-            "ru": "Пенополистирол"
+            "ru": "Вспененный полистирол"
           },
           "href": {
             "ro": "/catalog/termoizolatie/polistiren-expandat/",
             "ru": "/ru/catalog/termoizolatie/polistiren-expandat/"
+          },
+          "fatade": {
+            "url": "https://fatade3d.md/categorie-produs/sisteme-de-termoizolatie/polistiren-expandat/",
+            "ru_url": "https://fatade3d.md/ru/categoria-producta/sistemy-teploizolyaczii/vspenennyj-polistirol/",
+            "image_src": "https://fatade3d.md/wp-content/uploads/2025/06/1222949.jpg",
+            "top": false,
+            "order": 1
           }
         },
         {
           "label": {
             "ro": "Polistiren extrudat",
-            "ru": "Экструдированный пенополистирол"
+            "ru": "Экструдированный полистирол"
           },
           "href": {
             "ro": "/catalog/termoizolatie/polistiren-extrudat/",
             "ru": "/ru/catalog/termoizolatie/polistiren-extrudat/"
+          },
+          "fatade": {
+            "url": "https://fatade3d.md/categorie-produs/sisteme-de-termoizolatie/polistiren-extrudat/",
+            "ru_url": "https://fatade3d.md/ru/categoria-producta/sistemy-teploizolyaczii/ekstrudirovannyj-polistirol/",
+            "image_src": "https://fatade3d.md/wp-content/uploads/2025/06/d8c58caebd3bd477f089313320622a20.png",
+            "top": false,
+            "order": 2
           }
         },
         {
@@ -39,16 +53,30 @@
           "href": {
             "ro": "/catalog/termoizolatie/vata-minerala/",
             "ru": "/ru/catalog/termoizolatie/vata-minerala/"
+          },
+          "fatade": {
+            "url": "https://fatade3d.md/categorie-produs/sisteme-de-termoizolatie/vata-minerala/",
+            "ru_url": "https://fatade3d.md/ru/categoria-producta/sistemy-teploizolyaczii/mineralnaya-vata/",
+            "image_src": "https://fatade3d.md/wp-content/uploads/2025/06/vata-minerala-bazaltica-ravatherm-sw-etics-extra-30kpa-271045.webp",
+            "top": true,
+            "order": 3
           }
         },
         {
           "label": {
             "ro": "Adezivi și mase de șpaclu",
-            "ru": "Клеи и шпаклёвочные смеси"
+            "ru": "Клеи и шпатлевочные массы"
           },
           "href": {
             "ro": "/catalog/termoizolatie/adezivi-si-mase-de-spaclu/",
             "ru": "/ru/catalog/termoizolatie/adezivi-si-mase-de-spaclu/"
+          },
+          "fatade": {
+            "url": "https://fatade3d.md/categorie-produs/sisteme-de-termoizolatie/adezivi-si-mase-de-spaclu/",
+            "ru_url": "https://fatade3d.md/ru/categoria-producta/sistemy-teploizolyaczii/klei-i-shpatlevochnye-massy/",
+            "image_src": "https://fatade3d.md/wp-content/uploads/2025/06/IMG_6027.jpg",
+            "top": false,
+            "order": 4
           }
         },
         {
@@ -59,10 +87,23 @@
           "href": {
             "ro": "/catalog/termoizolatie/alte-produse/",
             "ru": "/ru/catalog/termoizolatie/alte-produse/"
+          },
+          "fatade": {
+            "url": "https://fatade3d.md/categorie-produs/sisteme-de-termoizolatie/alte-produse/",
+            "ru_url": "https://fatade3d.md/ru/categoria-producta/sistemy-teploizolyaczii/drugie-produkty/",
+            "image_src": "https://fatade3d.md/wp-content/uploads/2025/04/alte-materiale.webp",
+            "top": false,
+            "order": 5
           }
         }
       ],
-      "menu_position": 1
+      "menu_position": 1,
+      "fatade": {
+        "url": "https://fatade3d.md/categorie-produs/sisteme-de-termoizolatie/",
+        "ru_url": "https://fatade3d.md/ru/categoria-producta/sistemy-teploizolyaczii/",
+        "image_src": "https://fatade3d.md/wp-content/uploads/2025/04/polistiren_21.png",
+        "top": false
+      }
     },
     {
       "label": {
@@ -72,16 +113,28 @@
       "href": {
         "ro": "/catalog/tencuieli-decorative/",
         "ru": "/ru/catalog/tencuieli-decorative/"
+      },
+      "fatade": {
+        "url": "https://fatade3d.md/categorie-produs/tencuieli-decorative/",
+        "ru_url": "https://fatade3d.md/ru/categoria-producta/dekorativnye-shtukaturki/",
+        "image_src": "https://fatade3d.md/wp-content/uploads/2025/04/tencuieli-decorative.webp",
+        "top": false
       }
     },
     {
       "label": {
-        "ro": "Plăci flexibile",
-        "ru": "Гибкая плитка"
+        "ro": "Plăci ceramice",
+        "ru": "Керамическая плитка"
       },
       "href": {
         "ro": "/catalog/placi-ceramice/",
         "ru": "/ru/catalog/placi-ceramice/"
+      },
+      "fatade": {
+        "url": "https://fatade3d.md/categorie-produs/placi-ceramice/",
+        "ru_url": "https://fatade3d.md/ru/categoria-producta/keramicheskaya-plitka/",
+        "image_src": "https://fatade3d.md/wp-content/uploads/2025/05/placi_ceramice_fatade3d-1.jpg",
+        "top": true
       }
     },
     {
@@ -92,6 +145,12 @@
       "href": {
         "ro": "/catalog/elemente-decorative/",
         "ru": "/ru/catalog/elemente-decorative/"
+      },
+      "fatade": {
+        "url": "https://fatade3d.md/categorie-produs/elemente-decorative/",
+        "ru_url": "https://fatade3d.md/ru/categoria-producta/decorativnie-elementi/",
+        "image_src": "https://fatade3d.md/wp-content/uploads/2025/04/elemente-decorative.webp",
+        "top": false
       }
     },
     {
@@ -107,24 +166,44 @@
         {
           "label": {
             "ro": "Vopsele de exterior",
-            "ru": "Фасадные краски"
+            "ru": "Краски для наружных работ"
           },
           "href": {
             "ro": "/catalog/vopsele/vopsele-de-exterior/",
             "ru": "/ru/catalog/vopsele/vopsele-de-exterior/"
+          },
+          "fatade": {
+            "url": "https://fatade3d.md/categorie-produs/vopsele/vopsele-de-exterior/",
+            "ru_url": "https://fatade3d.md/ru/categoria-producta/kraski/vopsele-de-exterior-ru/",
+            "image_src": "https://fatade3d.md/wp-content/uploads/2025/06/IMG_6147.jpg",
+            "top": false,
+            "order": 1
           }
         },
         {
           "label": {
             "ro": "Vopsele de interior",
-            "ru": "Интерьерные краски"
+            "ru": "Краски для интерьера"
           },
           "href": {
             "ro": "/catalog/vopsele/vopsele-de-interior/",
             "ru": "/ru/catalog/vopsele/vopsele-de-interior/"
+          },
+          "fatade": {
+            "url": "https://fatade3d.md/categorie-produs/vopsele/vopsele-de-interior/",
+            "ru_url": "https://fatade3d.md/ru/categoria-producta/kraski/kraski-dlya-interera/",
+            "image_src": "https://fatade3d.md/wp-content/uploads/2025/04/vopsele-interior.jpg",
+            "top": false,
+            "order": 2
           }
         }
-      ]
+      ],
+      "fatade": {
+        "url": "https://fatade3d.md/categorie-produs/vopsele/",
+        "ru_url": "https://fatade3d.md/ru/categoria-producta/kraski/",
+        "image_src": "https://fatade3d.md/wp-content/uploads/2025/04/vopsele-interior.jpg",
+        "top": false
+      }
     },
     {
       "label": {
@@ -134,6 +213,12 @@
       "href": {
         "ro": "/catalog/sisteme-iluminare/",
         "ru": "/ru/catalog/sisteme-iluminare/"
+      },
+      "fatade": {
+        "url": "https://fatade3d.md/categorie-produs/sisteme-de-iluminare/",
+        "ru_url": "https://fatade3d.md/ru/categoria-producta/sistemy-osveshheniya/",
+        "image_src": "https://fatade3d.md/wp-content/uploads/2025/04/sisteme-de-iluminare.webp",
+        "top": true
       }
     },
     {
@@ -144,6 +229,12 @@
       "href": {
         "ro": "/catalog/alte-materiale/",
         "ru": "/ru/catalog/alte-materiale/"
+      },
+      "fatade": {
+        "url": "https://fatade3d.md/categorie-produs/alte-materiale-de-constructii/",
+        "ru_url": "https://fatade3d.md/ru/categoria-producta/drugie-stroitelnye-materialy/",
+        "image_src": "https://fatade3d.md/wp-content/uploads/2025/04/alte-materiale.webp",
+        "top": false
       }
     },
     {

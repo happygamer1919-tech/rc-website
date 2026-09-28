@@ -1040,6 +1040,17 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     under overflow hidden), between two clean controls (R-AB). Watched fail on the real tree before
     the fix: `/ru/`, 337px, the chip named. It fails on zero pages, either locale missing, Inter not
     loading where it is asked for, and fewer pages measured than read.
+36. `node scripts/check-service-cards.js` clean. **Since W29-02 (wave 29)**, owner ruling R-W29-03,
+    run by `quality` after gate 35. **Every home page service card is one link.** On `/` and `/ru/` at
+    1440 wide, each card of `#servicii` is scrolled to the middle and clicked with a real pointer on
+    its picture and on its description; each click must land on the card's service page, and the
+    point pressed must be inside the card (a header or floating button over it fails by name). On the
+    same pages no link, button, field or focusable element sits inside another link or button. **Its
+    self-test runs first on pages it serves itself**: a whole-card control, a RED arm in the shape the
+    cards had before (only "Află mai multe" a link) that must fail on the picture click, and a RED
+    nested-anchor arm, between two clean controls (R-AB). Watched fail on the build of `main` before
+    the card: 18 cards named, exit 1. The Chrome, server and protocol code is the shared
+    `scripts/lib/headless.js`, lifted from gate 35 so the wave 29 tests carry no copy of their own.
 
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number (Q-W14-03 was found "at gate 9") and those bodies are immutable under

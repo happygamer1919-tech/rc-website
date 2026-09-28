@@ -244,6 +244,12 @@ jobs:
       - name: Every page fits a 320px screen, both locales (W28-28)
         run: node scripts/check-viewport-320.js
 
+      # W29-02 (R-W29-03). Every home page service card is ONE link: a real pointer click on its
+      # picture and on its description lands on the service page, RO and RU, and no interactive
+      # element sits inside another on either home page. Self-test first (R-AB).
+      - name: Every service card is one link, picture and text both land (W29-02)
+        run: node scripts/check-service-cards.js
+
       # RC-145. Every form POSTs to build.js's FORM_ENDPOINT_URL, armed, with the
       # configured recipient (the Web3Forms access key) and a subject, and every
       # sitemap page carries its form. A check has no secret, so this step alone

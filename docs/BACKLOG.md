@@ -1436,4 +1436,13 @@ the artifact is republished from `main` after this merges. Documents only.
 **Status: board sync, not a card** (opened 2026-09-25). `docs/reports/W28-FINAL-RUN-4.md`; the board JSON names #193 to #198;
 the artifact is republished from `main` after this merges. Documents only.
 ## W29-00 · The wave 29 ruling register
-**Status: PR open** (opened 2026-09-28). `docs/rulings/W29-R.md`, R-W29-00 to R-W29-03 verbatim with readings; Q-W29-01 to 03. Documents only.
+**Status: MERGED #200, section 12.0 exit 0** (opened 2026-09-28, merged 2026-09-28 15:35 UTC as `09c273a`). `docs/rulings/W29-R.md`, R-W29-00 to R-W29-03 verbatim with readings; Q-W29-01 to 03. Documents only.
+
+## W29-02 · Service cards fully clickable
+**Status: PR open** (opened 2026-09-28). The nine home page service cards are one link each, RO and RU; gate 36 (`scripts/check-service-cards.js`) clicks the picture and the description of every card. Creates `docs/board/W29-board.json` and the three wave 29 card files.
+
+## W29-03 · Gallery preview visibility and a distinct image
+**Status: todo** (opened 2026-09-28).
+
+## W29-01 · Catalogue: the fatade3d.md structure, pages and pictures
+**Status: todo** (opened 2026-09-28).

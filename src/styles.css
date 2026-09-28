@@ -297,6 +297,13 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
   display: flex; flex-direction: column;
 }
 .card__body { padding: 24px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+/* W29-02 (R-W29-03). A service card on the home page is ONE link, the whole card. The global
+   `a:hover` colour would turn the title and the text brand-dark, so the card keeps its ink and only
+   the "Află mai multe" line takes the hover colour. The lift and the border colour are the shared
+   card hover in the motion block below; the ring is the site's own focus ring, drawn on the card. */
+.card--link, .card--link:hover { color: var(--ink); }
+.card--link:hover .link-arrow, .card--link:focus-visible .link-arrow { color: var(--brand-dark); }
+.card--link:focus-visible { outline: 3px solid var(--brand-dark); outline-offset: 3px; border-radius: var(--radius-card); border-color: var(--brand); }
 
 /* --- service page: spec table, FAQ, related ---------------------------------- */
 /* W9-08. No new colour: borders are --line, secondary text is --ink-muted, and

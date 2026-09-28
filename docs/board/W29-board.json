@@ -1,0 +1,121 @@
+{
+ "board": "rc-website wave 29",
+ "schema_version": 1,
+ "opened": "2026-09-28",
+ "main_at_open": "595a7cd722930a38a02aaa2a3dc8913635691811",
+ "renders_to": null,
+ "rulings_file": "docs/rulings/W29-R.md",
+ "_note": "W29-02 (the first card) creates this board. The wave 29 dispatch of 2026-09-28 asked for three cards in docs/board/, worked in the order W29-02, W29-03, W29-01, one card one PR, skip not halt. Same shape as docs/board/W28-board.json: `ask` is the dispatch text verbatim, `reading` is this terminal's, `acceptance` is commands run from the repo root after node build.js, each ending in the value that passes. Statuses: todo, in_progress, pr_open, merged, verified (section 12.0 exit 0 on the merge sha), blocked, skipped. Standing rule R-W28-12: the artifact is rendered only from this file as it stands on main after a merge, a card's merged and verified state lands in the next pull request, and the run closes with a documents-only board sync listed under board_syncs. `renders_to` is filled by the first sync that publishes the wave 29 artifact.",
+ "defaults": {
+  "lane": "queue",
+  "priority": "normal",
+  "owner_terminal": "yellow",
+  "status": "todo",
+  "depends_on": "the previous card, because each branch is stacked on the previous card's branch"
+ },
+ "rulings": [
+  {
+   "id": "R-W29-00",
+   "title": "Self-merge on green, carried from R-W28-01",
+   "pr": 200
+  },
+  {
+   "id": "R-W29-01",
+   "title": "The fatade3d.md catalogue pictures and structure may be reused; R-13 is scoped out of them (reverses the recorded R-W28-06; the phone hero R-W28-04 stands, Q-W29-01)",
+   "pr": 200
+  },
+  {
+   "id": "R-W29-02",
+   "title": "Catalogue image sourcing: fatade3d.md is the source of record, licence string per SOURCES.md row, four exceptions",
+   "pr": 200
+  },
+  {
+   "id": "R-W29-03",
+   "title": "Whole-card service links; a gallery preview never repeats a described picture",
+   "pr": 200
+  }
+ ],
+ "cards": [
+  {
+   "lane": "done",
+   "status": "verified",
+   "priority": "normal",
+   "owner_terminal": "yellow",
+   "pr": 200,
+   "merge_sha": "09c273a6279b99f0c6648c4fe3a92c9ad1faab73",
+   "id": "W29-00",
+   "title": "The wave 29 ruling register, R-W29-00 to R-W29-03",
+   "branch": "w29/w29-00-rulings",
+   "depends_on": [],
+   "ask": "FIRST write docs/rulings/W29-R.md and commit it on its own PR before any card.",
+   "reading": "Documents only. The dispatch's R-W28-04 and R-W28-06 both point at the recorded R-W28-06; Q-W29-01 to 03 opened.",
+   "acceptance": [
+    "node scripts/check-dashes.js  -> exit 0",
+    "node scripts/check-merge-artifacts.js  -> exit 0"
+   ],
+   "evidence": "quality green 7m20s; merged 2026-09-28 15:35Z as 09c273a; section 12.0 EXIT=0 at 15:38:24Z (55 of 55 pages, 0 unverified, 0 failed)"
+  },
+  {
+   "lane": "doing",
+   "status": "pr_open",
+   "priority": "normal",
+   "owner_terminal": "yellow",
+   "pr": null,
+   "id": "W29-02",
+   "title": "Service cards fully clickable",
+   "branch": "w29/w29-02-service-cards-clickable",
+   "depends_on": [
+    "W29-00"
+   ],
+   "ask": "W29-02 services cards fully clickable\nHome \"Ce oferim pentru tine\" cards and every other service card grid (services index, RU too): the whole card is one link to the service page, not only \"Afla mai multe\". Keep the \"Afla mai multe\" text as visual affordance inside the link. Hover state: card lift plus border colour change on the whole card. Keyboard focus ring on the card. No nested anchors.\nAcceptance: playwright test clicks the card image area and the description text area on each service card RO and RU and asserts navigation to the service URL, exit 0. axe passes, no nested interactive elements. 320px gate passes.",
+   "reading": "The site has no services index page; the home grid in both locales is the only card grid that links to service pages (the teaser row and the cross-sell cards were whole-card links already). Each card becomes one <a> with the 'Afla mai multe' line as a span inside. Playwright is read as a zero-dependency CDP script and axe as Lighthouse accessibility 100 (R-W29 register, test tooling; Q-W29-03).",
+   "acceptance": [
+    "node scripts/check-service-cards.js  -> exit 0 (36 pointer clicks, 18 cards, no nested interactive element; exits 1 on the build of main before the card)",
+    "node scripts/check-lighthouse.js  -> exit 0 (accessibility 100 on / and /ru/)",
+    "node scripts/check-viewport-320.js  -> exit 0"
+   ]
+  },
+  {
+   "lane": "queue",
+   "status": "todo",
+   "priority": "normal",
+   "owner_terminal": "yellow",
+   "pr": null,
+   "id": "W29-03",
+   "title": "Gallery preview visibility and a distinct image",
+   "branch": "w29/w29-03-gallery-preview-distinct",
+   "depends_on": [
+    "W29-02"
+   ],
+   "ask": "W29-03 gallery preview visibility and distinct image\nOn every service page gallery (RO and RU): the \"Deschide galeria\" card must read as a button at first sight: orange filled background, white bold text, gallery icon, image count \"(N fotografii)\", full-card link, hover darken. Preview image rule: the preview image must not be any image already shown as a described item card in that same gallery. Pick the next RC-own image not used above; if none remain, use the first stock image of that gallery; never leave it identical. Audit every service page for this failure, fix all of them, list per page in the report which image was replaced.\nAcceptance: named test gallery-preview-distinct asserts for every service page in both locales that the preview src is not in the set of described-card srcs, exit 0. Screenshot per page in the report.",
+   "reading": "A described item card is a project card in the same grid. Covers and gallery photographs are separate files of possibly the same original, so the test compares the src (the dispatch's words) and the photograph (a Chrome-drawn difference hash). RC-own is origin owner in content/galleries.json.",
+   "acceptance": [
+    "node scripts/check-gallery-preview.js  -> exit 0 (gallery-preview-distinct, every service page RO and RU)"
+   ]
+  },
+  {
+   "lane": "queue",
+   "status": "todo",
+   "priority": "normal",
+   "owner_terminal": "yellow",
+   "pr": null,
+   "id": "W29-01",
+   "title": "Catalogue: the fatade3d.md catalogue structure, pages and pictures, in RC colours and design",
+   "branch": "w29/w29-01-catalog-fatade",
+   "depends_on": [
+    "W29-03"
+   ],
+   "ask": "W29-01 catalog: exact copy of fatade3d.md catalog structure, pages and images, in RC colours and design\nSource of record: https://fatade3d.md/categorie-produs/sisteme-de-termoizolatie/ and every category and product page reachable from their Catalog menu. Use headless Chrome, scroll each page fully, follow pagination, do not miss products. Acoperisuri and Garduri stay as they are (Imperlux source, do not touch). Copertine stays out of the Catalog.\n\n1. STRUCTURE. Catalog categories, in this order, with sub-categories exactly as fatade:\nSisteme de termoizolatie -> Polistiren expandat, Polistiren extrudat, Vata minerala, Adezivi si mase de spaclu, Alte produse\nTencuieli decorative\nPlaci ceramice (rename our Placi flexibile to this, 301 redirect old slug)\nElemente decorative\nVopsele -> Vopsele de exterior, Vopsele de interior\nSisteme de iluminare\nAlte materiale de constructii\nplus our Acoperisuri and Garduri. Hub tile count stays 9, update catalog-counts test to the new category slugs and counts.\n\n2. PAGES. Three levels like fatade:\na) Catalog hub: 9 tiles.\nb) Category page: for categories with sub-categories, show sub-category tiles (image, name, \"Vezi produse\" button, optional TOP badge where fatade has it), NOT the product dump. For categories without sub-categories, show the product grid directly.\nc) Sub-category page: product grid. Breadcrumb Acasa / Catalog / Category / Sub-category.\nProduct grid: 4 columns desktop, 2 tablet, 1 at 320px, cards fill rows, no half-page blank space. Card = image, brand logo small if fatade shows one, name, sizes or variants line, price or price range in MDL, our orange arrow button. Prices copied from fatade as shown; where fatade shows \"0,00 lei\" as the low end, show only the high value. Every product fatade has must exist on ours in the same category and sub-category and the same order. Product detail pages: same fields as fatade (name, variants, description, price), our design, \"Solicita oferta\" CTA instead of cart.\nRU: use fatade's RU toggle for names and descriptions where available, translate only what fatade lacks.\n\n3. IMAGES. Download every product, sub-category and category image from fatade3d.md at the largest resolution served, convert to webp plus fallback, store under public/images/catalog/<category>/<sub>/. Manifest row per image per R-W29-02. Replace all current fatade-group images on our side.\nEXCEPTIONS (do not take from fatade):\n- Polistiren expandat > \"CT 80 F - Polistiren expandat\": placeholder image (neutral grey EPS board, our existing stock is fine), product stays with its name, sizes and price.\n- Alte materiale de constructii > Coltar PVC - FATADE 3D, Plasa de armare, Membrana de DIFUZIE pentru acoperisuri: keep our current images exactly as they are, no change.\nAll other images: fatade's, exactly.\n\n4. MENU AND MOTION. Rebuild the Catalog mega menu to fatade's behaviour: left column of categories, hover or tap on a category with sub-categories opens a flyout panel to the RIGHT, aligned to the top of that row, same height as the row block, panel heading = category name, chevron on the row points right and stays right. Mobile: same, panel slides in from the right at the row's height, never upward. Measure fatade's transitions in headless Chrome (getComputedStyle transition-duration, timing-function, transform on menu open, on flyout open, on tile hover, on \"Vezi produse\" hover) and reproduce those values with our colours. Record the measured values in the report.\n\n5. DO NOT: change Acoperisuri, Garduri, Copertine, service pages, home. Do not add cart, blog, promotions, \"rate cu 0%\" or any discount or financing string (R-X). Do not add review counts.\n\nAcceptance:\n- named test catalog-structure asserts the category and sub-category tree above in both locales, exit 0\n- named test catalog-parity compares a committed docs/catalog/FATADE-PARITY.json (product name, category, sub-category, order, price, image source URL, scraped by you at run time and committed) against our rendered catalog in headless Chrome, zero missing products, exit 0\n- named test catalog-images asserts every fatade-group product image src maps to a SOURCES.md row with the fatade licence string, and the 4 exceptions are exactly as specified, exit 0\n- 320px gate, axe, Lighthouse catalog pages >= 90 performance\n- catalog-counts updated and green\n- screenshots in the report: hub, Sisteme de termoizolatie category page, Polistiren expandat sub-page, Vopsele flyout open desktop and mobile, one product detail page\n\nReport to docs/reports/W29-RUN.md: per card status, PR numbers, deviations, the measured motion values, list of products copied per sub-category with counts, the 4 exceptions confirmed. End with documents-only board sync and artifact republish from main.",
+   "reading": "Recorded in the card's PR and in docs/reports/W29-RUN.md.",
+   "acceptance": [
+    "node scripts/check-catalog-structure.js  -> exit 0 (catalog-structure)",
+    "node scripts/check-catalog-parity.js  -> exit 0 (catalog-parity, zero missing products)",
+    "node scripts/check-catalog-images.js  -> exit 0 (catalog-images)",
+    "node scripts/check-catalog-counts.js  -> exit 0",
+    "node scripts/check-viewport-320.js  -> exit 0",
+    "Lighthouse on the catalogue pages  -> performance at or above 90, accessibility 100"
+   ]
+  }
+ ],
+ "board_syncs": []
+}

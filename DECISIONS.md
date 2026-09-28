@@ -14606,3 +14606,18 @@ R-W29-01 also lifts R-W28-10's fatade3d mark exclusion and W24-R2's file ban for
 imperlux.md and dasterum.md keep W24-R2. Two tooling readings recorded ahead of the cards: the named
 Playwright tests are zero-dependency CDP scripts and "axe" is Lighthouse accessibility, and fatade's motion
 values are reproduced inside docs/CLAUDE.md section 1. Questions Q-W29-01 to 03 opened with defaults.
+
+## W29-02 · Service cards fully clickable, 2026-09-28
+
+Branch `w29/w29-02-service-cards-clickable`, on `main` at `09c273a`. Ruling R-W29-03. The nine cards of the
+home page "Ce oferim pentru tine" grid, both locales, were `<article>`s whose only link was "Află mai multe";
+each is now one `<a class="card card--link">` to its service page with that line as a `<span>` inside, so
+there is no nested anchor. The card keeps its ink on hover (the global `a:hover` colour would have turned the
+title brand-dark), the lift and the border colour are the shared card hover that was already there, and the
+focus ring is the site's own, drawn on the card. **Reading**: the site has no services index page, and the
+teaser row and the cross-sell cards were whole-card links already, so the home grid is the whole scope. **Gate
+36** (`scripts/check-service-cards.js`) clicks the picture and the description of every card with a real
+pointer and asserts the landing path, and asserts no interactive element inside another on both home pages;
+it exits 1 on the build of `main` before this card (18 cards named). The Chrome, server and protocol code the
+wave 29 tests share is `scripts/lib/headless.js`, lifted from gate 35. This card also opens the wave 29 board,
+`docs/board/W29-board.json`, with the three dispatch cards and W29-00 recorded as verified.

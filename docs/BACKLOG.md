@@ -1446,3 +1446,6 @@ the artifact is republished from `main` after this merges. Documents only.
 
 ## W29-01 · Catalogue: the fatade3d.md structure, pages and pictures
 **Status: PR open** (opened 2026-09-28). 162 products in 165 placements from the committed capture, three page levels plus a product page per product (324 pages), 912 picture files on the R-W29-02 licence, the flyout menu with fatade's timing; gates 38 to 41; Q-W29-04 to 09.
+
+## W29-05 · The Alte produse tile shows the owner's photograph
+**Status: PR open** (opened 2026-09-28). CATSUB-05 on the owner's photograph; the intake keeps it on a re-run. Owner message.

@@ -775,7 +775,8 @@
     },
     "termoizolatie/alte-produse": {
       "slot": "CATSUB-05",
-      "base": "public/images/catalog/termoizolatie/alte-produse/subcategory"
+      "base": "public/images/catalog/termoizolatie/alte-produse/subcategory-rc",
+      "owner": true
     },
     "tencuieli-decorative": {
       "slot": "CATEG-02",
@@ -807,7 +808,7 @@
     },
     "alte-materiale": {
       "slot": "CATEG-07",
-      "base": "public/images/catalog/termoizolatie/alte-produse/subcategory"
+      "base": "public/images/catalog/alte-materiale/category"
     }
   },
   "exceptions": {
@@ -817,6 +818,9 @@
     "f3d-2569": "current picture kept exactly (W29-01 exception 4)"
   },
   "files": [
+    "public/images/catalog/alte-materiale/category-600.webp",
+    "public/images/catalog/alte-materiale/category.jpg",
+    "public/images/catalog/alte-materiale/category.webp",
     "public/images/catalog/brands/baumit.png",
     "public/images/catalog/brands/baumit.webp",
     "public/images/catalog/brands/caparol.png",
@@ -1654,9 +1658,9 @@
     "public/images/catalog/termoizolatie/alte-produse/diblu-din-plastic-ltx-600.webp",
     "public/images/catalog/termoizolatie/alte-produse/diblu-din-plastic-ltx.jpg",
     "public/images/catalog/termoizolatie/alte-produse/diblu-din-plastic-ltx.webp",
-    "public/images/catalog/termoizolatie/alte-produse/subcategory-600.webp",
-    "public/images/catalog/termoizolatie/alte-produse/subcategory.jpg",
-    "public/images/catalog/termoizolatie/alte-produse/subcategory.webp",
+    "public/images/catalog/termoizolatie/alte-produse/subcategory-rc-600.webp",
+    "public/images/catalog/termoizolatie/alte-produse/subcategory-rc.jpg",
+    "public/images/catalog/termoizolatie/alte-produse/subcategory-rc.webp",
     "public/images/catalog/termoizolatie/category-600.webp",
     "public/images/catalog/termoizolatie/category.jpg",
     "public/images/catalog/termoizolatie/category.webp",
@@ -1729,5 +1733,12 @@
     "public/images/catalog/vopsele/vopsele-de-interior/caparol-tiefgrund-amorsa-acrilica-pentru-interior-si-exterior-600.webp",
     "public/images/catalog/vopsele/vopsele-de-interior/caparol-tiefgrund-amorsa-acrilica-pentru-interior-si-exterior.jpg",
     "public/images/catalog/vopsele/vopsele-de-interior/caparol-tiefgrund-amorsa-acrilica-pentru-interior-si-exterior.webp"
-  ]
+  ],
+  "owner_tiles": {
+    "CATSUB-05": {
+      "name": "Alte produse",
+      "base": "public/images/catalog/termoizolatie/alte-produse/subcategory-rc",
+      "received": "28.09.2026"
+    }
+  }
 }

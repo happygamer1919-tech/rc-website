@@ -21,12 +21,12 @@ them apart: nothing from the earlier dispatch is a labelled swatch or carries a 
 |---|---|---|
 | labelled swatch | 4 | the product name or code is printed into the photograph, and the card prints it again underneath |
 | watermark | 57 | a supplier mark on the picture or on the product. It is there on purpose and must not be cropped |
-| reuse | 8 | one picture filling a second record of the same product (W25-R17). Check the two cards are the same product |
+| reuse | 7 | one picture filling a second record of the same product (W25-R17). Check the two cards are the same product |
 | google_pick | 0 | found by search because the product's own source publishes nothing at the 450 floor (W25-R20). Check it is the right product, and correct it if not |
 | library | 3 | a licence-free stock photograph from Unsplash or Pexels (W25-R23, W26-R8), decoration only. Check it suits the page |
 | low_res | 18 | the longest side is under the site's 450 floor, installed under W26-R13's floor of 300 for the last empty products. Replace it when a larger picture exists |
 | low confidence match | 0 | the plate matched Phomi at a tier that is not an exact string match. Check the name in the picture against the name on the card |
-| no flag | 229 | an ordinary manufacturer packshot |
+| no flag | 230 | an ordinary manufacturer packshot |
 
 ## Table one: every image on the site in these 4 sections
 
@@ -202,7 +202,7 @@ them apart: nothing from the earlier dispatch is a labelled swatch or carries a 
 | `CATEG-04` | CATEG-04 | /catalog/ | https://fatade3d.md/wp-content/uploads/2025/04/elemente-decorative.webp | direct_supplier fatade3d.md | 524x262 | none |
 | `CATEG-05` | CATEG-05 | /catalog/ | https://fatade3d.md/wp-content/uploads/2025/04/vopsele-interior.jpg | direct_supplier fatade3d.md | 372x258 | low_res |
 | `CATEG-06` | CATEG-06 | /catalog/ | https://fatade3d.md/wp-content/uploads/2025/04/sisteme-de-iluminare.webp | direct_supplier fatade3d.md | 482x340 | none |
-| `CATEG-07` | CATEG-07 | /catalog/ | https://fatade3d.md/wp-content/uploads/2025/04/alte-materiale.webp | direct_supplier fatade3d.md | 602x356 | reuse of CATSUB-05 |
+| `CATEG-07` | CATEG-07 | /catalog/ | https://fatade3d.md/wp-content/uploads/2025/04/alte-materiale.webp | direct_supplier fatade3d.md | 602x356 | none |
 | `CATEG-08` | CATEG-08 | /catalog/ | https://imperlux.md/images/offers/p-tigla.png | owner_override_imperlux | 1197x1200 | reuse of ACOP-01 |
 | `CATEG-09` | CATEG-09 | /catalog/ | https://imperlux.md/images/offers/g-il100.webp | owner_override_imperlux | 972x1200 | reuse of GARDB-01 |
 

@@ -62,6 +62,15 @@ const EXCEPT = {
   'f3d-2569': { name: 'Membrana de DIFUZIE pentru acoperișuri', how: 'current picture kept exactly (W29-01 exception 4)' },
 };
 
+/* W29-05 (owner, 2026-09-28): "the preview image for Alte produse should be another one, because the
+   current holds fatade3d brand on it". A tile the owner replaced with a photograph of his own: its
+   slot never takes fatade3d.md's picture again. `src` is the owner's file, read only when the encoded
+   files are missing (the first run); after that the committed files stand and are kept as they are. */
+const OWNER_TILES = {
+  'CATSUB-05': { name: 'Alte produse', src: path.join(os.homedir(), 'RC-Alte Produse.jpeg'), base: `${'public/images/catalog'}/termoizolatie/alte-produse/subcategory-rc`, received: '28.09.2026',
+    alt: { ro: 'Alte produse: diblu de plastic pentru termoizolație', ru: 'Другие продукты: пластиковый дюбель для теплоизоляции' } },
+};
+
 const w29 = DATA.products.filter((r) => r.source && r.source.host === 'fatade3d.md' && r.source.captured === '2026-09-28');
 if (w29.length !== 162) fail(`expected the 162 fatade-group records the capture holds, read ${w29.length}. Run scripts/gen-catalog-w29.js first.`);
 for (const [id, e] of Object.entries(EXCEPT)) {
@@ -113,6 +122,7 @@ CATALOG.categories.forEach((c, i) => {
     subN += 1;
     const s = k.href.ro.replace(/^\/catalog\//, '').replace(/\/$/, '');
     const sslot = `CATSUB-${String(subN).padStart(2, '0')}`;
+    if (OWNER_TILES[sslot]) { catImages[s] = { slot: sslot, base: OWNER_TILES[sslot].base, owner: true }; continue; }
     catImages[s] = { slot: sslot, base: `${BASE_DIR}/${s}/subcategory` };
     catImagesByBase[catImages[s].base] = catImages[s];
     jobs.push({ key: `sub:${s}`, url: k.fatade.image_src, base: catImages[s].base, kind: 'photo', page: c.href.ro, alt: { ro: `${k.label.ro}, fotografia subcategoriei`, ru: `${k.label.ru}, фотография подкатегории` }, slot: sslot, fatadePage: k.fatade.url });
@@ -227,6 +237,18 @@ const rowFile = (l) => { const m = l.match(/^\| `([^`]+)`/); return m ? m[1] : n
 
 (async () => {
   const done = await encodeAll(encodeJobs);
+  /* The owner's tiles: encoded once from the owner's file (the same Chrome export, which drops every
+     metadata block, as the client-supplied origin requires); kept as committed on every later run. */
+  const ownerDone = [];
+  for (const [slot, o] of Object.entries(OWNER_TILES)) {
+    const have = ['.jpg', '.webp', '-600.webp'].every((e) => fs.existsSync(P(o.base + e)));
+    if (have) { ownerDone.push({ slot, o, written: ['.jpg', '.webp', '-600.webp'].map((e) => ({ file: o.base + e })) , kept: true }); continue; }
+    if (!fs.existsSync(o.src)) throw new Error(`owner tile ${slot}: neither its files nor the owner's source ${o.src} exist`);
+    const url = 'owner:' + slot;
+    fs.copyFileSync(o.src, cacheFile(url));
+    const [d] = await encodeAll([{ key: `owner:${slot}`, url, base: o.base, kind: 'photo' }]);
+    ownerDone.push({ slot, o, written: d.written, natural: d.natural });
+  }
   const newFiles = new Set(done.flatMap((d) => d.written.map((w) => w.file)));
 
   /* Which old files go: every file a fatade-group ledger row or reuse pointed at before this run,
@@ -255,6 +277,7 @@ const rowFile = (l) => { const m = l.match(/^\| `([^`]+)`/); return m ? m[1] : n
   /* Earlier runs of this script: its own files that are no longer produced. */
   if (PREV) for (const f of PREV.files || []) if (!newFiles.has(f)) oldFiles.add(f);
   for (const f of newFiles) oldFiles.delete(f);
+  for (const od of ownerDone) for (const w of od.written) oldFiles.delete(w.file);
   let removed = 0;
   for (const f of oldFiles) if (fs.existsSync(P(f))) { fs.unlinkSync(P(f)); removed++; }
 
@@ -288,6 +311,13 @@ const rowFile = (l) => { const m = l.match(/^\| `([^`]+)`/); return m ? m[1] : n
     delete row.label;
     if (j.base in catImagesByBase) catImagesByBase[j.base].base = j.reuseOf.base;
   }
+  for (const od of ownerDone) {
+    let row = slotRow.get(od.slot);
+    if (!row) { row = { id: od.slot, page: '/catalog/termoizolatie/', ratio: '4 / 3', min_px: '800x600', shows: '' }; LEDGER.slots.push(row); slotRow.set(od.slot, row); }
+    row.state = 'filled'; row.provenance = od.o.base + '.jpg'; row.alt = od.o.alt;
+    row.shows = `Fotografia proprietarului (transfer direct, ${od.o.received}): ${od.o.name}, fara nicio marca. Inlocuieste imaginea fatade3d.md la cererea proprietarului (W29-05).`;
+    delete row.reuse_of; delete row.reuse_reason; delete row.label;
+  }
   /* CT 80 F: its own file now, not a reuse of a slot whose picture moved. */
   const ct = w29.find((r) => r.id === 'f3d-3283');
   const ctRow = slotRow.get(ct.slot);
@@ -303,6 +333,9 @@ const rowFile = (l) => { const m = l.match(/^\| `([^`]+)`/); return m ? m[1] : n
   for (const d of done) for (const w of d.written) {
     provNew.push(`| \`${w.file}\` | ${d.job.url} · ${d.job.fatadePage} · Fatade 3D, source ${d.natural}, written ${w.w}x${w.h} by scripts/intake-catalog-w29.js at the largest resolution served | ${PROV_LICENCE} | https://fatade3d.md/ | ${TODAY} |`);
   }
+  const ownerFiles = new Set(ownerDone.flatMap((od) => od.written.map((w) => w.file)));
+  for (let i = provKept.length - 1; i >= 0; i--) { const f = rowFile(provKept[i]); if (f && ownerFiles.has(f)) provKept.splice(i, 1); }
+  for (const od of ownerDone) for (const w of od.written) provNew.push(`| \`${w.file}\` | client direct transfer, owner, ${od.o.received} | owned by Rapid Construct, supplied for site use | not required, client-supplied original | ${TODAY} |`);
   const lastRow = provKept.map((l, i) => (rowFile(l) ? i : -1)).filter((i) => i >= 0).pop();
   provKept.splice(lastRow + 1, 0, ...provNew);
   fs.writeFileSync(provPath, provKept.join('\n'));
@@ -329,7 +362,8 @@ const rowFile = (l) => { const m = l.match(/^\| `([^`]+)`/); return m ? m[1] : n
     logos: Object.fromEntries(Object.entries(logos).map(([b, base]) => [b, { base, size: (byBase.get(base).written[0] || {}).w ? `${byBase.get(base).written[0].w}x${byBase.get(base).written[0].h}` : null }])),
     tiles: catImages,
     exceptions: Object.fromEntries(Object.entries(EXCEPT).map(([id, e]) => [id, e.how])),
-    files: [...newFiles].sort(),
+    files: [...newFiles, ...ownerFiles].sort(),
+    owner_tiles: Object.fromEntries(Object.entries(OWNER_TILES).map(([k, o]) => [k, { name: o.name, base: o.base, received: o.received }])),
   };
   fs.writeFileSync(P('content/catalog-images-w29.json'), JSON.stringify(IMG, null, 2) + '\n');
 

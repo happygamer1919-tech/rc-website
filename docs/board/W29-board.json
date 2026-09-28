@@ -3,7 +3,7 @@
  "schema_version": 1,
  "opened": "2026-09-28",
  "main_at_open": "595a7cd722930a38a02aaa2a3dc8913635691811",
- "renders_to": null,
+ "renders_to": "https://claude.ai/artifact/JrELJq3JM8Ub8pmLkdvatk",
  "rulings_file": "docs/rulings/W29-R.md",
  "_note": "W29-02 (the first card) creates this board. The wave 29 dispatch of 2026-09-28 asked for three cards in docs/board/, worked in the order W29-02, W29-03, W29-01, one card one PR, skip not halt. Same shape as docs/board/W28-board.json: `ask` is the dispatch text verbatim, `reading` is this terminal's, `acceptance` is commands run from the repo root after node build.js, each ending in the value that passes. Statuses: todo, in_progress, pr_open, merged, verified (section 12.0 exit 0 on the merge sha), blocked, skipped. Standing rule R-W28-12: the artifact is rendered only from this file as it stands on main after a merge, a card's merged and verified state lands in the next pull request, and the run closes with a documents-only board sync listed under board_syncs. `renders_to` is filled by the first sync that publishes the wave 29 artifact.",
  "defaults": {
@@ -37,7 +37,7 @@
   {
    "id": "R-W29-04",
    "title": "Service gallery stock: nothing that reads as non-Moldova, seven hard criteria, no replacement; the fence gallery's last seven go (addendum dispatch)",
-   "pr": null
+   "pr": 205
   }
  ],
  "cards": [
@@ -103,11 +103,11 @@
    "evidence": "quality green 8m42s; merged 2026-09-28 16:18Z as 00b260a; section 12.0 EXIT=0 at 16:22:55Z; local run-gates 36 of 36"
   },
   {
-   "lane": "doing",
-   "status": "pr_open",
+   "lane": "done",
+   "status": "verified",
    "priority": "normal",
    "owner_terminal": "yellow",
-   "pr": null,
+   "pr": 203,
    "id": "W29-01",
    "title": "Catalogue: the fatade3d.md catalogue structure, pages and pictures, in RC colours and design",
    "branch": "w29/w29-01-catalog-fatade",
@@ -124,14 +124,16 @@
     "node scripts/check-catalog-counts.js  -> exit 0 (hub 9 tiles, fatade counts recorded)",
     "node scripts/check-viewport-320.js  -> exit 0 (409 pages)",
     "Lighthouse on hub, tiles page, sub-category, the two largest grids and a product page, both locales  -> performance at or above 90, accessibility 100 (recorded in the PR and docs/reports/W29-RUN.md)"
-   ]
+   ],
+   "merge_sha": "1f1d647806235cb55c8120185e2f645fadbd5cfa",
+   "evidence": "quality green 24m11s; merged 2026-09-28 18:30Z as 1f1d647; section 12.0 EXIT=0 at 18:34:48Z (59 of 59 pages); local run-gates 40 of 40; Lighthouse catalogue pages perf 99 to 100, a11y 100"
   },
   {
-   "lane": "doing",
-   "status": "pr_open",
+   "lane": "done",
+   "status": "verified",
    "priority": "high",
    "owner_terminal": "yellow",
-   "pr": null,
+   "pr": 204,
    "id": "W29-05",
    "title": "The Alte produse tile shows the owner's photograph, not fatade's FATADE membrane",
    "branch": "w29/w29-05-alte-produse-tile",
@@ -144,14 +146,16 @@
     "node build.js && grep -o 'data-photo-slot=\"CATSUB-05\"[^>]*><source[^>]*srcset=\"[^\"]*subcategory-rc' dist/catalog/termoizolatie/index.html dist/ru/catalog/termoizolatie/index.html  -> one match each",
     "node scripts/check-catalog-images.js  -> exit 0 (6 URLs on the owner's tile photograph)",
     "node scripts/check-image-metadata.js && node scripts/check-photo-slots-w24.js && node scripts/check-asset-provenance.js  -> exit 0"
-   ]
+   ],
+   "merge_sha": "5ddc703ba71dd881b35b609e6c6c1339341b3323",
+   "evidence": "quality green 24m15s; merged 2026-09-28 19:06Z as 5ddc703; section 12.0 EXIT=0 at 19:10:20Z"
   },
   {
-   "lane": "doing",
-   "status": "pr_open",
+   "lane": "done",
+   "status": "verified",
    "priority": "normal",
    "owner_terminal": "yellow",
-   "pr": null,
+   "pr": 205,
    "id": "W29-04",
    "title": "Garduri gallery: remove non-Moldova stock, audit all galleries",
    "branch": "w29/w29-04-gallery-non-moldova",
@@ -168,8 +172,16 @@
     "node scripts/check-image-sources.js  -> exit 0",
     "node scripts/check-asset-provenance.js  -> exit 0",
     "docs/audits/w29-04/servicii_galerie-garduri.jpg  -> the fence gallery RO after the change, fifteen thumbnails"
-   ]
+   ],
+   "merge_sha": "697276c664f3141db568447955b87d6bf89f9839",
+   "evidence": "quality green 24m10s on the head with main merged in; merged 2026-09-28 19:32Z as 697276c; section 12.0 EXIT=0 at 19:36:10Z; local run-gates 41 of 41; gallery-removed exits 1 on main before the card (366 problems)"
   }
  ],
- "board_syncs": []
+ "board_syncs": [
+  {
+   "branch": "w29/w29-r1-final-run",
+   "date": "2026-09-28",
+   "records": "W29-01, W29-05 and W29-04 verified (#203 to #205), docs/reports/W29-RUN.md; the board artifact (renders_to, the page wave 28 used) republished from main after this merges; the wave run closes here"
+  }
+ ]
 }

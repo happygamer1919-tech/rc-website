@@ -14715,3 +14715,12 @@ the ledger and manifests; watched fail on the build of `1f1d647` (366 problems).
 page is 900px shorter (4,981 to 4,081 at 1280, both locales), its two budgets move to 4,141 in
 `scripts/verify-live.js` and R-Y, and its `galSlides` marker goes from 22 to 15; the ten service pages with a
 gallery card measure identical before and after.
+
+## W29-R1 · The closing report W29-RUN and the board sync, 2026-09-28
+
+Branch `w29/w29-r1-final-run`, on `main` at `697276c`. Documents only. `docs/reports/W29-RUN.md` closes the wave 29
+run: #200 to #205 (W29-00, W29-02, W29-03, W29-01, W29-05, W29-04), each merged on green and verified live
+(section 12.0 exit 0 on every merge sha), the deviations, fatade's measured motion against what shipped, the
+products per sub-category, the four exceptions, Lighthouse on the catalogue pages and the per-gallery removals.
+The board JSON names every merge and this sync; the board artifact (the page wave 28 used, now drawn from
+`docs/board/W29-board.json`) is republished from `main` after this merges (R-W28-12). Q-W29-01 to 12 stay open.

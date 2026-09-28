@@ -1445,10 +1445,13 @@ the artifact is republished from `main` after this merges. Documents only.
 **Status: MERGED #202, section 12.0 exit 0** (opened 2026-09-28, merged 2026-09-28 16:18 UTC as `00b260a`). The "Deschide galeria" card is an orange button with icon and count on all 20 gallery cards; two previews replaced (Fatade 3 to 1, Terasamente 7 to 1); gate 37 (`scripts/check-gallery-preview.js`, gallery-preview-distinct).
 
 ## W29-01 · Catalogue: the fatade3d.md structure, pages and pictures
-**Status: PR open** (opened 2026-09-28). 162 products in 165 placements from the committed capture, three page levels plus a product page per product (324 pages), 912 picture files on the R-W29-02 licence, the flyout menu with fatade's timing; gates 38 to 41; Q-W29-04 to 09.
+**Status: MERGED #203, section 12.0 exit 0** (opened 2026-09-28, merged 2026-09-28 18:30 UTC as `1f1d647`). 162 products in 165 placements from the committed capture, three page levels plus a product page per product (324 pages), 912 picture files on the R-W29-02 licence, the flyout menu with fatade's timing; gates 38 to 41; Q-W29-04 to 09.
 
 ## W29-05 · The Alte produse tile shows the owner's photograph
-**Status: PR open** (opened 2026-09-28). CATSUB-05 on the owner's photograph; the intake keeps it on a re-run. Owner message.
+**Status: MERGED #204, section 12.0 exit 0** (opened 2026-09-28, merged 2026-09-28 19:06 UTC as `5ddc703`). CATSUB-05 on the owner's photograph; the intake keeps it on a re-run. Owner message.
 
 ## W29-04 · Garduri gallery: remove non-Moldova stock, audit all galleries
-**Status: PR open** (opened 2026-09-28). R-W29-04: 25 stock pictures (50 files) leave eleven galleries under seven criteria, no replacement; the fence gallery keeps its twelve RC-own photographs and three stock pictures. `docs/reports/W29-04-REMOVED.md` lists every file; gate 42 (`scripts/check-gallery-removed.js`, gallery-removed). Q-W29-10 to 12.
+**Status: MERGED #205, section 12.0 exit 0** (opened 2026-09-28, merged 2026-09-28 19:32 UTC as `697276c`). R-W29-04: 25 stock pictures (50 files) leave eleven galleries under seven criteria, no replacement; the fence gallery keeps its twelve RC-own photographs and three stock pictures. `docs/reports/W29-04-REMOVED.md` lists every file; gate 42 (`scripts/check-gallery-removed.js`, gallery-removed). Q-W29-10 to 12.
+
+## W29-R1 · The closing report W29-RUN and the board sync
+**Status: board sync, not a card** (opened 2026-09-28). `docs/reports/W29-RUN.md`; the board JSON names #200 to #205; the artifact is republished from `main` after this merges. Documents only.

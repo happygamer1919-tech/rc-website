@@ -33,6 +33,11 @@
    "id": "R-W29-03",
    "title": "Whole-card service links; a gallery preview never repeats a described picture",
    "pr": 200
+  },
+  {
+   "id": "R-W29-04",
+   "title": "Service gallery stock: nothing that reads as non-Moldova, seven hard criteria, no replacement; the fence gallery's last seven go (addendum dispatch)",
+   "pr": null
   }
  ],
  "cards": [
@@ -119,6 +124,30 @@
     "node scripts/check-catalog-counts.js  -> exit 0 (hub 9 tiles, fatade counts recorded)",
     "node scripts/check-viewport-320.js  -> exit 0 (409 pages)",
     "Lighthouse on hub, tiles page, sub-category, the two largest grids and a product page, both locales  -> performance at or above 90, accessibility 100 (recorded in the PR and docs/reports/W29-RUN.md)"
+   ]
+  },
+  {
+   "lane": "doing",
+   "status": "pr_open",
+   "priority": "normal",
+   "owner_terminal": "yellow",
+   "pr": null,
+   "id": "W29-04",
+   "title": "Garduri gallery: remove non-Moldova stock, audit all galleries",
+   "branch": "w29/w29-04-gallery-non-moldova",
+   "depends_on": [
+    "W29-01"
+   ],
+   "ask": "W29-04 Garduri gallery: remove non-Moldova stock, audit all galleries\nRuling R-W29-04 (append to docs/rulings/W29-R.md): service gallery stock images must not show scenery that reads as non-Moldova. Hard criteria, remove if ANY applies: mountains or cliffs in frame, snow with non-local house style, Mediterranean or coastal vegetation, log cabins or timber houses, ornate wrought-iron gates on villas, visible foreign signage or plates, greenhouse or industrial campus backdrops. Close-up product shots (mesh, gabion, jaluzele panels, tile texture) with no scenery are allowed. No replacements from stock. Gaps stay until owner supplies RC-own photos.\n\n1. Garduri gallery (RO and RU): remove the last 7 stock images: iron gate with flowered wall, snow gate with garage, road fence with greenhouse, mountain fence with orange chairs, gabion wall, chain-link mesh wall, log house with metal fence. Keep RC-own images and the three jaluzele close-ups. Delete files from public/, remove SOURCES.md rows, update alt maps.\n2. Audit every other service gallery and the fatade service gallery against R-W29-04 criteria. Remove offenders, same cleanup. List per gallery in the report: kept count, removed files with the criterion that hit.\n3. Gallery preview image rule from W29-03 still holds after removals, re-run gallery-preview-distinct.\n\nAcceptance: committed docs/reports/W29-04-REMOVED.md lists every removed path; named test gallery-removed asserts none of those paths is referenced in any page or manifest, exit 0; gallery-preview-distinct green; 320px gate green; screenshot of the Garduri gallery RO after change.",
+   "reading": "Eleven galleries, stock only (origin stock); owner photographs never. The owner's seven are fence gallery files 16 to 22; two of them (gabion, chain-link) meet no criterion and go on the list alone. The three kept stock pictures (13, 14, 15) are not jaluzele close-ups (Q-W29-10). Criteria applied literally to the frame; eight borderline removals (Q-W29-11) and eleven kept-but-foreign pictures (Q-W29-12) asked. 25 pictures, 50 files; no renumbering; industrial's preview photograph removed, its preview 1 now names 02. verify-live galSlides 22 to 15 and the fence gallery budgets re-measured (R-Y).",
+   "acceptance": [
+    "node scripts/check-gallery-removed.js  -> exit 0 (gallery-removed, gate 42; exits 1 on the build of 1f1d647, 366 problems)",
+    "node scripts/check-gallery-preview.js  -> exit 0 (gallery-preview-distinct, gate 37)",
+    "node scripts/check-viewport-320.js  -> exit 0",
+    "node scripts/check-galleries.js  -> exit 0",
+    "node scripts/check-image-sources.js  -> exit 0",
+    "node scripts/check-asset-provenance.js  -> exit 0",
+    "docs/audits/w29-04/servicii_galerie-garduri.jpg  -> the fence gallery RO after the change, fifteen thumbnails"
    ]
   }
  ],

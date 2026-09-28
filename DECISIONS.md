@@ -14675,3 +14675,30 @@ catalog-structure, 39 catalog-parity, 40 catalog-images, 41 the generator check;
 out animations, gate 31 counts the fatade categories, gate 32 reversed for R-W29-02, the R-X percent-off
 pattern reads "1-2%" as a range, the catalogue page gate knows a product page, the provenance gate lifts
 fatade3d.md for the catalogue folder only. Questions Q-W29-04 to Q-W29-09.
+
+## W29-04 · Non-Moldova stock leaves the service galleries, 2026-09-28
+
+Branch `w29/w29-04-gallery-non-moldova`, on `main` at `1f1d647`. Ruling R-W29-04 (the addendum dispatch).
+**The audit.** Every one of the 115 stock pictures in `content/galleries.json` was opened at full size and read
+against the ruling's seven criteria, with plates, signs and backdrops cropped and enlarged where they decided
+the call; the owner's photographs were not candidates. **25 pictures, 50 files, leave**: the fence gallery's
+seven (16 to 22, one for one with the owner's descriptions: the flowered-wall gate for Mediterranean
+vegetation, the snow gate for snow and an ornate gate, the greenhouse road fence, the mountain fence, the
+gabion and chain-link close-ups on the owner's list alone, the log house), and eighteen from the audit:
+acoperisuri 19, 20, 21, 23, 25; case-la-cheie 03, 09; copertine 03, 04, 05, 07, 08, 09, 10, 12; fatade 19;
+reparatii 30; industrial 01. finisaje, instalatii, terasamente and proiectare-3d keep all theirs. Counts after:
+fence gallery 15, acoperisuri 20, case-la-cheie 10, copertine 4, fatade 18, reparatii 36, industrial 9; 90 stock
+pictures remain. **The cleanup** is the whole trace: files deleted, ledger entries (and their alt text in both
+locales, which is where a stock picture's alt lives) dropped, the SOURCES row and both PROVENANCE rows of each
+deleted; no file renumbered, no picture added. **Previews**: every removed picture sits after its gallery's
+preview, so no `preview` value moves; industrial's preview photograph (01) is itself removed, and its 1 now
+names 02, R-W29-03's "first stock" order; gate 37 reads it against the four industrial covers. **Readings,
+open for ratification** (W29-R.md): the owner's list binds as written, so the gabion and chain-link close-ups go
+although the ruling's close-up allowance would keep them; the three kept fence pictures are not jaluzele
+close-ups (Q-W29-10); eight removals rest on a reading (Q-W29-11); eleven kept pictures may still read foreign
+(Q-W29-12). **Gate 42**, gallery-removed, reads the list from the report and holds every listed file, its thumb
+and its JPEG twin, off every built page, data file and manifest and off disk, and every removed source URL out of
+the ledger and manifests; watched fail on the build of `1f1d647` (366 problems). **Also**: the fence gallery
+page is 900px shorter (4,981 to 4,081 at 1280, both locales), its two budgets move to 4,141 in
+`scripts/verify-live.js` and R-Y, and its `galSlides` marker goes from 22 to 15; the ten service pages with a
+gallery card measure identical before and after.

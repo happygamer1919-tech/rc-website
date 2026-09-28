@@ -66,12 +66,17 @@ const PATTERNS = [
   { id: 'ru-skidka', kind: 'discount', scope: 'text', re: word('скидк[а-я]*'), yes: ['Скидка 10% на любую услугу только до 2027 года', 'скидка десять процентов', 'Скидки'] },
   { id: 'ru-rannei', kind: 'discount', scope: 'text', re: word('при ранней записи'), yes: ['−10% при ранней записи'] },
   { id: 'ru-do-goda', kind: 'discount', scope: 'text', re: word('только до 20\\d\\d года'), yes: ['только до 2027 года'] },
-  { id: 'percent-off', kind: 'discount', scope: 'text', re: /(?:[−-]\s?\d{1,2}\s?%)|(?:\d{1,2}\s?%\s*(?:la |pe |pentru |reducere|discount|на |скидк))/iu, yes: ['−10% la programări anticipate', '-10%', '10% la orice serviciu', '10% на любую услугу'] },
+  /* AMENDED (W29-01): a hyphen straight after a digit is a RANGE, not a minus sign: two plaster data
+     sheets fatade3d.md publishes read "dilute with 1-2% water". `(?<!\d)` keeps every discount shape
+     the arms below name and lets a range through; the range is in CLEAN so it is watched passing. */
+  { id: 'percent-off', kind: 'discount', scope: 'text', re: /(?:(?<!\d)[−-]\s?\d{1,2}\s?%)|(?:\d{1,2}\s?%\s*(?:la |pe |pentru |reducere|discount|на |скидк))/iu, yes: ['−10% la programări anticipate', '-10%', '10% la orice serviciu', '10% на любую услугу'] },
 ];
 
 /* Phrases that must never match. Each is on the site, or is a near miss that a
    careless pattern would catch. */
 const CLEAN = [
+  'Diluație: se poate dilua cu maxim 1-2% apă, în funcție de temperatură.',
+  'Разбавление: нет, 1-2% воды в зависимости от температуры.',
   'O singură echipă răspunde de tot proiectul, de la structură până la ultimul finisaj.',
   'Garanție 30 de ani în contract',
   'generate separate decorate',

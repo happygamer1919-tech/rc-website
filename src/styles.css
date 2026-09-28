@@ -41,6 +41,14 @@
   --reveal-dur: 380ms;  /* W28-01: 380ms for reveals and the image zoom */
   --hover-dur: 320ms;   /* W28-01: 320ms on --ease-out, one curve for everything */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  /* W29-01: fatade3d.md's own motion, measured in headless Chrome on 2026-09-28
+     (docs/catalog/FATADE-MOTION-W29.json): the catalogue panel and its flyout open with a 0.3s
+     ease-in-out keyframe, and the tile, the "Vezi produse" button and the product card hover on
+     0.3s. The duration and the curve are reproduced; the travel is not (fatade slides the panel
+     511px and the flyout 330px), because section 1 of docs/CLAUDE.md caps travel under 20px. */
+  --menu-dur: 300ms;
+  --menu-ease: ease-in-out;
+  --menu-travel: 16px;
 
   --line: #E6E1DA;
   /* W28-01: the CLEAR outline, for form fields and filter buttons only: 3.02:1 on white,
@@ -504,13 +512,12 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 /* The dispatch's columns: 4 at 1440, 3 at 1024, 2 at 768, 1 at 390. The stated
    widths are the breakpoints, so each rule takes effect at or below the width
    above the one it names. */
-@media (max-width: 1180px) {
-  .prod-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
+/* AMENDED (W29-01, the owner's dispatch): "4 columns desktop, 2 tablet, 1 at 320px". The three-column
+   step at 1180 is gone; four columns hold down to 1025, two from 1024 to 512, one below. */
 @media (max-width: 1024px) {
   .cat-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .prod-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 511px) {
@@ -1045,6 +1052,7 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 .catalog__row.is-active > .catalog__link:hover { color: var(--ink); }
 .catalog__sub {
   position: absolute; top: -1px; left: calc(100% + 4px);
+  animation: rc-flyout-in var(--menu-dur) var(--menu-ease);
   width: 300px;
   background: var(--bg-light); color: var(--ink);
   border: 1px solid var(--hairline); border-radius: var(--radius-panel);
@@ -1052,6 +1060,16 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
 }
 .catalog__sub[hidden] { display: none; }
 .catalog__back { display: none; }
+/* W29-01. fatade3d.md's flyout: it opens beside the row that opened it, its top on that row's top,
+   and it is headed by the category's name; the chevron points right and stays right. The row is the
+   flyout's containing block, so "aligned to the top of that row" is a property of the layout rather
+   than a number measured once. */
+.catalog__row--parent { position: relative; }
+.catalog__row--title { background: var(--bg-warm); }
+.catalog__row--title .catalog__link { font-size: 16px; color: var(--ink); }
+.catalog__panel { animation: rc-menu-in var(--menu-dur) var(--menu-ease); }
+@keyframes rc-menu-in { from { opacity: 0; transform: translateY(var(--menu-travel)); } to { opacity: 1; transform: none; } }
+@keyframes rc-flyout-in { from { opacity: 0; transform: translateX(var(--menu-travel)); } to { opacity: 1; transform: none; } }
 
 /* W19-D10. A phone held sideways is wider than 768px but only 375 to 430px tall,
    so it got the flyout above, which cannot scroll and whose bottom sits 447px down:
@@ -1067,9 +1085,10 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
     position: fixed; top: 96px; left: 0; right: 0; bottom: 0;
     width: auto; border-width: 1px 0 0; border-radius: 0; box-shadow: none; overflow-y: auto;
   }
+  .catalog__row--parent { position: static; }
   .catalog__sub {
-    top: 0; left: 0; right: 0; bottom: 0; width: auto; min-height: 100%;
-    border: 0; border-radius: 0; box-shadow: none;
+    top: var(--sub-top, 0px); left: 0; right: 0; bottom: auto; width: auto; min-height: calc(100% - var(--sub-top, 0px));
+    border: 0; border-top: 1px solid var(--hairline); border-radius: 0; box-shadow: none;
   }
   .catalog__back {
     display: flex; align-items: center; gap: 8px; width: 100%;
@@ -2296,9 +2315,12 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
     position: fixed; top: 80px; left: 0; right: 0; bottom: 0;
     width: auto; border-width: 1px 0 0; border-radius: 0; box-shadow: none; overflow-y: auto;
   }
+  /* AMENDED (W29-01): the sub-list opens at the height of the row that opened it and slides in from
+     the right, never upward; src/main.js writes --sub-top from the row's own offset. */
+  .catalog__row--parent { position: static; }
   .catalog__sub {
-    top: 0; left: 0; right: 0; bottom: 0; width: auto; min-height: 100%;
-    border: 0; border-radius: 0; box-shadow: none;
+    top: var(--sub-top, 0px); left: 0; right: 0; bottom: auto; width: auto; min-height: calc(100% - var(--sub-top, 0px));
+    border: 0; border-top: 1px solid var(--hairline); border-radius: 0; box-shadow: none;
   }
   .catalog__back {
     display: flex; align-items: center; gap: 8px; width: 100%;
@@ -2473,6 +2495,96 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
    Elements render in their final state.
    ========================================================================== */
 
+/* --- W29-01, the catalogue's sub-category tiles and product page ----------------------------- */
+/* Prefixes .subcat and .pd grepped free (3.1). No new colour: the tile is the card's white on its
+   hairline, the TOP badge --brand with --ink (5.3:1), the "Vezi produse" button an outline in
+   --brand-dark that fills on hover (white on --brand-dark, 5.93:1). */
+.subcat-grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap);
+}
+.subcat { display: flex; }
+.subcat__link {
+  display: flex; flex-direction: column; width: 100%;
+  background: var(--bg-light); color: var(--ink);
+  border: 1px solid var(--hairline); border-radius: 20px; overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.subcat__link:hover, .subcat__link:focus-visible { color: var(--ink); }
+.subcat__link:focus-visible { outline: 3px solid var(--brand-dark); outline-offset: 3px; }
+.subcat__media { position: relative; padding: 12px 12px 0; }
+.subcat__ph { border-radius: 12px; overflow: hidden; }
+.subcat__ph.ph--filled img { object-fit: contain; background: var(--bg-light); }
+.subcat__badge {
+  position: absolute; top: 20px; left: 20px;
+  padding: 4px 10px; border-radius: 999px;
+  background: var(--brand); color: var(--ink);
+  font-size: 13px; font-weight: 700; line-height: 1.2; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.subcat__body { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 18px 20px 22px; flex: 1; }
+.subcat__name { margin: 0; font-size: 20px; font-weight: 700; line-height: 1.25; }
+.subcat__btn {
+  margin-top: auto; display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 16px; border-radius: 999px; border: 2px solid var(--brand-dark);
+  color: var(--brand-dark); font-size: 16px; font-weight: 700; line-height: 1;
+}
+.subcat__btn svg { display: block; flex: none; }
+.subcat__link:hover .subcat__btn, .subcat__link:focus-visible .subcat__btn { background: var(--brand-dark); color: var(--bg-light); }
+@media (max-width: 1024px) { .subcat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 511px) { .subcat-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* The card's manufacturer logo and its name link. The logo is small and never wider than the card
+   text; the name link carries the card's ink, not the global link hover. */
+.prod__logo { display: block; order: 0; margin-bottom: 8px; }
+.prod__logo img { display: block; height: 28px; width: auto; max-width: 120px; object-fit: contain; object-position: left center; }
+.prod__link { color: inherit; }
+.prod__link:hover { color: var(--brand-dark); }
+
+/* The product page: pictures on the left, the facts and the quote button on the right; the
+   description and the specifications under both. */
+.pd { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+.pd__main .pd__ph { border: 1px solid var(--hairline); border-radius: 20px; overflow: hidden; }
+.pd__main .pd__ph.ph--filled img { object-fit: contain; background: var(--bg-light); }
+.pd__thumbs { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.pd__thumb {
+  display: block; width: 72px; height: 72px; padding: 0; overflow: hidden; cursor: pointer;
+  background: var(--bg-light); border: 1px solid var(--hairline); border-radius: 10px;
+}
+.pd__thumb[aria-pressed='true'] { border: 2px solid var(--brand-dark); }
+.pd__thumb img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.pd__info { background: none; border: 0; border-radius: 0; box-shadow: none; padding: 0; gap: 16px; overflow: visible; }
+.pd__info:hover { translate: none; box-shadow: none; }
+.pd__logo img { display: block; height: 36px; width: auto; max-width: 160px; object-fit: contain; object-position: left center; }
+.pd__amount { display: flex; }
+.pd__info .prod__price { font-size: 28px; }
+.pd__vars { margin: 0; display: grid; gap: 10px; }
+.pd__vars div { display: grid; grid-template-columns: minmax(0, 9em) minmax(0, 1fr); gap: 12px; }
+.pd__vars dt { font-weight: 700; }
+.pd__vars dd { margin: 0; color: var(--ink-muted); overflow-wrap: anywhere; }
+.pd__line { margin: 0; color: var(--ink-muted); }
+.pd__info .pd__cta { align-self: flex-start; width: auto; height: auto; min-height: 48px; padding: 14px 28px; border-radius: 999px; }
+.pd__block { margin-top: 48px; max-width: 820px; }
+.pd__h { margin: 0 0 16px; font-size: 24px; }
+.pd__desc p { margin: 0 0 12px; }
+.pd__desc ul { margin: 0 0 12px; padding-left: 20px; }
+.pd__specs-scroll { overflow-x: auto; }
+.pd__specs { width: 100%; border-collapse: collapse; }
+.pd__specs th, .pd__specs td { padding: 10px 12px; border-bottom: 1px solid var(--hairline); text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+.pd__specs th { width: 40%; font-weight: 700; }
+@media (max-width: 900px) { .pd { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
+
+/* fatade's hover timing on the tile, its button and the product card: 0.3s, ease on the tile and
+   ease-in-out on the button and the card (docs/catalog/FATADE-MOTION-W29.json). Transform and
+   shadow move; colour changes are a state, as everywhere on this site. */
+@media (prefers-reduced-motion: no-preference) {
+  .subcat__link { transition: translate var(--menu-dur) ease, box-shadow var(--menu-dur) ease, border-color var(--menu-dur) ease; }
+  .subcat__link:hover { translate: 0 -4px; box-shadow: var(--shadow-card-hover); border-color: var(--brand); }
+  .subcat__btn { transition: background-color var(--menu-dur) var(--menu-ease), color var(--menu-dur) var(--menu-ease); }
+  .subcat__ph img { transition: transform var(--menu-dur) ease; }
+  .subcat__link:hover .subcat__ph img { transform: scale(1.03); }
+  .prod-grid .prod { transition: translate var(--menu-dur) var(--menu-ease), box-shadow var(--menu-dur) var(--menu-ease), border-color var(--menu-dur) var(--menu-ease); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -2508,6 +2620,10 @@ main > .section--light:nth-child(even of .section) { background: var(--bg-light)
   .supplier[aria-hidden="true"] { display: none; }
   /* Header: no compression animation. */
   .header, .header__logo img { transition: none !important; }
+  /* W29-01: the catalogue panel and its flyout open with no animation. */
+  .catalog__panel, .catalog__sub { animation: none !important; }
+  .subcat__link:hover { translate: none !important; }
+  .subcat__link:hover .subcat__ph img { transform: none !important; }
   /* Modal: no entrance. */
   .modal, .modal__panel { transition: none !important; animation: none !important; }
 }

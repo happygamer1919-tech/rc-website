@@ -68,7 +68,11 @@
       row.hoverOpened = false;
       row.classList.add('is-active');
       row.querySelector('.catalog__expand').setAttribute('aria-expanded', 'true');
-      row.querySelector('.catalog__sub').removeAttribute('hidden');
+      var sub = row.querySelector('.catalog__sub');
+      /* W29-01: on the sheet the sub-list opens at the height of its own row, never above it. */
+      if (mobile.matches) sub.style.setProperty('--sub-top', row.offsetTop + 'px');
+      else sub.style.removeProperty('--sub-top');
+      sub.removeAttribute('hidden');
     }
     function isOpen() { return !sheet.hasAttribute('hidden'); }
     function setOpen(open) {
@@ -126,6 +130,26 @@
         }
       });
       backBtn.addEventListener('click', function () { closeSubs(null); expand.focus(); });
+    });
+  })();
+
+  /* --- W29-01, the product page's pictures -------------------------------- */
+  /* A thumbnail shows its picture in the main frame. Pure swap of the frame's two sources; no
+     animation, and nothing here listens to scrolling. */
+  (function () {
+    var main = document.querySelector('[data-pd-main]');
+    if (!main) return;
+    var thumbs = document.querySelectorAll('[data-pd-thumb]');
+    Array.prototype.forEach.call(thumbs, function (t) {
+      t.addEventListener('click', function () {
+        var img = main.querySelector('img');
+        var source = main.querySelector('source');
+        if (!img) return;
+        if (source) { source.setAttribute('srcset', t.getAttribute('data-pd-webp')); source.removeAttribute('sizes'); }
+        img.setAttribute('src', t.getAttribute('data-pd-jpg'));
+        img.setAttribute('alt', t.getAttribute('data-pd-alt') || '');
+        Array.prototype.forEach.call(thumbs, function (o) { o.setAttribute('aria-pressed', o === t ? 'true' : 'false'); });
+      });
     });
   })();
 

@@ -217,6 +217,11 @@ const openPanel = (toggleId, panelId) => `(() => {
   if (p.hidden) t.click();
   return { open: !p.hidden && t.getAttribute('aria-expanded') === 'true' };
 })()`;
+/* AMENDED (W29-01): the catalogue panel and its flyout now open with a 300ms keyframe (fatade3d.md's
+   timing, docs/CLAUDE.md section 1's limits). "At rest" means after it: every running animation on
+   the page is waited out before a measurement, exactly as gate 28 does, so an opacity read mid-entrance
+   is never taken for the resting state. A panel that never settles still fails on its opacity. */
+const SETTLE = `Promise.race([Promise.all(document.getAnimations().map((a) => a.finished.catch(() => null))), new Promise((r) => setTimeout(r, 3000))]).then(() => 1)`;
 const closeAll = `(() => { for (const id of ['svcmenu-toggle', 'catalog-toggle']) { const t = document.getElementById(id); if (t && t.getAttribute('aria-expanded') === 'true') t.click(); } })()`;
 
 async function main() {
@@ -296,7 +301,7 @@ async function main() {
       /* The Catalog panel, then each category's sub-list in turn. */
       const o2 = await cdp.ev(openPanel('catalog-toggle', 'catalog-panel'));
       if (o2.error || !o2.open) { problems.push({ kind: 'PRESENCE', where, msg: `Catalog: ${o2.error || 'the panel did not open'}` }); continue; }
-      await park(h); await sleep(150);
+      await park(h); await sleep(150); await cdp.ev(SETTLE);
       const top = judge(where, 'Catalog', await cdp.ev(`${MEASURE}('catalog-panel')`));
       const parents = await cdp.ev(`document.querySelectorAll('#catalog-panel .catalog__list--top > .catalog__row--parent').length`);
       if (!parents) problems.push({ kind: 'PRESENCE', where, msg: 'Catalog: no category with a sub-list' });
@@ -309,7 +314,7 @@ async function main() {
           return { open: !sub.hidden, name: (row.querySelector('.catalog__link') || {}).textContent || '' };
         })()`);
         if (!opened.open) { problems.push({ kind: 'PRESENCE', where, msg: `Catalog: the sub-list of "${opened.name.trim()}" did not open` }); continue; }
-        await park(h); await sleep(100);
+        await park(h); await sleep(100); await cdp.ev(SETTLE);
         const m = judge(where, `Catalog > ${opened.name.trim()}`, await cdp.ev(`${MEASURE}('catalog-panel')`));
         if (m !== null) { subMin = Math.min(subMin, m); combo.subs++; }
       }

@@ -53,6 +53,13 @@ const DIRECT_SUPPLIER_LICENCES = {
   'dasterum.md': DIRECT_SUPPLIER_LICENCE,
   'fatade3d.md': 'direct supplier, fatade3d.md, owner buys catalogue goods directly and accepts use of their product data and product images, watermark as published, owner accepted 2026-09-21',
 };
+/* R-W29-01 and R-W29-02 (wave 29, 2026-09-28). The owner obtained permission from Fatade 3D to reuse
+   their CATALOGUE pictures and structure; R-13 stays in force outside the catalogue. So the third
+   sentence lifts fatade3d.md only for a file under the catalogue's own picture folder, which is where
+   scripts/intake-catalog-w29.js writes every picture it takes: the same sentence on any other file is
+   refused by name. Held exactly, like the two above. */
+const W29_LICENCE = 'direct supplier, fatade3d.md, permission Fatade 3D via owner 2026-09-28 (R-W29-01, R-W29-02)';
+const W29_FOLDER = 'public/images/catalog/';
 /* R-W amendment, 2026-09-21 (W25-R15). NOT a direct supplier and deliberately not
    written like one. imperlux.md is a competitor, the owner has decided to take
    twelve pictures from it anyway, and the row says so in those words. The
@@ -287,7 +294,9 @@ for (const { line, c } of rows) {
   }
   /* W25-R7 and W25-R14: one host, one exact sentence, and the sentence names the
      host, so the fatade3d licence cannot lift dasterum.md or the other way round. */
-  const supplierHost = Object.keys(DIRECT_SUPPLIER_LICENCES).find((h) => licence === DIRECT_SUPPLIER_LICENCES[h]) || null;
+  const w29 = licence === W29_LICENCE;
+  if (w29 && !file.startsWith(W29_FOLDER)) problems.push(`${where} ${file} carries the R-W29-01 catalogue licence and is not under ${W29_FOLDER}; the permission covers catalogue pictures only (R-13 stays in force elsewhere).`);
+  const supplierHost = (w29 && file.startsWith(W29_FOLDER)) ? 'fatade3d.md' : (Object.keys(DIRECT_SUPPLIER_LICENCES).find((h) => licence === DIRECT_SUPPLIER_LICENCES[h]) || null);
   /* The licence names its ruling and the ruling names its files, so the pair has to
      agree: a row carrying one ruling's sentence on the other ruling's file is not an
      override at all. */

@@ -42,6 +42,12 @@ is a transform the reveal never sets. The reveal's transition list carries the h
 with no stagger delay, so a card answers the pointer at once. Measured: a card with a 120ms
 stagger reads -0.84px 40ms after the pointer arrives and -4px at rest.
 
+**AMENDED (W29-01, the wave 29 dispatch: "reproduce those values"): the Catalog panel and its flyout open
+with fatade3d.md's measured timing, 300ms ease-in-out (`--menu-dur`, `--menu-ease`), on opacity and
+transform, travel held at 16px (`--menu-travel`; fatade slides 511px and 330px), none under reduced
+motion.** This is motion in the header, which the clause above excludes; it answers a click, not the page
+load or the scroll, and it is recorded as a deviation for the owner to ratify (Q-W29-08), not assumed.
+
 **The stricter parent rule still holds:** zero *scroll-driven* motion. No
 parallax, no scroll sequences, no count-up numerals, no auto-advancing
 carousels. The predecessor build was rejected over a scroll-driven section whose
@@ -175,7 +181,8 @@ refused once: the `form-bg` slot was struck for needing exactly that.
 `.hub__*` belongs to the bento hub. `.prod__*` belongs to the catalogue card,
 `.cat-*` to the catalogue category page, `.nvk-*` to the Novatik grid,
 `.xsell-*` to the cross-sell row, **`.pf-cta*` to the portfolio's quote button (W28-12) and
-`.lk-*` to the catalogue link cards on a service page (W28-13)**.
+`.lk-*` to the catalogue link cards on a service page (W28-13)**, **`.subcat*` to the sub-category
+tiles and `.pd*` to the catalogue product page (W29-01)**.
 
 **Before writing a new block's first rule, grep `src/styles.css` for its prefix.**
 If anything comes back, the prefix is taken and the new block gets a different
@@ -339,6 +346,15 @@ derived "de la" lines are permitted by SHAPE in the price scan, `<div class="roo
 data-roof-table>` through its `</table>`, held to the count `content/roofing-sections.json`
 names; a price in prose outside them still fires, and the arm watches both.**
 *Source: DECISIONS.md, W24-R ruling R3, and W24-04.*
+**AMENDED (W29-01, the wave 29 dispatch: "Product detail pages: same fields as fatade (name, variants,
+description, price), our design, 'Solicita oferta' CTA instead of cart"): the catalogue gains a PRODUCT
+page per product, both locales, one level below the page that lists it.** It carries fatade3d.md's name,
+variants, description and specifications as the capture recorded them (Russian from fatade's own switcher,
+or translated in `content/catalog-ru-w29.json` where fatade has none), the price in the same `.prod__price`
+shape a card uses, and a quote button; no cart. It is copied text, not authored prose: section 5's rule
+against inventing copy is kept by copying it, and every prohibition `scripts/check-catalog-pages.js` holds
+reads it whole (a product page is a kind of its own there). A phrase a prohibition refuses is edited out
+with its reason in `content/catalog-ru-w29.json`, never left in and never exempted.
 
 **AMENDED (W24-R7, wave 24): the two phrases are permitted by their SHAPE, not by the
 page.** The owner's ruling: "Imperlux prices are not published. Slots render 'Preț la
@@ -443,6 +459,16 @@ placeholder whose slot id has no row. **No image, logo or asset from `fatade3d.m
 `imperlux.md` or `dasterum.md` enters the repo** (W24-R2); their pages are fetched to read
 text and measure layout, and nothing else crosses.
 *Source: DECISIONS.md, W24-R, rulings R2 and the W24-01 card.*
+**AMENDED (W29-01, rulings R-W29-01 and R-W29-02): the catalogue's pictures from fatade3d.md cross.** The
+owner obtained permission from Fatade 3D on 2026-09-28; fatade3d.md is the source of record for every
+fatade category, every picture is taken at the largest resolution served by
+`scripts/intake-catalog-w29.js` into `public/images/catalog/<category>/<sub>/`, and each has a SOURCES row
+with the licence "permission Fatade 3D via owner 2026-09-28" and an R-W row with the exact sentence
+`scripts/check-asset-provenance.js` holds, which it lifts for that folder only. Manufacturer marks and the
+Fatade packaging marks are allowed on those pictures; W27-R-13 (no third-party mark) holds everywhere
+outside the catalogue. `imperlux.md` and `dasterum.md` keep W24-R2 in full. **The supplier's name as TEXT is
+still refused on a catalogue page (section 5)**: R-W29-01 lifts it for pictures only, so a name, a slug or
+a description that carries it is printed without it, each change logged by `scripts/gen-catalog-w29.js`.
 
 ---
 
@@ -623,6 +649,9 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     does not open, when an open panel shows no text, when a colour cannot be read, when a
     template page carries no dropdown, when either locale carries none, and when fewer
     combinations were measured than the matrix holds.
+    **AMENDED (W29-01):** the Catalog panel and its flyout now open with a 300ms keyframe, so every
+    running animation is waited out before a measurement (gate 28's rule); a panel that never settles
+    still fails on its opacity.
 
 19. `node scripts/check-photo-slots-w24.js` clean. **Since W24-01 (wave 24)**, run by
     `quality`. **Every image wave 24 renders is a placeholder**, and
@@ -977,6 +1006,10 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     are named in the script so a data change that moves one is reported by name rather than
     absorbed. `--llms` (W28-19) additionally requires every top-level catalogue URL in
     `dist/llms.txt`. It fails on zero pages, a missing data file or a page it cannot find.
+    **AMENDED (W29-01, "update catalog-counts test to the new category slugs and counts"):** it also
+    holds the catalogue index to nine tiles and every fatade category and sub-category page to the
+    product count fatade3d.md rendered on 2026-09-28, recorded in the script, and to the data's own list;
+    the two parents with sub-categories to their tile counts (5 and 2) and to no product card.
 
 32. `node scripts/check-image-sources.js` clean. **Since W28-15 (wave 28)**, run by `quality`
     after gate 31. **Every catalogue picture on the fatade3d.md direct-supplier licence names a
@@ -998,6 +1031,13 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     the manufacturer and owner-picked packshots (Q-W28-05) and never licenses them as stock. It
     fails on zero fatade records, zero stock pictures and a missing SOURCES manifest, and runs six
     self-test arms first, two of them green (a stock picture with both rows; a packshot counted).
+
+    **AMENDED (W29-01, rulings R-W29-01 and R-W29-02): reversed again.** Every fatade-group picture stands
+    on the owner's Fatade 3D permission with a SOURCES row licensed "permission Fatade 3D via owner
+    2026-09-28" and a fatade3d.md source URL, except the four products W29-01 keeps off fatade3d.md, which
+    keep their origin and are counted by name; rules 2 to 5 (the stock manifest and the galleries) stand.
+    It fails on zero pictures on the permission, on the exceptions read other than four times, and on zero
+    stock gallery photographs. Eight arms, three green.
 
 33. `node scripts/seo-check.js` clean. **Since W28-17 (wave 28)**, run by `quality` after gate
     32. **Every built page**: a `<title>` unique across all 85 pages and under 60 characters, a
@@ -1070,6 +1110,36 @@ privacy-policy link pointing at the footer is a defect even though it resolves.
     `main` before the card: Terasamente in both locales named, and all twenty cards on the button
     assertions, exit 1. It fails on no service page in either locale, a locale count mismatch and zero
     gallery cards.
+38. `node scripts/check-catalog-structure.js` clean. **Since W29-01 (wave 29)**, rulings R-W29-01 and
+    R-W29-02; the dispatch names it catalog-structure. **The catalogue tree is the owner's.** On the
+    built tree, both locales, static: the Catalog menu lists the seven fatade3d.md categories in the
+    owner's order, each with its sub-categories in order (read as a tree of ul, li and a, not by
+    pattern), plus Acoperișuri and Garduri; the index carries nine tiles with the same names; a parent
+    with sub-categories shows their tiles in order and no product grid; every sub-category page carries
+    the breadcrumb Acasă / Catalog / category / sub-category and a grid; and "Plăci flexibile" is no
+    page's name (a category's authored paragraphs describe the material and are not read for it). The
+    Russian names are fatade3d.md's own. Four RED arms (a sub-category missing, tiles out of order, a
+    wrong Russian label, the old name left) between two clean controls (R-AB).
+39. `node scripts/check-catalog-parity.js` clean. **Since W29-01**, the dispatch's catalog-parity.
+    **Zero missing products.** `docs/catalog/FATADE-PARITY.json` is generated by
+    `scripts/gen-catalog-w29.js` from the committed capture and lists every placement fatade3d.md renders;
+    Chrome reads every listed catalogue page, both locales, at 1440, and each must show exactly those
+    products in the same order (identified by the card's link, so two products sharing a name cannot
+    swap), with fatade's name (or the recorded `name_rc` and its reason), the price the dispatch's rule
+    gives, a built product page whose h1 is the name, and a picture whose provenance names the listed
+    source URL (the four exceptions aside). RED arms: a product missing, two out of order, a wrong price.
+40. `node scripts/check-catalog-images.js` clean. **Since W29-01**, the dispatch's catalog-images.
+    Every picture of a fatade-group card, product page (main frame and thumbnails) and category or
+    sub-category tile, every URL in its src and srcset, is a file with a PROVENANCE row and maps to a
+    `docs/images/SOURCES.md` row whose licence is exactly "permission Fatade 3D via owner 2026-09-28"
+    (R-W29-02) and names a fatade3d.md source; the four W29-01 exceptions show exactly their files, whose
+    bytes hash to the values recorded from `main` before the card. RED arms: no SOURCES row, another
+    licence, an exception whose file changed.
+41. `node scripts/gen-catalog-w29.js --check` clean. **Since W29-01.** The catalogue data
+    (`content/catalog-products.json`, `content/catalog.json`, `content/plate-brand-settlement.json`) and
+    `docs/catalog/FATADE-PARITY.json` are GENERATED from `docs/catalog/FATADE-CAPTURE-W29.json` and
+    `content/catalog-ru-w29.json` (the Russian fatade lacks, and the logged text edits); a hand edit that
+    drifts from the capture, or a capture change nobody regenerated, fails here.
 
 **This list is appended to, never renumbered.** Recorded entries cite gates by
 number (Q-W14-03 was found "at gate 9") and those bodies are immutable under
@@ -1126,6 +1196,8 @@ itself for the 200 check; no browser.
 because gate 13 rebuilds `dist/` armed.
 **AMENDED (W29-02, W29-03):** gates 36 and 37 run after gate 35 and before gate 13, with the other
 browser gates, because gate 13 rebuilds `dist/` armed.
+**AMENDED (W29-01):** gates 38 to 41 run after gate 37 and before gate 13; 39 drives Chrome, the other
+three read files.
 
 **The count, so it stops drifting (W25-03c).** ~~This list numbers **25** gates.~~
 ~~**AMENDED (W25-24): 26**, and `quality` runs **25** commands.~~
@@ -1138,7 +1210,8 @@ browser gates, because gate 13 rebuilds `dist/` armed.
 ~~**AMENDED (W28-17): 33**, and `quality` runs **32** commands.~~
 ~~**AMENDED (W28-18): 34**, and `quality` runs **33** commands.~~
 ~~**AMENDED (W28-28): 35**, and `quality` runs **34** commands.~~
-**AMENDED (W29-03): 37**, and `quality` runs **36** commands (W29-02 added gate 36 and left this line at 35; corrected here). The number to report is the one
+~~**AMENDED (W29-03): 37**, and `quality` runs **36** commands (W29-02 added gate 36 and left this line at 35; corrected here).~~
+**AMENDED (W29-01): 41**, and `quality` runs **40** commands. The number to report is the one
 `node scripts/run-gates.js` prints, never this sentence. Five of them
 are not scripts and `quality` cannot run them: gate 4 (heights measured settled), gate 6 (no
 new colour), gate 7 (reduced motion), gate 8 (the three documents updated) and **gate 9,

@@ -1829,3 +1829,51 @@ built tree; four move to measured plus 60 (W24-R4) and the other 51 read identic
 | `/ru/servicii/copertine/` | 8,233 | **8,129** | 8,293 to **8,189** |
 | `/catalog/` | 4,047 | **3,682** | 4,107 to **3,742** |
 | `/ru/catalog/` | 4,072 | **3,706** | 4,132 to **3,766** |
+
+
+---
+
+## AMENDED 2026-09-28 (W29-01, wave 29): the fatade3d.md catalogue pages
+
+**Measured on the branch `w29/w29-01-catalog-fatade` at 1280 wide, every reveal applied and settled 1.6s,
+`document.documentElement.scrollHeight`, the method section 2 of docs/CLAUDE.md states; each new budget is
+the measurement plus 60 (W24-R4's rule for a page changed at ship).** W29-01 changed every fatade category
+and sub-category page (the grid is four columns down to 1025, the two parents show tiles instead of their
+products, Plăci ceramice lists 27 plates instead of 88) and created a product page per product, two of
+which per locale are measured here. The catalogue index and the roofing catalogue page did not change and
+keep their budgets. `scripts/verify-live.js` carries the same figures; change one and the other with it.
+
+| page | label | old budget | measured | new budget |
+|---|---|---|---|---|
+| `/catalog/termoizolatie/` | cat RO termo | 6924 | 4045 | **4105** |
+| `/ru/catalog/termoizolatie/` | cat RU termo | 6840 | 4099 | **4159** |
+| `/catalog/termoizolatie/polistiren-expandat/` | sub RO eps | 3667 | 3612 | **3672** |
+| `/ru/catalog/termoizolatie/polistiren-expandat/` | sub RU eps | 3584 | 3547 | **3607** |
+| `/catalog/termoizolatie/polistiren-extrudat/` | sub RO xps | 3144 | 3097 | **3157** |
+| `/ru/catalog/termoizolatie/polistiren-extrudat/` | sub RU xps | 3123 | 3077 | **3137** |
+| `/catalog/termoizolatie/vata-minerala/` | sub RO vata | 3625 | 3593 | **3653** |
+| `/ru/catalog/termoizolatie/vata-minerala/` | sub RU vata | 3627 | 3593 | **3653** |
+| `/catalog/termoizolatie/adezivi-si-mase-de-spaclu/` | sub RO adez | 4143 | 4122 | **4182** |
+| `/ru/catalog/termoizolatie/adezivi-si-mase-de-spaclu/` | sub RU adez | 4065 | 4122 | **4182** |
+| `/catalog/termoizolatie/alte-produse/` | sub RO altep | 3115 | 3055 | **3115** |
+| `/ru/catalog/termoizolatie/alte-produse/` | sub RU altep | 3075 | 3055 | **3115** |
+| `/catalog/tencuieli-decorative/` | cat RO tencu | 5372 | 5365 | **5425** |
+| `/ru/catalog/tencuieli-decorative/` | cat RU tencu | 5448 | 5441 | **5501** |
+| `/catalog/placi-ceramice/` | cat RO placi | 12867 | 6273 | **6333** |
+| `/ru/catalog/placi-ceramice/` | cat RU placi | 13805 | 6409 | **6469** |
+| `/catalog/elemente-decorative/` | cat RO elem | 10258 | 10774 | **10834** |
+| `/ru/catalog/elemente-decorative/` | cat RU elem | 10693 | 11209 | **11269** |
+| `/catalog/vopsele/` | cat RO vopsele | 4364 | 3628 | **3688** |
+| `/ru/catalog/vopsele/` | cat RU vopsele | 4459 | 3655 | **3715** |
+| `/catalog/vopsele/vopsele-de-exterior/` | sub RO vopext | 3123 | 3077 | **3137** |
+| `/ru/catalog/vopsele/vopsele-de-exterior/` | sub RU vopext | 3146 | 3099 | **3159** |
+| `/catalog/vopsele/vopsele-de-interior/` | sub RO vopint | 3146 | 3099 | **3159** |
+| `/ru/catalog/vopsele/vopsele-de-interior/` | sub RU vopint | 3192 | 3145 | **3205** |
+| `/catalog/sisteme-iluminare/` | cat RO ilumin | 6376 | 6316 | **6376** |
+| `/ru/catalog/sisteme-iluminare/` | cat RU ilumin | 6319 | 6312 | **6372** |
+| `/catalog/alte-materiale/` | cat RO alte | 3764 | 3704 | **3764** |
+| `/ru/catalog/alte-materiale/` | cat RU alte | 3764 | 3704 | **3764** |
+| `/catalog/termoizolatie/polistiren-expandat/polistiren-dalmatina/` | prod RO dalmat | new page | 4030 | **4090** |
+| `/ru/catalog/termoizolatie/polistiren-expandat/polistiren-dalmatina/` | prod RU dalmat | new page | 4073 | **4133** |
+| `/catalog/placi-ceramice/stone-alpes/` | prod RO alpes | new page | 3210 | **3270** |
+| `/ru/catalog/placi-ceramice/stone-alpes/` | prod RU alpes | new page | 3210 | **3270** |

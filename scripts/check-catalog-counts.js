@@ -163,7 +163,43 @@ if (process.argv.includes('--llms')) {
   out.push(`llms.txt: ${found} of ${urls.length} catalogue group URLs present`);
 }
 
+/* AMENDED (W29-01, the wave 29 dispatch: "Hub tile count stays 9, update catalog-counts test to the
+   new category slugs and counts"). The catalogue hub carries nine tiles; each fatade category and
+   sub-category page carries the product count fatade3d.md rendered on 2026-09-28 (recorded here and on
+   the W29-01 card), and it equals the data's own list for that slug. A parent with sub-categories
+   shows tiles, not products: its count is the number of its sub-category tiles. */
+const HUB = { ro: 'catalog/index.html', ru: 'ru/catalog/index.html' };
+const RECORDED_W29 = {
+  'termoizolatie/polistiren-expandat': 5, 'termoizolatie/polistiren-extrudat': 2, 'termoizolatie/vata-minerala': 5,
+  'termoizolatie/adezivi-si-mase-de-spaclu': 11, 'termoizolatie/alte-produse': 2, 'tencuieli-decorative': 13,
+  'placi-ceramice': 27, 'elemente-decorative': 64, 'vopsele/vopsele-de-exterior': 4, 'vopsele/vopsele-de-interior': 4,
+  'sisteme-iluminare': 25, 'alte-materiale': 3,
+};
+const RECORDED_TILES = { termoizolatie: 5, vopsele: 2 };
+const catData = JSON.parse(fs.readFileSync(path.join(ROOT, 'content/catalog-products.json'), 'utf8')).categories;
+for (const loc of ['ro', 'ru']) {
+  const hub = read(HUB[loc]); pagesRead++;
+  const tiles = count(hub, /<a class="cat-tile"/g);
+  if (tiles !== 9) bad(`${HUB[loc]}: ${tiles} hub tiles, the dispatch keeps 9`);
+  for (const [slug, n] of Object.entries(RECORDED_W29)) {
+    const rel = `${loc === 'ro' ? '' : 'ru/'}catalog/${slug}/index.html`;
+    const html = read(rel); pagesRead++;
+    const cards = count(html, /<article class="prod" data-product-card/g);
+    const data = (catData[slug] || []).length;
+    if (cards !== n) bad(`${rel}: ${cards} product cards, fatade3d.md rendered ${n} (recorded 2026-09-28)`);
+    if (data !== cards) bad(`${rel}: ${cards} product cards, content/catalog-products.json lists ${data} for ${slug}`);
+  }
+  for (const [slug, n] of Object.entries(RECORDED_TILES)) {
+    const rel = `${loc === 'ro' ? '' : 'ru/'}catalog/${slug}/index.html`;
+    const html = read(rel); pagesRead++;
+    const t = count(html, /<a class="subcat__link"/g);
+    if (t !== n) bad(`${rel}: ${t} sub-category tiles, recorded ${n}`);
+    if (count(html, /<article class="prod" data-product-card/g)) bad(`${rel}: a parent with sub-categories shows products, not only tiles`);
+  }
+}
+out.push(`catalogue hub: 9 tiles; fatade categories and sub-categories: ${Object.entries(RECORDED_W29).map(([k, v]) => `${k} ${v}`).join(', ')}; tiles: termoizolatie 5, vopsele 2; both locales`);
+
 console.log(`pages read: ${pagesRead}`);
 out.forEach((l) => console.log('  ' + l));
 if (problems.length) { console.error(`\n${problems.length} problem(s):`); problems.forEach((p) => console.error('  ' + p)); process.exit(1); }
-console.log(`roofing cards ${RECORDED.roofingCards}, tiles ${RECORDED.roofingTiles}, filters ${RECORDED.roofingFilters}, fence cards ${RECORDED.fenceCards}, copertine cards ${RECORDED.copertineCards}, both locales, and no product card or price on a service page.`);
+console.log(`roofing cards ${RECORDED.roofingCards}, tiles ${RECORDED.roofingTiles}, filters ${RECORDED.roofingFilters}, fence cards ${RECORDED.fenceCards}, copertine cards ${RECORDED.copertineCards}, both locales, the nine hub tiles and the fatade category counts, and no product card or price on a service page.`);

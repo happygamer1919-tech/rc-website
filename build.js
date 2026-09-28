@@ -499,13 +499,16 @@ function productLdFromHtml(html, pageUrl) {
   const items = [];
   for (const m of html.matchAll(/<article class="(?:prod|nvk)"[\s\S]*?<\/article>/g)) {
     const card = m[0];
-    const name = (card.match(/class="(?:prod|nvk)__name">([^<]*)</) || [])[1];
+    /* W29-01: the name may sit inside the card's link, and a product page's article names itself in
+       data-ld-name; the card's link, where it has one, is the Product's url. */
+    const name = (card.match(/data-ld-name="([^"]*)"/) || [])[1] || (card.match(/class="(?:prod|nvk)__name">(?:<a [^>]*>)?([^<]*)</) || [])[1];
+    const link = (card.match(/class="prod__link" href="([^"]+)"/) || [])[1];
     const price = (card.match(/class="(?:prod|nvk)__price"[^>]*>([^<]*)</) || [])[1];
     if (!name || price === undefined) continue;
     const low = priceNumber(unesc(price));
     if (low === null) die(`W28-18: the priced card "${unesc(name)}" on ${pageUrl} prints "${unesc(price)}", which carries no figure to publish as lowPrice.`);
     const img = (card.match(/<img[^>]*\ssrc="([^"]+)"/) || [])[1];
-    items.push(Object.assign({ '@type': 'Product', name: unesc(name), url: pageUrl },
+    items.push(Object.assign({ '@type': 'Product', name: unesc(name), url: link ? SITE + link : pageUrl },
       img ? { image: SITE + (img.startsWith('/') ? img : '/' + img) } : {},
       { offers: { '@type': 'AggregateOffer', lowPrice: low, priceCurrency: 'MDL', offerCount: 1, url: pageUrl } }));
   }
@@ -856,7 +859,14 @@ function slotImage(id, opts = {}) {
      and Lighthouse's LCP discovery insight named the one hint it lacked: fetchpriority=high.
      The caller says which slot is that picture; nothing else changes. */
   const priority = opts.priority ? ' fetchpriority="high"' : '';
-  const sources = hasWebp ? `<source type="image/webp" srcset="${BASE}/${esc(webpRel)}">` : '';
+  /* W29-01: a picture the catalogue intake wrote at card size as well (`-600.webp`) is offered at
+     both widths, so a card never fetches the full-size file; the caller may say how wide it paints. */
+  const smallRel = webpRel.replace(/\.webp$/, '-600.webp');
+  const hasSmall = hasWebp && fs.existsSync(path.join('public', smallRel));
+  const sizes = opts.sizes || '(min-width: 1200px) 290px, (min-width: 768px) 45vw, 92vw';
+  const sources = hasSmall
+    ? `<source type="image/webp" srcset="${BASE}/${esc(smallRel)} 600w, ${BASE}/${esc(webpRel)} 1600w" sizes="${esc(sizes)}">`
+    : (hasWebp ? `<source type="image/webp" srcset="${BASE}/${esc(webpRel)}">` : '');
   return `<picture class="ph ph--filled ph--${variant}${extra}" data-photo-slot="${esc(id)}" style="--ph-ratio: ${esc(row.ratio)};">${sources}<img src="${BASE}/${esc(rel)}" alt="${esc(alt)}" width="${W}" height="${H}" loading="${loading}"${priority} decoding="async"></picture>`;
 }
 
@@ -1376,8 +1386,15 @@ function prodCard(l, r, i, extra = '') {
        company's house brand on this catalogue reads as reselling their range.
        The products are kept; only the line is withheld. One flag, so the owner's
        other answer is a one-flag change either way. */
-    if (REAL(r.brand) && !r.brand_hidden) parts.push(`          <p class="prod__brand">${esc(r.brand)}</p>`);
-    parts.push(`          <h3 class="prod__name">${esc(name)}</h3>`);
+    /* W29-01: where fatade3d.md prints a manufacturer logo on the card, the card carries it, small,
+       in place of the brand line; and the name opens the product's own page. */
+    const logo = brandLogo(r, 'prod__logo');
+    const detail = productHref(l, r);
+    if (logo) parts.push(`          ${logo}`);
+    else if (REAL(r.brand) && !r.brand_hidden) parts.push(`          <p class="prod__brand">${esc(r.brand)}</p>`);
+    parts.push(detail
+      ? `          <h3 class="prod__name"><a class="prod__link" href="${detail}">${esc(name)}</a></h3>`
+      : `          <h3 class="prod__name">${esc(name)}</h3>`);
     /* W27-C-03 (W27-R-04): the imperlux model card's tagline, colour chips and facts line.
        The chip names go through the colour dictionary for RU and keep their RO name
        where it has no entry, which is what the dispatch asked for. */
@@ -1407,7 +1424,9 @@ function prodCard(l, r, i, extra = '') {
        it was written that way first and the gate caught it, on 1,230 hits. The
        slot id is this repo's own unique handle for the product, it is printed on
        the card's placeholder, and it is what the photo session uses. */
-    parts.push(`            <a class="prod__cta" href="#oferta" data-product="${esc(lead)}" aria-label="${esc(label('ctaAria'))}: ${esc(lead)}">${arrow}</a>`);
+    parts.push(detail
+      ? `            <a class="prod__cta" href="${detail}" data-product="${esc(lead)}" aria-label="${esc(w29Label(l, 'viewAria'))}: ${esc(lead)}">${arrow}</a>`
+      : `            <a class="prod__cta" href="#oferta" data-product="${esc(lead)}" aria-label="${esc(label('ctaAria'))}: ${esc(lead)}">${arrow}</a>`);
     parts.push('          </div>');
     parts.push('        </div>');
     return `      <article class="prod" data-product-card${extra} data-reveal data-stagger="${Math.min(i, 6)}">\n${parts.join('\n')}\n      </article>`;
@@ -2592,7 +2611,9 @@ function categoryBlock(l, c) {
   /* W24-04. The subcategories were listed as plain text, because until this card
      they had no page of their own to open. They do now, and a visitor on the
      parent page had no way to reach one except the header menu. */
-  const subs = kids.length ? `
+  /* AMENDED (W29-01): a parent now opens on its sub-category tiles, so the list under the prose would
+     say the same thing a second time; it renders only where there are no tiles. */
+  const subs = kids.length && !(entry.fatade && c.parent == null) ? `
     <ul class="cat-subs">
 ${kids.map((k, j) => {
     const w = `${where}.children[${j}]`;
@@ -2732,6 +2753,159 @@ const CATALOG_PRODUCTS = Object.fromEntries(
   const emptyPage = CATEGORIES.map((c) => c.slug).filter((s) => (CATALOG_DATA.index[s] || []).length === 0);
   if (emptyPage.length) die(`${emptyPage.length} catalogue page(s) would render an empty grid: ${emptyPage.join(', ')}. A category with no product is not a page.`);
 })();
+
+/* --- W29-01, the fatade3d.md catalogue in three levels (R-W29-01, R-W29-02) -------------
+   The records come from scripts/gen-catalog-w29.js (the capture of 2026-09-28) and their pictures
+   from scripts/intake-catalog-w29.js, whose list is content/catalog-images-w29.json. Three things
+   are built from them here: the sub-category tiles a parent category shows instead of the product
+   dump, the card's link and logo, and one detail page per product, both locales. */
+const CATALOG_IMAGES_FILE = 'content/catalog-images-w29.json';
+const CATALOG_IMAGES = (() => {
+  if (!fs.existsSync(CATALOG_IMAGES_FILE)) die(`${CATALOG_IMAGES_FILE} is missing. Run node scripts/intake-catalog-w29.js.`);
+  try { return JSON.parse(fs.readFileSync(CATALOG_IMAGES_FILE, 'utf8')); } catch (e) { die(`${CATALOG_IMAGES_FILE} did not parse: ${e.message}`); }
+})();
+const IS_W29 = (r) => !!(r && r.source && r.source.host === 'fatade3d.md' && r.source.captured === '2026-09-28');
+/* A product's page sits under its FIRST placement: three paints sit in both Vopsele
+   sub-categories, and one page with one canonical URL is what both cards open. */
+const DETAIL = [...CATALOG_DATA.byId.values()].filter(IS_W29).map((r) => ({ r, route: `${r.categories[0]}/${r.slug}` }));
+(() => {
+  if (DETAIL.length !== 162) die(`W29-01: ${DETAIL.length} fatade-group records carry the 2026-09-28 capture; the capture holds 162.`);
+  const seen = new Set();
+  for (const d of DETAIL) {
+    if (!REAL(d.r.slug) || !/^[a-z0-9-]+$/.test(d.r.slug)) die(`W29-01: ${d.r.id} has the slug "${d.r.slug}", which is not a URL segment.`);
+    if (seen.has(d.route)) die(`W29-01: two products would share the page /catalog/${d.route}/.`);
+    if (CATEGORY_ROUTES.has(d.route)) die(`W29-01: the product page /catalog/${d.route}/ would overwrite a category page.`);
+    seen.add(d.route);
+  }
+})();
+const DETAIL_BY_ID = new Map(DETAIL.map((d) => [d.r.id, d]));
+const productHref = (l, r) => { const d = DETAIL_BY_ID.get(r.id); return d ? `${BASE}${CATALOG_ROOT[l.code]}${d.route}/` : null; };
+function w29Label(l, k) {
+  const v = l.strings[`catalogW29.${k}`];
+  if (!REAL(v)) die(`catalogW29.${k} must be real in ${l.code}.`);
+  return v;
+}
+/* A small manufacturer logo where fatade3d.md prints one on the card, from the intake's list. */
+function brandLogo(r, cls) {
+  /* brand_hidden wins: the ceramic plates' maker is settled per plate (gate 23), and a logo would restate
+     a manufacturer the settlement found does not make the plate. */
+  if (!IS_W29(r) || !r.brand_logo_src || !REAL(r.brand) || r.brand_hidden) return '';
+  const g = (CATALOG_IMAGES.logos || {})[r.brand];
+  if (!g) die(`W29-01: ${r.id} shows the ${r.brand} logo on fatade3d.md and ${CATALOG_IMAGES_FILE} has no file for it.`);
+  const [w, h] = String(g.size || '160x60').split('x').map(Number);
+  if (!fs.existsSync(path.join(g.base + '.png'))) die(`W29-01: the ${r.brand} logo ${g.base}.png is missing.`);
+  const rel = g.base.replace(/^public\//, '');
+  return `<picture class="${cls}"><source type="image/webp" srcset="${BASE}/${esc(rel)}.webp"><img src="${BASE}/${esc(rel)}.png" alt="${esc(r.brand)}" width="${w}" height="${h}" loading="lazy" decoding="async"></picture>`;
+}
+
+/* Level b: a parent category with sub-categories shows one tile per sub-category, in fatade's tile
+   order, each the WHOLE tile one link (R-W29-03's pattern): picture, TOP badge where fatade has one,
+   name, and "Vezi produse" as the visual button inside the link. */
+function subcategoryTiles(l, c) {
+  const entry = CATALOG.categories[c.i];
+  const kids = entry.children || [];
+  const where = `${CATALOG_FILE}: categories[${c.i}]`;
+  const tiles = kids.map((k, j) => {
+    const w = `${where}.children[${j}]`;
+    const route = catalogHref(k, l, w);
+    const key = k.href.ro.replace(/^\/catalog\//, '').replace(/\/$/, '');
+    const tile = (CATALOG_IMAGES.tiles || {})[key];
+    if (!tile) die(`W29-01: the sub-category ${key} has no tile picture in ${CATALOG_IMAGES_FILE}.`);
+    const top = k.fatade && k.fatade.top ? `<span class="subcat__badge">${esc(w29Label(l, 'top'))}</span>` : '';
+    return `      <li class="subcat" data-reveal data-stagger="${Math.min(j, 6)}">
+        <a class="subcat__link" href="${route}">
+          <div class="subcat__media">${placeholder(tile.slot, { variant: 'light', className: 'subcat__ph', locale: l.code, eager: j < 3 })}${top}</div>
+          <div class="subcat__body">
+            <h3 class="subcat__name">${esc(catalogField(k, 'label', l, w))}</h3>
+            <span class="subcat__btn">${esc(w29Label(l, 'viewProducts'))}${PROD_ARROW}</span>
+          </div>
+        </a>
+      </li>`;
+  }).join('\n');
+  return `<section class="section section--light subcat-sec" aria-labelledby="subcat-h">
+  <div class="container">
+    <h2 class="sr-only" id="subcat-h">${esc(w29Label(l, 'tilesH'))}</h2>
+    <ul class="subcat-grid" data-subcat-grid>
+${tiles}
+    </ul>
+  </div>
+</section>`;
+}
+
+/* A description as fatade prints it: paragraphs on a blank line, "- " lines as a list, a single
+   line break kept. Escaped; nothing is added. */
+function richText(t) {
+  return String(t).split(/\n{2,}/).map((block) => {
+    const lines = block.split('\n').map((s) => s.trim()).filter(Boolean);
+    if (lines.length && lines.every((s) => /^-\s+/.test(s))) return `<ul>${lines.map((s) => `<li>${esc(s.replace(/^-\s+/, ''))}</li>`).join('')}</ul>`;
+    const out = [];
+    let list = [];
+    const flush = () => { if (list.length) { out.push(`<ul>${list.map((s) => `<li>${esc(s)}</li>`).join('')}</ul>`); list = []; } };
+    let para = [];
+    const flushP = () => { if (para.length) { out.push(`<p>${para.map(esc).join('<br>')}</p>`); para = []; } };
+    for (const s of lines) {
+      if (/^-\s+/.test(s)) { flushP(); list.push(s.replace(/^-\s+/, '')); } else { flush(); para.push(s); }
+    }
+    flushP(); flush();
+    return out.join('');
+  }).join('\n');
+}
+
+/* Level d: the product page. Name (the page's h1), the manufacturer logo, the price as the card
+   shows it, the variants, "Solicită ofertă" to the quote form with the product named, the
+   description and the specifications; the pictures on the left. The price element keeps the card's
+   shape (.prod__price with data-product), so the catalogue gate's single permitted place for a
+   figure is the same element on every page. */
+function productDetail(l, r) {
+  const name = r.name[l.code];
+  const lead = `${name} (${r.slot})`;
+  const price = (r.price && r.price.render && r.price.render[l.code]) || null;
+  const extra = ((CATALOG_IMAGES.gallery || {})[r.id]) || [];
+  const row = PHOTO_SLOTS.slots.find((s) => s.id === r.slot);
+  const mainRel = row && row.state === 'filled' ? row.provenance.replace(/^public\//, '') : null;
+  const thumbs = mainRel && extra.length ? [{ jpg: mainRel, alt: row.alt[l.code] }, ...extra.map((g, k) => ({ jpg: g.base.replace(/^public\//, '') + '.jpg', alt: `${name}, ${w29Label(l, 'photo')} ${k + 2}` }))] : [];
+  for (const t of thumbs) if (!fs.existsSync(path.join('public', t.jpg))) die(`W29-01: ${r.id} names the picture ${t.jpg}, which does not exist.`);
+  const webp = (jpg) => jpg.replace(/\.jpg$/, '.webp');
+  const small = (jpg) => { const s = jpg.replace(/\.jpg$/, '-600.webp'); return fs.existsSync(path.join('public', s)) ? s : webp(jpg); };
+  const thumbList = thumbs.length ? `
+        <ul class="pd__thumbs" aria-label="${esc(w29Label(l, 'galleryAria'))}">
+${thumbs.map((t, k) => `          <li><button class="pd__thumb" type="button" data-pd-thumb data-pd-webp="${BASE}/${esc(webp(t.jpg))}" data-pd-jpg="${BASE}/${esc(t.jpg)}" data-pd-alt="${esc(t.alt)}" aria-pressed="${k === 0 ? 'true' : 'false'}" aria-label="${esc(w29Label(l, 'thumbAria').replace('{i}', String(k + 1)))}"><img src="${BASE}/${esc(small(t.jpg))}" alt="" width="96" height="96" loading="lazy" decoding="async"></button></li>`).join('\n')}
+        </ul>` : '';
+  const variants = r.variants && r.variants[l.code] && r.variants[l.code].length ? `
+        <dl class="pd__vars">
+${r.variants[l.code].map((v) => `          <div><dt>${esc(v.name)}</dt><dd>${esc(v.options.join(', '))}</dd></div>`).join('\n')}
+        </dl>` : (REAL(r.variant && r.variant[l.code]) ? `
+        <p class="pd__line">${esc(r.variant[l.code])}</p>` : '');
+  const desc = r.description && REAL(r.description[l.code]) ? `
+      <div class="pd__block">
+        <h2 class="pd__h">${esc(w29Label(l, 'descH'))}</h2>
+        <div class="pd__desc">${richText(r.description[l.code])}</div>
+      </div>` : '';
+  const specs = r.specs && r.specs[l.code] && r.specs[l.code].length ? `
+      <div class="pd__block">
+        <h2 class="pd__h">${esc(w29Label(l, 'specsH'))}</h2>
+        <div class="pd__specs-scroll"><table class="pd__specs"><tbody>
+${r.specs[l.code].map((s) => `          <tr><th scope="row">${esc(s.name)}</th><td>${esc(s.value)}</td></tr>`).join('\n')}
+        </tbody></table></div>
+      </div>` : '';
+  const logo = brandLogo(r, 'pd__logo');
+  return `<section class="section section--light pd-sec">
+  <div class="container">
+    <div class="pd">
+      <div class="pd__media">
+        <div class="pd__main" data-pd-main>${placeholder(r.slot, { variant: 'light', className: 'pd__ph', locale: l.code, eager: true, priority: true, sizes: '(min-width: 1200px) 560px, (min-width: 900px) 46vw, 92vw' })}</div>${thumbList}
+      </div>
+      <article class="prod pd__info" data-product-card data-ld-name="${esc(name)}">
+        ${logo}${REAL(r.brand) && !r.brand_hidden && !logo ? `<p class="prod__brand">${esc(r.brand)}</p>` : ''}
+        <div class="pd__amount">${price == null
+          ? `<span class="prod__ask" data-product="${esc(lead)}">${esc(prodLabel(l, 'ask'))}</span>`
+          : `<span class="prod__price" data-product="${esc(lead)}">${esc(price)}</span>`}</div>${variants}
+        <a class="btn btn--primary prod__cta pd__cta" href="#oferta" data-product="${esc(lead)}">${esc(w29Label(l, 'offer'))}</a>
+      </article>
+    </div>${desc}${specs}
+  </div>
+</section>`;
+}
 
 /* --- W25-19, the consolidated roofing section ------------------------------ */
 
@@ -4476,7 +4650,9 @@ for (const l of loaded) {
          now open sections of this same page, W26-R5's shape) and the section with the filter
          bar, the counts, the compare tables and every card. The service page holds none of it. */
       'cat.block': roofCatalog ? bentoSection(l, BENTOS.acoperisuri) + bentoSection(l, PRODUCT_BENTOS.acoperisuri) + roofSection(l) : (c.parent == null ? categoryBlock(l, c) : ''),
-      'cat.products': roofCatalog ? '' : catalogProducts(l, c.slug),
+      /* W29-01: a parent with sub-categories shows their tiles, fatade3d.md's level b, and not the
+         product dump; every other catalogue page shows its grid. */
+      'cat.products': roofCatalog ? '' : (c.parent == null && (CATALOG.categories[c.i].children || []).length ? subcategoryTiles(l, c) : catalogProducts(l, c.slug)),
       'cat.footerLinks': SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
         `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join(''),
     };
@@ -4489,6 +4665,80 @@ for (const l of loaded) {
     if (html.includes('{{')) die(`unsubstituted placeholder survived in ${out}`);
     fs.mkdirSync(path.dirname(out), { recursive: true });
     fs.writeFileSync(out, fillProducts(html, catVars['cat.canonical']));
+  }
+
+  /* --- W29-01, one page per product, both locales ------------------------------------------ */
+  for (const d of DETAIL) {
+    const r = d.r;
+    const out = 'dist' + CATALOG_ROOT[l.code] + d.route + '/index.html';
+    const c = CATEGORIES.find((x) => x.slug === r.categories[0]);
+    if (!c) die(`W29-01: ${r.id} is placed on ${r.categories[0]}, which is not a catalogue page.`);
+    const parent = c.parent == null ? null : PARENT_CATEGORIES.find((x) => x.slug === c.parent);
+    const name = r.name[l.code];
+    const catTitle = categoryLabel(l, c);
+    const crumb = (href, text) => `      <a href="${href}">${esc(text)}</a>\n      <span aria-hidden="true">/</span>`;
+    const catUrl = (slug) => BASE + CATALOG_ROOT[l.code] + slug + '/';
+    /* The title ladder every page type uses, with the category as the second rung, so two products
+       that share a name (fatade prints some names twice) still carry different titles. */
+    /* Two fatade products share a name (Lampă K1247 twice); their variant lines differ, so a shared name
+       carries its own variant line and no two pages share a title. A name too long for any rung is cut
+       at its own " - " (fatade writes "Name - description") or, failing that, at a word boundary;
+       never mid-word. */
+    const twins = DETAIL.filter((x) => x.r.name[l.code] === name).length > 1;
+    const who = twins && r.variant && REAL(r.variant[l.code]) ? `${name} · ${r.variant[l.code]}` : name;
+    const shortName = (() => {
+      const head = who.split(' - ')[0];
+      if (head.length < TITLE_MAX) return head;
+      const words = who.split(' '); let t = '';
+      for (const w of words) { if ((t ? t + ' ' + w : w).length >= TITLE_MAX) break; t = t ? t + ' ' + w : w; }
+      return t;
+    })();
+    const metaTitle = [`${who} · ${catTitle}${BRAND}`, `${who}${BRAND}`, `${who} · ${catTitle}`, who, `${shortName} · ${catTitle}${BRAND}`, `${shortName}${BRAND}`, `${shortName} · ${catTitle}`, shortName].find((t) => t.length < TITLE_MAX);
+    const descSrc = r.description && REAL(r.description[l.code]) ? r.description[l.code].replace(/\s+/g, ' ').trim() : '';
+    const descBase = `${name}. ${catTitle}.`;
+    const firstSentence = descSrc ? descSrc.split(/(?<=[.!?])\s/)[0] : '';
+    const metaDesc = [firstSentence && `${who}: ${firstSentence}`, `${who}. ${catTitle}.`, descBase].filter(Boolean).find((t) => t.length < DESC_MAX) || who;
+    const detVars = {
+      ...vars,
+      'cat.title': name,
+      'cat.eyebrow': catTitle,
+      'cat.breadcrumb': [
+        crumb(BASE + l.home, l.strings['servicePage.home']),
+        crumb(BASE + CATALOG_ROOT[l.code], l.strings['header.catalog']),
+        parent ? crumb(catUrl(parent.slug), categoryLabel(l, parent)) : '',
+        crumb(catUrl(c.slug), catTitle),
+        `      <span aria-current="page">${esc(name)}</span>`,
+      ].filter(Boolean).join('\n'),
+      'cat.schema': breadcrumbLd([
+        { name: l.strings['servicePage.home'], item: SITE + BASE + l.home },
+        { name: l.strings['header.catalog'], item: SITE + BASE + CATALOG_ROOT[l.code] },
+        ...(parent ? [{ name: categoryLabel(l, parent), item: SITE + catUrl(parent.slug) }] : []),
+        { name: catTitle, item: SITE + catUrl(c.slug) },
+        { name },
+      ]) + PRODUCT_LD_MARK,
+      'cat.ledeBlock': '',
+      'cat.metaTitle': metaTitle,
+      'cat.metaDesc': metaDesc,
+      'cat.canonical': SITE + BASE + CATALOG_ROOT[l.code] + d.route + '/',
+      'cat.urlRo': SITE + BASE + CATALOG_ROOT.ro + d.route + '/',
+      'cat.urlRu': SITE + BASE + CATALOG_ROOT.ru + d.route + '/',
+      'cat.pathRo': BASE + CATALOG_ROOT.ro + d.route + '/',
+      'cat.pathRu': BASE + CATALOG_ROOT.ru + d.route + '/',
+      'cat.subject': `[${l.code.toUpperCase()}] ${name} (${r.slot}) - ${CATALOG_ROOT[l.code]}${d.route}/`,
+      'cat.block': '',
+      'cat.products': productDetail(l, r),
+      'cat.footerLinks': SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
+        `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join(''),
+    };
+    const missing = new Set();
+    const html = categoryTemplate.replace(/\{\{\s*([a-zA-Z0-9_.]+)\s*\}\}/g, (_, key) => {
+      if (key in detVars) return CAT_RAW_KEYS.has(key) ? detVars[key] : esc(detVars[key]);
+      missing.add(key); return `{{${key}}}`;
+    });
+    if (missing.size) die(`src/category.html references unknown keys for ${l.code}/${d.route}: ${[...missing].join(', ')}`);
+    if (html.includes('{{')) die(`unsubstituted placeholder survived in ${out}`);
+    fs.mkdirSync(path.dirname(out), { recursive: true });
+    fs.writeFileSync(out, fillProducts(html, detVars['cat.canonical']));
   }
 
   // --- W14-16, the three product pages --------------------------------------
@@ -4642,6 +4892,12 @@ const categoryPairs = [
   })),
 ];
 servicePairs.push(...categoryPairs);
+/* W29-01: every product page, both locales. */
+servicePairs.push(...DETAIL.map((d) => ({
+  ro: SITE + BASE + CATALOG_ROOT.ro + d.route + '/',
+  ru: SITE + BASE + CATALOG_ROOT.ru + d.route + '/',
+  lastmod: lastmodOf(...CAT_SOURCES, CATALOG_IMAGES_FILE),
+})));
 fs.writeFileSync('dist/sitemap.xml',
   '<?xml version="1.0" encoding="UTF-8"?>\n' +
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' +

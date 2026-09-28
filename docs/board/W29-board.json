@@ -17,27 +17,53 @@
   {
    "id": "R-W29-00",
    "title": "Self-merge on green, carried from R-W28-01",
-   "pr": 200
+   "pr": 200,
+   "date": "2026-09-28",
+   "ruled_by": "owner",
+   "applied_by": [
+    "W29-00"
+   ]
   },
   {
    "id": "R-W29-01",
    "title": "The fatade3d.md catalogue pictures and structure may be reused; R-13 is scoped out of them (reverses the recorded R-W28-06; the phone hero R-W28-04 stands, Q-W29-01)",
-   "pr": 200
+   "pr": 200,
+   "date": "2026-09-28",
+   "ruled_by": "owner",
+   "applied_by": [
+    "W29-01"
+   ]
   },
   {
    "id": "R-W29-02",
    "title": "Catalogue image sourcing: fatade3d.md is the source of record, licence string per SOURCES.md row, four exceptions",
-   "pr": 200
+   "pr": 200,
+   "date": "2026-09-28",
+   "ruled_by": "owner",
+   "applied_by": [
+    "W29-01"
+   ]
   },
   {
    "id": "R-W29-03",
    "title": "Whole-card service links; a gallery preview never repeats a described picture",
-   "pr": 200
+   "pr": 200,
+   "date": "2026-09-28",
+   "ruled_by": "owner",
+   "applied_by": [
+    "W29-02",
+    "W29-03"
+   ]
   },
   {
    "id": "R-W29-04",
    "title": "Service gallery stock: nothing that reads as non-Moldova, seven hard criteria, no replacement; the fence gallery's last seven go (addendum dispatch)",
-   "pr": 205
+   "pr": 205,
+   "date": "2026-09-28",
+   "ruled_by": "owner",
+   "applied_by": [
+    "W29-04"
+   ]
   }
  ],
  "cards": [

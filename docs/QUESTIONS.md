@@ -3593,3 +3593,33 @@ in, so the slot is a placeholder, named in gate 32 as waiting with this question
 silently. **Options**: (1) send one photograph of a membrane roll of your own stock, mark-free, and it is
 one intake run; (2) approve a Google Images Creative Commons find with the licence verified on its
 landing page, which the rule allows and this card did not use; (3) keep the placeholder.
+
+## Q-W29-01 · Which ruling "R-W28-04 and R-W28-06" means · OPEN · opened 2026-09-28 (W29-00)
+
+**Shipped default: both names point at the recorded R-W28-06 (fatade pictures, no mark), which R-W29-01
+reverses; the phone hero ruling R-W28-04 stands.**
+
+In `docs/rulings/W28-R.md`, R-W28-04 is "the phone hero matches the desktop hero" (W28-22, #174). The
+fatade picture ruling was called R-W28-04 by the second dispatch of wave 28 and recorded as R-W28-06
+because the id was taken. If the owner meant to reverse the phone hero as well, say so; wave 29 does not
+touch the home page hero.
+
+## Q-W29-02 · The written permission from Fatade 3D · OPEN · opened 2026-09-28 (W29-00)
+
+**Shipped default: proceed on the owner's word; every fatade3d.md picture's manifest row carries the licence
+string "permission Fatade 3D via owner 2026-09-28" exactly as R-W29-02 gives it.**
+
+R-W29-01 records that the owner obtained permission from Fatade 3D on 2026-09-28 to reuse their catalogue
+pictures and structure. No copy of that permission is in the repository. Recommended: file the e-mail or
+letter (a PDF under `docs/client-answers/` is enough) so the licence string points at evidence a later
+reader can check, and so the site can show it if Fatade 3D or a manufacturer ever asks.
+
+## Q-W29-03 · Playwright and axe-core as test dependencies · OPEN · opened 2026-09-28 (W29-00)
+
+**Shipped default: not added. The named tests are zero-dependency Chrome DevTools protocol scripts like every
+other browser gate here, and "axe passes" is Lighthouse accessibility at 100 (Lighthouse runs the axe-core
+rules) plus a static nested-interactive check.**
+
+The wave 29 acceptance lines name "playwright test" and "axe". The repo has no `package.json` and adds no
+dependency without the owner. Adding them means a `package.json`, a lockfile, an install step in `quality`
+and about 2 to 3 minutes more CI per pull request. Say "add them" and it is one card.

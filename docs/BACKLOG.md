@@ -1435,3 +1435,5 @@ the artifact is republished from `main` after this merges. Documents only.
 ## W28-R8 · The closing report W28-FINAL-RUN-4 and the board sync; wave 28 closes
 **Status: board sync, not a card** (opened 2026-09-25). `docs/reports/W28-FINAL-RUN-4.md`; the board JSON names #193 to #198;
 the artifact is republished from `main` after this merges. Documents only.
+## W29-00 · The wave 29 ruling register
+**Status: PR open** (opened 2026-09-28). `docs/rulings/W29-R.md`, R-W29-00 to R-W29-03 verbatim with readings; Q-W29-01 to 03. Documents only.

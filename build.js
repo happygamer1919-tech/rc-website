@@ -4249,6 +4249,12 @@ ${cards}${gal ? '\n' + galleryCard(l, gal, svcTitle, mine.length) : ''}
 </section>${gal ? '\n' + galleryLightbox(l, gal, svcTitle) : ''}`;
 }
 
+/* SEO-02, closes Q-W28-01. Google Search Console's HTML-tag token for the URL-prefix
+   property https://rapidconstruct.md/. Public by design, not a credential. Google reads
+   it from the homepage only, so it renders in src/template.html (both locale homepages).
+   Removing it un-verifies the property. */
+const GSC_META_CONTENT = 'BTgeJ0yWZFHh_8_bjUF11r7bPDVRBo7WoL761z1q9zM';
+
 for (const l of loaded) {
   const vars = {
     ...l.strings,
@@ -4258,6 +4264,7 @@ for (const l of loaded) {
     formAction: FORM_ARMED ? FORM_ENDPOINT_URL : '#oferta',
     base: BASE,
     buildSha: BUILD_SHA,
+    gscVerify: GSC_META_CONTENT,
     homeHref: BASE + l.home,
     /* W28-19 (wave 28 dispatch, GEO): ONE NAP, the same bytes on every page and in both locales
        (name, street, locality, phone, e-mail), rendered from this constant and nowhere else; the

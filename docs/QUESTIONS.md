@@ -3455,7 +3455,7 @@ summing to Toate). If "the two accessory grids" meant the "Accesorii Novatik Nat
 Creaton" tile blocks on Imperlux's own pages (Q-W27-03 part 4), those are not on this site, and
 making them cards is 43 pictures and a card of its own.
 
-## Q-W28-01 · The Search Console verification tag needs its content value from the owner · OPEN · opened 2026-09-23 (W28-00, for W28-20)
+## Q-W28-01 · The Search Console verification tag needs its content value from the owner · ANSWERED 2026-10-11, the owner sent the value (SEO-02) · opened 2026-09-23 (W28-00, for W28-20)
 
 **Raised W28-00, 2026-09-23. Shipped default: nothing; W28-20 is blocked on this one value and
 nothing else. Nothing else is blocked.**

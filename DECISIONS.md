@@ -14739,3 +14739,13 @@ and `scripts/indexnow-submit.js` sends every live sitemap URL to api.indexnow.or
 Naver), run by hand after the deploy propagates; it fails on a key the live host does not serve. **And** the
 copertine page carried two h1 elements, its own hero's and the hidden standard hero's; the hidden one is now a
 `p` (`prod.titleTag`), so every page has exactly one h1. Q-SEO-01 (the old domain).
+
+## SEO-02 · The Search Console verification tag, 2026-10-11
+
+Branch `seo/seo-02-search-console-tag`. Closes Q-W28-01 and W28-20. The owner created the URL-prefix property
+`https://rapidconstruct.md/` in his own Search Console account and sent the HTML-tag value. It is one constant,
+`GSC_META_CONTENT` in `build.js`, rendered as `<meta name="google-site-verification">` in `src/template.html`
+only, so both locale homepages carry it: Google reads the tag from the property's root URL and nothing else.
+Removing it un-verifies the property. SEO-01 merged as `8228832`, verify-live exit 0, and IndexNow accepted all
+390 sitemap URLs (HTTP 200 at 19:40 UTC after one 403 SiteVerificationNotCompleted on the first try, the
+protocol's own delay on a new key).

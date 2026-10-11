@@ -1345,7 +1345,7 @@ on 85 of 85 pages; the Despre facts block on both home pages; nine FAQ answers a
 four per locale corrected from a thirty-year warranty to W25-22's five; all 55 budgets move (R-Y).
 
 ## W28-20 · Search Console tag
-**Status: blocked** on the owner (Q-W28-01, the tag's content value). The Business Profile
+**Status: done by SEO-02** (2026-10-11; was blocked on Q-W28-01, the tag's content value). The Business Profile
 half is done by W28-11 under R-W28-03.
 
 ## W28-21 · Wave close: Lighthouse, W28-FINAL-RUN, the review, W28-RUN
@@ -1457,4 +1457,7 @@ the artifact is republished from `main` after this merges. Documents only.
 **Status: board sync, not a card** (opened 2026-09-28). `docs/reports/W29-RUN.md`; the board JSON names #200 to #205; the artifact is republished from `main` after this merges. Documents only.
 
 ## SEO-01 · Indexing baseline: IndexNow and one h1 per page
-**Status: open, PR** (opened 2026-10-11). IndexNow key and submit script; the copertine double h1. Search Console stays blocked on Q-W28-01.
+**Status: MERGED #207, section 12.0 exit 0** (opened 2026-10-11, merged as `8228832`); IndexNow accepted 390 URLs, HTTP 200, 19:40 UTC. IndexNow key and submit script; the copertine double h1. Search Console stays blocked on Q-W28-01.
+
+## SEO-02 · Search Console verification tag
+**Status: open, PR** (opened 2026-10-11). Closes Q-W28-01 and W28-20.

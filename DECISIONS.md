@@ -14724,3 +14724,18 @@ run: #200 to #205 (W29-00, W29-02, W29-03, W29-01, W29-05, W29-04), each merged 
 products per sub-category, the four exceptions, Lighthouse on the catalogue pages and the per-gallery removals.
 The board JSON names every merge and this sync; the board artifact (the page wave 28 used, now drawn from
 `docs/board/W29-board.json`) is republished from `main` after this merges (R-W28-12). Q-W29-01 to 12 stay open.
+
+## SEO-01 · Indexing baseline: IndexNow, one h1 on copertine, 2026-10-11
+
+Branch `seo/seo-01-indexing-baseline`, on `main` at `de176fc`. Reopened by the owner on 2026-10-11 after the
+client's reviewer said the site "will never have successful SEO/GEO". An audit of the live site the same day
+found the on-page base complete: 390 sitemap URLs, every one HTTP 200 with a unique title and description, a
+self-canonical, ro/ru/x-default hreflang, no noindex; BreadcrumbList on 388, Service 30, Product 32, FAQPage 22,
+GeneralContractor with NAP, hours, areaServed and the Business Profile in `sameAs`; robots.txt names six answer
+engines; `/llms.txt`; Lighthouse SEO 100 since wave 16. What was missing is off-page: the site was never
+verified in Search Console (Q-W28-01, open since 2026-09-23), so no sitemap was ever submitted, and no search
+engine was ever told the site exists. **This card**: `public/<key>.txt` is an IndexNow key (public by design)
+and `scripts/indexnow-submit.js` sends every live sitemap URL to api.indexnow.org (Bing, Yandex, Seznam,
+Naver), run by hand after the deploy propagates; it fails on a key the live host does not serve. **And** the
+copertine page carried two h1 elements, its own hero's and the hidden standard hero's; the hidden one is now a
+`p` (`prod.titleTag`), so every page has exactly one h1. Q-SEO-01 (the old domain).

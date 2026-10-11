@@ -161,7 +161,7 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
 {{prod.breadcrumb}}
     </nav>
     <p class="eyebrow">{{services.eyebrow}}</p>
-    <h1>{{prod.title}}</h1>
+    <{{prod.titleTag}}>{{prod.title}}</{{prod.titleTag}}>
     <p class="hero__sub" style="margin: 16px 0 0;">{{prod.lede}}</p>
     <div class="cta-row" style="justify-content: flex-start; margin-top: 32px;">
       <a class="btn btn--primary" href="#oferta">{{hero.ctaPrimary}}</a>

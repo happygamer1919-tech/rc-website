@@ -4004,6 +4004,8 @@ const PROD_RAW_KEYS = new Set(['mobileProducts', 'mobileServiceProducts', 'catal
   'prod.block', 'prod.footerLinks', 'prod.faqSchema', 'nap',
   // W24-08. The garduri bento, and the copertine hero and cross-sell row.
   'prod.bento', 'prod.hero', 'prod.crossSell', 'prod.heroHidden',
+  // SEO-01. The standard hero's title tag: p where that hero is hidden.
+  'prod.titleTag',
   // W24-06. Three levels on a parented product page, two on the others.
   'prod.breadcrumb',
 ]);
@@ -4781,6 +4783,10 @@ for (const l of loaded) {
          template, so the two heroes stay side by side in one file and a reader
          can see that exactly one of them shows. */
       'prod.heroHidden': p.slug === 'copertine' ? ' hidden' : '',
+      /* SEO-01. The hidden hero still sat in the HTML with its own h1, so the
+         copertine page carried two h1 elements and every SEO checker flags
+         that. Where the standard hero is hidden, its title is a p. */
+      'prod.titleTag': p.slug === 'copertine' ? 'p' : 'h1',
       'prod.faqSchema': (p.faqSchema ? p.faqSchema(l) : '') + PRODUCT_LD_MARK,
       'prod.footerLinks': SERVICE_SLUGS.slice(0, 6).map((sg, k) =>
         `<a href="${BASE}${SERVICES_ROOT[l.code]}${sg}/">${esc(l.strings[`services.items.${k}.title`])}</a>`).join(''),

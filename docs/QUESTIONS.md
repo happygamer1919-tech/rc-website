@@ -3725,3 +3725,13 @@ dormers on a stone house), case-la-cheie 08 and 10 (English terraces, a railway 
 new-build street), terasamente 17 (West European blocks behind an excavation), reparatii 33 (a stucco house
 with an S-tile roof), industrial 09 (a German factory hall with language-free safety pictograms). Name any
 and it goes the same way.
+
+## Q-SEO-01 · The old domain rapidconstructmd.com points at GitHub Pages and serves "Site not found" · OPEN · opened 2026-10-11 (SEO-01)
+
+**Raised SEO-01, 2026-10-11. Shipped default: nothing changes.** `rapidconstructmd.com` (nameservers at
+dns-parking.com) still resolves to the four GitHub Pages addresses, and since the custom domain moved to
+rapidconstruct.md no repository claims it, so every path answers 404 "Site not found". Any link, listing or
+reviewer that uses the old name sees a dead site, and an unclaimed Pages domain can be claimed by any GitHub
+account. **Recommended: point it at the real site** with the registrar's 301 URL forwarding to
+`https://rapidconstruct.md` if dns-parking offers it; otherwise remove its A records. Either needs the
+registrar login, which is the owner's.

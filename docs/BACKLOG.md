@@ -1455,3 +1455,6 @@ the artifact is republished from `main` after this merges. Documents only.
 
 ## W29-R1 · The closing report W29-RUN and the board sync
 **Status: board sync, not a card** (opened 2026-09-28). `docs/reports/W29-RUN.md`; the board JSON names #200 to #205; the artifact is republished from `main` after this merges. Documents only.
+
+## SEO-01 · Indexing baseline: IndexNow and one h1 per page
+**Status: open, PR** (opened 2026-10-11). IndexNow key and submit script; the copertine double h1. Search Console stays blocked on Q-W28-01.

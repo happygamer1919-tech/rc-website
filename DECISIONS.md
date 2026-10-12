@@ -14749,3 +14749,15 @@ only, so both locale homepages carry it: Google reads the tag from the property'
 Removing it un-verifies the property. SEO-01 merged as `8228832`, verify-live exit 0, and IndexNow accepted all
 390 sitemap URLs (HTTP 200 at 19:40 UTC after one 403 SiteVerificationNotCompleted on the first try, the
 protocol's own delay on a new key).
+
+## SEO-03 · No creator on the service-page ImageObjects, 2026-10-12
+
+Branch `seo/seo-03-image-metadata`. Search Console mailed the owner on 2026-10-12: "Image metadata", four
+non-critical issues, missing `license`, `creditText`, `copyrightNotice` and `acquireLicensePage`. Source: the
+38 project-cover ImageObjects on the 18 service pages each carried `creator: Rapid Construct`. Google's image
+licence documentation (last updated 2025-12-10) reads `contentUrl` plus any one of `creator`, `creditText`,
+`copyrightNotice` or `license` as image-licence markup and then recommends the rest. Filling them was rejected:
+the covers are client-supplied with the licence unverified (docs/assets/PROVENANCE.md), so a copyright or licence
+claim would be unbacked, and the Licensable badge has no use for a contractor. `creator` is removed; each
+ImageObject keeps `contentUrl`, `url`, `name`, `description`, `width` and `height`, so Google still reads what
+each photograph shows. After the deploy, the owner presses "Validate fix" in the Search Console report.

@@ -1460,4 +1460,7 @@ the artifact is republished from `main` after this merges. Documents only.
 **Status: MERGED #207, section 12.0 exit 0** (opened 2026-10-11, merged as `8228832`); IndexNow accepted 390 URLs, HTTP 200, 19:40 UTC. IndexNow key and submit script; the copertine double h1. Search Console stays blocked on Q-W28-01.
 
 ## SEO-02 · Search Console verification tag
-**Status: open, PR** (opened 2026-10-11). Closes Q-W28-01 and W28-20.
+**Status: MERGED #208, section 12.0 exit 0** (opened 2026-10-11, merged as `adfba93`). Closes Q-W28-01 and W28-20. The owner verified the property the same day.
+
+## SEO-03 · Search Console image metadata warnings
+**Status: open, PR** (opened 2026-10-12). The service-page ImageObjects lose `creator`, so Google stops reading them as licence markup.

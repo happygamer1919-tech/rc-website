@@ -606,7 +606,12 @@ function jpegSize(file) {
 
 /* An ImageObject per project cover on this service page. Each one carries the
    project's real title and summary, so a crawler that indexes the image also
-   gets what the photograph shows rather than a filename. */
+   gets what the photograph shows rather than a filename.
+   SEO-03: no `creator`. Google reads contentUrl plus any of creator, creditText,
+   copyrightNotice or license as image-licence markup, then reports the other
+   three and acquireLicensePage as missing (Search Console, 2026-10-12). The
+   covers are client-supplied with the licence unverified (docs/assets/
+   PROVENANCE.md), so no licence or copyright is claimed for them. */
 function serviceImageObjects(l, slug) {
   const mine = renderableProjects(l, slug).filter((p) => coverIsRealPhoto(p.cover));
   if (!mine.length) return '';
@@ -621,7 +626,6 @@ function serviceImageObjects(l, slug) {
       name: p.title[l.code],
       description: p.summary[l.code],
       width: d.w, height: d.h,
-      creator: { '@type': 'Organization', name: 'Rapid Construct' },
     });
   }).join(',\n') + '\n  ]';
 }
